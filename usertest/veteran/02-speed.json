@@ -1,0 +1,58 @@
+{
+  "j200": {
+    "ms": 2572,
+    "cursor": "R080 部品名",
+    "mode": "ナビ",
+    "scrollTop": 2173,
+    "cursorVisible": true
+  },
+  "latency80": {
+    "median": "16.6",
+    "max": "42.7"
+  },
+  "enter50": {
+    "ms": 6484,
+    "cursor": "R061 部品名",
+    "mode": "ナビ",
+    "okCount": 0,
+    "sample": [
+      "PLC CPUユニットz0",
+      "z13",
+      "出力拡張ユニットz2z14",
+      "アナログ入力z3z15",
+      "リレーz4z16z29"
+    ]
+  },
+  "undoRedo50": {
+    "ms": 1787,
+    "same": false,
+    "mode": "ナビ",
+    "cursor": "R061 部品名",
+    "toast": "戻す操作がありません"
+  },
+  "undo50": {
+    "restored": 50,
+    "events": 51
+  },
+  "views900": {
+    "ms": 63501,
+    "view": "view-9",
+    "cursor": "R004 部品名",
+    "rows": 71
+  },
+  "space50": {
+    "ms": 3578,
+    "detailOpen": 0,
+    "cursor": "R020 部品名"
+  },
+  "type200": {
+    "ms": 5404,
+    "len": 205
+  },
+  "insert30": {
+    "ms": 7614,
+    "rows": 110,
+    "cursor": "R110 部品名",
+    "mode": "ナビ"
+  }
+}

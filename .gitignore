@@ -5,3 +5,6 @@ dist-ssr
 test-results
 playwright-report
 .DS_Store
+usertest/**/shots/
+usertest/**/results/
+usertest/**/*.png

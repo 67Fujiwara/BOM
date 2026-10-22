@@ -1,0 +1,95 @@
+import { launch, check, log } from './lib.mjs'
+const t = await launch()
+const { page } = t
+await t.open('purchasing')
+let p = await t.proj()
+log('selected rows:', p.rows.filter((r) => r.status === 'selected').map((r) => r.id + ':' + r.adoptedSupplierId), 'formalQuoted:', p.rows.filter((r) => r.status === 'formalQuoted').map((r) => r.id))
+// 設計が R002 を作業中にして除外されるか
+await t.role('design'); await t.setCell('R002', '備考', '作業中メモ'); await t.role('purchasing')
+// 正式見積を依頼
+const dls = []
+page.on('download', (d) => dls.push(d.suggestedFilename()))
+await t.press('Control+k'); await page.getByTestId('palette-input').fill('正式見積'); await page.waitForTimeout(50)
+log('palette for 正式見積:', (await page.getByTestId('palette-list').textContent()).slice(0, 200))
+check('S4 パレットで「正式見積」と打つと依頼コマンドが先頭', /^流れ/.test(await page.getByTestId('palette-list').locator('.item').first().textContent()), await page.getByTestId('palette-list').locator('.item').first().textContent())
+await page.getByTestId('palette-input').fill('正式見積を依頼'); await page.waitForTimeout(50)
+await t.press('Enter'); await page.waitForTimeout(600)
+log('formal request →', await t.toast(), 'downloads:', dls)
+check('S4 正式見積依頼で作業中の行が除外される旨が出る', /作業中 1 行/.test(await t.toast()), await t.toast())
+p = await t.proj()
+log('statuses:', p.rows.filter((r) => ['formalRequested', 'formalQuoted'].includes(r.status)).map((r) => `${r.id}:${r.status}:${r.dueAt}`), 'requestRevs:', JSON.stringify(p.requestRevs))
+check('S4 選定済 → 正式依頼中', p.rows.filter((r) => r.status === 'formalRequested').length >= 2)
+// 8 ビューで正式単価入力
+await t.press('8')
+log('view8 cols:', (await page.locator('thead th').allTextContents()).join('|'), 'toolbar:', await page.locator('.toolbar').textContent())
+const r1 = p.rows.find((r) => r.id === 'R001'); const q1 = p.quotes.find((q) => q.rowId === 'R001' && q.supplierId === r1.adoptedSupplierId)
+log('R001 adopted', r1.adoptedSupplierId, 'unitPrice', q1.unitPrice, 'orderQty', r1.orderQty, 'qty', r1.qtyNeeded)
+// +16%（金額差は小さい）→ 仕様では「±10% または ¥10,000 の大きい方」以内なので OK のはず
+const p16 = Math.round(q1.unitPrice * 1.16)
+await t.setCellKey('R001', 'q.formalPrice@A', String(p16))
+log('R001 after formal +16%:', await t.cell('R001', 'status'), await t.cell('R001', 'formalPrice'), await t.cell('R001', 'formalDiff'))
+const f1 = await t.row('R001')
+check('S4 差分 +16% だが金額差 ¥' + (p16 - q1.unitPrice) * (f1.orderQty ?? f1.qtyNeeded) + ' < ¥10,000 → 閾値内（大きい方）で正式見積済', f1.status === 'formalQuoted' && !f1.flags.formalDiff, `status=${f1.status} formalDiff=${f1.flags.formalDiff}`)
+// R003: 大きく超過（+40%）
+const r3 = p.rows.find((r) => r.id === 'R003'); const q3 = p.quotes.find((q) => q.rowId === 'R003' && q.supplierId === r3.adoptedSupplierId)
+await t.setCellKey('R003', 'q.formalPrice@A', String(Math.round(q3.unitPrice * 1.4)))
+await t.setCellKey('R003', 'q.formalLeadDays@A', '12')
+log('R003 after formal +40%:', await t.cell('R003', 'status'), await t.cell('R003', 'formalDiff'), 'ball:', await t.cell('R003', 'ball'))
+check('S4 差分超過 → PM のボール', (await t.cell('R003', 'ball')) === 'PM' && /差分超過/.test(await t.cell('R003', 'status')))
+await t.shot('s4-01-view8')
+// PM 7
+await t.role('pm'); await t.press('7')
+const v7 = await page.locator('[data-row-id]').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id')))
+log('PM 7:', v7.join(','), 'status:', await t.status())
+check('S4 差分超過が 7 に載る', v7.includes('R003') && v7.includes('R013'))
+await t.goto('R003'); await t.press('Enter')
+const panel = await page.getByTestId('quickfix').textContent()
+log('decision panel 差分超過:', panel)
+check('S4 決定パネルに b/g/d/q と受入', /b 次点/.test(panel) && /g 再交渉/.test(panel) && /d 設計へ代替依頼/.test(panel) && /q 数量見直し/.test(panel))
+// g 再交渉
+await t.press('g'); await page.waitForTimeout(50)
+log('g dialog:', await page.locator('[role=dialog]').textContent().catch(() => ''))
+await page.getByTestId('prompt-text').fill('概算との差を再交渉'); await t.press('Enter'); await page.waitForTimeout(50)
+log('g →', await t.toast(), 'R003:', await t.cell('R003', 'status').catch(() => '(not in 7)'), 'row:', JSON.stringify((await t.row('R003')).flags), (await t.row('R003')).status, (await t.row('R003')).dueAt)
+check('S4 再交渉 → 正式依頼中・購買のボール', (await t.row('R003')).status === 'formalRequested')
+// R013（サンプルの差分超過 +15%）: d 設計へ代替依頼
+await t.goto('R013'); await t.press('Enter'); await t.press('d'); await page.waitForTimeout(50)
+await page.getByTestId('prompt-text').fill('安い代替を検討して'); await t.press('Enter'); await page.waitForTimeout(50)
+p = await t.proj()
+log('d →', await t.toast(), 'issues R013:', p.issues.filter((i) => i.rowId === 'R013').map((i) => `${i.kind}:${i.status}:${i.by.role}`), 'ball:', (await t.row('R013')).status)
+await t.press('1'); log('R013 ball cell:', await t.cell('R013', 'ball'), 'status:', await t.cell('R013', 'status'))
+check('S4 d → コスト超過の指摘が自動起票され設計のボール', p.issues.some((i) => i.rowId === 'R013' && i.kind === 'コスト超過' && i.status === 'open') && (await t.cell('R013', 'ball')) === '設計')
+// 設計が「7 代替なし」で回答 → 対策不成立で 7 に再掲
+await t.role('design'); await t.goto('R013'); await t.press(' '); await t.press('ArrowDown'); await t.press('Enter')
+const ap = await page.getByTestId('quickfix').textContent(); log('design action panel R013:', ap)
+const idx7 = ap.indexOf('7 代替なし')
+await t.press('ArrowDown', 'ArrowDown', 'ArrowDown'); await t.press('Enter'); await page.waitForTimeout(50)
+log('after select 代替なし:', await page.locator('[role=dialog]').textContent().catch(() => ''))
+await page.getByTestId('prompt-text').fill('同等品なし'); await t.press('Enter'); await page.waitForTimeout(50)
+p = await t.proj(); const r13 = p.rows.find((r) => r.id === 'R013')
+log('R013 after 代替なし:', r13.status, JSON.stringify(r13.flags), 'ball:', await t.cell('R013', 'ball'))
+await t.role('pm'); await t.press('7')
+const v7b = await page.locator('[data-row-id]').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id')))
+log('PM 7 after 対策不成立:', v7b.join(','))
+check('S4 対策不成立で 7 に再掲', v7b.includes('R013'))
+if (v7b.includes('R013')) { await t.goto('R013'); await t.press('Enter'); const pp = await page.getByTestId('quickfix').textContent(); log('panel 対策不成立:', pp); check('S4 対策不成立の選択肢は 受入 / b 次点 / g 再交渉 / e 特急・分納', /受入/.test(pp) && /b 次点/.test(pp) && /g 再交渉/.test(pp) && /e 特急/.test(pp), pp); await t.press('Escape') }
+// 上長決裁: R002 を大きな差額で正式見積（差額 >= ¥300,000）
+await t.role('design'); await t.press('Control+Enter'); await page.waitForTimeout(100); log('design publish R002 memo →', await t.toast()); const dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (dlg) { log('dlg:', dlg.slice(0, 100)); await t.press('1'); await page.waitForTimeout(50); const d2 = await page.locator('[role=dialog]').textContent().catch(() => ''); if (d2) await t.press('1') }
+await t.role('purchasing')
+await t.press('Control+k'); await page.getByTestId('palette-input').fill('正式見積を依頼'); await t.press('Enter'); await page.waitForTimeout(400); log('formal request 2 →', await t.toast())
+p = await t.proj(); const r2 = p.rows.find((r) => r.id === 'R002'); const q2 = p.quotes.find((q) => q.rowId === 'R002' && q.supplierId === r2.adoptedSupplierId)
+log('R002:', r2.status, q2?.unitPrice, r2.orderQty, r2.qtyNeeded)
+if (r2.status === 'formalRequested') {
+  await t.setCellKey('R002', 'q.formalPrice@A', String(q2.unitPrice + 200000))
+  log('R002 after big formal:', await t.cell('R002', 'status'))
+  await t.role('pm'); await t.press('7'); await t.goto('R002'); await t.press('y'); await page.waitForTimeout(50)
+  const yd = await page.locator('[role=dialog]').textContent().catch(() => '')
+  log('y dialog (上長決裁?):', yd)
+  check('S4 上長決裁条件に該当すると承認者・日付・決裁書 No. の入力が出る', /承認者/.test(yd) && /決裁書/.test(yd), yd)
+  await t.press('Enter'); await page.waitForTimeout(50); log('Enter without approver →', await t.toast())
+  if (await page.getByTestId('extra-承認者').count()) { await page.getByTestId('extra-承認者').fill('部長'); await page.getByTestId('extra-決裁書No').fill('K-100'); await page.getByTestId('prompt-text').fill('受入'); await t.press('Enter'); await page.waitForTimeout(50) }
+  log('after →', await t.toast(), 'R002:', (await t.row('R002')).status, JSON.stringify((await t.row('R002')).flags), 'decisions:', (await t.proj()).decisions.map((d) => d.kind + ':' + JSON.stringify(d.external ?? '')))
+}
+log('header money:', await t.money())
+log('ERRORS:', t.errors)
+await t.close()

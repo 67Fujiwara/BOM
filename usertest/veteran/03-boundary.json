@@ -1,0 +1,480 @@
+[
+  {
+    "case": "qty R076 \"0\"",
+    "qty": 0,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"-1\"",
+    "qty": -1,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"1e9\"",
+    "qty": 1000000000,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 3警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"1.5\"",
+    "qty": 1.5,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 3警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"１２\"",
+    "qty": null,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \" \"",
+    "qty": null,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"1,000\"",
+    "qty": 1000,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 3警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"abc\"",
+    "qty": null,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R076 \"999999999999999999999\"",
+    "qty": 1e+21,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 3警告 7期限超過 1"
+  },
+  {
+    "case": "qty R020 \"0\"",
+    "qty": 2,
+    "working": {
+      "qtyNeeded": 0
+    },
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 4警告 7期限超過 1"
+  },
+  {
+    "case": "qty R020 \"2.5\"",
+    "qty": 2,
+    "working": {
+      "qtyNeeded": 2.5
+    },
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "lamps": "設計待ち 74購買待ち 4PM待ち 2エラー 3警告 7期限超過 1"
+  },
+  {
+    "case": "model R076 \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "model": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "len": 500,
+    "html": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"A\\tB\"",
+    "model": "A\tB",
+    "len": 3,
+    "html": "A\tB",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"A\\nB\"",
+    "model": "A B",
+    "len": 3,
+    "html": "A B",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"🔥MY4N😀\"",
+    "model": "🔥MY4N😀",
+    "len": 8,
+    "html": "🔥MY4N😀",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"<script>alert(1)</script>\"",
+    "model": "<script>alert(1)</script>",
+    "len": 25,
+    "html": "&lt;script&gt;alert(1)&lt;/script&gt;",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"<img src=x onerror=\\\"document.title='xs",
+    "model": "<img src=x onerror=\"document.title='xss'\">",
+    "len": 42,
+    "html": "&lt;img src=x onerror=\"document.title='xss'\"&gt;",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R076 \"\\\"><b>bold</b>\"",
+    "model": "\"><b>bold</b>",
+    "len": 13,
+    "html": "\"&gt;&lt;b&gt;bold&lt;/b&gt;",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "model R020 \"　ＭＹ４Ｎ　\"",
+    "model": "　ＭＹ４Ｎ　",
+    "len": 6,
+    "html": "　ＭＹ４Ｎ　",
+    "title": "BOM Pro",
+    "toast": ""
+  },
+  {
+    "case": "入数 R076 \"0\"",
+    "needDateCell": "11/10",
+    "err": "col not found 入数"
+  },
+  {
+    "case": "入数 R076 \"-3\"",
+    "needDateCell": "11/10",
+    "err": "col not found 入数"
+  },
+  {
+    "case": "必要日(固定) R076 \"2026/13/45\"",
+    "needDateCell": "11/10",
+    "err": "col not found 必要日(固定)"
+  },
+  {
+    "case": "必要日(固定) R076 \"未定\"",
+    "needDateCell": "11/10",
+    "err": "col not found 必要日(固定)"
+  },
+  {
+    "case": "必要日(固定) R076 \"昨日\"",
+    "needDateCell": "11/10",
+    "err": "col not found 必要日(固定)"
+  },
+  {
+    "case": "必要日(固定) R076 \"2026-2-30\"",
+    "needDateCell": "11/10",
+    "err": "col not found 必要日(固定)"
+  },
+  {
+    "case": "必要日(固定) R076 \"13/45\"",
+    "needDateCell": "11/10",
+    "err": "col not found 必要日(固定)"
+  },
+  {
+    "case": "単位 R076 \"ぱ\"",
+    "value": "個",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "単位 R076 \"p\"",
+    "value": "個",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "単位 R076 \"zzz\"",
+    "value": "個",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "調達区分 R076 \"指\"",
+    "value": "客先指定品",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "代替可否 R076 \"不\"",
+    "value": "不可",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "回路記号 R076 \"K1\"",
+    "value": "K1",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "分類 R076 \"制御\"",
+    "value": "制御",
+    "needDateCell": "11/10",
+    "toast": ""
+  },
+  {
+    "case": "sup R020 単価 \"1,200\"",
+    "q": {
+      "unitPrice": 1200,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "役割: 購買",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"¥1200\"",
+    "q": {
+      "unitPrice": 1200,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "役割: 購買",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"１２００\"",
+    "q": {
+      "unitPrice": null,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "役割: 購買",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"1200円\"",
+    "q": {
+      "unitPrice": null,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "役割: 購買",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"-5\"",
+    "q": {
+      "unitPrice": -5,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"0\"",
+    "q": {
+      "unitPrice": 0,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"1e9\"",
+    "q": {
+      "unitPrice": 1000000000,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 単価 \"12.345\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 26,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 納期 \"即納\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 0,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 納期 \"-1\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": -1,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 納期 \"辞退\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": -1,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 納期 \"99999\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 99999,
+      "moq": null,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 MOQ \"1000000000000\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 99999,
+      "moq": 1000000000000,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 MOQ \"0\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 99999,
+      "moq": 0,
+      "validUntil": "2026-12-01",
+      "stock": "取寄"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 在庫 \"ざ\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 99999,
+      "moq": 0,
+      "validUntil": "2026-12-01",
+      "stock": "在庫"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 在庫 \"x\"",
+    "q": {
+      "unitPrice": 12.345,
+      "leadDays": 99999,
+      "moq": 0,
+      "validUntil": "2026-12-01",
+      "stock": "在庫"
+    },
+    "status": "quoted",
+    "flags": {},
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "sup R020 有効期限 \"2026/13/45\"",
+    "err": "no col"
+  },
+  {
+    "case": "sup R020 有効期限 \"昨日\"",
+    "err": "no col"
+  },
+  {
+    "case": "sup R020 有効期限 \"2020-01-01\"",
+    "err": "no col"
+  },
+  {
+    "case": "orderQty R020 0",
+    "orderQty": 0,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "orderQty R020 -1",
+    "orderQty": -1,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  },
+  {
+    "case": "orderQty R020 1e9",
+    "orderQty": 1000000000,
+    "toast": "",
+    "header": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)"
+  }
+]

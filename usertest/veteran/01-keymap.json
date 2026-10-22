@@ -1,0 +1,6962 @@
+[
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "palette.open",
+    "key": "Ctrl+K",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パレット",
+      "toast": ""
+    },
+    "panel": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "project.switch",
+    "key": "Ctrl+P",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": ""
+    },
+    "panel": "panel-inbox",
+    "active": "INPUT.q#inbox-input",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "project.save",
+    "key": "Ctrl+S",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "保存しました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "undo",
+    "key": "Ctrl+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "戻す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Shift+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Y",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "export.excel",
+    "key": "Ctrl+E",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": "panel-export",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "copy.formatted",
+    "key": "Ctrl+Shift+C",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "goto",
+    "key": "Ctrl+G",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "filter.focus",
+    "key": "/",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "INPUT.filter#filter",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "help",
+    "key": "?",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": "panel-help",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "escape",
+    "key": "Escape",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "—",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.up",
+    "key": "ArrowUp",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.down",
+    "key": "ArrowDown",
+    "before": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.left",
+    "key": "ArrowLeft",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 分類",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.right",
+    "key": "ArrowRight",
+    "before": {
+      "cursor": "R020 分類",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "j",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "J",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "k",
+    "before": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "K",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.tab",
+    "key": "Tab",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 型式",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.shiftTab",
+    "key": "Shift+Tab",
+    "before": {
+      "cursor": "R020 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.home",
+    "key": "Home",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 ID",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.end",
+    "key": "End",
+    "before": {
+      "cursor": "R020 ID",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.top",
+    "key": "Ctrl+ArrowUp",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.bottom",
+    "key": "Ctrl+ArrowDown",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.pageUp",
+    "key": "PageUp",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "move.pageDown",
+    "key": "PageDown",
+    "before": {
+      "cursor": "R061 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.toggleOpen",
+    "key": " ",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.1",
+    "key": "1",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.2",
+    "key": "2",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.3",
+    "key": "3",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.4",
+    "key": "4",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R016 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.5",
+    "key": "5",
+    "before": {
+      "cursor": "R016 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.6",
+    "key": "6",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.7",
+    "key": "7",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.8",
+    "key": "8",
+    "before": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "category.prev",
+    "key": "[",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "編集",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "F2",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "編集",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Delete",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Backspace",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.insertBelow",
+    "key": "Shift+Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R081 部品名",
+      "mode": "編集",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.duplicate",
+    "key": "Shift+D",
+    "before": {
+      "cursor": "R081 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 部品名",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.delete",
+    "key": "Shift+Delete",
+    "before": {
+      "cursor": "R082 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.moveUp",
+    "key": "Alt+ArrowUp",
+    "before": {
+      "cursor": "R082",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.moveDown",
+    "key": "Alt+ArrowDown",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": ""
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.copy",
+    "key": "Ctrl+C",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "コピー: PLC CPUユニット"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": false,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "cell.paste",
+    "key": "Ctrl+V",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "コピー: PLC CPUユニット"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "adopt.best",
+    "key": "a",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "R001 を 因幡電機 で採用（スコア 87.2 / 最安）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "adopt.choose",
+    "key": "Shift+A",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "パネル",
+      "toast": "R001 を 因幡電機 で採用（スコア 87.2 / 最安）"
+    },
+    "panel": "panel-adopt",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.replace",
+    "key": "r",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "編集",
+      "toast": "R001 を 因幡電機 で採用（スコア 87.2 / 最安）"
+    },
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.toggleOrdered",
+    "key": "o",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.toggleReceived",
+    "key": "i",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "row.toggleHidden",
+    "key": "h",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "sort.asc",
+    "key": "s",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "sort.desc",
+    "key": "Shift+S",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "filter.byCell",
+    "key": "f",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "columns.panel",
+    "key": "c",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R082 型式",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-columns",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.next",
+    "key": "n",
+    "before": {
+      "cursor": "R082 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R016 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.prev",
+    "key": "Shift+N",
+    "before": {
+      "cursor": "R016 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.quickfix",
+    "key": "Ctrl+.",
+    "before": {
+      "cursor": "R061 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 型式",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.ack",
+    "key": "x",
+    "before": {
+      "cursor": "R061 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 型式",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.sequence",
+    "key": "Ctrl+Shift+F",
+    "before": {
+      "cursor": "R061 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R016 型式",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.defer",
+    "key": "Shift+ArrowRight",
+    "before": {
+      "cursor": "R016 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "publish",
+    "key": "Ctrl+Enter",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-prompt",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.raise",
+    "key": "Shift+I",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-issue",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.reply",
+    "key": "Shift+R",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-replyIssue",
+    "active": "INPUT.q#reply-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "issue.bounce",
+    "key": "Shift+X",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "adopt.cheapest",
+    "key": "Alt+A",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ",
+      "toast": "R009 を 立花エレテック で採用"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "pm.approve",
+    "key": "y",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（承認は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "pm.reject",
+    "key": "Shift+Y",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "weights.row",
+    "key": "w",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R009 メーカ",
+      "mode": "パネル",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": "panel-weights",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "view.9",
+    "key": "9",
+    "before": {
+      "cursor": "R009 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R074 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "rev.prev",
+    "key": "<",
+    "before": {
+      "cursor": "R074 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R074 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "design",
+    "mode": "nav",
+    "id": "rev.next",
+    "key": ">",
+    "before": {
+      "cursor": "R074 メーカ",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R074 メーカ",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "palette.open",
+    "key": "Ctrl+K",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パレット",
+      "toast": "役割: 購買"
+    },
+    "panel": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "project.switch",
+    "key": "Ctrl+P",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "役割: 購買"
+    },
+    "panel": "panel-inbox",
+    "active": "INPUT.q#inbox-input",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "project.save",
+    "key": "Ctrl+S",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "保存しました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "undo",
+    "key": "Ctrl+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "戻す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Shift+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Y",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "export.excel",
+    "key": "Ctrl+E",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": "panel-export",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "copy.formatted",
+    "key": "Ctrl+Shift+C",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "goto",
+    "key": "Ctrl+G",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "filter.focus",
+    "key": "/",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "INPUT.filter#filter",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "help",
+    "key": "?",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": "panel-help",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "escape",
+    "key": "Escape",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "—",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.up",
+    "key": "ArrowUp",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.down",
+    "key": "ArrowDown",
+    "before": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.left",
+    "key": "ArrowLeft",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 分類",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.right",
+    "key": "ArrowRight",
+    "before": {
+      "cursor": "R020 分類",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "j",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "J",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "k",
+    "before": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "K",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.tab",
+    "key": "Tab",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 型式",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.shiftTab",
+    "key": "Shift+Tab",
+    "before": {
+      "cursor": "R020 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.home",
+    "key": "Home",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 ID",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.end",
+    "key": "End",
+    "before": {
+      "cursor": "R020 ID",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.top",
+    "key": "Ctrl+ArrowUp",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.bottom",
+    "key": "Ctrl+ArrowDown",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.pageUp",
+    "key": "PageUp",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "move.pageDown",
+    "key": "PageDown",
+    "before": {
+      "cursor": "R061 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.toggleOpen",
+    "key": " ",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.1",
+    "key": "1",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.2",
+    "key": "2",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.3",
+    "key": "3",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.4",
+    "key": "4",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.5",
+    "key": "5",
+    "before": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.6",
+    "key": "6",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.7",
+    "key": "7",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.8",
+    "key": "8",
+    "before": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "category.prev",
+    "key": "[",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "F2",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Delete",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Backspace",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.insertBelow",
+    "key": "Shift+Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の追加は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.duplicate",
+    "key": "Shift+D",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の複製は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.delete",
+    "key": "Shift+Delete",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.moveUp",
+    "key": "Alt+ArrowUp",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.moveDown",
+    "key": "Alt+ArrowDown",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.copy",
+    "key": "Ctrl+C",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "コピー: 電磁接触器"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": false,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "cell.paste",
+    "key": "Ctrl+V",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "adopt.best",
+    "key": "a",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "adopt.choose",
+    "key": "Shift+A",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.replace",
+    "key": "r",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（置換は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.toggleOrdered",
+    "key": "o",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.toggleReceived",
+    "key": "i",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "row.toggleHidden",
+    "key": "h",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "sort.asc",
+    "key": "s",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "sort.desc",
+    "key": "Shift+S",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "filter.byCell",
+    "key": "f",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "columns.panel",
+    "key": "c",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": "panel-columns",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.next",
+    "key": "n",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.prev",
+    "key": "Shift+N",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.quickfix",
+    "key": "Ctrl+.",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "パネル",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.ack",
+    "key": "x",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "このセルに確認するものはありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.sequence",
+    "key": "Ctrl+Shift+F",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "パネル",
+      "toast": "このセルに確認するものはありません"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.defer",
+    "key": "Shift+ArrowRight",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "このセルに確認するものはありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "publish",
+    "key": "Ctrl+Enter",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "公開するものがありません（未公開の行・下書き指摘なし）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.raise",
+    "key": "Shift+I",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "パネル",
+      "toast": "公開するものがありません（未公開の行・下書き指摘なし）"
+    },
+    "panel": "panel-issue",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.reply",
+    "key": "Shift+R",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "パネル",
+      "toast": "公開するものがありません（未公開の行・下書き指摘なし）"
+    },
+    "panel": "panel-replyIssue",
+    "active": "INPUT.q#reply-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "issue.bounce",
+    "key": "Shift+X",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "adopt.cheapest",
+    "key": "Alt+A",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "pm.approve",
+    "key": "y",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（承認は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "pm.reject",
+    "key": "Shift+Y",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "weights.row",
+    "key": "w",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R054 必要数",
+      "mode": "パネル",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": "panel-weights",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "view.9",
+    "key": "9",
+    "before": {
+      "cursor": "R054 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "rev.prev",
+    "key": "<",
+    "before": {
+      "cursor": "R019 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "purchasing",
+    "mode": "nav",
+    "id": "rev.next",
+    "key": ">",
+    "before": {
+      "cursor": "R019 必要数",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 必要数",
+      "mode": "ナビ",
+      "toast": "権限なし（却下は PM）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "palette.open",
+    "key": "Ctrl+K",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パレット",
+      "toast": "役割: PM"
+    },
+    "panel": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "project.switch",
+    "key": "Ctrl+P",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "役割: PM"
+    },
+    "panel": "panel-inbox",
+    "active": "INPUT.q#inbox-input",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "project.save",
+    "key": "Ctrl+S",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "保存しました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "undo",
+    "key": "Ctrl+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "戻す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Shift+Z",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "redo",
+    "key": "Ctrl+Y",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "export.excel",
+    "key": "Ctrl+E",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "やり直す操作がありません"
+    },
+    "panel": "panel-export",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "copy.formatted",
+    "key": "Ctrl+Shift+C",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "goto",
+    "key": "Ctrl+G",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "filter.focus",
+    "key": "/",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "INPUT.filter#filter",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "help",
+    "key": "?",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": "panel-help",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "escape",
+    "key": "Escape",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "—",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.up",
+    "key": "ArrowUp",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.down",
+    "key": "ArrowDown",
+    "before": {
+      "cursor": "R019 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.left",
+    "key": "ArrowLeft",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 分類",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.right",
+    "key": "ArrowRight",
+    "before": {
+      "cursor": "R020 分類",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "j",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.next",
+    "key": "J",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "k",
+    "before": {
+      "cursor": "R022 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.prev",
+    "key": "K",
+    "before": {
+      "cursor": "R021 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.tab",
+    "key": "Tab",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 型式",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.shiftTab",
+    "key": "Shift+Tab",
+    "before": {
+      "cursor": "R020 型式",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.home",
+    "key": "Home",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 ID",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.end",
+    "key": "End",
+    "before": {
+      "cursor": "R020 ID",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.top",
+    "key": "Ctrl+ArrowUp",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.bottom",
+    "key": "Ctrl+ArrowDown",
+    "before": {
+      "cursor": "R020 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.pageUp",
+    "key": "PageUp",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R061 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "move.pageDown",
+    "key": "PageDown",
+    "before": {
+      "cursor": "R061 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.toggleOpen",
+    "key": " ",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R080 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.1",
+    "key": "1",
+    "before": {
+      "cursor": "R080 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.2",
+    "key": "2",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 備考",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.3",
+    "key": "3",
+    "before": {
+      "cursor": "R001 備考",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.4",
+    "key": "4",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R016 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.5",
+    "key": "5",
+    "before": {
+      "cursor": "R016 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.6",
+    "key": "6",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.7",
+    "key": "7",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.8",
+    "key": "8",
+    "before": {
+      "cursor": "R013 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "category.prev",
+    "key": "[",
+    "before": {
+      "cursor": "R001 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "g:制御:R001",
+      "mode": "ナビ",
+      "toast": "80 行 × 25 列を書式つきでコピーしました"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.edit",
+    "key": "F2",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Delete",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.clear",
+    "key": "Backspace",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.insertBelow",
+    "key": "Shift+Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の追加は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.duplicate",
+    "key": "Shift+D",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の複製は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.delete",
+    "key": "Shift+Delete",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.moveUp",
+    "key": "Alt+ArrowUp",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.moveDown",
+    "key": "Alt+ArrowDown",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（行の削除は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.copy",
+    "key": "Ctrl+C",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "コピー: 電磁接触器"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": false,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "cell.paste",
+    "key": "Ctrl+V",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（設計の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "adopt.best",
+    "key": "a",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "adopt.choose",
+    "key": "Shift+A",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.replace",
+    "key": "r",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（置換は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.toggleOrdered",
+    "key": "o",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.toggleReceived",
+    "key": "i",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "row.toggleHidden",
+    "key": "h",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "sort.asc",
+    "key": "s",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "sort.desc",
+    "key": "Shift+S",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "filter.byCell",
+    "key": "f",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "columns.panel",
+    "key": "c",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "権限なし（購買の列）"
+    },
+    "panel": "panel-columns",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.next",
+    "key": "n",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "問題はありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.prev",
+    "key": "Shift+N",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "問題はありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.quickfix",
+    "key": "Ctrl+.",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "問題はありません"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.ack",
+    "key": "x",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "このセルに確認するものはありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.sequence",
+    "key": "Ctrl+Shift+F",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "問題はありません"
+    },
+    "panel": "panel-quickfix",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.defer",
+    "key": "Shift+ArrowRight",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "問題はありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "publish",
+    "key": "Ctrl+Enter",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "公開するものがありません（未公開の行・下書き指摘なし）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.raise",
+    "key": "Shift+I",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "公開するものがありません（未公開の行・下書き指摘なし）"
+    },
+    "panel": "panel-issue",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.reply",
+    "key": "Shift+R",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "この行に指摘はありません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "issue.bounce",
+    "key": "Shift+X",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "adopt.cheapest",
+    "key": "Alt+A",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "pm.approve",
+    "key": "y",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "権限なし（選定者は設計）"
+    },
+    "panel": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "pm.reject",
+    "key": "Shift+Y",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "この行では Shift+Y は使えません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "weights.row",
+    "key": "w",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "パネル",
+      "toast": "この行では Shift+Y は使えません"
+    },
+    "panel": "panel-weights",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "view.9",
+    "key": "9",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "—",
+      "mode": "ナビ",
+      "toast": "この行では Shift+Y は使えません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "rev.prev",
+    "key": "<",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "この行では Shift+Y は使えません"
+    },
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "role": "pm",
+    "mode": "nav",
+    "id": "rev.next",
+    "key": ">",
+    "before": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ"
+    },
+    "after": {
+      "cursor": "R020 部品名",
+      "mode": "ナビ",
+      "toast": "この行では Shift+Y は使えません"
+    },
+    "panel": null,
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "url": "http://localhost:5173/",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "palette.open",
+    "key": "Ctrl+K",
+    "bindingMode": "any",
+    "modeAfter": "パレット",
+    "valueBefore": "電磁接触器",
+    "valueAfter": null,
+    "panel": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": true,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "project.switch",
+    "key": "Ctrl+P",
+    "bindingMode": "any",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "project.save",
+    "key": "Ctrl+S",
+    "bindingMode": "any",
+    "modeAfter": "ナビ",
+    "valueBefore": "電磁接触器",
+    "valueAfter": null,
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "INPUT.cell",
+    "toast": "保存しました",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "undo",
+    "key": "Ctrl+Z",
+    "bindingMode": "any",
+    "modeAfter": "ナビ",
+    "valueBefore": "電磁接触器",
+    "valueAfter": null,
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "INPUT.cell",
+    "toast": "戻す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "redo",
+    "key": "Ctrl+Shift+Z",
+    "bindingMode": "any",
+    "modeAfter": "ナビ",
+    "valueBefore": "電磁接触器",
+    "valueAfter": null,
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "redo",
+    "key": "Ctrl+Y",
+    "bindingMode": "any",
+    "modeAfter": "ナビ",
+    "valueBefore": "電磁接触器",
+    "valueAfter": null,
+    "panel": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "export.excel",
+    "key": "Ctrl+E",
+    "bindingMode": "any",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "copy.formatted",
+    "key": "Ctrl+Shift+C",
+    "bindingMode": "any",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "goto",
+    "key": "Ctrl+G",
+    "bindingMode": "any",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "filter.focus",
+    "key": "/",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器/",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "help",
+    "key": "?",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器?",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.up",
+    "key": "ArrowUp",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.down",
+    "key": "ArrowDown",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.left",
+    "key": "ArrowLeft",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.right",
+    "key": "ArrowRight",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.next",
+    "key": "j",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器j",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.next",
+    "key": "J",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器J",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.prev",
+    "key": "k",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器k",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.prev",
+    "key": "K",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器K",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.home",
+    "key": "Home",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.end",
+    "key": "End",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.top",
+    "key": "Ctrl+ArrowUp",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.bottom",
+    "key": "Ctrl+ArrowDown",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.pageUp",
+    "key": "PageUp",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "やり直す操作がありません",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "move.pageDown",
+    "key": "PageDown",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.toggleOpen",
+    "key": " ",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器 ",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.1",
+    "key": "1",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器1",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.2",
+    "key": "2",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器2",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.3",
+    "key": "3",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器3",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.4",
+    "key": "4",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器4",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.5",
+    "key": "5",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器5",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.6",
+    "key": "6",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器6",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.7",
+    "key": "7",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器7",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.8",
+    "key": "8",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器8",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "category.prev",
+    "key": "[",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器[",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "cell.clear",
+    "key": "Delete",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "cell.clear",
+    "key": "Backspace",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.insertBelow",
+    "key": "Shift+Enter",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.duplicate",
+    "key": "Shift+D",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器D",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.delete",
+    "key": "Shift+Delete",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.moveUp",
+    "key": "Alt+ArrowUp",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.moveDown",
+    "key": "Alt+ArrowDown",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "cell.copy",
+    "key": "Ctrl+C",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "cell.paste",
+    "key": "Ctrl+V",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "adopt.best",
+    "key": "a",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器a",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "adopt.choose",
+    "key": "Shift+A",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器A",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.replace",
+    "key": "r",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器r",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.toggleOrdered",
+    "key": "o",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器o",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.toggleReceived",
+    "key": "i",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器i",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "row.toggleHidden",
+    "key": "h",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器h",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "sort.asc",
+    "key": "s",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器s",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "sort.desc",
+    "key": "Shift+S",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器S",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "filter.byCell",
+    "key": "f",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器f",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "columns.panel",
+    "key": "c",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器c",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.next",
+    "key": "n",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器n",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.prev",
+    "key": "Shift+N",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器N",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.quickfix",
+    "key": "Ctrl+.",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.ack",
+    "key": "x",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器x",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.sequence",
+    "key": "Ctrl+Shift+F",
+    "bindingMode": "any",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.defer",
+    "key": "Shift+ArrowRight",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "publish",
+    "key": "Ctrl+Enter",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.raise",
+    "key": "Shift+I",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器I",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.reply",
+    "key": "Shift+R",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器R",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "issue.bounce",
+    "key": "Shift+X",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器X",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "adopt.cheapest",
+    "key": "Alt+A",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "pm.approve",
+    "key": "y",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器y",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "pm.reject",
+    "key": "Shift+Y",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器Y",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "weights.row",
+    "key": "w",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器w",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "view.9",
+    "key": "9",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器9",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "rev.prev",
+    "key": "<",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器<",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "edit",
+    "id": "rev.next",
+    "key": ">",
+    "bindingMode": "nav",
+    "modeAfter": "編集",
+    "valueBefore": "電磁接触器",
+    "valueAfter": "電磁接触器>",
+    "panel": null,
+    "active": "INPUT.cell#cell-editor",
+    "prevented": false,
+    "target": "INPUT.cell",
+    "toast": "",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "INPUT.q#palette-input",
+    "prevented": true,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-palette",
+    "panelAfter": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Tab",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Backspace",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "DIV.list",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "DIV.list",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "1",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "DIV.list",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "j",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "DIV.list",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:palette",
+    "key": "a",
+    "panelBefore": "panel-palette",
+    "panelAfter": "panel-palette",
+    "active": "DIV.list#palette-list",
+    "prevented": false,
+    "target": "DIV.list",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Tab",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Backspace",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "1",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "j",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:help",
+    "key": "a",
+    "panelBefore": "panel-help",
+    "panelAfter": "panel-help",
+    "active": "DIV.body",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": true,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Tab",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Backspace",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-prompt",
+    "panelAfter": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R001 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "1",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R001 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "j",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R001 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:prompt",
+    "key": "a",
+    "panelBefore": "panel-prompt",
+    "panelAfter": "panel-prompt",
+    "active": "INPUT.q#prompt-text",
+    "prevented": false,
+    "target": "INPUT.q",
+    "toast": "",
+    "cursor": "R001 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Tab",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Backspace",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "1",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "j",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:columns",
+    "key": "a",
+    "panelBefore": "panel-columns",
+    "panelAfter": "panel-columns",
+    "active": "DIV.body panel-list#columns",
+    "prevented": false,
+    "target": "DIV.body",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Tab",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Backspace",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "1",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "j",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:issue",
+    "key": "a",
+    "panelBefore": "panel-issue",
+    "panelAfter": "panel-issue",
+    "active": "INPUT.q#issue-text",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+S",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+P",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+E",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+G",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+Shift+C",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+Shift+F",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+Z",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+K",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Tab",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Backspace",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "Ctrl+Enter",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "1",
+    "panelBefore": "panel-export",
+    "panelAfter": null,
+    "active": "BODY.",
+    "prevented": true,
+    "target": "BODY",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "j",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "panel:export",
+    "key": "a",
+    "panelBefore": "panel-export",
+    "panelAfter": "panel-export",
+    "active": "DIV.gridwrap#grid",
+    "prevented": true,
+    "target": "DIV.gridwrap",
+    "toast": "",
+    "cursor": "R020 部品名",
+    "newErrors": []
+  },
+  {
+    "mode": "filter",
+    "key": "Ctrl+S",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Ctrl+P",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Ctrl+K",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Ctrl+Z",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Tab",
+    "active": "BODY.",
+    "prevented": false,
+    "panel": null,
+    "filter": "",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "?",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "j",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?j",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Space",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?j ",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "1",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?j 1",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Ctrl+Enter",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?j 1",
+    "cursor": "R020 部品名"
+  },
+  {
+    "mode": "filter",
+    "key": "Backspace",
+    "active": "INPUT.filter#filter",
+    "prevented": false,
+    "panel": null,
+    "filter": "?j ",
+    "cursor": "R020 部品名"
+  }
+]

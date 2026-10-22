@@ -1,0 +1,136 @@
+// S05b: 新規BOMガイド（修正版: 部品の入れ方ステップの実際の挙動を確認）
+import { launch, fresh, T, makeLog, shot, store, clearToast } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('s05b_wizard')
+const openWizard = async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('新しいBOM'); await page.keyboard.press('Enter'); await page.getByTestId('wizard').waitFor() }
+const stepTitle = async () => (await page.getByTestId('wizard').locator('h3').textContent().catch(() => '(closed)'))
+try {
+  await fresh(page)
+  // A. 全部空欄で Enter 連打 → step7 で止まるか
+  await openWizard()
+  for (let i = 0; i < 7; i++) await page.keyboard.press('Enter')
+  log('A after 7 Enter: step', await stepTitle(), 'active', await page.evaluate(() => document.activeElement?.tagName))
+  await page.keyboard.press('3')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Enter')
+  log('A pressed 3,Enter,Enter: step', await stepTitle(), 'textarea', JSON.stringify(await page.getByTestId('wizard-paste').inputValue().catch(() => '-')), 'selected opt', await page.locator('.wizard .opt[aria-selected="true"]').first().textContent().catch(() => '-'))
+  await shot(page, 's05b_step7_stuck')
+  await page.keyboard.press('Control+Enter')
+  log('A Ctrl+Enter: step', await stepTitle())
+  await page.keyboard.press('Enter')
+  await page.waitForTimeout(50)
+  log('A created: panel', await T.panel(page), 'header', (await T.header(page)).slice(0, 80), 'rows', await T.rows(page), 'toast', await T.toast(page), 'view', await T.view(page))
+  const ws = await store(page)
+  log('A stored:', ws?.projects.map((p) => `${p.id}/${p.name}/due=${p.dueDate}/pd=${p.settings.processDays}/rows=${p.rows.map((r) => r.category + ':' + r.name).join(';')}`))
+  await shot(page, 's05b_empty_project')
+  await page.keyboard.press('Control+Enter')
+  log('A empty project Ctrl+Enter:', await T.toast(page))
+  await clearToast(page)
+  await page.keyboard.press('n')
+  log('A empty project n:', await T.toast(page))
+  await page.keyboard.press('Shift+Enter')
+  log('A Shift+Enter: mode', await T.mode(page), 'cursor', await T.cursor(page), 'rows', await T.rows(page))
+  await page.keyboard.type('リレー')
+  await page.keyboard.press('Enter')
+  log('A after typing name: rows', await T.rows(page), 'lamps', await page.getByTestId('lamps').textContent(), 'status', (await T.status(page)).slice(0, 80))
+  await page.keyboard.press('Escape')
+  // B. 納期「来月」・工程日数「十」・予算「100万」・既存IDと同じ
+  await fresh(page)
+  await openWizard()
+  await page.getByTestId('wizard-id').fill('P-2026-041')
+  await page.keyboard.press('Enter')
+  await page.getByTestId('wizard-name').fill('テスト盤2')
+  await page.keyboard.press('Enter')
+  await page.getByTestId('wizard-due').fill('来月')
+  await page.keyboard.press('Enter')
+  log('B due=来月 -> step', await stepTitle())
+  await page.getByTestId('wizard-processDays').fill('十')
+  await page.keyboard.press('Enter')
+  await page.getByTestId('wizard-budget').fill('100万')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Enter') // buyer empty
+  await page.keyboard.press('Enter') // suppliers none
+  await page.keyboard.press('Control+Enter')
+  await page.keyboard.press('Enter')
+  await page.waitForTimeout(50)
+  log('B created: panel', await T.panel(page), 'header', (await T.header(page)).slice(0, 200), 'toast', await T.toast(page))
+  await shot(page, 's05b_due_raigetsu')
+  const ws2 = await store(page)
+  log('B stored:', ws2?.projects.map((p) => `${p.id}/${p.name}/due=${p.dueDate}/pd=${p.settings.processDays}/budget=${p.settings.budget}/rows=${p.rows.length}`), 'current', ws2?.currentProjectId)
+  log('B side projects:', await page.locator('.side .view').filter({ hasNot: page.locator('.k') }).allTextContents())
+  await page.keyboard.press('Control+p')
+  log('B inbox:', (await page.getByTestId('inbox').allTextContents()).join(' || ').slice(0, 400))
+  await page.keyboard.press('ArrowDown'); await page.keyboard.press('Enter')
+  log('B open 2nd project via inbox: header', (await T.header(page)).slice(0, 80))
+  // C. 貼り付け各種
+  const cases = {
+    comma: '制御,リレー,MY4N-D2 DC24,オムロン,4,個,KA1\n制御,ソケット,PYF14A-E,オムロン,4,個,KA1S',
+    header: '分類\t部品名\t型式\tメーカ\t数量\t単位\t回路記号\n制御\tリレー\tMY4N-D2 DC24\tオムロン\t4\t個\tKA1\n\n制御\tソケット\tPYF14A-E\tオムロン\t4\t個\tKA1S\n',
+    headerDiffOrder: '部品名\t型式\t数量\tメーカ\n リレー \tMY4N-D2 DC24\t4\tオムロン\nソケット\tPYF14A-E\t4\tオムロン',
+    noCategory: 'リレー\tMY4N-D2 DC24\tオムロン\t4\n',
+    excelHeaderJp: 'No.\t品名\t形式\tメーカー\t員数\n1\tリレー\tMY4N-D2 DC24\tオムロン\t4\n2\tソケット\tPYF14A-E\tオムロン\t4',
+    spaces: 'リレー MY4N-D2 DC24 オムロン 4',
+    qtyText: '制御\tリレー\tMY4N-D2 DC24\tオムロン\t十\t個\tKA1\n制御\tソケット\tPYF14A-E\tオムロン\t0\t個\tKA1S',
+  }
+  for (const [name, text] of Object.entries(cases)) {
+    await fresh(page)
+    await openWizard()
+    await page.getByTestId('wizard-id').fill('T-' + name)
+    await page.keyboard.press('Enter')
+    await page.getByTestId('wizard-name').fill('貼付 ' + name)
+    for (let i = 0; i < 6; i++) await page.keyboard.press('Enter')
+    await page.getByTestId('wizard-paste').fill(text)
+    await page.keyboard.press('Control+Enter'); await page.keyboard.press('Enter')
+    await page.waitForTimeout(50)
+    const w = await store(page)
+    const p = w?.projects.find((p) => p.id === w.currentProjectId)
+    log(`C[${name}] rows:`, p?.rows.map((r) => [r.id, r.category, r.name, r.model, r.maker, r.qtyNeeded, r.unit, r.ref].join('|')))
+    await shot(page, 's05b_paste_' + name)
+    log(`C[${name}] lamps`, await page.getByTestId('lamps').textContent(), 'view', await T.view(page), 'rows shown', await T.rows(page), 'toast', await T.toast(page))
+  }
+  // D. Esc で中止したい
+  await fresh(page)
+  await openWizard()
+  await page.getByTestId('wizard-id').fill('X')
+  await page.keyboard.press('Enter'); await page.keyboard.press('Enter'); await page.keyboard.press('Enter')
+  await page.keyboard.press('Escape')
+  log('D Esc at step3 -> step', await stepTitle())
+  for (let i = 0; i < 5; i++) await page.keyboard.press('Escape')
+  log('D after 6 Esc: panel', await T.panel(page))
+  // 途中まで入れて Esc で全部消えたら再度開いたとき残っている？
+  await openWizard()
+  log('D reopened id value:', await page.getByTestId('wizard-id').inputValue())
+  await page.keyboard.press('Escape')
+  // E. 商社選択で ArrowDown 範囲外 → Space 連打
+  await openWizard()
+  for (let i = 0; i < 6; i++) await page.keyboard.press('Enter')
+  log('E step:', await stepTitle())
+  for (let i = 0; i < 10; i++) await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('Space'); await page.keyboard.press('Space'); await page.keyboard.press('Space')
+  log('E picks after 3 Space:', (await page.getByTestId('wizard').locator('.check').allTextContents()).join(''))
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Tab')
+  log('E step7 Tab: active', await page.evaluate(() => document.activeElement?.tagName))
+  await page.keyboard.press('2')
+  log('E after 2: selected', await page.locator('.wizard .opt[aria-selected="true"]').first().textContent().catch(() => '-'), 'textarea', JSON.stringify(await page.getByTestId('wizard-paste').inputValue().catch(() => '-')))
+  await page.keyboard.press('Control+Enter'); await page.keyboard.press('Enter')
+  log('E created: rows', await T.rows(page), 'stored rows', (await store(page))?.projects.at(-1)?.rows.map((r) => r.category + ':' + r.name))
+  // F. マウスで「3 1つずつ入力」をクリックできるか
+  await fresh(page)
+  await openWizard()
+  for (let i = 0; i < 7; i++) await page.keyboard.press('Enter')
+  await page.locator('.wizard .opt', { hasText: '1つずつ' }).click()
+  log('F click option3: selected', await page.locator('.wizard .opt[aria-selected="true"]').first().textContent().catch(() => '-'))
+  await page.locator('.wizard .steps span').first().click()
+  log('F click step label 1: step', await stepTitle())
+  await page.keyboard.press('Escape')
+  await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.keyboard.press('Escape')
+  // G. 受信箱から「新しいBOM を作る」を選ぶ
+  await page.keyboard.press('Control+p')
+  await page.keyboard.press('ArrowDown'); await page.keyboard.press('ArrowDown'); await page.keyboard.press('Enter')
+  log('G inbox new BOM: panel', await T.panel(page))
+  await page.keyboard.press('Escape')
+} catch (e) { log('EXC', String(e)) }
+log('console/page errors:', errors)
+save(errors)
+await browser.close()

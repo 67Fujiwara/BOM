@@ -1,0 +1,142 @@
+// S03: ナビモードで文字を打ってしまう・間違ったキー・Esc/Enter 連打（約15人）
+import { launch, fresh, T, makeLog, shot, sel, gotoCol } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, finding, save } = makeLog('s03_navtyping')
+try {
+  await fresh(page)
+  await sel(page, 'R003')
+  await gotoCol(page, '部品名')
+  const before = await page.locator('[data-row-id="R003"] td.name').textContent()
+  // 未割り当て文字 z → 上書き編集
+  await page.keyboard.press('z')
+  log('press z: mode', await T.mode(page), 'editor', (await page.getByTestId('cell-editor').count()) ? await page.getByTestId('cell-editor').inputValue() : '-')
+  await page.keyboard.press('Escape')
+  log('Esc: mode', await T.mode(page), 'name intact', (await page.locator('[data-row-id="R003"] td.name').textContent()) === before)
+  // 割り当て済みの文字を部品名セルで打つ: a / h / s / f / c / r / o / i / x / n / w
+  for (const k of ['h', 's', 'f', 'c', 'o', 'i', 'x', 'n', 'w', 'r']) {
+    await sel(page, 'R003')
+    await gotoCol(page, '部品名')
+    await page.keyboard.press(k)
+    await page.waitForTimeout(50)
+    log(`press ${k}: mode`, await T.mode(page), 'panel', await T.panel(page), 'toast', await T.toast(page), 'cursor', await T.cursor(page), 'chips', (await page.locator('.toolbar .chip').allTextContents()).join(','), 'hidden?', await page.locator('[data-row-id="R003"].hidden-row').count())
+    await page.keyboard.press('Escape')
+    await page.keyboard.press('Escape')
+    // reset state
+    if (k === 'h') { await sel(page, 'R003'); await page.keyboard.press('h') }
+    if (k === 's') { await page.keyboard.press('s'); }
+    if (k === 'f') { await page.keyboard.press('f'); await page.keyboard.press('Escape') }
+    if (k === 'o' || k === 'i') { await page.keyboard.press('Control+z') }
+    if (k === 'r') { await page.keyboard.press('Escape'); await page.keyboard.press('Control+z'); await page.keyboard.press('Control+z') }
+  }
+  await shot(page, 's03_after_keys')
+  log('rows after key spam:', await T.rows(page), 'R003 status', await page.locator('[data-row-id="R003"] td .status-pill').textContent().catch(() => '?'))
+  // 読み取り専用列（ID・状態・ボール）で文字を打つ → 無反応？
+  await sel(page, 'R004')
+  await gotoCol(page, 'ID')
+  await page.keyboard.press('z')
+  log('type z on ID col: mode', await T.mode(page), 'toast', await T.toast(page))
+  await gotoCol(page, '状態')
+  await page.keyboard.press('z')
+  log('type z on 状態 col: mode', await T.mode(page), 'toast', await T.toast(page))
+  await page.keyboard.press('Enter')
+  log('Enter on 状態 col: mode', await T.mode(page), 'toast', await T.toast(page))
+  await page.keyboard.press('Escape')
+  // 数字キー：数量セルで '5' を打ったらビューが変わる
+  await sel(page, 'R004')
+  await gotoCol(page, '必要数')
+  const qtyBefore = await T.cursor(page)
+  await page.keyboard.press('5')
+  log('press 5 on qty cell: view', await T.view(page), 'mode', await T.mode(page), 'cursor', await T.cursor(page))
+  await page.keyboard.press('1')
+  await sel(page, 'R004')
+  await gotoCol(page, '必要数')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Control+a')
+  await page.keyboard.type('十')
+  await page.keyboard.press('Enter')
+  log('qty "十": cell', await page.locator('[data-row-id="R004"] td').nth((await page.locator('table.grid th').allTextContents()).findIndex((t) => t.includes('必要数'))).textContent(), 'toast', await T.toast(page), 'lamps', await page.getByTestId('lamps').textContent())
+  await page.keyboard.press('Control+z')
+  // Esc 連打
+  await sel(page, 'R005')
+  await page.keyboard.press('Space')
+  for (let i = 0; i < 5; i++) await page.keyboard.press('Escape')
+  log('after 5x Esc: cursor', await T.cursor(page), 'detail', await page.getByTestId('detail').count(), 'status', (await T.status(page)).slice(0, 100))
+  await page.keyboard.press('a')
+  log('a after Esc spam: toast', await T.toast(page))
+  await page.keyboard.press('Enter')
+  log('Enter after Esc spam: mode', await T.mode(page), 'cursor', await T.cursor(page))
+  await page.keyboard.press('Escape')
+  // Enter 連打（部品名列）
+  await sel(page, 'R010')
+  await gotoCol(page, '部品名')
+  for (let i = 0; i < 6; i++) await page.keyboard.press('Enter')
+  log('after 6x Enter: mode', await T.mode(page), 'cursor', await T.cursor(page), 'status', (await T.status(page)).slice(0, 120))
+  await page.keyboard.press('Escape')
+  // Enter 連打（型式列、設計） → 空の編集→確定で値が変わらないか
+  await sel(page, 'R010')
+  await gotoCol(page, '型式')
+  const m10 = await page.locator('[data-row-id="R010"] td.model').textContent()
+  for (let i = 0; i < 4; i++) await page.keyboard.press('Enter')
+  await page.keyboard.press('Escape')
+  log('model R010 intact after Enter spam:', (await page.locator('[data-row-id="R010"] td.model').textContent()) === m10, 'unpublished:', (await T.status(page)).match(/未公開 \d+ 行/)?.[0])
+  // Backspace をナビで押す（前の画面に戻るつもり）
+  await sel(page, 'R011')
+  await gotoCol(page, '型式')
+  const m11 = await page.locator('[data-row-id="R011"] td.model').textContent()
+  await page.keyboard.press('Backspace')
+  log('Backspace in nav: model', await page.locator('[data-row-id="R011"] td.model').textContent(), 'was', m11, 'toast', await T.toast(page))
+  await shot(page, 's03_backspace')
+  await page.keyboard.press('Control+z')
+  log('after undo:', await page.locator('[data-row-id="R011"] td.model').textContent(), 'toast', await T.toast(page))
+  // Delete をナビで押す
+  await page.keyboard.press('Delete')
+  log('Delete in nav: model', await page.locator('[data-row-id="R011"] td.model').textContent(), 'toast', await T.toast(page))
+  await page.keyboard.press('Control+z')
+  // Shift+Delete で提出済の行を消す（取消）
+  await sel(page, 'R011')
+  await page.keyboard.press('Shift+Delete')
+  log('Shift+Delete on submitted row: status pill', await page.locator('[data-row-id="R011"] .status-pill').textContent(), 'toast', await T.toast(page), 'rows', await T.rows(page))
+  await page.keyboard.press('Control+z')
+  log('after undo Shift+Delete:', await page.locator('[data-row-id="R011"] .status-pill').textContent())
+  // 編集中に 1〜9 / ? / Ctrl+K
+  await sel(page, 'R012')
+  await gotoCol(page, '部品名')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('End')
+  await page.keyboard.type('?')
+  log('typed ? in edit: panel', await T.panel(page), 'editor', await page.getByTestId('cell-editor').inputValue())
+  await page.keyboard.press('Control+k')
+  log('Ctrl+K in edit: panel', await T.panel(page), 'mode', await T.mode(page), 'name', await page.locator('[data-row-id="R012"] td.name').textContent())
+  await page.keyboard.press('Escape')
+  await page.keyboard.press('Control+z')
+  // 編集中に Tab 連打 → 右へ、最後の列で？
+  await sel(page, 'R013')
+  await gotoCol(page, '部品名')
+  await page.keyboard.press('Enter')
+  for (let i = 0; i < 30; i++) await page.keyboard.press('Tab')
+  log('after 30x Tab from edit: mode', await T.mode(page), 'cursor', await T.cursor(page), 'toast', await T.toast(page), 'active', await page.evaluate(() => document.activeElement?.tagName))
+  await page.keyboard.press('Escape')
+  // ナビで Tab 連打 → ブラウザのフォーカスが移動しないか
+  await sel(page, 'R013')
+  await page.keyboard.press('Home')
+  for (let i = 0; i < 30; i++) await page.keyboard.press('Tab')
+  log('after 30x Tab nav: cursor', await T.cursor(page), 'active', await page.evaluate(() => document.activeElement?.tagName + '.' + document.activeElement?.className))
+  // 矢印連打で表の端
+  for (let i = 0; i < 100; i++) await page.keyboard.press('ArrowDown')
+  log('after 100 ArrowDown:', await T.cursor(page))
+  await page.keyboard.press('ArrowDown')
+  log('once more:', await T.cursor(page))
+  // 日本語IME想定: composition 中の Enter
+  await sel(page, 'R014')
+  await gotoCol(page, '部品名')
+  await page.keyboard.press('Enter')
+  const ed = page.getByTestId('cell-editor')
+  await ed.evaluate((el) => { el.dispatchEvent(new CompositionEvent('compositionstart')); })
+  await page.keyboard.press('Enter')
+  log('Enter during composition(simulated event only): mode', await T.mode(page))
+  await page.keyboard.press('Escape')
+  await page.keyboard.press('Escape')
+} catch (e) { log('EXC', String(e)) }
+log('console/page errors:', errors)
+save(errors)
+await browser.close()

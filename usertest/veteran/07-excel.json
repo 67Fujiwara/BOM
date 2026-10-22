@@ -1,0 +1,486 @@
+[
+  {
+    "case": "Ctrl+E 1",
+    "file": "download",
+    "size": 20712,
+    "sheets": [
+      {
+        "name": "BOM",
+        "rows": 81,
+        "cols": 23,
+        "head": [
+          "ID",
+          "回路記号",
+          "図面番号",
+          "分類",
+          "部品名",
+          "型式",
+          "メーカ"
+        ],
+        "r2": [
+          "R001",
+          "制1",
+          "E-2026-041-01",
+          "制御",
+          "PLC CPUユニット",
+          "FX5U-32MR/ES",
+          "三菱電機"
+        ]
+      },
+      {
+        "name": "変更点",
+        "rows": 76,
+        "cols": 9,
+        "head": [
+          "Rev",
+          "日時",
+          "公開者",
+          "ID",
+          "起因",
+          "変更理由",
+          "変更番号"
+        ],
+        "r2": [
+          1,
+          "2026-10-20 15:23",
+          "山田",
+          "R001",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "チェック結果",
+        "rows": 16,
+        "cols": 6,
+        "head": [
+          "ID",
+          "列",
+          "重大度",
+          "内容",
+          "種別",
+          "状態"
+        ],
+        "r2": [
+          "R005",
+          "model",
+          "警告",
+          "型式の前後に空白があります",
+          "チェック",
+          ""
+        ]
+      }
+    ],
+    "errs": []
+  },
+  {
+    "case": "Ctrl+E 2",
+    "file": "download",
+    "size": 18766,
+    "sheets": [
+      {
+        "name": "BOM",
+        "rows": 81,
+        "cols": 15,
+        "head": [
+          "ID",
+          "回路記号",
+          "図面番号",
+          "分類",
+          "部品名",
+          "型式",
+          "メーカ"
+        ],
+        "r2": [
+          "R001",
+          "制1",
+          "E-2026-041-01",
+          "制御",
+          "PLC CPUユニット",
+          "FX5U-32MR/ES",
+          "三菱電機"
+        ]
+      },
+      {
+        "name": "変更点",
+        "rows": 76,
+        "cols": 9,
+        "head": [
+          "Rev",
+          "日時",
+          "公開者",
+          "ID",
+          "起因",
+          "変更理由",
+          "変更番号"
+        ],
+        "r2": [
+          1,
+          "2026-10-20 15:23",
+          "山田",
+          "R001",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "チェック結果",
+        "rows": 16,
+        "cols": 6,
+        "head": [
+          "ID",
+          "列",
+          "重大度",
+          "内容",
+          "種別",
+          "状態"
+        ],
+        "r2": [
+          "R005",
+          "model",
+          "警告",
+          "型式の前後に空白があります",
+          "チェック",
+          ""
+        ]
+      }
+    ],
+    "errs": []
+  },
+  {
+    "case": "Ctrl+E 3",
+    "file": "download",
+    "size": 24622,
+    "sheets": [
+      {
+        "name": "BOM",
+        "rows": 81,
+        "cols": 34,
+        "head": [
+          "ID",
+          "回路記号",
+          "図面番号",
+          "分類",
+          "部品名",
+          "型式",
+          "メーカ"
+        ],
+        "r2": [
+          "R001",
+          "制1",
+          "E-2026-041-01",
+          "制御",
+          "PLC CPUユニット",
+          "FX5U-32MR/ES",
+          "三菱電機"
+        ]
+      },
+      {
+        "name": "変更点",
+        "rows": 76,
+        "cols": 9,
+        "head": [
+          "Rev",
+          "日時",
+          "公開者",
+          "ID",
+          "起因",
+          "変更理由",
+          "変更番号"
+        ],
+        "r2": [
+          1,
+          "2026-10-20 15:23",
+          "山田",
+          "R001",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "チェック結果",
+        "rows": 16,
+        "cols": 6,
+        "head": [
+          "ID",
+          "列",
+          "重大度",
+          "内容",
+          "種別",
+          "状態"
+        ],
+        "r2": [
+          "R005",
+          "model",
+          "警告",
+          "型式の前後に空白があります",
+          "チェック",
+          ""
+        ]
+      }
+    ],
+    "errs": []
+  },
+  {
+    "case": "formula-like cell in export",
+    "found": "=1+1"
+  },
+  {
+    "case": "Ctrl+Shift+C view2",
+    "toast": "コピー: PLC CPUユニット",
+    "types": [
+      "text/plain"
+    ],
+    "tsvLines": 1,
+    "tsvCols": 1,
+    "htmlHasBold": false,
+    "quoteEsc": false
+  },
+  {
+    "case": "Ctrl+Shift+C in edit",
+    "mode": "編集",
+    "toast": "コピー: PLC CPUユニット"
+  },
+  {
+    "case": "publish R076",
+    "panel": "panel-prompt",
+    "toast": "役割: 設計"
+  },
+  {
+    "case": "publish R076 result",
+    "toast": "行 1（Rev.2） を公開しました",
+    "status": "submitted"
+  },
+  {
+    "case": "rough request all",
+    "toast": "1 行 × 1 社に依頼（回答期限 2026-11-05）",
+    "downloads": [
+      "req-download"
+    ],
+    "r076": "quoting",
+    "deadline": "2026-11-05"
+  },
+  {
+    "case": "req file",
+    "f": "req-download",
+    "sheets": [
+      {
+        "name": "概算見積依頼",
+        "rows": 8,
+        "cols": 20,
+        "head": [
+          "概算見積依頼書"
+        ],
+        "r2": [
+          "依頼No",
+          "P-2026-041-S1-1",
+          "宛先",
+          "因幡電機"
+        ]
+      }
+    ]
+  },
+  {
+    "case": "import with header",
+    "toast": "取り込み 4 行 / 突合不能 1 / 型式不一致 1 / 代替提案の下書き 1",
+    "q76": {
+      "rowId": "R076",
+      "supplierId": "S1",
+      "unitPrice": 1500,
+      "leadDays": 7,
+      "moq": 10,
+      "stock": "取寄",
+      "quoteQty": 10,
+      "validUntil": "2026-12-31",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    },
+    "q20": {
+      "rowId": "R020",
+      "supplierId": "S1",
+      "unitPrice": 9999,
+      "leadDays": 0,
+      "moq": null,
+      "stock": "在庫",
+      "quoteQty": 2,
+      "validUntil": "2026-11-21",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    },
+    "q22": {
+      "rowId": "R022",
+      "supplierId": "S1",
+      "unitPrice": -1,
+      "leadDays": -1,
+      "moq": null,
+      "stock": "在庫",
+      "quoteQty": 1,
+      "validUntil": "2026-11-21",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    },
+    "q34": {
+      "rowId": "R034",
+      "supplierId": "S1",
+      "unitPrice": 500,
+      "leadDays": null,
+      "moq": -1,
+      "stock": "取寄",
+      "quoteQty": 1,
+      "validUntil": "2026/13/45",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    },
+    "issues": [
+      {
+        "id": "I-006",
+        "kind": "代替提案",
+        "rowId": "R020",
+        "proposal": {
+          "model": "S-T21 AC200V 代替",
+          "maker": "三菱電機",
+          "supplierId": "S1",
+          "unitPrice": 8800,
+          "leadDays": 3
+        }
+      }
+    ],
+    "r076status": "quoting",
+    "r034flags": "selected"
+  },
+  {
+    "case": "import headerless S2",
+    "toast": "取り込み 2 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0",
+    "q76": {
+      "rowId": "R076",
+      "supplierId": "S2",
+      "unitPrice": 1400,
+      "leadDays": 5,
+      "moq": null,
+      "stock": "在庫",
+      "quoteQty": 1,
+      "validUntil": "2026-11-21",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    },
+    "q20": {
+      "rowId": "R020",
+      "supplierId": "S2",
+      "unitPrice": 1234,
+      "leadDays": 4,
+      "moq": 20,
+      "stock": "受注生産",
+      "quoteQty": 2,
+      "validUntil": "2026-11-21",
+      "note": "",
+      "formalPrice": null,
+      "formalLeadDays": null,
+      "formalValidUntil": null,
+      "formalDiffReason": "",
+      "source": "取込"
+    }
+  },
+  {
+    "case": "import garbage",
+    "toast": "取り込み 1 行 / 突合不能 2 / 型式不一致 0 / 代替提案の下書き 0",
+    "errs": []
+  },
+  {
+    "case": "undo import",
+    "toast": "元に戻す: 見積回答を取り込む（因幡電機）",
+    "q20": 9999
+  },
+  {
+    "case": "formal request",
+    "toast": "3 行 × 1 社に正式見積を依頼",
+    "downloads": [
+      "req-download"
+    ],
+    "statuses": [
+      "formalRequested",
+      "formalRequested",
+      "formalRequested"
+    ]
+  },
+  {
+    "case": "formal file",
+    "f": "req-download",
+    "sheets": [
+      {
+        "name": "正式見積依頼",
+        "rows": 10,
+        "cols": 13,
+        "head": [
+          "正式見積依頼書"
+        ],
+        "r2": [
+          "依頼No",
+          "P-2026-041-S1-F1",
+          "宛先",
+          "因幡電機"
+        ]
+      }
+    ]
+  },
+  {
+    "case": "selection record",
+    "downloads": [
+      "req-download"
+    ],
+    "sheets": [
+      {
+        "name": "選定記録",
+        "rows": 5,
+        "cols": 8,
+        "head": [
+          "ID",
+          "部品名",
+          "型式",
+          "採用",
+          "理由",
+          "スコア",
+          "内訳（商社: 合計 / 価格 / 納期 / 実績 / 条件）"
+        ],
+        "r2": [
+          "R001",
+          "PLC CPUユニット",
+          "FX5U-32MR/ES",
+          "因幡電機",
+          "推奨",
+          88,
+          "因幡電機: 87.2 / 100 / 60 / 96 / 100　立花エレテック: 76.7 / 59 / 100 / 90 / 50　ミスミ: 59.2 / 98 / 0 / 50 / 100"
+        ]
+      }
+    ]
+  },
+  {
+    "case": "export with special chars in name",
+    "name": "A/B:C*D?",
+    "downloads": [
+      "req-P-2026-041_A_B_C_D_.xlsx"
+    ]
+  }
+]

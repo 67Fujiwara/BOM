@@ -1,0 +1,25 @@
+// S16: 欠けていた証跡（編集中に役割ボタン / 新規案件直後の空の 4 ビュー）
+import { launch, fresh, T, makeLog, shot, sel, gotoCol } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('s16_evidence')
+try {
+  await fresh(page)
+  await sel(page, 'R031'); await gotoCol(page, '部品名'); await page.keyboard.press('Enter'); await page.keyboard.type('ABC')
+  await page.locator('.role button', { hasText: '購買' }).click()
+  log('role click during edit: mode', await T.mode(page), 'editor', await page.getByTestId('cell-editor').count(), 'editor value', await page.getByTestId('cell-editor').inputValue().catch(() => '-'), 'active', await page.evaluate(() => document.activeElement?.tagName))
+  await shot(page, 's14_role_click_during_edit')
+  await page.keyboard.type('DEF')
+  await page.keyboard.press('Enter')
+  log('Enter: mode', await T.mode(page), 'toast', await T.toast(page), 'R031 name', await page.locator('[data-row-id="R031"] td.name').textContent())
+  await fresh(page)
+  await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('新しいBOM'); await page.keyboard.press('Enter')
+  await page.getByTestId('wizard-id').fill('P2'); await page.keyboard.press('Enter'); await page.getByTestId('wizard-name').fill('二つ目')
+  for (let i = 0; i < 6; i++) await page.keyboard.press('Enter')
+  await page.getByTestId('wizard-paste').fill('制御\tリレー\tMY4N-D2 DC24\tオムロン\t4\t個\tKA1')
+  await page.keyboard.press('Control+Enter'); await page.keyboard.press('Enter'); await page.waitForTimeout(100)
+  log('new project: view', await T.view(page), 'rows', await T.rows(page), 'toast', await T.toast(page), 'grid text', (await page.getByTestId('grid').textContent()).slice(0, 80))
+  await shot(page, 's10b_p2_empty_view4')
+} catch (e) { log('EXC', String(e)) }
+log('console/page errors:', errors)
+save(errors)
+await browser.close()

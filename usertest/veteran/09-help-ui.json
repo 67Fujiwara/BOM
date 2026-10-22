@@ -1,0 +1,345 @@
+[
+  {
+    "case": "help coverage",
+    "bindings": 71,
+    "missingLabel": [],
+    "missingKey": []
+  },
+  {
+    "case": "help mentions panel keys",
+    "present": {
+      "Alt+←": false,
+      "Ctrl+Enter": true,
+      "J": true,
+      "Tab": true,
+      "Delete": true,
+      "1〜9": true,
+      "y": true,
+      "Shift+Y": true
+    }
+  },
+  {
+    "case": "help label dup",
+    "dupLabels": [
+      "右のセル",
+      "左のセル"
+    ]
+  },
+  {
+    "case": "keymap conflicts",
+    "conflicts": []
+  },
+  {
+    "case": "palette empty query items",
+    "n": 34,
+    "first": [
+      "ビュービュー: すべて1",
+      "ビュービュー: 購買提出用2",
+      "ビュービュー: 発注・入荷3"
+    ]
+  },
+  {
+    "case": "keymap labels searchable in palette",
+    "notInPalette": []
+  },
+  {
+    "case": "hints design on draft R076 (no quotes)",
+    "hints": "Enter編集a推奨採用Shift+I指摘Space開くCtrl+Enter公開?ヘルプ",
+    "toastOnA": "選定済以降の行は採用できません"
+  },
+  {
+    "case": "hints design on ID col (not editable)",
+    "hints": "Enter編集a推奨採用Shift+I指摘Space開くCtrl+Enter公開?ヘルプ",
+    "toastOnEnter": "この列は自動計算です",
+    "mode": "ナビ"
+  },
+  {
+    "case": "hints purchasing R020",
+    "hints": "Enter編集a推奨採用Shift+I指摘Space開くCtrl+Enter指摘を発行?ヘルプ"
+  },
+  {
+    "case": "hints purchasing R016 (open issue by buyer)",
+    "hints": "Enter編集a推奨採用Shift+I指摘Space開くx警告を確認済みCtrl+Enter指摘を発行?ヘルプ",
+    "status": "ナビR016 ID型式あいまい 1/1購買: 未発行 0 件役割: 購買Enter編集a推奨採用Shift+I指摘Space開くx警告を確認済みCtrl+Enter指摘を発行?ヘルプ72 bindings"
+  },
+  {
+    "case": "hints PM view7",
+    "cursor": "R013 ID",
+    "hints": "y承認Shift+Y却下Enter決定パネル?ヘルプ"
+  },
+  {
+    "case": "hints PM on normal row",
+    "hints": "Enter編集a推奨採用Shift+I指摘Space開く?ヘルプ"
+  },
+  {
+    "case": "mode label palette",
+    "mode": "パレット"
+  },
+  {
+    "case": "mode label panel",
+    "mode": "パネル"
+  },
+  {
+    "case": "side count vs rows design",
+    "r": {
+      "1": [
+        "80",
+        "80"
+      ],
+      "2": [
+        "80",
+        "80"
+      ],
+      "3": [
+        "4",
+        "4"
+      ],
+      "4": [
+        "11",
+        "11"
+      ],
+      "5": [
+        "75",
+        "75"
+      ],
+      "6": [
+        "75",
+        "75"
+      ],
+      "7": [
+        "1",
+        "1"
+      ],
+      "8": [
+        "4",
+        "4"
+      ],
+      "9": [
+        "71",
+        "71"
+      ]
+    },
+    "mismatch": []
+  },
+  {
+    "case": "side count vs rows purchasing",
+    "r": {
+      "1": [
+        "80",
+        "80"
+      ],
+      "2": [
+        "80",
+        "80"
+      ],
+      "3": [
+        "4",
+        "4"
+      ],
+      "4": [
+        "1",
+        "1"
+      ],
+      "5": [
+        "75",
+        "75"
+      ],
+      "6": [
+        "75",
+        "75"
+      ],
+      "7": [
+        "1",
+        "1"
+      ],
+      "8": [
+        "4",
+        "4"
+      ],
+      "9": [
+        "71",
+        "71"
+      ]
+    },
+    "mismatch": []
+  },
+  {
+    "case": "side count vs rows pm",
+    "r": {
+      "1": [
+        "80",
+        "80"
+      ],
+      "2": [
+        "80",
+        "80"
+      ],
+      "3": [
+        "4",
+        "4"
+      ],
+      "4": [
+        "11",
+        "11"
+      ],
+      "5": [
+        "75",
+        "75"
+      ],
+      "6": [
+        "75",
+        "75"
+      ],
+      "7": [
+        "1",
+        "1"
+      ],
+      "8": [
+        "4",
+        "4"
+      ],
+      "9": [
+        "71",
+        "71"
+      ]
+    },
+    "mismatch": []
+  },
+  {
+    "case": "hidden row counts",
+    "side1": "80",
+    "rows1": 80,
+    "r030hidden": "row sel hidden-row",
+    "side2": "79",
+    "rows2": 79,
+    "r030inView2": 0
+  },
+  {
+    "case": "lamps vs view4",
+    "lamps": "設計待ち 75購買待ち 4PM待ち 1エラー 3警告 7期限超過 1",
+    "view4": "11",
+    "rows": 11
+  },
+  {
+    "case": "dark",
+    "theme": "dark",
+    "bodyBg": "rgb(20, 22, 24)"
+  },
+  {
+    "case": "compact",
+    "density": "compact",
+    "rowH": 28
+  },
+  {
+    "case": "after reload",
+    "theme": "dark"
+  },
+  {
+    "case": "1280x720 header",
+    "clipped": [
+      {
+        "cls": "role",
+        "text": "設計購買PM",
+        "clipped": true,
+        "w": 131
+      },
+      {
+        "cls": "muted",
+        "text": "山田",
+        "clipped": true,
+        "w": 24
+      },
+      {
+        "cls": "btn",
+        "text": "Ctrl+K コマンド",
+        "clipped": true,
+        "w": 116
+      }
+    ],
+    "all": [
+      "pid:60",
+      "pname:0",
+      "due:185",
+      "muted mono:402",
+      "muted:54",
+      "spacer:0",
+      "lamps:457",
+      "role:131",
+      "muted:24",
+      "btn:116"
+    ]
+  },
+  {
+    "case": "1280x720 status",
+    "st": {
+      "scrollW": 1280,
+      "clientW": 1280,
+      "hintsRight": 1268
+    }
+  },
+  {
+    "case": "1280 detail quotes table overflow",
+    "quotesW": 912,
+    "cellW": 1291
+  },
+  {
+    "case": "1280 zoom150 header",
+    "hidden": [
+      "lamps",
+      "role",
+      "muted",
+      "btn"
+    ],
+    "headerRight": 1280
+  },
+  {
+    "case": "1280 zoom150 status overflow",
+    "st2": {
+      "scrollW": 853,
+      "clientW": 853,
+      "overflow": false,
+      "hints": [
+        {
+          "t": "Enter編集",
+          "right": 704
+        },
+        {
+          "t": "a推奨採用",
+          "right": 808
+        },
+        {
+          "t": "Shift+I指摘",
+          "right": 929
+        },
+        {
+          "t": "Space開く",
+          "right": 1030
+        },
+        {
+          "t": "Ctrl+Enter公開",
+          "right": 1178
+        },
+        {
+          "t": "?ヘルプ",
+          "right": 1262
+        }
+      ]
+    }
+  },
+  {
+    "case": "zoom150 palette dialog",
+    "dlg": {
+      "h": 820.796875,
+      "bottom": 950.390625,
+      "winH": 480
+    }
+  },
+  {
+    "case": "zoom150 help dialog",
+    "hd": {
+      "bodyScroll": true,
+      "dialogBottom": 941.390625,
+      "winH": 480
+    }
+  }
+]

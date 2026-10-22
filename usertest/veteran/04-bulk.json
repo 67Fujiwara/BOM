@@ -1,0 +1,418 @@
+{
+  "create": {
+    "ms": 105,
+    "view": "view-4",
+    "toast": "大型盤300 を作成しました。4 要確認で問題を直し、Ctrl+Enter で提出"
+  },
+  "rows": 300,
+  "counts": [
+    "300",
+    "300",
+    "0",
+    "27",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "project": {
+    "supplierIds": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "preferred": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rows": 300,
+    "qty0": 0,
+    "pasteFirst": {
+      "ref": "K1",
+      "drawing": "",
+      "category": "電源",
+      "name": "部品1",
+      "model": "MODEL-001",
+      "maker": "オムロン",
+      "qtyNeeded": 2,
+      "unit": "個",
+      "packQty": null,
+      "procurement": "相見積",
+      "makerLock": "推奨",
+      "altPolicy": "同等品可",
+      "designated": "",
+      "needOffset": null,
+      "needDateFixed": null,
+      "tags": "",
+      "note": "",
+      "id": "R001",
+      "hidden": false,
+      "status": "draft",
+      "flags": {},
+      "orderQty": null,
+      "extraCost": null,
+      "extraCostKind": "",
+      "ordered": false,
+      "received": false,
+      "ackRules": [],
+      "deferredRules": [],
+      "statusChangedAt": "2026-10-22T15:21:02.741Z"
+    },
+    "due": "2026-12-25"
+  },
+  "views": {
+    "1": {
+      "ms": 61,
+      "rows": 300
+    },
+    "2": {
+      "ms": 309,
+      "rows": 300
+    },
+    "3": {
+      "ms": 56,
+      "rows": 0
+    },
+    "4": {
+      "ms": 81,
+      "rows": 27
+    },
+    "5": {
+      "ms": 22,
+      "rows": 0
+    },
+    "6": {
+      "ms": 21,
+      "rows": 0
+    },
+    "7": {
+      "ms": 22,
+      "rows": 0
+    },
+    "8": {
+      "ms": 33,
+      "rows": 0
+    },
+    "9": {
+      "ms": 16,
+      "rows": 0
+    }
+  },
+  "latency300": {
+    "median": "31.8",
+    "max": "135.6"
+  },
+  "editCommit300": {
+    "toEdit": "48.5",
+    "hasInput": true,
+    "commitMs": 501
+  },
+  "sort": [
+    {
+      "col": "g:電源:R151",
+      "ascMs": 178,
+      "descMs": 303,
+      "firstAsc": "R001",
+      "firstDesc": "R300",
+      "cleared": true,
+      "cursorAfter": "R001 ID"
+    },
+    {
+      "col": "R001 ボール",
+      "ascMs": 163,
+      "descMs": 149,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 ボール"
+    },
+    {
+      "col": "R001 回路記号",
+      "ascMs": 255,
+      "descMs": 329,
+      "firstAsc": "R001",
+      "firstDesc": "R099",
+      "cleared": true,
+      "cursorAfter": "R001 回路記号"
+    },
+    {
+      "col": "R001 分類",
+      "ascMs": 218,
+      "descMs": 277,
+      "firstAsc": "R005",
+      "firstDesc": "R003",
+      "cleared": true,
+      "cursorAfter": "R001 分類"
+    },
+    {
+      "col": "R001 部品名",
+      "ascMs": 148,
+      "descMs": 332,
+      "firstAsc": "R001",
+      "firstDesc": "R099",
+      "cleared": true,
+      "cursorAfter": "R001 部品名"
+    },
+    {
+      "col": "R001 型式",
+      "ascMs": 119,
+      "descMs": 300,
+      "firstAsc": "R001",
+      "firstDesc": "R300",
+      "cleared": true,
+      "cursorAfter": "R001 型式"
+    },
+    {
+      "col": "R001 メーカ",
+      "ascMs": 213,
+      "descMs": 182,
+      "firstAsc": "R011",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 メーカ"
+    },
+    {
+      "col": "R001 必要数",
+      "ascMs": 223,
+      "descMs": 285,
+      "firstAsc": "R007",
+      "firstDesc": "R006",
+      "cleared": true,
+      "cursorAfter": "R001 必要数"
+    },
+    {
+      "col": "R001 単位",
+      "ascMs": 253,
+      "descMs": 171,
+      "firstAsc": "R017",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 単位"
+    },
+    {
+      "col": "R001 調達区分",
+      "ascMs": 126,
+      "descMs": 163,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 調達区分"
+    },
+    {
+      "col": "R001 代替可否",
+      "ascMs": 309,
+      "descMs": 239,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 代替可否"
+    },
+    {
+      "col": "R001 必要日",
+      "ascMs": 119,
+      "descMs": 284,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 必要日"
+    },
+    {
+      "col": "R001 採用",
+      "ascMs": 144,
+      "descMs": 120,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 採用"
+    },
+    {
+      "col": "R001 スコア",
+      "ascMs": 258,
+      "descMs": 148,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 スコア"
+    },
+    {
+      "col": "R001 単価",
+      "ascMs": 112,
+      "descMs": 267,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 単価"
+    },
+    {
+      "col": "R001 金額",
+      "ascMs": 131,
+      "descMs": 166,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 金額"
+    },
+    {
+      "col": "R001 納期",
+      "ascMs": 281,
+      "descMs": 140,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 納期"
+    },
+    {
+      "col": "R001 状態",
+      "ascMs": 116,
+      "descMs": 119,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 状態"
+    },
+    {
+      "col": "R001 期限",
+      "ascMs": 184,
+      "descMs": 149,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 期限"
+    },
+    {
+      "col": "R001 待ち",
+      "ascMs": 251,
+      "descMs": 114,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 待ち"
+    },
+    {
+      "col": "R001 発注",
+      "ascMs": 119,
+      "descMs": 121,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 発注"
+    },
+    {
+      "col": "R001 入荷",
+      "ascMs": 115,
+      "descMs": 120,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 入荷"
+    },
+    {
+      "col": "R001 入荷予定",
+      "ascMs": 123,
+      "descMs": 264,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 入荷予定"
+    },
+    {
+      "col": "R001 ロット",
+      "ascMs": 149,
+      "descMs": 131,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 ロット"
+    },
+    {
+      "col": "R001 備考",
+      "ascMs": 280,
+      "descMs": 118,
+      "firstAsc": "R001",
+      "firstDesc": "R001",
+      "cleared": true,
+      "cursorAfter": "R001 備考"
+    }
+  ],
+  "filter": {
+    "ms": 537,
+    "rows": 111,
+    "cursor": "R001 備考",
+    "cursorAfterEnter": "R002 備考",
+    "active": "gridwrap",
+    "afterEsc": {
+      "rows": 300,
+      "filter": ""
+    }
+  },
+  "cellFilter": {
+    "chip": "仮",
+    "rows": 27,
+    "expected": 27,
+    "afterToggle": 300
+  },
+  "allColsOff": {
+    "ths": 12,
+    "cursor": "R011 メーカ",
+    "rows": 300,
+    "mode": "ナビ",
+    "afterEnter": {
+      "mode": "ナビ",
+      "toast": "",
+      "cursor": "g:操作:R012"
+    },
+    "afterMoves": {
+      "cursor": "—",
+      "errs": 1
+    }
+  },
+  "category": {
+    "seq": [
+      "g:操作:R002",
+      "g:表示:R003",
+      "g:配線:R004",
+      "g:制御:R005",
+      "g:電源:R006",
+      "g:操作:R007",
+      "g:表示:R008",
+      "g:配線:R009",
+      "g:表示:R008",
+      "g:操作:R007",
+      "g:電源:R006"
+    ],
+    "spaceOnGroup": {
+      "rowsAfterCollapse": 240,
+      "cursor": "g:電源:R006"
+    },
+    "jAfterCollapse": "g:操作:R007"
+  },
+  "paging": {
+    "top": "g:電源:R001",
+    "pd": "g:電源:R011",
+    "pd2": "g:電源:R021",
+    "pu": "g:電源:R011",
+    "bot": "R300 部品名",
+    "end": "R300 備考",
+    "home": "R300 ID",
+    "visibleRowsPerScreen": 23,
+    "scrollTopAtBottom": 19649
+  },
+  "view4": {
+    "sideCount": "27",
+    "rows": 27,
+    "lamps": "設計待ち 300購買待ち 0PM待ち 0エラー 27警告 0"
+  },
+  "nCycle": {
+    "distinct": 27,
+    "first": "R011 メーカ"
+  },
+  "publish": {
+    "toast": "公開できません: エラー 27 件（R011 メーカが空です … n で移動して直す）"
+  },
+  "excel300": {
+    "ms": 307,
+    "file": "download"
+  }
+}

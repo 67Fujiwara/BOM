@@ -1,0 +1,30 @@
+header: P-2026-101中堅テスト盤納期 あと57日（必要日 あと47日）仮概算 ¥0 / 正式 ¥0 / 予算 ¥1,500,000 (-100.0%)設計待ち 30購買待ち 0PM待ち 0エラー 3警告 6設計購買PM山田Ctrl+K コマンド?
+toast: 中堅テスト盤（30 行）を作成しました。問題のある行 9 行を n で順に直し、Ctrl+Enter で提出します
+PASS S1 案件作成 30 行
+rows in view1: 30  view4: 9 lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 3警告 6
+members {"design":"山田","purchasing":"佐藤","pm":""} supplierIds [ 'S1', 'S2', 'S3' ] due 2026-12-18 pmConfirmed false
+PASS S1 パックの入数が貼付時に入らない（packQty null） :: null
+n → cursor: R005 メーカ  status: ナビR005 メーカ設計 山田: 未公開 30 行 / 指摘 0中堅テスト盤（30 行）を作成しました。問題のある行 9 行を n で順に直し、Ctrl+Enter で提出しますEnter編集Space開くCtrl+Enter公開 30 行?ヘルプ
+quickfix: 1 メーカが空です: 編集する2 メーカが空です: あとで（Shift+→）
+problems by lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 3警告 6
+problem 0: R006 必要数 | model= "NF32-SV 3P 30A" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 3警告 6
+problem 1: R005 メーカ | model= "S8VK-G12024" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 2警告 6
+problem 2: R010 部品名 | model= "XYZ-1" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 1警告 6
+problem 3: R003 型式 | model= "CP30-BA 2P" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 6
+problem 4: R007 回路記号 | model= "A22NN-BPM-NGA" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 5
+  deferred (Shift+→) → cursor now R008 回路記号
+problem 5: R013 型式 | model= "CP30-BA 2P-12" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 5
+problem 6: R007 回路記号 | model= "A22NN-BPM-NGA" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 4
+  x → 確認済みにしました: 回路記号が他の行と重複しています
+problem 7: R004 型式 | model= "ＰＴ ２，５" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 3
+  qf: 1 型式に全角文字が含まれています: 半角に変換2 型式に全角文字が含まれています: 確認済みにする（x）3 型式に全角文字が含まれています: あとで（Shift+→）
+problem 8: R008 回路記号 | model= "A22NN-BPM-NRA" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 2
+  x → 確認済みにしました: 回路記号が他の行と重複しています
+problem 9: R023 型式 | model= "CP30-BA 2P-22" | lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 1
+n: 問題はありません
+lamps after fixes: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 0  status: ナビ—設計 山田: 未公開 30 行 / 指摘 0設計がいま直す問題はありません（Ctrl+Enter で公開できます）↓表へn次の問題?ヘルプ
+publish toast (with deferred): 公開できません: 「あとで」にした問題が 1 行に残っています（R007）
+PASS S1 「あとで」が残ると公開不可 :: 公開できません: 「あとで」にした問題が 1 行に残っています（R007）
+deferred row: R007 [ 'rule.ref.dup' ]
+publish toast after fixing deferred: 公開できません: 「あとで」にした問題が 1 行に残っています（R007）
+FAIL S1 「あとで」の問題を直した後に公開できる :: 公開できません: 「あとで」にした問題が 1 行に残っています（R007）

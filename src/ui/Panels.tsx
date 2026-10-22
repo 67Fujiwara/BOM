@@ -1,19 +1,29 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { useStore, type Panel } from '@/model/store'
 import { KEYMAP, formatKey } from '@/keys/keymap'
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
-import { paletteItems } from '@/commands/registry'
+import { colsForPanel, paletteItems, closePanel, WIZ_KEYS } from '@/commands/registry'
+import { issueKindsFor } from '@/commands/keyboard'
 import { ballCounts, effective, fmtYen } from '@/model/derive'
 import { scoreRow } from '@/model/score'
 import { fmtDateTime } from '@/model/dates'
+import { settingsFields } from './settingsFields'
+import { FIELD_LABEL, parseBomPaste, xlsxToTsv } from '@/io/paste'
+
+/** パネルのキー操作を合成する（クリックでもキーと同じ動きにするため） */
+function press(key: string) {
+  const init: KeyboardEventInit = { key, bubbles: true, cancelable: true }
+  if (key === 'Ctrl+Enter') Object.assign(init, { key: 'Enter', ctrlKey: true })
+  window.dispatchEvent(new KeyboardEvent('keydown', init))
+}
 
 export function Panels() {
   const st = useStore()
   const panel = st.panel
   if (!panel) return null
   return (
-    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => { if (e.target === e.currentTarget) st.set({ panel: null, mode: 'nav' }) }}>
+    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => e.target === e.currentTarget && closePanel()}>
       <PanelBody panel={panel} />
     </div>
   )
@@ -23,7 +33,7 @@ function Foot({ items }: { items: Array<[string, string]> }) {
   return (
     <div className="foot">
       {items.map(([k, l]) => (
-        <span key={k}>
+        <span key={k + l}>
           <kbd>{formatKey(k)}</kbd> {l}
         </span>
       ))}
@@ -31,27 +41,56 @@ function Foot({ items }: { items: Array<[string, string]> }) {
   )
 }
 
-function AutoInput({ value, onChange, placeholder, testid, multiline }: { value: string; onChange: (v: string) => void; placeholder?: string; testid?: string; multiline?: boolean }) {
+function AutoInput({ value, onChange, placeholder, testid, multiline, autoFocus = true, className }: { value: string; onChange: (v: string) => void; placeholder?: string; testid?: string; multiline?: boolean; autoFocus?: boolean; className?: string }) {
   const ref = useRef<HTMLInputElement & HTMLTextAreaElement>(null)
   useEffect(() => {
-    ref.current?.focus()
-  }, [])
-  if (multiline) return <textarea ref={ref} className="f" rows={8} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
-  return <input ref={ref} className="q" data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+    if (autoFocus) ref.current?.focus()
+  }, [autoFocus])
+  if (multiline) return <textarea ref={ref} className={className ?? 'f'} rows={8} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+  return <input ref={ref} className={className ?? 'q'} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+}
+
+/** 選ばれている項目が見えるようにスクロールする */
+function useScrollSelected(dep: unknown) {
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    ref.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' })
+  }, [dep])
+  return ref
+}
+
+function OptionList({ options, index, onPick, testid, render }: { options: Array<{ label: string; key?: string }>; index: number; onPick: (i: number) => void; testid?: string; render?: (o: { label: string; key?: string }, i: number) => ReactNode }) {
+  const ref = useScrollSelected(index)
+  return (
+    <div className="body panel-list" data-testid={testid} ref={ref}>
+      {options.map((o, i) => (
+        <div key={o.label + i} className="opt clickable" aria-selected={i === index} onClick={() => onPick(i)}>
+          {render ? render(o, i) : (
+            <>
+              <kbd>{o.key ? formatKey(o.key) : i < 9 ? i + 1 : '·'}</kbd> <span>{o.label}</span>
+            </>
+          )}
+        </div>
+      ))}
+      {options.length === 0 && <div className="muted">候補がありません（Enter / Esc で閉じる）</div>}
+    </div>
+  )
 }
 
 function PanelBody({ panel }: { panel: Panel }) {
   const st = useStore()
   const p = st.project()
+  const setIndex = (i: number) => st.set({ panel: { ...panel, index: i } as Panel })
+  const listRef = useScrollSelected('index' in panel ? panel.index : 0)
   switch (panel.kind) {
     case 'palette': {
       const items = paletteItems(panel.query)
       return (
         <div className="dialog" role="dialog" aria-label="コマンドパレット">
-          <AutoInput value={panel.query} onChange={(v) => st.set({ panel: { ...panel, query: v, index: 0 } })} placeholder="操作・行ID・案件名を入力（例: R034 採用、ビュー 要確認、公開）" testid="palette-input" />
-          <div className="list" data-testid="palette-list">
-            {items.slice(0, 40).map((it, i) => (
-              <div key={it.id + i} className="item" aria-selected={i === panel.index} onMouseEnter={() => st.set({ panel: { ...panel, index: i } })} onClick={() => it.run()}>
+          <AutoInput value={panel.query} onChange={(v) => st.set({ panel: { ...panel, query: v, index: 0 } })} placeholder="やりたいことを入力（例: 公開、エクセル、R034 採用、ヘルプ）" testid="palette-input" />
+          <div className="list" data-testid="palette-list" ref={listRef}>
+            {items.slice(0, 60).map((it, i) => (
+              <div key={it.id + i} className="item" aria-selected={i === panel.index} onMouseEnter={() => setIndex(i)} onClick={() => it.run()}>
                 <span className="sec">{it.section}</span>
                 <span>{it.label}</span>
                 {it.desc && <span className="desc">{it.desc}</span>}
@@ -62,9 +101,9 @@ function PanelBody({ panel }: { panel: Panel }) {
                 </span>
               </div>
             ))}
-            {items.length === 0 && <div className="item muted">該当する操作がありません</div>}
+            {items.length === 0 && <div className="item muted">該当する操作がありません。? でショートカット一覧、「ヘルプ」と打つと使い方</div>}
           </div>
-          <Foot items={[['Enter', '実行'], ['Escape', '閉じる'], ['ArrowUp', '選択'], ['ArrowDown', '選択']]} />
+          <Foot items={[['Enter', '実行'], ['ArrowUp', '/ ↓ 選択'], ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -73,7 +112,10 @@ function PanelBody({ panel }: { panel: Panel }) {
       return (
         <div className="dialog wide" role="dialog" aria-label="ショートカット一覧">
           <div className="body">
-            <h3 style={{ margin: '0 0 10px' }}>ショートカット一覧</h3>
+            <h3 style={{ margin: '0 0 4px' }}>ショートカット一覧</h3>
+            <p className="muted" style={{ margin: '0 0 10px', fontSize: 12 }}>
+              迷ったら <kbd>Ctrl+K</kbd> で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は <kbd>Ctrl+Z</kbd> で戻せます（あなた自身の操作だけ）。
+            </p>
             <div className="help-cols" data-testid="help">
               {sections.map((sec) => (
                 <section key={sec}>
@@ -92,7 +134,11 @@ function PanelBody({ panel }: { panel: Panel }) {
               ))}
               <section>
                 <h4>要決定（7 ビュー・PM）</h4>
-                {[['y', '承認 / 受入 / 許可'], ['Shift+Y', '却下 / 受入（遅延許容）/ 現状維持'], ['Enter', '決定パネル（b 次点 / g 再交渉 / d 設計へ代替依頼 / q 数量見直し / e 特急・分納 / p 委譲）']].map(([k, l]) => (
+                {[
+                  ['y', '承認 / 受入 / 許可'],
+                  ['Shift+Y', '却下 / 受入（遅延許容）/ 現状維持'],
+                  ['Enter', '決定パネル（b 次点 / g 再交渉 / d 設計へ代替依頼 / q 数量見直し / e 特急・分納 / p 委譲）'],
+                ].map(([k, l]) => (
                   <div className="r" key={k}>
                     <span>{l}</span>
                     <span className="ks">
@@ -102,9 +148,27 @@ function PanelBody({ panel }: { panel: Panel }) {
                 ))}
               </section>
               <section>
-                <h4>指摘パネル（Space で開いて ↓ で選択）</h4>
-                {[['Enter', '指摘アクション（1 返信 / 2 直さず回答 / 3 客先承認取得 / 4 提案を適用 / 5 ルール化 / 6 見送り / 7 代替なし）'], ['Shift+R', '返信']].map(([k, l]) => (
+                <h4>行の詳細（Space で開いて ↓ で選択）</h4>
+                {[
+                  ['Enter', '指摘のアクション（返信 / 直さず回答 / 客先承認取得 / 提案を適用 / ルール化 / 見送り / 代替なし）、見積のアクション（採用 / 据え置き / 再見積）'],
+                  ['Shift+R', '返信'],
+                ].map(([k, l]) => (
                   <div className="r" key={k}>
+                    <span>{l}</span>
+                    <span className="ks">
+                      <kbd>{formatKey(k)}</kbd>
+                    </span>
+                  </div>
+                ))}
+              </section>
+              <section>
+                <h4>新規BOMガイド</h4>
+                {[
+                  ['Enter', '次へ（貼り付け欄の中は Ctrl+Enter）'],
+                  ['Alt+ArrowLeft', '1 つ前の段階'],
+                  ['Escape', '中止（入れた内容は残る）'],
+                ].map(([k, l]) => (
+                  <div className="r" key={k + l}>
                     <span>{l}</span>
                     <span className="ks">
                       <kbd>{formatKey(k)}</kbd>
@@ -119,60 +183,71 @@ function PanelBody({ panel }: { panel: Panel }) {
       )
     }
     case 'columns': {
-      const cols = COLUMNS.filter((c) => !c.perSupplier)
+      const cols = colsForPanel()
       return (
         <div className="dialog" role="dialog" aria-label="列の表示">
-          <div className="body panel-list" data-testid="columns">
-            <h3 style={{ margin: '0 0 8px' }}>列の表示</h3>
-            {cols.map((c, i) => (
-              <div key={c.key} className="opt" aria-selected={i === panel.index}>
-                <span className="check">{st.hiddenCols.includes(c.key) ? '○' : '●'}</span>
-                <span>{c.label}</span>
-                <span className="muted" style={{ marginLeft: 'auto' }}>{c.editableBy.map((r) => ROLE_LABEL[r]).join('・') || '自動'}</span>
-              </div>
-            ))}
+          <div className="body panel-list" data-testid="columns" ref={listRef}>
+            <h3 style={{ margin: '0 0 8px' }}>列の表示（すべて・購買提出用以外のビューは列が決まっています）</h3>
+            {cols.map((key, i) => {
+              const c = COLUMNS.find((x) => x.key === key)!
+              return (
+                <div key={c.key} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press(' '))}>
+                  <span className="check">{st.hiddenCols.includes(c.key) ? '○' : '●'}</span>
+                  <span>{c.label}</span>
+                  <span className="muted" style={{ marginLeft: 'auto' }}>
+                    {c.editableBy.map((r) => ROLE_LABEL[r]).join('・') || '自動'}
+                  </span>
+                </div>
+              )
+            })}
           </div>
-          <Foot items={[['ArrowUp', '選択'], ['ArrowDown', '選択'], [' ', '表示切替'], ['Escape', '閉じる']]} />
+          <Foot items={[['ArrowUp', '/ ↓ 選択'], [' ', '表示を切り替え'], ['Escape', '閉じる']]} />
         </div>
       )
     }
     case 'issue': {
       const row = p.rows.find((r) => r.id === panel.rowId)
+      const kinds = issueKindsFor()
+      const defs = ISSUE_KINDS.filter((k) => kinds.includes(k.kind))
+      const proposalKind = panel.issueKind === '廃番' || panel.issueKind === '代替提案'
       return (
         <div className="dialog" role="dialog" aria-label="指摘を起票">
           <div className="body">
             <h3 style={{ margin: '0 0 8px' }}>
-              指摘を起票 <span className="muted">{panel.rowId} {row ? effective(row).name : ''} [{panel.field}]</span>
+              指摘を起票 <span className="muted">{panel.rowId} {row ? effective(row).name : ''}</span>
             </h3>
             {panel.step === 'kind' && (
-              <div className="panel-list" data-testid="issue-kinds">
-                {ISSUE_KINDS.filter((k) => k.kind !== '納期NG' && k.kind !== 'コスト超過').map((k) => (
-                  <div key={k.kind} className="opt" aria-selected={panel.issueKind === k.kind}>
+              <div className="panel-list" data-testid="issue-kinds" ref={listRef}>
+                {defs.map((k, i) => (
+                  <div key={k.kind} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press('Enter'))}>
                     <kbd>{k.key}</kbd> <span>{k.kind}</span>
-                    <span className="muted" style={{ marginLeft: 'auto' }}>担当 {ROLE_LABEL[k.resolver]} / 期限 {k.dueDays} 営業日</span>
+                    <span className="muted" style={{ marginLeft: 'auto' }}>
+                      対応 {ROLE_LABEL[k.resolver]} / 期限 {k.dueDays} 営業日
+                    </span>
                   </div>
                 ))}
+                {st.ws.user.role !== 'purchasing' && <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>{ROLE_LABEL[st.ws.user.role]}が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します）</div>}
               </div>
             )}
             {panel.step === 'text' && (
               <>
-                <div className="muted" style={{ marginBottom: 6 }}>種別: {panel.issueKind}</div>
-                <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder="本文（Enter で起票、Tab で提案欄へ）" testid="issue-text" />
+                <div className="muted" style={{ marginBottom: 6 }}>種別: {panel.issueKind}{panel.issueKind === '最小ロット' ? '（空なら「必要数 → 丸め数量（余剰）」を自動で書きます）' : ''}</div>
+                <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={`本文（何がどう問題か）。Enter で起票${proposalKind ? '、Tab で提案欄（型式・メーカ・商社・単価・納期）' : ''}`} testid="issue-text" />
               </>
             )}
             {panel.step === 'proposal' && (
               <div className="wizard">
-                <div className="muted">提案（型式 / メーカ / 商社 / 単価 / 納期）。Tab で次へ、Enter で起票</div>
+                <div className="muted">提案（型式 / メーカ / 商社 / 単価 / 納期）。Tab で次の欄、Enter で起票</div>
                 {(['model', 'maker', 'supplierId', 'unitPrice', 'leadDays'] as const).map((k, i) => (
                   <label key={k}>
-                    {['提案型式', '提案メーカ', '商社ID（S1〜）', '単価', '納期(日)'][i]}
+                    {['提案型式', '提案メーカ', `商社（${st.ws.suppliers.map((s) => s.id + ' ' + s.name).join(' / ')}）`, '単価', '納期（日）'][i]}
                     <input className="f" data-testid={`proposal-${k}`} value={panel.proposal[k]} onChange={(e) => st.set({ panel: { ...panel, proposal: { ...panel.proposal, [k]: e.target.value } } })} autoFocus={i === 0} />
                   </label>
                 ))}
               </div>
             )}
           </div>
-          <Foot items={panel.step === 'kind' ? [['k', '型式あいまい'], ['m', 'メーカ未記入'], ['d', '廃番'], ['a', '代替提案'], ['l', '最小ロット'], ['q', '質問'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ['Tab', '提案欄'], ['Escape', '閉じる']]} />
+          <Foot items={panel.step === 'kind' ? [['k', '等の頭文字 / ↑↓ Enter で種別'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ...(proposalKind && panel.step === 'text' ? ([['Tab', '提案欄']] as Array<[string, string]>) : []), ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -181,17 +256,18 @@ function PanelBody({ panel }: { panel: Panel }) {
       const scores = scoreRow(p, row, st.ws.suppliers)
       return (
         <div className="dialog" role="dialog" aria-label="商社を選んで採用">
-          <div className="body panel-list" data-testid="adopt">
+          <div className="body panel-list" data-testid="adopt" ref={listRef}>
             <h3 style={{ margin: '0 0 8px' }}>
               商社を選んで採用 <span className="muted">{row.id} {effective(row).name}</span>
             </h3>
             {scores.map((sc, i) => (
-              <div key={sc.supplierId} className="opt" aria-selected={i === panel.index}>
+              <div key={sc.supplierId} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press(String(i + 1)))}>
                 <kbd>{i + 1}</kbd>
                 <span className="supplier-dot" style={{ background: st.ws.suppliers.find((s) => s.id === sc.supplierId)?.color }} />
                 <span>{st.ws.suppliers.find((s) => s.id === sc.supplierId)?.name}</span>
                 <span className="muted">
                   {fmtYen(sc.quote.unitPrice, p.settings.currency)} / {sc.quote.stock === '在庫' ? '即納' : `${sc.quote.leadDays}日`} / スコア {sc.total} {sc.reasons.join('・')}
+                  {i === 0 ? '（推奨）' : ''}
                 </span>
               </div>
             ))}
@@ -203,19 +279,19 @@ function PanelBody({ panel }: { panel: Panel }) {
     }
     case 'prompt':
       return (
-        <div className="dialog" role="dialog" aria-label={panel.title}>
+        <div className={'dialog' + (panel.danger ? ' danger' : '')} role="dialog" aria-label={panel.title}>
           <div className="body">
-            <h3 style={{ margin: '0 0 8px' }}>{panel.title}</h3>
+            <h3 style={{ margin: '0 0 8px', fontSize: 14 }}>{panel.title}</h3>
             {panel.options && (
-              <div className="panel-list" data-testid="prompt-options">
+              <div className="panel-list" data-testid="prompt-options" ref={listRef}>
                 {panel.options.map((o, i) => (
-                  <div key={o} className="opt" aria-selected={i === panel.index}>
-                    <kbd>{i + 1}</kbd> <span>{o}</span>
+                  <div key={o} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), !panel.showText && press('Enter'))}>
+                    <kbd>{panel.showText ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
                   </div>
                 ))}
               </div>
             )}
-            {(panel.requireText || !panel.options) && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={panel.placeholder ?? '理由・本文（Enter で確定）'} testid="prompt-text" />}
+            {panel.showText && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={panel.placeholder ?? (panel.requireText ? '理由・本文（必須。Enter で確定）' : '補足（任意。Enter で確定）')} testid="prompt-text" />}
             {panel.extra && (
               <div className="wizard">
                 {Object.entries(panel.extra).map(([k, v]) => (
@@ -227,33 +303,30 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={[['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={panel.showText && panel.options ? [['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'quickfix':
     case 'rule':
-    case 'export':
+    case 'export': {
+      const title = panel.kind === 'export' ? 'Excel 出力（どこに出すもの？）' : panel.kind === 'rule' ? 'ルールを追加' : panel.title
       return (
-        <div className="dialog" role="dialog" aria-label="候補">
-          <div className="body panel-list" data-testid="quickfix">
-            <h3 style={{ margin: '0 0 8px' }}>{panel.kind === 'export' ? 'Excel 出力先' : panel.kind === 'rule' ? 'ルールを追加' : `直し方の候補 ${'rowId' in panel ? panel.rowId : ''}`}</h3>
-            {panel.options.map((o, i) => (
-              <div key={o.label + i} className="opt" aria-selected={i === panel.index}>
-                <kbd>{i + 1}</kbd> <span>{o.label}</span>
-              </div>
-            ))}
-            {panel.options.length === 0 && <div className="muted">候補がありません</div>}
+        <div className="dialog" role="dialog" aria-label={title}>
+          <h3 style={{ margin: '14px 18px 0', fontSize: 14 }}>{title}</h3>
+          <div ref={listRef}>
+            <OptionList testid="quickfix" options={panel.options} index={panel.index} onPick={(i) => (setIndex(i), press('Enter'))} />
           </div>
-          <Foot items={[['Enter', '実行'], ['Escape', '閉じる']]} />
+          <Foot items={[['Enter', '実行'], ['ArrowUp', '/ ↓ 選択'], ['Escape', '閉じる']]} />
         </div>
       )
+    }
     case 'consolidate':
       return (
         <div className="dialog wide" role="dialog" aria-label="商社を集約">
-          <div className="body panel-list">
-            <h3 style={{ margin: '0 0 8px' }}>商社を集約（試算）</h3>
+          <div className="body panel-list" ref={listRef}>
+            <h3 style={{ margin: '0 0 8px' }}>商社を集約（試算。Enter で適用）</h3>
             {panel.options.map((o, i) => (
-              <div key={o.label} className="opt" aria-selected={i === panel.index}>
+              <div key={o.label} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press('Enter'))}>
                 <kbd>{i + 1}</kbd> <span>{o.label}</span> <span className="muted">{o.detail}</span>
               </div>
             ))}
@@ -272,15 +345,15 @@ function PanelBody({ panel }: { panel: Panel }) {
               ))}
             </ul>
           </div>
-          <Foot items={[['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={[['Enter', '確定に進む'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'import':
       return (
         <div className="dialog wide" role="dialog" aria-label={panel.title}>
           <div className="body wizard">
-            <h3 style={{ margin: '0 0 8px' }}>{panel.title}</h3>
-            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder="Excel からコピーして貼り付け（タブ区切り）。Ctrl+Enter で取り込み" testid="import-text" />
+            <h3 style={{ margin: '0 0 8px', fontSize: 14 }}>{panel.title}</h3>
+            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder="Excel からコピーして貼り付け（Ctrl+V）。Ctrl+Enter で取り込み" testid="import-text" />
           </div>
           <Foot items={[['Ctrl+Enter', '取り込む'], ['Escape', '閉じる']]} />
         </div>
@@ -300,13 +373,13 @@ function PanelBody({ panel }: { panel: Panel }) {
       const list = st.ws.projects.filter((x) => !q || (x.id + x.name).toLowerCase().includes(q))
       return (
         <div className="dialog wide" role="dialog" aria-label="受信箱">
-          <AutoInput value={panel.query} onChange={(v) => st.set({ panel: { ...panel, query: v, index: 0 } })} placeholder="案件を検索（Enter で開く。自分宛の最初の行にジャンプ）" testid="inbox-input" />
-          <div className="list" data-testid="inbox">
+          <AutoInput value={panel.query} onChange={(v) => st.set({ panel: { ...panel, query: v, index: 0 } })} placeholder="案件を検索（Enter で開いて、あなた宛の最初の行へ）" testid="inbox-input" />
+          <div className="list" data-testid="inbox" ref={listRef}>
             {list.map((x, i) => {
               const bc = ballCounts(x)
               const mine = bc[st.ws.user.role]
               return (
-                <div key={x.id} className="item" aria-selected={i === panel.index}>
+                <div key={x.id} className="item" aria-selected={i === panel.index} onClick={() => (setIndex(i), press('Enter'))}>
                   <span className="sec mono">{x.id}</span>
                   <span>{x.name}</span>
                   <span className="desc">
@@ -316,12 +389,13 @@ function PanelBody({ panel }: { panel: Panel }) {
                 </div>
               )
             })}
-            <div className="item" aria-selected={panel.index === list.length}>
+            {q && !list.length && <div className="item muted">「{panel.query}」に当たる案件はありません</div>}
+            <div className="item" aria-selected={panel.index === list.length} onClick={() => (setIndex(list.length), press('Enter'))}>
               <span className="sec">＋</span>
               <span>新しいBOM を作る</span>
             </div>
           </div>
-          <Foot items={[['Enter', '開く'], ['Escape', '閉じる']]} />
+          <Foot items={[['Enter', '開く'], ['ArrowUp', '/ ↓ 選択'], ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -329,19 +403,33 @@ function PanelBody({ panel }: { panel: Panel }) {
       const fields = settingsFields(p)
       return (
         <div className="dialog wide" role="dialog" aria-label="案件設定">
-          <div className="body panel-list" data-testid="settings">
+          <div className="body panel-list" data-testid="settings" ref={listRef}>
             <h3 style={{ margin: '0 0 8px' }}>
               案件設定 <span className="muted">（PM 項目は PM、購買項目は購買が変更。{p.settings.pmConfirmed ? '確定済' : '未確定（PM が y で確定）'}）</span>
             </h3>
-            {fields.map((f, i) => (
-              <div key={f.key} className="opt" aria-selected={i === panel.index}>
-                <span className="muted" style={{ width: 60 }}>{f.owner}</span>
-                <span style={{ width: 220 }}>{f.label}</span>
-                {panel.editing && i === panel.index ? <input className="f" autoFocus data-testid="settings-input" value={panel.value} onChange={(e) => st.set({ panel: { ...panel, value: e.target.value } })} style={{ width: 240 }} /> : <span className="mono">{panel.draft[f.key] ?? f.value}</span>}
-              </div>
-            ))}
+            {fields.map((f, i) => {
+              const role = st.ws.user.role
+              const mine = (f.owner === 'PM' && role === 'pm') || (f.owner === '購買' && role !== 'design')
+              return (
+                <div key={f.key} className={'opt clickable' + (mine ? '' : ' disabled')} aria-selected={i === panel.index} onClick={() => !panel.editing && (setIndex(i), press('Enter'))}>
+                  <span className="muted" style={{ width: 40 }}>{f.owner}</span>
+                  <span style={{ width: 240 }}>{f.label}</span>
+                  {panel.editing && i === panel.index ? (
+                    <span style={{ flex: 1 }}>
+                      <input className="f" autoFocus data-testid="settings-input" value={panel.value} onChange={(e) => st.set({ panel: { ...panel, value: e.target.value, error: undefined } })} style={{ width: '100%' }} placeholder={f.hint} />
+                      {panel.error && <span className="err-text" style={{ display: 'block' }}>{panel.error}</span>}
+                    </span>
+                  ) : (
+                    <span className="mono">
+                      {panel.draft[f.key] ?? f.value}
+                      {f.key in panel.draft && <span className="chip warn" style={{ marginLeft: 6 }}>変更</span>}
+                    </span>
+                  )}
+                </div>
+              )
+            })}
           </div>
-          <Foot items={[['Enter', '編集 / 確定'], ['y', 'PM: 設定を確定'], ['Ctrl+Enter', '保存（理由を聞く）'], ['Escape', '閉じる']]} />
+          <Foot items={[['Enter', '項目を編集 / 確定'], ['Ctrl+Enter', '保存（理由を聞く）'], ['y', 'PM: 設定を確定'], ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -351,7 +439,9 @@ function PanelBody({ panel }: { panel: Panel }) {
       return (
         <div className="dialog" role="dialog" aria-label="この行の重み">
           <div className="body panel-list">
-            <h3 style={{ margin: '0 0 8px' }}>この行だけ重みを変える {panel.rowId}</h3>
+            <h3 style={{ margin: '0 0 8px' }}>
+              この行だけ重みを変える {panel.rowId} {p.rowWeights[panel.rowId] ? '' : <span className="muted">（いまは案件の既定）</span>}
+            </h3>
             {keys.map((k, i) => (
               <div key={k} className="opt" aria-selected={i === panel.index}>
                 <span style={{ width: 60 }}>{['価格', '納期', '実績', '条件'][i]}</span>
@@ -359,16 +449,16 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             ))}
           </div>
-          <Foot items={[['ArrowLeft', '−5'], ['ArrowRight', '+5'], ['Delete', '案件既定に戻す'], ['Escape', '閉じる']]} />
+          <Foot items={[['ArrowLeft', '−5'], ['ArrowRight', '+5'], ['Delete', '案件の既定に戻す'], ['Escape', '閉じる']]} />
         </div>
       )
     }
     case 'history': {
-      const evs = [...p.events].reverse().slice(0, 50)
+      const evs = [...p.events].reverse().slice(0, 80)
       return (
         <div className="dialog wide" role="dialog" aria-label="履歴">
           <div className="body">
-            <h3 style={{ margin: '0 0 8px' }}>履歴（最新 50 件）</h3>
+            <h3 style={{ margin: '0 0 8px' }}>履歴（最新 80 件）</h3>
             <ul className="history">
               {evs.map((ev) => (
                 <li key={ev.id}>
@@ -386,43 +476,27 @@ function PanelBody({ panel }: { panel: Panel }) {
   }
 }
 
-export function settingsFields(p: ReturnType<typeof useStore.getState>['project'] extends () => infer R ? R : never) {
-  const s = p.settings
-  return [
-    { key: 'name', label: '案件名', owner: 'PM', value: p.name },
-    { key: 'dueDate', label: '案件納期', owner: 'PM', value: p.dueDate ?? '未定' },
-    { key: 'processDays', label: '社内工程日数（この案件）', owner: 'PM', value: String(s.processDays) },
-    { key: 'budget', label: '予算', owner: 'PM', value: s.budget == null ? '' : String(s.budget) },
-    { key: 'weights', label: '重み（価格,納期,実績,条件）', owner: 'PM', value: `${p.weights.price},${p.weights.lead},${p.weights.record},${p.weights.terms}` },
-    { key: 'selector', label: '選定者（design / purchasing）', owner: 'PM', value: s.selector },
-    { key: 'changeNeedsPmApproval', label: '設計変更は PM 承認が必要', owner: 'PM', value: s.changeNeedsPmApproval ? 'はい' : 'いいえ' },
-    { key: 'externalApprovalAmount', label: '上長決裁: 行の差額 ≥', owner: 'PM', value: String(s.externalApprovalAmount) },
-    { key: 'externalApprovalBudgetPct', label: '上長決裁: 予算比 +%', owner: 'PM', value: String(s.externalApprovalBudgetPct * 100) },
-    { key: 'members', label: '担当者（設計,購買,PM）', owner: 'PM', value: `${p.members.design},${p.members.purchasing},${p.members.pm}` },
-    { key: 'quoteDays', label: '回答期限の既定（日）', owner: '購買', value: String(s.quoteDays) },
-    { key: 'quoteDeadline', label: '今回の回答期限', owner: '購買', value: s.quoteDeadline ?? '' },
-    { key: 'quoteCompleteRule', label: '見積完了条件（all / min2 / deadline）', owner: '購買', value: s.quoteCompleteRule },
-    { key: 'tieThreshold', label: '拮抗閾値（点）', owner: '購買', value: String(s.tieThreshold) },
-    { key: 'exceptionAmount', label: '例外閾値（円）', owner: '購買', value: String(s.exceptionAmount) },
-    { key: 'exceptionPct', label: '例外閾値（%）', owner: '購買', value: String(s.exceptionPct * 100) },
-    { key: 'formalDiffPct', label: '正式見積の差分閾値（%）', owner: '購買', value: String(s.formalDiffPct * 100) },
-    { key: 'formalDiffAmount', label: '正式見積の差分閾値（円）', owner: '購買', value: String(s.formalDiffAmount) },
-    { key: 'qtyTolerancePct', label: '数量変更の許容（%）', owner: '購買', value: String(s.qtyTolerancePct * 100) },
-    { key: 'formalDays', label: '正式見積の所要日数', owner: '購買', value: String(s.formalDays) },
-    { key: 'currency', label: '通貨', owner: '購買', value: s.currency },
-    { key: 'holidays', label: '休日（カンマ区切り）', owner: '購買', value: s.holidays.join(',') },
-    { key: 'supplierIds', label: '相見積先（商社ID カンマ区切り）', owner: '購買', value: p.supplierIds.join(',') },
-  ]
-}
-
-const WIZ_STEPS = ['案件ID', '案件名', '納期', '社内工程日数', '予算（任意）', '購買担当者', '希望商社', '部品の入れ方', 'チェック']
+const WIZ_STEPS = ['案件ID', '案件名', '納期', '社内工程日数', '予算（任意）', '購買担当者', '希望商社', '部品の入れ方', '確認して作成']
 
 function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
   const st = useStore()
   const d = panel.data
   const step = panel.step
-  const setData = (k: string, v: string) => st.set({ panel: { ...panel, data: { ...d, [k]: v } } })
-  const key = ['id', 'name', 'due', 'processDays', 'budget', 'buyer', 'suppliers', 'input', 'check'][step]
+  const setData = (k: string, v: string) => st.set({ panel: { ...panel, data: { ...d, [k]: v }, error: undefined } })
+  const key = WIZ_KEYS[step]
+  const fileRef = useRef<HTMLInputElement>(null)
+  const preview = step === 8 && d.inputMode !== '2' ? parseBomPaste(d.paste ?? '') : null
+  const onFile = async (f: File | undefined) => {
+    if (!f) return
+    try {
+      const text = /\.xlsx$/i.test(f.name) ? await xlsxToTsv(await f.arrayBuffer()) : await f.text()
+      st.set({ panel: { ...panel, data: { ...d, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
+      st.toastMsg(`${f.name} を読み込みました。Enter で次へ`, 'ok')
+    } catch (err) {
+      st.toastMsg(`ファイルを読めませんでした: ${(err as Error).message}`, 'err')
+    }
+  }
+  const hints = ['例: P-2026-042（空なら自動で付けます）', '例: 第4ライン 制御盤', '2026-11-30 / 11/30 / 未定', '納期から逆算して必要日を出す日数（空なら 10）', '目標原価（円）。例: 2800000 / 280万。空でも可', '購買担当者の氏名']
   return (
     <div className="dialog wide wizard" role="dialog" aria-label="新しいBOM">
       <div className="steps">
@@ -436,39 +510,92 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
         <h3 style={{ margin: '0 0 4px' }}>{WIZ_STEPS[step]}</h3>
         {step <= 5 && (
           <>
-            <div className="muted" style={{ marginBottom: 6 }}>{['例: P-2026-042', '例: 第4ライン 制御盤', 'YYYY-MM-DD または 未定', '納期から逆算して必要日を出す日数（既定 10）', '目標原価（円）。空でも可', '購買担当者の氏名'][step]}</div>
-            <AutoInput value={d[key] ?? ''} onChange={(v) => setData(key, v)} placeholder="" testid={`wizard-${key}`} />
-            <div className="muted" style={{ marginTop: 6 }}>納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。</div>
+            <div className="muted" style={{ marginBottom: 6 }}>{hints[step]}</div>
+            <AutoInput key={step} className="f" value={d[key] ?? ''} onChange={(v) => setData(key, v)} placeholder="" testid={`wizard-${key}`} />
+            {step >= 2 && step <= 4 && <div className="muted" style={{ marginTop: 6 }}>納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。</div>}
           </>
         )}
         {step === 6 && (
           <div className="panel-list">
             {st.ws.suppliers.map((s, i) => (
-              <div key={s.id} className="opt" aria-selected={i === panel.sel}>
+              <div key={s.id} className="opt clickable" aria-selected={i === panel.sel} onClick={() => st.set({ panel: { ...panel, sel: i, picks: panel.picks.includes(s.id) ? panel.picks.filter((x) => x !== s.id) : [...panel.picks, s.id] } })}>
                 <span className="check">{panel.picks.includes(s.id) ? '●' : '○'}</span>
                 <span className="supplier-dot" style={{ background: s.color }} />
                 <span>{s.name}</span>
-                <span className="muted">{s.kind} / {s.tradable ? '取引可' : '取引停止'} / {s.handledMakers.length ? s.handledMakers.slice(0, 3).join('・') : '取扱メーカ未登録'}</span>
+                <span className="muted">
+                  {s.kind} / {s.tradable ? '取引可' : '取引停止'} / {s.handledMakers.length ? s.handledMakers.slice(0, 3).join('・') : '取扱メーカ未登録'}
+                </span>
               </div>
             ))}
-            <div className="muted">希望商社（任意）。確定は購買が行います。Space で選択、Enter で次へ</div>
+            <div className="muted">希望商社（任意。確定は購買）。↑↓ で移動、Space で選択、Enter で次へ</div>
           </div>
         )}
         {step === 7 && (
           <>
             <div className="panel-list">
-              {['1 貼り付け（Excel の表をコピーして貼る）', '2 ファイル（次の画面で貼り付けと同じ形式を使う）', '3 1つずつ入力（空の表から始める）'].map((o, i) => (
-                <div key={o} className="opt" aria-selected={panel.sel === i}>
+              {['1 貼り付け（Excel の表をコピーして貼る。見出し行があれば列を自動で判別）', '2 ファイル（.xlsx / .csv / .tsv / .txt）', '3 1 つずつ入力（空の表から始める）'].map((o, i) => (
+                <div key={o} className="opt clickable" aria-selected={panel.sel === i} onClick={() => st.set({ panel: { ...panel, sel: i, data: { ...d, inputMode: String(i) } } })}>
                   <span>{o}</span>
                 </div>
               ))}
             </div>
-            {panel.sel !== 2 && <AutoInput multiline value={d.paste ?? ''} onChange={(v) => setData('paste', v)} placeholder={'分類\t部品名\t型式\tメーカ\t数量\t単位\t回路記号（タブ区切り、ヘッダー行は任意）'} testid="wizard-paste" />}
+            {panel.sel === 0 && <AutoInput multiline autoFocus={false} value={d.paste ?? ''} onChange={(v) => setData('paste', v)} placeholder={'例）見出し行つきでそのまま貼れます\n品名\t形式\tメーカー\t員数\nリレー\tMY4N-D2 DC24\tオムロン\t12\n\n貼り付け欄の中では Ctrl+Enter で次へ'} testid="wizard-paste" />}
+            {panel.sel === 1 && (
+              <div style={{ marginTop: 8 }}>
+                <input ref={fileRef} type="file" data-testid="wizard-file" accept=".xlsx,.csv,.tsv,.txt" onChange={(e) => void onFile(e.target.files?.[0])} />
+                {d.fileName && <div className="muted">読み込み済み: {d.fileName}（{(d.paste ?? '').split('\n').filter(Boolean).length} 行）</div>}
+              </div>
+            )}
+            <div className="muted" style={{ marginTop: 6 }}>1〜3 で選ぶ（貼り付け欄にいるときは Tab で外に出られます）。Enter で次へ</div>
           </>
         )}
-        {step === 8 && <div className="muted">Enter で作成します。作成後は「4 要確認」で問題を 1 件ずつ直し（Enter で直して次へ、x で確認済み、Shift+→ であとで）、Ctrl+Enter で提出します。</div>}
+        {step === 8 && (
+          <div data-testid="wizard-preview">
+            <div>
+              案件 <b>{d.id || '（自動）'}</b> {d.name || '新しいBOM'} / 納期 {d.due || '未定'} / 工程日数 {d.processDays || 10} / 予算 {d.budget || 'なし'} / 購買 {d.buyer || '未定'} / 希望商社 {panel.picks.length} 社
+            </div>
+            {preview && (
+              <>
+                <div style={{ marginTop: 8 }}>
+                  取り込む行: <b>{preview.rows.length}</b> 行（{preview.delimiter === 'tab' ? 'タブ区切り' : preview.delimiter === 'comma' ? 'カンマ区切り' : '1 列'}、見出し{preview.header ? 'あり' : 'なし'}）
+                </div>
+                <div className="muted" style={{ fontSize: 12 }}>
+                  列の対応: {preview.mapping.map((f, i) => `${preview.header ? preview.header[i] : `${i + 1}列目`} → ${f ? FIELD_LABEL[f] : '（使わない）'}`).join(' / ')}
+                </div>
+                {preview.warnings.map((w) => (
+                  <div key={w} className="warn-text" style={{ fontSize: 12 }}>
+                    ⚠ {w}
+                  </div>
+                ))}
+                <table className="quotes" style={{ marginTop: 6 }}>
+                  <tbody>
+                    {preview.rows.slice(0, 5).map((r, i) => (
+                      <tr key={i}>
+                        <td>{r.category}</td>
+                        <td>{r.name}</td>
+                        <td className="mono">{r.model}</td>
+                        <td>{r.maker}</td>
+                        <td className="num">{r.qtyNeeded}</td>
+                        <td>{r.unit}</td>
+                        <td>{r.ref}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {preview.rows.length > 5 && <div className="muted">… ほか {preview.rows.length - 5} 行</div>}
+              </>
+            )}
+            {!preview && <div className="muted">空の表から始めます。</div>}
+            <div className="muted" style={{ marginTop: 8 }}>Enter で作成します。作成後は「4 要確認」で問題を n で順に直し、Ctrl+Enter で提出します。</div>
+          </div>
+        )}
+        {panel.error && (
+          <div className="err-text" data-testid="wizard-error" style={{ marginTop: 8 }}>
+            {panel.error}
+          </div>
+        )}
       </div>
-      <Foot items={[['Enter', '次へ'], ['Alt+ArrowLeft', '1つ前の段階'], ['Escape', '中止']]} />
+      <Foot items={[['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
     </div>
   )
 }

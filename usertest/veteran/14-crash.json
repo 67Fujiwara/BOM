@@ -1,0 +1,96 @@
+[
+  {
+    "case": "budget 百万 via settings",
+    "root": 0,
+    "pageerrors": [
+      "Cannot read properties of null (reading 'toFixed') | TypeError: Cannot read properties of null (reading 'toFixed') /     at Header (http://localhost:5173/src/ui/Header.tsx:76:15) /     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)"
+    ]
+  },
+  {
+    "case": "reload after budget NaN",
+    "grid": 1,
+    "budget": null
+  },
+  {
+    "case": "wizard weird inputs (budget 1e6)",
+    "id": "\"P-2026-002\"",
+    "name": "<b>名</b>",
+    "due": "2026/13/45",
+    "processDays": 10,
+    "budget": 1000000,
+    "rows": [
+      [
+        "リレー",
+        "MY4N",
+        1
+      ],
+      [
+        "ソケット",
+        "",
+        1
+      ]
+    ],
+    "header": "P-2026-002<b>名</b>納期 あとNaN日（必要日 あとNaN日）仮概算 ¥0 / 正式 ¥0（採用 0 行） / 予算 ¥1,000,000 (-100.0%)重み：",
+    "pageerrors": 1
+  },
+  {
+    "case": "needDate cell with due 2026/13/45",
+    "cell": "aN/NaN",
+    "due": "納期 あとNaN日（必要日 あとNaN日）仮"
+  },
+  {
+    "case": "wizard id lowercase dup",
+    "projects": [
+      "P-2026-041",
+      "P-2026-002",
+      "p-2026-041"
+    ]
+  },
+  {
+    "case": "weights abc",
+    "weights": {
+      "price": null
+    },
+    "root": 4755,
+    "pageerrors": [
+      "Cannot read properties of null (reading 'toFixed')"
+    ]
+  },
+  {
+    "case": "detail with NaN weights",
+    "scores": [
+      "3. 因幡電機¥3,23126日取寄2 65.591096100納期NG(7日超過) / 期限 12/01",
+      "2. 立花エレテック¥3,06925日受注生産2 66.396090100納期NG(6日超過) / 期限 12/11"
+    ],
+    "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥13,197 / 正式 ¥14,"
+  },
+  {
+    "case": "a with NaN weights",
+    "toast": "権限なし（選定者は設計）"
+  },
+  {
+    "case": "processDays -5",
+    "pd": -5,
+    "due": "納期 あと29日（必要日 あと34日）",
+    "pageerrors": 1
+  },
+  {
+    "case": "holidays garbage",
+    "h": [
+      "あした",
+      "2026-13-01",
+      "x"
+    ],
+    "pageerrors": 1
+  },
+  {
+    "case": "currency script",
+    "money": "概算 <script>x</script>13,197 / 正式 <script>x</script>14,753（採用 4 行） / 予算 <script>x</script>2,800,000 (-99.5%)",
+    "title": "BOM Pro"
+  },
+  {
+    "case": "quoteCompleteRule nonsense",
+    "v": "nonsense",
+    "pageerrors": 1
+  }
+]

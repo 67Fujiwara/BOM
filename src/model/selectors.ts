@@ -6,6 +6,7 @@ import type { Problem } from './rules'
 import type { State, ViewId } from './store'
 import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, openIssues, orderQty, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
 import { fmtDate } from './dates'
+import { toHalf } from './parse'
 
 export type Item = { kind: 'group'; key: string; category: string; count: number } | { kind: 'row'; key: string; row: Row } | { kind: 'detail'; key: string; row: Row }
 
@@ -18,8 +19,18 @@ export interface ViewModel {
   problems: Map<string, Problem[]>
 }
 
+let probKey: [unknown, unknown] | null = null
+let probVal: Map<string, Problem[]> | null = null
+/** チェック結果は案件・ルールが変わったときだけ計算し直す（ビュー切替を速くする） */
+function problemsFor(ws: Workspace, p: Project): Map<string, Problem[]> {
+  if (probKey && probVal && probKey[0] === p && probKey[1] === ws.rules) return probVal
+  probVal = buildProblems(ws, p)
+  probKey = [p, ws.rules]
+  return probVal
+}
+
 export function makeCtx(ws: Workspace, p: Project, rev: number | null): ViewCtx {
-  return { ws, p, problems: buildProblems(ws, p), role: ws.user.role, rev }
+  return { ws, p, problems: problemsFor(ws, p), role: ws.user.role, rev }
 }
 
 export function viewColumns(st: State, p: Project): string[] {
@@ -34,10 +45,11 @@ export function viewColumns(st: State, p: Project): string[] {
   return cols
 }
 
-function matchText(row: Row, p: Project, q: string): boolean {
+function matchText(row: Row, p: Project, q: string, role: Role): boolean {
   if (!q) return true
-  const e = effective(row)
-  const hay = [row.id, e.ref, e.name, e.model, e.maker, e.category, e.note, STATUS_LABEL[row.status], ...openIssues(p, row.id).map((i) => i.kind + i.text)].join(' ').toLowerCase()
+  q = toHalf(q)
+  const e = role === 'design' ? effective(row) : row
+  const hay = toHalf([row.id, e.ref, e.name, e.model, e.maker, e.category, e.note, STATUS_LABEL[row.status], ...openIssues(p, row.id).map((i) => i.kind + i.text)].join(' ')).toLowerCase()
   return q.toLowerCase().split(/\s+/).every((t) => hay.includes(t))
 }
 
@@ -61,7 +73,7 @@ function buildViewModelUncached(st: State): ViewModel {
   const counts = {} as Record<ViewId, number>
   for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (v.id === 1 || !r.hidden)).length
   const v = VIEWS.find((x) => x.id === st.view)!
-  let rows = p.rows.filter((r) => v.filter(r, ctx) && (st.view === 1 || !r.hidden) && matchText(r, p, st.filter))
+  let rows = p.rows.filter((r) => v.filter(r, ctx) && (st.view === 1 || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
   if (st.cellFilter) rows = rows.filter((r) => cellText(r, st.cellFilter!.col, ctx).text === st.cellFilter!.value)
   const sort = st.sort
   if (sort) {
@@ -103,9 +115,10 @@ export interface CellText {
 
 export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
   const p = ctx.p
-  const e = effective(row)
+  // 作業中（未公開）の値は設計だけに見せる。購買・PM には公開済の値
+  const e = ctx.role === 'design' ? effective(row) : row
   const d = colDef(col)
-  const w = row.working ?? {}
+  const w = ctx.role === 'design' ? (row.working ?? {}) : {}
   const working = (k: string) => (k in w ? ' changed' : '')
   if (!d) return { text: '', raw: '' }
   if (d.perSupplier) {

@@ -20,7 +20,7 @@ await t.press('Enter'); await page.waitForTimeout(50)
 let dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); log('reason dialog:', dlg)
 await page.getByTestId('prompt-text').fill('客先要求で前倒し'); await t.press('1'); await page.waitForTimeout(80)
 dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); log('dialog2:', dlg)
-if (/再選定提案/.test(dlg)) await t.press('1')
+if (/再選定提案/.test(dlg)) await t.press('2') // 載せない（納期NG を単独で見る）
 await page.waitForTimeout(150)
 log('→', await t.toast())
 p = await t.proj()
@@ -31,12 +31,12 @@ check('S6 納期NG が付く', p.rows.some((r) => r.flags.leadNG))
 await t.press('7')
 const v7 = await page.locator('[data-row-id]').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id')))
 log('PM 7:', v7.join(','), 'header:', await t.header())
-const ng = p.rows.find((r) => r.flags.leadNG)
+const ng = p.rows.find((r) => r.id === 'R003' && r.flags.leadNG)
 if (ng) {
   await t.goto(ng.id); await t.press('Enter'); const pnl = await page.getByTestId('quickfix').textContent(); log('納期NG panel:', pnl)
   check('S6 納期NG の選択肢 Shift+Y 受入 / b / p 委譲 / d / e', /Shift\+Y 受入/.test(pnl) && /b 次点/.test(pnl) && /p 購買が再選定/.test(pnl) && /d 設計/.test(pnl) && /e 特急/.test(pnl), pnl)
-  await t.press('y'); await page.waitForTimeout(50); log('y on 納期NG →', await t.toast(), (await page.locator('[role=dialog]').textContent().catch(() => '')).slice(0, 60))
-  await t.press('Escape')
+  await t.press('Escape'); await t.goto(ng.id); await t.press('y'); await page.waitForTimeout(50); log('y on 納期NG →', await t.toast(), (await page.locator('[role=dialog]').textContent().catch(() => '')).slice(0, 60))
+  if (await page.locator('.overlay').count()) await t.press('Escape')
   // p 委譲
   await t.goto(ng.id); await t.press('Enter'); await t.press('p'); await page.waitForTimeout(50); await t.press('Enter'); await page.waitForTimeout(50)
   log('p →', await t.toast(), 'flags:', JSON.stringify((await t.row(ng.id)).flags), 'ball:', await t.cell(ng.id, 'ball').catch(() => '-'))
@@ -49,7 +49,7 @@ if (ng) {
   await t.role('pm'); await t.press('7')
 }
 // 他の納期NG 行で d / e
-const ng2 = (await t.proj()).rows.filter((r) => r.flags.leadNG)
+const ng2 = (await t.proj()).rows.filter((r) => r.flags.leadNG && !r.flags.formalDiff && !r.flags.pmPending)
 log('remaining leadNG:', ng2.map((r) => r.id))
 if (ng2[0]) { await t.goto(ng2[0].id); await t.press('Enter'); await t.press('d'); await page.waitForTimeout(50); await t.press('Enter'); await page.waitForTimeout(50); const p2 = await t.proj(); const iss = p2.issues.filter((i) => i.rowId === ng2[0].id); log('d →', await t.toast(), 'issue:', iss.map((i) => i.kind + ':' + i.status + ':' + i.by.role), 'flags:', JSON.stringify(p2.rows.find((r) => r.id === ng2[0].id).flags)); await t.press('1'); log('ball:', await t.cell(ng2[0].id, 'ball')); check('S6 d 設計が代替品検討 → 納期NG 指摘（R=設計）で設計のボール', (await t.cell(ng2[0].id, 'ball')) === '設計', await t.cell(ng2[0].id, 'ball')); await t.role('design'); await t.press('4'); const v4 = await page.locator('[data-row-id]').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id'))); check('S6 設計の 4 に出る', v4.includes(ng2[0].id)); await t.role('pm'); await t.press('7') }
 if (ng2[1]) { await t.goto(ng2[1].id); await t.press('Enter'); await t.press('e'); await page.waitForTimeout(50); const dd = await page.locator('[role=dialog]').textContent().catch(() => ''); log('e dialog:', dd); if (await page.getByTestId('extra-上限金額').count()) await page.getByTestId('extra-上限金額').fill('30000'); await t.press('Enter'); await page.waitForTimeout(50); log('e →', await t.toast(), JSON.stringify((await t.row(ng2[1].id)).flags), 'decision:', (await t.proj()).decisions.at(-1)) }

@@ -1,0 +1,28 @@
+import { describe, it, expect } from 'vitest'
+import { parseBomPaste } from './paste'
+
+describe('parseBomPaste', () => {
+  it('detects Excel-style headers (品名・形式・メーカー・員数)', () => {
+    const r = parseBomPaste('品名\t形式\tメーカー\t員数\nリレー\tMY4N\tオムロン\t１０\nソケット\tPYF14A\tオムロン\t十')
+    expect(r.header).not.toBeNull()
+    expect(r.rows).toHaveLength(2)
+    expect(r.rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N', maker: 'オムロン', qtyNeeded: 10 })
+    expect(r.rows[1].qtyNeeded).toBe(10)
+  })
+  it('uses default order without header', () => {
+    const r = parseBomPaste('制御\tリレー\tMY4N\tオムロン\t4\t個\tKA1')
+    expect(r.rows[0]).toMatchObject({ category: '制御', name: 'リレー', model: 'MY4N', qtyNeeded: 4, ref: 'KA1' })
+  })
+  it('flags unreadable quantities instead of silently using 1', () => {
+    const r = parseBomPaste('部品名\t数量\nA\tたくさん\nB\t0')
+    expect(r.rows[0].qtyNeeded).toBe(0)
+    expect(r.rows[1].qtyNeeded).toBe(0)
+    expect(r.warnings.join()).toContain('数量を読めない行が 1 行')
+  })
+  it('accepts CSV and plain lines', () => {
+    expect(parseBomPaste('部品名,型式\n"リレー, 4極",MY4N').rows[0]).toMatchObject({ name: 'リレー, 4極', model: 'MY4N' })
+    const plain = parseBomPaste('リレー\nソケット')
+    expect(plain.rows.map((r) => r.name)).toEqual(['リレー', 'ソケット'])
+    expect(plain.warnings.length).toBe(1)
+  })
+})

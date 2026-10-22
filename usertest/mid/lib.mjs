@@ -57,6 +57,7 @@ export async function launch() {
     header: () => page.getByTestId('header').textContent(),
     lamps: () => page.getByTestId('lamps').textContent(),
     money: () => page.getByTestId('money').textContent(),
+    issuesOf: (id) => page.locator(`tr[data-row-id="${id}"] + tr [data-testid="issues"]`),
     rowText: (id) => page.locator(`[data-row-id="${id}"]`).textContent(),
     cell: (id, col) => page.locator(`[data-row-id="${id}"] td[data-col="${col}"]`).textContent(),
     rowCount: () => page.getByTestId('row').count(),

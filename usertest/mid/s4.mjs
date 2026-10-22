@@ -34,7 +34,7 @@ check('S4 差分 +16% だが金額差 ¥' + (p16 - q1.unitPrice) * (f1.orderQty 
 const r3 = p.rows.find((r) => r.id === 'R003'); const q3 = p.quotes.find((q) => q.rowId === 'R003' && q.supplierId === r3.adoptedSupplierId)
 await t.setCellKey('R003', 'q.formalPrice@A', String(Math.round(q3.unitPrice * 1.4)))
 await t.setCellKey('R003', 'q.formalLeadDays@A', '12')
-log('R003 after formal +40%:', await t.cell('R003', 'status'), await t.cell('R003', 'formalDiff'), 'ball:', await t.cell('R003', 'ball'))
+await t.press('1'); log('R003 after formal +40%:', await t.cell('R003', 'status'), JSON.stringify((await t.row('R003')).flags), 'ball:', await t.cell('R003', 'ball'))
 check('S4 差分超過 → PM のボール', (await t.cell('R003', 'ball')) === 'PM' && /差分超過/.test(await t.cell('R003', 'status')))
 await t.shot('s4-01-view8')
 // PM 7
@@ -80,7 +80,7 @@ await t.press('Control+k'); await page.getByTestId('palette-input').fill('正式
 p = await t.proj(); const r2 = p.rows.find((r) => r.id === 'R002'); const q2 = p.quotes.find((q) => q.rowId === 'R002' && q.supplierId === r2.adoptedSupplierId)
 log('R002:', r2.status, q2?.unitPrice, r2.orderQty, r2.qtyNeeded)
 if (r2.status === 'formalRequested') {
-  await t.setCellKey('R002', 'q.formalPrice@A', String(q2.unitPrice + 200000))
+  await t.press('8'); await t.setCellKey('R002', 'q.formalPrice@A', String(q2.unitPrice + 200000))
   log('R002 after big formal:', await t.cell('R002', 'status'))
   await t.role('pm'); await t.press('7'); await t.goto('R002'); await t.press('y'); await page.waitForTimeout(50)
   const yd = await page.locator('[role=dialog]').textContent().catch(() => '')

@@ -1,7 +1,7 @@
 import { useStore } from '@/model/store'
 import type { Issue, IssueKind, Project, Role, Row, Rule } from '@/model/types'
-import { ISSUE_KINDS } from '@/model/types'
-import { effective, openIssues, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
+import { ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
+import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { replaceRow } from './rows'
 import { normalize } from '@/model/lifecycle'
 import { addBusinessDays, todayStr } from '@/model/dates'
@@ -23,11 +23,29 @@ export function canRaise(row: Row, kind: IssueKind): string | null {
   return null
 }
 
+/** 役割ごとに手で起票できる種別（納期NG・コスト超過は PM の決定からだけ自動起票） */
+export function kindsForRole(role: Role): IssueKind[] {
+  if (role === 'purchasing') return ['型式あいまい', 'メーカ未記入', '廃番', '代替提案', '最小ロット', '数量見直し依頼', '質問', '発注後変更依頼', 'その他']
+  return ['質問', 'その他']
+}
+
 export function raiseIssue(rowId: string, field: string | undefined, kind: IssueKind, text: string, proposal?: Issue['proposal'], publishNow = false): string | null {
   const s = st()
   const user = s.user()
   const row = s.project().rows.find((r) => r.id === rowId)
   if (!row) return null
+  if (!isActiveRow(row)) {
+    s.toastMsg(`${row.id} は取消・置換済の行です（指摘は付けられません）`, 'err')
+    return null
+  }
+  if (!publishNow && !kindsForRole(user.role).includes(kind)) {
+    s.toastMsg(`${ROLE_LABEL[user.role]}は「${kind}」を起票できません（${kindsForRole(user.role).join('・')}）`, 'err')
+    return null
+  }
+  if (!text.trim() && kind !== '最小ロット' && !proposal?.model) {
+    s.toastMsg('本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）', 'err')
+    return null
+  }
   const err = canRaise(row, kind)
   if (err) {
     s.toastMsg(err, 'err')

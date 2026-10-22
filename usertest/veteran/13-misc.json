@@ -1,0 +1,178 @@
+[
+  {
+    "case": "quotes.import empty supplierIds prompt",
+    "panel": "panel-prompt",
+    "opts": ""
+  },
+  {
+    "case": "Enter",
+    "panel": null,
+    "err": [
+      "Cannot read properties of undefined (reading 'split') | TypeError: Cannot read properties of undefined (reading 'split') /     at http://localhost:5173/src/commands/registry.ts:694:50"
+    ]
+  },
+  {
+    "case": "PM changed budget + decided R013",
+    "budget": 5000000,
+    "decisions": [
+      "案件設定変更",
+      "受入"
+    ],
+    "r013": {
+      "formalDiff": false,
+      "leadNG": false
+    }
+  },
+  {
+    "case": "design Ctrl+Z after PM/purchasing changes",
+    "toast": "元に戻す: セル編集",
+    "budget": 2800000,
+    "decisions": [],
+    "r013": {
+      "formalDiff": true
+    },
+    "q30": 5555,
+    "events": [
+      "山田:セル編集",
+      "鈴木:案件設定を変更",
+      "鈴木:決定: 受入",
+      "佐藤:セル編集"
+    ]
+  },
+  {
+    "case": "design published",
+    "toast": "行 1（Rev.2） を公開しました",
+    "subs": 2,
+    "r076": "submitted"
+  },
+  {
+    "case": "purchasing quoted R076",
+    "status": "quoting",
+    "q": 3
+  },
+  {
+    "case": "design Ctrl+Z (undo publish) after purchasing quoted",
+    "toast": "元に戻す: 公開",
+    "subs": 1,
+    "r076": "draft",
+    "quotes76": [],
+    "revInfo": "提出 Rev.1（山田 10/20, 追加75 / 型式0 / 数量0）"
+  },
+  {
+    "case": "再交渉 result",
+    "status": "formalQuoted",
+    "flags": {
+      "formalDiff": true,
+      "leadNG": false
+    },
+    "formalPrice": 11927,
+    "stillInView7": 1,
+    "ball": "PM",
+    "decisions": [
+      "再交渉"
+    ]
+  },
+  {
+    "case": "d 設計へ代替依頼",
+    "status": "formalQuoted",
+    "flags": {
+      "formalDiff": true,
+      "leadNG": false,
+      "pmPending": false
+    },
+    "issues": [
+      "コスト超過:open"
+    ],
+    "inView7": 1
+  },
+  {
+    "case": "hide adopted row R001",
+    "money": "概算 ¥13,197 / 正式 ¥14,753（採用 4 行） / 予算 ¥2,800,000 (-99.5%)",
+    "hidden": true
+  },
+  {
+    "case": "detail of replaced row",
+    "detail": "相見積・スコア内訳 （必要日 11/10 / 必要数 2個 / 基準日 10/21）商社単価納期MOQ在庫丸め/余剰合計価格納期実績条件備考1. 因幡電機¥53,54813日受注生産2 89.5967396100期限 12/213. 立花エレテック¥56,04120日取寄2 64.892090100納期NG(1日超過)"
+  },
+  {
+    "case": "Shift+Enter under filter",
+    "cursor": "R082 部品名",
+    "mode": "編集",
+    "rowsShown": 82,
+    "filter": ""
+  },
+  {
+    "case": "after commit",
+    "cursor": "R006 部品名",
+    "rowsShown": 82,
+    "newRowVisible": 1
+  },
+  {
+    "case": "Shift+Enter under sort",
+    "cursor": "R083 部品名",
+    "mode": "編集",
+    "idxInProject": 11
+  },
+  {
+    "case": "Enter on bool cell",
+    "mode": "編集",
+    "val": "1",
+    "cands": 0
+  },
+  {
+    "case": "typed y on 発注",
+    "ordered": false,
+    "status": "formalQuoted",
+    "toast": "役割: 購買"
+  },
+  {
+    "case": "Delete on 発注 (ordered)",
+    "ordered": false,
+    "received": false,
+    "status": "formalQuoted"
+  },
+  {
+    "case": "promisedDate 2026/13/45",
+    "v": "2026-13-45",
+    "cell": "13/45",
+    "flags": {
+      "formalDiff": true,
+      "leadNG": false,
+      "pmPending": false
+    }
+  },
+  {
+    "case": "weights panel extremes",
+    "w": {
+      "price": 0,
+      "lead": 30,
+      "record": 20,
+      "terms": 10
+    },
+    "events": 69
+  },
+  {
+    "case": "weights Delete"
+  },
+  {
+    "case": "all weights to 0?",
+    "w": {
+      "price": 30,
+      "lead": 25,
+      "record": 15,
+      "terms": 0
+    }
+  },
+  {
+    "case": "detail scores with weights",
+    "scores": [
+      "3. 因幡電機¥3,23126日取寄2 59.591096100納期NG(7日超過) / 期限 12/01",
+      "2. 立花エレテック¥3,06925日受注生産2 60.396090100納期NG(6日超過) / 期限 12/11"
+    ],
+    "errs": 1
+  },
+  {
+    "case": "undo entries from weight panel",
+    "undos": 60
+  }
+]

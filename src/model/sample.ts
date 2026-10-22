@@ -87,8 +87,13 @@ const parts: Array<[string, string, string, string, number, Unit]> = [
 
 export const SUPPLIER_COLORS = ['#2a5bd7', '#14804f', '#e39a00', '#8a3ffc', '#d02a3c', '#0f7b8a', '#b5651d', '#5b6168', '#c71585']
 
+export function supplierColor(i: number): string {
+  if (i < SUPPLIER_COLORS.length) return SUPPLIER_COLORS[i]
+  return `hsl(${Math.round((i * 137.5) % 360)} 60% 45%)`
+}
+
 export function makeSupplier(id: string, name: string, i: number, partial: Partial<Supplier> = {}): Supplier {
-  return { id, name, color: SUPPLIER_COLORS[i % SUPPLIER_COLORS.length], order: i, kind: '商社', tradable: true, avl: true, handledMakers: [], onTimeRate: null, defectRate: null, ...partial }
+  return { id, name, color: supplierColor(i), order: i, kind: '商社', tradable: true, avl: true, handledMakers: [], onTimeRate: null, defectRate: null, ...partial }
 }
 
 export const SAMPLE_SUPPLIERS: Supplier[] = [

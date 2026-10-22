@@ -1,0 +1,125 @@
+[
+  {
+    "case": "palette Enter isComposing",
+    "panel": "panel-palette",
+    "toast": ""
+  },
+  {
+    "case": "palette CDP composition + Enter",
+    "panel": "panel-palette",
+    "query": "こうかい",
+    "toast": ""
+  },
+  {
+    "case": "after commit 公開",
+    "query": "公開",
+    "first": "流れ公開（提出 / 指摘を発行）自分の未公開の行と下書き指摘Ctrl+Enter"
+  },
+  {
+    "case": "issue text Shift+J as first char",
+    "cursor": "R030 部品名",
+    "text": "J",
+    "header": "指摘を起票 R030 表示灯 白 [name]"
+  },
+  {
+    "case": "issue raised on which row?",
+    "toast": "I-006 型式あいまい を下書きに追加（Ctrl+Enter で発行、J で次の行）",
+    "issue": [
+      {
+        "rowId": "R030",
+        "text": "JIS規格の確認"
+      }
+    ]
+  },
+  {
+    "case": "issue kind unknown key z",
+    "step": 1
+  },
+  {
+    "case": "issue kind n (納期NG blocked)",
+    "step": 1,
+    "toast": "元に戻す: 指摘 型式あいまい"
+  },
+  {
+    "case": "Tab to proposal",
+    "active": "proposal-model"
+  },
+  {
+    "case": "Tab in proposal 1",
+    "active": "proposal-model"
+  },
+  {
+    "case": "proposal issue",
+    "toast": "I-007 代替提案 を下書きに追加（Ctrl+Enter で発行、J で次の行）",
+    "issue": [
+      {
+        "rowId": "R030",
+        "text": "代替",
+        "proposal": {
+          "model": "ALT-1メーカXS21,200abc",
+          "maker": "",
+          "unitPrice": null,
+          "leadDays": null
+        }
+      }
+    ]
+  },
+  {
+    "case": "unbound letters start edit (overwrite)",
+    "res": {
+      "b": "編集:b",
+      "d": "編集:d",
+      "e": "編集:e",
+      "g": "編集:g",
+      "l": "編集:l",
+      "m": "編集:m",
+      "p": "編集:p",
+      "q": "編集:q",
+      "t": "編集:t",
+      "u": "編集:u",
+      "v": "編集:v",
+      "z": "編集:z",
+      "Shift+B": "ナビ:null",
+      "Shift+C": "ナビ:null",
+      "Shift+E": "ナビ:null",
+      "Shift+T": "ナビ:null",
+      "Shift+Z": "ナビ:null"
+    }
+  },
+  {
+    "case": "digit 5 on qty col (nav)",
+    "mode": "ナビ",
+    "view": "view-5",
+    "val": null
+  },
+  {
+    "case": "digit 0 on qty col (nav)",
+    "mode": "編集",
+    "val": "0"
+  },
+  {
+    "case": "- on qty col",
+    "mode": "編集",
+    "val": "-"
+  },
+  {
+    "case": ". on qty col",
+    "mode": "編集",
+    "val": "."
+  },
+  {
+    "case": "type on ID col",
+    "mode": "ナビ",
+    "toast": ""
+  },
+  {
+    "case": "type on status col",
+    "mode": "ナビ",
+    "toast": ""
+  },
+  {
+    "case": "purchasing type on name col",
+    "mode": "ナビ",
+    "toast": "役割: 購買"
+  }
+]

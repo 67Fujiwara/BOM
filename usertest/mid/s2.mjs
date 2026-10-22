@@ -78,14 +78,15 @@ for (const id of ['R030', 'R031', 'R032', 'R035', 'R037', 'R038', 'R039', 'R042'
 await t.press('n'); log('n1:', await t.cursor(), (await t.status()).match(/[^ ]+ \d+\/\d+/)?.[0])
 await t.press('n'); log('n2:', await t.cursor())
 // Enter で直す（R030 型式）
+await t.press('1')
 await t.setCell('R030', '型式', 'M22N-BC-TWA-WC-2')
 log('R030 status cell:', await t.cell('R030', 'status'), 'status bar:', await t.status())
 // R042 型式: 表記だけ（空白追加）
-await t.setCell('R042', '型式', 'e6b2-cwz6c 1000P/R 2M')
+await t.setCell('R042', '型式', 'e52-ca1d m6 2m')
 // R031 メーカ未記入: 直す
-await t.setCell('R031', 'メーカ', 'オムロン')
+await t.setCell('R031', 'メーカ', 'IDEC')
 // R043 メーカ未記入 → 型式も変える（指摘セル以外も変更 → 変更セット側）
-await t.setCell('R043', 'メーカ', 'オムロン')
+await t.setCell('R043', 'メーカ', 'IDEC')
 await t.setCell('R043', '型式', 'XS5W-D421-D81-F-NEW')
 // Ctrl+. で提案を適用（R032 廃番）
 await t.goto('R032'); await t.colKey('model'); await t.press('Control+.')
@@ -111,8 +112,8 @@ await page.getByTestId('prompt-text').fill('取付方向は図面 E-01 のとお
 await t.press('Enter')
 await page.waitForTimeout(50)
 log('answer toast:', await t.toast(), 'R038 still in view4?', await page.locator('[data-row-id="R038"]').count())
-await t.press('1'); await t.goto('R038'); if (!(await page.getByTestId('issues').count())) await t.press(' ')
-log('issues panel:', (await page.getByTestId('issues').textContent()).slice(0, 200))
+await t.press('1'); await t.goto('R038'); if (!(await t.issuesOf('R038').count())) await t.press(' ')
+log('issues panel:', (await t.issuesOf('R038').textContent()).slice(0, 200))
 p = await t.proj()
 log('R038 issue:', p.issues.filter((i) => i.rowId === 'R038').map((i) => i.status + ':' + i.answer))
 check('S2 直さず回答で回答済になる', p.issues.some((i) => i.rowId === 'R038' && i.status === 'answered'))
@@ -161,8 +162,8 @@ await t.press('>'); await t.press('>')
 await t.goto('R030'); await t.press(' ')
 log('R030 status hint:', (await t.status()).match(/x[^?]*/)?.[0])
 await t.press('x'); await page.waitForTimeout(50)
-log('x1 →', await t.toast(), (await page.getByTestId('issues').textContent()).slice(0, 120))
-check('S2 x で対応済 → 確認済', /確認済/.test(await page.getByTestId('issues').textContent()))
+log('x1 →', await t.toast(), (await t.issuesOf('R030').textContent()).slice(0, 120))
+check('S2 x で対応済 → 確認済', /確認済/.test(await t.issuesOf('R030').textContent()))
 await t.press('x'); await page.waitForTimeout(50); log('x2 →', await t.toast(), 'flags:', JSON.stringify((await t.row('R030')).flags))
 // Shift+X 差戻し（R031 対応済）→ 2回目で PM
 await t.press('Escape'); await t.goto('R031'); await t.press('Shift+X')

@@ -2,34 +2,43 @@ import { useEffect, useState } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
-import { unpublishedCount, openIssues } from '@/model/derive'
-import { KEYMAP, formatKey } from '@/keys/keymap'
+import { unpublishedCount, openIssues, isActive } from '@/model/derive'
+import { formatKey } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import { pmCaseOf } from '@/actions/pm'
+import { canAdopt } from '@/actions/adopt'
 import { nextAckTarget } from '@/commands/registry'
+import { canEdit } from '@/actions/rows'
 
 export function StatusBar({ vm }: { vm: ViewModel }) {
   const st = useStore()
   const p = vm.ctx.p
   const user = st.ws.user
   const [, tick] = useState(0)
+  const toastMs = st.toast?.kind === 'err' ? 9000 : 6000
   useEffect(() => {
     if (!st.toast) return
-    const id = setTimeout(() => tick((x) => x + 1), 4000)
+    const id = setTimeout(() => tick((x) => x + 1), toastMs)
     return () => clearTimeout(id)
-  }, [st.toast])
-  const row = st.cursorRow ? p.rows.find((r) => r.id === st.cursorRow) : undefined
+  }, [st.toast, toastMs])
+  const row = st.cursorRow && !st.cursorRow.startsWith('g:') ? vm.rows.find((r) => r.id === st.cursorRow) : undefined
   const up = unpublishedCount(p, user.name)
   const hints: Array<[string, string]> = []
   const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? '編集' : st.mode === 'palette' ? 'パレット' : 'パネル'
-  if (st.mode === 'nav' && row) {
-    if (user.role === 'pm' && pmCaseOf(p, row) !== 'なし') hints.push(['y', '承認'], ['Shift+Y', '却下'], ['Enter', '決定パネル'])
-    else hints.push(['Enter', '編集'], ['a', '推奨採用'], ['Shift+I', '指摘'], ['Space', '開く'])
+  if (st.mode === 'nav' && row && isActive(row)) {
+    const pmCase = pmCaseOf(p, row)
+    if (user.role === 'pm' && pmCase !== 'なし') hints.push(['y', '承認'], ['Shift+Y', '却下'], ['Enter', '決定パネル'])
+    else if (!canEdit(st.cursorCol)) hints.push(['Enter', '編集'])
+    if (!canAdopt(p, row)) hints.push(['a', '推奨採用'])
+    if (user.role === 'purchasing') hints.push(['Shift+I', '指摘'])
+    else if (openIssues(p, row.id).length) hints.push(['Space', '指摘を見る'])
+    hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : '開く'])
     const ack = nextAckTarget(p, row, user.role)
     if (ack) hints.push(['x', ack])
-    if (user.role === 'design') hints.push(['Ctrl+Enter', '公開'])
-    if (user.role === 'purchasing') hints.push(['Ctrl+Enter', '指摘を発行'])
-  } else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Esc', '取り消し'])
+    if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])
+    if (user.role === 'purchasing' && up.issues) hints.push(['Ctrl+Enter', `指摘 ${up.issues} 件を発行`])
+  } else if (st.mode === 'nav' && !row) hints.push(['ArrowDown', '表へ'], ['n', '次の問題'])
+  else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Escape', '取り消し'])
   hints.push(['?', 'ヘルプ'])
   const problemHint = (() => {
     if (!row) return ''
@@ -40,31 +49,39 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     const idx = all.findIndex((i) => i.rowId === row.id)
     return `${kind} ${idx + 1}/${all.length}`
   })()
-  const toastVisible = st.toast && Date.now() - st.toast.at < 4000
+  const toastVisible = st.toast && Date.now() - st.toast.at < toastMs
   return (
-    <footer className="status" data-testid="status">
-      <span className={'mode ' + st.mode} data-testid="mode">{modeLabel}</span>
-      <span className="cell" data-testid="cursor">
-        {row ? `${row.id} ${colDef(st.cursorCol)?.label ?? st.cursorCol}` : st.cursorRow ?? '—'}
-      </span>
-      {problemHint && <span className="muted">{problemHint}</span>}
-      <span className="muted">
-        {ROLE_LABEL[user.role]}: {user.role === 'purchasing' ? `未発行 ${up.issues} 件` : user.role === 'design' ? `未公開 ${up.rows} 行 / 指摘 ${up.issues}` : `要決定 ${vm.counts[7]}`}
-      </span>
-      {toastVisible && (
-        <span className={'toast ' + st.toast!.kind} data-testid="toast">
-          {st.toast!.text}
+    <>
+      <footer className="status" data-testid="status">
+        <span className={'mode ' + st.mode} data-testid="mode">
+          {modeLabel}
         </span>
-      )}
-      <span className="hints">
-        {hints.map(([k, l]) => (
-          <span key={k + l}>
-            <b>{formatKey(k)}</b>
-            {l}
+        <span className="cell" data-testid="cursor">
+          {row ? `${row.id} ${colDef(st.cursorCol)?.label ?? st.cursorCol}` : st.cursorRow?.startsWith('g:') ? `分類 ${st.cursorRow.split(':')[1]}` : '—'}
+        </span>
+        {problemHint && <span className="muted">{problemHint}</span>}
+        <span className="muted" data-testid="role-status">
+          {ROLE_LABEL[user.role]} {user.name}: {user.role === 'purchasing' ? `未発行 ${up.issues} 件` : user.role === 'design' ? `未公開 ${up.rows} 行 / 指摘 ${up.issues}` : `要決定 ${vm.counts[7]}`}
+        </span>
+        {toastVisible && (
+          <span className={'toast ' + st.toast!.kind} data-testid="toast">
+            {st.toast!.text}
           </span>
-        ))}
-      </span>
-      <span className="sr-only">{KEYMAP.length} bindings</span>
-    </footer>
+        )}
+        <span className="hints">
+          {hints.map(([k, l]) => (
+            <span key={k + l}>
+              <b>{formatKey(k)}</b>
+              {l}
+            </span>
+          ))}
+        </span>
+      </footer>
+      {toastVisible && (
+        <div className={'toast-float ' + st.toast!.kind} role={st.toast!.kind === 'err' ? 'alert' : 'status'} data-testid="toast-float">
+          {st.toast!.text}
+        </div>
+      )}
+    </>
   )
 }

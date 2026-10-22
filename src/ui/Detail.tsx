@@ -10,11 +10,13 @@ import { pmCaseOf } from '@/actions/pm'
 export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
   const st = useStore()
   const p = vm.ctx.p
-  const e = effective(row)
+  // 設計以外には公開済の値を見せる（作業中の値は設計だけ）
+  const e = vm.ctx.role === 'design' ? effective(row) : row
   const scores = scoreRow(p, row, st.ws.suppliers)
   const quotes = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
   const stale = p.quotes.filter((q) => q.rowId === row.id && q.stale)
-  const issues = p.issues.filter((i) => i.rowId === row.id)
+  // 他の人の下書き（未発行）の指摘は見せない
+  const issues = p.issues.filter((i) => i.rowId === row.id && (i.status !== 'draft' || i.by.name === st.ws.user.name))
   const decisions = p.decisions.filter((d) => d.rowId === row.id)
   const events = p.events.filter((ev) => ev.rowId === row.id).slice(-8).reverse()
   const focused = st.cursorRow === row.id && st.detailIndex > 0
@@ -27,6 +29,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
           <h4>
             相見積・スコア内訳 <span className="muted">（必要日 {fmtDate(need) || '未定'} / 必要数 {e.qtyNeeded}{e.unit}{row.quotedAt ? ` / 基準日 ${fmtDate(row.quotedAt)}` : ''}）</span>
           </h4>
+          <div className="quotes-wrap">
           <table className="quotes">
             <thead>
               <tr>
@@ -98,6 +101,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
               )}
             </tbody>
           </table>
+          </div>
           {row.adoptedSupplierId && (
             <p className="muted" style={{ margin: '6px 0 0', fontSize: 12 }}>
               採用: {st.ws.suppliers.find((s) => s.id === row.adoptedSupplierId)?.name} {row.scoreSnapshot != null ? `スコア ${row.scoreSnapshot}（固定）` : ''} {row.adoptReason ? `理由: ${row.adoptReason}` : ''} {row.flags.pmPending ? '／ PM承認待ち' : ''}
@@ -111,7 +115,8 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
         </div>
         <div>
           <h4>
-            指摘 <span className="muted">（↓ で選択、Enter でアクション、Shift+R 返信）</span>
+            指摘 <span className="muted">（↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）</span>
+            {row.working && Object.keys(row.working).length > 0 && vm.ctx.role !== 'design' && <span className="chip warn" style={{ marginLeft: 6 }}>設計作業中（未公開の変更あり）</span>}
           </h4>
           <ul className="issues" data-testid="issues">
             {issues.map((i, idx) => {

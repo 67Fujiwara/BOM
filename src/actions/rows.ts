@@ -7,6 +7,7 @@ import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { checkRow } from '@/model/rules'
 import { addBusinessDays, todayStr } from '@/model/dates'
+import { parseDate, parseNumber, toHalf, type Parsed } from '@/model/parse'
 
 function st() {
   return useStore.getState()
@@ -21,90 +22,132 @@ export function canEdit(colKey: string): string | null {
   return null
 }
 
-export function parseValue(colKey: string, raw: string): unknown {
+const SELECT_ALIASES: Record<string, Record<string, string>> = {
+  unit: { k: '個', ko: '個', pcs: '個', h: '本', hon: '本', s: 'セット', set: 'セット', p: 'パック', pack: 'パック', pk: 'パック', shiki: '式', m: 'm', ｍ: 'm', メートル: 'm' },
+  procurement: { a: '相見積', ai: '相見積', sh: '指定商社', k: '客先指定品', kyaku: '客先指定品', shi: '支給品', z: '社内在庫', zaiko: '社内在庫' },
+  altPolicy: { k: '可', ka: '可', d: '同等品可', f: '不可', fuka: '不可', no: '不可', ng: '不可', kyaku: '客先承認要' },
+  makerLock: { s: '指定', shitei: '指定', r: '推奨', suisho: '推奨', n: '任意', nini: '任意' },
+  'q.stock': { z: '在庫', zaiko: '在庫', t: '取寄', toriyose: '取寄', j: '受注生産' },
+  extraCostKind: { t: '特急', s: '送料', b: '分納', o: 'その他' },
+}
+
+const NUM_RULES: Record<string, { min?: number; max?: number; integer?: boolean; label: string }> = {
+  qtyNeeded: { min: 0, max: 1e9, label: '必要数' },
+  packQty: { min: 1, max: 1e7, integer: true, label: '入数' },
+  orderQty: { min: 0, max: 1e9, label: '発注数' },
+  needOffset: { min: -730, max: 730, integer: true, label: '必要日(前倒し日数)' },
+  extraCost: { min: 0, max: 1e10, label: '追加費用' },
+  'q.unitPrice': { min: 0, max: 1e10, label: '単価' },
+  'q.formalPrice': { min: 0, max: 1e10, label: '正式単価' },
+  'q.moq': { min: 1, max: 1e9, integer: true, label: 'MOQ' },
+  'q.leadDays': { min: 0, max: 3650, integer: true, label: '納期（日）' },
+  'q.formalLeadDays': { min: 0, max: 3650, integer: true, label: '正式納期（日）' },
+}
+const TEXT_MAX: Record<string, number> = { note: 1000, name: 200, model: 200, maker: 100, ref: 100, drawing: 100, designated: 200, tags: 100, category: 50, receivedLot: 100, 'q.formalDiffReason': 200 }
+
+/** 入力値を列の型で解釈する。読めないときは ok:false と理由を返す（黙って捨てない） */
+export function parseValue(colKey: string, raw: string): Parsed<unknown> {
   const d = colDef(colKey)!
-  const s = raw.trim()
+  const base = colKey.includes('@') ? colKey.slice(0, colKey.indexOf('@')) : colKey
+  const s = toHalf(raw).trim()
   switch (d.kind) {
     case 'num': {
-      if (s === '') return null
-      if (/^即納$/.test(s)) return 0
-      if (/^(取扱なし|辞退)$/.test(s)) return -1
-      const n = Number(s.replace(/[,¥￥]/g, ''))
-      return Number.isFinite(n) ? n : null
+      if (base === 'q.leadDays' || base === 'q.formalLeadDays') {
+        if (/^(即納|在庫|0日?)$/.test(s)) return { ok: true, value: 0 }
+        if (/^(取扱なし|取り扱いなし|辞退|-1|×)$/.test(s)) return { ok: true, value: -1 }
+        const w = /^(\d+)\s*(週|w)$/i.exec(s)
+        if (w) return { ok: true, value: Number(w[1]) * 7 }
+        const mo = /^(\d+)\s*(ヶ月|か月|カ月|ヵ月)$/.exec(s)
+        if (mo) return { ok: true, value: Number(mo[1]) * 30 }
+      }
+      return parseNumber(raw, NUM_RULES[base] ?? { label: d.label })
     }
     case 'select': {
-      if (s === '') return null
       const opts = d.options ?? []
-      return opts.find((o) => o === s) ?? opts.find((o) => o.startsWith(s)) ?? opts.find((o) => o.toLowerCase().startsWith(s.toLowerCase())) ?? s
+      if (s === '') return { ok: false, error: `${d.label}は空にできません（${opts.join(' / ')}）` }
+      const lower = s.toLowerCase()
+      const hit = opts.find((o) => o === s) ?? SELECT_ALIASES[base]?.[lower] ?? opts.find((o) => o.startsWith(s)) ?? opts.find((o) => o.toLowerCase().startsWith(lower)) ?? opts.find((o) => o.includes(s))
+      if (!hit) return { ok: false, error: `${d.label}に「${raw}」はありません（${opts.join(' / ')}）` }
+      return { ok: true, value: hit }
     }
-    case 'date': {
-      if (s === '' || s === '未定') return null
-      const m = s.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/) ?? s.match(/^(\d{1,2})[-/](\d{1,2})$/)
-      if (!m) return s
-      const y = m.length === 4 ? m[1] : String(new Date().getFullYear())
-      const mo = m.length === 4 ? m[2] : m[1]
-      const dd = m.length === 4 ? m[3] : m[2]
-      return `${y}-${mo.padStart(2, '0')}-${dd.padStart(2, '0')}`
-    }
+    case 'date':
+      return parseDate(raw, { label: d.label })
     case 'bool':
-      return /^(1|y|yes|true|済|○|o)$/i.test(s)
-    default:
-      return raw
+      if (/^(1|y|yes|true|済|○|o|✓|v)$/i.test(s)) return { ok: true, value: true }
+      if (/^(|0|n|no|false|×|x|-|未)$/i.test(s)) return { ok: true, value: false }
+      return { ok: false, error: `${d.label}は ✓（1）か 空（0）です` }
+    default: {
+      const v = raw.replace(/[\t\r\n]+/g, ' ')
+      const max = TEXT_MAX[base] ?? 500
+      if (v.length > max) return { ok: false, error: `${d.label}が長すぎます（${v.length} 文字。上限 ${max}）` }
+      return { ok: true, value: v }
+    }
   }
 }
 
-/** セルの値を書く（設計列は公開済み以降なら作業中に積む） */
-export function setCell(rowId: string, colKey: string, raw: string, label = 'セル編集'): boolean {
+/** セルの値を書く（設計列は公開済み以降なら作業中に積む）。書けなかったら理由をトーストして false */
+export function setCell(rowId: string, colKey: string, raw: string, label = 'セル編集', opts: { quiet?: boolean } = {}): boolean {
   const err = canEdit(colKey)
   if (err) {
-    st().toastMsg(err, 'err')
+    if (!opts.quiet) st().toastMsg(err, 'err')
     return false
   }
-  const d = colDef(colKey)!
-  const value = parseValue(colKey, raw)
-  let ok = true
-  st().commit(
+  const parsed = parseValue(colKey, raw)
+  if (!parsed.ok) {
+    if (!opts.quiet) st().toastMsg(parsed.error, 'err')
+    return false
+  }
+  const value = parsed.value
+  return st().commit(
     label,
     (p, ws) => {
       const r = p.rows.find((x) => x.id === rowId)
       if (!r) return '行がありません'
-      if (!isActive(r)) return '取消・置換済の行は編集できません'
-      if (d.perSupplier) {
-        const sid = supplierOfCol(colKey)!
-        let q = p.quotes.find((x) => x.rowId === rowId && x.supplierId === sid && !x.stale)
-        if (!q) {
-          q = emptyQuote(rowId, sid)
-          p.quotes.push(q)
-        }
-        const f = colKey.slice(2, colKey.indexOf('@')) as keyof typeof q
-        ;(q as unknown as Record<string, unknown>)[f] = value
-        if (f === 'unitPrice' && q.quoteQty == null) q.quoteQty = orderQty(r)
-        if (r.status === 'submitted' && value != null) setStatus(r, 'quoting')
-      } else if (d.design) {
-        if (['ordered', 'received'].includes(r.status)) return '発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）'
-        const f = colKey as keyof DesignFields
-        if (r.status === 'draft' || r.publishedRev == null) {
-          ;(r as unknown as Record<string, unknown>)[f] = value
-        } else {
-          const w = { ...(r.working ?? {}) } as Record<string, unknown>
-          if (JSON.stringify((r as unknown as Record<string, unknown>)[f]) === JSON.stringify(value)) delete w[f]
-          else w[f] = value
-          r.working = Object.keys(w).length ? (w as Partial<DesignFields>) : undefined
-        }
-      } else {
-        ;(r as unknown as Record<string, unknown>)[colKey] = value
-        if (colKey === 'ordered' && value === true && r.status !== 'formalQuoted' && !r.flags.early && !['ordered', 'received'].includes(r.status)) {
-          ok = false
-          return '正式見積済でないと発注できません（先行発注は PM の許可「7」が要ります）'
-        }
-        if (colKey === 'received' && value === true) r.ordered = true
-        if (colKey === 'ordered' && value === false) r.received = false
-      }
+      const e = applyCellValue(p, r, colKey, value)
+      if (e) return e
       normalize(p, ws)
     },
     { rowId },
   )
-  return ok
+}
+
+/** 1 セルの書き込み（commit の中で使う）。書けなければ理由を返す */
+export function applyCellValue(p: Project, r: Row, colKey: string, value: unknown): string | void {
+  const d = colDef(colKey)!
+  const rowId = r.id
+  if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
+  if (d.perSupplier) {
+    const sid = supplierOfCol(colKey)!
+    let q = p.quotes.find((x) => x.rowId === rowId && x.supplierId === sid && !x.stale)
+    if (!q) {
+      q = emptyQuote(rowId, sid)
+      p.quotes.push(q)
+    }
+    const f = colKey.slice(2, colKey.indexOf('@')) as keyof typeof q
+    ;(q as unknown as Record<string, unknown>)[f] = value
+    if (f === 'unitPrice' && q.quoteQty == null) q.quoteQty = orderQty(r)
+    if (f === 'unitPrice' || f === 'leadDays') q.source = '手入力'
+    if (r.status === 'submitted' && value != null) setStatus(r, 'quoting')
+  } else if (d.design) {
+    if (['ordered', 'received'].includes(r.status)) return '発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）'
+    const f = colKey as keyof DesignFields
+    if (r.status === 'draft' || r.publishedRev == null) {
+      ;(r as unknown as Record<string, unknown>)[f] = value
+    } else {
+      const w = { ...(r.working ?? {}) } as Record<string, unknown>
+      if (JSON.stringify((r as unknown as Record<string, unknown>)[f]) === JSON.stringify(value)) delete w[f]
+      else w[f] = value
+      r.working = Object.keys(w).length ? (w as Partial<DesignFields>) : undefined
+    }
+  } else {
+    if (colKey === 'ordered' && value === true && r.status !== 'formalQuoted' && !r.flags.early && !['ordered', 'received'].includes(r.status)) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
+    if (colKey === 'received' && value === true && !r.ordered && r.status !== 'formalQuoted' && !r.flags.early) return '発注前の行は入荷にできません'
+    if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
+    ;(r as unknown as Record<string, unknown>)[colKey] = value
+    if (colKey === 'received' && value === true) r.ordered = true
+    if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, r.flags.early ? 'selected' : 'formalQuoted')
+    if (colKey === 'received' && value === false && r.status === 'received') setStatus(r, 'ordered')
+  }
 }
 
 export function clearCell(rowId: string, colKey: string) {
@@ -147,25 +190,32 @@ export function duplicateRow(rowId: string): string | null {
 
 export function deleteRow(rowId: string) {
   if (st().user().role !== 'design') return st().toastMsg('権限なし（行の削除は設計）', 'err')
+  let msg = ''
   st().commit(
     '行を削除',
     (p, ws) => {
       const idx = p.rows.findIndex((r) => r.id === rowId)
       if (idx < 0) return
       const r = p.rows[idx]
-      if (r.status === 'draft' && r.publishedRev == null) p.rows.splice(idx, 1)
-      else {
+      if (!isActive(r)) return `${r.id} はすでに${r.status === 'cancelled' ? '取消' : '置換'}済です`
+      if (r.status === 'draft' && r.publishedRev == null) {
+        p.rows.splice(idx, 1)
+        msg = `${rowId} を削除しました（Ctrl+Z で戻せます）`
+      } else {
         if (['ordered', 'received'].includes(r.status)) return '発注済の行は取り消せません（発注後変更依頼を起票）'
         setStatus(r, 'cancelled')
         r.working = undefined
+        msg = `${rowId} を取消にしました（提出済の行は取り消し線で残り、次の公開で購買に伝わります。Ctrl+Z で戻せます）`
       }
       normalize(p, ws)
     },
     { rowId },
   )
+  if (msg) st().toastMsg(msg, 'info')
 }
 
 export function moveRow(rowId: string, dir: -1 | 1) {
+  if (st().user().role !== 'design') return st().toastMsg('権限なし（行の並びは設計）', 'err')
   st().commit('行を移動', (p) => {
     const idx = p.rows.findIndex((r) => r.id === rowId)
     const j = idx + dir
@@ -175,10 +225,15 @@ export function moveRow(rowId: string, dir: -1 | 1) {
 }
 
 export function toggleHidden(rowId: string) {
+  let hidden = false
   st().commit('行を隠す/戻す', (p) => {
     const r = p.rows.find((x) => x.id === rowId)
-    if (r) r.hidden = !r.hidden
+    if (r) {
+      r.hidden = !r.hidden
+      hidden = r.hidden
+    }
   })
+  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
 }
 
 /** 置き換え品を作る。指摘・見積・状態を新行に引き継ぎ「要再確認」 */
@@ -194,7 +249,8 @@ export function replaceRow(rowId: string, preset?: { model: string; maker: strin
       const idx = p.rows.findIndex((r) => r.id === rowId)
       if (idx < 0) return
       const old = p.rows[idx]
-      if (['ordered', 'received'].includes(old.status)) return '発注済の行は置換できません'
+      if (!isActive(old)) return `${old.id} は${old.status === 'cancelled' ? '取消' : '置換'}済の行です（置換できません）`
+      if (['ordered', 'received'].includes(old.status)) return '発注済の行は置換できません（発注後変更依頼を起票）'
       id = nextRowId(p)
       const e = effective(old)
       const copy: Partial<Row> = {}
@@ -412,7 +468,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     if (revs.includes(1) && !p.settings.pmConfirmed && !p.caseDecisions.some((c) => c.kind === '案件設定確定')) p.caseDecisions.push({ id: 'C1', kind: '案件設定確定', status: 'open', at: now })
     normalize(p, ws)
     msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました'
-  })
+  }, { kind: plan.rows.length ? 'publish' : 'normal' })
   s.toastMsg(msg, 'ok')
   return true
 }
@@ -452,27 +508,56 @@ export function applyFix(rowId: string, patch: Partial<Row>, label: string) {
   for (const [k, v] of Object.entries(patch)) setCell(rowId, k, v == null ? '' : String(v), label)
 }
 
-/** Excel 貼り付け（タブ区切り）を複数セルに流し込む */
+/** Excel 貼り付け（タブ区切り）を複数セルに流し込む。1 回の操作として記録し、読めないセルは理由を出す */
 export function pasteCells(startRowId: string, startCol: string, visibleCols: string[], orderedRowIds: string[], text: string) {
-  const lines = text.replace(/\r/g, '').split('\n').filter((l, i, a) => !(i === a.length - 1 && l === ''))
+  const lines = text.replace(/\r/g, '').split('\n')
+  if (lines.at(-1) === '') lines.pop()
   const c0 = visibleCols.indexOf(startCol)
   const r0 = orderedRowIds.indexOf(startRowId)
   if (c0 < 0 || r0 < 0) return
-  let count = 0
+  const role = st().user().role
+  const cells: Array<{ row: number; col: string; value: unknown }> = []
+  const errors: string[] = []
+  let skipped = 0
   lines.forEach((line, i) => {
-    const cells = line.split('\t')
-    let rowId = orderedRowIds[r0 + i]
-    if (!rowId) {
-      rowId = insertBelow(orderedRowIds[orderedRowIds.length - 1]) ?? ''
-      if (!rowId) return
-      orderedRowIds.push(rowId)
-    }
-    cells.forEach((v, j) => {
+    line.split('\t').forEach((v, j) => {
       const col = visibleCols[c0 + j]
-      if (!col || canEdit(col)) return
-      setCell(rowId, col, v, '貼り付け')
-      count++
+      if (!col) return
+      if (canEdit(col)) {
+        skipped++
+        return
+      }
+      const parsed = parseValue(col, v)
+      if (!parsed.ok) errors.push(`${i + 1}行目 ${colDef(col)?.label}: ${parsed.error}`)
+      else cells.push({ row: i, col, value: parsed.value })
     })
   })
-  st().toastMsg(`${count} セルを貼り付けました`, 'ok')
+  if (errors.length) {
+    st().toastMsg(`貼り付けできません（${errors.length} セル）: ${errors[0]}`, 'err')
+    return
+  }
+  const needNew = Math.max(0, r0 + lines.length - orderedRowIds.length)
+  if (needNew && role !== 'design') {
+    st().toastMsg('貼り付けが表の最後を超えています（行の追加は設計）', 'err')
+    return
+  }
+  let count = 0
+  const ok = st().commit('貼り付け', (p, ws) => {
+    const ids = [...orderedRowIds]
+    for (let k = 0; k < needNew; k++) {
+      const id = nextRowId(p)
+      const last = p.rows.findIndex((r) => r.id === ids[ids.length - 1])
+      p.rows.splice(last + 1, 0, newRow(id))
+      ids.push(id)
+    }
+    for (const c of cells) {
+      const r = p.rows.find((x) => x.id === ids[r0 + c.row])
+      if (!r) continue
+      const e = applyCellValue(p, r, c.col, c.value)
+      if (e) return `${r.id}: ${e}`
+      count++
+    }
+    normalize(p, ws)
+  })
+  if (ok) st().toastMsg(`${count} セルを貼り付けました${needNew ? `（${needNew} 行追加）` : ''}${skipped ? `。書けない列 ${skipped} セルは飛ばしました` : ''}（Ctrl+Z で一度に戻せます）`, 'ok')
 }

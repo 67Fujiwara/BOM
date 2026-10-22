@@ -1,0 +1,171 @@
+[
+  {
+    "case": "zoom150 header children",
+    "clipped": [
+      {
+        "cls": "lamps",
+        "text": "設計待ち 75購買待ち 4PM待ち 1エ",
+        "right": 1244,
+        "clipped": true
+      },
+      {
+        "cls": "role",
+        "text": "設計購買PM",
+        "right": 1387,
+        "clipped": true
+      },
+      {
+        "cls": "muted",
+        "text": "山田",
+        "right": 1423,
+        "clipped": true
+      },
+      {
+        "cls": "btn",
+        "text": "Ctrl+K コマンド",
+        "right": 1550,
+        "clipped": true
+      }
+    ],
+    "all": [
+      {
+        "cls": "pid",
+        "text": "P-2026-041",
+        "right": 74,
+        "clipped": false
+      },
+      {
+        "cls": "pname",
+        "text": "第3ライン 搬送制御盤",
+        "right": 86,
+        "clipped": false
+      },
+      {
+        "cls": "due",
+        "text": "納期 あと29日（必要日 あと19日）",
+        "right": 283,
+        "clipped": false
+      },
+      {
+        "cls": "muted",
+        "text": "概算 ¥13,197 / 正式 ¥14,",
+        "right": 697,
+        "clipped": false
+      },
+      {
+        "cls": "muted",
+        "text": "重み：確定",
+        "right": 763,
+        "clipped": false
+      },
+      {
+        "cls": "spacer",
+        "text": "",
+        "right": 775,
+        "clipped": false
+      },
+      {
+        "cls": "lamps",
+        "text": "設計待ち 75購買待ち 4PM待ち 1エ",
+        "right": 1244,
+        "clipped": true
+      },
+      {
+        "cls": "role",
+        "text": "設計購買PM",
+        "right": 1387,
+        "clipped": true
+      },
+      {
+        "cls": "muted",
+        "text": "山田",
+        "right": 1423,
+        "clipped": true
+      },
+      {
+        "cls": "btn",
+        "text": "Ctrl+K コマンド",
+        "right": 1550,
+        "clipped": true
+      }
+    ]
+  },
+  {
+    "case": "zoom150 status",
+    "st": {
+      "scrollW": 853,
+      "clientW": 853,
+      "hints": [
+        "?ヘルプ@841"
+      ],
+      "overflow": false
+    }
+  },
+  {
+    "case": "zoom150 palette",
+    "dlg": {
+      "top": 55.14100646972656,
+      "bottom": 419.93788146972656,
+      "h": 364.796875,
+      "winH": 480,
+      "listScroll": 1137
+    }
+  },
+  {
+    "case": "zoom150 help",
+    "hd": {
+      "bottom": 421.5897445678711,
+      "winH": 480,
+      "bodyScrollable": true,
+      "cols": "2"
+    }
+  },
+  {
+    "case": "zoom150 detail",
+    "det": {
+      "detailW": 2050,
+      "quotesW": 1017,
+      "overflow": false,
+      "gridScrollW": 2103,
+      "gridClientW": 633
+    }
+  },
+  {
+    "case": "zoom150 side",
+    "side": {
+      "scrollH": 479,
+      "clientH": 406
+    }
+  },
+  {
+    "case": "zoom150 wizard",
+    "wz": {
+      "bottom": 262.937931060791,
+      "winH": 480,
+      "stepsW": 800,
+      "stepsClient": 800
+    }
+  },
+  {
+    "case": "zoom150 settings last item visible after ArrowDown x22",
+    "sp": {
+      "selVisible": false,
+      "selTop": 740.1875,
+      "bodyBottom": 387.59375
+    }
+  },
+  {
+    "case": "1440 columns panel last item visible after ArrowDown x36",
+    "cp": {
+      "selVisible": false,
+      "text": "●備考設計"
+    }
+  },
+  {
+    "case": "palette ArrowDown x33 selection visible",
+    "pp": {
+      "selVisible": false,
+      "text": "表示ショートカット一覧?"
+    }
+  }
+]

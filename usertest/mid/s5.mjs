@@ -15,9 +15,10 @@ await t.setCell('R001', '型式', 'FX5U-32MT/ES')
 // 3) 数量 +50%（見積済）
 await t.setCell('R006', '必要数', '18')
 // 4) 数量 +10%（閾値内）
-await t.setCell('R009', '必要数', '66')
+await t.setCell('R014', '必要数', '1')  // 変更なし（同値）→ R015 で +10%
+await t.setCell('R015', '必要数', '1')
 // 5) 表記だけ（正式見積済 R013: 全角→半角相当。空白追加）
-await t.setCell('R013', '型式', 'S8VK-G12024 ')
+await t.setCell('R013', '型式', 's8vk-g12024')
 // 6) 正式見積済の数量変更 R013 → もう型式変えたので R003（選定済）の必要日
 await t.showCol('needOffset'); await t.setCellKey('R003', 'needOffset', '-5')
 // 7) 客先承認要の行の型式変更
@@ -44,13 +45,13 @@ check('S5 変更セットの理由を公開単位で 1 回聞く', /変更セッ
 check('S5 変更番号を入力できる欄がある', (await page.getByTestId('prompt-text').count()) > 0)
 await t.press('2'); await page.waitForTimeout(100)
 dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (dlg) { log('dlg2:', dlg.slice(0, 80)); await t.press('1'); await page.waitForTimeout(100) }
-log('publish →', await t.toast())
+log('publish →', await t.toast(), '| bar:', (await t.status()).slice(0, 160))
 p = await t.proj()
 log('submissions:', p.submissions.map((s) => `Rev${s.rev} ${s.rowIds.join('/')} cs=${JSON.stringify(s.changeSet)} causes=${JSON.stringify(s.causes)}`))
-for (const id of ['R005', 'R001', 'R006', 'R009', 'R013', 'R003', 'R007', 'R010', 'R011', rep?.id]) { const r = p.rows.find((x) => x.id === id); log(id, r.status, 'adopted=', r.adoptedSupplierId, 'flags=', JSON.stringify(r.flags), 'cause=', r.lastChangeCause) }
+for (const id of ['R005', 'R001', 'R006', 'R015', 'R013', 'R003', 'R007', 'R010', 'R011', rep?.id]) { const r = p.rows.find((x) => x.id === id); log(id, r.status, 'adopted=', r.adoptedSupplierId, 'flags=', JSON.stringify(r.flags), 'cause=', r.lastChangeCause) }
 check('S5 R005 型式変更 → 再見積要', p.rows.find((r) => r.id === 'R005').flags.requote === true)
 check('S5 R006 数量 +50% → 再見積要', p.rows.find((r) => r.id === 'R006').flags.requote === true)
-check('S5 R009 数量 +10% → 再見積要なし', !p.rows.find((r) => r.id === 'R009').flags.requote)
+check('S5 R015 数量 同値 → 再見積要なし', !p.rows.find((r) => r.id === 'R015').flags.requote)
 check('S5 R013 表記だけ → 表記修正（正式見積は有効のまま）', p.rows.find((r) => r.id === 'R013').flags.notation === true && !p.rows.find((r) => r.id === 'R013').flags.requote)
 check('S5 R003 必要日変更（選定済）→ 再発行なし', !p.rows.find((r) => r.id === 'R003').flags.reissue)
 check('S5 R007 客先承認要の型式変更 → 代替承認待ち', p.rows.find((r) => r.id === 'R007').flags.altPending === true)
@@ -79,12 +80,11 @@ check('S5 全商社を据え置きにした置換行は見積済になる', (awa
 // R013 表記修正の x
 await t.press('1'); await t.goto('R013'); log('R013 hint:', (await t.status()).match(/x[^?]*/)?.[0]); await t.press('x'); await page.waitForTimeout(50); log('x →', JSON.stringify((await st('R013')).flags))
 // 発注数要確認: 購買が R009 の発注数を手で変える → 設計が必要数を変えて公開
-await t.showCol('orderQty'); await t.setCellKey('R009', 'orderQty', '70'); log('R009 orderQty set:', (await st('R009')).orderQty)
-await t.role('design'); await t.goto('R009'); await t.press('a'); await page.waitForTimeout(50); log('adopt R009 →', await t.toast())
-await t.role('purchasing'); await t.setCellKey('R009', 'orderQty', '72')
-await t.role('design'); await t.setCell('R009', '必要数', '68'); await t.press('Control+Enter'); await page.waitForTimeout(100); dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (/変更セット/.test(dlg)) { await t.press('2'); await page.waitForTimeout(80) } dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (/Rev/.test(dlg)) await t.press('1'); await page.waitForTimeout(100)
-log('R009 after qty publish:', JSON.stringify((await st('R009')).flags), 'orderQty', (await st('R009')).orderQty, await t.toast())
-check('S5 購買が手で変えた発注数 → 必要数公開で発注数要確認', (await st('R009')).flags.orderQtyCheck === true)
+await t.role('design'); await t.goto('R017'); await t.press('a'); await page.waitForTimeout(50); log('adopt R017 →', await t.toast(), 'orderQty:', (await st('R017')).orderQty)
+await t.role('purchasing'); await t.showCol('orderQty'); await t.setCellKey('R017', 'orderQty', '5'); log('R017 orderQty set:', (await st('R017')).orderQty)
+await t.role('design'); await t.setCell('R017', '必要数', '3'); await t.press('Control+Enter'); await page.waitForTimeout(100); dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (/変更セット/.test(dlg)) { await t.press('2'); await page.waitForTimeout(80) } dlg = await page.locator('[role=dialog]').textContent().catch(() => ''); if (/Rev/.test(dlg)) await t.press('1'); await page.waitForTimeout(100)
+log('R017 after qty publish:', JSON.stringify((await st('R017')).flags), 'orderQty', (await st('R017')).orderQty, (await t.status()).slice(0, 120))
+check('S5 購買が手で変えた発注数 → 必要数公開で発注数要確認', (await st('R017')).flags.orderQtyCheck === true)
 await t.shot('s5-02-after')
 log('ERRORS:', t.errors)
 await t.close()

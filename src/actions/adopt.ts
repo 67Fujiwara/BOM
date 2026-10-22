@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, isQuotable, roundedQty } from '@/model/derive'
+import { effective, isActive, isQuotable, roundedQty } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -15,7 +15,8 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   void p
   const allowed = p.settings.selector === role || (row.flags.delegated && role === 'purchasing')
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
-  if (!isQuotable(row)) return '見積対象外の行です（選定済・固定）'
+  if (!isActive(row)) return '取消・置換済の行は採用できません'
+  if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
   if (row.working && Object.keys(row.working).length) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
@@ -23,7 +24,10 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
     const answered = qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length
     return `回答 ${answered}/${qs.length} 待ち（Shift+A / Alt+A で先行採用）`
   }
-  if (!['quoted', 'selected', 'quoting'].includes(row.status)) return `${row.status === 'submitted' ? '見積前' : '選定済以降'}の行は採用できません`
+  if (row.status === 'draft') return '下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます'
+  if (row.status === 'submitted') return '見積前の行です（購買が概算見積を依頼・回答待ち）'
+  if (!isActive(row)) return '取消・置換済の行は採用できません'
+  if (!['quoted', 'selected', 'quoting'].includes(row.status)) return '正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）'
   return null
 }
 

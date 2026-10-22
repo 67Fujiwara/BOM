@@ -144,7 +144,7 @@ test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要�
   expect(n).toBeGreaterThan(1)
   await page.keyboard.press(String(n)) // 最下位の商社
   await expect(page.getByTestId('prompt-options')).toBeVisible()
-  await page.keyboard.press('1') // 納期
+  await page.keyboard.press('Enter') // 理由: 納期（先頭）
   const toast = await page.getByTestId('toast').textContent()
   const row = page.locator('[data-row-id="R020"]')
   if (toast?.includes('PM')) {

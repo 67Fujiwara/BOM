@@ -1,0 +1,404 @@
+[
+  {
+    "case": "wizard step7 key 3 with textarea focused",
+    "active": "TEXTAREA",
+    "typedIntoTextarea": "3",
+    "stepAfterEnter": "8.部品の入れ方"
+  },
+  {
+    "case": "dup project create #0",
+    "projects": [
+      "P-2026-041:第3ライン 搬送制御盤",
+      "P-2026-041:重複0"
+    ],
+    "current": "P-2026-041",
+    "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+    "errs": [
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi"
+    ]
+  },
+  {
+    "case": "wizard step7 key 3 with textarea focused",
+    "active": "TEXTAREA",
+    "typedIntoTextarea": "3",
+    "stepAfterEnter": "8.部品の入れ方"
+  },
+  {
+    "case": "dup project create #1",
+    "projects": [
+      "P-2026-041:第3ライン 搬送制御盤",
+      "P-2026-041:重複0",
+      "P-2026-041:重複1"
+    ],
+    "current": "P-2026-041",
+    "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+    "errs": [
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi"
+    ]
+  },
+  {
+    "case": "inbox list",
+    "items": [
+      "P-2026-041第3ライン 搬送制御盤納期 2026-11-20 / 提出 ",
+      "P-2026-041重複0納期 未定 / 提出 Rev.0 / 設計 1 購買 ",
+      "P-2026-041重複1納期 未定 / 提出 Rev.0 / 設計 1 購買 ",
+      "＋新しいBOM を作る"
+    ]
+  },
+  {
+    "case": "open 3rd inbox item",
+    "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+    "current": "P-2026-041",
+    "sideCurrent": [
+      "1すべて80",
+      "第3ライン 搬送制御盤",
+      "重複0",
+      "重複1"
+    ]
+  },
+  {
+    "case": "wizard step7 key 3 with textarea focused",
+    "active": "TEXTAREA",
+    "typedIntoTextarea": "3",
+    "stepAfterEnter": "8.部品の入れ方"
+  },
+  {
+    "case": "empty project created",
+    "projects": [
+      "P-2026-041",
+      "P-EMPTY"
+    ],
+    "rows": 1
+  },
+  {
+    "case": "empty project",
+    "rows": 0,
+    "grid": "この条件に合う行はありません"
+  },
+  {
+    "case": "empty project all keys done",
+    "rows": 2,
+    "mode": "ナビ",
+    "cursor": "—",
+    "grid": 1
+  },
+  {
+    "case": "empty project cmd 概算見積を依頼",
+    "panel": "panel-prompt",
+    "toast": "入力は必須です",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 正式見積を依頼",
+    "panel": null,
+    "toast": "依頼する行がありません（選定済・再発行対象なし）",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 商社を集約",
+    "panel": "panel-consolidate",
+    "toast": "依頼する行がありません（選定済・再発行対象なし）",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 未採用を推奨で一括採用",
+    "panel": null,
+    "toast": "採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 選定記録を出力",
+    "panel": null,
+    "toast": "採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 見積回答を取り込む",
+    "panel": null,
+    "toast": "採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0",
+    "errors": [
+      "Cannot read properties of undefined (reading 'split')"
+    ]
+  },
+  {
+    "case": "empty project cmd 公開",
+    "panel": null,
+    "toast": "公開するものがありません（未公開の行・下書き指摘なし）",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 履歴",
+    "panel": "panel-history",
+    "toast": "公開するものがありません（未公開の行・下書き指摘なし）",
+    "errors": []
+  },
+  {
+    "case": "empty project cmd 案件設定",
+    "panel": "panel-settings",
+    "toast": "公開するものがありません（未公開の行・下書き指摘なし）",
+    "errors": []
+  },
+  {
+    "case": "Shift+Enter in empty",
+    "mode": "編集",
+    "cursor": "R003 部品名",
+    "rows": 3
+  },
+  {
+    "case": "10 suppliers added",
+    "n": 15,
+    "ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15"
+    ],
+    "colorsDup": 6,
+    "undoToast": "戻す操作がありません"
+  },
+  {
+    "case": "settings supplierIds prompt",
+    "panel": null
+  },
+  {
+    "case": "supplierIds set",
+    "ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15"
+    ],
+    "toast": "権限なし（設計の列）"
+  },
+  {
+    "case": "view 6 with 15 suppliers",
+    "ms": 626,
+    "ths": 82,
+    "width": 8851
+  },
+  {
+    "case": "view 9 with 15 suppliers",
+    "ms": 280,
+    "ths": 76,
+    "width": 7463
+  },
+  {
+    "case": "End in view 9",
+    "cursor": "R005 在庫",
+    "scrollLeft": 6243,
+    "cursorVisible": true
+  },
+  {
+    "case": "Shift+A opts count (3 quotes)",
+    "n": 2
+  },
+  {
+    "case": "archive export 15 suppliers",
+    "ok": true
+  },
+  {
+    "case": "reason prompt after Shift+A",
+    "panel": "panel-prompt",
+    "hasText": 0
+  },
+  {
+    "case": "design Shift+A worst",
+    "toast": "R030: 立花エレテック を仮採用。PM の承認待ち（7 要決定）",
+    "flags": {
+      "pmPending": true,
+      "pmReason": "例外選定",
+      "contested": false
+    },
+    "status": "quoted",
+    "adopted": "S2"
+  },
+  {
+    "case": "design edit model on pmPending row",
+    "working": {
+      "model": "NEW-MODEL"
+    },
+    "toast": "R030: 立花エレテック を仮採用。PM の承認待ち（7 要決定）",
+    "flags": {
+      "pmPending": true,
+      "pmReason": "例外選定",
+      "contested": false
+    }
+  },
+  {
+    "case": "purchasing Ctrl+Z after design edit",
+    "toast": "戻す操作がありません",
+    "working": {
+      "model": "NEW-MODEL"
+    }
+  },
+  {
+    "case": "purchasing edit unitPrice on pmPending+working row",
+    "toast": "戻す操作がありません",
+    "q": 777,
+    "status": "quoted",
+    "view9has": 1
+  },
+  {
+    "case": "PM approve R030 while design working",
+    "toast": "役割: PM",
+    "flags": {
+      "pmPending": false,
+      "contested": false,
+      "leadNG": false
+    },
+    "status": "selected",
+    "working": {
+      "model": "NEW-MODEL"
+    }
+  },
+  {
+    "case": "design Ctrl+Z (own last = model edit)",
+    "toast": "元に戻す: セル編集",
+    "flags": {
+      "pmPending": true,
+      "pmReason": "例外選定",
+      "contested": false
+    },
+    "status": "quoted"
+  },
+  {
+    "case": "design Ctrl+Z again (adopt) after PM approved",
+    "toast": "元に戻す: 採用 立花エレテック（納期） PM承認待ち",
+    "flags": {},
+    "status": "quoted",
+    "decisions": []
+  },
+  {
+    "case": "PM Enter decision panel R013",
+    "panel": "panel-quickfix",
+    "opts": [
+      "1 y 受入 → 正式見積済",
+      "2 b 次点商社へ",
+      "3 g 再交渉（購買へ）",
+      "4 d 設計へ代替依頼（コスト超過を起票）",
+      "5 q 数量見直し依頼（設計へ）"
+    ]
+  },
+  {
+    "case": "press g",
+    "panel": "panel-prompt",
+    "title": "決定: 再交渉（理由）"
+  },
+  {
+    "case": "after g reason",
+    "toast": "役割: PM",
+    "status": "formalQuoted",
+    "flags": {
+      "formalDiff": true,
+      "leadNG": false
+    },
+    "view7rows": 2,
+    "cursor": "R013 部品名"
+  },
+  {
+    "case": "PM undo decision",
+    "toast": "元に戻す: 決定: 再交渉",
+    "status": "formalQuoted",
+    "flags": {
+      "formalDiff": true
+    },
+    "decisions": 0
+  },
+  {
+    "case": "Shift+Y on 差分超過",
+    "toast": "この行では Shift+Y は使えません",
+    "panel": null
+  },
+  {
+    "case": "b 次点",
+    "toast": "この行では Shift+Y は使えません",
+    "adopted": "S2",
+    "status": "selected",
+    "flags": {
+      "formalDiff": false,
+      "pmPending": false,
+      "leadNG": false
+    }
+  },
+  {
+    "case": "Enter on R013 after decision (view 7 still?)",
+    "panel": "panel-quickfix",
+    "mode": "パネル",
+    "toast": "この行では Shift+Y は使えません",
+    "cursor": "R003 部品名"
+  },
+  {
+    "case": "quotes.request prompt",
+    "panel": "panel-prompt",
+    "options": "1 S1 因幡電機（相見積先）2 S2 立花エレテック（相見積先）3 S3 ミスミ（相見積先）4 S4 RSコンポーネンツ5 S5 オムロン直販",
+    "hasText": 1
+  },
+  {
+    "case": "typed deadline 2026-11-05",
+    "panel": null,
+    "text": null,
+    "toast": "",
+    "downloads": [],
+    "deadline": "2026-10-25",
+    "quoting": 0
+  },
+  {
+    "case": "needDateFixed set",
+    "v": null
+  },
+  {
+    "case": "reason prompt (with fixedNeed options)",
+    "panel": "panel-prompt",
+    "options": null,
+    "hasText": 1
+  },
+  {
+    "case": "typed 納期を2週間延長",
+    "panel": "panel-prompt",
+    "text": "納期を2週間延長",
+    "toast": "",
+    "due": "2026-11-20"
+  }
+]

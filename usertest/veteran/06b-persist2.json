@@ -1,0 +1,62 @@
+[
+  {
+    "case": "json export",
+    "file": "bom-workspace-2026-10-22.json",
+    "bytes": 223499,
+    "same": true
+  },
+  {
+    "case": "json import roundtrip",
+    "pasteMs": 108,
+    "toast": "JSON を読み込みました",
+    "diff": [],
+    "r020": "編集済"
+  },
+  {
+    "case": "Ctrl+Z after JSON import",
+    "toast": "戻す操作がありません"
+  },
+  {
+    "case": "json import {\"projects\":\"x\"}",
+    "toast": "",
+    "grid": 0,
+    "rows": 0,
+    "pageerrors": [
+      "ws.projects.find is not a function"
+    ]
+  },
+  {
+    "case": "after reload post-garbage",
+    "grid": 0,
+    "rows": 0,
+    "pageerrors": 2,
+    "ls": "has ws"
+  },
+  {
+    "case": "json import minimal project",
+    "toast": "",
+    "grid": 0,
+    "pageerrors": [
+      "ws.projects.find is not a function",
+      "ws.projects.find is not a function",
+      "p.rows is not iterable"
+    ]
+  },
+  {
+    "case": "reload after minimal import",
+    "grid": 0,
+    "pageerrors": 4
+  },
+  {
+    "case": "edit when localStorage near quota",
+    "toast": "",
+    "shown": "quota",
+    "stored": {
+      "name": "quota"
+    }
+  },
+  {
+    "case": "after reload near quota",
+    "shown": "quota"
+  }
+]

@@ -1,0 +1,82 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fbfbfa;
+  --bg-elev: #ffffff;
+  --bg-sunken: #f3f3f1;
+  --fg: #111418;
+  --fg-muted: #5b6168;
+  --fg-faint: #9aa0a6;
+  --line: #e7e7e4;
+  --line-strong: #cfcfca;
+  --accent: #2a5bd7;
+  --accent-soft: #e6ecfb;
+  --accent-fg: #ffffff;
+  --err: #d02a3c;
+  --err-soft: #fbe8ea;
+  --warn: #e39a00;
+  --warn-soft: #fdf3dc;
+  --ok: #14804f;
+  --ok-soft: #e3f3ea;
+  --sel-row: #f0f4fd;
+  --sel-cell: #2a5bd7;
+  --edit-cell: #fff8e1;
+  --font-body: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', system-ui, sans-serif;
+  --font-mono: 'BIZ UDGothic', 'SFMono-Regular', Consolas, 'Yu Gothic', monospace;
+  --fs: 13px;
+  --row-h: 34px;
+  --radius: 6px;
+  --shadow: 0 8px 30px rgba(17, 20, 24, 0.12);
+  --dur: 120ms;
+}
+:root[data-density='compact'] { --row-h: 28px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #141618;
+    --bg-elev: #1c1f22;
+    --bg-sunken: #0f1113;
+    --fg: #e8eaed;
+    --fg-muted: #9aa0a6;
+    --fg-faint: #6b7178;
+    --line: #2a2e33;
+    --line-strong: #3b4047;
+    --accent: #6c93f0;
+    --accent-soft: #1d2a47;
+    --accent-fg: #0b1020;
+    --err: #ef6b78;
+    --err-soft: #3a1b20;
+    --warn: #f0b429;
+    --warn-soft: #3a2e12;
+    --ok: #3dbb7d;
+    --ok-soft: #14301f;
+    --sel-row: #1b2230;
+    --sel-cell: #6c93f0;
+    --edit-cell: #2b2612;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #141618;
+  --bg-elev: #1c1f22;
+  --bg-sunken: #0f1113;
+  --fg: #e8eaed;
+  --fg-muted: #9aa0a6;
+  --fg-faint: #6b7178;
+  --line: #2a2e33;
+  --line-strong: #3b4047;
+  --accent: #6c93f0;
+  --accent-soft: #1d2a47;
+  --accent-fg: #0b1020;
+  --err: #ef6b78;
+  --err-soft: #3a1b20;
+  --warn: #f0b429;
+  --warn-soft: #3a2e12;
+  --ok: #3dbb7d;
+  --ok-soft: #14301f;
+  --sel-row: #1b2230;
+  --sel-cell: #6c93f0;
+  --edit-cell: #2b2612;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; }
+}

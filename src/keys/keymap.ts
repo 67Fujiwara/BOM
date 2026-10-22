@@ -1,0 +1,135 @@
+// 1か所のキー定義表。ヘルプ・パレット・ステータスバーはここから生成する。
+export type Mode = 'nav' | 'edit' | 'palette' | 'panel'
+
+export interface KeyBinding {
+  /** コマンドID（commands/registry のキー） */
+  id: string
+  /** 表示用のキー（複数可）。"Ctrl+K" "Shift+A" "a" "ArrowUp" の形式 */
+  keys: string[]
+  /** どのモードで効くか */
+  mode: 'any' | 'nav' | 'edit'
+  section: string
+  label: string
+  /** ステータスバーに出す短い表記 */
+  hint?: string
+}
+
+export const KEYMAP: KeyBinding[] = [
+  // 5.1 全体
+  { id: 'palette.open', keys: ['Ctrl+K'], mode: 'any', section: '全体', label: 'コマンドパレットを開く', hint: 'Ctrl+K' },
+  { id: 'project.switch', keys: ['Ctrl+P'], mode: 'any', section: '全体', label: '案件を切り替える' },
+  { id: 'project.save', keys: ['Ctrl+S'], mode: 'any', section: '全体', label: '一時保存' },
+  { id: 'undo', keys: ['Ctrl+Z'], mode: 'any', section: '全体', label: '元に戻す' },
+  { id: 'redo', keys: ['Ctrl+Shift+Z', 'Ctrl+Y'], mode: 'any', section: '全体', label: 'やり直す' },
+  { id: 'export.excel', keys: ['Ctrl+E'], mode: 'any', section: '全体', label: 'Excelで出力' },
+  { id: 'copy.formatted', keys: ['Ctrl+Shift+C'], mode: 'any', section: '全体', label: '表示中の行と列を書式つきでコピー' },
+  { id: 'goto', keys: ['Ctrl+G'], mode: 'any', section: '全体', label: 'ID・型式・Noでジャンプ' },
+  { id: 'filter.focus', keys: ['/'], mode: 'nav', section: '全体', label: '絞り込み検索にフォーカス' },
+  { id: 'help', keys: ['?'], mode: 'nav', section: '全体', label: 'ショートカット一覧', hint: '?' },
+  { id: 'escape', keys: ['Escape'], mode: 'any', section: '全体', label: '1段階戻る' },
+
+  // 5.2 移動
+  { id: 'move.up', keys: ['ArrowUp'], mode: 'nav', section: '移動', label: '上のセル' },
+  { id: 'move.down', keys: ['ArrowDown'], mode: 'nav', section: '移動', label: '下のセル' },
+  { id: 'move.left', keys: ['ArrowLeft'], mode: 'nav', section: '移動', label: '左のセル' },
+  { id: 'move.right', keys: ['ArrowRight'], mode: 'nav', section: '移動', label: '右のセル' },
+  { id: 'row.next', keys: ['j', 'J'], mode: 'nav', section: '移動', label: '次の行' },
+  { id: 'row.prev', keys: ['k', 'K'], mode: 'nav', section: '移動', label: '前の行' },
+  { id: 'move.tab', keys: ['Tab'], mode: 'nav', section: '移動', label: '右のセル' },
+  { id: 'move.shiftTab', keys: ['Shift+Tab'], mode: 'nav', section: '移動', label: '左のセル' },
+  { id: 'move.home', keys: ['Home'], mode: 'nav', section: '移動', label: '行の先頭のセル' },
+  { id: 'move.end', keys: ['End'], mode: 'nav', section: '移動', label: '行の最後のセル' },
+  { id: 'move.top', keys: ['Ctrl+ArrowUp'], mode: 'nav', section: '移動', label: '表の先頭' },
+  { id: 'move.bottom', keys: ['Ctrl+ArrowDown'], mode: 'nav', section: '移動', label: '表の最後' },
+  { id: 'move.pageUp', keys: ['PageUp'], mode: 'nav', section: '移動', label: '1画面ぶん上' },
+  { id: 'move.pageDown', keys: ['PageDown'], mode: 'nav', section: '移動', label: '1画面ぶん下' },
+  { id: 'row.toggleOpen', keys: [' '], mode: 'nav', section: '移動', label: '行を開く・閉じる（相見積の比較と履歴）', hint: 'Space 開く' },
+  { id: 'view.1', keys: ['1'], mode: 'nav', section: '移動', label: 'ビュー: すべて' },
+  { id: 'view.2', keys: ['2'], mode: 'nav', section: '移動', label: 'ビュー: 購買提出用' },
+  { id: 'view.3', keys: ['3'], mode: 'nav', section: '移動', label: 'ビュー: 発注・入荷' },
+  { id: 'view.4', keys: ['4'], mode: 'nav', section: '移動', label: 'ビュー: 要確認' },
+  { id: 'view.5', keys: ['5'], mode: 'nav', section: '移動', label: 'ビュー: 変更あり' },
+  { id: 'view.6', keys: ['6'], mode: 'nav', section: '移動', label: 'ビュー: 商社別' },
+  { id: 'view.7', keys: ['7'], mode: 'nav', section: '移動', label: 'ビュー: 要決定' },
+  { id: 'view.8', keys: ['8'], mode: 'nav', section: '移動', label: 'ビュー: 正式見積' },
+  { id: 'category.prev', keys: ['['], mode: 'nav', section: '移動', label: '前の分類へ' },
+  { id: 'category.next', keys: [']'], mode: 'nav', section: '移動', label: '次の分類へ' },
+
+  // 5.3 編集
+  { id: 'cell.edit', keys: ['Enter', 'F2'], mode: 'nav', section: '編集', label: 'セルを編集', hint: 'Enter 編集' },
+  { id: 'cell.clear', keys: ['Delete', 'Backspace'], mode: 'nav', section: '編集', label: 'セルを空にする' },
+  { id: 'row.insertBelow', keys: ['Shift+Enter'], mode: 'nav', section: '編集', label: '下に行を追加して部品名を編集' },
+  { id: 'row.duplicate', keys: ['Shift+D'], mode: 'nav', section: '編集', label: '行を複製' },
+  { id: 'row.delete', keys: ['Shift+Delete'], mode: 'nav', section: '編集', label: '行を削除' },
+  { id: 'row.moveUp', keys: ['Alt+ArrowUp'], mode: 'nav', section: '編集', label: '行を1つ上へ' },
+  { id: 'row.moveDown', keys: ['Alt+ArrowDown'], mode: 'nav', section: '編集', label: '行を1つ下へ' },
+  { id: 'cell.copy', keys: ['Ctrl+C'], mode: 'nav', section: '編集', label: 'セルをコピー' },
+  { id: 'cell.paste', keys: ['Ctrl+V'], mode: 'nav', section: '編集', label: '貼り付け（Excelの複数セルも可）' },
+
+  // 5.4 BOM操作
+  { id: 'adopt.best', keys: ['a'], mode: 'nav', section: 'BOM操作', label: '推奨（最高スコア）で採用。見積済のみ', hint: 'a 推奨採用' },
+  { id: 'adopt.choose', keys: ['Shift+A'], mode: 'nav', section: 'BOM操作', label: '商社を選んで採用（1〜9）' },
+  { id: 'row.replace', keys: ['r'], mode: 'nav', section: 'BOM操作', label: '置き換え品を作る', hint: 'r 置換' },
+  { id: 'row.toggleOrdered', keys: ['o'], mode: 'nav', section: 'BOM操作', label: '発注済の切り替え', hint: 'o 発注' },
+  { id: 'row.toggleReceived', keys: ['i'], mode: 'nav', section: 'BOM操作', label: '入荷済の切り替え', hint: 'i 入荷' },
+  { id: 'row.toggleHidden', keys: ['h'], mode: 'nav', section: 'BOM操作', label: '行を隠す / 戻す' },
+  { id: 'sort.asc', keys: ['s'], mode: 'nav', section: 'BOM操作', label: '今の列で並び替え（昇順）' },
+  { id: 'sort.desc', keys: ['Shift+S'], mode: 'nav', section: 'BOM操作', label: '今の列で並び替え（降順）' },
+  { id: 'filter.byCell', keys: ['f'], mode: 'nav', section: 'BOM操作', label: '今のセルの値で絞り込み' },
+  { id: 'columns.panel', keys: ['c'], mode: 'nav', section: 'BOM操作', label: '列の表示パネル' },
+
+  // 5.5 チェック
+  { id: 'issue.next', keys: ['n'], mode: 'nav', section: 'チェック', label: '次の問題へ', hint: 'n 次の問題' },
+  { id: 'issue.prev', keys: ['Shift+N'], mode: 'nav', section: 'チェック', label: '前の問題へ' },
+  { id: 'issue.quickfix', keys: ['Ctrl+.'], mode: 'nav', section: 'チェック', label: '今の問題をその場で直す' },
+  { id: 'issue.ack', keys: ['x'], mode: 'nav', section: 'チェック', label: '警告を確認済みにする / 外す' },
+  { id: 'issue.sequence', keys: ['Ctrl+Shift+F'], mode: 'any', section: 'チェック', label: '順番に直すモード' },
+  { id: 'issue.defer', keys: ['Shift+ArrowRight'], mode: 'nav', section: 'チェック', label: '今の問題をあとで直す（次へ）' },
+
+  // v0.2 流れ（flow-design §14）
+  { id: 'publish', keys: ['Ctrl+Enter'], mode: 'nav', section: '流れ', label: '公開（自分の未公開の行＋下書き指摘）', hint: 'Ctrl+Enter 公開' },
+  { id: 'issue.raise', keys: ['Shift+I'], mode: 'nav', section: '流れ', label: '指摘を起票（種別は頭文字）', hint: 'Shift+I 指摘' },
+  { id: 'issue.reply', keys: ['Shift+R'], mode: 'nav', section: '流れ', label: '指摘に返信' },
+  { id: 'issue.bounce', keys: ['Shift+X'], mode: 'nav', section: '流れ', label: '指摘を差戻し（専用）' },
+  { id: 'adopt.cheapest', keys: ['Alt+A'], mode: 'nav', section: 'BOM操作', label: '最安で採用（スコア無視）。見積中なら先行採用' },
+  { id: 'pm.approve', keys: ['y'], mode: 'nav', section: '要決定', label: '承認 / 受入 / 許可（PM）' },
+  { id: 'pm.reject', keys: ['Shift+Y'], mode: 'nav', section: '要決定', label: '却下 / 受入（遅延許容）/ 現状維持（PM）' },
+  { id: 'weights.row', keys: ['w'], mode: 'nav', section: 'BOM操作', label: 'この行だけ重みを変える' },
+  { id: 'view.9', keys: ['9'], mode: 'nav', section: '移動', label: 'ビュー: 購買作業' },
+  { id: 'rev.prev', keys: ['<'], mode: 'nav', section: '移動', label: '5 変更あり: 前の Rev' },
+  { id: 'rev.next', keys: ['>'], mode: 'nav', section: '移動', label: '5 変更あり: 次の Rev' },
+]
+
+/** KeyboardEvent を "Ctrl+Shift+Z" 形式に正規化する */
+export function eventToKey(e: KeyboardEvent): string {
+  const parts: string[] = []
+  if (e.ctrlKey || e.metaKey) parts.push('Ctrl')
+  if (e.altKey) parts.push('Alt')
+  let key = e.key
+  // 印字可能な1文字はShiftを含んだ結果の文字で表す（? や A など）
+  const printable = key.length === 1
+  if (e.shiftKey && !printable) parts.push('Shift')
+  if (printable && e.shiftKey && /[A-Z]/.test(key)) parts.push('Shift')
+  // Ctrl/Alt と組む英字は大文字に揃える（Ctrl+k → Ctrl+K）
+  if (printable && (e.ctrlKey || e.metaKey || e.altKey) && /[a-z]/.test(key)) key = key.toUpperCase()
+  parts.push(key)
+  return parts.join('+')
+}
+
+const byKey = new Map<string, KeyBinding[]>()
+for (const b of KEYMAP) for (const k of b.keys) byKey.set(k, [...(byKey.get(k) ?? []), b])
+
+/** モードに応じたバインディングを探す */
+export function lookupBinding(key: string, mode: Mode): KeyBinding | undefined {
+  const list = byKey.get(key)
+  if (!list) return undefined
+  return list.find((b) => b.mode === 'any' || (b.mode === 'nav' && mode === 'nav') || (b.mode === 'edit' && mode === 'edit'))
+}
+
+export function bindingsFor(id: string): string[] {
+  return KEYMAP.find((b) => b.id === id)?.keys ?? []
+}
+
+export function formatKey(k: string): string {
+  return k === ' ' ? 'Space' : k.replace('ArrowUp', '↑').replace('ArrowDown', '↓').replace('ArrowLeft', '←').replace('ArrowRight', '→').replace('Escape', 'Esc')
+}

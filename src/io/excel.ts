@@ -62,6 +62,7 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     cols.push({ header: '追加費用', key: 'extraCost', width: 10 }, { header: 'スコア', key: 'score', width: 7 })
   }
   headerRow(sheet, cols)
+  let written = 0
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
     // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も購買には出さない（§5。承認する PM には出す）
@@ -78,18 +79,21 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     const e = target === 'internal' ? valuesFor(r, ws.user.role) : r
     const q = adoptedQuote(p, r)
     const amt = lineAmount(p, r)
-    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status], ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
+    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status] + (e !== r && r.working && Object.keys(r.working).length ? '（作業中の値・未公開）' : ''), ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
     if (target === 'archive') for (const sid of p.supplierIds) {
       const qq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
       rec[`q.${sid}.price`] = qq?.unitPrice ?? ''
       rec[`q.${sid}.lead`] = qq?.leadDays ?? ''
       rec[`q.${sid}.moq`] = qq?.moq ?? ''
     }
+    written++
     const row = sheet.addRow(rec)
     if (!isActive(r)) row.font = { strike: true, color: { argb: 'FF888888' } }
     const sup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId)
     if (sup && target !== 'supplier') row.getCell('adopted').fill = FILL('FF' + sup.color.slice(1) + '')
   }
+  // 商社向けに出す行が無ければファイルを作らない（見出しだけのファイルを商社に送らない）
+  if (target === 'supplier' && !written) throw new Error('商社向けに出す行がありません（公開した行だけが出ます。設計が Ctrl+Enter で公開してから）')
   if (target !== 'supplier') addInternalSheets(wb, ws, p)
   const buf = await wb.xlsx.writeBuffer()
   const suffix = target === 'supplier' ? `_${ws.suppliers.find((s) => s.id === supplierId)?.name ?? '商社向け'}` : target === 'archive' ? '_保管用' : ''
@@ -122,7 +126,9 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // チェック結果
   const chk = wb.addWorksheet('チェック結果')
   headerRow(chk, [{ header: 'ID', key: 'id', width: 7 }, { header: '列', key: 'field', width: 10 }, { header: '重大度', key: 'sev', width: 8 }, { header: '内容', key: 'msg', width: 40 }, { header: '種別', key: 'kind', width: 12 }, { header: '状態', key: 'status', width: 8 }])
-  for (const pr of checkProject(p, ws.rules).filter((x) => !hide(x.rowId))) {
+  // 設計以外の出力は公開値で判定する（作業中・承認待ちの値をチェック結果に出さない §5）
+  const checked = ws.user.role === 'design' ? p : { ...p, rows: p.rows.map((r) => ({ ...r, ...valuesFor(r, ws.user.role), working: undefined, pendingApproval: undefined })) }
+  for (const pr of checkProject(checked, ws.rules).filter((x) => !hide(x.rowId))) {
     const row = chk.addRow({ id: pr.rowId, field: pr.field, sev: pr.severity === 'error' ? 'エラー' : '警告', msg: pr.message, kind: 'チェック', status: '' })
     row.fill = pr.severity === 'error' ? ERR_FILL : WARN_FILL
   }
@@ -162,7 +168,8 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
     const dh = diff.addRow(['行ID', '項目', '旧', '新'])
     dh.font = { bold: true }
     for (const r of rows) {
-      const subs = p.submissions.filter((s) => s.rowIds.includes(r.id))
+      // 承認待ち・却下の変更セットの Rev は商社向けの差分に使わない（社内で決まっていない・取り消した変更）
+      const subs = p.submissions.filter((s) => s.rowIds.includes(r.id) && liveRev(s))
       const now = subs.at(-1)?.snapshot[r.id]
       const before = subs.at(-2)?.snapshot[r.id]
       if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
@@ -202,4 +209,9 @@ export async function copyFormatted(headers: string[], rows: string[][]) {
   } catch {
     await navigator.clipboard.writeText(tsv)
   }
+}
+
+/** 決まった Rev か（承認待ち・却下の変更セット・取り消した Rev でない） */
+function liveRev(s: Project['submissions'][number]): boolean {
+  return !s.revoked && !(s.changeSet && (!s.changeSet.approved || s.changeSet.rejected))
 }

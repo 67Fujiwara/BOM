@@ -280,6 +280,15 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           const next = nextBest(p, r, ws.suppliers)
           if (!next) return (err = '必要日を満たす次点の商社がありません（有効期限切れなら再見積を依頼。受入・特急・代替依頼から選んでください）')
           const from = r.adoptedSupplierId
+          // 前の商社への正式依頼は取り下げる（購買に知らせる）。前の正式回答も外す
+          const fq = from ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === from && !x.stale) : undefined
+          if (fq) {
+            if (fq.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`
+            fq.formalPrice = null
+            fq.formalLeadDays = null
+            fq.formalValidUntil = null
+            fq.formalRequestNo = undefined
+          }
           r.adoptedSupplierId = next.supplierId
           r.adoptReason = `次点へ（${c}）`
           r.scoreSnapshot = next.total
@@ -466,7 +475,8 @@ export function applySettings(patch: Partial<Project['settings']> & { dueDate?: 
       }
     }
     if (dueDate !== undefined || rest.processDays !== undefined) {
-      const sub = p.submissions.at(-1)
+      // 承認待ち・却下の変更セットの Rev には書かない（却下で起因が消える・購買の変更点に出ないため）。決まった最後の Rev に
+      const sub = [...p.submissions].reverse().find((x) => !x.revoked && !(x.changeSet && (!x.changeSet.approved || x.changeSet.rejected)))
       if (sub) for (const r of p.rows) if (isActive(r) && rowNeedDate(p, r) !== oldNeed.get(r.id)) {
         if (!sub.rowIds.includes(r.id)) sub.rowIds.push(r.id)
         sub.causes[r.id] = '案件納期変更'

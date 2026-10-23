@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { ChangeReason, DesignFields, Issue, Project, Removal, Role, Row, Submission } from '@/model/types'
 import { DESIGN_FIELDS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { colDef, supplierOfCol } from '@/model/columns'
-import { effective, fixedSupplierId, makerTargets, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
+import { effective, fixedSupplierId, makerTargets, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty, routeSurplusToPm } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { parseTable } from '@/io/paste'
@@ -206,7 +206,13 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       req.resolution = '発注を取り消し、設計が置き換え品を作る（r）'
     }
     ;(r as unknown as Record<string, unknown>)[colKey] = value
-    if (colKey === 'received' && value === true) r.ordered = true
+    // 入荷記録（発注日・入荷日）を残す。商社の納期遵守率の集計に使う（§8.1）
+    if (colKey === 'ordered') r.orderedAt = value === true ? (r.orderedAt ?? todayStr()) : undefined
+    if (colKey === 'received') r.receivedAt = value === true ? todayStr() : undefined
+    if (colKey === 'received' && value === true) {
+      if (!r.ordered) r.orderedAt = r.orderedAt ?? todayStr()
+      r.ordered = true
+    }
     if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, r.flags.early ? 'selected' : 'formalQuoted')
     if (colKey === 'received' && value === false && r.status === 'received') setStatus(r, 'ordered')
   }
@@ -261,6 +267,7 @@ export function restoreOrder(rowId: string): string | null {
     x.flags.countermeasure = undefined
     x.flags.orderCancelApproved = false
     x.ordered = true
+    x.orderedAt = x.orderedAt ?? todayStr()
     setStatus(x, 'ordered')
     const req = [...p2.issues].reverse().find((i) => i.rowId === rowId && i.kind === '発注後変更依頼' && (i.status === 'confirmed' || i.status === 'inProgress'))
     if (req) {
@@ -591,6 +598,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
       i.at = now
       const def = ISSUE_KINDS.find((k) => k.kind === i.kind)!
       i.dueAt = addBusinessDays(today, def.dueDays, p.settings.holidays)
+      routeSurplusToPm(p, i)
       issued++
     }
     // 行の公開：指摘対応と変更セットを別 Rev に分ける
@@ -659,7 +667,8 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
         r.publishedRev = sub.rev
         r.lastChangeCause = sub.causes[r.id] ?? r.lastChangeCause
         r.deferredRules = r.deferredRules.filter((id) => activeDeferred(r, ws.rules, p).includes(id))
-        sub.snapshot[r.id] = { ...pick({ ...r, ...(r.pendingApproval ?? {}) }), status: r.status }
+        // 承認待ちの値は、その変更セットの Rev のスナップショットにだけ入れる（ほかの Rev には公開値。§5）
+        sub.snapshot[r.id] = { ...pick(r.pendingApproval && r.pendingRev === sub.rev ? { ...r, ...r.pendingApproval } : r), status: r.status }
         if (r.status === 'submitted') r.dueAt = addBusinessDays(today, 1, p.settings.holidays)
       }
       // 取消行も差分に（変更セットの Rev に入れる）

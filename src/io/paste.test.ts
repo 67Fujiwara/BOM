@@ -307,3 +307,95 @@ describe('ラウンド 13 の取り込み（表題欄）', () => {
     expect(s.rows.map((x) => [x.model, x.maker, x.qtyNeeded])).toEqual([['MY4N', 'オムロン', 4]])
   })
 })
+
+describe('ラウンド 14 の取り込み（新人）', () => {
+  it('変更図の削除の行（新の列が空・備考に削除、追加の行がある表）は取り込まない', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\t変更\nタイマ\tH3Y-2\t\tオムロン\t1\t\t削除\n端子台\t\tXW2B-20G4\tオムロン\t\t2\t追加')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N-D2', 4], ['端子台', 'XW2B-20G4', 2]])
+    expect(r.warnings[0]).toContain('削除された部品')
+  })
+  it('〃・同上は上の行、同左は左のセルの値', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N-D2\t〃\t2\nタイマ\tH3CR-A8\t同上\t1\n〃\tH3CR-A8N\t〃\t1')
+    expect(r.rows.map((x) => [x.name, x.maker])).toEqual([['リレー', 'オムロン'], ['リレー', 'オムロン'], ['タイマ', 'オムロン'], ['タイマ', 'オムロン']])
+    expect(r.warnings.join()).toContain('〃')
+  })
+  it('表題欄「品名｜第4ライン制御盤｜型式｜CP-4L｜数量｜1台｜備考｜客先」を見出しにしない', () => {
+    const r = parseBomPaste('品名\t第4ライン制御盤\t型式\tCP-4L\t数量\t1台\t備考\t客先 ABC\n作成\t山田\t承認\t田中\n\nNo\t品名\t形式\tメーカー\t員数\n1\tリレー\tMY4N-D2 DC24\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N-D2 DC24', 4], ['タイマ', 'H3CR-A8', 2]])
+  })
+  it('以下次葉・製品名つきのページの表題・部品点数合計・合計 6 ヶ・以上 2 品目を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n-以下次葉-\t\t\n制御盤A 部品表 2/2\t\t\n部品点数合計 2\t\t\n合計 6 ヶ\t\t\n以上 2 品目\t\t\n端子台\tXW2B\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+})
+
+describe('ラウンド 14 の xlsx（新人）', () => {
+  it('縦に結合したデータのセル（分類・メーカ）は各行に値、横に結合した見出しは左上だけ', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRows([['分類', '品名', '型式', '', 'メーカー', '数量'], ['制御', 'リレー', 'MY4N', '', 'オムロン', 2], ['', 'タイマ', 'H3CR', '', '', 1], ['', 'リレー', 'MY2N', '', '', 3]])
+    ws.mergeCells('C1:D1')
+    ws.mergeCells('A2:A4')
+    ws.mergeCells('E2:E4')
+    const tsv = await xlsxToTsv((await wb.xlsx.writeBuffer()) as ArrayBuffer)
+    const r = parseBomPaste(tsv)
+    expect(r.rows.map((x) => [x.category, x.name, x.maker])).toEqual([['制御', 'リレー', 'オムロン'], ['制御', 'タイマ', 'オムロン'], ['制御', 'リレー', 'オムロン']])
+  })
+})
+
+describe('ラウンド 14 の取り込み（ベテラン）', () => {
+  it('ページの見出しに列が足りないページも、ある列だけ並べ直す（無い列は空）', () => {
+    const a = parseBomPaste('部品名\t型式\tメーカ\t員数\nリレー\tMY4N\tオムロン\t4\n部品名\t型式\t員数\n端子台\tXW2B\t2\nヒューズ\tF-10\t4')
+    expect(a.rows.map((x) => [x.name, x.model, x.maker, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 'オムロン', 4], ['端子台', 'XW2B', '', 2], ['ヒューズ', 'F-10', '', 4]])
+    const b = parseBomPaste('回路記号\t部品名\t型式\t数量\nKA1\tリレー\tMY4N\t4\n部品名\t型式\t数量\n端子台\tXW2B\t2')
+    expect(b.rows.map((x) => [x.ref, x.name, x.model, x.qtyNeeded])).toEqual([['KA1', 'リレー', 'MY4N', 4], ['', '端子台', 'XW2B', 2]])
+  })
+  it('変更後の型式・変更前の数量／変更後の数量・新しい型式・Prev. P/N・新台数・新図番', () => {
+    expect(parseBomPaste('部品名\t現在の型式\t変更後の型式\t数量\nリレー\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('部品名\t型式\t変更前の数量\t変更後の数量\nリレー\tMY4N\t10\t12').rows[0].qtyNeeded).toBe(12)
+    expect(parseBomPaste('部品名\t今の型式\t新しい型式\t数量\nリレー\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('Description\tPrev. P/N\tP/N\tQty\nRelay\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('部品名\t型式\t旧台数\t新台数\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(3)
+    expect(parseBomPaste('部品名\t型式\t旧図番\t新図番\t数量\nリレー\tMY4N\tD-100\tD-200\t1').rows[0].drawing).toBe('D-200')
+  })
+  it('上の段に変更前／変更後、下の段に項目を繰り返す様式は変更後を読む（部品名は上の段だけでも）', () => {
+    const a = parseBomPaste('\t変更前\t\t\t変更後\t\t\n部品名\t型式\tメーカ\t数量\t型式\tメーカ\t数量\nリレー\tMY2N\tオムロン\t10\tMY4N\tオムロン\t12')
+    expect(a.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 12]])
+    const b = parseBomPaste('部品名\t旧\t\t新\t\n\t型式\t数量\t型式\t数量\nリレー\tMY2N\t10\tMY4N\t12')
+    expect(b.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 12]])
+  })
+  it('2/3 ページ・2/3頁・ページ 2/3・2ページ目・第2頁・Sheet 2 を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n2/3 ページ\t\t\n2/3頁\t\t\nページ 2/3\t\t\n2ページ目\t\t\n第2頁\t\t\nSheet 2\t\t\n端子台\tXW2B\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+  it('2 段の見出しの下の段に単位の注記・Rev.A／B・印が 1 つだけでも 1 段にまとめる', () => {
+    const a = parseBomPaste('部品名\t型式\t\t数量\t\t単位\n\t旧\t新\t旧\t新\t(個)\nリレー\tMY2N\tMY4N\t10\t12\t個')
+    expect(a.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N', 12]])
+    const b = parseBomPaste('部品名\t型式\t\t数量\n\tRev.A\tRev.B\t\nリレー\tMY2N\tMY4N\t3')
+    expect(b.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N', 3]])
+  })
+  it('新の列の －・〃・同左・変更なし は変えていない、削除・廃止は取り込まない', () => {
+    const r = parseBomPaste('部品名\t型式\t新型式\t数量\t新数量\nリレー\tMY2N\tMY4N\t1\t2\n端子台\tXW2B\t－\t3\t〃\nヒューズ\tF-10\t変更なし\t4\t同左\nタイマ\tH3Y\t削除\t1\t削除')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 2], ['端子台', 'XW2B', 3], ['ヒューズ', 'F-10', 4]])
+  })
+  it('ページの見出しの旧／新の並びが違っても新の列、見出しの語だけの銘板の行は見出しにしない', () => {
+    const a = parseBomPaste('部品名\t型式(旧)\t型式(新)\t数量\nリレー\tMY2N\tMY4N\t1\n部品名\t新型式\t旧型式\t数量\n端子台\tXW2B\tXW2A\t2')
+    expect(a.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+    const b = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t1\n部品名\t型式(旧)\t型式(新)\t数量\n端子台\tXW2A\tXW2B\t2')
+    expect(b.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+    const c = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t1\n型式表示板\t部品名札\tメーカ銘板\t数量表示ラベル\n端子台\tXW2B\tオムロン\t2')
+    expect(c.rows.at(-1)).toMatchObject({ name: '端子台', model: 'XW2B' })
+  })
+})
+
+describe('ラウンド 14 のページの表題（ベテラン）', () => {
+  it('部品構成表 (2/3)・購入品リスト 2/3・部品明細表 P.2・材料表 (3/3)・部品表 (2/3) 制御盤A・部品表 Rev.B (2/3)・BOM - Page 2 of 3', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n部品構成表 (2/3)\t\t\n購入品リスト 2/3\t\t\n部品明細表 P.2\t\t\n材料表 (3/3)\t\t\n部品表 (2/3) 制御盤A\t\t\n部品表 Rev.B (2/3)\t\t\nBOM - Page 2 of 3\t\t\n端子台\tXW2B\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+  it('項目以外の列が多い見出しの上の表題欄（数量 2台）を見出しにしない', () => {
+    const r = parseBomPaste('品名\t制御盤A\t型式\tCP-100\t数量\t2台\tメーカ\t自社\n\nNo\t品名\t型式\tメーカ\t数量\t単位\t単価\t金額\t納期\t購入先\t手配区分\t仕様\t備考\n1\tケーブル\tVCTF 2C\t富士\t20\tm\t100\t2000\t5\tA\t購入\t-\t\n')
+    expect(r.rows.map((x) => [x.name, x.qtyNeeded, x.unit])).toEqual([['ケーブル', 20, 'm']])
+  })
+})

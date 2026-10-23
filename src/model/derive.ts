@@ -260,14 +260,19 @@ export function quoteResponses(p: Project, row: Row): { answered: number; total:
   // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）。
   // 案件の相見積先から外した・取引不可にした商社は、回答が無ければ待たない
   const waitable = (id: string) => p.supplierIds.includes(id) && knownSuppliers.find((x) => x.id === id)?.tradable !== false
-  const ids = new Set([...qs.filter((q) => done(q) || waitable(q.supplierId)).map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter(waitable)])
-  return { answered: qs.filter(done).length, total: ids.size }
+  // 取引停止にした商社の回答は数えない（その回答では選べない）
+  const tradable = (id: string) => knownSuppliers.find((x) => x.id === id)?.tradable !== false
+  const counted = qs.filter((q) => done(q) && tradable(q.supplierId))
+  const ids = new Set([...counted.map((q) => q.supplierId), ...qs.filter((q) => waitable(q.supplierId)).map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter(waitable)])
+  return { answered: counted.length, total: ids.size }
 }
 
 /** 見積済の成立条件 */
 export function quoteComplete(p: Project, row: Row, today = todayStr()): boolean {
   const { answered, total } = quoteResponses(p, row)
   if (total === 0) return false
+  // 取引できる商社の有効な回答（辞退でない）が 1 つも無ければ、選べないので見積済にしない（購買が次の商社に頼む）
+  if (!isFixedProcurement(row) && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && knownSuppliers.find((x) => x.id === q.supplierId)?.tradable !== false)) return false
   switch (p.settings.quoteCompleteRule) {
     case 'all':
       return answered === total
@@ -342,4 +347,23 @@ export function makerTargets(p: Project, maker: string | undefined | null, suppl
   const explicit = ids.filter((id) => listed(id) && handlesMaker(suppliers.find((x) => x.id === id)!.handledMakers, maker))
   if (!explicit.length) return ids
   return ids.filter((id) => !listed(id) || explicit.includes(id))
+}
+
+/** 最小ロット・入数の丸めで余って買う金額（選定後は採用商社、選定前は MOQ がいちばん効く商社） */
+export function surplusOf(p: Project, row: Row): { quote: Project['quotes'][number] | undefined; rounded: number; amount: number } {
+  const qs = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.unitPrice != null)
+  const q = (row.adoptedSupplierId ? qs.find((x) => x.supplierId === row.adoptedSupplierId) : undefined) ?? [...qs].sort((a, b) => (b.moq ?? 0) - (a.moq ?? 0))[0]
+  const rounded = roundedQty(row.qtyNeeded, q?.moq, row.packQty, row.unit)
+  return { quote: q, rounded, amount: (rounded - row.qtyNeeded) * (q?.unitPrice ?? 0) }
+}
+
+/** 最小ロットの指摘を発行したとき、余剰金額が閾値（§9.1）を超えていれば PM の要決定（閾値超）に載せる */
+export function routeSurplusToPm(p: Project, issue: Issue): void {
+  if (issue.kind !== '最小ロット') return
+  const r = p.rows.find((x) => x.id === issue.rowId)
+  if (!r || r.flags.pmPending) return
+  if (surplusOf(p, r).amount > p.settings.surplusAmount) {
+    r.flags.pmPending = true
+    r.flags.pmReason = '閾値超'
+  }
 }

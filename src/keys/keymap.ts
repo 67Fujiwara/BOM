@@ -68,7 +68,7 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'cell.paste', keys: ['Ctrl+V'], mode: 'nav', section: '編集', label: '貼り付け（Excelの複数セルも可）' },
 
   // 5.4 BOM操作
-  { id: 'adopt.best', keys: ['a', 'Ctrl+Alt+A'], mode: 'nav', section: 'BOM操作', label: '推奨（最高スコア）で採用。見積済のみ', hint: 'a 推奨採用' },
+  { id: 'adopt.best', keys: ['a'], mode: 'nav', section: 'BOM操作', label: '推奨（最高スコア）で採用。見積済のみ', hint: 'a 推奨採用' },
   { id: 'adopt.choose', keys: ['Shift+A'], mode: 'nav', section: 'BOM操作', label: '商社を選んで採用（1〜9）' },
   { id: 'row.replace', keys: ['r'], mode: 'nav', section: 'BOM操作', label: '置き換え品を作る', hint: 'r 置換' },
   { id: 'row.toggleOrdered', keys: ['o'], mode: 'nav', section: 'BOM操作', label: '発注済の切り替え', hint: 'o 発注' },
@@ -92,7 +92,7 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'issue.raise', keys: ['Shift+I'], mode: 'nav', section: '流れ', label: '指摘を起票（種別は頭文字）', hint: 'Shift+I 指摘' },
   { id: 'issue.reply', keys: ['Shift+R'], mode: 'nav', section: '流れ', label: '指摘に返信' },
   { id: 'issue.bounce', keys: ['Shift+X'], mode: 'nav', section: '流れ', label: '指摘を差戻し（専用）' },
-  { id: 'adopt.cheapest', keys: ['Alt+A'], mode: 'nav', section: 'BOM操作', label: '最安で採用（スコア無視）。見積中なら先行採用' },
+  { id: 'adopt.cheapest', keys: ['Ctrl+Alt+A'], mode: 'nav', section: 'BOM操作', label: '最安で採用（スコア無視）。見積中なら先行採用' },
   { id: 'pm.approve', keys: ['y'], mode: 'nav', section: '要決定', label: '承認 / 受入 / 許可（PM）' },
   { id: 'pm.reject', keys: ['Shift+Y'], mode: 'nav', section: '要決定', label: '却下 / 受入（遅延許容）/ 現状維持（PM）' },
   { id: 'weights.row', keys: ['w'], mode: 'nav', section: 'BOM操作', label: 'この行だけ重みを変える' },

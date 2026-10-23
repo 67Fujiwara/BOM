@@ -160,11 +160,11 @@ export function startEdit(initial?: string) {
   const r = cursorRow()
   if (!r) return toast(s.cursorRow?.startsWith('g:') ? '分類の見出しです（Space で折りたたみ。↓ で行へ）' : '行を選んでください（↓ で先頭の行へ）', 'info')
   const err = rows.canEdit(s.cursorCol)
-  if (err) return toast(`${err}${s.ws.user.role !== 'design' && colDef(s.cursorCol)?.design ? '。変えてほしいときは Shift+I で指摘' : ''}`, 'err')
+  if (err) return toast(`${err}${s.ws.user.role !== 'design' && colDef(s.cursorCol)?.design ? '。変えてほしいときは Alt+Shift+I で指摘' : ''}`, 'err')
   if (!isActive(r)) return toast(`${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`, 'err')
   const d = colDef(s.cursorCol)!
   // 打ち終わってから拒否しない: 発注済以降の行の設計列は入口で止める
-  if (d.design && (r.status === 'ordered' || r.status === 'received')) return toast(`${r.id} は発注済以降の行です。設計列は変えられません（Shift+I → h 発注後変更依頼）`, 'err')
+  if (d.design && (r.status === 'ordered' || r.status === 'received')) return toast(`${r.id} は発注済以降の行です。設計列は変えられません（Alt+Shift+I → h 発注後変更依頼）`, 'err')
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
@@ -205,7 +205,9 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   }
   const r = s.cursorRow ? s.project().rows.find((x) => x.id === s.cursorRow) : undefined
   if (!r) {
+    const v = s.editValue
     cancelEdit()
+    toast(`編集中の行が別のタブで削除されたので、入力「${v}」は保存していません`, 'err')
     return false
   }
   const d = colDef(s.cursorCol)!
@@ -357,9 +359,14 @@ function gotoProblem(delta: 1 | -1): boolean {
     return false
   }
   const s = st()
-  const idx = list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
-  const next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
-  jumpToRow(list[next].rowId, list[next].field)
+  // ID・状態の列で使っているときは列を変えずに行だけ移る（x → n → x … を ID の列で続けられる）
+  const stay = s.cursorCol === 'id' || s.cursorCol === 'status'
+  const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
+  let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
+  // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
+  if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
+  if (stay) jumpToRow(list[next].rowId)
+  else jumpToRow(list[next].rowId, list[next].field)
   return true
 }
 
@@ -537,12 +544,12 @@ export function publishFlow(rowIds?: string[]) {
   const plan = rows.planPublish(s.project(), s.ws.rules, user, rowIds)
   if (plan.rows.length === 0 && plan.draftIssues.length === 0) {
     const errs = user.role === 'design' ? s.project().rows.filter((r) => isActive(r) && checkRow(r, s.ws.rules, s.project()).some((x) => x.severity === 'error')).length : 0
-    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（n で移動）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
+    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（F8 で移動）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Alt+Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
   }
   // 先にゲートを確かめる（理由を聞いてから拒否しない）
   const gate = plan.blockedErrors[0] ?? plan.blockedWarnings[0]
-  if (plan.blockedErrors.length) return toast(`公開できません: エラー ${plan.blockedErrors.length} 件（${gate.rowId} ${gate.message} … n で移動して直す）`, 'err')
-  if (plan.blockedWarnings.length) return toast(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${gate.rowId} ${gate.message} … 直すか x で確認済みに）`, 'err')
+  if (plan.blockedErrors.length) return toast(`公開できません: エラー ${plan.blockedErrors.length} 件（${gate.rowId} ${gate.message} … F8 で移動して直す）`, 'err')
+  if (plan.blockedWarnings.length) return toast(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${gate.rowId} ${gate.message} … 直すか Alt+x で確認済みに）`, 'err')
   if (plan.deferred.length) return toast(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}）`, 'err')
   if (plan.nonIssueChanges.length && user.role === 'design') {
     prompt(`変更セット（${plan.nonIssueChanges.length} 行: ${plan.nonIssueChanges.slice(0, 5).join(', ')}${plan.nonIssueChanges.length > 5 ? ' …' : ''}）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter`, { options: [...CHANGE_REASONS], index: -1, placeholder: '変更番号（任意。例: ECN-2026-012）', showText: true, digitsSelect: true }, (choice, text) => {
@@ -862,7 +869,7 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   // 最初の問題のセルにカーソルを置く（n は「次の」問題へ進むので、ここから直す）
   const first = problemCells()[0]
   if (first) jumpToRow(first.rowId, first.field)
-  toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、n で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
+  toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
 }
 function restoreBackup(b: Backup) {
   let res: ReturnType<typeof sanitizeWorkspace>
@@ -884,7 +891,9 @@ function exportBackup(b: Backup) {
   const blob = new Blob([b.raw], { type: 'application/json' })
   const a = document.createElement('a')
   a.href = URL.createObjectURL(blob)
-  a.download = `bom-workspace-backup-${b.at.slice(0, 19).replace(/[:T]/g, '-')}.json`
+  const d = new Date(b.at)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  a.download = `bom-workspace-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.json`
   a.click()
   setTimeout(() => URL.revokeObjectURL(a.href), 5000)
   toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
@@ -906,6 +915,7 @@ function replaceWorkspace(ws: Workspace): boolean {
   }
   st().clearHistory()
   set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
+  ensureCursor()
   return true
 }
 function nextProjectId(): string {
@@ -1086,7 +1096,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       // PM が 7 で決めることの無い行に Enter: 次の手を案内する（「権限なし」で止めない）
       if (role === 'pm' && r && s.view === 7 && rows.canEdit(s.cursorCol)) {
         const ans = p.issues.find((i) => i.rowId === r.id && (i.status === 'answered' || i.status === 'fixed') && i.by.role === 'pm')
-        return toast(`${r.id} に要決定はありません${ans ? `（${ans.id} は${ans.status === 'answered' ? '回答済' : '対応済'}。x で受け入れ、Space で中身を見る）` : '（Space で詳細、n で次の要決定へ）'}`, 'info')
+        return toast(`${r.id} に要決定はありません${ans ? `（${ans.id} は${ans.status === 'answered' ? '回答済' : '対応済'}。Alt+x で受け入れ、Space で中身を見る）` : '（Space で詳細、F8 で次の要決定へ）'}`, 'info')
       }
       return startEdit()
     case 'cell.clear': {
@@ -1201,9 +1211,20 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (!need()) return
       if (rows.setCell(r!.id, 'received', r!.received ? '' : '1', r!.received ? '入荷済を外す' : '入荷済')) toast(`${r!.id}: ${r!.received ? '入荷済を外しました' : '入荷済にしました'}`, 'info')
       return
-    case 'row.toggleHidden':
+    case 'row.toggleHidden': {
       if (!need()) return
-      return rows.toggleHidden(r!.id)
+      // 隠した行がこのビューから消えるなら、カーソルを同じ位置の行（無ければ上の行）へ移す（行を選んでいない状態にしない）
+      const before = vm().rows.map((x) => x.id)
+      const at = before.indexOf(r!.id)
+      rows.toggleHidden(r!.id)
+      const after = vm().rows.map((x) => x.id)
+      if (at >= 0 && !after.includes(r!.id)) {
+        const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
+        if (next) set({ cursorRow: next })
+        else ensureCursor()
+      }
+      return
+    }
     case 'sort.asc':
     case 'sort.desc': {
       if (!s.cursorRow) return toast('並び替える列にカーソルを置いてください（↓ で表へ）', 'info')
@@ -1223,7 +1244,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       }
       const value = cellText(r!, s.cursorCol, vm().ctx).text
       set({ cellFilter: { col: s.cursorCol, value } })
-      return toast(`${colDef(s.cursorCol)?.label} =「${value || '（空）'}」で絞り込みました（f か Esc で解除）`, 'info')
+      return toast(`${colDef(s.cursorCol)?.label} =「${value || '（空）'}」で絞り込みました（Esc か Alt+f で解除）`, 'info')
     }
     case 'columns.panel':
       return openPanel({ kind: 'columns', index: 0 })
@@ -1328,7 +1349,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'quotes.import': {
       if (role !== 'purchasing') return toast('権限なし（取り込みは購買）', 'err')
-      const ids = p.supplierIds.length ? p.supplierIds : s.ws.suppliers.filter((x) => x.tradable).map((x) => x.id)
+      // 相見積先と、見積を頼んだ指定先の商社（相見積先に無い商社も）
+      const asked = [...new Set(p.quotes.filter((q) => !q.stale).map((q) => q.supplierId))].filter((id) => !p.supplierIds.includes(id))
+      const ids = p.supplierIds.length || asked.length ? [...p.supplierIds, ...asked] : s.ws.suppliers.filter((x) => x.tradable).map((x) => x.id)
       if (!ids.length) return toast('商社マスタに商社がありません（Ctrl+K → 商社を追加）', 'err')
       return prompt('どの商社の回答ですか', { options: ids.map((sid) => `${sid} ${s.ws.suppliers.find((x) => x.id === sid)?.name ?? ''}`), showText: false }, (choice) => {
         const sid = (choice ?? `${ids[0]} `).split(' ')[0]
@@ -1579,7 +1602,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },
   { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
-  { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ?' },
+  { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ? alt f8 英字 ショートカット' },
 ]
 
 /** ショートカット表の操作の言い換え（パレットで探す言葉） */

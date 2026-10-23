@@ -38,7 +38,9 @@ export function viewColumns(st: State, p: Project): string[] {
   let cols: string[]
   if (v.columns) cols = [...v.columns]
   else cols = COLUMNS.filter((c) => !c.perSupplier && !st.hiddenCols.includes(c.key)).map((c) => c.key)
-  if (st.view === 6) for (const sid of p.supplierIds) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.validUntil@${sid}`)
+  // 相見積先に加えて、見積を頼んだ商社（指定系の行の指定先で、相見積先に無い商社）の列も出す
+  const quoted = [...p.supplierIds, ...new Set(p.quotes.filter((q) => !q.stale && !p.supplierIds.includes(q.supplierId)).map((q) => q.supplierId))]
+  if (st.view === 6) for (const sid of quoted) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.validUntil@${sid}`)
   if (st.view === 9) for (const sid of p.supplierIds) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`)
   if (st.view === 8) cols.push('q.formalPrice@A', 'q.formalLeadDays@A', 'q.formalValidUntil@A', 'q.formalDiffReason@A')
   if (st.view === 3) cols.push('extraCost', 'extraCostKind')

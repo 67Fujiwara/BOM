@@ -146,9 +146,7 @@ export function parseBomPaste(text: string): PasteResult {
     } else mapping = width <= 3 ? (['name', 'model', 'maker'] as BomField[]).slice(0, width) : DEFAULT_ORDER.slice(0, width)
     warnings.push(`見出しが無いので、列を「${mapping.map((f) => (f ? FIELD_LABEL[f] : '（使わない）')).join('・')}」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください`)
   }
-  const used = mapping.filter(Boolean)
-  const dup = used.find((f, i) => used.indexOf(f) !== i)
-  if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
+
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
   const isTotal = (l: string[]) => l.some((c) => /^(小計|合計|総計|計|total|subtotal)$/i.test(c.trim()))
@@ -157,6 +155,10 @@ export function parseBomPaste(text: string): PasteResult {
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
   // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
   mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
+  // 同じ項目に当たる列が 2 つあれば、左の列を使う（番号だけの列を外したあとで判定する）
+  const used = mapping.filter(Boolean)
+  const dup = used.find((f, i) => used.indexOf(f) !== i)
+  if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
   let badQty = 0
   let badUnit = 0
   const rows = body.map((line, i) => {
@@ -194,6 +196,8 @@ export function parseBomPaste(text: string): PasteResult {
   })
   if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。4 要確認で直してください）`)
   if (badUnit) warnings.push(`単位を読めない行が ${badUnit} 行あります（「個」にしました）`)
+  const noResult = body.reduce((n, l) => n + split(l).filter((c) => c.trim() === '#数式の結果なし').length, 0)
+  if (noResult) warnings.push(`数式の計算結果が入っていないセルが ${noResult} 個あります（Excel で開いて保存し直してから読むと値が入ります）`)
   return { rows, mapping, header: hasHeader ? first : null, delimiter, warnings }
 }
 
@@ -232,7 +236,9 @@ function cellToText(v: unknown): string {
     if (Array.isArray(o.richText)) return (o.richText as Array<{ text?: unknown }>).map((t) => String(t.text ?? '')).join('')
     // エラーのセル（#REF! など）は空にせず、そのまま見せる（数量なら「読めない」として知らせる）
     if ('error' in o) return String(o.error ?? '#エラー')
-    if ('result' in o) return cellToText(o.result)
+    if ('result' in o && o.result !== undefined) return cellToText(o.result)
+    // 計算結果を持たない数式（Excel 以外のツールが書いたファイル）は空にせず印を残す（数量なら「読めない」として知らせる）
+    if ('formula' in o || 'sharedFormula' in o) return '#数式の結果なし'
     if ('text' in o) return cellToText(o.text)
     if ('hyperlink' in o) return String(o.hyperlink)
     return ''

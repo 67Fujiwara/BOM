@@ -35,10 +35,9 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
   if (row.procurement === '客先指定品') {
     // 一度決まった商社（採用済み・見積を依頼した商社）は、値を入れた順番で変えない
     if (row.adoptedSupplierId) return row.adoptedSupplierId
-    // 辞退（取扱なし）した商社は飛ばし、単価の入った商社 → 依頼中の商社 → そのメーカを扱う商社の順（購買が 6 で別の商社に単価を入れれば、その商社になる）
+    // 最初に頼んだ商社（辞退していないもの）。辞退したら次に頼んだ・単価を入れた商社 → そのメーカを扱う商社の順。
+    // 頼んだ商社の回答前に別の商社の欄に値を入れても、指定先は変わらない
     const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1)
-    const priced = live.find((x) => x.unitPrice != null)
-    if (priced) return priced.supplierId
     if (live[0]) return live[0].supplierId
     const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
     const cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
@@ -87,6 +86,8 @@ export function ball(p: Project, row: Row): Role | null {
   const pending = issues.find((i) => i.status === 'fixed' || i.status === 'answered')
   if (pending) return pending.by.role === 'pm' ? 'pm' : pending.by.role
   if (f.altPending) return 'design'
+  // 指定商社の指定先が辞退（取扱なし）: 設計が指定先を変える
+  if (row.procurement === '指定商社' && designatedDeclined(p, row)) return 'design'
   if (f.countermeasure === '代替品検討') return 'design'
   if (f.countermeasure === '商社変更' || f.delegated) return 'purchasing'
   if (row.status === 'draft' || hasWork(row)) return 'design'
@@ -255,10 +256,16 @@ export function hasWork(r: Row): boolean {
 }
 
 /** 決定の付帯情報（先行発注の申請内容・特急の上限金額）を文にする。詳細・Excel の変更点に出す */
-export function decisionExtra(d: { payload?: Record<string, unknown> }): string {
+export function decisionExtra(d: { kind?: string; payload?: Record<string, unknown> }): string {
   const pl = d.payload ?? {}
   const parts: string[] = []
   if (typeof pl.request === 'string' && pl.request) parts.push(`申請: ${pl.request}`)
-  if (typeof pl.amount === 'number') parts.push(`金額 ¥${pl.amount.toLocaleString()}`)
+  if (typeof pl.amount === 'number') parts.push(`${d.kind === '特急・分納' ? '上限' : '金額'} ¥${pl.amount.toLocaleString()}`)
   return parts.join('・')
+}
+
+/** 指定商社の指定先が辞退（取扱なし）したか */
+export function designatedDeclined(p: Project, row: Row): boolean {
+  const d = (row.designated ?? '').trim()
+  return !!d && p.quotes.some((q) => q.rowId === row.id && !q.stale && (q.supplierId === d) && q.leadDays === -1)
 }

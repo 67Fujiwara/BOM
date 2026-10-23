@@ -117,7 +117,7 @@ function PanelBody({ panel }: { panel: Panel }) {
             <p className="muted" style={{ margin: '0 0 10px', fontSize: 12 }}>
               迷ったら <kbd>Ctrl+K</kbd> で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は <kbd>Ctrl+Z</kbd> で戻せます（あなた自身の操作だけ）。
               <br />
-              文字を打てるセルでは、英字は値の入力になります（Excel と同じ）。英字の操作は <kbd>Alt</kbd> を押しながら（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+Shift+I</kbd> 指摘）、または ID・状態などの列で押します。次の問題は <kbd>F8</kbd>、推奨で採用は <kbd>Ctrl+Alt+A</kbd> でも使えます。
+              表の中の英字・数字は、ID・状態・チェック（発注・入荷）の列ではそのまま 1 キー操作、それ以外の列では値の入力です（Excel と同じ）。どの列でも <kbd>Alt</kbd> を押しながらなら 1 キー操作です（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+a</kbd> 推奨で採用、<kbd>Alt+Shift+I</kbd> 指摘、<kbd>Alt+4</kbd> 要確認）。次の問題は <kbd>F8</kbd>、最安で採用は <kbd>Ctrl+Alt+A</kbd>。
             </p>
             <div className="help-cols" data-testid="help">
               {sections.map((sec) => (
@@ -525,11 +525,16 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
         }
       } else {
         // 日本語の Excel が出す CSV は Shift_JIS のことが多い。UTF-8 で読めなければ Shift_JIS で読む
-        try {
-          text = new TextDecoder('utf-8', { fatal: true }).decode(buf)
-        } catch {
-          text = new TextDecoder('shift_jis').decode(buf)
-        }
+        // Excel の「Unicode テキスト」は UTF-16（先頭が FF FE / FE FF）
+        const bom = new Uint8Array(buf.slice(0, 2))
+        const utf16 = bom[0] === 0xff && bom[1] === 0xfe ? 'utf-16le' : bom[0] === 0xfe && bom[1] === 0xff ? 'utf-16be' : null
+        if (utf16) text = new TextDecoder(utf16).decode(buf)
+        else
+          try {
+            text = new TextDecoder('utf-8', { fatal: true }).decode(buf)
+          } catch {
+            text = new TextDecoder('shift_jis').decode(buf)
+          }
         if (/[\u0000\ufffd]/.test(text.slice(0, 4000))) throw new Error('文字のファイル（CSV・タブ区切り）ではありません。Excel から .xlsx か CSV で保存してください')
       }
       if (!text.trim()) throw new Error('中身が空です')
@@ -631,7 +636,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
               </>
             )}
             {!preview && <div className="muted">空の表から始めます。</div>}
-            <div className="muted" style={{ marginTop: 8 }}>Enter で作成します。作成後は「4 要確認」で問題を n で順に直し、Ctrl+Enter で提出します。</div>
+            <div className="muted" style={{ marginTop: 8 }}>Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。</div>
           </div>
         )}
         {panel.error && (

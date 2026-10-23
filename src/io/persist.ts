@@ -73,7 +73,8 @@ export function saveBackup(raw: string, reason: string): boolean {
 function dropOldestBackup(): boolean {
   const list = loadBackups()
   const isProtected = (b: Backup) => b.reason.startsWith(BROKEN) || b.reason.startsWith('一部を外して')
-  const victim = [...list].reverse().find((b) => !isProtected(b))
+  // いちばん新しい退避（いま作った「読み込みの前」など）と守る退避は消さない
+  const victim = [...list.slice(1)].reverse().find((b) => !isProtected(b))
   if (!victim) return false
   try {
     localStorage.setItem(BACKUP_KEY, JSON.stringify(list.filter((b) => b !== victim)))

@@ -17,12 +17,13 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
   if (!isActive(row)) return '取消・置換済の行は採用できません'
   if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
+  if (isFixedProcurement(row)) return `${effective(row).procurement}の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）`
   if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
     const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
     const answered = qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length
-    return `回答 ${answered}/${qs.length} 待ち（Shift+A / Alt+A で先行採用）`
+    return `回答 ${answered}/${qs.length} 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）`
   }
   if (row.status === 'draft') return '下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます'
   if (row.status === 'submitted') return '見積前の行です（購買が概算見積を依頼・回答待ち）'
@@ -85,7 +86,7 @@ export function adoptBest(rowId: string): boolean {
   return true
 }
 
-/** Alt+A: 最安で採用（スコア無視）。見積中なら先行採用 */
+/** Ctrl+Alt+A: 最安で採用（スコア無視）。見積中なら先行採用 */
 export function adoptCheapest(rowId: string): boolean {
   const s = st()
   const p = s.project()
@@ -135,7 +136,7 @@ export function adoptChoose(rowId: string, supplierId: string, reason?: string):
     applyAdoption(p2, r, chosen, early ? `先行採用: ${reason ?? ''}` : reason, pending, early ? '先行採用' : '例外選定')
     normalize(p2, ws)
   }, { rowId })
-  s.toastMsg(pending ? `${row.id}: ${sup?.name} を仮採用。PM の承認待ち（7 要決定）` : `${row.id} を ${sup?.name} で採用`, pending ? 'info' : 'ok')
+  s.toastMsg(pending ? `${row.id}: ${sup?.name} を仮採用${reason ? `（${reason}）` : ''}。PM の承認待ち（7 要決定）` : `${row.id} を ${sup?.name} で採用${reason ? `（${reason}）` : ''}`, pending ? 'info' : 'ok')
   return true
 }
 

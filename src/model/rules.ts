@@ -31,6 +31,30 @@ export function setSupplierMaster(list: Array<{ id: string; name: string }>) {
   supplierMaster = list
 }
 
+/** 重複・代替可否の突き合わせを行ごとに全行走査すると行数の 2 乗になるので、行の並び（配列）ごとに索引を作って持つ */
+const dupCache = new WeakMap<Row[], Map<string, Map<string, Row[]>>>()
+function dupCounted(r: Row): boolean {
+  return r.status !== 'cancelled' && r.status !== 'replaced' && !r.removal && !r.pendingRemoval
+}
+function rowsByValue(rows: Row[], field: string): Map<string, Row[]> {
+  let byField = dupCache.get(rows)
+  if (!byField) dupCache.set(rows, (byField = new Map()))
+  let idx = byField.get(field)
+  if (!idx) {
+    idx = new Map()
+    for (const r of rows) {
+      if (field !== '#model' && !dupCounted(r)) continue
+      const v = String(effective(r)[(field === '#model' ? 'model' : field) as keyof ReturnType<typeof effective>] ?? '')
+      if (!v) continue
+      const list = idx.get(v)
+      if (list) list.push(r)
+      else idx.set(v, [r])
+    }
+    byField.set(field, idx)
+  }
+  return idx
+}
+
 export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
   const out: Problem[] = []
   if (row.status === 'cancelled' || row.status === 'replaced') return out
@@ -88,7 +112,7 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         break
       case 'duplicate':
         // 取消・置換の作業中の行と、置換の元と先（同じ部品位置を引き継ぐ）どうしは重複に数えない
-        if (str && project.rows.some((r) => r.id !== row.id && r.status !== 'cancelled' && r.status !== 'replaced' && !r.removal && !r.pendingRemoval && !row.removal && !row.pendingRemoval && r.replaces !== row.id && row.replaces !== r.id && String(effective(r)[field as keyof typeof e] ?? '') === str)) push([])
+        if (str && !row.removal && !row.pendingRemoval && (rowsByValue(project.rows, field).get(str) ?? []).some((r) => r.id !== row.id && r.replaces !== row.id && row.replaces !== r.id)) push([])
         break
       case 'packMultiple':
         // 単位が「パック」なら数量はパック数。個数で数える単位で入数があるときだけ倍数を確かめる
@@ -102,11 +126,16 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         }
         break
       case 'altConsistent': {
-        const other = project.rows.find((r) => r.id !== row.id && effective(r).model === e.model && effective(r).altPolicy !== e.altPolicy)
+        const other = e.model ? rowsByValue(project.rows, '#model').get(String(e.model))?.find((r) => r.id !== row.id && effective(r).altPolicy !== e.altPolicy) : undefined
         if (e.model && other) push([{ label: `${other.id} と同じ「${effective(other).altPolicy}」にする`, apply: () => ({ altPolicy: effective(other).altPolicy }) }])
         break
       }
     }
+  }
+  // Excel のエラー値（#REF! など）がそのまま入っている項目は、公開前に直す
+  for (const f of ['name', 'model', 'maker', 'ref', 'note'] as const) {
+    const v = String(e[f] ?? '')
+    if (/^#(REF!|DIV\/0!|N\/A|VALUE!|NAME\?|NUM!|NULL!|SPILL!|CALC!|エラー|数式の結果なし)/i.test(v.trim())) out.push({ rowId: row.id, field: f, ruleId: 'sys.excel.error', severity: 'error', message: v.startsWith('#数式') ? '数式の計算結果が入っていないセルでした（元のファイルを Excel で開いて保存し直してから読むか、正しい値を入れてください）' : `Excel のエラー値「${v}」のままです（元の表で直してから貼り直すか、正しい値を入れてください）`, fixes: [] })
   }
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'

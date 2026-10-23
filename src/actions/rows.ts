@@ -101,7 +101,7 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     return false
   }
   const value = parsed.value
-  return st().commit(
+  const ok = st().commit(
     label,
     (p, ws) => {
       const r = p.rows.find((x) => x.id === rowId)
@@ -112,6 +112,13 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     },
     { rowId },
   )
+  // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
+  if (ok && colKey === 'extraCost' && typeof value === 'number') {
+    const cap = [...st().project().decisions].reverse().find((d) => d.rowId === rowId && d.kind === '特急・分納' && typeof d.payload?.amount === 'number')
+    const amt = cap?.payload?.amount as number | undefined
+    if (amt != null && value > amt) st().toastMsg(`追加費用 ¥${value.toLocaleString()} が、PM の決めた特急・分納の上限 ¥${amt.toLocaleString()} を超えています（${cap!.id}）`, 'err')
+  }
+  return ok
 }
 
 /** 1 セルの書き込み（commit の中で使う）。書けなければ理由を返す */
@@ -154,7 +161,7 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       const req = p.issues.find((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
       if (!r.flags.orderCancelApproved || !req) {
         r.flags.orderCancelApproved = false
-        return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+        return '発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
       }
       // 発注を取り消したら、設計が置き換え品を作る番（設計の 4 に出る。§9.1）
       r.flags.orderCancelApproved = false
@@ -201,6 +208,7 @@ export function orderBlock(p: Project, r: Row): string | null {
   // 設計が取消・置換の作業中（未公開）の行は、公開されるまで発注しない
   if (r.removal) return '設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します'
   if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
+  if (r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります）'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
   // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない
   const waiting = p.issues.find((i) => i.rowId === r.id && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '発注後変更依頼') && ['open', 'inProgress', 'answered'].includes(i.status))
@@ -305,7 +313,7 @@ export function toggleHidden(rowId: string) {
       hidden = r.hidden
     }
   })
-  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
+  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
 }
 
 /** 置き換え品を作る。指摘・見積・状態を新行に引き継ぎ「要再確認」 */
@@ -480,16 +488,16 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
   }
   if (plan.blockedErrors.length) {
     const b = plan.blockedErrors[0]
-    s.toastMsg(`公開できません: エラー ${plan.blockedErrors.length} 件（${b.rowId} ${b.message} … n で移動して直す）`, 'err')
+    s.toastMsg(`公開できません: エラー ${plan.blockedErrors.length} 件（${b.rowId} ${b.message} … F8 で移動して直す）`, 'err')
     return false
   }
   if (plan.blockedWarnings.length) {
     const b = plan.blockedWarnings[0]
-    s.toastMsg(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${b.rowId} ${b.message} … 直すか x で確認済みに）`, 'err')
+    s.toastMsg(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${b.rowId} ${b.message} … 直すか Alt+x で確認済みに）`, 'err')
     return false
   }
   if (plan.deferred.length) {
-    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}。直すか、警告なら x で確認済みに）`, 'err')
+    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}。直すか、警告なら Alt+x で確認済みに）`, 'err')
     return false
   }
   if (plan.nonIssueChanges.length && !changeSet) return false // UI が理由を聞いてから再呼び出し
@@ -604,7 +612,13 @@ export function quoteTargets(p: Project, r: Row): string[] {
     const sid = fixedSupplierId(p, { ...r, ...e } as Row, st().ws.suppliers)
     return sid ? [sid] : p.supplierIds.slice(0, 1)
   }
-  return p.supplierIds
+  // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない。どこも扱わなければ全社）
+  const sups = st().ws.suppliers
+  const carries = p.supplierIds.filter((id) => {
+    const sp = sups.find((x) => x.id === id)
+    return !sp || sp.handledMakers.length === 0 || !e.maker || sp.handledMakers.includes(e.maker)
+  })
+  return carries.length ? carries : p.supplierIds
 }
 
 function pick(e: DesignFields): DesignFields {

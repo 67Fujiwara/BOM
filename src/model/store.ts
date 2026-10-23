@@ -246,10 +246,20 @@ export const useStore = create<State>((set, get) => ({
     const entry = stack[idx]
     const rest = [...stack.slice(0, idx), ...stack.slice(idx + 1)]
     if (entry.kind === 'publish') {
-      // 公開より前の、公開した行の編集は Rev に含まれている。Ctrl+Z の続きでそこへは戻らない（戻すと公開を戻したのを打ち消すだけになる）
-      const keys = new Set(entry.rows.map((c) => c.key))
+      // この公開のあとに、別のタブ・他の人がその行を公開し直していたら戻さない（その Rev を黙って打ち消さない）
+      const curRows = st.project().rows
+      const moved = entry.rows.find((c) => {
+        const now = curRows.find((x) => x.id === c.key)
+        return now && c.after && (c.after as Row).publishedRev !== now.publishedRev
+      })
+      if (moved) {
+        set({ undo: { ...get().undo, [user]: rest } })
+        return st.toastMsg(`戻せません: ${moved.key} は、この公開のあとに公開し直されています（別のタブ・他の人）。この公開は戻さずに飛ばしました`, 'err')
+      }
+      // 公開より前の編集は Rev に含まれている。Ctrl+Z の続きでそこへは戻らない（戻すと公開を戻したのを打ち消すだけになる）
       // さらに前の公開も、公開を戻したあとの Ctrl+Z では戻さない（知らせと動きをそろえる。前の Rev は購買に伝わっている）
-      const folded = rest.filter((e) => e.projectId === pid && (e.kind === 'publish' || (e.rows.length > 0 && e.rows.every((c) => keys.has(c.key) && designEdit(c)) && !e.quotes.length && !e.issues.length && !e.proj.length)))
+      // それより前の操作はこの案件ではすべて Ctrl+Z の対象から外す（戻すと公開した Rev とくい違い、「別の操作で変わっています」になる）
+      const folded = rest.filter((e) => e.projectId === pid)
       set({ undo: { ...get().undo, [user]: rest.filter((e) => !folded.includes(e)) } })
       const n = revertPublishAsWorking(entry)
       // 公開を戻した操作は Ctrl+Z の履歴に積まない。Ctrl+Y で取り消せる（公開済の値に戻す）ように、やり直す側にだけ積む
@@ -262,7 +272,7 @@ export const useStore = create<State>((set, get) => ({
         persistHistory()
       }
       const pubs = folded.filter((e) => e.kind === 'publish').length
-      const more = folded.length ? `公開より前の編集${pubs ? `・前の公開 ${pubs} 回` : ''}（${folded.length} 件）は公開した Rev に含まれているので、Ctrl+Z ではそれより前に戻りません。` : ''
+      const more = folded.length ? `公開より前の操作${pubs ? `（前の公開 ${pubs} 回を含む）` : ''} ${folded.length} 件は、Ctrl+Z ではもう戻りません（公開した Rev に含まれています）。` : ''
       // 公開した取消・置換は購買に伝わっているので戻さない（必要なら行を追加し直す）
       const removed = entry.rows.filter((c) => c.before && c.after && !['cancelled', 'replaced'].includes(c.before.status) && ['cancelled', 'replaced'].includes(c.after.status)).map((c) => c.key)
       const rm = removed.length ? `取消・置換を公開した ${removed.slice(0, 3).join(', ')} は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。` : ''
@@ -299,7 +309,9 @@ export const useStore = create<State>((set, get) => ({
       if (conflict.startsWith('!')) return st.toastMsg(`やり直せません: ${conflict.slice(1)}。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作）`, 'err')
       return st.toastMsg(`やり直せません: ${conflict} は、元に戻した後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作）`, 'err')
     }
-    set({ redo: { ...get().redo, [user]: rest }, undo: { ...get().undo, [user]: [...(get().undo[user] ?? []), entry] } })
+    // 「公開を戻したのを取り消す」をやり直したら、次の Ctrl+Z は公開を戻す操作として表す（文と動きをそろえる）
+    const undoEntry = entry.label === '公開を戻したのを取り消す（公開済の値に戻す）' ? { ...entry, label: '公開を戻す（未公開として積む）' } : entry
+    set({ redo: { ...get().redo, [user]: rest }, undo: { ...get().undo, [user]: [...(get().undo[user] ?? []), undoEntry] } })
     persistHistory()
     st.toastMsg(`やり直す: ${entry.label}`, 'info')
   },
@@ -571,13 +583,6 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
   useStore.setState({ ws: next })
   if (!saveTracked(next)) useStore.getState().toastMsg('保存領域がいっぱいで保存できませんでした（リロードすると消えます）', 'err')
   return null
-}
-
-/** 設計の値の編集だけの変更か（隠す・発注・採用などは公開の Rev に含まれない） */
-function designEdit(c: Change<Row>): boolean {
-  const b = (c.before ?? {}) as unknown as Record<string, unknown>
-  const a = (c.after ?? {}) as unknown as Record<string, unknown>
-  return !['hidden', 'ordered', 'received', 'adoptedSupplierId', 'orderQty', 'extraCost', 'removal', 'pendingRemoval'].some((k) => !sameJson(b[k], a[k]))
 }
 
 /** 公開の Ctrl+Z: Rev は消さず、公開前の設計列を作業中として積む（flow-design §1） */

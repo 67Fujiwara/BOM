@@ -197,6 +197,8 @@ export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
   if (!commitEdit('stay')) return
   set({ view: v, detailIndex: 0, revView: null })
+  // 6 商社別・8 正式見積は相見積先の列で入れる。相見積先が無ければ理由を知らせる
+  if ((v === 6 || v === 8) && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
   if (!vm().rows.some((r) => r.id === st().cursorRow)) set({ cursorRow: null })
   ensureCursor()
   // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 6・8 を開くと単価、9 なら発注数）。ID・状態の列にいるときはそのまま
@@ -330,7 +332,10 @@ export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'dow
     tabAnchor = null
     moveCursorToRow(1)
     // 最後の行（下に行が無い）では列を戻さない（同じ行の最初の値を上書きしない）
-    if (st().cursorRow === r.id) return true
+    if (st().cursorRow === r.id) {
+      if (st().user().role === 'design') toast('最後の行です。下に行を足すときは Shift+Enter', 'info')
+      return true
+    }
     if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
   } else if (dir === 'up') {
     tabAnchor = null
@@ -729,7 +734,8 @@ export function publishFlow(rowIds?: string[]) {
   const plan = rows.planPublish(s.project(), s.ws.rules, user, rowIds)
   if (plan.rows.length === 0 && plan.draftIssues.length === 0) {
     const errs = user.role === 'design' ? s.project().rows.filter((r) => isActive(r) && checkRow(r, s.ws.rules, s.project()).some((x) => x.severity === 'error')).length : 0
-    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（F8 で移動）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Alt+Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
+    const blank = user.role === 'design' ? s.project().rows.filter((r) => r.status === 'draft' && r.publishedRev == null && !r.name && !r.model).length : 0
+    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（F8 で移動）` : ''}${blank ? `。部品名も型式も無い下書きの行 ${blank} 行は公開しません（入れてから Ctrl+Enter）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Alt+Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
   }
   // 先にゲートを確かめる（理由を聞いてから拒否しない）
   const gate = plan.blockedErrors[0] ?? plan.blockedWarnings[0]
@@ -1053,7 +1059,8 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   closePanel()
   ensureCursor()
   const problems = p.rows.filter((r) => checkRow(r, st().ws.rules, p).length).length
-  const note = warnings.length ? `。注意: ${warnings[0]}` : ''
+  // 注意はいくつあっても件数と先頭の 2 つを出す（1 つ目だけで、数量の列が無い などを見落とさない）
+  const note = warnings.length ? `。注意 ${warnings.length} 件: ${warnings.slice(0, 2).join(' / ')}${warnings.length > 2 ? ' ほか' : ''}` : ''
   if (s.ws.user.role !== 'design') {
     setView(1)
     return toast(`${p.name}（${p.rows.length} 行）を作成しました。行の追加・編集は設計が行います（Ctrl+K → 役割 で設計に切り替え）${note}`, 'info')
@@ -1464,7 +1471,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'issue.ack':
       return ackCurrent()
     case 'issue.sequence': {
-      if (!gotoProblem(1)) return
+      // カーソルが問題のセルにいればそこから、いなければ次の問題から。前の回で回った問題は数え直す
+      resetSequence()
+      const here = problemCells().some((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
+      if (!here && !gotoProblem(1)) return
       set({ sequence: true })
       if (cursorRow()) openQuickfix()
       return
@@ -1974,5 +1984,6 @@ export function colsForPanel() {
 }
 
 export { handleKeyDown } from './keyboard'
+import { resetSequence } from './keyboard'
 export { issues as issueActions, rows as rowActions, ROLE_LABEL, KEYMAP, eventToKey, lookupBinding, ISSUE_KINDS, VIEWS, cursorRow as visibleCursorRow, moveCursorRow, gotoProblem, problemCells, openQuickfix, prompt, confirmDanger, decisionPanel, saveSettings, createProjectFromWizard, nextProjectId }
 export type { IssueKind }

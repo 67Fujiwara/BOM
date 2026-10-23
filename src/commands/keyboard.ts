@@ -454,6 +454,10 @@ function altBinding(key: string) {
 /** 順番に直すモード: 次の問題へ進んで候補を開く。無ければ終わる */
 /** 順番に直すモードで回った問題（一周したら黙って二周目に入らずに終わる） */
 const seqSeen = new Set<string>()
+/** 順番に直すモードを始め直すとき、前の回で回った問題を忘れる */
+export function resetSequence() {
+  seqSeen.clear()
+}
 function sequenceNext() {
   if (!st().sequence) return seqSeen.clear()
   const here = `${st().cursorRow}|${st().cursorCol}`
@@ -555,6 +559,7 @@ export function handleKeyDown(e: KeyboardEvent) {
       // 文字の欄と選択肢を行き来する: Tab で欄へ（以後の数字は文字）、Shift+Tab で選択肢へ（数字で選ぶ）
       if (s.panel.kind === 'prompt' && s.panel.showText && s.panel.digitsSelect && s.panel.options) {
         set({ panel: { ...s.panel, textTouched: key === 'Tab' } })
+        toast(key === 'Tab' ? '文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）' : '選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）', 'info')
         e.preventDefault()
         const input = document.querySelector<HTMLElement>('[data-testid="prompt-text"]')
         if (key === 'Tab') input?.focus()

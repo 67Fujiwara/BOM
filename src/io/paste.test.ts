@@ -230,3 +230,32 @@ describe('ラウンド 12（ベテラン）の取り込み', () => {
     expect(r.rows.map((x) => x.name)).toEqual(['部品表ホルダー', 'BOM ラベル', 'リレー'])
   })
 })
+
+describe('ラウンド 13 の取り込み', () => {
+  it('字の間に空白のある見出し（品 名・メ ー カ・数　量）', () => {
+    const r = parseBomPaste('品 名\t型 式\tメ ー カ\t数　量\nリレー\tMY4N-D2\tオムロン\t4')
+    expect([r.rows[0].name, r.rows[0].model, r.rows[0].maker, r.rows[0].qtyNeeded]).toEqual(['リレー', 'MY4N-D2', 'オムロン', 4])
+  })
+  it('上の段がまとめの名前（部品情報｜数量）、下の段が 品名…旧｜新 の 2 段の見出し', () => {
+    const r = parseBomPaste('部品情報\t\t\t数量\t\n品名\t型式\tメーカー\t旧\t新\nリレー\tMY4N\tオムロン\t2\t4')
+    expect(r.rows[0].qtyNeeded).toBe(4)
+  })
+  it('修正前/後・改定前/後・改正前/後・訂正前/後・差替前/後・現状/変更案・Rev.A/B は新しい列', () => {
+    for (const [a, b] of [['型式（修正前）', '型式（修正後）'], ['改定前型式', '改定後型式'], ['型式 改正前', '型式 改正後'], ['訂正前型式', '訂正後型式'], ['型式（差替前）', '型式（差替後）'], ['型式（現状）', '型式（変更案）'], ['型式 Rev.A', '型式 Rev.B']]) {
+      const r = parseBomPaste(`部品名\t${a}\t${b}\t数量\nリレー\tMY2N\tMY4N-D2\t4`)
+      expect([a, r.rows[0].model]).toEqual([a, 'MY4N-D2'])
+    }
+  })
+  it('新品番・旧品番・新品名は品番・品名', () => {
+    const r = parseBomPaste('新品名\t旧品番\t新品番\t数量\nリレー\tMY2N\tMY4N-D2\t4')
+    expect([r.rows[0].name, r.rows[0].model]).toEqual(['リレー', 'MY4N-D2'])
+  })
+  it('要数・所要量・使用量・必要量は数量。数量の列が無ければ知らせる', () => {
+    for (const h of ['要数', '所要量', '使用量', '必要量']) expect(parseBomPaste(`部品名\t型式\t${h}\nリレー\tMY4N\t7`).rows[0].qtyNeeded).toBe(7)
+    expect(parseBomPaste('部品名\t型式\nリレー\tMY4N').warnings.join()).toContain('数量')
+  })
+  it('－２－・P1/3・以下次頁・次頁につづく・合計 6台分・計 ６・合計：6個 / ¥12,000 を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n－２－\t\t\nP1/3\t\t\n以下次頁\t\t\n次頁につづく\t\t\n合計 6台分\t\t\n計 ６\t\t\n合計：6個 / ¥12,000\t\t')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
+  })
+})

@@ -170,6 +170,13 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
     const v = String(e[f] ?? '')
     if (/^#(REF!|DIV\/0!|N\/A|VALUE!|NAME\?|NUM!|NULL!|SPILL!|CALC!|エラー|数式の結果なし)/i.test(v.trim())) out.push({ rowId: row.id, field: f, ruleId: 'sys.excel.error', severity: 'error', message: v.startsWith('#数式') ? '数式の計算結果が入っていないセルでした（元のファイルを Excel で開いて保存し直してから読むか、正しい値を入れてください）' : `Excel のエラー値「${v}」のままです（元の表で直してから貼り直すか、正しい値を入れてください）`, fixes: [] })
   }
+  // 型式・メーカが「未定」「TBD」「-」のままの行は、そのまま購買に見積を頼めない（決まってから公開するか、承知のうえで確認済みに）
+  const TBD = 'sys.tbd'
+  for (const f of ['model', 'maker'] as const) {
+    const v = String(e[f] ?? '').trim()
+    if (v && /^[（(【\[]?\s*(未定|tbd|tba|検討中|調整中|未決|確認中|不明|[-－―ー?？]+)\s*[）)】\]]?$/i.test(v) && !row.ackRules.includes(TBD))
+      out.push({ rowId: row.id, field: f, ruleId: TBD, severity: 'warn', message: `${f === 'model' ? '型式' : 'メーカ'}が「${v}」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）`, fixes: [] })
+  }
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'
   if (e.makerLock === '任意' && e.altPolicy === '不可' && !row.ackRules.includes(MAKER_ALT))

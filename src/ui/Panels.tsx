@@ -295,7 +295,13 @@ function PanelBody({ panel }: { panel: Panel }) {
             {panel.options && (
               <div className="panel-list" data-testid="prompt-options" ref={listRef}>
                 {panel.options.map((o, i) => (
-                  <div key={o} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), !panel.showText && press('Enter'))}>
+                  <div key={o} className="opt clickable" aria-selected={i === panel.index} onClick={() => {
+                    setIndex(i)
+                    if (!panel.showText) return press('Enter')
+                    // 文字の欄もあるダイアログでは、選択肢をクリックしたら文字の欄へ（続けて打った番号・理由が欄に入る）
+                    st.set({ panel: { ...(useStore.getState().panel as typeof panel), index: i, textTouched: true } })
+                    document.querySelector<HTMLElement>('[data-testid="prompt-text"]')?.focus()
+                  }}>
                     <kbd>{panel.showText && !panel.digitsSelect ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
                   </div>
                 ))}

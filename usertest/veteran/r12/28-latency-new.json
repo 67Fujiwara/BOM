@@ -1,0 +1,107 @@
+{
+  "SIZE": 2500,
+  "all": {
+    "r11": [
+      {
+        "f8_view1": 42,
+        "shiftF8_view1": 31.2,
+        "f8_view4": 17.4,
+        "f8_filter": 20.5,
+        "commit_first10": 114.6,
+        "commit_last10": 139.1,
+        "histChars": 279646,
+        "undo_200hist": 131.2,
+        "redo_200hist": 123.1,
+        "f2_toggle": 16.7
+      },
+      {
+        "f8_view1": 46.6,
+        "shiftF8_view1": 32.6,
+        "f8_view4": 21.3,
+        "f8_filter": 24,
+        "commit_first10": 118.7,
+        "commit_last10": 93.5,
+        "histChars": 279646,
+        "undo_200hist": 124.1,
+        "redo_200hist": 104.2,
+        "f2_toggle": 16.1
+      },
+      {
+        "f8_view1": 45.3,
+        "shiftF8_view1": 28.7,
+        "f8_view4": 22.9,
+        "f8_filter": 22.7,
+        "commit_first10": 115.1,
+        "commit_last10": 128.6,
+        "histChars": 279646,
+        "undo_200hist": 98,
+        "redo_200hist": 128.8,
+        "f2_toggle": 16.7
+      }
+    ],
+    "current": [
+      {
+        "f8_view1": 81.8,
+        "shiftF8_view1": 53.1,
+        "f8_view4": 17.6,
+        "f8_filter": 22.7,
+        "commit_first10": 108.8,
+        "commit_last10": 105.4,
+        "histChars": 279646,
+        "undo_200hist": 95.4,
+        "redo_200hist": 95.6,
+        "f2_toggle": 12.8
+      },
+      {
+        "f8_view1": 45.2,
+        "shiftF8_view1": 39.3,
+        "f8_view4": 23.1,
+        "f8_filter": 30.6,
+        "commit_first10": 153.4,
+        "commit_last10": 97.6,
+        "histChars": 279646,
+        "undo_200hist": 87.4,
+        "redo_200hist": 95.3,
+        "f2_toggle": 16.6
+      },
+      {
+        "f8_view1": 51,
+        "shiftF8_view1": 34.9,
+        "f8_view4": 31.4,
+        "f8_filter": 31.2,
+        "commit_first10": 137.3,
+        "commit_last10": 112.2,
+        "histChars": 279646,
+        "undo_200hist": 94.9,
+        "redo_200hist": 104.5,
+        "f2_toggle": 15.1
+      }
+    ]
+  },
+  "summary": {
+    "r11": {
+      "f8_view1": 45.3,
+      "shiftF8_view1": 31.2,
+      "f8_view4": 21.3,
+      "f8_filter": 22.7,
+      "commit_first10": 115.1,
+      "commit_last10": 128.6,
+      "histChars": 279646,
+      "undo_200hist": 124.1,
+      "redo_200hist": 123.1,
+      "f2_toggle": 16.7
+    },
+    "current": {
+      "f8_view1": 51,
+      "shiftF8_view1": 39.3,
+      "f8_view4": 23.1,
+      "f8_filter": 30.6,
+      "commit_first10": 137.3,
+      "commit_last10": 105.4,
+      "histChars": 279646,
+      "undo_200hist": 94.9,
+      "redo_200hist": 95.6,
+      "f2_toggle": 15.1
+    }
+  }
+}

@@ -32,6 +32,7 @@ const res = {}
 for (const id of [E, D, F]) { const r = p.rows.find((x) => x.id === id); res[id] = r; log('after switch', h.show(p, id), 'cm', r.flags.countermeasure, 'extra', r.extraCost, iss(p, id), 'ball', await h.ballOf(id), 'case', await h.caseOf(id), '|', await h.status(id)) }
 log('money', money0, '→', await t.money())
 await t.role('pm'); await t.press('7'); const v7 = await t.viewRows(); log('PM 7 has E/D/F', v7.includes(E), v7.includes(D), v7.includes(F))
+if (v7.includes(F)) { await t.goto(F); await t.press('Enter'); await page.waitForTimeout(80); log('PM panel F', JSON.stringify(await t.panel())); await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await t.goto(F); await t.press('Home'); log('PM status bar F', (await t.status()).slice(0, 200)) }
 check('E3-1 (e) 指定商社（別の商社）に切り替えたら、前の商社への特急費・対策区分「分納・特急」を残さない', res[E].extraCost == null && res[E].flags.countermeasure == null, `extra=${res[E].extraCost} cm=${res[E].flags.countermeasure}`)
 check('E3-2 (e) 新しい指定先が必要日に間に合わないなら納期NG で PM の 7 に載る（前の対策で隠れない）', res[E].flags.leadNG && v7.includes(E), `leadNG=${res[E].flags.leadNG} in7=${v7.includes(E)}`)
 const dOpen = p.issues.filter((i) => i.rowId === D && i.by.role === 'pm' && ['open', 'inProgress'].includes(i.status))

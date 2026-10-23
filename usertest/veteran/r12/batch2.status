@@ -7,3 +7,5 @@
 == 14-typed-arrow-latency-5197 12:22:01 load=3.32 6.24 13.44
    exit 0 12:22:27 load=4.08 6.18 13.24
 == 14-typed-arrow-latency-5198 12:22:27 load=4.08 6.18 13.24
+   exit 0 12:22:51 load=3.80 5.96 12.97
+== 03-entry-matrix-5176 12:22:51 load=3.80 5.96 12.97

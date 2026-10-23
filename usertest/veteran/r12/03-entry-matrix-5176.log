@@ -1,0 +1,10 @@
+{"name":"設計 1 部品名（文字）","w":"abc","gap":0,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"abc\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"abc","gap":40,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"abc\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"Abc","gap":0,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"Abc\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"Abc","gap":40,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"Abc\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"1N4148","gap":0,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"1N4148\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"1N4148","gap":40,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"1N4148\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"47","gap":0,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"47\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"47","gap":40,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"47\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"<5mm","gap":0,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"<5mm\"}"],"toasts":[],"bad":false}
+{"name":"設計 1 部品名（文字）","w":"<5mm","gap":40,"editable":true,"start":"R010 部品名","after":"view-1/R011 部品名/ナビ","diff":["R010.working:undefined→{\"name\":\"<5mm\"}"],"toasts":[],"bad":false}

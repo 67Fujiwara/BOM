@@ -170,3 +170,21 @@ describe('ラウンド 11 の取り込み', () => {
     expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
   })
 })
+
+describe('ラウンド 11（ベテラン）の取り込み', () => {
+  it('ページの見出しが少し違っても（P.1・員数／数量）前のページを捨てない、ページの表題を部品にしない', () => {
+    const r = parseBomPaste('部品表 (1/2)\t\t\t\nNo\t品名\t型式\t員数\n1\tリレー\tMY4N\t2\n部品表 (2/2)\t\t\t\nP.2\t品名\t型式\t数量\n2\tタイマ\tH3CR\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'H3CR'])
+  })
+  it('隠した数量の列は、表題の「台数 2台」があっても読む', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRow([null, null, '台数 2台'])
+    ws.addRow(['部品名', '型式', '数量'])
+    ws.addRow(['リレー', 'MY4N', 12])
+    ws.getColumn(3).hidden = true
+    const tsv = await xlsxToTsv((await wb.xlsx.writeBuffer()) as ArrayBuffer)
+    expect(parseBomPaste(tsv).rows.map((x) => x.qtyNeeded)).toEqual([12])
+  })
+})

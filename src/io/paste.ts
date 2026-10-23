@@ -114,10 +114,19 @@ export function parseBomPaste(text: string): PasteResult {
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
   const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
-  // 繰り返しかどうかは見出しの言葉の組み合わせで見る（2 ページ目の「品名（続き）」・空の No でも同じ見出し）
-  const fieldsOf = (l: string[]) => [...new Set(l.map(detectField).filter(Boolean))].sort().join(',')
-  const same = tops.length > 1 && tops.every((i) => fieldsOf(lines[i]) === fieldsOf(lines[tops[0]]))
-  const headerAt = best >= 2 ? (same ? tops[0] : tops[tops.length - 1]) : -1
+  // 繰り返しかどうかは見出しの言葉の組み合わせで見る（2 ページ目の「品名（続き）」・空の No・「P.1」・員数／数量でも同じ見出し）。
+  // いちばん見出しらしい行と、見出しの言葉が 6 割以上重なる行を「同じ見出し」とみなし、その最初の行を見出しにする
+  const fieldSet = (l: string[]) => new Set(l.map(detectField).filter(Boolean))
+  const bestSet = best >= 2 ? fieldSet(lines[tops[tops.length - 1]]) : new Set()
+  const sameHeader = (l: string[]) => {
+    const f = fieldSet(l)
+    if (f.size < 2) return false
+    let both = 0
+    for (const x of f) if (bestSet.has(x)) both++
+    return both >= Math.ceil(Math.max(f.size, bestSet.size) * 0.6)
+  }
+  const firstSame = lines.slice(0, 30).findIndex(sameHeader)
+  const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
@@ -126,9 +135,8 @@ export function parseBomPaste(text: string): PasteResult {
   }
   if (headerAt >= 0) {
     // ページごとに繰り返した同じ見出しの行は外す（部品にしない）
-    const h = fieldsOf(lines[0])
     const before = lines.length
-    lines = [lines[0], ...lines.slice(1).filter((l) => !(new Set(l.map(detectField).filter(Boolean)).size >= 2 && fieldsOf(l) === h))]
+    lines = [lines[0], ...lines.slice(1).filter((l) => !sameHeader(l))]
     if (lines.length < before) warnings.push(`繰り返しの見出し ${before - lines.length} 行は取り込みません`)
   } else if (headerAt < 0 && !singleHeader) {
     // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
@@ -250,15 +258,18 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     // 隠した列でも、その項目（数量・型式など）の列がほかに無ければ読む（隠しただけで数量が全部 1 にならない）
     const unhidden: string[] = []
     if (hiddenCols.size) {
-      const fieldOf = new Map<number, BomField>()
+      // 見出しの行（上から 30 行で見出しの言葉が最も多い行）の列だけを見る（表題の「台数 2台」などを見出しにしない）
+      let fieldOf = new Map<number, BomField>()
       let n = 0
       ws.eachRow({ includeEmpty: false }, (row) => {
         if (n++ >= 30) return
         const raw = row.values as unknown[]
+        const m = new Map<number, BomField>()
         for (let c = 1; c < raw.length; c++) {
           const f = detectField(cellToText(raw[c]))
-          if (f && !fieldOf.has(c)) fieldOf.set(c, f)
+          if (f && ![...m.values()].includes(f)) m.set(c, f)
         }
+        if (m.size > fieldOf.size) fieldOf = m
       })
       const visibleFields = new Set([...fieldOf].filter(([c]) => !hiddenCols.has(c)).map(([, f]) => f))
       for (const c of [...hiddenCols]) {
@@ -345,5 +356,13 @@ export function isTotalCell(c: string): boolean {
  */
 export function isSectionLine(cells: string[], width = cells.length): boolean {
   const filled = cells.map((c) => c.trim()).filter(Boolean)
-  return width > 1 && filled.length === 1 && (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) || /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]))
+  return (
+    width > 1 &&
+    filled.length === 1 &&
+    (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) ||
+      /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]) ||
+      // ページごとの表題・ページ番号（部品表 (2/3)・P.2・2 / 3 ページ）
+      /(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|\bBOM\b).*([(（]\s*\d+\s*[/／]\s*\d+\s*[)）]|\d+\s*(ページ|頁))?$/i.test(filled[0]) ||
+      /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+)(\s*(ページ|頁))?$/i.test(filled[0]))
+  )
 }

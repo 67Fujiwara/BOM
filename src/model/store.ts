@@ -209,7 +209,7 @@ export const useStore = create<State>((set, get) => ({
     set({ ws: next, undo, undoSeq: undo !== st.undo ? st.undoSeq + 1 : st.undoSeq, redo: changed ? { ...st.redo, [uk]: [] } : st.redo })
     persistHistory()
     // 保存できなかったら false（呼び出し側が「〜しました」で上書きしない。画面には入っているが、リロードで消える）
-    if (!saveWorkspace(next)) {
+    if (!saveTracked(next)) {
       get().toastMsg('保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください', 'err')
       return false
     }
@@ -222,7 +222,7 @@ export const useStore = create<State>((set, get) => ({
     fn(next)
     set({ ws: next })
     // 保存できなかったら黙らない（リロードで消えることを知らせる）
-    if (!saveWorkspace(next)) {
+    if (!saveTracked(next)) {
       get().toastMsg('保存領域がいっぱいで保存できませんでした。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください', 'err')
       return false
     }
@@ -290,7 +290,8 @@ export const useStore = create<State>((set, get) => ({
     set({ undo: {}, redo: {} })
     persistHistory()
   },
-  toastMsg: (text, kind = 'ok') => set({ toast: { text, kind, at: Date.now() } }),
+  // 保存できていない変更があるあいだは、「〜しました」の通知も保存できていないことを先に言う（リロードで消えるのに成功と読めないように）
+  toastMsg: (text, kind = 'ok') => set({ toast: unsavedChanges && kind !== 'err' ? { text: `保存できていません（容量不足。リロードで消えます）: ${text}`, kind: 'err', at: Date.now() } : { text, kind, at: Date.now() } }),
 }))
 
 /** Undo 履歴は「役割:氏名」ごと（同じ氏名でも役割が違えば別） */
@@ -355,6 +356,13 @@ function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string
   return { undo: {}, redo: {} }
 }
 let histTimer: number | undefined
+/** 保存できていない変更があるか（次に保存できたら外す） */
+let unsavedChanges = false
+function saveTracked(ws: Workspace): boolean {
+  const ok = saveWorkspace(ws)
+  unsavedChanges = !ok
+  return ok
+}
 function persistHistory() {
   window.clearTimeout(histTimer)
   histTimer = window.setTimeout(writeHistory, 300)
@@ -377,7 +385,12 @@ function writeHistory() {
       try {
         sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: Object.fromEntries(Object.entries(undo).map(([k, v]) => [k, v.slice(-10)])), redo: {} }))
       } catch {
-        /* 入りきらなければ保存しない */
+        // 入りきらなければ古い履歴を残さない（リロード後の Ctrl+Z が古い操作を戻さないように）
+        try {
+          sessionStorage.removeItem(HISTORY_KEY)
+        } catch {
+          /* noop */
+        }
       }
     }
   }
@@ -532,7 +545,7 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
   p.updatedAt = new Date().toISOString()
   p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: p.updatedAt, by: st.ws.user, text: `${dir === 'undo' ? '元に戻す' : 'やり直す'}: ${entry.label}` })
   useStore.setState({ ws: next })
-  saveWorkspace(next)
+  if (!saveTracked(next)) useStore.getState().toastMsg('保存領域がいっぱいで保存できませんでした（リロードすると消えます）', 'err')
   return null
 }
 

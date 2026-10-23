@@ -1,0 +1,72 @@
+[
+  {
+    "op": "move",
+    "wait": 0,
+    "changedKept": true,
+    "undoToast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "undone": false
+  },
+  {
+    "op": "move",
+    "wait": 100,
+    "changedKept": true,
+    "undoToast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "undone": false
+  },
+  {
+    "op": "move",
+    "wait": 250,
+    "changedKept": true,
+    "undoToast": "元に戻す: 行を移動",
+    "undone": true
+  },
+  {
+    "op": "move",
+    "wait": 400,
+    "changedKept": true,
+    "undoToast": "元に戻す: 行を移動",
+    "undone": true
+  },
+  {
+    "op": "move",
+    "wait": 800,
+    "changedKept": true,
+    "undoToast": "元に戻す: 行を移動",
+    "undone": true
+  },
+  {
+    "op": "edit",
+    "wait": 0,
+    "changedKept": true,
+    "undoToast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "undone": false
+  },
+  {
+    "op": "edit",
+    "wait": 100,
+    "changedKept": true,
+    "undoToast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "undone": false
+  },
+  {
+    "op": "edit",
+    "wait": 250,
+    "changedKept": true,
+    "undoToast": "元に戻す: セル編集",
+    "undone": true
+  },
+  {
+    "op": "edit",
+    "wait": 400,
+    "changedKept": true,
+    "undoToast": "元に戻す: セル編集",
+    "undone": true
+  },
+  {
+    "op": "edit",
+    "wait": 800,
+    "changedKept": true,
+    "undoToast": "元に戻す: セル編集",
+    "undone": true
+  }
+]

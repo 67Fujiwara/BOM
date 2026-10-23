@@ -1,0 +1,6 @@
+1 {"name":"knob","dialogs":0,"mode":"ナビ"}
+2 {"rows":80,"R040":"E32-D11 2M","panel":null}
+3 {"movedPersisted":true,"undoneToStart":false,"toast":"戻す操作がありません（この案件であなたが行った操作はまだありません）"}
+4 {"panelBefore":"panel-prompt","project":"P-2026-041"}
+5 {"n0":80,"n1":80,"ms":101,"confirm":null,"toast":"貼り付けできません（300 セル）: 1行目 調達区分: 調達区分は空にできません（相見積 / 客先指定品 / 指定商社 / 支給品 / 社内在庫）","last":["R080","ラベルプリンタテープ","TZe-231"],"afterUndo":80,"undoMs":81,"R080":"ラベルプリンタテープ"}
+--- console/page errors (27): 0 (uniq 0)

@@ -10,12 +10,13 @@ async function edit(pg, id, col, v) { await pg.bringToFront(); await closeAll(pg
 async function key(pg, id, k, col = 'name') { await pg.bringToFront(); await closeAll(pg); await goto(pg, id); await toColKey(pg, col); await pg.keyboard.press(k); await sleep(400) }
 async function undo(pg, k = 'Control+z') { await pg.bringToFront(); await closeAll(pg); await pg.keyboard.press(k); await sleep(100); return (await toastNow(pg)).slice(0, 120) }
 async function reset() {
-  await fresh(A); A._tag = 'A'
+  await fresh(A); A._tag = 'A'; await A.keyboard.press('Control+s')
   for (const p of context.pages()) if (p !== A) await p.close()
   const B = await context.newPage(); B._tag = 'B'
   await B.goto(URL); await B.waitForSelector('[data-testid="grid"]'); await B.locator('.gridwrap').focus(); await B.keyboard.press('1'); await A.keyboard.press('1')
   return B
 }
+if (!process.env.SKIP3)
 // 1) A が R045 を下へ → B が R046 の部品名を変える → A の Ctrl+Z
 {
   const B = await reset()
@@ -25,6 +26,7 @@ async function reset() {
   const t = await undo(A)
   log({ case: '1 A move, B edits neighbour, A undo', afterMove: o1, undoToast: t, orderA: await near(A, 'R044', 'R047'), orderB: await near(B, 'R044', 'R047'), R046: await val(A, 'R046') })
 }
+if (!process.env.SKIP3)
 // 2) A が R045 を下へ → B が R050 を上へ 2 回 → A の Ctrl+Z → A の Ctrl+Y
 {
   const B = await reset()
@@ -36,6 +38,7 @@ async function reset() {
   const t2 = await undo(A, 'Control+y')
   log({ case: '2 both move, A undo/redo', before, undoToast: t, afterUndo, redoToast: t2, afterRedo: await near(A, 'R044', 'R051'), B_sees: await near(B, 'R044', 'R051') })
 }
+if (!process.env.SKIP3)
 // 3) A が R045 を下へ → B が R045 の下に行を追加 → A の Ctrl+Z
 {
   const B = await reset()

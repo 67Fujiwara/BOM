@@ -1,0 +1,13 @@
+{"case":"1 A move, B edits neighbour, A undo","afterMove":["R044","R046","R045","R047"],"undoToast":"元に戻す: 行を移動","orderA":["R044","R045","R046","R047"],"orderB":["R044","R045","R046","R047"],"R046":"B-46"}
+{"case":"2 both move, A undo/redo","before":["R044","R046","R045","R047","R050","R048","R049","R051"],"undoToast":"元に戻す: 行を移動","afterUndo":["R044","R045","R046","R047","R048","R049","R050","R051"],"redoToast":"やり直す: 行を移動","afterRedo":["R044","R046","R045","R047","R048","R049","R050","R051"],"B_sees":["R044","R046","R045","R047","R048","R049","R050","R051"]}
+{"case":"3 A move, B inserts below, A undo","before":["R044","R046","R045","R081","R047"],"undoToast":"元に戻す: 行を移動","after":["R044","R045","R081","R046","R047"],"all":81}
+file:///home/user/BOM/usertest/veteran/r4/26-twotab.mjs:6
+const order = async (pg, ids) => { const w = await ws(pg); const p = w.projects.find((x) => x.id === w.currentProjectId); return p.rows.map((r) => r.id).filter((id) => !ids || ids.includes(id)) }
+                                                                       ^
+
+TypeError: Cannot read properties of null (reading 'projects')
+    at order (file:///home/user/BOM/usertest/veteran/r4/26-twotab.mjs:6:72)
+    at async near (file:///home/user/BOM/usertest/veteran/r4/26-twotab.mjs:7:50)
+    at async file:///home/user/BOM/usertest/veteran/r4/26-twotab.mjs:51:14
+
+Node.js v22.22.0

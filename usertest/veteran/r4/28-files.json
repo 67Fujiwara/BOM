@@ -1,0 +1,58 @@
+[
+  {
+    "f": "empty.xlsx",
+    "toast": "empty.xlsx を読めませんでした: Excel（.xlsx）として読めません。壊れているか、別の形式のファイルです",
+    "preview": "",
+    "created": null,
+    "ms": 30690,
+    "errs": []
+  },
+  {
+    "f": "empty.csv",
+    "toast": "empty.csv を読めませんでした: 中身が空です",
+    "preview": "",
+    "created": null,
+    "ms": 30645,
+    "errs": []
+  },
+  {
+    "f": "header-only.csv",
+    "toast": "header-only.csv を読み込みました。Enter で次へ",
+    "preview": "",
+    "created": null,
+    "ms": 30632,
+    "errs": []
+  },
+  {
+    "f": "sjis.csv",
+    "toast": "sjis.csv を読めませんでした: 文字のファイル（CSV・タブ区切り）ではありません。Excel から .xlsx か CSV で保存してください",
+    "preview": "",
+    "created": null,
+    "ms": 30639,
+    "errs": []
+  },
+  {
+    "f": "bom-utf8.csv",
+    "toast": "bom-utf8.csv を読み込みました。Enter で次へ",
+    "preview": "",
+    "created": null,
+    "ms": 30653,
+    "errs": []
+  },
+  {
+    "f": "5000.tsv",
+    "toast": "5000.tsv を読み込みました。Enter で次へ",
+    "preview": "",
+    "created": null,
+    "ms": 31543,
+    "errs": []
+  },
+  {
+    "f": "merged-formula.xlsx",
+    "toast": "merged-formula.xlsx を読み込みました。Enter で次へ",
+    "preview": "",
+    "created": null,
+    "ms": 30640,
+    "errs": []
+  }
+]

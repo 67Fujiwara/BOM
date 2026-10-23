@@ -1,6 +1,6 @@
 // keymap.ts の全バインディング × 役割 3 × ビュー 9（ナビ）、編集モード、各パネル。ブラウザ既定動作の漏れ・フォーカス・エラー
 import { launch, fresh, setRole, goto, cursor, mode, sleep, dumpErrors, shot as shot2, save as save2, panel, closeAll } from './lib.mjs'
-import { parseKeymap, toPress } from '../keymap-parse.mjs'
+import { parseKeymap, toPress } from '../../keymap-parse.mjs'
 const KM = parseKeymap()
 const KEYS = KM.flatMap((b) => b.keys.map((k) => ({ id: b.id, key: k, mode: b.mode })))
 console.log('bindings', KM.length, 'keys', KEYS.length)

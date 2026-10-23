@@ -52,7 +52,7 @@ export const VIEWS: ViewDef[] = [
     columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'adopted', 'score', 'unitPrice', 'formalPrice', 'formalDiff', 'lead', 'status', 'due', 'waiting'],
     filter: (r, c) => isActive(r) && (ball(c.p, r) === 'pm' || r.flags.leadNG === true || r.flags.pmPending === true || r.flags.formalDiff === true),
   },
-  { id: 8, label: '正式見積', columns: ['id', 'name', 'model', 'maker', 'orderQty', 'adopted', 'unitPrice', 'formalPrice', 'formalDiff', 'lead', 'status', 'due'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
+  { id: 8, label: '正式見積', columns: ['id', 'name', 'model', 'maker', 'orderQty', 'adopted', 'unitPrice', 'formalDiff', 'lead', 'status', 'due'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   { id: 9, label: '購買作業', columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'packQty', 'procurement', 'makerLock', 'altPolicy', 'needDate', 'orderQty', 'status', 'due', 'waiting'], filter: (r) => isActive(r) && (['submitted', 'quoting', 'quoted'].includes(r.status) || r.flags.requote === true) },
 ]
 

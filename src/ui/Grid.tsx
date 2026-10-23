@@ -176,7 +176,7 @@ export function Grid({ vm }: { vm: ViewModel }) {
             if (it.kind === 'group') {
               const sel = st.cursorRow === it.key
               return (
-                <tr key={it.key} className={'group' + (sel ? ' sel' : '')} data-testid="group-row" onClick={() => (st.set({ cursorRow: it.key }), runCommand('row.toggleOpen'))}>
+                <tr key={it.key} className={'group' + (sel ? ' sel' : '')} data-testid="group-row" onMouseDown={commitBeforeClick} onClick={() => useStore.getState().mode !== 'edit' && (st.set({ cursorRow: it.key }), runCommand('row.toggleOpen'))}>
                   <td colSpan={cols.length}>
                     {st.collapsed.includes(it.category) ? '▸' : '▾'} {it.category} <span className="muted">({it.count})</span>
                   </td>
@@ -197,7 +197,7 @@ export function Grid({ vm }: { vm: ViewModel }) {
             if (it.kind === 'case') {
               const sel = st.cursorRow === it.key
               return (
-                <tr key={it.key} className={'group case' + (sel ? ' sel' : '')} data-testid="case-row" onClick={() => st.set({ cursorRow: it.key })} onDoubleClick={() => (st.set({ cursorRow: it.key }), runCommand('cell.edit'))}>
+                <tr key={it.key} className={'group case' + (sel ? ' sel' : '')} data-testid="case-row" onMouseDown={commitBeforeClick} onClick={() => st.set({ cursorRow: it.key })} onDoubleClick={() => (st.set({ cursorRow: it.key }), runCommand('cell.edit'))}>
                   <td colSpan={cols.length}>◆ {it.label}</td>
                 </tr>
               )
@@ -359,4 +359,11 @@ function colWidth(c: string, suppliers: Array<{ id: string; name: string }>): nu
   const label = (sup ? sup.name + ' ' : '') + (d?.label ?? c)
   const textW = [...label].reduce((w, ch) => w + (ch.charCodeAt(0) > 0xff ? 12 : 7), 0) + (sup ? 12 : 0) + 30
   return Math.max((d?.width ?? 100) + 16, Math.min(textW, 220))
+}
+
+/** 編集中に見出しなどの行を押したら、先に確定する（読めない値なら押した操作をしない） */
+function commitBeforeClick(e: React.MouseEvent) {
+  if (useStore.getState().mode !== 'edit') return
+  e.preventDefault()
+  commitEdit('stay')
 }

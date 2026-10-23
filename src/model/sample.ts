@@ -1,3 +1,4 @@
+import { normalize } from './lifecycle'
 import type { DesignFields, Project, Quote, Row, Rule, Supplier, Unit, User, Workspace } from './types'
 import { DEFAULT_WEIGHTS } from './score'
 import { addDays, todayStr } from './dates'
@@ -295,5 +296,8 @@ export const DEFAULT_RULES: Rule[] = [
 
 export function makeWorkspace(): Workspace {
   const p = makeSampleProject()
-  return { user: { name: '山田', role: 'design' }, projects: [p], suppliers: SAMPLE_SUPPLIERS, rules: DEFAULT_RULES, currentProjectId: p.id }
+  const ws: Workspace = { user: { name: '山田', role: 'design' }, projects: [p], suppliers: SAMPLE_SUPPLIERS, rules: DEFAULT_RULES, currentProjectId: p.id }
+  // 作った時点で状態・フラグを整合させる（最初の無関係な編集で 7 要決定などが入れ替わらないように）
+  normalize(p, ws)
+  return ws
 }

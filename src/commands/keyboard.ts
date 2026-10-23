@@ -218,17 +218,11 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       if (idx >= 0 && opts[idx]) {
         closePanel()
         opts[idx].run()
-        if (s.sequence && panel.kind === 'quickfix')
-          setTimeout(() => {
-            if (problemCells().length && gotoProblem(1) && visibleCursorRow()) openQuickfix()
-            else {
-              set({ sequence: false })
-              toast('順番に直すモード: 残りの問題はありません', 'ok')
-            }
-          }, 0)
+        // 「編集する」を選んだときは編集が終わってから次の問題へ（Enter の確定で進む）
+        if (s.sequence && panel.kind === 'quickfix') setTimeout(() => st().mode !== 'edit' && sequenceNext(), 0)
         return true
       }
-      if (key.length === 1 || /^Shift\+/.test(key)) toast(opts.some((o) => o.key) ? `使えるキー: ${opts.map((o) => o.key).filter(Boolean).join(' / ')}（↑↓ と Enter でも選べます）` : `1〜${Math.min(9, opts.length)} か ↑↓ と Enter で選んでください`, 'info')
+      if (key.length === 1 || /^Shift\+/.test(key) || key === 'Enter') toast(opts.some((o) => o.key) ? `使えるキー: ${opts.map((o) => o.key).filter(Boolean).join(' / ')}（↑↓ と Enter でも選べます）` : `1〜${Math.min(9, opts.length)} か ↑↓ と Enter で選んでください`, 'info')
       return true
     }
     case 'impact':
@@ -397,12 +391,13 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
 // ---------- 英字を続けて打ったときの扱い ----------
 // 編集できるセルで英字を打つと、1 文字目が a/h/o などのコマンドとして動いてしまう。
 // 直後（BURST_MS 以内）に続けて文字が来たら「入力していた」とみなし、コマンドを取り消して上書き編集にする。
-const BURST_MS = 350
+const BURST_MS = 600
 const UI_KEYS = ['cursorRow', 'cursorCol', 'view', 'sort', 'filter', 'cellFilter', 'collapsed', 'openRows', 'detailIndex', 'revView'] as const
 type Burst = { at: number; text: string; ui: Partial<State>; undoLen: number; row: string; col: string }
 let burst: Burst | null = null
-/** 続けて押しても移動とみなすキー（j j k / x n など） */
-const NAV_LETTERS = new Set(['j', 'k', 'n'])
+let digitHintShown = false
+/** 続けて押しても移動とみなすキー（j j k / n n など。Shift 付きも） */
+const NAV_LETTERS = new Set(['j', 'k', 'n', 'J', 'K', 'N'])
 const undoLen = () => (st().undo[userKey(st().ws.user)] ?? []).length
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
@@ -418,10 +413,12 @@ function resolveBurst(e: KeyboardEvent, key: string): boolean {
   const b = burst
   if (!b || performance.now() - b.at > BURST_MS || !printable(e) || e.key === ' ') return false
   const binding = lookupBinding(key, 'nav')
-  // 移動キー（j k n）の後・同じキーの連打は、割り当てのあるキーならそのまま実行する。
-  // それ以外は、200ms 以内に続いた文字を入力とみなす（割り当ての無い文字なら BURST_MS 以内）
+  // 移動キー（j k n）どうしの連続（j j k / n n）だけはコマンドとして続ける。
+  // それ以外は、文字を打てるセルで英字コマンドの直後（BURST_MS 以内）に文字が続いたら入力とみなす
+  // （a のあと n、k のあと i、Shift+N のあと E … も入力。anode / kit / NEC）
   const first = b.text.at(-1) ?? ''
-  if (binding && (NAV_LETTERS.has(first) || NAV_LETTERS.has(e.key) || e.key === first || performance.now() - b.at > 200)) {
+  // 移動キーのあとの数字（k → 4 のビュー切替）もコマンドのまま
+  if (binding && NAV_LETTERS.has(first) && (NAV_LETTERS.has(e.key) || /^\d$/.test(e.key))) {
     burst = null
     return false
   }
@@ -437,9 +434,21 @@ function resolveBurst(e: KeyboardEvent, key: string): boolean {
   return true
 }
 
+/** 順番に直すモード: 次の問題へ進んで候補を開く。無ければ終わる */
+function sequenceNext() {
+  if (!st().sequence) return
+  if (problemCells().length && gotoProblem(1) && visibleCursorRow()) openQuickfix()
+  else {
+    set({ sequence: false })
+    toast('順番に直すモード: 残りの問題はありません', 'ok')
+  }
+}
+
 // ---------- 全体のキー処理 ----------
 export function handleKeyDown(e: KeyboardEvent) {
   if (e.isComposing || e.key === 'Process' || e.keyCode === 229) return // 日本語入力の変換中は何もしない
+  // 修飾キーだけの押下（Shift など）は何もしない（続けて打つ英字の判定を切らない）
+  if (['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Hyper', 'Super', 'OS'].includes(e.key)) return
   const key = eventToKey(e)
   if (resolveBurst(e, key)) return
   const s = st()
@@ -480,6 +489,15 @@ export function handleKeyDown(e: KeyboardEvent) {
     return
   }
   if (s.panel) {
+    // 「迷ったら Ctrl+K」はどのダイアログの中でも効く（ダイアログ自身のキー処理より先に見る。ガイドの途中の内容は残す）
+    if (key === 'Ctrl+K' && s.panel.kind !== 'palette') {
+      e.preventDefault()
+      const panel = s.panel
+      if (panel.kind === 'wizard') set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
+      closePanel()
+      runCommand('palette.open')
+      return
+    }
     if (handlePanelKey(key, e)) {
       e.preventDefault()
       return
@@ -495,15 +513,6 @@ export function handleKeyDown(e: KeyboardEvent) {
       }
       return
     }
-    // 「迷ったら Ctrl+K」はどのダイアログの中でも効く（ガイドの途中の内容は残す）
-    if (key === 'Ctrl+K') {
-      e.preventDefault()
-      const panel = s.panel
-      if (panel.kind === 'wizard') set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
-      closePanel()
-      runCommand('palette.open')
-      return
-    }
     if (key === 'Ctrl+S' || key === 'Ctrl+P' || key === 'Ctrl+E' || key === 'Ctrl+G') e.preventDefault()
     return
   }
@@ -511,6 +520,10 @@ export function handleKeyDown(e: KeyboardEvent) {
     switch (key) {
       case 'Enter':
         e.preventDefault()
+        if (s.sequence) {
+          if (commitEdit('stay')) setTimeout(sequenceNext, 0)
+          return
+        }
         commitEdit('down')
         return
       case 'Tab':
@@ -557,13 +570,23 @@ export function handleKeyDown(e: KeyboardEvent) {
     e.preventDefault()
     if (b.id.startsWith('view.')) {
       const d = colDef(s.cursorCol)
-      if (s.cursorRow && d?.numeric && !rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください${s.view === 6 || s.view === 8 ? '（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）' : ''}`, 'info')
+      // 数値の列で数字を押したときの案内は、ビューが変わって驚く最初の 1 回だけ
+      if (!digitHintShown && d?.numeric && s.cursorRow) {
+        digitHintShown = true
+        if (d.kind === 'computed') toast(`数字キーはビュー切替です（${d.label}は自動計算の列です）`, 'info')
+        else if (!rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください${s.view === 6 || s.view === 8 ? '（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）' : ''}`, 'info')
+      }
     }
-    const letter = /^[a-z]$/.test(key)
-    const editable = letter && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
+    // 英字（Shift 付きも）のコマンドで、カーソルが文字を打てるセル（チェック・自動計算の列以外）にあるとき
+    const letter = /^(Shift\+)?[A-Za-z]$/.test(key) && /^[A-Za-z]$/.test(e.key)
+    const kind = colDef(s.cursorCol)?.kind
+    const editable = letter && kind !== 'bool' && kind !== 'computed' && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
     if (editable) beginBurst(e.key)
     else burst = null
     runCommand(b.id, e)
+    // 選ぶためのダイアログ（Shift+A 商社・Shift+I 指摘の種別・c 列・w 重み）は、続けて押すキーがダイアログの選択になる。
+    // 何も変えていないので取り消さない（Shift+A → 2 のような速い操作をそのまま通す）。r（置換）は文字を打つ欄なので取り消す
+    if (st().panel && ['adopt.choose', 'issue.raise', 'columns.panel', 'weights.row'].includes(b.id)) burst = null
     return
   }
   burst = null

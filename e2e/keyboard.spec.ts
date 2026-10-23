@@ -270,6 +270,17 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
   await page.keyboard.type('nut', { delay: 40 })
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R033"] td[data-col="name"]')).toHaveText('nut')
+  // 2 文字目が移動キー（anode / kit）、Shift 付きの英字（NEC）
+  for (const [id, word] of [['R034', 'anode'], ['R035', 'kit']] as const) {
+    await gotoCell(page, id, '部品名')
+    await page.keyboard.type(word, { delay: 60 })
+    await page.keyboard.press('Enter')
+    await expect(page.locator(`[data-row-id="${id}"] td[data-col="name"]`)).toHaveText(word)
+  }
+  await gotoCell(page, 'R036', '部品名')
+  for (const k of ['Shift+N', 'Shift+E', 'Shift+C']) await page.keyboard.press(k, { delay: 20 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R036"] td[data-col="name"]')).toHaveText('NEC')
 })
 
 test('編集中にサイドバーのビューをクリックしても、入力は編集していた行に入る', async ({ page }) => {

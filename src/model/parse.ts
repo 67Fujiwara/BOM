@@ -66,7 +66,7 @@ export function parseDate(raw: string, opts: { label?: string; allowUndecided?: 
   const s = toHalf(raw).trim()
   const label = opts.label ?? '日付'
   if (s === '' || s === '未定' || s === '-') return opts.allowUndecided === false && s !== '' ? { ok: false, error: `${label}を入れてください` } : { ok: true, value: null }
-  const rel: Record<string, number> = { 今日: 0, 本日: 0, 明日: 1, あした: 1, 昨日: -1, きのう: -1, 明後日: 2 }
+  const rel: Record<string, number> = { 今日: 0, 本日: 0, 明日: 1, あした: 1, 昨日: -1, きのう: -1, 明後日: 2, あさって: 2, 来週: 7, 再来週: 14 }
   if (s in rel) return { ok: true, value: addDays(todayStr(), rel[s]) }
   const plus = /^\+(\d+)(日|d)?$/.exec(s)
   if (plus) return { ok: true, value: addDays(todayStr(), Number(plus[1])) }

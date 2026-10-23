@@ -74,6 +74,7 @@ function prompt(title: string, opts: PromptOpts, onSubmit: (choice: string | nul
 function confirmDanger(title: string, yesLabel: string, run: () => void) {
   prompt(title, { options: ['やめる', yesLabel], index: 0, danger: true, showText: false }, (c) => {
     if (c === yesLabel) run()
+    else toast('やめました（何も変えていません）', 'info')
   })
 }
 
@@ -527,7 +528,8 @@ function decisionPanel(r: Row) {
   const c = pm.pmCaseOf(p, r)
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
   const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => decideWithReason(r.id, o.kind) }))
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: 0, options })
+  // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
+  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: -1, options })
 }
 function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
   const s = st()
@@ -1098,13 +1100,16 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'row.replace': {
       if (!need()) return
-      const nid = rows.replaceRow(r!.id)
-      if (nid) {
+      if (role !== 'design') return toast('権限なし（置換は設計）', 'err')
+      // 先に置き換え品の型式を聞く（r で始まる単語を打ったときに、黙って行が作られないように）
+      const e0 = effective(r!)
+      return prompt(`${r!.id} の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます）`, { showText: true, requireText: true, placeholder: `例: ${e0.model || 'MY4N-GS DC24'}` }, (_c, t) => {
+        const [model, maker] = t.split(/\s+\/\s+/)
+        const nid = rows.replaceRow(r!.id, { model: model.trim(), maker: (maker ?? e0.maker).trim() })
+        if (!nid) return
         jumpToRow(nid, 'model')
-        toast(`${r!.id} を置換済にし、新しい行 ${nid} を作りました。型式を入れてください（Ctrl+Z で戻す）`, 'info')
-        startEdit()
-      }
-      return
+        toast(`${r!.id} の置き換え品 ${nid} を作りました（公開すると ${r!.id} は置換済になります。Ctrl+Z で戻す）`, 'info')
+      })
     }
     case 'row.toggleOrdered':
       if (!need()) return
@@ -1230,9 +1235,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const def = addDays(todayStr(), p.settings.quoteDays)
       const allLabel = `相見積先すべて（${ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join('・')}）`
       return prompt('概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）', { options: [allLabel, ...tradable.map((x) => `${x.id} ${x.name}`)], placeholder: `回答期限（空なら ${def}）`, showText: true }, (choice, text) => {
+        // 読めない・過去の期限は、選んだ依頼先と入力を残したままダイアログで直す
         const dl = parseDate(text || def, { label: '回答期限' })
-        if (!dl.ok || !dl.value) return toast(dl.ok ? '回答期限を入れてください' : dl.error, 'err')
-        if (dl.value < todayStr()) return toast('回答期限が過去の日付です', 'err')
+        if (!dl.ok) return dl.error.replace(/、未定/, '')
+        if (!dl.value) return `回答期限を日付で入れてください（空なら ${def}）`
+        if (dl.value < todayStr()) return `回答期限 ${dl.value} が過去の日付です`
         const sids = !choice || choice === allLabel ? ids : [choice.split(' ')[0]]
         void quotes.requestRoughQuotes(sids, dl.value).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
       })
@@ -1270,13 +1277,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'export.selection':
       return void import('@/io/excel').then((m) => m.exportSelectionRecord(s.ws, p, (row) => scoreRow(p, row, s.ws.suppliers))).then(() => toast('選定記録（社内）を出力しました', 'ok'))
     case 'adopt.bulkBest':
+    case 'adopt.bulkCheapest': {
       if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
-      adopt.bulkAdopt('best')
-      return
-    case 'adopt.bulkCheapest':
-      if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
-      adopt.bulkAdopt('cheapest')
-      return
+      // 多くの行を一度に変えるので、件数を見せて既定「やめる」で確認する
+      const n = p.rows.filter((x) => isActive(x) && x.status === 'quoted' && !x.adoptedSupplierId).length
+      if (!n) return toast('一括で採用できる行がありません（見積済で未採用の行なし）', 'info')
+      const cheapest = id === 'adopt.bulkCheapest'
+      return confirmDanger(`見積済で未採用の ${n} 行を${cheapest ? '最安（スコア無視）' : '推奨（最高スコア）'}でまとめて採用します。1 行だけなら表で a`, `${n} 行を採用する`, () => adopt.bulkAdopt(cheapest ? 'cheapest' : 'best'))
+    }
     case 'consolidate': {
       if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
       const options = adopt.consolidateOptions().map((o) => ({ label: o.label, detail: o.detail, run: () => adopt.applyConsolidation(o.supplierIds) }))
@@ -1458,8 +1466,8 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'publish', label: '公開（提出 / 指摘を発行）', section: '流れ', desc: '自分の未公開の行と下書き指摘', keywords: '提出 送る 送信 submit 出す 発行 購買へ' },
   { id: 'quotes.request', label: '概算見積を依頼', section: '流れ', desc: '購買。商社向け依頼 Excel を出す', keywords: '見積 依頼 相見積 rfq' },
   { id: 'quotes.import', label: '見積回答を取り込む', section: '流れ', desc: '購買。貼り付けで突合', keywords: '回答 取込 インポート import' },
-  { id: 'adopt.bulkBest', label: '未採用を推奨で一括採用', section: '流れ', keywords: '採用 選定 まとめて' },
-  { id: 'adopt.bulkCheapest', label: '未採用を最安で一括採用（スコア無視）', section: '流れ', keywords: '採用 選定 安い' },
+  { id: 'adopt.bulkBest', label: '未採用を推奨で一括採用', section: '流れ', keywords: 'まとめて 全部 一括' },
+  { id: 'adopt.bulkCheapest', label: '未採用を最安で一括採用（スコア無視）', section: '流れ', keywords: 'まとめて 安い' },
   { id: 'consolidate', label: '商社を集約', section: '流れ', desc: '1社/2社に集約した総額差を試算', keywords: 'まとめる 集約' },
   { id: 'quotes.formal', label: '正式見積を依頼（社外）', section: '流れ', desc: '購買。選定済の行を商社ごとに', keywords: '正式 依頼書' },
   { id: 'export.selection', label: '選定記録を出力（社内）', section: '流れ', desc: 'スコア内訳つき', keywords: '記録 スコア' },
@@ -1472,11 +1480,11 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 予算 重み 担当 相見積先' },
   { id: 'settings.confirm', label: '案件設定を確定（PM）', section: '案件' },
   { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件' },
-  { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 一覧 受信箱 inbox' },
+  { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
   { id: 'rule.add', label: 'ルールを追加', section: 'チェック' },
-  { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す' },
+  { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す エクスポート export' },
   { id: 'copy.formatted', label: '表示中の行と列を書式つきでコピー', section: '出力', keywords: 'コピー メール 貼る' },
-  { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し' },
+  { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し jsonエクスポート' },
   { id: 'data.importJson', label: 'JSON を読み込む', section: 'データ', keywords: '復元 読み込み' },
   { id: 'data.restoreBackup', label: '読み込み前に戻す（退避したデータに戻す）', section: 'データ', keywords: '復元 戻す 元に戻す 退避 バックアップ' },
   { id: 'data.exportBackup', label: '退避したデータを書き出す', section: 'データ', keywords: '退避 バックアップ 壊れた 保存データ' },
@@ -1493,6 +1501,17 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
   { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ?' },
 ]
+
+/** ショートカット表の操作の言い換え（パレットで探す言葉） */
+const KEYMAP_KEYWORDS: Record<string, string> = {
+  'issue.quickfix': '直す 修正 直し方 候補',
+  'adopt.best': '採用 選定 推奨 決める',
+  'adopt.choose': '商社を選ぶ 選定',
+  'issue.raise': '指摘 起票 質問',
+  'issue.next': '次の問題 エラー 警告',
+  'row.replace': '置換 置き換え 代替',
+  'issue.sequence': '順番 まとめて直す',
+}
 
 const QUIT_WORDS = /^(終了|閉じる|quit|exit|ログアウト|印刷|print)$/i
 
@@ -1572,7 +1591,7 @@ export function paletteItems(query: string): PaletteItem[] {
         }),
       })
   for (const c of STATIC) if (!q || matchScore(c.label, c.keywords, c.desc, ql) > 0) items.push({ id: c.id, section: c.section, label: c.label, desc: c.desc, keys: bindingsFor(c.id), run: wrap(() => runCommand(c.id)) })
-  for (const b of KEYMAP) if (q && matchScore(b.label, undefined, undefined, ql) >= 60 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
+  for (const b of KEYMAP) if (q && matchScore(b.label, KEYMAP_KEYWORDS[b.id], undefined, ql) >= 40 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
   if (q && QUIT_WORDS.test(q)) items.push({ id: 'info.quit', section: '案内', label: q.match(/印刷|print/i) ? '印刷は「Excelで出力」から（Ctrl+E）' : '終了はブラウザのタブを閉じるだけです（編集は自動で保存済み）', run: wrap(() => (q.match(/印刷|print/i) ? runCommand('export.excel') : undefined)) })
   // 並び: 打った言葉との一致度 → 最近使った順
   const recent = s.recentCommands
@@ -1580,7 +1599,7 @@ export function paletteItems(query: string): PaletteItem[] {
     if (!q) return 0
     if (it.section === m?.[1]?.toUpperCase() || /^R\d{3}$/.test(it.section)) return 90
     const st0 = STATIC.find((c) => c.id === it.id)
-    return matchScore(it.label, st0?.keywords, it.desc, ql)
+    return matchScore(it.label, st0?.keywords ?? KEYMAP_KEYWORDS[it.id], it.desc, ql)
   }
   const scored = items.map((it, i) => ({ it, i, sc: score(it), rc: recent.indexOf(it.id) }))
   scored.sort((a, b) => b.sc - a.sc || (a.rc < 0 ? 999 : a.rc) - (b.rc < 0 ? 999 : b.rc) || a.i - b.i)
@@ -1588,14 +1607,19 @@ export function paletteItems(query: string): PaletteItem[] {
 }
 
 /** パレットの一致度。完全一致 > 前方一致 > 部分一致 > 言い換え（キーワード） */
-function matchScore(label: string, keywords: string | undefined, desc: string | undefined, ql: string): number {
-  const l = toHalf(label).toLowerCase()
-  const plain = l.replace(/（.*?）/g, '').trim()
+function matchScore(label: string, keywords: string | undefined, desc: string | undefined, ql0: string): number {
+  // 空白の有無は区別しない（「JSONを書き出す」と「JSON を書き出す」）
+  const sp = (x: string) => x.replace(/\s+/g, '')
+  const ql = sp(ql0)
+  if (!ql) return 0
+  const l = sp(toHalf(label).toLowerCase())
+  const plain = l.replace(/（.*?）/g, '')
   if (l === ql || plain === ql) return 100
   if (l.startsWith(ql) || plain.startsWith(ql)) return 80
-  if (l.includes(ql)) return 60
   const kws = (keywords ?? '').toLowerCase().split(' ').filter(Boolean)
-  if (kws.some((k) => k === ql)) return 50
+  // 言い換えに完全一致する操作は、ラベルの途中に含むだけの操作より先（「直す」→ その場で直す、「採用」→ 推奨で採用）
+  if (kws.some((k) => k === ql)) return 65
+  if (l.includes(ql)) return 60
   if (kws.some((k) => k.startsWith(ql) || (ql.length >= 2 && k.includes(ql)))) return 40
   if ((desc ?? '').toLowerCase().includes(ql)) return 30
   if (kws.some((k) => k.length >= 2 && ql.includes(k) && ql.length <= k.length + 2)) return 20

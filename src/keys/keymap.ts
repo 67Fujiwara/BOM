@@ -27,7 +27,7 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'filter.focus', keys: ['/'], mode: 'nav', section: '全体', label: '絞り込み検索にフォーカス' },
   { id: 'help', keys: ['?'], mode: 'nav', section: '全体', label: 'ショートカット一覧', hint: '?' },
   { id: 'escape', keys: ['Escape'], mode: 'any', section: '全体', label: '1段階戻る' },
-  { id: 'wizard.back', keys: ['Alt+ArrowLeft'], mode: 'nav', section: '全体', label: '新規BOMガイドで1つ前の段階へ' },
+  { id: 'wizard.back', keys: ['Alt+ArrowLeft'], mode: 'nav', section: '全体', label: 'ガイドで1つ前の段階へ（新しいBOM）' },
 
   // 5.2 移動
   { id: 'move.up', keys: ['ArrowUp'], mode: 'nav', section: '移動', label: '上のセル' },

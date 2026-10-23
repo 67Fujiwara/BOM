@@ -10,6 +10,7 @@ import { scoreRow } from '@/model/score'
 import { fmtDateTime } from '@/model/dates'
 import { settingsFields } from './settingsFields'
 import { FIELD_LABEL, parseBomPaste, xlsxToTsv } from '@/io/paste'
+import * as pasteIo from '@/io/paste'
 
 /** パネルのキー操作を合成する（クリックでもキーと同じ動きにするため） */
 function press(key: string) {
@@ -533,7 +534,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
       const cur = useStore.getState().panel
       if (cur?.kind !== 'wizard') return
       st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
-      st.toastMsg(`${f.name} を読み込みました。Enter で次へ`, 'ok')
+      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ`, 'ok')
     } catch (err) {
       st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
     }
@@ -637,7 +638,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
           </div>
         )}
       </div>
-      <Foot items={[['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
+      <Foot items={[step === 7 && d.inputMode !== '2' && d.inputMode !== '3' ? ['Ctrl+Enter', '次へ（貼り付け欄の Enter は改行）'] : ['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
     </div>
   )
 }

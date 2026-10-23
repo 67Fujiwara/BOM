@@ -13,7 +13,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       r.statusChangedAt = now
     }
     // 指定商社・客先指定品: 指定先の有効な見積が来たら、スコアなしで指定先を採用して選定済（§3.4）
-    if (isFixedProcurement(r) && !r.adoptedSupplierId && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
+    if (isFixedProcurement(r) && !r.adoptedSupplierId && !r.flags.pmPending && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
       const sid = fixedSupplierId(p, r, ws.suppliers)
       const q = sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale && x.unitPrice != null && x.leadDays !== -1) : undefined
       if (q && sid && r.publishedRev != null) {

@@ -502,6 +502,10 @@ export function handleKeyDown(e: KeyboardEvent) {
     if (key === 'Ctrl+K' && s.panel.kind !== 'palette') {
       e.preventDefault()
       const panel = s.panel
+      // 入れている途中の文字は黙って捨てない（ガイドは下書きとして残るので開いてよい）
+      const p0 = panel as unknown as Record<string, unknown>
+      const typed = (typeof p0.text === 'string' && p0.text.trim() !== '') || (panel.kind === 'settings' && (panel.editing || Object.keys(panel.draft).length > 0)) || (panel.kind === 'issue' && !!panel.proposal && Object.values(panel.proposal).some((v) => String(v ?? '').trim() !== ''))
+      if (typed) return toast('入力中の内容があります。Enter で確定するか Esc で閉じてから Ctrl+K を押してください', 'info')
       if (panel.kind === 'wizard') set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
       closePanel()
       runCommand('palette.open')
@@ -526,6 +530,13 @@ export function handleKeyDown(e: KeyboardEvent) {
     return
   }
   if (s.mode === 'edit') {
+    // 6・8 で自動で始めた入力が空のままなら、矢印・Ctrl+Z は表の操作として効かせる（入力をやめて移動・取り消し）
+    if (s.editAuto && s.editValue === '' && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Ctrl+Z', 'Escape'].includes(key)) {
+      e.preventDefault()
+      cancelEdit()
+      if (key !== 'Escape') runCommand(lookupBinding(key, 'nav')!.id, e)
+      return
+    }
     switch (key) {
       case 'Enter':
         e.preventDefault()

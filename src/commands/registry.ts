@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, effective, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, effective, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -83,6 +83,9 @@ function confirmDanger(title: string, yesLabel: string, run: () => void) {
 function navItems() {
   return vm().items.filter((i) => i.kind !== 'detail')
 }
+/** Tab で右へ入力してきたときの開始の列（Enter で次の行のこの列へ戻る） */
+let tabAnchor: { row: string; col: string } | null = null
+
 /** 1 画面に見えている行数（PageUp / PageDown の移動量） */
 function pageRows(): number {
   const wrap = document.querySelector<HTMLElement>('.gridwrap')
@@ -227,10 +230,17 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     set({ mode: 'nav', editCandidates: null, editError: null })
     if (!rows.setCell(r.id, col, value)) return false
   } else set({ mode: 'nav', editCandidates: null, editError: null })
-  // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）
-  if (dir === 'down') moveCursorToRow(1)
-  else if (dir === 'right') moveCol(1)
-  else if (dir === 'left') moveCol(-1)
+  // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）。
+  // Tab で右へ入れてきた後の Enter は、Excel と同じく Tab を始めた列に戻る（単価 Tab 納期 Tab MOQ Enter → 次の行の単価）
+  if (dir === 'down') {
+    const anchor = tabAnchor && tabAnchor.row === r.id ? tabAnchor.col : null
+    tabAnchor = null
+    moveCursorToRow(1)
+    if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
+  } else if (dir === 'right' || dir === 'left') {
+    if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
+    moveCol(dir === 'right' ? 1 : -1)
+  } else tabAnchor = null
   // 6 商社別・8 正式見積: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
   const n = st()
   if (dir !== 'stay' && (n.view === 6 || n.view === 8) && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
@@ -1312,7 +1322,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.formal': {
       if (role !== 'purchasing') return toast('権限なし（正式見積の依頼は購買）', 'err')
       const cand = p.rows.filter((x) => isActive(x) && x.adoptedSupplierId && (x.status === 'selected' || (x.flags.reissue && ['formalRequested', 'formalQuoted'].includes(x.status))))
-      const working = cand.filter((x) => x.working && Object.keys(x.working).length).length
+      const working = cand.filter((x) => hasWork(x) || x.pendingRemoval).length
       const pending = cand.filter((x) => x.flags.pmPending || x.flags.ltbPending).length
       const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.flags.pmPending || x.flags.ltbPending).length
       const contested = cand.filter((x) => x.flags.contested && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending).length
@@ -1624,12 +1634,16 @@ export function paletteItems(query: string): PaletteItem[] {
       })
   for (const c of STATIC) if (!q || matchScore(c.label, c.keywords, c.desc, ql) > 0) items.push({ id: c.id, section: c.section, label: c.label, desc: c.desc, keys: bindingsFor(c.id), run: wrap(() => runCommand(c.id)) })
   for (const b of KEYMAP) if (q && matchScore(b.label, KEYMAP_KEYWORDS[b.id], undefined, ql) >= 40 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
+  // 文字の大きさはブラウザの拡大で変える（アプリの設定ではない）
+  if (q && /文字.*(大き|小さ)|拡大|縮小|ズーム|zoom/i.test(q)) items.push({ id: 'info.zoom', section: '案内', label: '文字の大きさは Ctrl + ＋ / Ctrl + − で変えられます（行の高さは「コンパクト表示切替」）', run: wrap(() => undefined) })
   if (q && QUIT_WORDS.test(q)) items.push({ id: 'info.quit', section: '案内', label: q.match(/印刷|print/i) ? '印刷は「Excelで出力」から（Ctrl+E）' : '終了はブラウザのタブを閉じるだけです（編集は自動で保存済み）', run: wrap(() => (q.match(/印刷|print/i) ? runCommand('export.excel') : undefined)) })
   // 並び: 打った言葉との一致度 → 最近使った順
   const recent = s.recentCommands
   const score = (it: PaletteItem) => {
     if (!q) return 0
     if (it.section === m?.[1]?.toUpperCase() || /^R\d{3}$/.test(it.section)) return 90
+    // 案内（終了・印刷・文字の大きさ）は、その言葉を打ったときだけ出るので先頭に
+    if (it.id.startsWith('info.')) return 70
     const st0 = STATIC.find((c) => c.id === it.id)
     return matchScore(it.label, st0?.keywords ?? KEYMAP_KEYWORDS[it.id], it.desc, ql)
   }

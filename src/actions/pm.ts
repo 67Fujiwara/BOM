@@ -56,7 +56,12 @@ export function pmOptions(c: PmCase, row?: Row): PmOption[] {
     case '先行発注判断':
       return [{ key: 'y', label: '先行発注を許可（推奨商社で選定済）', kind: '先行発注許可' }, { key: 'Y', label: '却下 → 正式見積を待つ', kind: '却下' }]
     case '変更セット':
-      return [{ key: 'y', label: '承認 → 変更を公開値に反映', kind: '承認' }, { key: 'Y', label: '却下 → 設計の作業中に戻す', kind: '却下' }]
+      {
+        // 変更セットは Rev ごとにまとめて決める（この行だけではない）
+        const n = row ? st().project().rows.filter((x) => x.pendingRev === row.pendingRev && x.flags.pmPending && x.flags.pmReason === '変更セット').length : 0
+        const scope = row?.pendingRev != null ? `Rev.${row.pendingRev} の変更セット ${n} 行まとめて` : '変更セットまとめて'
+        return [{ key: 'y', label: `承認 → ${scope}公開値に反映`, kind: '承認' }, { key: 'Y', label: `却下 → ${scope}設計の作業中に戻す`, kind: '却下' }]
+      }
     case '差分超過':
       if (ordered) return [{ key: 'y', label: '受入', kind: '受入' }, { key: 'd', label: '設計へ代替依頼（コスト超過を起票）', kind: '設計へ代替依頼' }]
       return [{ key: 'y', label: '受入 → 正式見積済', kind: '受入' }, { key: 'b', label: '次点商社へ', kind: '次点商社へ' }, { key: 'g', label: '再交渉（購買へ）', kind: '再交渉' }, { key: 'd', label: '設計へ代替依頼（コスト超過を起票）', kind: '設計へ代替依頼' }, { key: 'q', label: '数量見直し依頼（設計へ）', kind: '数量見直し依頼' }]
@@ -182,7 +187,10 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
                 // 公開値はそのまま。変更は設計の作業中に戻す（見積は失わない）
                 rr.working = { ...rr.pendingApproval, ...(rr.working ?? {}) }
                 rr.pendingApproval = undefined
-              } else if (rr.status === 'submitted' && rr.publishedRev === rev && !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id))) {
+              } else if (rr.publishedRev === rev && !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id)) && !['ordered', 'received'].includes(rr.status)) {
+                // この変更セットで足した行（客先指定品などで自動で選定済になった行も）は下書きに戻す
+                rr.adoptedSupplierId = undefined
+                rr.scoreSnapshot = undefined
                 // 承認待ちだった追加行は下書きに戻す
                 setStatus(rr, 'draft')
                 rr.publishedRev = undefined

@@ -1,6 +1,6 @@
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
-import { isActive, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
+import { hasWork, isActive, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { emptyQuote } from '@/model/sample'
 import { parseValue, quoteTargets } from './rows'
@@ -18,7 +18,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   const p = s.project()
   // 要再確認で「再見積」を選んだ商社（まだ回答なし）も依頼の対象
   const awaitingRequote = (r: Row) => p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.reconfirm === 'requote' && q.unitPrice == null).map((q) => q.supplierId)
-  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0) && !(r.working && Object.keys(r.working).length) && !r.flags.pmPending)
+  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
   const perSupplier = new Map<string, Row[]>()
@@ -174,7 +174,7 @@ export async function requestFormalQuotes(): Promise<string> {
   if (s.user().role !== 'purchasing') return '権限なし（正式見積の依頼は購買）'
   const p = s.project()
   const target = p.rows.filter((r) => isActive(r) && r.adoptedSupplierId && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
-  const working = target.filter((r) => r.working && Object.keys(r.working).length)
+  const working = target.filter((r) => hasWork(r) || r.pendingRemoval)
   const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
   // 再見積要の行は概算が失効している。概算を取り直して採用し直してから正式見積へ
   const requote = target.filter((r) => r.flags.requote)

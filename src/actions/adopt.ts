@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, isActive, isFixedProcurement, isQuotable, roundedQty } from '@/model/derive'
+import { effective, hasWork, isActive, isFixedProcurement, isQuotable, roundedQty } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -17,7 +17,7 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
   if (!isActive(row)) return '取消・置換済の行は採用できません'
   if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
-  if (row.working && Object.keys(row.working).length) return '設計作業中の行は選定できません（公開を待つ）'
+  if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
     const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)

@@ -14,7 +14,7 @@ const HEADER_SYNONYMS: Record<BomField, RegExp> = {
   maker: /^(メーカ|メーカー|製造元|製造者|maker|mfr|manufacturer|vendor)/i,
   qtyNeeded: /^(数量|員数|個数|台数|必要数|qty|quantity|数)/i,
   unit: /^(単位|unit)/i,
-  ref: /^(回路記号|記号|部品記号|デバイス|refdes|ref|reference|シンボル)/i,
+  ref: /^(回路記号|記号|部品記号|デバイス|refdes|ref|reference|designator|シンボル)/i,
   drawing: /^(図面|図番|図面番号|drawing|dwg)/i,
   note: /^(備考|摘要|メモ|note|remarks?|comment)/i,
   packQty: /^(入数|入り数|pack)/i,
@@ -82,6 +82,8 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 
 export function detectField(h: string): BomField | null {
   const s = toHalf(h).trim()
+  // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
+  if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
   return null
 }
@@ -99,7 +101,10 @@ export function parseBomPaste(text: string): PasteResult {
   const split = (l: string[]) => l
   // 見出しの行を上から探す（表題・依頼No などの行が先にあってもよい）
   const filled = (l: string[]) => l.filter((c) => c.trim() !== '').length
-  const headerAt = lines.slice(0, 10).findIndex((l) => l.map(detectField).filter(Boolean).length >= 2)
+  // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
+  const counts = lines.slice(0, 30).map((l) => new Set(l.map(detectField).filter(Boolean)).size)
+  const best = Math.max(0, ...counts)
+  const headerAt = best >= 2 ? counts.indexOf(best) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
@@ -130,7 +135,10 @@ export function parseBomPaste(text: string): PasteResult {
       const vals = lines.map((l) => split(l)[i] ?? '').filter((v) => v.trim() !== '')
       return vals.length > 0 && vals.every((v) => { const r = parseNumber(v); return r.ok && r.value != null })
     })
-    if (numericCol != null && numericCol >= 1 && numericCol <= 4) {
+    if (numericCol === 0 && width >= 2) {
+      // 数量が先頭の列（「4 リレー MY4N」）
+      mapping = (['qtyNeeded', 'name', 'model', 'maker', 'unit', 'ref'] as BomField[]).slice(0, width)
+    } else if (numericCol != null && numericCol >= 1 && numericCol <= 4) {
       const before = ([['name'], ['name', 'model'], ['name', 'model', 'maker'], ['category', 'name', 'model', 'maker']] as BomField[][])[numericCol - 1]
       const after = (['unit', 'ref', 'note'] as BomField[]).slice(0, Math.max(0, width - numericCol - 1))
       mapping = [...before, 'qtyNeeded', ...after]
@@ -158,7 +166,13 @@ export function parseBomPaste(text: string): PasteResult {
           if (v !== '' || !n.ok) badQty++
           r.qtyNeeded = 0
           if (v !== '') r.note = `${r.note ? r.note + ' ' : ''}数量「${v}」を読めません`
-        } else r.qtyNeeded = n.value
+        } else {
+          r.qtyNeeded = n.value
+          // 単位の列が無いときは、数量に付いた単位（20 m・5 本）を単位にする
+          const suffix = /([^\d\s.,]+)\s*$/.exec(toHalf(v))?.[1]
+          const u = suffix ? UNIT_ALIAS[suffix.toLowerCase()] : undefined
+          if (u && !mapping.includes('unit')) r.unit = u
+        }
       } else if (f === 'packQty') {
         const n = parseNumber(v, { min: 1, integer: true })
         r.packQty = n.ok ? n.value : null

@@ -233,7 +233,10 @@ export const useStore = create<State>((set, get) => ({
     if (entry.kind === 'publish') {
       set({ undo: { ...get().undo, [user]: rest } })
       const n = revertPublishAsWorking(entry)
-      return st.toastMsg(n > 0 ? `公開済の値を戻しました。Rev は残し、未公開として ${n} 行に積みました（Ctrl+Enter で Rev+1 として公開）` : '公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください', 'info')
+      // 公開した取消・置換は購買に伝わっているので戻さない（必要なら行を追加し直す）
+      const removed = entry.rows.filter((c) => c.before && c.after && !['cancelled', 'replaced'].includes(c.before.status) && ['cancelled', 'replaced'].includes(c.after.status)).map((c) => c.key)
+      const rm = removed.length ? `取消・置換を公開した ${removed.slice(0, 3).join(', ')} は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。` : ''
+      return st.toastMsg(n > 0 ? `${rm}公開済の値を戻しました。Rev は残し、未公開として ${n} 行に積みました（Ctrl+Enter で Rev+1 として公開）` : rm || '公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください', 'info')
     }
     const conflict = applyEntry(entry, 'undo')
     if (conflict) {

@@ -68,7 +68,7 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'cell.paste', keys: ['Ctrl+V'], mode: 'nav', section: '編集', label: '貼り付け（Excelの複数セルも可）' },
 
   // 5.4 BOM操作
-  { id: 'adopt.best', keys: ['a'], mode: 'nav', section: 'BOM操作', label: '推奨（最高スコア）で採用。見積済のみ', hint: 'a 推奨採用' },
+  { id: 'adopt.best', keys: ['a', 'Ctrl+Alt+A'], mode: 'nav', section: 'BOM操作', label: '推奨（最高スコア）で採用。見積済のみ', hint: 'a 推奨採用' },
   { id: 'adopt.choose', keys: ['Shift+A'], mode: 'nav', section: 'BOM操作', label: '商社を選んで採用（1〜9）' },
   { id: 'row.replace', keys: ['r'], mode: 'nav', section: 'BOM操作', label: '置き換え品を作る', hint: 'r 置換' },
   { id: 'row.toggleOrdered', keys: ['o'], mode: 'nav', section: 'BOM操作', label: '発注済の切り替え', hint: 'o 発注' },
@@ -80,8 +80,8 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'columns.panel', keys: ['c'], mode: 'nav', section: 'BOM操作', label: '列の表示パネル' },
 
   // 5.5 チェック
-  { id: 'issue.next', keys: ['n'], mode: 'nav', section: 'チェック', label: '次の問題へ', hint: 'n 次の問題' },
-  { id: 'issue.prev', keys: ['Shift+N'], mode: 'nav', section: 'チェック', label: '前の問題へ' },
+  { id: 'issue.next', keys: ['n', 'F8'], mode: 'nav', section: 'チェック', label: '次の問題へ', hint: 'n 次の問題' },
+  { id: 'issue.prev', keys: ['Shift+N', 'Shift+F8'], mode: 'nav', section: 'チェック', label: '前の問題へ' },
   { id: 'issue.quickfix', keys: ['Ctrl+.'], mode: 'nav', section: 'チェック', label: '今の問題をその場で直す' },
   { id: 'issue.ack', keys: ['x'], mode: 'nav', section: 'チェック', label: '警告を確認済みにする / 外す' },
   { id: 'issue.sequence', keys: ['Ctrl+Shift+F'], mode: 'any', section: 'チェック', label: '順番に直すモード' },

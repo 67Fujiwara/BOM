@@ -40,6 +40,9 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   } else if (st.mode === 'nav' && !row) hints.push(['ArrowDown', '表へ'], ['n', '次の問題'])
   else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Escape', '取り消し'])
   hints.push(['?', 'ヘルプ'])
+  // 文字を打てるセルでは英字は入力になるので、英字のコマンドは Alt を付けて案内する（n は F8）
+  if (st.mode === 'nav' && row && isActive(row) && !canEdit(st.cursorCol) && !['bool', 'computed'].includes(colDef(st.cursorCol)?.kind ?? 'computed'))
+    for (const h of hints) if (/^(Shift\+)?[A-Za-z]$/.test(h[0])) h[0] = h[0] === 'n' ? 'F8' : h[0] === 'a' ? 'Ctrl+Alt+A' : `Alt+${h[0]}`
   const problemHint = (() => {
     if (!row) return ''
     const iss = openIssues(p, row.id).filter((i) => i.status === 'open' || i.status === 'inProgress')

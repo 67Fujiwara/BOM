@@ -69,6 +69,28 @@ export function saveBackup(raw: string, reason: string): boolean {
     }
   }
 }
+/** 守る退避以外でいちばん古い退避を 1 件消す（消せたら true） */
+function dropOldestBackup(): boolean {
+  const list = loadBackups()
+  const isProtected = (b: Backup) => b.reason.startsWith(BROKEN) || b.reason.startsWith('一部を外して')
+  const victim = [...list].reverse().find((b) => !isProtected(b))
+  if (!victim) return false
+  try {
+    localStorage.setItem(BACKUP_KEY, JSON.stringify(list.filter((b) => b !== victim)))
+    return true
+  } catch {
+    return false
+  }
+}
+/** 退避をすべて消す（容量を空ける。読めなかった保存データの退避も含む） */
+export function clearBackups() {
+  try {
+    localStorage.removeItem(BACKUP_KEY)
+  } catch {
+    /* noop */
+  }
+}
+
 /** 退避の一覧（新しい順） */
 export function loadBackups(): Backup[] {
   try {
@@ -126,13 +148,18 @@ export function loadIfChangedElsewhere(): Workspace | null {
 
 export function saveWorkspace(ws: Workspace): boolean {
   saveUser(ws.user)
-  let ok = true
-  try {
-    const body = JSON.stringify(ws)
-    localStorage.setItem(STORAGE_KEY, body)
-    lastWritten = body
-  } catch {
-    ok = false
+  let ok = false
+  const body = JSON.stringify(ws)
+  // 入らなければ、守る退避以外の古い退避から空けて入れ直す（本体のデータを退避より優先する）
+  for (;;) {
+    try {
+      localStorage.setItem(STORAGE_KEY, body)
+      lastWritten = body
+      ok = true
+      break
+    } catch {
+      if (!dropOldestBackup()) break
+    }
   }
   if (SYNC_URL) {
     window.clearTimeout(timer)

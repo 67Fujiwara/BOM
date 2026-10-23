@@ -35,10 +35,14 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
   if (row.procurement === '客先指定品') {
     // 一度決まった商社（採用済み・見積を依頼した商社）は、値を入れた順番で変えない
     if (row.adoptedSupplierId) return row.adoptedSupplierId
-    const q = p.quotes.find((x) => x.rowId === row.id && !x.stale)
-    if (q) return q.supplierId
-    const handling = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).find((x) => x?.handledMakers.includes(row.maker))
-    return handling?.id ?? p.supplierIds[0] ?? null
+    // 辞退（取扱なし）した商社は飛ばし、単価の入った商社 → 依頼中の商社 → そのメーカを扱う商社の順（購買が 6 で別の商社に単価を入れれば、その商社になる）
+    const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1)
+    const priced = live.find((x) => x.unitPrice != null)
+    if (priced) return priced.supplierId
+    if (live[0]) return live[0].supplierId
+    const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
+    const cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
+    return (cands.find((x) => x.handledMakers.includes(row.maker)) ?? cands[0])?.id ?? null
   }
   return null
 }
@@ -248,4 +252,13 @@ export function fmtYen(n: number | null | undefined, currency = '¥'): string {
 /** 設計の未公開の作業（値の変更・取消・置換）があるか */
 export function hasWork(r: Row): boolean {
   return (!!r.working && Object.keys(r.working).length > 0) || !!r.removal
+}
+
+/** 決定の付帯情報（先行発注の申請内容・特急の上限金額）を文にする。詳細・Excel の変更点に出す */
+export function decisionExtra(d: { payload?: Record<string, unknown> }): string {
+  const pl = d.payload ?? {}
+  const parts: string[] = []
+  if (typeof pl.request === 'string' && pl.request) parts.push(`申請: ${pl.request}`)
+  if (typeof pl.amount === 'number') parts.push(`金額 ¥${pl.amount.toLocaleString()}`)
+  return parts.join('・')
 }

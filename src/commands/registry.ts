@@ -15,7 +15,7 @@ import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
 import { normalize, setStatus } from '@/model/lifecycle'
-import { loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
+import { clearBackups, loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
@@ -249,6 +249,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     const anchor = tabAnchor && tabAnchor.row === r.id ? tabAnchor.col : null
     tabAnchor = null
     moveCursorToRow(1)
+    // 最後の行（下に行が無い）では列を戻さない（同じ行の最初の値を上書きしない）
+    if (st().cursorRow === r.id) return true
     if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
   } else if (dir === 'right' || dir === 'left') {
     if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
@@ -573,13 +575,17 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
   const r = p.rows.find((x) => x.id === rowId)!
   const ext = pm.needsExternalApproval(p, r) && (kind === '受入' || kind === '承認')
   const must = kind === '却下' || kind === '回答を支持' || kind === '指摘を支持'
-  prompt(`決定: ${kind}（${rowId}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
+  // 変更セットの承認・却下は Rev の全行に効くので、対象を題に出す
+  const cs = pm.pmCaseOf(p, r) === '変更セット' && r.pendingRev != null ? `・Rev.${r.pendingRev} の変更セット ${p.rows.filter((x) => x.pendingRev === r.pendingRev && x.flags.pmPending && x.flags.pmReason === '変更セット').length} 行まとめて` : ''
+  prompt(`決定: ${kind}（${rowId}${cs}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
     if (ext && !(extra?.['承認者'] ?? '').trim()) return '上長決裁の条件に該当します。承認者を入れてください'
     if (ext) {
       const dd = parseDate(extra?.['日付'] ?? '', { label: '決裁日' })
       if (!dd.ok) return dd.error
     }
     let amount: number | undefined
+    // 特急・分納は上限金額を入れる（§9.1「上限入力」）
+    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim()) return '特急・分納の上限金額を入れてください（例: 30000）'
     if (extra?.['上限金額']) {
       const n = parseNumber(extra['上限金額'], { min: 0, label: '上限金額' })
       if (!n.ok) return n.error
@@ -587,7 +593,7 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
     }
     const err = pm.decide(rowId, kind, text, { external: ext ? { approver: (extra?.['承認者'] ?? '').trim(), date: extra?.['日付'] ?? '', ref: extra?.['決裁書No'] ?? '' } : undefined, amount })
     if (err) return err
-    toast(`${rowId}: ${kind}`, 'ok')
+    toast(`${rowId}${cs}: ${kind}`, 'ok')
   })
 }
 
@@ -870,7 +876,7 @@ function restoreBackup(b: Backup) {
   const cur = st().ws
   confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
     const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
-    replaceWorkspace(ws)
+    if (!replaceWorkspace(ws)) return toast('保存領域が足りないため戻せませんでした（いまの内容のまま）', 'err')
     toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
   })
 }
@@ -885,15 +891,22 @@ function exportBackup(b: Backup) {
 }
 
 /** ワークスペースを丸ごと置き換える（JSON 読み込み・退避からの復元）。Undo 履歴は別の内容のものなので消す */
-function replaceWorkspace(ws: Workspace) {
-  st().commitWs('', (w) => {
+function replaceWorkspace(ws: Workspace): boolean {
+  const prev = st().ws
+  const ok = st().commitWs('', (w) => {
     w.projects = ws.projects
     w.suppliers = ws.suppliers
     w.rules = ws.rules
     w.currentProjectId = ws.currentProjectId
   })
+  if (!ok) {
+    // 保存できない置き換えは画面にも反映しない（「読み込みました」と言ってリロードで消えるのを防ぐ）
+    set({ ws: prev })
+    return false
+  }
   st().clearHistory()
   set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
+  return true
 }
 function nextProjectId(): string {
   const y = new Date().getFullYear()
@@ -1008,7 +1021,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         set({ cellFilter: null, filter: '' })
         return toast('絞り込みを解除しました', 'info')
       }
-      return set({ cursorRow: null })
+      // カーソルは残す（Esc を重ねても行を見失わない）
+      return
     case 'move.up':
       if (r && s.detailIndex > 0) return set({ detailIndex: s.detailIndex - 1 })
       return moveCursorRow(-1)
@@ -1309,7 +1323,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (!dl.value) return `回答期限を日付で入れてください（空なら ${def}）`
         if (dl.value < todayStr()) return `回答期限 ${dl.value} が過去の日付です`
         const sids = !choice || choice === allLabel ? ids : [choice.split(' ')[0]]
-        void quotes.requestRoughQuotes(sids, dl.value).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
+        void quotes.requestRoughQuotes(sids, dl.value, !choice || choice === allLabel).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
       })
     }
     case 'quotes.import': {
@@ -1464,7 +1478,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           const ws = res.ws
           const cur = st().ws
           const done = (backedUp: boolean) => {
-            replaceWorkspace(ws)
+            if (!replaceWorkspace(ws)) return toast('保存領域が足りないため読み込みませんでした（いまの内容のまま）。「退避データを消す」で空きを作ってから読み込んでください', 'err')
             toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
           }
           confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
@@ -1474,12 +1488,20 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           })
         },
       })
+    case 'data.clearBackups': {
+      const n = loadBackups().length
+      if (!n) return toast('退避したデータはありません', 'info')
+      return confirmDanger(`退避したデータ ${n} 件をすべて消して保存領域を空けます（読めなかった保存データの退避も消えます。先に「退避したデータを書き出す」で保存できます）`, `${n} 件を消す`, () => {
+        clearBackups()
+        toast(`退避したデータ ${n} 件を消しました`, 'ok')
+      })
+    }
     case 'data.restoreBackup':
     case 'data.exportBackup': {
       const list = loadBackups()
       if (!list.length) return toast('退避したデータはありません', 'info')
       // 同じ分に作った退避も見分けられるよう、番号と秒まで出し、選んだ番号で取り出す
-      const labelOf = (b: (typeof list)[number], i: number) => `#${i + 1} ${b.at.slice(0, 19).replace('T', ' ')}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      const labelOf = (b: (typeof list)[number], i: number) => `#${i + 1} ${new Date(b.at).toLocaleString('ja-JP', { hour12: false })}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
       const labels = list.map(labelOf)
       const act = (b: (typeof list)[number]) => (id === 'data.exportBackup' ? exportBackup(b) : restoreBackup(b))
       if (list.length === 1) return act(list[0])
@@ -1544,6 +1566,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し jsonエクスポート' },
   { id: 'data.importJson', label: 'JSON を読み込む', section: 'データ', keywords: '復元 読み込み' },
   { id: 'data.restoreBackup', label: '読み込み前に戻す（退避したデータに戻す）', section: 'データ', keywords: '復元 戻す 元に戻す 退避 バックアップ' },
+  { id: 'data.clearBackups', label: '退避データを消す（保存領域を空ける）', section: 'データ', keywords: '容量 空き 削除 退避 バックアップ' },
   { id: 'data.exportBackup', label: '退避したデータを書き出す', section: 'データ', keywords: '退避 バックアップ 壊れた 保存データ' },
   { id: 'data.reset', label: 'サンプルデータに戻す', section: 'データ', keywords: '初期化 リセット' },
   { id: 'supplier.add', label: '商社を追加', section: '案件', keywords: '商社 マスタ' },
@@ -1588,11 +1611,12 @@ export function paletteItems(query: string): PaletteItem[] {
     const row = p.rows.find((x) => x.id === id)
     if (row) {
       // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
-      const rest = m[2].trim().replace(/^を\s*/, '')
+      // 表示どおりの「R040 を置換」「R040 へジャンプ」「R040 を 因幡電機 で採用」でも当たる
+      const rest = m[2].trim().replace(/^[をへ]\s*/, '')
       const e = effective(row)
-      if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用'))) {
+      if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用') || /で採用/.test(rest))) {
         const scores = scoreRow(p, row, s.ws.suppliers)
-        const supQ = rest.replace(/^採用\s*/, '').trim()
+        const supQ = rest.replace(/^採用\s*/, '').replace(/\s*で採用.*$/, '').replace(/\s*スコア.*$/, '').trim()
         const cands = supQ ? scores.filter((sc) => s.ws.suppliers.find((x) => x.id === sc.supplierId)?.name.includes(supQ)) : scores
         cands.forEach((sc) => {
           const i = scores.indexOf(sc)
@@ -1632,7 +1656,7 @@ export function paletteItems(query: string): PaletteItem[] {
               runCommand(cmd)
             }),
           })
-      if (!rest) items.push({ id: `goto:${id}`, section: id, label: `${id} へジャンプ`, desc: e.name, keys: ['Ctrl+G'], run: wrap(() => jumpToRow(id)) })
+      if (!rest || 'ジャンプ'.startsWith(rest) || rest.startsWith('ジャンプ')) items.push({ id: `goto:${id}`, section: id, label: `${id} へジャンプ`, desc: e.name, keys: ['Ctrl+G'], run: wrap(() => jumpToRow(id)) })
     }
   }
   for (const v of VIEWS) if (!q || `ビュー ${v.label}`.includes(q) || v.label.includes(q)) items.push({ id: `view.${v.id}`, section: 'ビュー', label: `ビュー: ${v.label}`, keys: [String(v.id)], run: wrap(() => runCommand(`view.${v.id}`)) })

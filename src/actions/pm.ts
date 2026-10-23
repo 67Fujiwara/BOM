@@ -70,7 +70,11 @@ export function pmOptions(c: PmCase, row?: Row): PmOption[] {
       return [{ key: 'Y', label: '受入（遅延許容）', kind: '受入' }, { key: 'b', label: '次点へ（必要日を満たす商社）', kind: '次点商社へ' }, { key: 'p', label: '購買が再選定（委譲）', kind: '委譲' }, { key: 'd', label: '設計が代替品検討', kind: '設計へ代替依頼' }, { key: 'e', label: '特急・分納（上限入力）', kind: '特急・分納' }]
     case '対策不成立':
       if (ordered) return [{ key: 'Y', label: '受入（遅延・価格を受け入れる）', kind: '受入' }, { key: 'e', label: '特急・分納・納期短縮交渉（購買）', kind: '特急・分納' }]
-      return [{ key: 'Y', label: '受入（遅延・価格を受け入れる）', kind: '受入' }, { key: 'b', label: '次点へ', kind: '次点商社へ' }, { key: 'g', label: '再交渉（購買へ）', kind: '再交渉' }, { key: 'e', label: '特急・分納（上限入力）', kind: '特急・分納' }]
+      {
+        // 再交渉は正式見積の単価についてのもの（正式依頼の前の行には出さない）
+        const formal = !!row && (row.status === 'formalRequested' || row.status === 'formalQuoted')
+        return [{ key: 'Y', label: '受入（遅延・価格を受け入れる）', kind: '受入' }, { key: 'b', label: '次点へ', kind: '次点商社へ' }, ...(formal ? [{ key: 'g', label: '再交渉（購買へ）', kind: '再交渉' as const }] : []), { key: 'e', label: '特急・分納（上限入力）', kind: '特急・分納' }]
+      }
     case '差戻し2回目':
       return [{ key: 'y', label: '購買の指摘を支持 → 設計へ', kind: '指摘を支持' }, { key: 'Y', label: '設計の回答を支持 → 確認済', kind: '回答を支持' }]
     case '閾値超':

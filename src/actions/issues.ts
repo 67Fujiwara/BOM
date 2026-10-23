@@ -20,6 +20,7 @@ export function canRaise(row: Row, kind: IssueKind): string | null {
   const e = effective(row)
   if (def.blockedFor.includes(e.procurement)) return `${e.procurement} の行には「${kind}」を起票できません`
   if (def.blockedIfNoAlt && e.altPolicy === '不可') return `代替不可の行には「${kind}」を起票できません`
+  if (kind === '発注後変更依頼' && row.status !== 'ordered' && row.status !== 'received') return '発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）'
   return null
 }
 
@@ -47,7 +48,8 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
     return null
   }
   // 同じ行・同じ種別の指摘がまだ開いていれば、重ねて起票しない（返信で足す）
-  const dup = s.project().issues.find((i) => i.rowId === rowId && i.kind === kind && ['draft', 'open', 'inProgress', 'answered'].includes(i.status))
+  // 代替の提案は複数あってよい（§6.3・§16。商社ごと・型式ごとの提案を並べて比べる）
+  const dup = proposal || kind === '代替提案' ? undefined : s.project().issues.find((i) => i.rowId === rowId && i.kind === kind && ['draft', 'open', 'inProgress', 'answered'].includes(i.status))
   if (dup) {
     s.toastMsg(`${rowId} には同じ「${kind}」の指摘 ${dup.id} がもうあります。内容を足すときは Space → ↓ で ${dup.id} を選んで返信（1）`, 'err')
     return null
@@ -274,7 +276,8 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
       r.flags.reconfirm = false
       // 再見積があれば見積中へ。据え置き・提案値だけでも、残した見積で見積済に進める（normalize が判定）
       const requote = p.quotes.some((x) => x.rowId === rowId && !x.stale && x.reconfirm === 'requote')
-      if ((requote && r.status !== 'draft') || r.status === 'submitted') {
+      // 採用中の商社を残したまま他の商社を再見積にした行（選定済以降）は、状態を戻さない（採用はそのまま、回答は比較用）
+      if (r.status === 'submitted' || (requote && !r.adoptedSupplierId && ['quoting', 'quoted'].includes(r.status))) {
         r.status = 'quoting'
         r.statusChangedAt = new Date().toISOString()
       }

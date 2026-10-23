@@ -76,9 +76,14 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         if (FULLWIDTH.test(str)) push([{ label: '半角に変換', apply: () => ({ [field]: toHalfWidth(str) }) as Partial<Row> }])
         break
       case 'regex':
-        if (rule.pattern && str && (!rule.maker || rule.maker === e.maker) && (!rule.when || new RegExp(rule.when).test(str))) {
-          const re = new RegExp(rule.pattern)
-          if (!re.test(str)) push([])
+        // 書き方の誤ったルール（正規表現として読めない）は、画面を止めずに飛ばす
+        try {
+          if (rule.pattern && str && (!rule.maker || rule.maker === e.maker) && (!rule.when || new RegExp(rule.when).test(str))) {
+            const re = new RegExp(rule.pattern)
+            if (!re.test(str)) push([])
+          }
+        } catch {
+          /* 読めないルールは無視 */
         }
         break
       case 'duplicate':

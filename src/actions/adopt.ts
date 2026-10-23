@@ -209,7 +209,8 @@ export function consolidateOptions(): Array<{ label: string; detail: string; sup
     }
     const names = ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join(' + ')
     const delta = total - current
-    return { label: names, detail: `${covered}/${rows.length} 行を集約（残りはいまの採用のまま）、総額 ¥${Math.round(total).toLocaleString()}（差 ${delta >= 0 ? '+' : ''}¥${Math.round(delta).toLocaleString()}）、最長納期 ${worstLead} 日`, supplierIds: ids, delta }
+    const fixedN = p.rows.filter((r) => (r.status === 'quoted' || r.status === 'selected') && isFixedProcurement(r)).length
+    return { label: names, detail: `${covered}/${rows.length} 行を集約（残りはいまの採用のまま${fixedN ? `。指定商社・客先指定品 ${fixedN} 行は指定先のまま対象外` : ''}）、総額 ¥${Math.round(total).toLocaleString()}（差 ${delta >= 0 ? '+' : ''}¥${Math.round(delta).toLocaleString()}）、最長納期 ${worstLead} 日`, supplierIds: ids, delta }
   })
   return out.sort((a, b) => a.delta - b.delta)
 }

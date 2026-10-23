@@ -59,7 +59,7 @@ export const VIEWS: ViewDef[] = [
 /** 購買の 4（§11）: ボールに関係なく、見積の期限切れ・未回答（回答が揃っていない見積中）を出す */
 function purchasingAttention(r: Row, c: ViewCtx): boolean {
   // 取込の型式不一致は、行のボールに関係なく購買の後始末（§7）
-  if (r.flags.importMismatch) return true
+  if (r.flags.importMismatch || r.flags.orderQtyCheck) return true
   if (!['quoting', 'quoted', 'selected', 'formalRequested'].includes(r.status)) return false
   const today = todayStr()
   const qs = c.p.quotes.filter((q) => q.rowId === r.id && !q.stale)

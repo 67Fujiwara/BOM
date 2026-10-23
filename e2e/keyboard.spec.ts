@@ -29,6 +29,7 @@ test('矢印・j/k・数字キーで移動とビュー切替ができ、? のヘ
   await open(page)
   await page.keyboard.press('ArrowDown')
   await expect(page.getByTestId('cursor')).toContainText('R001')
+  await page.keyboard.press('Home') // ID の列（文字を打てない列）では英字がコマンド
   await page.keyboard.press('j')
   await page.keyboard.press('j')
   await expect(page.getByTestId('cursor')).toContainText('R003')
@@ -86,7 +87,7 @@ test('コマンドパレット: 文の形 "R035 採用" で推奨採用が先頭
 test('設計: 4 要確認 → n → 直す → Ctrl+Enter で公開すると指摘が対応済になり、購買が x で確認済にできる', async ({ page }) => {
   await open(page)
   await page.keyboard.press('4')
-  await page.keyboard.press('n')
+  await page.keyboard.press('F8') // 次の問題（文字を打てるセルでも効く）
   const cur = await page.getByTestId('cursor').textContent()
   expect(cur).toMatch(/R0(16|09|41|54|22)/)
   // R016 型式あいまい → 定格を書き足す
@@ -146,7 +147,7 @@ test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要�
   await page.keyboard.press('Control+g')
   await page.getByTestId('prompt-text').fill('R020')
   await page.keyboard.press('Enter')
-  await page.keyboard.press('Shift+A')
+  await page.keyboard.press('Alt+Shift+A') // 文字を打てるセルでは Alt を付けて英字のコマンド
   await expect(page.getByTestId('adopt')).toBeVisible()
   const n = await page.getByTestId('adopt').locator('.opt').count()
   expect(n).toBeGreaterThan(1)
@@ -214,7 +215,7 @@ test('80 行でキー入力から画面反応まで 50ms 以内（ページ内�
     for (let i = 0; i < 30; i++) {
       const before = cursor()
       const t0 = performance.now()
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'j', bubbles: true }))
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await new Promise<void>((resolve) => {
         const check = () => (cursor() !== before ? resolve() : requestAnimationFrame(check))
         requestAnimationFrame(check)
@@ -354,17 +355,20 @@ test('提出済の行の取消は公開するまで購買に見えない', async
   await expect(page.locator('[data-row-id="R050"]')).toContainText('作業中')
 })
 
-test('英字コマンドを続けて使うとき（x → n、a → j、s → 4）は文字にならない', async ({ page }) => {
+test('英字のコマンドは ID の列ではそのまま、文字を打てるセルでは Alt を付けて使う', async ({ page }) => {
   await open(page)
-  await gotoCell(page, 'R010', '部品名')
+  await gotoCell(page, 'R010', 'ID')
   await page.keyboard.press('s')
   await page.keyboard.press('4')
   await expect(page.getByTestId('view-4')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await page.keyboard.press('1')
   await gotoCell(page, 'R011', '部品名')
-  await page.keyboard.press('h')
-  await page.keyboard.press('j')
+  await page.keyboard.press('Alt+h')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await expect(page.getByTestId('toast')).toContainText('R011')
+  // 同じセルで Alt なしの英字は値の入力
+  await page.keyboard.press('h')
+  await expect(page.getByTestId('mode')).toHaveText('編集')
+  await page.keyboard.press('Escape')
 })

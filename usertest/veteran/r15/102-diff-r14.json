@@ -1,8 +1,131 @@
 {
+  "02-arrows-5176.log": {
+    "lines": [
+      54,
+      54
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "03-entry-matrix-5176.log": {
+    "lines": [
+      532,
+      532
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "04-twotab-5176.log": {
+    "lines": [
+      12,
+      12
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "05-undo-reload-5176.log": {
+    "lines": [
+      5,
+      5
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "07-json-import-5176.log": {
+    "lines": [
+      20,
+      20
+    ],
+    "diffs": 2,
+    "first": [
+      {
+        "i": 3,
+        "r14": "{\"name\":\"日付が 2026-02-30・\\\"明日\\\"・数値\",\"size\":124307,\"confirm\":\"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し\",\"toast1\":\"保存しました（編集は自動で保存されています）\",\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 2 件: 案件 P-2026-041 の納期「xx」は存在しない日付なので空にしました（案件設定で入れ直してください） / 案件 P-2026-041: 日付が読めないので外した（例: R008） 2 行。戻すときは Ctrl+K →「読み込み前に戻す」\",\"ms\":0,\"slow\":[],\"alive\":true,\"after\":{\"projects\":1,\"cur\":\"P-2026-041\",\"rows\":80,\"dupIds\":0,\"polluted\":null},\"cursor\":\"R016 型式\",\"errs\":[]}",
+        "r15": "{\"name\":\"日付が 2026-02-30・\\\"明日\\\"・数値\",\"size\":124307,\"confirm\":\"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し\",\"toast1\":\"保存しました（編集は自動で保存されています）\",\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 2 件: 案件 P-2026-041 の納期「xx」は日付（YYYY-MM-DD）として読めないので空にしました（案件設定で入れ直してください） / 案件 P-2026-041: 日付が読めないので外した（例: R008） 2 行。戻すときは Ctrl+K →「読み込み前に戻す」\",\"ms\":0,\"slow\":[],\"alive\":true,\"after\":{\"projects\":1,\"cur\":\"P-2026-041\",\"rows\":80,\"dupIds\":0,\"polluted\":null},\"cursor\":\"R016 型式\",\"errs\":[]}"
+      },
+      {
+        "i": 15,
+        "r14": "{\"name\":\"rows が 5,000 行（同じ ID 無し）\",\"size\":2572495,\"confirm\":\"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し\",\"toast1\":\"保存しました（編集は自動で保存されています）\",\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"ms\":0,\"slow\":[\"Alt+4:411\",\"F8:358\",\"Alt+1:564\"],\"alive\":true,\"after\":{\"projects\":1,\"cur\":\"P-2026-041\",\"rows\":5000,\"dupIds\":0,\"polluted\":null},\"cursor\":\"R016 型式\",\"errs\":[]}",
+        "r15": "{\"name\":\"rows が 5,000 行（同じ ID 無し）\",\"size\":2572495,\"confirm\":\"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し\",\"toast1\":\"保存しました（編集は自動で保存されています）\",\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"ms\":0,\"slow\":[\"Alt+4:446\",\"F8:389\",\"Alt+1:481\"],\"alive\":true,\"after\":{\"projects\":1,\"cur\":\"P-2026-041\",\"rows\":5000,\"dupIds\":0,\"polluted\":null},\"cursor\":\"R016 型式\",\"errs\":[]}"
+      }
+    ]
+  },
+  "07b-json-values.log": {
+    "lines": [
+      0,
+      0
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "08-files7.log": {
+    "lines": [
+      16,
+      16
+    ],
+    "diffs": 0,
+    "first": []
+  },
   "09-dialog-digits-5176.log": {
     "lines": [
       3,
       3
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "10-storage-full-5176.log": {
+    "lines": [
+      3,
+      3
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "10b-storage-paste-5176.log": {
+    "lines": [
+      3,
+      3
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "11-f1-ctrlf-inputs-5176.log": {
+    "lines": [
+      18,
+      18
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "12-reload-odd-5176.log": {
+    "lines": [
+      6,
+      6
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "13-alt-sweep-5176.log": {
+    "lines": [
+      27,
+      27
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "16-deselect-arrow-5176.log": {
+    "lines": [
+      3,
+      3
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "17-palette-exact-5176.log": {
+    "lines": [
+      39,
+      39
     ],
     "diffs": 0,
     "first": []
@@ -15,6 +138,14 @@
     "diffs": 0,
     "first": []
   },
+  "21-f2-modes-5176.log": {
+    "lines": [
+      36,
+      36
+    ],
+    "diffs": 0,
+    "first": []
+  },
   "22-dialog-digits2-5176.log": {
     "lines": [
       12,
@@ -22,6 +153,58 @@
     ],
     "diffs": 0,
     "first": []
+  },
+  "23-norow-keys-5176.log": {
+    "lines": [
+      46,
+      46
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "24-storage-actions-5176.log": {
+    "lines": [
+      18,
+      18
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "24b-storage-actions2-5176.log": {
+    "lines": [
+      4,
+      4
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "25-undo200-5176.log": {
+    "lines": [
+      4,
+      4
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 0,
+        "r14": "{\"case\":\"A 205 回編集 → リロード → Z×200 → Z → Y×200\",\"orig\":\"端子台エンドカバー\",\"v0\":\"U204\",\"h0\":{\"len\":256046,\"undo\":[200],\"redo\":[0]},\"h1\":{\"len\":256046,\"undo\":[200],\"redo\":[0]},\"v200\":\"U4\",\"t200\":\"元に戻す: セル編集\",\"v201\":\"U4\",\"t201\":\"これ以上戻す操作がありません（Ctrl+Y でやり直せます）\",\"vRedo\":\"U204\",\"tRedo\":\"やり直す: セル編集\",\"msFor200Undo\":9191}",
+        "r15": "{\"case\":\"A 205 回編集 → リロード → Z×200 → Z → Y×200\",\"orig\":\"端子台エンドカバー\",\"v0\":\"U204\",\"h0\":{\"len\":256046,\"undo\":[200],\"redo\":[0]},\"h1\":{\"len\":256046,\"undo\":[200],\"redo\":[0]},\"v200\":\"U4\",\"t200\":\"元に戻す: セル編集\",\"v201\":\"U4\",\"t201\":\"これ以上戻す操作がありません（Ctrl+Y でやり直せます）\",\"vRedo\":\"U204\",\"tRedo\":\"やり直す: セル編集\",\"msFor200Undo\":7521}"
+      }
+    ]
+  },
+  "26-twotab-new-5176.log": {
+    "lines": [
+      7,
+      7
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 0,
+        "r14": "{\"case\":\"W1 A が R004 の理由ダイアログ（2 ミスミ・在庫即納・補足入力中）→ B が R004 を a（推奨採用）→ A Enter\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"steps\":[\"Enter→view-1/R004 ID/ナビ\"],\"diff\":[\"R004.status:\\\"quoted\\\"→\\\"selected\\\"\",\"R004.flags:{}→{\\\"pmPending\\\":false,\\\"contested\\\":false,\\\"leadNG\\\":false}\",\"R004.orderQty:null→1\",\"R004.adoptedSupplierId:undefined→\\\"S1\\\"\",\"R004.scoreSnapshot:undefined→99.2\"],\"toastsOnB\":[\"「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定\"],\"toastsA\":[\"R004 の採用は、理由を入れているあいだに別のタブで「因幡電機」に変わりました。採用しませんでした（見直してからもう一度）\"]}",
+        "r15": "{\"case\":\"W1 A が R004 の理由ダイアログ（2 ミスミ・在庫即納・補足入力中）→ B が R004 を a（推奨採用）→ A Enter\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"steps\":[\"Enter→view-1/R004 ID/ナビ\"],\"diff\":[\"R004.status:\\\"quoted\\\"→\\\"selected\\\"\",\"R004.flags:{}→{\\\"pmPending\\\":false,\\\"contested\\\":false,\\\"leadNG\\\":false}\",\"R004.orderQty:null→1\",\"R004.adoptedSupplierId:undefined→\\\"S1\\\"\",\"R004.scoreSnapshot:undefined→99.2\"],\"toastsOnB\":[\"「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定\"],\"toastsA\":[\"R004 の採用は、一覧・理由のダイアログを開いているあいだに別のタブで「因幡電機」に変わりました。採用しませんでした（見直してからもう一度）\"]}"
+      }
+    ]
   },
   "27-files8.log": {
     "lines": [
@@ -70,6 +253,14 @@
     "lines": [
       17,
       17
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "41b-norow-ctrl-5176.log": {
+    "lines": [
+      7,
+      7
     ],
     "diffs": 0,
     "first": []
@@ -179,26 +370,10 @@
   "47-excel-new-b.log": {
     "lines": [
       3,
-      0
+      3
     ],
-    "diffs": 3,
-    "first": [
-      {
-        "i": 0,
-        "r14": "{\"f\":\"x11-no-qty-col.xlsx\",\"loadMs\":0,\"toast\":\"x11-no-qty-col.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）リレーMY4Nオムロン1個端子台XW2Bオムロン1個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":2,\"sample\":[[\"リレー\",\"MY4N\",\"オムロン\",1],[\"端子台\",\"XW2B\",\"オムロン\",1]]},\"errs\":[]}",
-        "r15": ""
-      },
-      {
-        "i": 1,
-        "r14": "{\"f\":\"x12-hidden-price.xlsx\",\"loadMs\":0,\"toast\":\"x12-hidden-price.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列（「単価」）は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 1 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ Excel で隠した列 1 列（「単価」）は読んでいません（要るときは Excel で再表示してから読んでください）リレーMY4Nオムロン12個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":1,\"sample\":[[\"リレー\",\"MY4N\",\"オムロン\",12]]},\"errs\":[]}",
-        "r15": ""
-      },
-      {
-        "i": 2,
-        "r14": "{\"f\":\"x10-hidden-model-visible-empty.xlsx\",\"loadMs\":0,\"toast\":\"x10-hidden-model-visible-empty.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列（「型式」）は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 品番 → 型式 / メーカ → メーカ / 員数 → 数量⚠ Excel で隠した列 1 列（「型式」）は読んでいません（要るときは Excel で再表示してから読んでください）リレーオムロン12個端子台オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":2,\"sample\":[[\"リレー\",\"\",\"オムロン\",12],[\"端子台\",\"\",\"オムロン\",2]]},\"errs\":[]}",
-        "r15": ""
-      }
-    ]
+    "diffs": 0,
+    "first": []
   },
   "47-excel-new.log": {
     "lines": [
@@ -207,6 +382,38 @@
     ],
     "diffs": 0,
     "first": []
+  },
+  "48-paste-new-5176.log": {
+    "lines": [
+      7,
+      7
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "50-fast-chain-5176.log": {
+    "lines": [
+      6,
+      6
+    ],
+    "diffs": 3,
+    "first": [
+      {
+        "i": 3,
+        "r14": "{\"rows\":300,\"gap\":120,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\"]}",
+        "r15": "{\"rows\":300,\"gap\":120,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\",\"X081.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X082.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X083.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X084.status:\\\"quoted\\\"→\\\"quoting\\\"\"]}"
+      },
+      {
+        "i": 4,
+        "r14": "{\"rows\":300,\"gap\":40,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\"]}",
+        "r15": "{\"rows\":300,\"gap\":40,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\",\"X081.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X082.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X083.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X084.status:\\\"quoted\\\"→\\\"quoting\\\"\"]}"
+      },
+      {
+        "i": 5,
+        "r14": "{\"rows\":300,\"gap\":15,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\"]}",
+        "r15": "{\"rows\":300,\"gap\":15,\"ms\":0,\"end\":\"R016 型式/ナビ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N\\\"}\",\"R009.working:undefined→{\\\"maker\\\":\\\"OMRON\\\"}\",\"R016.ackRules:[]→[\\\"rule.model.cp30\\\"]\",\"R022.working:undefined→{\\\"model\\\":\\\"7\\\"}\",\"X081.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X082.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X083.status:\\\"quoted\\\"→\\\"quoting\\\"\",\"X084.status:\\\"quoted\\\"→\\\"quoting\\\"\"]}"
+      }
+    ]
   },
   "60-header-unit.log": {
     "lines": [
@@ -1358,5 +1565,45 @@
         "r15": "{\"name\":\"I 4 で ↓ を押して R005 → ID で x → F8\",\"seq\":[\"start→—\",\"Control+ArrowUp→R016 部品名\",\"ArrowDown→R009 部品名\",\"Home→R009 ID\",\"F8TO:R005→R005 ID\",\"x→R005 ID\",\"F8→R061 ID\"],\"expect\":\"R061\",\"last\":\"R061 ID\",\"diff\":[\"R005.ackRules:[]→[\\\"rule.model.ws\\\"]\"],\"toasts\":[\"確認済みにしました: 型式の前後に空白があります\"]}"
       }
     ]
+  },
+  "r9-30-norow-symbols.log": {
+    "lines": [
+      204,
+      204
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "r9-36-undo-chain.log": {
+    "lines": [
+      2,
+      2
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "r9-38-misc-keys.log": {
+    "lines": [
+      13,
+      13
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "r9-40-twotab3.log": {
+    "lines": [
+      4,
+      4
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "r9-r8-25-ime.log": {
+    "lines": [
+      5,
+      5
+    ],
+    "diffs": 0,
+    "first": []
   }
 }

@@ -18,4 +18,15 @@ describe('sanitizeWorkspace', () => {
     expect(res.ws!.projects[0].settings.budget).toBeNull()
     expect(typeof res.ws!.projects[0].weights.price).toBe('number')
   })
+  it('drops malformed suppliers, rules, working values and quote fields (V4-08)', () => {
+    const res = sanitizeWorkspace({
+      suppliers: [null, { id: 'S1', name: { a: 1 } }, { id: 'S2', name: '立花' }],
+      rules: [null, { id: 'r1', type: 'required', field: 'name', message: 'x', severity: 'error' }],
+      projects: [{ id: 'X', rows: [{ id: 'R001', working: { needDateFixed: 5, category: { a: 1 }, name: 'ok' } }], quotes: [{ rowId: 'R001', supplierId: 'S2', validUntil: 7, stock: { a: 1 }, unitPrice: 10 }] }],
+    })
+    expect(res.ws!.suppliers.map((x) => x.id)).toEqual(['S2'])
+    expect(res.ws!.rules).toHaveLength(1)
+    expect(res.ws!.projects[0].rows[0].working).toEqual({ name: 'ok' })
+    expect(res.ws!.projects[0].quotes[0]).toMatchObject({ validUntil: null, stock: null, unitPrice: 10 })
+  })
 })

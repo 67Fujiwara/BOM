@@ -7,6 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { commitEdit, handleKeyDown } from '@/commands/registry'
+import { flushPending } from '@/commands/keyboard'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
@@ -40,11 +41,14 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
         <button className="btn" onClick={save}>
           データを JSON で退避
         </button>
-        {loadBackups().length > 0 && (
+        {loadBackups().some((x) => !x.reason.startsWith('画面を表示できなかった')) && (
           <button
             className="btn"
             onClick={() => {
-              const b = loadBackups()[0]
+              // いまの（画面を壊した）データと違う、いちばん新しい退避に戻す
+              const cur = localStorage.getItem(STORAGE_KEY) ?? '{}'
+              const b = loadBackups().find((x) => x.raw !== cur && !x.reason.startsWith('画面を表示できなかった'))
+              if (!b) return alert('戻せる退避データがありません。「データを JSON で退避」で保存してから「サンプルに戻す」を選んでください')
               if (!confirm(`退避したデータ（${b.at.slice(0, 16).replace('T', ' ')}・${b.reason}）に戻します。いまのデータは退避に入れます。よろしいですか？`)) return
               saveBackup(localStorage.getItem(STORAGE_KEY) ?? '{}', '画面を表示できなかったデータ')
               localStorage.setItem(STORAGE_KEY, b.raw)
@@ -86,11 +90,14 @@ function Main() {
       }
     }
     window.addEventListener('beforeunload', unload)
+    // 待たせている英字コマンドは、クリックでカーソルが動く前に実行する（別の行に効かないように）
+    window.addEventListener('pointerdown', flushPending, true)
     // 保存データを読めなかった・一部を外したときは、黙ってサンプルにしない
     if (loadProblem) useStore.getState().toastMsg(loadProblem, 'err')
     return () => {
       window.removeEventListener('keydown', h)
       window.removeEventListener('beforeunload', unload)
+      window.removeEventListener('pointerdown', flushPending, true)
     }
   }, [])
   useEffect(() => {

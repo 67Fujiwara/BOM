@@ -46,6 +46,12 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
     s.toastMsg('本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）', 'err')
     return null
   }
+  // 同じ行・同じ種別の指摘がまだ開いていれば、重ねて起票しない（返信で足す）
+  const dup = s.project().issues.find((i) => i.rowId === rowId && i.kind === kind && ['draft', 'open', 'inProgress', 'answered'].includes(i.status))
+  if (dup) {
+    s.toastMsg(`${rowId} には同じ「${kind}」の指摘 ${dup.id} がもうあります。内容を足すときは Space → ↓ で ${dup.id} を選んで返信（1）`, 'err')
+    return null
+  }
   const err = canRaise(row, kind)
   if (err) {
     s.toastMsg(err, 'err')
@@ -237,6 +243,16 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
     if (!q) return
     q.reconfirm = choice
     if (choice === 'requote') {
+      // 採用中の商社を再見積にしたら、採用の前提（その単価）が無くなるので採用を外して選び直す
+      if (r.adoptedSupplierId === supplierId) {
+        r.adoptedSupplierId = undefined
+        r.scoreSnapshot = undefined
+        r.flags.contested = false
+        if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
+          r.status = 'quoting'
+          r.statusChangedAt = new Date().toISOString()
+        }
+      }
       q.unitPrice = null
       q.leadDays = null
       q.moq = null

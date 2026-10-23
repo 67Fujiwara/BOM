@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, effective, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, effective, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -14,6 +14,7 @@ import * as pm from '@/actions/pm'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
+import { normalize, setStatus } from '@/model/lifecycle'
 import { loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
@@ -82,6 +83,9 @@ function confirmDanger(title: string, yesLabel: string, run: () => void) {
 function navItems() {
   return vm().items.filter((i) => i.kind !== 'detail')
 }
+/** Tab で右へ入力してきたときの開始の列（Enter で次の行のこの列へ戻る） */
+let tabAnchor: { row: string; col: string } | null = null
+
 /** 1 画面に見えている行数（PageUp / PageDown の移動量） */
 function pageRows(): number {
   const wrap = document.querySelector<HTMLElement>('.gridwrap')
@@ -164,6 +168,7 @@ export function startEdit(initial?: string) {
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
+  editProject = projectIdentity()
   set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
@@ -183,9 +188,21 @@ export function updateEditValue(v: string) {
   set({ editValue: v, editError: null, editCandidates: d?.kind === 'select' ? candidates(d.options ?? [], v) : null })
 }
 /** 編集を確定する。読めない値なら編集を続けて理由を出す（値を捨てない） */
+/** 編集を始めた案件（別のタブで JSON 読み込みなどにより案件が置き換わったら、確定しない） */
+let editProject = ''
+function projectIdentity(): string {
+  const p = st().project()
+  return `${p.id}|${p.createdAt}`
+}
 export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): boolean {
   const s = st()
   if (s.mode !== 'edit') return true
+  if (editProject && editProject !== projectIdentity()) {
+    const v = s.editValue
+    cancelEdit()
+    toast(`編集中に案件が別のタブで置き換わったので、入力「${v}」は保存していません`, 'err')
+    return false
+  }
   const r = s.cursorRow ? s.project().rows.find((x) => x.id === s.cursorRow) : undefined
   if (!r) {
     cancelEdit()
@@ -226,10 +243,17 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     set({ mode: 'nav', editCandidates: null, editError: null })
     if (!rows.setCell(r.id, col, value)) return false
   } else set({ mode: 'nav', editCandidates: null, editError: null })
-  // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）
-  if (dir === 'down') moveCursorToRow(1)
-  else if (dir === 'right') moveCol(1)
-  else if (dir === 'left') moveCol(-1)
+  // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）。
+  // Tab で右へ入れてきた後の Enter は、Excel と同じく Tab を始めた列に戻る（単価 Tab 納期 Tab MOQ Enter → 次の行の単価）
+  if (dir === 'down') {
+    const anchor = tabAnchor && tabAnchor.row === r.id ? tabAnchor.col : null
+    tabAnchor = null
+    moveCursorToRow(1)
+    if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
+  } else if (dir === 'right' || dir === 'left') {
+    if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
+    moveCol(dir === 'right' ? 1 : -1)
+  } else tabAnchor = null
   // 6 商社別・8 正式見積: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
   const n = st()
   if (dir !== 'stay' && (n.view === 6 || n.view === 8) && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
@@ -373,13 +397,16 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
         {
           label: '再見積要: 据え置き（旧見積を有効に戻す）',
           run: () =>
-            s.commit('再見積要: 据え置き', (p2) => {
+            s.commit('再見積要: 据え置き', (p2, ws) => {
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
               for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) {
                 const live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === q.supplierId && !x.stale)
                 if (live && live.unitPrice == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
               }
+              // 旧見積が戻ったので、提出済に戻っていた行は見積済へ進める（選定者が選び直す）
+              if (rr.status === 'submitted') setStatus(rr, 'quoting')
+              normalize(p2, ws)
             }),
         },
         { label: '再見積要: 再見積（概算見積を依頼）', run: () => runCommand('quotes.request') },
@@ -536,7 +563,9 @@ function decisionPanel(r: Row) {
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
   const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => decideWithReason(r.id, o.kind) }))
   // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: -1, options })
+  // 先行発注の申請は、理由と金額を見て決められるように題に出す
+  const req = c === '先行発注判断' && r.ltbRequest ? ` 申請: ${r.ltbRequest.reason}${r.ltbRequest.amount != null ? `（¥${r.ltbRequest.amount.toLocaleString()}）` : ''}・${r.ltbRequest.by}` : ''
+  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）${req}`, rowId: r.id, field: 'status', index: -1, options })
 }
 function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
   const s = st()
@@ -926,10 +955,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         kind: 'export',
         index: 0,
         options: [
+          // 番号は仕様の 1 社内 / 2 商社向け / 3 保管用。商社ごとの商社向けは 4 以降
           { label: '社内（採用・金額・状態つき）', run: () => void import('@/io/excel').then(done('internal')) },
-          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
           { label: '商社向け: 全商社共通（提出済の全行・価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
           { label: '保管用（全列・商社別見積つき）', run: () => void import('@/io/excel').then(done('archive')) },
+          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
         ],
       })
     }
@@ -1039,6 +1069,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (it?.kind === 'quote') return quoteActionPanel(r, it.supplierId)
       }
       if (role === 'pm' && r && pm.pmCaseOf(p, r) !== 'なし') return decisionPanel(r)
+      // PM が 7 で決めることの無い行に Enter: 次の手を案内する（「権限なし」で止めない）
+      if (role === 'pm' && r && s.view === 7 && rows.canEdit(s.cursorCol)) {
+        const ans = p.issues.find((i) => i.rowId === r.id && (i.status === 'answered' || i.status === 'fixed') && i.by.role === 'pm')
+        return toast(`${r.id} に要決定はありません${ans ? `（${ans.id} は${ans.status === 'answered' ? '回答済' : '対応済'}。x で受け入れ、Space で中身を見る）` : '（Space で詳細、n で次の要決定へ）'}`, 'info')
+      }
       return startEdit()
     case 'cell.clear': {
       if (!need()) return
@@ -1300,7 +1335,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.formal': {
       if (role !== 'purchasing') return toast('権限なし（正式見積の依頼は購買）', 'err')
       const cand = p.rows.filter((x) => isActive(x) && x.adoptedSupplierId && (x.status === 'selected' || (x.flags.reissue && ['formalRequested', 'formalQuoted'].includes(x.status))))
-      const working = cand.filter((x) => x.working && Object.keys(x.working).length).length
+      const working = cand.filter((x) => hasWork(x) || x.pendingRemoval).length
       const pending = cand.filter((x) => x.flags.pmPending || x.flags.ltbPending).length
       const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.flags.pmPending || x.flags.ltbPending).length
       const contested = cand.filter((x) => x.flags.contested && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending).length
@@ -1339,7 +1374,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         return prompt(`先行発注を申請 ${r!.id}（理由と金額）`, { requireText: true, placeholder: '理由（例: 長納期のため正式見積を待てない）', extra: { 金額: String(est) } }, (_c, t, ex) => {
           const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
           if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
-          pm.requestEarlyOrder(r!.id, `${t}（金額 ¥${amt.value.toLocaleString()}）`)
+          pm.requestEarlyOrder(r!.id, t, amt.value)
         })
       }
     case 'project.new': {
@@ -1443,12 +1478,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'data.exportBackup': {
       const list = loadBackups()
       if (!list.length) return toast('退避したデータはありません', 'info')
-      const labelOf = (b: (typeof list)[number]) => `${fmtDateTime(b.at)}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      // 同じ分に作った退避も見分けられるよう、番号と秒まで出し、選んだ番号で取り出す
+      const labelOf = (b: (typeof list)[number], i: number) => `#${i + 1} ${b.at.slice(0, 19).replace('T', ' ')}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      const labels = list.map(labelOf)
       const act = (b: (typeof list)[number]) => (id === 'data.exportBackup' ? exportBackup(b) : restoreBackup(b))
       if (list.length === 1) return act(list[0])
-      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: list.map(labelOf), showText: false }, (c) => {
-        const b = list.find((x) => labelOf(x) === c)
-        if (b) act(b)
+      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: labels, showText: false }, (c) => {
+        const i = labels.indexOf(c ?? '')
+        if (i >= 0) act(list[i])
       })
     }
     case 'supplier.add':
@@ -1550,7 +1587,8 @@ export function paletteItems(query: string): PaletteItem[] {
     const id = /^r?\d+$/i.test(m[1]) ? 'R' + m[1].replace(/\D/g, '').padStart(3, '0') : m[1].toUpperCase()
     const row = p.rows.find((x) => x.id === id)
     if (row) {
-      const rest = m[2].trim()
+      // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
+      const rest = m[2].trim().replace(/^を\s*/, '')
       const e = effective(row)
       if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用'))) {
         const scores = scoreRow(p, row, s.ws.suppliers)
@@ -1612,12 +1650,16 @@ export function paletteItems(query: string): PaletteItem[] {
       })
   for (const c of STATIC) if (!q || matchScore(c.label, c.keywords, c.desc, ql) > 0) items.push({ id: c.id, section: c.section, label: c.label, desc: c.desc, keys: bindingsFor(c.id), run: wrap(() => runCommand(c.id)) })
   for (const b of KEYMAP) if (q && matchScore(b.label, KEYMAP_KEYWORDS[b.id], undefined, ql) >= 40 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
+  // 文字の大きさはブラウザの拡大で変える（アプリの設定ではない）
+  if (q && /文字.*(大き|小さ)|拡大|縮小|ズーム|zoom/i.test(q)) items.push({ id: 'info.zoom', section: '案内', label: '文字の大きさは Ctrl + ＋ / Ctrl + − で変えられます（行の高さは「コンパクト表示切替」）', run: wrap(() => undefined) })
   if (q && QUIT_WORDS.test(q)) items.push({ id: 'info.quit', section: '案内', label: q.match(/印刷|print/i) ? '印刷は「Excelで出力」から（Ctrl+E）' : '終了はブラウザのタブを閉じるだけです（編集は自動で保存済み）', run: wrap(() => (q.match(/印刷|print/i) ? runCommand('export.excel') : undefined)) })
   // 並び: 打った言葉との一致度 → 最近使った順
   const recent = s.recentCommands
   const score = (it: PaletteItem) => {
     if (!q) return 0
     if (it.section === m?.[1]?.toUpperCase() || /^R\d{3}$/.test(it.section)) return 90
+    // 案内（終了・印刷・文字の大きさ）は、その言葉を打ったときだけ出るので先頭に
+    if (it.id.startsWith('info.')) return 70
     const st0 = STATIC.find((c) => c.id === it.id)
     return matchScore(it.label, st0?.keywords ?? KEYMAP_KEYWORDS[it.id], it.desc, ql)
   }

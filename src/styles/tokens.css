@@ -14,6 +14,8 @@
   --err: #d02a3c;
   --err-soft: #fbe8ea;
   --warn: #e39a00;
+  /* 文字に使う警告色（淡い背景の上でも読める濃さ） */
+  --warn-text: #8a5800;
   --warn-soft: #fdf3dc;
   --ok: #14804f;
   --ok-soft: #e3f3ea;
@@ -45,6 +47,8 @@
     --err: #ef6b78;
     --err-soft: #3a1b20;
     --warn: #f0b429;
+  --warn-text: #f0b429;
+    --warn-text: #f0b429;
     --warn-soft: #3a2e12;
     --ok: #3dbb7d;
     --ok-soft: #14301f;

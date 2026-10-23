@@ -149,6 +149,11 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       if (block) return colKey === 'received' ? `入荷にできません（発注前の行）: ${block}` : block
     }
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
+    // 発注の取り消しは、発注後変更依頼を PM が承認したときだけ（§9.1）。押し間違いは Ctrl+Z で戻す
+    if (colKey === 'ordered' && value === false && r.ordered) {
+      if (!r.flags.orderCancelApproved) return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+      r.flags.orderCancelApproved = false
+    }
     ;(r as unknown as Record<string, unknown>)[colKey] = value
     if (colKey === 'received' && value === true) r.ordered = true
     if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, r.flags.early ? 'selected' : 'formalQuoted')
@@ -184,7 +189,9 @@ export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) 
 export function orderBlock(p: Project, r: Row): string | null {
   if (r.status !== 'formalQuoted' && !r.flags.early) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
   if (r.flags.formalDiff) return '正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません'
-  if (r.flags.pmPending || r.pendingApproval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
+  if (r.flags.pmPending || r.pendingApproval || r.pendingRemoval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
+  // 設計が取消・置換の作業中（未公開）の行は、公開されるまで発注しない
+  if (r.removal) return '設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します'
   if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
   // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない

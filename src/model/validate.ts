@@ -50,7 +50,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const quotes0 = arr<unknown>(p0.quotes)
     const quotes = quotes0
       .filter((q): q is Record<string, unknown> => isObj(q) && str(q.rowId) && str(q.supplierId) && rowIds.has(q.rowId as string))
-      .map((q) => ({ ...q, unitPrice: numOrNull(q.unitPrice), leadDays: numOrNull(q.leadDays), moq: numOrNull(q.moq), quoteQty: numOrNull(q.quoteQty), formalPrice: numOrNull(q.formalPrice), formalLeadDays: numOrNull(q.formalLeadDays), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
+      .map((q) => ({ ...q, validUntil: typeof q.validUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(q.validUntil) ? q.validUntil : null, formalValidUntil: typeof q.formalValidUntil === 'string' ? q.formalValidUntil : null, stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: numOrNull(q.unitPrice), leadDays: numOrNull(q.leadDays), moq: numOrNull(q.moq), quoteQty: numOrNull(q.quoteQty), formalPrice: numOrNull(q.formalPrice), formalLeadDays: numOrNull(q.formalLeadDays), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
     const now = new Date().toISOString()
     const p: Project = {
@@ -84,7 +84,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
   if (dup) return { error: `案件 ID が重複しています: ${dup}` }
   const user = isObj(raw.user) && typeof raw.user.name === 'string' && ['design', 'purchasing', 'pm'].includes(String(raw.user.role)) ? (raw.user as unknown as Workspace['user']) : { name: '山田', role: 'design' as const }
   const currentProjectId = typeof raw.currentProjectId === 'string' && projects.some((p) => p.id === raw.currentProjectId) ? raw.currentProjectId : projects[0].id
-  return { warnings, ws: { user, projects, suppliers: arr(raw.suppliers, SAMPLE_SUPPLIERS).length ? arr(raw.suppliers, SAMPLE_SUPPLIERS) : SAMPLE_SUPPLIERS, rules: Array.isArray(raw.rules) ? (raw.rules as Workspace['rules']) : DEFAULT_RULES, currentProjectId } }
+  return { warnings, ws: { user, projects, suppliers: suppliersOf(raw.suppliers, warnings), rules: rulesOf(raw.rules, warnings), currentProjectId } }
 }
 
 const STATUSES = ['draft', 'submitted', 'quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received', 'cancelled', 'replaced']
@@ -106,6 +106,19 @@ function coerceRow(r: Record<string, unknown>): Row {
   out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
   out.deferredRules = arr<unknown>(r.deferredRules).filter((x) => typeof x === 'string')
   for (const k of ['working', 'pendingApproval', 'removal', 'pendingRemoval']) if (out[k] != null && !isObj(out[k])) out[k] = undefined
+  // 作業中・承認待ちの値も、行の項目と同じ型にそろえる（型の違う値は捨てる）
+  for (const k of ['working', 'pendingApproval']) {
+    const w = out[k] as Record<string, unknown> | undefined
+    if (!w) continue
+    const kept: Record<string, unknown> = {}
+    for (const [f, v] of Object.entries(w)) {
+      const def = (base as Record<string, unknown>)[f]
+      if (!(f in base)) continue
+      if (v === null && (def === null || f === 'needOffset' || f === 'needDateFixed' || f === 'packQty')) kept[f] = null
+      else if (f === 'needDateFixed' ? typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
+    }
+    out[k] = Object.keys(kept).length ? kept : undefined
+  }
   return out as unknown as Row
 }
 
@@ -128,4 +141,25 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
   }
   for (const [k, x] of Object.entries(v)) if (!(k in out)) out[k] = x
   return out as T
+}
+
+/** 商社マスタ: id と名前が文字の商社だけ。足りない項目は既定で補う。1 社も無ければサンプルの商社 */
+function suppliersOf(v: unknown, warnings: string[]): Workspace['suppliers'] {
+  const list = arr<unknown>(v)
+  const ok = list
+    .filter((x): x is Record<string, unknown> => isObj(x) && str(x.id) && str(x.name))
+    .map((x, i) => {
+      const def = SAMPLE_SUPPLIERS[i % SAMPLE_SUPPLIERS.length]
+      return { ...def, ...x, color: typeof x.color === 'string' ? x.color : def.color, order: typeof x.order === 'number' ? x.order : i, kind: x.kind === '直販' ? '直販' : '商社', tradable: x.tradable !== false, avl: x.avl !== false, handledMakers: arr<unknown>(x.handledMakers).filter((m) => typeof m === 'string'), onTimeRate: typeof x.onTimeRate === 'number' && Number.isFinite(x.onTimeRate) ? x.onTimeRate : null } as Workspace['suppliers'][number]
+    })
+  if (ok.length < list.length) warnings.push(`商社マスタの ${list.length - ok.length} 件は形式が読めないので外しました`)
+  return ok.length ? ok : SAMPLE_SUPPLIERS
+}
+
+/** ルール: id・種類・項目が文字のものだけ */
+function rulesOf(v: unknown, warnings: string[]): Workspace['rules'] {
+  if (!Array.isArray(v)) return DEFAULT_RULES
+  const ok = v.filter((x): x is Workspace['rules'][number] => isObj(x) && str(x.id) && str(x.type) && str(x.field) && typeof x.message === 'string')
+  if (ok.length < v.length) warnings.push(`ルールの ${v.length - ok.length} 件は形式が読めないので外しました`)
+  return ok
 }

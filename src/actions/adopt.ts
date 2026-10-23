@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, isActive, isQuotable, roundedQty } from '@/model/derive'
+import { effective, hasWork, isActive, isFixedProcurement, isQuotable, roundedQty } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -17,7 +17,7 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
   if (!isActive(row)) return '取消・置換済の行は採用できません'
   if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
-  if (row.working && Object.keys(row.working).length) return '設計作業中の行は選定できません（公開を待つ）'
+  if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
     const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
@@ -179,7 +179,8 @@ export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contest
 export function consolidateOptions(): Array<{ label: string; detail: string; supplierIds: string[]; delta: number }> {
   const s = st()
   const p = s.project()
-  const rows = p.rows.filter((r) => (r.status === 'quoted' || r.status === 'selected') && !canAdopt(p, r))
+  // 指定商社・客先指定品は指定先が決まっているので集約しない（§3.4）
+  const rows = p.rows.filter((r) => (r.status === 'quoted' || r.status === 'selected') && !canAdopt(p, r) && !isFixedProcurement(r))
   const curOf = (r: Row) => {
     const sc = scoreRow(p, r, s.ws.suppliers)
     const a = r.adoptedSupplierId ? sc.find((x) => x.supplierId === r.adoptedSupplierId) : sc[0]
@@ -221,7 +222,7 @@ export function applyConsolidation(supplierIds: string[]) {
   const p0 = s.project()
   s.commit('商社を集約', (p, ws) => {
     for (const r of p.rows) {
-      if (!(r.status === 'quoted' || r.status === 'selected')) continue
+      if (!(r.status === 'quoted' || r.status === 'selected') || isFixedProcurement(r)) continue
       // 作業中・承認待ち・委譲中など、採用を変えられない行は飛ばす
       if (canAdopt(p0, p0.rows.find((x) => x.id === r.id)!)) {
         skipped++

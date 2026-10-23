@@ -63,7 +63,17 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       rows: rows.map((r) => coerceRow(r as Record<string, unknown>)),
       quotes,
       issues,
-      submissions: arr<Project['submissions'][number]>(p0.submissions).filter(isObj).map((s) => ({ ...s, rowIds: arr(s.rowIds), acked: arr(s.acked), causes: isObj(s.causes) ? s.causes : {}, snapshot: isObj(s.snapshot) ? s.snapshot : {} })),
+      submissions: arr<Project['submissions'][number]>(p0.submissions).filter((x) => isObj(x) && typeof (x as { rev?: unknown }).rev === 'number').map((s) => ({
+        ...s,
+        by: userOf(s.by, fallbackUser),
+        at: typeof s.at === 'string' ? s.at : now,
+        summary: isObj(s.summary) ? { added: 0, modelChanged: 0, qtyChanged: 0, other: 0, cancelled: 0, ...(s.summary as object) } : { added: 0, modelChanged: 0, qtyChanged: 0, other: 0, cancelled: 0 },
+        rowIds: arr<unknown>(s.rowIds).filter((x): x is string => typeof x === 'string'),
+        acked: arr<unknown>(s.acked).filter((x): x is string => typeof x === 'string'),
+        causes: isObj(s.causes) ? Object.fromEntries(Object.entries(s.causes).filter(([, v]) => typeof v === 'string')) : {},
+        snapshot: isObj(s.snapshot) ? Object.fromEntries(Object.entries(s.snapshot).filter(([, v]) => isObj(v))) : {},
+        changeSet: isObj(s.changeSet) ? s.changeSet : undefined,
+      })),
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
@@ -75,7 +85,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       requestRevs: isObj(p0.requestRevs) ? (p0.requestRevs as Project['requestRevs']) : {},
       nextIssueNo: Number(p0.nextIssueNo) || arr(p0.issues).length + 1,
       nextDecisionNo: Number(p0.nextDecisionNo) || arr(p0.decisions).length + 1,
-      caseDecisions: arr<Project['caseDecisions'][number]>(p0.caseDecisions).filter(isObj),
+      caseDecisions: arr<Project['caseDecisions'][number]>(p0.caseDecisions).filter((c) => isObj(c) && str(c.id) && typeof c.kind === 'string' && (c.status === 'open' || c.status === 'done')),
     }
     projects.push(p)
   }
@@ -99,6 +109,8 @@ function coerceRow(r: Record<string, unknown>): Row {
     else if (typeof def === 'number' && (typeof v !== 'number' || !Number.isFinite(v))) out[k] = Number.isFinite(Number(v)) && v !== null && typeof v !== 'object' && v !== '' ? Number(v) : def
     else if (typeof def === 'boolean' && typeof v !== 'boolean') out[k] = v === true || v === 'true' || v === 1
   }
+  // 任意の文字の項目（起因・置換元／先・採用理由など）に文字以外が入っていたら外す
+  for (const k of ['lastChangeCause', 'replaces', 'replacedBy', 'adoptReason', 'fromIssue', 'adoptedSupplierId', 'statusChangedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = undefined
   for (const k of ['packQty', 'orderQty', 'needOffset', 'extraCost', 'scoreSnapshot']) if (out[k] != null && (typeof out[k] !== 'number' || !Number.isFinite(out[k] as number))) out[k] = null
   for (const k of ['needDateFixed', 'promisedDate', 'dueAt', 'quotedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = null
   if (!STATUSES.includes(String(out.status))) out.status = 'draft'
@@ -159,7 +171,17 @@ function suppliersOf(v: unknown, warnings: string[]): Workspace['suppliers'] {
 /** ルール: id・種類・項目が文字のものだけ */
 function rulesOf(v: unknown, warnings: string[]): Workspace['rules'] {
   if (!Array.isArray(v)) return DEFAULT_RULES
-  const ok = v.filter((x): x is Workspace['rules'][number] => isObj(x) && str(x.id) && str(x.type) && str(x.field) && typeof x.message === 'string')
+  const regexOk = (x: unknown) => {
+    if (x == null || x === '') return true
+    if (typeof x !== 'string') return false
+    try {
+      new RegExp(x)
+      return true
+    } catch {
+      return false
+    }
+  }
+  const ok = v.filter((x): x is Workspace['rules'][number] => isObj(x) && str(x.id) && str(x.type) && str(x.field) && typeof x.message === 'string' && regexOk(x.pattern) && regexOk(x.when))
   if (ok.length < v.length) warnings.push(`ルールの ${v.length - ok.length} 件は形式が読めないので外しました`)
   return ok
 }

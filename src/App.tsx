@@ -48,7 +48,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
               const cur = localStorage.getItem(STORAGE_KEY) ?? '{}'
               const b = loadBackups().find((x) => x.raw !== cur && !x.reason.startsWith('画面を表示できなかった'))
               if (!b) return alert('戻せる退避データがありません。「データを JSON で退避」で保存してから「サンプルに戻す」を選んでください')
-              if (!confirm(`退避したデータ（${b.at.slice(0, 16).replace('T', ' ')}・${b.reason}）に戻します。いまのデータは退避に入れます。よろしいですか？`)) return
+              if (!confirm(`退避したデータ（${new Date(b.at).toLocaleString('ja-JP', { hour12: false })}・${b.reason}）に戻します。いまのデータは退避に入れます。よろしいですか？`)) return
               saveBackup(localStorage.getItem(STORAGE_KEY) ?? '{}', '画面を表示できなかったデータ')
               localStorage.setItem(STORAGE_KEY, b.raw)
               location.reload()

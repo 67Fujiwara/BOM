@@ -88,7 +88,7 @@ export interface State {
   project: () => Project
   user: () => User
   commit: (label: string, fn: (p: Project, ws: Workspace) => void | string, opts?: { rowId?: string; undoable?: boolean; silent?: boolean; kind?: UndoEntry['kind']; quietError?: boolean }) => boolean
-  commitWs: (label: string, fn: (ws: Workspace) => void) => void
+  commitWs: (label: string, fn: (ws: Workspace) => void) => boolean
   undoLast: () => void
   redoLast: () => void
   clearHistory: () => void
@@ -213,8 +213,13 @@ export const useStore = create<State>((set, get) => ({
     const next = structuredClone(base)
     fn(next)
     set({ ws: next })
-    saveWorkspace(next)
+    // 保存できなかったら黙らない（リロードで消えることを知らせる）
+    if (!saveWorkspace(next)) {
+      get().toastMsg('保存領域がいっぱいで保存できませんでした。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください', 'err')
+      return false
+    }
     if (label) get().toastMsg(label, 'info')
+    return true
   },
   undoLast: () => {
     const st = get()
@@ -413,11 +418,6 @@ function mergeFields(now: Row | undefined, from: Row | undefined, to: Row | unde
  * 他の人・他のタブが後から動かした行はそのまま（全体を昔の並びに戻さない）
  */
 function moveBack(rows: Row[], from: string[], target: string[]): Row[] {
-  // 行がとても多いときは比較をやめて、target の並びにそろえる（知らない行は後ろ）
-  if (from.length * target.length > 4e6) {
-    const idx = new Map(target.map((id, i) => [id, i]))
-    return [...rows].sort((a, b) => (idx.get(a.id) ?? Infinity) - (idx.get(b.id) ?? Infinity))
-  }
   const prevIn = (list: string[], id: string) => list[list.indexOf(id) - 1] ?? null
   // 動いた行 = 2 つの並びの最長共通部分列に入らない行（入れ替えなら片方の行だけ）
   const common = new Set(lcs(from.filter((id) => target.includes(id)), target.filter((id) => from.includes(id))))
@@ -434,19 +434,28 @@ function moveBack(rows: Row[], from: string[], target: string[]): Row[] {
   return out
 }
 
-/** 最長共通部分列（行の並びの比較用。行数は数百なので O(n²) で足りる） */
+/** 最長共通部分列。行の並びは同じ ID の並べ替えなので、位置の最長増加部分列で O(n log n) に求める（行数の上限なし） */
 function lcs(a: string[], b: string[]): string[] {
-  const dp: number[][] = Array.from({ length: a.length + 1 }, () => new Array<number>(b.length + 1).fill(0))
-  for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--) dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1])
+  const pos = new Map(b.map((id, i) => [id, i]))
+  const seq = a.filter((id) => pos.has(id))
+  const tails: number[] = []
+  const tailIdx: number[] = []
+  const prev: number[] = new Array(seq.length).fill(-1)
+  seq.forEach((id, i) => {
+    const v = pos.get(id)!
+    let lo = 0
+    let hi = tails.length
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1
+      if (tails[mid] < v) lo = mid + 1
+      else hi = mid
+    }
+    tails[lo] = v
+    tailIdx[lo] = i
+    prev[i] = lo > 0 ? tailIdx[lo - 1] : -1
+  })
   const out: string[] = []
-  for (let i = 0, j = 0; i < a.length && j < b.length; ) {
-    if (a[i] === b[j]) {
-      out.push(a[i])
-      i++
-      j++
-    } else if (dp[i + 1][j] >= dp[i][j + 1]) i++
-    else j++
-  }
+  for (let i = tailIdx[tails.length - 1] ?? -1; i >= 0; i = prev[i]) out.unshift(seq[i])
   return out
 }
 

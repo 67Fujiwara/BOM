@@ -230,7 +230,8 @@ function cellToText(v: unknown): string {
   if (typeof v === 'object') {
     const o = v as Record<string, unknown>
     if (Array.isArray(o.richText)) return (o.richText as Array<{ text?: unknown }>).map((t) => String(t.text ?? '')).join('')
-    if ('error' in o) return ''
+    // エラーのセル（#REF! など）は空にせず、そのまま見せる（数量なら「読めない」として知らせる）
+    if ('error' in o) return String(o.error ?? '#エラー')
     if ('result' in o) return cellToText(o.result)
     if ('text' in o) return cellToText(o.text)
     if ('hyperlink' in o) return String(o.hyperlink)

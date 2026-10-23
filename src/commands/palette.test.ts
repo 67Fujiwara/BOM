@@ -33,4 +33,9 @@ describe('palette ranking', () => {
     const wrong = cases.filter(([q, id]) => paletteItems(q)[0]?.id !== id).map(([q, id]) => `${q} → ${paletteItems(q)[0]?.id} (want ${id})`)
     expect(wrong).toEqual([])
   })
+  it('row actions typed as displayed are found (V4-11)', () => {
+    useStore.setState({ ws: { ...useStore.getState().ws, user: { role: 'design', name: 'テスト' } } })
+    expect(paletteItems('R040 を置換')[0]?.id).toBe('row.replace:R040')
+    expect(paletteItems('R040 へジャンプ')[0]?.id).toBe('goto:R040')
+  })
 })

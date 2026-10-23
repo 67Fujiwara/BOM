@@ -65,7 +65,9 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
     const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1)
     if (live[0]) return live[0].supplierId
     const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
-    const cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
+    let cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
+    // 案件の相見積先がすべて辞退したら、商社マスタの中から（メーカを扱う商社を先に）
+    if (!cands.length) cands = suppliers.filter((x) => !declined.has(x.id))
     return (cands.find((x) => handlesMaker(x.handledMakers, row.maker)) ?? cands.find((x) => !x.handledMakers.length) ?? cands[0])?.id ?? null
   }
   return null
@@ -99,7 +101,7 @@ export function ball(p: Project, row: Row): Role | null {
   if (!isActive(row)) return null
   if (row.status === 'received') return null
   const f = row.flags
-  if (f.pmPending || f.formalDiff || (f.leadNG && !f.countermeasure) || f.ltbPending) return 'pm'
+  if (f.pmPending || f.formalDiff || (f.leadNG && !f.countermeasure) || f.ltbPending || capPending(p, row)) return 'pm'
   if (f.importMismatch) return 'purchasing'
   const issues = openIssues(p, row.id)
   if (issues.some((i) => i.bounceCount >= 2 && i.status === 'open' && !i.pmRuled)) return 'pm'
@@ -305,7 +307,12 @@ export function setKnownSuppliers(list: Array<{ id: string; name: string }>) {
 /** 追加費用が PM の決めた特急・分納の上限を超えているか（超えた額の上限の決定を返す） */
 export function overCap(p: Project, r: Row): { cap: number; decisionId: string } | null {
   if (r.extraCost == null) return null
-  const d = [...p.decisions].reverse().find((x) => x.rowId === r.id && x.kind === '特急・分納' && typeof x.payload?.amount === 'number')
+  // 上限は「特急・分納」の決定、または上限超過を承認した決定（上限を実費まで引き上げ）
+  const d = [...p.decisions].reverse().find((x) => x.rowId === r.id && (x.kind === '特急・分納' || x.payload?.cap === true) && typeof x.payload?.amount === 'number')
   const cap = d?.payload?.amount as number | undefined
   return d && cap != null && r.extraCost > cap ? { cap, decisionId: d.id } : null
+}
+/** 上限超過で PM の決定を待っているか（却下した額のままなら待たない） */
+export function capPending(p: Project, r: Row): boolean {
+  return !!overCap(p, r) && r.flags.capRuled !== r.extraCost
 }

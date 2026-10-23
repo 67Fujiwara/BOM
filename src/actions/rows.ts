@@ -128,6 +128,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   const rowId = r.id
   if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
   if (d.perSupplier) {
+    // §5: PM 承認待ちの変更セットで足した行は、承認されるまで購買に渡っていない
+    if (r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') return `${r.id} は変更セット（Rev.${r.pendingRev ?? ''}）の PM 承認待ちの追加行です。承認されてから見積を入れます`
     const sid = supplierOfCol(colKey)!
     let q = p.quotes.find((x) => x.rowId === rowId && x.supplierId === sid && !x.stale)
     if (!q) {
@@ -138,7 +140,11 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
     ;(q as unknown as Record<string, unknown>)[f] = value
     if (f === 'unitPrice' && q.quoteQty == null) q.quoteQty = orderQty(r)
     if (f === 'unitPrice' || f === 'leadDays') q.source = '手入力'
-    if (r.status === 'submitted' && value != null) setStatus(r, 'quoting')
+    if (r.status === 'submitted' && value != null) {
+      // 依頼書を出さずに回答を入れ始めた（電話・メールで頼んだ）行は、相見積先すべてに頼んだものとして回答を待つ（1 社の回答だけで見積済にしない）
+      if (!isFixedProcurement(r)) for (const t of quoteTargets(p, r)) if (!p.quotes.some((x) => x.rowId === rowId && x.supplierId === t && !x.stale)) p.quotes.push(emptyQuote(rowId, t))
+      setStatus(r, 'quoting')
+    }
   } else if (d.design) {
     if (['ordered', 'received'].includes(r.status)) return '発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）'
     const f = colKey as keyof DesignFields
@@ -205,22 +211,35 @@ export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) 
 export function awaitingReplacement(p: Project, r: Row): boolean {
   return r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')
 }
+/** PM が発注後変更依頼を承認したが、購買がまだ発注を外していない行か */
+export function cancelApprovedNotYet(p: Project, r: Row): boolean {
+  return r.ordered && !!r.flags.orderCancelApproved && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
+}
 /** 取引先がキャンセルを受けなかった: 置き換えをやめ、もとの発注に戻す（購買。§9.1 の発注後変更依頼の出口） */
 export function restoreOrder(rowId: string): string | null {
   const s = st()
   if (s.user().role !== 'purchasing') return '権限なし（発注は購買）'
   const p = s.project()
   const r = p.rows.find((x) => x.id === rowId)
-  if (!r || !awaitingReplacement(p, r)) return `${rowId} は発注を取り消して置き換えを待っている行ではありません`
-  if (r.removal || r.pendingRemoval || r.replacedBy) return `${rowId} は設計が置き換えの作業中です。設計にもう一度 Shift+Delete で置換を取りやめてもらってから戻します`
+  if (!r || (!awaitingReplacement(p, r) && !cancelApprovedNotYet(p, r))) return `${rowId} は発注後変更依頼の承認で発注を取り消す・取り消した行ではありません`
+  if (r.removal || r.pendingRemoval || r.replacedBy) {
+    const by = r.replacedBy ?? (r.removal?.kind === 'replace' ? r.removal.by : undefined) ?? (r.pendingRemoval?.kind === 'replace' ? r.pendingRemoval.by : undefined)
+    return `${rowId} は設計が置き換えの作業中です。設計に${by ? `置換先の行 ${by} で` : ''} Shift+Delete を押して置換を取りやめてもらってから戻します`
+  }
   if (!r.adoptedSupplierId) return `${rowId} は採用商社がありません`
-  s.commit('キャンセル不可で発注に戻す', (p2) => {
+  s.commit('キャンセル不可で発注に戻す', (p2, ws) => {
     const x = p2.rows.find((y) => y.id === rowId)!
     x.flags.countermeasure = undefined
+    x.flags.orderCancelApproved = false
     x.ordered = true
     setStatus(x, 'ordered')
-    const req = [...p2.issues].reverse().find((i) => i.rowId === rowId && i.kind === '発注後変更依頼' && i.status === 'confirmed')
-    if (req) req.resolution = 'キャンセル不可（取引先が受けず）。もとの発注のまま'
+    const req = [...p2.issues].reverse().find((i) => i.rowId === rowId && i.kind === '発注後変更依頼' && (i.status === 'confirmed' || i.status === 'inProgress'))
+    if (req) {
+      req.status = 'confirmed'
+      req.resolution = 'キャンセル不可（取引先が受けず）。もとの発注のまま'
+    }
+    // 納期NG などを今の発注で見直す（PM の 7 にすぐ出す）
+    normalize(p2, ws)
   })
   return null
 }
@@ -575,8 +594,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           setStatus(r, 'submitted')
           sub.summary.added++
           sub.causes[r.id] = r.replaces ? `置換 ${r.replaces}` : '追加'
-          const targets = quoteTargets(p, r)
-          for (const sid of targets) if (!p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) p.quotes.push(emptyQuote(r.id, sid))
+          // 見積の枠は依頼したときに作る（頼んでいない商社の回答を待たない。回答待ちの数は頼んだ商社だけ）
         } else if (r.working) {
           const values = r.working
           r.working = undefined

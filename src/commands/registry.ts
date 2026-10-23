@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -415,12 +415,16 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
   if (role === 'design' && r.procurement === '指定商社' && designatedDeclined(p, r)) {
     const cur = s.ws.suppliers.find((x) => x.id === r.designated || x.name === r.designated)
     const declined = new Set(p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.leadDays === -1).map((q) => q.supplierId))
-    const names = s.ws.suppliers.filter((x) => !declined.has(x.id)).map((x) => x.name)
+    // メーカを扱う商社を先に。扱わない（取扱メーカに無い）商社はそうと分かるように
+    const cands = s.ws.suppliers.filter((x) => !declined.has(x.id))
+    const carries = (x: (typeof cands)[number]) => !x.handledMakers.length || handlesMaker(x.handledMakers, r.maker)
+    const labelOf = new Map(cands.map((x) => [carries(x) ? x.name : `${x.name}（${r.maker || 'メーカ'} は取扱メーカに無い）`, x] as const))
+    const names = [...cands.filter(carries), ...cands.filter((x) => !carries(x))].map((x) => [...labelOf].find(([, v]) => v === x)![0])
     opts.push({
       label: `指定先を変える（${cur?.name ?? r.designated} が取扱なしと回答）`,
       run: () =>
         prompt(`${r.id} の新しい指定先（公開すると購買が新しい指定先に依頼します）`, { options: names }, (c) => {
-          const sp = s.ws.suppliers.find((x) => x.name === c)
+          const sp = c ? labelOf.get(c) : undefined
           if (sp && rows.setCell(r.id, 'designated', sp.id, '指定先を変える')) toast(`${r.id} の指定先を ${sp.name} にしました（Ctrl+Enter で公開）`, 'ok')
         }),
     })
@@ -1579,8 +1583,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'order.restore': {
       if (!need()) return
       const r0 = r!
-      if (!rows.awaitingReplacement(s.project(), r0)) return toast(`${r0.id} は発注を取り消して置き換えを待っている行ではありません`, 'info')
-      return confirmDanger(`${r0.id} を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, '発注済に戻す', () => {
+      if (s.user().role !== 'purchasing') return toast('権限なし（発注は購買）', 'err')
+      const notYet = rows.cancelApprovedNotYet(s.project(), r0)
+      if (!rows.awaitingReplacement(s.project(), r0) && !notYet) return toast(`${r0.id} は発注後変更依頼の承認で発注を取り消す・取り消した行ではありません`, 'info')
+      return confirmDanger(`${r0.id} を${notYet ? '発注済のまま残します' : '発注済に戻します'}。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, notYet ? '発注済のまま残す' : '発注済に戻す', () => {
         const e = rows.restoreOrder(r0.id)
         toast(e ?? `${r0.id} を発注済に戻しました（キャンセル不可）`, e ? 'err' : 'ok')
       })

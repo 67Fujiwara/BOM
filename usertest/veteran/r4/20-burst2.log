@@ -1,11 +1,11 @@
-NG  ref K1 → "セ40" {"cursorRow":["R040","R039"]} | 保存しました（編集は自動で保存されています）
-NG  ref J1 → "セ40" {"cursorRow":["R040","R041"]} | 保存しました（編集は自動で保存されています）
-NG  ref J12 → "セ40" {"view":[1,2],"cursorRow":["R040","R041"]} | 保存しました（編集は自動で保存されています）
-NG  ref N1 → "セ40" {"cursorRow":["R040","R061"],"cursorCol":["ref","model"]} | 保存しました（編集は自動で保存されています）
-NG  ref k1 → "セ40" {"cursorRow":["R040","R039"]} | 保存しました（編集は自動で保存されています）
+NG  ref K1 → "セ40" {"cursorRow":["R040","R039"]} | 
+NG  ref J1 → "セ40" {"cursorRow":["R040","R041"]} | 
+NG  ref J12 → "セ40" {"view":[1,2],"cursorRow":["R040","R041"]} | 
+NG  ref N1 → "セ40" {"cursorRow":["R040","R061"],"cursorCol":["ref","model"]} | 
+NG  ref k1 → "セ40" {"cursorRow":["R040","R039"]} | 
 OK  ref KA1 → "KA1" {"cursorRow":["R040","R041"]} | 続けて打たれたので「K」はコマンドではなく文字の入力として扱いました
-OK  ref CN1 → "CN1" {"cursorRow":["R040","R041"]} | 保存しました（編集は自動で保存されています）
-NG  model K3HB-X → "E32-D11 2M" {"view":[1,3],"cursorRow":["R040","R002"]} | 保存しました（編集は自動で保存されています）
+OK  ref CN1 → "CN1" {"cursorRow":["R040","R041"]} | 
+NG  model K3HB-X → "E32-D11 2M" {"view":[1,3],"cursorRow":["R040","R002"]} | 
 NG  model J7KN-10 → "E32-D11 2M" {"view":[1,7],"cursorRow":["R040","R003"]} | 続けて打たれたので「K」はコマンドではなく文字の入力として扱いました
 NG  model K8AK-AS1 → "E32-D11 2M" {"view":[1,8],"cursorRow":["R040","R001"]} | R001 を 因幡電機 で採用
 NG  model JJ-100 → "E32-D11 2M" {"cursorRow":["R040","R042"]} | 続けて打たれたので「J」はコマンドではなく文字の入力として扱いました
@@ -13,32 +13,47 @@ NG  model NN-5 → "E32-D11 2M" {"cursorRow":["R040","R062"]} | 続けて打た�
 NG  model ADP3338 → "E32-D11 2M" {"view":[1,8],"adopted":[6,7]} | R040 を ミスミ で採用
 NG  model AD8605 → "E32-D11 2M" {"panel":[null,"adopt"]} | 1〜3 で商社を選んでください
 NG  model INA219 → "E32-D11 2M" {"panel":[null,"issue"]} | 種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
-OK  maker WAGO → "WAGO" {"cursorRow":["R040","R041"]} | 保存しました（編集は自動で保存されています）
-NG  maker wago → "オムロン" {"panel":[null,"weights"]} | 保存しました（編集は自動で保存されています）
-NG  name coil → "ファイバユニット" {"panel":[null,"columns"]} | 保存しました（編集は自動で保存されています）
-NG  name cable → "ファイバユニット" {"panel":[null,"columns"]} | 保存しました（編集は自動で保存されています）
-NG  name capacitor → "ファイバユニット" {"panel":[null,"columns"]} | 保存しました（編集は自動で保存されています）
-NG  model DRV8833 → "E32-D11 2M" {"rows":[80,81],"cursorRow":["R040","R041"]} | 続けて打たれたので「R」はコマンドではなく文字の入力として扱いました
+OK  maker WAGO → "WAGO" {"cursorRow":["R040","R041"]} | 
+NG  maker wago → "オムロン" {"panel":[null,"weights"]} | 
+NG  name coil → "ファイバユニット" {"panel":[null,"columns"]} | 
+NG  name cable → "ファイバユニット" {"panel":[null,"columns"]} | 
+NG  name capacitor → "ファイバユニット" {"panel":[null,"columns"]} | 
+OK  model DRV8833 → "DRV8833" {"cursorRow":["R040","R041"]} | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
 OK  model NJM2904 → "NJM2904" {"cursorRow":["R040","R041"]} | 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
 OK  name knob → "knob" {"cursorRow":["R040","R041"]} | 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
 OK  name nand → "nand" {"cursorRow":["R040","R041"]} | 続けて打たれたので「n」はコマンドではなく文字の入力として扱いました
 OK  name ssr → "ssr" {"cursorRow":["R040","R041"]} | 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
 OK  name jumper → "jumper" {"cursorRow":["R040","R041"]} | 続けて打たれたので「j」はコマンドではなく文字の入力として扱いました
-NG  name kj → "ファイバユニット" {} | 保存しました（編集は自動で保存されています）
-NG  model S1 → "E32-D11 2M" {"sort":[null,{"col":"model","dir":"desc"}]} | 型式 で降順に並べました（もう一度で解除）
+NG  name kj → "ファイバユニット" {} | 
+OK  model S1 → "S1" {"cursorRow":["R040","R041"]} | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
 OK  model X1 → "X1" {"cursorRow":["R040","R041"]} | 続けて打たれたので「X」はコマンドではなく文字の入力として扱いました
-OK  model H1 → "H1" {"cursorRow":["R040","R041"]} | 保存しました（編集は自動で保存されています）
+OK  model H1 → "H1" {"cursorRow":["R040","R041"]} | 
 OK  name a1 → "a1" {"cursorRow":["R040","R041"]} | 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
 NG  model 2SC1815 → "SC1815" {"view":[1,2],"cursorRow":["R040","R041"]} | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
 draft R076 ADP3338 "ADP3338" {"cursorRow":["R076","R077"]}
-file:///home/user/BOM/usertest/veteran/r4/lib.mjs:65
-export async function proj(page) { let w = await ws(page); if (!w) { await page.locator('.gridwrap').focus(); await page.keyboard.press('Control+s'); w = await ws(page) } return w.projects.find((x) => x.id === w.currentProjectId) }
-                                                                                                                                                                                    ^
-
-TypeError: Cannot read properties of null (reading 'projects')
-    at proj (file:///home/user/BOM/usertest/veteran/r4/lib.mjs:65:181)
-    at async row (file:///home/user/BOM/usertest/veteran/r4/lib.mjs:66:47)
-    at async cell (file:///home/user/BOM/usertest/veteran/r4/20-burst2.mjs:5:45)
-    at async file:///home/user/BOM/usertest/veteran/r4/20-burst2.mjs:50:38
-
-Node.js v22.22.0
+draft R076 IRF540N "USB-ISO" {"panel":[null,"issue"]}
+CMD hjhjhj 45 行を隠す→次の行 ×3 | mode 編集 edit "hjhjhj" {} | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+CMD hjhjhj 120 同 120ms | mode 編集 edit "hjhjhj" {} | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+CMD hjhjhj 200 同 200ms | mode 編集 edit "jhjhj" {"hidden":[[],["R040"]]} | 続けて打たれたので「j」はコマンドではなく文字の入力として扱いました
+CMD hjhjhj 260 同 260ms | mode ナビ edit null {"cursorRow":["R040","R043"],"hidden":[[],["R040","R041","R042"]]} | R042 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD xnxnxn 45 確認済み→次の問題 ×3（4 要確認） | mode 編集 edit "xnxnxn" {} | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+CMD xnxnxn 150 同 150ms | mode 編集 edit "xnxnxn" {} | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+CMD ajaj 60 推奨で採用→次の行 | mode 編集 edit "ajaj" {} | 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
+CMD anan 60 推奨で採用→次の問題 | mode 編集 edit "anan" {} | 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
+CMD s4 60 並び替え→ビュー4 | mode 編集 edit "s4" {} | 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
+CMD S1 60 降順→ビュー1 | mode 編集 edit "S1" {} | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+CMD f1 60 絞り込み→ビュー1 | mode 編集 edit "f1" {} | 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+CMD Dj 60 複製→次の行 | mode 編集 edit "Dj" {} | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+CMD hk 60 隠す→前の行 | mode 編集 edit "hk" {} | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+CMD ojoj 60 発注→次の行（ロットの列） | mode 編集 edit "ojoj" {} | 続けて打たれたので「o」はコマンドではなく文字の入力として扱いました
+CMD ijij 60 入荷→次の行（ロットの列） | mode 編集 edit "ijij" {} | 続けて打たれたので「i」はコマンドではなく文字の入力として扱いました
+CMD ojoj 60 発注→次の行（発注数の列・9） | mode 編集 edit "oj" {"cursorRow":["g:制御:R004","R004"]} | 続けて打たれたので「o」はコマンドではなく文字の入力として扱いました
+GAP Shift+D→R 240ms ナビ null {"rows":[80,81],"cursorRow":["R040","R081"]}
+GAP Shift+D→R 270ms ナビ null {"rows":[80,81],"cursorRow":["R040","R081"]}
+GAP a→b 240 編集 "ab" {}
+GAP a→b 270 編集 "ab" {}
+GAP h→u(割当なし) 550 編集 "u" {"hidden":[[],["R040"]]}
+GAP h→u 650 編集 "u" {"hidden":[[],["R040"]]}
+GAP k→n 300ms 編集 "nob" {"cursorRow":["R040","R039"]}
+text NG 20 / 34
+--- console/page errors (20): 0 (uniq 0)

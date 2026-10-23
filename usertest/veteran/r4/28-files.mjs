@@ -11,7 +11,7 @@ fs.writeFileSync(P('empty.xlsx'), '')
 fs.writeFileSync(P('empty.csv'), '')
 fs.writeFileSync(P('header-only.csv'), '部品名,型式,メーカ,員数\n')
 // Shift_JIS の CSV（Excel の既定の CSV 保存）: 「リレー,MY4N,オムロン,2」
-fs.writeFileSync(P('sjis.csv'), Buffer.from('95948e9596bc2c8c5e8eae2c838183808a2c88f590940d0a838a838c815b2c4d59344e2c83498380838d83932c320d0a', 'hex'))
+// sjis.csv は iconv で作成（printf ... | iconv -f UTF-8 -t SHIFT_JIS > dl/sjis.csv）
 fs.writeFileSync(P('bom-utf8.csv'), '﻿部品名,型式,メーカ,員数\r\nリレー,MY4N,オムロン,2\r\n')
 { const l = ['部品名\t型式\tメーカ\t員数']; for (let i = 0; i < 5000; i++) l.push(`部品${i}\tM-${i}\tオムロン\t1`); fs.writeFileSync(P('5000.tsv'), l.join('\n')) }
 {
@@ -47,7 +47,7 @@ async function tryWizard(f) {
   out.push(rec); console.log(JSON.stringify(rec).slice(0, 900))
   await page.keyboard.press('Escape'); await page.keyboard.press('Escape')
 }
-for (const f of ['empty.xlsx', 'empty.csv', 'header-only.csv', 'sjis.csv', 'bom-utf8.csv', '5000.tsv', 'merged-formula.xlsx']) await tryWizard(f)
+for (const f of (process.env.ONLYF ? process.env.ONLYF.split(',') : ['empty.xlsx', 'empty.csv', 'header-only.csv', 'sjis.csv', 'bom-utf8.csv', '5000.tsv', 'merged-formula.xlsx'])) await tryWizard(f)
 save('28-files.json', out)
 dumpErrors(errors, '28')
 await browser.close()

@@ -197,17 +197,18 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         }
       }
       // 文字欄が無い、または理由の選択で文字欄が空のときは数字キーで選ぶ
-      // 選んだあと（数字・↑↓）に打つ数字は文字（「3日で入る」「2026-012」の先頭の数字で選び直さない）
-      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text && !panel.picked))
+      // 数字は、文字欄に移る（Tab）か文字を打つまでは選択肢を選ぶ（打ち間違えたら数字で選び直せる）。
+      // 数字で始まる理由・番号（3日で入る・2026-012）は Tab で欄へ移ってから
+      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text && !panel.textTouched))
       if (digitPick) {
         if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
         // 文字欄もあるダイアログ（理由・氏名を入れる）では、数字は選ぶだけ。確定は Enter（続けて打った文字が背後の表に入らない）
-        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1, picked: true } }), toast(`「${panel.options![Number(key) - 1]}」を選びました。${panel.requireText ? '理由を入れて' : '必要なら入れて'} Enter で確定`, 'info'), true)
+        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), toast(`「${panel.options![Number(key) - 1]}」を選びました（選び直しは数字か ↑↓）。${panel.requireText ? '理由' : '補足'}は打てば欄に入ります（数字で始まるときは Tab で欄へ）。Enter で確定`, 'info'), true)
         submit(panel.options![Number(key) - 1])
         return true
       }
-      if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n), picked: true } }), true)
-      if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n), picked: true } }), true)
+      if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n) } }), true)
+      if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n) } }), true)
       if (key === 'Enter') {
         submit(panel.options ? (panel.options[panel.index] ?? null) : null)
         return true
@@ -448,10 +449,22 @@ function altBinding(key: string) {
 }
 
 /** 順番に直すモード: 次の問題へ進んで候補を開く。無ければ終わる */
+/** 順番に直すモードで回った問題（一周したら黙って二周目に入らずに終わる） */
+const seqSeen = new Set<string>()
 function sequenceNext() {
-  if (!st().sequence) return
-  if (problemCells().length && gotoProblem(1) && visibleCursorRow()) openQuickfix()
-  else {
+  if (!st().sequence) return seqSeen.clear()
+  const here = `${st().cursorRow}|${st().cursorCol}`
+  seqSeen.add(here)
+  if (problemCells().length && gotoProblem(1) && visibleCursorRow()) {
+    const next = `${st().cursorRow}|${st().cursorCol}`
+    if (seqSeen.has(next)) {
+      set({ sequence: false })
+      seqSeen.clear()
+      return toast(`順番に直すモード: 一周しました（残りの問題 ${problemCells().length} 件はそのまま。F8 で回れます）`, 'ok')
+    }
+    openQuickfix()
+  } else {
+    seqSeen.clear()
     set({ sequence: false })
     toast('順番に直すモード: 残りの問題はありません', 'ok')
   }
@@ -536,6 +549,8 @@ export function handleKeyDown(e: KeyboardEvent) {
       return
     }
     if (key === 'Tab' || key === 'Shift+Tab') {
+      // 文字欄へ移ったら、以後の数字は文字（数字で始まる理由を打てる）
+      if (s.panel.kind === 'prompt' && s.panel.showText && !s.panel.textTouched) set({ panel: { ...s.panel, textTouched: true } })
       // フォーカスはダイアログの中で回す（外に出て背後の表・絞り込み欄に打鍵が入らないように）
       e.preventDefault()
       const dlg = document.querySelector<HTMLElement>('.overlay .dialog')
@@ -597,7 +612,8 @@ export function handleKeyDown(e: KeyboardEvent) {
         if (c && c.length > 1) {
           e.preventDefault()
           const rot = key === 'ArrowDown' ? [...c.slice(1), c[0]] : [c[c.length - 1], ...c.slice(0, -1)]
-          set({ editCandidates: rot })
+          // 選んだ候補を入力欄の値にする（Enter でその候補が入る）
+          set({ editCandidates: rot, editValue: rot[0] })
         }
         return
       }
@@ -608,6 +624,13 @@ export function handleKeyDown(e: KeyboardEvent) {
         if (commitEdit('stay')) runCommand(key === 'ArrowLeft' ? 'move.left' : 'move.right')
         return
       }
+    }
+    // 打って始めた入力の Ctrl+Z は、入力ごと取り消す（最初の 1 文字がブラウザの取り消しで消えずに残らない。Excel と同じ）
+    if (key === 'Ctrl+Z' && s.editTyped) {
+      e.preventDefault()
+      cancelEdit()
+      toast('入力を取り消しました（セルは元のまま）', 'info')
+      return
     }
     // 入力欄にフォーカスが移る前に打たれた文字は取りこぼさない
     if (printable(e) && !(target instanceof HTMLInputElement && target.classList.contains('cell'))) {

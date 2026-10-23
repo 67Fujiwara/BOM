@@ -153,3 +153,20 @@ describe('隠した列（ほかに同じ項目の列が無い）', () => {
     expect(parseBomPaste(tsv).rows[0].qtyNeeded).toBe(4)
   })
 })
+
+describe('ラウンド 11 の取り込み', () => {
+  it('型式 旧・型式_旧・型式【旧】・型式[旧]・現型式／新型式・型式（旧品）では新しい列', () => {
+    for (const [a, b] of [['型式 旧', '型式 新'], ['型式_旧', '型式_新'], ['型式【旧】', '型式【新】'], ['型式[旧]', '型式[新]'], ['現型式', '新型式'], ['型式（旧品）', '型式（新品）']]) {
+      const r = parseBomPaste(`部品名\t${a}\t${b}\t数量\nリレー\tMY2N\tMY4N-D2\t4`)
+      expect([a, r.rows[0].model]).toEqual([a, 'MY4N-D2'])
+    }
+  })
+  it('2 ページ目の見出しが少し違っても前のページを捨てない', () => {
+    const r = parseBomPaste('No\t品名\t型式\t数量\n1\tリレー\tMY4N\t2\n\t品名（続き）\t型式\t数量\n2\tタイマ\tH3CR\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'H3CR'])
+  })
+  it('総数量・員数合計・数量計・合計 6 個 ¥12,000・以下余白です、使う列が空の行を飛ばす', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\t\nリレー\tMY4N\t2\t\n総数量\t\t6\t\n員数合計\t\t6\t\n数量計\t\t6\t\n合計 6 個 ¥12,000\t\t\t\n以下余白です\t\t\t\n\t\t\tページ 1/2')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
+  })
+})

@@ -120,6 +120,12 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     const r = p.rows.find((x) => x.id === rowId)
     const sid = supplierOfCol(colKey)
     const q = r && sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === (sid === 'A' ? r.adoptedSupplierId : sid) && !x.stale) : undefined
+    // 概算単価が他社の単価とけた違い（1/5 未満・5 倍超）なら知らせる（数字キーのビュー切替のつもりで「4」が入った など）
+    if (r && q && colKey.startsWith('q.unitPrice') && q.unitPrice != null) {
+      const others = p.quotes.filter((x) => x.rowId === r.id && !x.stale && x.supplierId !== q.supplierId && x.unitPrice != null).map((x) => x.unitPrice as number).sort((a, b) => a - b)
+      const med = others.length ? others[Math.floor(others.length / 2)] : null
+      if (med && (q.unitPrice < med / 5 || q.unitPrice > med * 5)) st().toastMsg(`${r.id} の単価 ¥${q.unitPrice.toLocaleString()} は他社（¥${med.toLocaleString()} 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）`, 'err')
+    }
     if (q && colKey.startsWith('q.validUntil') && q.validUntil && q.validUntil < todayStr()) st().toastMsg(`有効期限 ${q.validUntil} はもう過ぎています（期限切れの見積として扱います）`, 'err')
     if (r && q && colKey.startsWith('q.formalPrice') && q.formalPrice != null) {
       const early = !['formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status)

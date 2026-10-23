@@ -20,7 +20,7 @@ export type Panel =
   | { kind: 'columns'; index: number }
   | { kind: 'issue'; rowId: string; field: string; step: 'kind' | 'text' | 'proposal'; issueKind?: string; index: number; text: string; proposal: { model: string; maker: string; supplierId: string; unitPrice: string; leadDays: string } }
   | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string }
-  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; /** 文字欄のあるダイアログで、選択肢を選んだあと（以後の数字は文字として欄に入る） */ picked?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
+  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; /** 文字欄に移った・文字を打った（以後の数字は文字として欄に入る。それまでは数字で選び直せる） */ textTouched?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
   | { kind: 'wizard'; step: number; data: Record<string, string>; sel: number; picks: string[]; error?: string }
   | { kind: 'inbox'; index: number; query: string }
   | { kind: 'settings'; index: number; draft: Record<string, string>; editing: boolean; value: string; error?: string; discardArmed?: boolean }

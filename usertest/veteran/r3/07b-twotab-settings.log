@@ -1,0 +1,12 @@
+fields 23 3 PM予算2800000
+after field enter  0
+fields 23 1 PM案件納期2026-11-21
+after field enter 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました 0
+A panel 影響試算（確定前）|納期NG になる行: 0（なし）|推奨が変わる行: 1（R003）|行必要日が固定の行: 0（）|正式依頼中で必要納期が変わる行（再発行対象）: 1|総額差（推奨で選び直した場合）: +¥0|特急費の概算: 納期NG 0 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）|Enter 確定に進む|Esc 取り消し
+A panel 変更理由（必須）|Enter 確定|Esc 取り消し
+A panel 推奨が変わる 1 行を 7 に再選定提案として載せますか|1|載せる|2|載せない|1 〜 数字で選ぶ|Enter 選択中を確定|Esc 取り消し
+A toast 案件設定を保存しました 2027-06-30
+B panel panel-settings
+B panel 変更理由（必須）|Enter 確定|Esc 取り消し
+B toast events ["提出 Rev.1（75行）","概算見積を依頼（因幡電機・立花エレテック・ミスミ）","案件設定を変更","案件設定を変更"]
+B toast 案件設定を保存しました 2027-06-30 3000000 ["currency","budget","processDays","tieThreshold","exceptionAmount","exceptionPct","formalDiffPct","formalDiffAmount","qtyTolerancePct","surplusAmount","quoteCompleteRule","quoteDeadline","changeNeedsPmApproval","selector","pmConfirmed","externalApprovalAmount","externalApprovalBudgetPct","quoteDays

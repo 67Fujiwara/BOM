@@ -1,0 +1,51 @@
+{
+  "A paste 900 cells": {
+    "pasteMs": 152,
+    "undoMs": 307,
+    "redoMs": 183,
+    "pasted": true,
+    "undoRestored": true,
+    "redoReapplied": true,
+    "toast": "やり直す: 貼り付け"
+  },
+  "B mixed 30": {
+    "undoEntries": 25,
+    "undoBackToStart": false,
+    "redoBackToEnd": false,
+    "lastMsgs": [
+      "元に戻す: 行を複製",
+      "元に戻す: セル編集",
+      "元に戻す: 行を追加",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）"
+    ]
+  },
+  "C limit": {
+    "undone": 200,
+    "R050note": "49",
+    "toast": "戻す操作がありません（この案件であなたが行った操作はまだありません）"
+  },
+  "D reload right after edits": {
+    "immediateReload": {
+      "toast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+      "R032": "D2"
+    },
+    "after600ms": {
+      "toast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+      "R033": "D-wait"
+    }
+  },
+  "E history after reload": {
+    "undoneAfterReload": 0,
+    "of": 60
+  },
+  "F cross project": {
+    "undoInNewProject": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "projectsAfter": [
+      "P-2026-041",
+      "P-F2"
+    ],
+    "switchedTo": "P-2026-041",
+    "undoBack": "元に戻す: セル編集",
+    "R030": "表示灯 白"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "needOffset": {
+    "365": {
+      "mode": "ナビ",
+      "stored": 365
+    },
+    "400": {
+      "mode": "編集",
+      "err": "必要日(前倒し日数)が大きすぎます（上限 365）: 「400」",
+      "stored": -10
+    },
+    "-10": {
+      "mode": "ナビ",
+      "stored": -10
+    },
+    "-400": {
+      "mode": "編集",
+      "err": "必要日(前倒し日数)は -365 以上にしてください: 「-400」",
+      "stored": -10
+    },
+    "3.5": {
+      "mode": "編集",
+      "err": "必要日(前倒し日数)は整数で入れてください: 「3.5」",
+      "stored": 365
+    }
+  },
+  "quota": {
+    "restoreMsg": "退避したデータはありません / panel:null",
+    "bytes": 2421267,
+    "initialSet": true,
+    "importToast": "JSON を読み込みました（案件 20 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "sizes": {
+      "bom-pro.workspace.v2": 2421324
+    },
+    "savedNew": true,
+    "editToast": "退避したデータはありません",
+    "afterReload": {
+      "hasNew": true,
+      "hasEdit": true
+    }
+  }
+}

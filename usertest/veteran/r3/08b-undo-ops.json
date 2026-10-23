@@ -1,0 +1,270 @@
+[
+  {
+    "op": "edit",
+    "row": "R045",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: セル編集"
+    ]
+  },
+  {
+    "op": "edit",
+    "row": "R076",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: セル編集"
+    ]
+  },
+  {
+    "op": "insertTyped",
+    "row": "R045",
+    "entries": 2,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: セル編集",
+      "元に戻す: 行を追加"
+    ]
+  },
+  {
+    "op": "insertTyped",
+    "row": "R076",
+    "entries": 2,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: セル編集",
+      "元に戻す: 行を追加"
+    ]
+  },
+  {
+    "op": "insertEsc",
+    "row": "R045",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: 行を追加"
+    ]
+  },
+  {
+    "op": "insertEsc",
+    "row": "R076",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: 行を追加"
+    ]
+  },
+  {
+    "op": "dup",
+    "row": "R045",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: 行を複製"
+    ]
+  },
+  {
+    "op": "dup",
+    "row": "R076",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": false,
+    "undoDiff": null,
+    "redoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "toasts": [
+      "元に戻す: 行を複製"
+    ]
+  },
+  {
+    "op": "moveDown",
+    "row": "R045",
+    "entries": 0,
+    "changed": true,
+    "undoOk": false,
+    "redoOk": true,
+    "undoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "moveDown",
+    "row": "R076",
+    "entries": 0,
+    "changed": true,
+    "undoOk": false,
+    "redoOk": true,
+    "undoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "moveUp",
+    "row": "R045",
+    "entries": 0,
+    "changed": true,
+    "undoOk": false,
+    "redoOk": true,
+    "undoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "moveUp",
+    "row": "R076",
+    "entries": 0,
+    "changed": true,
+    "undoOk": false,
+    "redoOk": true,
+    "undoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "hide",
+    "row": "R045",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: 行を隠す/戻す"
+    ]
+  },
+  {
+    "op": "hide",
+    "row": "R076",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: 行を隠す/戻す"
+    ]
+  },
+  {
+    "op": "clear",
+    "row": "R045",
+    "entries": 0,
+    "changed": false,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "clear",
+    "row": "R076",
+    "entries": 0,
+    "changed": false,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": []
+  },
+  {
+    "op": "delete",
+    "row": "R045",
+    "entries": 1,
+    "changed": true,
+    "undoOk": true,
+    "redoOk": true,
+    "undoDiff": null,
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: 行を削除"
+    ]
+  },
+  {
+    "op": "delete",
+    "row": "R076",
+    "entries": 1,
+    "changed": true,
+    "undoOk": false,
+    "redoOk": true,
+    "undoDiff": {
+      "onlyBefore": [],
+      "onlyAfter": [],
+      "orderSame": false
+    },
+    "redoDiff": null,
+    "toasts": [
+      "元に戻す: 行を削除"
+    ]
+  }
+]

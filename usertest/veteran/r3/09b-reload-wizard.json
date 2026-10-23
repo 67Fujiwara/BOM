@@ -1,0 +1,26 @@
+{
+  "result": {
+    "draftSavedInSession": {
+      "step": 7,
+      "pasteLen": 8011,
+      "view": 5
+    },
+    "afterReload": {
+      "view": "1すべて80",
+      "recentBefore": [
+        "ダークモード切替",
+        "ビュー: すべて"
+      ],
+      "recentAfter": [
+        "ビュー: すべて",
+        "ビュー: 購買提出用"
+      ],
+      "wizard": {
+        "panel": "panel-wizard",
+        "id": "",
+        "paste": 0,
+        "text": "1.案件ID\n2.案件名\n3.納期\n4.社内工程日数\n5.予算（任意）\n6.購買・PM 担当者\n7.希望商社\n8.部品の入れ方\n9.確認して作成\n案件ID\n例:"
+      }
+    }
+  }
+}

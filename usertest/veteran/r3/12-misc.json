@@ -1,0 +1,45 @@
+{
+  "1 move then undo": {
+    "moveToast": "",
+    "orderAfterMove": [
+      "R044",
+      "R046",
+      "R045",
+      "R047"
+    ],
+    "undoToast": "元に戻す: セル編集",
+    "orderAfterUndo": [
+      "R044",
+      "R046",
+      "R045",
+      "R047"
+    ],
+    "R030": "表示灯 白"
+  },
+  "2 pageDown step": {
+    "1440x900": {
+      "fullyVisibleRows": 21,
+      "pageDownFromR010": "R030"
+    },
+    "1280x720": {
+      "fullyVisibleRows": 16,
+      "pageDownFromR010": "R030"
+    },
+    "853x480": {
+      "fullyVisibleRows": 9,
+      "pageDownFromR010": "R030"
+    },
+    "1920x1200": {
+      "fullyVisibleRows": 30,
+      "pageDownFromR010": "R030"
+    }
+  },
+  "3 browser find": {
+    "near": false,
+    "far": false
+  },
+  "4 ] without headers": {
+    "cursor": "R001 部品名",
+    "toast": "分類の見出しがありません（並び替え・要確認・要決定のビューでは分類でまとめません）"
+  }
+}

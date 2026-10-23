@@ -1,83 +1,83 @@
 {
   "summary": {
     "dev-current@80": {
-      "j": 21.7,
-      "right": 18.7,
-      "view": 62.6,
-      "space": 29.1,
-      "pageDown": 25.4,
-      "perViewPress": 50.6,
-      "perEnter": 174.3,
+      "j": 22.9,
+      "right": 20,
+      "view": 72.4,
+      "space": 42,
+      "pageDown": 18.3,
+      "perViewPress": 59.4,
+      "perEnter": 190.7,
       "rowsRendered": 27
     },
     "dev-r2@80": {
-      "j": 29.3,
-      "right": 29.3,
-      "view": 135.3,
-      "space": 50.7,
-      "pageDown": 15.8,
-      "perViewPress": 114.7,
-      "perEnter": 448.4,
+      "j": 31,
+      "right": 29.4,
+      "view": 142.2,
+      "space": 48.3,
+      "pageDown": 25,
+      "perViewPress": 114.6,
+      "perEnter": 445.3,
       "rowsRendered": 59
     },
     "build-current@80": {
-      "j": 16.9,
+      "j": 16.5,
       "right": 16.6,
-      "view": 32.5,
-      "space": 17.9,
+      "view": 33,
+      "space": 16.5,
       "pageDown": 16.8,
-      "perViewPress": 32.8,
-      "perEnter": 85.9,
+      "perViewPress": 28.6,
+      "perEnter": 75.5,
       "rowsRendered": 27
     },
     "build-r2@80": {
-      "j": 17.1,
-      "right": 16.7,
-      "view": 82.4,
-      "space": 26.6,
-      "pageDown": 15.9,
-      "perViewPress": 60.1,
-      "perEnter": 237.9,
+      "j": 16.9,
+      "right": 16.6,
+      "view": 79.3,
+      "space": 29.5,
+      "pageDown": 16.4,
+      "perViewPress": 61.6,
+      "perEnter": 232.8,
       "rowsRendered": 59
     },
     "dev-current@300": {
-      "j": 23.9,
-      "right": 20.5,
-      "view": 96.9,
-      "space": 29.6,
-      "pageDown": 29.5,
-      "perViewPress": 74.2,
-      "perEnter": 238.3,
+      "j": 25.7,
+      "right": 20.9,
+      "view": 100.4,
+      "space": 42.8,
+      "pageDown": 28.9,
+      "perViewPress": 67.9,
+      "perEnter": 249.1,
       "rowsRendered": 29
     },
     "dev-r2@300": {
-      "j": 62.3,
-      "right": 58.3,
-      "view": 564.3,
-      "space": 53.2,
-      "pageDown": 15.5,
-      "perViewPress": 331.7,
-      "perEnter": 1146.8,
+      "j": 51.6,
+      "right": 59.9,
+      "view": 575.5,
+      "space": 67.6,
+      "pageDown": 17.8,
+      "perViewPress": 347.3,
+      "perEnter": 1109,
       "rowsRendered": 233
     },
     "build-current@300": {
-      "j": 16.7,
+      "j": 16.5,
       "right": 16.6,
-      "view": 37.6,
-      "space": 20.4,
+      "view": 36.7,
+      "space": 16.9,
       "pageDown": 16.7,
-      "perViewPress": 35.2,
-      "perEnter": 109.9,
+      "perViewPress": 31,
+      "perEnter": 107.2,
       "rowsRendered": 29
     },
     "build-r2@300": {
-      "j": 29.5,
-      "right": 29.7,
-      "view": 237.7,
-      "space": 27.8,
-      "pageDown": 16.8,
-      "perViewPress": 170.5,
-      "perEnter": 581.5,
+      "j": 26.1,
+      "right": 28.5,
+      "view": 262.7,
+      "space": 29.5,
+      "pageDown": 16.6,
+      "perViewPress": 168.2,
+      "perEnter": 612.8,
       "rowsRendered": 233
     }
   },
@@ -85,29 +85,85 @@
     "dev-current@80": [
       {
         "j": {
-          "median": 21.7,
+          "median": 17.8,
           "p90": 26.6
         },
         "right": {
-          "median": 18.7,
-          "p90": 23.3
+          "median": 20,
+          "p90": 24.9
         },
         "view": {
-          "median": 62.6,
-          "p90": 103.1
+          "median": 81.8,
+          "p90": 126.9
         },
         "space": {
-          "median": 29.1,
-          "p90": 108.1
+          "median": 50.3,
+          "p90": 63.9
         },
         "pageDown": {
-          "median": 25.4,
-          "p90": 32
+          "median": 16.4,
+          "p90": 26
         },
-        "views90ms": 4558,
-        "perViewPress": 50.6,
-        "enter20ms": 3487,
-        "perEnter": 174.3,
+        "views90ms": 6342,
+        "perViewPress": 70.5,
+        "enter20ms": 4096,
+        "perEnter": 204.8,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 23.4,
+          "p90": 29.7
+        },
+        "right": {
+          "median": 20.9,
+          "p90": 36.1
+        },
+        "view": {
+          "median": 72.4,
+          "p90": 120.5
+        },
+        "space": {
+          "median": 42,
+          "p90": 105.4
+        },
+        "pageDown": {
+          "median": 18.3,
+          "p90": 45
+        },
+        "views90ms": 5345,
+        "perViewPress": 59.4,
+        "enter20ms": 3813,
+        "perEnter": 190.7,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 22.9,
+          "p90": 31
+        },
+        "right": {
+          "median": 19.5,
+          "p90": 24.6
+        },
+        "view": {
+          "median": 67.6,
+          "p90": 118.8
+        },
+        "space": {
+          "median": 29.9,
+          "p90": 97.3
+        },
+        "pageDown": {
+          "median": 29.3,
+          "p90": 48.6
+        },
+        "views90ms": 5234,
+        "perViewPress": 58.2,
+        "enter20ms": 3518,
+        "perEnter": 175.9,
         "rowsRendered": 27,
         "errs": []
       }
@@ -115,29 +171,85 @@
     "dev-r2@80": [
       {
         "j": {
-          "median": 29.3,
-          "p90": 37.7
+          "median": 31,
+          "p90": 42.9
         },
         "right": {
-          "median": 29.3,
-          "p90": 41
+          "median": 27,
+          "p90": 48.5
         },
         "view": {
-          "median": 135.3,
-          "p90": 287.9
+          "median": 166.4,
+          "p90": 322.5
         },
         "space": {
-          "median": 50.7,
-          "p90": 140.6
+          "median": 55.5,
+          "p90": 113.4
         },
         "pageDown": {
-          "median": 15.8,
-          "p90": 28.1
+          "median": 25,
+          "p90": 26.7
         },
-        "views90ms": 10323,
-        "perViewPress": 114.7,
-        "enter20ms": 8969,
-        "perEnter": 448.4,
+        "views90ms": 11105,
+        "perViewPress": 123.4,
+        "enter20ms": 8905,
+        "perEnter": 445.3,
+        "rowsRendered": 59,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 21.1,
+          "p90": 34.3
+        },
+        "right": {
+          "median": 31.9,
+          "p90": 46.2
+        },
+        "view": {
+          "median": 140.9,
+          "p90": 278.9
+        },
+        "space": {
+          "median": 48.3,
+          "p90": 137
+        },
+        "pageDown": {
+          "median": 16.8,
+          "p90": 22.3
+        },
+        "views90ms": 10317,
+        "perViewPress": 114.6,
+        "enter20ms": 8227,
+        "perEnter": 411.4,
+        "rowsRendered": 59,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 32.5,
+          "p90": 42.5
+        },
+        "right": {
+          "median": 29.4,
+          "p90": 37.6
+        },
+        "view": {
+          "median": 142.2,
+          "p90": 290.9
+        },
+        "space": {
+          "median": 47.2,
+          "p90": 101.5
+        },
+        "pageDown": {
+          "median": 30.1,
+          "p90": 55.3
+        },
+        "views90ms": 10144,
+        "perViewPress": 112.7,
+        "enter20ms": 9109,
+        "perEnter": 455.4,
         "rowsRendered": 59,
         "errs": []
       }
@@ -145,29 +257,85 @@
     "build-current@80": [
       {
         "j": {
-          "median": 16.9,
-          "p90": 23.7
+          "median": 16.1,
+          "p90": 21.1
         },
         "right": {
           "median": 16.6,
-          "p90": 19.1
+          "p90": 18.2
         },
         "view": {
-          "median": 32.5,
-          "p90": 48
+          "median": 37,
+          "p90": 65.9
         },
         "space": {
-          "median": 17.9,
-          "p90": 40.6
+          "median": 21.4,
+          "p90": 34.8
         },
         "pageDown": {
           "median": 16.8,
-          "p90": 18.7
+          "p90": 25.9
         },
-        "views90ms": 2950,
-        "perViewPress": 32.8,
-        "enter20ms": 1718,
-        "perEnter": 85.9,
+        "views90ms": 2962,
+        "perViewPress": 32.9,
+        "enter20ms": 2281,
+        "perEnter": 114,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.5,
+          "p90": 18.5
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 18.3
+        },
+        "view": {
+          "median": 30.6,
+          "p90": 44.5
+        },
+        "space": {
+          "median": 16.4,
+          "p90": 37.2
+        },
+        "pageDown": {
+          "median": 16.9,
+          "p90": 19.3
+        },
+        "views90ms": 2565,
+        "perViewPress": 28.5,
+        "enter20ms": 1510,
+        "perEnter": 75.5,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 19.9
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 19.9
+        },
+        "view": {
+          "median": 33,
+          "p90": 47.5
+        },
+        "space": {
+          "median": 16.5,
+          "p90": 42.1
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 23.2
+        },
+        "views90ms": 2577,
+        "perViewPress": 28.6,
+        "enter20ms": 1370,
+        "perEnter": 68.5,
         "rowsRendered": 27,
         "errs": []
       }
@@ -175,29 +343,85 @@
     "build-r2@80": [
       {
         "j": {
-          "median": 17.1,
-          "p90": 23.6
+          "median": 18.8,
+          "p90": 34.1
         },
         "right": {
-          "median": 16.7,
-          "p90": 27.3
-        },
-        "view": {
-          "median": 82.4,
-          "p90": 139.2
-        },
-        "space": {
-          "median": 26.6,
-          "p90": 91.1
-        },
-        "pageDown": {
-          "median": 15.9,
+          "median": 20.2,
           "p90": 29.6
         },
-        "views90ms": 5410,
-        "perViewPress": 60.1,
-        "enter20ms": 4759,
-        "perEnter": 237.9,
+        "view": {
+          "median": 103.6,
+          "p90": 158.6
+        },
+        "space": {
+          "median": 33.5,
+          "p90": 54.1
+        },
+        "pageDown": {
+          "median": 16.5,
+          "p90": 18.9
+        },
+        "views90ms": 6091,
+        "perViewPress": 67.7,
+        "enter20ms": 4574,
+        "perEnter": 228.7,
+        "rowsRendered": 59,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 19.3
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 18.5
+        },
+        "view": {
+          "median": 79.3,
+          "p90": 132.4
+        },
+        "space": {
+          "median": 26.4,
+          "p90": 48.1
+        },
+        "pageDown": {
+          "median": 16.2,
+          "p90": 17.5
+        },
+        "views90ms": 5547,
+        "perViewPress": 61.6,
+        "enter20ms": 5007,
+        "perEnter": 250.3,
+        "rowsRendered": 59,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.9,
+          "p90": 25.8
+        },
+        "right": {
+          "median": 16.3,
+          "p90": 21.1
+        },
+        "view": {
+          "median": 75.3,
+          "p90": 128.8
+        },
+        "space": {
+          "median": 29.5,
+          "p90": 46.1
+        },
+        "pageDown": {
+          "median": 16.4,
+          "p90": 20.6
+        },
+        "views90ms": 5202,
+        "perViewPress": 57.8,
+        "enter20ms": 4657,
+        "perEnter": 232.8,
         "rowsRendered": 59,
         "errs": []
       }
@@ -205,29 +429,85 @@
     "dev-current@300": [
       {
         "j": {
-          "median": 23.9,
-          "p90": 30.5
+          "median": 25.7,
+          "p90": 41
         },
         "right": {
-          "median": 20.5,
-          "p90": 35.2
+          "median": 20.9,
+          "p90": 41.1
         },
         "view": {
-          "median": 96.9,
-          "p90": 155.6
+          "median": 100.4,
+          "p90": 149.7
         },
         "space": {
-          "median": 29.6,
-          "p90": 94.1
+          "median": 51.3,
+          "p90": 60.1
         },
         "pageDown": {
-          "median": 29.5,
-          "p90": 44.1
+          "median": 16.6,
+          "p90": 39.7
         },
-        "views90ms": 6677,
-        "perViewPress": 74.2,
-        "enter20ms": 4767,
-        "perEnter": 238.3,
+        "views90ms": 6768,
+        "perViewPress": 75.2,
+        "enter20ms": 5992,
+        "perEnter": 299.6,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 26.7,
+          "p90": 31.5
+        },
+        "right": {
+          "median": 22,
+          "p90": 37.1
+        },
+        "view": {
+          "median": 94.4,
+          "p90": 141.1
+        },
+        "space": {
+          "median": 42.8,
+          "p90": 90.3
+        },
+        "pageDown": {
+          "median": 32,
+          "p90": 34.9
+        },
+        "views90ms": 5614,
+        "perViewPress": 62.4,
+        "enter20ms": 4639,
+        "perEnter": 231.9,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 25.2,
+          "p90": 29.3
+        },
+        "right": {
+          "median": 16.9,
+          "p90": 38.8
+        },
+        "view": {
+          "median": 102.2,
+          "p90": 170
+        },
+        "space": {
+          "median": 42,
+          "p90": 95
+        },
+        "pageDown": {
+          "median": 28.9,
+          "p90": 62.2
+        },
+        "views90ms": 6107,
+        "perViewPress": 67.9,
+        "enter20ms": 4981,
+        "perEnter": 249.1,
         "rowsRendered": 29,
         "errs": []
       }
@@ -235,29 +515,85 @@
     "dev-r2@300": [
       {
         "j": {
-          "median": 62.3,
-          "p90": 76.2
+          "median": 51.6,
+          "p90": 74.4
         },
         "right": {
-          "median": 58.3,
-          "p90": 83.3
+          "median": 62.7,
+          "p90": 72
         },
         "view": {
-          "median": 564.3,
-          "p90": 704.7
+          "median": 607,
+          "p90": 805.9
         },
         "space": {
-          "median": 53.2,
-          "p90": 127.2
+          "median": 76.6,
+          "p90": 136.2
         },
         "pageDown": {
-          "median": 15.5,
-          "p90": 18.3
+          "median": 17.8,
+          "p90": 28.4
         },
-        "views90ms": 29853,
-        "perViewPress": 331.7,
-        "enter20ms": 22936,
-        "perEnter": 1146.8,
+        "views90ms": 31254,
+        "perViewPress": 347.3,
+        "enter20ms": 21540,
+        "perEnter": 1077,
+        "rowsRendered": 233,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 63.2,
+          "p90": 86.1
+        },
+        "right": {
+          "median": 59.9,
+          "p90": 70.4
+        },
+        "view": {
+          "median": 530.8,
+          "p90": 725.2
+        },
+        "space": {
+          "median": 62,
+          "p90": 142
+        },
+        "pageDown": {
+          "median": 17.3,
+          "p90": 44.8
+        },
+        "views90ms": 31306,
+        "perViewPress": 347.8,
+        "enter20ms": 24347,
+        "perEnter": 1217.3,
+        "rowsRendered": 233,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 45.6,
+          "p90": 75.3
+        },
+        "right": {
+          "median": 58.7,
+          "p90": 93
+        },
+        "view": {
+          "median": 575.5,
+          "p90": 711.5
+        },
+        "space": {
+          "median": 67.6,
+          "p90": 134.1
+        },
+        "pageDown": {
+          "median": 17.8,
+          "p90": 26.4
+        },
+        "views90ms": 29918,
+        "perViewPress": 332.4,
+        "enter20ms": 22181,
+        "perEnter": 1109,
         "rowsRendered": 233,
         "errs": []
       }
@@ -265,29 +601,85 @@
     "build-current@300": [
       {
         "j": {
-          "median": 16.7,
-          "p90": 17.7
+          "median": 16.5,
+          "p90": 18.2
         },
         "right": {
           "median": 16.6,
-          "p90": 20.4
+          "p90": 19.3
         },
         "view": {
-          "median": 37.6,
-          "p90": 63
+          "median": 33.2,
+          "p90": 53.1
         },
         "space": {
-          "median": 20.4,
-          "p90": 36.5
+          "median": 15.5,
+          "p90": 35.7
+        },
+        "pageDown": {
+          "median": 16.3,
+          "p90": 29.1
+        },
+        "views90ms": 2788,
+        "perViewPress": 31,
+        "enter20ms": 2143,
+        "perEnter": 107.2,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.9,
+          "p90": 22.4
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 18.9
+        },
+        "view": {
+          "median": 45.2,
+          "p90": 69.4
+        },
+        "space": {
+          "median": 19.1,
+          "p90": 57.3
         },
         "pageDown": {
           "median": 16.7,
-          "p90": 18.2
+          "p90": 18.9
         },
-        "views90ms": 3171,
-        "perViewPress": 35.2,
-        "enter20ms": 2198,
-        "perEnter": 109.9,
+        "views90ms": 3189,
+        "perViewPress": 35.4,
+        "enter20ms": 2589,
+        "perEnter": 129.4,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.4,
+          "p90": 19.4
+        },
+        "right": {
+          "median": 16.4,
+          "p90": 19.7
+        },
+        "view": {
+          "median": 36.7,
+          "p90": 57
+        },
+        "space": {
+          "median": 16.9,
+          "p90": 32.3
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 20.9
+        },
+        "views90ms": 2562,
+        "perViewPress": 28.5,
+        "enter20ms": 2054,
+        "perEnter": 102.7,
         "rowsRendered": 29,
         "errs": []
       }
@@ -295,29 +687,85 @@
     "build-r2@300": [
       {
         "j": {
-          "median": 29.5,
-          "p90": 40.4
+          "median": 26.1,
+          "p90": 28.9
         },
         "right": {
-          "median": 29.7,
-          "p90": 34.8
+          "median": 27.8,
+          "p90": 44.4
         },
         "view": {
-          "median": 237.7,
-          "p90": 376.7
+          "median": 262.7,
+          "p90": 412.6
         },
         "space": {
-          "median": 27.8,
-          "p90": 49.7
+          "median": 30.6,
+          "p90": 47.6
         },
         "pageDown": {
-          "median": 16.8,
-          "p90": 19
+          "median": 16.6,
+          "p90": 20.2
         },
-        "views90ms": 15347,
-        "perViewPress": 170.5,
-        "enter20ms": 11631,
-        "perEnter": 581.5,
+        "views90ms": 15139,
+        "perViewPress": 168.2,
+        "enter20ms": 12255,
+        "perEnter": 612.8,
+        "rowsRendered": 233,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 33.7,
+          "p90": 53.4
+        },
+        "right": {
+          "median": 28.5,
+          "p90": 38.4
+        },
+        "view": {
+          "median": 234.3,
+          "p90": 390.1
+        },
+        "space": {
+          "median": 29.5,
+          "p90": 51.7
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 22.2
+        },
+        "views90ms": 15136,
+        "perViewPress": 168.2,
+        "enter20ms": 12518,
+        "perEnter": 625.9,
+        "rowsRendered": 233,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 25.7,
+          "p90": 34.1
+        },
+        "right": {
+          "median": 29.9,
+          "p90": 42.5
+        },
+        "view": {
+          "median": 263.2,
+          "p90": 383.1
+        },
+        "space": {
+          "median": 24.8,
+          "p90": 46.3
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 18
+        },
+        "views90ms": 14689,
+        "perViewPress": 163.2,
+        "enter20ms": 11091,
+        "perEnter": 554.5,
         "rowsRendered": 233,
         "errs": []
       }

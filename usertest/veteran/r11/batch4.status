@@ -17,3 +17,15 @@
 == r9-36-undo-chain 11:05:14
    exit 0 11:05:31
 == r9-30-norow-symbols 11:05:31
+   exit 0 11:08:31
+== r9-r8-23-norow-digits 11:08:31
+   exit 0 11:08:45
+== r9-31-norow-keys 11:08:45
+   exit 0 11:11:09
+== r9-32-twotab2 11:11:09
+   exit 0 11:11:43
+== r9-40-twotab3 11:11:43
+   exit 0 11:11:57
+== r9-r8-15-twotab 11:11:57
+   exit 0 11:12:31
+== 03-entry-matrix-5176 11:12:31

@@ -470,3 +470,38 @@ describe('ラウンド 15 の版の印（ベテラン）', () => {
     expect(parseBomPaste('部品名\t型式\t型式(修正)\t数量\nリレー\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
   })
 })
+
+describe('ラウンド 16 の取り込み（新人）', () => {
+  it('変えた行だけ変更後を書く表で、1 行だけ新旧とも書いても、変えていない行・変更なし・同左の行を消さない', () => {
+    const r = parseBomPaste('品名\t型式\t変更後型式\t数量\t変更後数量\nリレー\tMY2N\tMY4N\t2\t2\n端子台\tXW2B\t\t3\t\nヒューズ\tF-10\t変更なし\t4\t同左\nタイマ\tH3CR\t\t1\t')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 2], ['端子台', 'XW2B', 3], ['ヒューズ', 'F-10', 4], ['タイマ', 'H3CR', 1]])
+  })
+  it('備考の ※削除・今回削除・（削除）は削除、削除しない は残す', () => {
+    const r = parseBomPaste('品名\t型式(旧)\t型式(新)\t数量\t備考\nリレー\tMY2N\tMY4N\t1\t\nタイマ\tH3Y\t\t1\t※削除\n端子\tXW2A\t\t1\t今回削除\nヒューズ\tF-1\t\t1\t（削除）\nソケット\tPYF\t\t1\t削除しない')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'ソケット'])
+  })
+  it('2 段目の「現行｜変更」は 1 段にまとめて変更の列', () => {
+    const r = parseBomPaste('品名\t型式\t\t数量\t\n\t現行\t変更\t現行\t変更\nリレー\tMY2N\tMY4N-D2\t2\t4')
+    expect(r.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N-D2', 4]])
+  })
+  it('号機ごとの数量（合計の列なし）は足す、#1｜#2｜計 は計、1台当り×台数 は掛ける、A号機｜B号機｜合計 は合計', () => {
+    expect(parseBomPaste('品名\t型式\t数量\t\n\t\t1号機\t2号機\nリレー\tMY4N\t3\t3').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t数量\t\t\n\t\t#1\t#2\t計\nリレー\tMY4N\t3\t3\t6').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t数量\t\n\t\t1台当り\t台数\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t数量\t\t\n\t\tA号機\tB号機\t合計\nリレー\tMY4N\t2\t3\t5').rows[0].qtyNeeded).toBe(5)
+  })
+  it('表題欄「数量｜1」を見出しにしない', () => {
+    const r = parseBomPaste('品名\t制御盤A\t数量\t1\n\n品名\t型式\t数量\nリレー\tMY4N\t4')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([4])
+  })
+  it('言い方の違うページの見出し（名称｜形番｜製造元｜個数）を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t1\n名称\t形番\t製造元\t個数\n端子台\tXW2B\tオムロン\t2')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+  })
+  it('新の列の（削除）・削除済・取外し・廃止品・ー削除ー・不使用、〃〃・々・上と同じ・上記に同じ・同', () => {
+    const r = parseBomPaste('品名\t型式\t新型式\t数量\nリレー\tMY2N\tMY4N\t1\nA\tX1\t（削除）\t1\nB\tX2\t削除済\t1\nC\tX3\t取外し\t1\nD\tX4\t廃止品\t1\nE\tX5\tー削除ー\t1\nF\tX6\t不使用\t1')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+    const d = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N\tオムロン\t1\nA\tX1\t〃〃\t1\nB\tX2\t々\t1\nC\tX3\t上と同じ\t1\nD\tX4\t上記に同じ\t1\nE\tX5\t同\t1')
+    expect(d.rows.map((x) => x.maker)).toEqual(Array(6).fill('オムロン'))
+  })
+})

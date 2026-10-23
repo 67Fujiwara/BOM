@@ -197,7 +197,9 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         const err = panel.onSubmit(choice, panel.text, panel.extra)
         if (typeof err === 'string') {
           // エラーなら入れた内容を残したままダイアログを開き直す
-          set({ panel: { ...panel, error: err }, mode: 'panel' })
+          // 選択肢つきのダイアログで数字だけの文字を断ったときは、文字の欄を空にして選択肢に戻す（案内どおり Shift+Tab → 数字 で選べるように）
+          const digitsOnly = !!panel.options && /^[\d０-９\s]+$/.test(panel.text.trim())
+          set({ panel: { ...panel, error: err, ...(digitsOnly ? { text: '', textTouched: false } : {}) }, mode: 'panel' })
           toast(err, 'err')
         }
       }

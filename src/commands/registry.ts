@@ -999,13 +999,15 @@ function saveSettings(draft: Record<string, string>) {
   }
   const role = s.user().role
   for (const f of settingsFieldsOf(p)) if (f.key in draft && ((f.owner === 'PM' && role !== 'pm') || (f.owner === '購買' && role === 'design'))) return toast(`権限なし（${f.label} は ${f.owner} 項目）`, 'err')
-  extraCommits.forEach((f) => f())
   if (!Object.keys(patch).length) {
+    extraCommits.forEach((f) => f())
     closePanel()
     return toast(extraCommits.length ? '案件設定を保存しました' : '変更はありません', 'info')
   }
   const needImpact = 'dueDate' in patch || 'processDays' in patch || 'weights' in patch
+  // 担当者などのほかの変更も、理由を入れて確定したときにまとめて保存する（Esc で取りやめたら何も保存しない）
   const finish = (reason: string, opts?: { fixedNeed?: 'shift' | 'keep'; proposeReselect?: boolean }) => {
+    extraCommits.forEach((f) => f())
     pm.applySettings(patch as Parameters<typeof pm.applySettings>[0], reason, opts)
     closePanel()
     toast('案件設定を保存しました', 'ok')
@@ -1757,6 +1759,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         onSubmit: (text) => {
           let raw: unknown
           // Excel のファイル（中身が PK で始まる zip）は JSON ではない。部品表はガイドから読む
+          // 表（タブ区切り・CSV）を貼った・選んだときも、部品表はガイドから
+          if (!/^\s*[{[]/.test(text) && (text.includes('\t') || /^[^\n]*,[^\n]*\n/.test(text))) return toast('これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）', 'err')
           if (text.startsWith('PK')) return toast('これは Excel のファイル（.xlsx）です。部品表は Ctrl+K →「新しいBOM」→「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）', 'err')
           try {
             raw = JSON.parse(text)

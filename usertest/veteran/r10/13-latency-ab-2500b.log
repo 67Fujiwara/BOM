@@ -12,3 +12,127 @@
 1 current epoch {"loadMs":370,"部品名":{"commit":129.1,"undo":126.5},"必要数":{"commit":118.3,"undo":97},"nav":{"down":16.6,"view":53.1,"space":37.2}}
 1 r9 regex {"loadMs":3191,"部品名":{"commit":128.7,"undo":107.5},"必要数":{"commit":89.4,"undo":88.2},"nav":{"down":16.7,"view":56.9,"space":22.3}}
 1 current regex {"loadMs":2800,"部品名":{"commit":120.4,"undo":86.5},"必要数":{"commit":100.8,"undo":91.5},"nav":{"down":16.7,"view":51.5,"space":21.7}}
+1 r9 holidays {"loadMs":237,"部品名":{"commit":97.3,"undo":91.9},"必要数":{"commit":96.3,"undo":92.3},"nav":{"down":16.8,"view":57.8,"space":31.2}}
+1 current holidays {"loadMs":251,"部品名":{"commit":106.6,"undo":95.1},"必要数":{"commit":95.8,"undo":100.4},"nav":{"down":16.8,"view":51.1,"space":26.1}}
+2 r9 plain {"loadMs":212,"部品名":{"commit":89,"undo":73.2},"必要数":{"commit":88.7,"undo":84.6},"nav":{"down":16.3,"view":54.7,"space":33}}
+2 current plain {"loadMs":323,"部品名":{"commit":92.8,"undo":87.6},"必要数":{"commit":92.9,"undo":98.4},"nav":{"down":14.1,"view":68,"space":32.6}}
+2 r9 epoch {"loadMs":241,"部品名":{"commit":104.2,"undo":94.7},"必要数":{"commit":85.3,"undo":99.8},"nav":{"down":16.3,"view":53.3,"space":26.4}}
+2 current epoch {"loadMs":236,"部品名":{"commit":94,"undo":81.1},"必要数":{"commit":97.2,"undo":98.3},"nav":{"down":16.6,"view":57.4,"space":33.7}}
+2 r9 regex {"loadMs":2905,"部品名":{"commit":93.1,"undo":78.5},"必要数":{"commit":90.5,"undo":87.8},"nav":{"down":16.3,"view":52,"space":24.7}}
+2 current regex {"loadMs":2943,"部品名":{"commit":103.2,"undo":94.7},"必要数":{"commit":94.1,"undo":93.2},"nav":{"down":15.8,"view":47.5,"space":24.3}}
+2 r9 holidays {"loadMs":278,"部品名":{"commit":96.6,"undo":97},"必要数":{"commit":94.4,"undo":77.8},"nav":{"down":16.8,"view":53.6,"space":23.2}}
+2 current holidays {"loadMs":193,"部品名":{"commit":116,"undo":105.6},"必要数":{"commit":95.2,"undo":99.6},"nav":{"down":16.8,"view":49.7,"space":25.1}}
+{
+ "r9@plain": {
+  "loadMs": 210,
+  "name": {
+   "commit": 130.6,
+   "undo": 81.2
+  },
+  "qty": {
+   "commit": 95.8,
+   "undo": 84.6
+  },
+  "down": 16.3,
+  "view": 54.7,
+  "space": 34.7
+ },
+ "current@plain": {
+  "loadMs": 297,
+  "name": {
+   "commit": 120.8,
+   "undo": 87.6
+  },
+  "qty": {
+   "commit": 92.9,
+   "undo": 98.4
+  },
+  "down": 16.4,
+  "view": 62.8,
+  "space": 32.6
+ },
+ "r9@epoch": {
+  "loadMs": 299,
+  "name": {
+   "commit": 104.2,
+   "undo": 94.7
+  },
+  "qty": {
+   "commit": 102.1,
+   "undo": 99.8
+  },
+  "down": 15.4,
+  "view": 53.3,
+  "space": 23
+ },
+ "current@epoch": {
+  "loadMs": 322,
+  "name": {
+   "commit": 127.2,
+   "undo": 103.1
+  },
+  "qty": {
+   "commit": 118.3,
+   "undo": 98.3
+  },
+  "down": 16.6,
+  "view": 57.4,
+  "space": 37.2
+ },
+ "r9@regex": {
+  "loadMs": 3014,
+  "name": {
+   "commit": 101.9,
+   "undo": 91.2
+  },
+  "qty": {
+   "commit": 89.4,
+   "undo": 88.2
+  },
+  "down": 16.6,
+  "view": 52.8,
+  "space": 22.9
+ },
+ "current@regex": {
+  "loadMs": 2800,
+  "name": {
+   "commit": 103.2,
+   "undo": 87.7
+  },
+  "qty": {
+   "commit": 100.8,
+   "undo": 93.2
+  },
+  "down": 16.6,
+  "view": 51.5,
+  "space": 24.3
+ },
+ "r9@holidays": {
+  "loadMs": 278,
+  "name": {
+   "commit": 97.3,
+   "undo": 97
+  },
+  "qty": {
+   "commit": 96.3,
+   "undo": 92.3
+  },
+  "down": 16.8,
+  "view": 57.8,
+  "space": 31.2
+ },
+ "current@holidays": {
+  "loadMs": 251,
+  "name": {
+   "commit": 116,
+   "undo": 105.6
+  },
+  "qty": {
+   "commit": 95.8,
+   "undo": 100.4
+  },
+  "down": 16.8,
+  "view": 51.1,
+  "space": 26.1
+ }
+}

@@ -1,0 +1,6 @@
+{"case":"U1 60 編集 → リロード → Ctrl+Z ×62","histLen":63434,"restoredNames":["U0","U1","U2","U3","U4","U5","U6","U7","U8","U9","エンドクランプ","DINレール"],"stillEdited":10,"lastToasts":["元に戻す: セル編集","戻す操作がありません（この案件であなたが行った操作はまだありません）"]}
+{"case":"U1b 60 編集 → Ctrl+Z ×62（リロードなし）","stillEdited":0,"lastToasts":["元に戻す: セル編集","戻す操作がありません（この案件であなたが行った操作はまだありません）"]}
+{"case":"U2 2,500 行貼り付け → 5 編集 → リロード → Ctrl+Z ×7","n0":80,"n1":2579,"histLenBeforeReload":1275823,"steps":["2579行/V0,V1,V2,V3,スイッチング電源 24V 10A","2579行/V0,V1,V2,スイッチング電源 24V 5A,スイッチング電源 24V 10A","2579行/V0,V1,DINレール,スイッチング電源 24V 5A,スイッチング電源 24V 10A","2579行/V0,エンドクランプ,DINレール,スイッチング電源 24V 5A,スイッチング電源 24V 10A","2579行/端子�
+{"case":"U3 打って矢印で確定 ×4 → Z×4 → Y×4","seq":["a1ArrowRight→R020 部品名","b2ArrowDown→R020 部品名","c3ArrowLeft→R020 部品名","d4ArrowUp→R020 部品名","Z→R020 部品名","Z→R020 部品名","Z→R020 部品名","Z→R020 部品名","Y→R020 部品名","Y→R020 部品名","Y→R020 部品名","Y→R020 部品名"],"sameAfterRedo":true,"undoneAll":true}
+{"case":"U4 0ms 値 Enter ×10 → Z×10 → Y×10","changed":true,"undoneToStart":true,"redoneToEdited":true}
+errors []

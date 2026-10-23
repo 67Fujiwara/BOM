@@ -194,10 +194,12 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       }
       if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n) } }), true)
       if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n) } }), true)
-      if (key === 'Enter' || key === 'Ctrl+Enter') {
+      if (key === 'Enter') {
         submit(panel.options ? (panel.options[panel.index] ?? null) : null)
         return true
       }
+      // Ctrl+Enter の押し直しで、選択肢を読まずに確定しない
+      if (key === 'Ctrl+Enter') return (toast('選んで Enter で確定します（Esc で取り消し）', 'info'), true)
       if (!panel.showText && !panel.extra && key.length === 1) return (toast(panel.options ? `↑↓ と Enter、または 1〜${n} で選んでください` : 'Enter で確定、Esc で取り消し', 'info'), true)
       return false
     }
@@ -443,13 +445,15 @@ export function handleKeyDown(e: KeyboardEvent) {
   const s = st()
   const target = e.target as HTMLElement | null
   const inInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement
+  // 「戻る」（Alt+← / Alt+→ / Cmd+[ ]）や Ctrl+G 検索などのブラウザ既定動作は、どの場面でも止める（入力中の内容を失わない）
+  if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {
     e.preventDefault()
     target.blur()
   }
   // 絞り込み入力中
-  if (inInput && target?.classList.contains('filter')) {
+  if (inInput && target?.classList.contains('filter') && !s.panel) {
     const input = target as HTMLInputElement
     if (key === 'Escape') {
       e.preventDefault()
@@ -478,6 +482,17 @@ export function handleKeyDown(e: KeyboardEvent) {
   if (s.panel) {
     if (handlePanelKey(key, e)) {
       e.preventDefault()
+      return
+    }
+    if (key === 'Tab' || key === 'Shift+Tab') {
+      // フォーカスはダイアログの中で回す（外に出て背後の表・絞り込み欄に打鍵が入らないように）
+      e.preventDefault()
+      const dlg = document.querySelector<HTMLElement>('.overlay .dialog')
+      const fs = dlg ? [...dlg.querySelectorAll<HTMLElement>('input:not([type=file]), textarea, select, button')].filter((x) => !x.hasAttribute('disabled') && x.offsetParent !== null) : []
+      if (fs.length) {
+        const i = fs.indexOf(document.activeElement as HTMLElement)
+        fs[(i + (key === 'Tab' ? 1 : -1) + fs.length) % fs.length].focus()
+      }
       return
     }
     // 「迷ったら Ctrl+K」はどのダイアログの中でも効く（ガイドの途中の内容は残す）
@@ -527,9 +542,10 @@ export function handleKeyDown(e: KeyboardEvent) {
       return
     }
     // 編集中のグローバルキー: 確定してから実行（Ctrl+Z はブラウザの入力欄の取り消しに任せる）
-    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P'].includes(key)) {
+    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P', 'Ctrl+G', 'Ctrl+Shift+C', 'Ctrl+.', 'Ctrl+Shift+F'].includes(key)) {
       e.preventDefault()
-      if (commitEdit('stay')) runCommand(lookupBinding(key, 'nav')!.id, e)
+      const b = lookupBinding(key, 'nav')
+      if (b && commitEdit('stay')) runCommand(b.id, e)
     }
     return
   }

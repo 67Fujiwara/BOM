@@ -7,7 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { commitEdit, handleKeyDown } from '@/commands/registry'
-import { STORAGE_KEY, loadUser, parseWorkspace, resetWorkspace, startSync } from '@/io/persist'
+import { STORAGE_KEY, loadProblem, loadUser, parseWorkspace, resetWorkspace, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
 
@@ -71,6 +71,8 @@ function Main() {
       }
     }
     window.addEventListener('beforeunload', unload)
+    // 保存データを読めなかった・一部を外したときは、黙ってサンプルにしない
+    if (loadProblem) useStore.getState().toastMsg(loadProblem, 'err')
     return () => {
       window.removeEventListener('keydown', h)
       window.removeEventListener('beforeunload', unload)
@@ -80,6 +82,8 @@ function Main() {
     try {
       const theme = localStorage.getItem('bom-pro.theme')
       if (theme) document.documentElement.dataset.theme = theme
+      const density = localStorage.getItem('bom-pro.density')
+      if (density) document.documentElement.dataset.density = density
     } catch {
       /* noop */
     }

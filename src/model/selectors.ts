@@ -86,6 +86,10 @@ function buildViewModelUncached(st: State): ViewModel {
     rows = [...rows].sort((a, b) => {
       const ta = cellText(a, sort.col, ctx)
       const tb = cellText(b, sort.col, ctx)
+      // 空欄は昇順・降順とも末尾（Excel と同じ）
+      const ea = ta.raw === '' || ta.raw == null
+      const eb = tb.raw === '' || tb.raw == null
+      if (ea || eb) return ea === eb ? 0 : ea ? 1 : -1
       const na = Number(ta.raw)
       const nb = Number(tb.raw)
       if (ta.raw !== '' && tb.raw !== '' && Number.isFinite(na) && Number.isFinite(nb)) return (na - nb) * dir
@@ -94,7 +98,11 @@ function buildViewModelUncached(st: State): ViewModel {
   } else if (v.defaultSort) rows = [...rows].sort((a, b) => v.defaultSort!(a, b, ctx))
   const items: Item[] = []
   if (st.view === 7 && !st.filter && !st.cellFilter) for (const c of openCases) items.push({ kind: 'case', key: 'case:' + c.id, label: c.kind === '案件設定確定' ? '案件設定確定（納期・工程日数・予算・重み・選定者）: y で既定のまま確定 / Enter で案件設定を開く' : c.kind })
-  const grouped = !sort && !v.defaultSort && st.view !== 7 && st.view !== 4
+  // 分類ごとに 1 つの見出し。分類が連続していない BOM（回路記号順・図面順など）では見出しを出さない
+  const catOf = (r: Row) => effective(r).category || '（分類なし）'
+  const runs = rows.reduce((n, r, i) => (i === 0 || catOf(rows[i - 1]) !== catOf(r) ? n + 1 : n), 0)
+  const contiguous = runs === new Set(rows.map(catOf)).size
+  const grouped = !sort && !v.defaultSort && st.view !== 7 && st.view !== 4 && contiguous
   let lastCat: string | null = null
   const ordered: Row[] = []
   for (const r of rows) {

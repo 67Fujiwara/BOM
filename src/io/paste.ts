@@ -30,25 +30,53 @@ export interface PasteResult {
   warnings: string[]
 }
 
-function splitCsvLine(line: string): string[] {
-  const out: string[] = []
-  let cur = ''
-  let q = false
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i]
-    if (q) {
-      if (ch === '"' && line[i + 1] === '"') {
-        cur += '"'
+/**
+ * タブ区切り・CSV を表に分ける。Excel は改行を含むセルを "…" で囲んで出すので、引用符の中の改行・区切りはセルの一部として扱う。
+ * セルの中の改行は空白にする（BOM の項目は 1 行）
+ */
+export function parseTable(text: string, delim: '\t' | ','): string[][] {
+  const out: string[][] = []
+  let row: string[] = []
+  let cell = ''
+  let quoted = false
+  let fresh = true // セルの先頭か（引用符はセルの先頭にあるときだけ囲みとみなす）
+  const src = text.replace(/\r\n?/g, '\n')
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i]
+    if (quoted) {
+      if (ch === '"' && src[i + 1] === '"') {
+        cell += '"'
         i++
-      } else if (ch === '"') q = false
-      else cur += ch
-    } else if (ch === '"') q = true
-    else if (ch === ',') {
-      out.push(cur)
-      cur = ''
-    } else cur += ch
+      } else if (ch === '"') quoted = false
+      else cell += ch === '\n' ? ' ' : ch
+      continue
+    }
+    if (ch === '"' && fresh) {
+      quoted = true
+      fresh = false
+      continue
+    }
+    if (ch === delim) {
+      row.push(cell)
+      cell = ''
+      fresh = true
+      continue
+    }
+    if (ch === '\n') {
+      row.push(cell)
+      out.push(row)
+      row = []
+      cell = ''
+      fresh = true
+      continue
+    }
+    cell += ch
+    fresh = false
   }
-  out.push(cur)
+  if (cell !== '' || row.length) {
+    row.push(cell)
+    out.push(row)
+  }
   return out
 }
 
@@ -62,11 +90,13 @@ const UNIT_ALIAS: Record<string, Unit> = { 個: '個', pcs: '個', pc: '個', �
 
 /** Excel からの貼り付け（タブ区切り / CSV）を BOM 行に変換する */
 export function parseBomPaste(text: string): PasteResult {
-  const lines = text.replace(/\r/g, '').split('\n').filter((l) => l.trim() !== '')
+  const raw = text.replace(/\r\n?/g, '\n')
   const warnings: string[] = []
+  const delimiter: PasteResult['delimiter'] = raw.includes('\t') ? 'tab' : raw.includes(',') ? 'comma' : 'none'
+  const table = delimiter === 'none' ? raw.split('\n').map((l) => [l]) : parseTable(raw, delimiter === 'tab' ? '\t' : ',')
+  const lines = table.filter((r) => r.some((c) => c.trim() !== ''))
   if (!lines.length) return { rows: [], mapping: [], header: null, delimiter: 'none', warnings: ['貼り付けが空です'] }
-  const delimiter: PasteResult['delimiter'] = lines.some((l) => l.includes('\t')) ? 'tab' : lines.some((l) => l.includes(',')) ? 'comma' : 'none'
-  const split = (l: string) => (delimiter === 'tab' ? l.split('\t') : delimiter === 'comma' ? splitCsvLine(l) : [l])
+  const split = (l: string[]) => l
   const first = split(lines[0])
   const detected = first.map(detectField)
   const hasHeader = detected.filter(Boolean).length >= 2 || (detected.filter(Boolean).length >= 1 && first.length === 1)

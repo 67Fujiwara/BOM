@@ -166,6 +166,9 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           }
           break
         case '先行発注許可': {
+          if (r.flags.requote) return (err = '型式・数量の変更で見積が失効しています（再見積要）。見積を取り直してから判断してください')
+          const adoptedValid = r.adoptedSupplierId && p.quotes.some((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale && x.unitPrice != null)
+          if (r.adoptedSupplierId && !adoptedValid) r.adoptedSupplierId = undefined
           if (!r.adoptedSupplierId) {
             const best = scoreRow(p, r, ws.suppliers)[0]
             if (!best) return (err = '有効な見積がありません（推奨商社を決められません）')

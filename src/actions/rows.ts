@@ -5,6 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import { effective, isActive, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
+import { parseTable } from '@/io/paste'
 import { checkRow } from '@/model/rules'
 import { addBusinessDays, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf, type Parsed } from '@/model/parse'
@@ -35,7 +36,7 @@ const NUM_RULES: Record<string, { min?: number; max?: number; integer?: boolean;
   qtyNeeded: { min: 0, max: 1e9, label: '必要数' },
   packQty: { min: 1, max: 1e7, integer: true, label: '入数' },
   orderQty: { min: 0, max: 1e9, label: '発注数' },
-  needOffset: { min: -730, max: 730, integer: true, label: '必要日(前倒し日数)' },
+  needOffset: { min: -365, max: 365, integer: true, label: '必要日(前倒し日数)' },
   extraCost: { min: 0, max: 1e10, label: '追加費用' },
   'q.unitPrice': { min: 0, max: 1e10, label: '単価' },
   'q.formalPrice': { min: 0, max: 1e10, label: '正式単価' },
@@ -55,7 +56,9 @@ export function parseValue(colKey: string, raw: string): Parsed<unknown> {
       if (base === 'q.leadDays' || base === 'q.formalLeadDays') {
         if (/^(即納|在庫|0日?)$/.test(s)) return { ok: true, value: 0 }
         if (/^(取扱なし|取り扱いなし|辞退|-1|×)$/.test(s)) return { ok: true, value: -1 }
-        const w = /^(\d+)\s*(週|w)$/i.exec(s)
+        const dd = /^(\d+)\s*(日|days?|d)$/i.exec(s)
+        if (dd) return { ok: true, value: Number(dd[1]) }
+        const w = /^(\d+)\s*(週間?|w|weeks?)$/i.exec(s)
         if (w) return { ok: true, value: Number(w[1]) * 7 }
         const mo = /^(\d+)\s*(ヶ月|か月|カ月|ヵ月)$/.exec(s)
         if (mo) return { ok: true, value: Number(mo[1]) * 30 }
@@ -146,6 +149,9 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       if (r.flags.formalDiff) return '正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません'
       if (r.flags.pmPending || r.pendingApproval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
       if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
+      if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
+      const aq = r.adoptedSupplierId ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale && x.unitPrice != null) : undefined
+      if (!aq) return '採用商社の有効な見積がありません。採用してから発注します'
     }
     if (colKey === 'received' && value === true && !r.ordered && r.status !== 'formalQuoted' && !r.flags.early) return '発注前の行は入荷にできません'
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
@@ -365,6 +371,13 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
           p.quotes.push(emptyQuote(r.id, q.supplierId))
         }
         if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) setStatus(r, 'submitted')
+        // 採用・先行採用・先行発注・差分超過の判断は旧型式に対するもの。新しい型式で見積から出し直す
+        r.flags.early = undefined
+        r.flags.formalDiff = undefined
+        if (r.flags.pmReason && ['例外選定', '先行採用', '先行発注判断', '差分超過', '閾値超', '再選定提案'].includes(r.flags.pmReason)) {
+          r.flags.pmPending = undefined
+          r.flags.pmReason = undefined
+        }
       }
       if (formalStage && !sameNorm) r.flags.reissue = true
     }
@@ -559,8 +572,9 @@ export function applyFix(rowId: string, patch: Partial<Row>, label: string) {
 
 /** Excel 貼り付け（タブ区切り）を複数セルに流し込む。1 回の操作として記録し、読めないセルは理由を出す */
 export function pasteCells(startRowId: string, startCol: string, visibleCols: string[], orderedRowIds: string[], text: string) {
-  const lines = text.replace(/\r/g, '').split('\n')
-  if (lines.at(-1) === '') lines.pop()
+  // Excel の改行入りセル（"…" で囲まれる）を 1 セルとして読む
+  const lines = parseTable(text, '\t')
+  if (lines.length && lines.at(-1)!.every((c) => c === '')) lines.pop()
   const c0 = visibleCols.indexOf(startCol)
   const r0 = orderedRowIds.indexOf(startRowId)
   if (c0 < 0 || r0 < 0) return
@@ -569,7 +583,7 @@ export function pasteCells(startRowId: string, startCol: string, visibleCols: st
   const errors: string[] = []
   let skipped = 0
   lines.forEach((line, i) => {
-    line.split('\t').forEach((v, j) => {
+    line.forEach((v, j) => {
       const col = visibleCols[c0 + j]
       if (!col) return
       if (canEdit(col)) {

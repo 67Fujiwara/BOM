@@ -338,6 +338,37 @@ function labelOf(kind: string, key: string): string {
 }
 
 /** 現在が after と一致するときだけ before に戻す。一つでも食い違えば何も変えず、食い違った箇所を返す */
+/** now（いまの値）に from→to の変更を項目ごとに当てる。from から変わっている項目に触れるなら、その項目名を返す */
+function mergeFields(now: Row | undefined, from: Row | undefined, to: Row | undefined): { value: Row | undefined } | string {
+  if (!from || !to) return sameJson(now, from) ? { value: to } : '行の追加・削除'
+  if (!now) return '行（後から削除された）'
+  const out = structuredClone(now) as unknown as Record<string, unknown>
+  const f = from as unknown as Record<string, unknown>
+  const t = to as unknown as Record<string, unknown>
+  const n = now as unknown as Record<string, unknown>
+  for (const k of new Set([...Object.keys(f), ...Object.keys(t)])) {
+    if (sameJson(f[k], t[k])) continue
+    if (k === 'flags') {
+      const ff = (f.flags ?? {}) as Record<string, unknown>
+      const tf = (t.flags ?? {}) as Record<string, unknown>
+      const nf = (n.flags ?? {}) as Record<string, unknown>
+      const of = { ...nf }
+      for (const fk of new Set([...Object.keys(ff), ...Object.keys(tf)])) {
+        if (sameJson(ff[fk], tf[fk])) continue
+        if (!sameJson(nf[fk], ff[fk])) return `状態（${fk}）`
+        if (tf[fk] === undefined) delete of[fk]
+        else of[fk] = structuredClone(tf[fk])
+      }
+      out.flags = of
+      continue
+    }
+    if (!sameJson(n[k], f[k])) return `「${k}」`
+    if (t[k] === undefined) delete out[k]
+    else out[k] = structuredClone(t[k])
+  }
+  return { value: out as unknown as Row }
+}
+
 function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
   const st = useStore.getState()
   const latest = loadIfChangedElsewhere()
@@ -346,8 +377,18 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
   const p = next.projects.find((x) => x.id === entry.projectId)
   if (!p) return '案件'
   const cur = entities(p)
+  // 行は項目ごと（flags はフラグごと）に突き合わせる。自分が変えた項目を後から誰かが変えたときだけ衝突にし、
+  // 同じ行の別の項目（自動更新のフラグ・他の人が変えた列）はそのまま残す
+  const rowValues = new Map<string, Row | undefined>()
+  for (const c of entry.rows) {
+    const from = (dir === 'undo' ? c.after : c.before) as Row | undefined
+    const to = (dir === 'undo' ? c.before : c.after) as Row | undefined
+    const now = cur.rows.get(c.key) as Row | undefined
+    const m = mergeFields(now, from, to)
+    if (typeof m === 'string') return `${c.key} の${m}`
+    rowValues.set(c.key, m.value)
+  }
   const groups: Array<[string, Change<unknown>[], Map<string, unknown>]> = [
-    ['row', entry.rows, cur.rows],
     ['quote', entry.quotes, cur.quotes],
     ['issue', entry.issues, cur.issues],
     ['proj', entry.proj, cur.proj],
@@ -364,7 +405,7 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
     } else if (idx >= 0) list[idx] = structuredClone(value)
     else list.push(structuredClone(value))
   }
-  for (const c of entry.rows) put(p.rows, (r) => r.id, c.key, dir === 'undo' ? c.before : c.after)
+  for (const c of entry.rows) put(p.rows, (r) => r.id, c.key, rowValues.get(c.key))
   for (const c of entry.issues) put(p.issues, (i) => i.id, c.key, dir === 'undo' ? c.before : c.after)
   if (entry.quotes.length) {
     const qm = quoteMap(p)

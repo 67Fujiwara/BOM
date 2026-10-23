@@ -59,11 +59,17 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
   const res: ImportResult = { updated: 0, unmatched: [], modelMismatch: [], proposals: 0, errors: [] }
   const lines = text.replace(/\r/g, '').split('\n').filter((l) => l.trim())
   if (!lines.length) return res
-  const header = lines[0].split('\t').map((h) => h.trim())
+  // 依頼書のシートを丸ごと貼ったとき（表題・依頼No の行が先にある）も、見出しの行を探す
+  const isHeader = (l: string) => {
+    const hs = l.split('\t').map((h) => h.trim())
+    return (hs.includes('行ID') || hs.includes('ID')) && hs.includes('単価')
+  }
+  const headerAt = lines.slice(0, 20).findIndex(isHeader)
+  const header = (headerAt >= 0 ? lines[headerAt] : lines[0]).split('\t').map((h) => h.trim())
   const idx = (...names: string[]) => header.findIndex((h) => names.includes(h))
   const col = { id: idx('行ID', 'ID'), model: idx('型式'), price: idx('単価'), lead: idx('納期'), moq: idx('MOQ'), stock: idx('在庫区分', '在庫'), qty: idx('見積数量'), valid: idx('有効期限'), altModel: idx('代替型式'), altMaker: idx('代替メーカ', '代替メーカー'), altPrice: idx('代替単価'), altLead: idx('代替納期') }
   const hasHeader = col.id >= 0 && col.price >= 0
-  const body = hasHeader ? lines.slice(1) : lines
+  const body = hasHeader ? lines.slice(headerAt + 1) : lines
   const get = (cells: string[], i: number) => (i >= 0 && i < cells.length ? cells[i].trim() : '')
   const parse = (field: string, v: string, label: string, rowId: string): number | null | undefined => {
     if (v === '') return null
@@ -81,6 +87,10 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
       const r = p.rows.find((x) => x.id === id)
       if (!r || !isActive(r)) {
         res.unmatched.push(id || line.slice(0, 20))
+        continue
+      }
+      if (r.status === 'ordered' || r.status === 'received') {
+        res.errors.push(`${r.id}: 発注済の行には取り込みません（変えるときは発注後変更依頼）`)
         continue
       }
       const model = hasHeader ? get(cells, col.model) : get(cells, 1)

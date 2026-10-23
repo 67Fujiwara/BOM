@@ -2,7 +2,7 @@ import { useStore, type Panel, type PanelOption, type ViewId, type State } from 
 import { KEYMAP, bindingsFor, eventToKey, lookupBinding } from '@/keys/keymap'
 import { buildViewModel, cellText } from '@/model/selectors'
 import { colDef, supplierOfCol } from '@/model/columns'
-import type { ChangeReason, IssueKind, Project, Role, Row } from '@/model/types'
+import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS } from '@/model/views'
 import { ball as ballOf, effective, isActive, openIssues } from '@/model/derive'
@@ -14,8 +14,8 @@ import * as pm from '@/actions/pm'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
-import { resetWorkspace } from '@/io/persist'
-import { addDays, todayStr } from '@/model/dates'
+import { loadBackup, resetWorkspace, saveBackup } from '@/io/persist'
+import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
 import { parseBomPaste } from '@/io/paste'
@@ -80,6 +80,11 @@ function confirmDanger(title: string, yesLabel: string, run: () => void) {
 // ---------- 移動 ----------
 function navItems() {
   return vm().items.filter((i) => i.kind !== 'detail')
+}
+function moveCursorToRow(delta: 1 | -1) {
+  const items = navItems()
+  const idx = items.findIndex((i) => i.key === st().cursorRow)
+  for (let i = idx + delta; i >= 0 && i < items.length; i += delta) if (items[i].kind === 'row') return set({ cursorRow: items[i].key, detailIndex: 0 })
 }
 function moveCursorRow(delta: number) {
   const items = navItems()
@@ -146,6 +151,8 @@ export function startEdit(initial?: string) {
   if (err) return toast(`${err}${s.ws.user.role !== 'design' && colDef(s.cursorCol)?.design ? '。変えてほしいときは Shift+I で指摘' : ''}`, 'err')
   if (!isActive(r)) return toast(`${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`, 'err')
   const d = colDef(s.cursorCol)!
+  // 打ち終わってから拒否しない: 発注済以降の行の設計列は入口で止める
+  if (d.design && (r.status === 'ordered' || r.status === 'received')) return toast(`${r.id} は発注済以降の行です。設計列は変えられません（Shift+I → h 発注後変更依頼）`, 'err')
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
@@ -209,7 +216,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     set({ mode: 'nav', editCandidates: null, editError: null })
     if (!rows.setCell(r.id, col, value)) return false
   } else set({ mode: 'nav', editCandidates: null, editError: null })
-  if (dir === 'down') moveCursorRow(1)
+  // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）
+  if (dir === 'down') moveCursorToRow(1)
   else if (dir === 'right') moveCol(1)
   else if (dir === 'left') moveCol(-1)
   return true
@@ -597,8 +605,14 @@ export function validateSetting(key: string, v: string, p: Project, ws = st().ws
       }
       return null
     }
-    case 'members':
-      return v.split(',').length === 3 ? null : '担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください'
+    case 'members': {
+      const ms = toHalf(v).split(/[,、]/).map((x) => x.trim())
+      if (ms.length !== 3) return '担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください'
+      if (ms.some((x) => !x)) return '担当者の名前を 3 人とも入れてください（未定なら「未定」など）'
+      // 役割ごとに別の人として記録する（同じ名前だと Undo・「自分の」指摘・決定の記録が混ざる）
+      const dup = ms.find((x, i) => ms.indexOf(x) !== i)
+      return dup ? `同じ名前「${dup}」が複数の役割にあります。役割ごとに別の担当者を入れてください` : null
+    }
     case 'supplierIds': {
       const ids = v.split(/[,、\s]+/).filter(Boolean)
       const bad = ids.filter((id) => !ws.suppliers.some((s) => s.id === id || s.name === id))
@@ -633,7 +647,7 @@ function saveSettings(draft: Record<string, string>) {
         break
       }
       case 'members': {
-        const [d, pu, m] = v.split(',').map((x) => x.trim())
+        const [d, pu, m] = toHalf(v).split(/[,、]/).map((x) => x.trim())
         extraCommits.push(() => s.commit('担当者を変更', (p2) => void (p2.members = { design: d ?? '', purchasing: pu ?? '', pm: m ?? '' })))
         break
       }
@@ -729,6 +743,14 @@ export function validateWizardStep(step: number, d: Record<string, string>): str
       const r = parseNumber(d.budget ?? '', { min: 0, max: 1e12, label: '予算' })
       return r.ok ? null : r.error
     }
+    case 5: {
+      // 購買・PM の担当者（役割ごとに別の人。作った本人とも別）
+      const names = toHalf(d.buyer ?? '').split(/[,、]/).map((x) => x.trim()).filter(Boolean)
+      if (names.length > 2) return '購買担当, PM 担当 の 2 人までをカンマ区切りで入れてください'
+      if (names.length === 2 && names[0] === names[1]) return `購買と PM に同じ名前「${names[0]}」があります。役割ごとに別の担当者を入れてください`
+      if (names.includes(s.ws.user.name)) return `「${s.ws.user.name}」はいまの${ROLE_LABEL[s.ws.user.role]}担当（あなた）です。別の担当者を入れるか空にしてください`
+      return null
+    }
     case 7:
       if (d.inputMode !== '2' && !(d.paste ?? '').trim()) return '部品を貼り付けてください（またはファイルを選ぶ / 3 で 1 つずつ入力）'
       return null
@@ -751,7 +773,11 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
     preferredSupplierIds: picks,
     supplierIds: picks,
     // 作った人は自分の役割の担当者にする（購買・PM が作っても設計担当にはしない）
-    members: { design: s.ws.user.role === 'design' ? s.ws.user.name : '', purchasing: s.ws.user.role === 'purchasing' ? s.ws.user.name : (d.buyer ?? '').trim(), pm: s.ws.user.role === 'pm' ? s.ws.user.name : (d.pm ?? '').trim() },
+    members: (() => {
+      const [buyer = '', pmName = ''] = toHalf(d.buyer ?? '').split(/[,、]/).map((x) => x.trim())
+      const me = s.ws.user
+      return { design: me.role === 'design' ? me.name : '', purchasing: me.role === 'purchasing' ? me.name : buyer, pm: me.role === 'pm' ? me.name : pmName }
+    })(),
     settings: { ...DEFAULT_SETTINGS, processDays: pd.ok && pd.value != null ? pd.value : 10, budget: bd.ok ? bd.value : null },
   })
   let warnings: string[] = []
@@ -782,6 +808,17 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   const first = problemCells()[0]
   if (first) jumpToRow(first.rowId, first.field)
   toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、n で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
+}
+/** ワークスペースを丸ごと置き換える（JSON 読み込み・退避からの復元）。Undo 履歴は別の内容のものなので消す */
+function replaceWorkspace(ws: Workspace) {
+  st().commitWs('', (w) => {
+    w.projects = ws.projects
+    w.suppliers = ws.suppliers
+    w.rules = ws.rules
+    w.currentProjectId = ws.currentProjectId
+  })
+  st().clearHistory()
+  set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
 }
 function nextProjectId(): string {
   const y = new Date().getFullYear()
@@ -972,6 +1009,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'row.duplicate': {
       if (!need()) return
+      if (!isActive(r!)) return toast(`${r!.id} は${r!.status === 'cancelled' ? '取消' : '置換'}済の行です。${r!.replacedBy ? `置換先 ${r!.replacedBy} を複製してください` : '複製できません'}`, 'info')
       const nid = rows.duplicateRow(r!.id)
       if (nid) {
         jumpToRow(nid)
@@ -1155,6 +1193,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'weights.row':
       if (!need()) return
+      if (!isActive(r!)) return toast(`${r!.id} は${r!.status === 'cancelled' ? '取消' : '置換'}済の行です（重みは変えられません）`, 'info')
       return openPanel({ kind: 'weights', rowId: r!.id, index: 0 })
     case 'rev.prev':
     case 'rev.next': {
@@ -1272,6 +1311,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'density.toggle': {
       const cur = document.documentElement.dataset.density
       document.documentElement.dataset.density = cur === 'compact' ? '' : 'compact'
+      try {
+        localStorage.setItem('bom-pro.density', cur === 'compact' ? '' : 'compact')
+      } catch {
+        /* noop */
+      }
       return toast(cur === 'compact' ? '標準の行の高さ' : 'コンパクト表示', 'info')
     }
     case 'data.reset':
@@ -1313,17 +1357,43 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           const res = sanitizeWorkspace(raw)
           if (!res.ws) return toast(`読み込めません: ${res.error}`, 'err')
           const ws = res.ws
-          s.commitWs('', (w) => {
-            w.projects = ws.projects
-            w.suppliers = ws.suppliers
-            w.rules = ws.rules
-            w.currentProjectId = ws.currentProjectId
+          const cur = st().ws
+          confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
+            saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')
+            replaceWorkspace(ws)
+            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}。戻すときは Ctrl+K →「読み込み前に戻す」`, res.warnings?.length ? 'info' : 'ok')
           })
-          s.clearHistory()
-          set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
-          toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）`, 'ok')
         },
       })
+    case 'data.restoreBackup': {
+      const b = loadBackup()
+      if (!b) return toast('退避したデータはありません', 'info')
+      let res: ReturnType<typeof sanitizeWorkspace>
+      try {
+        res = sanitizeWorkspace(JSON.parse(b.raw))
+      } catch (err) {
+        return toast(`退避したデータは JSON として読めません（${(err as Error).message}）。「退避したデータを書き出す」で取り出して直してください`, 'err')
+      }
+      if (!res.ws) return toast(`退避したデータを読めません: ${res.error}。「退避したデータを書き出す」で取り出せます`, 'err')
+      const ws = res.ws
+      const cur = st().ws
+      return confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避と入れ替えます`, '戻す', () => {
+        saveBackup(JSON.stringify(cur), '退避からの復元の前')
+        replaceWorkspace(ws)
+        toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）`, 'ok')
+      })
+    }
+    case 'data.exportBackup': {
+      const b = loadBackup()
+      if (!b) return toast('退避したデータはありません', 'info')
+      const blob = new Blob([b.raw], { type: 'application/json' })
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = `bom-workspace-backup-${b.at.slice(0, 10)}.json`
+      a.click()
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000)
+      return toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
+    }
     case 'supplier.add':
       if (role !== 'purchasing') return toast('権限なし（商社マスタは購買）', 'err')
       return prompt('商社を追加（名前）', { requireText: true }, (_c, name) => {
@@ -1355,7 +1425,7 @@ export interface PaletteItem {
   run: () => void
 }
 
-const STATIC: Array<{ id: string; label: string; section: string; desc?: string; keywords?: string }> = [
+export const STATIC: Array<{ id: string; label: string; section: string; desc?: string; keywords?: string }> = [
   { id: 'publish', label: '公開（提出 / 指摘を発行）', section: '流れ', desc: '自分の未公開の行と下書き指摘', keywords: '提出 送る 送信 submit 出す 発行 購買へ' },
   { id: 'quotes.request', label: '概算見積を依頼', section: '流れ', desc: '購買。商社向け依頼 Excel を出す', keywords: '見積 依頼 相見積 rfq' },
   { id: 'quotes.import', label: '見積回答を取り込む', section: '流れ', desc: '購買。貼り付けで突合', keywords: '回答 取込 インポート import' },
@@ -1379,6 +1449,8 @@ const STATIC: Array<{ id: string; label: string; section: string; desc?: string;
   { id: 'copy.formatted', label: '表示中の行と列を書式つきでコピー', section: '出力', keywords: 'コピー メール 貼る' },
   { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し' },
   { id: 'data.importJson', label: 'JSON を読み込む', section: 'データ', keywords: '復元 読み込み' },
+  { id: 'data.restoreBackup', label: '読み込み前に戻す（退避したデータに戻す）', section: 'データ', keywords: '復元 戻す 元に戻す 退避 バックアップ' },
+  { id: 'data.exportBackup', label: '退避したデータを書き出す', section: 'データ', keywords: '退避 バックアップ 壊れた 保存データ' },
   { id: 'data.reset', label: 'サンプルデータに戻す', section: 'データ', keywords: '初期化 リセット' },
   { id: 'supplier.add', label: '商社を追加', section: '案件', keywords: '商社 マスタ' },
   { id: 'role.switch', label: '役割を切り替え（ログイン）', section: '案件', keywords: 'ログイン 設計 購買 pm ユーザー' },
@@ -1471,7 +1543,7 @@ export function paletteItems(query: string): PaletteItem[] {
         }),
       })
   for (const c of STATIC) if (!q || matchScore(c.label, c.keywords, c.desc, ql) > 0) items.push({ id: c.id, section: c.section, label: c.label, desc: c.desc, keys: bindingsFor(c.id), run: wrap(() => runCommand(c.id)) })
-  for (const b of KEYMAP) if (q && b.label.toLowerCase().includes(ql) && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
+  for (const b of KEYMAP) if (q && matchScore(b.label, undefined, undefined, ql) >= 60 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
   if (q && QUIT_WORDS.test(q)) items.push({ id: 'info.quit', section: '案内', label: q.match(/印刷|print/i) ? '印刷は「Excelで出力」から（Ctrl+E）' : '終了はブラウザのタブを閉じるだけです（編集は自動で保存済み）', run: wrap(() => (q.match(/印刷|print/i) ? runCommand('export.excel') : undefined)) })
   // 並び: 打った言葉との一致度 → 最近使った順
   const recent = s.recentCommands

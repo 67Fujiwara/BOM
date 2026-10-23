@@ -36,3 +36,12 @@ describe('parseBomPaste', () => {
     expect(parseBomPaste('Part No\tQty\nMY4N\t2').rows[0]).toMatchObject({ model: 'MY4N', qtyNeeded: 2 })
   })
 })
+
+describe('parseTable', () => {
+  it('keeps quoted newlines and delimiters inside one cell', async () => {
+    const { parseTable } = await import('./paste')
+    expect(parseTable('a\t"1行目\n2行目"\tc\nd\te\tf\n', '\t')).toEqual([['a', '1行目 2行目', 'c'], ['d', 'e', 'f']])
+    expect(parseTable('"x, y",2\n"say ""hi""",3', ',')).toEqual([['x, y', '2'], ['say "hi"', '3']])
+    expect(parseTable('5"\t6', '\t')).toEqual([['5"', '6']])
+  })
+})

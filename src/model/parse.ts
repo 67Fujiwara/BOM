@@ -42,8 +42,9 @@ export function parseNumber(raw: string, opts: { min?: number; max?: number; int
     mult = unit[1] === '万' ? 1e4 : unit[1] === '千' ? 1e3 : 1e8
     s = s.slice(0, -1)
   }
-  let n = s === '' && unit ? 1 : Number(s)
-  if (!Number.isFinite(n) || s.includes('e') || s.includes('E')) {
+  // 16 進（0x10）・指数（1e3）などは数値として受け付けない
+  let n = s === '' && unit ? 1 : /^[+-]?(\d+\.?\d*|\.\d+)$/.test(s) ? Number(s) : NaN
+  if (!Number.isFinite(n)) {
     const k = kanjiNumber(s)
     if (k == null) return { ok: false, error: `${opts.label ?? '数値'}として読めません: 「${raw}」` }
     n = k

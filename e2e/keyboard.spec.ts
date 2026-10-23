@@ -14,7 +14,12 @@ async function open(page: Page, role: 'design' | 'purchasing' | 'pm' = 'design')
 
 test('80 行の BOM が表示され、ヘッダーにボール別件数と金額が出る', async ({ page }) => {
   await open(page)
-  await expect(page.getByTestId('row')).toHaveCount(80)
+  // 表は見えている範囲の行だけを描く。先頭と最後の行に移動できることで 80 行あることを確かめる
+  await expect(page.locator('[data-row-id="R001"]')).toBeVisible()
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('Control+ArrowDown')
+  await expect(page.locator('[data-row-id="R080"]')).toBeVisible()
+  await expect(page.getByTestId('cursor')).toContainText('R080')
   await expect(page.getByTestId('lamps')).toContainText('設計待ち')
   await expect(page.getByTestId('money')).toContainText('概算')
   await expect(page.getByTestId('due')).toContainText('必要日')

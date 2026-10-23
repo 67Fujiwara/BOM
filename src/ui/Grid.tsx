@@ -1,4 +1,4 @@
-import { memo, useEffect, useLayoutEffect, useRef, type RefObject } from 'react'
+import { memo, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { cellSev, cellText } from '@/model/selectors'
@@ -26,15 +26,100 @@ export function Grid({ vm }: { vm: ViewModel }) {
     return () => ro.disconnect()
   }, [])
 
-  useEffect(() => {
-    cursorRef.current?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+  // ---------- 表示している範囲の行だけを描く（行数が多くても、ビュー切替・移動のたびに全セルを測り直さない） ----------
+  const [view, setViewport] = useState({ top: 0, h: 900 })
+  const rowH = useRef(30)
+  const headH = useRef(30)
+  const detailH = useRef(new Map<string, number>())
+  const [, bump] = useState(0)
+  const items = vm.items
+  const heightOf = (it: (typeof items)[number]) => (it.kind === 'detail' ? (detailH.current.get(it.key) ?? 320) : rowH.current)
+  const offsets = new Array<number>(items.length + 1)
+  offsets[0] = 0
+  for (let i = 0; i < items.length; i++) offsets[i + 1] = offsets[i] + heightOf(items[i])
+  const OVERSCAN = 120
+  let start = 0
+  while (start < items.length && offsets[start + 1] < view.top - headH.current - OVERSCAN) start++
+  let end = start
+  while (end < items.length && offsets[end] < view.top + view.h + OVERSCAN) end++
+
+  useLayoutEffect(() => {
+    const el = wrap.current
+    if (!el) return
+    let raf = 0
+    const read = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => setViewport((v) => (v.top === el.scrollTop && v.h === el.clientHeight ? v : { top: el.scrollTop, h: el.clientHeight })))
+    }
+    setViewport({ top: el.scrollTop, h: el.clientHeight })
+    el.addEventListener('scroll', read, { passive: true })
+    const ro = new ResizeObserver(read)
+    ro.observe(el)
+    return () => {
+      el.removeEventListener('scroll', read)
+      ro.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  // 描いた行の高さを測って、見積もりと違えば描き直す（コンパクト表示・詳細の高さ）
+  useLayoutEffect(() => {
+    const el = wrap.current
+    if (!el) return
+    let changed = false
+    const th = el.querySelector<HTMLElement>('table.grid > thead')
+    if (th && th.offsetHeight && th.offsetHeight !== headH.current) {
+      headH.current = th.offsetHeight
+      changed = true
+    }
+    const r = el.querySelector<HTMLElement>('table.grid > tbody > tr.row')
+    if (r && r.offsetHeight && r.offsetHeight !== rowH.current) {
+      rowH.current = r.offsetHeight
+      changed = true
+    }
+    for (const d of el.querySelectorAll<HTMLElement>('table.grid > tbody > tr.detail')) {
+      const k = 'd:' + d.dataset.detailFor
+      if (d.offsetHeight && detailH.current.get(k) !== d.offsetHeight) {
+        detailH.current.set(k, d.offsetHeight)
+        changed = true
+      }
+    }
+    if (changed) bump((x) => x + 1)
+  })
+
+  /** items[i] が見える位置までスクロールする（描いていない行にも使える） */
+  const ensureVisible = (i: number, bottomPad = 64) => {
+    const el = wrap.current
+    if (!el || i < 0) return
+    const top = offsets[i]
+    const h = offsets[i + 1] - offsets[i]
+    const before = el.scrollTop
+    if (top < el.scrollTop) el.scrollTop = top
+    else if (headH.current + top + h > el.scrollTop + el.clientHeight - bottomPad) el.scrollTop = Math.min(top, headH.current + top + h - el.clientHeight + bottomPad)
+    // 描く範囲もすぐ合わせる（スクロールの通知を待つと 1 フレーム空白になる）
+    if (el.scrollTop !== before) setViewport({ top: el.scrollTop, h: el.clientHeight })
+  }
+
+  useLayoutEffect(() => {
+    // 分類の見出し・案件の要決定の行にカーソルがあるときも、その行が見えるようにする
+    ensureVisible(items.findIndex((it) => it.key === st.cursorRow && it.kind !== 'detail'))
+    // 横方向は描いているセルで合わせる
+    const el = wrap.current
+    const cell = cursorRef.current
+    if (el && cell) {
+      const left = cell.offsetLeft
+      const right = left + cell.offsetWidth
+      if (left < el.scrollLeft) el.scrollLeft = left
+      else if (right > el.scrollLeft + el.clientWidth) el.scrollLeft = right - el.clientWidth
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [st.cursorRow, st.cursorCol, st.view])
 
   // Space で開いた詳細が画面の外に出ないようにする
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!st.cursorRow || !st.openRows.includes(st.cursorRow)) return
-    const el = wrap.current?.querySelector(`tr.detail[data-detail-for="${st.cursorRow}"]`)
-    el?.scrollIntoView({ block: 'nearest' })
+    ensureVisible(items.findIndex((it) => it.kind === 'detail' && it.row.id === st.cursorRow), 8)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [st.openRows, st.cursorRow, st.detailIndex])
 
   useEffect(() => {
@@ -44,9 +129,17 @@ export function Grid({ vm }: { vm: ViewModel }) {
 
   const cols = vm.columns
   const role = st.ws.user.role
+  // 列幅は定義から固定する（自動幅だと、ビュー切替・カーソル移動のたびに全セルを測り直して遅い）
+  const widths = cols.map((c) => colWidth(c, st.ws.suppliers))
+  const tableWidth = widths.reduce((a, b) => a + b, 0)
   return (
     <div className="gridwrap" ref={wrap} tabIndex={-1} data-testid="grid">
-      <table className="grid">
+      <table className="grid" style={{ width: tableWidth }}>
+        <colgroup>
+          {cols.map((c, i) => (
+            <col key={c} style={{ width: widths[i] }} />
+          ))}
+        </colgroup>
         <thead>
           <tr>
             {cols.map((c) => {
@@ -57,7 +150,6 @@ export function Grid({ vm }: { vm: ViewModel }) {
                 <th
                   key={c}
                   className={(d?.numeric ? 'num ' : '') + (st.sort?.col === c ? 'sorted ' : '') + 'sortable'}
-                  style={{ minWidth: d?.width }}
                   title={`${d?.label ?? c}（クリックで並び替え。キーは s / Shift+S）${d?.editableBy.length ? ` 書ける役割: ${d.editableBy.map((r) => ROLE_LABEL[r]).join('・')}` : ' 自動計算'}`}
                   onClick={() => {
                     const cur = useStore.getState().sort
@@ -75,7 +167,12 @@ export function Grid({ vm }: { vm: ViewModel }) {
           </tr>
         </thead>
         <tbody>
-          {vm.items.map((it) => {
+          {start > 0 && (
+            <tr className="spacer" aria-hidden>
+              <td colSpan={cols.length} style={{ height: offsets[start] }} />
+            </tr>
+          )}
+          {items.slice(start, end).map((it) => {
             if (it.kind === 'group') {
               const sel = st.cursorRow === it.key
               return (
@@ -109,6 +206,11 @@ export function Grid({ vm }: { vm: ViewModel }) {
             const sel = st.cursorRow === r.id
             return <GridRow key={it.key} row={r} cols={cols} ctx={vm.ctx} sel={sel} cursorCol={sel ? st.cursorCol : ''} editing={sel && st.mode === 'edit'} editValue={sel ? st.editValue : ''} editError={sel ? st.editError : null} candidates={sel ? st.editCandidates : null} cursorRef={cursorRef} inputRef={inputRef} suppliers={st.ws.suppliers} />
           })}
+          {end < items.length && (
+            <tr className="spacer" aria-hidden>
+              <td colSpan={cols.length} style={{ height: offsets[items.length] - offsets[end] }} />
+            </tr>
+          )}
         </tbody>
       </table>
       {vm.items.length === 0 && <EmptyState vm={vm} role={role} />}
@@ -248,3 +350,13 @@ const GridRow = memo(function GridRow({ row: r, cols, ctx, sel, cursorCol, editi
     </tr>
   )
 })
+
+/** 列幅: 定義の幅＋余白と、見出しの文字が収まる幅の大きい方 */
+function colWidth(c: string, suppliers: Array<{ id: string; name: string }>): number {
+  const d = colDef(c)
+  const sid = c.includes('@') ? c.slice(c.indexOf('@') + 1) : null
+  const sup = sid && sid !== 'A' ? suppliers.find((s) => s.id === sid) : null
+  const label = (sup ? sup.name + ' ' : '') + (d?.label ?? c)
+  const textW = [...label].reduce((w, ch) => w + (ch.charCodeAt(0) > 0xff ? 12 : 7), 0) + (sup ? 12 : 0) + 30
+  return Math.max((d?.width ?? 100) + 16, Math.min(textW, 220))
+}

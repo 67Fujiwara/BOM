@@ -1,0 +1,28 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+PM d E R004: 設計へ代替依頼
+h E → 指摘 1 件 を公開しました
+PM y E → R004: 承認
+unorder E → R004: 発注済を外しました
+restore E → R004 を発注済に戻しました（キャンセル不可）
+E right after restore R004:ordered:ord=true:prom=2026-12-20:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:2621","orderCancelApproved":false} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:confirmed:ruled
+E after an unrelated edit R004:ordered:ord=true:prom=2026-12-20:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:2621","orderCancelApproved":false} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:confirmed:ruled
+PM 7: right after restore true / after unrelated edit true "決定パネル R004（納期NG）" ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+PASS A3b-1 戻した直後から、入荷予定が必要日を超える行は納期NG（発注済）で PM の 7 に出る（別の操作を待たない） :: true/true
+PASS A3b-2 PM の決定パネルは発注済の納期NG（e と 受入） :: ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+h B → 指摘 1 件 を公開しました
+PM y B → R001: 承認
+6 prompt 見送り I-008
+B after 見送り 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました R001:ordered:ord=true:prom=-:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} issues=I-008:発注後変更依頼:wontfix:ruled ball 購買
+unorder B after 見送り → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+B R001:ordered:ord=true:prom=-:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} issues=I-008:発注後変更依頼:wontfix:ruled
+PASS A3b-3 外す前に断られたら、購買が発注後変更依頼を見送りにして発注済のまま閉じられる（購買の 4 から消え、外せない） :: pu4=false R001:ordered:ord=true:prom=-:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} issues=I-008:発注後変更依頼:wontfix:ruled
+h C → 指摘 1 件 を公開しました
+PM y C → R002: 承認
+unorder C → R002: 発注済を外しました
+design r C → R002 の置き換え品 R081 を作りました（公開すると R002 は置換済になります。Ctrl+Z で戻す）
+new row R081
+after delete new row → R081 を削除しました（R002 の置換を取りやめました）（Ctrl+Z で戻せます） R002:formalQuoted:ord=false:prom=-:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-009:発注後変更依頼:confirmed:ruled new false
+restore C → R002 を発注済に戻しました（キャンセル不可） R002:ordered:ord=true:prom=-:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false} issues=I-009:発注後変更依頼:confirmed:ruled
+PASS A3b-4 設計が置換先を消したら、購買が戻せる :: R002 を発注済に戻しました（キャンセル不可）
+== 4/4 PASS

@@ -1,0 +1,47 @@
+== 96-header-wizard 17:43:06 load=22.99 16.18 8.33
+   exit 0 17:45:21
+== 96-header-wizard-5198 17:45:21 load=18.97 17.64 9.98
+   exit 0 17:46:45
+== 97-xlsx-r15 17:46:45 load=15.85 17.52 10.65
+   exit 0 17:47:19
+== 97-xlsx-r15-5198 17:47:19 load=16.29 17.46 10.88
+   exit 0 17:47:40
+97b-xlsx-direct.ts head exit 0
+97b-xlsx-direct.ts r15b exit 0
+== 104-header-wizard 17:47:47 load=17.21 17.56 11.13
+   exit 0 17:47:58
+== 104-header-wizard-5198 17:47:58 load=15.28 17.13 11.06
+   exit 0 17:48:06
+== 105-redos-xlsx-run1 17:48:06 load=14.13 16.87 11.00
+   exit 0 17:48:22
+== 105-redos-xlsx-run2 17:48:22 load=15.53 16.98 11.16
+   exit 0 17:48:49
+== 105-redos-xlsx-5198 17:48:49 load=20.63 18.02 11.66
+   exit 0 17:49:10
+== 98-f8-anchor-run1 17:49:10 load=20.89 18.27 11.88
+   exit 0 17:50:13
+== 99-undo-publish3-run1 17:50:13 load=27.81 20.78 13.18
+   exit 0 17:51:11
+== 100-json-r15-run1 17:51:11 load=28.09 21.94 14.01
+   exit 0 17:52:17
+== 101-misc-r15-run1 17:52:17 load=34.08 24.64 15.50
+   exit 0 17:53:14
+== 103-twotab-undo-run1 17:53:14 load=34.04 26.22 16.57
+   exit 0 17:54:00
+== 98-f8-anchor-run2 17:54:00 load=36.61 28.05 17.64
+   exit 0 17:55:29
+== 99-undo-publish3-run2 17:55:29 load=36.86 30.75 19.60
+   exit 0 17:56:38
+== 100-json-r15-run2 17:56:38 load=34.13 31.31 20.61
+   exit 0 17:57:35
+== 101-misc-r15-run2 17:57:35 load=34.90 31.99 21.46
+   exit 0 17:58:21
+== 103-twotab-undo-run2 17:58:21 load=33.88 32.13 22.00
+   exit 0 17:58:58
+== 99-undo-publish3-5198 17:58:58 load=32.76 32.07 22.42
+   exit 0 17:59:27
+== 100-json-r15-5198 17:59:27 load=29.14 31.33 22.43
+   exit 0 17:59:56
+== 103-twotab-undo-5198 17:59:56 load=27.27 30.59 22.46
+   exit 0 18:00:18
+DONE

@@ -1,0 +1,25 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+leadNG rows R003,R021,R025,R032,R038,R039,R044,R046,R055,R064
+e R003 "R003: 特急・分納"
+d R021 "R021: 設計へ代替依頼"
+p R025 "R025: 委譲"
+after PM R003 相見積 st=selected adopt=S1 reason= oq=- flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] ball purchasing
+after PM R021 相見積 st=selected adopt=S2 reason= oq=2 flags={"countermeasure":"代替品検討"} quotes=[["S1",10939,9,null],["S2",10094,20,null],["S3",null,null,null]] ball design
+after PM R025 相見積 st=selected adopt=S1 reason=納期 oq=3 flags={"contested":true,"delegated":true,"countermeasure":"商社変更"} quotes=[["S1",105,20,null],["S2",92,21,null],["S3",102,12,null]] ball purchasing
+E decisions [["特急・分納",{"amount":30000}]]
+E extra 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+money before decline 概算 ¥18,571,654 / 正式 ¥18,573,210 / 予算 ¥2,800,000 (+563.3%)
+after decline R003 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] extra null ball design case なし issues []
+after decline R021 相見積 st=quoting adopt=- reason= oq=2 flags={} quotes=[["S1",10939,9,null],["S2",10094,-1,null],["S3",null,null,null]] extra null ball purchasing case なし issues [["I-006","納期NG","confirmed"]]
+after decline R025 相見積 st=quoted adopt=- reason= oq=3 flags={"delegated":true} quotes=[["S1",105,-1,null],["S2",92,21,null],["S3",102,12,null]] extra null ball purchasing case なし issues []
+money after decline 概算 ¥18,529,285 / 正式 ¥18,530,841 / 予算 ¥2,800,000 (+561.8%)
+PASS C5-1 (e) 辞退した商社のための特急費（追加費用）を、採用を外した行の金額に黙って残さない（外すか、購買の 4 で確かめさせる） :: extra=null
+PASS C5-2 (d) 採用商社が辞退した行に、その商社の納期に対する「納期NG」の指摘を設計の未対応として残さない（または選び直し待ちと分かる） :: []
+D ball purchasing
+PASS C5-3 (p) 委譲された行は、採用商社の辞退後も購買が選び直せる（ボール購買） :: purchasing
+design 4 has D false
+D issue panel ["1 返信"]
+D after 代替なし R021 相見積 st=quoting adopt=- reason= oq=2 flags={} quotes=[["S1",10939,9,null],["S2",10094,-1,null],["S3",null,null,null]] ball purchasing case なし
+PM 7 has D false
+PASS C5-4 採用のない（選び直し待ちの）行が、辞退した商社の納期NG の「対策不成立」で PM の 7 に載らない
+== 4/4 PASS

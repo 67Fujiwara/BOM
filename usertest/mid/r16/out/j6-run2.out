@@ -1,0 +1,20 @@
+F R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+decline S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+F after declines R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]] | 見積中（有効な見積なし） ball purchasing
+purch 4/9 has F true true
+PASS J6-1 全社辞退の行は「見積中（有効な見積なし）」で購買の 4 に出る（U15-02） :: 見積中（有効な見積なし） in4=true
+design a → 取引できる商社の有効な見積がありません（全社辞退・取引停止）。購買がほかの商社に依頼します
+PASS J6-2 選定者の a は「取引できる商社の有効な見積がありません…」と出る（先行採用を案内しない） :: 取引できる商社の有効な見積がありません（全社辞退・取引停止）。購買がほかの商社に依頼します
+purch Ctrl+. options []
+request S4 → 依頼する行がありません（提出済・再見積要の行なし） [] options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+F after S4 request R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]] | 見積中（有効な見積なし） quotes S4 []
+request all → 依頼する行がありません（提出済・再見積要の行なし） []
+settings supplierIds +S4 → 案件設定を保存しました
+supplierIds ["S1","S2","S3","S4"] F R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]] | 見積中（有効な見積なし）
+request S4 after settings → 依頼する行がありません（提出済・再見積要の行なし） []
+FAIL J6-3 全社辞退の行を、ほかの商社（RSコンポーネンツ）への概算見積の依頼に入れられる :: 依頼する行がありません（提出済・再見積要の行なし）
+INFO 6 で S4 に手入力 → EDIT-ERR R005 の単価 ¥999 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） / EDIT-ERR R005 の単価 ¥999 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",999,5,null]] | 見積済 ball design
+ERRORS []
+== 2/3 PASS

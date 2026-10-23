@@ -1,0 +1,14 @@
+b7 == 7/7 PASS
+b8 == 6/6 PASS
+b5 == 4/4 PASS
+b2-quickfix == 1/1 PASS
+b1-all == 2/4 PASS
+b3 == 8/9 PASS
+b9 == 1/2 PASS
+b5-reject == 4/4 PASS
+b1-min2 == 2/4 PASS
+b6 == 0/2 PASS
+b4 == 4/4 PASS
+b1-deadline == 2/4 PASS
+b2-pick == 1/1 PASS
+DONE

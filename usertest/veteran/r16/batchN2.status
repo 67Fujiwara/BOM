@@ -1,0 +1,17 @@
+== 109-wizard-paste-r16 18:07:02 load=9.20 16.86 19.11
+   exit 0 18:07:24
+== 109-wizard-paste-r16-5198 18:07:24 load=11.30 16.77 19.02
+   exit 0 18:07:39
+== 113-dup-tab-run1 18:07:39 load=12.63 16.80 18.99
+   exit 0 18:08:01
+== 113-dup-tab-run2 18:08:01 load=11.41 16.26 18.77
+   exit 0 18:08:22
+== 113-dup-tab-5198 18:08:22 load=10.60 15.77 18.55
+   exit 0 18:08:39
+== 114-mac-ctrl-typed-run1 18:08:39 load=8.63 14.99 18.23
+   exit 0 18:08:55
+== 114-mac-ctrl-typed-run2 18:08:55 load=7.02 14.32 17.96
+   exit 0 18:09:13
+== 114-mac-ctrl-typed-linux 18:09:13 load=6.35 13.69 17.68
+   exit 0 18:09:34
+DONE

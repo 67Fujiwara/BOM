@@ -1,0 +1,261 @@
+[
+  {
+    "f": "x1-title-merged-2rows.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "小計・合計・区切りの 10 行は取り込みません（例: 「部品表 (2/6)」「部品表 (2/6)」 ほか）"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "部品1\tMDL-1\t三菱電機\t2",
+      "部品2\tMDL-2\tIDEC\t3",
+      "部品3\tMDL-3\tオムロン\t4"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / オムロン / 4"
+    ]
+  },
+  {
+    "f": "x10-kyushin-name-up-repeat-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 270,
+    "modelNew": 30,
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません",
+      "繰り返しの見出し 10 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「型式（新）」の列を使います",
+      "「数量」に当たる列が 2 つあります。「数量（新）」の列を使います"
+    ],
+    "tsvHead": [
+      "部品名\t旧\t\t新\t",
+      "部品名\t型式\t数量\t型式\t数量",
+      "部品1\tOLD-1\t2\tOLD-1\t2",
+      "部品2\tOLD-2\t3\tOLD-2\t3"
+    ],
+    "first": [
+      "部品1 / OLD-1 /  / 2",
+      "部品2 / OLD-2 /  / 3",
+      "部品3 / OLD-3 /  / 4"
+    ]
+  },
+  {
+    "f": "x11-section-merged-2rows.xlsx",
+    "n": 20,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "小計・合計・区切りの 4 行は取り込みません（例: 「■ 制御部」「■ 制御部」 ほか）"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量\t単位\t備考",
+      "■ 制御部\t\t\t\t\t",
+      "■ 制御部\t\t\t\t\t",
+      "部品1\tMDL-1\t三菱電機\t2\t個\t"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 2",
+      "部品3 / MDL-3 / オムロン / 2"
+    ]
+  },
+  {
+    "f": "x2-yohaku-merged.xlsx",
+    "n": 20,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "小計・合計・区切りの 2 行は取り込みません（例: 「以下余白」「以下余白」）"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "部品1\tMDL-1\t三菱電機\t2",
+      "部品2\tMDL-2\tIDEC\t3",
+      "部品3\tMDL-3\tオムロン\t4"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / オムロン / 4"
+    ]
+  },
+  {
+    "f": "x3-maker-vmerged.xlsx",
+    "n": 20,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "部品1\tMDL-1\tオムロン\t2",
+      "部品2\tMDL-2\tオムロン\t2",
+      "部品3\tMDL-3\tオムロン\t2"
+    ],
+    "first": [
+      "部品1 / MDL-1 / オムロン / 2",
+      "部品2 / MDL-2 / オムロン / 2",
+      "部品3 / MDL-3 / オムロン / 2"
+    ]
+  },
+  {
+    "f": "x4-qty-vmerged.xlsx",
+    "n": 3,
+    "qty0": 0,
+    "notBuhin": [
+      "リレー / MY4N / オムロン / 4",
+      "リレー(予備) / MY4N / オムロン / 4",
+      "端子台 / XW2B / オムロン / 2"
+    ],
+    "notBuhinN": 3,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "リレー\tMY4N\tオムロン\t4",
+      "リレー(予備)\tMY4N\tオムロン\t4",
+      "端子台\tXW2B\tオムロン\t2"
+    ],
+    "first": [
+      "リレー / MY4N / オムロン / 4",
+      "リレー(予備) / MY4N / オムロン / 4",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "f": "x5-ascii-quote-ditto.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "部品1\tMDL-1\t三菱電機\t2",
+      "部品2\tMDL-2\tIDEC\t3",
+      "部品3\tMDL-3\t\"\"\"\"\t3"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / IDEC / 3"
+    ]
+  },
+  {
+    "f": "x6-model-starts-quote.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量",
+      "部品1\tMDL-1\t三菱電機\t2",
+      "部品2\tMDL-2\tIDEC\t3",
+      "部品3\t\"\"\"N\"\"型コネクタ\"\tオムロン\t3"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / \"N\"型コネクタ / オムロン / 3"
+    ]
+  },
+  {
+    "f": "x7-changed-only-plus-add.xlsx",
+    "n": 301,
+    "qty0": 0,
+    "notBuhin": [
+      "追加電源 / NEW-S8VK /  / 1"
+    ],
+    "notBuhinN": 1,
+    "modelOld": 270,
+    "modelNew": 31,
+    "warnings": [
+      "「変更後型式」が空の 270 行は、ほかの「型式」の列の値を使いました",
+      "「型式」に当たる列が 2 つあります。「変更後型式」の列を使います"
+    ],
+    "tsvHead": [
+      "部品名\t型式\t変更後型式\t数量",
+      "部品1\tOLD-1\t\t2",
+      "部品2\tOLD-2\t\t3",
+      "部品3\tOLD-3\t\t4"
+    ],
+    "first": [
+      "部品1 / OLD-1 /  / 2",
+      "部品2 / OLD-2 /  / 3",
+      "部品3 / OLD-3 /  / 4"
+    ]
+  },
+  {
+    "f": "x8-quotation-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "品名\t仕様\t数量\t単価\t金額",
+      "部品1\tDC24V-1\t2\t100\t200",
+      "部品2\tDC24V-2\t3\t200\t600",
+      "部品3\tDC24V-3\t4\t300\t1200"
+    ],
+    "first": [
+      "部品1 /  /  / 2",
+      "部品2 /  /  / 3",
+      "部品3 /  /  / 4"
+    ]
+  },
+  {
+    "f": "x9-ecn-top-repeat-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "notBuhin": [],
+    "notBuhinN": 0,
+    "modelOld": 270,
+    "modelNew": 30,
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません",
+      "繰り返しの見出し 10 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います",
+      "「メーカ」に当たる列が 2 つあります。「メーカ（変更後）」の列を使います",
+      "「数量」に当たる列が 2 つあります。「数量（変更後）」の列を使います"
+    ],
+    "tsvHead": [
+      "\t変更前\t\t\t変更後\t\t",
+      "部品名\t型式\tメーカ\t数量\t型式\tメーカ\t数量",
+      "部品1\tOLD-1\t三菱電機\t2\tOLD-1\t三菱電機\t2",
+      "部品2\tOLD-2\tIDEC\t3\tOLD-2\tIDEC\t3"
+    ],
+    "first": [
+      "部品1 / OLD-1 / 三菱電機 / 2",
+      "部品2 / OLD-2 / IDEC / 3",
+      "部品3 / OLD-3 / オムロン / 4"
+    ]
+  }
+]

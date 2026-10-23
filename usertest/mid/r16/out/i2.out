@@ -1,0 +1,32 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+rows {"R001":"S1","R002":"S1","R007":"S1","R008":"S1"}
+issue publish → 指摘 1 件 を公開しました
+E model → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+F model → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+G delete → R007 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+H replace → R008 の置き換え品 R081 を作りました（公開すると R008 は置換済になります。Ctrl+Z で戻す）
+new row for H R081
+publish → [変更セット（9 行: R001, R007, R008, R081, R076 …）の理由。数字か ↑↓ で選び、変更番] 行 10（Rev.2・3） を公開しました
+after publish R001 相見積 st=submitted adopt=- reason= oq=- flags={"reissue":true,"requote":true,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[] withdrawn= 因幡電機 P-2026-041-S1-F1 | 提出済 · 再見積要·再発行·正式依頼取下げ fno [["stale",null,null]]
+after publish R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"reissue":true,"reconfirm":true} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] withdrawn= - | 正式依頼中 · 指摘·要再確認·再発行 fno [["live","P-2026-041-S1-F1",null]]
+after publish R007 相見積 st=cancelled adopt=S1 reason= oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] withdrawn= 因幡電機 P-2026-041-S1-F1 | 取消 · 正式依頼取下げ fno [["live",null,null]]
+after publish R008 相見積 st=replaced adopt=S1 reason= oq=4 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]] withdrawn= 因幡電機 P-2026-041-S1-F1 | 置換済 →R081 · 正式依頼取下げ fno [["live",null,null]]
+F quickfix ["要再確認 因幡電機: 据え置き","要再確認 因幡電機: 再見積","要再確認 立花エレテック: 据え置き","要再確認 立花エレテック: 再見積","要再確認 ミスミ: 据え置き","要再確認 ミスミ: 再見積","I-006 からルールを作る（全案件）"]
+F reconfirm → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+F after R002 相見積 st=quoting adopt=- reason= oq=- flags={"reissue":true,"reconfirm":true,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",418,0,null],["S3",376,23,null]] withdrawn= 因幡電機 P-2026-041-S1-F1 | 見積中 2/3 · 指摘·要再確認·再発行·正式依頼取下げ fno [["live",null,null]]
+purch 4 has E,F,G,H [true,true,true,true] 8 has [false,false,false,false]
+PASS I2-1 (f) 指摘対応の型式変更 → 要再確認で採用商社を「再見積」にして採用が外れた正式依頼中の行に「正式依頼取下げ」 :: R002 相見積 st=quoting adopt=- reason= oq=- flags={"reissue":true,"reconfirm":true,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",418,0,null],["S3",376,23,null]] | 見積中 2/3 · 指摘·要再確認·再発行·正式依頼取下げ | fno=[["live",null,null]]
+PASS I2-2 (g) 正式依頼中の行を取消したら、元の商社への正式依頼の取下げが購買に分かる（取下げの印・4・8 のどれか） :: R007 相見積 st=cancelled adopt=S1 reason= oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 取消 · 正式依頼取下げ | fno=[["live",null,null]] | in4=true in8=false
+PASS I2-3 (h) 正式見積済の行を置換したら、元の商社への正式依頼の取下げが購買に分かる :: R008 相見積 st=replaced adopt=S1 reason= oq=4 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]] | 置換済 →R081 · 正式依頼取下げ | fno=[["live",null,null]] | in4=true in8=false
+rough all → 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+q R001 S1 EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） / EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+q R001 S2 EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） / EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+q R001 S3 EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） / EDIT-ERR 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+E quoted R001 相見積 st=quoted adopt=- reason= oq=- flags={"reissue":true,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",900,1,null],["S2",500,1,null],["S3",800,1,null]] | 見積済 · 再発行·正式依頼取下げ
+E a → R001 を 立花エレテック で採用（スコア 98 / 最安）
+formal again → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+E after formal R001 相見積 st=formalRequested adopt=S2 reason= oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",900,1,null],["S2",500,1,null],["S3",800,1,null]] withdrawn= 因幡電機 P-2026-041-S1-F1 | 正式依頼中 · 正式依頼取下げ files [["立花エレテック",true]] old fno [["stale",null,null],["live",null,null]]
+PASS I2-4 (e) 型式変更で採用が外れ、別の商社（立花エレテック）に正式依頼したとき、元の商社（因幡電機）への正式依頼の取下げが購買に分かる :: adopt=S2 withdrawn=因幡電機 P-2026-041-S1-F1 files=[["立花エレテック",true]]
+ERRORS []
+== 4/4 PASS

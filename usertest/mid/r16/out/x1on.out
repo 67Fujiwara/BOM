@@ -1,0 +1,45 @@
+approval ON true
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+o → R001: 発注済にしました
+ordered+late R001:ordered:ord=true:adopt=S1:{"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false} issues=
+PM d → R001: 設計へ代替依頼
+after answer R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered ball PM
+PM 7 has row (answered only)? true
+U4-03 PM Enter → null | R001 に要決定はありません（I-006 は回答済。Alt+x で受け入れ、Space で中身を見る）
+issue publish → 指摘 1 件 を公開しました
+after h R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered,I-007:発注後変更依頼:open ball PM
+un-order before approval → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+PASS X1-1 承認前は発注済を外せない :: R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered,I-007:発注後変更依頼:open
+PM 7 has row? true
+PM panel "決定パネル R001（発注後変更依頼）" ["y 承認 → 購買が発注を取り消し、設計が Alt+r で置き換える","Shift+Y 却下 → 元の発注のまま受入"]
+PASS X1-2 発注後変更依頼が PM の 7 に載り、決定パネルが出る
+PM y → R001: 承認 {"承認者":"","日付":"2026-10-23","決裁書No":""}
+after approve R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":true} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:inProgress:ruled ball 購買
+decisions [["設計へ代替依頼","代替品を検討",null],["承認","代替品へ切替を承認","部長 田中"]]
+PM 7 still has row? false
+purch 4 has row? true
+purch 9 has row? false
+purch status bar ナビR001 発注数発注後変更依頼 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+un-order after approval → R001: 発注済を外しました
+after un-order R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":false} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:confirmed:ruled ball 設計
+PASS X1-3 承認後は購買が発注を外せる
+design 4 has row? true ball 設計
+PASS X1-4 発注を外した行は設計（r で置き換える）のボール・4 に出る :: 設計
+PM 7 has row after unorder? false
+PM 4 has row? false
+design r → R001 の置き換え品 R081 を作りました（公開すると R001 は置換済になります。Ctrl+Z で戻す）
+new row R081
+R001 の置き換え品 R081 を作りました（公開すると R001 は置換済になります。Ctrl+Z で戻す）
+publish → [変更セット（7 行: R001, R081, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+after publish old R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":true,"pmReason":"変更セット","countermeasure":"代替品検討","orderCancelApproved":false} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:confirmed:ruled
+after publish new R081:submitted:ord=false:adopt=-:{"reconfirm":true,"renegotiating":false,"pmPending":true,"pmReason":"変更セット"} issues=
+PM 7 has old/new true true
+PM y changeset → R081・Rev.2 の変更セット 7 行まとめて: 承認
+after cs approve old R001:replaced:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":false,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} issues=I-006:納期NG:confirmed,I-007:発注後変更依頼:confirmed:ruled
+after cs approve new R081:submitted:ord=false:adopt=-:{"reconfirm":true,"renegotiating":false,"pmPending":false} issues=
+PASS X1-5 公開（承認）で元行は置換済、新行は要再確認で購買へ :: R081:submitted:ord=false:adopt=-:{"reconfirm":true,"renegotiating":false,"pmPending":false} issues=
+purch 5 has new? true ball new 購買
+purch 5 old cause Rev.2 置換 → R081 new cause Rev.2 置換 R001
+money 概算 ¥18,551,508 / 正式 ¥18,553,064 / 予算 ¥2,800,000 (+562.6%)
+== 5/5 PASS

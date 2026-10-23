@@ -1,0 +1,29 @@
+== 107-header-wizard 17:50:19 load=27.02 20.73 13.20
+   exit 0 17:53:12
+== 107-header-wizard-5198 17:53:12 load=34.04 26.22 16.57
+   exit 0 17:55:19
+== 108-xlsx-r16 17:55:19 load=37.68 30.69 19.45
+   exit 0 17:56:18
+== 108-xlsx-r16-5198 17:56:18 load=35.17 31.30 20.37
+   exit 0 17:56:57
+108b-xlsx-direct.ts head exit 0
+108b-xlsx-direct.ts r15b exit 0
+== 110-undo-publish4-run1 17:57:10 load=34.30 31.59 21.04
+   exit 0 17:58:49
+== 111-mac-ctrl-mac-run1 17:58:49 load=32.22 31.94 22.27
+   exit 0 18:00:32
+== 112-json-r16-run1 18:00:33 load=23.40 29.19 22.34
+   exit 0 18:01:23
+== 110-undo-publish4-run2 18:01:23 load=22.14 28.04 22.31
+   exit 0 18:02:29
+== 111-mac-ctrl-mac-run2 18:02:29 load=16.50 25.45 21.82
+   exit 0 18:03:40
+== 112-json-r16-run2 18:03:40 load=10.77 21.74 20.78
+   exit 0 18:04:17
+== 111-mac-ctrl-linux 18:04:17 load=11.87 20.69 20.46
+   exit 0 18:05:53
+== 110-undo-publish4-5198 18:05:53 load=15.10 19.41 20.03
+   exit 0 18:06:34
+== 112-json-r16-5198 18:06:34 load=10.32 17.69 19.43
+   exit 0 18:06:59
+DONE

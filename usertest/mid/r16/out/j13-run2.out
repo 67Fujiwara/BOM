@@ -1,0 +1,11 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A R005 相見積 st=selected adopt=S3 reason= oq=12 flags={"contested":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+confirm panel 全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます ["やめる","置き換える"]
+import → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+S3 tradable false
+A after import R005 相見積 st=selected adopt=S3 reason= oq=12 flags={"contested":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 選定済 · 拮抗
+FAIL J13-1 JSON を読み込んだ直後から、取引停止の商社（ミスミ）の採用は外れて選び直しになっている :: R005 相見積 st=selected adopt=S3 reason= oq=12 flags={"contested":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 選定済 · 拮抗
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 [["因幡電機",false,43],["ミスミ",true,6],["立花エレテック",false,25]] | R005 相見積 st=quoted adopt=- reason= oq=12 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 見積済 · 正式依頼取下げ·先行発注判断
+FAIL J13-2 読み込みの直後に押した正式見積の依頼で、取引停止のミスミに依頼書を出さない :: [["因幡電機",43],["ミスミ",6],["立花エレテック",25]]
+ERRORS []
+== 0/2 PASS

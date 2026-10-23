@@ -1,0 +1,21 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] surplusAmount 20000
+moq R004 S1 100 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → I-006 最小ロット を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行 | text 
+publish → 指摘 1 件 を公開しました
+X after R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","open","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]] ball pm case 閾値超
+PM 7 has X true
+PASS I5-0 余剰が閾値超の最小ロットは PM の 7 に「閾値超」で載る :: in7=true case=閾値超
+PM panel ["y 承認（余剰 / 価格差を受入）","Shift+Y 却下 → 起票者に戻す","q 数量見直し依頼","d 設計へ代替依頼"] → R004: 承認
+X after y R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] | 選定済 · 指摘 ball purchasing issues [["I-006","最小ロット","open","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]] orderQty 1
+PASS I5-3 PM の承認のあと、行は採用のまま購買のボール（最小ロットの指摘は購買が丸める） :: R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] ball=purchasing
+orderQty → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after orderQty R004 相見積 st=selected adopt=S1 reason= oq=100 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","fixed","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]] ball purchasing case なし
+statusbar ナビR004 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くx指摘を確認済に
+x → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+issues after x [["I-006","最小ロット","confirmed","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 X row [["R004","アナログ入力","FX5-4AD","三菱電機",100,"個","2026-11-11",2621]] | R004 相見積 st=formalRequested adopt=S1 reason= oq=100 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS I5-4 PM が余剰を受け入れた行は、丸めた発注数（100）で正式見積を依頼できる :: [["R004","アナログ入力","FX5-4AD","三菱電機",100,"個","2026-11-11",2621]]
+PASS I5-5 最小ロットの指摘は、発注数を丸めたあと開いたまま残らない（確認できる） :: [["I-006","最小ロット","confirmed","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]]
+ERRORS []
+== 4/4 PASS

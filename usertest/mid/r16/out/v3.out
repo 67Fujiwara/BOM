@@ -1,0 +1,64 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+money 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%) contested 32 pending []
+採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal confirm: 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります
+expected n (excluding R002 working): 73 contested 32
+PASS M-32 確認に「拮抗 n 行を含む」と除外後の件数 :: 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります
+formal → 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行 downloads 3
+formalRequested 73 R002 selected dueAt sample 2026-11-03
+formal request xlsx head: [
+  '正式見積依頼書',
+  '依頼No|P-2026-041-S2-F1|宛先|立花エレテック',
+  '案件|P-2026-041 第3ライン 搬送制御盤|発行日|2026-10-23',
+  '回答期限|2026-11-03|必要納期|2026-11-21',
+  '通貨|¥|数量|必要数（見積数量の基準）',
+  '行ID|部品名|型式|メーカ|発注数|単位|必要日|概算単価|正式単価|正式納期|有効期限|差分理由|支払条件',
+  'R014|スイッチング電源 24V 10A|S8VK-G24024|オムロン|1|個|2026-11-11|12775|||||'
+]
+PASS M-34 正式見積依頼書の回答期限が営業日（行の期限と同じ） :: excel=2026-11-03 row.dueAt=2026-11-03
+R001 146 1
+EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+PASS M-16 +16% でも差額 ¥10,000 未満は閾値内で正式見積済 :: {"s":"formalQuoted","f":false,"diff":23}
+diff rows R047:44402x200 R048:54523x100 R053:8629x100 R064:67016x6 R056:62352x5 R052:2473x100 R006:14485x12 R008:43427x4
+EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R048 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R053 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R064 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R056 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R052 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R006 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+R008 EDIT-ERR 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+press 3 in view8 → view 8 mode edit R008 formalPrice 54284 → 54284
+PASS U3 8 正式見積で数字キー 3 がビュー切替にならず、続く Ctrl+G で正式単価が 3 に上書きされない :: view=8 mode=edit 54284→54284
+diff flags R047:formalQuoted:DIFF R048:formalQuoted:DIFF R053:formalQuoted:DIFF R064:formalQuoted:DIFF R056:formalQuoted:DIFF R052:formalQuoted:DIFF R006:formalQuoted:DIFF R008:formalQuoted:DIFF
+o on diff R052 → 正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません
+PASS M-08 差分超過（PM 未決定）の行は o で発注できない
+i on diff R006 → 入荷にできません（発注前の行）: 正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません
+R006 after i: formalQuoted false false {"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":true}
+PASS M3 差分超過（PM 未決定）の行を i（入荷）で発注済・入荷済にできない :: formalQuoted ordered=false received=false
+PM 7 rows: R003,R006,R008,R021,R025,R032,R038,R039,R044,R046,R047,R048,R052,R053,R055,R056,R064
+y on ext: {"kind":"prompt","title":"決定: 受入（R047。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[],"extra":{"承認者":"","日付":"2026-10-23","決裁書No":""},"index":0}
+after Enter w/o approver: {"kind":"prompt","title":"決定: 受入（R047。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[],"extra":{"承認者":"","日付":"2026-10-23","決裁書No":""},"error":"上長決裁の条件に該当します。承認者を入れてください","index":0} toast 上長決裁の条件に該当します。承認者を入れてください
+PASS U-03 上長決裁の入力が無いエラーでダイアログと理由が残る
+R047 after 受入: formalQuoted {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:55503"} {"id":"D-001","rowId":"R047","kind":"受入","by":{"role":"pm","name":"鈴木"},"at":"2026-10-23T17:38:17.933Z","reason":"為替で上昇。受入","external":{"approver":"部長 田中","date":"2026-10-23","ref":"K-001"}}
+PASS M-01 上長決裁の承認者・決裁書 No. が決定に記録され受入できる
+panel ["y 受入 → 正式見積済","b 次点商社へ","g 再交渉（購買へ）","d 設計へ代替依頼（コスト超過を起票）","q 数量見直し依頼（設計へ）"]
+g → R048: 再交渉 formalRequested {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":true,"formalDiff":false} ball 購買 due 2026-10-30
+PASS M-06g g 再交渉 → 正式依頼中・購買（7 から外れる）
+d → R053: 設計へ代替依頼 formalQuoted {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:10786"} [ 'コスト超過:open:2026-10-27' ]
+PASS M-06d d → コスト超過を起票・設計のボール・7 から外れる
+q → R064: 数量見直し依頼 formalQuoted {"pmPending":false,"contested":true,"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:83770"} [ '数量見直し依頼:open:必要数 6 を減らせますか（発注数 6）:2026-10-27' ]
+PASS M-06q q → 数量見直し依頼・設計のボール
+b → R056: 次点商社へ S3 → S2 selected {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalWithdrawn":"ミスミ P-2026-041-S3-F1"}
+view 3
+o on R053 → I-006（コスト超過）の結論が出ていません。対応・確認が済んでから発注します formalQuoted
+o on R064 → 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません formalQuoted
+PASS M3 d（代替依頼）/ q（数量見直し）の後、PM の受入なしに差分超過の価格で発注できない :: ordered d=false q=false
+design issue panel: ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+R053 after 代替なし: formalQuoted {"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:10786"}
+PM panel 対策不成立: 決定パネル R053（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","g 再交渉（購買へ）","e 特急・分納（上限入力）"]
+PASS M-17 対策不成立は専用の種別で 受入 / b / g / e
+受入 → 上長決裁の条件に該当します。承認者を入れてください {"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:10786"}
+PM Ctrl+Z → 上長決裁の条件に該当します。承認者を入れてください
+R053 after undo {"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:10786"}
+== 13/13 PASS

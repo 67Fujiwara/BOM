@@ -1,0 +1,62 @@
+[
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+e",
+    "panel": "panel-export",
+    "mode": "パネル",
+    "editor": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバーXYZ"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+k",
+    "panel": "panel-palette",
+    "mode": "パレット",
+    "editor": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバーXYZ"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+f",
+    "panel": null,
+    "mode": "ナビ",
+    "editor": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバーXYZ"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+p",
+    "panel": "panel-inbox",
+    "mode": "パネル",
+    "editor": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバーXYZ"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+a",
+    "panel": null,
+    "mode": "編集",
+    "editor": "端子台エンドカバーXYZ",
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバー"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+d",
+    "panel": null,
+    "mode": "編集",
+    "editor": "端子台エンドカバーXYZ",
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバー"
+  },
+  {
+    "name": "linux 編集中に「端子台エンドカバーXYZ」→ Control+h",
+    "panel": null,
+    "mode": "編集",
+    "editor": "端子台エンドカバーXYZ",
+    "toast": "保存しました（編集は自動で保存されています）",
+    "savedAfterEsc": "端子台エンドカバー"
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

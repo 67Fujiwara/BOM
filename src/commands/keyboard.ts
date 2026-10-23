@@ -11,7 +11,7 @@ import * as adopt from '@/actions/adopt'
 import * as pm from '@/actions/pm'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
+import { ROLE_DEFAULT_VIEW, vm, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -414,7 +414,11 @@ function printable(e: KeyboardEvent): boolean {
 export function onCommandCell(ch = ''): boolean {
   const s = st()
   if (!visibleCursorRow()) return /^\d$/.test(ch)
-  return s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool'
+  if (s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool') return true
+  // 自分が書けない列では、数字はビュー切替（値にならないので、打ち間違えても何も書き換わらない）
+  if (/^\d$/.test(ch) && rows.canEdit(s.cursorCol)) return true
+  // このビューに自分が書ける列が 1 つも無いとき（PM はどの列も書かない）は、どの列でも 1 キー操作（§9.1: 7 の y / Shift+Y）
+  return !vm().columns.some((c) => !rows.canEdit(c))
 }
 /** Alt+英字・Alt+数字 → その 1 キー操作（Alt 付きで別に決まっている操作があればそちらが先） */
 function altBinding(key: string) {
@@ -587,7 +591,7 @@ export function handleKeyDown(e: KeyboardEvent) {
     const r = visibleCursorRow()
     if (!r) return toast('行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）', 'info')
     const err = rows.canEdit(s.cursorCol)
-    if (err) return toast(`${err}。1 キー操作は Alt を押しながら（例: Alt+${ch.toLowerCase()}）か、ID の列で`, 'info')
+    if (err) return toast(`${err}。1 キー操作は Alt を押しながら（例: ${/[A-Z]/.test(ch) ? `Alt+Shift+${ch}` : `Alt+${ch}`}）か、ID の列で`, 'info')
     startEdit(ch)
   }
 }

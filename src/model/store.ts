@@ -71,6 +71,8 @@ export interface State {
   editBase: string | null
   /** 6・8 で確定後に自動で始めた入力（空のまま確定したら何も変えない） */
   editAuto?: boolean
+  /** Enter で始めた数値・日付の編集は値を全選択して始める（打ち直しが上書きになる。Excel の打ち直しと同じ結果） */
+  editSelectAll?: boolean
   panel: Panel | null
   toast: { text: string; kind: 'ok' | 'err' | 'info'; at: number } | null
   revView: number | null
@@ -246,6 +248,8 @@ export const useStore = create<State>((set, get) => ({
     const conflict = applyEntry(entry, 'undo')
     if (conflict) {
       set({ undo: { ...get().undo, [user]: rest } })
+      // 「!」で始まるのは決まりで止めたもの（誰も変えていない）
+      if (conflict.startsWith('!')) return st.toastMsg(`戻せません: ${conflict.slice(1)}。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）`, 'err')
       return st.toastMsg(`戻せません: ${conflict} は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください`, 'err')
     }
     set({ undo: { ...get().undo, [user]: rest }, redo: { ...get().redo, [user]: [...(get().redo[user] ?? []), entry] } })
@@ -269,7 +273,8 @@ export const useStore = create<State>((set, get) => ({
     const conflict = applyEntry(entry, 'redo')
     if (conflict) {
       set({ redo: { ...get().redo, [user]: rest } })
-      return st.toastMsg(`やり直せません: ${conflict} を後から別の操作が変更しています`, 'err')
+      if (conflict.startsWith('!')) return st.toastMsg(`やり直せません: ${conflict.slice(1)}。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作）`, 'err')
+      return st.toastMsg(`やり直せません: ${conflict} は、元に戻した後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作）`, 'err')
     }
     set({ redo: { ...get().redo, [user]: rest }, undo: { ...get().undo, [user]: [...(get().undo[user] ?? []), entry] } })
     persistHistory()
@@ -475,7 +480,7 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
     const to = (dir === 'undo' ? c.before : c.after) as Row | undefined
     const now = cur.rows.get(c.key) as Row | undefined
     // 発注後変更依頼（PM の判断）がある行の発注は、Ctrl+Z で外さない（PM の却下を迂回しない。§9.1）
-    if (now?.ordered && from?.ordered && to && !to.ordered && p.issues.some((i) => i.rowId === c.key && i.kind === '発注後変更依頼')) return `${c.key} の発注（発注後変更依頼で PM が判断しています）`
+    if (now?.ordered && from?.ordered && to && !to.ordered && p.issues.some((i) => i.rowId === c.key && i.kind === '発注後変更依頼')) return `!${c.key} の発注は、発注後変更依頼で PM が判断しているので Ctrl+Z・Ctrl+Y では外しません（外すのは PM の承認のあと、購買の o）`
     const m = mergeFields(now, from, to)
     if (typeof m === 'string') return `${c.key} の${m}`
     rowValues.set(c.key, m.value)

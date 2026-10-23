@@ -1,5 +1,5 @@
 import type { Project, Row, Rule } from './types'
-import { effective } from './derive'
+import { effective, setKnownSuppliers } from './derive'
 
 export interface Problem {
   rowId: string
@@ -29,6 +29,7 @@ export function toHalfWidth(s: string): string {
 let supplierMaster: Array<{ id: string; name: string }> = []
 export function setSupplierMaster(list: Array<{ id: string; name: string }>) {
   supplierMaster = list
+  setKnownSuppliers(list)
 }
 
 /** 重複・代替可否の突き合わせを行ごとに全行走査すると行数の 2 乗になるので、行の並び（配列）ごとに索引を作って持つ */

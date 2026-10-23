@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, isActive, isFixedProcurement, isOverdue, openIssues, resolverOfIssue } from './derive'
+import { ball, isActive, isFixedProcurement, isOverdue, openIssues, overCap, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -50,7 +50,7 @@ export const VIEWS: ViewDef[] = [
     id: 7,
     label: '要決定',
     columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'adopted', 'score', 'unitPrice', 'formalPrice', 'formalDiff', 'lead', 'status', 'due', 'waiting'],
-    filter: (r, c) => isActive(r) && (ball(c.p, r) === 'pm' || r.flags.leadNG === true || r.flags.pmPending === true || r.flags.formalDiff === true),
+    filter: (r, c) => isActive(r) && (ball(c.p, r) === 'pm' || r.flags.leadNG === true || r.flags.pmPending === true || r.flags.formalDiff === true || !!overCap(c.p, r)),
   },
   { id: 8, label: '正式見積', columns: ['id', 'name', 'model', 'maker', 'orderQty', 'adopted', 'unitPrice', 'formalDiff', 'lead', 'status', 'due'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   { id: 9, label: '購買作業', columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'packQty', 'procurement', 'makerLock', 'altPolicy', 'needDate', 'orderQty', 'status', 'due', 'waiting'], filter: (r) => isActive(r) && (['submitted', 'quoting', 'quoted'].includes(r.status) || r.flags.requote === true) },
@@ -60,6 +60,8 @@ export const VIEWS: ViewDef[] = [
 function purchasingAttention(r: Row, c: ViewCtx): boolean {
   // 取込の型式不一致は、行のボールに関係なく購買の後始末（§7）
   if (r.flags.importMismatch || r.flags.orderQtyCheck) return true
+  // 追加費用が特急・分納の上限を超えた（PM に相談する）
+  if (overCap(c.p, r)) return true
   // 指定系の行で、頼んだ商社がすべて辞退した（次の商社に頼む）
   if (isFixedProcurement(r) && r.status === 'quoting') {
     const qs = c.p.quotes.filter((q) => q.rowId === r.id && !q.stale)

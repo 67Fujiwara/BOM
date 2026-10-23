@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
-import { unpublishedCount, openIssues, isActive } from '@/model/derive'
+import { unpublishedCount, openIssues, isActive, designatedDeclined } from '@/model/derive'
 import { formatKey, keyToEventInit } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import { pmCaseOf } from '@/actions/pm'
@@ -34,6 +34,9 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (user.role === 'purchasing') hints.push(['Shift+I', '指摘'])
     else if (openIssues(p, row.id).length) hints.push(['Space', '指摘を見る'])
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : '開く'])
+    if (vm.counts[4]) hints.push(['F8', '次の問題'])
+    if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) hints.push(['Ctrl+.', '指定先を変える'])
+    if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1)) hints.push(['Ctrl+.', '次の商社に依頼'])
     const ack = nextAckTarget(p, row, user.role)
     if (ack) hints.push(['x', ack])
     if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])

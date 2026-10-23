@@ -60,11 +60,11 @@ kbd {
 .view { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: var(--radius); cursor: pointer; color: var(--fg); }
 .view:hover { background: var(--bg-sunken); }
 .view[aria-current='true'] { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-.view .k { font-family: var(--font-mono); color: var(--fg-muted); width: 12px; }
+.view .k { font-family: var(--font-mono); color: var(--fg-muted); min-width: 12px; white-space: nowrap; }
 .view[aria-current='true'] .k { color: var(--accent); }
 .view .n { margin-left: auto; font-family: var(--font-mono); color: var(--fg-muted); font-size: 11px; }
 .view .n.err { color: var(--err); font-weight: 700; }
-.view .n.warn { color: var(--warn); font-weight: 700; }
+.view .n.warn { color: var(--warn-text); font-weight: 700; }
 
 .main { grid-area: main; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .toolbar { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-bottom: 1px solid var(--line); background: var(--bg-elev); min-height: 36px; }
@@ -135,7 +135,7 @@ table.quotes tr.adopted td:first-child::before { content: '✓ '; color: var(--o
 /* ---------- status bar ---------- */
 .status { grid-area: status; display: flex; align-items: center; gap: 14px; padding: 0 12px; white-space: nowrap; overflow: hidden; min-width: 0; border-top: 1px solid var(--line); background: var(--bg-elev); font-size: 12px; color: var(--fg-muted); }
 .status .mode { font-weight: 700; padding: 2px 8px; border-radius: 4px; background: var(--bg-sunken); color: var(--fg); min-width: 44px; text-align: center; }
-.status .mode.edit { background: var(--warn-soft); color: var(--warn); }
+.status .mode.edit { background: var(--warn-soft); color: var(--warn-text); }
 .status .mode.palette, .status .mode.panel { background: var(--accent-soft); color: var(--accent); }
 .status .cell { font-family: var(--font-mono); color: var(--fg); }
 .status .hints { display: flex; gap: 12px; margin-left: auto; overflow: hidden; min-width: 0; flex-shrink: 1; }
@@ -153,7 +153,7 @@ table.quotes tr.adopted td:first-child::before { content: '✓ '; color: var(--o
 .dialog .list { overflow: auto; padding: 6px; }
 .dialog .item { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: var(--radius); cursor: pointer; }
 .dialog .item[aria-selected='true'] { background: var(--accent-soft); color: var(--accent); }
-.dialog .item .sec { color: var(--fg-faint); font-size: 11px; min-width: 56px; }
+.dialog .item .sec { color: var(--fg-muted); font-size: 11px; min-width: 56px; }
 .dialog .item .keys { margin-left: auto; display: flex; gap: 4px; }
 .dialog .item .desc { color: var(--fg-muted); font-size: 12px; }
 .dialog .body { padding: 14px 18px; overflow: auto; }

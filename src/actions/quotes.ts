@@ -1,6 +1,7 @@
+import { isTotalCell } from '@/io/paste'
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
-import { fixedSupplierId, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
+import { fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { emptyQuote } from '@/model/sample'
 import { parseValue, quoteTargets } from './rows'
@@ -76,7 +77,17 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
     const sup = s.ws.suppliers.find((x) => x.id === sid)!
     await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'rough', deadline, p2.requestRevs[sid] ?? 1)
   }
-  return `${sent.size} 行 × ${perSupplier.size} 社に依頼（回答期限 ${deadline}）${excluded ? `。作業中 ${excluded} 行を除外` : ''}`
+  // §7 のメーカでの絞り込みを知らせる（どの行をどの商社に頼まなかったか・扱う商社が無くて全社に頼んだか）
+  const asked = [...perSupplier.keys()]
+  const narrowed = rows.filter((r) => sent.has(r.id) && r.status === 'submitted' && !isFixedProcurement(r) && asked.some((sid) => !targetsOf(r).includes(sid)))
+  const listedAny = p.supplierIds.some((id) => (s.ws.suppliers.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0)
+  const unknownMaker = listedAny ? rows.filter((r) => sent.has(r.id) && r.status === 'submitted' && !isFixedProcurement(r) && r.maker && !p.supplierIds.some((id) => handlesMaker(s.ws.suppliers.find((x) => x.id === id)?.handledMakers ?? [], r.maker))) : []
+  const name = (id: string) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id
+  const notes = [
+    narrowed.length ? `メーカを扱わない商社には頼まない行 ${narrowed.length} 行（例: ${narrowed[0].id}「${narrowed[0].maker}」→ ${targetsOf(narrowed[0]).filter((x) => asked.includes(x)).map(name).join('・')}）` : '',
+    unknownMaker.length ? `メーカを扱う商社がマスタに無い行 ${unknownMaker.length} 行は全社に依頼（例: ${unknownMaker[0].id}「${unknownMaker[0].maker}」。商社マスタの取扱メーカに足すと絞れます）` : '',
+  ].filter(Boolean)
+  return `${sent.size} 行 × ${perSupplier.size} 社に依頼（回答期限 ${deadline}）${excluded ? `。作業中 ${excluded} 行を除外` : ''}${notes.length ? `。${notes.join('。')}` : ''}`
 }
 
 export interface ImportResult {
@@ -118,7 +129,7 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
     for (const line of body) {
       const cells = line.split('\t')
       // 小計・合計の行は回答ではない
-      if (cells.some((c) => /^(小計|合計|総計|total|subtotal)$/i.test(c.trim()))) continue
+      if (cells.some(isTotalCell)) continue
       const id = (hasHeader ? get(cells, col.id) : get(cells, 0)).toUpperCase()
       const r = p.rows.find((x) => x.id === id)
       if (!r || !isActive(r)) {

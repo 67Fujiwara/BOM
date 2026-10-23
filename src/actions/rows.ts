@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { ChangeReason, DesignFields, Issue, Project, Removal, Role, Row, Submission } from '@/model/types'
 import { DESIGN_FIELDS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { colDef, supplierOfCol } from '@/model/columns'
-import { effective, fixedSupplierId, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
+import { effective, fixedSupplierId, handlesMaker, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { parseTable } from '@/io/paste'
@@ -114,9 +114,10 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
   )
   // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
   if (ok && colKey === 'extraCost' && typeof value === 'number') {
-    const cap = [...st().project().decisions].reverse().find((d) => d.rowId === rowId && d.kind === '特急・分納' && typeof d.payload?.amount === 'number')
-    const amt = cap?.payload?.amount as number | undefined
-    if (amt != null && value > amt) st().toastMsg(`追加費用 ¥${value.toLocaleString()} が、PM の決めた特急・分納の上限 ¥${amt.toLocaleString()} を超えています（${cap!.id}）`, 'err')
+    const p = st().project()
+    const r = p.rows.find((x) => x.id === rowId)
+    const oc = r ? overCap(p, r) : null
+    if (oc) st().toastMsg(`追加費用 ¥${value.toLocaleString()} が、PM の決めた特急・分納の上限 ¥${oc.cap.toLocaleString()} を超えています（${oc.decisionId}）。購買の 4・PM の 7 に出します`, 'err')
   }
   return ok
 }
@@ -200,6 +201,30 @@ export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) 
   }
 }
 
+/** 発注後変更依頼の承認で発注を外し、設計の置き換えを待っている行か */
+export function awaitingReplacement(p: Project, r: Row): boolean {
+  return r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')
+}
+/** 取引先がキャンセルを受けなかった: 置き換えをやめ、もとの発注に戻す（購買。§9.1 の発注後変更依頼の出口） */
+export function restoreOrder(rowId: string): string | null {
+  const s = st()
+  if (s.user().role !== 'purchasing') return '権限なし（発注は購買）'
+  const p = s.project()
+  const r = p.rows.find((x) => x.id === rowId)
+  if (!r || !awaitingReplacement(p, r)) return `${rowId} は発注を取り消して置き換えを待っている行ではありません`
+  if (r.removal || r.pendingRemoval || r.replacedBy) return `${rowId} は設計が置き換えの作業中です。設計にもう一度 Shift+Delete で置換を取りやめてもらってから戻します`
+  if (!r.adoptedSupplierId) return `${rowId} は採用商社がありません`
+  s.commit('キャンセル不可で発注に戻す', (p2) => {
+    const x = p2.rows.find((y) => y.id === rowId)!
+    x.flags.countermeasure = undefined
+    x.ordered = true
+    setStatus(x, 'ordered')
+    const req = [...p2.issues].reverse().find((i) => i.rowId === rowId && i.kind === '発注後変更依頼' && i.status === 'confirmed')
+    if (req) req.resolution = 'キャンセル不可（取引先が受けず）。もとの発注のまま'
+  })
+  return null
+}
+
 /** 発注できない理由（発注できるなら null）。§4・§9.1: 正式見積済（または先行発注許可）で、PM の決定待ちが無く、採用商社の有効な見積がある行だけ */
 export function orderBlock(p: Project, r: Row): string | null {
   if (r.status !== 'formalQuoted' && !r.flags.early) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
@@ -208,7 +233,7 @@ export function orderBlock(p: Project, r: Row): string | null {
   // 設計が取消・置換の作業中（未公開）の行は、公開されるまで発注しない
   if (r.removal) return '設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します'
   if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
-  if (r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります）'
+  if (awaitingReplacement(p, r)) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
   // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない
   const waiting = p.issues.find((i) => i.rowId === r.id && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '発注後変更依頼') && ['open', 'inProgress', 'answered'].includes(i.status))
@@ -612,13 +637,14 @@ export function quoteTargets(p: Project, r: Row): string[] {
     const sid = fixedSupplierId(p, { ...r, ...e } as Row, st().ws.suppliers)
     return sid ? [sid] : p.supplierIds.slice(0, 1)
   }
-  // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない。どこも扱わなければ全社）
+  // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない）。
+  // メーカを扱うと登録した商社が 1 社も無いとき（表記ゆれ・マスタ未登録）は、取りこぼさないよう全社に頼む
+  if (!e.maker) return p.supplierIds
   const sups = st().ws.suppliers
-  const carries = p.supplierIds.filter((id) => {
-    const sp = sups.find((x) => x.id === id)
-    return !sp || sp.handledMakers.length === 0 || !e.maker || sp.handledMakers.includes(e.maker)
-  })
-  return carries.length ? carries : p.supplierIds
+  const listed = (id: string) => (sups.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0
+  const explicit = p.supplierIds.filter((id) => listed(id) && handlesMaker(sups.find((x) => x.id === id)!.handledMakers, e.maker))
+  if (!explicit.length) return p.supplierIds
+  return p.supplierIds.filter((id) => !listed(id) || explicit.includes(id))
 }
 
 function pick(e: DesignFields): DesignFields {

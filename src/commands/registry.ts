@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, effective, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -25,7 +25,7 @@ import { settingsFields as settingsFieldsOf } from '@/ui/settingsFields'
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
 const toast = (t: string, k: 'ok' | 'err' | 'info' = 'ok') => st().toastMsg(t, k)
-const vm = () => buildViewModel(st())
+export const vm = () => buildViewModel(st())
 
 export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 4, purchasing: 9, pm: 7 }
 
@@ -169,7 +169,7 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -378,6 +378,26 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
   const opts: PanelOption[] = []
   const iss = p.issues.filter((i) => i.rowId === r.id)
   for (const i of iss) if (i.proposal && (i.status === 'open' || i.status === 'inProgress') && role === 'design') opts.push({ label: `購買の提案 ${i.proposal.model} を適用して置換（${i.id}）`, run: () => void issues.applyProposal(i.id) })
+  // 指定商社の指定先が「取扱なし」: 設計が指定先を変える（§3.4）
+  if (role === 'design' && r.procurement === '指定商社' && designatedDeclined(p, r)) {
+    const cur = s.ws.suppliers.find((x) => x.id === r.designated || x.name === r.designated)
+    const declined = new Set(p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.leadDays === -1).map((q) => q.supplierId))
+    const names = s.ws.suppliers.filter((x) => !declined.has(x.id)).map((x) => x.name)
+    opts.push({
+      label: `指定先を変える（${cur?.name ?? r.designated} が取扱なしと回答）`,
+      run: () =>
+        prompt(`${r.id} の新しい指定先（公開すると購買が新しい指定先に依頼します）`, { options: names }, (c) => {
+          const sp = s.ws.suppliers.find((x) => x.name === c)
+          if (sp && rows.setCell(r.id, 'designated', sp.id, '指定先を変える')) toast(`${r.id} の指定先を ${sp.name} にしました（Ctrl+Enter で公開）`, 'ok')
+        }),
+    })
+  }
+  // 客先指定品の依頼先が辞退: 購買が次の商社（メーカを扱う商社）に頼み直す
+  if (role === 'purchasing' && r.procurement === '客先指定品' && !r.adoptedSupplierId && r.status === 'quoting') {
+    const qs = p.quotes.filter((q) => q.rowId === r.id && !q.stale)
+    const next = fixedSupplierId(p, r, s.ws.suppliers)
+    if (qs.length && qs.every((q) => q.leadDays === -1) && next) opts.push({ label: `次の商社 ${s.ws.suppliers.find((x) => x.id === next)?.name ?? next} に依頼する（概算見積を依頼）`, run: () => runCommand('quotes.request') })
+  }
   if (role === 'design') {
     const prs: Problem[] = checkRow(r, s.ws.rules, p)
     for (const pr of prs.filter((x) => x.field === field).concat(prs.filter((x) => x.field !== field))) {
@@ -1511,6 +1531,15 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           })
         },
       })
+    case 'order.restore': {
+      if (!need()) return
+      const r0 = r!
+      if (!rows.awaitingReplacement(s.project(), r0)) return toast(`${r0.id} は発注を取り消して置き換えを待っている行ではありません`, 'info')
+      return confirmDanger(`${r0.id} を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, '発注済に戻す', () => {
+        const e = rows.restoreOrder(r0.id)
+        toast(e ?? `${r0.id} を発注済に戻しました（キャンセル不可）`, e ? 'err' : 'ok')
+      })
+    }
     case 'data.clearBackups': {
       const n = loadBackups().length
       if (!n) return toast('退避したデータはありません', 'info')
@@ -1567,7 +1596,7 @@ export interface PaletteItem {
 export const STATIC: Array<{ id: string; label: string; section: string; desc?: string; keywords?: string }> = [
   { id: 'publish', label: '公開（提出 / 指摘を発行）', section: '流れ', desc: '自分の未公開の行と下書き指摘', keywords: '提出 送る 送信 submit 出す 発行 購買へ' },
   { id: 'quotes.request', label: '概算見積を依頼', section: '流れ', desc: '購買。商社向け依頼 Excel を出す', keywords: '見積 依頼 相見積 rfq' },
-  { id: 'quotes.import', label: '見積回答を取り込む', section: '流れ', desc: '購買。貼り付けで突合', keywords: '回答 取込 インポート import' },
+  { id: 'quotes.import', label: '見積回答を取り込む', section: '流れ', desc: '購買。貼り付けで突合', keywords: '回答 取込 取り込み インポート import ファイル 見積書' },
   { id: 'adopt.bulkBest', label: '未採用を推奨で一括採用', section: '流れ', keywords: 'まとめて 全部 一括' },
   { id: 'adopt.bulkCheapest', label: '未採用を最安で一括採用（スコア無視）', section: '流れ', keywords: 'まとめて 安い' },
   { id: 'consolidate', label: '商社を集約', section: '流れ', desc: '1社/2社に集約した総額差を試算', keywords: 'まとめる 集約' },
@@ -1577,11 +1606,11 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'undo', label: '元に戻す', section: '編集', keywords: 'undo 戻る 取り消し もどす' },
   { id: 'redo', label: 'やり直す', section: '編集', keywords: 'redo やりなおし やり直し' },
   { id: 'project.save', label: '保存', section: '編集', desc: '編集は自動で保存されています', keywords: 'save 保存 ほぞん' },
-  { id: 'row.delete', label: '行を削除（提出済なら取消）', section: '編集', keywords: '削除 消す delete 取消' },
+  { id: 'row.delete', label: '行を削除（提出済なら取消）', section: '編集', keywords: '削除 消す delete 取消 取り消し キャンセル cancel やめる' },
   { id: 'row.insertBelow', label: '行を追加', section: '編集', keywords: '追加 新しい行 挿入 insert' },
-  { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 予算 重み 担当 相見積先' },
+  { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 期限 回答期限 予算 重み 担当 相見積先 選定者 閾値 理由' },
   { id: 'settings.confirm', label: '案件設定を確定（PM）', section: '案件' },
-  { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件' },
+  { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件 取り込み 取込 インポート csv excel xlsx ファイル 貼り付け 読み込む' },
   { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
   { id: 'rule.add', label: 'ルールを追加', section: 'チェック' },
   { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す エクスポート export' },
@@ -1589,13 +1618,14 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し jsonエクスポート' },
   { id: 'data.importJson', label: 'JSON を読み込む', section: 'データ', keywords: '復元 読み込み' },
   { id: 'data.restoreBackup', label: '読み込み前に戻す（退避したデータに戻す）', section: 'データ', keywords: '復元 戻す 元に戻す 退避 バックアップ' },
+  { id: 'order.restore', label: 'キャンセル不可で発注に戻す（発注後変更依頼のあと）', section: '購買', keywords: 'キャンセル 取り消し 断られた 戻す 発注 発注後変更' },
   { id: 'data.clearBackups', label: '退避データを消す（保存領域を空ける）', section: 'データ', keywords: '容量 空き 削除 退避 バックアップ' },
   { id: 'data.exportBackup', label: '退避したデータを書き出す', section: 'データ', keywords: '退避 バックアップ 壊れた 保存データ' },
   { id: 'data.reset', label: 'サンプルデータに戻す', section: 'データ', keywords: '初期化 リセット' },
   { id: 'supplier.add', label: '商社を追加', section: '案件', keywords: '商社 マスタ' },
-  { id: 'role.switch', label: '役割を切り替え（ログイン）', section: '案件', keywords: 'ログイン 設計 購買 pm ユーザー' },
+  { id: 'role.switch', label: '役割を切り替え（ログイン）', section: '案件', keywords: 'ログイン 設計 購買 pm ユーザー 切り替え 購買に切り替え 設計に切り替え pmに切り替え 担当' },
   { id: 'history', label: '履歴', section: '案件', keywords: 'ログ 変更履歴 誰が' },
-  { id: 'theme.toggle', label: 'ダークモード切替', section: '表示', keywords: 'ダーク 暗い テーマ' },
+  { id: 'theme.toggle', label: 'ダークモード切替', section: '表示', keywords: 'ダーク 暗い 暗く 明るく ライト テーマ 色' },
   { id: 'density.toggle', label: 'コンパクト表示切替', section: '表示', keywords: '行の高さ 小さく 大きく 文字 拡大 縮小 見やすく' },
   { id: 'sort.asc', label: '今の列で並び替え', section: '表示', desc: 's 昇順 / Shift+S 降順。列見出しのクリックでも', keywords: 'ソート sort 並べ替え 順番' },
   { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: '/ で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },

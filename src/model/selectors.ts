@@ -4,7 +4,7 @@ import { COLUMNS, colDef, supplierOfCol } from './columns'
 import { VIEWS, buildProblems, causeOf, type ViewCtx } from './views'
 import type { Problem } from './rules'
 import type { State, ViewId } from './store'
-import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, openIssues, orderQty, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
+import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, openIssues, orderQty, quoteResponses, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
 import { fmtDate } from './dates'
 import { toHalf } from './parse'
 
@@ -224,8 +224,9 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       else if (row.removal && !flags.includes('作業中●')) flags.push('作業中●')
       let text = STATUS_LABEL[row.status]
       if (row.status === 'quoting') {
-        const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
-        text += ` ${qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length}/${qs.length}`
+        // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に（見積済の判定と同じ数え方）
+        const { answered, total } = quoteResponses(p, row)
+        text += ` ${answered}/${total}`
       }
       if (row.status === 'replaced' && row.replacedBy) text += ` →${row.replacedBy}`
       return { text: flags.length ? `${text} · ${flags.join('·')}` : text, raw: row.status, cls: 's-' + row.status, sev: isOverdue(p, row) ? 'err' : undefined, title: flags.join(' / ') }

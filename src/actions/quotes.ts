@@ -27,7 +27,8 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   }
   // 相見積の行で、まだ頼んでいない商社（前に一部の商社だけに頼んだ）。あとから頼める
   // 頼むつもりで、まだ頼んでいない商社（最初の依頼を一部の商社だけにした・回答を手で入れ始めた行）。あとで案件に足した商社は入れない
-  const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : (r.quoteTargets ?? []).filter((sid) => !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
+  const tradable = (sid: string) => p.supplierIds.includes(sid) && s.ws.suppliers.find((x) => x.id === sid)?.tradable !== false
+  const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : (r.quoteTargets ?? []).filter((sid) => tradable(sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
   const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid))) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
@@ -48,7 +49,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       if (!sent.has(r0.id)) continue
       const r = p2.rows.find((x) => x.id === r0.id)!
       // 最初の依頼で、頼むつもりの商社（相見積先）を覚える
-      if (!isFixedProcurement(r0) && r0.status === 'submitted') r.quoteTargets = quoteTargets(p, r0)
+      if (!isFixedProcurement(r0) && (r0.status === 'submitted' || r0.flags.requote)) r.quoteTargets = quoteTargets(p, r0)
       for (const sid of targetsOf(r0)) {
         if (!wanted(sid)) continue
         if (!p2.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) p2.quotes.push(emptyQuote(r.id, sid))
@@ -93,7 +94,9 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
     narrowed.length ? `メーカを扱わない商社には頼まない行 ${narrowed.length} 行（例: ${narrowed[0].id}「${narrowed[0].maker}」→ ${targetsOf(narrowed[0]).filter((x) => asked.includes(x)).map(name).join('・')}）` : '',
     unknownMaker.length ? `メーカを扱う商社がマスタに無い行 ${unknownMaker.length} 行は、選んだ商社すべてに依頼（例: ${unknownMaker[0].id}「${unknownMaker[0].maker}」。商社マスタの取扱メーカに足すと絞れます）` : '',
   ].filter(Boolean)
-  const reopened = rows.filter((r) => sent.has(r.id) && r.status === 'quoted').length
+  // 実際に見積済から見積中に戻った行だけを数える
+  const after = st().project()
+  const reopened = rows.filter((r) => sent.has(r.id) && r.status === 'quoted' && after.rows.find((x) => x.id === r.id)?.status === 'quoting').length
   if (reopened) notes.push(`見積済だった ${reopened} 行は、新しく頼んだ商社の回答を待つため見積中に戻しました`)
   return `${sent.size} 行 × ${perSupplier.size} 社に依頼（回答期限 ${deadline}）${excluded ? `。作業中 ${excluded} 行を除外` : ''}${notes.length ? `。${notes.join('。')}` : ''}`
 }

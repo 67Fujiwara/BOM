@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, hasWork, isActive, isFixedProcurement, isQuotable, roundedQty } from '@/model/derive'
+import { effective, hasWork, isActive, isFixedProcurement, isQuotable, quoteResponses, roundedQty } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -21,9 +21,8 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
-    const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
-    const answered = qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length
-    return `回答 ${answered}/${qs.length} 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）`
+    const { answered, total } = quoteResponses(p, row)
+    return `回答 ${answered}/${total} 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）`
   }
   if (row.status === 'draft') return '下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます'
   if (row.status === 'submitted') return '見積前の行です（購買が概算見積を依頼・回答待ち）'

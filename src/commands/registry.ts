@@ -483,7 +483,7 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
     const next = fixedSupplierId(p, r, s.ws.suppliers)
     const nx = next ? s.ws.suppliers.find((x) => x.id === next) : undefined
     const note = nx && nx.handledMakers.length && !handlesMaker(nx.handledMakers, r.maker) ? `。${r.maker} は取扱メーカに無い商社です` : ''
-    if (qs.length && qs.every((q) => q.leadDays === -1) && next) opts.push({ label: `次の商社 ${nx?.name ?? next} に依頼する（概算見積を依頼${p.supplierIds.includes(next) ? '' : '。依頼先で「相見積先すべて」を選ぶ'}）${note}`, run: () => runCommand('quotes.request') })
+    if (qs.length && qs.every((q) => q.leadDays === -1) && next) opts.push({ label: `次の商社 ${nx?.name ?? next} に依頼する（概算見積を依頼。依頼先で「${next} ${nx?.name ?? ''}」か「相見積先すべて」を選ぶ）${note}`, run: () => runCommand('quotes.request') })
   }
   if (role === 'design') {
     const prs: Problem[] = checkRow(r, s.ws.rules, p)

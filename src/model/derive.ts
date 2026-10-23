@@ -65,7 +65,7 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
     const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1)
     if (live[0]) return live[0].supplierId
     const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
-    let cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
+    let cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id) && x.tradable !== false)
     // 案件の相見積先がすべて辞退したら、商社マスタの中から（メーカを扱う商社を先に）
     if (!cands.length) cands = suppliers.filter((x) => !declined.has(x.id) && x.tradable !== false)
     return (cands.find((x) => handlesMaker(x.handledMakers, row.maker)) ?? cands.find((x) => !x.handledMakers.length) ?? cands[0])?.id ?? null
@@ -251,7 +251,8 @@ export function roundedQty(qtyNeeded: number, moq: number | null | undefined, pa
 export function quoteResponses(p: Project, row: Row): { answered: number; total: number } {
   const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
   // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）
-  const ids = new Set([...qs.map((q) => q.supplierId), ...(row.quoteTargets ?? [])])
+  // 案件の相見積先から外した商社は、まだ頼んでいなければ待たない
+  const ids = new Set([...qs.map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter((id) => p.supplierIds.includes(id))])
   return { answered: qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length, total: ids.size }
 }
 

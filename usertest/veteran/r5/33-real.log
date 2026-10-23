@@ -1,0 +1,26 @@
+REAL NG Analog 80 {"col":"メーカ","text":"Analog","gap":80,"cursor":["R040 メーカ","R040 メーカ"],"mode":"パネル","edit":null,"panel":"panel-adopt","changedAfterEnter":["R040:{\"model\":\"E32-D11 2M\",\"maker\":\"オムロン\",\"hidden\":false,\"status\":\"selected\"}"],"ok":false}
+REAL NG Analog 250 {"col":"メーカ","text":"Analog","gap":250,"cursor":["R040 メーカ","R040 メーカ"],"mode":"パネル","edit":null,"panel":"panel-adopt","changedAfterEnter":["R040:{\"model\":\"E32-D11 2M\",\"maker\":\"オムロン\",\"hidden\":false,\"status\":\"selected\"}"],"ok":false}
+REAL NG Knowles 80 {"col":"メーカ","text":"Knowles","gap":80,"cursor":["R040 メーカ","R039 メーカ"],"mode":"編集","edit":"nowles","panel":null,"changedAfterEnter":["R039:{\"maker\":\"nowles\"}"],"ok":false}
+REAL NG Knowles 250 {"col":"メーカ","text":"Knowles","gap":250,"cursor":["R040 メーカ","R039 メーカ"],"mode":"編集","edit":"nowles","panel":null,"changedAfterEnter":["R039:{\"maker\":\"nowles\"}"],"ok":false}
+REAL NG sn74hc595 80 {"col":"型式","text":"sn74hc595","gap":80,"cursor":["R040 型式","R054 型式"],"mode":"パネル","edit":null,"panel":"panel-columns","changedAfterEnter":["R054:{\"model\":\"1.25Y-3\",\"maker\":\"ニチフ\",\"hidden\":true,\"status\":\"quoted\"}"],"ok":false}
+REAL NG sn74hc595 250 {"col":"型式","text":"sn74hc595","gap":250,"cursor":["R040 型式","R016 型式"],"mode":"パネル","edit":null,"panel":"panel-columns","changedAfterEnter":["R016:{\"model\":\"CP30-BA 2P\",\"maker\":\"三菱電機\",\"hidden\":true,\"status\":\"quoted\"}"],"ok":false}
+REAL NG i2c 80 {"col":"備考","text":"i2c","gap":80,"cursor":["R040 備考","R040 備考"],"mode":"パネル","edit":null,"panel":"panel-columns","changedAfterEnter":[],"ok":false}
+REAL NG i2c 250 {"col":"備考","text":"i2c","gap":250,"cursor":["R040 備考","R040 備考"],"mode":"パネル","edit":null,"panel":"panel-columns","changedAfterEnter":[],"ok":false}
+REAL NG Inductor 80 {"col":"部品名","text":"Inductor","gap":80,"cursor":["R040 部品名","R040 部品名"],"mode":"パネル","edit":null,"panel":"panel-issue","changedAfterEnter":[],"ok":false}
+REAL NG Inductor 250 {"col":"部品名","text":"Inductor","gap":250,"cursor":["R040 部品名","R040 部品名"],"mode":"パネル","edit":null,"panel":"panel-issue","changedAfterEnter":[],"ok":false}
+REAL OK coil 80 {"col":"部品名","text":"coil","gap":80,"cursor":["R040 部品名","R040 部品名"],"mode":"編集","edit":"coil","panel":null,"changedAfterEnter":["R040:{\"name\":\"coil\"}"],"ok":true}
+REAL OK coil 250 {"col":"部品名","text":"coil","gap":250,"cursor":["R040 部品名","R040 部品名"],"mode":"編集","edit":"coil","panel":null,"changedAfterEnter":["R040:{\"name\":\"coil\"}"],"ok":true}
+REAL OK ADP3338 80 {"col":"型式","text":"ADP3338","gap":80,"cursor":["R040 型式","R040 型式"],"mode":"編集","edit":"ADP3338","panel":null,"changedAfterEnter":["R040:{\"model\":\"ADP3338\"}"],"ok":true}
+REAL OK ADP3338 250 {"col":"型式","text":"ADP3338","gap":250,"cursor":["R040 型式","R040 型式"],"mode":"編集","edit":"ADP3338","panel":null,"changedAfterEnter":["R040:{\"model\":\"ADP3338\"}"],"ok":true}
+REAL OK K1 80 {"col":"回路記号","text":"K1","gap":80,"cursor":["R040 回路記号","R040 回路記号"],"mode":"編集","edit":"K1","panel":null,"changedAfterEnter":["R040:{\"ref\":\"K1\"}"],"ok":true}
+REAL OK K1 250 {"col":"回路記号","text":"K1","gap":250,"cursor":["R040 回路記号","R040 回路記号"],"mode":"編集","edit":"K1","panel":null,"changedAfterEnter":["R040:{\"ref\":\"K1\"}"],"ok":true}
+REAL OK knob 80 {"col":"部品名","text":"knob","gap":80,"cursor":["R040 部品名","R040 部品名"],"mode":"編集","edit":"knob","panel":null,"changedAfterEnter":["R040:{\"name\":\"knob\"}"],"ok":true}
+REAL OK knob 250 {"col":"部品名","text":"knob","gap":250,"cursor":["R040 部品名","R040 部品名"],"mode":"編集","edit":"knob","panel":null,"changedAfterEnter":["R040:{\"name\":\"knob\"}"],"ok":true}
+R 150 {"wait":150,"panelAtType":null,"panelAfterType":null,"promptVal":null,"rows":[80,80],"r40model":"rMY4N-NEW","newRows":[],"toast":"保存しました（編集は自動で保存されています）"}
+R 300 {"wait":300,"panelAtType":null,"panelAfterType":null,"promptVal":null,"rows":[80,80],"r40model":"rMY4N-NEW","newRows":[],"toast":"保存しました（編集は自動で保存されています）"}
+R 380 {"wait":380,"panelAtType":null,"panelAfterType":null,"promptVal":null,"rows":[80,80],"r40model":"rMY4N-NEW","newRows":[],"toast":"保存しました（編集は自動で保存されています）"}
+R 420 {"wait":420,"panelAtType":"panel-prompt","panelAfterType":"panel-prompt","promptVal":"MY4N-NEW","rows":[80,81],"r40model":"E32-D11 2M","newRows":["R081:MY4N-NEW"],"toast":"R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"}
+R 450 {"wait":450,"panelAtType":"panel-prompt","panelAfterType":"panel-prompt","promptVal":"MY4N-NEW","rows":[80,81],"r40model":"E32-D11 2M","newRows":["R081:MY4N-NEW"],"toast":"R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"}
+R 500 {"wait":500,"panelAtType":"panel-prompt","panelAfterType":"panel-prompt","promptVal":"MY4N-NEW","rows":[80,81],"r40model":"E32-D11 2M","newRows":["R081:MY4N-NEW"],"toast":"R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"}
+R 700 {"wait":700,"panelAtType":"panel-prompt","panelAfterType":"panel-prompt","promptVal":"MY4N-NEW","rows":[80,81],"r40model":"E32-D11 2M","newRows":["R081:MY4N-NEW"],"toast":"R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"}
+--- console/page errors (33-real): 0 (uniq 0)

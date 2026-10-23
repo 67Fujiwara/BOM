@@ -1,0 +1,418 @@
+{
+  "build": [
+    {
+      "col": "型式",
+      "text": "J7KN-10",
+      "memo": "V4-01",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "J7KN-10",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 146
+    },
+    {
+      "col": "型式",
+      "text": "J7KN-10",
+      "memo": "V4-01",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "J7KN-10",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 5
+    },
+    {
+      "col": "型式",
+      "text": "K8AK-AS1",
+      "memo": "V4-01",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "K8AK-AS1",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 16
+    },
+    {
+      "col": "型式",
+      "text": "K8AK-AS1",
+      "memo": "V4-01",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "K8AK-AS1",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 20
+    },
+    {
+      "col": "型式",
+      "text": "ADP3338",
+      "memo": "V4-02",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "ADP3338",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 10
+    },
+    {
+      "col": "型式",
+      "text": "ADP3338",
+      "memo": "V4-02",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "ADP3338",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 19
+    },
+    {
+      "col": "部品名",
+      "text": "coil",
+      "memo": "V4-02",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "coil",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 17
+    },
+    {
+      "col": "部品名",
+      "text": "coil",
+      "memo": "V4-02",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "coil",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 1
+    },
+    {
+      "col": "部品名",
+      "text": "knob",
+      "memo": "V3-01",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "knob",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 2
+    },
+    {
+      "col": "部品名",
+      "text": "knob",
+      "memo": "V3-01",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "knob",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 58
+    },
+    {
+      "col": "型式",
+      "text": "DRV8833",
+      "memo": "V3-01",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "DRV8833",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 5
+    },
+    {
+      "col": "型式",
+      "text": "DRV8833",
+      "memo": "V3-01",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "DRV8833",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 3
+    },
+    {
+      "col": "型式",
+      "text": "NJM2904",
+      "memo": "V3-01",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "NJM2904",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 4
+    },
+    {
+      "col": "型式",
+      "text": "NJM2904",
+      "memo": "V3-01",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "NJM2904",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 48
+    },
+    {
+      "col": "部品名",
+      "text": "xtal",
+      "memo": "英単語",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "xtal",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 34
+    },
+    {
+      "col": "部品名",
+      "text": "xtal",
+      "memo": "英単語",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "xtal",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 2
+    },
+    {
+      "col": "型式",
+      "text": "S1",
+      "memo": "Shift+S＋数字",
+      "gap": 45,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "S1",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 1
+    },
+    {
+      "col": "型式",
+      "text": "S1",
+      "memo": "Shift+S＋数字",
+      "gap": 120,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "S1",
+      "panel": null,
+      "chips": "",
+      "toast": "",
+      "diff": [],
+      "maxLag": 1
+    }
+  ]
+}

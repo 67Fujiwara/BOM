@@ -1,0 +1,41 @@
+rows with 3 answers [
+  'R005', 'R006',
+  'R007', 'R008',
+  'R010', 'R011',
+  'R014', 'R015',
+  'R017', 'R019'
+]
+issue publish → 指摘 1 件 を公開しました
+Ctrl+. A ["購買の提案 ALT-R005 を適用して置換（I-006）","型式の前後に空白があります: 前後の空白を削除","型式の前後に空白があります: 確認済みにする（x）","型式の前後に空白があります: あとで（Shift+→）"]
+new R081
+publish → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 7（Rev.2・3） を公開しました
+(a) R081:quoted:adopt=-:{"reconfirm":false}:q=[["S1",8870,"keep"],["S2",100,"proposal"],["S3",10512,"keep"]]
+PASS W4-1 全社の回答がある行の置換で 据え置き・提案値 → 見積済 :: R081:quoted:adopt=-:{"reconfirm":false}:q=[["S1",8870,"keep"],["S2",100,"proposal"],["S3",10512,"keep"]]
+design a → R081 を 立花エレテック で採用（スコア 98 / 最安）
+r R006 R006 の置き換え品 R082 を作りました（公開すると R006 は置換済になります。Ctrl+Z で戻す）
+publish → [変更セット（2 行: R006, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を公開しました
+(b) R082:quoting:adopt=-:{"reconfirm":false}:q=[["S1",null,"requote"],["S2",15088,"keep"],["S3",13542,"keep"]]
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-28）
+(b) after rough R082:quoting:adopt=-:{"reconfirm":false,"requote":false}:q=[["S1",null,""],["S2",15088,"keep"],["S3",13542,"keep"]] downloads 3
+(b) new row in request files: ["依頼No|P-2026-041-S1-1|宛先|因幡電機"]
+PASS W4-2 要再確認で「再見積」を選んだ商社に、概算見積の依頼を出せる :: ["依頼No|P-2026-041-S1-1|宛先|因幡電機"]
+bulk → 採用 67 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 6
+採用 67 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 6
+publish → [変更セット（1 行: R007）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.5） を公開しました
+(c) after publish R007:submitted:adopt=-:{"pmPending":false,"contested":false,"leadNG":false,"requote":true}:q=[["S1",null,""],["S2",null,""],["S3",null,""]]
+(c) Ctrl+. ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+(c) after keep R007:quoted:adopt=-:{"pmPending":false,"contested":false,"leadNG":false,"requote":false}:q=[["S1",28664,""],["S2",34098,""],["S3",33103,""]]
+(c) design a → R007 を 因幡電機 で採用（スコア 99.2 / 最安）
+(c) after a R007:selected:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"requote":false}:q=[["S1",28664,""],["S2",34098,""],["S3",33103,""]]
+PASS W4-3 再見積要を「据え置き（旧見積を有効に戻す）」にすると選定できる状態に戻る :: R007:selected:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"requote":false}:q=[["S1",28664,""],["S2",34098,""],["S3",33103,""]]
+issue → 指摘 1 件 を公開しました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 行 1（Rev.6） を公開しました
+(d) after fix publish R008:selected:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"reconfirm":true}:q=[["S1",43427,""],["S2",52001,""],["S3",44133,""]]
+(d) after reconfirm (adopted 因幡電機 requote) R008:quoting:adopt=-:{"pmPending":false,"contested":false,"leadNG":false,"reconfirm":false}:q=[["S1",null,"requote"],["S2",52001,"keep"],["S3",44133,"keep"]]
+PASS W4-4 採用商社を再見積にしたら、その商社の空の見積のまま選定済・採用が残らない :: R008:quoting:adopt=-:{"pmPending":false,"contested":false,"leadNG":false,"reconfirm":false}:q=[["S1",null,"requote"],["S2",52001,"keep"],["S3",44133,"keep"]]
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+(d) after answer R008:quoted:adopt=-:{"pmPending":false,"contested":false,"leadNG":false,"reconfirm":false}:q=[["S1",50000,"requote"],["S2",52001,"keep"],["S3",44133,"keep"]] ball 購買
+(d) in design 4? false
+== 4/4 PASS

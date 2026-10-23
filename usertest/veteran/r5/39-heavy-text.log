@@ -1,0 +1,19 @@
+build OK J7KN-10@45 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 146
+build OK J7KN-10@120 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 5
+build OK K8AK-AS1@45 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 16
+build OK K8AK-AS1@120 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 20
+build OK ADP3338@45 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 10
+build OK ADP3338@120 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 19
+build OK coil@45 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 17
+build OK coil@120 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+build OK knob@45 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 2
+build OK knob@120 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 58
+build OK DRV8833@45 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 5
+build OK DRV8833@120 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+build OK NJM2904@45 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 4
+build OK NJM2904@120 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 48
+build OK xtal@45 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 34
+build OK xtal@120 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 2
+build OK S1@45 | 型式 | mode 編集 edit "S1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+build OK S1@120 | 型式 | mode 編集 edit "S1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+build errors []

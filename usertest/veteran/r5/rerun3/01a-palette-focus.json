@@ -1,0 +1,1204 @@
+{
+  "palette": {
+    "design": {
+      "checked": 109,
+      "notFirst": []
+    },
+    "purchasing": {
+      "checked": 109,
+      "notFirst": []
+    },
+    "pm": {
+      "checked": 109,
+      "notFirst": []
+    }
+  },
+  "recent": {
+    "emptyQueryTop": [
+      "コンパクト表示切替",
+      "ダークモード切替",
+      "読み込み前に戻す（退避したデータに戻す）"
+    ],
+    "query切替Top": [
+      "コンパクト表示切替",
+      "ダークモード切替"
+    ]
+  },
+  "help": {
+    "start": {
+      "st": 0,
+      "sh": 1382,
+      "ch": 461
+    },
+    "down2": {
+      "st": 80,
+      "sh": 1382,
+      "ch": 461
+    },
+    "pgdn": {
+      "st": 501,
+      "sh": 1382,
+      "ch": 461
+    },
+    "space": {
+      "st": 921,
+      "sh": 1382,
+      "ch": 461
+    },
+    "end": {
+      "st": 921,
+      "sh": 1382,
+      "ch": 461
+    },
+    "shiftSpace": {
+      "st": 921,
+      "sh": 1382,
+      "ch": 461
+    },
+    "home": {
+      "st": 0,
+      "sh": 1382,
+      "ch": 461
+    },
+    "j": {
+      "st": 40,
+      "sh": 1382,
+      "ch": 461
+    }
+  },
+  "tab": [
+    {
+      "name": "goto",
+      "k": "Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "prompt-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "goto",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "prompt-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "goto",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "prompt-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "palette",
+      "k": "Tab",
+      "panelBefore": "panel-palette",
+      "panelAfter": "panel-palette",
+      "active": {
+        "tag": "palette-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パレット"
+    },
+    {
+      "name": "palette",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-palette",
+      "panelAfter": "panel-palette",
+      "active": {
+        "tag": "palette-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パレット"
+    },
+    {
+      "name": "palette",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-palette",
+      "panelAfter": "panel-palette",
+      "active": {
+        "tag": "palette-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パレット"
+    },
+    {
+      "name": "wizard",
+      "k": "Tab",
+      "panelBefore": "panel-wizard",
+      "panelAfter": "panel-wizard",
+      "active": {
+        "tag": "wizard-id",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "wizard",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-wizard",
+      "panelAfter": "panel-wizard",
+      "active": {
+        "tag": "wizard-id",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "wizard",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-wizard",
+      "panelAfter": "panel-wizard",
+      "active": {
+        "tag": "wizard-id",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "import",
+      "k": "Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "import",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "import",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "inbox",
+      "k": "Tab",
+      "panelBefore": "panel-inbox",
+      "panelAfter": "panel-inbox",
+      "active": {
+        "tag": "inbox-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "inbox",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-inbox",
+      "panelAfter": "panel-inbox",
+      "active": {
+        "tag": "inbox-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "inbox",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-inbox",
+      "panelAfter": "panel-inbox",
+      "active": {
+        "tag": "inbox-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "settingsEdit",
+      "k": "Tab",
+      "panelBefore": "panel-settings",
+      "panelAfter": "panel-settings",
+      "active": {
+        "tag": "settings-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "settingsEdit",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-settings",
+      "panelAfter": "panel-settings",
+      "active": {
+        "tag": "settings-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "settingsEdit",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-settings",
+      "panelAfter": "panel-settings",
+      "active": {
+        "tag": "settings-input",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "confirm",
+      "k": "Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "BODY",
+        "inDlg": false
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "confirm",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "BODY",
+        "inDlg": false
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "confirm",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-prompt",
+      "panelAfter": "panel-prompt",
+      "active": {
+        "tag": "BODY",
+        "inDlg": false
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "reply",
+      "k": "Tab",
+      "panelBefore": null,
+      "panelAfter": "panel-replyIssue",
+      "active": {
+        "tag": "reply-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "reply",
+      "k": "Shift+Tab",
+      "panelBefore": null,
+      "panelAfter": "panel-replyIssue",
+      "active": {
+        "tag": "reply-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "reply",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": null,
+      "panelAfter": "panel-replyIssue",
+      "active": {
+        "tag": "reply-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "issueText",
+      "k": "Tab",
+      "panelBefore": "panel-issue",
+      "panelAfter": "panel-issue",
+      "active": {
+        "tag": "issue-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "issueText",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-issue",
+      "panelAfter": "panel-issue",
+      "active": {
+        "tag": "issue-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "issueText",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-issue",
+      "panelAfter": "panel-issue",
+      "active": {
+        "tag": "issue-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "quotesImport",
+      "k": "Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "quotesImport",
+      "k": "Shift+Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    },
+    {
+      "name": "quotesImport",
+      "k": "Tab+Tab+Tab",
+      "panelBefore": "panel-import",
+      "panelAfter": "panel-import",
+      "active": {
+        "tag": "import-text",
+        "inDlg": true
+      },
+      "gridFilter": "",
+      "mode": "パネル"
+    }
+  ],
+  "leak": [
+    {
+      "ctx": "nav",
+      "k": "Control+d",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+f",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+h",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+j",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+l",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+n",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+o",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+r",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+t",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+u",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+w",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F1",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F3",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F5",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F6",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F7",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F11",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "F12",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Alt+Home",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Shift+Delete",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Shift+I",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Shift+J",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Shift+N",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Shift+T",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Tab",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Plus",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+Minus",
+      "prevented": false
+    },
+    {
+      "ctx": "nav",
+      "k": "Control+0",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+d",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+f",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+h",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+j",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+l",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+n",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+o",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+r",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+t",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+u",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+w",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F1",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F3",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F5",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F6",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F7",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F11",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "F12",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Alt+Home",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Shift+Delete",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Shift+I",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Shift+J",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Shift+N",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Shift+T",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Tab",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Plus",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+Minus",
+      "prevented": false
+    },
+    {
+      "ctx": "edit",
+      "k": "Control+0",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+d",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+f",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+h",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+j",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+l",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+n",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+o",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+r",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+t",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+u",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+w",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F1",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F3",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F5",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F6",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F7",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F11",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "F12",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Alt+Home",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Shift+Delete",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Shift+I",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Shift+J",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Shift+N",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Shift+T",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Tab",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Plus",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+Minus",
+      "prevented": false
+    },
+    {
+      "ctx": "palette",
+      "k": "Control+0",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+d",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+f",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+h",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+j",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+l",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+n",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+o",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+r",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+t",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+u",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+w",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F1",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F3",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F5",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F6",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F7",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F11",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "F12",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Alt+Home",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Shift+Delete",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Shift+I",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Shift+J",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Shift+N",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Shift+T",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Tab",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Plus",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+Minus",
+      "prevented": false
+    },
+    {
+      "ctx": "filter",
+      "k": "Control+0",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+d",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+f",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+h",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+j",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+l",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+n",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+o",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+r",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+t",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+u",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+w",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F1",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F3",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F5",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F6",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F7",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F11",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "F12",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Alt+Home",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Shift+Delete",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Shift+I",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Shift+J",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Shift+N",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Shift+T",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Tab",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Plus",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+Minus",
+      "prevented": false
+    },
+    {
+      "ctx": "wizard",
+      "k": "Control+0",
+      "prevented": false
+    }
+  ],
+  "ctrlEnter2": {
+    "subs0": 1,
+    "subs1": 1,
+    "panelStillOpen": "panel-prompt",
+    "toast": "選んで Enter で確定します（Esc で取り消し）"
+  },
+  "paletteRun": [
+    {
+      "typed": "見積回答を取り込む",
+      "panel": "panel-prompt",
+      "title": "どの商社の回答ですか1 S1 因幡電機2 S2 立花エレテック3 S3 ミスミ1 〜 数字で選ぶEnter 選択中を確定Esc 取り消し",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "match": true
+    },
+    {
+      "typed": "正式見積を依頼（社外）",
+      "panel": "panel-prompt",
+      "title": "正式見積依頼書（社外）を出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります1 やめる2 依頼書を作る1 〜 数字で選ぶEnter ",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "match": true
+    },
+    {
+      "typed": "商社を追加",
+      "panel": "panel-prompt",
+      "title": "商社を追加（名前）Enter 確定Esc 取り消し",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "match": true
+    },
+    {
+      "typed": "ルールを追加",
+      "panel": "panel-rule",
+      "title": "ルールを追加1 部品名 の前後空白チェック（警告）Enter 実行↑ / ↓ 選択Esc 閉じる",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "match": true
+    },
+    {
+      "typed": "ショートカット一覧",
+      "panel": "panel-help",
+      "title": "ショートカット一覧迷ったら Ctrl+K で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は Ct",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "match": true
+    },
+    {
+      "typed": "案件設定を確定（PM）",
+      "panel": null,
+      "title": "",
+      "toast": "権限なし（案件設定の確定は PM）",
+      "match": true
+    },
+    {
+      "typed": "この行だけ重みを変える",
+      "panel": "panel-weights",
+      "title": "この行だけ重みを変える R030 （いまは案件の既定）価格 40納期 30実績 20条件 10← −5→ +5Delete 案件の既定に戻すEsc 閉じる",
+      "toast": "権限なし（案件設定の確定は PM）",
+      "match": true
+    },
+    {
+      "typed": "退避したデータを書き出す",
+      "panel": null,
+      "title": "",
+      "toast": "退避したデータはありません",
+      "match": true
+    },
+    {
+      "typed": "読み込み前に戻す",
+      "panel": null,
+      "title": "",
+      "toast": "退避したデータはありません",
+      "match": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+CRASH submissions 末尾 {} | after import |  | %o %s %s TypeError: Cannot read properties of undefined (reading 'name') at Main (http://localhost:5173/src/App.tsx:268:
+CRASH submissions 末尾 summary 無し | after import |  | %o %s %s TypeError: Cannot read properties of undefined (reading 'added') at http://localhost:5173/src/App.tsx:273:30 at
+CRASH submissions 末尾 at=5 | after import |  | %o %s %s TypeError: p.submissions.at(...).at.slice is not a function at Main (http://localhost:5173/src/App.tsx:270:43) 
+CRASH rules regex pattern="(" | after import |  | %o %s %s SyntaxError: Invalid regular expression: /(/: Unterminated group at new RegExp (<anonymous>) at checkRow (http:
+CRASH rules regex when="[" | after import |  | %o %s %s SyntaxError: Invalid regular expression: /[/: Unterminated character class at new RegExp (<anonymous>) at check
+ok    rules message={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.receivedLot={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.adoptReason={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.adoptedSupplierId={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH row.lastChangeCause={} | design:Space | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | %o %s %s Error: Objects are not valid as a React child (found: object with keys {a}). If you meant to render a collectio
+ok    row.replacedBy=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.replaces={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.publishedRev="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.ltbRequest=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.removal={kind:5} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.flags.pmReason={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.flags.importMismatch={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.flags.countermeasure={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.fromIssue={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.quotedAt=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.statusChangedAt=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.dueAt=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.scoreSnapshot="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].proposal={model:{}} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].proposal=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].replies[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].answer={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].field={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    decisions[0].text={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH caseDecisions open 型違い | design:7 | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | %o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection
+ok    events 末尾 at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers handledMakers 正常＋onTimeRate="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers color={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers order="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    project.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    project.id 数字だけ "123" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.budget="1e400" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.currency={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    members.design="x".repeat(5000) |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+--- console/page errors (35): 38 (uniq 14)
+   error | fresh | %o  %s  %s  TypeError: Cannot read properties of undefined (reading 'name')     at Main (http://localhost:5173/src/App.tsx:268:34)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)     at renderWithHooks (http://localhost:5
+   error | fresh | TypeError: Cannot read properties of undefined (reading 'name')     at Main (http://localhost:5173/src/App.tsx:268:34)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)     at renderWithHooks (http://localhost:5173/node_mod
+   error | fresh | %o  %s  %s  TypeError: Cannot read properties of undefined (reading 'added')     at http://localhost:5173/src/App.tsx:273:30     at Main (http://localhost:5173/src/App.tsx:274:13)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:202
+   error | fresh | TypeError: Cannot read properties of undefined (reading 'added')     at http://localhost:5173/src/App.tsx:273:30     at Main (http://localhost:5173/src/App.tsx:274:13)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)     a
+   error | fresh | %o  %s  %s  TypeError: p.submissions.at(...).at.slice is not a function     at Main (http://localhost:5173/src/App.tsx:270:43)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)     at renderWithHooks (http://localhost:5173/
+   error | fresh | TypeError: p.submissions.at(...).at.slice is not a function     at Main (http://localhost:5173/src/App.tsx:270:43)     at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:20259:20)     at renderWithHooks (http://localhost:5173/node_modules
+   error | fresh | %o  %s  %s  SyntaxError: Invalid regular expression: /(/: Unterminated group     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:54:22)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/model/sele
+   error | fresh | SyntaxError: Invalid regular expression: /(/: Unterminated group     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:54:22)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/model/selectors.ts:11:
+   error | fresh | %o  %s  %s  SyntaxError: Invalid regular expression: /[/: Unterminated character class     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:53:94)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/
+   error | fresh | SyntaxError: Invalid regular expression: /[/: Unterminated character class     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:53:94)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/model/select
+   error | fresh | %o  %s  %s  Error: Objects are not valid as a React child (found: object with keys {a}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInv
+   error | fresh | Error: Objects are not valid as a React child (found: object with keys {a}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInvalidObjectTy
+   error | fresh | %o  %s  %s  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInva
+   error | fresh | Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInvalidObjectTyp

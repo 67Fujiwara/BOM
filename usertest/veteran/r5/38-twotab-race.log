@@ -1,0 +1,4 @@
+{"case":"1 normal","toastA":"編集中に案件が別のタブで置き換わったので、入力「A-while-B-imports」は保存していません","otherR030":"表示灯 白"}
+{"case":"2 race x10","wroteIntoOther":0,"recs":[{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":"表示灯 白","toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":"表示灯 白","toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"},{"v":null,"toastA":"保存しました（編集は自動で保存されています）"}]}
+{"case":"3 before storage event","toastA":"保存しました（編集は自動で保存されています）","otherR030":"A-while-B-imports","header":"P-OTHER別案件納期 あと29日（必要日 あと19日）概"}
+--- console/page errors (38): 0 (uniq 0)

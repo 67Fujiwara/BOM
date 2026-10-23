@@ -1,0 +1,13 @@
+name knob ["R040.name: \"ファイバユニット\" → \"knob\""]
+maker jst ["R040.maker: \"オムロン\" → \"jst\""]
+name nand ["R040.name: \"ファイバユニット\" → \"nand\""]
+name ssr ["R040.name: \"ファイバユニット\" → \"ssr\""]
+model NJM2904 ["R040.model: \"E32-D11 2M\" → \"NJM2904\""]
+maker JST ["R040.maker: \"オムロン\" → \"JST\""]
+model STM32F103 ["R040.model: \"E32-D11 2M\" → \"STM32F103\""]
+model DRV8833 ["R040.model: \"E32-D11 2M\" → \"DRV8833\""]
+model ADP3338 ["R040.model: \"E32-D11 2M\" → \"ADP3338\""]
+altPolicy ka ["R040.altPolicy: \"同等品可\" → \"可\""]
+model 2SC1815 ["R040.model: \"E32-D11 2M\" → \"SC1815\""]
+f1 {"case":"f then 1","st":{"mode":"nav","editValue":"","cursorRow":"R040","cellFilter":{"col":"name","value":"ファイバユニット"}},"editorInDom":0,"vis":{"rendered":true,"top":153,"bottom":187,"wTop":119,"wBottom":870,"inView":true,"left":522,"right":718,"wLeft":220,"wRight":1440,"hInView":true},"afterTyping":{"mode":"edit","editValue":"Z"},"savedName":"Z","active":"gridwrap"}
+--- console/page errors (04b): 0 (uniq 0)

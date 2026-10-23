@@ -1,0 +1,202 @@
+dev NG xnxnxn@60 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 11
+dev NG xnxnxn@150 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 2
+dev NG xnxnxn@300 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 2
+dev NG xnxnxn@450 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 2
+dev NG xnxnxn@600 | mode ナビ edit null | cur R016 部品名 → R041 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 1
+dev NG xjxjxj@60 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 0
+dev NG xjxjxj@150 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 1
+dev NG xjxjxj@300 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 0
+dev NG xjxjxj@450 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 40
+dev NG xjxjxj@600 | mode ナビ edit null | cur R016 部品名 → R022 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 1
+dev NG hjhjhj@60 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 91
+dev NG hjhjhj@150 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 1
+dev NG hjhjhj@300 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 10
+dev NG hjhjhj@450 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 76
+dev OK hjhjhj@600 | mode ナビ edit null | cur R040 部品名 → R043 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true ; R041.hidden:false→true ; R042.hidden:false→true | toast R042 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 147
+dev NG hkhk@60 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 57
+dev NG hkhk@150 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 301
+dev NG hkhk@300 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 80
+dev NG hkhk@450 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 118
+dev OK hkhk@600 | mode ナビ edit null | cur R040 部品名 → R038 部品名 | view view-1 | panel null | chips  | diff R039.hidden:false→true ; R040.hidden:false→true | toast R039 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 13
+dev NG ajaj@60 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 273
+dev NG ajaj@150 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 114
+dev NG ajaj@300 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 5
+dev NG ajaj@450 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 60
+dev OK ajaj@600 | mode ナビ edit null | cur R040 型式 → R042 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 ; R041.status:"quoted"→"se | toast R041 を 立花エレテック で採用（スコア 94 / 在庫即納） | lag 0
+dev OK s4@60 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 0
+dev OK s4@150 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 0
+dev OK s4@300 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 3
+dev OK s4@450 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 175
+dev OK s4@600 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 4
+dev OK Dj@60 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+dev OK Dj@150 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+dev OK Dj@300 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+dev OK Dj@450 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 92
+dev OK Dj@600 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 1
+dev NG DjDj@60 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 72
+dev NG DjDj@150 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 16
+dev NG DjDj@300 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+dev NG DjDj@450 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 55
+dev OK DjDj@600 | mode ナビ edit null | cur R040 型式 → R042 型式 | view view-1 | panel null | chips  | diff R081:+new ; R082:+new ; order changed | toast R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 15
+dev NG nxnx@60 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 6
+dev NG nxnx@150 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 1
+dev NG nxnx@300 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 0
+dev NG nxnx@450 | mode 編集 edit "nx" | cur R016 部品名 → R016 型式 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 35
+dev NG nxnx@600 | mode ナビ edit null | cur R016 部品名 → R009 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 0
+dev OK fj@60 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 15
+dev OK fj@150 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 25
+dev OK fj@300 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 7
+dev OK fj@450 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 15
+dev OK fj@600 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 0
+dev NG ojoj(購買3ロット)@60 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 8
+dev NG ojoj(購買3ロット)@150 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 8
+dev NG ojoj(購買3ロット)@300 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 4
+dev NG ojoj(購買3ロット)@450 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 2
+dev NG ojoj(購買3ロット)@600 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 4
+dev NG ijij(購買3ロット)@60 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 29
+dev NG ijij(購買3ロット)@150 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 4
+dev NG ijij(購買3ロット)@300 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 5
+dev NG ijij(購買3ロット)@450 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 0
+dev NG ijij(購買3ロット)@600 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 4
+dev NG Xn(購買)@60 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 81
+dev NG Xn(購買)@150 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 1
+dev NG Xn(購買)@300 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 4
+dev NG Xn(購買)@450 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 142
+dev OK Xn(購買)@600 | mode ナビ edit null | cur R040 ロット → R054 必要数 | view view-1 | panel null | chips  | diff  | toast R054 の差分を確認済にしました（購買として） | lag 345
+dev NG x→j→coil@60 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 650
+dev NG x→j→coil@150 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 170
+dev NG x→j→coil@300 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 114
+dev NG x→j→coil@450 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 19
+dev NG x→j→coil@600 | mode パネル edit null | cur R016 部品名 → R009 部品名 | view view-4 | panel panel-columns | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 130
+dev NG h→Analog@60 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 265
+dev NG h→Analog@150 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 137
+dev NG h→Analog@300 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 57
+dev NG h→Analog@450 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 1
+dev NG h→Analog@600 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 7
+dev NG h→↓→snap@60 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 274
+dev NG h→↓→snap@150 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 151
+dev NG h→↓→snap@300 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 83
+dev NG h→↓→snap@450 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 277
+dev NG h→↓→snap@600 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 98
+dev NG h→Esc@60 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+dev NG h→Esc@150 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 3
+dev NG h→Esc@300 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+dev NG h→Esc@450 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+dev NG h→Esc@600 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 22
+dev NG h→Backspace@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+dev NG h→Backspace@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+dev NG h→Backspace@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 5
+dev NG h→Backspace@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+dev NG h→Backspace@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+dev NG A→Enter@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+dev NG A→Enter@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+dev NG A→Enter@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+dev NG A→Enter@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 1
+dev NG A→Enter@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+dev OK x→Tab@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 1
+dev OK x→Tab@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+dev OK x→Tab@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+dev OK x→Tab@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 3
+dev OK x→Tab@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+dev errors []
+build NG xnxnxn@60 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 18
+build NG xnxnxn@150 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 18
+build NG xnxnxn@300 | mode 編集 edit "nxnxn" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 1
+build NG xnxnxn@450 | mode ナビ edit null | cur R016 部品名 → R041 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 3
+build NG xnxnxn@600 | mode ナビ edit null | cur R016 部品名 → R041 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 12
+build NG xjxjxj@60 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 1
+build NG xjxjxj@150 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 3
+build NG xjxjxj@300 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 1
+build NG xjxjxj@450 | mode 編集 edit "jxjxj" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 3
+build NG xjxjxj@600 | mode ナビ edit null | cur R016 部品名 → R022 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 6
+build NG hjhjhj@60 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 26
+build NG hjhjhj@150 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 8
+build NG hjhjhj@300 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 3
+build NG hjhjhj@450 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 2
+build OK hjhjhj@600 | mode ナビ edit null | cur R040 部品名 → R043 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true ; R041.hidden:false→true ; R042.hidden:false→true | toast R042 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 19
+build NG hkhk@60 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 1
+build NG hkhk@150 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 1
+build NG hkhk@300 | mode 編集 edit "khk" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 1
+build OK hkhk@450 | mode ナビ edit null | cur R040 部品名 → R038 部品名 | view view-1 | panel null | chips  | diff R039.hidden:false→true ; R040.hidden:false→true | toast R039 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 2
+build OK hkhk@600 | mode ナビ edit null | cur R040 部品名 → R038 部品名 | view view-1 | panel null | chips  | diff R039.hidden:false→true ; R040.hidden:false→true | toast R039 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 7
+build NG ajaj@60 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 0
+build NG ajaj@150 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 1
+build NG ajaj@300 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 3
+build NG ajaj@450 | mode 編集 edit "jaj" | cur R040 型式 → R040 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用（スコア 97.8） | lag 0
+build OK ajaj@600 | mode ナビ edit null | cur R040 型式 → R042 型式 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.adoptReason:undefined→"拮抗" ; R040.scoreSnapshot:undefined→97.8 ; R041.status:"quoted"→"se | toast R041 を 立花エレテック で採用（スコア 94 / 在庫即納） | lag 0
+build OK s4@60 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 1
+build OK s4@150 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 2
+build OK s4@300 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 0
+build OK s4@450 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 0
+build OK s4@600 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 4
+build OK Dj@60 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+build OK Dj@150 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+build OK Dj@300 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+build OK Dj@450 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 3
+build OK Dj@600 | mode ナビ edit null | cur R040 型式 → R041 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+build NG DjDj@60 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 1
+build NG DjDj@150 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 0
+build NG DjDj@300 | mode 編集 edit "jDj" | cur R040 型式 → R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 1
+build OK DjDj@450 | mode ナビ edit null | cur R040 型式 → R042 型式 | view view-1 | panel null | chips  | diff R081:+new ; R082:+new ; order changed | toast R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 1
+build OK DjDj@600 | mode ナビ edit null | cur R040 型式 → R042 型式 | view view-1 | panel null | chips  | diff R081:+new ; R082:+new ; order changed | toast R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す） | lag 1
+build NG nxnx@60 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 0
+build NG nxnx@150 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 3
+build NG nxnx@300 | mode 編集 edit "nxnx" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff  | toast 保存しました（編集は自動で保存されています） | lag 17
+build NG nxnx@450 | mode ナビ edit null | cur R016 部品名 → R009 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 1
+build NG nxnx@600 | mode ナビ edit null | cur R016 部品名 → R009 メーカ | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補） | lag 0
+build OK fj@60 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 0
+build OK fj@150 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 1
+build OK fj@300 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 4
+build OK fj@450 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 1
+build OK fj@600 | mode ナビ edit null | cur R040 メーカ → R042 メーカ | view view-1 | panel null | chips メーカ = オムロン ✕ | diff  | toast メーカ =「オムロン」で絞り込みました（f か Esc で解除） | lag 0
+build NG ojoj(購買3ロット)@60 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 1
+build NG ojoj(購買3ロット)@150 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 0
+build NG ojoj(購買3ロット)@300 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 0
+build NG ojoj(購買3ロット)@450 | mode 編集 edit "joj" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 2
+build NG ojoj(購買3ロット)@600 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 4
+build NG ijij(購買3ロット)@60 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 7
+build NG ijij(購買3ロット)@150 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 1
+build NG ijij(購買3ロット)@300 | mode 編集 edit "jij" | cur R001 ロット → R001 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 0
+build NG ijij(購買3ロット)@450 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 21
+build NG ijij(購買3ロット)@600 | mode ナビ edit null | cur R001 ロット → R003 ロット | view view-3 | panel null | chips  | diff  | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | lag 0
+build NG Xn(購買)@60 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 1
+build NG Xn(購買)@150 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 0
+build NG Xn(購買)@300 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 2
+build NG Xn(購買)@450 | mode 編集 edit "nxn" | cur R040 ロット → R040 ロット | view view-1 | panel null | chips  | diff  | toast R040 の差分を確認済にしました（購買として） | lag 0
+build OK Xn(購買)@600 | mode ナビ edit null | cur R040 ロット → R054 必要数 | view view-1 | panel null | chips  | diff  | toast R054 の差分を確認済にしました（購買として） | lag 6
+build NG x→j→coil@60 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 0
+build NG x→j→coil@150 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 0
+build NG x→j→coil@300 | mode 編集 edit "jcoil" | cur R016 部品名 → R016 部品名 | view view-4 | panel null | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 2
+build NG x→j→coil@450 | mode パネル edit null | cur R016 部品名 → R009 部品名 | view view-4 | panel panel-columns | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 0
+build NG x→j→coil@600 | mode パネル edit null | cur R016 部品名 → R009 部品名 | view view-4 | panel panel-columns | chips  | diff R016.ackRules:[]→["rule.model.cp30"] | toast 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください | lag 1
+build NG h→Analog@60 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 15
+build NG h→Analog@150 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 0
+build NG h→Analog@300 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 0
+build NG h→Analog@450 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 0
+build NG h→Analog@600 | mode パネル edit null | cur R040 メーカ → R040 メーカ | view view-1 | panel panel-adopt | chips  | diff R040.hidden:false→true | toast 1〜3 で商社を選んでください | lag 3
+build NG h→↓→snap@60 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 0
+build NG h→↓→snap@150 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 3
+build NG h→↓→snap@300 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 0
+build NG h→↓→snap@450 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 40
+build NG h→↓→snap@600 | mode 編集 edit "nap" | cur R040 部品名 → R041 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff R040.hidden:false→true | toast 部品名 で昇順に並べました（もう一度で解除） | lag 7
+build NG h→Esc@60 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+build NG h→Esc@150 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+build NG h→Esc@300 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+build NG h→Esc@450 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+build NG h→Esc@600 | mode ナビ edit null | cur R040 備考 → — | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 0
+build NG h→Backspace@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+build NG h→Backspace@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 11
+build NG h→Backspace@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+build NG h→Backspace@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+build NG h→Backspace@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast このセルはもう空です | lag 0
+build NG A→Enter@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+build NG A→Enter@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+build NG A→Enter@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+build NG A→Enter@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+build NG A→Enter@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | toast R040 を 因幡電機 で採用 | lag 0
+build OK x→Tab@60 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+build OK x→Tab@150 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 1
+build OK x→Tab@300 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+build OK x→Tab@450 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 0
+build OK x→Tab@600 | mode ナビ edit null | cur R040 備考 → R040 備考 | view view-1 | panel null | chips  | diff  | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません | lag 4
+build errors []

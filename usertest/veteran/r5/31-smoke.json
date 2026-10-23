@@ -1,0 +1,306 @@
+{
+  "dev": [
+    {
+      "col": "メーカ",
+      "text": "Analog",
+      "memo": "メーカ名（A＋n）",
+      "gap": 60,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 メーカ",
+        "R040 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "1〜3 で商社を選んでください",
+      "diff": [],
+      "maxLag": 18,
+      "afterEnter": {
+        "diff": [
+          "R040.status:\"quoted\"→\"selected\"",
+          "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+          "R040.orderQty:null→2",
+          "R040.adoptedSupplierId:undefined→\"S1\"",
+          "R040.scoreSnapshot:undefined→97.8"
+        ],
+        "cursor": "R040 メーカ",
+        "panel": null,
+        "toast": "R040 を 因幡電機 で採用"
+      }
+    },
+    {
+      "col": "メーカ",
+      "text": "Analog",
+      "memo": "メーカ名（A＋n）",
+      "gap": 300,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 メーカ",
+        "R040 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "1〜3 で商社を選んでください",
+      "diff": [],
+      "maxLag": 0,
+      "afterEnter": {
+        "diff": [
+          "R040.status:\"quoted\"→\"selected\"",
+          "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+          "R040.orderQty:null→2",
+          "R040.adoptedSupplierId:undefined→\"S1\"",
+          "R040.scoreSnapshot:undefined→97.8"
+        ],
+        "cursor": "R040 メーカ",
+        "panel": null,
+        "toast": "R040 を 因幡電機 で採用"
+      }
+    },
+    {
+      "col": "メーカ",
+      "text": "Knowles",
+      "memo": "メーカ名（K＋n）",
+      "gap": 60,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 メーカ",
+        "R039 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "nowles",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "maxLag": 0,
+      "afterEnter": {
+        "diff": [
+          "R039.working:undefined→{\"maker\":\"nowles\"}"
+        ],
+        "cursor": "R040 メーカ",
+        "panel": null,
+        "toast": "保存しました（編集は自動で保存されています）"
+      }
+    },
+    {
+      "col": "メーカ",
+      "text": "Knowles",
+      "memo": "メーカ名（K＋n）",
+      "gap": 300,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 メーカ",
+        "R039 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "nowles",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "maxLag": 1,
+      "afterEnter": {
+        "diff": [
+          "R039.working:undefined→{\"maker\":\"nowles\"}"
+        ],
+        "cursor": "R040 メーカ",
+        "panel": null,
+        "toast": "保存しました（編集は自動で保存されています）"
+      }
+    },
+    {
+      "col": "型式",
+      "text": "sn74hc595",
+      "memo": "小文字型式（s＋n）",
+      "gap": 60,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R054 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-columns",
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "R054 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R054.hidden:false→true"
+      ],
+      "maxLag": 12,
+      "afterEnter": {
+        "diff": [
+          "R054.hidden:false→true"
+        ],
+        "cursor": "R054 型式",
+        "panel": "panel-columns",
+        "toast": "ID と部品名は隠せません"
+      }
+    },
+    {
+      "col": "型式",
+      "text": "sn74hc595",
+      "memo": "小文字型式（s＋n）",
+      "gap": 300,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R016 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-columns",
+      "chips": "",
+      "toast": "R016 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R016.hidden:false→true"
+      ],
+      "maxLag": 0,
+      "afterEnter": {
+        "diff": [
+          "R016.hidden:false→true"
+        ],
+        "cursor": "R016 型式",
+        "panel": "panel-columns",
+        "toast": "ID と部品名は隠せません"
+      }
+    },
+    {
+      "col": "備考",
+      "text": "i2c",
+      "memo": "小文字＋数字",
+      "gap": 60,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "view": [
+        "view-1",
+        "view-2"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-columns",
+      "chips": "",
+      "toast": "権限なし（購買の列）",
+      "diff": [],
+      "maxLag": 0,
+      "afterEnter": {
+        "diff": [],
+        "cursor": "R040 備考",
+        "panel": "panel-columns",
+        "toast": "ID と部品名は隠せません"
+      }
+    },
+    {
+      "col": "備考",
+      "text": "i2c",
+      "memo": "小文字＋数字",
+      "gap": 300,
+      "ok": false,
+      "okNav": true,
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "view": [
+        "view-1",
+        "view-2"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-columns",
+      "chips": "",
+      "toast": "権限なし（購買の列）",
+      "diff": [],
+      "maxLag": 2,
+      "afterEnter": {
+        "diff": [],
+        "cursor": "R040 備考",
+        "panel": "panel-columns",
+        "toast": "ID と部品名は隠せません"
+      }
+    },
+    {
+      "col": "型式",
+      "text": "K8AK-AS1",
+      "memo": "V4-01",
+      "gap": 60,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "K8AK-AS1",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "maxLag": 0
+    },
+    {
+      "col": "型式",
+      "text": "K8AK-AS1",
+      "memo": "V4-01",
+      "gap": 300,
+      "ok": true,
+      "okNav": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "K8AK-AS1",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "maxLag": 1
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+OK  name knob → "knob" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  maker jst → "jst" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name nand → "nand" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name analog → "analog" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name ssr → "ssr" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name hook → "hook" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name relay → "relay" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name fuse → "fuse" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name coil → "coil" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name xtal → "xtal" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name wire → "wire" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name oscillator → "oscillator" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  name inductor → "inductor" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model DRV8833 → "DRV8833" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model STM32F103 → "STM32F103" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model IRF540N → "IRF540N" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model NJM2904 → "NJM2904" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  maker JST → "JST" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  maker KEMET → "KEMET" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model ADP3338 → "ADP3338" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model RC0603 → "RC0603" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model XC6206 → "XC6206" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  maker YAGEO → "YAGEO" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+OK  model MY4N → "MY4N" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  model 2SC1815 → "SC1815" {"view":[1,2],"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  model 1N4148 → "N4148" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  altPolicy ka → "可" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  altPolicy no → "不可" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  unit ko → "個" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  procurement sh → "指定商社" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  altPolicy fuka → "不可" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  unit k → "個" {"cursorRow":["R040","R039"]} 保存しました（編集は自動で保存されています）
+r+type {"case":"r then type new model at 45ms (120ms after r)","afterR":{"mode":"ナビ","cursor":"R040 型式"},"editVal":"rMY4N-NEW","R040":{"status":"quoted","model":"rMY4N-NEW","orig":"E32-D11 2M"},"newRow":"R080","newModel":"TZe-231","toast":"保存しました（編集は自動で保存されています）"}
+r+400+type {"case":"r then type after 400ms","R040":{"status":"quoted","model":"E32-D11 2M"},"newModel":"TZe-231"}
+cmd s 4 {"case":"s then 4 at 60ms (sort → view 4)","mode":"ナビ","editVal":null,"view":[1,4],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":"部品名 で昇順に並べました（もう一度で解除）"}
+cmd x a {"case":"x then a at 60ms (ack → adopt)","mode":"編集","editVal":"xa","view":[1,1],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":""}
+cmd h x {"case":"h then x at 60ms (hide → ack)","mode":"編集","editVal":"hx","view":[1,1],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":""}
+cmd a 9 {"case":"a then 9 at 60ms (adopt → view 9)","mode":"ナビ","editVal":null,"view":[1,9],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":"R040 を 因幡電機 で採用（スコア 97.8）"}
+cmd f 1 {"case":"f then 1 at 60ms (filter → view 1)","mode":"ナビ","editVal":null,"view":[1,1],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":"部品名 =「ファイバユニット」で絞り込みました（f か Esc で解除）"}
+cmd s S {"case":"s then S at 60ms (sort asc → desc (Shift+S))","mode":"編集","editVal":"sS","view":[1,1],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":""}
+cmd c x {"case":"c then x at 60ms (columns → x)","mode":"編集","editVal":"cx","view":[1,1],"sort":{"col":"name","dir":"asc"},"panel":null,"hidden":[0,0],"toast":""}
+adoptBurst 0 {"target":"R004","undoBefore":37,"name":"ab","adopted":null,"status":"quoted","toast":""}
+adoptBurst 205 {"target":"R004","undoBefore":200,"name":"ab","adopted":null,"status":"quoted","toast":""}
+redoAfterBurst {"hiddenBefore":0,"hiddenAfterCtrlY":0,"redoBefore":0,"toast":"やり直す操作がありません"}
+imeInNav {"mode":"ナビ","editVal":null,"name":"ファイバユニット","toast":"保存しました（編集は自動で保存されています）","active":"gridwrap"}
+text NG 9 / 33
+--- console/page errors (04): 0 (uniq 0)

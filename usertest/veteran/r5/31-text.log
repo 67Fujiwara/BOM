@@ -1,0 +1,208 @@
+dev NG Analog@60 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 2
+dev NG Analog@150 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 1
+dev NG Analog@300 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 8
+dev NG Analog@380 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 1
+dev NG Analog@450 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 3
+dev NG Infineon@60 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 2
+dev NG Infineon@150 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 1
+dev NG Infineon@300 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 2
+dev NG Infineon@380 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 1
+dev NG Infineon@450 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 1
+dev NG Knowles@60 | メーカ | mode 編集 edit "nowles" | cur R039 メーカ | view view-1 | panel null | chips  | diff  | afterEnter R039.working:undefined→{"maker":"nowles"} | lag 10
+dev NG Knowles@150 | メーカ | mode 編集 edit "nowles" | cur R039 メーカ | view view-1 | panel null | chips  | diff  | afterEnter R039.working:undefined→{"maker":"nowles"} | lag 71
+dev NG Knowles@300 | メーカ | mode 編集 edit "nowles" | cur R039 メーカ | view view-1 | panel null | chips  | diff  | afterEnter R039.working:undefined→{"maker":"nowles"} | lag 3
+dev NG Knowles@380 | メーカ | mode 編集 edit "nowles" | cur R039 メーカ | view view-1 | panel null | chips  | diff  | afterEnter R039.working:undefined→{"maker":"nowles"} | lag 8
+dev NG Knowles@450 | メーカ | mode 編集 edit "nowles" | cur R039 メーカ | view view-1 | panel null | chips  | diff  | afterEnter R039.working:undefined→{"maker":"nowles"} | lag 19
+dev NG Skyworks@60 | メーカ | mode 編集 edit "kyworks" | cur R040 メーカ | view view-1 | panel null | chips 並び替え メーカ ▼ ✕ | diff  | afterEnter R040.working:undefined→{"maker":"kyworks"} | lag 301
+dev NG Skyworks@150 | メーカ | mode 編集 edit "kyworks" | cur R040 メーカ | view view-1 | panel null | chips 並び替え メーカ ▼ ✕ | diff  | afterEnter R040.working:undefined→{"maker":"kyworks"} | lag 80
+dev NG Skyworks@300 | メーカ | mode 編集 edit "kyworks" | cur R040 メーカ | view view-1 | panel null | chips 並び替え メーカ ▼ ✕ | diff  | afterEnter R040.working:undefined→{"maker":"kyworks"} | lag 75
+dev NG Skyworks@380 | メーカ | mode パネル edit null | cur R039 メーカ | view view-1 | panel panel-weights | chips 並び替え メーカ ▼ ✕ | diff  | afterEnter  | lag 111
+dev NG Skyworks@450 | メーカ | mode 編集 edit "kyworks" | cur R040 メーカ | view view-1 | panel null | chips 並び替え メーカ ▼ ✕ | diff  | afterEnter R040.working:undefined→{"maker":"kyworks"} | lag 227
+dev NG Intersil@60 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 38
+dev NG Intersil@150 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 4
+dev NG Intersil@300 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 5
+dev NG Intersil@380 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 10
+dev NG Intersil@450 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 9
+dev NG Inductor@60 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 6
+dev NG Inductor@150 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 2
+dev NG Inductor@300 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 21
+dev NG Inductor@380 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 16
+dev NG Inductor@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 4
+dev NG Antenna@60 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 3
+dev NG Antenna@150 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 4
+dev NG Antenna@300 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 12
+dev NG Antenna@380 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 2
+dev NG Antenna@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 11
+dev NG Anode@60 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 28
+dev NG Anode@150 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 5
+dev NG Anode@300 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 11
+dev NG Anode@380 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 5
+dev NG Anode@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 29
+dev NG Sn-Ag-Cu@60 | 備考 | mode 編集 edit "n-Ag-Cu" | cur R040 備考 | view view-1 | panel null | chips 並び替え 備考 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"note":"n-Ag-Cu"} | lag 17
+dev NG Sn-Ag-Cu@150 | 備考 | mode 編集 edit "n-Ag-Cu" | cur R040 備考 | view view-1 | panel null | chips 並び替え 備考 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"note":"n-Ag-Cu"} | lag 2
+dev NG Sn-Ag-Cu@300 | 備考 | mode 編集 edit "n-Ag-Cu" | cur R040 備考 | view view-1 | panel null | chips 並び替え 備考 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"note":"n-Ag-Cu"} | lag 12
+dev NG Sn-Ag-Cu@380 | 備考 | mode 編集 edit "n-Ag-Cu" | cur R040 備考 | view view-1 | panel null | chips 並び替え 備考 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"note":"n-Ag-Cu"} | lag 17
+dev NG Sn-Ag-Cu@450 | 備考 | mode 編集 edit "n-Ag-Cu" | cur R040 備考 | view view-1 | panel null | chips 並び替え 備考 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"note":"n-Ag-Cu"} | lag 49
+dev NG snubber@60 | 部品名 | mode 編集 edit "nubber" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"nubber"} | lag 169
+dev NG snubber@150 | 部品名 | mode 編集 edit "nubber" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"nubber"} | lag 14
+dev NG snubber@300 | 部品名 | mode 編集 edit "nubber" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"nubber"} | lag 15
+dev NG snubber@380 | 部品名 | mode 編集 edit "nubber" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"nubber"} | lag 3
+dev NG snubber@450 | 部品名 | mode 編集 edit "nubber" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"nubber"} | lag 108
+dev NG skip@60 | 部品名 | mode 編集 edit "p" | cur R039 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R039.working:undefined→{"name":"p"} | lag 794
+dev NG skip@150 | 部品名 | mode 編集 edit "kip" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"kip"} | lag 277
+dev NG skip@300 | 部品名 | mode 編集 edit "kip" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"kip"} | lag 165
+dev NG skip@380 | 部品名 | mode 編集 edit "kip" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"kip"} | lag 2
+dev NG skip@450 | 部品名 | mode 編集 edit "kip" | cur R040 部品名 | view view-1 | panel null | chips 並び替え 部品名 ▲ ✕ | diff  | afterEnter R040.working:undefined→{"name":"kip"} | lag 359
+dev NG sn74hc595@60 | 型式 | mode パネル edit null | cur R054 型式 | view view-4 | panel panel-columns | chips 並び替え 型式 ▲ ✕ | diff R054.hidden:false→true | afterEnter R054.hidden:false→true | lag 899
+dev NG sn74hc595@150 | 型式 | mode パネル edit null | cur R054 型式 | view view-4 | panel panel-columns | chips 並び替え 型式 ▲ ✕ | diff R054.hidden:false→true | afterEnter R054.hidden:false→true | lag 400
+dev NG sn74hc595@300 | 型式 | mode パネル edit null | cur R054 型式 | view view-4 | panel panel-columns | chips 並び替え 型式 ▲ ✕ | diff R054.hidden:false→true | afterEnter R054.hidden:false→true | lag 18
+dev NG sn74hc595@380 | 型式 | mode パネル edit null | cur R054 型式 | view view-4 | panel panel-columns | chips 並び替え 型式 ▲ ✕ | diff R054.hidden:false→true | afterEnter R054.hidden:false→true | lag 34
+dev NG sn74hc595@450 | 型式 | mode パネル edit null | cur R054 型式 | view view-4 | panel panel-columns | chips 並び替え 型式 ▲ ✕ | diff R054.hidden:false→true | afterEnter R054.hidden:false→true | lag 311
+dev NG cn1@60 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 29
+dev NG cn1@150 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 4
+dev NG cn1@300 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 3
+dev NG cn1@380 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 1
+dev NG cn1@450 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 84
+dev NG i2c@60 | 備考 | mode パネル edit null | cur R040 備考 | view view-2 | panel panel-columns | chips  | diff  | afterEnter  | lag 4
+dev NG i2c@150 | 備考 | mode パネル edit null | cur R040 備考 | view view-2 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG i2c@300 | 備考 | mode パネル edit null | cur R040 備考 | view view-2 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG i2c@380 | 備考 | mode パネル edit null | cur R040 備考 | view view-2 | panel panel-columns | chips  | diff  | afterEnter  | lag 1
+dev NG i2c@450 | 備考 | mode パネル edit null | cur R040 備考 | view view-2 | panel panel-columns | chips  | diff  | afterEnter  | lag 18
+dev NG r1@60 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 1
+dev NG r1@150 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 0
+dev NG r1@300 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 0
+dev NG r1@380 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 1
+dev NG r1@450 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 6
+dev NG c10@60 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 3
+dev NG c10@150 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG c10@300 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG c10@380 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG c10@450 | 回路記号 | mode パネル edit null | cur R040 回路記号 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 0
+dev NG x7r@60 | 備考 | mode パネル edit null | cur R003 部品名 | view view-7 | panel panel-prompt | chips  | diff  | afterEnter  | lag 0
+dev NG x7r@150 | 備考 | mode パネル edit null | cur R003 部品名 | view view-7 | panel panel-prompt | chips  | diff  | afterEnter  | lag 3
+dev NG x7r@300 | 備考 | mode パネル edit null | cur R003 部品名 | view view-7 | panel panel-prompt | chips  | diff  | afterEnter  | lag 4
+dev NG x7r@380 | 備考 | mode パネル edit null | cur R003 部品名 | view view-7 | panel panel-prompt | chips  | diff  | afterEnter  | lag 2
+dev NG x7r@450 | 備考 | mode パネル edit null | cur R003 部品名 | view view-7 | panel panel-prompt | chips  | diff  | afterEnter  | lag 3
+dev NG k1@60 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 1
+dev NG k1@150 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 2
+dev NG k1@300 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 0
+dev NG k1@380 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 0
+dev NG k1@450 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 1
+dev OK K1@60 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK K1@150 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK K1@300 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 2
+dev OK K1@380 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG K1@450 | 回路記号 | mode ナビ edit null | cur R039 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 0
+dev OK J1@60 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J1@150 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J1@300 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J1@380 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 3
+dev NG J1@450 | 回路記号 | mode ナビ edit null | cur R041 回路記号 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 9
+dev OK J12@60 | 回路記号 | mode 編集 edit "J12" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 4
+dev OK J12@150 | 回路記号 | mode 編集 edit "J12" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 29
+dev OK J12@300 | 回路記号 | mode 編集 edit "J12" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J12@380 | 回路記号 | mode 編集 edit "J12" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG J12@450 | 回路記号 | mode ナビ edit null | cur R041 回路記号 | view view-2 | panel null | chips  | diff  | afterEnter  | lag 1
+dev OK N1@60 | 回路記号 | mode 編集 edit "N1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK N1@150 | 回路記号 | mode 編集 edit "N1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK N1@300 | 回路記号 | mode 編集 edit "N1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK N1@380 | 回路記号 | mode 編集 edit "N1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 4
+dev NG N1@450 | 回路記号 | mode ナビ edit null | cur R061 型式 | view view-1 | panel null | chips  | diff  | afterEnter  | lag 101
+dev OK K3HB-X@60 | 型式 | mode 編集 edit "K3HB-X" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK K3HB-X@150 | 型式 | mode 編集 edit "K3HB-X" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK K3HB-X@300 | 型式 | mode 編集 edit "K3HB-X" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK K3HB-X@380 | 型式 | mode 編集 edit "K3HB-X" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG K3HB-X@450 | 型式 | mode 編集 edit "HB-X" | cur R001 型式 | view view-3 | panel null | chips  | diff  | afterEnter R001.working:undefined→{"model":"HB-X"} | lag 1
+dev OK J7KN-10@60 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J7KN-10@150 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK J7KN-10@300 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK J7KN-10@380 | 型式 | mode 編集 edit "J7KN-10" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG J7KN-10@450 | 型式 | mode 編集 edit "-10" | cur R061 型式 | view view-1 | panel null | chips  | diff  | afterEnter R061.working:undefined→{"model":"-10"} | lag 1
+dev OK K8AK-AS1@60 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 2
+dev OK K8AK-AS1@150 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK K8AK-AS1@300 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 26
+dev OK K8AK-AS1@380 | 型式 | mode 編集 edit "K8AK-AS1" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG K8AK-AS1@450 | 型式 | mode ナビ edit null | cur R001 型式 | view view-8 | panel null | chips 再発行対象 0 行 | diff R001.flags:{"leadNG":false}→{"leadNG":false,"pmPending":false,"contested":false} ; R001.orderQty:null→1 ; R001.scoreSnapshot:88→99.2 | afterEnter R001.flags:{"leadNG":false}→{"leadNG":false,"pmPending":false,"contested":false} ; R001.orderQty:null→1 ; R001.scoreSnapshot:88→99.2 | lag 3
+dev OK ADP3338@60 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK ADP3338@150 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK ADP3338@300 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK ADP3338@380 | 型式 | mode 編集 edit "ADP3338" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 4
+dev NG ADP3338@450 | 型式 | mode ナビ edit null | cur R040 型式 | view view-8 | panel null | chips 再発行対象 0 行 | diff R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S3" ; R040.adoptReason:undefined→"実績/品質" | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S3" ; R040.adoptReason:undefined→"実績/品質" | lag 1
+dev OK AD8605@60 | 型式 | mode 編集 edit "AD8605" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK AD8605@150 | 型式 | mode 編集 edit "AD8605" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK AD8605@300 | 型式 | mode 編集 edit "AD8605" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK AD8605@380 | 型式 | mode 編集 edit "AD8605" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG AD8605@450 | 型式 | mode パネル edit null | cur R040 型式 | view view-1 | panel panel-adopt | chips  | diff  | afterEnter R040.status:"quoted"→"selected" ; R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false} ; R040.orderQty:null→2 ; R040.adoptedSupplierId:undefined→"S1" ; R040.scoreSnapshot:undefined→97.8 | lag 0
+dev OK INA219@60 | 型式 | mode 編集 edit "INA219" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK INA219@150 | 型式 | mode 編集 edit "INA219" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK INA219@300 | 型式 | mode 編集 edit "INA219" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK INA219@380 | 型式 | mode 編集 edit "INA219" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG INA219@450 | 型式 | mode パネル edit null | cur R040 型式 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 1
+dev OK IRF540N@60 | 型式 | mode 編集 edit "IRF540N" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK IRF540N@150 | 型式 | mode 編集 edit "IRF540N" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK IRF540N@300 | 型式 | mode 編集 edit "IRF540N" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 23
+dev OK IRF540N@380 | 型式 | mode 編集 edit "IRF540N" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 83
+dev NG IRF540N@450 | 型式 | mode パネル edit null | cur R040 型式 | view view-1 | panel panel-issue | chips  | diff  | afterEnter  | lag 17
+dev OK wago@60 | メーカ | mode 編集 edit "wago" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 1
+dev OK wago@150 | メーカ | mode 編集 edit "wago" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 0
+dev OK wago@300 | メーカ | mode 編集 edit "wago" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 11
+dev OK wago@380 | メーカ | mode 編集 edit "wago" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 0
+dev NG wago@450 | メーカ | mode パネル edit null | cur R040 メーカ | view view-1 | panel panel-weights | chips  | diff  | afterEnter  | lag 6
+dev OK wire@60 | 部品名 | mode 編集 edit "wire" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 2
+dev OK wire@150 | 部品名 | mode 編集 edit "wire" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 14
+dev OK wire@300 | 部品名 | mode 編集 edit "wire" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK wire@380 | 部品名 | mode 編集 edit "wire" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev NG wire@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-weights | chips  | diff  | afterEnter  | lag 0
+dev OK coil@60 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK coil@150 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 4
+dev OK coil@300 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK coil@380 | 部品名 | mode 編集 edit "coil" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev NG coil@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 5
+dev OK cable@60 | 部品名 | mode 編集 edit "cable" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 5
+dev OK cable@150 | 部品名 | mode 編集 edit "cable" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 4
+dev OK cable@300 | 部品名 | mode 編集 edit "cable" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 2
+dev OK cable@380 | 部品名 | mode 編集 edit "cable" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 16
+dev NG cable@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-columns | chips  | diff  | afterEnter  | lag 15
+dev OK knob@60 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 21
+dev OK knob@150 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 16
+dev OK knob@300 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 9
+dev OK knob@380 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 4
+dev OK knob@450 | 部品名 | mode 編集 edit "knob" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK DRV8833@60 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 5
+dev OK DRV8833@150 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK DRV8833@300 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK DRV8833@380 | 型式 | mode 編集 edit "DRV8833" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 6
+dev NG DRV8833@450 | 型式 | mode 編集 edit "V8833" | cur R081 型式 | view view-1 | panel null | chips  | diff R081:+new ; order changed | afterEnter R081:+new ; order changed | lag 204
+dev OK STM32F103@60 | 型式 | mode 編集 edit "STM32F103" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK STM32F103@150 | 型式 | mode 編集 edit "STM32F103" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK STM32F103@300 | 型式 | mode 編集 edit "STM32F103" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK STM32F103@380 | 型式 | mode 編集 edit "STM32F103" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 3
+dev NG STM32F103@450 | 型式 | mode 編集 edit "TM32F103" | cur R040 型式 | view view-1 | panel null | chips 並び替え 型式 ▼ ✕ | diff  | afterEnter R040.working:undefined→{"model":"TM32F103"} | lag 87
+dev OK NJM2904@60 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK NJM2904@150 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK NJM2904@300 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK NJM2904@380 | 型式 | mode 編集 edit "NJM2904" | cur R040 型式 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG NJM2904@450 | 型式 | mode 編集 edit "M2904" | cur R062 型式 | view view-1 | panel null | chips  | diff  | afterEnter R062.working:undefined→{"model":"M2904"} | lag 27
+dev OK hook@60 | 部品名 | mode 編集 edit "hook" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK hook@150 | 部品名 | mode 編集 edit "hook" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK hook@300 | 部品名 | mode 編集 edit "hook" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 11
+dev OK hook@380 | 部品名 | mode 編集 edit "hook" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev NG hook@450 | 部品名 | mode ナビ edit null | cur R039 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | afterEnter R040.hidden:false→true | lag 41
+dev OK relay@60 | 部品名 | mode 編集 edit "relay" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK relay@150 | 部品名 | mode 編集 edit "relay" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK relay@300 | 部品名 | mode 編集 edit "relay" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK relay@380 | 部品名 | mode 編集 edit "relay" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 4
+dev NG relay@450 | 部品名 | mode パネル edit null | cur R040 部品名 | view view-1 | panel panel-prompt | chips  | diff  | afterEnter  | lag 0
+dev OK fuse@60 | 部品名 | mode 編集 edit "fuse" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK fuse@150 | 部品名 | mode 編集 edit "fuse" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK fuse@300 | 部品名 | mode 編集 edit "fuse" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK fuse@380 | 部品名 | mode 編集 edit "fuse" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+dev NG fuse@450 | 部品名 | mode 編集 edit "use" | cur R040 部品名 | view view-1 | panel null | chips 部品名 = ファイバユニット ✕ | diff  | afterEnter R040.working:undefined→{"name":"use"} | lag 0
+dev OK xtal@60 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 3
+dev OK xtal@150 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+dev OK xtal@300 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev OK xtal@380 | 部品名 | mode 編集 edit "xtal" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+dev NG xtal@450 | 部品名 | mode 編集 edit "tal" | cur R040 部品名 | view view-1 | panel null | chips  | diff  | afterEnter R040.working:undefined→{"name":"tal"} | lag 0
+dev OK YAGEO@60 | メーカ | mode 編集 edit "YAGEO" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 5
+dev OK YAGEO@150 | メーカ | mode 編集 edit "YAGEO" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 1
+dev OK YAGEO@300 | メーカ | mode 編集 edit "YAGEO" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 0

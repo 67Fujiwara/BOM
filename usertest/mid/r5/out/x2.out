@@ -1,0 +1,28 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+A(reject+undo) B(h before order) C(対策不成立 ordered) R001 R002 R004
+o A → R001: 発注済にしました
+o C → R004: 発注済にしました
+A issue publish → 指摘 1 件 を公開しました
+PM Shift+Y A → R001: 却下
+A after reject R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"受入"} issues=I-006:発注後変更依頼:wontfix:ruled ball 購買
+PM 7 has A after reject? false
+purch Ctrl+Z #1 → 戻せません: I-006 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください | A ordered ord true
+purch Ctrl+Z #2 → 戻せません: I-006 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください | A ordered ord true
+purch Ctrl+Z #3 → 元に戻す: セル編集 | A ordered ord true
+purch Ctrl+Z #4 → 元に戻す: 発注済 | A ordered ord true
+purch Ctrl+Z #5 → 元に戻す: 発注済 | A formalQuoted ord false
+FAIL X2-1 PM が発注後変更依頼を却下した行は、購買の Ctrl+Z でも発注済を外せない :: R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"受入"} issues=I-006:発注後変更依頼:wontfix:ruled
+B raise h → 元に戻す: 発注済 | publish → 指摘 1 件 を公開しました
+B after h R002:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false} issues=I-007:発注後変更依頼:open ball PM
+PM 7 has B? true
+PM y B → R002: 承認
+B after PM y R002:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"orderCancelApproved":true} issues=I-007:発注後変更依頼:inProgress:ruled ball 購買
+o B → I-007（発注後変更依頼）の結論が出ていません。対応・確認が済んでから発注します
+B R002:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"orderCancelApproved":true} issues=I-007:発注後変更依頼:inProgress:ruled
+B issue panel (purch) ["1 返信","5 この指摘からルールを作る","6 見送り（理由）"]
+B after wontfix R002:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"orderCancelApproved":true} issues=I-007:発注後変更依頼:wontfix:ruled
+o B → R002: 発注済にしました
+un-order B → R002: 発注済を外しました
+FAIL X2-2 発注前に承認された依頼の印で、発注後に承認なしで発注を外せない :: R002:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"orderCancelApproved":false} issues=I-007:発注後変更依頼:wontfix:ruled
+== 0/2 PASS

@@ -9,6 +9,8 @@ export const URL = 'http://localhost:5173/'
 export async function launch(opts = {}) {
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
   const context = await browser.newContext({ viewport: opts.viewport ?? { width: 1440, height: 900 }, colorScheme: opts.colorScheme ?? 'light', acceptDownloads: true, permissions: ['clipboard-read', 'clipboard-write'] })
+  // テスト用: ?fresh=… で開いたときだけ、アプリより先に保存データを消す（pagehide で書き戻されるのを避ける）
+  await context.addInitScript(() => { if (location.search.includes('fresh=')) { try { localStorage.clear(); sessionStorage.clear() } catch {} ; history.replaceState(null, '', location.pathname) } })
   const page = await context.newPage()
   const errors = []
   attachErrors(page, errors)
@@ -20,10 +22,10 @@ export function attachErrors(page, errors, tag = '') {
 }
 
 export async function fresh(page, role) {
-  await page.goto(URL)
-  await page.evaluate(() => { localStorage.clear(); sessionStorage.clear() })
-  await page.goto(URL)
+  await page.goto(URL + '?fresh=' + Date.now())
   await page.getByTestId('grid').waitFor()
+  const leftover = await page.evaluate(() => sessionStorage.length + ':' + Object.keys(localStorage).join(','))
+  if (!/^0:/.test(leftover)) { /* 初期化で書かれるものは許す */ }
   if (role && role !== 'design') await page.getByTestId(`role-${role}`).click()
   await page.locator('.gridwrap').focus()
 }

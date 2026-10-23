@@ -1,0 +1,6 @@
+A {"crashAfterImport":1,"steps":[{"i":0,"crash":0,"cur":"P-2026-041","backups":["画面を表示できなかったデータ:P-BAD","JSON 読み込みの前:P-2026-041"],"toast":""}]}
+B {"crashOnLoad":1,"backupsAtCrash":["JSON 読み込みの前:P-2026-041"],"steps":[{"i":0,"crash":0,"cur":"P-2026-041","backups":["画面を表示できなかったデータ:P-GOOD","JSON 読み込みの前:P-2026-041"]}]}
+--- console/page errors (37): 6 (uniq 3)
+   error | fresh | %o  %s  %s  SyntaxError: Invalid regular expression: /(/: Unterminated group     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:54:22)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/model/sele
+   error | fresh | SyntaxError: Invalid regular expression: /(/: Unterminated group     at new RegExp (<anonymous>)     at checkRow (http://localhost:5173/src/model/rules.ts:54:22)     at buildProblems (http://localhost:5173/src/model/views.ts:76:16)     at problemsFor (http://localhost:5173/src/model/selectors.ts:11:
+   dialog | fresh | confirm: 退避したデータ（2026-10-23 05:01・JSON 読み込みの前）に戻します。いまのデータは退避に入れます。よろしいですか？

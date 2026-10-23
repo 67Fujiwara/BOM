@@ -1,0 +1,188 @@
+{
+  "dev": [
+    {
+      "name": "xnxnxn",
+      "role": "design",
+      "gap": 60,
+      "ok": false,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "nxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "maxLag": 2
+    },
+    {
+      "name": "xnxnxn",
+      "role": "design",
+      "gap": 300,
+      "ok": false,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "nxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "maxLag": 1
+    },
+    {
+      "name": "xjxjxj",
+      "role": "design",
+      "gap": 60,
+      "ok": false,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "jxjxj",
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "maxLag": 0
+    },
+    {
+      "name": "xjxjxj",
+      "role": "design",
+      "gap": 300,
+      "ok": false,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "jxjxj",
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "maxLag": 1
+    },
+    {
+      "name": "hjhjhj",
+      "role": "design",
+      "gap": 60,
+      "ok": false,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "jhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "maxLag": 5
+    },
+    {
+      "name": "hjhjhj",
+      "role": "design",
+      "gap": 300,
+      "ok": false,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "jhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "maxLag": 0
+    },
+    {
+      "name": "h→Esc",
+      "role": "design",
+      "gap": 60,
+      "ok": false,
+      "cursor": [
+        "R040 備考",
+        "—"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "maxLag": 0
+    },
+    {
+      "name": "h→Esc",
+      "role": "design",
+      "gap": 300,
+      "ok": false,
+      "cursor": [
+        "R040 備考",
+        "—"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "maxLag": 1
+    }
+  ]
+}

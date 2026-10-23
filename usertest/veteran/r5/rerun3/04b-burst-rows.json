@@ -1,0 +1,122 @@
+[
+  {
+    "col": "name",
+    "text": "knob",
+    "changes": [
+      "R040.name: \"ファイバユニット\" → \"knob\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "maker",
+    "text": "jst",
+    "changes": [
+      "R040.maker: \"オムロン\" → \"jst\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "name",
+    "text": "nand",
+    "changes": [
+      "R040.name: \"ファイバユニット\" → \"nand\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "name",
+    "text": "ssr",
+    "changes": [
+      "R040.name: \"ファイバユニット\" → \"ssr\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "NJM2904",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"NJM2904\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "maker",
+    "text": "JST",
+    "changes": [
+      "R040.maker: \"オムロン\" → \"JST\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "STM32F103",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"STM32F103\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "DRV8833",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"DRV8833\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "ADP3338",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"ADP3338\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "altPolicy",
+    "text": "ka",
+    "changes": [
+      "R040.altPolicy: \"同等品可\" → \"可\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "2SC1815",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"SC1815\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "case": "f then 1",
+    "st": {
+      "mode": "nav",
+      "editValue": "",
+      "cursorRow": "R040",
+      "cellFilter": {
+        "col": "name",
+        "value": "ファイバユニット"
+      }
+    },
+    "editorInDom": 0,
+    "vis": {
+      "rendered": true,
+      "top": 153,
+      "bottom": 187,
+      "wTop": 119,
+      "wBottom": 870,
+      "inView": true,
+      "left": 522,
+      "right": 718,
+      "wLeft": 220,
+      "wRight": 1440,
+      "hInView": true
+    },
+    "afterTyping": {
+      "mode": "edit",
+      "editValue": "Z"
+    },
+    "savedName": "Z",
+    "active": "gridwrap"
+  }
+]

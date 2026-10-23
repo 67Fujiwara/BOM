@@ -1,0 +1,95 @@
+{
+  "V2-05/enter50": {
+    "ms": 5882,
+    "ok": 50,
+    "firstBad": -1,
+    "cursor": "R051 部品名",
+    "mode": "ナビ",
+    "collapsed": []
+  },
+  "V2-05/overwrite30": {
+    "ok": 30,
+    "sample": [
+      "MX10",
+      "MX11",
+      "MX12",
+      "MX13",
+      "MX14",
+      "MX15"
+    ],
+    "cursor": "R031 型式"
+  },
+  "V2-11": {
+    "groupRowsRendered": 0,
+    "bracketSeq": [
+      "R001 型式",
+      "R001 型式",
+      "R001 型式",
+      "R001 型式",
+      "R001 型式"
+    ]
+  },
+  "V2-16": {
+    "cursor": "分類 制御",
+    "vis": {
+      "rendered": true,
+      "top": 119,
+      "bottom": 153,
+      "wTop": 119,
+      "wBottom": 870,
+      "inView": true,
+      "left": 220,
+      "right": 2614,
+      "wLeft": 220,
+      "wRight": 1440,
+      "hInView": false
+    }
+  },
+  "V2-18": {
+    "before": "compact",
+    "afterReload": "compact"
+  },
+  "V2-19": {
+    "overlaps": 0,
+    "of": 15
+  },
+  "V2-06/a": {
+    "toast": "元に戻す: セル編集",
+    "R030": "表示灯 白"
+  },
+  "V2-06/b": {
+    "purchaseToast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+    "undoToast": "元に戻す: セル編集",
+    "note": "",
+    "promised": "2026-12-01"
+  },
+  "V2-07": {
+    "wizard": {
+      "山田, 鈴木": {
+        "accepted": false,
+        "err": "「山田」はいまの設計担当（あなた）です。別の担当者を入れるか空にしてください"
+      },
+      "佐藤, 佐藤": {
+        "accepted": false,
+        "err": "購買と PM に同じ名前「佐藤」があります。役割ごとに別の担当者を入れてください"
+      },
+      "佐藤,": {
+        "accepted": true
+      }
+    },
+    "settings": {
+      "山田,佐藤,山田": {
+        "err": "同じ名前「山田」が複数の役割にあります。役割ごとに別の担当者を入れてください",
+        "stillEditing": 1
+      },
+      ",,": {
+        "err": "担当者の名前を 3 人とも入れてください（未定なら「未定」など）",
+        "stillEditing": 1
+      },
+      "山田,佐藤": {
+        "err": "担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください",
+        "stillEditing": 1
+      }
+    }
+  }
+}

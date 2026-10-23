@@ -1,0 +1,4 @@
+build NG hjhjhj@60 | mode 編集 edit "jhjhj" | cur R040 部品名 → R040 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 209
+build OK hjhjhj@600 | mode ナビ edit null | cur R040 部品名 → R043 部品名 | view view-1 | panel null | chips  | diff R040.hidden:false→true ; R041.hidden:false→true ; R042.hidden:false→true | toast R042 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る） | lag 2
+build OK s4@60 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 1
+build OK s4@600 | mode ナビ edit null | cur R040 型式 → R040 型式 | view view-4 | panel null | chips 並び替え 型式 ▲ ✕ | diff  | toast 型式 で昇順に並べました（もう一度で解除） | lag 28

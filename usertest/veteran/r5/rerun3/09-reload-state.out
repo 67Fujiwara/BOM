@@ -1,0 +1,18 @@
+dev {"before":{"cursor":"R040 メーカ","ths":24,"sorted":1},"after":{"cursor":"R040 メーカ","ths":24,"sorted":1},"undoAfterReload":"元に戻す: セル編集","ss":["bom-pro.history","bom-pro.ui","bom-pro.user"]}
+build {"before":{"cursor":"R040 メーカ","ths":24,"sorted":1},"after":{"cursor":"R040 メーカ","ths":24,"sorted":1},"undoAfterReload":"元に戻す: セル編集","ss":["bom-pro.history","bom-pro.ui","bom-pro.user"]}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5197/
+Call log:
+[2m  - navigating to "http://localhost:5197/", waiting until "load"[22m
+
+    at /home/user/BOM/usertest/veteran/r5/rerun3/09-reload-state.mjs:9:14 {
+  log: [
+    '  - navigating to "http://localhost:5197/", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v22.22.0

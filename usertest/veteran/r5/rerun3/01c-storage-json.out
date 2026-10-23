@@ -1,0 +1,13 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: Cannot read properties of undefined (reading 'length')
+    at eval (eval at evaluate (:370:30), <anonymous>:1:143)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /home/user/BOM/usertest/veteran/r5/rerun3/01c-storage-json.mjs:40:29 {
+  log: []
+}
+
+Node.js v22.22.0

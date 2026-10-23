@@ -1,0 +1,34 @@
+{
+  "A": {
+    "crashAfterImport": 1,
+    "steps": [
+      {
+        "i": 0,
+        "crash": 0,
+        "cur": "P-2026-041",
+        "backups": [
+          "画面を表示できなかったデータ:P-BAD",
+          "JSON 読み込みの前:P-2026-041"
+        ],
+        "toast": ""
+      }
+    ]
+  },
+  "B": {
+    "crashOnLoad": 1,
+    "backupsAtCrash": [
+      "JSON 読み込みの前:P-2026-041"
+    ],
+    "steps": [
+      {
+        "i": 0,
+        "crash": 0,
+        "cur": "P-2026-041",
+        "backups": [
+          "画面を表示できなかったデータ:P-GOOD",
+          "JSON 読み込みの前:P-2026-041"
+        ]
+      }
+    ]
+  }
+}

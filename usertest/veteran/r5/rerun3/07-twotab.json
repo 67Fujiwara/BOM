@@ -1,0 +1,100 @@
+[
+  {
+    "case": "1 same cell conflict",
+    "first": {
+      "mode": "ナビ",
+      "toast": "編集中に案件が別のタブで置き換わったので、入力「A-typing」は保存していません",
+      "ls": "B-33"
+    },
+    "second": {
+      "mode": "編集",
+      "ls": "B-33"
+    }
+  },
+  {
+    "case": "2 undo after other tab",
+    "diffCol": {
+      "toast": "元に戻す: セル編集",
+      "name": "光電センサ 反射",
+      "note": "B-NOTE"
+    },
+    "sameCol": {
+      "toast": "戻せません: R036 の「部品名」 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください",
+      "name": "B-36"
+    }
+  },
+  {
+    "case": "3 B imports JSON while A editing",
+    "aState": {
+      "header": "P-OTHER他の案件納期 あと29日（必要日 あと19日）概算 ¥23,692",
+      "mode": "編集"
+    },
+    "afterEnter": {
+      "mode": "ナビ",
+      "toast": "編集中に案件が別のタブで置き換わったので、入力「A-while-B-imports」は保存していません",
+      "otherR030": "表示灯 白"
+    },
+    "afterSecondEnter": {
+      "otherR030": "表示灯 白",
+      "ids": [
+        "P-OTHER"
+      ]
+    }
+  },
+  {
+    "case": "3b A Ctrl+Z after B replaced workspace",
+    "toast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "otherR030": "表示灯 白"
+  },
+  {
+    "case": "3c B restores backup",
+    "A_ids": [
+      "P-2026-041"
+    ],
+    "A_header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+    "r030": "表示灯 白"
+  },
+  {
+    "case": "4 A undo after B re-imports same JSON",
+    "toast": "元に戻す: セル編集",
+    "r040": "ファイバユニット"
+  },
+  {
+    "case": "5 settings: both PM tabs",
+    "A_due": "2026-11-21",
+    "final_due": "2026-11-21",
+    "final_budget": 2800000,
+    "toastB": "入力は必須です"
+  },
+  {
+    "case": "6 both publish",
+    "revs": [
+      "Rev.1:R001/R002/R003/R004/R005/R006/R007/R008/R009/R010/R011/R012/R013/R014/R015/R016/R017/R018/R019/R020/R021/R022/R023/R024/R025/R026/R027/R028/R029/R030/R031/R032/R033/R034/R035/R036/R037/R038/R039/R040/R041/R042/R043/R044/R045/R046/R047/R048/R049/R050/R051/R052/R053/R054/R055/R056/R057/R058/R059/R060/R061/R062/R063/R064/R065/R066/R067/R068/R069/R070/R071/R072/R073/R074/R075",
+      "Rev.2:R038/R076/R077/R078/R079/R080"
+    ],
+    "ta": "行 6（Rev.2） を公開しました",
+    "tb": "公開するものはありません（PM は y / Shift+Y で決定）",
+    "r038": null,
+    "r039": null
+  },
+  {
+    "case": "7 B deletes row A has open",
+    "crash": 0,
+    "errs": []
+  },
+  {
+    "case": "8 alternate 30 same row",
+    "ls": {
+      "name": "A28",
+      "note": "B29"
+    },
+    "uiA": {
+      "name": "A28",
+      "note": "B29"
+    },
+    "uiB": {
+      "name": "A28",
+      "note": "B29"
+    }
+  }
+]

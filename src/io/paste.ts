@@ -149,7 +149,7 @@ export function parseBomPaste(text: string): PasteResult {
 
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
-  const isTotal = (l: string[]) => l.some((c) => /^(小計|合計|総計|計|total|subtotal)$/i.test(c.trim()))
+  const isTotal = (l: string[]) => l.some(isTotalCell)
   const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
   if (totals) warnings.push(`小計・合計の ${totals} 行は取り込みません`)
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
@@ -219,11 +219,17 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     return { name: ws.name, text: lines.join('\n'), score, rows: lines.length }
   })
   if (!sheets.length) return ''
-  // 見出しの言葉が同じだけあるシートが複数なら、左（先）のシート
-  const best = sheets.reduce((a, b) => (b.score > a.score ? b : a))
+  // 見出しの言葉が同じだけあるシートが複数なら、名前が「旧版・old・コピー」などでないシート → 左（先）のシート
+  const stale = (n: string) => /旧|old|bak|backup|履歴|コピー|copy|削除|廃止|参考/i.test(n)
+  const rank = (x: (typeof sheets)[number]) => x.score * 2 - (stale(x.name) ? 1 : 0)
+  const best = sheets.reduce((a, b) => (rank(b) > rank(a) ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
+  // 見出しのある別のシートがあれば、名前を知らせる（違うシートを読んだと気づけるように）
+  otherSheets = sheets.filter((x) => x !== best && x.score > 0 && x.score >= best.score - 1).map((x) => x.name)
   return best.text
 }
+/** 見出しがあって読まなかったシートの名前（案内用） */
+export let otherSheets: string[] = []
 /** 複数シートの xlsx で読んだシートの名前（案内用） */
 export let lastSheetName: string | null = null
 
@@ -244,4 +250,9 @@ function cellToText(v: unknown): string {
     return ''
   }
   return String(v)
+}
+
+/** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
+export function isTotalCell(c: string): boolean {
+  return /^(小計|合計|総計|計|total|sub\s*total|grand\s*total)(金額|額|数|数量|点数|amount|qty)?\s*[:：]?$/i.test(c.trim())
 }

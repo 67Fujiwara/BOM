@@ -2,6 +2,7 @@ import { useStore, type ViewId } from '@/model/store'
 import { setView, runCommand, commitEdit } from '@/commands/registry'
 import { VIEWS } from '@/model/views'
 import type { ViewModel } from '@/model/selectors'
+import { onCommandCell } from '@/commands/keyboard'
 
 export function Side({ vm }: { vm: ViewModel }) {
   const st = useStore()
@@ -13,7 +14,7 @@ export function Side({ vm }: { vm: ViewModel }) {
         const cls = v.id === 4 && n ? 'n err' : v.id === 7 && n ? 'n warn' : 'n'
         return (
           <div key={v.id} className="view" aria-current={st.view === v.id} onClick={() => setView(v.id as ViewId)} data-testid={`view-${v.id}`}>
-            <span className="k">{v.id}</span>
+            <span className="k" title={st.mode === 'nav' && !onCommandCell(String(v.id)) ? '文字を打てるセルでは数字は値になるので、Alt を押しながら' : undefined}>{st.mode === 'nav' && !onCommandCell(String(v.id)) ? `Alt+${v.id}` : v.id}</span>
             <span>{v.label}</span>
             <span className={cls}>{n}</span>
           </div>

@@ -37,13 +37,17 @@ export function isHoliday(s: string, holidays: string[] = []): boolean {
 }
 /** 営業日を n 日進める */
 export function addBusinessDays(s: string, n: number, holidays: string[] = []): string {
-  let cur = s
-  let left = n
+  // 日付の文字を毎日作り直さず、Date を 1 つ進める（休日の一覧があるときだけ文字にして引く）
+  const set = holidayIndex(holidays).set
+  const d = parse(s)
+  if (Number.isNaN(d.getTime())) return s
+  let left = Math.min(Math.max(0, Math.floor(n)), 3650)
   while (left > 0) {
-    cur = addDays(cur, 1)
-    if (!isHoliday(cur, holidays)) left--
+    d.setDate(d.getDate() + 1)
+    const w = d.getDay()
+    if (w !== 0 && w !== 6 && (set.size === 0 || !set.has(toStr(d)))) left--
   }
-  return cur
+  return toStr(d)
 }
 /** from の翌日から to までの営業日の数（1 日ずつ数えず、週の数と休日の一覧の二分探索で出す） */
 export function businessDaysBetween(from: string, to: string, holidays: string[] = []): number {

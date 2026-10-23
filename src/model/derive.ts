@@ -27,6 +27,31 @@ export function isFixedProcurement(row: Pick<Row, 'procurement'>): boolean {
 }
 
 /** 指定先の商社。指定商社は指定先、客先指定品は購買が見積を入れた商社（無ければそのメーカを扱う第 1 商社） */
+/** メーカ名の表記ゆれ（英字の大小・全角・会社の種類・カナと英字）をそろえる */
+const MAKER_ALIASES: Record<string, string> = {
+  omron: 'オムロン', mitsubishi: '三菱', mitsubishielectric: '三菱', 三菱電機: '三菱', panasonic: 'パナソニック', keyence: 'キーエンス',
+  fujielectric: '富士電機', misumi: 'ミスミ', murata: '村田製作所', murataseisakusho: '村田製作所', rohm: 'ローム', toshiba: '東芝',
+  renesas: 'ルネサス', idec: 'idec', azbil: 'アズビル', hitachi: '日立', yaskawa: '安川電機', phoenixcontact: 'フエニックス・コンタクト',
+  wago: 'ワゴ', taiyoyuden: '太陽誘電', kyocera: '京セラ', nichicon: 'ニチコン', patlite: 'パトライト', nidec: 'ニデック', 日本電産: 'ニデック',
+  schneider: 'シュナイダー', schneiderelectric: 'シュナイダー', siemens: 'シーメンス', abb: 'abb', tdk: 'tdk', smc: 'smc', ckd: 'ckd',
+}
+export function makerKey(m: string): string {
+  const k = m
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/株式会社|有限会社|\(株\)|\(有\)|corporation|corp\.?|co\.,?\s*ltd\.?|ltd\.?|inc\.?|gmbh|[\s・.,、]/g, '')
+  return MAKER_ALIASES[k] ?? k
+}
+/** 商社の取扱メーカにそのメーカが入っているか（表記ゆれ・「三菱」と「三菱電機」のような前方一致も同じとみる） */
+export function handlesMaker(handled: string[], maker: string): boolean {
+  const m = makerKey(maker)
+  if (!m) return false
+  return handled.some((h) => {
+    const k = makerKey(h)
+    return !!k && (k === m || (Math.min(k.length, m.length) >= 2 && (k.startsWith(m) || m.startsWith(k))))
+  })
+}
+
 export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): string | null {
   if (row.procurement === '指定商社') {
     const d = (row.designated ?? '').trim()
@@ -41,7 +66,7 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
     if (live[0]) return live[0].supplierId
     const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
     const cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
-    return (cands.find((x) => x.handledMakers.includes(row.maker)) ?? cands[0])?.id ?? null
+    return (cands.find((x) => handlesMaker(x.handledMakers, row.maker)) ?? cands.find((x) => !x.handledMakers.length) ?? cands[0])?.id ?? null
   }
   return null
 }
@@ -267,5 +292,20 @@ export function decisionExtra(d: { kind?: string; payload?: Record<string, unkno
 /** 指定商社の指定先が辞退（取扱なし）したか */
 export function designatedDeclined(p: Project, row: Row): boolean {
   const d = (row.designated ?? '').trim()
-  return !!d && p.quotes.some((q) => q.rowId === row.id && !q.stale && (q.supplierId === d) && q.leadDays === -1)
+  // 指定先は商社 ID でも商社名でも書ける（画面はどちらも商社名で出す）
+  const id = knownSuppliers.find((x) => x.id === d || x.name === d)?.id ?? d
+  return !!d && p.quotes.some((q) => q.rowId === row.id && !q.stale && q.supplierId === id && q.leadDays === -1)
+}
+/** 商社マスタ（指定先の名前から ID を引くため。ストアが読み込み・変更のたびに渡す） */
+let knownSuppliers: Array<{ id: string; name: string }> = []
+export function setKnownSuppliers(list: Array<{ id: string; name: string }>) {
+  knownSuppliers = list
+}
+
+/** 追加費用が PM の決めた特急・分納の上限を超えているか（超えた額の上限の決定を返す） */
+export function overCap(p: Project, r: Row): { cap: number; decisionId: string } | null {
+  if (r.extraCost == null) return null
+  const d = [...p.decisions].reverse().find((x) => x.rowId === r.id && x.kind === '特急・分納' && typeof x.payload?.amount === 'number')
+  const cap = d?.payload?.amount as number | undefined
+  return d && cap != null && r.extraCost > cap ? { cap, decisionId: d.id } : null
 }

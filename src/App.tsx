@@ -6,7 +6,7 @@ import { Side } from '@/ui/Side'
 import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
-import { commitEdit, handleKeyDown } from '@/commands/registry'
+import { commitEdit, handleKeyDown, keepCursorVisible } from '@/commands/registry'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
@@ -113,14 +113,18 @@ function Main() {
       const s = useStore.getState()
       ws.user = loadUser() ?? s.ws.user
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
+      const before = buildViewModel(s).rows.map((r) => r.id)
       useStore.setState({ ws })
+      keepCursorVisible(before)
     }
     window.addEventListener('storage', onStorage)
     const stop = startSync((ws) => {
       const s = useStore.getState()
       ws.user = s.ws.user
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
+      const before = buildViewModel(s).rows.map((r) => r.id)
       useStore.setState({ ws })
+      keepCursorVisible(before)
     })
     return () => {
       window.removeEventListener('storage', onStorage)

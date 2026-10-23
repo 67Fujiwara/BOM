@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { addDays, businessDaysBetween, isHoliday } from './dates'
+import { addBusinessDays, addDays, businessDaysBetween, isHoliday } from './dates'
 
 function naive(from: string, to: string, holidays: string[]): number {
   let n = 0
@@ -26,5 +26,22 @@ describe('businessDaysBetween', () => {
     for (let i = 0; i < 1000; i++) businessDaysBetween('1970-01-01', '2026-10-23')
     expect(performance.now() - t).toBeLessThan(200)
     expect(businessDaysBetween('1970-01-01', '1970-01-08')).toBe(naive('1970-01-01', '1970-01-08', []))
+  })
+})
+
+describe('addBusinessDays', () => {
+  it('土日・休日を飛ばして進める', () => {
+    const naiveAdd = (s: string, n: number, h: string[]) => {
+      let cur = s
+      let left = n
+      while (left > 0) {
+        cur = addDays(cur, 1)
+        if (!isHoliday(cur, h)) left--
+      }
+      return cur
+    }
+    const h = ['2026-05-04', '2026-05-05', '2026-05-06']
+    for (const s of ['2026-04-29', '2026-05-01', '2026-05-02', '2026-12-30'])
+      for (let n = 0; n < 15; n++) expect(addBusinessDays(s, n, h)).toBe(naiveAdd(s, n, h))
   })
 })

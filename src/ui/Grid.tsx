@@ -127,8 +127,10 @@ export function Grid({ vm }: { vm: ViewModel }) {
     if (st.mode === 'edit' && inputRef.current && document.activeElement !== inputRef.current && !st.panel) inputRef.current.focus()
   })
   useEffect(() => {
-    if (st.mode === 'edit') inputRef.current?.focus()
-    else if (st.mode === 'nav' && !st.panel && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') wrap.current?.focus({ preventScroll: true })
+    if (st.mode === 'edit') {
+      inputRef.current?.focus()
+      if (useStore.getState().editSelectAll) inputRef.current?.select()
+    } else if (st.mode === 'nav' && !st.panel && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') wrap.current?.focus({ preventScroll: true })
   }, [st.mode, st.cursorRow, st.cursorCol, st.panel])
 
   const cols = vm.columns

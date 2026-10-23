@@ -1,6 +1,13 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { useStore, type Panel } from '@/model/store'
 import { KEYMAP, formatKey } from '@/keys/keymap'
+import { onCommandCell } from '@/commands/keyboard'
+
+/** 英字・数字 1 キーの操作は、いまのセルで素のキーが値になるなら Alt 付きで見せる（§14.1） */
+function navKey(k: string): string {
+  if (!/^(Shift\+)?[A-Za-z0-9]$/.test(k) && !/^[^A-Za-z0-9 ]$/.test(k)) return k
+  return onCommandCell(k.slice(-1)) ? k : `Alt+${k}`
+}
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
 import { colsForPanel, paletteItems, WIZ_KEYS } from '@/commands/registry'
@@ -97,7 +104,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                 {it.desc && <span className="desc">{it.desc}</span>}
                 <span className="keys">
                   {it.keys?.map((k) => (
-                    <kbd key={k}>{formatKey(k)}</kbd>
+                    <kbd key={k}>{formatKey(navKey(k))}</kbd>
                   ))}
                 </span>
               </div>
@@ -117,7 +124,7 @@ function PanelBody({ panel }: { panel: Panel }) {
             <p className="muted" style={{ margin: '0 0 10px', fontSize: 12 }}>
               迷ったら <kbd>Ctrl+K</kbd> で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は <kbd>Ctrl+Z</kbd> で戻せます（あなた自身の操作だけ）。
               <br />
-              表の中の英字・数字は、ID・状態・チェック（発注・入荷）の列ではそのまま 1 キー操作、それ以外の列では値の入力です（Excel と同じ）。どの列でも <kbd>Alt</kbd> を押しながらなら 1 キー操作です（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+a</kbd> 推奨で採用、<kbd>Alt+Shift+I</kbd> 指摘、<kbd>Alt+4</kbd> 要確認）。次の問題は <kbd>F8</kbd>、最安で採用は <kbd>Ctrl+Alt+A</kbd>。
+              表の中の英字・数字は、ID・状態・チェック（発注・入荷）の列ではそのまま 1 キー操作、それ以外の列では値の入力です（Excel と同じ）。下の一覧のキーは、いまのセルで押せる形（必要なら Alt 付き）で出しています。PM（書ける列が無い）はどの列でもそのまま 1 キー操作、自分が書けない列では数字はビュー切替です。どの列でも <kbd>Alt</kbd> を押しながらなら 1 キー操作です（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+a</kbd> 推奨で採用、<kbd>Alt+Shift+I</kbd> 指摘、<kbd>Alt+4</kbd> 要確認）。次の問題は <kbd>F8</kbd>、最安で採用は <kbd>Ctrl+Alt+A</kbd>。
             </p>
             <div className="help-cols" data-testid="help">
               {sections.map((sec) => (
@@ -128,7 +135,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                       <span>{b.label}</span>
                       <span className="ks">
                         {b.keys.map((k) => (
-                          <kbd key={k}>{formatKey(k)}</kbd>
+                          <kbd key={k}>{formatKey(b.mode === 'nav' ? navKey(k) : k)}</kbd>
                         ))}
                       </span>
                     </div>
@@ -145,7 +152,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                   <div className="r" key={k}>
                     <span>{l}</span>
                     <span className="ks">
-                      <kbd>{formatKey(k)}</kbd>
+                      <kbd>{formatKey(navKey(k))}</kbd>
                     </span>
                   </div>
                 ))}
@@ -541,7 +548,8 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
       const cur = useStore.getState().panel
       if (cur?.kind !== 'wizard') return
       st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
-      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ`, 'ok')
+      const others = isZip ? pasteIo.otherSheets : []
+      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length ? 'info' : 'ok')
     } catch (err) {
       st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
     }

@@ -116,5 +116,7 @@ export function setStatus(r: Row, s: Row['status']) {
     r.status = s
     r.statusChangedAt = new Date().toISOString()
     r.dueAt = undefined
+    // 概算から取り直す（見積中より前に戻る）なら、前の再交渉は終わり（次の正式依頼で納期NG を見直しの待ちにしない）
+    if (['draft', 'submitted', 'quoting', 'quoted'].includes(s)) r.flags.renegotiating = false
   }
 }

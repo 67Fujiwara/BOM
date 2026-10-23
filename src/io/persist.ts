@@ -83,6 +83,22 @@ function dropOldestBackup(): boolean {
     return false
   }
 }
+/** 退避の一覧をそのまま取っておく / 戻す（置き換えをやめたときに、その前の退避を失わないため） */
+export function backupsSnapshot(): string | null {
+  try {
+    return localStorage.getItem(BACKUP_KEY)
+  } catch {
+    return null
+  }
+}
+export function restoreBackupsSnapshot(raw: string | null) {
+  try {
+    if (raw == null) localStorage.removeItem(BACKUP_KEY)
+    else localStorage.setItem(BACKUP_KEY, raw)
+  } catch {
+    /* 戻せなければ今の退避のまま */
+  }
+}
 /** 退避をすべて消す（容量を空ける。読めなかった保存データの退避も含む） */
 export function clearBackups() {
   try {

@@ -80,3 +80,10 @@ describe('round 5 import cases', () => {
     expect(parseBomPaste("Part\tQ'ty\nRelay\t4").rows[0]).toMatchObject({ name: 'Relay', qtyNeeded: 4 })
   })
 })
+
+describe('合計の行', () => {
+  it('ラベルが品名以外の列にある「合計金額」も飛ばす', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t2\n\t\t合計金額\t12000\n\t\tGrand Total:\t3')
+    expect(r.rows.length).toBe(1)
+  })
+})

@@ -1,0 +1,362 @@
+{
+  "r": [
+    {
+      "wait": 150,
+      "dialogShownBeforeTyping": null,
+      "modeWhileTyping": "編集",
+      "panelWhileTyping": null,
+      "R040": "rMY4N-NEW",
+      "rows": 80,
+      "last": "R080",
+      "lastModel": "TZe-231",
+      "toast": ""
+    },
+    {
+      "wait": 400,
+      "dialogShownBeforeTyping": "panel-prompt",
+      "modeWhileTyping": "パネル",
+      "panelWhileTyping": "panel-prompt",
+      "R040": "E32-D11 2M",
+      "rows": 81,
+      "last": "R080",
+      "lastModel": "TZe-231",
+      "toast": "R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"
+    },
+    {
+      "wait": 650,
+      "dialogShownBeforeTyping": "panel-prompt",
+      "modeWhileTyping": "パネル",
+      "panelWhileTyping": "panel-prompt",
+      "R040": "E32-D11 2M",
+      "rows": 81,
+      "last": "R080",
+      "lastModel": "TZe-231",
+      "toast": "R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"
+    }
+  ],
+  "ime": [
+    {
+      "seq": "f1",
+      "activeAfterBurst": "gridwrap",
+      "store": {
+        "mode": "nav",
+        "editValue": ""
+      },
+      "saved": "ファイバユニット"
+    },
+    {
+      "seq": "ab",
+      "activeAfterBurst": "cell",
+      "store": {
+        "mode": "edit",
+        "editValue": "abリレー"
+      },
+      "saved": "abリレー"
+    },
+    {
+      "seq": "Dx",
+      "activeAfterBurst": "cell",
+      "store": {
+        "mode": "edit",
+        "editValue": "Dxリレー"
+      },
+      "saved": "Dxリレー"
+    }
+  ],
+  "page": {
+    "853x480": {
+      "fullyVisibleRows": 8,
+      "firstLast": [
+        "R004",
+        "R011"
+      ],
+      "c0": "R010 部品名",
+      "afterPgDn": "R017 部品名",
+      "visible": true,
+      "afterPgUp": "R010 部品名"
+    },
+    "1440x900": {
+      "fullyVisibleRows": 20,
+      "firstLast": [
+        "R001",
+        "R020"
+      ],
+      "c0": "R010 部品名",
+      "afterPgDn": "R029 部品名",
+      "visible": true,
+      "afterPgUp": "R010 部品名"
+    },
+    "1920x1200": {
+      "fullyVisibleRows": 27,
+      "firstLast": [
+        "R001",
+        "R027"
+      ],
+      "c0": "R010 部品名",
+      "afterPgDn": "R036 部品名",
+      "visible": true,
+      "afterPgUp": "R010 部品名"
+    }
+  },
+  "undo": {
+    "ops": [
+      "R045:Alt+ArrowDown → ",
+      "R046:Alt+ArrowDown → ",
+      "R030:edit:name → ",
+      "R050:Alt+ArrowUp → ",
+      "R050:Alt+ArrowUp → ",
+      "R060:Shift+Enter → ",
+      "R061:Shift+D → R061 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す",
+      "R030:Alt+ArrowDown → R061 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す",
+      "R070:h → R070 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "R076:Shift+Delete → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R020:edit:note → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R021:Alt+ArrowDown → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R010:Alt+ArrowUp → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R001:Alt+ArrowUp → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R080:Alt+ArrowDown → R076 を削除しました（Ctrl+Z で戻せます）",
+      "R040:Shift+D → R040 を複製して R083 を作りました（回路記号は空。Ctrl+Z で戻す",
+      "R040:Alt+ArrowDown → R040 を複製して R083 を作りました（回路記号は空。Ctrl+Z で戻す"
+    ],
+    "undoCount": 16,
+    "undoAllEqualsStart": true,
+    "redoAllEqualsEnd": true,
+    "diffUndo": null,
+    "diffRedo": null,
+    "undoMsgs": [
+      "元に戻す: 行を移動",
+      "元に戻す: 行を複製",
+      "元に戻す: 行を移動",
+      "元に戻す: 行を移動",
+      "元に戻す: セル編集",
+      "元に戻す: 行を削除",
+      "元に戻す: 行を隠す/戻す",
+      "元に戻す: 行を移動",
+      "元に戻す: 行を複製",
+      "元に戻す: セル編集",
+      "元に戻す: 行を追加",
+      "元に戻す: 行を移動",
+      "元に戻す: 行を移動",
+      "元に戻す: セル編集",
+      "元に戻す: 行を移動",
+      "元に戻す: 行を移動",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）"
+    ],
+    "redoMsgs": [
+      "やり直す: 行を移動",
+      "やり直す: 行を移動",
+      "やり直す: セル編集",
+      "やり直す: 行を移動",
+      "やり直す: 行を移動",
+      "やり直す: 行を追加",
+      "やり直す: セル編集",
+      "やり直す: 行を複製",
+      "やり直す: 行を移動",
+      "やり直す: 行を隠す/戻す",
+      "やり直す: 行を削除",
+      "やり直す: セル編集",
+      "やり直す: 行を移動",
+      "やり直す: 行を移動",
+      "やり直す: 行を複製",
+      "やり直す: 行を移動",
+      "やり直す操作がありません",
+      "やり直す操作がありません",
+      "やり直す操作がありません"
+    ],
+    "rowCount": [
+      80,
+      82,
+      80,
+      82
+    ]
+  },
+  "undoAlt": {
+    "same": true
+  },
+  "chain": [
+    {
+      "role": "design",
+      "view": "4",
+      "col": "name",
+      "seq": "xnxnxn",
+      "gap": 45,
+      "start": "R016 部品名",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "nxnxn",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 258
+      },
+      "end": "R016 部品名",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+    },
+    {
+      "role": "design",
+      "view": "4",
+      "col": "model",
+      "seq": "xnxnxn",
+      "gap": 45,
+      "start": "R016 型式",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "nxnxn",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 258
+      },
+      "end": "R016 型式",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+    },
+    {
+      "role": "purchasing",
+      "view": "3",
+      "col": "receivedLot",
+      "seq": "ojoj",
+      "gap": 60,
+      "start": "R005 ロット",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "joj",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "end": "R005 ロット",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "role": "purchasing",
+      "view": "3",
+      "col": "promisedDate",
+      "seq": "ojoj",
+      "gap": 60,
+      "start": "R005 入荷予定",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "joj",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "end": "R005 入荷予定",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "role": "purchasing",
+      "view": "3",
+      "col": "orderQty",
+      "seq": "ijij",
+      "gap": 60,
+      "start": "R005 備考",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "nav",
+        "editValue": "",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "end": "R007 備考",
+      "toast": "入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "col": "name",
+      "seq": "hjhjhj",
+      "gap": 45,
+      "start": "分類 制御",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "jhj",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 1,
+        "adopted": 6,
+        "acks": 241
+      },
+      "end": "R001 部品名",
+      "toast": "R001 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "col": "name",
+      "seq": "ajajaj",
+      "gap": 60,
+      "start": "分類 制御",
+      "before": {
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "after": {
+        "mode": "edit",
+        "editValue": "jaj",
+        "ordered": 0,
+        "received": 0,
+        "hidden": 0,
+        "adopted": 6,
+        "acks": 241
+      },
+      "end": "R001 部品名",
+      "toast": "R001 を 因幡電機 で採用（スコア 99.2 / 最安）"
+    }
+  ]
+}

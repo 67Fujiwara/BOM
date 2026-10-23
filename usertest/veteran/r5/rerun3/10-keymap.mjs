@@ -104,12 +104,13 @@ const PANEL_OPEN = {
 }
 const PKEYS = ['Control+s', 'Control+p', 'Control+e', 'Control+g', 'Control+Shift+C', 'Control+Shift+F', 'Tab', 'Shift+Tab', 'Space', 'Backspace', 'Alt+ArrowLeft', 'PageDown', 'End', 'F2', 'Control+Enter', 'Control+z', 'Control+y', 'Control+Period', 'Control+ArrowDown', '/']
 total = 0
-for (const [name, open] of Object.entries(PANEL_OPEN)) {
+for (const [name, open] of Object.entries(PANEL_OPEN).filter(([n]) => !process.env.ONLYP || process.env.ONLYP.split(',').includes(n))) {
   for (const k of PKEYS) {
     await fresh(page)
     await probe()
     try { await open() } catch (e) { out.panels.push({ name, k, err: 'open failed ' + e.message.slice(0, 80) }); break }
     await sleep(40)
+    if (!(await page.evaluate(() => document.querySelector('[data-testid^="panel-"]')))) await sleep(500) // ラウンド5: 英字コマンドの 0.4 秒待ち
     const p0 = await snap()
     if (!p0.panel) { out.panels.push({ name, k, err: 'panel not open' }); break }
     const n = errors.length

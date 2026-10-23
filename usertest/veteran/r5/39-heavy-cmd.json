@@ -1,0 +1,184 @@
+{
+  "build": [
+    {
+      "name": "hjhjhj",
+      "role": "design",
+      "gap": 60,
+      "ok": false,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "jhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "maxLag": 209
+    },
+    {
+      "name": "hjhjhj",
+      "role": "design",
+      "gap": 600,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "maxLag": 2
+    },
+    {
+      "name": "s4",
+      "role": "design",
+      "gap": 60,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "maxLag": 1
+    },
+    {
+      "name": "s4",
+      "role": "design",
+      "gap": 600,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "maxLag": 28
+    },
+    {
+      "name": "Dj",
+      "role": "design",
+      "gap": 60,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R301 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R301:+new",
+        "order changed"
+      ],
+      "maxLag": 4
+    },
+    {
+      "name": "Dj",
+      "role": "design",
+      "gap": 600,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R301 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R301:+new",
+        "order changed"
+      ],
+      "maxLag": 62
+    },
+    {
+      "name": "fj",
+      "role": "design",
+      "gap": 60,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（f か Esc で解除）",
+      "diff": [],
+      "maxLag": 1
+    },
+    {
+      "name": "fj",
+      "role": "design",
+      "gap": 600,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（f か Esc で解除）",
+      "diff": [],
+      "maxLag": 2
+    }
+  ]
+}

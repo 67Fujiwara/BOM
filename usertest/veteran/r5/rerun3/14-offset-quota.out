@@ -1,0 +1,2 @@
+needOffset {"365":{"mode":"ナビ","stored":365},"400":{"mode":"編集","err":"必要日(前倒し日数)が大きすぎます（上限 365）: 「400」","stored":-10},"-10":{"mode":"ナビ","stored":-10},"-400":{"mode":"編集","err":"必要日(前倒し日数)は -365 以上にしてください: 「-400」","stored":-10},"3.5":{"mode":"編集","err":"必要日(前倒し日数)は整数で入れてください: 「3.5」","stored":365}}
+quota {"restoreMsg":"退避したデータはありません / panel:null","bytes":2424887,"initialSet":true,"importToast":"","sizes":{"bom-pro.workspace.v2":2424887},"savedNew":false,"editToast":"退避したデータはありません","afterReload":{"hasNew":false,"hasEdit":true}}

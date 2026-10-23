@@ -2,3 +2,24 @@ bindings 72 keys 77
 role done design 693 anomalies 0
 role done purchasing 1386 anomalies 0
 role done pm 2079 anomalies 0
+panel done palette
+panel done help
+panel done columns
+panel done goto
+panel done issue_kind
+panel done issue_text
+panel done adopt
+panel done wizard
+panel done wizard_paste
+panel done inbox
+panel done settings
+panel done settings_edit
+panel done quickfix
+panel done history
+panel done weights
+panel done export
+panel done import
+panel done confirm
+panel done reply
+nav anomalies 0 edit 2 panels 104
+--- console/page errors (keymap): 0 (uniq 0)

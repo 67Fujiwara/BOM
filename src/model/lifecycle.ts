@@ -31,8 +31,9 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.statusChangedAt = now
       }
     }
-    // 見積中 → 見積済
-    if (r.status === 'quoting' && quoteComplete(p, r, today)) {
+    // 見積中 → 見積済（指定系の行は、指定先の有効な見積が来たとき。辞退だけなら購買が次の商社に頼むまで見積中のまま）
+    const fixedWaiting = isFixedProcurement(r) && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1)
+    if (r.status === 'quoting' && !fixedWaiting && quoteComplete(p, r, today)) {
       r.status = 'quoted'
       r.statusChangedAt = now
       r.quotedAt = today
@@ -52,6 +53,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (q?.formalPrice != null) {
         r.status = 'formalQuoted'
+        r.flags.renegotiating = false
         r.statusChangedAt = now
       }
     }
@@ -99,6 +101,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
 function leadAccepted(r: Row): boolean {
   const cm = r.flags.countermeasure
   // 先行発注を PM が許可した行は、納期を承知のうえでの判断（§4 先行発注許可）
+  // 再交渉中（正式見積の回答待ち）は、回答が来てから判定する
+  if (r.flags.renegotiating && r.status === 'formalRequested') return true
   return cm === '受入' || cm === '分納・特急' || cm === '代替品検討' || (cm === '商社変更' && !!r.flags.delegated) || !!r.flags.early
 }
 

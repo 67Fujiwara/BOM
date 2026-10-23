@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, isActive, isOverdue, openIssues, resolverOfIssue } from './derive'
+import { ball, isActive, isFixedProcurement, isOverdue, openIssues, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -60,6 +60,11 @@ export const VIEWS: ViewDef[] = [
 function purchasingAttention(r: Row, c: ViewCtx): boolean {
   // 取込の型式不一致は、行のボールに関係なく購買の後始末（§7）
   if (r.flags.importMismatch || r.flags.orderQtyCheck) return true
+  // 指定系の行で、頼んだ商社がすべて辞退した（次の商社に頼む）
+  if (isFixedProcurement(r) && r.status === 'quoting') {
+    const qs = c.p.quotes.filter((q) => q.rowId === r.id && !q.stale)
+    if (qs.length && qs.every((q) => q.leadDays === -1)) return true
+  }
   if (!['quoting', 'quoted', 'selected', 'formalRequested'].includes(r.status)) return false
   const today = todayStr()
   const qs = c.p.quotes.filter((q) => q.rowId === r.id && !q.stale)

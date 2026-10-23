@@ -101,7 +101,7 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     return false
   }
   const value = parsed.value
-  return st().commit(
+  const ok = st().commit(
     label,
     (p, ws) => {
       const r = p.rows.find((x) => x.id === rowId)
@@ -112,6 +112,13 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     },
     { rowId },
   )
+  // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
+  if (ok && colKey === 'extraCost' && typeof value === 'number') {
+    const cap = [...st().project().decisions].reverse().find((d) => d.rowId === rowId && d.kind === '特急・分納' && typeof d.payload?.amount === 'number')
+    const amt = cap?.payload?.amount as number | undefined
+    if (amt != null && value > amt) st().toastMsg(`追加費用 ¥${value.toLocaleString()} が、PM の決めた特急・分納の上限 ¥${amt.toLocaleString()} を超えています（${cap!.id}）`, 'err')
+  }
+  return ok
 }
 
 /** 1 セルの書き込み（commit の中で使う）。書けなければ理由を返す */
@@ -201,6 +208,7 @@ export function orderBlock(p: Project, r: Row): string | null {
   // 設計が取消・置換の作業中（未公開）の行は、公開されるまで発注しない
   if (r.removal) return '設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します'
   if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
+  if (r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります）'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
   // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない
   const waiting = p.issues.find((i) => i.rowId === r.id && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '発注後変更依頼') && ['open', 'inProgress', 'answered'].includes(i.status))
@@ -604,7 +612,13 @@ export function quoteTargets(p: Project, r: Row): string[] {
     const sid = fixedSupplierId(p, { ...r, ...e } as Row, st().ws.suppliers)
     return sid ? [sid] : p.supplierIds.slice(0, 1)
   }
-  return p.supplierIds
+  // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない。どこも扱わなければ全社）
+  const sups = st().ws.suppliers
+  const carries = p.supplierIds.filter((id) => {
+    const sp = sups.find((x) => x.id === id)
+    return !sp || sp.handledMakers.length === 0 || !e.maker || sp.handledMakers.includes(e.maker)
+  })
+  return carries.length ? carries : p.supplierIds
 }
 
 function pick(e: DesignFields): DesignFields {

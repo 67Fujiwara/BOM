@@ -1328,7 +1328,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'quotes.import': {
       if (role !== 'purchasing') return toast('権限なし（取り込みは購買）', 'err')
-      const ids = p.supplierIds.length ? p.supplierIds : s.ws.suppliers.filter((x) => x.tradable).map((x) => x.id)
+      // 相見積先と、見積を頼んだ指定先の商社（相見積先に無い商社も）
+      const asked = [...new Set(p.quotes.filter((q) => !q.stale).map((q) => q.supplierId))].filter((id) => !p.supplierIds.includes(id))
+      const ids = p.supplierIds.length || asked.length ? [...p.supplierIds, ...asked] : s.ws.suppliers.filter((x) => x.tradable).map((x) => x.id)
       if (!ids.length) return toast('商社マスタに商社がありません（Ctrl+K → 商社を追加）', 'err')
       return prompt('どの商社の回答ですか', { options: ids.map((sid) => `${sid} ${s.ws.suppliers.find((x) => x.id === sid)?.name ?? ''}`), showText: false }, (choice) => {
         const sid = (choice ?? `${ids[0]} `).split(' ')[0]

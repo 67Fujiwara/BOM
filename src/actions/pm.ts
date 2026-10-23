@@ -137,6 +137,12 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
             i.status = 'inProgress'
             i.resolution = 'PM 承認: 発注取消・代替品へ'
             r.flags.orderCancelApproved = true
+            // もとになった PM の依頼（納期NG・コスト超過の代替品検討）は、この承認で決着
+            for (const o of p.issues)
+              if (o.rowId === r.id && o.by.role === 'pm' && (o.kind === '納期NG' || o.kind === 'コスト超過' || o.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(o.status)) {
+                o.status = 'confirmed'
+                o.resolution = 'PM の決定: 発注後変更依頼を承認（代替品へ）'
+              }
             break
           }
           if (c === '変更セット') {
@@ -282,6 +288,9 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           r.flags.formalDiffKey = undefined
           r.flags.pmPending = false
           r.flags.pmReason = undefined
+          // 再交渉は遅れ・価格を受け入れたのではない。対策区分を外し、交渉の結果で納期NG・差分超過を判定し直す（PM に戻る）
+          r.flags.countermeasure = undefined
+          r.flags.renegotiating = true
           setStatus(r, 'formalRequested')
           r.dueAt = addBusinessDays(today, 5, p.settings.holidays)
           break

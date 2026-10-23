@@ -246,7 +246,7 @@ export const useStore = create<State>((set, get) => ({
     const conflict = applyEntry(entry, 'undo')
     if (conflict) {
       set({ undo: { ...get().undo, [user]: rest } })
-      return st.toastMsg(`戻せません: ${conflict} を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください`, 'err')
+      return st.toastMsg(`戻せません: ${conflict} は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください`, 'err')
     }
     set({ undo: { ...get().undo, [user]: rest }, redo: { ...get().redo, [user]: [...(get().redo[user] ?? []), entry] } })
     persistHistory()

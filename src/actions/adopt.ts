@@ -17,6 +17,7 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
   if (!isActive(row)) return '取消・置換済の行は採用できません'
   if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
+  if (isFixedProcurement(row)) return `${effective(row).procurement}の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）`
   if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
   if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {

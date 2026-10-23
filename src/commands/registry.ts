@@ -220,13 +220,19 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? startCandidates(d.options ?? [], initial, value) : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
   if (col === 'ordered') return runCommand('row.toggleOrdered')
   if (col === 'received') return runCommand('row.toggleReceived')
   rows.setCell(r.id, col, v ? '' : '1')
+}
+/** Enter で始めた選択の列の編集は、いまの値を先頭に（↑↓ はいまの値から数える） */
+function startCandidates(options: string[], initial: string | undefined, value: string): string[] {
+  if (initial !== undefined) return candidates(options, initial)
+  const i = options.indexOf(value)
+  return i > 0 ? [...options.slice(i), ...options.slice(0, i)] : options
 }
 function candidates(options: string[], v: string): string[] {
   const q = toHalf(v).trim().toLowerCase()
@@ -599,13 +605,8 @@ function openQuickfix() {
   if (s.sequence)
     options.push({
       label: '飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる）',
-      run: () => {
-        if (problemCells().length > 1 && gotoProblem(1) && cursorRow()) setTimeout(openQuickfix, 0)
-        else {
-          set({ sequence: false })
-          toast('順番に直すモード: ほかの問題はありません', 'ok')
-        }
-      },
+      // 進むのは選んだあとの順番に直すモードの処理（ここで進めると 2 つ進む）
+      run: () => undefined,
     })
   if (!options.length) return toast(`${r.id} に直し方の候補はありません`, 'info')
   openPanel({ kind: 'quickfix', title: `直し方の候補 ${r.id} ${effective(r).name}`, rowId: r.id, field: s.cursorCol, index: 0, options })

@@ -202,11 +202,11 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       // 文字欄が無い、または理由の選択で文字欄が空のときは数字キーで選ぶ
       // 数字は、文字欄に移る（Tab）か文字を打つまでは選択肢を選ぶ（打ち間違えたら数字で選び直せる）。
       // 数字で始まる理由・番号（3日で入る・2026-012）は Tab で欄へ移ってから
-      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text && !panel.textTouched))
+      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.textTouched))
       if (digitPick) {
         if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
         // 文字欄もあるダイアログ（理由・氏名を入れる）では、数字は選ぶだけ。確定は Enter（続けて打った文字が背後の表に入らない）
-        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), toast(`「${panel.options![Number(key) - 1]}」を選びました（選び直しは数字か ↑↓）。${panel.requireText ? '理由' : '補足'}は打てば欄に入ります（数字で始まるときは Tab で欄へ）。Enter で確定`, 'info'), true)
+        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), toast(`「${panel.options![Number(key) - 1]}」を選びました（選び直しは数字か ↑↓）。文字の欄（${panel.placeholder?.split(/[（(]/)[0] || (panel.requireText ? '理由' : '補足')}）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定`, 'info'), true)
         submit(panel.options![Number(key) - 1])
         return true
       }
@@ -552,8 +552,14 @@ export function handleKeyDown(e: KeyboardEvent) {
       return
     }
     if (key === 'Tab' || key === 'Shift+Tab') {
-      // 文字欄へ移ったら、以後の数字は文字（数字で始まる理由を打てる）
-      if (s.panel.kind === 'prompt' && s.panel.showText && !s.panel.textTouched) set({ panel: { ...s.panel, textTouched: true } })
+      // 文字の欄と選択肢を行き来する: Tab で欄へ（以後の数字は文字）、Shift+Tab で選択肢へ（数字で選ぶ）
+      if (s.panel.kind === 'prompt' && s.panel.showText && s.panel.digitsSelect && s.panel.options) {
+        set({ panel: { ...s.panel, textTouched: key === 'Tab' } })
+        e.preventDefault()
+        const input = document.querySelector<HTMLElement>('[data-testid="prompt-text"]')
+        if (key === 'Tab') input?.focus()
+        return
+      }
       // フォーカスはダイアログの中で回す（外に出て背後の表・絞り込み欄に打鍵が入らないように）
       e.preventDefault()
       const dlg = document.querySelector<HTMLElement>('.overlay .dialog')
@@ -667,6 +673,9 @@ export function handleKeyDown(e: KeyboardEvent) {
     return
   }
   if (/^(Ctrl\+)?Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) return toast(`${key} は割り当てがありません（F1 でキーの一覧）`, 'info')
+  // Excel の癖のキー（範囲選択・下へコピー）は使えないことを知らせる
+  if (key === 'Ctrl+D') return (e.preventDefault(), toast('Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）', 'info'))
+  if (/^Shift\+Arrow(Up|Down|Left|Right)$/.test(key)) return toast('セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）', 'info')
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {

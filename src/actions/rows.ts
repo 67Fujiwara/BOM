@@ -17,7 +17,7 @@ function st() {
 export function canEdit(colKey: string): string | null {
   const d = colDef(colKey)
   if (!d) return '編集できない列です'
-  if (d.kind === 'computed') return 'この列は自動計算です'
+  if (d.kind === 'computed') return colKey === 'needDate' ? 'この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）' : 'この列は自動計算です'
   const role = st().user().role
   if (!d.editableBy.includes(role)) return `権限なし（${d.editableBy.map((r) => ROLE_LABEL[r]).join('・')}の列）`
   return null

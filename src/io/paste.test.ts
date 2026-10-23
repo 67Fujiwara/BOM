@@ -188,3 +188,26 @@ describe('ラウンド 11（ベテラン）の取り込み', () => {
     expect(parseBomPaste(tsv).rows.map((x) => x.qtyNeeded)).toEqual([12])
   })
 })
+
+describe('ラウンド 12 の取り込み', () => {
+  it('型式も数量も旧／新がある表では、どちらも新しい列', () => {
+    const r = parseBomPaste('部品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\t2\t4')
+    expect([r.rows[0].model, r.rows[0].qtyNeeded]).toEqual(['MY4N-D2', 4])
+  })
+  it('使用個数・手配数量・必要個数・現数量／新数量も数量', () => {
+    for (const h of ['使用個数', '手配数量', '必要個数']) expect(parseBomPaste(`部品名\t型式\t${h}\nリレー\tMY4N\t7`).rows[0].qtyNeeded).toBe(7)
+    expect(parseBomPaste('部品名\t型式\t現数量\t新数量\nリレー\tMY4N\t2\t5').rows[0].qtyNeeded).toBe(5)
+  })
+  it('現行型式／変更型式・型式(現)／(改) では変更後', () => {
+    expect(parseBomPaste('部品名\t現行型式\t変更型式\t数量\nリレー\tMY2N\tMY4N-D2\t1').rows[0].model).toBe('MY4N-D2')
+    expect(parseBomPaste('部品名\t型式(現)\t型式(改)\t数量\nリレー\tMY2N\tMY4N-D2\t1').rows[0].model).toBe('MY4N-D2')
+  })
+  it('2 段の見出し（型式・数量の下に 旧／新）は新しい列を読み、下の段を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t\t数量\t\n\t旧\t新\t旧\t新\nリレー\tMY2N\tMY4N-D2\t2\t4')
+    expect(r.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N-D2', 4]])
+  })
+  it('- 1 -・Page 1 of 2・（次頁へ続く）・※注記・以上、2点・（合計）を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n- 1 -\t\t\nPage 1 of 2\t\t\n（次頁へ続く）\t\t\n※ 端子は別途\t\t\nタイマ\tH3CR\t1\n以上、2点\t\t\n（合計）\t\t3')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'H3CR'])
+  })
+})

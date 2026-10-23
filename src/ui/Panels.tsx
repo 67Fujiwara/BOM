@@ -49,13 +49,13 @@ function Foot({ items }: { items: Array<[string, string]> }) {
   )
 }
 
-function AutoInput({ value, onChange, placeholder, testid, multiline, autoFocus = true, className }: { value: string; onChange: (v: string) => void; placeholder?: string; testid?: string; multiline?: boolean; autoFocus?: boolean; className?: string }) {
+function AutoInput({ value, onChange, placeholder, testid, multiline, autoFocus = true, className, onPointer }: { value: string; onChange: (v: string) => void; placeholder?: string; testid?: string; multiline?: boolean; autoFocus?: boolean; className?: string; onPointer?: () => void }) {
   const ref = useRef<HTMLInputElement & HTMLTextAreaElement>(null)
   useEffect(() => {
     if (autoFocus) ref.current?.focus()
   }, [autoFocus])
   if (multiline) return <textarea ref={ref} className={className ?? 'f'} rows={8} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
-  return <input ref={ref} className={className ?? 'q'} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+  return <input ref={ref} className={className ?? 'q'} data-testid={testid} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} onMouseDown={onPointer} />
 }
 
 /** 選ばれている項目が見えるようにスクロールする */
@@ -301,7 +301,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                 ))}
               </div>
             )}
-            {panel.showText && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...(useStore.getState().panel as typeof panel), text: v, textTouched: true } })} placeholder={panel.placeholder ?? (panel.requireText ? '理由・本文（必須。Enter で確定）' : '補足（任意。Enter で確定）')} testid="prompt-text" />}
+            {panel.showText && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...(useStore.getState().panel as typeof panel), text: v, textTouched: true } })} onPointer={() => st.set({ panel: { ...(useStore.getState().panel as typeof panel), textTouched: true } })} placeholder={panel.placeholder ?? (panel.requireText ? '理由・本文（必須。Enter で確定）' : '補足（任意。Enter で確定）')} testid="prompt-text" />}
             {panel.extra && (
               <div className="wizard">
                 {Object.entries(panel.extra).map(([k, v]) => (
@@ -313,7 +313,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect ? ([['1', '〜 数字で選ぶ']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ...(panel.digitsSelect ? ([['Tab', '文字の欄へ（数字で始まるとき）']] as Array<[string, string]>) : []), ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect && !panel.textTouched ? ([['1', '〜 数字で選ぶ'], ['Tab', '文字の欄へ（数字で始まるとき）']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ...(panel.digitsSelect && panel.textTouched ? ([['Shift+Tab', '数字で選ぶに戻る']] as Array<[string, string]>) : []), ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'quickfix':

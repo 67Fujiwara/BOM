@@ -43,7 +43,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])
     if (user.role === 'purchasing' && up.issues) hints.push(['Ctrl+Enter', `指摘 ${up.issues} 件を発行`])
   } else if (st.mode === 'nav' && !row) hints.push(['ArrowDown', '表へ'], ['n', '次の問題'])
-  else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Escape', '取り消し'])
+  else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Escape', '取り消し'], ['F2', st.editTyped ? '編集モードへ（矢印で文字の中）' : '入力モードへ（矢印で確定）'])
   hints.push(['?', 'ヘルプ'])
   // 幅が足りないときに切れないよう、公開・ヘルプ・次の問題を先頭に
   for (const k of ['F8', '?', 'Ctrl+Enter']) {

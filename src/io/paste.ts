@@ -87,7 +87,9 @@ export function detectField(h: string): BomField | null {
   const head = s.replace(/[（(][^）)]*[）)]/g, '').trim()
   if (/^(旧|変更前|前回|改訂前|廃止|old\b|prev(ious)?\b)/i.test(head)) return null
   // 括弧の注記が「旧」「変更前」「old」だけのもの（型式（旧）・型式(old)・型式（変更前））も前の版の列
-  if (/[（(]\s*(旧|旧版|変更前|前回|改訂前|廃止|old|prev(ious)?|before)\s*[）)]/i.test(s)) return null
+  if (/[（(]\s*(旧|旧版|旧品|変更前|前回|改訂前|廃止|old|prev(ious)?|before)\s*[）)]/i.test(s)) return null
+  // 区切り（空白・_・【】・[]）の後ろの「旧」（型式 旧・型式_旧・型式【旧】・型式[旧]）
+  if (/(^|[\s_\-【\[［／/])(旧|旧品|旧版|変更前|old|before)([\s_\-】\]］]|$)/i.test(s)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -112,8 +114,19 @@ export function parseBomPaste(text: string): PasteResult {
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
   const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
-  const same = tops.length > 1 && tops.every((i) => lines[i].join('\t').trim() === lines[tops[0]].join('\t').trim())
-  const headerAt = best >= 2 ? (same ? tops[0] : tops[tops.length - 1]) : -1
+  // 繰り返しかどうかは見出しの言葉の組み合わせで見る（2 ページ目の「品名（続き）」・空の No・「P.1」・員数／数量でも同じ見出し）。
+  // いちばん見出しらしい行と、見出しの言葉が 6 割以上重なる行を「同じ見出し」とみなし、その最初の行を見出しにする
+  const fieldSet = (l: string[]) => new Set(l.map(detectField).filter(Boolean))
+  const bestSet = best >= 2 ? fieldSet(lines[tops[tops.length - 1]]) : new Set()
+  const sameHeader = (l: string[]) => {
+    const f = fieldSet(l)
+    if (f.size < 2) return false
+    let both = 0
+    for (const x of f) if (bestSet.has(x)) both++
+    return both >= Math.ceil(Math.max(f.size, bestSet.size) * 0.6)
+  }
+  const firstSame = lines.slice(0, 30).findIndex(sameHeader)
+  const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
@@ -122,9 +135,8 @@ export function parseBomPaste(text: string): PasteResult {
   }
   if (headerAt >= 0) {
     // ページごとに繰り返した同じ見出しの行は外す（部品にしない）
-    const h = lines[0].join('\t').trim()
     const before = lines.length
-    lines = [lines[0], ...lines.slice(1).filter((l) => l.join('\t').trim() !== h)]
+    lines = [lines[0], ...lines.slice(1).filter((l) => !sameHeader(l))]
     if (lines.length < before) warnings.push(`繰り返しの見出し ${before - lines.length} 行は取り込みません`)
   } else if (headerAt < 0 && !singleHeader) {
     // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
@@ -170,13 +182,24 @@ export function parseBomPaste(text: string): PasteResult {
   const isTotal = (l: string[]) => (l.some(isTotalCell) && !looksPart(l)) || isSectionLine(l, Math.max(l.length, mapping.length))
   const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
   if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません`)
-  const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
+  // 使う列がすべて空の行（使わない列にだけあるページ番号・表題など）は部品にしない
+  const mappedEmpty = (l: string[]) => mapping.every((f, j) => !f || (l[j] ?? '').trim() === '')
+  const blanks = lines.slice(hasHeader ? 1 : 0).filter((l) => !isTotal(l) && mappedEmpty(l)).length
+  if (blanks) warnings.push(`部品の列がすべて空の ${blanks} 行（ページ番号・表題など）は取り込みません`)
+  const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l) && !mappedEmpty(l))
   // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
   mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
   // 同じ項目に当たる列が 2 つあれば、左の列を使う（番号だけの列を外したあとで判定する）
+  // 見出しに「新」「変更後」「new」とある列があればそれを（現型式／新型式）、無ければ左の列を使う
   const used = mapping.filter(Boolean)
   const dup = used.find((f, i) => used.indexOf(f) !== i)
-  if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
+  if (dup) {
+    const cols = mapping.map((f, j) => (f === dup ? j : -1)).filter((j) => j >= 0)
+    const newer = hasHeader ? cols.find((j) => /新|変更後|改訂後|\bnew\b|\bafter\b/i.test(first[j] ?? '')) : undefined
+    const keep = newer ?? cols[0]
+    mapping = mapping.map((f, j) => (f === dup && j !== keep ? null : f))
+    warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が ${cols.length} つあります。「${(hasHeader ? first[keep] : '') || '左の列'}」の列を使います`)
+  }
   let badQty = 0
   let badUnit = 0
   const rows = body.map((line, i) => {
@@ -235,15 +258,18 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     // 隠した列でも、その項目（数量・型式など）の列がほかに無ければ読む（隠しただけで数量が全部 1 にならない）
     const unhidden: string[] = []
     if (hiddenCols.size) {
-      const fieldOf = new Map<number, BomField>()
+      // 見出しの行（上から 30 行で見出しの言葉が最も多い行）の列だけを見る（表題の「台数 2台」などを見出しにしない）
+      let fieldOf = new Map<number, BomField>()
       let n = 0
       ws.eachRow({ includeEmpty: false }, (row) => {
         if (n++ >= 30) return
         const raw = row.values as unknown[]
+        const m = new Map<number, BomField>()
         for (let c = 1; c < raw.length; c++) {
           const f = detectField(cellToText(raw[c]))
-          if (f && !fieldOf.has(c)) fieldOf.set(c, f)
+          if (f && ![...m.values()].includes(f)) m.set(c, f)
         }
+        if (m.size > fieldOf.size) fieldOf = m
       })
       const visibleFields = new Set([...fieldOf].filter(([c]) => !hiddenCols.has(c)).map(([, f]) => f))
       for (const c of [...hiddenCols]) {
@@ -320,9 +346,9 @@ export function isTotalCell(c: string): boolean {
   const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*※\-－ー—―=＝~～・_＿]/g, '')
   // 飾りだけのセル（「＝＝＝＝」「----」）は区切り
   if (!t && c.trim().length >= 3) return true
-  if (/^(以下余白|以下空白|以上)$/.test(t)) return true
+  if (/^(以下余白|以下空白|以上)(です|でございます)?$/.test(t)) return true
   // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
-  return /^(小計|合計|総計|総合計|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
+  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?)*([（(][^）)]*[）)])?$/i.test(t)
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。
@@ -330,5 +356,13 @@ export function isTotalCell(c: string): boolean {
  */
 export function isSectionLine(cells: string[], width = cells.length): boolean {
   const filled = cells.map((c) => c.trim()).filter(Boolean)
-  return width > 1 && filled.length === 1 && (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) || /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]))
+  return (
+    width > 1 &&
+    filled.length === 1 &&
+    (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) ||
+      /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]) ||
+      // ページごとの表題・ページ番号（部品表 (2/3)・P.2・2 / 3 ページ）
+      /(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|\bBOM\b).*([(（]\s*\d+\s*[/／]\s*\d+\s*[)）]|\d+\s*(ページ|頁))?$/i.test(filled[0]) ||
+      /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+)(\s*(ページ|頁))?$/i.test(filled[0]))
+  )
 }

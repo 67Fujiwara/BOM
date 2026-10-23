@@ -301,7 +301,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                 ))}
               </div>
             )}
-            {panel.showText && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={panel.placeholder ?? (panel.requireText ? '理由・本文（必須。Enter で確定）' : '補足（任意。Enter で確定）')} testid="prompt-text" />}
+            {panel.showText && <AutoInput value={panel.text} onChange={(v) => st.set({ panel: { ...(useStore.getState().panel as typeof panel), text: v, textTouched: true } })} placeholder={panel.placeholder ?? (panel.requireText ? '理由・本文（必須。Enter で確定）' : '補足（任意。Enter で確定）')} testid="prompt-text" />}
             {panel.extra && (
               <div className="wizard">
                 {Object.entries(panel.extra).map(([k, v]) => (
@@ -313,7 +313,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect ? ([['1', '〜 数字で選ぶ']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect ? ([['1', '〜 数字で選ぶ']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ...(panel.digitsSelect ? ([['Tab', '文字の欄へ（数字で始まるとき）']] as Array<[string, string]>) : []), ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'quickfix':

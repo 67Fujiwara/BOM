@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, quoteResponses, resolverOfIssue } from './derive'
+import { ball, fixedSupplierId, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, quoteResponses, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -63,10 +63,12 @@ function purchasingAttention(r: Row, c: ViewCtx): boolean {
   if (r.flags.importMismatch || r.flags.orderQtyCheck) return true
   // 追加費用が特急・分納の上限を超えた（PM に相談する）
   if (overCap(c.p, r)) return true
-  // 指定系の行で、頼んだ商社がすべて辞退した（次の商社に頼む）
+  // 指定系の行で、頼んだ商社がすべて辞退した・指定先（いまの依頼先）にまだ頼んでいない（指定先を変えた）
   if (isFixedProcurement(r) && r.status === 'quoting') {
     const qs = c.p.quotes.filter((q) => q.rowId === r.id && !q.stale)
     if (qs.length && qs.every((q) => q.leadDays === -1)) return true
+    const sid = fixedSupplierId(c.p, r, c.ws.suppliers)
+    if (sid && !qs.some((q) => q.supplierId === sid)) return true
   }
   if (!['quoting', 'quoted', 'selected', 'formalRequested'].includes(r.status)) return false
   const today = todayStr()
@@ -78,7 +80,7 @@ function purchasingAttention(r: Row, c: ViewCtx): boolean {
   const { answered, total } = quoteResponses(c.p, r)
   const deadlinePassed = !!c.p.settings.quoteDeadline && c.p.settings.quoteDeadline < today
   // 頼むつもりでまだ頼んでいない商社がある行も出す（購買が残りに依頼する）
-  const unasked = (r.quoteTargets ?? []).some((id) => c.p.supplierIds.includes(id) && !qs.some((q) => q.supplierId === id))
+  const unasked = (r.quoteTargets ?? []).some((id) => c.p.supplierIds.includes(id) && c.ws.suppliers.find((x) => x.id === id)?.tradable !== false && !qs.some((q) => q.supplierId === id))
   return unasked || (answered < total && (answered > 0 || deadlinePassed))
 }
 

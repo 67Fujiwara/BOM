@@ -75,12 +75,14 @@ function buildViewModelUncached(st: State): ViewModel {
   const counts = {} as Record<ViewId, number>
   // 隠した行は「すべて」と作業のビュー（要確認・要決定）には出す
   const showHidden = (id: number) => id === 1 || id === 4 || id === 7
-  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden)).length
+  // §5: PM 承認待ちの変更セットで足した行は、承認まで購買にはどのビューでも見せない
+  const hiddenFromRole = (r: Row) => ws.user.role === 'purchasing' && !!r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted'
+  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden) && !hiddenFromRole(r)).length
   // 案件レベルの要決定（案件設定確定）も 7 の件数に入れる
   const openCases = p.caseDecisions.filter((c) => c.status === 'open')
   counts[7] += openCases.length
   const v = VIEWS.find((x) => x.id === st.view)!
-  let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
+  let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && !hiddenFromRole(r) && matchText(r, p, st.filter, ws.user.role))
   if (st.cellFilter) rows = rows.filter((r) => cellText(r, st.cellFilter!.col, ctx).text === st.cellFilter!.value)
   const sort = st.sort
   if (sort) {

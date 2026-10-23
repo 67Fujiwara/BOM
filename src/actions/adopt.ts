@@ -106,11 +106,17 @@ export function adoptCheapest(rowId: string): boolean {
 }
 
 /** Shift+A → 商社を選んで採用。1位以外は理由必須、閾値超は PM 承認待ち */
-export function adoptChoose(rowId: string, supplierId: string, reason?: string): boolean {
+export function adoptChoose(rowId: string, supplierId: string, reason?: string, expectAdopted?: string | null): boolean {
   const s = st()
   const p = s.project()
   const row = p.rows.find((r) => r.id === rowId)
   if (!row) return false
+  // 理由を入れているあいだに別のタブで採用が変わっていたら、黙って上書きしない
+  if (expectAdopted !== undefined && (row.adoptedSupplierId ?? null) !== expectAdopted) {
+    const now = s.ws.suppliers.find((x) => x.id === row.adoptedSupplierId)?.name ?? 'なし'
+    s.toastMsg(`${row.id} の採用は、理由を入れているあいだに別のタブで「${now}」に変わりました。採用しませんでした（見直してからもう一度）`, 'err')
+    return false
+  }
   const err = canAdopt(p, row, true)
   if (err) {
     s.toastMsg(err, 'err')

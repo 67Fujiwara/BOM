@@ -47,12 +47,16 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const fixes: Record<string, number> = {}
     const fallbackUser = { name: '不明', role: 'design' as const }
     const issues0 = arr<unknown>(p0.issues)
+    // 数字で書いた行 ID（81 など）は、行と同じく文字にして突き合わせる
+    const idStr = (x: unknown) => (isObj(x) && typeof x.rowId === 'number' && Number.isFinite(x.rowId) ? { ...x, rowId: String(x.rowId) } : x)
     const issues = issues0
+      .map(idStr)
       .filter((x): x is Record<string, unknown> => isObj(x) && str(x.id) && str(x.rowId) && rowIds.has(x.rowId as string) && typeof x.kind === 'string')
       .map((x) => ({ ...x, by: userOf(x.by, fallbackUser), status: ISSUE_STATUS_OK.includes(String(x.status)) ? x.status : 'open', text: typeof x.text === 'string' ? x.text : '', replies: arr<unknown>(x.replies).filter(isObj).map((rp) => ({ ...rp, by: userOf(rp.by, fallbackUser), text: typeof rp.text === 'string' ? rp.text : '' })), bounceCount: Number(x.bounceCount) || 0 })) as unknown as Project['issues']
     if (issues.length < issues0.length) warnings.push(`案件 ${p0.id} の指摘 ${issues0.length - issues.length} 件は形式が読めないので外しました`)
     const quotes0 = arr<unknown>(p0.quotes)
     const quotes = quotes0
+      .map(idStr)
       .filter((q): q is Record<string, unknown> => isObj(q) && str(q.rowId) && str(q.supplierId) && rowIds.has(q.rowId as string))
       .map((q) => ({ ...q, validUntil: typeof q.validUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(q.validUntil) ? q.validUntil : null, formalValidUntil: typeof q.formalValidUntil === 'string' ? q.formalValidUntil : null, stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: numOrNull(q.unitPrice), leadDays: numOrNull(q.leadDays), moq: numOrNull(q.moq), quoteQty: numOrNull(q.quoteQty), formalPrice: numOrNull(q.formalPrice), formalLeadDays: numOrNull(q.formalLeadDays), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
@@ -104,11 +108,26 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
 
 const STATUSES = ['draft', 'submitted', 'quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received', 'cancelled', 'replaced']
 /** 行の各項目を既定の型にそろえる（数値の欄に文字・文字の欄に数値やオブジェクトが入った JSON でも画面が壊れないように） */
-function coerceRow(r: Record<string, unknown>, fixes: Record<string, number> = {}): Row {
-  const note = (k: string) => (fixes[k] = (fixes[k] ?? 0) + 1)
+function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = {}): Row {
+  let r = r0
+  // 直した項目は、件数と最初の行 ID を知らせる
+  const note = (k: string) => {
+    const key = Object.keys(fixes).find((x) => x.startsWith(k + '（')) ?? `${k}（例: ${String(r0.id)}）`
+    fixes[key] = (fixes[key] ?? 0) + 1
+  }
   const q = r.qtyNeeded
-  if (q === undefined || q === null || (typeof q === 'number' && !Number.isFinite(q)) || (typeof q !== 'number' && !Number.isFinite(Number(q)))) note('必要数が無い・読めないので 1 にした')
-  else if (Number(q) < 0) note('必要数が負なので 0 にした')
+  if (q === undefined || q === null || typeof q === 'boolean' || Array.isArray(q) || q === '' || (typeof q === 'number' && !Number.isFinite(q)) || (typeof q !== 'number' && !Number.isFinite(Number(q)))) {
+    note('必要数が無い・読めないので 1 にした')
+    r = { ...r, qtyNeeded: 1 }
+  } else if (Number(q) < 0) note('必要数が負なので 0 にした')
+  else if (Number(q) > 1e9) {
+    note('必要数が大きすぎるので 1,000,000,000 にした')
+    r = { ...r, qtyNeeded: 1e9 }
+  }
+  for (const k of ['packQty', 'orderQty'] as const) if (typeof r[k] === 'number' && (r[k] as number) < (k === 'packQty' ? 1 : 0)) {
+    note(`${k === 'packQty' ? '入数' : '発注数'}が範囲外なので外した`)
+    r = { ...r, [k]: null }
+  }
   const base = newRow(r.id as string) as unknown as Record<string, unknown>
   const out: Record<string, unknown> = { ...base, ...r }
   for (const [k, def] of Object.entries(base)) {
@@ -146,7 +165,17 @@ function coerceRow(r: Record<string, unknown>, fixes: Record<string, number> = {
       const def = (base as Record<string, unknown>)[f]
       if (!(f in base)) continue
       if (v === null && (def === null || f === 'needOffset' || f === 'needDateFixed' || f === 'packQty')) kept[f] = null
-      else if (f === 'needDateFixed' ? typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
+      else if (f === 'needDateFixed' ? typeof v === 'string' && realDate(v) : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
+      else note('作業中の値が読めないので外した')
+    }
+    // 作業中の必要数・入数も、行の値と同じ範囲に
+    if (typeof kept.qtyNeeded === 'number' && (kept.qtyNeeded < 0 || kept.qtyNeeded > 1e9)) {
+      kept.qtyNeeded = Math.min(1e9, Math.max(0, kept.qtyNeeded))
+      note('作業中の必要数が範囲外なので直した')
+    }
+    if (typeof kept.packQty === 'number' && kept.packQty < 1) {
+      kept.packQty = null
+      note('作業中の入数が 1 未満なので外した')
     }
     out[k] = Object.keys(kept).length ? kept : undefined
   }

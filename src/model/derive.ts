@@ -250,10 +250,18 @@ export function roundedQty(qtyNeeded: number, moq: number | null | undefined, pa
 
 export function quoteResponses(p: Project, row: Row): { answered: number; total: number } {
   const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
-  // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）
-  // 案件の相見積先から外した商社は、まだ頼んでいなければ待たない
-  const ids = new Set([...qs.map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter((id) => p.supplierIds.includes(id))])
-  return { answered: qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length, total: ids.size }
+  const done = (q: (typeof qs)[number]) => q.unitPrice != null || q.leadDays === -1
+  // 指定系の行は、いまの指定先 1 社の回答だけを見る（ほかの商社の見積は数えない）
+  if (isFixedProcurement(row)) {
+    const sid = fixedSupplierId(p, row, knownSuppliers as Supplier[])
+    const q = sid ? qs.find((x) => x.supplierId === sid) : undefined
+    return { answered: q && done(q) ? 1 : 0, total: 1 }
+  }
+  // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）。
+  // 案件の相見積先から外した・取引不可にした商社は、回答が無ければ待たない
+  const waitable = (id: string) => p.supplierIds.includes(id) && knownSuppliers.find((x) => x.id === id)?.tradable !== false
+  const ids = new Set([...qs.filter((q) => done(q) || waitable(q.supplierId)).map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter(waitable)])
+  return { answered: qs.filter(done).length, total: ids.size }
 }
 
 /** 見積済の成立条件 */
@@ -302,8 +310,8 @@ export function designatedDeclined(p: Project, row: Row): boolean {
   return !!d && p.quotes.some((q) => q.rowId === row.id && !q.stale && q.supplierId === id && q.leadDays === -1)
 }
 /** 商社マスタ（指定先の名前から ID を引くため。ストアが読み込み・変更のたびに渡す） */
-let knownSuppliers: Array<{ id: string; name: string }> = []
-export function setKnownSuppliers(list: Array<{ id: string; name: string }>) {
+let knownSuppliers: Array<{ id: string; name: string; tradable?: boolean; handledMakers?: string[] }> = []
+export function setKnownSuppliers(list: Array<{ id: string; name: string; tradable?: boolean; handledMakers?: string[] }>) {
   knownSuppliers = list
 }
 

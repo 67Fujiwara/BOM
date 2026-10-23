@@ -15,15 +15,17 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     // 採用した商社があとから「取扱なし」（辞退）になったら採用を外す（§3.2・§8.1: 辞退は選定の対象外）。
     // 相見積は選び直し（見積済）、指定系は次の商社・指定先の変更へ（見積中）。発注済は発注後変更依頼で扱う
     // PM 承認待ちの仮の採用（先行採用・例外選定・閾値超）も同じ
-    const tentative = r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断'].includes(r.flags.pmReason ?? '')
+    const tentative = r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立'].includes(r.flags.pmReason ?? '')
     if (r.adoptedSupplierId && (['selected', 'formalRequested', 'formalQuoted'].includes(r.status) || tentative)) {
       const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (aq && aq.leadDays === -1) {
-        if (tentative) {
+        if (tentative || r.flags.pmReason === '対策不成立') {
           r.flags.pmPending = false
           r.flags.pmReason = undefined
           r.flags.ltbPending = false
         }
+        // 再交渉もこの商社とのもの
+        r.flags.renegotiating = false
         // PM がこの商社の納期・価格について出した依頼（納期NG・コスト超過）は取り下げ（選び直しで判定し直す）
         for (const i of p.issues)
           if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過') && ['open', 'inProgress', 'answered'].includes(i.status)) {
@@ -60,6 +62,13 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       // 指定商社は指定先を変えたら（設計が直して公開）その商社に。客先指定品は採用した依頼先のまま（スコアで選んだ採用だけ外す）
       const mismatch = fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）'
       if (mismatch) {
+        // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
+        if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案'].includes(r.flags.pmReason ?? '')) {
+          r.flags.pmPending = false
+          r.flags.pmReason = undefined
+          r.flags.ltbPending = false
+        }
+        r.flags.renegotiating = false
         r.adoptedSupplierId = undefined
         r.adoptReason = undefined
         r.scoreSnapshot = undefined

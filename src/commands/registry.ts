@@ -182,6 +182,8 @@ export function jumpToRow(id: string, col?: string, keepProblem = false) {
   const r = p.rows.find((x) => x.id === id)
   if (!r) return
   if (!vm().rows.some((x) => x.id === id)) set({ view: 1, filter: '', cellFilter: null })
+  // 1 すべてにも出ない行（購買には PM 承認待ちの変更セットの追加行）は選ばない
+  if (!vm().rows.some((x) => x.id === id) && !r.hidden) return toast(`${id} は変更セットの PM 承認待ちの行です（承認されると見えます）`, 'info')
   const cat = effective(r).category || '（分類なし）'
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
@@ -426,14 +428,15 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   })
   // F8 は見えている並び（4 は種別の順に並んでいる）で上から下へ進む。同じ行は列の順。このビューに無い行は最後（一覧の順）
   const v = vm()
-  const pos = new Map(v.rows.map((x, i) => [x.id, i] as const))
+  // このビューに無い行は、BOM の並び（1 すべての順）で後ろに
+  const pos = new Map<string, number>([...p.rows.map((x, i) => [x.id, 1e6 + i] as const), ...v.rows.map((x, i) => [x.id, i] as const)])
   const colPos = (f: string) => {
     const i = v.columns.indexOf(f)
     return i < 0 ? 999 : i
   }
   return uniq
     .map((x, i) => ({ x, i }))
-    .sort((a, b) => (pos.get(a.x.rowId) ?? 1e9) - (pos.get(b.x.rowId) ?? 1e9) || (pos.has(a.x.rowId) ? colPos(a.x.field) - colPos(b.x.field) : 0) || a.i - b.i)
+    .sort((a, b) => (pos.get(a.x.rowId) ?? 1e9) - (pos.get(b.x.rowId) ?? 1e9) || colPos(a.x.field) - colPos(b.x.field) || a.i - b.i)
     .map((y) => y.x)
 }
 function gotoProblem(delta: 1 | -1): boolean {
@@ -442,6 +445,7 @@ function gotoProblem(delta: 1 | -1): boolean {
   const shown = new Set(vm().rows.map((x) => x.id))
   const visible = all.filter((x) => shown.has(x.rowId))
   const list = visible.length ? visible : all
+  if (!visible.length && all.length) lastProblem = null
   if (!visible.length && all.length && (st().filter || st().cellFilter || st().view !== 1)) toast('このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります', 'info')
   if (!list.length) {
     toast(`${ROLE_LABEL[st().user().role]}がいま直す問題はありません${st().user().role === 'design' ? '（Ctrl+Enter で公開できます）' : ''}`, 'info')
@@ -452,9 +456,9 @@ function gotoProblem(delta: 1 | -1): boolean {
   const stay = s.cursorCol === 'id' || s.cursorCol === 'status'
   const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
-  // 直した・確認した問題は一覧から消えるので、前に飛んだ位置から続ける（先頭に戻って間の問題を飛ばさない）
-  // （直したあと Enter で下の行へ移っていても同じ）
-  if (idx < 0 && lastProblem) {
+  // カーソルが行にあるときは、その行から下（Shift+F8 は上）でいちばん近い問題（↓・PageDown で動いたあとも、カーソルから数える）。
+  // 行を選んでいない（直してビューから外れた など）ときだけ、前に飛んだ位置から続ける
+  if (idx < 0 && !s.cursorRow && lastProblem) {
     const lp = lastProblem
     const j = list.findIndex((x) => x.rowId === lp.rowId && x.field === lp.field)
     if (j >= 0) next = (j + delta + list.length) % list.length
@@ -463,7 +467,6 @@ function gotoProblem(delta: 1 | -1): boolean {
       next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
     }
   }
-  // 前に飛んだ位置が無い（リロード直後・Ctrl+G や ↓ で来た）ときは、カーソルの行より下（Shift+F8 は上）の最初の問題へ
   else if (idx < 0 && s.cursorRow) {
     // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題
     const pos = new Map(vm().rows.map((x, i) => [x.id, i] as const))
@@ -554,12 +557,20 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
             s.commit('再見積要: 据え置き', (p2, ws) => {
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
-              for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) {
-                const live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === q.supplierId && !x.stale)
-                if (live && live.unitPrice == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
+              // 商社ごとにいちばん新しい旧見積を、有効な見積として戻す（見積の枠が無ければ作る）
+              const latest = new Map<string, (typeof p2.quotes)[number]>()
+              for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) latest.set(q.supplierId, q)
+              for (const [sid, q] of latest) {
+                let live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
+                if (!live) {
+                  live = { ...q, stale: false, staleModel: undefined }
+                  p2.quotes.push(live)
+                } else if (live.unitPrice == null && live.leadDays == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
               }
-              // 旧見積が戻ったので、提出済に戻っていた行は見積済へ進める（選定者が選び直す）
-              if (rr.status === 'submitted') setStatus(rr, 'quoting')
+              // 頼むつもりの商社も旧見積の商社に戻す
+              rr.quoteTargets = [...latest.keys()]
+              // 旧見積が戻ったので、提出済に戻っていた行は見積中へ（揃っていれば見積済。選定者が選び直す）
+              if (rr.status === 'submitted' || rr.status === 'quoted') setStatus(rr, 'quoting')
               normalize(p2, ws)
             }),
         },
@@ -674,7 +685,10 @@ function quoteActionPanel(r: Row, supplierId: string) {
       run: () => {
         const scores = scoreRow(p, r, s.ws.suppliers)
         if (scores[0]?.supplierId === supplierId && r.status !== 'quoting') adopt.adoptChoose(r.id, supplierId)
-        else prompt('1位以外を選ぶ理由（数字か ↑↓ で選んで Enter）', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(r.id, supplierId, (c ?? 'その他') + (t ? `: ${t}` : '')))
+        else {
+          const was = r.adoptedSupplierId ?? null
+          prompt('1位以外を選ぶ理由（数字か ↑↓ で選んで Enter）', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(r.id, supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
+        }
       },
     })
   if (s.user().role === 'purchasing' && r.flags.reconfirm && q && !q.reconfirm) {
@@ -1284,6 +1298,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'row.insertBelow': {
       if (role !== 'design') return toast('権限なし（行の追加は設計）', 'err')
+      // 行を選んでいないときは足す位置が分からないので足さない（表の最後に足すなら Ctrl+↓ で最後の行へ）
+      if (!r && s.project().rows.length) return toast('行を選んでから Shift+Enter（その下に足します。最後に足すときは Ctrl+↓ で最後の行へ）', 'info')
       if (s.filter || s.cellFilter) set({ filter: '', cellFilter: null })
       if (![1, 2, 4].includes(s.view)) setView(1)
       const nid = rows.insertBelow(r?.id ?? null)
@@ -1353,7 +1369,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         const c = scoreRow(p, r!, s.ws.suppliers).sort((a, b) => a.effectivePrice - b.effectivePrice)[0]
         if (!c) return toast('有効な見積がありません', 'err')
         const name = s.ws.suppliers.find((x) => x.id === c.supplierId)?.name
-        return prompt(`先行採用（見積中）: 最安の ${name} を仮採用し PM の承認待ちにします。理由（数字か ↑↓）`, { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (ch, t) => void adopt.adoptChoose(r!.id, c.supplierId, `最安（スコア無視）・${ch ?? 'その他'}${t ? ': ' + t : ''}`))
+        const was = r!.adoptedSupplierId ?? null
+        return prompt(`先行採用（見積中）: 最安の ${name} を仮採用し PM の承認待ちにします。理由（数字か ↑↓）`, { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (ch, t) => void adopt.adoptChoose(r!.id, c.supplierId, `最安（スコア無視）・${ch ?? 'その他'}${t ? ': ' + t : ''}`, was))
       }
       adopt.adoptCheapest(r!.id)
       return
@@ -1502,7 +1519,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.request': {
       if (role !== 'purchasing') return toast('権限なし（概算見積の依頼は購買）', 'err')
       const tradable = s.ws.suppliers.filter((x) => x.tradable)
-      const ids = p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)
+      const ids = (p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)).filter((id) => s.ws.suppliers.find((x) => x.id === id)?.tradable !== false)
       const def = addDays(todayStr(), p.settings.quoteDays)
       const allLabel = `相見積先すべて（${ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join('・')}）`
       return prompt('概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）', { options: [allLabel, ...tradable.map((x) => `${x.id} ${x.name}`)], placeholder: `回答期限（空なら ${def}）`, showText: true }, (choice, text) => {
@@ -1737,7 +1754,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
         const noRow = !st().cursorRow
         setView(Number(id.slice(5)) as ViewId)
-        if (noRow && e && !e.altKey && /^\d$/.test(e.key)) set({ cursorRow: null })
+        if (noRow && e && /^Digit\d$|^\d$/.test(e.code || e.key)) set({ cursorRow: null })
         return
       }
       toast(`未実装: ${id}`, 'err')
@@ -1844,7 +1861,10 @@ export function paletteItems(query: string): PaletteItem[] {
             run: wrap(() => {
               jumpToRow(id)
               if (i === 0) adopt.adoptBest(id)
-              else prompt('1位以外を選ぶ理由（数字か ↑↓ で選んで Enter）', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : '')))
+              else {
+                const was = st().project().rows.find((x) => x.id === id)?.adoptedSupplierId ?? null
+                prompt('1位以外を選ぶ理由（数字か ↑↓ で選んで Enter）', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
+              }
             }),
           })
         })

@@ -1,0 +1,8 @@
+ID 列 n R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R005 ID → R061 ID → R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R005 ID → R061 ID → R016 ID | ナビ
+ID 列 F8 R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R005 ID → R061 ID → R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R005 ID → R061 ID → R016 ID | ナビ
+部品名 F8 R016 部品名 → R016 型式 → R009 メーカ → R041 メーカ → R022 型式 → R054 必要数 → R005 型式 → R061 型式 → R016 型式 → R009 メーカ → R041 メーカ → R022 型式 → R054 必要数 → R005 型式 → R061 型式 | ナビ
+ID 列 x n R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R005 ID → R016 ID → R009 ID → R041 ID → R022 ID → R054 ID → R061 ID → R016 ID → R009 ID → R041 ID | ナビ
+部品名 Alt+x F8 R016 部品名 → R016 型式 → R009 メーカ → R041 メーカ → R022 型式 → R054 必要数 → R005 型式 → R016 型式 → R009 メーカ → R041 メーカ → R022 型式 → R054 必要数 → R061 型式 → R016 型式 → R009 メーカ | ナビ
+ID 列 Shift+N R016 ID → R061 ID → R005 ID → R054 ID → R022 ID → R041 ID → R009 ID → R016 ID → R061 ID → R005 ID → R054 ID → R022 ID → R041 ID → R009 ID → R016 ID | ナビ
+部品名 Shift+F8 R016 部品名 → R061 型式 → R005 型式 → R054 必要数 → R022 型式 → R041 メーカ → R009 メーカ → R016 型式 → R061 型式 → R005 型式 → R054 必要数 → R022 型式 → R041 メーカ → R009 メーカ → R016 型式 | ナビ
+view4 tab 4要確認74

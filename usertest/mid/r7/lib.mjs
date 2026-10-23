@@ -28,15 +28,16 @@ export async function launch(opts = {}) {
   page.on('pageerror', (e) => errors.push('[pageerror] ' + e.message))
   await context.addInitScript(() => { window.__m = (p) => { const e = performance.getEntriesByType('resource').map((x) => x.name).filter((n) => new URL(n).pathname === p); return e[0] ?? p } })
   const downloads = []
-  page.on('download', async (d) => { const name = `${SHOTS}/dl-${Date.now()}-${downloads.length}.xlsx`; await d.saveAs(name).catch(() => {}); downloads.push({ name, suggested: d.suggestedFilename() }) })
+  let dlSeq = 0
+  page.on('download', async (d) => { const name = `${SHOTS}/dl-${Date.now()}-${process.pid}-${dlSeq++}.xlsx`; await d.saveAs(name).catch(() => {}); downloads.push({ name, suggested: d.suggestedFilename() }) })
   const t = {
     browser, context, page, errors, downloads, paletteMiss: [],
     async open(role = 'design', seed) {
       if (seed) {
-        await page.goto('http://localhost:5173/?fresh=' + Date.now()); await page.getByTestId('grid').waitFor()
+        await page.goto('http://localhost:5175/?fresh=' + Date.now()); await page.getByTestId('grid').waitFor()
         await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(seed)])
-        await page.goto('http://localhost:5173/')
-      } else await page.goto('http://localhost:5173/?fresh=' + Date.now())
+        await page.goto('http://localhost:5175/')
+      } else await page.goto('http://localhost:5175/?fresh=' + Date.now())
       await page.getByTestId('grid').waitFor()
       // 状態を一度保存させる（サンプルを localStorage に）
       await t.role(role === 'pm' ? 'design' : 'pm')

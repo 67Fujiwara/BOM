@@ -1,0 +1,52 @@
+{"case":"V5-04 ID: x j →→ coil","g":0,"cursor":["R016 ID","R009 メーカ"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+x Alt+j coil","g":0,"cursor":["R016 部品名","R009 部品名"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+h ↓ snap","g":0,"cursor":["R040 部品名","R041 部品名"],"mode":"編集","edit":"snap","panel":null,"diff":["R040.hidden:false→true"]}
+{"case":"V5-04 ID: x j →→ coil","g":60,"cursor":["R016 ID","R009 メーカ"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+x Alt+j coil","g":60,"cursor":["R016 部品名","R009 部品名"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+h ↓ snap","g":60,"cursor":["R040 部品名","R041 部品名"],"mode":"編集","edit":"snap","panel":null,"diff":["R040.hidden:false→true"]}
+{"case":"V5-04 ID: x j →→ coil","g":450,"cursor":["R016 ID","R009 メーカ"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+x Alt+j coil","g":450,"cursor":["R016 部品名","R009 部品名"],"mode":"編集","edit":"coil","panel":null,"diff":["R016.ackRules:[]→[\"rule.model.cp30\"]"]}
+{"case":"V5-04 部品名: Alt+h ↓ snap","g":450,"cursor":["R040 部品名","R041 部品名"],"mode":"編集","edit":"snap","panel":null,"diff":["R040.hidden:false→true"]}
+{"case":"V5-05 h Esc","g":0,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Esc","g":60,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Esc","g":350,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Backspace","g":0,"mode":"編集","edit":"h","cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Backspace","g":60,"mode":"編集","edit":"h","cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Backspace","g":350,"mode":"編集","edit":"h","cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 A Enter","g":0,"mode":"ナビ","edit":null,"cursor":"R041 備考","diff":["R040.working:undefined→{\"note\":\"A\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 A Enter","g":60,"mode":"ナビ","edit":null,"cursor":"R041 備考","diff":["R040.working:undefined→{\"note\":\"A\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 A Enter","g":350,"mode":"ナビ","edit":null,"cursor":"R041 備考","diff":["R040.working:undefined→{\"note\":\"A\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 x Tab","g":0,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":["R040.working:undefined→{\"note\":\"x\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 x Tab","g":60,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":["R040.working:undefined→{\"note\":\"x\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 x Tab","g":350,"mode":"ナビ","edit":null,"cursor":"R040 備考","diff":["R040.working:undefined→{\"note\":\"x\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"V5-05 h Esc（ID 列）","g":0,"mode":"ナビ","edit":null,"cursor":"R040 ID","diff":["R040.hidden:false→true"],"toast":"R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"}
+{"case":"V5-05 h Esc（ID 列）","g":60,"mode":"ナビ","edit":null,"cursor":"R040 ID","diff":["R040.hidden:false→true"],"toast":"R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"}
+{"case":"V5-05 h Esc（ID 列）","g":350,"mode":"ナビ","edit":null,"cursor":"R040 ID","diff":["R040.hidden:false→true"],"toast":"R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"}
+{"case":"select/num/date: 単位 ← k Enter","mode":"ナビ","edit":null,"cursor":"R041 単位","panel":null,"view":"view-1","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"select/num/date: 単位 ← h Enter","mode":"ナビ","edit":null,"cursor":"R041 単位","panel":null,"view":"view-1","diff":["R040.working:undefined→{\"unit\":\"本\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"select/num/date: 単位 ← S Enter","mode":"ナビ","edit":null,"cursor":"R041 単位","panel":null,"view":"view-1","diff":["R040.working:undefined→{\"unit\":\"セット\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"select/num/date: 調達区分 ← a Enter","mode":"ナビ","edit":null,"cursor":"R041 調達区分","panel":null,"view":"view-1","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"select/num/date: 代替可否 ← n Enter","mode":"編集","edit":"n","cursor":"R040 代替可否","panel":null,"view":"view-1","diff":[],"toast":"代替可否に「n」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc）"}
+{"case":"select/num/date: メーカ指定 ← r Enter","mode":"ナビ","edit":null,"cursor":"R041 備考","panel":null,"view":"view-1","diff":["R040.working:undefined→{\"note\":\"r\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"select/num/date: 必要数 ← x Enter","mode":"編集","edit":"x","cursor":"R040 必要数","panel":null,"view":"view-1","diff":[],"toast":"必要数として読めません: 「x」（直して Enter、やめるときは Esc）"}
+{"case":"select/num/date: 必要日(固定) ← j Enter","mode":"ナビ","edit":null,"cursor":"R041 備考","panel":null,"view":"view-1","diff":["R040.working:undefined→{\"note\":\"j\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"起動直後（行を選んでいない）に Analog","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":"view-1","chips":"","diff":[],"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"case":"分類の見出しで hook","cursor":["分類 電源","分類 電源"],"mode":"ナビ","edit":null,"panel":null,"view":"view-1","chips":"","diff":[],"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"case":"絞り込み 0 行で coil","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"chips":"","diff":[],"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"case":"編集中に Alt+Enter","mode":"ナビ","edit":null,"cursor":"R040 備考","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"編集中に F8","mode":"ナビ","edit":null,"cursor":"R016 型式","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"編集中に Alt+KeyX","mode":"ナビ","edit":null,"cursor":"R040 備考","diff":[],"toast":"この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"}
+{"case":"編集中に Alt+KeyN","mode":"ナビ","edit":null,"cursor":"R016 型式","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+{"case":"ヒント","role":"design","view":4,"cursor":"R016 部品名","hints":"Ctrl+Enter公開 5 行?ヘルプEnter編集Alt+a推奨採用Space指摘を見るSpace開くAlt+x警告を確認済み"}
+{"case":"ヒント","role":"design","view":4,"cursor":"R016 ID","hints":"Ctrl+Enter公開 5 行?ヘルプa推奨採用Space指摘を見るSpace開くx警告を確認済み"}
+{"case":"ヒント","role":"design","view":1,"cursor":"R040 型式","hints":"Ctrl+Enter公開 5 行?ヘルプEnter編集Alt+a推奨採用Space開く"}
+{"case":"ヒント","role":"purchasing","view":9,"cursor":"R005 単価","hints":"?ヘルプEnter編集Alt+Shift+I指摘Space開く"}
+{"case":"ヒント","role":"purchasing","view":1,"cursor":"R040 部品名","hints":"?ヘルプAlt+Shift+I指摘Space開く"}
+{"case":"ヒント","role":"pm","view":7,"cursor":"R003 部品名","hints":"?ヘルプAlt+y承認Alt+Shift+Y却下Enter決定パネルSpace開く"}
+{"case":"ヒント「Ctrl+Alt+A 推奨採用」をクリック","found":1,"diff":["R040.status:\"quoted\"→\"selected\"","R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}","R040.orderQty:null→2","R040.adoptedSupplierId:undefined→\"S1\"","R040.adoptReason:undefined→\"拮抗\"","R040.scoreSnapshot:undefined→97.8"],"toast":"R040 を 因幡電機 で採用（スコア 97.8）"}
+{"case":"パレット「隠す」の表記（部品名）","items":["表示列の表示・非表示c","編集行を隠す / 隠した行を戻す隠した行は 1 すべてに薄く出ますh"]}
+{"case":"パレット「次の問題」の表記（部品名）","items":["チェック次の問題へnF8"]}
+{"case":"ヘルプの冒頭","text":"ショートカット一覧\n\n迷ったら Ctrl+K で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は Ctrl+Z で戻せます（あなた自身の操作だけ）。\n表の中の英字・数字は、ID・状態・チェック（発注・入荷）の列ではそのまま 1 キー操作、それ以外の列では値の入力です（Excel と同じ）。どの列でも Alt を押しながらなら 1 キー操作です（例: Alt+x 確認済み、Alt+a 推奨で採用、Alt+Shift+I 指摘、Alt+4 要確認）。次の問題は F8、最安で採用は Ctrl+Alt+A。\n\n全体\nコマンドパレットを開く\nCtrl+K\n案件を切り替える\nCtrl+P\n一時保存\nCtrl+S\n元に戻す\nCtrl+Z\nやり直す\nCtrl+Shift+Z\nCtrl+Y\nExcelで出力\nCtrl+E\n表示中の行と列を書式つき"}
+{"case":"ガイド作成直後に n","wizard":{"preview":"案件 P-R6N 案件P-R6N / 納期 2027-03-31 / 工程日数 10 / 予算 なし / 購買・PM 佐藤, 鈴木 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量リレーオムロン2個端子台XW2B-20G40個ヒューズF-1ASOC0個コネクタXH-2PJST4個Ente","ms":69},"toast":"案件P-R6N（4 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します","cursor":["R001 型式","R001 型式"],"mode":"編集","edit":"n","hints":"?ヘルプEnter確定して下へTab確定して右へEsc取り消し"}
+{"case":"Alt+h のあと案内どおり k → h","toast":"R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）","cursor":["R040 部品名","R040 部品名"],"mode":"編集","edit":"kh","diff":[]}
+{"errors":[]}

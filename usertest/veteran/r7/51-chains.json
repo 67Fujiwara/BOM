@@ -1,0 +1,7996 @@
+{
+  "dev": [
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    }
+  ],
+  "build": [
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x n x n x n",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x j x j x j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R043 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: a j a j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 立花エレテック で採用（スコア 94 / 在庫即納）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S2\"",
+        "R041.scoreSnapshot:undefined→94"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: D j D j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R042 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: s 4",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 ID",
+        "R040 ID"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 状態",
+        "R043 状態"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x n x n x n（部品名から）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R041 メーカ"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h j h j h j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R043 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true",
+        "R041.hidden:false→true",
+        "R042.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Ctrl+Alt+A j Ctrl+Alt+A",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を 因幡電機 で採用（最安（スコア無視））",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S3\"",
+        "R040.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R040.scoreSnapshot:undefined→90",
+        "R041.status:\"quoted\"→\"selected\"",
+        "R041.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":true}",
+        "R041.orderQty:null→1",
+        "R041.adoptedSupplierId:undefined→\"S1\"",
+        "R041.adoptReason:undefined→\"最安（スコア無視）\"",
+        "R041.scoreSnapshot:undefined→69.2"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt+a（推奨）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）",
+      "diff": [
+        "R040.status:\"quoted\"→\"selected\"",
+        "R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+        "R040.orderQty:null→2",
+        "R040.adoptedSupplierId:undefined→\"S1\"",
+        "R040.adoptReason:undefined→\"拮抗\"",
+        "R040.scoreSnapshot:undefined→97.8"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x F8 x F8 x F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R016 ID",
+        "R022 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x N x N（Shift+N）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: x S-F8 x S-F8",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R005 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: 型式に全角文字が含まれています",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]",
+        "R061.ackRules:[]→[\"rule.model.fw\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "状態: x n x n x n",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R016 状態",
+        "R022 状態"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "ID: n n n n n n",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 ID",
+        "R061 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: 4 j 1（Alt+数字）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓ ↓（押したまま）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R042 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D ↓",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R041 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: d（割り当て無し）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+D j Shift+D j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 型式",
+        "R042 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R041 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）",
+      "diff": [
+        "R081:+new",
+        "R082:+new",
+        "order changed"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 0,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 30,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 120,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 450,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: s 4（4 は Alt なし）",
+      "role": "design",
+      "gap": 1000,
+      "ok": false,
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "4",
+      "panel": null,
+      "chips": "並び替え 型式 ▲ ✕",
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: f j",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 メーカ",
+        "R042 メーカ"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "メーカ = オムロン ✕",
+      "toast": "メーカ =「オムロン」で絞り込みました（Esc か Alt+f で解除）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+I（指摘パネル）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-issue",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: Shift+A（採用パネル）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "パネル",
+      "edit": null,
+      "panel": "panel-adopt",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3ロット Alt: o k j",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 ロット",
+        "R013 ロット"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R013: 発注済にしました",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買3発注 o k j（文字を打てない列）",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 発注",
+        "分類 電源"
+      ],
+      "view": [
+        "view-3",
+        "view-3"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+      "diff": [
+        "R013.status:\"formalQuoted\"→\"ordered\"",
+        "R013.ordered:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "購買 ID: x n x n",
+      "role": "purchasing",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R013 ID",
+        "R054 ID"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R054 の差分を確認済にしました（購買として）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "PM 7: j k j（PM は打てる列が無い）",
+      "role": "pm",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R003 部品名",
+        "R003 部品名"
+      ],
+      "view": [
+        "view-7",
+        "view-7"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+j）か、ID の列で",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: xnxnxn は値",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-4",
+        "view-4"
+      ],
+      "mode": "編集",
+      "edit": "xnxnxn",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "部品名: hjhjhj は値",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "編集",
+      "edit": "hjhjhj",
+      "panel": null,
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "diff": [],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: h ↓（Alt+↓ は行の移動）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R040 部品名",
+        "R041 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-1"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "diff": [
+        "R040.hidden:false→true"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 0,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 30,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 120,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 450,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    },
+    {
+      "name": "Alt: x 4（Alt+4）",
+      "role": "design",
+      "gap": 1000,
+      "ok": true,
+      "cursor": [
+        "R016 部品名",
+        "R016 部品名"
+      ],
+      "view": [
+        "view-1",
+        "view-4"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "chips": "",
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください",
+      "diff": [
+        "R016.ackRules:[]→[\"rule.model.cp30\"]"
+      ],
+      "notPrevented": []
+    }
+  ]
+}

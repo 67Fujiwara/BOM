@@ -1,0 +1,70 @@
+0 build-r6@80 {"j":16.6,"view":31.8,"space":17.4,"pageDown":16.8,"perEnter":59.4,"perUndo":51.8}
+0 build-current@80 {"j":18.2,"view":40.1,"space":32.9,"pageDown":15,"perEnter":87.2,"perUndo":25.6}
+0 build-r6@300 {"j":16.7,"view":26.8,"space":15.7,"pageDown":16.8,"perEnter":130.3,"perUndo":59.6}
+0 build-current@300 {"j":16.9,"view":39.2,"space":19,"pageDown":17.8,"perEnter":96.3,"perUndo":35.2}
+0 build-r6@2500 {"j":16.7,"view":31.4,"space":16.5,"pageDown":16.1,"perEnter":1353,"perUndo":1522.2}
+0 build-current@2500 {"j":16.8,"view":46.7,"space":25.2,"pageDown":22.3,"perEnter":255.3,"perUndo":122.8}
+letter build-r6 {"隠す（部品名・Alt+h）":{"median":8,"samples":[7,8,8,8,15]},"複製（型式・Alt+Shift+D）":{"median":11,"samples":[10,11,11,16,45]},"隠す（ID・h）":{"median":9,"samples":[6,7,9,9,13]}}
+letter build-current {"隠す（部品名・Alt+h）":{"median":13,"samples":[8,13,13,14,14]},"複製（型式・Alt+Shift+D）":{"median":12,"samples":[10,11,12,13,28]},"隠す（ID・h）":{"median":10,"samples":[9,10,10,11,30]}}
+1 build-r6@80 {"j":16.4,"view":40.1,"space":18.1,"pageDown":19.7,"perEnter":74.3,"perUndo":52.6}
+1 build-current@80 {"j":16.8,"view":39.7,"space":21.4,"pageDown":17.7,"perEnter":89.5,"perUndo":29.4}
+1 build-r6@300 {"j":16,"view":38.8,"space":18.4,"pageDown":16.4,"perEnter":153.7,"perUndo":66.6}
+1 build-current@300 {"j":16.8,"view":43.3,"space":22.4,"pageDown":16.8,"perEnter":128.9,"perUndo":32.6}
+1 build-r6@2500 {"j":20.6,"view":59.3,"space":35.5,"pageDown":34.3,"perEnter":2106.7,"perUndo":1571.8}
+1 build-current@2500 {"j":18.4,"view":54.7,"space":30,"pageDown":21.8,"perEnter":341.9,"perUndo":191}
+2 build-r6@80 {"j":16.3,"view":37.1,"space":17,"pageDown":15.9,"perEnter":70.9,"perUndo":32}
+2 build-current@80 {"j":16.8,"view":34.4,"space":19.7,"pageDown":17.8,"perEnter":82.7,"perUndo":19.4}
+2 build-r6@300 {"j":16.9,"view":52.1,"space":15.5,"pageDown":15.5,"perEnter":134.6,"perUndo":50.6}
+2 build-current@300 {"j":18,"view":30.6,"space":16,"pageDown":16.6,"perEnter":73.1,"perUndo":22.6}
+2 build-r6@2500 {"j":15.7,"view":50,"space":21.2,"pageDown":19.4,"perEnter":1555,"perUndo":1404.6}
+2 build-current@2500 {"j":17,"view":43.3,"space":32.7,"pageDown":17.2,"perEnter":288.9,"perUndo":119.8}
+{
+ "build-r6@80": {
+  "j": 16.4,
+  "view": 37.1,
+  "space": 17.4,
+  "pageDown": 16.8,
+  "perEnter": 70.9,
+  "perUndo": 51.8
+ },
+ "build-current@80": {
+  "j": 16.8,
+  "view": 39.7,
+  "space": 21.4,
+  "pageDown": 17.7,
+  "perEnter": 87.2,
+  "perUndo": 25.6
+ },
+ "build-r6@300": {
+  "j": 16.7,
+  "view": 38.8,
+  "space": 15.7,
+  "pageDown": 16.4,
+  "perEnter": 134.6,
+  "perUndo": 59.6
+ },
+ "build-current@300": {
+  "j": 16.9,
+  "view": 39.2,
+  "space": 19,
+  "pageDown": 16.8,
+  "perEnter": 96.3,
+  "perUndo": 32.6
+ },
+ "build-r6@2500": {
+  "j": 16.7,
+  "view": 50,
+  "space": 21.2,
+  "pageDown": 19.4,
+  "perEnter": 1555,
+  "perUndo": 1522.2
+ },
+ "build-current@2500": {
+  "j": 17,
+  "view": 46.7,
+  "space": 30,
+  "pageDown": 21.8,
+  "perEnter": 288.9,
+  "perUndo": 122.8
+ }
+}

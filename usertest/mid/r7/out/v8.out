@@ -1,17 +1,32 @@
-node:internal/modules/run_main:123
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737595937
-Call log:
-[2m  - navigating to "http://localhost:5173/?fresh=1792737595937", waiting until "load"[22m
-
-    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
-    at /home/user/BOM/usertest/mid/r7/v8.mjs:5:9 {
-  log: [
-    '  - navigating to "http://localhost:5173/?fresh=1792737595937", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v22.22.0
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R015 problems [ 'warn:メーカ指定＝任意 と 代替可否＝不可 は矛盾しています' ]
+PASS M3 メーカ指定＝任意 と 代替可否＝不可 の組合せを矛盾として警告（§3.1・§16） :: warn:メーカ指定＝任意 と 代替可否＝不可 は矛盾しています
+publish → 公開できません: 未確認の警告 1 件（R015 メーカ指定＝任意 と 代替可否＝不可 は矛盾しています … 直すか Alt+x で確認済みに） "指定"
+R011 Shift+A → R011: ミスミ を仮採用（実績/品質）。PM の承認待ち（7 要決定） quoted S3 {"pmPending":true,"pmReason":"例外選定","contested":false}
+R012 Shift+A → R012: ミスミ を仮採用（実績/品質）。PM の承認待ち（7 要決定） quoted S3 {"pmPending":true,"pmReason":"例外選定","contested":false}
+import → 取り込み 2 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 1 件（R062 単価: 単価として読めません: 「12O0」。その行は取り込んでいません）
+drafts []
+FAIL M-35 メーカ指定＝任意の行は代替不可でも代替提案の下書きを作る
+PASS S メーカ指定＝指定・代替不可の行は提案を作らない
+PASS M3 取込で読めない値（12O0）があったことを結果に出す :: 取り込み 2 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 1 件（R062 単価: 単価として読めません: 「12O0」。その行は取り込んでいません）
+R062 S1 price 17318
+issue publish → 指摘 1 件 を公開しました
+round 1 issue open bounce 1 ball 設計
+round 2 issue open bounce 2 ball PM
+PASS S 差戻し 2 回目で PM のボール
+PM 7 has R011:true R012:true R017:true
+panel 差戻し2回目 ["y 購買の指摘を支持 → 設計へ","Shift+Y 設計の回答を支持 → 確認済"]
+R017 after 指摘を支持: ball 設計 ["open:true"]
+PASS S 2 回目の差戻しで PM が指摘を支持 → 設計のボール
+R011 after 却下 quoted undefined {"pmPending":false,"contested":false,"ltbPending":false} ball 設計
+PASS S 例外選定の却下 → 見積済・選定者（設計）のボール
+R012 after 承認 selected S3 {"pmPending":false,"contested":false,"leadNG":false} R012: 承認
+PASS S 例外選定の承認 → 選定済
+PM Ctrl+Z → 元に戻す: 決定: 承認 quoted {"pmPending":true,"pmReason":"例外選定","contested":false}
+PASS S PM の Ctrl+Z で自分の承認を戻せる（承認待ちに戻る）
+design Ctrl+Z → 戻せません: I-006 は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください selected {"pmPending":false,"contested":false,"leadNG":false}
+purchasing 4: 2 R054,R013
+PM 4: 1 R003
+PM 7: 1 R003
+== 8/9 PASS

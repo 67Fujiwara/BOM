@@ -1,17 +1,32 @@
-node:internal/modules/run_main:123
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737614443
-Call log:
-[2m  - navigating to "http://localhost:5173/?fresh=1792737614443", waiting until "load"[22m
-
-    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
-    at /home/user/BOM/usertest/mid/r7/y2.mjs:5:9 {
-  log: [
-    '  - navigating to "http://localhost:5173/?fresh=1792737614443", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v22.22.0
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+o A → R001: 発注済にしました
+o B → R002: 発注済にしました
+publish → 指摘 1 件 を公開しました
+PM y → R001: 承認
+un-order A → R001: 発注済を外しました
+A after un-order R001:formalQuoted:ord=false:cm=代替品検討:oca=false issues=I-006:発注後変更依頼:confirmed:ruled ball 設計
+design 4 has A? true ball 設計
+design status bar on A ナビR001 部品名設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 5 行?ヘルプEnter編集Space開く
+PASS Y2-1 （納期NG なし）発注を外した行は設計のボール・設計の 4（r で置き換える）
+purch Ctrl+Z → 元に戻す: 発注済を外す
+A R001:ordered:ord=true:cm=-:oca=true issues=I-006:発注後変更依頼:inProgress:ruled
+purch Ctrl+Y → やり直せません: R001 の発注（発注後変更依頼で PM が判断しています） を後から別の操作が変更しています
+A R001:ordered:ord=true:cm=-:oca=true issues=I-006:発注後変更依頼:inProgress:ruled
+o again → R001: 発注済を外しました
+A R001:formalQuoted:ord=false:cm=代替品検討:oca=false issues=I-006:発注後変更依頼:confirmed:ruled
+PASS Y2-2 承認済みで外した発注を Ctrl+Z で戻したあと、Ctrl+Y（または o）でもう一度外せる :: redo=やり直せません: R001 の発注（発注後変更依頼で PM が判断しています） を後から別の操作が変更しています / o=R001: 発注済を外しました
+PM d → R002: 設計へ代替依頼
+publish → 指摘 1 件 を公開しました
+PM y → R002: 承認
+B after approve R002:ordered:ord=true:cm=代替品検討:oca=true issues=I-007:納期NG:confirmed,I-008:発注後変更依頼:inProgress:ruled ball 購買
+un-order B → R002: 発注済を外しました
+B after un-order R002:formalQuoted:ord=false:cm=代替品検討:oca=false issues=I-007:納期NG:confirmed,I-008:発注後変更依頼:confirmed:ruled ball 設計
+design 4 has B? true ball 設計
+PASS Y2-3 （納期NG・PM d の経路）発注を外した行は設計のボール・設計の 4（§9.1 末尾） :: ball=設計 R002:formalQuoted:ord=false:cm=代替品検討:oca=false issues=I-007:納期NG:confirmed,I-008:発注後変更依頼:confirmed:ruled
+PM 7 has B? false
+PM 4 has B? false
+PM x → R002 の差分を確認済にしました（PMとして）
+B after PM x R002:formalQuoted:ord=false:cm=代替品検討:oca=false issues=I-007:納期NG:confirmed,I-008:発注後変更依頼:confirmed:ruled ball 設計
+design 4 has B after PM x? true
+== 3/3 PASS

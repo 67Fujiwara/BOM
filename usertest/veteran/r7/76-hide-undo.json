@@ -1,0 +1,171 @@
+[
+  {
+    "case": "1 2 で Alt+h ×5 → Ctrl+Z ×5 → Ctrl+Y ×5",
+    "cursorsAfterHide": [
+      "R010 部品名",
+      "R011 部品名",
+      "R012 部品名",
+      "R013 部品名",
+      "R014 部品名",
+      "R015 部品名"
+    ],
+    "hidden": [
+      "R010.hidden:false→true",
+      "R011.hidden:false→true",
+      "R012.hidden:false→true",
+      "R013.hidden:false→true",
+      "R014.hidden:false→true"
+    ],
+    "afterUndo": [],
+    "z": [
+      "R015 部品名 / 元に戻す: 行を隠す/戻す",
+      "R015 部品名 / 元に戻す: 行を隠す/戻す",
+      "R015 部品名 / 元に戻す: 行を隠す/戻す",
+      "R015 部品名 / 元に戻す: 行を隠す/戻す",
+      "R015 部品名 / 元に戻す: 行を隠す/戻す"
+    ],
+    "afterRedoVsHide": [],
+    "y": [
+      "R015 部品名 / やり直す: 行を隠す/戻す",
+      "R015 部品名 / やり直す: 行を隠す/戻す",
+      "R015 部品名 / やり直す: 行を隠す/戻す",
+      "R015 部品名 / やり直す: 行を隠す/戻す",
+      "R015 部品名 / やり直す: 行を隠す/戻す"
+    ]
+  },
+  {
+    "case": "2 Alt を押したまま h ↓ ↓ h",
+    "cursor": [
+      "R040 部品名",
+      "R042 部品名"
+    ],
+    "view": "view-1",
+    "mode": "ナビ",
+    "diff": [
+      "R040.hidden:false→true",
+      "R042.hidden:false→true"
+    ],
+    "movedRows": [],
+    "toast": "R042 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+  },
+  {
+    "case": "2 Alt を押したまま x ↑（4）",
+    "cursor": [
+      "R016 部品名",
+      "R016 部品名"
+    ],
+    "view": "view-4",
+    "mode": "ナビ",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ],
+    "movedRows": [],
+    "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+  },
+  {
+    "case": "2 Alt を押し直して ↓（行の移動）",
+    "cursor": [
+      "R040 部品名",
+      "R040 部品名"
+    ],
+    "view": "view-1",
+    "mode": "ナビ",
+    "diff": [
+      "R040.hidden:false→true",
+      "order changed"
+    ],
+    "movedRows": [
+      "R040",
+      "R041"
+    ],
+    "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+  },
+  {
+    "case": "2 Alt を押したまま 4 j j 1",
+    "cursor": [
+      "R040 部品名",
+      "R043 部品名"
+    ],
+    "view": "view-1",
+    "mode": "ナビ",
+    "diff": [],
+    "movedRows": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "case": "2 Alt を押したまま ↓ だけ（行の移動）",
+    "cursor": [
+      "R040 部品名",
+      "R040 部品名"
+    ],
+    "view": "view-1",
+    "mode": "ナビ",
+    "diff": [
+      "order changed"
+    ],
+    "movedRows": [
+      "R040",
+      "R041",
+      "R042"
+    ],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "case": "2 Alt を押したまま Shift+D ↓",
+    "cursor": [
+      "R040 部品名",
+      "R041 部品名"
+    ],
+    "view": "view-1",
+    "mode": "ナビ",
+    "diff": [
+      "R081:+new",
+      "order changed"
+    ],
+    "movedRows": [],
+    "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"
+  },
+  {
+    "case": "3 2 で R016 を隠したあと F8 を 9 回",
+    "seq": [
+      "R017 型式",
+      "R016 型式",
+      "R009 メーカ",
+      "R041 メーカ",
+      "R022 型式",
+      "R054 必要数",
+      "R005 型式",
+      "R061 型式",
+      "R016 型式",
+      "R009 メーカ"
+    ],
+    "R016visibleIn2": true,
+    "cursorOnHiddenR016": 2
+  },
+  {
+    "case": "3b 見えない R016 の上で coil",
+    "cursor": "R016 型式",
+    "mode": "編集",
+    "edit": "coil",
+    "toast": "R016 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+  },
+  {
+    "case": "4a B が A のカーソルの行（2 で R030）を隠した → A で Knowles",
+    "cursorA": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）",
+    "visibleHasR030": false
+  },
+  {
+    "case": "4b B が R031 を削除 → A で R032 から ↑",
+    "cursor": "R031 部品名"
+  },
+  {
+    "errors": []
+  }
+]

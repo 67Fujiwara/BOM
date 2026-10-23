@@ -1,0 +1,102 @@
+[
+  {
+    "step": "起動",
+    "app": {},
+    "truth": {}
+  },
+  {
+    "step": "R041 型式 := R040 の型式（E32-D11 2M）",
+    "app": {},
+    "truth": {
+      "R040": "model",
+      "R041": "model"
+    }
+  },
+  {
+    "step": "Ctrl+Z",
+    "app": {},
+    "truth": {}
+  },
+  {
+    "step": "Ctrl+Y",
+    "app": {},
+    "truth": {
+      "R040": "model",
+      "R041": "model"
+    }
+  },
+  {
+    "step": "回路記号 K1 を 2 行",
+    "app": {
+      "R041": "ref",
+      "R042": "ref"
+    },
+    "truth": {
+      "R040": "model",
+      "R041": "model,ref",
+      "R042": "ref"
+    }
+  },
+  {
+    "step": "R042 を削除",
+    "app": {},
+    "truth": {
+      "R040": "model",
+      "R041": "model"
+    }
+  },
+  {
+    "step": "削除を Ctrl+Z",
+    "app": {
+      "R041": "ref",
+      "R042": "ref"
+    },
+    "truth": {
+      "R040": "model",
+      "R041": "model,ref",
+      "R042": "ref"
+    }
+  },
+  {
+    "step": "別タブで R043 型式 := 同じ",
+    "app": {
+      "R041": "ref",
+      "R042": "ref"
+    },
+    "truth": {
+      "R040": "model",
+      "R041": "model,ref",
+      "R042": "ref",
+      "R043": "model"
+    }
+  },
+  {
+    "step": "貼り付けで R050〜R052 に同じ型式",
+    "toast": "3 セルを貼り付けました（Ctrl+Z で一度に戻せます）",
+    "app": {
+      "R041": "ref",
+      "R042": "ref"
+    },
+    "truth": {
+      "R040": "model",
+      "R041": "model,ref",
+      "R042": "ref",
+      "R043": "model",
+      "R050": "model",
+      "R051": "model",
+      "R052": "model"
+    }
+  },
+  {
+    "mismatchSteps": [
+      "R041 型式 := R040 の型式（E32-D11 2M）",
+      "Ctrl+Y",
+      "回路記号 K1 を 2 行",
+      "R042 を削除",
+      "削除を Ctrl+Z",
+      "別タブで R043 型式 := 同じ",
+      "貼り付けで R050〜R052 に同じ型式"
+    ],
+    "errors": []
+  }
+]

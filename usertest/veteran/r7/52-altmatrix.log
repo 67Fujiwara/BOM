@@ -1,0 +1,447 @@
+設計・文字を打てる列 | Alt+KeyA | prevented true | diff:R040.status:"quoted"→"selected";R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→"S1";R0 | toast R040 を 因幡電機 で採用（スコア 97.8）
+設計・文字を打てる列 | Alt+KeyB | prevented true | (なし) | toast Alt+B は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyC | prevented true | panel:panel-columns | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyD | prevented true | (なし) | toast Alt+D は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyE | prevented true | (なし) | toast Alt+E は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyF | prevented true | chips:部品名 = ファイバユニット ✕ | toast 部品名 =「ファイバユニット」で絞り込みました（Esc か Alt+f で解除）
+設計・文字を打てる列 | Alt+KeyG | prevented true | (なし) | toast Alt+G は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyH | prevented true | diff:R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+設計・文字を打てる列 | Alt+KeyI | prevented true | (なし) | toast 権限なし（購買の列）
+設計・文字を打てる列 | Alt+KeyJ | prevented true | cursor:R041 部品名 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyK | prevented true | cursor:R039 部品名 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyL | prevented true | (なし) | toast Alt+L は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyM | prevented true | (なし) | toast Alt+M は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyN | prevented true | cursor:R016 型式 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyO | prevented true | (なし) | toast 権限なし（購買の列）
+設計・文字を打てる列 | Alt+KeyP | prevented true | (なし) | toast Alt+P は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyQ | prevented true | (なし) | toast Alt+Q は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyR | prevented true | panel:panel-prompt | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyS | prevented true | chips:並び替え 部品名 ▲ ✕ | toast 部品名 で昇順に並べました（もう一度で解除）
+設計・文字を打てる列 | Alt+KeyT | prevented true | (なし) | toast Alt+T は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyU | prevented true | (なし) | toast Alt+U は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyV | prevented true | (なし) | toast Alt+V は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+KeyW | prevented true | panel:panel-weights | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+KeyX | prevented true | (なし) | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません
+設計・文字を打てる列 | Alt+KeyY | prevented true | (なし) | toast 権限なし（承認は PM）
+設計・文字を打てる列 | Alt+KeyZ | prevented true | (なし) | toast Alt+Z は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyA | prevented true | panel:panel-adopt | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Shift+KeyB | prevented true | (なし) | toast Alt+Shift+B は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyC | prevented true | (なし) | toast Alt+Shift+C は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyD | prevented true | diff:R081:+new;order changed | cursor:R081 部品名 | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）
+設計・文字を打てる列 | Alt+Shift+KeyE | prevented true | (なし) | toast Alt+Shift+E は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyF | prevented true | (なし) | toast Alt+Shift+F は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyG | prevented true | (なし) | toast Alt+Shift+G は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyH | prevented true | (なし) | toast Alt+Shift+H は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyI | prevented true | panel:panel-issue | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Shift+KeyJ | prevented true | cursor:R041 部品名 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Shift+KeyK | prevented true | cursor:R039 部品名 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Shift+KeyL | prevented true | (なし) | toast Alt+Shift+L は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyM | prevented true | (なし) | toast Alt+Shift+M は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyN | prevented true | cursor:R061 型式 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Shift+KeyO | prevented true | (なし) | toast Alt+Shift+O は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyP | prevented true | (なし) | toast Alt+Shift+P は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyQ | prevented true | (なし) | toast Alt+Shift+Q は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyR | prevented true | (なし) | toast この行に指摘はありません
+設計・文字を打てる列 | Alt+Shift+KeyS | prevented true | chips:並び替え 部品名 ▼ ✕ | toast 部品名 で降順に並べました（もう一度で解除）
+設計・文字を打てる列 | Alt+Shift+KeyT | prevented true | (なし) | toast Alt+Shift+T は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyU | prevented true | (なし) | toast Alt+Shift+U は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyV | prevented true | (なし) | toast Alt+Shift+V は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyW | prevented true | (なし) | toast Alt+Shift+W は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Alt+Shift+KeyX | prevented true | (なし) | toast 差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます
+設計・文字を打てる列 | Alt+Shift+KeyY | prevented true | (なし) | toast 権限なし（却下は PM）
+設計・文字を打てる列 | Alt+Shift+KeyZ | prevented true | (なし) | toast Alt+Shift+Z は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyA | prevented true | diff:R040.status:"quoted"→"selected";R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→"S3";R0 | toast R040 を ミスミ で採用（最安（スコア無視））
+設計・文字を打てる列 | Control+Alt+KeyB | prevented true | (なし) | toast Ctrl+Alt+B は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyC | prevented true | (なし) | toast Ctrl+Alt+C は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyD | prevented true | (なし) | toast Ctrl+Alt+D は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyE | prevented true | (なし) | toast Ctrl+Alt+E は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyF | prevented true | (なし) | toast Ctrl+Alt+F は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyG | prevented true | (なし) | toast Ctrl+Alt+G は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyH | prevented true | (なし) | toast Ctrl+Alt+H は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyI | prevented true | (なし) | toast Ctrl+Alt+I は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyJ | prevented true | (なし) | toast Ctrl+Alt+J は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyK | prevented true | (なし) | toast Ctrl+Alt+K は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyL | prevented true | (なし) | toast Ctrl+Alt+L は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyM | prevented true | (なし) | toast Ctrl+Alt+M は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyN | prevented true | (なし) | toast Ctrl+Alt+N は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyO | prevented true | (なし) | toast Ctrl+Alt+O は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyP | prevented true | (なし) | toast Ctrl+Alt+P は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyQ | prevented true | (なし) | toast Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyR | prevented true | (なし) | toast Ctrl+Alt+R は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyS | prevented true | (なし) | toast Ctrl+Alt+S は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyT | prevented true | (なし) | toast Ctrl+Alt+T は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyU | prevented true | (なし) | toast Ctrl+Alt+U は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyV | prevented true | (なし) | toast Ctrl+Alt+V は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyW | prevented true | (なし) | toast Ctrl+Alt+W は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyX | prevented true | (なし) | toast Ctrl+Alt+X は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyY | prevented true | (なし) | toast Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | Control+Alt+KeyZ | prevented true | (なし) | toast Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）
+設計・文字を打てる列 | F8 | prevented true | cursor:R016 型式 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Shift+F8 | prevented true | cursor:R061 型式 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+F8 | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Digit4 | prevented true | view:view-4 | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+ArrowDown | prevented true | diff:order changed | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+ArrowRight | prevented true | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Home | prevented true | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Enter | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Space | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・文字を打てる列 | Alt+Slash | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyA | prevented true | diff:R040.status:"quoted"→"selected";R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→"S1";R0 | toast R040 を 因幡電機 で採用（スコア 97.8）
+設計・ID 列 | Alt+KeyB | prevented true | (なし) | toast Alt+B は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyC | prevented true | panel:panel-columns | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyD | prevented true | (なし) | toast Alt+D は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyE | prevented true | (なし) | toast Alt+E は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyF | prevented true | chips:ID = R040 ✕ | toast ID =「R040」で絞り込みました（Esc か Alt+f で解除）
+設計・ID 列 | Alt+KeyG | prevented true | (なし) | toast Alt+G は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyH | prevented true | diff:R040.hidden:false→true | toast R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+設計・ID 列 | Alt+KeyI | prevented true | (なし) | toast 権限なし（購買の列）
+設計・ID 列 | Alt+KeyJ | prevented true | cursor:R041 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyK | prevented true | cursor:R039 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyL | prevented true | (なし) | toast Alt+L は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyM | prevented true | (なし) | toast Alt+M は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyN | prevented true | cursor:R016 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyO | prevented true | (なし) | toast 権限なし（購買の列）
+設計・ID 列 | Alt+KeyP | prevented true | (なし) | toast Alt+P は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyQ | prevented true | (なし) | toast Alt+Q は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyR | prevented true | panel:panel-prompt | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyS | prevented true | chips:並び替え ID ▲ ✕ | toast ID で昇順に並べました（もう一度で解除）
+設計・ID 列 | Alt+KeyT | prevented true | (なし) | toast Alt+T は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyU | prevented true | (なし) | toast Alt+U は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyV | prevented true | (なし) | toast Alt+V は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+KeyW | prevented true | panel:panel-weights | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+KeyX | prevented true | (なし) | toast この行に確認するもの（対応済の指摘・警告・表記修正など）はありません
+設計・ID 列 | Alt+KeyY | prevented true | (なし) | toast 権限なし（承認は PM）
+設計・ID 列 | Alt+KeyZ | prevented true | (なし) | toast Alt+Z は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyA | prevented true | panel:panel-adopt | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Shift+KeyB | prevented true | (なし) | toast Alt+Shift+B は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyC | prevented true | (なし) | toast Alt+Shift+C は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyD | prevented true | diff:R081:+new;order changed | cursor:R081 ID | toast R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）
+設計・ID 列 | Alt+Shift+KeyE | prevented true | (なし) | toast Alt+Shift+E は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyF | prevented true | (なし) | toast Alt+Shift+F は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyG | prevented true | (なし) | toast Alt+Shift+G は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyH | prevented true | (なし) | toast Alt+Shift+H は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyI | prevented true | panel:panel-issue | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Shift+KeyJ | prevented true | cursor:R041 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Shift+KeyK | prevented true | cursor:R039 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Shift+KeyL | prevented true | (なし) | toast Alt+Shift+L は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyM | prevented true | (なし) | toast Alt+Shift+M は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyN | prevented true | cursor:R061 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Shift+KeyO | prevented true | (なし) | toast Alt+Shift+O は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyP | prevented true | (なし) | toast Alt+Shift+P は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyQ | prevented true | (なし) | toast Alt+Shift+Q は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyR | prevented true | (なし) | toast この行に指摘はありません
+設計・ID 列 | Alt+Shift+KeyS | prevented true | chips:並び替え ID ▼ ✕ | toast ID で降順に並べました（もう一度で解除）
+設計・ID 列 | Alt+Shift+KeyT | prevented true | (なし) | toast Alt+Shift+T は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyU | prevented true | (なし) | toast Alt+Shift+U は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyV | prevented true | (なし) | toast Alt+Shift+V は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyW | prevented true | (なし) | toast Alt+Shift+W は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Alt+Shift+KeyX | prevented true | (なし) | toast 差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます
+設計・ID 列 | Alt+Shift+KeyY | prevented true | (なし) | toast 権限なし（却下は PM）
+設計・ID 列 | Alt+Shift+KeyZ | prevented true | (なし) | toast Alt+Shift+Z は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyA | prevented true | diff:R040.status:"quoted"→"selected";R040.flags:{}→{"pmPending":false,"contested":false,"leadNG":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→"S3";R0 | toast R040 を ミスミ で採用（最安（スコア無視））
+設計・ID 列 | Control+Alt+KeyB | prevented true | (なし) | toast Ctrl+Alt+B は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyC | prevented true | (なし) | toast Ctrl+Alt+C は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyD | prevented true | (なし) | toast Ctrl+Alt+D は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyE | prevented true | (なし) | toast Ctrl+Alt+E は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyF | prevented true | (なし) | toast Ctrl+Alt+F は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyG | prevented true | (なし) | toast Ctrl+Alt+G は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyH | prevented true | (なし) | toast Ctrl+Alt+H は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyI | prevented true | (なし) | toast Ctrl+Alt+I は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyJ | prevented true | (なし) | toast Ctrl+Alt+J は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyK | prevented true | (なし) | toast Ctrl+Alt+K は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyL | prevented true | (なし) | toast Ctrl+Alt+L は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyM | prevented true | (なし) | toast Ctrl+Alt+M は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyN | prevented true | (なし) | toast Ctrl+Alt+N は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyO | prevented true | (なし) | toast Ctrl+Alt+O は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyP | prevented true | (なし) | toast Ctrl+Alt+P は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyQ | prevented true | (なし) | toast Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyR | prevented true | (なし) | toast Ctrl+Alt+R は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyS | prevented true | (なし) | toast Ctrl+Alt+S は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyT | prevented true | (なし) | toast Ctrl+Alt+T は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyU | prevented true | (なし) | toast Ctrl+Alt+U は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyV | prevented true | (なし) | toast Ctrl+Alt+V は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyW | prevented true | (なし) | toast Ctrl+Alt+W は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyX | prevented true | (なし) | toast Ctrl+Alt+X は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyY | prevented true | (なし) | toast Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）
+設計・ID 列 | Control+Alt+KeyZ | prevented true | (なし) | toast Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）
+設計・ID 列 | F8 | prevented true | cursor:R016 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Shift+F8 | prevented true | cursor:R061 ID | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+F8 | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Digit4 | prevented true | view:view-4 | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+ArrowDown | prevented true | diff:order changed | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+ArrowRight | prevented true | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Home | prevented true | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Enter | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Space | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+設計・ID 列 | Alt+Slash | prevented false | (なし) | toast 保存しました（編集は自動で保存されています）
+購買・9 単価 | Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・9 単価 | Alt+KeyB | prevented true | (なし) | toast Alt+B は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyC | prevented true | panel:panel-columns | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+KeyD | prevented true | (なし) | toast Alt+D は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyE | prevented true | (なし) | toast Alt+E は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyF | prevented true | chips:単価 = ¥8,870 ✕ | 未発行の指摘 0 件 | toast 単価 =「¥8,870」で絞り込みました（Esc か Alt+f で解除）
+購買・9 単価 | Alt+KeyG | prevented true | (なし) | toast Alt+G は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyH | prevented true | diff:R005.hidden:false→true | cursor:R006 単価 | toast R005 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+購買・9 単価 | Alt+KeyI | prevented true | (なし) | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+購買・9 単価 | Alt+KeyJ | prevented true | cursor:R006 単価 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+KeyK | prevented true | cursor:R004 単価 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+KeyL | prevented true | (なし) | toast Alt+L は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyM | prevented true | (なし) | toast Alt+M は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyN | prevented true | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+KeyO | prevented true | (なし) | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+購買・9 単価 | Alt+KeyP | prevented true | (なし) | toast Alt+P は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyQ | prevented true | (なし) | toast Alt+Q は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyR | prevented true | (なし) | toast 権限なし（置換は設計）
+購買・9 単価 | Alt+KeyS | prevented true | chips:並び替え 単価 ▲ ✕ | 未発行の指摘 0 件 | toast 単価 で昇順に並べました（もう一度で解除）
+購買・9 単価 | Alt+KeyT | prevented true | (なし) | toast Alt+T は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyU | prevented true | (なし) | toast Alt+U は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyV | prevented true | (なし) | toast Alt+V は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+KeyW | prevented true | panel:panel-weights | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+KeyX | prevented true | (なし) | toast R005 の差分を確認済にしました（購買として）
+購買・9 単価 | Alt+KeyY | prevented true | (なし) | toast 権限なし（承認は PM）
+購買・9 単価 | Alt+KeyZ | prevented true | (なし) | toast Alt+Z は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・9 単価 | Alt+Shift+KeyB | prevented true | (なし) | toast Alt+Shift+B は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyC | prevented true | (なし) | toast Alt+Shift+C は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyD | prevented true | (なし) | toast 権限なし（行の複製は設計）
+購買・9 単価 | Alt+Shift+KeyE | prevented true | (なし) | toast Alt+Shift+E は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyF | prevented true | (なし) | toast Alt+Shift+F は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyG | prevented true | (なし) | toast Alt+Shift+G は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyH | prevented true | (なし) | toast Alt+Shift+H は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyI | prevented true | panel:panel-issue | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Shift+KeyJ | prevented true | cursor:R006 単価 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Shift+KeyK | prevented true | cursor:R004 単価 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Shift+KeyL | prevented true | (なし) | toast Alt+Shift+L は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyM | prevented true | (なし) | toast Alt+Shift+M は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyN | prevented true | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Shift+KeyO | prevented true | (なし) | toast Alt+Shift+O は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyP | prevented true | (なし) | toast Alt+Shift+P は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyQ | prevented true | (なし) | toast Alt+Shift+Q は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyR | prevented true | (なし) | toast この行に指摘はありません
+購買・9 単価 | Alt+Shift+KeyS | prevented true | chips:並び替え 単価 ▼ ✕ | 未発行の指摘 0 件 | toast 単価 で降順に並べました（もう一度で解除）
+購買・9 単価 | Alt+Shift+KeyT | prevented true | (なし) | toast Alt+Shift+T は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyU | prevented true | (なし) | toast Alt+Shift+U は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyV | prevented true | (なし) | toast Alt+Shift+V は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyW | prevented true | (なし) | toast Alt+Shift+W は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Alt+Shift+KeyX | prevented true | (なし) | toast 差戻しできる指摘がありません（対応済・回答済・対応中のもの）
+購買・9 単価 | Alt+Shift+KeyY | prevented true | (なし) | toast 権限なし（却下は PM）
+購買・9 単価 | Alt+Shift+KeyZ | prevented true | (なし) | toast Alt+Shift+Z は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・9 単価 | Control+Alt+KeyB | prevented true | (なし) | toast Ctrl+Alt+B は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyC | prevented true | (なし) | toast Ctrl+Alt+C は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyD | prevented true | (なし) | toast Ctrl+Alt+D は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyE | prevented true | (なし) | toast Ctrl+Alt+E は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyF | prevented true | (なし) | toast Ctrl+Alt+F は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyG | prevented true | (なし) | toast Ctrl+Alt+G は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyH | prevented true | (なし) | toast Ctrl+Alt+H は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyI | prevented true | (なし) | toast Ctrl+Alt+I は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyJ | prevented true | (なし) | toast Ctrl+Alt+J は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyK | prevented true | (なし) | toast Ctrl+Alt+K は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyL | prevented true | (なし) | toast Ctrl+Alt+L は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyM | prevented true | (なし) | toast Ctrl+Alt+M は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyN | prevented true | (なし) | toast Ctrl+Alt+N は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyO | prevented true | (なし) | toast Ctrl+Alt+O は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyP | prevented true | (なし) | toast Ctrl+Alt+P は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyQ | prevented true | (なし) | toast Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyR | prevented true | (なし) | toast Ctrl+Alt+R は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyS | prevented true | (なし) | toast Ctrl+Alt+S は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyT | prevented true | (なし) | toast Ctrl+Alt+T は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyU | prevented true | (なし) | toast Ctrl+Alt+U は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyV | prevented true | (なし) | toast Ctrl+Alt+V は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyW | prevented true | (なし) | toast Ctrl+Alt+W は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyX | prevented true | (なし) | toast Ctrl+Alt+X は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyY | prevented true | (なし) | toast Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）
+購買・9 単価 | Control+Alt+KeyZ | prevented true | (なし) | toast Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）
+購買・9 単価 | F8 | prevented true | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Shift+F8 | prevented true | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+F8 | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Digit4 | prevented true | view:view-4 | chips: | cursor:R054 部品名 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+ArrowDown | prevented true | (なし) | toast 権限なし（行の並びは設計）
+購買・9 単価 | Alt+ArrowRight | prevented true | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Home | prevented true | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Enter | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Space | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・9 単価 | Alt+Slash | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・3 ロット | Alt+KeyB | prevented true | (なし) | toast Alt+B は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyC | prevented true | panel:panel-columns | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyD | prevented true | (なし) | toast Alt+D は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyE | prevented true | (なし) | toast Alt+E は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyF | prevented true | chips:ロット = （空） ✕ | toast ロット =「（空）」で絞り込みました（Esc か Alt+f で解除）
+購買・3 ロット | Alt+KeyG | prevented true | (なし) | toast Alt+G は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyH | prevented true | diff:R002.hidden:false→true | cursor:R003 ロット | toast R002 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+購買・3 ロット | Alt+KeyI | prevented true | (なし) | toast 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+購買・3 ロット | Alt+KeyJ | prevented true | cursor:R003 ロット | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyK | prevented true | cursor:R001 ロット | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyL | prevented true | (なし) | toast Alt+L は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyM | prevented true | (なし) | toast Alt+M は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyN | prevented true | view:view-1 | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyO | prevented true | (なし) | toast 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+購買・3 ロット | Alt+KeyP | prevented true | (なし) | toast Alt+P は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyQ | prevented true | (なし) | toast Alt+Q は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyR | prevented true | (なし) | toast 権限なし（置換は設計）
+購買・3 ロット | Alt+KeyS | prevented true | chips:並び替え ロット ▲ ✕ | toast ロット で昇順に並べました（もう一度で解除）
+購買・3 ロット | Alt+KeyT | prevented true | (なし) | toast Alt+T は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyU | prevented true | (なし) | toast Alt+U は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyV | prevented true | (なし) | toast Alt+V は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+KeyW | prevented true | panel:panel-weights | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+KeyX | prevented true | (なし) | toast R002 の差分を確認済にしました（購買として）
+購買・3 ロット | Alt+KeyY | prevented true | (なし) | toast 権限なし（承認は PM）
+購買・3 ロット | Alt+KeyZ | prevented true | (なし) | toast Alt+Z は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・3 ロット | Alt+Shift+KeyB | prevented true | (なし) | toast Alt+Shift+B は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyC | prevented true | (なし) | toast Alt+Shift+C は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyD | prevented true | (なし) | toast 権限なし（行の複製は設計）
+購買・3 ロット | Alt+Shift+KeyE | prevented true | (なし) | toast Alt+Shift+E は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyF | prevented true | (なし) | toast Alt+Shift+F は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyG | prevented true | (なし) | toast Alt+Shift+G は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyH | prevented true | (なし) | toast Alt+Shift+H は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyI | prevented true | panel:panel-issue | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Shift+KeyJ | prevented true | cursor:R003 ロット | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Shift+KeyK | prevented true | cursor:R001 ロット | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Shift+KeyL | prevented true | (なし) | toast Alt+Shift+L は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyM | prevented true | (なし) | toast Alt+Shift+M は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyN | prevented true | view:view-1 | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Shift+KeyO | prevented true | (なし) | toast Alt+Shift+O は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyP | prevented true | (なし) | toast Alt+Shift+P は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyQ | prevented true | (なし) | toast Alt+Shift+Q は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyR | prevented true | (なし) | toast この行に指摘はありません
+購買・3 ロット | Alt+Shift+KeyS | prevented true | chips:並び替え ロット ▼ ✕ | toast ロット で降順に並べました（もう一度で解除）
+購買・3 ロット | Alt+Shift+KeyT | prevented true | (なし) | toast Alt+Shift+T は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyU | prevented true | (なし) | toast Alt+Shift+U は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyV | prevented true | (なし) | toast Alt+Shift+V は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyW | prevented true | (なし) | toast Alt+Shift+W は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Alt+Shift+KeyX | prevented true | (なし) | toast 差戻しできる指摘がありません（対応済・回答済・対応中のもの）
+購買・3 ロット | Alt+Shift+KeyY | prevented true | (なし) | toast 権限なし（却下は PM）
+購買・3 ロット | Alt+Shift+KeyZ | prevented true | (なし) | toast Alt+Shift+Z は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+購買・3 ロット | Control+Alt+KeyB | prevented true | (なし) | toast Ctrl+Alt+B は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyC | prevented true | (なし) | toast Ctrl+Alt+C は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyD | prevented true | (なし) | toast Ctrl+Alt+D は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyE | prevented true | (なし) | toast Ctrl+Alt+E は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyF | prevented true | (なし) | toast Ctrl+Alt+F は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyG | prevented true | (なし) | toast Ctrl+Alt+G は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyH | prevented true | (なし) | toast Ctrl+Alt+H は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyI | prevented true | (なし) | toast Ctrl+Alt+I は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyJ | prevented true | (なし) | toast Ctrl+Alt+J は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyK | prevented true | (なし) | toast Ctrl+Alt+K は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyL | prevented true | (なし) | toast Ctrl+Alt+L は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyM | prevented true | (なし) | toast Ctrl+Alt+M は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyN | prevented true | (なし) | toast Ctrl+Alt+N は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyO | prevented true | (なし) | toast Ctrl+Alt+O は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyP | prevented true | (なし) | toast Ctrl+Alt+P は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyQ | prevented true | (なし) | toast Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyR | prevented true | (なし) | toast Ctrl+Alt+R は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyS | prevented true | (なし) | toast Ctrl+Alt+S は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyT | prevented true | (なし) | toast Ctrl+Alt+T は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyU | prevented true | (なし) | toast Ctrl+Alt+U は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyV | prevented true | (なし) | toast Ctrl+Alt+V は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyW | prevented true | (なし) | toast Ctrl+Alt+W は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyX | prevented true | (なし) | toast Ctrl+Alt+X は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyY | prevented true | (なし) | toast Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）
+購買・3 ロット | Control+Alt+KeyZ | prevented true | (なし) | toast Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）
+購買・3 ロット | F8 | prevented true | view:view-1 | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Shift+F8 | prevented true | view:view-1 | cursor:R054 必要数 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+F8 | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Digit4 | prevented true | view:view-4 | cursor:R054 部品名 | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+ArrowDown | prevented true | (なし) | toast 権限なし（行の並びは設計）
+購買・3 ロット | Alt+ArrowRight | prevented true | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Home | prevented true | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Enter | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Space | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+購買・3 ロット | Alt+Slash | prevented false | (なし) | toast 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+PM・7 | Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+PM・7 | Alt+KeyB | prevented true | (なし) | toast Alt+B は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyC | prevented true | panel:panel-columns | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+KeyD | prevented true | (なし) | toast Alt+D は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyE | prevented true | (なし) | toast Alt+E は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyF | prevented true | chips:部品名 = 出力拡張ユニット ✕ | toast 部品名 =「出力拡張ユニット」で絞り込みました（Esc か Alt+f で解除）
+PM・7 | Alt+KeyG | prevented true | (なし) | toast Alt+G は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyH | prevented true | diff:R003.hidden:false→true | toast R003 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+PM・7 | Alt+KeyI | prevented true | (なし) | toast 権限なし（購買の列）
+PM・7 | Alt+KeyJ | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+KeyK | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+KeyL | prevented true | (なし) | toast Alt+L は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyM | prevented true | (なし) | toast Alt+M は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyN | prevented true | cursor:R003 状態 | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+KeyO | prevented true | (なし) | toast 権限なし（購買の列）
+PM・7 | Alt+KeyP | prevented true | (なし) | toast Alt+P は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyQ | prevented true | (なし) | toast Alt+Q は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyR | prevented true | (なし) | toast 権限なし（置換は設計）
+PM・7 | Alt+KeyS | prevented true | chips:並び替え 部品名 ▲ ✕ | toast 部品名 で昇順に並べました（もう一度で解除）
+PM・7 | Alt+KeyT | prevented true | (なし) | toast Alt+T は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyU | prevented true | (なし) | toast Alt+U は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyV | prevented true | (なし) | toast Alt+V は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+KeyW | prevented true | panel:panel-weights | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+KeyX | prevented true | (なし) | toast R003 の差分を確認済にしました（PMとして）
+PM・7 | Alt+KeyY | prevented true | (なし) | toast 納期NG の行では y は使えません（Enter で決定パネル）
+PM・7 | Alt+KeyZ | prevented true | (なし) | toast Alt+Z は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+PM・7 | Alt+Shift+KeyB | prevented true | (なし) | toast Alt+Shift+B は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyC | prevented true | (なし) | toast Alt+Shift+C は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyD | prevented true | (なし) | toast 権限なし（行の複製は設計）
+PM・7 | Alt+Shift+KeyE | prevented true | (なし) | toast Alt+Shift+E は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyF | prevented true | (なし) | toast Alt+Shift+F は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyG | prevented true | (なし) | toast Alt+Shift+G は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyH | prevented true | (なし) | toast Alt+Shift+H は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyI | prevented true | panel:panel-issue | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Shift+KeyJ | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Shift+KeyK | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Shift+KeyL | prevented true | (なし) | toast Alt+Shift+L は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyM | prevented true | (なし) | toast Alt+Shift+M は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyN | prevented true | cursor:R003 状態 | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Shift+KeyO | prevented true | (なし) | toast Alt+Shift+O は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyP | prevented true | (なし) | toast Alt+Shift+P は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyQ | prevented true | (なし) | toast Alt+Shift+Q は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyR | prevented true | (なし) | toast この行に指摘はありません
+PM・7 | Alt+Shift+KeyS | prevented true | chips:並び替え 部品名 ▼ ✕ | toast 部品名 で降順に並べました（もう一度で解除）
+PM・7 | Alt+Shift+KeyT | prevented true | (なし) | toast Alt+Shift+T は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyU | prevented true | (なし) | toast Alt+Shift+U は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyV | prevented true | (なし) | toast Alt+Shift+V は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyW | prevented true | (なし) | toast Alt+Shift+W は割り当てがありません（? でキーの一覧）
+PM・7 | Alt+Shift+KeyX | prevented true | (なし) | toast 差戻しできる指摘がありません（対応済・回答済・対応中のもの）
+PM・7 | Alt+Shift+KeyY | prevented true | panel:panel-prompt | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Shift+KeyZ | prevented true | (なし) | toast Alt+Shift+Z は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyA | prevented true | (なし) | toast 権限なし（選定者は設計）
+PM・7 | Control+Alt+KeyB | prevented true | (なし) | toast Ctrl+Alt+B は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyC | prevented true | (なし) | toast Ctrl+Alt+C は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyD | prevented true | (なし) | toast Ctrl+Alt+D は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyE | prevented true | (なし) | toast Ctrl+Alt+E は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyF | prevented true | (なし) | toast Ctrl+Alt+F は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyG | prevented true | (なし) | toast Ctrl+Alt+G は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyH | prevented true | (なし) | toast Ctrl+Alt+H は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyI | prevented true | (なし) | toast Ctrl+Alt+I は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyJ | prevented true | (なし) | toast Ctrl+Alt+J は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyK | prevented true | (なし) | toast Ctrl+Alt+K は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyL | prevented true | (なし) | toast Ctrl+Alt+L は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyM | prevented true | (なし) | toast Ctrl+Alt+M は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyN | prevented true | (なし) | toast Ctrl+Alt+N は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyO | prevented true | (なし) | toast Ctrl+Alt+O は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyP | prevented true | (なし) | toast Ctrl+Alt+P は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyQ | prevented true | (なし) | toast Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyR | prevented true | (なし) | toast Ctrl+Alt+R は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyS | prevented true | (なし) | toast Ctrl+Alt+S は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyT | prevented true | (なし) | toast Ctrl+Alt+T は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyU | prevented true | (なし) | toast Ctrl+Alt+U は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyV | prevented true | (なし) | toast Ctrl+Alt+V は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyW | prevented true | (なし) | toast Ctrl+Alt+W は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyX | prevented true | (なし) | toast Ctrl+Alt+X は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyY | prevented true | (なし) | toast Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）
+PM・7 | Control+Alt+KeyZ | prevented true | (なし) | toast Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）
+PM・7 | F8 | prevented true | cursor:R003 状態 | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Shift+F8 | prevented true | cursor:R003 状態 | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+F8 | prevented false | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Digit4 | prevented true | view:view-4 | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+ArrowDown | prevented true | (なし) | toast 権限なし（行の並びは設計）
+PM・7 | Alt+ArrowRight | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Home | prevented true | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Enter | prevented false | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Space | prevented false | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM・7 | Alt+Slash | prevented false | (なし) | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+EDIT Alt+KeyX {"where":"編集中（部品名に abc）","key":"Alt+KeyX","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyH {"where":"編集中（部品名に abc）","key":"Alt+KeyH","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyD {"where":"編集中（部品名に abc）","key":"Alt+KeyD","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyE {"where":"編集中（部品名に abc）","key":"Alt+KeyE","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyF {"where":"編集中（部品名に abc）","key":"Alt+KeyF","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyN {"where":"編集中（部品名に abc）","key":"Alt+KeyN","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+Shift+KeyI {"where":"編集中（部品名に abc）","key":"Alt+Shift+KeyI","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}

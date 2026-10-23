@@ -4,7 +4,7 @@ import path from 'node:path'
 
 const ROOT = '/home/user/BOM/usertest/newbie/r7'
 export const SHOTS = path.join(ROOT, 'shots')
-export const URL = 'http://localhost:5173/'
+export const URL = 'http://localhost:5174/'
 
 export async function launch(opts = {}) {
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })

@@ -1,0 +1,801 @@
+[
+  {
+    "label": "起動直後",
+    "keys": "Knowles",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "hook",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "4",
+    "cursor": [
+      "—",
+      "R016 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "Alt+h",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "Alt+KeyN coil",
+    "cursor": [
+      "—",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "F8 coil",
+    "cursor": [
+      "—",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "Alt+4 x",
+    "cursor": [
+      "—",
+      "R016 部品名"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"name\":\"x\"}"
+    ],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "起動直後",
+    "keys": "Shift+F8 Alt+x",
+    "cursor": [
+      "—",
+      "R061 型式"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [
+      "R061.ackRules:[]→[\"rule.model.fw\"]"
+    ],
+    "afterEnter": null,
+    "toast": "確認済みにしました: 型式に全角文字が含まれています"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "Knowles",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "hook",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "4",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "「zzzzqq」に合う行はありません（Esc で解除）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "Alt+h",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "Alt+KeyN coil",
+    "cursor": [
+      "—",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "「zzzzqq」に合う行はありません（Esc で解除）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "F8 coil",
+    "cursor": [
+      "—",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "「zzzzqq」に合う行はありません（Esc で解除）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "Alt+4 x",
+    "cursor": [
+      "—",
+      "—"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "絞り込み 0 行",
+    "keys": "Shift+F8 Alt+x",
+    "cursor": [
+      "—",
+      "R061 型式"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [
+      "R061.ackRules:[]→[\"rule.model.fw\"]"
+    ],
+    "afterEnter": null,
+    "toast": "確認済みにしました: 型式に全角文字が含まれています"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "Knowles",
+    "cursor": [
+      "分類 電源",
+      "分類 電源"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "hook",
+    "cursor": [
+      "分類 電源",
+      "分類 電源"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "4",
+    "cursor": [
+      "分類 電源",
+      "R016 ID"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "Alt+h",
+    "cursor": [
+      "分類 電源",
+      "分類 電源"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "分類の見出しです（↓ で行へ）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "Alt+KeyN coil",
+    "cursor": [
+      "分類 電源",
+      "R016 ID"
+    ],
+    "mode": "パネル",
+    "edit": null,
+    "panel": "panel-columns",
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "F8 coil",
+    "cursor": [
+      "分類 電源",
+      "R016 ID"
+    ],
+    "mode": "パネル",
+    "edit": null,
+    "panel": "panel-columns",
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "Alt+4 x",
+    "cursor": [
+      "分類 電源",
+      "R016 ID"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ],
+    "afterEnter": null,
+    "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+  },
+  {
+    "label": "分類の見出し（[ で移動）",
+    "keys": "Shift+F8 Alt+x",
+    "cursor": [
+      "分類 電源",
+      "R061 ID"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [
+      "R061.ackRules:[]→[\"rule.model.fw\"]"
+    ],
+    "afterEnter": null,
+    "toast": "確認済みにしました: 型式に全角文字が含まれています"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "Knowles",
+    "cursor": [
+      "R001 部品名",
+      "R001 部品名"
+    ],
+    "mode": "編集",
+    "edit": "Knowles",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R001.working:undefined→{\"name\":\"Knowles\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "hook",
+    "cursor": [
+      "R001 部品名",
+      "R001 部品名"
+    ],
+    "mode": "編集",
+    "edit": "hook",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R001.working:undefined→{\"name\":\"hook\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "4",
+    "cursor": [
+      "R001 部品名",
+      "R001 部品名"
+    ],
+    "mode": "編集",
+    "edit": "4",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R001.working:undefined→{\"name\":\"4\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "Alt+h",
+    "cursor": [
+      "R001 部品名",
+      "R001 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [
+      "R001.hidden:false→true"
+    ],
+    "afterEnter": null,
+    "toast": "R001 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "Alt+KeyN coil",
+    "cursor": [
+      "R001 部品名",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "F8 coil",
+    "cursor": [
+      "R001 部品名",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "coil",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"model\":\"coil\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "Alt+4 x",
+    "cursor": [
+      "R001 部品名",
+      "R016 部品名"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": [
+      "R016.working:undefined→{\"name\":\"x\"}"
+    ],
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+  },
+  {
+    "label": "JSON 読み込み直後",
+    "keys": "Shift+F8 Alt+x",
+    "cursor": [
+      "R001 部品名",
+      "R061 型式"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-1",
+      "view-1"
+    ],
+    "chips": "",
+    "diff": [
+      "R061.ackRules:[]→[\"rule.model.fw\"]"
+    ],
+    "afterEnter": null,
+    "toast": "確認済みにしました: 型式に全角文字が含まれています"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "Knowles",
+    "cursor": [
+      "R004 部品名",
+      "R004 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+s）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "hook",
+    "cursor": [
+      "R004 部品名",
+      "R004 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+k）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "4",
+    "cursor": [
+      "R004 部品名",
+      "R004 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+4）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "Alt+h",
+    "cursor": [
+      "R004 部品名",
+      "R005 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [
+      "R004.hidden:false→true"
+    ],
+    "afterEnter": null,
+    "toast": "R004 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "Alt+KeyN coil",
+    "cursor": [
+      "R004 部品名",
+      "R054 必要数"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+l）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "F8 coil",
+    "cursor": [
+      "R004 部品名",
+      "R054 必要数"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+l）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "Alt+4 x",
+    "cursor": [
+      "R004 部品名",
+      "R054 部品名"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-4"
+    ],
+    "chips": "",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+x）か、ID の列で"
+  },
+  {
+    "label": "購買 7（行の無いビュー？）",
+    "keys": "Shift+F8 Alt+x",
+    "cursor": [
+      "R004 部品名",
+      "R054 必要数"
+    ],
+    "mode": "ナビ",
+    "edit": null,
+    "panel": null,
+    "view": [
+      "view-9",
+      "view-9"
+    ],
+    "chips": "未発行の指摘 0 件",
+    "diff": [],
+    "afterEnter": null,
+    "toast": "R054 の差分を確認済にしました（購買として）"
+  },
+  {
+    "errors": []
+  }
+]

@@ -1,17 +1,11 @@
-node:internal/modules/run_main:123
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737617821
-Call log:
-[2m  - navigating to "http://localhost:5173/?fresh=1792737617821", waiting until "load"[22m
-
-    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
-    at /home/user/BOM/usertest/mid/r7/y6.mjs:7:9 {
-  log: [
-    '  - navigating to "http://localhost:5173/?fresh=1792737617821", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v22.22.0
+design 4 start {"mode":"nav","row":"R016","col":"name","edit":"","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+n #1 {"mode":"edit","row":"R016","col":"name","edit":"n","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+n #2 {"mode":"edit","row":"R016","col":"name","edit":"nn","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+status 編集R016 部品名型式あいまい 1/1設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプEnter確定して下へTab確定して右へEsc取り消し
+FAIL Y6-1 4 で n → n と打つと 2 つ目の問題へ進む（§15 のキー列） :: {"mode":"edit","row":"R016","col":"name","edit":"nn","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+R016 name/working before F8 サーキットプロテクタ 2P 10A undefined
+F8 {"mode":"edit","row":"R016","col":"name","edit":"nn","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+R016 name/working after F8 サーキットプロテクタ 2P 10A undefined
+PASS Y6-2 編集中に F8 を押しても、打ちかけの文字が部品名に確定されない
+Home {"mode":"edit","row":"R016","col":"name","edit":"nn","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました"}
+== 1/2 PASS

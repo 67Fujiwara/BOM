@@ -1,0 +1,10 @@
+{"role":"pm","view":7,"col":"(↓ のまま)","keys":"y","seq":["R003 部品名","R003 部品名"],"view2":"view-7","mode":"ナビ","panel":null,"diff":[],"toasts":["権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+y）か、ID の列で"]}
+{"role":"pm","view":7,"col":"ID","keys":"n n n","seq":["R003 ID","R003 ID","R003 ID","R003 ID"],"view2":"view-7","mode":"ナビ","panel":null,"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","view":7,"col":"ID","keys":"y","seq":["R003 ID","R003 ID"],"view2":"view-7","mode":"ナビ","panel":null,"diff":[],"toasts":["納期NG の行では y は使えません（Enter で決定パネル）"]}
+{"role":"pm","view":7,"col":"(↓ のまま)","keys":"Alt+y","seq":["R003 部品名","R003 部品名"],"view2":"view-7","mode":"ナビ","panel":null,"diff":[],"toasts":["納期NG の行では y は使えません（Enter で決定パネル）"]}
+{"role":"pm","view":7,"col":"ID","keys":"Enter","seq":["R003 ID","R003 ID"],"view2":"view-7","mode":"パネル","panel":"panel-quickfix","diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","view":7,"col":"(↓ のまま)","keys":"F8 F8 F8","seq":["R003 部品名","R003 状態","R003 状態","R003 状態"],"view2":"view-7","mode":"ナビ","panel":null,"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"purchasing","view":9,"col":"ID","keys":"x n x n","seq":["R005 ID","R005 ID","R054 ID","R054 ID","R054 ID"],"view2":"view-9","mode":"ナビ","panel":null,"diff":[],"toasts":["R005 の差分を確認済にしました（購買として）","R005 の差分を確認済にしました（購買として）","R054 の差分を確認済にしました（購買として）","R054 の差分を確認済にしました（購買として）"]}
+{"role":"purchasing","view":9,"col":"(↓ のまま)","keys":"4","seq":["R005 部品名","R005 部品名"],"view2":"view-9","mode":"ナビ","panel":null,"diff":[],"toasts":["権限なし（設計の列）。1 キー操作は Alt を押しながら（例: Alt+4）か、ID の列で"]}
+{"role":"purchasing","view":9,"col":"ID","keys":"4","seq":["R005 ID","R054 ID"],"view2":"view-4","mode":"ナビ","panel":null,"diff":[],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"errors":[]}

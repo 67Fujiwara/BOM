@@ -1,17 +1,31 @@
-node:internal/modules/run_main:123
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737602957
-Call log:
-[2m  - navigating to "http://localhost:5173/?fresh=1792737602957", waiting until "load"[22m
-
-    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
-    at /home/user/BOM/usertest/mid/r7/w5.mjs:5:9 {
-  log: [
-    '  - navigating to "http://localhost:5173/?fresh=1792737602957", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v22.22.0
+ball R016 設計 R003 PM R030 設計
+import → 取り込み 0 行 / 突合不能 0 / 型式不一致 2 / 代替提案の下書き 0
+purchasing 4: R016,R054,R013,R030
+R016:quoted:adopt=-:reason=:{"importMismatch":"因幡電機: 回答の型式「XX-CP30-BA 2P」（BOM は「CP30-BA 2P」）"} ball 購買
+R030:quoted:adopt=-:reason=:{"importMismatch":"因幡電機: 回答の型式「YY-1」（BOM は「M22N-BC-TWA-WC」）"} ball 購買
+PASS W5-1 型式不一致の行は、ボールが設計でも購買の 4 に出る（§7・§11） :: R016,R054,R013,R030
+PASS W5-1b 型式不一致の行（ボール購買）が購買の 4 に出る
+ltb dialog {"kind":"prompt","title":"先行発注を申請 R020（理由と金額）","options":[],"extra":{"金額":"5870"},"index":0}
+R020 best {"s":"S3","price":2935,"rq":2} expected default 5870
+PASS W5-2 先行発注の申請で金額を聞き、既定値は推奨見積 × 丸め数量 :: {"金額":"5870"}
+ltb → 取り込み 0 行 / 突合不能 0 / 型式不一致 2 / 代替提案の下書き 0 null
+R020:quoted:adopt=-:reason=:{"ltbPending":true}
+PM detail R020 相見積・スコア内訳 （必要日 11/11 / 必要数 2個 / 基準日 10/22）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. ミスミ¥2,935即納在庫2 9010010050*100最安 / 在庫即納 / 実績なし / 期限 11/302. 立花エレテック¥3,06925日受注生産2 66.396090100納期NG(5日超過) / 期限 12/123. 因幡電機¥3,23126日取寄2 65.591096100納期NG(6日超過) / 期限 12/02要決定: 先行発注判断 PM は y / Shift+Y、または Enter で決定パネル指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴佐藤 10/23 06:43 先行発注を申請
+PM panel R020 {"kind":"quickfix","title":"決定パネル R020（先行発注判断） 申請: 長納期のため（¥12,345）・佐藤","options":["y 先行発注を許可（推奨商社で選定済）","Shift+Y 却下 → 正式見積を待つ"],"index":-1}
+PASS W5-3 PM が申請の理由・金額を見られる
+y → R020: 先行発注許可
+R020:selected:adopt=S3:reason=先行発注（推奨）:{"ltbPending":false,"early":true,"pmPending":false,"leadNG":false}
+decisions [{"id":"D-001","rowId":"R020","kind":"先行発注許可","by":{"role":"pm","name":"鈴木"},"at":"2026-10-23T06:43:03.760Z","reason":"先行を許可","payload":{"amount":12345,"request":"長納期のため"}}]
+FAIL W5-4 許可後も申請の理由・金額が行か決定に残る :: 先行発注（推奨）
+R011 before R011:selected:adopt=S2:reason=納期:{"pmPending":false,"contested":false,"leadNG":true}
+ltb on selected {"kind":"prompt","title":"先行発注を申請 R011（理由と金額）","options":[],"extra":{"金額":"22440"},"index":0} 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R011 after ltb request R011:selected:adopt=S2:reason=納期:{"pmPending":false,"contested":false,"leadNG":true,"ltbPending":true}
+PASS W5-5 選定済の行に先行発注を申請しても、採用理由（設計の 1 納期）を消さない :: 納期
+bulk → 採用 67 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+contested 32 [ 'R005', 'R006', 'R009', 'R010', 'R014' ]
+design 4 has contested 32 / 32 ball 設計
+PASS W5-6 拮抗の行は選定者（設計）の 4 に出る
+status bar x hint ナビR005 部品名設計 山田: 未公開 5 行 / 指摘 0採用 67 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0Ctrl+Enter公開 5 行?ヘルプEnter編集Alt+a推奨採用Space開くAlt+x拮抗を確認
+design x → 採用 67 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+PASS W5-7 設計の x で拮抗が外れる
+== 7/8 PASS

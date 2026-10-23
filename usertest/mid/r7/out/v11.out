@@ -1,17 +1,8 @@
-node:internal/modules/run_main:123
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737598680
-Call log:
-[2m  - navigating to "http://localhost:5173/?fresh=1792737598680", waiting until "load"[22m
-
-    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
-    at /home/user/BOM/usertest/mid/r7/v11.mjs:5:9 {
-  log: [
-    '  - navigating to "http://localhost:5173/?fresh=1792737598680", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v22.22.0
+役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R040 S1 validUntil 2026-10-01 ball 設計
+purchasing 4: R054,R013,R040
+PASS M3 購買の 4 に期限切れの見積がある行が出る（§11）
+5 行 × 3 社に依頼（回答期限 2026-10-26）
+EDIT-ERR 5 行 × 3 社に依頼（回答期限 2026-10-26）
+purchasing 4 after quoting: R054,R013,R040,R076 R076 見積中 1/2
+== 1/1 PASS

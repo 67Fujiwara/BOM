@@ -1,0 +1,7 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+publish → [変更セット（6 行: R002, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after R002 相見積 st=submitted adopt=- reason= oq=- flags={"reissue":true,"requote":true} quotes=[] withdrawn - | 提出済 · 再見積要·再発行 fno [["S1","stale","P-2026-041-S1-F1",null],["S2","stale",null,null],["S3","stale",null,null]]
+statusbar ナビR002 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+FAIL G6-1 (model) 正式依頼（S1 F1）を出した行の採用が外れたら、元の商社への取下げが購買に分かる（調達区分の切り替えと同じ「正式依頼取下げ」） :: withdrawn=undefined status=提出済 · 再見積要·再発行 fno=[["S1","stale","P-2026-041-S1-F1",null],["S2","stale",null,null],["S3","stale",null,null]]
+== 0/1 PASS

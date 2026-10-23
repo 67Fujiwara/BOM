@@ -1,0 +1,66 @@
+approval ON true
+G3 status bar ナビR083 指定先設計 山田: 未公開 8 行 / 指摘 0最後の行です。下に行を足すときは Shift+EnterCtrl+Enter公開 8 行F1ヘルプF8次の問題Enter編集Space開く
+G3 Ctrl+. ["指定先「因幡」は商社マスタにありません（因幡電機 / 立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）: 「因幡電機」にする","指定先「因幡」は商社マスタにありません（因幡電機 / 立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→）"]
+PASS A1-0 指定先を略称（因幡）で書くと「商社マスタにありません」のエラーと「因幡電機にする」の候補 :: ["指定先「因幡」は商社マスタにありません（因幡電機 / 立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）: 「因幡電機」にする","指定先「因幡」は商社マスタにありません（因幡電機 / 立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→）"]
+G3 after fix R083 指定商社 maker=フエニックス des=S1 st=draft adopt=- reason= work={} flags={} quotes=[] cell 因幡電機
+publish → [変更セット（8 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+PM y new rows R081・Rev.2 の変更セット 8 行まとめて: 承認
+after approve R081 指定商社 maker=フエニックス des=S1 st=submitted adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false} quotes=[]
+request → 8 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+R081 指定商社 maker=フエニックス des=S1 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,null,""]]
+R082 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,null,""]]
+R083 指定商社 maker=フエニックス des=S1 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,null,""]]
+{
+ "R081": {
+  "ball": "設計",
+  "st": "quoting",
+  "pu4": true,
+  "de4": true,
+  "sb": "ナビR081 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える",
+  "qf": "[\"指定先を変える（因幡電機 が取扱なしと回答）\"]"
+ },
+ "R082": {
+  "ball": "設計",
+  "st": "quoting",
+  "pu4": true,
+  "de4": true,
+  "sb": "ナビR082 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える",
+  "qf": "[\"指定先を変える（因幡電機 が取扱なしと回答）\"]"
+ },
+ "R083": {
+  "ball": "設計",
+  "st": "quoting",
+  "pu4": true,
+  "de4": true,
+  "sb": "ナビR083 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える",
+  "qf": "[\"指定先を変える（因幡電機 が取扱なしと回答）\"]"
+ }
+}
+PASS A1-1 (M7-01) 指定先を名前で書いた行の辞退 → ボール設計・設計の 4 :: {"ball":"設計","st":"quoting","pu4":true,"de4":true,"sb":"ナビR082 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える","qf":"[\"指定先を変える（因幡電機 が取扱なしと回答）\"]"}
+PASS A1-2 (M7-01) 指定先を ID で書いた行も同じ
+PASS A1-3 (U6-04) ステータスバーに「Ctrl+. 指定先を変える」 :: ナビR082 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える
+PASS A1-4 (U6-04) Ctrl+. に「指定先を変える（因幡電機 が取扱なしと回答）」 :: ["指定先を変える（因幡電機 が取扱なしと回答）"]
+change prompt R082 の新しい指定先（公開すると購買が新しい指定先に依頼します） ["立花エレテック","ミスミ","RSコンポーネンツ","オムロン直販（フエニックス は取扱メーカに無い）"]
+candidates 立花エレテック:扱う / ミスミ:未登録 / RSコンポーネンツ:未登録 / オムロン直販（フエニックス は取扱メーカに無い）:?
+PASS A1-5 指定先の候補に、フエニックスを扱わない商社（直販など）を混ぜない／扱うかを示す :: 立花エレテック:扱う / ミスミ:未登録 / RSコンポーネンツ:未登録 / オムロン直販（フエニックス は取扱メーカに無い）:?
+after choose → R082 の指定先を 立花エレテック にしました（Ctrl+Enter で公開）
+R082 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- reason= work={"designated":"S2"} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,-1,""]]
+G1 set 立花エレテック R082 の指定先を 立花エレテック にしました（Ctrl+Enter で公開）
+publish → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+after publish R081 指定商社 maker=フエニックス des=S1 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":true,"pmReason":"変更セット","requote":false} quotes=[["S1",null,-1,""]] ball PM
+after publish R082 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":true,"pmReason":"変更セット","requote":false} quotes=[["S1",null,-1,""]] ball PM
+PASS A1-6on 承認 ON: 指定先の変更は変更セットとして PM 承認待ち :: R081,R082
+purch request while pending → 依頼する行がありません（提出済・再見積要の行なし）
+PM y R082・Rev.3 の変更セット 2 行まとめて: 承認
+after PM y R081 指定商社 maker=フエニックス des=立花エレテック st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,-1,""]] R082 指定商社 maker=フエニックス des=S2 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,-1,""]]
+purch 4 has G1/G2 R081,R082
+request after change → 2 行 × 1 社に依頼（回答期限 2026-10-28） download
+R081 指定商社 maker=フエニックス des=立花エレテック st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,-1,""],["S2",null,null,""]]
+R082 指定商社 maker=フエニックス des=S2 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false} quotes=[["S1",null,-1,""],["S2",null,null,""]]
+PASS A1-7 指定先の変更を公開すると、購買の依頼で新しい指定先（立花）に頼む :: 2 行 × 1 社に依頼（回答期限 2026-10-28）
+answered R081 指定商社 maker=フエニックス des=立花エレテック st=selected adopt=S2 reason=指定先（固定） work={} flags={"renegotiating":false,"pmPending":false,"requote":false,"leadNG":false} quotes=[["S1",null,-1,""],["S2",700,4,""]]
+answered R082 指定商社 maker=フエニックス des=S2 st=selected adopt=S2 reason=指定先（固定） work={} flags={"renegotiating":false,"pmPending":false,"requote":false,"leadNG":false} quotes=[["S1",null,-1,""],["S2",700,4,""]]
+PASS A1-8 新しい指定先の回答で「指定先（固定）」採用
+G2 S2 declined R082 指定商社 maker=フエニックス des=S2 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false,"leadNG":false,"contested":false,"formalDiff":false} quotes=[["S1",null,-1,""],["S2",700,-1,""]] ball 設計
+PASS A1-9 採用後に新しい指定先が取扱なしに変わったら、採用を外して設計へ（指定先を変える） :: R082 指定商社 maker=フエニックス des=S2 st=quoting adopt=- reason= work={} flags={"renegotiating":false,"pmPending":false,"requote":false,"leadNG":false,"contested":false,"formalDiff":false} quotes=[["S1",null,-1,""],["S2",700,-1,""]]
+== 10/10 PASS

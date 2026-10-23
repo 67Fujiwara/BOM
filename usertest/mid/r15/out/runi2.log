@@ -1,0 +1,10 @@
+i2-run2 == 0/4 PASS
+i3-run2 == 3/5 PASS
+i4-run2 == 0/3 PASS
+i5-sel-run2 == 3/4 PASS
+i5-quoted-run2 == 1/2 PASS
+i7-approve-run2 == 0/2 PASS
+i7-multi-run2 == 0/1 PASS
+i9-supplyreq-run2 == 0/1 PASS
+i9-partial-run2 == 0/1 PASS
+DONE

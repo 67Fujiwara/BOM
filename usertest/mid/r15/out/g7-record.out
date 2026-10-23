@@ -1,0 +1,14 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+S3 rows R005,R020,R032 other row with S3 quote R001 [["S1",99.2,96,"最安"],["S2",76.7,90,"在庫即納・MOQ 2"],["S3",71.2,50,"納期NG(3日超過)・実績なし"]]
+order R005 R005: 発注済にしました
+order R020 R020: 発注済にしました
+order R032 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+receive R005 R005: 入荷済にしました
+receive R020 R020: 入荷済にしました
+receive R032 入荷にできません（発注前の行）: 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+statuses received,received,formalQuoted
+S3 master {"id":"S3","name":"ミスミ","color":"#e39a00","order":2,"kind":"商社","tradable":true,"avl":true,"handledMakers":[],"onTimeRate":null,"defectRate":null}
+other scores after receipts [["S1",99.2,96,"最安"],["S3",81.2,100,"納期NG(3日超過)"],["S2",76.7,90,"在庫即納・MOQ 2"]]
+PASS G7-1 入荷記録（S3 で 3 行入荷）から S3 の実績（納期遵守率）が集計され、「実績なし」（実績点 50）でなくなる（§8.1） :: onTimeRate=null ["S3",81.2,100,"納期NG(3日超過)"]
+== 1/1 PASS

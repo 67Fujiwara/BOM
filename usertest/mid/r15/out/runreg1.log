@@ -1,0 +1,13 @@
+v1 == 14/18 PASS
+v1b == 7/7 PASS
+v2 R050 (購買起票の数量見直し依頼) に 7 対策不成立 が出る: false
+v3 == 13/13 PASS
+v4 == 7/7 PASS
+v5 == 10/10 PASS
+v6 paletteMiss []
+v7 == 9/9 PASS
+v8 == 8/9 PASS
+v9 == 3/3 PASS
+v10 == 3/3 PASS
+v11 == 1/1 PASS
+DONE

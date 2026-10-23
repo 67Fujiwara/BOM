@@ -1,0 +1,11 @@
+C R006 [["S1",96.6,14485],["S2",93.9,15088],["S3",90,13542]]
+decline R005 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline R005 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+F R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,17,null]] | 見積済
+Ctrl+Alt+A C → R006 を 因幡電機 で採用（最安（スコア無視）） | R006 相見積 st=selected adopt=S1 reason=最安（スコア無視） oq=12 flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]]
+PASS G3-7 最安で採用（Ctrl+Alt+A）は取引不可の商社を選ばない :: R006 を 因幡電機 で採用（最安（スコア無視）） / R006 相見積 st=selected adopt=S1 reason=最安（スコア無視） oq=12 flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]]
+F status 見積済 ball design scores []
+a F → 有効な見積がありません
+purch 4/9 has F false true status 見積済
+FAIL G3-8 取引不可の商社の見積しか残らない行は、選定者の「見積済」で止めず購買に戻す（または理由を言う） :: status=quoted a→有効な見積がありません ball=design
+== 1/2 PASS

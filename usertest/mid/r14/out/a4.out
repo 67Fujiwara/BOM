@@ -1,0 +1,38 @@
+Shift+A 3 R011 → R011: ミスミ を仮採用（その他: 評価用）。PM の承認待ち（7 要決定）
+Shift+A 3 R013 → 正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）
+Shift+A 3 R014 → R014 を ミスミ で採用（その他: 評価用）
+Shift+A 3 R015 → R015: ミスミ を仮採用（その他: 評価用）。PM の承認待ち（7 要決定）
+exception rows [ 'R011', 'R015' ]
+pmPending R011:例外選定,R015:例外選定
+bulk → 採用 66 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 0
+PM raw y on name {"view":7,"mode":"panel","row":"R011","col":"name","edit":"","toast":"役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","panel":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+R011 after y selected {"pmPending":false,"contested":false,"leadNG":true} R011: 承認
+PASS A4-1 (U7-01) PM が 7 の部品名の列で素の y → 例外選定を承認 :: selected {"pmPending":false,"contested":false,"leadNG":true}
+PM raw Shift+Y {"view":7,"mode":"panel","row":"R015","col":"maker","edit":"","toast":"R011: 承認","panel":"prompt","title":"決定: 却下（R015。理由・必須）"}
+R008 after Shift+Y quoted undefined {"pmPending":false,"contested":false,"ltbPending":false}
+PASS A4-2 (U7-01) PM が 7 のメーカの列で素の Shift+Y → 却下（見積済に戻る） :: quoted
+PM raw 4 → 4
+L R003
+L panel {"kind":"quickfix","title":"決定パネル R003（納期NG）","options":["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"],"index":-1}
+e prompt {"kind":"prompt","title":"決定: 特急・分納（R003。理由・任意）","options":[],"extra":{"上限金額":""},"index":0}
+L after e {"leadNG":false,"countermeasure":"分納・特急","pmPending":false} R003: 特急・分納
+extraCost 45000 → 追加費用 ¥45,000 が、PM の決めた特急・分納の上限 ¥30,000 を超えています（D-003）。購買の 4・PM の 7 に出します
+purch 4 has L true sb ナビR003 ID上限超過 ¥45,000 > ¥30,000（PM 判断待ち）購買 佐藤: 未発行 0 件追加費用 ¥45,000 が、PM の決めた特急・分納の上限 ¥30,000 を超えています（D-003）。購買の 4・PM の 7 に出します?ヘルプF8次の問題Shift+I指摘Space開く
+extra cell ¥45,000
+PM 7 has L true header P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥18,590,717 / 正式 ¥18,592,273 / 予算 ¥2,800,000 (+564.0%)設計待ち 32購買待ち 37PM待ち 11見積済 75/75エラー 3警告 3期限超過 1設計購買PM鈴木Ctrl+K コマンド?
+PASS A4-3 (U6-01) 上限超えの行が購買の 4 に出る
+PASS A4-4 (U6-01) 上限超えの行が PM の 7 に出る
+PM on L: sb ナビR003 ID上限超過 ¥45,000 > ¥30,000（PM 判断待ち）PM 鈴木: 要決定 11役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開く Enter → {"view":7,"mode":"panel","row":"R003","col":"id","edit":"45000","toast":"役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","panel":"quickfix","title":"決定パネル R003（上限超過）"} ["y 追加費用 ¥45,000 を承認（上限 ¥30,000を実費まで引き上げ）","Shift+Y 却下 → 購買が上限内で手配し直す"]
+PM y on L {"view":7,"mode":"panel","row":"R003","col":"id","edit":"45000","toast":"役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","panel":"prompt","title":"決定: 承認（R003。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PM detail L 決定: 上限超過 PM は y / Shift+Y、または Enter で決定パネル指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴鈴木 10/23 14:27 特急・分納 特急で （上限 ¥30,000） 佐藤 10/23 14:27 セル編集鈴木 10/23 14:27 決定: 特急・分納
+PASS A4-5 PM の 7 で、上限超えの行に決める手（上限の引き上げ・超過の承認など）がある :: Enter={"view":7,"mode":"panel","row":"R003","col":"id","edit":"45000","toast":"役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","panel":"quickfix","title":"決定パネル R003（上限超過）"} y=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PASS A4-6 7 の行に「上限超え」の理由が見える（ステータスバー・詳細） :: ナビR003 ID上限超過 ¥45,000 > ¥30,000（PM 判断待ち）PM 鈴木: 要決定 11役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開く
+PM 7 has L after 28000 false
+design start {"view":4,"mode":"nav","row":"R016","col":"name","edit":"28000","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null,"title":""} sb ナビR016 部品名型式あいまい 1/1設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 5 行F1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開いて指摘を見るAlt+x拮抗を確認
+design F8 {"view":4,"mode":"nav","row":"R016","col":"model","edit":"28000","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null,"title":""}
+design F8 #2 {"view":4,"mode":"nav","row":"R009","col":"maker","edit":"28000","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null,"title":""}
+PASS A4-7 (U6-02) 設計が 4 を開いて F8 → F8 で問題を進む（値にならない） :: R016/model → R009/maker
+PASS A4-8 (U6-02) ステータスバーに F8 の案内
+sidebar Alt+1すべて80 | Alt+2購買提出用80 | Alt+3発注・入荷74 | Alt+4要確認38 | Alt+5変更あり75 | Alt+6商社別75 | Alt+7要決定10 | Alt+8正式見積74 | Alt+9購買作業1
+9 columns q.unitPrice@S1,q.leadDays@S1,q.moq@S1,q.stock@S1,q.unitPrice@S2,q.leadDays@S2,q.moq@S2,q.stock@S2,q.unitPrice@S3,q.leadDays@S3,q.moq@S3,q.stock@S3
+== 8/8 PASS

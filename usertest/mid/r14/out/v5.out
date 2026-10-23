@@ -1,0 +1,45 @@
+approval ON: true
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R010 needDate purchasing 11/11 design 11/06
+PASS M-22 購買の必要日は公開値（設計の作業中は反映しない） :: 11/11 vs 11/06
+purchasing internal Excel R040 model: E32-D11 2M
+PASS M-10 購買の Excel に設計の作業中の値が出ない
+cancel → R050 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+r → R060 の置き換え品 R081 を作りました（公開すると R060 は置換済になります。Ctrl+Z で戻す）
+replace → R081 AB150-N R060 quoted
+purchasing before publish: R050 見積済 · 作業中● R060 見積済 · 作業中●
+PASS M3 公開前の取消・置換は購買に見えない :: 見積済 · 作業中● / 見積済 · 作業中●
+publish try → {"kind":"prompt","title":"変更セット（10 行: R010, R040, R050, R060, R081 …）の理由。数字か ↑↓  役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+x dup ref → この行に確認するもの（対応済の指摘・警告・表記修正など）はありません
+publish dialog: 変更セット（10 行: R010, R040, R050, R060, R081 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter
+publish → 行 10（Rev.2） を公開しました
+subs Rev2[R010,R040,R050,R060,R081,R076,R077,R078,R079,R080] cs={"reason":"客先要求","changeNo":"","approved":false}
+pending rows R010:quoted:変更セット R040:quoted:変更セット R050:quoted:変更セット R060:quoted:変更セット R081:submitted:変更セット R076:submitted:変更セット R077:submitted:変更セット R078:submitted:変更セット R079:submitted:変更セット R080:submitted:変更セット
+purchasing after publish (pending): R040 E32-D11 2M 見積済 · PM承認待ち quotes [["S1",53548],["S2",56041],["S3",51619]] | R050 見積済 · PM承認待ち | R060 見積済 · PM承認待ち | R081 提出済 · 要再確認·PM承認待ち
+PASS M-09 承認待ちの型式変更は購買に旧値のまま、見積も失効しない
+PASS M3 承認ON: 取消は PM 承認まで反映されない（購買には承認待ちとして見える） :: 見積済 · PM承認待ち
+PASS M3 承認ON: 置換は PM 承認まで反映されない :: 見積済 · PM承認待ち
+request → 依頼する行がありません（提出済・再見積要の行なし）
+PM 7 includes R040:0R042:0R010:0R050:0R081:0
+PM 7 rows: R010,R040,R050,R060,R081
+reject → R040・Rev.2 の変更セット 10 行まとめて: 却下
+R040:quoted:model=E32-D11 2M:working={"model":"E32-D11 5M"}:f={"pmPending":false}
+R042:quoted:model=E52-CA1D M6 2M:working=null:f={}
+R050:quoted:model=KIV 2 黒:working=null:f={"pmPending":false}
+R060:quoted:model=AB150:working=null:f={"pmPending":false}
+R081:draft:model=AB150-N:working=null:f={"reconfirm":true,"renegotiating":false,"pmPending":false}
+R040 quotes after reject [["S1",53548,"live"],["S2",56041,"live"],["S3",51619,"live"]]
+PASS M-09b 却下で型式変更は設計の作業中に戻り、見積は有効のまま
+PASS M3 却下で取消が取り消される（R050 が元の状態に戻る） :: quoted
+PASS M3 却下で置換が取り消される（置換元 R060 が有効に戻るか、置換先が作業中として残る） :: R060=quoted R081=draft
+re-publish dialog: 変更セット（10 行: R010, R040, R050, R060, R081 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter
+re-publish → 行 10（Rev.3） を公開しました
+approve → R040・Rev.3 の変更セット 10 行まとめて: 承認
+R040:quoted:model=E32-D11 5M:working=null:f={"pmPending":false,"requote":true}
+R040 quotes [["S1",53548,"stale"],["S2",56041,"stale"],["S3",51619,"stale"]]
+PASS M-09c 承認で型式変更が公開値に反映・再見積要
+design Ctrl+Z → 公開済の値を戻しました。Rev は残し、未公開として 2 行に積みました（Ctrl+Enter で Rev+1 として公開。取り消すときは Ctrl+Y）。公開より前の編集 2 件は公開した Rev に含まれているので、Ctrl+Z ではそれより前に戻りません。
+after design undo R040:quoted:model=E32-D11 5M:working={"model":"E32-D11 2M"}:f={"pmPending":false,"requote":true} sub revoked? {"reason":"設計起因","changeNo":"","approved":true,"decisionId":"D-003"}
+== 10/10 PASS

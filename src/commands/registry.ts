@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, pendingAdd, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -174,20 +174,24 @@ export function keepCursorVisible(before: string[], external = false) {
   if (next) set({ cursorRow: next })
   else ensureCursor()
 }
-export function jumpToRow(id: string, col?: string, keepProblem = false) {
+export function jumpToRow(id: string, col?: string, keepProblem = false): boolean {
   // Ctrl+G・パレットなどで別の行へ飛んだら、F8 は飛んだ先から数え直す（直し方の候補から同じ問題のセルへ移るときは続ける）
   if (!keepProblem) lastProblem = null
   const s = st()
   const p = s.project()
   const r = p.rows.find((x) => x.id === id)
-  if (!r) return
+  if (!r) return false
   if (!vm().rows.some((x) => x.id === id)) set({ view: 1, filter: '', cellFilter: null })
   // 1 すべてにも出ない行（購買には PM 承認待ちの変更セットの追加行）は選ばない
-  if (!vm().rows.some((x) => x.id === id) && !r.hidden) return toast(`${id} は変更セットの PM 承認待ちの行です（承認されると見えます）`, 'info')
+  if (!vm().rows.some((x) => x.id === id) && !r.hidden) {
+    toast(`${id} は変更セットの PM 承認待ちの行です（承認されると見えます）`, 'info')
+    return false
+  }
   const cat = effective(r).category || '（分類なし）'
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
   ensureCol()
+  return true
 }
 export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
@@ -220,13 +224,19 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editFromTyping: initial !== undefined && initial !== '', editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? startCandidates(d.options ?? [], initial, value) : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
   if (col === 'ordered') return runCommand('row.toggleOrdered')
   if (col === 'received') return runCommand('row.toggleReceived')
   rows.setCell(r.id, col, v ? '' : '1')
+}
+/** Enter で始めた選択の列の編集は、いまの値を先頭に（↑↓ はいまの値から数える） */
+function startCandidates(options: string[], initial: string | undefined, value: string): string[] {
+  if (initial !== undefined) return candidates(options, initial)
+  const i = options.indexOf(value)
+  return i > 0 ? [...options.slice(i), ...options.slice(0, i)] : options
 }
 function candidates(options: string[], v: string): string[] {
   const q = toHalf(v).trim().toLowerCase()
@@ -468,9 +478,16 @@ function gotoProblem(delta: 1 | -1): boolean {
     }
   }
   else if (idx < 0 && s.cursorRow) {
-    // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題
+    // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題。
+    // 分類の見出しにいるときは、その見出しの下の最初の行から
     const pos = new Map(vm().rows.map((x, i) => [x.id, i] as const))
-    const cur = pos.get(s.cursorRow)
+    let curId = s.cursorRow
+    if (curId.startsWith('g:')) {
+      const items = navItems()
+      const at = items.findIndex((i) => i.key === curId)
+      curId = (delta > 0 ? items.slice(at + 1).find((i) => i.kind === 'row') : [...items.slice(0, at)].reverse().find((i) => i.kind === 'row'))?.key ?? curId
+    }
+    const cur = pos.get(curId)
     if (cur != null) {
       let best = -1
       list.forEach((x, i) => {
@@ -555,6 +572,7 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
           label: '再見積要: 据え置き（旧見積を有効に戻す）',
           run: () =>
             s.commit('再見積要: 据え置き', (p2, ws) => {
+              queueMicrotask(() => toast(`${r.id} の旧見積を戻しました（概算。選定は選び直し、正式見積は依頼し直します）`, 'info'))
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
               // 商社ごとにいちばん新しい旧見積を、有効な見積として戻す（見積の枠が無ければ作る）
@@ -563,7 +581,8 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
               for (const [sid, q] of latest) {
                 let live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
                 if (!live) {
-                  live = { ...q, stale: false, staleModel: undefined }
+                  // 正式見積の値は旧型式・旧数量に対するもの。概算だけを戻す（正式見積は依頼し直す）
+                  live = { ...q, stale: false, staleModel: undefined, formalPrice: null, formalLeadDays: null, formalValidUntil: null, formalRequestNo: undefined }
                   p2.quotes.push(live)
                 } else if (live.unitPrice == null && live.leadDays == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
               }
@@ -599,13 +618,8 @@ function openQuickfix() {
   if (s.sequence)
     options.push({
       label: '飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる）',
-      run: () => {
-        if (problemCells().length > 1 && gotoProblem(1) && cursorRow()) setTimeout(openQuickfix, 0)
-        else {
-          set({ sequence: false })
-          toast('順番に直すモード: ほかの問題はありません', 'ok')
-        }
-      },
+      // 進むのは選んだあとの順番に直すモードの処理（ここで進めると 2 つ進む）
+      run: () => undefined,
     })
   if (!options.length) return toast(`${r.id} に直し方の候補はありません`, 'info')
   openPanel({ kind: 'quickfix', title: `直し方の候補 ${r.id} ${effective(r).name}`, rowId: r.id, field: s.cursorCol, index: 0, options })
@@ -722,14 +736,16 @@ export function publishFlow(rowIds?: string[]) {
   if (plan.blockedErrors.length) return toast(`公開できません: エラー ${plan.blockedErrors.length} 件（${gate.rowId} ${gate.message} … F8 で移動して直す）`, 'err')
   if (plan.blockedWarnings.length) return toast(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${gate.rowId} ${gate.message} … 直すか Alt+x で確認済みに）`, 'err')
   if (plan.deferred.length) return toast(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}）`, 'err')
+  // ダイアログを開いたときの行だけを公開する（開いているあいだに別のタブで変わった・足した行を、同じ理由で一緒に出さない）
+  const ids = rowIds ?? [...plan.rows.map((r) => r.id), ...plan.cancelled]
   if (plan.nonIssueChanges.length && user.role === 'design') {
     prompt(`変更セット（${plan.nonIssueChanges.length} 行: ${plan.nonIssueChanges.slice(0, 5).join(', ')}${plan.nonIssueChanges.length > 5 ? ' …' : ''}）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter`, { options: [...CHANGE_REASONS], index: -1, placeholder: '変更番号（任意。例: ECN-2026-012）', showText: true, digitsSelect: true }, (choice, text) => {
-      rows.publish(rowIds, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
+      rows.publish(ids, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
     })
     return
   }
   if (plan.canAppend && plan.rows.length) {
-    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(rowIds, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
+    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
     return
   }
   rows.publish(rowIds)
@@ -891,7 +907,11 @@ function saveSettings(draft: Record<string, string>) {
       }
       case 'supplierIds': {
         const ids = v.split(/[,、\s]+/).filter(Boolean).map((id) => s.ws.suppliers.find((x) => x.id === id || x.name === id)!.id)
-        extraCommits.push(() => s.commit('相見積先を設定', (p2) => void (p2.supplierIds = [...new Set(ids)])))
+        // 相見積先が変わったら、待つ商社・見積済の判定も見直す
+        extraCommits.push(() => s.commit('相見積先を設定', (p2, ws2) => {
+          p2.supplierIds = [...new Set(ids)]
+          normalize(p2, ws2)
+        }))
         break
       }
       case 'changeNeedsPmApproval':
@@ -1145,7 +1165,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'project.switch':
       return openPanel({ kind: 'inbox', index: 0, query: '' })
     case 'project.save':
-      s.commitWs('', () => {})
+      if (!s.commitWs('', () => {})) return
       return toast('保存しました（編集は自動で保存されています）', 'ok')
     case 'undo':
     case 'redo': {
@@ -1754,7 +1774,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
         const noRow = !st().cursorRow
         setView(Number(id.slice(5)) as ViewId)
-        if (noRow && e && /^Digit\d$|^\d$/.test(e.code || e.key)) set({ cursorRow: null })
+        if (noRow && e && (/^(Digit|Numpad)\d$/.test(e.code) || /^\d$/.test(e.key))) set({ cursorRow: null })
         return
       }
       toast(`未実装: ${id}`, 'err')
@@ -1839,7 +1859,9 @@ export function paletteItems(query: string): PaletteItem[] {
   const m = q.match(/^(r?\d{1,3}|R\d{3})\s*(.*)$/i)
   if (m) {
     const id = /^r?\d+$/i.test(m[1]) ? 'R' + m[1].replace(/\D/g, '').padStart(3, '0') : m[1].toUpperCase()
-    const row = p.rows.find((x) => x.id === id)
+    const row0 = p.rows.find((x) => x.id === id)
+    // 購買には、PM 承認待ちの変更セットで足した行は出さない（名前も操作も）
+    const row = row0 && !(s.user().role === 'purchasing' && pendingAdd(row0)) ? row0 : undefined
     if (row) {
       // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
       // 表示どおりの「R040 を置換」「R040 へジャンプ」「R040 を 因幡電機 で採用」でも当たる
@@ -1859,7 +1881,7 @@ export function paletteItems(query: string): PaletteItem[] {
             desc: e.name,
             keys: i === 0 ? ['a'] : ['Shift+A', String(i + 1)],
             run: wrap(() => {
-              jumpToRow(id)
+              if (!jumpToRow(id)) return
               if (i === 0) adopt.adoptBest(id)
               else {
                 const was = st().project().rows.find((x) => x.id === id)?.adoptedSupplierId ?? null
@@ -1886,8 +1908,8 @@ export function paletteItems(query: string): PaletteItem[] {
             desc: e.name + ' ' + e.model,
             keys: [key],
             run: wrap(() => {
-              jumpToRow(id)
-              runCommand(cmd)
+              // 行へ移れなかったら、いまのカーソルの行に操作しない
+              if (jumpToRow(id)) runCommand(cmd)
             }),
           })
       if (!rest || 'ジャンプ'.startsWith(rest) || rest.startsWith('ジャンプ')) items.push({ id: `goto:${id}`, section: id, label: `${id} へジャンプ`, desc: e.name, keys: ['Ctrl+G'], run: wrap(() => jumpToRow(id)) })

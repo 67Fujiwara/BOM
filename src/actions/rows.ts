@@ -17,7 +17,7 @@ function st() {
 export function canEdit(colKey: string): string | null {
   const d = colDef(colKey)
   if (!d) return '編集できない列です'
-  if (d.kind === 'computed') return 'この列は自動計算です'
+  if (d.kind === 'computed') return colKey === 'needDate' ? 'この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）' : 'この列は自動計算です'
   const role = st().user().role
   if (!d.editableBy.includes(role)) return `権限なし（${d.editableBy.map((r) => ROLE_LABEL[r]).join('・')}の列）`
   return null
@@ -455,7 +455,7 @@ export function activeDeferred(r: Row, rules: Parameters<typeof checkRow>[1], p:
 export function planPublish(p: Project, rules: Parameters<typeof checkRow>[1], user: { name: string; role: Role }, rowIds?: string[]): PublishPlan {
   const isDesign = user.role === 'design'
   const targets = isDesign ? p.rows.filter((r) => isActive(r) && (rowIds ? rowIds.includes(r.id) : true) && ((r.status === 'draft' && r.publishedRev == null && (r.name || r.model)) || hasWork(r))) : []
-  const cancelled = isDesign ? p.rows.filter((r) => r.status === 'cancelled' && r.publishedRev != null && !p.submissions.some((sb) => sb.causes[r.id] === '取消')).map((r) => r.id) : []
+  const cancelled = isDesign ? p.rows.filter((r) => r.status === 'cancelled' && r.publishedRev != null && !p.submissions.some((sb) => sb.causes[r.id] === '取消') && (!rowIds || rowIds.includes(r.id))).map((r) => r.id) : []
   const draftIssues = p.issues.filter((i) => i.status === 'draft' && i.by.name === user.name)
   const last = p.submissions.at(-1)
   const plan: PublishPlan = { rows: targets, draftIssues, blockedErrors: [], blockedWarnings: [], deferred: [], nonIssueChanges: [...cancelled], cancelled, issueFixes: [], canAppend: !!last && last.by.name === user.name && !last.acked.some((a) => !a.includes('@') || a.endsWith('@purchasing')) && !last.revoked && !last.changeSet }

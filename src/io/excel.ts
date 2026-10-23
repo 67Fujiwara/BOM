@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { STATUS_LABEL, ROLE_LABEL } from '@/model/types'
-import { adoptedQuote, decisionExtra, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
+import { pendingAdd, adoptedQuote, decisionExtra, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
 const FILL = (argb: string): ExcelJS.Fill => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } })
@@ -64,6 +64,8 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   headerRow(sheet, cols)
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
+    // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も設計以外には出さない（§5）
+    if (pendingAdd(r) && (target === 'supplier' || ws.user.role !== 'design')) continue
     // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
     if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
     if (target === 'supplier' && supplierId) {
@@ -96,12 +98,14 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
 
 /** 社内だけのシート（変更点・チェック結果）。商社向けには付けない */
 function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
+  const hide = (id: string) => ws.user.role !== 'design' && pendingAdd(p.rows.find((x) => x.id === id) ?? ({ flags: {} } as Row))
   // 変更点
   const chg = wb.addWorksheet('変更点')
   headerRow(chg, [{ header: 'Rev', key: 'rev', width: 6 }, { header: '日時', key: 'at', width: 16 }, { header: '公開者', key: 'by', width: 10 }, { header: 'ID', key: 'id', width: 7 }, { header: '起因', key: 'cause', width: 18 }, { header: '変更理由', key: 'reason', width: 12 }, { header: '変更番号', key: 'no', width: 12 }, { header: '内容', key: 'detail', width: 50 }, { header: '承認', key: 'approval', width: 24 }])
   for (const sub of p.submissions) {
     const prev = p.submissions.filter((x) => x.rev < sub.rev)
     for (const id of sub.rowIds) {
+      if (hide(id)) continue
       const now = sub.snapshot[id]
       const before = [...prev].reverse().map((x) => x.snapshot[id]).find(Boolean)
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
@@ -115,7 +119,7 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // チェック結果
   const chk = wb.addWorksheet('チェック結果')
   headerRow(chk, [{ header: 'ID', key: 'id', width: 7 }, { header: '列', key: 'field', width: 10 }, { header: '重大度', key: 'sev', width: 8 }, { header: '内容', key: 'msg', width: 40 }, { header: '種別', key: 'kind', width: 12 }, { header: '状態', key: 'status', width: 8 }])
-  for (const pr of checkProject(p, ws.rules)) {
+  for (const pr of checkProject(p, ws.rules).filter((x) => !hide(x.rowId))) {
     const row = chk.addRow({ id: pr.rowId, field: pr.field, sev: pr.severity === 'error' ? 'エラー' : '警告', msg: pr.message, kind: 'チェック', status: '' })
     row.fill = pr.severity === 'error' ? ERR_FILL : WARN_FILL
   }

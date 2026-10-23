@@ -7,6 +7,11 @@ const arr = <T,>(v: unknown, fallback: T[] = []): T[] => (Array.isArray(v) ? (v 
 
 const str = (v: unknown): v is string => typeof v === 'string' && v !== ''
 const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null)
+/** 見積の単価・数量は 0 以上、納期は 0 以上か -1（取扱なし） */
+const nonNeg = (v: unknown, allowDecline = false): number | null => {
+  const n = numOrNull(v)
+  return n == null ? null : n >= 0 || (allowDecline && n === -1) ? n : null
+}
 const ROLES_OK = ['design', 'purchasing', 'pm']
 const ISSUE_STATUS_OK = ['draft', 'open', 'inProgress', 'fixed', 'answered', 'confirmed', 'wontfix']
 const userOf = (v: unknown, fallback: Workspace['user']): Workspace['user'] => (isObj(v) && typeof v.name === 'string' && ROLES_OK.includes(String(v.role)) ? (v as unknown as Workspace['user']) : fallback)
@@ -46,7 +51,8 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     // 値を直して読んだ項目（数量の無い・読めない・負の値、存在しない日付）を数えて知らせる
     const fixes: Record<string, number> = {}
     const fallbackUser = { name: '不明', role: 'design' as const }
-    const issues0 = arr<unknown>(p0.issues)
+    for (const k of ['quotes', 'issues', 'submissions', 'decisions'] as const) if (p0[k] !== undefined && !Array.isArray(p0[k])) warnings.push(`案件 ${p0.id} の ${k} が一覧の形ではないので読めませんでした`)
+    const issues0 = arr<unknown>(p0.issues).map((x) => (isObj(x) && typeof x.id === 'number' && Number.isFinite(x.id) ? { ...x, id: String(x.id) } : x))
     // 数字で書いた行 ID（81 など）は、行と同じく文字にして突き合わせる
     const idStr = (x: unknown) => (isObj(x) && typeof x.rowId === 'number' && Number.isFinite(x.rowId) ? { ...x, rowId: String(x.rowId) } : x)
     const issues = issues0
@@ -58,7 +64,9 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const quotes = quotes0
       .map(idStr)
       .filter((q): q is Record<string, unknown> => isObj(q) && str(q.rowId) && str(q.supplierId) && rowIds.has(q.rowId as string))
-      .map((q) => ({ ...q, validUntil: typeof q.validUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(q.validUntil) ? q.validUntil : null, formalValidUntil: typeof q.formalValidUntil === 'string' ? q.formalValidUntil : null, stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: numOrNull(q.unitPrice), leadDays: numOrNull(q.leadDays), moq: numOrNull(q.moq), quoteQty: numOrNull(q.quoteQty), formalPrice: numOrNull(q.formalPrice), formalLeadDays: numOrNull(q.formalLeadDays), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
+      .map((q) => ({ ...q, validUntil: typeof q.validUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(q.validUntil) ? q.validUntil : null, formalValidUntil: typeof q.formalValidUntil === 'string' ? q.formalValidUntil : null, stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: nonNeg(q.unitPrice), leadDays: nonNeg(q.leadDays, true), moq: nonNeg(q.moq), quoteQty: nonNeg(q.quoteQty), formalPrice: nonNeg(q.formalPrice), formalLeadDays: nonNeg(q.formalLeadDays, true), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
+    const negs = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'formalPrice'].some((k) => typeof q[k] === 'number' && (q[k] as number) < (k === 'leadDays' ? -1 : 0))).length
+    if (negs) warnings.push(`案件 ${p0.id} の見積 ${negs} 件に負の値（単価・納期・MOQ）があったので空にしました`)
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
     const now = new Date().toISOString()
     const p: Project = {
@@ -250,7 +258,7 @@ function clampSettings<T extends object>(st: T): T {
 }
 
 function realDate(v: string): boolean {
-  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(v)
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v)
   if (!m) return false
   const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]))
   return d.getFullYear() === Number(m[1]) && d.getMonth() === Number(m[2]) - 1 && d.getDate() === Number(m[3])

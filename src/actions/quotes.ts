@@ -99,6 +99,9 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   // 実際に見積済から見積中に戻った行だけを数える
   const after = st().project()
   const reopened = rows.filter((r) => sent.has(r.id) && r.status === 'quoted' && after.rows.find((x) => x.id === r.id)?.status === 'quoting').length
+  // 指定先が取引不可の商社になっている行（指定は設計の判断なので頼むが、知らせる）
+  const blocked = [...perSupplier].flatMap(([sid, rs]) => (s.ws.suppliers.find((x) => x.id === sid)?.tradable === false ? rs.filter((r) => isFixedProcurement(r)).map((r) => `${r.id}→${name(sid)}`) : []))
+  if (blocked.length) notes.push(`取引不可の商社が指定先の行 ${blocked.length} 行（${blocked.slice(0, 3).join('・')}）にも依頼しました。指定先を設計と確かめてください`)
   if (reopened) notes.push(`見積済だった ${reopened} 行は、新しく頼んだ商社の回答を待つため見積中に戻しました`)
   return `${sent.size} 行 × ${perSupplier.size} 社に依頼（回答期限 ${deadline}）${excluded ? `。作業中 ${excluded} 行を除外` : ''}${notes.length ? `。${notes.join('。')}` : ''}`
 }
@@ -242,6 +245,14 @@ export async function requestFormalQuotes(): Promise<string> {
         // 前回送った必要納期を差分シートのために残してから、今回の値を記録
         if (q.formalNeedDate !== undefined) prevNeed.set(r.id, q.formalNeedDate)
         q.formalNeedDate = rowNeedDate(p2, r)
+      }
+      // 再発行（数量・型式の変更のあと）は前の正式回答を消して、新しい回答を待つ（正式見積済のまま古い単価で止まらない）
+      if (r.flags.reissue && q) {
+        q.prevFormalPrice = q.formalPrice ?? q.prevFormalPrice
+        q.formalPrice = null
+        q.formalLeadDays = null
+        q.formalValidUntil = null
+        if (r.status === 'formalQuoted') setStatus(r, 'formalRequested')
       }
       r.flags.reissue = false
       if (r.status === 'selected') setStatus(r, 'formalRequested')

@@ -492,6 +492,8 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
   const before = { ...r }
   const changed = (Object.keys(values) as (keyof DesignFields)[]).filter((k) => JSON.stringify(values[k]) !== JSON.stringify(before[k]))
   Object.assign(r, values)
+  // 指定系から相見積に変えた（まだ採用していない）行は、相見積先すべてに頼むつもりにする（残りの商社に依頼できる）
+  if (changed.includes('procurement') && !isFixedProcurement(r) && isFixedProcurement(before) && ['submitted', 'quoting', 'quoted'].includes(r.status)) r.quoteTargets = quoteTargets(p, r)
   const inFlight = ['quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status)
   const formalStage = ['formalRequested', 'formalQuoted'].includes(r.status)
   if (changed.includes('model') || changed.includes('maker')) {

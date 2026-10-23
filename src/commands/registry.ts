@@ -182,6 +182,8 @@ export function jumpToRow(id: string, col?: string, keepProblem = false) {
   const r = p.rows.find((x) => x.id === id)
   if (!r) return
   if (!vm().rows.some((x) => x.id === id)) set({ view: 1, filter: '', cellFilter: null })
+  // 1 すべてにも出ない行（購買には PM 承認待ちの変更セットの追加行）は選ばない
+  if (!vm().rows.some((x) => x.id === id) && !r.hidden) return toast(`${id} は変更セットの PM 承認待ちの行です（承認されると見えます）`, 'info')
   const cat = effective(r).category || '（分類なし）'
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
@@ -554,12 +556,20 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
             s.commit('再見積要: 据え置き', (p2, ws) => {
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
-              for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) {
-                const live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === q.supplierId && !x.stale)
-                if (live && live.unitPrice == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
+              // 商社ごとにいちばん新しい旧見積を、有効な見積として戻す（見積の枠が無ければ作る）
+              const latest = new Map<string, (typeof p2.quotes)[number]>()
+              for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) latest.set(q.supplierId, q)
+              for (const [sid, q] of latest) {
+                let live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
+                if (!live) {
+                  live = { ...q, stale: false, staleModel: undefined }
+                  p2.quotes.push(live)
+                } else if (live.unitPrice == null && live.leadDays == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
               }
-              // 旧見積が戻ったので、提出済に戻っていた行は見積済へ進める（選定者が選び直す）
-              if (rr.status === 'submitted') setStatus(rr, 'quoting')
+              // 頼むつもりの商社も旧見積の商社に戻す
+              rr.quoteTargets = [...latest.keys()]
+              // 旧見積が戻ったので、提出済に戻っていた行は見積中へ（揃っていれば見積済。選定者が選び直す）
+              if (rr.status === 'submitted' || rr.status === 'quoted') setStatus(rr, 'quoting')
               normalize(p2, ws)
             }),
         },
@@ -1502,7 +1512,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.request': {
       if (role !== 'purchasing') return toast('権限なし（概算見積の依頼は購買）', 'err')
       const tradable = s.ws.suppliers.filter((x) => x.tradable)
-      const ids = p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)
+      const ids = (p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)).filter((id) => s.ws.suppliers.find((x) => x.id === id)?.tradable !== false)
       const def = addDays(todayStr(), p.settings.quoteDays)
       const allLabel = `相見積先すべて（${ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join('・')}）`
       return prompt('概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）', { options: [allLabel, ...tradable.map((x) => `${x.id} ${x.name}`)], placeholder: `回答期限（空なら ${def}）`, showText: true }, (choice, text) => {

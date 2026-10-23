@@ -37,7 +37,9 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   const targetsOf = (r: Row) => (r.status === 'submitted' || r.flags.requote ? quoteTargets(p, r) : [...awaitingRequote(r), ...needsNextFixed(r), ...unasked(r)])
   // 「相見積先すべて」のときは、指定先が案件の相見積先に無い指定系の行も、その指定先に頼む
   const wanted = (sid: string) => all || supplierIds.includes(sid)
-  for (const r of rows) for (const sid of targetsOf(r)) if (wanted(sid)) perSupplier.set(sid, [...(perSupplier.get(sid) ?? []), r])
+  // すでに回答をもらっている商社には、その行の依頼書を出し直さない
+  const answeredBy = (r: Row, sid: string) => p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale && (q.unitPrice != null || q.leadDays != null))
+  for (const r of rows) for (const sid of targetsOf(r)) if (wanted(sid) && !(answeredBy(r, sid) && !r.flags.requote && !awaitingRequote(r).includes(sid))) perSupplier.set(sid, [...(perSupplier.get(sid) ?? []), r])
   // 今回どの商社にも頼まない行（指定先が別の商社）は、見積中にしない（回答の来ない見積中で止めない）
   const sent = new Set([...perSupplier.values()].flat().map((r) => r.id))
   if (!sent.size) return '依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）'

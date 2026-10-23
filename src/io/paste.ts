@@ -93,6 +93,17 @@ export function headerVersion(h: string): 'old' | 'new' | null {
   if (verToken(NEW_WORDS).test(s) || verPrefix(NEW_WORDS).test(s)) return 'new'
   return null
 }
+/**
+ * 見出しのセルとして見るときの項目（見出しを探すとき用）。値の入ったセル（「名称未定」「型式未定」「品名：制御盤」「数量：1台」）は見出しにしない
+ */
+export function headerField(c: string): BomField | null {
+  const t = toHalf(c).trim()
+  if (!t || t.length > 24) return null
+  if (/未定|tbd|予定|検討中|調整中|確認中|不明/i.test(t)) return null
+  if (/[:：]\s*\S/.test(t)) return null
+  if (/\d{2,}/.test(t)) return null
+  return detectField(t)
+}
 export function detectField(h: string): BomField | null {
   // 版の印を外してから項目を見る（「現数量」「型式（旧）」「新型式」も数量・型式。どちらを使うかは列を選ぶときに決める）
   let s = toHalf(h).trim()
@@ -120,13 +131,13 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しの行を上から探す（表題・依頼No などの行が先にあってもよい）
   const filled = (l: string[]) => l.filter((c) => c.trim() !== '').length
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
-  const counts = lines.slice(0, 30).map((l) => new Set(l.map(detectField).filter(Boolean)).size)
+  const counts = lines.slice(0, 30).map((l) => new Set(l.map(headerField).filter(Boolean)).size)
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
   const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
   // 繰り返しかどうかは見出しの言葉の組み合わせで見る（2 ページ目の「品名（続き）」・空の No・「P.1」・員数／数量でも同じ見出し）。
   // いちばん見出しらしい行と、見出しの言葉が 6 割以上重なる行を「同じ見出し」とみなし、その最初の行を見出しにする
-  const fieldSet = (l: string[]) => new Set(l.map(detectField).filter(Boolean))
+  const fieldSet = (l: string[]) => new Set(l.map(headerField).filter(Boolean))
   const bestSet = best >= 2 ? fieldSet(lines[tops[tops.length - 1]]) : new Set()
   const sameHeader = (l: string[]) => {
     const f = fieldSet(l)
@@ -144,10 +155,26 @@ export function parseBomPaste(text: string): PasteResult {
     lines = lines.slice(headerAt)
   }
   if (headerAt >= 0) {
-    // ページごとに繰り返した同じ見出しの行は外す（部品にしない）
-    const before = lines.length
-    lines = [lines[0], ...lines.slice(1).filter((l) => !sameHeader(l))]
-    if (lines.length < before) warnings.push(`繰り返しの見出し ${before - lines.length} 行は取り込みません`)
+    // ページごとに繰り返した同じ見出しの行は外す（部品にしない）。2 ページ目以降の見出しで列の並びが違えば、
+    // そのページの行を最初の見出しの並びに並べ直す（No の列が増えた・数量と単位が入れ替わった など）
+    const baseFields = lines[0].map(headerField)
+    const out: string[][] = [lines[0]]
+    let perm: number[] | null = null
+    let removed = 0
+    let reordered = 0
+    for (const l of lines.slice(1)) {
+      if (sameHeader(l)) {
+        removed++
+        const f = l.map(headerField)
+        const pm = baseFields.map((bf, j) => (bf ? f.indexOf(bf) : j))
+        perm = pm.every((k, j) => k === j) ? null : pm
+        continue
+      }
+      if (perm) reordered++
+      out.push(perm ? perm.map((k, j) => (k >= 0 ? (l[k] ?? '') : baseFields[j] ? '' : (l[j] ?? ''))) : l)
+    }
+    lines = out
+    if (removed) warnings.push(`繰り返しの見出し ${removed} 行は取り込みません${reordered ? `（列の並びが違うページの ${reordered} 行は、最初の見出しの並びに直しました）` : ''}`)
   } else if (headerAt < 0 && !singleHeader) {
     // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
     const width = Math.max(...lines.map((l) => filled(l)))
@@ -393,15 +420,19 @@ export function isTotalCell(c: string): boolean {
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。
  * width は表の列の数（xlsx は行の右の空のセルが無いので、セルの数では見ない）。1 列だけの表では使わない
  */
+const PAGE_TITLE = /^(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|BOM)\s*([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|\d+\s*(ページ|頁)|p\.?\s*\d+)?$/i
+const PAGE_NO = /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+(\s*(of|\/)\s*\d+)?)$/i
 export function isSectionLine(cells: string[], width = cells.length): boolean {
   const filled = cells.map((c) => c.trim()).filter(Boolean)
+  // ページの表題とページ番号だけの行（「部品表 (2/3)」と「P.2」）
+  if (width > 1 && filled.length === 2 && filled.every((c) => PAGE_TITLE.test(c) || PAGE_NO.test(c))) return true
   return (
     width > 1 &&
     filled.length === 1 &&
     (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) ||
       /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]) ||
       // ページごとの表題・ページ番号（部品表 (2/3)・P.2・2 / 3 ページ）
-      /(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|\bBOM\b).*([(（]\s*\d+\s*[/／]\s*\d+\s*[)）]|\d+\s*(ページ|頁))?$/i.test(filled[0]) ||
+      PAGE_TITLE.test(filled[0]) ||
       /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+)(\s*(ページ|頁))?$/i.test(filled[0]) ||
       // 「- 1 -」「Page 1 of 2」「（次頁へ続く）」「※ 注記」
       /^[-－—]\s*\d+\s*[-－—]$/.test(filled[0]) ||

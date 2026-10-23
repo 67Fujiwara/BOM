@@ -211,3 +211,22 @@ describe('ラウンド 12 の取り込み', () => {
     expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'H3CR'])
   })
 })
+
+describe('ラウンド 12（ベテラン）の取り込み', () => {
+  it('名称未定・型式未定・メーカ未定の行を見出しの繰り返しにしない', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t2\n名称未定\t型式未定\tメーカ未定\t1\n部品取付板\t品番未定\t\t1\nタイマ\tH3CR\tオムロン\t1')
+    expect(r.rows.length).toBe(4)
+  })
+  it('表題の「品名：…」「数量：…」を見出しにしない', () => {
+    const r = parseBomPaste('品名：制御盤\t\t数量：1台\n部品名\t型式\t数量\nリレー\tMY4N\t2')
+    expect(r.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N', 2]])
+  })
+  it('2 ページ目の見出しの列の並びが違っても、正しい項目に入れる', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t2\nNo\t部品名\t型式\t数量\tメーカ\n2\tタイマ\tH3CR\t1\tオムロン')
+    expect(r.rows.map((x) => [x.name, x.model, x.maker, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 'オムロン', 2], ['タイマ', 'H3CR', 'オムロン', 1]])
+  })
+  it('部品表ホルダー・BOM ラベルは部品、部品表 (2/3) と P.2 だけの行は飛ばす', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\n部品表ホルダー\t\t\nBOM ラベル\t\t\n部品表 (2/3)\t\tP.2\nリレー\tMY4N\t2')
+    expect(r.rows.map((x) => x.name)).toEqual(['部品表ホルダー', 'BOM ラベル', 'リレー'])
+  })
+})

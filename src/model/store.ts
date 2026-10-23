@@ -75,6 +75,8 @@ export interface State {
   editSelectAll?: boolean
   /** 打ち始めた（または 6・8 で自動で始めた）入力。Excel の「入力モード」と同じく、矢印キーで確定して隣のセルへ（Enter で始めた編集では矢印は文字の中を動く） */
   editTyped?: boolean
+  /** この編集を打って始めたか（F2 で編集モードに切り替えても変わらない。Ctrl+Z で入力ごと取り消すため） */
+  editFromTyping?: boolean
   panel: Panel | null
   toast: { text: string; kind: 'ok' | 'err' | 'info'; at: number } | null
   revView: number | null
@@ -358,6 +360,13 @@ function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string
 let histTimer: number | undefined
 /** 保存できていない変更があるか（次に保存できたら外す） */
 let unsavedChanges = false
+export function hasUnsavedChanges(): boolean {
+  return unsavedChanges
+}
+/** 別のタブの保存を取り込んだ（このタブの保存できていない変更はそれで置き換わる） */
+export function dropUnsavedChanges() {
+  unsavedChanges = false
+}
 function saveTracked(ws: Workspace): boolean {
   const ok = saveWorkspace(ws)
   unsavedChanges = !ok

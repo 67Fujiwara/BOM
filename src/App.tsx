@@ -1,5 +1,5 @@
 import { Component, useEffect, useMemo, type ReactNode } from 'react'
-import { useStore } from '@/model/store'
+import { useStore, hasUnsavedChanges, dropUnsavedChanges } from '@/model/store'
 import { buildViewModel } from '@/model/selectors'
 import { Header } from '@/ui/Header'
 import { Side } from '@/ui/Side'
@@ -114,8 +114,12 @@ function Main() {
       ws.user = loadUser() ?? s.ws.user
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
       const before = buildViewModel(s).rows.map((r) => r.id)
+      // 容量不足で保存できていなかった変更は、別のタブの保存で置き換わる（黙って消さない）
+      const lost = hasUnsavedChanges()
+      dropUnsavedChanges()
       useStore.setState({ ws })
       keepCursorVisible(before, true)
+      if (lost) useStore.getState().toastMsg('このタブの保存できていなかった変更は、別のタブの保存で置き換わりました（容量不足。Ctrl+K →「JSON を書き出す」で退避してから空きを作ってください）', 'err')
     }
     window.addEventListener('storage', onStorage)
     const stop = startSync((ws) => {

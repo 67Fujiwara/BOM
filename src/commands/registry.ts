@@ -224,7 +224,7 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? startCandidates(d.options ?? [], initial, value) : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editFromTyping: initial !== undefined && initial !== '', editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? startCandidates(d.options ?? [], initial, value) : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -478,9 +478,16 @@ function gotoProblem(delta: 1 | -1): boolean {
     }
   }
   else if (idx < 0 && s.cursorRow) {
-    // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題
+    // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題。
+    // 分類の見出しにいるときは、その見出しの下の最初の行から
     const pos = new Map(vm().rows.map((x, i) => [x.id, i] as const))
-    const cur = pos.get(s.cursorRow)
+    let curId = s.cursorRow
+    if (curId.startsWith('g:')) {
+      const items = navItems()
+      const at = items.findIndex((i) => i.key === curId)
+      curId = (delta > 0 ? items.slice(at + 1).find((i) => i.kind === 'row') : [...items.slice(0, at)].reverse().find((i) => i.kind === 'row'))?.key ?? curId
+    }
+    const cur = pos.get(curId)
     if (cur != null) {
       let best = -1
       list.forEach((x, i) => {
@@ -729,14 +736,16 @@ export function publishFlow(rowIds?: string[]) {
   if (plan.blockedErrors.length) return toast(`公開できません: エラー ${plan.blockedErrors.length} 件（${gate.rowId} ${gate.message} … F8 で移動して直す）`, 'err')
   if (plan.blockedWarnings.length) return toast(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${gate.rowId} ${gate.message} … 直すか Alt+x で確認済みに）`, 'err')
   if (plan.deferred.length) return toast(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}）`, 'err')
+  // ダイアログを開いたときの行だけを公開する（開いているあいだに別のタブで変わった・足した行を、同じ理由で一緒に出さない）
+  const ids = rowIds ?? [...plan.rows.map((r) => r.id), ...plan.cancelled]
   if (plan.nonIssueChanges.length && user.role === 'design') {
     prompt(`変更セット（${plan.nonIssueChanges.length} 行: ${plan.nonIssueChanges.slice(0, 5).join(', ')}${plan.nonIssueChanges.length > 5 ? ' …' : ''}）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter`, { options: [...CHANGE_REASONS], index: -1, placeholder: '変更番号（任意。例: ECN-2026-012）', showText: true, digitsSelect: true }, (choice, text) => {
-      rows.publish(rowIds, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
+      rows.publish(ids, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
     })
     return
   }
   if (plan.canAppend && plan.rows.length) {
-    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(rowIds, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
+    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
     return
   }
   rows.publish(rowIds)
@@ -1156,7 +1165,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'project.switch':
       return openPanel({ kind: 'inbox', index: 0, query: '' })
     case 'project.save':
-      s.commitWs('', () => {})
+      if (!s.commitWs('', () => {})) return
       return toast('保存しました（編集は自動で保存されています）', 'ok')
     case 'undo':
     case 'redo': {
@@ -1765,7 +1774,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
         const noRow = !st().cursorRow
         setView(Number(id.slice(5)) as ViewId)
-        if (noRow && e && /^Digit\d$|^\d$/.test(e.code || e.key)) set({ cursorRow: null })
+        if (noRow && e && (/^(Digit|Numpad)\d$/.test(e.code) || /^\d$/.test(e.key))) set({ cursorRow: null })
         return
       }
       toast(`未実装: ${id}`, 'err')

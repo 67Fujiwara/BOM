@@ -185,7 +185,7 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         // 既定の無い選択（理由など）は、選ぶまで進めない（Enter 連打で理由が勝手に決まらないように）
         if (panel.options && choice == null) {
           set({ panel: { ...panel, error: '選んでください' } })
-          return toast(`数字（1〜${n}）か ↑↓ で選んでから Enter`, 'err')
+          return toast(panel.textTouched ? `↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）` : `数字（1〜${n}）か ↑↓ で選んでから Enter`, 'err')
         }
         if (panel.requireText && !panel.text.trim()) {
           set({ panel: { ...panel, error: '入力は必須です' } })
@@ -635,7 +635,7 @@ export function handleKeyDown(e: KeyboardEvent) {
       }
     }
     // 打って始めた入力の Ctrl+Z は、入力ごと取り消す（最初の 1 文字がブラウザの取り消しで消えずに残らない。Excel と同じ）
-    if (key === 'Ctrl+Z' && s.editTyped) {
+    if (key === 'Ctrl+Z' && (s.editTyped || s.editFromTyping)) {
       e.preventDefault()
       cancelEdit()
       toast('入力を取り消しました（セルは元のまま）', 'info')

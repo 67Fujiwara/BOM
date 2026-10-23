@@ -139,19 +139,32 @@ export function ensureCursor() {
  * カーソルの行がこのビューから消えたら（自分や別のタブが隠した・状態が変わった）、同じ位置の行（無ければ上の行）へ移す。
  * 行を選んでいない状態にしない（英字が効かなくなる）。before は変わる前に見えていた行の ID
  */
-export function keepCursorVisible(before: string[]) {
+export function keepCursorVisible(before: string[], external = false) {
   const s = st()
   const cur = s.cursorRow
-  if (!cur || cur.startsWith('g:') || s.mode === 'edit') return
+  if (!cur || cur.startsWith('g:')) return
   const after = vm().rows.map((x) => x.id)
   if (after.includes(cur)) return
   const at = before.indexOf(cur)
   if (at < 0) return
+  // 別のタブの変更で行が消えたときは、黙って隣の行へ移さない（続けて押したキーが別の行に効かないように）。行の選択を外して知らせる
+  if (external) {
+    if (s.mode === 'edit') {
+      const v = s.editValue
+      cancelEdit()
+      toast(`編集中の ${cur} が別のタブの変更でこのビューから外れたので、入力「${v}」は保存していません（Ctrl+G ${cur} で行へ）`, 'err')
+    } else toast(`${cur} が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G ${cur} でその行へ）`, 'info')
+    set({ cursorRow: null })
+    return
+  }
+  if (s.mode === 'edit') return
   const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
   if (next) set({ cursorRow: next })
   else ensureCursor()
 }
 export function jumpToRow(id: string, col?: string) {
+  // Ctrl+G・パレットなどで別の行へ飛んだら、F8 は飛んだ先から数え直す
+  lastProblem = null
   const s = st()
   const p = s.project()
   const r = p.rows.find((x) => x.id === id)
@@ -258,8 +271,15 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
       toast(`${parsed.error}（直して Enter、やめるときは Esc）`, 'err')
       return false
     }
+    const beforeIds = vm().rows.map((x) => x.id)
     set({ mode: 'nav', editCandidates: null, editError: null })
     if (!rows.setCell(r.id, col, value)) return false
+    // 直したことで行がこのビューから外れた（4 要確認で問題が消えた など）ときは、先頭へ飛ばず、その位置の次の行へ（それが「下へ」）
+    if (!vm().rows.some((x) => x.id === r.id)) {
+      tabAnchor = null
+      keepCursorVisible(beforeIds)
+      return true
+    }
   } else set({ mode: 'nav', editCandidates: null, editError: null })
   // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）。
   // Tab で右へ入れてきた後の Enter は、Excel と同じく Tab を始めた列に戻る（単価 Tab 納期 Tab MOQ Enter → 次の行の単価）
@@ -393,11 +413,21 @@ function gotoProblem(delta: 1 | -1): boolean {
       next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
     }
   }
+  // 前に飛んだ位置が無い（リロード直後・Ctrl+G や ↓ で来た）ときは、カーソルの行より下（Shift+F8 は上）の最初の問題へ
+  else if (idx < 0 && s.cursorRow) {
+    const pos = new Map(s.project().rows.map((x, i) => [x.id, i] as const))
+    const cur = pos.get(s.cursorRow) ?? -1
+    if (cur >= 0) {
+      const k = delta > 0 ? list.findIndex((x) => (pos.get(x.rowId) ?? -1) > cur) : list.map((x, i) => [x, i] as const).reverse().find(([x]) => (pos.get(x.rowId) ?? -1) < cur)?.[1] ?? -1
+      if (k >= 0) next = k
+    }
+  }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
-  lastProblem = { rowId: list[next].rowId, field: list[next].field, idx: next }
   if (stay) jumpToRow(list[next].rowId)
   else jumpToRow(list[next].rowId, list[next].field)
+  // jumpToRow は「前に飛んだ位置」を消すので、そのあとで覚える
+  lastProblem = { rowId: list[next].rowId, field: list[next].field, idx: next }
   return true
 }
 /** 最後に F8 / n で飛んだ問題（行と一覧の中の番号） */
@@ -945,12 +975,16 @@ function restoreBackup(b: Backup) {
   const cur = st().ws
   confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
     const before = backupsSnapshot()
-    const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
-    if (!replaceWorkspace(ws)) {
-      restoreBackupsSnapshot(before)
-      return toast('保存領域が足りないため戻せませんでした（いまの内容のまま。退避も前のまま）', 'err')
+    const go = (backedUp: boolean) => {
+      if (!replaceWorkspace(ws)) {
+        restoreBackupsSnapshot(before)
+        return toast('保存領域が足りないため戻せませんでした（いまの内容のまま。退避も前のまま）', 'err')
+      }
+      toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は退避していません'}`, backedUp ? 'ok' : 'info')
     }
-    toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
+    if (saveBackup(JSON.stringify(cur), '退避からの復元の前')) return go(true)
+    // 退避できないまま戻さない（JSON の読み込みと同じく、もう一度確かめる）
+    confirmDanger('保存領域がいっぱいで、いまの内容を退避できませんでした。戻すといまの内容は失われます。先に Ctrl+K →「JSON を書き出す」で保存するのが安全です', '退避せずに戻す（いまの内容は戻せません）', () => go(false))
   })
 }
 function exportBackup(b: Backup) {
@@ -1629,7 +1663,13 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         switchRole(choice === '購買' ? 'purchasing' : choice === 'PM' ? 'pm' : 'design', name)
       })
     default:
-      if (id.startsWith('view.')) return setView(Number(id.slice(5)) as ViewId)
+      if (id.startsWith('view.')) {
+        // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
+        const noRow = !cursorRow()
+        setView(Number(id.slice(5)) as ViewId)
+        if (noRow && e && !e.altKey && /^\d$/.test(e.key)) set({ cursorRow: null })
+        return
+      }
       toast(`未実装: ${id}`, 'err')
   }
 }

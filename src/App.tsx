@@ -115,7 +115,7 @@ function Main() {
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
       const before = buildViewModel(s).rows.map((r) => r.id)
       useStore.setState({ ws })
-      keepCursorVisible(before)
+      keepCursorVisible(before, true)
     }
     window.addEventListener('storage', onStorage)
     const stop = startSync((ws) => {
@@ -124,7 +124,7 @@ function Main() {
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
       const before = buildViewModel(s).rows.map((r) => r.id)
       useStore.setState({ ws })
-      keepCursorVisible(before)
+      keepCursorVisible(before, true)
     })
     return () => {
       window.removeEventListener('storage', onStorage)

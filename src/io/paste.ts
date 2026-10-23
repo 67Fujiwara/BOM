@@ -82,6 +82,8 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 
 export function detectField(h: string): BomField | null {
   const s = toHalf(h).trim()
+  // 「旧型式」「変更前 数量」「Old P/N」のような前の版の列は使わない（今の値の列と取り違えない）
+  if (/旧|変更前|前回|改訂前|廃止|\bold\b|\bprev(ious)?\b/i.test(s)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -207,7 +209,9 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const wb = new ExcelJS.Workbook()
   await wb.xlsx.load(buf)
   // シートが複数あるときは、見出し（部品名・型式・数量 など）のあるシートを読む（表紙・改訂履歴を部品にしない）
-  const sheets = wb.worksheets.map((ws) => {
+  // 非表示のシート（旧版を隠したもの）は読まない。すべて非表示なら全部から選ぶ
+  const visible = wb.worksheets.filter((ws) => ws.state === undefined || ws.state === 'visible')
+  const sheets = (visible.length ? visible : wb.worksheets).map((ws) => {
     const lines: string[] = []
     // 非表示の列（Excel で隠した旧型式の列など）も取り込まない
     const hiddenCols = new Set<number>()

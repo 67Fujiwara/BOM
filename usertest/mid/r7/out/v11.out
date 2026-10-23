@@ -1,0 +1,17 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5173/?fresh=1792737598680
+Call log:
+[2m  - navigating to "http://localhost:5173/?fresh=1792737598680", waiting until "load"[22m
+
+    at Object.open (/home/user/BOM/usertest/mid/r7/lib.mjs:39:25)
+    at /home/user/BOM/usertest/mid/r7/v11.mjs:5:9 {
+  log: [
+    '  - navigating to "http://localhost:5173/?fresh=1792737598680", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v22.22.0

@@ -1,0 +1,72 @@
+{
+  "SIZE": 2500,
+  "N": 3,
+  "all": {
+    "r8@regex": [
+      {
+        "loadMs": 3688,
+        "部品名": {
+          "commit": 726.1,
+          "undo": 615.6
+        },
+        "必要数": {
+          "commit": 685.2,
+          "undo": 654.9
+        },
+        "nav": {
+          "down": 16.4,
+          "view": 49.8,
+          "space": 28.1
+        }
+      }
+    ],
+    "current@regex": [
+      {
+        "loadMs": 2856,
+        "部品名": {
+          "commit": 144.4,
+          "undo": 92.1
+        },
+        "必要数": {
+          "commit": 121.4,
+          "undo": 79.3
+        },
+        "nav": {
+          "down": 16.6,
+          "view": 49.7,
+          "space": 29.1
+        }
+      }
+    ]
+  },
+  "summary": {
+    "r8@regex": {
+      "loadMs": 3688,
+      "name": {
+        "commit": 726.1,
+        "undo": 615.6
+      },
+      "qty": {
+        "commit": 685.2,
+        "undo": 654.9
+      },
+      "down": 16.4,
+      "view": 49.8,
+      "space": 28.1
+    },
+    "current@regex": {
+      "loadMs": 2856,
+      "name": {
+        "commit": 144.4,
+        "undo": 92.1
+      },
+      "qty": {
+        "commit": 121.4,
+        "undo": 79.3
+      },
+      "down": 16.6,
+      "view": 49.7,
+      "space": 29.1
+    }
+  }
+}

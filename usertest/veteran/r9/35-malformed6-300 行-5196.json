@@ -1,0 +1,61 @@
+[
+  {
+    "name": "regex 試しをすり抜ける・300 行すべて英大文字 19＋1（1 回は 30ms 未満）",
+    "loadMs": 1723,
+    "toast": "",
+    "keysMs": 5282,
+    "slow": [
+      "F8:1520",
+      "Enter:1520",
+      "Control+z:1464"
+    ],
+    "alive": true,
+    "cursor": "R001 型式",
+    "errs": []
+  },
+  {
+    "name": "regex 部品名 カタカナ ^([ァ-ヶー]+・?)+$・300 行 20 字＋（",
+    "loadMs": 849,
+    "toast": "",
+    "keysMs": 3113,
+    "slow": [
+      "F8:772",
+      "Enter:883",
+      "Control+z:691"
+    ],
+    "alive": true,
+    "cursor": "R001 部品名",
+    "errs": []
+  },
+  {
+    "name": "holidays 5,000 件（今日から毎日）＋300 行",
+    "loadMs": 527,
+    "toast": "",
+    "keysMs": 5778,
+    "slow": [
+      "Alt+4:333",
+      "Alt+1:333",
+      "Enter:341",
+      "Control+z:400",
+      "Alt+7:316",
+      "Alt+9:398",
+      "Alt+3:347",
+      "Space:332",
+      "Alt+1:350",
+      "Control+k:359"
+    ],
+    "alive": true,
+    "cursor": "R001 型式",
+    "errs": []
+  },
+  {
+    "name": "holidays 同じ日 10 万件＋300 行",
+    "loadMs": 163,
+    "toast": "",
+    "keysMs": 944,
+    "slow": [],
+    "alive": true,
+    "cursor": "R001 型式",
+    "errs": []
+  }
+]

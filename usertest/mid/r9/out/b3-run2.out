@@ -1,0 +1,38 @@
+R003 before R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] ball pm case 納期NG
+R003 after decline R003 相見積 st=quoted adopt=- reason= oq=- flags={"leadNG":true} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] ball pm case 納期NG
+PASS B3-1 採用商社の辞退で採用が外れ見積済（相見積・選定済） :: quoted
+FAIL B3-2 採用が外れた行に納期NG が残らず、ボールは選定者（設計） :: leadNG=true ball=pm case=納期NG
+PM 7 has R003 true design 4 has R003 false
+PM Enter on R003 {"kind":"quickfix","title":"決定パネル R003（納期NG）","options":["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"],"index":-1} 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+formal → 正式見積依頼書（社外）を出します: 対象 4 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 4 行 × 2 社に正式見積を依頼
+R001 formal R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] {"due":"2026-11-03","dueAt":"2026-11-03"}
+R001 after decline R001 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] ball design {"due":"2026-11-03","dueAt":"2026-11-03"} formalNo P-2026-041-S1-F1 needDate 2026-11-11
+PASS B3-3 正式依頼中で採用商社が辞退 → 見積済・選定者のボール :: quoted
+FAIL B3-4 見積済に戻った行の期限は選定期限（見積済から 2 営業日）で、正式見積の期限が残らない :: {"due":"2026-11-03","dueAt":"2026-11-03"}
+8 has R001 false
+design a → R001 を 立花エレテック で採用（スコア 77.2 / 在庫即納・MOQ 2）
+formal again → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+files [["立花エレテック",["R001"]]]
+R001 after re-adopt R001 相見積 st=formalRequested adopt=S2 reason= oq=2 flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]]
+R013 before R013 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",10371,16,11927],["S2",8657,6,null],["S3",10952,26,null]]
+R013 after R013 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",10371,-1,null],["S2",8657,6,null],["S3",10952,26,null]] ball design {"due":"2026-10-27","dueAt":null}
+PASS B3-5 正式見積済で採用商社が辞退 → 見積済に戻り、正式単価が消える :: quoted
+R045 before R045 指定商社 st=formalRequested adopt=S2 reason=指定先（固定） oq=1 flags={} quotes=[["S1",8811,16,null],["S2",10139,12,null],["S3",9047,28,null]]
+R045 after R045 指定商社 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",8811,16,null],["S2",10139,-1,null],["S3",9047,28,null]] ball pm
+FAIL B3-6 指定商社の指定先が採用後に辞退 → 見積中・設計のボール :: quoted
+design 4 has R045 false
+Ctrl+. ["指定先を変える（立花エレテック が取扱なしと回答）"]
+candidates ["因幡電機","ミスミ","RSコンポーネンツ","オムロン直販"]
+→ R045 の指定先を 因幡電機 にしました（Ctrl+Enter で公開）
+publish → [変更セット（6 行: R045, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+request → 5 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",false],["立花エレテック",false],["ミスミ",false]] R045 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={"ltbPending":true} quotes=[["S1",8811,16,null],["S2",10139,-1,null],["S3",9047,28,null]]
+R045 new answer R045 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={"ltbPending":true} quotes=[["S1",9000,10,null],["S2",10139,-1,null],["S3",9047,28,null]]
+PASS B3-7 新しい指定先の回答で「指定先（固定）」採用 :: R045 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={"ltbPending":true} quotes=[["S1",9000,10,null],["S2",10139,-1,null],["S3",9047,28,null]]
+R034 after R034 客先指定品 st=quoting adopt=- reason= oq=1 flags={} quotes=[["S1",356,-1,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing
+R034 Ctrl+. undefined
+FAIL B3-8 客先指定品の採用後の辞退 → 見積中・次の商社の案内
+R002 before R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+R002 after decline R002 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",407,-1,null],["S2",418,0,null],["S3",376,23,null]]
+R002 after Ctrl+Z R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] 元に戻す: セル編集
+PASS B3-9 辞退の入力を Ctrl+Z で戻すと採用も戻る :: R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+== 5/9 PASS

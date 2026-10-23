@@ -1,0 +1,172 @@
+[
+  {
+    "role": "design",
+    "col": "型式",
+    "char": "µ",
+    "note": "µPD720（NEC の型番）",
+    "found": true,
+    "start": "R040 型式",
+    "afterOption": "view-1/R040 型式/ナビ",
+    "after": "view-1/R041 型式/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"model\":\"PD720\"}"
+    ],
+    "toasts": [
+      "Alt+M は割り当てがありません（? でキーの一覧）"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "ø",
+    "note": "ø6 チューブ",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-1/R040 備考/ナビ",
+    "after": "view-1/R041 備考/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"note\":\"6 チューブ\"}"
+    ],
+    "toasts": [
+      "権限なし（購買の列）"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "≈",
+    "note": "≈10mm",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-1/R040 備考/ナビ",
+    "after": "view-1/R041 備考/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"note\":\"10mm\"}"
+    ],
+    "toasts": [
+      "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "•",
+    "note": "• 予備",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-8/R001 部品名/ナビ",
+    "after": "view-8/R001 部品名/編集",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "™",
+    "note": "™X",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-2/R040 備考/ナビ",
+    "after": "view-2/R041 備考/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"note\":\"X\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "role": "design",
+    "col": "規格",
+    "char": "Ω",
+    "note": "Ω10",
+    "found": false,
+    "start": "R040 備考",
+    "afterOption": "view-1/R040 備考/ナビ",
+    "after": "view-1/R041 備考/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"note\":\"10\"}"
+    ],
+    "toasts": [
+      "Alt+Z は割り当てがありません（? でキーの一覧）"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "規格",
+    "char": "°",
+    "note": "°C",
+    "found": false,
+    "start": "R040 備考",
+    "afterOption": "view-8/R001 部品名/ナビ",
+    "after": "view-8/R002 部品名/ナビ",
+    "diff": [
+      "R001.working:undefined→{\"name\":\"C\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "®",
+    "note": "®mark",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-1/R040 備考/パネル/panel-prompt",
+    "after": "view-1/R081 型式/ナビ",
+    "diff": [
+      "R040.removal:undefined→{\"kind\":\"replace\",\"by\":\"R081\"}",
+      "R081:+new",
+      "order changed",
+      "quotes changed"
+    ],
+    "toasts": [
+      "R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "備考",
+    "char": "˙",
+    "note": "˙x",
+    "found": true,
+    "start": "R040 備考",
+    "afterOption": "view-1/R040 備考/ナビ",
+    "after": "view-1/R041 備考/ナビ",
+    "diff": [
+      "R040.hidden:false→true",
+      "R040.working:undefined→{\"note\":\"x\"}"
+    ],
+    "toasts": [
+      "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    ]
+  },
+  {
+    "role": "purchasing",
+    "col": "ロット",
+    "char": "ø",
+    "note": "ø6",
+    "found": true,
+    "start": "R001 ロット",
+    "afterOption": "view-3/R001 ロット/ナビ",
+    "after": "view-3/R002 ロット/ナビ",
+    "diff": [
+      "R001.receivedLot:undefined→\"6\""
+    ],
+    "toasts": [
+      "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    ]
+  },
+  {
+    "role": "design",
+    "col": "型式（編集中）",
+    "char": "µ",
+    "note": "編集中なら µ が入る（r8 で確認済）",
+    "found": true,
+    "start": "R040 型式",
+    "afterOption": "view-1/R040 型式/編集[µ]",
+    "after": "view-1/R041 型式/ナビ",
+    "diff": [
+      "R040.working:undefined→{\"model\":\"µPD720\"}"
+    ],
+    "toasts": []
+  }
+]

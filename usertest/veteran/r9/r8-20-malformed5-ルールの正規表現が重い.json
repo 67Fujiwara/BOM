@@ -1,0 +1,22 @@
+[
+  {
+    "name": "ルールの正規表現が重い ^([A-Z0-9]+-?)+$（型式 22 文字＋!）",
+    "loadMs": 2677,
+    "toast": "",
+    "keysMs": 743,
+    "slow": [],
+    "alive": true,
+    "cursor": "R001 メーカ",
+    "errs": []
+  },
+  {
+    "name": "ルールの正規表現が重い（型式 26 文字＋!）",
+    "loadMs": 2806,
+    "toast": "",
+    "keysMs": 970,
+    "slow": [],
+    "alive": true,
+    "cursor": "R001 メーカ",
+    "errs": []
+  }
+]

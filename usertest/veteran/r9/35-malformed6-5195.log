@@ -1,0 +1,13 @@
+{"name":"regex 試しをすり抜ける ^([A-Z]+-?)+$・型式 英大文字 24＋1","loadMs":336,"toast":"","keysMs":1164,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"regex 試しをすり抜ける ^([A-Z]+-?)+$・型式 英大文字 28＋1","loadMs":2561,"toast":"","keysMs":930,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"regex 試しをすり抜ける・300 行すべて英大文字 19＋1（1 回は 30ms 未満）","loadMs":1694,"toast":"","keysMs":5648,"slow":["F8:1480","Enter:1684","Control+z:1647"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"regex 部品名 カタカナ ^([ァ-ヶー]+・?)+$・300 行 20 字＋（","loadMs":827,"toast":"","keysMs":3000,"slow":["F8:705","Enter:733","Control+z:784"],"alive":true,"cursor":"R001 部品名","errs":[]}
+{"name":"regex when が重い（^([A-Z0-9]+-?)+$）","loadMs":2996,"toast":"","keysMs":880,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"regex 1,000 本（別々の正規表現）","loadMs":298,"toast":"","keysMs":1228,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"regex 1MB の正規表現","loadMs":1670,"toast":"","keysMs":986,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"regex 書き方の誤り・数値・null","loadMs":152,"toast":"保存データの一部を外して読みました: ルールの 2 件は形式が読めないので外しました。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）","keysMs":927,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"holidays 5,000 件（今日から毎日）＋300 行","loadMs":181,"toast":"","keysMs":1060,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"holidays 同じ日 10 万件＋300 行","loadMs":189,"toast":"","keysMs":828,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"holidays 2,500 行・毎日 10 年","loadMs":325,"toast":"","keysMs":1082,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"holidays が文字列（配列でない）","loadMs":131,"toast":"","keysMs":817,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}
+{"name":"rules が物（配列でない）・rule が null","loadMs":162,"toast":"","keysMs":807,"slow":[],"alive":true,"cursor":"R001 メーカ","errs":[]}

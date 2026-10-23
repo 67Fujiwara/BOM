@@ -1,0 +1,121 @@
+[
+  {
+    "name": "絞り込み欄で ab → F1",
+    "before": "—/ナビ/null/INPUT.filter/f=ab",
+    "after": "—/ナビ/null/INPUT.filter/f=ab",
+    "prevented": true,
+    "target": "INPUT",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "絞り込み欄で Ctrl+F（2 回目）",
+    "before": "—/ナビ/null/INPUT.filter/f=ab",
+    "after": "—/ナビ/null/INPUT.filter/f=ab",
+    "prevented": false,
+    "target": "INPUT",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "パレットで Ctrl+F",
+    "before": "R040 部品名/パレット/panel-palette/INPUT.q/f=",
+    "after": "R040 部品名/パレット/panel-palette/INPUT.q/f=",
+    "prevented": false,
+    "target": "INPUT",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Ctrl+G の入力欄で Ctrl+F",
+    "before": "R040 部品名/パネル/panel-prompt/INPUT.q/f=",
+    "after": "R040 部品名/パネル/panel-prompt/INPUT.q/f=",
+    "prevented": false,
+    "target": "INPUT",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "編集中に Ctrl+F",
+    "before": "R040 部品名/編集/null/INPUT.cell/f=",
+    "after": "R040 部品名/ナビ/null/INPUT.filter/f=",
+    "prevented": true,
+    "target": "INPUT",
+    "diff": [
+      "R040.working:undefined→{\"name\":\"ファイバユニットxy\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "ヘルプを開いて Ctrl+F",
+    "before": "R040 部品名/パネル/panel-help/DIV.gridwrap/f=",
+    "after": "R040 部品名/パネル/panel-help/DIV.gridwrap/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "表で Ctrl+F",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "R040 部品名/ナビ/null/INPUT.filter/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "JIS Alt+@（code BracketLeft）",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "分類 センサ/ナビ/null/DIV.gridwrap/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "JIS Alt+Shift+@（`）",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "分類 センサ/ナビ/null/DIV.gridwrap/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "JIS Alt+[（code BracketRight）",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "分類 センサ/ナビ/null/DIV.gridwrap/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "JIS Alt+]（code Backslash）",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "分類 配線/ナビ/null/DIV.gridwrap/f=",
+    "prevented": true,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "JIS Alt+:（code Quote）",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "prevented": false,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "US Alt+\\",
+    "before": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "after": "R040 部品名/ナビ/null/DIV.gridwrap/f=",
+    "prevented": false,
+    "target": "DIV",
+    "diff": [],
+    "toasts": []
+  }
+]

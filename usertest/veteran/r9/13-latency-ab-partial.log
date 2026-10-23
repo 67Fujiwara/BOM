@@ -1,0 +1,14 @@
+0 r8 plain {"loadMs":222,"部品名":{"commit":91.6,"undo":100},"必要数":{"commit":85.7,"undo":83.7},"nav":{"down":16.3,"view":58.2,"space":33}}
+0 current plain {"loadMs":232,"部品名":{"commit":96.7,"undo":94.9},"必要数":{"commit":88.7,"undo":86.7},"nav":{"down":16.5,"view":52.4,"space":29.4}}
+0 r8 epoch {"loadMs":250,"部品名":{"commit":96.7,"undo":85.9},"必要数":{"commit":87.9,"undo":92.1},"nav":{"down":16.7,"view":57.5,"space":34.8}}
+0 current epoch {"loadMs":312,"部品名":{"commit":89.6,"undo":83.9},"必要数":{"commit":83.6,"undo":86.7},"nav":{"down":16.6,"view":58.2,"space":25.3}}
+0 r8 regex {"loadMs":3690,"部品名":{"commit":653.2,"undo":673.5},"必要数":{"commit":703.9,"undo":653.7},"nav":{"down":16.4,"view":55.2,"space":27.9}}
+0 current regex {"loadMs":2800,"部品名":{"commit":102.2,"undo":81.6},"必要数":{"commit":85.6,"undo":72.6},"nav":{"down":16.2,"view":51.7,"space":28.1}}
+0 r8 holidays {"err":"Error: page.evaluate: Target page, context or browser has been closed"}
+0 current holidays {"loadMs":353,"部品名":{"commit":116.8,"undo":118.8},"必要数":{"commit":107.9,"undo":82.4},"nav":{"down":16.6,"view":55.3,"space":29.1}}
+1 r8 plain {"loadMs":251,"部品名":{"commit":119.9,"undo":88.1},"必要数":{"commit":94.5,"undo":87.1},"nav":{"down":15.7,"view":59.6,"space":40.1}}
+1 current plain {"loadMs":292,"部品名":{"commit":112,"undo":108},"必要数":{"commit":115.6,"undo":99.9},"nav":{"down":16.7,"view":63.4,"space":36}}
+1 r8 epoch {"loadMs":214,"部品名":{"commit":96.4,"undo":92.6},"必要数":{"commit":140.7,"undo":90.9},"nav":{"down":16.4,"view":65.2,"space":30.4}}
+1 current epoch {"loadMs":269,"部品名":{"commit":129.2,"undo":88.2},"必要数":{"commit":118.4,"undo":99.3},"nav":{"down":13.2,"view":69.5,"space":53.9}}
+1 r8 regex {"loadMs":3762,"部品名":{"commit":691.7,"undo":674.8},"必要数":{"commit":711.4,"undo":707.2},"nav":{"down":17.5,"view":63.4,"space":45.9}}
+1 current regex {"loadMs":3945,"部品名":{"commit":177.8,"undo":121},"必要数":{"commit":102.1,"undo":87.2},"nav":{"down":16.8,"view":58,"space":34.1}}

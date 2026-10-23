@@ -1,0 +1,104 @@
+0 r8 plain {"loadMs":250,"部品名":{"commit":120.2,"undo":107.5},"必要数":{"commit":111,"undo":98.6},"nav":{"down":16.9,"view":63.1,"space":43.9}}
+0 current plain {"loadMs":317,"部品名":{"commit":94.6,"undo":100.3},"必要数":{"commit":128,"undo":105.2},"nav":{"down":16.1,"view":52.5,"space":42.8}}
+0 r8 epoch {"loadMs":346,"部品名":{"commit":120.9,"undo":86.3},"必要数":{"commit":87.4,"undo":86.2},"nav":{"down":16.4,"view":53.9,"space":23.5}}
+0 current epoch {"loadMs":317,"部品名":{"commit":120.8,"undo":99.1},"必要数":{"commit":113.7,"undo":113.9},"nav":{"down":14.6,"view":65.9,"space":29.1}}
+0 r8 regex {"loadMs":4152,"部品名":{"commit":710.3,"undo":653.5},"必要数":{"commit":676.5,"undo":673.4},"nav":{"down":16,"view":62.2,"space":32.9}}
+0 current regex {"loadMs":2953,"部品名":{"commit":118.2,"undo":105},"必要数":{"commit":140.3,"undo":97},"nav":{"down":12,"view":64.9,"space":62.2}}
+1 r8 plain {"loadMs":297,"部品名":{"commit":139.1,"undo":92.8},"必要数":{"commit":97.2,"undo":83.6},"nav":{"down":16.6,"view":54.5,"space":30.9}}
+1 current plain {"loadMs":219,"部品名":{"commit":96.6,"undo":83.6},"必要数":{"commit":84.6,"undo":92.8},"nav":{"down":16.7,"view":62.4,"space":39.1}}
+1 r8 epoch {"loadMs":417,"部品名":{"commit":223.8,"undo":331},"必要数":{"commit":239.5,"undo":273.4},"nav":{"down":26.6,"view":144.4,"space":128.6}}
+1 current epoch {"loadMs":853,"部品名":{"commit":231.4,"undo":100.8},"必要数":{"commit":253.1,"undo":193.7},"nav":{"down":18.9,"view":139.4,"space":94.9}}
+1 r8 regex {"loadMs":6990,"部品名":{"commit":1690.8,"undo":1854.6},"必要数":{"commit":1687,"undo":1478.2},"nav":{"down":30.2,"view":125.5,"space":54.6}}
+1 current regex {"loadMs":5734,"部品名":{"commit":210,"undo":162.1},"必要数":{"commit":213.6,"undo":178.7},"nav":{"down":16.1,"view":94.1,"space":40.5}}
+2 r8 plain {"loadMs":851,"部品名":{"commit":321.8,"undo":127.4},"必要数":{"commit":407.6,"undo":207.4},"nav":{"down":20.9,"view":154.5,"space":99.5}}
+2 current plain {"loadMs":387,"部品名":{"commit":245.9,"undo":165.7},"必要数":{"commit":204.6,"undo":290.9},"nav":{"down":19.7,"view":72.9,"space":100.6}}
+2 r8 epoch {"loadMs":611,"部品名":{"commit":260.5,"undo":211.4},"必要数":{"commit":310.3,"undo":124.8},"nav":{"down":19.9,"view":110.1,"space":60.6}}
+2 current epoch {"loadMs":1472,"部品名":{"commit":236.5,"undo":350.4},"必要数":{"commit":240.3,"undo":230.4},"nav":{"down":18.2,"view":205.1,"space":120.4}}
+2 r8 regex {"loadMs":9626,"部品名":{"commit":1825.1,"undo":1935.5},"必要数":{"commit":1589.1,"undo":1201.3},"nav":{"down":18.3,"view":85.3,"space":56.6}}
+2 current regex {"loadMs":3560,"部品名":{"commit":118.4,"undo":95.2},"必要数":{"commit":103.4,"undo":111.3},"nav":{"down":16,"view":69.1,"space":39.3}}
+{
+ "r8@plain": {
+  "loadMs": 297,
+  "name": {
+   "commit": 139.1,
+   "undo": 107.5
+  },
+  "qty": {
+   "commit": 111,
+   "undo": 98.6
+  },
+  "down": 16.9,
+  "view": 63.1,
+  "space": 43.9
+ },
+ "current@plain": {
+  "loadMs": 317,
+  "name": {
+   "commit": 96.6,
+   "undo": 100.3
+  },
+  "qty": {
+   "commit": 128,
+   "undo": 105.2
+  },
+  "down": 16.7,
+  "view": 62.4,
+  "space": 42.8
+ },
+ "r8@epoch": {
+  "loadMs": 417,
+  "name": {
+   "commit": 223.8,
+   "undo": 211.4
+  },
+  "qty": {
+   "commit": 239.5,
+   "undo": 124.8
+  },
+  "down": 19.9,
+  "view": 110.1,
+  "space": 60.6
+ },
+ "current@epoch": {
+  "loadMs": 853,
+  "name": {
+   "commit": 231.4,
+   "undo": 100.8
+  },
+  "qty": {
+   "commit": 240.3,
+   "undo": 193.7
+  },
+  "down": 18.2,
+  "view": 139.4,
+  "space": 94.9
+ },
+ "r8@regex": {
+  "loadMs": 6990,
+  "name": {
+   "commit": 1690.8,
+   "undo": 1854.6
+  },
+  "qty": {
+   "commit": 1589.1,
+   "undo": 1201.3
+  },
+  "down": 18.3,
+  "view": 85.3,
+  "space": 54.6
+ },
+ "current@regex": {
+  "loadMs": 3560,
+  "name": {
+   "commit": 118.4,
+   "undo": 105
+  },
+  "qty": {
+   "commit": 140.3,
+   "undo": 111.3
+  },
+  "down": 16,
+  "view": 69.1,
+  "space": 40.5
+ }
+}

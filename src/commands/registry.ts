@@ -249,6 +249,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     const anchor = tabAnchor && tabAnchor.row === r.id ? tabAnchor.col : null
     tabAnchor = null
     moveCursorToRow(1)
+    // 最後の行（下に行が無い）では列を戻さない（同じ行の最初の値を上書きしない）
+    if (st().cursorRow === r.id) return true
     if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
   } else if (dir === 'right' || dir === 'left') {
     if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
@@ -573,7 +575,9 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
   const r = p.rows.find((x) => x.id === rowId)!
   const ext = pm.needsExternalApproval(p, r) && (kind === '受入' || kind === '承認')
   const must = kind === '却下' || kind === '回答を支持' || kind === '指摘を支持'
-  prompt(`決定: ${kind}（${rowId}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
+  // 変更セットの承認・却下は Rev の全行に効くので、対象を題に出す
+  const cs = pm.pmCaseOf(p, r) === '変更セット' && r.pendingRev != null ? `・Rev.${r.pendingRev} の変更セット ${p.rows.filter((x) => x.pendingRev === r.pendingRev && x.flags.pmPending && x.flags.pmReason === '変更セット').length} 行まとめて` : ''
+  prompt(`決定: ${kind}（${rowId}${cs}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
     if (ext && !(extra?.['承認者'] ?? '').trim()) return '上長決裁の条件に該当します。承認者を入れてください'
     if (ext) {
       const dd = parseDate(extra?.['日付'] ?? '', { label: '決裁日' })
@@ -589,7 +593,7 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
     }
     const err = pm.decide(rowId, kind, text, { external: ext ? { approver: (extra?.['承認者'] ?? '').trim(), date: extra?.['日付'] ?? '', ref: extra?.['決裁書No'] ?? '' } : undefined, amount })
     if (err) return err
-    toast(`${rowId}: ${kind}`, 'ok')
+    toast(`${rowId}${cs}: ${kind}`, 'ok')
   })
 }
 
@@ -1010,7 +1014,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         set({ cellFilter: null, filter: '' })
         return toast('絞り込みを解除しました', 'info')
       }
-      return set({ cursorRow: null })
+      // カーソルは残す（Esc を重ねても行を見失わない）
+      return
     case 'move.up':
       if (r && s.detailIndex > 0) return set({ detailIndex: s.detailIndex - 1 })
       return moveCursorRow(-1)

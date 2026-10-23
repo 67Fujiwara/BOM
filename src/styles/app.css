@@ -72,7 +72,7 @@ kbd {
 .toolbar input.filter:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .chip.err { background: var(--err-soft); color: var(--err); }
-.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.warn { background: var(--warn-soft); color: var(--warn-text); }
 .chip.ok { background: var(--ok-soft); color: var(--ok); }
 .chip.muted { background: var(--bg-sunken); color: var(--fg-muted); }
 

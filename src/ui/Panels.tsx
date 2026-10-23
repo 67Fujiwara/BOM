@@ -640,7 +640,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
           </div>
         )}
       </div>
-      <Foot items={[step === 7 && d.inputMode !== '2' && d.inputMode !== '3' ? ['Ctrl+Enter', '次へ（貼り付け欄の Enter は改行）'] : ['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
+      <Foot items={[step === 7 && (d.inputMode ?? '0') === '0' ? ['Ctrl+Enter', '次へ（貼り付け欄の Enter は改行）'] : ['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
     </div>
   )
 }

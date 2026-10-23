@@ -35,7 +35,7 @@ export function parseNumber(raw: string, opts: { min?: number; max?: number; int
   let s = toHalf(raw).trim()
   if (s === '') return { ok: true, value: null }
   s = s.replace(/^[¥￥$]/, '').replace(/,/g, '').replace(/\s/g, '')
-  s = s.replace(/(円|個|本|枚|台|式|セット|set|pcs|pc|ヶ|ケ|コ|つ|パック|箱|m|ｍ)$/i, '')
+  s = s.replace(/(円|個|本|枚|台|式|セット|set|pcs|pc|ヶ|ケ|コ|つ|パック|箱|袋|m|ｍ)$/i, '')
   let mult = 1
   const unit = /(万|千|億)$/.exec(s)
   if (unit) {

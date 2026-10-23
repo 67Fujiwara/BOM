@@ -23,13 +23,25 @@ export function issueKindsFor(): IssueKind[] {
 }
 
 // ---------- パネルのキー処理 ----------
+/** 打ちかけの文があるダイアログで Esc を 1 回押した（もう一度で捨てる） */
+let escArmed = false
 function handlePanelKey(key: string, e: KeyboardEvent): boolean {
+  if (key !== 'Escape') escArmed = false
   const s = st()
   const panel = s.panel!
   const p = s.project()
   const up = (n: number, len: number) => Math.max(0, Math.min(Math.max(len - 1, 0), n))
   const inText = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
   if (key === 'Escape') {
+    // 打ちかけの文（指摘の本文・置き換え品の型式・返信など）は、1 回目の Esc では捨てずに知らせる
+    const p0 = panel as unknown as Record<string, unknown>
+    const typed = typeof p0.text === 'string' && p0.text.trim() !== '' && panel.kind !== 'palette' && panel.kind !== 'inbox'
+    if (typed && !escArmed) {
+      escArmed = true
+      toast('入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）', 'info')
+      return true
+    }
+    escArmed = false
     if (panel.kind === 'wizard') {
       set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
       toast('新規BOMガイドを中止しました（入れた内容は残っています。Ctrl+K → 新しいBOM で続きから）', 'info')

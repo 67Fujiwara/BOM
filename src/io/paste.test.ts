@@ -70,3 +70,13 @@ describe('round 4 import cases', () => {
     expect(parseBomPaste('部品名\t数量\nケーブル\t20 m').rows[0]).toMatchObject({ qtyNeeded: 20, unit: 'm' })
   })
 })
+
+describe('round 5 import cases', () => {
+  it('reads 使用数 / Q\'ty, メーカー型式, title block with equal words, totals and item numbers', () => {
+    const r = parseBomPaste("品名\t制御盤\t型式\tX-1\nItem\t品名\tメーカー型式\tメーカー\t使用数\n1\tリレー\tMY4N\tオムロン\t2\n2\tタイマ\tH3CR\tオムロン\t1袋\n\t\t\t合計\t3")
+    expect(r.rows).toHaveLength(2)
+    expect(r.rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N', maker: 'オムロン', qtyNeeded: 2 })
+    expect(r.rows[1].qtyNeeded).toBe(1)
+    expect(parseBomPaste("Part\tQ'ty\nRelay\t4").rows[0]).toMatchObject({ name: 'Relay', qtyNeeded: 4 })
+  })
+})

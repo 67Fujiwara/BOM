@@ -12,7 +12,7 @@ const HEADER_SYNONYMS: Record<BomField, RegExp> = {
   name: /^(部品名|品名|名称|品目|部品|名前|item|description|part(\s*name)?$|name$)/i,
   model: /^(型式|形式|型番|品番|形名|型名|部品番号|part\s*no|p\/n|mpn|model)/i,
   maker: /^(メーカ|メーカー|製造元|製造者|maker|mfr|manufacturer|vendor)/i,
-  qtyNeeded: /^(数量|員数|個数|台数|必要数|qty|quantity|数)/i,
+  qtyNeeded: /^(数量|員数|個数|台数|必要数|使用数|所要数|qty|q'ty|q\.ty|quantity|数)/i,
   unit: /^(単位|unit)/i,
   ref: /^(回路記号|記号|部品記号|デバイス|refdes|ref|reference|designator|シンボル)/i,
   drawing: /^(図面|図番|図面番号|drawing|dwg)/i,
@@ -83,7 +83,7 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 export function detectField(h: string): BomField | null {
   const s = toHalf(h).trim()
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
-  if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番/i.test(s)) return 'model'
+  if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
   return null
 }
@@ -104,7 +104,8 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
   const counts = lines.slice(0, 30).map((l) => new Set(l.map(detectField).filter(Boolean)).size)
   const best = Math.max(0, ...counts)
-  const headerAt = best >= 2 ? counts.indexOf(best) : -1
+  // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）
+  const headerAt = best >= 2 ? counts.lastIndexOf(best) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
@@ -149,7 +150,13 @@ export function parseBomPaste(text: string): PasteResult {
   const dup = used.find((f, i) => used.indexOf(f) !== i)
   if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
-  const body = hasHeader ? lines.slice(1) : lines
+  // 小計・合計の行は部品ではない
+  const isTotal = (l: string[]) => l.some((c) => /^(小計|合計|総計|計|total|subtotal)$/i.test(c.trim()))
+  const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
+  if (totals) warnings.push(`小計・合計の ${totals} 行は取り込みません`)
+  const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
+  // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
+  mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
   let badQty = 0
   let badUnit = 0
   const rows = body.map((line, i) => {
@@ -208,7 +215,8 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     return { name: ws.name, text: lines.join('\n'), score, rows: lines.length }
   })
   if (!sheets.length) return ''
-  const best = [...sheets].sort((a, b) => b.score - a.score || b.rows - a.rows)[0]
+  // 見出しの言葉が同じだけあるシートが複数なら、左（先）のシート
+  const best = sheets.reduce((a, b) => (b.score > a.score ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
   return best.text
 }

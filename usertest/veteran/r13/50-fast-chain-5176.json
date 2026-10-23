@@ -1,0 +1,74 @@
+[
+  {
+    "rows": 80,
+    "gap": 120,
+    "ms": 3376,
+    "end": "R061 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 80,
+    "gap": 40,
+    "ms": 1830,
+    "end": "R061 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 80,
+    "gap": 15,
+    "ms": 1350,
+    "end": "R061 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 120,
+    "ms": 3385,
+    "end": "X283 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 40,
+    "ms": 1851,
+    "end": "X283 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 15,
+    "ms": 1508,
+    "end": "X283 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "外れる → Control+ArrowDown → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "Control+ArrowDown→v4/R080 必要数",
+      "Shift+Enter→v4/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}",
+      "R081:+new",
+      "order changed"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れる → Control+ArrowUp → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "Control+ArrowUp→v4/R016 必要数",
+      "Shift+Enter→v4/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R081:+new",
+      "R054.working:undefined→{\"qtyNeeded\":5}",
+      "order changed"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れる → Control+Home → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "Control+Home→v4/R016 必要数",
+      "Shift+Enter→v4/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R081:+new",
+      "R054.working:undefined→{\"qtyNeeded\":5}",
+      "order changed"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れる → Control+End → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "Control+End→v4/R080 必要数",
+      "Shift+Enter→v4/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}",
+      "R081:+new",
+      "order changed"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れる → End → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "End→v4/—",
+      "Shift+Enter→v4/—"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）",
+      "行を選んでいません（↓ で表へ）",
+      "行を選んでから Shift+Enter（その下に足します。最後に足すときは Ctrl+↓ で最後の行へ）"
+    ]
+  },
+  {
+    "name": "外れる → PageDown → Shift+Enter",
+    "expect": "行が選ばれ、その下に足す",
+    "seq": [
+      "start→v4/—",
+      "G:R054→v4/R054 部品名",
+      "C:必要数→v4/R054 必要数",
+      "T:5→v4/R054 必要数(入力:5)",
+      "ArrowRight→v4/—",
+      "PageDown→v4/R005 必要数",
+      "Shift+Enter→v4/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R081:+new",
+      "R054.working:undefined→{\"qtyNeeded\":5}",
+      "order changed"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "起動直後（行なし）→ Ctrl+↓ → Shift+Enter",
+    "expect": "最後の行の下に足す",
+    "seq": [
+      "start→v1/—",
+      "Control+ArrowDown→v1/R080 部品名",
+      "Shift+Enter→v1/R081 部品名(入力:)"
+    ],
+    "diff": [
+      "R081:+new",
+      "order changed"
+    ],
+    "toasts": []
+  }
+]

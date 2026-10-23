@@ -1,0 +1,236 @@
+[
+  {
+    "name": "r9 形: 300 行すべて英大文字 19＋1",
+    "port": 5197,
+    "loadMs": 316,
+    "ms": {
+      "f8": 24,
+      "down": 11,
+      "commit": 36,
+      "undo": 23
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r9 形: 300 行すべて英大文字 19＋1",
+    "port": 5198,
+    "loadMs": 279,
+    "ms": {
+      "f8": 21,
+      "down": 15,
+      "commit": 29,
+      "undo": 18
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r9 形: カタカナ 300 行 20 字＋（",
+    "port": 5197,
+    "loadMs": 208,
+    "ms": {
+      "f8": 30,
+      "down": 17,
+      "commit": 39,
+      "undo": 30
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r9 形: カタカナ 300 行 20 字＋（",
+    "port": 5198,
+    "loadMs": 178,
+    "ms": {
+      "f8": 20,
+      "down": 17,
+      "commit": 43,
+      "undo": 27
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r9 形: 1 行だけ 28＋1",
+    "port": 5197,
+    "loadMs": 2433,
+    "ms": {
+      "f8": 19,
+      "down": 12,
+      "commit": 41,
+      "undo": 15
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r9 形: 1 行だけ 28＋1",
+    "port": 5198,
+    "loadMs": 2748,
+    "ms": {
+      "f8": 23,
+      "down": 13,
+      "commit": 36,
+      "undo": 23
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r8 形: ^([A-Z0-9]+-?)+$ 26＋!",
+    "port": 5197,
+    "loadMs": 3046,
+    "ms": {
+      "f8": 18,
+      "down": 18,
+      "commit": 35,
+      "undo": 21
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "r8 形: ^([A-Z0-9]+-?)+$ 26＋!",
+    "port": 5198,
+    "loadMs": 3079,
+    "ms": {
+      "f8": 30,
+      "down": 18,
+      "commit": 38,
+      "undo": 22
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/12 が 20＋1",
+    "port": 5197,
+    "loadMs": 176,
+    "ms": {
+      "f8": 26,
+      "down": 15,
+      "commit": 27,
+      "undo": 21
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/12 が 20＋1",
+    "port": 5198,
+    "loadMs": 178,
+    "ms": {
+      "f8": 26,
+      "down": 13,
+      "commit": 36,
+      "undo": 29
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/25 が 21＋1",
+    "port": 5197,
+    "loadMs": 166,
+    "ms": {
+      "f8": 24,
+      "down": 16,
+      "commit": 28,
+      "undo": 24
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/25 が 21＋1",
+    "port": 5198,
+    "loadMs": 201,
+    "ms": {
+      "f8": 22,
+      "down": 17,
+      "commit": 24,
+      "undo": 20
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/25 が 22＋1",
+    "port": 5197,
+    "loadMs": 233,
+    "ms": {
+      "f8": 26,
+      "down": 16,
+      "commit": 41,
+      "undo": 23
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 300 行・1/25 が 22＋1",
+    "port": 5198,
+    "loadMs": 174,
+    "ms": {
+      "f8": 22,
+      "down": 16,
+      "commit": 36,
+      "undo": 19
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 2,500 行・1/100 が 21＋1",
+    "port": 5197,
+    "loadMs": 409,
+    "ms": {
+      "f8": 35,
+      "down": 17,
+      "commit": 91,
+      "undo": 103
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 2,500 行・1/100 が 21＋1",
+    "port": 5198,
+    "loadMs": 684,
+    "ms": {
+      "f8": 47,
+      "down": 16,
+      "commit": 177,
+      "undo": 81
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 2,500 行・1/100 が 22＋1",
+    "port": 5197,
+    "loadMs": 261,
+    "ms": {
+      "f8": 42,
+      "down": 17,
+      "commit": 145,
+      "undo": 124
+    },
+    "alive": true,
+    "errs": []
+  },
+  {
+    "name": "まばら 2,500 行・1/100 が 22＋1",
+    "port": 5198,
+    "loadMs": 384,
+    "ms": {
+      "f8": 48,
+      "down": 18,
+      "commit": 172,
+      "undo": 109
+    },
+    "alive": true,
+    "errs": []
+  }
+]

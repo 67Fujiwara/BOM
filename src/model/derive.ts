@@ -18,7 +18,27 @@ export function isActive(row: Row): boolean {
 
 /** 見積対象外（分母から外す） */
 export function isQuotable(row: Row): boolean {
-  return isActive(row) && (row.procurement === '相見積' || row.procurement === '指定商社')
+  return isActive(row) && (row.procurement === '相見積' || isFixedProcurement(row))
+}
+
+/** 指定商社・客先指定品: 見積は指定先 1 社、スコアなしで選定済に固定（§3.4） */
+export function isFixedProcurement(row: Pick<Row, 'procurement'>): boolean {
+  return row.procurement === '指定商社' || row.procurement === '客先指定品'
+}
+
+/** 指定先の商社。指定商社は指定先、客先指定品は購買が見積を入れた商社（無ければそのメーカを扱う第 1 商社） */
+export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): string | null {
+  if (row.procurement === '指定商社') {
+    const d = (row.designated ?? '').trim()
+    return suppliers.find((x) => x.id === d || x.name === d)?.id ?? null
+  }
+  if (row.procurement === '客先指定品') {
+    const q = p.quotes.find((x) => x.rowId === row.id && !x.stale && x.unitPrice != null)
+    if (q) return q.supplierId
+    const handling = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).find((x) => x?.handledMakers.includes(row.maker))
+    return handling?.id ?? p.supplierIds[0] ?? null
+  }
+  return null
 }
 
 /** 発注数（購買が入れていなければ公開済の必要数） */
@@ -60,7 +80,7 @@ export function ball(p: Project, row: Row): Role | null {
   if (f.altPending) return 'design'
   if (f.countermeasure === '代替品検討') return 'design'
   if (f.countermeasure === '商社変更' || f.delegated) return 'purchasing'
-  if (row.status === 'draft' || (row.working && Object.keys(row.working).length > 0)) return 'design'
+  if (row.status === 'draft' || hasWork(row)) return 'design'
   if (f.requote || f.reconfirm || f.orderQtyCheck || f.notation || f.reissue) return 'purchasing'
   switch (row.status) {
     case 'submitted':
@@ -169,17 +189,18 @@ export function designBreakdown(p: Project): { issues: number; selecting: number
 }
 
 export function unpublishedCount(p: Project, userName?: string): { rows: number; issues: number } {
-  const rows = p.rows.filter((r) => (r.working && Object.keys(r.working).length > 0) || (r.status === 'draft' && r.publishedRev == null && (r.name || r.model))).length
+  const rows = p.rows.filter((r) => hasWork(r) || (r.status === 'draft' && r.publishedRev == null && (r.name || r.model))).length
   const issues = p.issues.filter((i) => i.status === 'draft' && (!userName || i.by.name === userName)).length
   return { rows, issues }
 }
 
 /** 正規化後の型式（空白・全角半角・大文字小文字・区切り記号を無視） */
 export function normalizeModel(s: string): string {
+  // NFKC で全角の英数字・記号（．／＿，など）を半角にしてから、空白と区切り記号を除く（§4 型式の正規化）
   return s
-    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
-    .replace(/[－—–]/g, '-')
-    .replace(/[\s\u3000\-_/.,()（）]/g, '')
+    .normalize('NFKC')
+    .replace(/[－—–−‐]/g, '-')
+    .replace(/[\s\-_/.,()]/g, '')
     .toUpperCase()
 }
 
@@ -217,4 +238,9 @@ export function daysLeft(p: Project, today = todayStr()): { due: number | null; 
 export function fmtYen(n: number | null | undefined, currency = '¥'): string {
   if (n == null) return ''
   return currency + Math.round(n).toLocaleString('ja-JP')
+}
+
+/** 設計の未公開の作業（値の変更・取消・置換）があるか */
+export function hasWork(r: Row): boolean {
+  return (!!r.working && Object.keys(r.working).length > 0) || !!r.removal
 }

@@ -60,7 +60,7 @@ kbd {
 .view { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: var(--radius); cursor: pointer; color: var(--fg); }
 .view:hover { background: var(--bg-sunken); }
 .view[aria-current='true'] { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-.view .k { font-family: var(--font-mono); color: var(--fg-faint); width: 12px; }
+.view .k { font-family: var(--font-mono); color: var(--fg-muted); width: 12px; }
 .view[aria-current='true'] .k { color: var(--accent); }
 .view .n { margin-left: auto; font-family: var(--font-mono); color: var(--fg-muted); font-size: 11px; }
 .view .n.err { color: var(--err); font-weight: 700; }
@@ -212,3 +212,5 @@ table.quotes tr.focus td, .issues li.focus { outline: 2px solid var(--accent); o
 .crash pre { background: var(--bg-sunken); padding: 10px; border-radius: 6px; white-space: pre-wrap; font-size: 12px; }
 .crash button { margin-right: 8px; }
 .clickable { cursor: pointer; } .side .clickable:hover { color: var(--accent); }
+
+.lamp-sub { color: var(--fg-muted); font-size: 11px; margin-left: 2px; }

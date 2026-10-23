@@ -45,11 +45,11 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
                 <th>MOQ</th>
                 <th>在庫</th>
                 <th>丸め/余剰</th>
-                <th>合計</th>
-                <th>価格</th>
-                <th>納期</th>
-                <th>実績</th>
-                <th>条件</th>
+                <th title="スコアの合計（100 点満点）">スコア</th>
+                <th title="価格の点">価格点</th>
+                <th title="納期の点（必要日に間に合えば 100）">納期点</th>
+                <th title="実績の点">実績点</th>
+                <th title="条件の点">条件点</th>
                 <th>備考</th>
               </tr>
             </thead>

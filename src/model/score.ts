@@ -1,6 +1,6 @@
 import type { Project, Quote, Row, ScoreWeights, Supplier } from './types'
 import { addDays, diffDays, todayStr } from './dates'
-import { effective, roundedQty, rowNeedDate } from './derive'
+import { effective, fixedSupplierId, isFixedProcurement, roundedQty, rowNeedDate } from './derive'
 
 export const DEFAULT_WEIGHTS: ScoreWeights = { price: 40, lead: 30, record: 20, terms: 10 }
 
@@ -32,7 +32,9 @@ export function validQuotes(p: Project, row: Row, today = todayStr()): Quote[] {
 
 /** 行に対する商社ごとのスコア内訳（降順）。§8.1: 基準数量は公開済の必要数、納期の基準日は見積済になった日 */
 export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = todayStr()): ScoreBreakdown[] {
-  const quotes = validQuotes(p, row, today)
+  // 指定商社・客先指定品は指定先 1 社だけ（スコアで他社を選ばない）
+  const fixed = isFixedProcurement(row) ? fixedSupplierId(p, row, suppliers) : null
+  const quotes = validQuotes(p, row, today).filter((q) => !fixed || q.supplierId === fixed)
   if (quotes.length === 0) return []
   const w = weightsFor(p, row.id)
   const sum = w.price + w.lead + w.record + w.terms || 1

@@ -18,4 +18,19 @@ describe('palette ranking', () => {
       expect(wrong).toEqual([])
     })
   }
+  it('common words pick the intended command first', () => {
+    useStore.setState({ ws: { ...useStore.getState().ws, user: { role: 'design', name: 'テスト' } } })
+    const cases: Array<[string, string]> = [
+      ['直す', 'issue.quickfix'],
+      ['採用', 'adopt.best'],
+      ['JSONを書き出す', 'data.exportJson'],
+      ['新規', 'project.new'],
+      ['提出', 'publish'],
+      ['エクスポート', 'export.excel'],
+      ['案件を開く', 'project.switch'],
+      ['やり直し', 'redo'],
+    ]
+    const wrong = cases.filter(([q, id]) => paletteItems(q)[0]?.id !== id).map(([q, id]) => `${q} → ${paletteItems(q)[0]?.id} (want ${id})`)
+    expect(wrong).toEqual([])
+  })
 })

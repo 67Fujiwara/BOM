@@ -1,9 +1,9 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { isActive, isQuotable, orderQty, quoteComplete, rowNeedDate } from './derive'
+import { fixedSupplierId, isActive, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
-export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
+export function normalize(p: Project, ws: Workspace, today = todayStr()) {
   const now = new Date().toISOString()
   for (const r of p.rows) {
     if (!isActive(r)) continue
@@ -11,6 +11,25 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
     if (!isQuotable(r) && ['submitted', 'quoting', 'quoted'].includes(r.status)) {
       r.status = 'selected'
       r.statusChangedAt = now
+    }
+    // 指定商社・客先指定品: 指定先の有効な見積が来たら、スコアなしで指定先を採用して選定済（§3.4）
+    if (isFixedProcurement(r) && !r.adoptedSupplierId && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
+      const sid = fixedSupplierId(p, r, ws.suppliers)
+      const q = sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale && x.unitPrice != null && x.leadDays !== -1) : undefined
+      if (q && sid && r.publishedRev != null) {
+        r.adoptedSupplierId = sid
+        r.adoptReason = '指定先（固定）'
+        r.orderQty = roundedQty(r.qtyNeeded, q.moq, r.packQty, r.unit)
+        if (r.status !== 'selected') {
+          if (!r.quotedAt) r.quotedAt = today
+          r.status = 'selected'
+          r.statusChangedAt = now
+        }
+      } else if (r.status === 'selected') {
+        // 指定先の見積がまだ無いのに選定済で止まっている行は、見積の依頼に戻す
+        r.status = 'submitted'
+        r.statusChangedAt = now
+      }
     }
     // 見積中 → 見積済
     if (r.status === 'quoting' && quoteComplete(p, r, today)) {
@@ -79,7 +98,8 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
 /** 納期NG に PM が手を打った（受入・特急・代替品検討・委譲中）なら NG として PM に出さない */
 function leadAccepted(r: Row): boolean {
   const cm = r.flags.countermeasure
-  return cm === '受入' || cm === '分納・特急' || cm === '代替品検討' || (cm === '商社変更' && !!r.flags.delegated)
+  // 先行発注を PM が許可した行は、納期を承知のうえでの判断（§4 先行発注許可）
+  return cm === '受入' || cm === '分納・特急' || cm === '代替品検討' || (cm === '商社変更' && !!r.flags.delegated) || !!r.flags.early
 }
 
 export function nextRowId(p: Project): string {

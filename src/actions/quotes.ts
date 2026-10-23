@@ -32,7 +32,23 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       }
       r.flags.requote = false
       if (r.status === 'submitted') setStatus(r, 'quoting')
-      else if (['quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status) && r0.flags.requote) setStatus(r, 'quoting')
+      else if (['quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status) && r0.flags.requote) {
+        // 概算を取り直す行は、前の採用・正式見積の依頼を外して選び直す（正式依頼中のまま見積済に戻さない）
+        if (r.adoptedSupplierId) {
+          r.adoptedSupplierId = undefined
+          r.scoreSnapshot = undefined
+          r.flags.contested = false
+          r.flags.formalDiff = false
+          r.flags.reissue = false
+          for (const q of p2.quotes.filter((x) => x.rowId === r.id && !x.stale)) {
+            q.formalPrice = null
+            q.formalLeadDays = null
+            q.formalValidUntil = null
+            q.formalRequestNo = undefined
+          }
+        }
+        setStatus(r, 'quoting')
+      }
     }
     for (const sid of perSupplier.keys()) p2.requestRevs[sid] = (p2.requestRevs[sid] ?? 0) + 1
     normalize(p2, ws)
@@ -154,16 +170,24 @@ export async function requestFormalQuotes(): Promise<string> {
   const target = p.rows.filter((r) => isActive(r) && r.adoptedSupplierId && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
   const working = target.filter((r) => r.working && Object.keys(r.working).length)
   const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
-  const rows = target.filter((r) => !working.includes(r) && !pending.includes(r))
+  // 再見積要の行は概算が失効している。概算を取り直して採用し直してから正式見積へ
+  const requote = target.filter((r) => r.flags.requote)
+  const rows = target.filter((r) => !working.includes(r) && !pending.includes(r) && !requote.includes(r))
   if (!rows.length) return '依頼する行がありません（選定済・再発行対象なし）'
   const per = new Map<string, Row[]>()
   for (const r of rows) per.set(r.adoptedSupplierId!, [...(per.get(r.adoptedSupplierId!) ?? []), r])
+  const prevNeed = new Map<string, string | null>()
   s.commit('正式見積を依頼（社外）', (p2, ws) => {
     for (const sid of per.keys()) p2.requestRevs['F' + sid] = (p2.requestRevs['F' + sid] ?? 0) + 1
     for (const r0 of rows) {
       const r = p2.rows.find((x) => x.id === r0.id)!
       const q = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      if (q) q.formalRequestNo = `${p2.id}-${r.adoptedSupplierId}-F${p2.requestRevs['F' + r.adoptedSupplierId!]}`
+      if (q) {
+        q.formalRequestNo = `${p2.id}-${r.adoptedSupplierId}-F${p2.requestRevs['F' + r.adoptedSupplierId!]}`
+        // 前回送った必要納期を差分シートのために残してから、今回の値を記録
+        if (q.formalNeedDate !== undefined) prevNeed.set(r.id, q.formalNeedDate)
+        q.formalNeedDate = rowNeedDate(p2, r)
+      }
       r.flags.reissue = false
       if (r.status === 'selected') setStatus(r, 'formalRequested')
       r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
@@ -173,9 +197,9 @@ export async function requestFormalQuotes(): Promise<string> {
   const p2 = st().project()
   for (const [sid, rs] of per) {
     const sup = s.ws.suppliers.find((x) => x.id === sid)!
-    await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addDays(todayStr(), p2.settings.formalDays), p2.requestRevs['F' + sid] ?? 1)
+    await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays), p2.requestRevs['F' + sid] ?? 1, prevNeed)
   }
-  return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || pending.length ? `。除外: 作業中 ${working.length} 行 / 承認待ち ${pending.length} 行` : ''}`
+  return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || pending.length || requote.length ? `。除外: 作業中 ${working.length} 行 / 承認待ち ${pending.length} 行 / 再見積要 ${requote.length} 行` : ''}`
 }
 
 export function quoteFor(p: Project, rowId: string, supplierId: string): Quote | undefined {

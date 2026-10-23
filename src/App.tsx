@@ -7,7 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { commitEdit, handleKeyDown } from '@/commands/registry'
-import { STORAGE_KEY, loadProblem, loadUser, parseWorkspace, resetWorkspace, startSync } from '@/io/persist'
+import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
 
@@ -40,10 +40,25 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
         <button className="btn" onClick={save}>
           データを JSON で退避
         </button>
+        {loadBackups().length > 0 && (
+          <button
+            className="btn"
+            onClick={() => {
+              const b = loadBackups()[0]
+              if (!confirm(`退避したデータ（${b.at.slice(0, 16).replace('T', ' ')}・${b.reason}）に戻します。いまのデータは退避に入れます。よろしいですか？`)) return
+              saveBackup(localStorage.getItem(STORAGE_KEY) ?? '{}', '画面を表示できなかったデータ')
+              localStorage.setItem(STORAGE_KEY, b.raw)
+              location.reload()
+            }}
+          >
+            退避したデータに戻す
+          </button>
+        )}
         <button
           className="btn"
           onClick={() => {
-            if (confirm('サンプルデータに戻します。いまのデータは消えます（先に退避してください）。よろしいですか？')) {
+            if (confirm('サンプルデータに戻します。いまのデータは退避に入れます（あとで「退避したデータに戻す」で戻せます）。よろしいですか？')) {
+              saveBackup(localStorage.getItem(STORAGE_KEY) ?? '{}', '画面を表示できなかったデータ')
               resetWorkspace()
               location.reload()
             }

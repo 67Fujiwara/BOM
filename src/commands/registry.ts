@@ -4,7 +4,7 @@ import { buildViewModel, cellText } from '@/model/selectors'
 import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { VIEWS } from '@/model/views'
+import { VIEWS, isAcked } from '@/model/views'
 import { ball as ballOf, effective, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
@@ -14,7 +14,7 @@ import * as pm from '@/actions/pm'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
-import { loadBackup, resetWorkspace, saveBackup } from '@/io/persist'
+import { loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
@@ -74,12 +74,20 @@ function prompt(title: string, opts: PromptOpts, onSubmit: (choice: string | nul
 function confirmDanger(title: string, yesLabel: string, run: () => void) {
   prompt(title, { options: ['やめる', yesLabel], index: 0, danger: true, showText: false }, (c) => {
     if (c === yesLabel) run()
+    else toast('やめました（何も変えていません）', 'info')
   })
 }
 
 // ---------- 移動 ----------
 function navItems() {
   return vm().items.filter((i) => i.kind !== 'detail')
+}
+/** 1 画面に見えている行数（PageUp / PageDown の移動量） */
+function pageRows(): number {
+  const wrap = document.querySelector<HTMLElement>('.gridwrap')
+  const head = wrap?.querySelector<HTMLElement>('table.grid > thead')?.offsetHeight ?? 30
+  const row = wrap?.querySelector<HTMLElement>('table.grid > tbody > tr.row')?.offsetHeight ?? 30
+  return wrap ? Math.max(1, Math.floor((wrap.clientHeight - head) / row) - 1) : 20
 }
 function moveCursorToRow(delta: 1 | -1) {
   const items = navItems()
@@ -156,7 +164,7 @@ export function startEdit(initial?: string) {
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
-  set({ mode: 'edit', editValue: value, editError: null, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -191,6 +199,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   }
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const now = String(cur.raw ?? '')
+  // 自動で始めた入力を空のまま確定したら、値は変えずに移動だけ
+  if (s.editAuto && value.trim() === '') value = now
   // 編集している間に、別のタブ（別の人）が同じセルを変えていたら、黙って上書きしない
   if (s.editBase != null && now !== s.editBase && value !== now) {
     set({ editBase: now, editError: `別のタブで「${now || '（空）'}」に変更されています` })
@@ -220,6 +230,12 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   if (dir === 'down') moveCursorToRow(1)
   else if (dir === 'right') moveCol(1)
   else if (dir === 'left') moveCol(-1)
+  // 6 商社別・8 正式見積: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
+  const n = st()
+  if (dir !== 'stay' && (n.view === 6 || n.view === 8) && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
+    startEdit('')
+    set({ editAuto: true })
+  }
   return true
 }
 export function cancelEdit() {
@@ -236,14 +252,14 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
   }
   if (row.flags.notation) return '表記修正を確認'
   if (row.flags.orderQtyCheck) return '発注数を確認'
-  if (row.flags.contested) return '拮抗を確認'
+  if (row.flags.contested && role === p.settings.selector) return '拮抗を確認'
   if (row.flags.priceCheck) return '単価要確認を確認'
   if (role === 'design') {
     const prs = checkRow(row, st().ws.rules, p)
     const pr = prs.find((x) => x.severity === 'warn' && x.field === st().cursorCol) ?? prs.find((x) => x.severity === 'warn')
     if (pr) return row.ackRules.includes(pr.ruleId) ? '警告の確認済みを外す' : '警告を確認済み'
   }
-  if (st().view === 5 && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !sb.acked.includes(row.id))) return '差分を確認済'
+  if (st().view === 5 && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
   return null
 }
 function ackCurrent() {
@@ -260,7 +276,7 @@ function ackCurrent() {
   }
   if (r.flags.notation) return issues.ackFlag(r.id, 'notation')
   if (r.flags.orderQtyCheck) return issues.ackFlag(r.id, 'orderQtyCheck')
-  if (r.flags.contested) return issues.ackFlag(r.id, 'contested')
+  if (r.flags.contested && role === p.settings.selector) return issues.ackFlag(r.id, 'contested')
   if (r.flags.priceCheck) return issues.ackFlag(r.id, 'priceCheck')
   if (role === 'design') {
     const prs = checkRow(r, s.ws.rules, p)
@@ -271,11 +287,13 @@ function ackCurrent() {
     }
     if (prs.some((x) => x.severity === 'error')) return toast('エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）', 'err')
   }
-  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !sb.acked.includes(r.id)) && (s.view === 5 || role !== 'design')) {
+  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !isAcked(sb, r.id, role)) && (s.view === 5 || role !== 'design')) {
+    // 確認は自分の役割の分だけ。Rev を選んでいればその Rev だけ
+    const rev = s.revView
     s.commit('差分を確認済', (p2) => {
-      for (const sub of p2.submissions) if (sub.rowIds.includes(r.id) && !sub.acked.includes(r.id)) sub.acked.push(r.id)
+      for (const sub of p2.submissions) if (sub.rowIds.includes(r.id) && !isAcked(sub, r.id, role) && (rev == null || sub.rev === rev)) sub.acked.push(`${r.id}@${role}`)
     })
-    return toast(`${r.id} の差分を確認済にしました`, 'info')
+    return toast(`${r.id} の差分を確認済にしました（${ROLE_LABEL[role]}として${rev != null ? `・Rev.${rev}` : ''}）`, 'info')
   }
   toast('この行に確認するもの（対応済の指摘・警告・表記修正など）はありません', 'info')
 }
@@ -418,7 +436,8 @@ function issueActionPanel(issueId: string) {
         }),
     })
     if (i.proposal) options.push({ key: '4', label: `提案 ${i.proposal.model} を適用（置換）`, run: () => void issues.applyProposal(i.id) })
-    if (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼')
+    // 対策不成立は、PM の決定から出た指摘への回答だけ（購買の依頼には「直さず回答」で返す。§6.3）
+    if ((i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && i.by.role === 'pm')
       options.push({
         key: '7',
         label: `${i.kind === '数量見直し依頼' ? '数量変更不可' : '代替なし'}（対策不成立として PM へ）`,
@@ -516,7 +535,8 @@ function decisionPanel(r: Row) {
   const c = pm.pmCaseOf(p, r)
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
   const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => decideWithReason(r.id, o.kind) }))
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: 0, options })
+  // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
+  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: -1, options })
 }
 function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
   const s = st()
@@ -809,6 +829,32 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   if (first) jumpToRow(first.rowId, first.field)
   toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、n で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
 }
+function restoreBackup(b: Backup) {
+  let res: ReturnType<typeof sanitizeWorkspace>
+  try {
+    res = sanitizeWorkspace(JSON.parse(b.raw))
+  } catch (err) {
+    return toast(`退避したデータは JSON として読めません（${(err as Error).message}）。「退避したデータを書き出す」で取り出して直してください`, 'err')
+  }
+  if (!res.ws) return toast(`退避したデータを読めません: ${res.error}。「退避したデータを書き出す」で取り出せます`, 'err')
+  const ws = res.ws
+  const cur = st().ws
+  confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
+    const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
+    replaceWorkspace(ws)
+    toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
+  })
+}
+function exportBackup(b: Backup) {
+  const blob = new Blob([b.raw], { type: 'application/json' })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = `bom-workspace-backup-${b.at.slice(0, 19).replace(/[:T]/g, '-')}.json`
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000)
+  toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
+}
+
 /** ワークスペースを丸ごと置き換える（JSON 読み込み・退避からの復元）。Undo 履歴は別の内容のものなので消す */
 function replaceWorkspace(ws: Workspace) {
   st().commitWs('', (w) => {
@@ -870,13 +916,19 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'redo':
       return s.redoLast()
     case 'export.excel': {
-      const done = (label: string) => (m: typeof import('@/io/excel')) => m.exportBomExcel(s.ws, p, label === 'internal' ? 'internal' : label === 'supplier' ? 'supplier' : 'archive').then(() => toast(`Excel を出力しました（${label === 'internal' ? '社内' : label === 'supplier' ? '商社向け' : '保管用'}、BOM・変更点・チェック結果の 3 シート）`, 'ok')).catch((err: Error) => toast(`Excel を出力できませんでした: ${err.message}`, 'err'))
+      const done = (label: string, sid?: string) => (m: typeof import('@/io/excel')) =>
+        m
+          .exportBomExcel(s.ws, p, label === 'internal' ? 'internal' : label === 'supplier' ? 'supplier' : 'archive', sid)
+          .then(() => toast(`Excel を出力しました（${label === 'internal' ? '社内、BOM・変更点・チェック結果の 3 シート' : label === 'supplier' ? `商社向け${sid ? `・${s.ws.suppliers.find((x) => x.id === sid)?.name}` : ''}、BOM シートのみ・価格なし` : '保管用、全列'}）`, 'ok'))
+          .catch((err: Error) => toast(`Excel を出力できませんでした: ${err.message}`, 'err'))
+      const sups = p.supplierIds.map((id) => s.ws.suppliers.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x)
       return openPanel({
         kind: 'export',
         index: 0,
         options: [
           { label: '社内（採用・金額・状態つき）', run: () => void import('@/io/excel').then(done('internal')) },
-          { label: '商社向け（価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
+          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
+          { label: '商社向け: 全商社共通（提出済の全行・価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
           { label: '保管用（全列・商社別見積つき）', run: () => void import('@/io/excel').then(done('archive')) },
         ],
       })
@@ -958,9 +1010,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'move.bottom':
       return setCursorRowAbs('bottom')
     case 'move.pageUp':
-      return moveCursorRow(-20)
+      return moveCursorRow(-pageRows())
     case 'move.pageDown':
-      return moveCursorRow(20)
+      return moveCursorRow(pageRows())
     case 'row.toggleOpen': {
       if (s.cursorRow?.startsWith('g:')) {
         const cat = s.cursorRow.split(':')[1]
@@ -1081,13 +1133,16 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'row.replace': {
       if (!need()) return
-      const nid = rows.replaceRow(r!.id)
-      if (nid) {
+      if (role !== 'design') return toast('権限なし（置換は設計）', 'err')
+      // 先に置き換え品の型式を聞く（r で始まる単語を打ったときに、黙って行が作られないように）
+      const e0 = effective(r!)
+      return prompt(`${r!.id} の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます）`, { showText: true, requireText: true, placeholder: `例: ${e0.model || 'MY4N-GS DC24'}` }, (_c, t) => {
+        const [model, maker] = t.split(/\s+\/\s+/)
+        const nid = rows.replaceRow(r!.id, { model: model.trim(), maker: (maker ?? e0.maker).trim() })
+        if (!nid) return
         jumpToRow(nid, 'model')
-        toast(`${r!.id} を置換済にし、新しい行 ${nid} を作りました。型式を入れてください（Ctrl+Z で戻す）`, 'info')
-        startEdit()
-      }
-      return
+        toast(`${r!.id} の置き換え品 ${nid} を作りました（公開すると ${r!.id} は置換済になります。Ctrl+Z で戻す）`, 'info')
+      })
     }
     case 'row.toggleOrdered':
       if (!need()) return
@@ -1213,9 +1268,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const def = addDays(todayStr(), p.settings.quoteDays)
       const allLabel = `相見積先すべて（${ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join('・')}）`
       return prompt('概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）', { options: [allLabel, ...tradable.map((x) => `${x.id} ${x.name}`)], placeholder: `回答期限（空なら ${def}）`, showText: true }, (choice, text) => {
+        // 読めない・過去の期限は、選んだ依頼先と入力を残したままダイアログで直す
         const dl = parseDate(text || def, { label: '回答期限' })
-        if (!dl.ok || !dl.value) return toast(dl.ok ? '回答期限を入れてください' : dl.error, 'err')
-        if (dl.value < todayStr()) return toast('回答期限が過去の日付です', 'err')
+        if (!dl.ok) return dl.error.replace(/、未定/, '')
+        if (!dl.value) return `回答期限を日付で入れてください（空なら ${def}）`
+        if (dl.value < todayStr()) return `回答期限 ${dl.value} が過去の日付です`
         const sids = !choice || choice === allLabel ? ids : [choice.split(' ')[0]]
         void quotes.requestRoughQuotes(sids, dl.value).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
       })
@@ -1233,7 +1290,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           onSubmit: (text) => {
             if (!text.trim()) return toast('貼り付けが空です', 'err')
             const res = quotes.importQuoteAnswers(text, sid)
-            toast(`取り込み ${res.updated} 行 / 突合不能 ${res.unmatched.length}${res.unmatched.length ? `（${res.unmatched.slice(0, 3).join(', ')}）` : ''} / 型式不一致 ${res.modelMismatch.length} / 代替提案の下書き ${res.proposals}`, res.unmatched.length || res.modelMismatch.length ? 'info' : 'ok')
+            // 読めない値で飛ばした行も必ず知らせる（黙って捨てない）
+            const errs = res.errors.length ? ` / 読めない値 ${res.errors.length} 件（${res.errors.slice(0, 2).join('、')}${res.errors.length > 2 ? ' …' : ''}。その行は取り込んでいません）` : ''
+            toast(`取り込み ${res.updated} 行 / 突合不能 ${res.unmatched.length}${res.unmatched.length ? `（${res.unmatched.slice(0, 3).join(', ')}）` : ''} / 型式不一致 ${res.modelMismatch.length} / 代替提案の下書き ${res.proposals}${errs}`, res.errors.length ? 'err' : res.unmatched.length || res.modelMismatch.length ? 'info' : 'ok')
           },
         })
       })
@@ -1251,13 +1310,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'export.selection':
       return void import('@/io/excel').then((m) => m.exportSelectionRecord(s.ws, p, (row) => scoreRow(p, row, s.ws.suppliers))).then(() => toast('選定記録（社内）を出力しました', 'ok'))
     case 'adopt.bulkBest':
+    case 'adopt.bulkCheapest': {
       if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
-      adopt.bulkAdopt('best')
-      return
-    case 'adopt.bulkCheapest':
-      if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
-      adopt.bulkAdopt('cheapest')
-      return
+      // 多くの行を一度に変えるので、件数を見せて既定「やめる」で確認する
+      const n = p.rows.filter((x) => isActive(x) && x.status === 'quoted' && !x.adoptedSupplierId).length
+      if (!n) return toast('一括で採用できる行がありません（見積済で未採用の行なし）', 'info')
+      const cheapest = id === 'adopt.bulkCheapest'
+      return confirmDanger(`見積済で未採用の ${n} 行を${cheapest ? '最安（スコア無視）' : '推奨（最高スコア）'}でまとめて採用します。1 行だけなら表で a`, `${n} 行を採用する`, () => adopt.bulkAdopt(cheapest ? 'cheapest' : 'best'))
+    }
     case 'consolidate': {
       if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
       const options = adopt.consolidateOptions().map((o) => ({ label: o.label, detail: o.detail, run: () => adopt.applyConsolidation(o.supplierIds) }))
@@ -1271,7 +1331,17 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'ltb.request':
       if (!need()) return
       if (role !== 'purchasing') return toast('権限なし（先行発注の申請は購買）', 'err')
-      return prompt(`先行発注を申請 ${r!.id}（理由）`, { requireText: true }, (_c, t) => pm.requestEarlyOrder(r!.id, t))
+      {
+        // PM が判断できるのは有効な見積がある行だけ（§4）。金額の目安は推奨の見積から
+        const best = scoreRow(p, r!, s.ws.suppliers)[0]
+        if (!best) return toast(`${r!.id} には有効な見積がありません。見積が揃ってから申請します`, 'info')
+        const est = Math.round((best.quote.unitPrice ?? 0) * best.roundedQty)
+        return prompt(`先行発注を申請 ${r!.id}（理由と金額）`, { requireText: true, placeholder: '理由（例: 長納期のため正式見積を待てない）', extra: { 金額: String(est) } }, (_c, t, ex) => {
+          const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
+          if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
+          pm.requestEarlyOrder(r!.id, `${t}（金額 ¥${amt.value.toLocaleString()}）`)
+        })
+      }
     case 'project.new': {
       const d = s.wizardDraft
       if (d) toast('途中まで入れた内容を戻しました（Esc で中止しても内容は残ります）', 'info')
@@ -1358,41 +1428,28 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           if (!res.ws) return toast(`読み込めません: ${res.error}`, 'err')
           const ws = res.ws
           const cur = st().ws
-          confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
-            saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')
+          const done = (backedUp: boolean) => {
             replaceWorkspace(ws)
-            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}。戻すときは Ctrl+K →「読み込み前に戻す」`, res.warnings?.length ? 'info' : 'ok')
+            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
+          }
+          confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
+            if (saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')) return done(true)
+            // 退避できないまま置き換えない（戻せると言って戻せない状態にしない）
+            confirmDanger('保存領域がいっぱいで、いまの内容を退避できませんでした。先に Ctrl+K →「JSON を書き出す」で保存してから読み込むのが安全です', '退避せずに置き換える（戻せません）', () => done(false))
           })
         },
       })
-    case 'data.restoreBackup': {
-      const b = loadBackup()
-      if (!b) return toast('退避したデータはありません', 'info')
-      let res: ReturnType<typeof sanitizeWorkspace>
-      try {
-        res = sanitizeWorkspace(JSON.parse(b.raw))
-      } catch (err) {
-        return toast(`退避したデータは JSON として読めません（${(err as Error).message}）。「退避したデータを書き出す」で取り出して直してください`, 'err')
-      }
-      if (!res.ws) return toast(`退避したデータを読めません: ${res.error}。「退避したデータを書き出す」で取り出せます`, 'err')
-      const ws = res.ws
-      const cur = st().ws
-      return confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避と入れ替えます`, '戻す', () => {
-        saveBackup(JSON.stringify(cur), '退避からの復元の前')
-        replaceWorkspace(ws)
-        toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）`, 'ok')
-      })
-    }
+    case 'data.restoreBackup':
     case 'data.exportBackup': {
-      const b = loadBackup()
-      if (!b) return toast('退避したデータはありません', 'info')
-      const blob = new Blob([b.raw], { type: 'application/json' })
-      const a = document.createElement('a')
-      a.href = URL.createObjectURL(blob)
-      a.download = `bom-workspace-backup-${b.at.slice(0, 10)}.json`
-      a.click()
-      setTimeout(() => URL.revokeObjectURL(a.href), 5000)
-      return toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
+      const list = loadBackups()
+      if (!list.length) return toast('退避したデータはありません', 'info')
+      const labelOf = (b: (typeof list)[number]) => `${fmtDateTime(b.at)}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      const act = (b: (typeof list)[number]) => (id === 'data.exportBackup' ? exportBackup(b) : restoreBackup(b))
+      if (list.length === 1) return act(list[0])
+      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: list.map(labelOf), showText: false }, (c) => {
+        const b = list.find((x) => labelOf(x) === c)
+        if (b) act(b)
+      })
     }
     case 'supplier.add':
       if (role !== 'purchasing') return toast('権限なし（商社マスタは購買）', 'err')
@@ -1429,8 +1486,8 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'publish', label: '公開（提出 / 指摘を発行）', section: '流れ', desc: '自分の未公開の行と下書き指摘', keywords: '提出 送る 送信 submit 出す 発行 購買へ' },
   { id: 'quotes.request', label: '概算見積を依頼', section: '流れ', desc: '購買。商社向け依頼 Excel を出す', keywords: '見積 依頼 相見積 rfq' },
   { id: 'quotes.import', label: '見積回答を取り込む', section: '流れ', desc: '購買。貼り付けで突合', keywords: '回答 取込 インポート import' },
-  { id: 'adopt.bulkBest', label: '未採用を推奨で一括採用', section: '流れ', keywords: '採用 選定 まとめて' },
-  { id: 'adopt.bulkCheapest', label: '未採用を最安で一括採用（スコア無視）', section: '流れ', keywords: '採用 選定 安い' },
+  { id: 'adopt.bulkBest', label: '未採用を推奨で一括採用', section: '流れ', keywords: 'まとめて 全部 一括' },
+  { id: 'adopt.bulkCheapest', label: '未採用を最安で一括採用（スコア無視）', section: '流れ', keywords: 'まとめて 安い' },
   { id: 'consolidate', label: '商社を集約', section: '流れ', desc: '1社/2社に集約した総額差を試算', keywords: 'まとめる 集約' },
   { id: 'quotes.formal', label: '正式見積を依頼（社外）', section: '流れ', desc: '購買。選定済の行を商社ごとに', keywords: '正式 依頼書' },
   { id: 'export.selection', label: '選定記録を出力（社内）', section: '流れ', desc: 'スコア内訳つき', keywords: '記録 スコア' },
@@ -1443,11 +1500,11 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 予算 重み 担当 相見積先' },
   { id: 'settings.confirm', label: '案件設定を確定（PM）', section: '案件' },
   { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件' },
-  { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 一覧 受信箱 inbox' },
+  { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
   { id: 'rule.add', label: 'ルールを追加', section: 'チェック' },
-  { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す' },
+  { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す エクスポート export' },
   { id: 'copy.formatted', label: '表示中の行と列を書式つきでコピー', section: '出力', keywords: 'コピー メール 貼る' },
-  { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し' },
+  { id: 'data.exportJson', label: 'JSON を書き出す', section: 'データ', keywords: 'バックアップ 退避 書き出し jsonエクスポート' },
   { id: 'data.importJson', label: 'JSON を読み込む', section: 'データ', keywords: '復元 読み込み' },
   { id: 'data.restoreBackup', label: '読み込み前に戻す（退避したデータに戻す）', section: 'データ', keywords: '復元 戻す 元に戻す 退避 バックアップ' },
   { id: 'data.exportBackup', label: '退避したデータを書き出す', section: 'データ', keywords: '退避 バックアップ 壊れた 保存データ' },
@@ -1464,6 +1521,17 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
   { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ?' },
 ]
+
+/** ショートカット表の操作の言い換え（パレットで探す言葉） */
+const KEYMAP_KEYWORDS: Record<string, string> = {
+  'issue.quickfix': '直す 修正 直し方 候補',
+  'adopt.best': '採用 選定 推奨 決める',
+  'adopt.choose': '商社を選ぶ 選定',
+  'issue.raise': '指摘 起票 質問',
+  'issue.next': '次の問題 エラー 警告',
+  'row.replace': '置換 置き換え 代替',
+  'issue.sequence': '順番 まとめて直す',
+}
 
 const QUIT_WORDS = /^(終了|閉じる|quit|exit|ログアウト|印刷|print)$/i
 
@@ -1543,7 +1611,7 @@ export function paletteItems(query: string): PaletteItem[] {
         }),
       })
   for (const c of STATIC) if (!q || matchScore(c.label, c.keywords, c.desc, ql) > 0) items.push({ id: c.id, section: c.section, label: c.label, desc: c.desc, keys: bindingsFor(c.id), run: wrap(() => runCommand(c.id)) })
-  for (const b of KEYMAP) if (q && matchScore(b.label, undefined, undefined, ql) >= 60 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
+  for (const b of KEYMAP) if (q && matchScore(b.label, KEYMAP_KEYWORDS[b.id], undefined, ql) >= 40 && !items.some((i) => i.id === b.id)) items.push({ id: b.id, section: b.section, label: b.label, keys: b.keys, run: wrap(() => runCommand(b.id)) })
   if (q && QUIT_WORDS.test(q)) items.push({ id: 'info.quit', section: '案内', label: q.match(/印刷|print/i) ? '印刷は「Excelで出力」から（Ctrl+E）' : '終了はブラウザのタブを閉じるだけです（編集は自動で保存済み）', run: wrap(() => (q.match(/印刷|print/i) ? runCommand('export.excel') : undefined)) })
   // 並び: 打った言葉との一致度 → 最近使った順
   const recent = s.recentCommands
@@ -1551,7 +1619,7 @@ export function paletteItems(query: string): PaletteItem[] {
     if (!q) return 0
     if (it.section === m?.[1]?.toUpperCase() || /^R\d{3}$/.test(it.section)) return 90
     const st0 = STATIC.find((c) => c.id === it.id)
-    return matchScore(it.label, st0?.keywords, it.desc, ql)
+    return matchScore(it.label, st0?.keywords ?? KEYMAP_KEYWORDS[it.id], it.desc, ql)
   }
   const scored = items.map((it, i) => ({ it, i, sc: score(it), rc: recent.indexOf(it.id) }))
   scored.sort((a, b) => b.sc - a.sc || (a.rc < 0 ? 999 : a.rc) - (b.rc < 0 ? 999 : b.rc) || a.i - b.i)
@@ -1559,14 +1627,19 @@ export function paletteItems(query: string): PaletteItem[] {
 }
 
 /** パレットの一致度。完全一致 > 前方一致 > 部分一致 > 言い換え（キーワード） */
-function matchScore(label: string, keywords: string | undefined, desc: string | undefined, ql: string): number {
-  const l = toHalf(label).toLowerCase()
-  const plain = l.replace(/（.*?）/g, '').trim()
+function matchScore(label: string, keywords: string | undefined, desc: string | undefined, ql0: string): number {
+  // 空白の有無は区別しない（「JSONを書き出す」と「JSON を書き出す」）
+  const sp = (x: string) => x.replace(/\s+/g, '')
+  const ql = sp(ql0)
+  if (!ql) return 0
+  const l = sp(toHalf(label).toLowerCase())
+  const plain = l.replace(/（.*?）/g, '')
   if (l === ql || plain === ql) return 100
   if (l.startsWith(ql) || plain.startsWith(ql)) return 80
-  if (l.includes(ql)) return 60
   const kws = (keywords ?? '').toLowerCase().split(' ').filter(Boolean)
-  if (kws.some((k) => k === ql)) return 50
+  // 言い換えに完全一致する操作は、ラベルの途中に含むだけの操作より先（「直す」→ その場で直す、「採用」→ 推奨で採用）
+  if (kws.some((k) => k === ql)) return 65
+  if (l.includes(ql)) return 60
   if (kws.some((k) => k.startsWith(ql) || (ql.length >= 2 && k.includes(ql)))) return 40
   if ((desc ?? '').toLowerCase().includes(ql)) return 30
   if (kws.some((k) => k.length >= 2 && ql.includes(k) && ql.length <= k.length + 2)) return 20

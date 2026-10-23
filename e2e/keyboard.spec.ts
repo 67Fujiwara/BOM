@@ -270,6 +270,25 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
   await page.keyboard.type('nut', { delay: 40 })
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R033"] td[data-col="name"]')).toHaveText('nut')
+  // 2 文字目が移動キー（anode / kit）、Shift 付きの英字（NEC）
+  for (const [id, word] of [['R034', 'anode'], ['R035', 'kit'], ['R037', 'knob']] as const) {
+    await gotoCell(page, id, '部品名')
+    await page.keyboard.type(word, { delay: 60 })
+    await page.keyboard.press('Enter')
+    await expect(page.locator(`[data-row-id="${id}"] td[data-col="name"]`)).toHaveText(word)
+  }
+  await gotoCell(page, 'R036', '部品名')
+  for (const k of ['Shift+N', 'Shift+E', 'Shift+C']) await page.keyboard.press(k, { delay: 20 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R036"] td[data-col="name"]')).toHaveText('NEC')
+  // Shift で打つ型番（1 文字目が Shift+N / Shift+D のコマンド）
+  for (const [id, word] of [['R038', 'NJM2904'], ['R039', 'DRV8833']] as const) {
+    await gotoCell(page, id, '型式')
+    for (const ch of word) await page.keyboard.press(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, { delay: 15 })
+    await page.keyboard.press('Enter')
+    await expect(page.locator(`[data-row-id="${id}"] td[data-col="model"]`)).toHaveText(word)
+  }
+  await expect(page.getByTestId('status')).not.toContainText('R081')
 })
 
 test('編集中にサイドバーのビューをクリックしても、入力は編集していた行に入る', async ({ page }) => {
@@ -282,4 +301,36 @@ test('編集中にサイドバーのビューをクリックしても、入力�
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await page.getByTestId('view-1').click()
   await expect(page.locator('[data-row-id="R010"] td[data-col="name"]')).toHaveText('クリック確定')
+})
+
+test('リロードしてもビュー・カーソルと Ctrl+Z の履歴が残る', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R010', '部品名')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Control+a')
+  await page.keyboard.type('リロード前')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('4')
+  await page.waitForTimeout(500)
+  await page.reload()
+  await expect(page.getByTestId('view-4')).toHaveAttribute('aria-current', 'true')
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('1')
+  await page.keyboard.press('Control+z')
+  await expect(page.getByTestId('toast')).toContainText('元に戻す')
+  await gotoCell(page, 'R010', '部品名')
+  await expect(page.locator('[data-row-id="R010"] td[data-col="name"]')).not.toHaveText('リロード前')
+})
+
+test('提出済の行の取消は公開するまで購買に見えない', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R050', '部品名')
+  await page.keyboard.press('Shift+Delete')
+  await expect(page.locator('[data-row-id="R050"]')).toContainText('取消予定')
+  await page.locator('.role button', { hasText: '購買' }).click()
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('1')
+  await gotoCell(page, 'R050', '部品名')
+  await expect(page.locator('[data-row-id="R050"]')).not.toContainText('取消')
+  await expect(page.locator('[data-row-id="R050"]')).toContainText('作業中')
 })

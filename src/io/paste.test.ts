@@ -45,3 +45,16 @@ describe('parseTable', () => {
     expect(parseTable('5"\t6', '\t')).toEqual([['5"', '6']])
   })
 })
+
+describe('header search and short tables', () => {
+  it('skips title rows above the header', () => {
+    const r = parseBomPaste('部品表 第4ライン 制御盤\n\n品名\t形式\tメーカー\t員数\nリレー\tMY4N\tオムロン\t4')
+    expect(r.rows).toHaveLength(1)
+    expect(r.rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N', maker: 'オムロン', qtyNeeded: 4 })
+  })
+  it('maps 2 and 3 headerless columns from the left', () => {
+    expect(parseBomPaste('リレー\t4\nタイマ\t2').rows[0]).toMatchObject({ name: 'リレー', qtyNeeded: 4 })
+    expect(parseBomPaste('リレー\tMY4N\t4').rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N', qtyNeeded: 4 })
+    expect(parseBomPaste('リレー\tMY4N\nタイマ\tH3CR').rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N' })
+  })
+})

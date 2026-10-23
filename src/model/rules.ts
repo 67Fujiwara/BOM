@@ -91,6 +91,10 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
       }
     }
   }
+  // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
+  const MAKER_ALT = 'sys.makerlock.alt'
+  if (e.makerLock === '任意' && e.altPolicy === '不可' && !row.ackRules.includes(MAKER_ALT))
+    out.push({ rowId: row.id, field: 'altPolicy', ruleId: MAKER_ALT, severity: 'warn', message: 'メーカ指定＝任意 と 代替可否＝不可 は矛盾しています', fixes: [{ label: '代替可否を「同等品可」にする', apply: () => ({ altPolicy: '同等品可' }) }, { label: 'メーカ指定を「推奨」にする', apply: () => ({ makerLock: '推奨' }) }] })
   return out
 }
 

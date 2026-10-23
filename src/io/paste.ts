@@ -94,12 +94,30 @@ export function parseBomPaste(text: string): PasteResult {
   const warnings: string[] = []
   const delimiter: PasteResult['delimiter'] = raw.includes('\t') ? 'tab' : raw.includes(',') ? 'comma' : 'none'
   const table = delimiter === 'none' ? raw.split('\n').map((l) => [l]) : parseTable(raw, delimiter === 'tab' ? '\t' : ',')
-  const lines = table.filter((r) => r.some((c) => c.trim() !== ''))
+  let lines = table.filter((r) => r.some((c) => c.trim() !== ''))
   if (!lines.length) return { rows: [], mapping: [], header: null, delimiter: 'none', warnings: ['貼り付けが空です'] }
   const split = (l: string[]) => l
+  // 見出しの行を上から探す（表題・依頼No などの行が先にあってもよい）
+  const filled = (l: string[]) => l.filter((c) => c.trim() !== '').length
+  const headerAt = lines.slice(0, 10).findIndex((l) => l.map(detectField).filter(Boolean).length >= 2)
+  // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
+  const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
+  if (headerAt > 0) {
+    warnings.push(`見出しより上の ${headerAt} 行（表題など）は取り込みません`)
+    lines = lines.slice(headerAt)
+  } else if (headerAt < 0 && !singleHeader) {
+    // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
+    const width = Math.max(...lines.map((l) => filled(l)))
+    let skip = 0
+    while (width >= 3 && skip < lines.length - 1 && filled(lines[skip]) === 1) skip++
+    if (skip) {
+      warnings.push(`表題らしい先頭の ${skip} 行は取り込みません`)
+      lines = lines.slice(skip)
+    }
+  }
   const first = split(lines[0])
   const detected = first.map(detectField)
-  const hasHeader = detected.filter(Boolean).length >= 2 || (detected.filter(Boolean).length >= 1 && first.length === 1)
+  const hasHeader = headerAt >= 0 || singleHeader
   let mapping: Array<BomField | null>
   if (hasHeader) mapping = detected
   else if (delimiter === 'none') {
@@ -113,10 +131,10 @@ export function parseBomPaste(text: string): PasteResult {
       return vals.length > 0 && vals.every((v) => { const r = parseNumber(v); return r.ok && r.value != null })
     })
     if (numericCol != null && numericCol >= 1 && numericCol <= 4) {
-      const before = (['category', 'name', 'model', 'maker'] as BomField[]).slice(4 - numericCol)
+      const before = ([['name'], ['name', 'model'], ['name', 'model', 'maker'], ['category', 'name', 'model', 'maker']] as BomField[][])[numericCol - 1]
       const after = (['unit', 'ref', 'note'] as BomField[]).slice(0, Math.max(0, width - numericCol - 1))
       mapping = [...before, 'qtyNeeded', ...after]
-    } else mapping = DEFAULT_ORDER.slice(0, width)
+    } else mapping = width <= 3 ? (['name', 'model', 'maker'] as BomField[]).slice(0, width) : DEFAULT_ORDER.slice(0, width)
     warnings.push(`見出しが無いので、列を「${mapping.map((f) => (f ? FIELD_LABEL[f] : '（使わない）')).join('・')}」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください`)
   }
   const used = mapping.filter(Boolean)
@@ -163,18 +181,38 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const ExcelJS = (await import('exceljs')).default
   const wb = new ExcelJS.Workbook()
   await wb.xlsx.load(buf)
-  const ws = wb.worksheets[0]
-  if (!ws) return ''
-  const lines: string[] = []
-  ws.eachRow({ includeEmpty: false }, (row) => {
-    const vals = (row.values as unknown[]).slice(1).map((v) => {
-      if (v == null) return ''
-      if (typeof v === 'object' && v && 'text' in (v as object)) return String((v as { text: unknown }).text)
-      if (typeof v === 'object' && v && 'result' in (v as object)) return String((v as { result: unknown }).result)
-      if (v instanceof Date) return v.toISOString().slice(0, 10)
-      return String(v).replace(/[\t\n]/g, ' ')
+  // シートが複数あるときは、見出し（部品名・型式・数量 など）のあるシートを読む（表紙・改訂履歴を部品にしない）
+  const sheets = wb.worksheets.map((ws) => {
+    const lines: string[] = []
+    ws.eachRow({ includeEmpty: false }, (row) => {
+      // 非表示の行（Excel で隠した行）は取り込まない
+      if (row.hidden) return
+      const vals = (row.values as unknown[]).slice(1).map((v) => cellToText(v).replace(/[\t\n\r]/g, ' '))
+      lines.push(vals.join('\t'))
     })
-    lines.push(vals.join('\t'))
+    const score = lines.slice(0, 10).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
+    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length }
   })
-  return lines.join('\n')
+  if (!sheets.length) return ''
+  const best = [...sheets].sort((a, b) => b.score - a.score || b.rows - a.rows)[0]
+  lastSheetName = sheets.length > 1 ? best.name : null
+  return best.text
+}
+/** 複数シートの xlsx で読んだシートの名前（案内用） */
+export let lastSheetName: string | null = null
+
+/** Excel のセルの値を文字にする（リッチテキスト・数式・ハイパーリンク・エラー・日付） */
+function cellToText(v: unknown): string {
+  if (v == null) return ''
+  if (v instanceof Date) return v.toISOString().slice(0, 10)
+  if (typeof v === 'object') {
+    const o = v as Record<string, unknown>
+    if (Array.isArray(o.richText)) return (o.richText as Array<{ text?: unknown }>).map((t) => String(t.text ?? '')).join('')
+    if ('error' in o) return ''
+    if ('result' in o) return cellToText(o.result)
+    if ('text' in o) return cellToText(o.text)
+    if ('hyperlink' in o) return String(o.hyperlink)
+    return ''
+  }
+  return String(v)
 }

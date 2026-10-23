@@ -149,6 +149,10 @@ export interface Row extends DesignFields {
   /** PM 承認待ちの変更セット（承認されるまで公開値には反映しない） */
   pendingApproval?: Partial<DesignFields>
   pendingRev?: number
+  /** 設計の作業中の取消・置換（公開するまで購買には「設計作業中」だけ見える） */
+  removal?: Removal
+  /** PM 承認待ちの取消・置換 */
+  pendingRemoval?: Removal
   /** 指摘の提案から作られた行（その指摘 ID） */
   fromIssue?: string
   /** 公開済み差分の起因（指摘ID or 変更セットID） */
@@ -192,6 +196,8 @@ export interface Quote {
   reconfirm?: 'keep' | 'requote' | 'proposal'
   /** 要再確認の既定（提案商社＝提案値、他＝再見積） */
   reconfirmDefault?: 'keep' | 'requote' | 'proposal'
+  /** 正式見積の依頼で送った必要納期（再発行時の差分シート用） */
+  formalNeedDate?: string | null
   /** 再交渉前の正式単価 */
   prevFormalPrice?: number | null
   // 正式見積
@@ -397,3 +403,5 @@ export interface Workspace {
   rules: Rule[]
   currentProjectId: string
 }
+
+export type Removal = { kind: 'cancel' } | { kind: 'replace'; by: string }

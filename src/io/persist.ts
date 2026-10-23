@@ -44,21 +44,38 @@ export interface Backup {
   reason: string
   raw: string
 }
+const BROKEN = '読めなかった保存データ'
+/** 退避を 1 件足す。読めなかった保存データの退避は、後の JSON 読み込みの退避で押し出さない（最大: 読めなかったもの 2 件＋その他 3 件） */
 export function saveBackup(raw: string, reason: string): boolean {
+  const list = loadBackups()
+  list.unshift({ at: new Date().toISOString(), reason, raw })
+  const broken = list.filter((b) => b.reason.startsWith(BROKEN) || b.reason.startsWith('一部を外して')).slice(0, 2)
+  const others = list.filter((b) => !broken.includes(b) && !b.reason.startsWith(BROKEN) && !b.reason.startsWith('一部を外して')).slice(0, 3)
+  // 容量が足りなければ古いものから諦める。新しい 1 件も入らなければ失敗を返す（呼び出し側が置き換えを止める）
+  for (let keep = [...broken, ...others].sort((a, b) => b.at.localeCompare(a.at)); keep.length > 0; keep = keep.slice(0, -1)) {
+    if (!keep.includes(list[0])) return false
+    try {
+      localStorage.setItem(BACKUP_KEY, JSON.stringify(keep))
+      return true
+    } catch {
+      /* 次は 1 件減らして試す */
+    }
+  }
+  return false
+}
+/** 退避の一覧（新しい順） */
+export function loadBackups(): Backup[] {
   try {
-    localStorage.setItem(BACKUP_KEY, JSON.stringify({ at: new Date().toISOString(), reason, raw } satisfies Backup))
-    return true
+    const v = JSON.parse(localStorage.getItem(BACKUP_KEY) ?? 'null')
+    // 以前の形式（1 件だけ）も読む
+    const arr = Array.isArray(v) ? v : v ? [v] : []
+    return arr.filter((b): b is Backup => !!b && typeof b.raw === 'string' && typeof b.at === 'string' && typeof b.reason === 'string')
   } catch {
-    return false
+    return []
   }
 }
 export function loadBackup(): Backup | null {
-  try {
-    const b = JSON.parse(localStorage.getItem(BACKUP_KEY) ?? 'null')
-    return b && typeof b.raw === 'string' ? (b as Backup) : null
-  } catch {
-    return null
-  }
+  return loadBackups()[0] ?? null
 }
 /** 起動時に保存データを読めなかった・一部を外したときの説明（画面が出たら通知する） */
 export let loadProblem: string | null = null
@@ -75,7 +92,7 @@ export function loadWorkspace(): Workspace | null {
       res = { error: `JSON として読めません（${(e as Error).message}）` }
     }
     if (!res.ws || res.warnings?.length) {
-      const saved = saveBackup(raw, res.ws ? '一部を外して読み込み' : '読めなかった保存データ')
+      const saved = saveBackup(raw, res.ws ? '一部を外して読み込み' : BROKEN)
       const where = saved ? '元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）' : '元のデータを退避できませんでした（ブラウザの容量不足）'
       loadProblem = res.ws ? `保存データの一部を外して読みました: ${res.warnings!.slice(0, 2).join(' / ')}${res.warnings!.length > 2 ? ` ほか ${res.warnings!.length - 2} 件` : ''}。${where}` : `保存データを読めなかったのでサンプルを表示しています（${res.error}）。${where}`
     }

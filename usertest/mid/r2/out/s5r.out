@@ -1,0 +1,64 @@
+formal → 6 行 × 1 社に正式見積を依頼
+R016 selected {} adopted=S1 oq=2
+R016 orderQty manual → selected {} adopted=S1 oq=50 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+qtyRow R005 12 R021 model TH-T18 5A
+before offset: cursor R017 必要数 headers has 前倒し: true
+cursor at R010 必要日(前倒し) status formalRequested
+mode 編集
+R010 needOffset set → 数字キーはビュー切替です。必要数に数値を入れるときは Enter か F2 で編集してから打ってください {"needOffset":-5}
+design status: ナビ分類 電源設計 山田: 未公開 12 行 / 指摘 0数字キーはビュー切替です。必要数に数値を入れるときは Enter か F2 で編集してから打ってくださ
+purchasing sees R020 model: S-T21 AC200V | R010 needDate: 11/05 | R024 status: 見積済 · 作業中●
+PASS S5 購買には R020 の作業中の型式が見えない :: S-T21 AC200V
+FAIL S5 購買の必要日（R010）は公開済の値（設計の作業中 -5 日を反映しない） :: purchasing=11/05 design=11/05
+purchasing detail R024: 相見積・スコア内訳 （必要日 11/10 / 必要数 1個 / 基準日 10/21）商社単価納期MOQ在庫丸め/余剰合計価格納期実績条件備考因幡電機辞退—1. 
+PASS S5 購買の Space 内訳の必要数は公開済の値 :: pub=1 detail=相見積・スコア内訳 （必要日 11/10 / 必要数 1個 / 基準日 10/21）商社単価納期MOQ在庫丸め/余剰合計価格納期実績条件備考因幡電機辞退—1. 
+export panel: 1 社内（採用・金額・状態つき）2 商社向け（価格列なし）3 保管用（全列・商社別見積つき）
+purchasing Excel R020 model: XYZ-NEW-1
+FAIL S5 購買の Excel 出力に設計の作業中の型式が出ない :: XYZ-NEW-1
+Shift+Delete → R030 を取消にしました（提出済の行は取り消し線で残り、次の公開で購買に伝わります。Ctrl+Z で戻せます） cancelled {} adopted=- oq=null
+r → R031 を置換済にし、新しい行 R081 を作りました。型式を入れてください（Ctrl+Z で戻す） cursor R081 型式 dialog 
+replace new row: R081 draft {"reconfirm":true} old R031: replaced
+mode after r: 編集
+R081 after model: {"model":"NEW-MODEL-31","st":"draft"}
+warn gate: 公開できません: 未確認の警告 2 件（R005 型式の前後に空白があります … 直すか x で確認済みに）
+  x → 確認済みにしました: 型式の前後に空白があります ack ["rule.model.ws"]
+warn gate: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか x で確認済みに）
+  x → 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください ack ["rule.model.cp30"]
+publish dlg: 変更セット（7 行: R005, R010, R012, R016, R020 …）の理由。↑↓ で選び、変更番号（任意）を入れて Enter▶ 客先要求· 設計起因· 廃番・入手難· コスト· 納期· その他↑ / ↓ 選択Enter 確
+publish → 行 13（Rev.2・3） を公開しました
+subs: [
+  'Rev2 rows=R081/R076/R077/R078/R079/R080/R030 cs=undefined sum={"added":6,"modelChanged":0,"qtyChanged":0,"other":0,"cancelled":1}',
+  'Rev3 rows=R005/R010/R012/R016/R020/R021/R024 cs={"reason":"設計起因","changeNo":"ECN-2026-001","approved":true} sum={"added":0,"modelChanged":2,"qtyChanged":4,"other":1,"cancelled":0}'
+]
+  R020 quoted {"requote":true} adopted=- oq=null
+  R021 quoted {"notation":true} adopted=- oq=null
+  R024 quoted {"requote":true} adopted=- oq=null
+  R005 quoted {"priceCheck":true} adopted=- oq=null
+  R016 selected {"requote":true,"orderQtyCheck":true} adopted=S1 oq=3
+  R010 formalRequested {"reissue":true} adopted=S1 oq=12
+  R012 formalRequested {"reissue":true,"requote":true} adopted=S1 oq=4
+  R030 cancelled {} adopted=- oq=null
+  R081 submitted {"reconfirm":true} adopted=- oq=null
+PASS S5 R020 型式変更（見積済）→ 再見積要
+PASS S5 R021 表記だけ → 表記修正
+PASS S5 R024 必要数 ×2（±20% 超）→ 再見積要
+PASS S5 R016 必要数変更・発注数を手で変えていた → 発注数要確認
+PASS S5 R010 正式依頼中で必要日変更 → 再発行
+PASS S5 R012 正式依頼中で数量変更 → 再発行＋再見積要
+R016 orderQty after: 3
+purchasing 5: R005,R010,R012,R016,R020,R021,R024 cols: ID|ボール|回路記号|部品名|型式|メーカ|必要数|単位|状態
+view8 toolbar: 再発行対象 2 行提出 Rev.3（山田 10/22, 追加0 / 型式2 / 数量4） count 9
+PASS S5 8 に「再発行 n 行」が出る
+9 has R020/R024/R012: [ true, true, true ]
+purchasing 4: R016,R012,R013,R020,R024,R081
+PASS S5 購買の 4 に発注数要確認（R016）
+R021 x hint: x表記修正を確認
+x R021 → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました quoted {} adopted=- oq=null
+R016 x hint: x発注数を確認
+x R016 → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました selected {"requote":true} adopted=S1 oq=3
+R024 quickfix: 1 再見積要: 据え置き（旧見積を有効に戻す）2 再見積要: 再見積（概算見積を依頼）
+据え置き → quoted {} adopted=- oq=null
+design Ctrl+Z after publish → 公開済の値を戻しました。Rev は残し、未公開として 7 行に積みました（Ctrl+Enter で Rev+1 として公開）
+subs after undo: 3 (before 3 ) R020 working: {"model":"S-T21 AC200V"} status: ナビR009 型式メーカ未記入 1/2設計 山田: 未公開 7 行 / 指摘 0公開済の値を戻しました。Rev は残し、
+PASS S5 公開後の Ctrl+Z で Rev は消えず、未公開として積まれる
+ERRORS: [] paletteMiss: [ '正式見積を依頼 → 先頭は「流れ概算見積を依頼購買。商社向け依頼 Excel を出す」、目的は 2 番目' ]

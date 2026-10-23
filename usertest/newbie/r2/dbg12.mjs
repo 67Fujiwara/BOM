@@ -1,0 +1,10 @@
+import { launch, fresh, T, runPalette } from './lib.mjs'
+const { browser, page, errors } = await launch()
+await fresh(page)
+await runPalette(page, '新しいBOM'); for (let i = 0; i < 7; i++) await page.keyboard.press('Enter')
+await page.keyboard.press('1'); await page.waitForTimeout(800); console.log('active before type', await page.evaluate(() => document.activeElement?.dataset?.testid)); await page.keyboard.type('abc', { delay: 100 }); console.log('val', await page.getByTestId('wizard-paste').inputValue())
+await page.keyboard.press('Tab')
+const act = () => page.evaluate(() => document.activeElement?.tagName + ':' + (document.activeElement?.dataset?.testid ?? document.activeElement?.className))
+console.log('after Tab: value', JSON.stringify(await page.getByTestId('wizard-paste').inputValue()), 'active', await act())
+await page.keyboard.press('3'); console.log('3 ->', await page.locator('.wizard .opt[aria-selected="true"]').textContent(), 'value', JSON.stringify(await page.getByTestId('wizard-paste').inputValue().catch(() => '(hidden)')))
+await browser.close()

@@ -1,0 +1,22 @@
+import { launch, fresh, T, runPalette, store } from './lib.mjs'
+import fs from 'node:fs'
+const { browser, page, errors } = await launch()
+await fresh(page)
+const dl = page.waitForEvent('download')
+await runPalette(page, 'JSON を書き出す')
+const d = await dl
+const json = fs.readFileSync(await d.path(), 'utf8')
+console.log('json len', json.length)
+await runPalette(page, 'JSON を読み込む')
+console.log(await T.panelText(page))
+await page.evaluate((t) => navigator.clipboard.writeText(t), json)
+let t0 = Date.now()
+await page.getByTestId('import-text').focus()
+await page.keyboard.press('Control+v')
+await page.waitForTimeout(100)
+console.log('paste ms', Date.now() - t0, 'len', (await page.getByTestId('import-text').inputValue()).length)
+t0 = Date.now()
+await page.keyboard.press('Control+Enter'); await page.waitForTimeout(300)
+console.log('import ms', Date.now() - t0, await T.toast(page), await T.rows(page))
+await browser.close()
+console.log(errors)

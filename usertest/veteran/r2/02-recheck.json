@@ -1,0 +1,227 @@
+{
+  "V-e": {
+    "ok": true,
+    "opts": "1 S1 因幡電機2 S2 立花エレテック3 S3 ミスミ4 S4 RSコンポーネンツ5 S5 オムロン直販",
+    "panelAfter": "panel-import",
+    "toast": "取り込み 1 行 / 突合不能 1（R999） / 型式不一致 1 / 代替提案の下書き 0",
+    "errors": []
+  },
+  "V-e/noSuppliers": {
+    "opts": "1 S1 因幡電機2 S2 立花エレテック3 S3 ミスミ4 S4 RSコンポーネンツ5 S5 オムロン直販",
+    "panel": "panel-import",
+    "toast": "",
+    "errors": []
+  },
+  "V-m/localStorage dup": {
+    "toast": "",
+    "projectsInLS": 2,
+    "inbox": "P-2026-041第3ライン 搬送制御盤納期 2026-11-20 / 提出 Rev.1 / 設計 75 購買 4 PM 1 / 更新 10/22 23:46 佐藤あなた宛 75＋新しいBOM を作る",
+    "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+    "errors": []
+  },
+  "V-m/2tabs same id": {
+    "ids": [
+      "P-2026-041:第3ライン 搬送制御盤",
+      "P-SAME:A"
+    ],
+    "toastB": "案件ID「P-SAME」はもうあります（Ctrl+P で開けます）。別の ID にしてください",
+    "errors": []
+  },
+  "V-n": {
+    "palette": true,
+    "columns": true,
+    "settings": true,
+    "helpScrollable": {
+      "sh": 418,
+      "ch": 418
+    },
+    "helpScrollAfterKeys": 0,
+    "inbox": true
+  },
+  "V-o": [
+    {
+      "tag": "1280x720/design",
+      "vw": 1280,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "ok",
+      "money": "clip(0-0/1280)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1280x720/pm",
+      "vw": 1280,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "ok",
+      "money": "clip(0-0/1280)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1280@150%/design",
+      "vw": 853,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/853)",
+      "money": "clip(0-0/853)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1280@150%/pm",
+      "vw": 853,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/853)",
+      "money": "clip(0-0/853)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1024/design",
+      "vw": 1024,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "ok",
+      "money": "clip(0-0/1024)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1024/pm",
+      "vw": 1024,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "ok",
+      "money": "clip(0-0/1024)",
+      "docScrollX": false
+    },
+    {
+      "tag": "1024@150%/design",
+      "vw": 683,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/683)",
+      "money": "clip(0-0/683)",
+      "docScrollX": true
+    },
+    {
+      "tag": "1024@150%/pm",
+      "vw": 683,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/683)",
+      "money": "clip(0-0/683)",
+      "docScrollX": true
+    },
+    {
+      "tag": "1280@200%/design",
+      "vw": 640,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/640)",
+      "money": "clip(0-0/640)",
+      "docScrollX": true
+    },
+    {
+      "tag": "1280@200%/pm",
+      "vw": 640,
+      "headerH": 44,
+      "design": "ok",
+      "purchasing": "ok",
+      "pm": "ok",
+      "palette": "ok",
+      "help": "ok",
+      "lamps": "clip(0-0/640)",
+      "money": "clip(0-0/640)",
+      "docScrollX": true
+    }
+  ],
+  "V-p": [
+    {
+      "w": 1280,
+      "tableRight": 846,
+      "detailRight": 1264,
+      "vw": 1280,
+      "detailScrollW": 1020,
+      "detailClientW": 1020
+    },
+    {
+      "w": 853,
+      "tableRight": 837,
+      "detailRight": 837,
+      "vw": 853,
+      "detailScrollW": 593,
+      "detailClientW": 593
+    }
+  ],
+  "V-q": {
+    "shownCols": "ID|部品名",
+    "cursor": "R001 部品名",
+    "cursorAfter": "R004 ID",
+    "modeAfterEnter": "ナビ",
+    "cursorCell": 1,
+    "errors": []
+  },
+  "V-r": {
+    "n": 17,
+    "unique": 17,
+    "dup": [],
+    "errors": []
+  },
+  "V-s": {
+    "ms": 4111,
+    "same": true,
+    "sameY": true,
+    "undosUntilEmpty": 49,
+    "lastToast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "restored": 50
+  },
+  "V-t": {
+    "ms900": 100154,
+    "perPressMs": 111.3,
+    "viewLatency": {
+      "median": 68.3,
+      "p90": 330.1,
+      "max": 374.4
+    },
+    "jLatency80": {
+      "median": 40.7,
+      "p90": 54.3,
+      "max": 62.4
+    }
+  }
+}

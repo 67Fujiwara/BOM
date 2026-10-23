@@ -126,7 +126,7 @@ await t.press('7')
 await page.waitForTimeout(50)
 const dlg = await page.locator('[role=dialog]').textContent().catch(() => '')
 log('after pressing 7:', dlg.slice(0, 80))
-check('S2 指摘パネルで「7 数量変更不可」をキー 7 で選べる', /対策不成立/.test(dlg), dlg.slice(0, 60))
+check('S2 指摘パネルで「7 数量変更不可」をキー 7 で選べる', /理由/.test(dlg) && !/指摘のアクション/.test(dlg), dlg.slice(0, 60))
 await t.press('Escape'); await t.press('Escape')
 // 公開
 log('status before publish:', await t.status())
@@ -134,7 +134,7 @@ await t.press('Control+Enter')
 await page.waitForTimeout(100)
 let dl = await page.locator('[role=dialog]').textContent().catch(() => '')
 log('publish dialog:', dl.slice(0, 200))
-if (/変更セット/.test(dl)) { await t.press('2'); await page.waitForTimeout(300); dl = await page.locator('[role=dialog]').textContent().catch(() => ''); log('dialog2:', dl.slice(0, 100), 'toast:', await t.toast(), 'errors:', t.errors) }
+if (/変更セット/.test(dl)) { await t.press('ArrowDown'); await t.press('Enter'); await page.waitForTimeout(300); dl = await page.locator('[role=dialog]').textContent().catch(() => ''); log('dialog2:', dl.slice(0, 100), 'toast:', await t.toast(), 'errors:', t.errors) }
 if (/Rev/.test(dl)) await t.press('1')
 await page.waitForTimeout(150)
 log('publish toast:', await t.toast())

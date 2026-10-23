@@ -1,0 +1,18 @@
+import { launch, fresh, T, runPalette, store } from './lib.mjs'
+const { browser, page, errors } = await launch()
+await fresh(page)
+await runPalette(page, '新しいBOM'); for (let i = 0; i < 7; i++) await page.keyboard.press('Enter')
+await page.keyboard.press('1'); await page.keyboard.type('リレー\tMY4N\tオムロン\t2')
+const act = () => page.evaluate(() => document.activeElement?.tagName + ':' + (document.activeElement?.dataset?.testid ?? document.activeElement?.className))
+console.log('typed with Tab chars in textarea:', JSON.stringify(await page.getByTestId('wizard-paste').inputValue()), 'active', await act())
+await page.keyboard.press('Enter'); console.log('Enter in textarea: step', await page.getByTestId('wizard').locator('h3').textContent())
+await page.keyboard.press('Escape')
+await runPalette(page, '新しいBOM'); console.log('reopen step', await page.getByTestId('wizard').locator('h3').textContent(), 'active', await act())
+await page.keyboard.press('3'); console.log('3 -> sel', await page.locator('.wizard .opt[aria-selected="true"]').textContent(), 'paste kept?', (await page.getByTestId('wizard').innerText()).includes('リレー'))
+await page.keyboard.press('Enter'); console.log('Enter ->', await page.getByTestId('wizard').locator('h3').textContent(), (await page.getByTestId('wizard-preview').innerText()).replace(/\s+/g, ' ').slice(0, 150))
+await page.keyboard.press('Enter'); await page.waitForTimeout(100)
+console.log('created rows', (await store(page)).projects.at(-1).rows.map((r) => r.name + '|' + r.model))
+// マウス: ステップ名クリック
+await runPalette(page, '新しいBOM'); await page.keyboard.press('Enter'); await page.keyboard.press('Enter')
+await page.locator('.wizard .steps span').first().click(); console.log('click step1 label ->', await page.getByTestId('wizard').locator('h3').textContent())
+await browser.close(); console.log(errors)

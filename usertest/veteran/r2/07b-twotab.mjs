@@ -1,0 +1,16 @@
+import { launch, fresh, goto, toCol, sleep, proj, toastNow, URL, dumpErrors } from './lib.mjs'
+const { browser, context, page: A, errors } = await launch()
+async function edit(pg, id, col, v) { await pg.bringToFront(); await pg.locator('.gridwrap').focus(); await goto(pg, id); await toCol(pg, col); await pg.keyboard.press('Enter'); await pg.keyboard.press('Control+a'); await pg.keyboard.type(v); await pg.keyboard.press('Enter') }
+await fresh(A)
+const B = await context.newPage(); await B.goto(URL); await B.waitForSelector('[data-testid="grid"]')
+await edit(A, 'R038', '部品名', 'pub-A'); await edit(B, 'R039', '部品名', 'pub-B')
+await A.bringToFront(); await A.keyboard.press('Control+Enter'); await sleep(80)
+const pa = await A.locator('[data-testid^="panel-"]').textContent().catch(() => null); const ta = await toastNow(A)
+await B.bringToFront(); await B.keyboard.press('Control+Enter'); await sleep(80)
+const pb = await B.locator('[data-testid^="panel-"]').textContent().catch(() => null)
+await A.bringToFront(); await A.keyboard.press('Enter'); await sleep(150); const ta2 = await toastNow(A)
+await B.bringToFront(); await B.keyboard.press('Enter'); await sleep(150); const tb2 = await toastNow(B)
+const p = await proj(A)
+console.log(JSON.stringify({ pa: pa?.slice(0, 120), ta: ta.slice(0, 120), pb: pb?.slice(0, 120), ta2: ta2.slice(0, 100), tb2: tb2.slice(0, 100), subs: p.submissions.map((s) => `Rev${s.rev}:${s.rowIds.join('/')}`.slice(0, 60)), r38: p.rows.find((r) => r.id === 'R038').publishedRev, r39: p.rows.find((r) => r.id === 'R039').publishedRev, w38: p.rows.find((r) => r.id === 'R038').working, w39: p.rows.find((r) => r.id === 'R039').working }, null, 1))
+dumpErrors(errors, '07b')
+await browser.close()

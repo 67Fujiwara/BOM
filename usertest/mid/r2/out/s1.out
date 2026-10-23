@@ -28,3 +28,75 @@ PASS S1 「あとで」が残ると公開不可 :: 公開できません: 「あ
 deferred row: R007 [ 'rule.ref.dup' ]
 publish toast after fixing deferred: 公開できません: 「あとで」にした問題が 1 行に残っています（R007）
 FAIL S1 「あとで」の問題を直した後に公開できる :: 公開できません: 「あとで」にした問題が 1 行に残っています（R007）
+  quickfix for deferred row: none / toast=R007 に直し方の候補はありません
+  n after fix (deferred row): 設計がいま直す問題はありません（Ctrl+Enter で公開できます） —
+  after reload deferredRules: ["rule.ref.dup"]
+publish toast after manual clear: 行 30（Rev.1） を公開しました
+submissions: [ 'Rev1 rows=30' ] caseDecisions: [{"id":"C1","kind":"案件設定確定","status":"open","at":"2026-10-22T23:37:01.956Z"}]
+rev-info: 提出 Rev.1（山田 10/22, 追加30 / 型式0 / 数量0）
+PASS S1 Rev.1 で案件設定確定が caseDecisions に載る
+statuses: [ 'submitted' ] quotes: 90
+rows due: [ '2026-10-23', '2026-10-23', '2026-10-23' ]
+PM view7 count: 0 rows: 0 status: ナビ—PM 山田: 要決定 0役割: PM（山田）。既定のビュー 7 要決定 を開きました↓表へn次の問題?ヘルプ
+FAIL S1 PM の 7 要決定に「案件設定確定」が載る
+toolbar text: 提出 Rev.1（山田 10/22, 追加30 / 型式0 / 数量0）案件設定 未確定（PM）
+palette items: 案件案件設定PM 項目 / 購買項目。納期変更は影響試算つき案件案件設定を確定（PM）案件新しいBOM案件受信箱・案件を切り替えるCtrl+P
+settings panel visible: 1
+after y: 案件設定を確定しました pmConfirmed: true
+PASS S1 PM が案件設定を確定できる
+purchasing view9 count: 30
+request prompt: 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ）· S1 因幡電機· S2 立花エレテック· S3 ミスミ· S4 RSコンポーネンツ· S5 オムロン直販↑ / ↓ 選択Enter 確定Esc 取り消し
+request toast: 30 行 × 3 社に依頼（回答期限 2026-10-29） download: download
+after request statuses: [ 'quoting' ] requestRevs: {"S1":1,"S2":1,"S3":1} deadline: 2026-10-29
+PASS S1 「Enter で相見積先すべてに依頼」で 3 社に依頼される :: 30 行 × 3 社に依頼（回答期限 2026-10-29）
+PASS S1 依頼後に見積中になる :: quoting
+view6 cols: [
+  'ID',
+  '部品名',
+  '型式',
+  'メーカ',
+  '必要数',
+  '単位',
+  '状態',
+  '因幡電機 単価',
+  '因幡電機 納期',
+  '因幡電機 MOQ',
+  '因幡電機 在庫',
+  '因幡電機 有効期限',
+  '立花エレテック 単価',
+  '立花エレテック 納期',
+  '立花エレテック MOQ',
+  '立花エレテック 在庫',
+  '立花エレテック 有効期限',
+  'ミスミ 単価',
+  'ミスミ 納期',
+  'ミスミ MOQ',
+  'ミスミ 在庫',
+  'ミスミ 有効期限'
+]
+after Tab mode/cursor: ナビ q.leadDays@S1
+after typing 5 in nav: view5 current? true mode: ナビ
+FAIL S1 Tab 確定後に数字を打つと（Excel 流儀）セル入力にならずビュー 5 に切り替わる → 使い勝手
+R001 after input: ¥1,200 5日 1 在庫 11/30 見積中 1/3
+PASS S1 6 で Tab 連続入力できる
+Enter→数字: view4 current? true
+Enter 連続: ¥300 ¥400 cursor: 分類 センサ
+paste toast: 135 セルを貼り付けました（Ctrl+Z で一度に戻せます） ms: 598
+R004 S2: ¥500 3日 10 取寄  R030 S2: ¥760
+PASS S1 Excel 貼り付け（27 行 × 5 列）が入る
+paste all toast: 450 セルを貼り付けました（Ctrl+Z で一度に戻せます）
+statuses after all answered: { quoted: 30 } quoteCompleteRule: deadline
+PASS S1 回答が揃うと見積済になる :: {"quoted":30}
+R001 flags: {"requote":false} quotedAt 2026-10-22 ball cell: 見積済
+lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 0
+design view4 count after quoted: 0 lamps: 設計待ち 30購買待ち 0PM待ち 0エラー 0警告 0
+FAIL S1 見積済の行が選定者（設計）の 4 に出る :: 0
+palette 見積回答 items: [ '流れ概算見積を依頼購買。商社向け依頼 Excel を出す', '流れ見積回答を取り込む購買。貼り付けで突合' ]
+paletteMiss: [ '見積回答を取り込む → 先頭は「流れ概算見積を依頼購買。商社向け依頼 Excel を出す」、目的は 2 番目' ]
+import prompt: どの商社の回答ですか1 S1 因幡電機2 S2 立花エレテック3 S3 ミスミ1 〜 数字で選ぶEnter 選択中を確定Esc 取り消し
+import toast: 取り込み 3 行 / 突合不能 1（R099） / 型式不一致 1 / 代替提案の下書き 1
+R002 S3 quote: {"rowId":"R002","supplierId":"S3","unitPrice":250,"leadDays":0,"moq":10,"stock":"在庫","quoteQty":10,"validUntil":"2026-12-31","note":"","formalPrice":null,"formalLeadDays":null,"formalValidUntil":null,"formalDiffReason":"","source":"取込"} issues: [ 'I-001 代替提案 draft R002' ]
+PASS S1 取込で代替提案の下書き指摘が生成される
+PASS S1 取込: 突合不能 R099 / 型式不一致 R003 が報告される :: 取り込み 3 行 / 突合不能 1（R099） / 型式不一致 1 / 代替提案の下書き 1
+purchasing view4 after import: 1 rows: 1
+ERRORS: []

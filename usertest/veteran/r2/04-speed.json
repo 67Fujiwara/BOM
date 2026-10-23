@@ -1,0 +1,101 @@
+{
+  "j200": {
+    "ms": 4016,
+    "cursor": "R080 部品名",
+    "cursorVisible": true,
+    "errors": []
+  },
+  "k200": {
+    "ms": 3078,
+    "cursor": "分類 制御",
+    "cursorInView": false
+  },
+  "enter50": {
+    "ms": 13708,
+    "ok": 1,
+    "cursor": "R061 部品名",
+    "mode": "ナビ",
+    "errors": []
+  },
+  "overwrite50": {
+    "ms": 15040,
+    "ok": 0,
+    "sample": [
+      "MX0MX13MX26MX39",
+      "MX40",
+      "MX41"
+    ]
+  },
+  "burst30": {
+    "ms": 5192,
+    "ok": 0,
+    "sample": [
+      "N",
+      "N",
+      "N",
+      "N"
+    ],
+    "mode": "編集"
+  },
+  "views900": {
+    "ms": 93840,
+    "view": "view-9",
+    "cursor": "R004 部品名"
+  },
+  "n100_x50_space51": {
+    "nms": 1450,
+    "xms": 711,
+    "sms": 7719,
+    "detailOpen": 1,
+    "errors": []
+  },
+  "insert30_delete30": {
+    "insMs": 17835,
+    "delMs": 9005,
+    "rowsAfterIns": 110,
+    "rowsAfterDel": 80,
+    "names": [
+      "新0",
+      "新1",
+      "新2"
+    ],
+    "errors": []
+  },
+  "latency80": {
+    "j": {
+      "median": 34.6,
+      "p90": 54.6,
+      "max": 78.1
+    },
+    "arrowRight": {
+      "median": 30,
+      "p90": 35,
+      "max": 37.1
+    },
+    "space": {
+      "median": 94.7,
+      "p90": 248.6,
+      "max": 274.1
+    },
+    "view": {
+      "median": 168.3,
+      "p90": 288.9,
+      "max": 406.6
+    },
+    "n": {
+      "median": 34.2,
+      "p90": 37.3,
+      "max": 42.8
+    },
+    "paletteOpenClose": {
+      "median": 20.7,
+      "p90": 37.8,
+      "max": 38.8
+    },
+    "helpOpenClose": {
+      "median": 28.6,
+      "p90": 77.8,
+      "max": 160.4
+    }
+  }
+}

@@ -1,0 +1,19 @@
+ack R016 → 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+publish → 行 6（Rev.2・3） を公開しました
+R016 issue: [ 'inProgress' ]
+FAIL S8 対応中（指摘セル未変更）の行が設計の 4 に残る :: R009,R041,R022,R054,R005,R055,R056,R057,R060,R061
+design 4 count: 10 lamps: 設計待ち 69購買待ち 9PM待ち 2エラー 3警告 6期限超過 1
+qf R022: 1 購買の提案 LT-C32AC385A を適用して置換（I-002）
+new R081 draft {"reconfirm":true} quotes [["S1",null,"requote"],["S2",9800,"proposal"],["S3",null,"requote"]]
+publish2 → 行 1（Rev.4） を公開しました submitted
+purchasing Ctrl+. on proposal row: NO PANEL: 
+FAIL S8 提案適用の新行で購買が Ctrl+. から商社ごとに 据え置き/再見積/提案値で確定 を選べる :: NO PANEL: 
+Space→見積→Enter panel: 
+hint: x回答を受け入れて見送り
+R041 issue after x: [ 'wontfix:回答を受け入れて見送り: メーカは客先支給品のため空欄' ]
+palette first: 流れ公開（提出 / 指摘を発行）自分の未公開の行と下書き指摘Ctrl+Enter
+Enter → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました | dialog: 変更セット（1 行: R045）の理由。↑↓ で選び、変更番号（任意）を入れて Enter▶ 客先要求· 設計起因· 廃 | download: false | subs 4 → 4
+header cols view1: ID|ボール|回路記号|分類|部品名|型式|メーカ|必要数|単位|調達区分|代替可否|必要日|採用|スコア|単価|金額|納期|状態|期限|待ち|発注|入荷|入荷予定|ロット|備考|商社|単価|納期|MOQ|在庫|丸め/余剰|合計|価格|納期|実績|条件|備考
+import → 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 {"rowId":"R060","supplierId":"S1","unitPrice":null,"leadDays":null,"moq":null,"stock":"取寄","quoteQty":3,"validUntil":"2026-12-31","note":"","formalPrice":null,"formalLeadDays":null,"formalValidUntil":null,"formalDiffReason":"","source":"取込"}
+R060 S1 cells: ¥NaN NaN日
+ERRORS: [] paletteMiss: [ '見積回答を取り込む → 先頭は「流れ概算見積を依頼購買。商社向け依頼 Excel を出す」、目的は 2 番目' ]

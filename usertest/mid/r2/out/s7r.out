@@ -1,0 +1,33 @@
+publish drafts → 行 5（Rev.2） を公開しました
+request → 5 行 × 3 社に依頼（回答期限 2026-10-28）
+paste → 75 セルを貼り付けました（Ctrl+Z で一度に戻せます）
+R076..80: R076:quoted:{"ltbPending":true,"pmReason":"先行採用"} R077:quoted:{"ltbPending":true,"pmReason":"先行採用"} R078:quoted:{"ltbPending":true,"pmReason":"先行採用"} R079:quoted:{"ltbPending":true,"pmReason":"先行採用"} R080:quoted:{"ltbPending":true,"pmReason":"先行採用"}
+PASS S7 長納期の見積済で先行発注判断が自動で付く
+panel 先行発注判断: y 先行発注を許可Shift+Y 却下 → 元の状態
+LTB y → R076: 先行発注許可 quoted undefined {"requote":false,"ltbPending":false,"early":true,"pmPending":false}
+FAIL S7 先行発注判断の y で推奨商社で選定済＋先行 :: quoted adopted=undefined
+o on early → R076: 発注済にしました ordered undefined
+FAIL S7 発注済の行には採用商社がある :: ordered adopted=undefined
+ltb.request dlg: 先行発注を申請 R004（理由）Enter 確定Esc 取り消し
+申請 → {"ltbPending":true,"pmReason":"先行採用"}
+view3 cols: ID|ボール|部品名|型式|メーカ|発注数|単位|採用|単価|金額|納期|発注|入荷|入荷予定|ロット|状態|追加費用|費用種別 rows 6
+excel internal name= download sheets BOM(81),変更点(82),チェック結果(16) head ID|回路記号|図面番号|分類|部品名|型式|メーカ|必要数|単位|入数|調達区分|メーカ指定|代替可否|必要日|備考|発注数|採用|単価|金額|正式単価|納期(日)|状態|ボール
+   row R076 ["R076","表76","E-2026-041-04","表示","USBアイソレータ","USB-ISO","ラトック",1,"個",null,"相見積","推奨","同等品可","2026-11-11","",1,"","","","","","発注済","購買"]
+excel supplier name= download sheets BOM(81),変更点(82),チェック結果(16) head ID|回路記号|図面番号|分類|部品名|型式|メーカ|必要数|単位|入数|調達区分|メーカ指定|代替可否|必要日|備考
+   row R076 ["R076","表76","E-2026-041-04","表示","USBアイソレータ","USB-ISO","ラトック",1,"個",null,"相見積","推奨","同等品可","2026-11-11",""]
+PASS S7 商社向け Excel に価格・採用・スコアの列がない :: ID|回路記号|図面番号|分類|部品名|型式|メーカ|必要数|単位|入数|調達区分|メーカ指定|代替可否|必要日|備考
+excel archive name= download sheets BOM(81),変更点(82),チェック結果(16) head ID|回路記号|図面番号|分類|部品名|型式|メーカ|必要数|単位|入数|調達区分|メーカ指定|代替可否|必要日|備考|発注数|採用|単価|金額|正式単価|納期(日)|状態|ボール|因幡電機 単価|因幡電機 納期|因幡電機 MOQ|立花エレテック 単価|立花エレテック 納期|立花エレテック MOQ|ミスミ 単価|ミスミ 納期|ミスミ MOQ|追加費用|スコア
+   row R076 ["R076","表76","E-2026-041-04","表示","USBアイソレータ","USB-ISO","ラトック",1,"個",null,"相見積","推奨","同等品可","2026-11-11","",1,"","","","","","発注済","購買",1000,40,"",1100,45,"",900,50,"","",""]
+   archive rows 81
+copy → 80 行 × 25 列を書式つきでコピーしました（Excel・メールに貼れます） clipboard: [
+  'text/plain:ID\tボール\t回路記号\t分類\t部品名\t型式\tメーカ\t必要数\t単位\t調達区分\t代替可否\t必要日\t採用\tスコア\t単価\t金額\t納期\t状態\t期限\t待ち\t発注\t入荷\t入荷予定\tロット\t備考 / R001\t購買\t制1\t制御\tPLC CPUユニット\tFX5U-32MR/ES\t三菱電機\t1\t個\t相見積\t不可\t11/11\t因幡電機\t88\t¥146\t¥146\t19日\t選定済\t10/23\t2日\t\t\t\t',
+  `text/html:<table border="1" style="border-collapse:collapse;font-family:'BIZ UDPGothic',sans-serif;font-size:10pt"><tbody><tr><th style="background:#e7e7e4">ID</th><th style="background:#e7e7e4">ボール</`
+]
+json name bom-workspace-2026-10-23.json bytes 236584
+import json → JSON を読み込みました（案件 1 件）
+PASS S7 JSON 書き出し→読み込みで内容が往復する :: before=126860 after=126860
+role after import: { role: 'design', name: '山田' }
+after reload note: {"note":"リロード前"} role button: true view true
+Ctrl+Z after reload → 戻す操作がありません（この案件であなたが行った操作はまだありません）
+inbox: P-2026-041第3ライン 搬送制御盤納期 2026-11-21 / 提出 Rev.2 / 設計 68 購買 5 PM 7 / 更新 10/23 00:01 山田あなた宛 68＋新しいBOM を作る
+ERRORS: [] paletteMiss: [ 'JSON を書き出す → 先頭は「流れ公開（提出 / 指摘を発行）自分の未公開の行と下書き指摘」、目的は 3 番目' ]

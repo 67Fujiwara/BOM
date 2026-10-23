@@ -1,0 +1,580 @@
+[
+  {
+    "case": "r on R040",
+    "toast": "R040 を置換済にし、新しい行 R081 を作りました。型式を入れてください（Ctrl+Z で戻す）",
+    "mode": "編集",
+    "r040": "replaced",
+    "rows": 81,
+    "errors": []
+  },
+  {
+    "case": "r on replaced R040 again",
+    "toast": "R040 は置換済の行です（置換できません）",
+    "rows": 81,
+    "errors": []
+  },
+  {
+    "case": "edit replaced R040 (Enter / type / Delete / Ctrl+V / Shift+D / w / Shift+I / a / o)",
+    "res": {
+      "Enter": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 は置換済の行です（編集できません）"
+      },
+      "z": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 は置換済の行です（編集できません）"
+      },
+      "Delete": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 は置換済の行です（編集できません）"
+      },
+      "Shift+D": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）"
+      },
+      "w": {
+        "mode": "パネル",
+        "panel": "panel-weights",
+        "toast": "R040 を複製して R082 を作りました（回路記号は空。Ctrl+Z で戻す）"
+      },
+      "Shift+I": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 は取消・置換済の行です（指摘は付けられません）"
+      },
+      "a": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "取消・置換済の行は採用できません"
+      },
+      "Alt+a": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "取消・置換済の行は採用できません"
+      },
+      "o": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "権限なし（購買の列）"
+      },
+      "i": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "権限なし（購買の列）"
+      },
+      "x": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+      },
+      "Control+Period": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 に直し方の候補はありません"
+      },
+      "Shift+Enter": {
+        "mode": "編集",
+        "panel": null,
+        "toast": "R040 に直し方の候補はありません"
+      },
+      "Alt+ArrowUp": {
+        "mode": "ナビ",
+        "panel": null,
+        "toast": "R040 に直し方の候補はありません"
+      }
+    },
+    "r040": {
+      "ref": "セ40",
+      "drawing": "E-2026-041-02",
+      "category": "センサ",
+      "name": "ファイバユニット",
+      "model": "E32-D11 2M",
+      "maker": "オムロン",
+      "qtyNeeded": 2,
+      "unit": "個",
+      "packQty": null,
+      "procurement": "相見積",
+      "makerLock": "推奨",
+      "altPolicy": "同等品可",
+      "designated": "",
+      "needOffset": null,
+      "needDateFixed": null,
+      "tags": "",
+      "note": "",
+      "id": "R040",
+      "hidden": false,
+      "status": "replaced",
+      "flags": {},
+      "orderQty": null,
+      "extraCost": null,
+      "extraCostKind": "",
+      "ordered": false,
+      "received": false,
+      "ackRules": [],
+      "deferredRules": [],
+      "statusChangedAt": "2026-10-22T23:53:17.598Z",
+      "publishedRev": 1,
+      "quotedAt": "2026-10-21",
+      "replacedBy": "R081"
+    },
+    "rows": 83,
+    "order": [
+      "R040",
+      "R039",
+      "R083",
+      "R082",
+      "R081"
+    ],
+    "errors": []
+  },
+  {
+    "case": "Ctrl+Z after r (both rows back?)",
+    "toast": "元に戻す: 行を追加",
+    "r040": "replaced",
+    "rows": 82,
+    "errors": []
+  },
+  {
+    "case": "Shift+Delete published R030 → cancelled → edit / delete again / undo",
+    "confirmOpts": null,
+    "statusAfterDelete": "cancelled",
+    "secondDelete": {
+      "toast": "R030 はすでに取消済です",
+      "opts": null
+    },
+    "editMode": "ナビ",
+    "dupToast": "R030 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+    "rowsAfterDup": 81,
+    "afterUndo": "quoted",
+    "undoToast": "元に戻す: 行を削除",
+    "errors": []
+  },
+  {
+    "case": "design: Shift+Delete ordered R001 / received R002, edit model, r",
+    "R001 del": {
+      "toast": "",
+      "opts": null
+    },
+    "R001 edit": {
+      "mode": "編集",
+      "toast": "",
+      "after": "発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）"
+    },
+    "R001 r": {
+      "toast": "発注済の行は置換できません（発注後変更依頼を起票）",
+      "rows": 80
+    },
+    "R002 del": {
+      "toast": "",
+      "opts": null
+    },
+    "R002 edit": {
+      "mode": "編集",
+      "toast": "",
+      "after": "発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）"
+    },
+    "R002 r": {
+      "toast": "発注済の行は置換できません（発注後変更依頼を起票）",
+      "rows": 80
+    },
+    "errors": []
+  },
+  {
+    "case": "purchasing: o off on received / i off then o off / Delete on 発注 col",
+    "oOnReceived": "入荷済の行です。先に入荷（i）を外してください",
+    "iOff": {
+      "toast": "R002: 入荷済を外しました",
+      "status": "ordered"
+    },
+    "oOff": {
+      "toast": "R002: 発注済を外しました",
+      "status": "formalQuoted"
+    },
+    "iWithoutOrdered": {
+      "toast": "R002: 入荷済にしました",
+      "status": "received"
+    },
+    "oOnQuoted": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）",
+    "errors": []
+  },
+  {
+    "case": "no quote rows: a / Shift+A / Alt+A on draft R076, selected R001",
+    "R076 a": {
+      "panel": null,
+      "toast": "下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます"
+    },
+    "R076 Shift+A": {
+      "panel": null,
+      "toast": "下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます"
+    },
+    "R076 Alt+a": {
+      "panel": null,
+      "toast": "下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます"
+    },
+    "R001 a": {
+      "panel": null,
+      "toast": "R001 を 因幡電機 で採用（スコア 87.2 / 最安）"
+    },
+    "R001 Shift+A": {
+      "panel": "panel-adopt",
+      "toast": "R001 を 因幡電機 で採用（スコア 87.2 / 最安）"
+    },
+    "R001 Alt+a": {
+      "panel": null,
+      "toast": "R001 を 因幡電機 で採用"
+    },
+    "R013 a": {
+      "panel": null,
+      "toast": "正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）"
+    },
+    "R013 Shift+A": {
+      "panel": null,
+      "toast": "正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）"
+    },
+    "R013 Alt+a": {
+      "panel": null,
+      "toast": "正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）"
+    },
+    "errors": []
+  },
+  {
+    "case": "empty project: create, delete the only row, all keys all roles",
+    "rows": 0,
+    "statuses": [
+      "draft",
+      "draft",
+      "draft",
+      "draft",
+      "draft",
+      "draft",
+      "draft",
+      "draft",
+      "draft"
+    ],
+    "bad": [],
+    "badCount": 0,
+    "cmds": {
+      "purchasing:Excelで出力": {
+        "panel": "panel-export",
+        "toast": "役割: 購買（山田）。既定のビュー 9 購買作業 を開きました",
+        "e": [],
+        "after": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）"
+      },
+      "purchasing:表示中の行と列を書式つきでコピー": {
+        "panel": null,
+        "toast": "コピーする行がありません",
+        "e": []
+      },
+      "purchasing:未採用を推奨で一括採用": {
+        "panel": null,
+        "toast": "権限なし（選定者は設計）",
+        "e": []
+      },
+      "purchasing:商社を集約": {
+        "panel": null,
+        "toast": "権限なし（選定者は設計）",
+        "e": []
+      },
+      "purchasing:正式見積を依頼": {
+        "panel": null,
+        "toast": "依頼する行がありません（選定済・再発行対象の行なし）",
+        "e": []
+      },
+      "purchasing:選定記録を出力": {
+        "panel": null,
+        "toast": "選定記録（社内）を出力しました",
+        "e": []
+      },
+      "purchasing:概算見積を依頼": {
+        "panel": "panel-prompt",
+        "toast": "選定記録（社内）を出力しました",
+        "e": []
+      },
+      "purchasing:履歴": {
+        "panel": "panel-history",
+        "toast": "選定記録（社内）を出力しました",
+        "e": []
+      },
+      "purchasing:JSON を書き出す": {
+        "panel": null,
+        "toast": "JSON を書き出しました（bom-workspace-2026-10-22.json）",
+        "e": []
+      },
+      "purchasing:案件設定を確定": {
+        "panel": null,
+        "toast": "権限なし（案件設定の確定は PM）",
+        "e": []
+      },
+      "design:Excelで出力": {
+        "panel": "panel-export",
+        "toast": "役割: 設計（山田）。既定のビュー 4 要確認 を開きました",
+        "e": [],
+        "after": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）"
+      },
+      "design:表示中の行と列を書式つきでコピー": {
+        "panel": null,
+        "toast": "9 行 × 12 列を書式つきでコピーしました（Excel・メールに貼れます）",
+        "e": []
+      },
+      "design:未採用を推奨で一括採用": {
+        "panel": null,
+        "toast": "採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0",
+        "e": []
+      },
+      "design:商社を集約": {
+        "panel": null,
+        "toast": "集約できる行がありません（見積済・選定済の行なし）",
+        "e": []
+      },
+      "design:正式見積を依頼": {
+        "panel": null,
+        "toast": "権限なし（正式見積の依頼は購買）",
+        "e": []
+      },
+      "design:選定記録を出力": {
+        "panel": null,
+        "toast": "選定記録（社内）を出力しました",
+        "e": []
+      },
+      "design:概算見積を依頼": {
+        "panel": null,
+        "toast": "権限なし（概算見積の依頼は購買）",
+        "e": []
+      },
+      "design:履歴": {
+        "panel": "panel-history",
+        "toast": "権限なし（概算見積の依頼は購買）",
+        "e": []
+      },
+      "design:JSON を書き出す": {
+        "panel": null,
+        "toast": "JSON を書き出しました（bom-workspace-2026-10-22.json）",
+        "e": []
+      },
+      "design:案件設定を確定": {
+        "panel": null,
+        "toast": "権限なし（案件設定の確定は PM）",
+        "e": []
+      }
+    },
+    "errors": []
+  },
+  {
+    "case": "design edits PM-pending R013, publishes; PM then decides",
+    "editMode": "編集",
+    "t1": "",
+    "r1": {
+      "status": "formalQuoted",
+      "working": {
+        "model": "NEW-013"
+      },
+      "flags": {
+        "formalDiff": true,
+        "leadNG": false
+      }
+    },
+    "publishOpts": "▶ 客先要求· 設計起因· 廃番・入手難· コスト· 納期· その他",
+    "t2": "行 6（Rev.2・3） を公開しました",
+    "r2": {
+      "status": "formalQuoted",
+      "model": "NEW-013",
+      "flags": {
+        "formalDiff": true,
+        "leadNG": false,
+        "requote": true,
+        "reissue": true
+      }
+    },
+    "inView7": 1,
+    "pmPanel": "panel-prompt",
+    "pmToast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました",
+    "r3": {
+      "status": "formalQuoted",
+      "flags": {
+        "formalDiff": false,
+        "leadNG": false,
+        "requote": true,
+        "reissue": true
+      },
+      "model": "NEW-013"
+    },
+    "decisions": [
+      "受入:R013"
+    ],
+    "quotes13": [
+      "S1(stale):10371/11927",
+      "S2(stale):8657/null",
+      "S3(stale):10952/null",
+      "S1:null/null",
+      "S2:null/null",
+      "S3:null/null"
+    ],
+    "errors": []
+  },
+  {
+    "case": "Alt+A early adopt on quoting row, design changes model, PM approves",
+    "statusBefore": "quoting",
+    "altAPanel": null,
+    "altAOpts": null,
+    "r1": {
+      "status": "quoting",
+      "adopted": "S1",
+      "flags": {
+        "pmPending": true,
+        "pmReason": "先行採用",
+        "contested": false
+      }
+    },
+    "r2": {
+      "status": "quoting",
+      "model": "M76-CHANGED",
+      "flags": {
+        "pmPending": true,
+        "pmReason": "先行採用",
+        "contested": false,
+        "requote": true
+      }
+    },
+    "in7": 1,
+    "pmPanel": "panel-prompt",
+    "pmToast": "R076: 先行発注許可",
+    "r3": {
+      "status": "quoting",
+      "flags": {
+        "pmPending": false,
+        "contested": false,
+        "requote": true,
+        "early": true,
+        "ltbPending": false
+      }
+    },
+    "quotes": [
+      "S1(stale USB-ISOM76):100",
+      "S2(stale USB-ISOM76):null",
+      "S3(stale USB-ISOM76):null",
+      "S1:null",
+      "S2:null",
+      "S3:null"
+    ],
+    "errors": []
+  },
+  {
+    "case": "Alt+Up on first, Alt+Down on last, Alt+Up under sort/filter",
+    "firstUp": "",
+    "lastDown": "",
+    "underSort": {
+      "toast": "型式 で昇順に並べました（もう一度で解除）",
+      "order": [
+        "R028",
+        "R030",
+        "R029",
+        "R031",
+        "R032"
+      ]
+    },
+    "underFilter": {
+      "cursor": "R005 型式",
+      "toast": "並び替えを解除しました"
+    },
+    "crossCategory": {
+      "cursor": "R005 型式",
+      "toast": "絞り込みを解除しました",
+      "cat": "制御",
+      "order": [
+        "R005:制御",
+        "R001:制御",
+        "R002:制御",
+        "R003:制御",
+        "R004:制御",
+        "R006:制御"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "case": "Ctrl+Enter twice fast / publish with nothing / x without target / Shift+X design / < > / Ctrl+. no problem / y design",
+    "pub2": {
+      "panel": null,
+      "toast": "行 5（Rev.2） を公開しました"
+    },
+    "x": {
+      "panel": null,
+      "toast": "確認済みにしました: 型式の前後に空白があります"
+    },
+    "Shift+X": {
+      "panel": null,
+      "toast": "差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます"
+    },
+    "<": {
+      "panel": null,
+      "toast": "Rev.2 の差分"
+    },
+    ">": {
+      "panel": null,
+      "toast": "未確認の差分すべて"
+    },
+    "Control+Period": {
+      "panel": null,
+      "toast": "R005 に直し方の候補はありません"
+    },
+    "y": {
+      "panel": null,
+      "toast": "権限なし（承認は PM）"
+    },
+    "Shift+Y": {
+      "panel": null,
+      "toast": "権限なし（却下は PM）"
+    },
+    "Shift+R": {
+      "panel": null,
+      "toast": "この行に指摘はありません"
+    },
+    "Shift+ArrowRight": {
+      "panel": null,
+      "toast": "この行に「あとで」にする問題はありません"
+    },
+    "Control+Shift+F": {
+      "panel": "panel-quickfix",
+      "toast": "この行に「あとで」にする問題はありません"
+    },
+    "errors": []
+  },
+  {
+    "case": "purchasing raises 2 issues, publishes, Ctrl+Z",
+    "opts": null,
+    "issues1": [
+      "I-006:open",
+      "I-007:open"
+    ],
+    "undoToast": "元に戻す: 公開",
+    "issues2": [
+      "I-006:draft",
+      "I-007:draft"
+    ],
+    "errors": []
+  },
+  {
+    "case": "members same name → design undo includes PM decision?",
+    "pmName": "鈴木",
+    "designName": "山田",
+    "decisionsAfterPM": 1,
+    "decisionsAfterDesignUndo": 1,
+    "toast": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "errors": []
+  },
+  {
+    "case": "wizard project with empty members: role names",
+    "names": {
+      "purchasing": "山田",
+      "pm": "山田",
+      "design": "山田"
+    },
+    "pmUndoToast": "元に戻す: セル編集",
+    "r001": "",
+    "errors": []
+  }
+]

@@ -98,3 +98,13 @@ export async function palette(page, q) {
 export async function paletteTop(page, n = 5) {
   return page.getByTestId('palette-list').locator('.item').evaluateAll((els, n) => els.slice(0, n).map((e) => e.textContent.replace(/\s+/g, ' ').trim()), n)
 }
+/** パレットで label を含む項目を ↓ で選んで Enter（新人が目で探して選ぶ動き） */
+export async function runPalette(page, q, label = q) {
+  await palette(page, q)
+  const items = await page.getByTestId('palette-list').locator('.item').allTextContents()
+  const i = items.findIndex((t) => t.includes(label))
+  if (i < 0) { await page.keyboard.press('Escape'); return false }
+  for (let k = 0; k < i; k++) await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('Enter')
+  return true
+}

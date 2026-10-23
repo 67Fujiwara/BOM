@@ -1,0 +1,33 @@
+publish fixed → 行 6（Rev.2・3） を公開しました "2026-11-12"
+bulk → 採用 70 / 拮抗 24（要見直し）/ 承認要 0 / スキップ 0
+formal → 73 行 × 3 社に正式見積を依頼
+ordId R001
+ordered R001 ordered
+impact: 納期NG になる行: 40（ordered 1 / formalRequested 38 / formalQuoted 1）推奨が変わる行: 18（R001, R005, R010, R023, R025, R026, R027, R029）行必要日が固定の行: 1（R070）正式依頼中で必要納期が変わる行（再発行対象）: 72
+FAIL S6 影響試算に 総額差・特急費概算 が出る :: 納期NG になる行: 40（ordered 1 / formalRequested 38 / formalQuoted 1）推奨が変わる行: 18（R001, R005, R010, R023, R025, R026, R027, R029）行必要日が固定の行: 1（R070）正式依頼中で必要納期が変わる行（再発行対象）: 72
+reason dlg: 変更理由（必須）▶ 固定必要日の行: 同じ日数だけ前倒し· 固定必要日の行: 据え置き↑ / ↓ 選択Enter 確定Esc 取り消し
+2nd dlg: 推奨が変わる 18 行を 7 に再選定提案として載せますか1 載せる2 載せない1 〜 数字で選ぶEnter 選択中を確定Esc 取り消し
+settings → 案件設定を保存しました due 2026-11-06 R070 fixed: 2026-10-29
+leadNG before: 4 after: 39 reissue: R002,R003,R004,R005,R006,R007,R008,R009,R010,R011,R012,R013,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R032,R033,R035,R036,R037,R038,R039,R040,R041,R042,R043,R044,R045,R046,R047,R048,R049,R050,R051,R052,R053,R054,R055,R056,R057,R058,R059,R060,R061,R062,R063,R064,R065,R066,R067,R068,R069,R070,R071,R072,R073,R074,R075
+PASS S6 正式依頼中で必要日が変わった行は再発行対象
+PM 7 count: 39
+ordId flags: {"leadNG":false,"reissue":false,"formalDiff":false} undefined
+promised → {"leadNG":true,"reissue":false,"formalDiff":false}
+panel 納期NG(発注済): Shift+Y 受入（遅延許容）b 次点へ（自動）p 購買が再選定（委譲）d 設計が代替品検討e 特急・分納（上限入力）
+FAIL S6 発注済の納期NG では b・p が出ない :: Shift+Y 受入（遅延許容）b 次点へ（自動）p 購買が再選定（委譲）d 設計が代替品検討e 特急・分納（上限入力）
+NG rows not ordered: R003,R004,R005,R007,R010,R011,R013,R016,R021,R023
+panel 納期NG: Shift+Y 受入（遅延許容）b 次点へ（自動）p 購買が再選定（委譲）d 設計が代替品検討e 特急・分納（上限入力）
+e dlg: 決定: 特急・分納（理由・任意）上限金額Enter 確定Esc 取り消し
+e → R003: 特急・分納 {"leadNG":false,"reissue":true,"countermeasure":"分納・特急"} ball - decision undefined
+p → R004: 委譲 {"pmPending":false,"contested":false,"leadNG":false,"reissue":true,"delegated":true,"countermeasure":"商社変更"} formalRequested
+d → R005: 設計へ代替依頼 {"pmPending":false,"contested":true,"leadNG":false,"reissue":true,"formalDiff":false,"countermeasure":"代替品検討"} issues [ '納期NG:open:pm' ]
+b → R007: 次点商社へ S1 → S2 {"pmPending":false,"contested":true,"leadNG":false,"reissue":true,"formalDiff":false,"countermeasure":"商社変更"} selected
+b next quote lead 11 受注生産 needDate cell -
+purchasing Shift+A on 委譲 row: 
+委譲 Shift+A →  formalRequested 納期 {"pmPending":false,"contested":false,"leadNG":false,"reissue":true,"delegated":true,"countermeasure":"商社変更"}
+PASS S6 委譲された購買の再選定は PM 承認なし
+design panel (納期NG指摘): 1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）4 7 代替なし（対策不成立として PM へ）
+代替なし → {"pmPending":true,"pmReason":"差分超過","contested":true,"leadNG":false,"reissue":true,"formalDiff":true,"countermeasure":"代替品検討"} formalRequested
+PM panel 対策不成立(納期): y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）
+FAIL S6 納期NG の代替なし → 対策不成立（受入 / b / g / e） :: y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）
+ERRORS: [] paletteMiss: [ '正式見積を依頼 → 先頭は「流れ概算見積を依頼購買。商社向け依頼 Excel を出す」、目的は 2 番目' ]

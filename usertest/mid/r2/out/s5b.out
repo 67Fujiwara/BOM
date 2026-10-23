@@ -1,0 +1,24 @@
+changeNeedsPmApproval: true
+dlg 変更セット（1 行: R040）の理由。↑↓ で選び、変更番号（任意）を入れて Enter▶ 客先要求· 設計起因· 廃番・入手難· コスト· 納期· その他↑
+publish → 行 7（Rev.2・3） を公開しました
+subs: [
+  'Rev2 R009/R076/R077/R078/R079/R080 cs=undefined',
+  'Rev3 R040 cs={"reason":"客先要求","changeNo":"","approved":false}'
+]
+R040: {"requote":true,"pmPending":true,"pmReason":"変更セット"} E32-D11 5M R009 issue: [ 'fixed' ]
+purchasing R040 model: E32-D11 5M status: 見積済 · 再見積要·PM承認待ち
+FAIL S5b 承認待ちの変更は購買には「承認待ちの変更あり」だけ見え、新しい型式は見えない :: E32-D11 5M
+purchasing 5: R040
+PM 7: R003,R013,R040
+panel 変更セット: y 承認 → 公開確定Shift+Y 却下 → 公開を取り消し作業中に戻す
+却下 → R040: 却下 R040 model E32-D11 2M working {"model":"E32-D11 5M"} flags {"requote":false,"pmPending":false} publishedRev 2 sub {"reason":"客先要求","changeNo":"","approved":false,"rejected":true} revoked true
+R040 quotes after 却下: [["S1",53548,"stale"],["S2",56041,"stale"],["S3",51619,"stale"],["S1",null,"live"],["S2",null,"live"],["S3",null,"live"]] adopted undefined status quoted
+FAIL S5b 却下後に元の見積が有効に戻る
+PASS S5b 却下で公開を取り消し、作業中に戻る（型式は旧値、作業中に新値）
+PASS S5b 却下で再見積要フラグが残らない
+design Ctrl+Z → 元に戻す: セル編集 R050 note: "" S1 price: 999
+purchasing Ctrl+Z → 元に戻す: セル編集 R050 note: "" S1 price: 409
+purchasing Ctrl+Y → やり直す: セル編集 999
+purchasing Ctrl+Shift+Z → やり直す操作がありません
+design Ctrl+Z after other changed row → 戻せません: R060 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください note "" oq 7
+ERRORS: [] paletteMiss: []

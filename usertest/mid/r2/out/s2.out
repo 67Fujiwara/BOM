@@ -1,0 +1,135 @@
+status: ナビR004 部品名購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたShift+I指摘Space開く?ヘルプ
+issue-kinds: k 型式あいまい対応 設計 / 期限 1 営業日m メーカ未記入対応 設計 / 期限 1 営業日d 廃番対応 設計 / 期限 3 営業日a 代替提案対応 設計 / 期限 3 営業日l 最小ロット対応 購買 / 期限 2 営業日r 数量見直し依頼対応 設計 / 期限 2 営業日q 質問対応 設計 / 期限 1 営業日h 発注後変更依頼対応 購買 / 期限 1 営業日o その他対応 設計 / 期限 2 営業日
+R030 k → I-006 型式あいまい を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R031 m → I-007 メーカ未記入 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R032 after Tab in proposal: active = proposal-maker
+PASS S2 提案欄で Tab で次の欄（メーカ）へ移れる :: proposal-maker
+R032 d → I-008 廃番 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R035 after Tab in proposal: active = proposal-maker
+PASS S2 提案欄で Tab で次の欄（メーカ）へ移れる :: proposal-maker
+R035 a → I-009 代替提案 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R036 l → I-010 最小ロット を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R037 r → I-011 数量見直し依頼 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R038 q → I-012 質問 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R039 o → I-013 その他 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R040 h → I-014 発注後変更依頼 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R042 k → I-015 型式あいまい を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R043 m → I-016 メーカ未記入 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+R044 q → I-017 質問 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行
+after J: text= "J" head= 指摘を起票 R045 エンコーダ
+FAIL S2 起票パネルで J を押すと次の行（R046）に移る :: head=指摘を起票 R045 エンコーダ text=J
+drafts: [
+  'I-006:型式あいまい:R030:model:型式のサフィックス不明',
+  'I-007:メーカ未記入:R031:maker:メーカ未記入',
+  'I-008:廃番:R032:model:廃番。後継 M22N-B',
+  'I-009:代替提案:R035:model:E3Z-D62 → E3',
+  'I-010:最小ロット:R036:qtyNeeded:必要数 2 → 発注数 ',
+  'I-011:数量見直し依頼:R037:qtyNeeded:必要数を減らせますか',
+  'I-012:質問:R038:model:取付方向の確認',
+  'I-013:その他:R039:model:その他の確認',
+  'I-014:発注後変更依頼:R040:model:発注後変更依頼テスト',
+  'I-015:型式あいまい:R042:model:ケーブル長',
+  'I-016:メーカ未記入:R043:maker:メーカ確認',
+  'I-017:質問:R044:name:色の指定'
+]
+最小ロット template: 必要数 2 → 発注数 2（余剰 ¥0）
+PASS S2 最小ロットの本文テンプレ「必要数 X → 丸め数量 Y（余剰 ¥Z）」 :: 必要数 2 → 発注数 2（余剰 ¥0）
+status bar: ナビR045 型式購買 佐藤: 未発行 12 件I-017 質問 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行Shift+I指摘Space開くCtrl+Enter指摘 12 件を発行?ヘルプ
+PASS S2 ステータスバー 未発行 12 件 :: ナビR045 型式購買 佐藤: 未発行 12 件I-017 質問 を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行Shift+I指摘Space開くCtrl+Enter指摘 12 件を発行?ヘルプ
+publish toast: 指摘 12 件 を公開しました
+PASS S2 Ctrl+Enter で指摘 12 件を発行 :: 指摘 12 件 を公開しました
+issues open: 17 dueAt sample: [ 'I-015:2026-10-23:1', 'I-016:2026-10-23:1', 'I-017:2026-10-23:1' ]
+ball of R039(その他 by 購買): 設計  R038(質問): 設計  R036(最小ロット): 購買  R040(発注後変更依頼): 購買
+PASS S2 「その他」（購買→設計）のボールは設計 :: 設計
+design view4 count: 23 lamps: 設計待ち 72購買待ち 6PM待ち 2エラー 3警告 7期限超過 1 status: ナビR037 型式数量見直し依頼 1/1設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたEnter編集a推奨採用Space指摘を見るSpace開くCtrl+Enter公開 5 行?ヘルプ
+view4 rows: R037,R016,R030,R042,R009,R031,R041,R043,R022,R032,R035,R036,R054,R038,R044,R040,R039,R005,R055,R056,R057,R060,R061
+PASS S2 設計の 4 に R030
+PASS S2 設計の 4 に R031
+PASS S2 設計の 4 に R032
+PASS S2 設計の 4 に R035
+PASS S2 設計の 4 に R037
+PASS S2 設計の 4 に R038
+PASS S2 設計の 4 に R039
+PASS S2 設計の 4 に R042
+PASS S2 設計の 4 に R043
+PASS S2 設計の 4 に R044
+n1: R016 型式 型式型式あいまい 1/3
+n2: R030 型式
+R030 status cell: 見積済 · 指摘·作業中● status bar: ナビR031 型式メーカ未記入 2/4設計 山田: 未公開 6 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたEnter編集a推奨採用Space指摘を見るSpace開くCtrl+Enter公開 6 行?ヘルプ
+quickfix R032: 1 購買の提案 M22N-BC-TRA-RD を適用して置換（I-008）
+after apply proposal toast:  cursor: R032 型式
+new row: R081 draft M22N-BC-TRA-RD {"reconfirm":true} old: replaced
+new row quotes: [
+  'S1:81668:undefined:undefined:stale',
+  'S2:81749:undefined:undefined:stale',
+  'S3:73527:undefined:undefined:stale',
+  'S1:1500:提案 I-008:proposal:',
+  'S2:null:undefined:requote:',
+  'S3:null:undefined:requote:'
+]
+PASS S2 提案適用で提案商社の列に提案値（¥1,500, 出典 提案 I-xxx）
+detail focus status: ナビR038 型式質問 1/2設計 山田: 未公開 10 行 / 指摘 0Enter編集a推奨採用Space指摘を見るSpace閉じるCtrl+Enter公開 10 行?ヘルプ
+issue action panel: 1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）
+after 2: 回答 I-012Enter 確定Esc 取り消し
+answer toast:  R038 still in view4? 1
+issues panel: I-012 質問 回答済 [model] 取付方向の確認購買 佐藤 10/22 23:39 Rev.1 期限 10/23   ／ 回答(説明): 取付方向は図面 E-01 のとおり縦 
+R038 issue: [ 'answered:取付方向は図面 E-01 のとおり縦' ]
+PASS S2 直さず回答で回答済になる
+R038 ball: 購買
+R037 action panel: 1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）4 7 数量変更不可（対策不成立として PM へ）
+after pressing 7: 指摘のアクション I-011 数量見直し依頼1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）4 7 数量変更不可（対策不成立として 
+FAIL S2 指摘パネルで「7 数量変更不可」をキー 7 で選べる :: 指摘のアクション I-011 数量見直し依頼1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）
+status before publish: ナビR037 型式数量見直し依頼 1/1設計 山田: 未公開 10 行 / 指摘 01〜4 か ↑↓ と Enter で選んでくださいEnter編集a推奨採用Space指摘を見るSpace閉じるCtrl+Enter公開 10 行?ヘルプ
+publish dialog: 変更セット（1 行: R043）の理由。↑↓ で選び、変更番号（任意）を入れて Enter▶ 客先要求· 設計起因· 廃番・入手難· コスト· 納期· その他↑ / ↓ 選択Enter 確定Esc 取り消し
+dialog2:  toast:  errors: []
+publish toast: 
+status: ナビR037 型式数量見直し依頼 1/1設計 山田: 未公開 0 行 / 指摘 0Enter編集a推奨採用Space指摘を見るSpace閉じる?ヘルプ
+submissions: [
+  'Rev1 rows=R001/R002/R003/R004/R005/R006/R007/R008/R009/R010/R011/R012/R013/R014/R015/R016/R017/R018/R019/R020/R021/R022/R023/R024/R025/R026/R027/R028/R029/R030/R031/R032/R033/R034/R035/R036/R037/R038/R039/R040/R041/R042/R043/R044/R045/R046/R047/R048/R049/R050/R051/R052/R053/R054/R055/R056/R057/R058/R059/R060/R061/R062/R063/R064/R065/R066/R067/R068/R069/R070/R071/R072/R073/R074/R075 cs=undefined causes={}',
+  'Rev2 rows=R030/R031/R081/R042/R076/R077/R078/R079/R080 cs=undefined causes={"R030":"I-006","R031":"I-007","R081":"置換 R032","R042":"I-015","R076":"追加","R077":"追加","R078":"追加","R079":"追加","R080":"追加"}',
+  'Rev3 rows=R043 cs={"reason":"設計起因","changeNo":"","approved":true} causes={"R043":"I-016"}'
+]
+issues: [
+  'I-006 型式あいまい R030 fixed model: M22N-BC-TWA-WC → M22N-BC-TWA-WC-2',
+  'I-007 メーカ未記入 R031 fixed maker: オムロン → IDEC',
+  'I-008 廃番 R032 fixed 提案を適用 → R081',
+  'I-009 代替提案 R035 open ',
+  'I-010 最小ロット R036 open ',
+  'I-011 数量見直し依頼 R037 open ',
+  'I-012 質問 R038 answered ',
+  'I-013 その他 R039 open ',
+  'I-014 発注後変更依頼 R040 open ',
+  'I-015 型式あいまい R042 fixed model: E52-CA1D M6 2M → e52-ca1d m6 2m',
+  'I-016 メーカ未記入 R043 fixed maker: オムロン → IDEC, model: D4N-1120 → XS5W-D421-D81-F-NEW',
+  'I-017 質問 R044 open '
+]
+R030 status: 見積済 · 指摘·要再確認 flags: {"reconfirm":true}
+R031 status: 見積済 · 指摘·要再確認 flags: {"reconfirm":true}
+R042 status: 見積済 · 指摘·表記修正 flags: {"notation":true}
+R043 status: 見積済 · 指摘·要再確認 flags: {"reconfirm":true}
+R081 status: 提出済 · 要再確認 flags: {"reconfirm":true}
+PASS S2 R042 表記だけの修正 → 表記修正フラグ（見積は有効のまま）
+PASS S2 R030 型式修正（指摘対応）→ 要再確認
+PASS S2 R043 指摘セル＋他セル変更は変更セット側 Rev、指摘は対応済
+view5 count: 1 cols: ID|ボール|回路記号|部品名|型式|メーカ|必要数|単位|状態 rev-filter: 未確認の差分すべて <>
+view5 rows: R043
+FAIL S2 購買の 5 に起因列がある
+FAIL S2 5 の既定で Rev 横断の未確認差分すべて（R030 と R043 の両方）が出る :: R043
+after <: Rev.3 <> R043
+R030 status hint: x指摘を確認済に
+x1 → 未確認の差分すべて I-006 型式あいまい 確認済 [model] 型式のサフィックス不明購買 佐藤 10/22 23:39 Rev.1 期限 10/23  ／ model: M22N-BC-TWA-WC → M22N-BC-TWA-WC-2  
+PASS S2 x で対応済 → 確認済
+x2 → R030 の差分を確認済にしました flags: {"reconfirm":true}
+bounce dialog: 差戻し I-007（理由必須。2 回目で PM の要決定に上がります）Enter 確定Esc 取り消し
+bounce1 toast: R030 の差分を確認済にしました R031 ball: 設計 issue: [ 'open:1' ]
+bounce2 toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました R031 ball: PM status: 見積済 · 指摘·要再確認
+PASS S2 2 回目の差戻しで PM のボール
+PM view7: R003,R013,R031
+PASS S2 PM の 7 に差戻し 2 回目の行が出る
+PM decision panel (差戻し2回目): y 購買の指摘を支持 → 設計へShift+Y 設計の回答を支持 → 確認済
+after Shift+Y dialog: 決定: 回答を支持（理由・必須）Enter 確定Esc 取り消し
+decision toast: R031: 回答を支持 issue: [ 'confirmed' ] ball: -
+purchasing own-issue panel: 1 1 返信2 5 この指摘からルールを作る3 6 見送り（理由）
+after 6: 指摘のアクション I-013 その他1 1 返信2 5 この指摘からルールを作る3 6 見送り（理由）Enter 実行↑
+PASS S2 「6 見送り」をキー 6 で選べる :: 指摘のアクション I-013 その他1 1 返信2 5 この指摘からルールを作る3 6 見送り（理由）Enter 実行↑
+ERRORS: []

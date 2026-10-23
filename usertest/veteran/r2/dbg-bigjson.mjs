@@ -1,0 +1,17 @@
+import fs from 'node:fs'
+import { launch, fresh, sleep, paletteExact, toastNow, ws } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const text = fs.readFileSync('usertest/veteran/r2/dl/bom-workspace-2026-10-23.json', 'utf8')
+await fresh(page)
+await paletteExact(page, 'JSON を読み込む', 'JSON を読み込む')
+console.log('panel', await page.evaluate(() => document.querySelector('[data-testid^="panel-"]')?.dataset.testid), 'visible', await page.getByTestId('import-text').isVisible(), 'enabled', await page.getByTestId('import-text').isEnabled(), 'editable', await page.getByTestId('import-text').isEditable())
+const t0 = Date.now()
+await page.getByTestId('import-text').fill(text.slice(0, 1000), { timeout: 5000 }).catch((e) => console.log('small fill fail', e.message.slice(0, 80)))
+console.log('small fill ms', Date.now() - t0)
+const t1 = Date.now()
+await page.evaluate((t) => { const el = document.querySelector('[data-testid="import-text"]'); const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set; set.call(el, t); el.dispatchEvent(new Event('input', { bubbles: true })) }, text)
+console.log('native set ms', Date.now() - t1)
+await page.getByTestId('import-text').focus()
+await page.keyboard.press('Control+Enter'); await sleep(500)
+console.log(await toastNow(page), errors.slice(-3))
+await browser.close()

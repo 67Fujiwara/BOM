@@ -1,0 +1,69 @@
+[
+  {
+    "case": "different rows",
+    "ls30": "A-30",
+    "ls31": "B-31",
+    "A_ui31": "B-31",
+    "B_ui30": "A-30"
+  },
+  {
+    "case": "same row diff cols",
+    "model": "A-MODEL",
+    "note": "B-NOTE",
+    "A_ui": "B-NOTE",
+    "B_ui": "A-MODEL"
+  },
+  {
+    "case": "same cell",
+    "ls": "B-33",
+    "A_ui": "B-33",
+    "B_ui": "B-33"
+  },
+  {
+    "case": "A editing while B commits same row",
+    "aModeWhileB": "編集",
+    "name": "A-typing",
+    "model": "B-34MODEL"
+  },
+  {
+    "case": "A undo after B touched same row",
+    "toast": "戻せません: R035 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください",
+    "name": "A-35",
+    "note": "B-35NOTE"
+  },
+  {
+    "case": "alternate 20",
+    "ok": 20
+  },
+  {
+    "case": "role per tab",
+    "A": {
+      "role": "purchasing",
+      "name": "佐藤"
+    },
+    "A_header": "設計",
+    "B_header": "購買"
+  },
+  {
+    "case": "B quote then A model change",
+    "model": "CHANGED-36",
+    "q": [
+      "777"
+    ]
+  },
+  {
+    "case": "A imports old JSON",
+    "r037": "近接センサ M12",
+    "B_ui": "近接センサ M12",
+    "toast": "JSON を読み込みました（案件 1 件）"
+  },
+  {
+    "case": "both publish",
+    "toastB": "",
+    "subs": [
+      "Rev1:75行"
+    ],
+    "r38": 1,
+    "r39": 1
+  }
+]

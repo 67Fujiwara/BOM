@@ -1,0 +1,261 @@
+[
+  {
+    "case": "nav composing",
+    "changed": [],
+    "r020": "quoted"
+  },
+  {
+    "case": "nav 229",
+    "changed": [],
+    "r020": "quoted"
+  },
+  {
+    "case": "nav process",
+    "changed": [],
+    "r020": "quoted"
+  },
+  {
+    "case": "edit: IME confirm Enter does not commit",
+    "modeAfterImeEnter": "編集",
+    "editorValue": "リレー",
+    "saved": "リレー",
+    "cursorAfter": "R021 部品名"
+  },
+  {
+    "case": "edit: Tab/Esc/↓/1 while composing",
+    "mode": "編集",
+    "panel": null,
+    "cursor": "R020 部品名",
+    "view": "view-1"
+  },
+  {
+    "case": "panel palette",
+    "before": {
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEnter": {
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEsc": {
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel goto",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel wizard",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-wizard",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-wizard",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-wizard",
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel issueText",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-issue",
+      "cursor": "R030 部品名",
+      "view": "view-9"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-issue",
+      "cursor": "R030 部品名",
+      "view": "view-9"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-issue",
+      "cursor": "R030 部品名",
+      "view": "view-9"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel settings",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-settings",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-settings",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-settings",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "inputValue": "第3ライン 搬送制御盤確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel filter",
+    "before": {
+      "mode": "ナビ",
+      "panel": null,
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEnter": {
+      "mode": "ナビ",
+      "panel": null,
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "afterImeEsc": {
+      "mode": "ナビ",
+      "panel": null,
+      "cursor": "—",
+      "view": "view-1"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": "確認"
+  },
+  {
+    "case": "panel reply",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-replyIssue",
+      "cursor": "R016 部品名",
+      "view": "view-1"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-replyIssue",
+      "cursor": "R016 部品名",
+      "view": "view-1"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-replyIssue",
+      "cursor": "R016 部品名",
+      "view": "view-1"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "panel decisionReason",
+    "before": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "afterImeEnter": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "afterImeEsc": {
+      "mode": "パネル",
+      "panel": "panel-prompt",
+      "cursor": "R013 部品名",
+      "view": "view-7"
+    },
+    "inputValue": "確認",
+    "issuesChanged": false,
+    "decisionsChanged": false,
+    "filter": ""
+  },
+  {
+    "case": "full-width keys in nav",
+    "fw": {
+      "ｊ": {
+        "before": "R020 部品名/view-1",
+        "after": "{\"mode\":\"ナビ\",\"panel\":null,\"cursor\":\"R021 部品名\",\"view\":\"view-1\"}",
+        "toast": ""
+      },
+      "４": {
+        "before": "R021 部品名/view-1",
+        "after": "{\"mode\":\"編集\",\"panel\":null,\"cursor\":\"R021 部品名\",\"view\":\"view-1\"}",
+        "toast": ""
+      },
+      "？": {
+        "before": "R021 部品名/view-1",
+        "after": "{\"mode\":\"編集\",\"panel\":null,\"cursor\":\"R021 部品名\",\"view\":\"view-1\"}",
+        "toast": ""
+      },
+      "／": {
+        "before": "R021 部品名/view-1",
+        "after": "{\"mode\":\"編集\",\"panel\":null,\"cursor\":\"R021 部品名\",\"view\":\"view-1\"}",
+        "toast": ""
+      },
+      "ａ": {
+        "before": "R021 部品名/view-1",
+        "after": "{\"mode\":\"ナビ\",\"panel\":null,\"cursor\":\"R021 部品名\",\"view\":\"view-1\"}",
+        "toast": "R021 を 立花エレテック で採用（スコア 68 / 最安・納期NG(1日超過)）"
+      }
+    }
+  }
+]

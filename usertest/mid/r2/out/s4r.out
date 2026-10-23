@@ -1,0 +1,46 @@
+settings panel: 案件設定 （PM 項目は PM、購買項目は購買が変更。確定済）PM案件名第3ライン 搬送制御盤PM案件納期2026-11-20PM社内工程日数（この案件）10PM予算2800000PM重み（価格,納期,実績,条件）40,30,20,10PM選定者（設計 / 購買）設計PM設計変更は PM 承認が必要いいえPM上長決裁: 行の差額 ≥（円）300000PM上長決裁: 予算比 +（%）5PM担当者（設計,購買,PM）山田,佐藤,鈴木購買回答期限の既定（日）5購買今回の回答期限2026-10-25購買見積完了条件（全社 / 2社以上 / 期限）期限購買拮抗閾値（点）5購買例外閾値（円）10000購買
+settings save dialog: 変更理由（必須）Enter 確定Esc 取り消し
+budget now 100000000 toast 案件設定を保存しました
+bulk → 採用 70 / 拮抗 24（要見直し）/ 承認要 0 / スキップ 0
+formal confirm: 正式見積依頼書（社外）を出します: 対象 73 行。商社に送る書類が作られ、状態が「正式依頼中」になります1 やめる2 依頼書を作る1 〜 数字で選ぶEnter 選択中を確定Esc 取り消し
+formal → 72 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 downloads: 3 [ 'download', 'download', 'download' ]
+formalRequested: 72 R002: selected contested in fr: 24
+PASS S4 正式見積依頼で作業中 R002 は除外
+FAIL S4 確認ダイアログ/結果に拮抗 n 行を含む旨 :: 正式見積依頼書（社外）を出します: 対象 73 行。商社に送る書類が作られ、状態が「正式依頼中」になります1 やめる2 依頼書を作る1 〜 数字で選ぶEnter 選択中を確定Esc 取り消し
+view8 cols: ID|部品名|型式|メーカ|発注数|採用|単価|正式単価|差分|納期|状態|期限|正式単価|正式納期|正式期限|差分理由
+R001 S1 146 oq null
+R001 after +16%: formalQuoted {"leadNG":false,"reissue":false,"formalDiff":true}
+FAIL S4 正式単価 +16%・差額 ¥23（¥10,000 未満）は閾値内（大きい方）で正式見積済
+R003 after big: formalQuoted {"leadNG":false,"reissue":false,"formalDiff":true} ball -
+others [ 'R004', 'R005', 'R006', 'R007' ] [
+  'R004:formalQuoted:diff',
+  'R005:formalQuoted:diff',
+  'R006:formalQuoted:diff',
+  'R007:formalQuoted:diff'
+]
+o on 差分超過 R007 → R007: 発注済にしました ordered
+FAIL S4 差分超過（PM 未決定）の行は発注できない
+PM 7: R001,R003,R004,R005,R006,R007,R013,R021,R032,R055
+panel 差分超過: y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）
+g → R003: 再交渉 formalQuoted {"leadNG":false,"reissue":false,"formalDiff":true} dueAt 2026-10-29
+FAIL S4 g 再交渉 → 正式依頼中（購買）で 7 から外れる :: formalQuoted formalDiff=true
+d → R004: 設計へ代替依頼 formalQuoted {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":true} issues: [ 'コスト超過:open' ]
+FAIL S4 d → コスト超過が起票され、行は設計のボール（7 から外れる） :: {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":true}
+q → R005: 数量見直し依頼 formalQuoted {"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"formalDiff":true} issues: [ '数量見直し依頼:open:必要数 12 を減らせますか（発注数 12）' ]
+b → R006: 次点商社へ S3 → S1 selected {"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"formalDiff":false}
+design issue panel (コスト超過): 1 1 返信2 2 直さず回答（理由必須）3 3 客先承認取得（番号・日付）4 7 代替なし（対策不成立として PM へ）
+dlg: I-006 対策不成立の理由Enter 確定Esc 取り消し
+after 代替なし: formalQuoted {"pmPending":true,"pmReason":"差分超過","contested":false,"leadNG":false,"reissue":false,"formalDiff":true}
+PM panel after 対策不成立: y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）
+FAIL S4 対策不成立の決定パネルは 受入 / b / g / e（d・q なし） :: y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）
+y dialog (上長決裁): 決定: 受入（理由・任意）承認者日付決裁書NoEnter 確定Esc 取り消し
+受入(上長決裁) → 上長決裁の条件に該当します。承認者を入れてください formalQuoted {"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"formalDiff":true}
+FAIL S4 上長決裁の入力を入れれば受入できる :: 上長決裁の条件に該当します。承認者を入れてください
+受入 small → R007: 受入 {"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"formalDiff":false} ordered
+o formalQuoted → R007: 発注済を外しました formalQuoted
+i → R007: 入荷済にしました received
+o selected R002 → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） selected
+PASS S4 選定済（正式見積前）は発注不可
+design edit on received row → 発注済以降の行は設計列を変えられません（発注後変更依頼を起票してください）
+header money: 概算 ¥28,150,991 / 正式 ¥28,609,570 / 予算 ¥100,000,000 (-71.4%)
+ERRORS: [] paletteMiss: [ '正式見積 → 先頭は「ビュービュー: 正式見積8」、目的は 3 番目' ]

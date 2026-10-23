@@ -18,8 +18,13 @@ export async function launch() {
       await page.evaluate(() => { localStorage.clear(); sessionStorage.clear() })
       await page.goto('http://localhost:5173/')
       await page.getByTestId('grid').waitFor()
+      await t.role(role === 'pm' ? 'design' : 'pm')
       await t.role(role)
       await page.locator('.gridwrap').focus()
+      if (!(await page.evaluate(() => localStorage.getItem('bom-pro.workspace.v2')))) {
+        // 何か保存させる（ダーク切替を 2 回は commit しないので、隠す h を 2 回）
+        await page.keyboard.press('ArrowDown'); await page.keyboard.press('h'); await page.keyboard.press('h'); await page.keyboard.press('Control+z'); await page.keyboard.press('Control+z')
+      }
     },
     async reload() { await page.reload(); await page.getByTestId('grid').waitFor(); await page.locator('.gridwrap').focus() },
     async role(role) {
@@ -51,6 +56,16 @@ export async function launch() {
       if (rows[idx].includes('○')) { for (let i = 0; i < idx; i++) await page.keyboard.press('ArrowDown'); await page.keyboard.press(' ') }
       await page.keyboard.press('Escape'); await page.waitForTimeout(30)
     },
+    async cmd(label, query = label) { // パレットで label を含む項目を選んで実行。先頭でなかったら記録
+      await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill(query); await page.waitForTimeout(80)
+      const items = await page.getByTestId('palette-list').locator('.item').allTextContents()
+      const idx = items.findIndex((x) => x.includes(label))
+      if (idx < 0) throw new Error('palette item not found: ' + label + ' in ' + items.slice(0, 5).join(' | '))
+      if (idx > 0) { t.paletteMiss.push(`${query} → 先頭は「${items[0].slice(0, 30)}」、目的は ${idx + 1} 番目`); for (let i = 0; i < idx; i++) await page.keyboard.press('ArrowDown') }
+      await page.keyboard.press('Enter'); await page.waitForTimeout(80)
+    },
+    paletteMiss: [],
+    dialog: async () => { const l = page.locator('[role=dialog]'); return (await l.count()) ? (await l.first().textContent()) : '' },
     cursor: () => page.getByTestId('cursor').textContent(),
     status: () => page.getByTestId('status').textContent(),
     toast: async () => { const l = page.getByTestId('toast'); return (await l.count()) ? l.textContent() : '' },

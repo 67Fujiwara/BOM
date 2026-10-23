@@ -1,0 +1,60 @@
+[
+  {
+    "case": "A: model changed after formal quote → order",
+    "decisionPanel": "決定パネル R013（差分超過）y 受入 → 正式見積済b 次点商社へg 再交渉（購買へ）d 設計へ代替依頼（コスト超過を起票）q 数量見直し依頼（設計へ）Enter 実行↑ / ↓ 選択Esc 閉じる",
+    "pmPromptTitle": "決定: 受入（理由・任意）Enter 確定Esc 取り消し",
+    "oToast": "R013: 発注済にしました",
+    "status": "ordered",
+    "ordered": true,
+    "model": "NEW-013",
+    "flags": {
+      "formalDiff": false,
+      "leadNG": false,
+      "requote": true,
+      "reissue": true
+    },
+    "validQuotes": 0,
+    "amountCell": ""
+  },
+  {
+    "case": "B: early adopt, model changed, PM allows, purchasing orders",
+    "pmPrompt": "決定: 先行発注許可（理由・任意）Enter 確定Esc 取り消し",
+    "oToast": "R076: 発注済にしました",
+    "status": "ordered",
+    "ordered": true,
+    "model": "M76-CHANGED",
+    "flags": {
+      "pmPending": false,
+      "contested": false,
+      "requote": true,
+      "early": true,
+      "ltbPending": false
+    }
+  },
+  {
+    "case": "C: design Shift+Delete ordered R001",
+    "panel": null,
+    "opts": null,
+    "toast": "",
+    "status": "ordered"
+  },
+  {
+    "case": "C2: purchasing Shift+Delete ordered R001",
+    "panel": null,
+    "opts": null,
+    "toast": "",
+    "status": "ordered"
+  },
+  {
+    "case": "D: members same name, design Ctrl+Z",
+    "pmName": "山田",
+    "members": {
+      "design": "山田",
+      "purchasing": "佐藤",
+      "pm": "山田"
+    },
+    "d1": 1,
+    "d2": 0,
+    "toast": "元に戻す: 決定: 受入"
+  }
+]

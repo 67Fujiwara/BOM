@@ -112,7 +112,11 @@ if (def) {
   check('S1 「あとで」の問題を直した後に公開できる', /公開しました/.test(tt), tt)
   if (!/公開しました/.test(tt)) {
     // 回避: Ctrl+. で候補を確認
-    await t.goto(def.id); await t.press('Control+.'); log('  quickfix for deferred row:', await page.getByTestId('quickfix').textContent()); await t.press('Escape')
+    await t.goto(def.id); await t.press('Control+.'); log('  quickfix for deferred row:', (await page.getByTestId('quickfix').count()) ? await page.getByTestId('quickfix').textContent() : 'none / toast=' + await t.toast()); await t.press('Escape')
+    await t.press('4'); await t.press('n'); log('  n after fix (deferred row):', await t.toast(), await t.cursor())
+    await t.press('1')
+    await t.reload(); log('  after reload deferredRules:', JSON.stringify((await t.row(def.id)).deferredRules))
+    await t.shot('s1-deferred-block')
     // 回避2: Ctrl+Z で戻せるか
     await page.evaluate(() => { const ws = JSON.parse(localStorage.getItem('bom-pro.workspace.v2')); for (const p of ws.projects) for (const r of p.rows) r.deferredRules = []; localStorage.setItem('bom-pro.workspace.v2', JSON.stringify(ws)) })
     await t.reload()
@@ -156,12 +160,10 @@ await page.getByTestId('palette-input').fill('概算見積')
 await t.press('Enter')
 await page.waitForTimeout(100)
 log('request prompt:', await page.locator('[data-testid="panel-prompt"]').textContent())
-// Enter で相見積先すべてに依頼（空のまま）
-await t.press('Enter')
-await page.waitForTimeout(100)
-log('request Enter(empty) toast:', await t.toast())
-const [dl] = await Promise.all([page.waitForEvent('download', { timeout: 3000 }).catch(() => null), (async () => { await page.getByTestId('prompt-text').fill('2026-10-29'); await t.press('Enter') })()])
-await page.waitForTimeout(400)
+// 回答期限を入れて Enter（依頼先は先頭＝相見積先すべて）
+await page.getByTestId('prompt-text').fill('2026-10-29')
+const [dl] = await Promise.all([page.waitForEvent('download', { timeout: 5000 }).catch(() => null), t.press('Enter')])
+await page.waitForTimeout(600)
 log('request toast:', await t.toast(), 'download:', dl ? dl.suggestedFilename() : 'none')
 p = await t.proj()
 log('after request statuses:', [...new Set(p.rows.map((r) => r.status))], 'requestRevs:', JSON.stringify(p.requestRevs), 'deadline:', p.settings.quoteDeadline)
@@ -227,7 +229,11 @@ check('S1 見積済の行が選定者（設計）の 4 に出る', Number(await 
 await t.role('purchasing')
 await t.press('Control+k')
 await page.getByTestId('palette-input').fill('見積回答')
-await t.press('Enter')
+await page.waitForTimeout(80)
+log('palette 見積回答 items:', (await page.getByTestId('palette-list').locator('.item').allTextContents()).slice(0, 4))
+await t.press('Escape')
+await t.cmd('見積回答を取り込む')
+log('paletteMiss:', t.paletteMiss)
 await page.waitForTimeout(100)
 log('import prompt:', (await page.locator('[data-testid="panel-prompt"]').textContent()).slice(0, 200))
 await t.press('3') // S3

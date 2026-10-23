@@ -1,0 +1,439 @@
+{
+  "V-a/truncated": {
+    "toast": "JSON として読めません: Expected ',' or '}' after property value in JSON at position 43 (line 1 column 44)",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": []
+  },
+  "V-a/emptyObj": {
+    "toast": "読み込めません: projects が配列ではありません",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": []
+  },
+  "V-a/nullRows": {
+    "toast": "JSON を読み込みました（案件 1 件）",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": []
+  },
+  "V-a/rowNoId": {
+    "toast": "読み込めません: 案件 X の rows[0] に id がありません",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": []
+  },
+  "V-a/weirdTypes": {
+    "toast": "",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": [
+      "Cannot read properties of null (reading 'replies')"
+    ]
+  },
+  "V-a/issueGarbage": {
+    "toast": "JSON を読み込みました（案件 1 件）",
+    "crashAfterImport": false,
+    "crashAfterKeys": true,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": [
+      "%o\n\n%s\n\n%s\n TypeError: Cannot read properties of null (reading 'role')\n    at http://localhost:5173/src/ui/Detail.tsx:384:31\n    at Array.map (<anonymous>)\n    at Detail (http://localhost:5173/src/ui/",
+      "TypeError: Cannot read properties of null (reading 'role')\n    at http://localhost:5173/src/ui/Detail.tsx:384:31\n    at Array.map (<anonymous>)\n    at Detail (http://localhost:5173/src/ui/Detail.tsx:3"
+    ]
+  },
+  "V-a/dupCase": {
+    "toast": "読み込めません: 案件 ID が重複しています: a",
+    "crashAfterImport": false,
+    "crashAfterKeys": false,
+    "gridAfterReload": true,
+    "crashAfterReload": false,
+    "errors": []
+  },
+  "V-a/truncatedLS": {
+    "grid": true,
+    "crash": false,
+    "errors": []
+  },
+  "V-a/garbageLS": {
+    "grid": true,
+    "crash": false,
+    "errors": []
+  },
+  "V-a/weirdLS": {
+    "grid": true,
+    "crash": false,
+    "errors": []
+  },
+  "V-a/issueGarbageLS": {
+    "grid": true,
+    "crash": true,
+    "errors": [
+      "%o\n\n%s\n\n%s\n TypeError: Cannot read properties of null (reading 'role')\n    at http://localhost:5173/src/ui/Detail.tsx:384:31\n    at Array.map (<anonymous>)\n    at Detail (http://localhost:5173/src/ui/",
+      "TypeError: Cannot read properties of null (reading 'role')\n    at http://localhost:5173/src/ui/Detail.tsx:384:31\n    at Array.map (<anonymous>)\n    at Detail (http://localhost:5173/src/ui/Detail.tsx:3"
+    ]
+  },
+  "V-b": {
+    "budget": 1000000,
+    "weights": {
+      "price": 40,
+      "lead": 30,
+      "record": 20,
+      "terms": 10
+    },
+    "weightAbcToast": "重みは「価格,納期,実績,条件」の 4 つを入れてください（例: 40,30,20,10）",
+    "stillEditingAfterAbc": 1,
+    "money": "概算 ¥13,197 / 正式 ¥14,753 / 予算 ¥1,000,000 (-98.5%)",
+    "crash": false,
+    "errors": []
+  },
+  "V-c": {
+    "toasts": [
+      "戻せません: R013 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）"
+    ],
+    "budgetBefore": 5000000,
+    "budgetAfter": 5000000,
+    "decisionsBefore": 2,
+    "decisionsAfter": 2,
+    "r030name": "設計の編集",
+    "q30": 5555,
+    "errors": []
+  },
+  "V-d": {
+    "pubPrompt": "1 新しい Rev2 直前の Rev に追記",
+    "subsBeforeUndo": 2,
+    "subsAfter": 2,
+    "toast": "公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください",
+    "r076": "quoting",
+    "quotes76": [
+      "S1:100",
+      "S2:null",
+      "S3:null"
+    ],
+    "errors": []
+  },
+  "V-e": {
+    "projId": "P-E2",
+    "supplierIds": [],
+    "rows": 1,
+    "opts": "▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ）· S1 因幡電機· S2 立花エレテック· S3 ミスミ· S4 RSコンポーネンツ· S5 オムロン直販",
+    "panelAfter": null,
+    "toast": "依頼する行がありません（提出済・再見積要の行なし）",
+    "errors": []
+  },
+  "V-e/noSuppliers": {
+    "suppliersAfterLoad": 0,
+    "panel": "panel-prompt",
+    "toast": "",
+    "errors": []
+  },
+  "V-f": [
+    {
+      "label": "社内工程日数",
+      "value": "-5",
+      "accepted": false,
+      "msg": "社内工程日数は 0 以上にしてください: 「-5」"
+    },
+    {
+      "label": "社内工程日数",
+      "value": "1e3",
+      "accepted": false,
+      "msg": "社内工程日数として読めません: 「1e3」"
+    },
+    {
+      "label": "休日",
+      "value": "あした, 2026-13-01,,x",
+      "accepted": false,
+      "msg": "存在しない休日です: 「2026-13-01」"
+    },
+    {
+      "label": "見積完了条件",
+      "value": "nonsense",
+      "accepted": false,
+      "msg": "見積完了条件は「全社」「2社以上」「期限」のどれかです"
+    },
+    {
+      "label": "通貨",
+      "value": "<script>",
+      "accepted": false,
+      "msg": "通貨は ¥ や USD のように 3 文字以内で入れてください"
+    },
+    {
+      "label": "通貨",
+      "value": "JPY",
+      "accepted": true,
+      "msg": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "label": "担当者",
+      "value": "山田,山田,山田",
+      "accepted": true,
+      "msg": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "label": "担当者",
+      "value": ",,",
+      "accepted": true,
+      "msg": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "label": "案件名",
+      "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "accepted": false,
+      "msg": "案件名が長すぎます（100 文字まで）"
+    },
+    {
+      "label": "案件名",
+      "value": "<img src=x onerror=alert(1)>",
+      "accepted": true,
+      "msg": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "label": "重み",
+      "value": "0,0,0,0",
+      "accepted": false,
+      "msg": "重みの合計が 0 です"
+    },
+    {
+      "label": "重み",
+      "value": "100,100,100,100",
+      "accepted": true,
+      "msg": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "label": "拮抗閾値",
+      "value": "NaN",
+      "accepted": false,
+      "msg": "拮抗閾値として読めません: 「NaN」"
+    },
+    {
+      "label": "回答期限の既定",
+      "value": "1.5",
+      "accepted": false,
+      "msg": "日数は整数で入れてください: 「1.5」"
+    },
+    {
+      "label": "今回の回答期限",
+      "value": "2026/2/30",
+      "accepted": false,
+      "msg": "存在しない回答期限です: 「2026/2/30」"
+    },
+    {
+      "label": "相見積先",
+      "value": "S1,S1,因幡電機",
+      "accepted": true,
+      "msg": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    }
+  ],
+  "V-g": {
+    "dupErr": "案件ID「p-2026-041」はもうあります（Ctrl+P で開けます）。別の ID にしてください",
+    "dupErrZen": "案件ID「ｐ－２０２６－０４１」はもうあります（Ctrl+P で開けます）。別の ID にしてください",
+    "dueErr": "存在しない納期です: 「2026/13/45」",
+    "dueErr2": "存在しない納期です: 「2026/2/29」",
+    "dueErr3": "納期 2025-12-01 が過去の日付です",
+    "errors": []
+  },
+  "V-h": [
+    {
+      "v": "2026-13-45",
+      "stillEditing": true,
+      "err": "存在しない入荷予定です: 「2026-13-45」"
+    },
+    {
+      "v": "2026/2/30",
+      "stillEditing": true,
+      "err": "存在しない入荷予定です: 「2026/2/30」"
+    },
+    {
+      "v": "13/1",
+      "stillEditing": true,
+      "err": "存在しない入荷予定です: 「13/1」"
+    },
+    {
+      "v": "あさって",
+      "stillEditing": true,
+      "err": "入荷予定として読めません: 「あさって」（例: 2026-11-30、11/30、未定）"
+    },
+    {
+      "v": "20261301",
+      "stillEditing": true,
+      "err": "存在しない入荷予定です: 「20261301」"
+    },
+    {
+      "v": "1999-01-01",
+      "stillEditing": true,
+      "err": "入荷予定の年が範囲外です: 「1999-01-01」"
+    },
+    {
+      "v": "2026-11-30",
+      "stored": "2026-11-30",
+      "stillEditing": false
+    }
+  ],
+  "V-i": [
+    {
+      "v": "１２",
+      "stored": 12,
+      "stillEditing": false
+    },
+    {
+      "v": "１２００",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "v": "1200円",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "v": "abc",
+      "stored": 1200,
+      "stillEditing": true,
+      "err": "必要数として読めません: 「abc」"
+    },
+    {
+      "v": "十二",
+      "stored": 12,
+      "stillEditing": false
+    },
+    {
+      "v": "1.5",
+      "stored": 1.5,
+      "stillEditing": false
+    },
+    {
+      "v": "-3",
+      "stored": 1.5,
+      "stillEditing": true,
+      "err": "必要数は 0 以上にしてください: 「-3」"
+    },
+    {
+      "v": "0",
+      "stored": 0,
+      "stillEditing": false
+    },
+    {
+      "v": "1e3",
+      "stored": 0,
+      "stillEditing": true,
+      "err": "必要数として読めません: 「1e3」"
+    },
+    {
+      "v": "１，２００",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "v": "99999999999",
+      "stored": 1200,
+      "stillEditing": true,
+      "err": "必要数が大きすぎます（上限 1,000,000,000）: 「99999999999」"
+    },
+    {
+      "v": " 7 ",
+      "stored": 7,
+      "stillEditing": false
+    },
+    {
+      "v": "½",
+      "stored": 7,
+      "stillEditing": true,
+      "err": "必要数として読めません: 「½」"
+    },
+    {
+      "col": "R030 単価",
+      "v": "１２００",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "col": "R030 単価",
+      "v": "1,200円",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "col": "R030 単価",
+      "v": "¥1200",
+      "stored": 1200,
+      "stillEditing": false
+    },
+    {
+      "col": "R030 単価",
+      "v": "1.2万",
+      "stored": 12000,
+      "stillEditing": false
+    },
+    {
+      "col": "R030 単価",
+      "v": "abc",
+      "stored": 12000,
+      "stillEditing": true,
+      "err": "単価として読めません: 「abc」"
+    },
+    {
+      "col": "R030 単価",
+      "v": "-1",
+      "stored": 12000,
+      "stillEditing": true,
+      "err": "単価は 0 以上にしてください: 「-1」"
+    },
+    {
+      "col": "R030 単価",
+      "v": "0",
+      "stored": 0,
+      "stillEditing": false
+    }
+  ],
+  "V-j": {
+    "lowerKeyLines": 81,
+    "lowerHead": "ID\tボール\t回路記号\t分類\t部品名\t型式\tメーカ\t必要数\t単位\t調達区分\t代替可否\t必要日\t備考\t状態\t期限\nR001",
+    "pwLines": 81,
+    "capsC_panel": "panel-columns",
+    "toast": "80 行 × 15 列を書式つきでコピーしました（Excel・メールに貼れます）"
+  },
+  "V-k": {
+    "kindsHasHaiban": true,
+    "vals": {
+      "model": "NEWMODEL",
+      "maker": "オムロン",
+      "supplierId": "S1",
+      "unitPrice": "1200",
+      "leadDays": "14"
+    },
+    "activeAfter3Tabs": "proposal-model",
+    "panelAfterEnter": null,
+    "issue": {
+      "kind": "廃番",
+      "text": "廃番です",
+      "proposal": {
+        "model": "NEWMODEL",
+        "maker": "オムロン",
+        "supplierId": "S1",
+        "unitPrice": 1200,
+        "leadDays": 14
+      }
+    }
+  },
+  "V-l": {
+    "stepText": "部品の入れ方1 貼り付け（Excel の表をコピーして貼る。見出し行があれば列を自動で判別）2 ファイル（.xlsx /",
+    "pasteBefore": 1,
+    "activeBefore": "BODY",
+    "pasteValAfter3": null,
+    "activeAfter1": "wizard-paste",
+    "pasteValTyped": "リレー\t3"
+  }
+}

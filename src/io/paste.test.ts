@@ -259,3 +259,51 @@ describe('ラウンド 13 の取り込み', () => {
     expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
   })
 })
+
+describe('ラウンド 13 の取り込み（ベテラン）', () => {
+  it('「部品取付板 / 品番なし / メーカ不問」の行を見出しにせず、後ろの数量を消さない', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t員数\nリレー\tMY4N\tオムロン\t12\n部品取付板\t品番なし\tメーカ不問\t1\n結束バンド\t型式なし\tメーカー支給\t50\n端子台\tXW2B\tオムロン\t2')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([12, 1, 50, 2])
+    const s = parseBomPaste('部品名\t型式\t数量\n部品名シール\t品番なし\t2\nA\tX1\t1\nB\tX2\t2')
+    expect(s.rows.map((x) => x.qtyNeeded)).toEqual([2, 1, 2])
+  })
+  it('旧／新の列のある見出しをページごとに繰り返しても、どのページも新の列', () => {
+    const page = (i: number) => `部品名\t型式(旧)\t型式(新)\t数量(旧)\t数量(新)\nリレー${i}\tOLD-${i}\tNEW-${i}\t${i}\t${i + 10}`
+    const r = parseBomPaste([page(0), page(1), page(2)].join('\n'))
+    expect(r.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['NEW-0', 10], ['NEW-1', 11], ['NEW-2', 12]])
+    expect(r.warnings.join()).not.toContain('並びに直しました')
+  })
+  it('見出しらしくない見出しの列も、ページの並びが違えば元の見出しの文字で並べ直す', () => {
+    const r = parseBomPaste('部品名\tメーカ\tManufacturer Part Number (MPN)\t数量(10台分)\nA\tM\tX1\t3\n数量(10台分)\t部品名\tメーカ\tManufacturer Part Number (MPN)\n2\tB\tM\tX2')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['A', 'X1', 3], ['B', 'X2', 2]])
+  })
+  it('縦に結合した部品名と、型式・数量の下の旧／新の 2 段の見出し（ページごとの繰り返しも）', () => {
+    const head = '部品名\t型式\t\t数量\t\n部品名\t旧\t新\t旧\t新'
+    const r = parseBomPaste(`${head}\nリレー\tMY2N\tMY4N\t10\t12\n${head}\n端子台\tXW2A\tXW2B\t1\t2`)
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 12], ['端子台', 'XW2B', 2]])
+  })
+  it('変更後の列が空の行は、元の列の値を使って知らせる', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\t変更後数量\nリレー\tMY4N\t10\t12\n端子台\tXW2B\t2\t\nヒューズ\tF-10\t4\t')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([12, 2, 4])
+    expect(r.warnings.join()).toContain('空の 2 行')
+    const m = parseBomPaste('部品名\t型式\t新型式\t数量\nリレー\tMY2N\tMY4N\t1\n端子台\tXW2B\t\t1')
+    expect(m.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+  it('Newark P/N・新光品番は版の印ではない（メーカの型番を型式に）', () => {
+    expect(parseBomPaste('Description\tMfr P/N\tNewark P/N\tManufacturer\tQty\nRelay\tMY4N\t12AB345\tOmron\t2').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('部品名\tメーカ型番\t新光品番\tメーカ\t数量\nリレー\tMY4N\tSK-001\tオムロン\t2').rows[0].model).toBe('MY4N')
+  })
+  it('ページの表題の書き方の違い（その2・2 of 3・Page 2・続き・全角）を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n部品表 その2\t\t\nBOM (2 of 3)\t\t\n部品リスト Page 2\t\t\n部品表(続き)\t\t\n部品表（２／３）\tＰ．２\t\n部品表 (2/2)\t制御盤A\tP.2\n端子台\tXW2B\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+})
+
+describe('ラウンド 13 の取り込み（表題欄）', () => {
+  it('ラベルと値が別のセルの表題欄（品名 | 制御盤A | 数量 | 2）を見出しにしない', () => {
+    const r = parseBomPaste('品名\t制御盤A\t数量\t2\n\n部品名\t型式\t数量\nリレー\tMY4N\t4\n端子台\tXW2B\t2')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 4], ['端子台', 'XW2B', 2]])
+    const s = parseBomPaste('品名\t制御盤A\t\t\n部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t4')
+    expect(s.rows.map((x) => [x.model, x.maker, x.qtyNeeded])).toEqual([['MY4N', 'オムロン', 4]])
+  })
+})

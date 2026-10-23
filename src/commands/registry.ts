@@ -502,6 +502,21 @@ function gotoProblem(delta: 1 | -1): boolean {
       })
       if (best >= 0) next = best
     }
+    // カーソルの行に問題が無く（直した・確認済みにして、4 の並びの後ろへ動いた など）、見えている並びでその下に問題が無いときや、
+    // 行がビューから外れたときは、先頭へ戻らずに BOM の並びでその行より下（上）のいちばん近い問題
+    if (cur == null || (!list.some((x) => x.rowId === curId) && !list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) }))) {
+      const bom = new Map(st().project().rows.map((x, i) => [x.id, i] as const))
+      const at = bom.get(curId)
+      if (at != null) {
+        let best = -1
+        list.forEach((x, i) => {
+          const q = bom.get(x.rowId)
+          if (q == null || x.rowId === curId) return
+          if (delta > 0 ? q > at && (best < 0 || q < bom.get(list[best].rowId)!) : q < at && (best < 0 || q > bom.get(list[best].rowId)!)) best = i
+        })
+        if (best >= 0) next = best
+      }
+    }
   }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
@@ -748,14 +763,26 @@ export function publishFlow(rowIds?: string[]) {
   if (plan.deferred.length) return toast(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}）`, 'err')
   // ダイアログを開いたときの行だけを公開する（開いているあいだに別のタブで変わった・足した行を、同じ理由で一緒に出さない）
   const ids = rowIds ?? [...plan.rows.map((r) => r.id), ...plan.cancelled]
+  // 開いたあとに別のタブでその行の中身（取消・値）が変わったら、確定の前に止めて確かめ直させる
+  const sig = () => {
+    const p2 = st().project()
+    return JSON.stringify(ids.map((id) => { const r = p2.rows.find((x) => x.id === id); return r && [r.status, r.working ?? null, r.removal ?? null, r.pendingRemoval ?? null, r.hidden ?? false] }))
+  }
+  const before = sig()
+  const changed = () => {
+    if (sig() === before) return false
+    toast('ダイアログを開いたあとに、公開する行が別のタブで変わりました（取消・値の変更）。公開していません。もう一度 Ctrl+Enter で中身を確かめてから公開してください', 'err')
+    return true
+  }
   if (plan.nonIssueChanges.length && user.role === 'design') {
     prompt(`変更セット（${plan.nonIssueChanges.length} 行: ${plan.nonIssueChanges.slice(0, 5).join(', ')}${plan.nonIssueChanges.length > 5 ? ' …' : ''}）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter`, { options: [...CHANGE_REASONS], index: -1, placeholder: '変更番号（任意。例: ECN-2026-012）', showText: true, digitsSelect: true }, (choice, text) => {
+      if (changed()) return
       rows.publish(ids, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
     })
     return
   }
   if (plan.canAppend && plan.rows.length) {
-    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
+    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void (!changed() && rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new')))
     return
   }
   rows.publish(rowIds)

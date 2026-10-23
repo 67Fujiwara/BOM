@@ -553,7 +553,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
       if (!text.trim()) throw new Error('中身が空です')
       const cur = useStore.getState().panel
       if (cur?.kind !== 'wizard') return
-      st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
+      st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, fileNote: isZip ? pasteIo.hiddenNote : '', inputMode: '1' }, error: undefined } })
       const others = isZip ? pasteIo.otherSheets : []
       st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${isZip && pasteIo.hiddenNote ? `。${pasteIo.hiddenNote}` : ''}${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length || (isZip && pasteIo.hiddenNote) ? 'info' : 'ok')
     } catch (err) {
@@ -626,7 +626,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
                 <div className="muted" style={{ fontSize: 12 }}>
                   列の対応: {preview.mapping.map((f, i) => `${preview.header ? preview.header[i] : `${i + 1}列目`} → ${f ? FIELD_LABEL[f] : '（使わない）'}`).join(' / ')}
                 </div>
-                {preview.warnings.map((w) => (
+                {[...(d.fileName && d.fileNote ? [d.fileNote] : []), ...preview.warnings].map((w) => (
                   <div key={w} className="warn-text" style={{ fontSize: 12 }}>
                     ⚠ {w}
                   </div>

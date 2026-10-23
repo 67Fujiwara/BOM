@@ -1,0 +1,59 @@
+OK  ref K1 → "K1" {"cursorRow":["R040","R041"]} | 
+OK  ref J1 → "J1" {"cursorRow":["R040","R041"]} | 
+OK  ref J12 → "J12" {"cursorRow":["R040","R041"]} | 
+OK  ref N1 → "N1" {"cursorRow":["R040","R041"]} | 
+NG  ref k1 → "セ40" {"cursorRow":["R040","R039"]} | 
+OK  ref KA1 → "KA1" {"cursorRow":["R040","R041"]} | 
+OK  ref CN1 → "CN1" {"cursorRow":["R040","R041"]} | 
+OK  model K3HB-X → "K3HB-X" {"cursorRow":["R040","R041"]} | 
+OK  model J7KN-10 → "J7KN-10" {"cursorRow":["R040","R041"]} | 
+OK  model K8AK-AS1 → "K8AK-AS1" {"cursorRow":["R040","R041"]} | 
+OK  model JJ-100 → "JJ-100" {"cursorRow":["R040","R041"]} | 
+OK  model NN-5 → "NN-5" {"cursorRow":["R040","R041"]} | 
+OK  model ADP3338 → "ADP3338" {"cursorRow":["R040","R041"]} | 
+OK  model AD8605 → "AD8605" {"cursorRow":["R040","R041"]} | 
+OK  model INA219 → "INA219" {"cursorRow":["R040","R041"]} | 
+OK  maker WAGO → "WAGO" {"cursorRow":["R040","R041"]} | 
+OK  maker wago → "wago" {"cursorRow":["R040","R041"]} | 
+OK  name coil → "coil" {"cursorRow":["R040","R041"]} | 
+OK  name cable → "cable" {"cursorRow":["R040","R041"]} | 
+OK  name capacitor → "capacitor" {"cursorRow":["R040","R041"]} | 
+OK  model DRV8833 → "DRV8833" {"cursorRow":["R040","R041"]} | 
+OK  model NJM2904 → "NJM2904" {"cursorRow":["R040","R041"]} | 
+OK  name knob → "knob" {"cursorRow":["R040","R041"]} | 
+OK  name nand → "nand" {"cursorRow":["R040","R041"]} | 
+OK  name ssr → "ssr" {"cursorRow":["R040","R041"]} | 
+OK  name jumper → "jumper" {"cursorRow":["R040","R041"]} | 
+NG  name kj → "ファイバユニット" {} | 
+OK  model S1 → "S1" {"cursorRow":["R040","R041"]} | 
+OK  model X1 → "X1" {"cursorRow":["R040","R041"]} | 
+OK  model H1 → "H1" {"cursorRow":["R040","R041"]} | 
+NG  name a1 → "ファイバユニット" {"adopted":[6,7]} | R040 を 因幡電機 で採用（スコア 97.8）
+NG  model 2SC1815 → "SC1815" {"view":[1,2],"cursorRow":["R040","R041"]} | 
+draft R076 ADP3338 "ADP3338" {"cursorRow":["R076","R077"]}
+draft R076 IRF540N "IRF540N" {"cursorRow":["R076","R077"]}
+CMD hjhjhj 45 行を隠す→次の行 ×3 | mode 編集 edit "jhjhj" {"hidden":[[],["R040"]]} | R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD hjhjhj 120 同 120ms | mode 編集 edit "jhjhj" {"hidden":[[],["R040"]]} | R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD hjhjhj 200 同 200ms | mode 編集 edit "jhjhj" {"hidden":[[],["R040"]]} | R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD hjhjhj 260 同 260ms | mode 編集 edit "jhjhj" {"hidden":[[],["R040"]]} | R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD xnxnxn 45 確認済み→次の問題 ×3（4 要確認） | mode 編集 edit "nxnxn" {} | 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+CMD xnxnxn 150 同 150ms | mode 編集 edit "nxnxn" {} | 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+CMD ajaj 60 推奨で採用→次の行 | mode 編集 edit "jaj" {"adopted":[6,7]} | R040 を 因幡電機 で採用（スコア 97.8）
+CMD anan 60 推奨で採用→次の問題 | mode 編集 edit "anan" {} | 
+CMD s4 60 並び替え→ビュー4 | mode ナビ edit null {"view":[1,4],"sort":[null,{"col":"model","dir":"asc"}]} | 型式 で昇順に並べました（もう一度で解除）
+CMD S1 60 降順→ビュー1 | mode 編集 edit "S1" {} | 
+CMD f1 60 絞り込み→ビュー1 | mode ナビ edit null {"cellFilter":[null,{"col":"model","value":"E32-D11 2M"}]} | 型式 =「E32-D11 2M」で絞り込みました（f か Esc で解除）
+CMD Dj 60 複製→次の行 | mode ナビ edit null {"rows":[80,81],"cursorRow":["R040","R041"]} | R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）
+CMD hk 60 隠す→前の行 | mode ナビ edit null {"cursorRow":["R040","R039"],"hidden":[[],["R040"]]} | R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）
+CMD ojoj 60 発注→次の行（ロットの列） | mode 編集 edit "joj" {} | 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申
+CMD ijij 60 入荷→次の行（ロットの列） | mode 編集 edit "jij" {} | 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要りま
+CMD ojoj 60 発注→次の行（発注数の列・9） | mode ナビ edit null {"cursorRow":["g:制御:R004","R005"]} | 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申
+GAP Shift+D→R 240ms 編集 "DR" {}
+GAP Shift+D→R 270ms 編集 "DR" {}
+GAP a→b 240 編集 "ab" {}
+GAP a→b 270 編集 "ab" {}
+GAP h→u(割当なし) 550 編集 "u" {"hidden":[[],["R040"]]}
+GAP h→u 650 編集 "u" {"hidden":[[],["R040"]]}
+GAP k→n 300ms 編集 "knob" {}
+text NG 4 / 34
+--- console/page errors (20): 0 (uniq 0)

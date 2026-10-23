@@ -1,0 +1,502 @@
+{
+  "summary": {
+    "build-r4@80": {
+      "j": 16.7,
+      "right": 16.7,
+      "view": 18.7,
+      "space": 16.6,
+      "pageDown": 16.7,
+      "perViewPress": 15.4,
+      "perEnter": 37.8,
+      "rowsRendered": 27
+    },
+    "build-current@80": {
+      "j": 16.6,
+      "right": 16.6,
+      "view": 18.3,
+      "space": 16.6,
+      "pageDown": 16.7,
+      "perViewPress": 16,
+      "perEnter": 39,
+      "rowsRendered": 27
+    },
+    "build-r4@300": {
+      "j": 16.7,
+      "right": 16.7,
+      "view": 20.9,
+      "space": 16.7,
+      "pageDown": 16.7,
+      "perViewPress": 17.5,
+      "perEnter": 55,
+      "rowsRendered": 29
+    },
+    "build-current@300": {
+      "j": 16.7,
+      "right": 16.7,
+      "view": 20.6,
+      "space": 16.7,
+      "pageDown": 16.6,
+      "perViewPress": 17.7,
+      "perEnter": 55.2,
+      "rowsRendered": 29
+    }
+  },
+  "raw": {
+    "build-r4@80": [
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.2
+        },
+        "view": {
+          "median": 18.1,
+          "p90": 29.2
+        },
+        "space": {
+          "median": 16.4,
+          "p90": 25.4
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 17.5
+        },
+        "views90ms": 1388,
+        "perViewPress": 15.4,
+        "enter20ms": 744,
+        "perEnter": 37.2,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 18.6
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 18.7
+        },
+        "view": {
+          "median": 18.4,
+          "p90": 29.4
+        },
+        "space": {
+          "median": 16.4,
+          "p90": 21.3
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 18.6
+        },
+        "views90ms": 1337,
+        "perViewPress": 14.9,
+        "enter20ms": 679,
+        "perEnter": 34,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 21.4
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.5
+        },
+        "view": {
+          "median": 18.7,
+          "p90": 31.5
+        },
+        "space": {
+          "median": 16.6,
+          "p90": 19.2
+        },
+        "pageDown": {
+          "median": 16.8,
+          "p90": 17.9
+        },
+        "views90ms": 1468,
+        "perViewPress": 16.3,
+        "enter20ms": 756,
+        "perEnter": 37.8,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 19.4
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "view": {
+          "median": 19.6,
+          "p90": 29.1
+        },
+        "space": {
+          "median": 16.8,
+          "p90": 22.7
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 17.8
+        },
+        "views90ms": 1379,
+        "perViewPress": 15.3,
+        "enter20ms": 789,
+        "perEnter": 39.5,
+        "rowsRendered": 27,
+        "errs": []
+      }
+    ],
+    "build-current@80": [
+      {
+        "j": {
+          "median": 16.6,
+          "p90": 20.8
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.1
+        },
+        "view": {
+          "median": 18.3,
+          "p90": 27.2
+        },
+        "space": {
+          "median": 16.5,
+          "p90": 20.7
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 17.6
+        },
+        "views90ms": 1366,
+        "perViewPress": 15.2,
+        "enter20ms": 770,
+        "perEnter": 38.5,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 18.1
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 17
+        },
+        "view": {
+          "median": 17.3,
+          "p90": 26.5
+        },
+        "space": {
+          "median": 16.5,
+          "p90": 23.1
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 17.6
+        },
+        "views90ms": 1444,
+        "perViewPress": 16,
+        "enter20ms": 860,
+        "perEnter": 43,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.6,
+          "p90": 17.5
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 17.5
+        },
+        "view": {
+          "median": 18.7,
+          "p90": 27.9
+        },
+        "space": {
+          "median": 16.6,
+          "p90": 25
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 17.6
+        },
+        "views90ms": 1443,
+        "perViewPress": 16,
+        "enter20ms": 779,
+        "perEnter": 39,
+        "rowsRendered": 27,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.6,
+          "p90": 17.5
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 17.7
+        },
+        "view": {
+          "median": 16.2,
+          "p90": 27.4
+        },
+        "space": {
+          "median": 16.8,
+          "p90": 18.7
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 18.8
+        },
+        "views90ms": 1376,
+        "perViewPress": 15.3,
+        "enter20ms": 753,
+        "perEnter": 37.6,
+        "rowsRendered": 27,
+        "errs": []
+      }
+    ],
+    "build-r4@300": [
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 18.5
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 17.2
+        },
+        "view": {
+          "median": 21.4,
+          "p90": 32.5
+        },
+        "space": {
+          "median": 16.4,
+          "p90": 24.9
+        },
+        "pageDown": {
+          "median": 16.8,
+          "p90": 18.6
+        },
+        "views90ms": 1574,
+        "perViewPress": 17.5,
+        "enter20ms": 1100,
+        "perEnter": 55,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 17.6
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.9
+        },
+        "view": {
+          "median": 20,
+          "p90": 31.4
+        },
+        "space": {
+          "median": 16.7,
+          "p90": 24.8
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 17.8
+        },
+        "views90ms": 1648,
+        "perViewPress": 18.3,
+        "enter20ms": 1150,
+        "perEnter": 57.5,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.6,
+          "p90": 17.7
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "view": {
+          "median": 20.9,
+          "p90": 28.4
+        },
+        "space": {
+          "median": 16.8,
+          "p90": 22.3
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 17.6
+        },
+        "views90ms": 1515,
+        "perViewPress": 16.8,
+        "enter20ms": 1068,
+        "perEnter": 53.4,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.3
+        },
+        "view": {
+          "median": 19.7,
+          "p90": 30.2
+        },
+        "space": {
+          "median": 16.7,
+          "p90": 26.8
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 17.5
+        },
+        "views90ms": 1488,
+        "perViewPress": 16.5,
+        "enter20ms": 1041,
+        "perEnter": 52,
+        "rowsRendered": 29,
+        "errs": []
+      }
+    ],
+    "build-current@300": [
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.5
+        },
+        "view": {
+          "median": 18.2,
+          "p90": 35.9
+        },
+        "space": {
+          "median": 16.8,
+          "p90": 24.6
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 18.2
+        },
+        "views90ms": 1592,
+        "perViewPress": 17.7,
+        "enter20ms": 1104,
+        "perEnter": 55.2,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 18
+        },
+        "right": {
+          "median": 16.6,
+          "p90": 17.1
+        },
+        "view": {
+          "median": 22.1,
+          "p90": 36.7
+        },
+        "space": {
+          "median": 16.6,
+          "p90": 25.8
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 19.9
+        },
+        "views90ms": 1674,
+        "perViewPress": 18.6,
+        "enter20ms": 1187,
+        "perEnter": 59.4,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.7,
+          "p90": 17.7
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 16.9
+        },
+        "view": {
+          "median": 20.6,
+          "p90": 34.4
+        },
+        "space": {
+          "median": 16.7,
+          "p90": 30.1
+        },
+        "pageDown": {
+          "median": 16.6,
+          "p90": 17.6
+        },
+        "views90ms": 1503,
+        "perViewPress": 16.7,
+        "enter20ms": 1036,
+        "perEnter": 51.8,
+        "rowsRendered": 29,
+        "errs": []
+      },
+      {
+        "j": {
+          "median": 16.6,
+          "p90": 17.2
+        },
+        "right": {
+          "median": 16.7,
+          "p90": 17.4
+        },
+        "view": {
+          "median": 20,
+          "p90": 35.5
+        },
+        "space": {
+          "median": 16.6,
+          "p90": 24.9
+        },
+        "pageDown": {
+          "median": 16.7,
+          "p90": 16.9
+        },
+        "views90ms": 1392,
+        "perViewPress": 15.5,
+        "enter20ms": 1055,
+        "perEnter": 52.8,
+        "rowsRendered": 29,
+        "errs": []
+      }
+    ]
+  }
+}

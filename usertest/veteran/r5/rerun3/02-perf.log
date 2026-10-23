@@ -6,3 +6,75 @@
 0 dev-current@300 {"j":{"median":20.4,"p90":32.9},"right":{"median":17,"p90":24.5},"view":{"median":59,"p90":99.3},"space":{"median":43.1,"p90":54.4},"pageDown":{"median":16.3,"p90":28.5},"views90ms":3988,"perViewPress":44.3,"enter20ms":2608,"perEnter":130.4,"rowsRendered":29,"errs":[]}
 1 build-current@80 {"j":{"median":16.5,"p90":19.3},"right":{"median":16.6,"p90":19.5},"view":{"median":19.8,"p90":34.2},"space":{"median":16.5,"p90":26.5},"pageDown":{"median":16.6,"p90":18.8},"views90ms":1488,"perViewPress":16.5,"enter20ms":887,"perEnter":44.4,"rowsRendered":27,"errs":[]}
 1 build-r4@80 {"j":{"median":16.5,"p90":18.6},"right":{"median":16.7,"p90":17.6},"view":{"median":19.2,"p90":31},"space":{"median":17.1,"p90":27.6},"pageDown":{"median":16.6,"p90":18},"views90ms":1616,"perViewPress":18,"enter20ms":950,"perEnter":47.5,"rowsRendered":27,"errs":[]}
+1 dev-current@80 {"j":{"median":16.6,"p90":26.4},"right":{"median":16.8,"p90":18.2},"view":{"median":37.8,"p90":70.6},"space":{"median":34.2,"p90":40.9},"pageDown":{"median":16.6,"p90":23},"views90ms":3236,"perViewPress":36,"enter20ms":1962,"perEnter":98.1,"rowsRendered":27,"errs":[]}
+1 build-current@300 {"j":{"median":16.6,"p90":18.4},"right":{"median":16.7,"p90":18.1},"view":{"median":28.5,"p90":45.3},"space":{"median":16.7,"p90":22.5},"pageDown":{"median":16.6,"p90":22.2},"views90ms":1724,"perViewPress":19.2,"enter20ms":1325,"perEnter":66.3,"rowsRendered":29,"errs":[]}
+1 build-r4@300 {"j":{"median":16.7,"p90":18.4},"right":{"median":16.6,"p90":19.5},"view":{"median":20.7,"p90":29.2},"space":{"median":15.8,"p90":28.6},"pageDown":{"median":16.7,"p90":20.4},"views90ms":1779,"perViewPress":19.8,"enter20ms":1214,"perEnter":60.7,"rowsRendered":29,"errs":[]}
+1 dev-current@300 {"j":{"median":16.6,"p90":18.5},"right":{"median":16.7,"p90":19.7},"view":{"median":49.6,"p90":89.6},"space":{"median":20.1,"p90":39.4},"pageDown":{"median":16.7,"p90":33.6},"views90ms":3266,"perViewPress":36.3,"enter20ms":2346,"perEnter":117.3,"rowsRendered":29,"errs":[]}
+2 build-current@80 {"j":{"median":16.7,"p90":17.9},"right":{"median":16.7,"p90":17},"view":{"median":18.1,"p90":27.2},"space":{"median":17.2,"p90":28.2},"pageDown":{"median":16.7,"p90":22.5},"views90ms":1438,"perViewPress":16,"enter20ms":789,"perEnter":39.5,"rowsRendered":27,"errs":[]}
+2 build-r4@80 {"j":{"median":16.6,"p90":22.1},"right":{"median":16.6,"p90":17.1},"view":{"median":18.6,"p90":32.2},"space":{"median":16.7,"p90":20.4},"pageDown":{"median":16.7,"p90":17.9},"views90ms":1401,"perViewPress":15.6,"enter20ms":702,"perEnter":35.1,"rowsRendered":27,"errs":[]}
+2 dev-current@80 {"j":{"median":16.7,"p90":19.9},"right":{"median":16.7,"p90":17.1},"view":{"median":37,"p90":75.7},"space":{"median":16.6,"p90":27.3},"pageDown":{"median":17.6,"p90":28.5},"views90ms":3083,"perViewPress":34.3,"enter20ms":1584,"perEnter":79.2,"rowsRendered":27,"errs":[]}
+2 build-current@300 {"j":{"median":16.7,"p90":18.1},"right":{"median":16.7,"p90":17.3},"view":{"median":24.7,"p90":38.6},"space":{"median":17,"p90":24.4},"pageDown":{"median":16.6,"p90":20.2},"views90ms":2060,"perViewPress":22.9,"enter20ms":1304,"perEnter":65.2,"rowsRendered":29,"errs":[]}
+2 build-r4@300 {"j":{"median":16.7,"p90":19.1},"right":{"median":16.7,"p90":17.6},"view":{"median":22.1,"p90":29.9},"space":{"median":16.8,"p90":24.1},"pageDown":{"median":16.6,"p90":17.6},"views90ms":1799,"perViewPress":20,"enter20ms":1132,"perEnter":56.6,"rowsRendered":29,"errs":[]}
+2 dev-current@300 {"j":{"median":16.7,"p90":19.8},"right":{"median":16.5,"p90":20.2},"view":{"median":42.5,"p90":82.8},"space":{"median":16.4,"p90":27.7},"pageDown":{"median":17.5,"p90":32.3},"views90ms":3157,"perViewPress":35.1,"enter20ms":2194,"perEnter":109.7,"rowsRendered":29,"errs":[]}
+{
+ "build-current@80": {
+  "j": 16.7,
+  "right": 16.7,
+  "view": 18.1,
+  "space": 17,
+  "pageDown": 16.6,
+  "perViewPress": 16.5,
+  "perEnter": 44.4,
+  "rowsRendered": 27
+ },
+ "build-r4@80": {
+  "j": 16.6,
+  "right": 16.7,
+  "view": 19.2,
+  "space": 16.8,
+  "pageDown": 16.6,
+  "perViewPress": 18,
+  "perEnter": 47.5,
+  "rowsRendered": 27
+ },
+ "dev-current@80": {
+  "j": 16.7,
+  "right": 16.7,
+  "view": 37.8,
+  "space": 18.1,
+  "pageDown": 17.6,
+  "perViewPress": 36,
+  "perEnter": 98.1,
+  "rowsRendered": 27
+ },
+ "build-current@300": {
+  "j": 16.7,
+  "right": 16.7,
+  "view": 27.7,
+  "space": 16.7,
+  "pageDown": 16.6,
+  "perViewPress": 21.8,
+  "perEnter": 65.8,
+  "rowsRendered": 29
+ },
+ "build-r4@300": {
+  "j": 16.7,
+  "right": 16.6,
+  "view": 22.1,
+  "space": 16.8,
+  "pageDown": 16.6,
+  "perViewPress": 20,
+  "perEnter": 60.7,
+  "rowsRendered": 29
+ },
+ "dev-current@300": {
+  "j": 16.7,
+  "right": 16.7,
+  "view": 49.6,
+  "space": 20.1,
+  "pageDown": 16.7,
+  "perViewPress": 36.3,
+  "perEnter": 117.3,
+  "rowsRendered": 29
+ }
+}

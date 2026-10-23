@@ -1,0 +1,926 @@
+{
+  "text": [
+    {
+      "col": "ref",
+      "text": "K1",
+      "why": "回路記号 K1（リレー）: Shift+K のあと数字",
+      "ok": true,
+      "before": "セ40",
+      "after": "K1",
+      "editVal": "K1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "J1",
+      "why": "回路記号 J1（コネクタ）",
+      "ok": true,
+      "before": "セ40",
+      "after": "J1",
+      "editVal": "J1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "J12",
+      "why": "回路記号 J12",
+      "ok": true,
+      "before": "セ40",
+      "after": "J12",
+      "editVal": "J12",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "N1",
+      "why": "回路記号 N1",
+      "ok": true,
+      "before": "セ40",
+      "after": "N1",
+      "editVal": "N1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "k1",
+      "why": "小文字 k1",
+      "ok": false,
+      "before": "セ40",
+      "after": "セ40",
+      "editVal": null,
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R039"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "KA1",
+      "why": "KA1",
+      "ok": true,
+      "before": "セ40",
+      "after": "KA1",
+      "editVal": "KA1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "ref",
+      "text": "CN1",
+      "why": "CN1",
+      "ok": true,
+      "before": "セ40",
+      "after": "CN1",
+      "editVal": "CN1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "K3HB-X",
+      "why": "オムロン K3HB（Shift+K→3）",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "K3HB-X",
+      "editVal": "K3HB-X",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "J7KN-10",
+      "why": "オムロン J7KN（Shift+J→7）",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "J7KN-10",
+      "editVal": "J7KN-10",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "K8AK-AS1",
+      "why": "オムロン K8AK",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "K8AK-AS1",
+      "editVal": "K8AK-AS1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "JJ-100",
+      "why": "JJ 始まり",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "JJ-100",
+      "editVal": "JJ-100",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "NN-5",
+      "why": "NN 始まり",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "NN-5",
+      "editVal": "NN-5",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "ADP3338",
+      "why": "Shift+A（見積済の行）",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "ADP3338",
+      "editVal": "ADP3338",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "AD8605",
+      "why": "Shift+A のあと D",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "AD8605",
+      "editVal": "AD8605",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "INA219",
+      "why": "Shift+I",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "INA219",
+      "editVal": "INA219",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "maker",
+      "text": "WAGO",
+      "why": "Shift+W",
+      "ok": true,
+      "before": "オムロン",
+      "after": "WAGO",
+      "editVal": "WAGO",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "maker",
+      "text": "wago",
+      "why": "w（重みパネル）",
+      "ok": true,
+      "before": "オムロン",
+      "after": "wago",
+      "editVal": "wago",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "coil",
+      "why": "c（列パネル）",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "coil",
+      "editVal": "coil",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "cable",
+      "why": "c",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "cable",
+      "editVal": "cable",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "capacitor",
+      "why": "c",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "capacitor",
+      "editVal": "capacitor",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "DRV8833",
+      "why": "Shift+D",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "DRV8833",
+      "editVal": "DRV8833",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "NJM2904",
+      "why": "Shift+N",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "NJM2904",
+      "editVal": "NJM2904",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "knob",
+      "why": "k→n",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "knob",
+      "editVal": "knob",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "nand",
+      "why": "n→a",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "nand",
+      "editVal": "nand",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "ssr",
+      "why": "s→s",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "ssr",
+      "editVal": "ssr",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "jumper",
+      "why": "j→u",
+      "ok": true,
+      "before": "ファイバユニット",
+      "after": "jumper",
+      "editVal": "jumper",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "kj",
+      "why": "k→j（行き来）",
+      "ok": false,
+      "before": "ファイバユニット",
+      "after": "ファイバユニット",
+      "editVal": null,
+      "side": {},
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "S1",
+      "why": "Shift+S→1",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "S1",
+      "editVal": "S1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "X1",
+      "why": "Shift+X→1",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "X1",
+      "editVal": "X1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "H1",
+      "why": "h→1（Shift+H は割り当てなし）",
+      "ok": true,
+      "before": "E32-D11 2M",
+      "after": "H1",
+      "editVal": "H1",
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "name",
+      "text": "a1",
+      "why": "a→1",
+      "ok": false,
+      "before": "ファイバユニット",
+      "after": "ファイバユニット",
+      "editVal": null,
+      "side": {
+        "adopted": [
+          6,
+          7
+        ]
+      },
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）"
+    },
+    {
+      "col": "model",
+      "text": "2SC1815",
+      "why": "数字始まり",
+      "ok": false,
+      "before": "E32-D11 2M",
+      "after": "SC1815",
+      "editVal": "SC1815",
+      "side": {
+        "view": [
+          1,
+          2
+        ],
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": ""
+    },
+    {
+      "col": "model",
+      "text": "ADP3338",
+      "why": "下書き行 R076",
+      "ok": true,
+      "after": "ADP3338",
+      "editVal": "ADP3338",
+      "side": {
+        "cursorRow": [
+          "R076",
+          "R077"
+        ]
+      }
+    },
+    {
+      "col": "model",
+      "text": "IRF540N",
+      "why": "下書き行 R076",
+      "ok": true,
+      "after": "IRF540N",
+      "editVal": "IRF540N",
+      "side": {
+        "cursorRow": [
+          "R076",
+          "R077"
+        ]
+      }
+    }
+  ],
+  "cmd": [
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "hjhjhj",
+      "why": "行を隠す→次の行 ×3",
+      "gap": 45,
+      "mode": "編集",
+      "editVal": "jhjhj",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "hjhjhj",
+      "why": "同 120ms",
+      "gap": 120,
+      "mode": "編集",
+      "editVal": "jhjhj",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "hjhjhj",
+      "why": "同 200ms",
+      "gap": 200,
+      "mode": "編集",
+      "editVal": "jhjhj",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "hjhjhj",
+      "why": "同 260ms",
+      "gap": 260,
+      "mode": "編集",
+      "editVal": "jhjhj",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "design",
+      "view": "4",
+      "start": "R016 部品名",
+      "col": "name",
+      "seq": "xnxnxn",
+      "why": "確認済み→次の問題 ×3（4 要確認）",
+      "gap": 45,
+      "mode": "編集",
+      "editVal": "nxnxn",
+      "side": {},
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+    },
+    {
+      "role": "design",
+      "view": "4",
+      "start": "R016 部品名",
+      "col": "name",
+      "seq": "xnxnxn",
+      "why": "同 150ms",
+      "gap": 150,
+      "mode": "編集",
+      "editVal": "nxnxn",
+      "side": {},
+      "toast": "確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "ajaj",
+      "why": "推奨で採用→次の行",
+      "gap": 60,
+      "mode": "編集",
+      "editVal": "jaj",
+      "side": {
+        "adopted": [
+          6,
+          7
+        ]
+      },
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 部品名",
+      "col": "name",
+      "seq": "anan",
+      "why": "推奨で採用→次の問題",
+      "gap": 60,
+      "mode": "編集",
+      "editVal": "anan",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 型式",
+      "col": "model",
+      "seq": "s4",
+      "why": "並び替え→ビュー4",
+      "gap": 60,
+      "mode": "ナビ",
+      "editVal": null,
+      "side": {
+        "view": [
+          1,
+          4
+        ],
+        "sort": [
+          null,
+          {
+            "col": "model",
+            "dir": "asc"
+          }
+        ]
+      },
+      "toast": "型式 で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 型式",
+      "col": "model",
+      "seq": "S1",
+      "why": "降順→ビュー1",
+      "gap": 60,
+      "mode": "編集",
+      "editVal": "S1",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 型式",
+      "col": "model",
+      "seq": "f1",
+      "why": "絞り込み→ビュー1",
+      "gap": 60,
+      "mode": "ナビ",
+      "editVal": null,
+      "side": {
+        "cellFilter": [
+          null,
+          {
+            "col": "model",
+            "value": "E32-D11 2M"
+          }
+        ]
+      },
+      "toast": "型式 =「E32-D11 2M」で絞り込みました（f か Esc で解除）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 型式",
+      "col": "model",
+      "seq": "Dj",
+      "why": "複製→次の行",
+      "gap": 60,
+      "mode": "ナビ",
+      "editVal": null,
+      "side": {
+        "rows": [
+          80,
+          81
+        ],
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"
+    },
+    {
+      "role": "design",
+      "view": "1",
+      "start": "R040 型式",
+      "col": "model",
+      "seq": "hk",
+      "why": "隠す→前の行",
+      "gap": 60,
+      "mode": "ナビ",
+      "editVal": null,
+      "side": {
+        "cursorRow": [
+          "R040",
+          "R039"
+        ],
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "role": "purchasing",
+      "view": "3",
+      "start": "R001 ロット",
+      "col": "receivedLot",
+      "seq": "ojoj",
+      "why": "発注→次の行（ロットの列）",
+      "gap": 60,
+      "mode": "編集",
+      "editVal": "joj",
+      "side": {},
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "role": "purchasing",
+      "view": "3",
+      "start": "R001 ロット",
+      "col": "receivedLot",
+      "seq": "ijij",
+      "why": "入荷→次の行（ロットの列）",
+      "gap": 60,
+      "mode": "編集",
+      "editVal": "jij",
+      "side": {},
+      "toast": "入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "role": "purchasing",
+      "view": "9",
+      "start": "分類 制御",
+      "col": "orderQty",
+      "seq": "ojoj",
+      "why": "発注→次の行（発注数の列・9）",
+      "gap": 60,
+      "mode": "ナビ",
+      "editVal": null,
+      "side": {
+        "cursorRow": [
+          "g:制御:R004",
+          "R005"
+        ]
+      },
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    }
+  ],
+  "gaps": [
+    {
+      "seq": "DR",
+      "gaps": [
+        240
+      ],
+      "why": "Shift+D→R 240ms",
+      "mode": "編集",
+      "editVal": "DR",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "seq": "DR",
+      "gaps": [
+        270
+      ],
+      "why": "Shift+D→R 270ms",
+      "mode": "編集",
+      "editVal": "DR",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "seq": "ab",
+      "gaps": [
+        240
+      ],
+      "why": "a→b 240",
+      "mode": "編集",
+      "editVal": "ab",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "seq": "ab",
+      "gaps": [
+        270
+      ],
+      "why": "a→b 270",
+      "mode": "編集",
+      "editVal": "ab",
+      "side": {},
+      "toast": ""
+    },
+    {
+      "seq": "hu",
+      "gaps": [
+        550
+      ],
+      "why": "h→u(割当なし) 550",
+      "mode": "編集",
+      "editVal": "u",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "seq": "hu",
+      "gaps": [
+        650
+      ],
+      "why": "h→u 650",
+      "mode": "編集",
+      "editVal": "u",
+      "side": {
+        "hidden": [
+          [],
+          [
+            "R040"
+          ]
+        ]
+      },
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）"
+    },
+    {
+      "seq": "knob",
+      "gaps": [
+        300,
+        45,
+        45
+      ],
+      "why": "k→n 300ms",
+      "mode": "編集",
+      "editVal": "knob",
+      "side": {},
+      "toast": ""
+    }
+  ]
+}

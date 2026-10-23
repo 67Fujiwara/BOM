@@ -1,0 +1,86 @@
+[
+  {
+    "text": "K3HB-X",
+    "gap": 450,
+    "mode": "編集",
+    "edit": "HB-X",
+    "cursor": "R001 型式",
+    "panel": null,
+    "changed": [
+      "R001:working={\"model\":\"HB-X\"}"
+    ]
+  },
+  {
+    "text": "K3HB-X",
+    "gap": 500,
+    "mode": "編集",
+    "edit": "HB-X",
+    "cursor": "R001 型式",
+    "panel": null,
+    "changed": [
+      "R001:working={\"model\":\"HB-X\"}"
+    ]
+  },
+  {
+    "text": "ADP3338",
+    "gap": 450,
+    "mode": "ナビ",
+    "edit": null,
+    "cursor": "R040 型式",
+    "panel": null,
+    "changed": [
+      "R040:status=\"selected\",flags={\"pmPending\":false,\"contested\":false,\"le,orderQty=2,adoptedSupplierId=\"S3\",adoptReason=\"実績/品質\",scoreSnapshot=90"
+    ]
+  },
+  {
+    "text": "ADP3338",
+    "gap": 500,
+    "mode": "ナビ",
+    "edit": null,
+    "cursor": "R040 型式",
+    "panel": null,
+    "changed": [
+      "R040:status=\"selected\",flags={\"pmPending\":false,\"contested\":false,\"le,orderQty=2,adoptedSupplierId=\"S3\",adoptReason=\"実績/品質\",scoreSnapshot=90"
+    ]
+  },
+  {
+    "text": "NJM2904",
+    "gap": 450,
+    "mode": "編集",
+    "edit": "M2904",
+    "cursor": "R062 型式",
+    "panel": null,
+    "changed": [
+      "R062:working={\"model\":\"M2904\"}"
+    ]
+  },
+  {
+    "text": "NJM2904",
+    "gap": 500,
+    "mode": "編集",
+    "edit": "M2904",
+    "cursor": "R062 型式",
+    "panel": null,
+    "changed": [
+      "R062:working={\"model\":\"M2904\"}"
+    ]
+  },
+  {
+    "text": "relay",
+    "gap": 450,
+    "mode": "パネル",
+    "edit": null,
+    "cursor": "R040 部品名",
+    "panel": "panel-prompt",
+    "changed": []
+  },
+  {
+    "text": "relay",
+    "gap": 500,
+    "mode": "パネル",
+    "edit": null,
+    "cursor": "R040 部品名",
+    "panel": "panel-prompt",
+    "changed": []
+  }
+]

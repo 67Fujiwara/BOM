@@ -139,7 +139,7 @@ function Main() {
       <Side vm={vm} />
       <main className="main">
         <div className="toolbar">
-          <input className="filter" placeholder="絞り込み（/ でここへ。Enter で表に戻る、Esc で解除）" value={st.filter} onChange={(e) => st.set({ filter: e.target.value })} data-testid="filter" />
+          <input className="filter" placeholder="絞り込み（Ctrl+F でここへ。Enter で表に戻る、Esc で解除）" value={st.filter} onChange={(e) => st.set({ filter: e.target.value })} data-testid="filter" />
           {st.filter && <span className="muted" style={{ fontSize: 12 }}>{vm.rows.length} 行</span>}
           {st.cellFilter && (
             <span className="chip" style={{ cursor: 'pointer' }} onClick={() => st.set({ cellFilter: null })} title="クリックか f / Esc で解除">

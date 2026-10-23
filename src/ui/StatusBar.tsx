@@ -44,8 +44,8 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   } else if (st.mode === 'nav' && !row) hints.push(['ArrowDown', '表へ'], ['n', '次の問題'])
   else if (st.mode === 'edit') hints.push(['Enter', '確定して下へ'], ['Tab', '確定して右へ'], ['Escape', '取り消し'])
   hints.push(['?', 'ヘルプ'])
-  // 幅が足りないときに切れないよう、公開とヘルプを先頭に
-  for (const k of ['?', 'Ctrl+Enter']) {
+  // 幅が足りないときに切れないよう、公開・ヘルプ・次の問題を先頭に
+  for (const k of ['F8', '?', 'Ctrl+Enter']) {
     const i = hints.findIndex((h) => h[0] === k)
     if (i > 0) hints.unshift(...hints.splice(i, 1))
   }
@@ -53,7 +53,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   if (st.mode === 'nav' && !onCommandCell('a')) for (const h of hints) if (/^(Shift\+)?[A-Za-z]$/.test(h[0])) h[0] = h[0] === 'n' ? 'F8' : `Alt+${h[0]}`
   if (!row) for (const h of hints) if (h[0] === 'n') h[0] = 'F8'
   // 文字を打てるセルでは ? も値になるので、ヘルプは F1 で案内する
-  if (st.mode === 'nav' && !onCommandCell('?')) for (const h of hints) if (h[0] === '?') h[0] = 'F1'
+  if (st.mode !== 'nav' || !onCommandCell('?')) for (const h of hints) if (h[0] === '?') h[0] = 'F1'
   const problemHint = (() => {
     if (!row) return ''
     const iss = openIssues(p, row.id).filter((i) => i.status === 'open' || i.status === 'inProgress')

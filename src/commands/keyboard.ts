@@ -11,7 +11,7 @@ import * as adopt from '@/actions/adopt'
 import * as pm from '@/actions/pm'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { ROLE_DEFAULT_VIEW, vm, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
+import { ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -73,7 +73,7 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         if (it) {
           set({ recentCommands: [it.id, ...s.recentCommands.filter((x) => x !== it.id)].slice(0, 20) })
           it.run()
-        } else toast('該当する操作がありません（? でショートカット一覧）', 'info')
+        } else toast('該当する操作がありません（F1 でショートカット一覧）', 'info')
         return true
       }
       return key === 'Ctrl+K' ? (closePanel(), true) : false
@@ -419,8 +419,8 @@ export function onCommandCell(ch = ''): boolean {
   if (s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool') return true
   // 自分が書けない列では、数字・記号は 1 キー操作（値にならないので、打ち間違えても何も書き換わらない）
   if ((/^\d$/.test(ch) || sym) && rows.canEdit(s.cursorCol)) return true
-  // このビューに自分が書ける列が 1 つも無いとき（PM はどの列も書かない）は、どの列でも 1 キー操作（§9.1: 7 の y / Shift+Y）
-  return !vm().columns.some((c) => !rows.canEdit(c))
+  // §9.1: PM の 7 では y / Shift+Y がどの列でもそのまま効く（ほかの英字は単語を打ったときに 1 文字ずつ操作にならないよう Alt）
+  return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y')
 }
 /** Alt+英字・Alt+数字 → その 1 キー操作（Alt 付きで別に決まっている操作があればそちらが先） */
 function altBinding(key: string) {
@@ -572,7 +572,7 @@ export function handleKeyDown(e: KeyboardEvent) {
       return
     }
     // 編集中のグローバルキー: 確定してから実行（Ctrl+Z はブラウザの入力欄の取り消しに任せる）
-    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P', 'Ctrl+G', 'Ctrl+Shift+C', 'Ctrl+.', 'Ctrl+Shift+F'].includes(key)) {
+    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P', 'Ctrl+G', 'Ctrl+Shift+C', 'Ctrl+.', 'Ctrl+Shift+F', 'Ctrl+F', 'F1'].includes(key)) {
       e.preventDefault()
       const b = lookupBinding(key, 'nav')
       if (b && commitEdit('stay')) runCommand(b.id, e)
@@ -592,7 +592,7 @@ export function handleKeyDown(e: KeyboardEvent) {
     runCommand(b.id, e)
     return
   }
-  if (/^(Ctrl\+)?Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) return toast(`${key} は割り当てがありません（? でキーの一覧）`, 'info')
+  if (/^(Ctrl\+)?Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) return toast(`${key} は割り当てがありません（F1 でキーの一覧）`, 'info')
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
@@ -600,7 +600,12 @@ export function handleKeyDown(e: KeyboardEvent) {
     const r = visibleCursorRow()
     if (!r) return toast('行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）', 'info')
     const err = rows.canEdit(s.cursorCol)
-    if (err) return toast(`${err}。1 キー操作は Alt を押しながら（例: ${/[A-Z]/.test(ch) ? `Alt+Shift+${ch}` : `Alt+${ch}`}）か、ID の列で`, 'info')
+    if (err) {
+      // 打ったキーの操作名も書く（単語を打ったときに、最後の文字の操作を知らずに Alt で押さないように）
+      const alt = /[A-Z]/.test(ch) ? `Alt+Shift+${ch}` : `Alt+${ch}`
+      const bound = lookupBinding(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, 'nav')
+      return toast(`${err}。${bound ? `「${bound.label}」は ${alt}（または ID の列で ${ch}）` : '1 キー操作は Alt を押しながらか、ID の列で'}。キーの一覧は F1`, 'info')
+    }
     startEdit(ch)
   }
 }

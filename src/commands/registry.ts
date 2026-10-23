@@ -185,7 +185,7 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -351,8 +351,11 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   const kinds = ISSUE_KINDS.map((k) => k.kind)
   for (const r of p.rows) {
     if (!isActive(r)) continue
+    const changed = Object.keys(r.working ?? {})
     for (const i of openIssues(p, r.id)) {
       const b = i.status === 'open' || i.status === 'inProgress' ? issues.issueBallRole(i) : i.by.role
+      // 設計が直して公開を待っている指摘（指摘のセルが作業中で変わった）は、もう直す問題として回らない
+      if (role === 'design' && b === 'design' && (i.field ? changed.includes(i.field as string) : changed.includes('model') || changed.includes('maker'))) continue
       if (b === role) out.push({ rowId: r.id, field: (i.field as string) ?? 'model', order: kinds.indexOf(i.kind) })
     }
     if (role === 'design') for (const pr of checkRow(r, s.ws.rules, p)) out.push({ rowId: r.id, field: pr.field, order: 20 + (pr.severity === 'error' ? 0 : 1) })
@@ -380,19 +383,25 @@ function gotoProblem(delta: 1 | -1): boolean {
   const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
   // 直した・確認した問題は一覧から消えるので、前に飛んだ位置から続ける（先頭に戻って間の問題を飛ばさない）
-  if (idx < 0 && lastProblem && lastProblem.rowId === s.cursorRow) {
-    const at = Math.min(lastProblem.idx, list.length) // 消えた問題の次は同じ番号に詰まっている
-    next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
+  // （直したあと Enter で下の行へ移っていても同じ）
+  if (idx < 0 && lastProblem) {
+    const lp = lastProblem
+    const j = list.findIndex((x) => x.rowId === lp.rowId && x.field === lp.field)
+    if (j >= 0) next = (j + delta + list.length) % list.length
+    else {
+      const at = Math.min(lp.idx, list.length) // 消えた問題の次は同じ番号に詰まっている
+      next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
+    }
   }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
-  lastProblem = { rowId: list[next].rowId, idx: next }
+  lastProblem = { rowId: list[next].rowId, field: list[next].field, idx: next }
   if (stay) jumpToRow(list[next].rowId)
   else jumpToRow(list[next].rowId, list[next].field)
   return true
 }
 /** 最後に F8 / n で飛んだ問題（行と一覧の中の番号） */
-let lastProblem: { rowId: string; idx: number } | null = null
+let lastProblem: { rowId: string; field: string; idx: number } | null = null
 
 // ---------- Ctrl+. 候補 ----------
 export function quickfixOptions(r: Row, field: string): PanelOption[] {
@@ -636,7 +645,12 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
     }
     let amount: number | undefined
     // 特急・分納は上限金額を入れる（§9.1「上限入力」）
-    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim()) return '特急・分納の上限金額を入れてください（例: 30000）'
+    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim())
+      return /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()
+        ? `「${text.trim()}」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください`
+        : '特急・分納の上限金額を入れてください（Tab で下の「上限金額」の欄へ。例: 30000）'
+    // 理由の欄に金額だけを入れたまま確定しない（理由が「50000」と残らないように）
+    if (kind === '特急・分納' && /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()) return '理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）'
     if (extra?.['上限金額']) {
       const n = parseNumber(extra['上限金額'], { min: 0, label: '上限金額' })
       if (!n.ok) return n.error
@@ -1012,9 +1026,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       s.commitWs('', () => {})
       return toast('保存しました（編集は自動で保存されています）', 'ok')
     case 'undo':
-      return s.undoLast()
-    case 'redo':
-      return s.redoLast()
+    case 'redo': {
+      // 戻した・やり直した結果、カーソルの行が消えた（置換で作った行など）ときは近くの行へ
+      const before = vm().rows.map((x) => x.id)
+      if (id === 'undo') s.undoLast()
+      else s.redoLast()
+      keepCursorVisible(before)
+      return
+    }
     case 'export.excel': {
       const done = (label: string, sid?: string) => (m: typeof import('@/io/excel')) =>
         m
@@ -1654,7 +1673,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'theme.toggle', label: 'ダークモード切替', section: '表示', keywords: 'ダーク 暗い 暗く 明るく ライト テーマ 色' },
   { id: 'density.toggle', label: 'コンパクト表示切替', section: '表示', keywords: '行の高さ 小さく 大きく 文字 拡大 縮小 見やすく' },
   { id: 'sort.asc', label: '今の列で並び替え', section: '表示', desc: 's 昇順 / Shift+S 降順。列見出しのクリックでも', keywords: 'ソート sort 並べ替え 順番' },
-  { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: '/ で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
+  { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: 'Ctrl+F で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },
   { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },

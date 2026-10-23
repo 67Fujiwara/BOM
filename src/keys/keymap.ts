@@ -24,7 +24,7 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'export.excel', keys: ['Ctrl+E'], mode: 'any', section: '全体', label: 'Excelで出力' },
   { id: 'copy.formatted', keys: ['Ctrl+Shift+C'], mode: 'any', section: '全体', label: '表示中の行と列を書式つきでコピー' },
   { id: 'goto', keys: ['Ctrl+G'], mode: 'any', section: '全体', label: 'ID・型式・Noでジャンプ' },
-  { id: 'filter.focus', keys: ['/'], mode: 'nav', section: '全体', label: '絞り込み検索にフォーカス' },
+  { id: 'filter.focus', keys: ['/', 'Ctrl+F'], mode: 'nav', section: '全体', label: '絞り込み検索にフォーカス' },
   { id: 'help', keys: ['?', 'F1'], mode: 'nav', section: '全体', label: 'ショートカット一覧', hint: '?' },
   { id: 'escape', keys: ['Escape'], mode: 'any', section: '全体', label: '1段階戻る' },
   { id: 'wizard.back', keys: ['Alt+ArrowLeft'], mode: 'nav', section: '全体', label: 'ガイドで1つ前の段階へ（新しいBOM）' },

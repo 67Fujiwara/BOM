@@ -62,6 +62,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
       // 追加費用の上限超過（PM の判断待ち・却下）
       const oc = overCap(p, row)
       if (oc) return `上限超過 ¥${(row.extraCost ?? 0).toLocaleString()} > ¥${oc.cap.toLocaleString()}${row.flags.capRuled === row.extraCost ? '（PM 却下: 上限内で手配し直す）' : '（PM 判断待ち）'}`
+      if (row.flags.formalWithdrawn) return `正式依頼を取り下げ: ${row.flags.formalWithdrawn}（元の商社に取り下げを伝える）`
       return ''
     }
     const kind = iss[0].kind

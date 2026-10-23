@@ -1,12 +1,14 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { fixedSupplierId, isActive, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
+import { fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
 export function normalize(p: Project, ws: Workspace, today = todayStr()) {
   const now = new Date().toISOString()
   for (const r of p.rows) {
     if (!isActive(r)) continue
+    // 発注済の行の再発行の印は使えない（発注後の変更は発注後変更依頼で扱う）。前の版で残った印を外す
+    if (r.flags.reissue && ['ordered', 'received'].includes(r.status)) r.flags.reissue = false
     // 見積対象外は選定をスキップして「選定済（固定）」
     if (!isQuotable(r) && ['submitted', 'quoting', 'quoted'].includes(r.status)) {
       r.status = 'selected'
@@ -63,7 +65,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       const mismatch = fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）'
       if (mismatch) {
         // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
-        if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案'].includes(r.flags.pmReason ?? '')) {
+        if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
           r.flags.pmPending = false
           r.flags.pmReason = undefined
           r.flags.ltbPending = false
@@ -83,12 +85,25 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
             i.status = 'confirmed'
             i.resolution = '調達区分・指定先の変更で取り下げ（選び直し）'
           }
+        // 前の採用商社の正式回答・差分超過も取り下げる（選び直して依頼したら新しい回答を待つ）。正式依頼中・正式見積済なら取り下げを購買に知らせる
+        const oldQ = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
+        if (oldQ) {
+          if (oldQ.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === oldQ.supplierId)?.name ?? oldQ.supplierId} ${oldQ.formalRequestNo}`
+          oldQ.formalPrice = null
+          oldQ.formalLeadDays = null
+          oldQ.formalValidUntil = null
+          oldQ.formalDiffReason = ''
+          oldQ.formalRequestNo = undefined
+        }
+        r.flags.formalDiff = false
+        r.flags.formalDiffKey = undefined
+        r.flags.reissue = false
         r.adoptedSupplierId = undefined
         r.adoptReason = undefined
         r.scoreSnapshot = undefined
         r.flags.contested = false
         // 相見積に戻した行は、相見積先すべての回答で見積済を判定する（回答済みの商社に頼み直さない）
-        r.quoteTargets = fixed ? undefined : p.supplierIds.filter((id) => ws.suppliers.find((x) => x.id === id)?.tradable !== false)
+        r.quoteTargets = fixed ? undefined : makerTargets(p, r.maker, ws.suppliers)
         r.status = fixed || p.quotes.some((x) => x.rowId === r.id && !x.stale) ? 'quoting' : 'submitted'
         r.statusChangedAt = now
         r.dueAt = undefined

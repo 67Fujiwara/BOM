@@ -169,9 +169,9 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       if (n >= 0 && scores[n]) {
         const sc = scores[n]
         closePanel()
-        if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId)
+        const was = panel.was !== undefined ? panel.was : (row.adoptedSupplierId ?? null)
+        if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId, undefined, was)
         else {
-          const was = row.adoptedSupplierId ?? null
           prompt(row.status === 'quoting' ? '先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter' : '1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
         }
         return true

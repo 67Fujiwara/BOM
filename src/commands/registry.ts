@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, pendingAdd, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -577,7 +577,6 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
           label: '再見積要: 据え置き（旧見積を有効に戻す）',
           run: () =>
             s.commit('再見積要: 据え置き', (p2, ws) => {
-              queueMicrotask(() => toast(`${r.id} の旧見積を戻しました（概算。選定は選び直し、正式見積は依頼し直します）`, 'info'))
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
               // 商社ごとにいちばん新しい旧見積を、有効な見積として戻す（見積の枠が無ければ作る）
@@ -596,6 +595,11 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
               // 旧見積が戻ったので、提出済に戻っていた行は見積中へ（揃っていれば見積済。選定者が選び直す）
               if (rr.status === 'submitted' || rr.status === 'quoted') setStatus(rr, 'quoting')
               normalize(p2, ws)
+              // 採用を残した行（数量の変更など）と、採用を外した行（型式の変更など）で知らせを分ける
+              const msg = rr.adoptedSupplierId
+                ? `${r.id} の旧見積を戻しました（概算。採用はそのまま${rr.flags.reissue ? '。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します' : ''}）`
+                : `${r.id} の旧見積を戻しました（概算。選定は選び直し、正式見積は依頼し直します）`
+              queueMicrotask(() => toast(msg, 'info'))
             }),
         },
         { label: '再見積要: 再見積（概算見積を依頼）', run: () => runCommand('quotes.request') },
@@ -1407,7 +1411,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const err = adopt.canAdopt(p, r!, true)
       if (err) return toast(err, 'err')
       if (!scoreRow(p, r!, s.ws.suppliers).length) return toast('有効な見積がありません（未回答・辞退・期限切れのみ）', 'err')
-      return openPanel({ kind: 'adopt', rowId: r!.id, index: 0 })
+      return openPanel({ kind: 'adopt', rowId: r!.id, index: 0, was: r!.adoptedSupplierId ?? null })
     }
     case 'row.replace': {
       if (!need()) return
@@ -1876,7 +1880,8 @@ export function paletteItems(query: string): PaletteItem[] {
       // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
       // 表示どおりの「R040 を置換」「R040 へジャンプ」「R040 を 因幡電機 で採用」でも当たる
       const rest = m[2].trim().replace(/^[をへ]\s*/, '')
-      const e = effective(row)
+      // 役割に見せる値（設計の作業中・承認待ちの値は設計にだけ）
+      const e = valuesFor(row, s.user().role)
       if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用') || /で採用/.test(rest))) {
         const scores = scoreRow(p, row, s.ws.suppliers)
         const supQ = rest.replace(/^採用\s*/, '').replace(/\s*で採用.*$/, '').replace(/\s*スコア.*$/, '').trim()

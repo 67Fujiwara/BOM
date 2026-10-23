@@ -247,7 +247,7 @@ export async function requestFormalQuotes(): Promise<string> {
         q.formalNeedDate = rowNeedDate(p2, r)
       }
       // 再発行（数量・型式の変更のあと）は前の正式回答を消して、新しい回答を待つ（正式見積済のまま古い単価で止まらない）
-      if (r.flags.reissue && q) {
+      if ((r.flags.reissue || r.status === 'selected') && q) {
         q.prevFormalPrice = q.formalPrice ?? q.prevFormalPrice
         q.formalPrice = null
         q.formalLeadDays = null
@@ -255,6 +255,7 @@ export async function requestFormalQuotes(): Promise<string> {
         if (r.status === 'formalQuoted') setStatus(r, 'formalRequested')
       }
       r.flags.reissue = false
+      r.flags.formalWithdrawn = undefined
       if (r.status === 'selected') setStatus(r, 'formalRequested')
       r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
     }

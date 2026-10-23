@@ -64,8 +64,8 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   headerRow(sheet, cols)
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
-    // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も設計以外には出さない（§5）
-    if (pendingAdd(r) && (target === 'supplier' || ws.user.role !== 'design')) continue
+    // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も購買には出さない（§5。承認する PM には出す）
+    if (pendingAdd(r) && (target === 'supplier' || ws.user.role === 'purchasing')) continue
     // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
     if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
     if (target === 'supplier' && supplierId) {
@@ -98,12 +98,15 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
 
 /** 社内だけのシート（変更点・チェック結果）。商社向けには付けない */
 function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
-  const hide = (id: string) => ws.user.role !== 'design' && pendingAdd(p.rows.find((x) => x.id === id) ?? ({ flags: {} } as Row))
+  const purchasing = ws.user.role === 'purchasing'
+  const hide = (id: string) => purchasing && pendingAdd(p.rows.find((x) => x.id === id) ?? ({ flags: {} } as Row))
   // 変更点
   const chg = wb.addWorksheet('変更点')
   headerRow(chg, [{ header: 'Rev', key: 'rev', width: 6 }, { header: '日時', key: 'at', width: 16 }, { header: '公開者', key: 'by', width: 10 }, { header: 'ID', key: 'id', width: 7 }, { header: '起因', key: 'cause', width: 18 }, { header: '変更理由', key: 'reason', width: 12 }, { header: '変更番号', key: 'no', width: 12 }, { header: '内容', key: 'detail', width: 50 }, { header: '承認', key: 'approval', width: 24 }])
   for (const sub of p.submissions) {
-    const prev = p.submissions.filter((x) => x.rev < sub.rev)
+    // 承認待ち・却下の変更セットの中身は購買には出さない（§5「承認待ちの変更あり」だけ）
+    if (purchasing && sub.changeSet && (!sub.changeSet.approved || sub.changeSet.rejected || sub.revoked)) continue
+    const prev = p.submissions.filter((x) => x.rev < sub.rev && !(purchasing && x.changeSet && (!x.changeSet.approved || x.changeSet.rejected || x.revoked)))
     for (const id of sub.rowIds) {
       if (hide(id)) continue
       const now = sub.snapshot[id]

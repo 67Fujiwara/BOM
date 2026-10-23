@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { STATUS_LABEL, ROLE_LABEL } from '@/model/types'
-import { adoptedQuote, effective, lineAmount, orderQty, rowNeedDate, isActive, ball } from '@/model/derive'
+import { adoptedQuote, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
 const FILL = (argb: string): ExcelJS.Fill => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } })
@@ -64,11 +64,13 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   headerRow(sheet, cols)
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
-    if (r.hidden) continue
-    const e = effective(r)
+    // 隠した行は社内・商社向けでは出さない。保管用は全行
+    if (r.hidden && target !== 'archive') continue
+    // 設計の作業中（未公開）の値は、設計が社内用に出すときだけ。商社向け・保管用・購買や PM の出力は公開値
+    const e = target === 'internal' ? valuesFor(r, ws.user.role) : r
     const q = adoptedQuote(p, r)
     const amt = lineAmount(p, r)
-    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status], ball: ROLE_LABEL[ball(p, r) ?? 'design'] ?? '', extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
+    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status], ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
     if (target === 'archive') for (const sid of p.supplierIds) {
       const qq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
       rec[`q.${sid}.price`] = qq?.unitPrice ?? ''
@@ -80,6 +82,14 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     const sup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId)
     if (sup && target !== 'supplier') row.getCell('adopted').fill = FILL('FF' + sup.color.slice(1) + '')
   }
+  if (target !== 'supplier') addInternalSheets(wb, ws, p)
+  const buf = await wb.xlsx.writeBuffer()
+  const suffix = target === 'supplier' ? `_${ws.suppliers.find((s) => s.id === supplierId)?.name ?? '商社向け'}` : target === 'archive' ? '_保管用' : ''
+  download(buf as ArrayBuffer, safeName(`${p.id}_${p.name}${suffix}.xlsx`))
+}
+
+/** 社内だけのシート（変更点・チェック結果）。商社向けには付けない */
+function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // 変更点
   const chg = wb.addWorksheet('変更点')
   headerRow(chg, [{ header: 'Rev', key: 'rev', width: 6 }, { header: '日時', key: 'at', width: 16 }, { header: '公開者', key: 'by', width: 10 }, { header: 'ID', key: 'id', width: 7 }, { header: '起因', key: 'cause', width: 18 }, { header: '変更理由', key: 'reason', width: 12 }, { header: '変更番号', key: 'no', width: 12 }, { header: '内容', key: 'detail', width: 50 }, { header: '承認', key: 'approval', width: 24 }])
@@ -104,9 +114,11 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     row.fill = pr.severity === 'error' ? ERR_FILL : WARN_FILL
   }
   for (const i of p.issues) if (i.status !== 'draft') chk.addRow({ id: i.rowId, field: i.field ?? '', sev: '指摘', msg: i.text, kind: i.kind, status: i.status })
-  const buf = await wb.xlsx.writeBuffer()
-  const suffix = target === 'supplier' ? `_${ws.suppliers.find((s) => s.id === supplierId)?.name ?? '商社向け'}` : target === 'archive' ? '_保管用' : ''
-  download(buf as ArrayBuffer, `${p.id}_${p.name}${suffix}.xlsx`)
+}
+
+/** ファイル名に使えない文字を置き換える */
+function safeName(s: string): string {
+  return s.replace(/[\\/:*?"<>|]/g, '_')
 }
 
 /** 商社向けの見積依頼書（概算 / 正式） */
@@ -126,7 +138,7 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
   hr.font = { bold: true }
   hr.fill = HEAD_FILL
   for (const r of rows) {
-    const e = effective(r)
+    const e = r
     const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === sup.id && !x.stale)
     if (kind === 'rough') sh.addRow([r.id, e.name, e.model, e.maker, e.makerLock, e.altPolicy, e.qtyNeeded, e.unit, rowNeedDate(p, r) ?? '', e.note, '', '', '', '', '', '', '', '', '', ''])
     else sh.addRow([r.id, e.name, e.model, e.maker, orderQty(r), e.unit, rowNeedDate(p, r) ?? '', q?.unitPrice ?? '', '', '', '', '', ''])
@@ -145,7 +157,7 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
     }
   }
   const buf = await wb.xlsx.writeBuffer()
-  download(buf as ArrayBuffer, `${reqNo}_${sup.name}.xlsx`)
+  download(buf as ArrayBuffer, safeName(`${reqNo}_${sup.name}.xlsx`))
 }
 
 /** 選定記録（社内）: スコア内訳つき */
@@ -155,7 +167,7 @@ export async function exportSelectionRecord(ws: Workspace, p: Project, scoresOf:
   headerRow(sh, [{ header: 'ID', key: 'id', width: 7 }, { header: '部品名', key: 'name', width: 22 }, { header: '型式', key: 'model', width: 24 }, { header: '採用', key: 'adopted', width: 14 }, { header: '理由', key: 'reason', width: 16 }, { header: 'スコア', key: 'score', width: 7 }, { header: '内訳（商社: 合計 / 価格 / 納期 / 実績 / 条件）', key: 'detail', width: 70 }, { header: '決定', key: 'decision', width: 30 }])
   for (const r of p.rows) {
     if (!r.adoptedSupplierId) continue
-    const e = effective(r)
+    const e = r
     const sc = scoresOf(r)
     const dec = p.decisions.filter((d) => d.rowId === r.id).map((d) => `${d.kind} ${d.by.name} ${d.at.slice(0, 10)}`).join('; ')
     sh.addRow({ id: r.id, name: e.name, model: e.model, adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', reason: r.adoptReason ?? '推奨', score: r.scoreSnapshot ?? '', detail: sc.map((x) => `${ws.suppliers.find((s) => s.id === x.supplierId)?.name}: ${x.total} / ${x.price} / ${x.lead} / ${x.record} / ${x.terms}`).join('　'), decision: dec })

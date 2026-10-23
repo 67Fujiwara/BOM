@@ -36,11 +36,50 @@ export function parseWorkspace(raw: string | null): Workspace | null {
   }
 }
 
+// ---------- 退避 ----------
+// 読めなかった保存データ・JSON 読み込みで置き換える前のデータを 1 つだけ退避しておく（上書きで失わないように）
+export const BACKUP_KEY = 'bom-pro.workspace.backup'
+export interface Backup {
+  at: string
+  reason: string
+  raw: string
+}
+export function saveBackup(raw: string, reason: string): boolean {
+  try {
+    localStorage.setItem(BACKUP_KEY, JSON.stringify({ at: new Date().toISOString(), reason, raw } satisfies Backup))
+    return true
+  } catch {
+    return false
+  }
+}
+export function loadBackup(): Backup | null {
+  try {
+    const b = JSON.parse(localStorage.getItem(BACKUP_KEY) ?? 'null')
+    return b && typeof b.raw === 'string' ? (b as Backup) : null
+  } catch {
+    return null
+  }
+}
+/** 起動時に保存データを読めなかった・一部を外したときの説明（画面が出たら通知する） */
+export let loadProblem: string | null = null
+
 export function loadWorkspace(): Workspace | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     lastWritten = raw ?? ''
-    const ws = parseWorkspace(raw)
+    if (!raw) return null
+    let res: ReturnType<typeof sanitizeWorkspace>
+    try {
+      res = sanitizeWorkspace(JSON.parse(raw))
+    } catch (e) {
+      res = { error: `JSON として読めません（${(e as Error).message}）` }
+    }
+    if (!res.ws || res.warnings?.length) {
+      const saved = saveBackup(raw, res.ws ? '一部を外して読み込み' : '読めなかった保存データ')
+      const where = saved ? '元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）' : '元のデータを退避できませんでした（ブラウザの容量不足）'
+      loadProblem = res.ws ? `保存データの一部を外して読みました: ${res.warnings!.slice(0, 2).join(' / ')}${res.warnings!.length > 2 ? ` ほか ${res.warnings!.length - 2} 件` : ''}。${where}` : `保存データを読めなかったのでサンプルを表示しています（${res.error}）。${where}`
+    }
+    const ws = res.ws
     if (!ws) return null
     const u = loadUser()
     if (u) ws.user = u

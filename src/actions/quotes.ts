@@ -1,10 +1,11 @@
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
-import { effective, isActive, isQuotable, orderQty, rowNeedDate } from '@/model/derive'
+import { isActive, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { emptyQuote } from '@/model/sample'
-import { quoteTargets } from './rows'
-import { addDays, todayStr } from '@/model/dates'
+import { parseValue, quoteTargets } from './rows'
+import { addBusinessDays, addDays, todayStr } from '@/model/dates'
+import { parseDate, parseNumber } from '@/model/parse'
 
 function st() {
   return useStore.getState()
@@ -15,7 +16,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   const s = st()
   if (s.user().role !== 'purchasing') return '権限なし（概算見積の依頼は購買）'
   const p = s.project()
-  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote) && !(r.working && Object.keys(r.working).length))
+  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote) && !(r.working && Object.keys(r.working).length) && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
   const perSupplier = new Map<string, Row[]>()
@@ -49,59 +50,92 @@ export interface ImportResult {
   unmatched: string[]
   modelMismatch: string[]
   proposals: number
+  errors: string[]
 }
 
 /** 見積回答の取り込み（タブ区切り。依頼 Excel と同じ列順） */
 export function importQuoteAnswers(text: string, supplierId: string): ImportResult {
   const s = st()
-  const res: ImportResult = { updated: 0, unmatched: [], modelMismatch: [], proposals: 0 }
+  const res: ImportResult = { updated: 0, unmatched: [], modelMismatch: [], proposals: 0, errors: [] }
   const lines = text.replace(/\r/g, '').split('\n').filter((l) => l.trim())
   if (!lines.length) return res
-  const header = lines[0].split('\t').map((h) => h.trim())
-  const idx = (name: string) => header.findIndex((h) => h === name)
-  const col = { id: idx('行ID') >= 0 ? idx('行ID') : idx('ID'), model: idx('型式'), price: idx('単価'), lead: idx('納期'), moq: idx('MOQ'), stock: idx('在庫区分'), qty: idx('見積数量'), valid: idx('有効期限'), altModel: idx('代替型式'), altMaker: idx('代替メーカ'), altPrice: idx('代替単価'), altLead: idx('代替納期') }
+  // 依頼書のシートを丸ごと貼ったとき（表題・依頼No の行が先にある）も、見出しの行を探す
+  const isHeader = (l: string) => {
+    const hs = l.split('\t').map((h) => h.trim())
+    return (hs.includes('行ID') || hs.includes('ID')) && hs.includes('単価')
+  }
+  const headerAt = lines.slice(0, 20).findIndex(isHeader)
+  const header = (headerAt >= 0 ? lines[headerAt] : lines[0]).split('\t').map((h) => h.trim())
+  const idx = (...names: string[]) => header.findIndex((h) => names.includes(h))
+  const col = { id: idx('行ID', 'ID'), model: idx('型式'), price: idx('単価'), lead: idx('納期'), moq: idx('MOQ'), stock: idx('在庫区分', '在庫'), qty: idx('見積数量'), valid: idx('有効期限'), altModel: idx('代替型式'), altMaker: idx('代替メーカ', '代替メーカー'), altPrice: idx('代替単価'), altLead: idx('代替納期') }
   const hasHeader = col.id >= 0 && col.price >= 0
-  const body = hasHeader ? lines.slice(1) : lines
+  const body = hasHeader ? lines.slice(headerAt + 1) : lines
   const get = (cells: string[], i: number) => (i >= 0 && i < cells.length ? cells[i].trim() : '')
+  const parse = (field: string, v: string, label: string, rowId: string): number | null | undefined => {
+    if (v === '') return null
+    const r = parseValue(`${field}@${supplierId}`, v)
+    if (!r.ok) {
+      res.errors.push(`${rowId} ${label}: ${r.error}`)
+      return undefined
+    }
+    return r.value as number | null
+  }
   s.commit(`見積回答を取り込む（${s.ws.suppliers.find((x) => x.id === supplierId)?.name}）`, (p, ws) => {
     for (const line of body) {
       const cells = line.split('\t')
-      const id = hasHeader ? get(cells, col.id) : get(cells, 0)
+      const id = (hasHeader ? get(cells, col.id) : get(cells, 0)).toUpperCase()
       const r = p.rows.find((x) => x.id === id)
-      if (!r) {
+      if (!r || !isActive(r)) {
         res.unmatched.push(id || line.slice(0, 20))
         continue
       }
+      if (r.status === 'ordered' || r.status === 'received') {
+        res.errors.push(`${r.id}: 発注済の行には取り込みません（変えるときは発注後変更依頼）`)
+        continue
+      }
       const model = hasHeader ? get(cells, col.model) : get(cells, 1)
-      if (model && model.replace(/\s/g, '') !== effective(r).model.replace(/\s/g, '')) res.modelMismatch.push(r.id)
+      if (model && normalizeModel(model) !== normalizeModel(r.model)) {
+        // 型式が違う回答は取り込まず、購買の 4 要確認に出す
+        res.modelMismatch.push(r.id)
+        r.flags.importMismatch = `${s.ws.suppliers.find((x) => x.id === supplierId)?.name ?? supplierId}: 回答の型式「${model}」（BOM は「${r.model}」）`
+        continue
+      }
+      const price = parse('q.unitPrice', hasHeader ? get(cells, col.price) : get(cells, 2), '単価', r.id)
+      const lead = parse('q.leadDays', hasHeader ? get(cells, col.lead) : get(cells, 3), '納期', r.id)
+      const moq = parse('q.moq', hasHeader ? get(cells, col.moq) : get(cells, 4), 'MOQ', r.id)
+      const validRaw = hasHeader ? get(cells, col.valid) : ''
+      const valid = validRaw ? parseDate(validRaw, { label: '有効期限' }) : null
+      if (price === undefined || lead === undefined || moq === undefined || (valid && !valid.ok)) {
+        if (valid && !valid.ok) res.errors.push(`${r.id} ${valid.error}`)
+        continue
+      }
       let q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === supplierId && !x.stale)
       if (!q) {
         q = emptyQuote(r.id, supplierId)
         p.quotes.push(q)
       }
-      const num = (v: string) => (v === '' ? null : v === '即納' ? 0 : /取扱なし|辞退/.test(v) ? -1 : Number(v.replace(/[,¥]/g, '')))
-      const price = hasHeader ? get(cells, col.price) : get(cells, 2)
-      const lead = hasHeader ? get(cells, col.lead) : get(cells, 3)
-      const moq = hasHeader ? get(cells, col.moq) : get(cells, 4)
-      q.unitPrice = num(price)
-      q.leadDays = num(lead)
-      q.moq = num(moq)
+      q.unitPrice = price
+      q.leadDays = lead
+      q.moq = moq
       const stock = hasHeader ? get(cells, col.stock) : get(cells, 5)
       q.stock = stock === '在庫' || stock === '取寄' || stock === '受注生産' ? stock : q.stock
       const qty = hasHeader ? get(cells, col.qty) : ''
-      q.quoteQty = qty ? Number(qty) : orderQty(r)
-      const valid = hasHeader ? get(cells, col.valid) : ''
-      q.validUntil = valid || addDays(todayStr(), 30)
+      const qn = qty ? parseNumber(qty, { min: 0 }) : null
+      q.quoteQty = qn && qn.ok && qn.value != null ? qn.value : orderQty(r)
+      q.validUntil = valid && valid.ok && valid.value ? valid.value : addDays(todayStr(), 30)
       q.source = '取込'
+      r.flags.importMismatch = undefined
       res.updated++
-      // 代替提案 → 指摘の下書き
+      // 代替提案 → 指摘の下書き（代替不可・客先指定品は対象外。ただしメーカ指定＝任意ならメーカ提案として出す）
       const altModel = hasHeader ? get(cells, col.altModel) : ''
       if (altModel) {
-        const e = effective(r)
-        if (e.altPolicy === '不可' || e.procurement === '客先指定品') {
+        const blocked = r.procurement === '客先指定品' || (r.altPolicy === '不可' && r.makerLock !== '任意')
+        if (blocked) {
           p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: new Date().toISOString(), by: s.user(), rowId: r.id, text: `商社提案（対象外）: ${altModel}` })
         } else {
-          p.issues.push({ id: 'I-' + String(p.nextIssueNo++).padStart(3, '0'), rowId: r.id, field: 'model', kind: '代替提案', text: `商社提案: ${altModel}`, proposal: { model: altModel, maker: get(cells, col.altMaker) || e.maker, supplierId, unitPrice: num(get(cells, col.altPrice)), leadDays: num(get(cells, col.altLead)) }, by: s.user(), at: new Date().toISOString(), status: 'draft', replies: [], bounceCount: 0, dueAt: addDays(todayStr(), 3) })
+          const ap = parseNumber(get(cells, col.altPrice), { min: 0 })
+          const al = parseNumber(get(cells, col.altLead), { min: 0, integer: true })
+          p.issues.push({ id: 'I-' + String(p.nextIssueNo++).padStart(3, '0'), rowId: r.id, field: 'model', kind: '代替提案', text: `商社提案: ${altModel}`, proposal: { model: altModel, maker: get(cells, col.altMaker) || r.maker, supplierId, unitPrice: ap.ok ? ap.value : null, leadDays: al.ok ? al.value : null }, by: s.user(), at: new Date().toISOString(), status: 'draft', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), 3, p.settings.holidays) })
           res.proposals++
         }
       }
@@ -119,7 +153,7 @@ export async function requestFormalQuotes(): Promise<string> {
   const p = s.project()
   const target = p.rows.filter((r) => isActive(r) && r.adoptedSupplierId && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
   const working = target.filter((r) => r.working && Object.keys(r.working).length)
-  const pending = target.filter((r) => r.flags.pmPending)
+  const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
   const rows = target.filter((r) => !working.includes(r) && !pending.includes(r))
   if (!rows.length) return '依頼する行がありません（選定済・再発行対象なし）'
   const per = new Map<string, Row[]>()
@@ -132,7 +166,7 @@ export async function requestFormalQuotes(): Promise<string> {
       if (q) q.formalRequestNo = `${p2.id}-${r.adoptedSupplierId}-F${p2.requestRevs['F' + r.adoptedSupplierId!]}`
       r.flags.reissue = false
       if (r.status === 'selected') setStatus(r, 'formalRequested')
-      r.dueAt = addDays(todayStr(), p2.settings.formalDays)
+      r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
     }
     normalize(p2, ws)
   })

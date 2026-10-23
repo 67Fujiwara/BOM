@@ -1,4 +1,4 @@
-import { useStore, type Panel, type State } from '@/model/store'
+import { useStore, userKey, type Panel, type State } from '@/model/store'
 import { eventToKey, lookupBinding } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import type { IssueKind } from '@/model/types'
@@ -11,7 +11,7 @@ import * as adopt from '@/actions/adopt'
 import * as pm from '@/actions/pm'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
+import { ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -38,6 +38,13 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       set({ panel: { ...panel, editing: false, error: undefined } })
       return true
     }
+    // 保存していない変更があるときは、もう一度 Esc で捨てる
+    if (panel.kind === 'settings' && Object.keys(panel.draft).length && !panel.discardArmed) {
+      set({ panel: { ...panel, discardArmed: true } })
+      toast(`保存していない変更が ${Object.keys(panel.draft).length} 件あります。Ctrl+Enter で保存、もう一度 Esc で変更を捨てて閉じます`, 'info')
+      return true
+    }
+    if (panel.kind === 'settings' && Object.keys(panel.draft).length) toast('案件設定の変更を捨てました', 'info')
     closePanel()
     if (s.sequence) set({ sequence: false })
     return true
@@ -60,8 +67,18 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       return key === 'Ctrl+K' ? (closePanel(), true) : false
     }
     case 'help':
-    case 'history':
-      return key === '?' || key === 'Enter' || key === 'Ctrl+K' ? (closePanel(), key === 'Ctrl+K' && runCommand('palette.open'), true) : true
+    case 'history': {
+      if (key === '?' || key === 'Enter' || key === 'Ctrl+K') return (closePanel(), key === 'Ctrl+K' && runCommand('palette.open'), true)
+      // 一覧が画面に収まらないときはキーでスクロールする
+      const body = document.querySelector<HTMLElement>('.overlay .dialog .body')
+      if (body) {
+        const step: Record<string, number> = { ArrowDown: 40, j: 40, ArrowUp: -40, k: -40, PageDown: body.clientHeight - 40, ' ': body.clientHeight - 40, PageUp: -(body.clientHeight - 40), 'Shift+ ': -(body.clientHeight - 40) }
+        if (key === 'End') body.scrollTop = body.scrollHeight
+        else if (key === 'Home') body.scrollTop = 0
+        else if (step[key] !== undefined) body.scrollBy({ top: step[key] })
+      }
+      return true
+    }
     case 'columns': {
       const cols = colsForPanel()
       if (key === 'ArrowDown') return (set({ panel: { ...panel, index: up(panel.index + 1, cols.length) } }), true)
@@ -114,7 +131,19 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         const id = issues.raiseIssue(panel.rowId, panel.field, kind, panel.text, proposal)
         if (!id) return true
         closePanel()
-        toast(`${id} ${kind} を下書きに追加しました。J で次の行 → Shift+I で続けて起票、最後に Ctrl+Enter で発行`, 'ok')
+        if (key === 'Ctrl+Enter') {
+          // 連続起票: 次の行で同じ種別の本文入力から始める
+          moveCursorRow(1)
+          const next = visibleCursorRow()
+          if (next && next.id !== panel.rowId) {
+            runCommand('issue.raise')
+            const np = st().panel
+            if (np?.kind === 'issue' && !issues.canRaise(next, kind)) set({ panel: { ...np, step: 'text', issueKind: kind } })
+            toast(`${id} ${kind} を下書きに追加。続けて ${next.id} の${kind}を書けます（Esc でやめる、最後に Ctrl+Enter で発行）`, 'ok')
+            return true
+          }
+        }
+        toast(`${id} ${kind} を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行`, 'ok')
         return true
       }
       return false
@@ -129,7 +158,7 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         const sc = scores[n]
         closePanel()
         if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId)
-        else prompt(row.status === 'quoting' ? '先行採用の理由（PM 承認待ちになります）' : '1位以外を選ぶ理由', { options: [...adopt.ADOPT_REASONS], placeholder: '補足（任意）', showText: true }, (c, t) => adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : '')))
+        else prompt(row.status === 'quoting' ? '先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter' : '1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : '')))
         return true
       }
       if (n >= 0 || key.length === 1) toast(`1〜${scores.length} で商社を選んでください`, 'info')
@@ -137,23 +166,41 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
     }
     case 'prompt': {
       const n = panel.options?.length ?? 0
-      // 文字欄があるときは数字は文字として入る。選択肢は ↑↓
-      if (panel.options && !panel.showText && /^[1-9]$/.test(key)) {
-        if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
+      const submit = (choice: string | null) => {
+        // 既定の無い選択（理由など）は、選ぶまで進めない（Enter 連打で理由が勝手に決まらないように）
+        if (panel.options && choice == null) {
+          set({ panel: { ...panel, error: '選んでください' } })
+          return toast(`数字（1〜${n}）か ↑↓ で選んでから Enter`, 'err')
+        }
+        if (panel.requireText && !panel.text.trim()) {
+          set({ panel: { ...panel, error: '入力は必須です' } })
+          return toast('入力は必須です', 'err')
+        }
         closePanel()
-        panel.onSubmit(panel.options[Number(key) - 1], panel.text)
+        const err = panel.onSubmit(choice, panel.text, panel.extra)
+        if (typeof err === 'string') {
+          // エラーなら入れた内容を残したままダイアログを開き直す
+          set({ panel: { ...panel, error: err }, mode: 'panel' })
+          toast(err, 'err')
+        }
+      }
+      // 文字欄が無い、または理由の選択で文字欄が空のときは数字キーで選ぶ
+      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text))
+      if (digitPick) {
+        if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
+        if (panel.showText && panel.requireText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), true)
+        submit(panel.options![Number(key) - 1])
         return true
       }
       if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n) } }), true)
       if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n) } }), true)
-      if (key === 'Enter' || key === 'Ctrl+Enter') {
-        if (panel.requireText && !panel.text.trim()) return (toast('入力は必須です', 'err'), true)
-        const choice = panel.options ? panel.options[panel.index] : null
-        closePanel()
-        panel.onSubmit(choice, panel.text)
+      if (key === 'Enter') {
+        submit(panel.options ? (panel.options[panel.index] ?? null) : null)
         return true
       }
-      if (!panel.showText && key.length === 1) return (toast(panel.options ? `↑↓ と Enter、または 1〜${n} で選んでください` : 'Enter で確定、Esc で取り消し', 'info'), true)
+      // Ctrl+Enter の押し直しで、選択肢を読まずに確定しない
+      if (key === 'Ctrl+Enter') return (toast('選んで Enter で確定します（Esc で取り消し）', 'info'), true)
+      if (!panel.showText && !panel.extra && key.length === 1) return (toast(panel.options ? `↑↓ と Enter、または 1〜${n} で選んでください` : 'Enter で確定、Esc で取り消し', 'info'), true)
       return false
     }
     case 'quickfix':
@@ -233,6 +280,10 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       return false
     }
     case 'settings': {
+      if (panel.discardArmed) {
+        set({ panel: { ...panel, discardArmed: false } })
+        return handlePanelKey(key, e)
+      }
       const fields = settingsFields(p)
       if (panel.editing) {
         if (key === 'Enter') {
@@ -342,20 +393,67 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
   return false
 }
 
+// ---------- 英字を続けて打ったときの扱い ----------
+// 編集できるセルで英字を打つと、1 文字目が a/h/o などのコマンドとして動いてしまう。
+// 直後（BURST_MS 以内）に続けて文字が来たら「入力していた」とみなし、コマンドを取り消して上書き編集にする。
+const BURST_MS = 350
+const UI_KEYS = ['cursorRow', 'cursorCol', 'view', 'sort', 'filter', 'cellFilter', 'collapsed', 'openRows', 'detailIndex', 'revView'] as const
+type Burst = { at: number; text: string; ui: Partial<State>; undoLen: number; row: string; col: string }
+let burst: Burst | null = null
+let digitHintShown = false
+/** 続けて押しても移動とみなすキー（j j k / x n など） */
+const NAV_LETTERS = new Set(['j', 'k', 'n'])
+const undoLen = () => (st().undo[userKey(st().ws.user)] ?? []).length
+function printable(e: KeyboardEvent): boolean {
+  return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
+}
+function beginBurst(ch: string) {
+  const s = st()
+  const ui: Partial<State> = {}
+  for (const k of UI_KEYS) (ui as Record<string, unknown>)[k] = s[k]
+  burst = { at: performance.now(), text: ch, ui, undoLen: undoLen(), row: s.cursorRow ?? '', col: s.cursorCol }
+}
+/** 続けて打たれた文字なら、前のコマンドを取り消して上書き編集を始める */
+function resolveBurst(e: KeyboardEvent, key: string): boolean {
+  const b = burst
+  if (!b || performance.now() - b.at > BURST_MS || !printable(e) || e.key === ' ') return false
+  const binding = lookupBinding(key, 'nav')
+  // 移動キー（j k n）の後・同じキーの連打は、割り当てのあるキーならそのまま実行する。
+  // それ以外は、200ms 以内に続いた文字を入力とみなす（割り当ての無い文字なら BURST_MS 以内）
+  const first = b.text.at(-1) ?? ''
+  if (binding && (NAV_LETTERS.has(first) || NAV_LETTERS.has(e.key) || e.key === first || performance.now() - b.at > 200)) {
+    burst = null
+    return false
+  }
+  e.preventDefault()
+  burst = null
+  if (st().panel) closePanel()
+  if (st().mode === 'edit') cancelEdit()
+  if (undoLen() > b.undoLen) st().undoLast()
+  set({ ...b.ui, cursorRow: b.row, cursorCol: b.col })
+  if (rows.canEdit(b.col)) return true
+  startEdit(b.text + e.key)
+  toast(`続けて打たれたので「${b.text}」はコマンドではなく文字の入力として扱いました`, 'info')
+  return true
+}
+
 // ---------- 全体のキー処理 ----------
 export function handleKeyDown(e: KeyboardEvent) {
   if (e.isComposing || e.key === 'Process' || e.keyCode === 229) return // 日本語入力の変換中は何もしない
-  const s = st()
   const key = eventToKey(e)
+  if (resolveBurst(e, key)) return
+  const s = st()
   const target = e.target as HTMLElement | null
   const inInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement
+  // 「戻る」（Alt+← / Alt+→ / Cmd+[ ]）や Ctrl+G 検索などのブラウザ既定動作は、どの場面でも止める（入力中の内容を失わない）
+  if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {
     e.preventDefault()
     target.blur()
   }
   // 絞り込み入力中
-  if (inInput && target?.classList.contains('filter')) {
+  if (inInput && target?.classList.contains('filter') && !s.panel) {
     const input = target as HTMLInputElement
     if (key === 'Escape') {
       e.preventDefault()
@@ -386,7 +484,27 @@ export function handleKeyDown(e: KeyboardEvent) {
       e.preventDefault()
       return
     }
-    if (key === 'Ctrl+K' || key === 'Ctrl+S' || key === 'Ctrl+P' || key === 'Ctrl+E' || key === 'Ctrl+G') e.preventDefault()
+    if (key === 'Tab' || key === 'Shift+Tab') {
+      // フォーカスはダイアログの中で回す（外に出て背後の表・絞り込み欄に打鍵が入らないように）
+      e.preventDefault()
+      const dlg = document.querySelector<HTMLElement>('.overlay .dialog')
+      const fs = dlg ? [...dlg.querySelectorAll<HTMLElement>('input:not([type=file]), textarea, select, button')].filter((x) => !x.hasAttribute('disabled') && x.offsetParent !== null) : []
+      if (fs.length) {
+        const i = fs.indexOf(document.activeElement as HTMLElement)
+        fs[(i + (key === 'Tab' ? 1 : -1) + fs.length) % fs.length].focus()
+      }
+      return
+    }
+    // 「迷ったら Ctrl+K」はどのダイアログの中でも効く（ガイドの途中の内容は残す）
+    if (key === 'Ctrl+K') {
+      e.preventDefault()
+      const panel = s.panel
+      if (panel.kind === 'wizard') set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
+      closePanel()
+      runCommand('palette.open')
+      return
+    }
+    if (key === 'Ctrl+S' || key === 'Ctrl+P' || key === 'Ctrl+E' || key === 'Ctrl+G') e.preventDefault()
     return
   }
   if (s.mode === 'edit') {
@@ -417,10 +535,17 @@ export function handleKeyDown(e: KeyboardEvent) {
         return
       }
     }
-    // 編集中のグローバルキー: 確定してから実行（Ctrl+Z はブラウザの入力欄の取り消しに任せる）
-    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P'].includes(key)) {
+    // 入力欄にフォーカスが移る前に打たれた文字は取りこぼさない
+    if (printable(e) && !(target instanceof HTMLInputElement && target.classList.contains('cell'))) {
       e.preventDefault()
-      if (commitEdit('stay')) runCommand(lookupBinding(key, 'nav')!.id, e)
+      updateEditValue(s.editValue + e.key)
+      return
+    }
+    // 編集中のグローバルキー: 確定してから実行（Ctrl+Z はブラウザの入力欄の取り消しに任せる）
+    if (['Ctrl+K', 'Ctrl+S', 'Ctrl+Enter', 'Ctrl+E', 'Ctrl+P', 'Ctrl+G', 'Ctrl+Shift+C', 'Ctrl+.', 'Ctrl+Shift+F'].includes(key)) {
+      e.preventDefault()
+      const b = lookupBinding(key, 'nav')
+      if (b && commitEdit('stay')) runCommand(b.id, e)
     }
     return
   }
@@ -432,11 +557,26 @@ export function handleKeyDown(e: KeyboardEvent) {
     e.preventDefault()
     if (b.id.startsWith('view.')) {
       const d = colDef(s.cursorCol)
+      // 6 商社別・8 正式見積の数値セルでは、数字はそのまま値の入力（単価→Tab→納期 と続けて打てる）
+      if ((s.view === 6 || s.view === 8) && visibleCursorRow() && d?.numeric && !rows.canEdit(s.cursorCol)) {
+        burst = null
+        startEdit(e.key)
+        if (!digitHintShown) {
+          digitHintShown = true
+          toast('この表の数値セルでは、数字はそのまま値の入力です（ビューを替えるときは Esc → Home で部品名の列へ移ってから数字、またはサイドバー）', 'info')
+        }
+        return
+      }
       if (s.cursorRow && d?.numeric && !rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください`, 'info')
     }
+    const letter = /^[a-z]$/.test(key)
+    const editable = letter && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
+    if (editable) beginBurst(e.key)
+    else burst = null
     runCommand(b.id, e)
     return
   }
+  burst = null
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {

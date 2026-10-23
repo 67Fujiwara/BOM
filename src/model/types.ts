@@ -84,7 +84,11 @@ export interface RowFlags {
   /** 選定権限を購買に委譲（納期NG 対策） */
   delegated?: boolean
   /** 要決定に載っている理由 */
-  pmReason?: '例外選定' | '先行採用' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案'
+  pmReason?: '例外選定' | '先行採用' | '先行発注判断' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '対策不成立'
+  /** 差分超過に PM が対応した時の「商社:正式単価」。同じ値の間は差分超過に戻さない */
+  formalDiffKey?: string
+  /** 見積回答の取り込みで型式が違った商社（購買が確認する） */
+  importMismatch?: string
 }
 
 /** 設計が書く列（作業中コピーの対象） */
@@ -142,6 +146,11 @@ export interface Row extends DesignFields {
   publishedRev?: number
   /** 作業中（未公開）の設計列。公開済み以降の編集はここに積む */
   working?: Partial<DesignFields>
+  /** PM 承認待ちの変更セット（承認されるまで公開値には反映しない） */
+  pendingApproval?: Partial<DesignFields>
+  pendingRev?: number
+  /** 指摘の提案から作られた行（その指摘 ID） */
+  fromIssue?: string
   /** 公開済み差分の起因（指摘ID or 変更セットID） */
   lastChangeCause?: string
   /** 「あとで」にしたチェック */
@@ -181,6 +190,10 @@ export interface Quote {
   staleModel?: string
   /** 要再確認の購買判断（据え置き / 再見積 / 提案値で確定） */
   reconfirm?: 'keep' | 'requote' | 'proposal'
+  /** 要再確認の既定（提案商社＝提案値、他＝再見積） */
+  reconfirmDefault?: 'keep' | 'requote' | 'proposal'
+  /** 再交渉前の正式単価 */
+  prevFormalPrice?: number | null
   // 正式見積
   formalPrice: number | null
   formalLeadDays: number | null
@@ -243,6 +256,8 @@ export interface Issue {
   decisionId?: string
   replies: IssueReply[]
   bounceCount: number
+  /** 差戻し 2 回目を PM が裁定した */
+  pmRuled?: boolean
   dueAt: string
   resolution?: string
   /** 対応先の行（置換時） */

@@ -14,7 +14,12 @@ async function open(page: Page, role: 'design' | 'purchasing' | 'pm' = 'design')
 
 test('80 行の BOM が表示され、ヘッダーにボール別件数と金額が出る', async ({ page }) => {
   await open(page)
-  await expect(page.getByTestId('row')).toHaveCount(80)
+  // 表は見えている範囲の行だけを描く。先頭と最後の行に移動できることで 80 行あることを確かめる
+  await expect(page.locator('[data-row-id="R001"]')).toBeVisible()
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('Control+ArrowDown')
+  await expect(page.locator('[data-row-id="R080"]')).toBeVisible()
+  await expect(page.getByTestId('cursor')).toContainText('R080')
   await expect(page.getByTestId('lamps')).toContainText('設計待ち')
   await expect(page.getByTestId('money')).toContainText('概算')
   await expect(page.getByTestId('due')).toContainText('必要日')
@@ -95,8 +100,11 @@ test('設計: 4 要確認 → n → 直す → Ctrl+Enter で公開すると指�
   await page.keyboard.press('Enter')
   await expect(page.getByTestId('status')).toContainText('未公開 6 行')
   await page.keyboard.press('Control+Enter')
-  await expect(page.getByTestId('prompt-options')).toContainText('直前の Rev に追記')
-  await page.keyboard.press('1') // 新しい Rev
+  // 最初の提出の後に足した行があるので、変更セットの理由を聞かれる。Enter だけでは進まず、数字で選ぶ
+  await expect(page.getByTestId('prompt-options')).toContainText('客先要求')
+  await page.keyboard.press('Enter')
+  await expect(page.getByTestId('toast')).toContainText('選んでから Enter')
+  await page.keyboard.press('2') // 設計起因
   await expect(page.getByTestId('toast')).toContainText('公開しました')
   await expect(page.getByTestId('status')).toContainText('未公開 0 行')
   // 公開後：購買に切り替えて 5 変更あり → x
@@ -144,7 +152,7 @@ test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要�
   expect(n).toBeGreaterThan(1)
   await page.keyboard.press(String(n)) // 最下位の商社
   await expect(page.getByTestId('prompt-options')).toBeVisible()
-  await page.keyboard.press('Enter') // 理由: 納期（先頭）
+  await page.keyboard.press('1') // 理由: 納期（数字で選ぶ。Enter だけでは進まない）
   const toast = await page.getByTestId('toast').textContent()
   const row = page.locator('[data-row-id="R020"]')
   if (toast?.includes('PM')) {
@@ -236,4 +244,42 @@ test('スクリーンショット', async ({ page }) => {
   await page.keyboard.press('7')
   await page.locator('.role button', { hasText: 'PM' }).click()
   await page.screenshot({ path: 'docs/screenshots/dark-pm.png' })
+})
+
+async function gotoCell(page: Page, id: string, colLabel: string) {
+  await page.keyboard.press('Control+g')
+  await page.getByTestId('prompt-text').fill(id)
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Home')
+  while (!(await page.getByTestId('cursor').textContent())!.includes(colLabel)) await page.keyboard.press('ArrowRight')
+}
+
+test('英字で始まる値をいきなり打っても、先頭の文字がコマンドにならない（hello / relay / nut）', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R030', '型式')
+  await page.keyboard.type('hello', { delay: 40 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R030"] td[data-col="model"]')).toHaveText('hello')
+  await expect(page.locator('[data-row-id="R030"]')).not.toHaveClass(/hidden-row/)
+  await gotoCell(page, 'R076', '部品名')
+  await page.keyboard.type('relay', { delay: 40 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R076"] td[data-col="name"]')).toHaveText('relay')
+  await expect(page.locator('[data-row-id="R081"]')).toHaveCount(0) // 置換行が作られていない
+  await gotoCell(page, 'R033', '部品名')
+  await page.keyboard.type('nut', { delay: 40 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R033"] td[data-col="name"]')).toHaveText('nut')
+})
+
+test('編集中にサイドバーのビューをクリックしても、入力は編集していた行に入る', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R010', '部品名')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Control+a')
+  await page.keyboard.type('クリック確定')
+  await page.getByTestId('view-4').click()
+  await expect(page.getByTestId('mode')).toHaveText('ナビ')
+  await page.getByTestId('view-1').click()
+  await expect(page.locator('[data-row-id="R010"] td[data-col="name"]')).toHaveText('クリック確定')
 })

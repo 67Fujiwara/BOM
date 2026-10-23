@@ -23,7 +23,6 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
         const best = p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.unitPrice != null && q.leadDays != null && q.leadDays >= 0).map((q) => (q.stock === '在庫' ? 0 : q.leadDays!))
         if (best.length && Math.min(...best) > 0 && addDays(today, Math.min(...best)) > addDays(need, -p.settings.formalDays)) {
           r.flags.ltbPending = true
-          r.flags.pmReason = '先行採用'
         }
       }
       // 期限到達で未回答の商社は辞退扱い
@@ -40,12 +39,12 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
     if (r.status === 'formalQuoted' && r.adoptedSupplierId) {
       const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (q?.formalPrice != null && q.unitPrice != null) {
+        // §9.2: 差が「±割合 または 金額 の大きい方」を超えたら差分超過。PM が対応した同じ正式単価には戻さない
         const qty = orderQty(r)
-        const diff = (q.formalPrice - q.unitPrice) * qty
-        const pct = (q.formalPrice - q.unitPrice) / q.unitPrice
-        const over = pct > p.settings.formalDiffPct || diff > p.settings.formalDiffAmount
-        if (over && !r.flags.formalDiff && !p.decisions.some((d) => d.rowId === r.id && (d.kind === '受入' || d.kind === '承認') && d.at > r.statusChangedAt)) r.flags.formalDiff = true
-        if (!over) r.flags.formalDiff = false
+        const diff = Math.abs(q.formalPrice - q.unitPrice) * qty
+        const threshold = Math.max(p.settings.formalDiffPct * q.unitPrice * qty, p.settings.formalDiffAmount)
+        const key = `${q.supplierId}:${q.formalPrice}`
+        r.flags.formalDiff = diff > threshold && r.flags.formalDiffKey !== key
       }
     }
     // 納期NG（採用済みの商社納期が必要日を超える）。対策区分が付いていれば外す
@@ -55,10 +54,15 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
       const ld = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays)
       if (ld != null && ld >= 0) {
         const arrive = addDays(today, ld)
-        r.flags.leadNG = arrive > need && !r.flags.countermeasure
+        r.flags.leadNG = arrive > need && !leadAccepted(r)
+        // 商社を変えてもまだ間に合わないなら対策区分を外して PM に戻す
+        if (arrive > need && r.flags.countermeasure === '商社変更' && !r.flags.delegated) {
+          r.flags.countermeasure = undefined
+          r.flags.leadNG = true
+        }
       }
     } else if (r.status === 'ordered' && r.promisedDate && need) {
-      r.flags.leadNG = r.promisedDate > need && !r.flags.countermeasure
+      r.flags.leadNG = r.promisedDate > need && !leadAccepted(r)
     }
     if (r.status === 'received') r.flags.leadNG = false
     // 発注・入荷のチェックと状態
@@ -70,6 +74,12 @@ export function normalize(p: Project, _ws: Workspace, today = todayStr()) {
       r.statusChangedAt = now
     }
   }
+}
+
+/** 納期NG に PM が手を打った（受入・特急・代替品検討・委譲中）なら NG として PM に出さない */
+function leadAccepted(r: Row): boolean {
+  const cm = r.flags.countermeasure
+  return cm === '受入' || cm === '分納・特急' || cm === '代替品検討' || (cm === '商社変更' && !!r.flags.delegated)
 }
 
 export function nextRowId(p: Project): string {

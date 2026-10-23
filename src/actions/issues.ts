@@ -51,6 +51,9 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
     s.toastMsg(err, 'err')
     return null
   }
+  // 種別で対象のセルが決まるものは、カーソルの列に関係なくそのセルに付ける（直したら対応済になるように）
+  const KIND_FIELD: Partial<Record<IssueKind, string>> = { 型式あいまい: 'model', メーカ未記入: 'maker', 数量見直し依頼: 'qtyNeeded', 廃番: 'model', 代替提案: 'model' }
+  field = KIND_FIELD[kind] ?? field
   let id = ''
   s.commit(
     `指摘 ${kind}`,
@@ -60,9 +63,13 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
       const prior = p.issues.find((i) => i.rowId === rowId && i.kind === kind && i.status === 'wontfix')
       let body = text
       if (kind === '最小ロット' && !text) {
-        const q = p.quotes.find((x) => x.rowId === rowId && x.supplierId === row.adoptedSupplierId)
-        const rq = roundedQty(effective(row).qtyNeeded, q?.moq, effective(row).packQty)
-        body = `必要数 ${effective(row).qtyNeeded} → 発注数 ${rq}（余剰 ¥${((rq - effective(row).qtyNeeded) * (q?.unitPrice ?? 0)).toLocaleString()}）`
+        // 選定後は採用商社、選定前は MOQ がいちばん効く商社で丸め数量を出す
+        const qs = p.quotes.filter((x) => x.rowId === rowId && !x.stale && x.unitPrice != null)
+        const q = (row.adoptedSupplierId ? qs.find((x) => x.supplierId === row.adoptedSupplierId) : undefined) ?? [...qs].sort((a, b) => (b.moq ?? 0) - (a.moq ?? 0))[0]
+        const need = row.qtyNeeded
+        const rq = roundedQty(need, q?.moq, row.packQty, row.unit)
+        const name = q ? (s.ws.suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId) : ''
+        body = `必要数 ${need} → 丸め数量 ${rq}${name ? `（${name}${q?.moq ? ` MOQ ${q.moq}` : ''}）` : ''}、余剰 ${rq - need}（¥${((rq - need) * (q?.unitPrice ?? 0)).toLocaleString()}）`
       }
       const i: Issue = { id, rowId, field: field as keyof Row | undefined, kind, text: body, proposal, by: user, at: new Date().toISOString(), status: publishNow ? 'open' : 'draft', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), def.dueDays, p.settings.holidays), rev: p.submissions.at(-1)?.rev }
       p.issues.push(i)
@@ -177,18 +184,19 @@ export function applyProposal(issueId: string): string | null {
         q.staleModel = effective(oldRow!).model
       }
       for (const sid of p2.supplierIds) {
-        const q = { rowId: newId, supplierId: sid, unitPrice: null as number | null, leadDays: null as number | null, moq: null as number | null, stock: null, quoteQty: null, validUntil: null, note: '', formalPrice: null, formalLeadDays: null, formalValidUntil: null, formalDiffReason: '', source: undefined as string | undefined, reconfirm: 'requote' as 'keep' | 'requote' | 'proposal' }
+        // 購買が商社ごとに「据え置き / 再見積 / 提案値で確定」を選ぶ（既定: 提案商社＝提案値、他＝再見積）
+        const q = { rowId: newId, supplierId: sid, unitPrice: null as number | null, leadDays: null as number | null, moq: null as number | null, stock: null, quoteQty: null, validUntil: null, note: '', formalPrice: null, formalLeadDays: null, formalValidUntil: null, formalDiffReason: '', source: undefined as string | undefined, reconfirmDefault: 'requote' as 'keep' | 'requote' | 'proposal' }
         if (prop.supplierId === sid) {
           q.unitPrice = prop.unitPrice ?? null
           q.leadDays = prop.leadDays ?? null
           q.moq = prop.moq ?? null
           q.source = `提案 ${issueId}`
-          q.reconfirm = 'proposal'
+          q.reconfirmDefault = 'proposal'
         }
         p2.quotes.push(q)
       }
       if (prop.supplierId && !p2.supplierIds.includes(prop.supplierId)) {
-        p2.quotes.push({ rowId: newId, supplierId: prop.supplierId, unitPrice: prop.unitPrice ?? null, leadDays: prop.leadDays ?? null, moq: prop.moq ?? null, stock: null, quoteQty: null, validUntil: null, note: '', formalPrice: null, formalLeadDays: null, formalValidUntil: null, formalDiffReason: '', source: `提案 ${issueId}`, reconfirm: 'proposal' })
+        p2.quotes.push({ rowId: newId, supplierId: prop.supplierId, unitPrice: prop.unitPrice ?? null, leadDays: prop.leadDays ?? null, moq: prop.moq ?? null, stock: null, quoteQty: null, validUntil: null, note: '', formalPrice: null, formalLeadDays: null, formalValidUntil: null, formalDiffReason: '', source: `提案 ${issueId}`, reconfirmDefault: 'proposal' })
       }
       // 代替可否＝客先承認要 → 代替承認待ち
       if (effective(nr).altPolicy === '客先承認要') nr.flags.altPending = true
@@ -200,10 +208,18 @@ export function applyProposal(issueId: string): string | null {
           nr.flags.pmReason = '閾値超'
         }
       }
+      nr.fromIssue = issueId
       const issue = p2.issues.find((x) => x.id === issueId)!
       issue.status = 'fixed'
       issue.resolution = `提案を適用 → ${newId}`
       issue.movedTo = newId
+      // 同じ行の他の提案は「見送り（この提案を適用）」にして起票者に知らせる
+      for (const o of p2.issues)
+        if (o.id !== issueId && o.rowId === i.rowId && o.proposal && o.movedTo === newId) {
+          o.status = 'wontfix'
+          o.resolution = `見送り（${issueId} を適用）`
+          o.replies.push({ by: s.user(), at: new Date().toISOString(), text: `${issueId} の提案を適用したので、この提案は見送りました` })
+        }
       normalize(p2, ws)
     },
     { rowId: newId },

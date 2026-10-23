@@ -128,6 +128,17 @@ export function eventToKey(e: Pick<KeyboardEvent, 'key' | 'code' | 'ctrlKey' | '
   return [...mods, key].join('+')
 }
 
+/** キー表記（'Shift+Y' / 'Ctrl+Enter' / 'Space'）からキー入力を作る。ヒントのクリックをキー操作と同じにするため */
+export function keyToEventInit(k: string): KeyboardEventInit {
+  const parts = k.split('+')
+  const base = parts.pop() || '+'
+  const init: KeyboardEventInit = { bubbles: true, cancelable: true, ctrlKey: parts.includes('Ctrl'), altKey: parts.includes('Alt'), shiftKey: parts.includes('Shift') }
+  if (base === 'Space' || base === ' ') return { ...init, key: ' ', code: 'Space' }
+  if (/^[a-zA-Z]$/.test(base)) return { ...init, key: init.shiftKey ? base.toUpperCase() : base.toLowerCase(), code: `Key${base.toUpperCase()}` }
+  if (/^\d$/.test(base)) return { ...init, key: base, code: `Digit${base}` }
+  return { ...init, key: base }
+}
+
 const byKey = new Map<string, KeyBinding[]>()
 for (const b of KEYMAP) for (const k of b.keys) byKey.set(k, [...(byKey.get(k) ?? []), b])
 

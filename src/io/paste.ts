@@ -9,7 +9,7 @@ export const FIELD_LABEL: Record<BomField, string> = { category: '分類', name:
 /** 見出しの言い換え（Excel でよく使われる表記） */
 const HEADER_SYNONYMS: Record<BomField, RegExp> = {
   category: /^(分類|区分|カテゴリ|種別|ユニット)/,
-  name: /^(部品名|品名|名称|品目|部品|名前|item|description)/i,
+  name: /^(部品名|品名|名称|品目|部品|名前|item|description|part(\s*name)?$|name$)/i,
   model: /^(型式|形式|型番|品番|形名|型名|部品番号|part\s*no|p\/n|mpn|model)/i,
   maker: /^(メーカ|メーカー|製造元|製造者|maker|mfr|manufacturer|vendor)/i,
   qtyNeeded: /^(数量|員数|個数|台数|必要数|qty|quantity|数)/i,
@@ -30,25 +30,53 @@ export interface PasteResult {
   warnings: string[]
 }
 
-function splitCsvLine(line: string): string[] {
-  const out: string[] = []
-  let cur = ''
-  let q = false
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i]
-    if (q) {
-      if (ch === '"' && line[i + 1] === '"') {
-        cur += '"'
+/**
+ * タブ区切り・CSV を表に分ける。Excel は改行を含むセルを "…" で囲んで出すので、引用符の中の改行・区切りはセルの一部として扱う。
+ * セルの中の改行は空白にする（BOM の項目は 1 行）
+ */
+export function parseTable(text: string, delim: '\t' | ','): string[][] {
+  const out: string[][] = []
+  let row: string[] = []
+  let cell = ''
+  let quoted = false
+  let fresh = true // セルの先頭か（引用符はセルの先頭にあるときだけ囲みとみなす）
+  const src = text.replace(/\r\n?/g, '\n')
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i]
+    if (quoted) {
+      if (ch === '"' && src[i + 1] === '"') {
+        cell += '"'
         i++
-      } else if (ch === '"') q = false
-      else cur += ch
-    } else if (ch === '"') q = true
-    else if (ch === ',') {
-      out.push(cur)
-      cur = ''
-    } else cur += ch
+      } else if (ch === '"') quoted = false
+      else cell += ch === '\n' ? ' ' : ch
+      continue
+    }
+    if (ch === '"' && fresh) {
+      quoted = true
+      fresh = false
+      continue
+    }
+    if (ch === delim) {
+      row.push(cell)
+      cell = ''
+      fresh = true
+      continue
+    }
+    if (ch === '\n') {
+      row.push(cell)
+      out.push(row)
+      row = []
+      cell = ''
+      fresh = true
+      continue
+    }
+    cell += ch
+    fresh = false
   }
-  out.push(cur)
+  if (cell !== '' || row.length) {
+    row.push(cell)
+    out.push(row)
+  }
   return out
 }
 
@@ -62,11 +90,13 @@ const UNIT_ALIAS: Record<string, Unit> = { 個: '個', pcs: '個', pc: '個', �
 
 /** Excel からの貼り付け（タブ区切り / CSV）を BOM 行に変換する */
 export function parseBomPaste(text: string): PasteResult {
-  const lines = text.replace(/\r/g, '').split('\n').filter((l) => l.trim() !== '')
+  const raw = text.replace(/\r\n?/g, '\n')
   const warnings: string[] = []
+  const delimiter: PasteResult['delimiter'] = raw.includes('\t') ? 'tab' : raw.includes(',') ? 'comma' : 'none'
+  const table = delimiter === 'none' ? raw.split('\n').map((l) => [l]) : parseTable(raw, delimiter === 'tab' ? '\t' : ',')
+  const lines = table.filter((r) => r.some((c) => c.trim() !== ''))
   if (!lines.length) return { rows: [], mapping: [], header: null, delimiter: 'none', warnings: ['貼り付けが空です'] }
-  const delimiter: PasteResult['delimiter'] = lines.some((l) => l.includes('\t')) ? 'tab' : lines.some((l) => l.includes(',')) ? 'comma' : 'none'
-  const split = (l: string) => (delimiter === 'tab' ? l.split('\t') : delimiter === 'comma' ? splitCsvLine(l) : [l])
+  const split = (l: string[]) => l
   const first = split(lines[0])
   const detected = first.map(detectField)
   const hasHeader = detected.filter(Boolean).length >= 2 || (detected.filter(Boolean).length >= 1 && first.length === 1)
@@ -75,7 +105,20 @@ export function parseBomPaste(text: string): PasteResult {
   else if (delimiter === 'none') {
     mapping = ['name']
     warnings.push('タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）')
-  } else mapping = DEFAULT_ORDER.slice(0, Math.max(...lines.map((l) => split(l).length)))
+  } else {
+    const width = Math.max(...lines.map((l) => split(l).length))
+    // 見出しが無いときは、数字ばかりの列を数量とみなし、その左に 部品名・型式・メーカ（列が多ければ分類も）を当てる
+    const numericCol = Array.from({ length: width }, (_, i) => i).find((i) => {
+      const vals = lines.map((l) => split(l)[i] ?? '').filter((v) => v.trim() !== '')
+      return vals.length > 0 && vals.every((v) => { const r = parseNumber(v); return r.ok && r.value != null })
+    })
+    if (numericCol != null && numericCol >= 1 && numericCol <= 4) {
+      const before = (['category', 'name', 'model', 'maker'] as BomField[]).slice(4 - numericCol)
+      const after = (['unit', 'ref', 'note'] as BomField[]).slice(0, Math.max(0, width - numericCol - 1))
+      mapping = [...before, 'qtyNeeded', ...after]
+    } else mapping = DEFAULT_ORDER.slice(0, width)
+    warnings.push(`見出しが無いので、列を「${mapping.map((f) => (f ? FIELD_LABEL[f] : '（使わない）')).join('・')}」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください`)
+  }
   const used = mapping.filter(Boolean)
   const dup = used.find((f, i) => used.indexOf(f) !== i)
   if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)

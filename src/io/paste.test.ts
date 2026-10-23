@@ -25,4 +25,23 @@ describe('parseBomPaste', () => {
     expect(plain.rows.map((r) => r.name)).toEqual(['リレー', 'ソケット'])
     expect(plain.warnings.length).toBe(1)
   })
+  it('shifts columns when there is no category and no header', () => {
+    const r = parseBomPaste('リレー\tMY4N\tオムロン\t4\nソケット\tPYF14A\tオムロン\t4')
+    expect(r.rows[0]).toMatchObject({ name: 'リレー', model: 'MY4N', maker: 'オムロン', qtyNeeded: 4 })
+    expect(r.warnings.join()).toContain('見出しが無い')
+  })
+  it('reads English Part header as name', () => {
+    const r = parseBomPaste('Part\tModel\tMaker\tQty\nRelay\tMY4N\tOmron\t4')
+    expect(r.rows[0]).toMatchObject({ name: 'Relay', model: 'MY4N', maker: 'Omron', qtyNeeded: 4 })
+    expect(parseBomPaste('Part No\tQty\nMY4N\t2').rows[0]).toMatchObject({ model: 'MY4N', qtyNeeded: 2 })
+  })
+})
+
+describe('parseTable', () => {
+  it('keeps quoted newlines and delimiters inside one cell', async () => {
+    const { parseTable } = await import('./paste')
+    expect(parseTable('a\t"1行目\n2行目"\tc\nd\te\tf\n', '\t')).toEqual([['a', '1行目 2行目', 'c'], ['d', 'e', 'f']])
+    expect(parseTable('"x, y",2\n"say ""hi""",3', ',')).toEqual([['x, y', '2'], ['say "hi"', '3']])
+    expect(parseTable('5"\t6', '\t')).toEqual([['5"', '6']])
+  })
 })

@@ -74,9 +74,14 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         if (str && project.rows.some((r) => r.id !== row.id && r.status !== 'cancelled' && r.status !== 'replaced' && String(effective(r)[field as keyof typeof e] ?? '') === str)) push([])
         break
       case 'packMultiple':
-        if (e.unit === 'パック' && e.packQty && e.packQty > 0 && e.qtyNeeded % e.packQty !== 0) {
+        // 単位が「パック」なら数量はパック数。個数で数える単位で入数があるときだけ倍数を確かめる
+        if (e.unit !== 'パック' && e.packQty && e.packQty > 1 && e.qtyNeeded % e.packQty !== 0) {
           const up = Math.ceil(e.qtyNeeded / e.packQty) * e.packQty
-          push([{ label: `入数の倍数 ${up} にする`, apply: () => ({ qtyNeeded: up }) }])
+          const packs = Math.ceil(e.qtyNeeded / e.packQty)
+          push([
+            { label: `入数の倍数 ${up} ${e.unit}にする`, apply: () => ({ qtyNeeded: up }) },
+            { label: `単位をパックにして ${packs} パックにする`, apply: () => ({ unit: 'パック', qtyNeeded: packs }) as Partial<Row> },
+          ])
         }
         break
       case 'altConsistent': {

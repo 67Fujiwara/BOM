@@ -5,6 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import { effective, isActive, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
+import { parseTable } from '@/io/paste'
 import { checkRow } from '@/model/rules'
 import { addBusinessDays, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf, type Parsed } from '@/model/parse'
@@ -35,7 +36,7 @@ const NUM_RULES: Record<string, { min?: number; max?: number; integer?: boolean;
   qtyNeeded: { min: 0, max: 1e9, label: '必要数' },
   packQty: { min: 1, max: 1e7, integer: true, label: '入数' },
   orderQty: { min: 0, max: 1e9, label: '発注数' },
-  needOffset: { min: -730, max: 730, integer: true, label: '必要日(前倒し日数)' },
+  needOffset: { min: -365, max: 365, integer: true, label: '必要日(前倒し日数)' },
   extraCost: { min: 0, max: 1e10, label: '追加費用' },
   'q.unitPrice': { min: 0, max: 1e10, label: '単価' },
   'q.formalPrice': { min: 0, max: 1e10, label: '正式単価' },
@@ -55,7 +56,9 @@ export function parseValue(colKey: string, raw: string): Parsed<unknown> {
       if (base === 'q.leadDays' || base === 'q.formalLeadDays') {
         if (/^(即納|在庫|0日?)$/.test(s)) return { ok: true, value: 0 }
         if (/^(取扱なし|取り扱いなし|辞退|-1|×)$/.test(s)) return { ok: true, value: -1 }
-        const w = /^(\d+)\s*(週|w)$/i.exec(s)
+        const dd = /^(\d+)\s*(日|days?|d)$/i.exec(s)
+        if (dd) return { ok: true, value: Number(dd[1]) }
+        const w = /^(\d+)\s*(週間?|w|weeks?)$/i.exec(s)
         if (w) return { ok: true, value: Number(w[1]) * 7 }
         const mo = /^(\d+)\s*(ヶ月|か月|カ月|ヵ月)$/.exec(s)
         if (mo) return { ok: true, value: Number(mo[1]) * 30 }
@@ -141,6 +144,15 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
     }
   } else {
     if (colKey === 'ordered' && value === true && r.status !== 'formalQuoted' && !r.flags.early && !['ordered', 'received'].includes(r.status)) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
+    // PM の決定待ち（差分超過・承認待ち・納期NG）の行は、決定が出るまで発注しない
+    if (colKey === 'ordered' && value === true && !r.ordered) {
+      if (r.flags.formalDiff) return '正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません'
+      if (r.flags.pmPending || r.pendingApproval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
+      if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
+      if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
+      const aq = r.adoptedSupplierId ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale && x.unitPrice != null) : undefined
+      if (!aq) return '採用商社の有効な見積がありません。採用してから発注します'
+    }
     if (colKey === 'received' && value === true && !r.ordered && r.status !== 'formalQuoted' && !r.flags.early) return '発注前の行は入荷にできません'
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
     ;(r as unknown as Record<string, unknown>)[colKey] = value
@@ -286,26 +298,40 @@ export interface PublishPlan {
   blockedErrors: Array<{ rowId: string; message: string }>
   blockedWarnings: Array<{ rowId: string; message: string }>
   deferred: string[]
-  /** 指摘対応でない変更がある行（変更セット） */
+  /** 指摘対応でない変更がある行（変更セット。提出後の追加・置換・取消も含む） */
   nonIssueChanges: string[]
+  /** 取消して、まだ購買に伝えていない行 */
+  cancelled: string[]
   /** 指摘対応の行 */
   issueFixes: Array<{ rowId: string; issue: Issue }>
   /** 直前の Rev に追記できるか */
   canAppend: boolean
 }
 
+/** 「あとで」にした問題のうち、まだ残っているもの */
+export function activeDeferred(r: Row, rules: Parameters<typeof checkRow>[1], p: Project): string[] {
+  if (!r.deferredRules.length) return []
+  const live = new Set(checkRow(r, rules, p).map((x) => x.ruleId))
+  return r.deferredRules.filter((id) => live.has(id))
+}
+
 /** 提出（公開）の計画。ゲート判定と変更理由の要否 */
 export function planPublish(p: Project, rules: Parameters<typeof checkRow>[1], user: { name: string; role: Role }, rowIds?: string[]): PublishPlan {
-  const targets = user.role === 'design' ? p.rows.filter((r) => isActive(r) && (rowIds ? rowIds.includes(r.id) : true) && ((r.status === 'draft' && r.publishedRev == null && (r.name || r.model)) || (r.working && Object.keys(r.working).length > 0))) : []
+  const isDesign = user.role === 'design'
+  const targets = isDesign ? p.rows.filter((r) => isActive(r) && (rowIds ? rowIds.includes(r.id) : true) && ((r.status === 'draft' && r.publishedRev == null && (r.name || r.model)) || (r.working && Object.keys(r.working).length > 0))) : []
+  const cancelled = isDesign ? p.rows.filter((r) => r.status === 'cancelled' && r.publishedRev != null && !p.submissions.some((sb) => sb.causes[r.id] === '取消')).map((r) => r.id) : []
   const draftIssues = p.issues.filter((i) => i.status === 'draft' && i.by.name === user.name)
   const last = p.submissions.at(-1)
-  const plan: PublishPlan = { rows: targets, draftIssues, blockedErrors: [], blockedWarnings: [], deferred: [], nonIssueChanges: [], issueFixes: [], canAppend: !!last && last.by.name === user.name && last.acked.length === 0 && !last.revoked && !last.changeSet }
+  const plan: PublishPlan = { rows: targets, draftIssues, blockedErrors: [], blockedWarnings: [], deferred: [], nonIssueChanges: [...cancelled], cancelled, issueFixes: [], canAppend: !!last && last.by.name === user.name && last.acked.length === 0 && !last.revoked && !last.changeSet }
+  const afterFirst = p.submissions.length > 0
   for (const r of targets) {
     for (const pr of checkRow(r, rules, p)) {
       if (pr.severity === 'error') plan.blockedErrors.push({ rowId: r.id, message: pr.message })
-      else if (!r.ackRules.includes(pr.ruleId)) plan.blockedWarnings.push({ rowId: r.id, message: pr.message })
+      else if (!r.ackRules.includes(pr.ruleId) && !r.deferredRules.includes(pr.ruleId)) plan.blockedWarnings.push({ rowId: r.id, message: pr.message })
     }
-    if (r.deferredRules.length) plan.deferred.push(r.id)
+    if (activeDeferred(r, rules, p).length) plan.deferred.push(r.id)
+    // 提出後に足した行・手で置き換えた行は設計変更（提案の適用で作った行は指摘対応）
+    if (r.status === 'draft' && r.publishedRev == null && afterFirst && !r.fromIssue) plan.nonIssueChanges.push(r.id)
     if (r.working) {
       const changed = Object.keys(r.working)
       const open = p.issues.filter((i) => i.rowId === r.id && (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'design')
@@ -319,6 +345,67 @@ export function planPublish(p: Project, rules: Parameters<typeof checkRow>[1], u
   return plan
 }
 
+/** 公開済の行に設計の変更を反映する（公開時、または変更セットの PM 承認時）。見積・状態・フラグも仕様どおりに動かす */
+export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFields>, fixedIssueIds: string[], summary?: Submission['summary']) {
+  const before = { ...r }
+  const changed = (Object.keys(values) as (keyof DesignFields)[]).filter((k) => JSON.stringify(values[k]) !== JSON.stringify(before[k]))
+  Object.assign(r, values)
+  const inFlight = ['quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status)
+  const formalStage = ['formalRequested', 'formalQuoted'].includes(r.status)
+  if (changed.includes('model') || changed.includes('maker')) {
+    if (summary) summary.modelChanged++
+    const sameNorm = normalizeModel(before.model) === normalizeModel(r.model) && before.maker === r.maker
+    const hasQuotes = p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null)
+    if (inFlight) {
+      if (sameNorm) r.flags.notation = true
+      else if (fixedIssueIds.length && hasQuotes) {
+        r.flags.reconfirm = true
+        r.flags.pmReason = undefined
+      } else {
+        r.flags.requote = true
+        r.adoptedSupplierId = undefined
+        r.scoreSnapshot = undefined
+        for (const q of p.quotes.filter((x) => x.rowId === r.id && !x.stale)) {
+          q.stale = true
+          q.staleModel = before.model
+          p.quotes.push(emptyQuote(r.id, q.supplierId))
+        }
+        if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) setStatus(r, 'submitted')
+        // 採用・先行採用・先行発注・差分超過の判断は旧型式に対するもの。新しい型式で見積から出し直す
+        r.flags.early = undefined
+        r.flags.formalDiff = undefined
+        if (r.flags.pmReason && ['例外選定', '先行採用', '先行発注判断', '差分超過', '閾値超', '再選定提案'].includes(r.flags.pmReason)) {
+          r.flags.pmPending = undefined
+          r.flags.pmReason = undefined
+        }
+      }
+      if (formalStage && !sameNorm) r.flags.reissue = true
+    }
+    if (r.altPolicy === '客先承認要' && !sameNorm) r.flags.altPending = true
+  }
+  if (changed.includes('qtyNeeded')) {
+    if (summary && !changed.includes('model')) summary.qtyChanged++
+    const q0 = before.qtyNeeded || 1
+    const q1 = r.qtyNeeded
+    const pct = Math.abs(q1 - q0) / q0
+    const crossMoq = p.quotes.some((x) => x.rowId === r.id && !x.stale && x.moq != null && (x.moq > q0) !== (x.moq > q1))
+    if (formalStage) {
+      r.flags.reissue = true
+      r.flags.requote = true
+    } else if (inFlight && (pct > p.settings.qtyTolerancePct || crossMoq)) r.flags.requote = true
+    else if (inFlight) r.flags.priceCheck = true
+    if (r.adoptedSupplierId) {
+      const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
+      const recalculated = roundedQty(q1, aq?.moq, r.packQty, r.unit)
+      const wasManual = r.orderQty != null && r.orderQty !== roundedQty(q0, aq?.moq, before.packQty, before.unit)
+      r.orderQty = recalculated
+      if (wasManual) r.flags.orderQtyCheck = true
+    }
+  }
+  if ((changed.includes('needOffset') || changed.includes('needDateFixed')) && formalStage) r.flags.reissue = true
+  if (summary && !changed.some((c) => c === 'model' || c === 'maker' || c === 'qtyNeeded')) summary.other++
+}
+
 export type PublishMode = 'new' | 'append'
 
 /** 公開（Ctrl+Enter）：自分の未公開の行 ＋ 自分の下書き指摘 */
@@ -326,7 +413,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
   const s = st()
   const user = s.user()
   const plan = planPublish(s.project(), s.ws.rules, user, rowIds)
-  if (plan.rows.length === 0 && plan.draftIssues.length === 0) {
+  if (plan.rows.length === 0 && plan.draftIssues.length === 0 && plan.cancelled.length === 0) {
     s.toastMsg('公開するものがありません（未公開の行・下書き指摘なし）', 'info')
     return false
   }
@@ -341,7 +428,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     return false
   }
   if (plan.deferred.length) {
-    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています`, 'err')
+    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}。直すか、警告なら x で確認済みに）`, 'err')
     return false
   }
   if (plan.nonIssueChanges.length && !changeSet) return false // UI が理由を聞いてから再呼び出し
@@ -362,10 +449,11 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     // 行の公開：指摘対応と変更セットを別 Rev に分ける
     const fixRows = plan.rows.filter((r) => !plan.nonIssueChanges.includes(r.id))
     const csRows = plan.rows.filter((r) => plan.nonIssueChanges.includes(r.id))
+    const cancelGroupIsCs = plan.cancelled.length > 0
     const revs: number[] = []
     const needsApproval = !!changeSet && p.settings.changeNeedsPmApproval
     for (const [group, isCs] of [[fixRows, false], [csRows, true]] as Array<[Row[], boolean]>) {
-      if (group.length === 0) continue
+      if (group.length === 0 && !(isCs && cancelGroupIsCs)) continue
       let sub: Submission
       const last = p.submissions.at(-1)
       if (mode === 'append' && !isCs && last && plan.canAppend) sub = last
@@ -385,77 +473,40 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           const targets = quoteTargets(p, r)
           for (const sid of targets) if (!p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) p.quotes.push(emptyQuote(r.id, sid))
         } else if (r.working) {
-          const before = { ...r }
-          const changed = Object.keys(r.working) as (keyof DesignFields)[]
-          Object.assign(r, r.working)
+          const values = r.working
           r.working = undefined
           const fixed = plan.issueFixes.filter((f) => f.rowId === r.id)
           for (const f of fixed) {
             const i = p.issues.find((x) => x.id === f.issue.id)!
             i.status = 'fixed'
-            i.resolution = changed.map((c) => `${c}: ${String((before as unknown as Record<string, unknown>)[c] ?? '')} → ${String((r as unknown as Record<string, unknown>)[c] ?? '')}`).join(', ')
+            i.resolution = Object.keys(values).map((c) => `${c}: ${String((r as unknown as Record<string, unknown>)[c] ?? '')} → ${String((values as Record<string, unknown>)[c] ?? '')}`).join(', ')
           }
           // 他セルだけ変わった未対応指摘は「対応中」
           for (const i of p.issues) if (i.rowId === r.id && i.status === 'open' && resolverOfIssue(i) === 'design' && !fixed.some((f) => f.issue.id === i.id)) i.status = 'inProgress'
           sub.causes[r.id] = fixed.length ? fixed.map((f) => f.issue.id).join(',') : `変更セット #${sub.rev}${changeSet?.changeNo ? ' ' + changeSet.changeNo : ''}`
-          const inFlight = ['quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status)
-          const formalStage = ['formalRequested', 'formalQuoted'].includes(r.status)
-          if (changed.includes('model') || changed.includes('maker')) {
-            sub.summary.modelChanged++
-            const sameNorm = normalizeModel(before.model) === normalizeModel(r.model) && before.maker === r.maker
-            if (inFlight) {
-              if (sameNorm) r.flags.notation = true
-              else if (fixed.length) {
-                r.flags.reconfirm = true
-                r.flags.pmReason = undefined
-              } else {
-                r.flags.requote = true
-                r.adoptedSupplierId = undefined
-                r.scoreSnapshot = undefined
-                for (const q of p.quotes.filter((x) => x.rowId === r.id && !x.stale)) {
-                  q.stale = true
-                  q.staleModel = before.model
-                  p.quotes.push(emptyQuote(r.id, q.supplierId))
-                }
-              }
-              if (formalStage && !sameNorm) r.flags.reissue = true
-            }
-          } else if (changed.includes('qtyNeeded')) {
-            sub.summary.qtyChanged++
-            const q0 = before.qtyNeeded || 1
-            const q1 = r.qtyNeeded
-            const pct = Math.abs(q1 - q0) / q0
-            const crossMoq = p.quotes.some((x) => x.rowId === r.id && !x.stale && x.moq != null && (x.moq > q0) !== (x.moq > q1))
-            if (formalStage) {
-              r.flags.reissue = true
-              r.flags.requote = true
-            } else if (inFlight && (pct > p.settings.qtyTolerancePct || crossMoq)) r.flags.requote = true
-            else if (inFlight) r.flags.priceCheck = true
-            // 発注数の再計算
-            if (r.adoptedSupplierId) {
-              const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-              const recalculated = roundedQty(q1, aq?.moq, r.packQty)
-              const wasManual = r.orderQty != null && r.orderQty !== roundedQty(q0, aq?.moq, before.packQty)
-              r.orderQty = recalculated
-              if (wasManual) r.flags.orderQtyCheck = true
-            }
-          } else if (changed.includes('needOffset') || changed.includes('needDateFixed')) {
-            sub.summary.other++
-            if (formalStage) r.flags.reissue = true
-          } else sub.summary.other++
           if (isCs && needsApproval) {
+            // PM の承認まで公開値は変えない（購買には「承認待ちの変更あり」だけ見える）
+            r.pendingApproval = { ...(r.pendingApproval ?? {}), ...values }
+            r.pendingRev = sub.rev
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'
-          }
+            sub.summary.other++
+          } else applyDesignChange(p, r, values, fixed.map((f) => f.issue.id), sub.summary)
+        }
+        if (isCs && needsApproval && r.status === 'submitted' && !r.pendingApproval) {
+          // 提出後に追加した行も承認まで保留
+          r.flags.pmPending = true
+          r.flags.pmReason = '変更セット'
+          r.pendingRev = sub.rev
         }
         r.publishedRev = sub.rev
         r.lastChangeCause = sub.causes[r.id]
-        r.deferredRules = []
-        sub.snapshot[r.id] = { ...pick(effective(r)), status: r.status }
+        r.deferredRules = r.deferredRules.filter((id) => activeDeferred(r, ws.rules, p).includes(id))
+        sub.snapshot[r.id] = { ...pick({ ...r, ...(r.pendingApproval ?? {}) }), status: r.status }
         if (r.status === 'submitted') r.dueAt = addBusinessDays(today, 1, p.settings.holidays)
       }
-      // 取消行も差分に
-      for (const r of p.rows) if (r.status === 'cancelled' && !p.submissions.some((sb) => sb.causes[r.id] === '取消')) {
+      // 取消行も差分に（変更セットの Rev に入れる）
+      if (isCs || !cancelGroupIsCs) for (const r of p.rows) if (r.status === 'cancelled' && r.publishedRev != null && !p.submissions.some((sb) => sb.causes[r.id] === '取消')) {
         sub.rowIds.push(r.id)
         sub.causes[r.id] = '取消'
         sub.summary.cancelled++
@@ -493,15 +544,26 @@ export function ackRule(rowId: string, ruleId: string) {
     const r = p.rows.find((x) => x.id === rowId)
     if (!r) return
     if (r.ackRules.includes(ruleId)) r.ackRules = r.ackRules.filter((x) => x !== ruleId)
-    else r.ackRules.push(ruleId)
+    else {
+      r.ackRules.push(ruleId)
+      r.deferredRules = r.deferredRules.filter((x) => x !== ruleId)
+    }
   })
 }
 
-export function deferRule(rowId: string, ruleId: string) {
+/** 「あとで」の切り替え（もう一度で外す） */
+export function deferRule(rowId: string, ruleId: string): boolean {
+  let on = false
   st().commit('あとで直す', (p) => {
     const r = p.rows.find((x) => x.id === rowId)
-    if (r && !r.deferredRules.includes(ruleId)) r.deferredRules.push(ruleId)
+    if (!r) return
+    if (r.deferredRules.includes(ruleId)) r.deferredRules = r.deferredRules.filter((x) => x !== ruleId)
+    else {
+      r.deferredRules.push(ruleId)
+      on = true
+    }
   })
+  return on
 }
 
 export function applyFix(rowId: string, patch: Partial<Row>, label: string) {
@@ -510,8 +572,9 @@ export function applyFix(rowId: string, patch: Partial<Row>, label: string) {
 
 /** Excel 貼り付け（タブ区切り）を複数セルに流し込む。1 回の操作として記録し、読めないセルは理由を出す */
 export function pasteCells(startRowId: string, startCol: string, visibleCols: string[], orderedRowIds: string[], text: string) {
-  const lines = text.replace(/\r/g, '').split('\n')
-  if (lines.at(-1) === '') lines.pop()
+  // Excel の改行入りセル（"…" で囲まれる）を 1 セルとして読む
+  const lines = parseTable(text, '\t')
+  if (lines.length && lines.at(-1)!.every((c) => c === '')) lines.pop()
   const c0 = visibleCols.indexOf(startCol)
   const r0 = orderedRowIds.indexOf(startRowId)
   if (c0 < 0 || r0 < 0) return
@@ -520,7 +583,7 @@ export function pasteCells(startRowId: string, startCol: string, visibleCols: st
   const errors: string[] = []
   let skipped = 0
   lines.forEach((line, i) => {
-    line.split('\t').forEach((v, j) => {
+    line.forEach((v, j) => {
       const col = visibleCols[c0 + j]
       if (!col) return
       if (canEdit(col)) {

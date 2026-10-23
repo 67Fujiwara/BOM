@@ -21,6 +21,7 @@ export interface ColumnDef {
 export const COLUMNS: ColumnDef[] = [
   { key: 'id', label: 'ID', kind: 'computed', width: 56, editableBy: [] },
   { key: 'ball', label: 'ボール', kind: 'computed', width: 52, editableBy: [] },
+  { key: 'cause', label: '起因', kind: 'computed', width: 130, editableBy: [] },
   { key: 'ref', label: '回路記号', kind: 'text', width: 70, editableBy: ['design'], design: true },
   { key: 'drawing', label: '図面番号', kind: 'text', width: 110, editableBy: ['design'], design: true },
   { key: 'category', label: '分類', kind: 'text', width: 60, editableBy: ['design'], design: true },

@@ -1,5 +1,5 @@
 import { useStore, type ViewId } from '@/model/store'
-import { setView, runCommand } from '@/commands/registry'
+import { setView, runCommand, commitEdit } from '@/commands/registry'
 import { VIEWS } from '@/model/views'
 import type { ViewModel } from '@/model/selectors'
 
@@ -21,7 +21,7 @@ export function Side({ vm }: { vm: ViewModel }) {
       })}
       <h3 style={{ marginTop: 16 }}>案件</h3>
       {st.ws.projects.map((p) => (
-        <div key={p.id} className="view" aria-current={p.id === st.ws.currentProjectId} onClick={() => { st.commitWs('', (ws) => { ws.currentProjectId = p.id }); st.set({ cursorRow: null, filter: '', cellFilter: null, openRows: [] }) }}>
+        <div key={p.id} className="view" aria-current={p.id === st.ws.currentProjectId} onClick={() => { if (!commitEdit('stay')) return; st.commitWs('', (ws) => { ws.currentProjectId = p.id }); st.set({ cursorRow: null, filter: '', cellFilter: null, openRows: [] }) }}>
           <span style={{ fontSize: 12 }}>{p.name}</span>
         </div>
       ))}

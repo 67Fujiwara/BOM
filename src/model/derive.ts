@@ -1,10 +1,15 @@
 import type { DesignFields, Issue, Project, Role, Row, RowStatus, Supplier, Workspace } from './types'
 import { addDays, addBusinessDays, businessDaysBetween, diffDays, todayStr } from './dates'
 
-/** 作業中（未公開）の値を重ねた設計列 */
+/** 設計が見ている値（公開値 ＋ PM 承認待ちの変更 ＋ 作業中）。購買・PM や計算には使わない */
 export function effective(row: Row): DesignFields {
-  if (!row.working) return row
-  return { ...row, ...row.working }
+  if (!row.working && !row.pendingApproval) return row
+  return { ...row, ...(row.pendingApproval ?? {}), ...(row.working ?? {}) }
+}
+
+/** 役割に応じて見せる値（設計は作業中を含む、他は公開値） */
+export function valuesFor(row: Row, role: Role): DesignFields {
+  return role === 'design' ? effective(row) : row
 }
 
 export function isActive(row: Row): boolean {
@@ -13,12 +18,12 @@ export function isActive(row: Row): boolean {
 
 /** 見積対象外（分母から外す） */
 export function isQuotable(row: Row): boolean {
-  const e = effective(row)
-  return isActive(row) && (e.procurement === '相見積' || e.procurement === '指定商社')
+  return isActive(row) && (row.procurement === '相見積' || row.procurement === '指定商社')
 }
 
+/** 発注数（購買が入れていなければ公開済の必要数） */
 export function orderQty(row: Row): number {
-  return row.orderQty ?? effective(row).qtyNeeded
+  return row.orderQty ?? row.qtyNeeded
 }
 
 /** 案件の必要日 = 納期 − 社内工程日数 */
@@ -26,8 +31,9 @@ export function projectNeedDate(p: Project): string | null {
   if (!p.dueDate) return null
   return addDays(p.dueDate, -p.settings.processDays)
 }
-export function rowNeedDate(p: Project, row: Row): string | null {
-  const e = effective(row)
+/** 行の必要日。計算には公開値を使う（working=true なら設計の作業中の値で） */
+export function rowNeedDate(p: Project, row: Row, working = false): string | null {
+  const e = working ? effective(row) : row
   if (e.needDateFixed) return e.needDateFixed
   const base = projectNeedDate(p)
   if (!base) return null
@@ -44,17 +50,18 @@ export function ball(p: Project, row: Row): Role | null {
   if (row.status === 'received') return null
   const f = row.flags
   if (f.pmPending || f.formalDiff || (f.leadNG && !f.countermeasure) || f.ltbPending) return 'pm'
+  if (f.importMismatch) return 'purchasing'
   const issues = openIssues(p, row.id)
-  if (issues.some((i) => i.bounceCount >= 2 && i.status === 'open')) return 'pm'
+  if (issues.some((i) => i.bounceCount >= 2 && i.status === 'open' && !i.pmRuled)) return 'pm'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'design')) return 'design'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'purchasing')) return 'purchasing'
   const pending = issues.find((i) => i.status === 'fixed' || i.status === 'answered')
-  if (pending) return pending.by.role
+  if (pending) return pending.by.role === 'pm' ? 'pm' : pending.by.role
   if (f.altPending) return 'design'
   if (f.countermeasure === '代替品検討') return 'design'
   if (f.countermeasure === '商社変更' || f.delegated) return 'purchasing'
-  if (f.requote || f.reconfirm || f.orderQtyCheck || f.notation || f.reissue) return 'purchasing'
   if (row.status === 'draft' || (row.working && Object.keys(row.working).length > 0)) return 'design'
+  if (f.requote || f.reconfirm || f.orderQtyCheck || f.notation || f.reissue) return 'purchasing'
   switch (row.status) {
     case 'submitted':
     case 'quoting':
@@ -85,7 +92,6 @@ export function resolverOfIssue(i: Issue): Role {
 export function resolverOf(kind: Issue['kind']): Role {
   switch (kind) {
     case '最小ロット':
-    case '納期NG':
     case '発注後変更依頼':
       return 'purchasing'
     case '質問':
@@ -132,8 +138,7 @@ export function totals(p: Project): { rough: number; formal: number; budget: num
   let formal = 0
   for (const r of p.rows) {
     if (!isActive(r)) continue
-    const e = effective(r)
-    if (e.procurement === '支給品' || e.procurement === '社内在庫') continue
+    if (r.procurement === '支給品' || r.procurement === '社内在庫') continue
     const a = lineAmount(p, r)
     rough += (a.rough ?? 0) + (r.extraCost ?? 0)
     formal += (a.formal ?? a.rough ?? 0) + (r.extraCost ?? 0)
@@ -147,7 +152,20 @@ export function ballCounts(p: Project): Record<Role, number> {
     const b = ball(p, r)
     if (b) c[b]++
   }
+  c.pm += p.caseDecisions.filter((x) => x.status === 'open').length
   return c
+}
+
+/** 設計待ちの内訳（指摘・選定待ち・その他） */
+export function designBreakdown(p: Project): { issues: number; selecting: number; other: number } {
+  const out = { issues: 0, selecting: 0, other: 0 }
+  for (const r of p.rows) {
+    if (ball(p, r) !== 'design') continue
+    if (openIssues(p, r.id).some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'design')) out.issues++
+    else if (r.status === 'quoted' || r.flags.contested) out.selecting++
+    else out.other++
+  }
+  return out
 }
 
 export function unpublishedCount(p: Project, userName?: string): { rows: number; issues: number } {
@@ -165,10 +183,10 @@ export function normalizeModel(s: string): string {
     .toUpperCase()
 }
 
-/** 商社ごとの丸め数量（MOQ・入数で切り上げ） */
-export function roundedQty(qtyNeeded: number, moq: number | null | undefined, packQty: number | null | undefined): number {
+/** 商社ごとの丸め数量（MOQ で切り上げ。単位が「個」などで入数があれば入数の倍数に。単位が「パック」なら数量はパック数なので入数では丸めない） */
+export function roundedQty(qtyNeeded: number, moq: number | null | undefined, packQty: number | null | undefined, unit?: string): number {
   let q = Math.max(qtyNeeded, moq ?? 0)
-  if (packQty && packQty > 0) q = Math.ceil(q / packQty) * packQty
+  if (packQty && packQty > 1 && unit !== 'パック') q = Math.ceil(q / packQty) * packQty
   return q
 }
 

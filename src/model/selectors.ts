@@ -1,14 +1,14 @@
 import type { Project, Role, Row, Workspace } from './types'
 import { STATUS_LABEL, ROLE_LABEL } from './types'
 import { COLUMNS, colDef, supplierOfCol } from './columns'
-import { VIEWS, buildProblems, type ViewCtx } from './views'
+import { VIEWS, buildProblems, causeOf, type ViewCtx } from './views'
 import type { Problem } from './rules'
 import type { State, ViewId } from './store'
 import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, openIssues, orderQty, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
 import { fmtDate } from './dates'
 import { toHalf } from './parse'
 
-export type Item = { kind: 'group'; key: string; category: string; count: number } | { kind: 'row'; key: string; row: Row } | { kind: 'detail'; key: string; row: Row }
+export type Item = { kind: 'group'; key: string; category: string; count: number } | { kind: 'row'; key: string; row: Row } | { kind: 'detail'; key: string; row: Row } | { kind: 'case'; key: string; label: string }
 
 export interface ViewModel {
   ctx: ViewCtx
@@ -71,9 +71,14 @@ function buildViewModelUncached(st: State): ViewModel {
   const ctx = makeCtx(ws, p, st.revView)
   const columns = viewColumns(st, p)
   const counts = {} as Record<ViewId, number>
-  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (v.id === 1 || !r.hidden)).length
+  // 隠した行は「すべて」と作業のビュー（要確認・要決定）には出す
+  const showHidden = (id: number) => id === 1 || id === 4 || id === 7
+  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden)).length
+  // 案件レベルの要決定（案件設定確定）も 7 の件数に入れる
+  const openCases = p.caseDecisions.filter((c) => c.status === 'open')
+  counts[7] += openCases.length
   const v = VIEWS.find((x) => x.id === st.view)!
-  let rows = p.rows.filter((r) => v.filter(r, ctx) && (st.view === 1 || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
+  let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
   if (st.cellFilter) rows = rows.filter((r) => cellText(r, st.cellFilter!.col, ctx).text === st.cellFilter!.value)
   const sort = st.sort
   if (sort) {
@@ -81,6 +86,10 @@ function buildViewModelUncached(st: State): ViewModel {
     rows = [...rows].sort((a, b) => {
       const ta = cellText(a, sort.col, ctx)
       const tb = cellText(b, sort.col, ctx)
+      // 空欄は昇順・降順とも末尾（Excel と同じ）
+      const ea = ta.raw === '' || ta.raw == null
+      const eb = tb.raw === '' || tb.raw == null
+      if (ea || eb) return ea === eb ? 0 : ea ? 1 : -1
       const na = Number(ta.raw)
       const nb = Number(tb.raw)
       if (ta.raw !== '' && tb.raw !== '' && Number.isFinite(na) && Number.isFinite(nb)) return (na - nb) * dir
@@ -88,7 +97,12 @@ function buildViewModelUncached(st: State): ViewModel {
     })
   } else if (v.defaultSort) rows = [...rows].sort((a, b) => v.defaultSort!(a, b, ctx))
   const items: Item[] = []
-  const grouped = !sort && !v.defaultSort && st.view !== 7 && st.view !== 4
+  if (st.view === 7 && !st.filter && !st.cellFilter) for (const c of openCases) items.push({ kind: 'case', key: 'case:' + c.id, label: c.kind === '案件設定確定' ? '案件設定確定（納期・工程日数・予算・重み・選定者）: y で既定のまま確定 / Enter で案件設定を開く' : c.kind })
+  // 分類ごとに 1 つの見出し。分類が連続していない BOM（回路記号順・図面順など）では見出しを出さない
+  const catOf = (r: Row) => effective(r).category || '（分類なし）'
+  const runs = rows.reduce((n, r, i) => (i === 0 || catOf(rows[i - 1]) !== catOf(r) ? n + 1 : n), 0)
+  const contiguous = runs === new Set(rows.map(catOf)).size
+  const grouped = !sort && !v.defaultSort && st.view !== 7 && st.view !== 4 && contiguous
   let lastCat: string | null = null
   const ordered: Row[] = []
   for (const r of rows) {
@@ -139,8 +153,11 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       const b = ball(p, row)
       return { text: b ? ROLE_LABEL[b] : '—', raw: b ?? '', cls: b === ctx.role ? 'mine' : 'muted' }
     }
+    case 'cause':
+      return { text: causeOf(row, ctx), raw: causeOf(row, ctx) }
     case 'needDate': {
-      const nd = rowNeedDate(p, row)
+      // 設計は作業中の値で、購買・PM は公開値で
+      const nd = rowNeedDate(p, row, ctx.role === 'design')
       return { text: fmtDate(nd), raw: nd ?? '', title: e.needDateFixed ? '固定' : e.needOffset ? `案件必要日 ${e.needOffset} 日` : '案件必要日' }
     }
     case 'needOffset':

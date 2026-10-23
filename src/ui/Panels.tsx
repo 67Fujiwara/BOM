@@ -3,7 +3,7 @@ import { useStore, type Panel } from '@/model/store'
 import { KEYMAP, formatKey } from '@/keys/keymap'
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
-import { colsForPanel, paletteItems, closePanel, WIZ_KEYS } from '@/commands/registry'
+import { colsForPanel, paletteItems, WIZ_KEYS } from '@/commands/registry'
 import { issueKindsFor } from '@/commands/keyboard'
 import { ballCounts, effective, fmtYen } from '@/model/derive'
 import { scoreRow } from '@/model/score'
@@ -23,7 +23,7 @@ export function Panels() {
   const panel = st.panel
   if (!panel) return null
   return (
-    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => e.target === e.currentTarget && closePanel()}>
+    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => e.target === e.currentTarget && press('Escape')}>
       <PanelBody panel={panel} />
     </div>
   )
@@ -247,7 +247,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.step === 'kind' ? [['k', '等の頭文字 / ↑↓ Enter で種別'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ...(proposalKind && panel.step === 'text' ? ([['Tab', '提案欄']] as Array<[string, string]>) : []), ['Escape', '閉じる']]} />
+          <Foot items={panel.step === 'kind' ? [['k', '等の頭文字 / ↑↓ Enter で種別'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ['Ctrl+Enter', '起票して次の行へ'], ...(proposalKind && panel.step === 'text' ? ([['Tab', '提案欄']] as Array<[string, string]>) : []), ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -286,7 +286,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               <div className="panel-list" data-testid="prompt-options" ref={listRef}>
                 {panel.options.map((o, i) => (
                   <div key={o} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), !panel.showText && press('Enter'))}>
-                    <kbd>{panel.showText ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
+                    <kbd>{panel.showText && !panel.digitsSelect ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
                   </div>
                 ))}
               </div>
@@ -303,7 +303,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.showText && panel.options ? [['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect ? ([['1', '〜 数字で選ぶ']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'quickfix':
@@ -353,7 +353,26 @@ function PanelBody({ panel }: { panel: Panel }) {
         <div className="dialog wide" role="dialog" aria-label={panel.title}>
           <div className="body wizard">
             <h3 style={{ margin: '0 0 8px', fontSize: 14 }}>{panel.title}</h3>
-            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder="Excel からコピーして貼り付け（Ctrl+V）。Ctrl+Enter で取り込み" testid="import-text" />
+            {panel.accept && (
+              <label className="btn" style={{ display: 'inline-block', marginBottom: 8, cursor: 'pointer' }}>
+                ファイルを選ぶ
+                <input
+                  type="file"
+                  accept={panel.accept}
+                  data-testid="import-file"
+                  style={{ display: 'none' }}
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0]
+                    if (!f) return
+                    const text = await f.text()
+                    const cur = useStore.getState().panel
+                    if (cur?.kind === 'import') useStore.getState().set({ panel: { ...cur, text } })
+                    useStore.getState().toastMsg(`${f.name} を読み込みました（Ctrl+Enter で反映）`, 'info')
+                  }}
+                />
+              </label>
+            )}
+            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={panel.placeholder ?? 'Excel からコピーして貼り付け（Ctrl+V）。Ctrl+Enter で取り込み'} testid="import-text" />
           </div>
           <Foot items={[['Ctrl+Enter', '取り込む'], ['Escape', '閉じる']]} />
         </div>
@@ -476,7 +495,7 @@ function PanelBody({ panel }: { panel: Panel }) {
   }
 }
 
-const WIZ_STEPS = ['案件ID', '案件名', '納期', '社内工程日数', '予算（任意）', '購買担当者', '希望商社', '部品の入れ方', '確認して作成']
+const WIZ_STEPS = ['案件ID', '案件名', '納期', '社内工程日数', '予算（任意）', '購買・PM 担当者', '希望商社', '部品の入れ方', '確認して作成']
 
 function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
   const st = useStore()
@@ -489,14 +508,37 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
   const onFile = async (f: File | undefined) => {
     if (!f) return
     try {
-      const text = /\.xlsx$/i.test(f.name) ? await xlsxToTsv(await f.arrayBuffer()) : await f.text()
-      st.set({ panel: { ...panel, data: { ...d, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
+      // 中身で判別する（拡張子が無い・違うファイルでも、Excel は zip の先頭 PK で分かる）
+      const buf = await f.arrayBuffer()
+      const head = new Uint8Array(buf.slice(0, 4))
+      const isZip = head[0] === 0x50 && head[1] === 0x4b && head[2] === 0x03 && head[3] === 0x04
+      if (/\.xlsx$/i.test(f.name) && !isZip) throw new Error('Excel（.xlsx）として読めません。壊れているか、別の形式のファイルです')
+      let text: string
+      if (isZip) {
+        try {
+          text = await xlsxToTsv(buf)
+        } catch {
+          throw new Error('Excel（.xlsx）として読めません。壊れているか、パスワード付きのファイルです')
+        }
+      } else {
+        // 日本語の Excel が出す CSV は Shift_JIS のことが多い。UTF-8 で読めなければ Shift_JIS で読む
+        try {
+          text = new TextDecoder('utf-8', { fatal: true }).decode(buf)
+        } catch {
+          text = new TextDecoder('shift_jis').decode(buf)
+        }
+        if (/[\u0000\ufffd]/.test(text.slice(0, 4000))) throw new Error('文字のファイル（CSV・タブ区切り）ではありません。Excel から .xlsx か CSV で保存してください')
+      }
+      if (!text.trim()) throw new Error('中身が空です')
+      const cur = useStore.getState().panel
+      if (cur?.kind !== 'wizard') return
+      st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
       st.toastMsg(`${f.name} を読み込みました。Enter で次へ`, 'ok')
     } catch (err) {
-      st.toastMsg(`ファイルを読めませんでした: ${(err as Error).message}`, 'err')
+      st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
     }
   }
-  const hints = ['例: P-2026-042（空なら自動で付けます）', '例: 第4ライン 制御盤', '2026-11-30 / 11/30 / 未定', '納期から逆算して必要日を出す日数（空なら 10）', '目標原価（円）。例: 2800000 / 280万。空でも可', '購買担当者の氏名']
+  const hints = ['例: P-2026-042（空なら自動で付けます）', '例: 第4ライン 制御盤', '2026-11-30 / 11/30 / 未定', '納期から逆算して必要日を出す日数（空なら 10）', '目標原価（円）。例: 2800000 / 280万。空でも可', '購買担当, PM 担当（カンマ区切り。例: 佐藤, 鈴木。空なら未定）']
   return (
     <div className="dialog wide wizard" role="dialog" aria-label="新しいBOM">
       <div className="steps">
@@ -552,7 +594,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
         {step === 8 && (
           <div data-testid="wizard-preview">
             <div>
-              案件 <b>{d.id || '（自動）'}</b> {d.name || '新しいBOM'} / 納期 {d.due || '未定'} / 工程日数 {d.processDays || 10} / 予算 {d.budget || 'なし'} / 購買 {d.buyer || '未定'} / 希望商社 {panel.picks.length} 社
+              案件 <b>{d.id || '（自動）'}</b> {d.name || '新しいBOM'} / 納期 {d.due || '未定'} / 工程日数 {d.processDays || 10} / 予算 {d.budget || 'なし'} / 購買・PM {d.buyer || '未定'} / 希望商社 {panel.picks.length} 社
             </div>
             {preview && (
               <>

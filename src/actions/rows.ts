@@ -154,7 +154,7 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       const req = p.issues.find((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
       if (!r.flags.orderCancelApproved || !req) {
         r.flags.orderCancelApproved = false
-        return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+        return '発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
       }
       // 発注を取り消したら、設計が置き換え品を作る番（設計の 4 に出る。§9.1）
       r.flags.orderCancelApproved = false
@@ -305,7 +305,7 @@ export function toggleHidden(rowId: string) {
       hidden = r.hidden
     }
   })
-  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
+  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
 }
 
 /** 置き換え品を作る。指摘・見積・状態を新行に引き継ぎ「要再確認」 */
@@ -480,16 +480,16 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
   }
   if (plan.blockedErrors.length) {
     const b = plan.blockedErrors[0]
-    s.toastMsg(`公開できません: エラー ${plan.blockedErrors.length} 件（${b.rowId} ${b.message} … n で移動して直す）`, 'err')
+    s.toastMsg(`公開できません: エラー ${plan.blockedErrors.length} 件（${b.rowId} ${b.message} … F8 で移動して直す）`, 'err')
     return false
   }
   if (plan.blockedWarnings.length) {
     const b = plan.blockedWarnings[0]
-    s.toastMsg(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${b.rowId} ${b.message} … 直すか x で確認済みに）`, 'err')
+    s.toastMsg(`公開できません: 未確認の警告 ${plan.blockedWarnings.length} 件（${b.rowId} ${b.message} … 直すか Alt+x で確認済みに）`, 'err')
     return false
   }
   if (plan.deferred.length) {
-    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}。直すか、警告なら x で確認済みに）`, 'err')
+    s.toastMsg(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}。直すか、警告なら Alt+x で確認済みに）`, 'err')
     return false
   }
   if (plan.nonIssueChanges.length && !changeSet) return false // UI が理由を聞いてから再呼び出し

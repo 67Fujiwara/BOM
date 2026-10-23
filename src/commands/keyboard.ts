@@ -400,24 +400,24 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
   return false
 }
 
-// ---------- 英字の扱い ----------
-// 文字を打てるセルでは、英字は（Shift 付きも）いつでも値の打ち始め（Excel と同じ。仕様「いきなり文字を打つ＝編集」）。
-// 英字のコマンドは、文字を打てないセル（ID・ボール・状態・自動計算・他の役割の列）ではそのまま、
-// どのセルでも Alt を押しながら（Alt+x・Alt+Shift+I）使える。打つ速さには左右されない。
-let digitHintShown = false
+// ---------- 英字・数字の扱い ----------
+// 表の中で英字・数字の 1 キー操作がそのまま効くのは、操作のための列（ID・状態）と、チェックの列（発注・入荷）だけ。
+// それ以外の列では、英字・数字は（Shift 付きも、何秒あけても）値の打ち始め。自分の役割で書けない列なら理由を知らせる。
+// どの列でも Alt を押しながらなら 1 キー操作（Alt+x・Alt+Shift+I・Alt+4）。打つ速さには左右されない。
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
 }
-/** カーソルのセルに、いまの役割で文字を打てるか */
-export function cursorTypable(): boolean {
+/** カーソルが 1 キー操作の列（ID・状態・チェックの列）にある、または行を選んでいない */
+export function onCommandCell(): boolean {
   const s = st()
-  const kind = colDef(s.cursorCol)?.kind
-  return kind !== undefined && kind !== 'bool' && kind !== 'computed' && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
+  if (!visibleCursorRow()) return true
+  return s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool'
 }
-/** Alt+英字 → 英字のコマンド（Alt+A のように Alt 付きで決まっている操作はそちらが先） */
-function altLetterBinding(key: string) {
-  const m = /^Alt\+(Shift\+)?([A-Z])$/.exec(key)
+/** Alt+英字・Alt+数字 → その 1 キー操作（Alt 付きで別に決まっている操作があればそちらが先） */
+function altBinding(key: string) {
+  const m = /^Alt\+(Shift\+)?([A-Z0-9])$/.exec(key)
   if (!m) return undefined
+  if (/\d/.test(m[2])) return m[1] ? undefined : lookupBinding(m[2], 'nav')
   return lookupBinding(m[1] ? `Shift+${m[2]}` : m[2].toLowerCase(), 'nav')
 }
 
@@ -561,21 +561,12 @@ export function handleKeyDown(e: KeyboardEvent) {
   }
   if (inInput) return
   // ナビモード
-  const letter = /^(Shift\+)?[A-Za-z]$/.test(key) && /^[A-Za-z]$/.test(e.key)
-  // 文字を打てるセルでの英字は、コマンドではなく値の打ち始め（下の「割り当ての無い文字」と同じ扱い）
-  const b = letter && cursorTypable() ? undefined : (lookupBinding(key, 'nav') ?? altLetterBinding(key))
+  // 英字・数字（Shift 付きも）は、1 キー操作の列でなければ値の打ち始め（下の「割り当ての無い文字」と同じ扱い）
+  const typedChar = printable(e) && /^[A-Za-z0-9]$/.test(e.key)
+  const b = typedChar && !onCommandCell() ? undefined : (lookupBinding(key, 'nav') ?? altBinding(key))
   if (b) {
     if (b.id === 'cell.copy' && window.getSelection()?.toString()) return
     e.preventDefault()
-    if (b.id.startsWith('view.')) {
-      const d = colDef(s.cursorCol)
-      // 数値の列で数字を押したときの案内は、ビューが変わって驚く最初の 1 回だけ
-      if (!digitHintShown && d?.numeric && s.cursorRow) {
-        digitHintShown = true
-        if (d.kind === 'computed') toast(`数字キーはビュー切替です（${d.label}は自動計算の列です）`, 'info')
-        else if (!rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください${s.view === 6 || s.view === 8 ? '（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）' : ''}`, 'info')
-      }
-    }
     runCommand(b.id, e)
     return
   }
@@ -586,7 +577,7 @@ export function handleKeyDown(e: KeyboardEvent) {
     const r = visibleCursorRow()
     if (!r) return toast('行を選んでください（↓ で先頭の行へ）', 'info')
     const err = rows.canEdit(s.cursorCol)
-    if (err) return toast(`${err}（Tab / ← → で編集できる列へ）`, 'info')
+    if (err) return toast(`${err}。1 キー操作は Alt を押しながら（例: Alt+${ch.toLowerCase()}）か、ID の列で`, 'info')
     startEdit(ch)
   }
 }

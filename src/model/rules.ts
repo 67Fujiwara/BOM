@@ -108,6 +108,11 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
       }
     }
   }
+  // Excel のエラー値（#REF! など）がそのまま入っている項目は、公開前に直す
+  for (const f of ['name', 'model', 'maker', 'ref', 'note'] as const) {
+    const v = String(e[f] ?? '')
+    if (/^#(REF!|DIV\/0!|N\/A|VALUE!|NAME\?|NUM!|NULL!|SPILL!|CALC!|エラー)/i.test(v.trim())) out.push({ rowId: row.id, field: f, ruleId: 'sys.excel.error', severity: 'error', message: `Excel のエラー値「${v}」のままです（元の表で直してから貼り直すか、正しい値を入れてください）`, fixes: [] })
+  }
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'
   if (e.makerLock === '任意' && e.altPolicy === '不可' && !row.ackRules.includes(MAKER_ALT))

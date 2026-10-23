@@ -117,6 +117,8 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
   s.commit(`見積回答を取り込む（${s.ws.suppliers.find((x) => x.id === supplierId)?.name}）`, (p, ws) => {
     for (const line of body) {
       const cells = line.split('\t')
+      // 小計・合計の行は回答ではない
+      if (cells.some((c) => /^(小計|合計|総計|total|subtotal)$/i.test(c.trim()))) continue
       const id = (hasHeader ? get(cells, col.id) : get(cells, 0)).toUpperCase()
       const r = p.rows.find((x) => x.id === id)
       if (!r || !isActive(r)) {

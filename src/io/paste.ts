@@ -146,9 +146,7 @@ export function parseBomPaste(text: string): PasteResult {
     } else mapping = width <= 3 ? (['name', 'model', 'maker'] as BomField[]).slice(0, width) : DEFAULT_ORDER.slice(0, width)
     warnings.push(`見出しが無いので、列を「${mapping.map((f) => (f ? FIELD_LABEL[f] : '（使わない）')).join('・')}」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください`)
   }
-  const used = mapping.filter(Boolean)
-  const dup = used.find((f, i) => used.indexOf(f) !== i)
-  if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
+
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
   const isTotal = (l: string[]) => l.some((c) => /^(小計|合計|総計|計|total|subtotal)$/i.test(c.trim()))
@@ -157,6 +155,10 @@ export function parseBomPaste(text: string): PasteResult {
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
   // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
   mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
+  // 同じ項目に当たる列が 2 つあれば、左の列を使う（番号だけの列を外したあとで判定する）
+  const used = mapping.filter(Boolean)
+  const dup = used.find((f, i) => used.indexOf(f) !== i)
+  if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)
   let badQty = 0
   let badUnit = 0
   const rows = body.map((line, i) => {

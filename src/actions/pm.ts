@@ -52,7 +52,7 @@ export function pmOptions(c: PmCase, row?: Row): PmOption[] {
     case '先行採用':
       return [{ key: 'y', label: '先行発注を許可（選んだ商社のまま選定済）', kind: '先行発注許可' }, { key: 'Y', label: '却下 → 元の状態', kind: '却下' }]
     case '発注後変更依頼':
-      return [{ key: 'y', label: '承認 → 購買が発注を取り消し、設計が r で置き換える', kind: '承認' }, { key: 'Y', label: '却下 → 元の発注のまま受入', kind: '却下' }]
+      return [{ key: 'y', label: '承認 → 購買が発注を取り消し、設計が Alt+r で置き換える', kind: '承認' }, { key: 'Y', label: '却下 → 元の発注のまま受入', kind: '却下' }]
     case '先行発注判断':
       return [{ key: 'y', label: '先行発注を許可（推奨商社で選定済）', kind: '先行発注許可' }, { key: 'Y', label: '却下 → 正式見積を待つ', kind: '却下' }]
     case '変更セット':

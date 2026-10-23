@@ -69,6 +69,8 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     if (pendingAdd(r) && (target === 'supplier' || ws.user.role === 'purchasing')) continue
     // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
     if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
+    // 支給品・社内在庫は商社に頼まない
+    if (target === 'supplier' && (r.procurement === '支給品' || r.procurement === '社内在庫')) continue
     if (target === 'supplier' && supplierId) {
       // 指定商社・客先指定品は指定先の商社のファイルにだけ出す
       if (isFixedProcurement(r) ? fixedSupplierId(p, r, ws.suppliers) !== supplierId : !p.quotes.some((q) => q.rowId === r.id && q.supplierId === supplierId && !q.stale) && r.adoptedSupplierId !== supplierId) continue
@@ -116,7 +118,11 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       const now = sub.snapshot[id]
       const before = [...prev].reverse().map((x) => x.snapshot[id]).find(Boolean)
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
-      if (before && now) detail = (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ')
+      const cause = sub.causes[id] ?? ''
+      if (cause.startsWith('置換')) detail = cause
+      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
+      // 取消・置換の行は値が変わらなくても、取消・置換と書く
+      if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
       const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)
       const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : '' })
       row.fill = CHG_FILL

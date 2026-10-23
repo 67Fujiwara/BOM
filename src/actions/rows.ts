@@ -155,7 +155,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   const rowId = r.id
   if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
   // 最小ロットの指摘（直すのは購買）は、発注数を丸め数量以上にしたら対応済（起票者が確認して閉じる）
-  if (colKey === 'orderQty' && typeof value === 'number')
+  // ただし余剰が閾値を超えて PM の判断待ちのあいだは対応済にしない（PM が却下したら戻す）
+  if (colKey === 'orderQty' && typeof value === 'number' && !(r.flags.pmPending && r.flags.pmReason === '閾値超'))
     for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && (x.status === 'open' || x.status === 'inProgress')))
       if (value >= surplusOf(p, r).rounded) {
         i.status = 'fixed'
@@ -667,7 +668,15 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'
             sub.summary.other++
-          } else applyDesignChange(p, r, values, fixed.map((f) => f.issue.id), sub.summary)
+          } else {
+            // 承認待ちの変更セットと同じ項目を、あとから指摘対応などで公開したら、そちらが新しい値（承認で古い値に戻さない）
+            if (r.pendingApproval) {
+              const pa = { ...r.pendingApproval } as Record<string, unknown>
+              for (const k of Object.keys(values)) delete pa[k]
+              r.pendingApproval = Object.keys(pa).length ? (pa as Row['pendingApproval']) : undefined
+            }
+            applyDesignChange(p, r, values, fixed.map((f) => f.issue.id), sub.summary)
+          }
         }
         if (isCs && needsApproval && r.status === 'submitted' && !r.pendingApproval) {
           // 提出後に追加した行も承認まで保留

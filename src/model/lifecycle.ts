@@ -1,6 +1,6 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
+import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
 export function normalize(p: Project, ws: Workspace, today = todayStr()) {
@@ -94,7 +94,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         // 前の採用商社の正式回答・差分超過も取り下げる（選び直して依頼したら新しい回答を待つ）。正式依頼中・正式見積済なら取り下げを購買に知らせる
         const oldQ = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
         if (oldQ) {
-          if (oldQ.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === oldQ.supplierId)?.name ?? oldQ.supplierId} ${oldQ.formalRequestNo}`
+          if (oldQ.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = addWithdrawn(r.flags.formalWithdrawn, `${ws.suppliers.find((x) => x.id === oldQ.supplierId)?.name ?? oldQ.supplierId} ${oldQ.formalRequestNo}`)
           oldQ.formalPrice = null
           oldQ.formalLeadDays = null
           oldQ.formalValidUntil = null
@@ -137,7 +137,9 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     }
     // 指定商社・客先指定品: 指定先の有効な見積が来たら、スコアなしで指定先を採用して選定済（§3.4）
     if (isFixedProcurement(r) && !r.adoptedSupplierId && !r.flags.pmPending && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
-      const sid = fixedSupplierId(p, r, ws.suppliers)
+      const sid0 = fixedSupplierId(p, r, ws.suppliers)
+      // 取引停止の指定先は採用しない（採用を外したあとに採用し直さない。設計が指定先を変える）
+      const sid = sid0 && ws.suppliers.find((s) => s.id === sid0)?.tradable !== false ? sid0 : null
       const q = sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale && x.unitPrice != null && x.leadDays !== -1) : undefined
       if (q && sid && r.publishedRev != null) {
         r.adoptedSupplierId = sid

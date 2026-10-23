@@ -3,6 +3,7 @@ import type { Issue, Project, Quote, Row, User, Workspace } from './types'
 import { DESIGN_FIELDS } from './types'
 import { makeWorkspace } from './sample'
 import { setSupplierMaster } from './rules'
+import { normalize } from './lifecycle'
 import type { Mode } from '@/keys/keymap'
 import { loadIfChangedElsewhere, loadWorkspace, saveWorkspace } from '@/io/persist'
 
@@ -351,6 +352,12 @@ function loadUiField<K extends 'recentCommands' | 'wizardDraft'>(k: K): UiSaved[
 let uiTimer: number | undefined
 // 指定先のチェックに使う商社マスタ
 setSupplierMaster(useStore.getState().ws.suppliers)
+// 読み込んだデータの状態・フラグを今の規則で整え直す（取引停止にした商社・前の版で残った印。保存は次の操作のとき）
+{
+  const ws0 = structuredClone(useStore.getState().ws)
+  for (const p of ws0.projects) normalize(p, ws0)
+  if (JSON.stringify(ws0.projects) !== JSON.stringify(useStore.getState().ws.projects)) useStore.setState({ ws: ws0 })
+}
 useStore.subscribe((s, prev) => {
   if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)
 })

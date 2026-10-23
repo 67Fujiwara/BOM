@@ -580,18 +580,18 @@ export function handleKeyDown(e: KeyboardEvent) {
         return cancelEdit()
       case 'ArrowDown':
       case 'ArrowUp': {
+        // 打って始めた入力は、矢印で確定して上下のセルへ（Excel と同じ。前の値に足さない。選択の列も候補を回さずに確定）
+        if (s.editTyped) {
+          e.preventDefault()
+          commitEdit(key === 'ArrowDown' ? 'down' : 'up')
+          return
+        }
+        // Enter で始めた選択の列の編集では、↑↓ で候補を選ぶ
         const c = s.editCandidates
         if (c && c.length > 1) {
           e.preventDefault()
           const rot = key === 'ArrowDown' ? [...c.slice(1), c[0]] : [c[c.length - 1], ...c.slice(0, -1)]
           set({ editCandidates: rot })
-          return
-        }
-        // 打って始めた入力は、矢印で確定して上下のセルへ（Excel と同じ。前の値に足さない）
-        if (s.editTyped) {
-          e.preventDefault()
-          if (key === 'ArrowDown') commitEdit('down')
-          else if (commitEdit('stay')) runCommand('move.up')
         }
         return
       }

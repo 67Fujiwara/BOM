@@ -184,7 +184,9 @@ export function setView(v: ViewId) {
   // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 6・8 を開くと単価、9 なら発注数）。ID・状態の列にいるときはそのまま
   const c = st().cursorCol
   if (c !== 'id' && c !== 'status' && rows.canEdit(c)) {
-    const mine = vm().columns.find((k) => !rows.canEdit(k) && colDef(k)?.kind !== 'bool')
+    // 単価（6 は概算、8 は正式）を先に。無ければ書ける最初の列（9 なら発注数）
+    const cols = vm().columns.filter((k) => !rows.canEdit(k) && colDef(k)?.kind !== 'bool')
+    const mine = cols.find((k) => k.startsWith(v === 8 ? 'q.formalPrice' : 'q.unitPrice')) ?? cols.find((k) => k.startsWith('q.')) ?? cols[0]
     if (mine) set({ cursorCol: mine })
   }
 }
@@ -229,7 +231,7 @@ function projectIdentity(): string {
   const p = st().project()
   return `${p.id}|${p.createdAt}`
 }
-export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): boolean {
+export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'down'): boolean {
   const s = st()
   if (s.mode !== 'edit') return true
   if (editProject && editProject !== projectIdentity()) {
@@ -247,7 +249,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   }
   const d = colDef(s.cursorCol)!
   let value = s.editValue
-  if (d.kind === 'select' && s.editCandidates?.length && value.trim() !== '' && !(d.options ?? []).includes(value)) {
+  // 選択の列: 打った値がそのまま読める（言い換え「sh」→ 指定商社 など）ならそれを使い、読めないときだけ候補の先頭
+  if (d.kind === 'select' && s.editCandidates?.length && value.trim() !== '' && !(d.options ?? []).includes(value) && !rows.parseValue(s.cursorCol, value).ok) {
     const narrowed = candidates(d.options ?? [], value)
     if (narrowed.length < (d.options ?? []).length || s.editCandidates[0] !== (d.options ?? [])[0]) value = s.editCandidates[0]
   }
@@ -302,6 +305,10 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     // 最後の行（下に行が無い）では列を戻さない（同じ行の最初の値を上書きしない）
     if (st().cursorRow === r.id) return true
     if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
+  } else if (dir === 'up') {
+    tabAnchor = null
+    // 分類の見出しで止まらず、上のデータ行へ
+    moveCursorToRow(-1)
   } else if (dir === 'right' || dir === 'left') {
     if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
     moveCol(dir === 'right' ? 1 : -1)
@@ -498,7 +505,7 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
           },
         })
       if (pr.severity === 'warn') opts.push({ label: `${pr.message}: 確認済みにする（x）`, run: () => rows.ackRule(r.id, pr.ruleId) })
-      opts.push({ label: `${pr.message}: あとで（公開を止めない。表では Shift+→）`, run: () => rows.deferRule(r.id, pr.ruleId) })
+      opts.push({ label: `${pr.message}: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→）`, run: () => rows.deferRule(r.id, pr.ruleId) })
     }
   }
   if (role === 'purchasing') {
@@ -546,6 +553,18 @@ function openQuickfix() {
   const r = cursorRow()
   if (!r) return toast('行を選んでください（↓ で先頭の行へ）', 'info')
   const options = quickfixOptions(r, s.cursorCol)
+  // 順番に直すモードでは、どの問題でも「飛ばして次へ」を選べる（候補の無い問題・提案つきの指摘で止まらない）
+  if (s.sequence)
+    options.push({
+      label: '飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる）',
+      run: () => {
+        if (problemCells().length > 1 && gotoProblem(1) && cursorRow()) setTimeout(openQuickfix, 0)
+        else {
+          set({ sequence: false })
+          toast('順番に直すモード: ほかの問題はありません', 'ok')
+        }
+      },
+    })
   if (!options.length) return toast(`${r.id} に直し方の候補はありません`, 'info')
   openPanel({ kind: 'quickfix', title: `直し方の候補 ${r.id} ${effective(r).name}`, rowId: r.id, field: s.cursorCol, index: 0, options })
 }

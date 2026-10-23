@@ -142,8 +142,9 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
     for (const line of body) {
       const cells = line.split('\t')
       // 小計・合計の行は回答ではない
-      if (cells.some(isTotalCell) || isSectionLine(cells)) continue
       const id = (hasHeader ? get(cells, col.id) : get(cells, 0)).toUpperCase()
+      // 小計・合計・区切りの行は回答ではない（行 ID が合う行は、備考が「---」などでも回答として読む）
+      if ((cells.some(isTotalCell) || isSectionLine(cells)) && !p.rows.some((x) => x.id === id)) continue
       const r = p.rows.find((x) => x.id === id)
       if (!r || !isActive(r)) {
         res.unmatched.push(id || line.replace(/\t+/g, ' ').trim().slice(0, 20))

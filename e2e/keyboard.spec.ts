@@ -448,3 +448,16 @@ test('行を選んでいないときの数字はビュー切替だけで、続�
   await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')
 })
+
+test('選択の列で打って ↓ は、打った値（言い換えも）で確定して下の行へ', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R070', '単位')
+  await page.keyboard.type('pcs', { delay: 30 })
+  await page.keyboard.press('ArrowDown')
+  await expect(page.locator('[data-row-id="R070"] td[data-col="unit"]')).toHaveText('個')
+  await expect(page.getByTestId('cursor')).toContainText('R071')
+  await gotoCell(page, 'R070', '調達区分')
+  await page.keyboard.type('sh', { delay: 30 })
+  await page.keyboard.press('ArrowDown')
+  await expect(page.locator('[data-row-id="R070"] td[data-col="procurement"]')).toHaveText('指定商社')
+})

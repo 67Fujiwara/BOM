@@ -128,6 +128,11 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
         st().toastMsg(`${r.id} の正式単価 ¥${q.formalPrice.toLocaleString()}${pct != null ? `（概算から ${pct > 0 ? '+' : ''}${pct}%）` : ''}${early ? '。まだ正式見積を依頼していない行です' : ''}。桁・行を確かめてください`, 'err')
     }
   }
+  // 発注数が必要数よりけた違いに多い（単価を打つつもりで発注数に入れた など）
+  if (ok && colKey === 'orderQty' && typeof value === 'number') {
+    const r = st().project().rows.find((x) => x.id === rowId)
+    if (r && value > Math.max(r.qtyNeeded * 10, r.qtyNeeded + 100)) st().toastMsg(`${rowId} の発注数 ${value} は必要数 ${r.qtyNeeded} の ${Math.round(value / Math.max(1, r.qtyNeeded))} 倍です。列（発注数）を確かめてください（Ctrl+Z で戻す）`, 'err')
+  }
   // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
   if (ok && colKey === 'extraCost' && typeof value === 'number') {
     const p = st().project()

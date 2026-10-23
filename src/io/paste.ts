@@ -86,6 +86,8 @@ export function detectField(h: string): BomField | null {
   // 括弧の注記（「型式（旧型式併記）」）は見ない
   const head = s.replace(/[（(][^）)]*[）)]/g, '').trim()
   if (/^(旧|変更前|前回|改訂前|廃止|old\b|prev(ious)?\b)/i.test(head)) return null
+  // 括弧の注記が「旧」「変更前」「old」だけのもの（型式（旧）・型式(old)・型式（変更前））も前の版の列
+  if (/[（(]\s*(旧|旧版|変更前|前回|改訂前|廃止|old|prev(ious)?|before)\s*[）)]/i.test(s)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -108,13 +110,22 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
   const counts = lines.slice(0, 30).map((l) => new Set(l.map(detectField).filter(Boolean)).size)
   const best = Math.max(0, ...counts)
-  // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）
-  const headerAt = best >= 2 ? counts.lastIndexOf(best) : -1
+  // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
+  const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
+  const same = tops.length > 1 && tops.every((i) => lines[i].join('\t').trim() === lines[tops[0]].join('\t').trim())
+  const headerAt = best >= 2 ? (same ? tops[0] : tops[tops.length - 1]) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
     warnings.push(`見出しより上の ${headerAt} 行（表題など）は取り込みません`)
     lines = lines.slice(headerAt)
+  }
+  if (headerAt >= 0) {
+    // ページごとに繰り返した同じ見出しの行は外す（部品にしない）
+    const h = lines[0].join('\t').trim()
+    const before = lines.length
+    lines = [lines[0], ...lines.slice(1).filter((l) => l.join('\t').trim() !== h)]
+    if (lines.length < before) warnings.push(`繰り返しの見出し ${before - lines.length} 行は取り込みません`)
   } else if (headerAt < 0 && !singleHeader) {
     // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
     const width = Math.max(...lines.map((l) => filled(l)))
@@ -278,10 +289,12 @@ function cellToText(v: unknown): string {
 /** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
 export function isTotalCell(c: string): boolean {
   // 空白と飾り（【】＜＞＊-＝ など）を外してから見る（「【合計】」「＊合計＊」「-- 以下余白 --」）
-  const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*\-－ー—―=＝~～・]/g, '')
+  const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*※\-－ー—―=＝~～・_＿]/g, '')
+  // 飾りだけのセル（「＝＝＝＝」「----」）は区切り
+  if (!t && c.trim().length >= 3) return true
   if (/^(以下余白|以下空白|以上)$/.test(t)) return true
-  // 「計：6個」「合計 6点」「合計数量 6」のように、同じセルに数・単位が続くものも
-  return /^(小計|合計|総計|総合計|計|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
+  // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
+  return /^(小計|合計|総計|総合計|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。

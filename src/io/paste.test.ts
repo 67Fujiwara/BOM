@@ -124,3 +124,19 @@ describe('合計・区切りの行（ラウンド 9 の表記）', () => {
     expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'F-1.5A'])
   })
 })
+
+describe('ラウンド 10 の取り込み', () => {
+  it('型式（旧）/型式（新）では新しい列を使う', () => {
+    const r = parseBomPaste('部品名\t型式（旧）\t型式（新）\t数量(old)\t数量\nリレー\tMY2N\tMY4N-D2\t2\t4')
+    expect(r.rows[0].model).toBe('MY4N-D2')
+    expect(r.rows[0].qtyNeeded).toBe(4)
+  })
+  it('ページごとに繰り返した見出しで前のページを捨てない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n部品名\t型式\t数量\nタイマ\tH3CR\t1\n部品名\t型式\t数量\nヒューズ\tF1\t3')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'H3CR', 'F1'])
+  })
+  it('※以下余白・＝＝＝＝・合計金額 ¥12,000・総数・部品点数 3 を飛ばす', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n＝＝＝＝\t\t\n合計金額 ¥12,000\t\t\n総数\t\t6\n部品点数 3\t\t\n※以下余白\t\t')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
+  })
+})

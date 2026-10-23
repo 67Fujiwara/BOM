@@ -197,16 +197,17 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         }
       }
       // 文字欄が無い、または理由の選択で文字欄が空のときは数字キーで選ぶ
-      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text))
+      // 選んだあと（数字・↑↓）に打つ数字は文字（「3日で入る」「2026-012」の先頭の数字で選び直さない）
+      const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text && !panel.picked))
       if (digitPick) {
         if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
         // 文字欄もあるダイアログ（理由・氏名を入れる）では、数字は選ぶだけ。確定は Enter（続けて打った文字が背後の表に入らない）
-        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), toast(`「${panel.options![Number(key) - 1]}」を選びました。${panel.requireText ? '理由を入れて' : '必要なら入れて'} Enter で確定`, 'info'), true)
+        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1, picked: true } }), toast(`「${panel.options![Number(key) - 1]}」を選びました。${panel.requireText ? '理由を入れて' : '必要なら入れて'} Enter で確定`, 'info'), true)
         submit(panel.options![Number(key) - 1])
         return true
       }
-      if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n) } }), true)
-      if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n) } }), true)
+      if (key === 'ArrowDown' && panel.options) return (set({ panel: { ...panel, index: up(panel.index + 1, n), picked: true } }), true)
+      if (key === 'ArrowUp' && panel.options) return (set({ panel: { ...panel, index: up(panel.index - 1, n), picked: true } }), true)
       if (key === 'Enter') {
         submit(panel.options ? (panel.options[panel.index] ?? null) : null)
         return true
@@ -578,6 +579,11 @@ export function handleKeyDown(e: KeyboardEvent) {
       case 'Escape':
         e.preventDefault()
         return cancelEdit()
+      case 'F2':
+        // Excel と同じく、入力（矢印で確定）と編集（矢印は文字の中）を切り替える
+        e.preventDefault()
+        set({ editTyped: !s.editTyped })
+        return
       case 'ArrowDown':
       case 'ArrowUp': {
         // 打って始めた入力は、矢印で確定して上下のセルへ（Excel と同じ。前の値に足さない。選択の列も候補を回さずに確定）

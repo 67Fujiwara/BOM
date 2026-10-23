@@ -20,7 +20,7 @@ export type Panel =
   | { kind: 'columns'; index: number }
   | { kind: 'issue'; rowId: string; field: string; step: 'kind' | 'text' | 'proposal'; issueKind?: string; index: number; text: string; proposal: { model: string; maker: string; supplierId: string; unitPrice: string; leadDays: string } }
   | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string }
-  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
+  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; /** 文字欄のあるダイアログで、選択肢を選んだあと（以後の数字は文字として欄に入る） */ picked?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
   | { kind: 'wizard'; step: number; data: Record<string, string>; sel: number; picks: string[]; error?: string }
   | { kind: 'inbox'; index: number; query: string }
   | { kind: 'settings'; index: number; draft: Record<string, string>; editing: boolean; value: string; error?: string; discardArmed?: boolean }
@@ -208,7 +208,11 @@ export const useStore = create<State>((set, get) => ({
     const undo = changed && opts.undoable !== false ? { ...st.undo, [uk]: [...(st.undo[uk] ?? []), entry].slice(-200) } : st.undo
     set({ ws: next, undo, undoSeq: undo !== st.undo ? st.undoSeq + 1 : st.undoSeq, redo: changed ? { ...st.redo, [uk]: [] } : st.redo })
     persistHistory()
-    if (!saveWorkspace(next)) get().toastMsg('保存領域がいっぱいで保存できませんでした。Ctrl+K → JSON を書き出す で退避してください', 'err')
+    // 保存できなかったら false（呼び出し側が「〜しました」で上書きしない。画面には入っているが、リロードで消える）
+    if (!saveWorkspace(next)) {
+      get().toastMsg('保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください', 'err')
+      return false
+    }
     return true
   },
   commitWs: (label, fn) => {
@@ -359,10 +363,17 @@ function writeHistory() {
   window.clearTimeout(histTimer)
   {
     const { undo, redo } = useStore.getState()
-    const trim = (m: Record<string, UndoEntry[]>) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.slice(-50)]))
+    // メモリと同じ 200 件まで残す（入らなければ 50 件、10 件と減らす）
+    const trim = (m: Record<string, UndoEntry[]>, n: number) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.slice(-n)]))
     try {
-      sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: trim(undo), redo: trim(redo) }))
+      sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: trim(undo, 200), redo: trim(redo, 200) }))
     } catch {
+      try {
+        sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: trim(undo, 50), redo: trim(redo, 50) }))
+        return
+      } catch {
+        /* 下で 10 件に */
+      }
       try {
         sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: Object.fromEntries(Object.entries(undo).map(([k, v]) => [k, v.slice(-10)])), redo: {} }))
       } catch {

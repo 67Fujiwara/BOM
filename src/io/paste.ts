@@ -232,6 +232,29 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     // 非表示の列（Excel で隠した旧型式の列など）も取り込まない
     const hiddenCols = new Set<number>()
     for (let c = 1; c <= ws.columnCount; c++) if (ws.getColumn(c).hidden) hiddenCols.add(c)
+    // 隠した列でも、その項目（数量・型式など）の列がほかに無ければ読む（隠しただけで数量が全部 1 にならない）
+    const unhidden: string[] = []
+    if (hiddenCols.size) {
+      const fieldOf = new Map<number, BomField>()
+      let n = 0
+      ws.eachRow({ includeEmpty: false }, (row) => {
+        if (n++ >= 30) return
+        const raw = row.values as unknown[]
+        for (let c = 1; c < raw.length; c++) {
+          const f = detectField(cellToText(raw[c]))
+          if (f && !fieldOf.has(c)) fieldOf.set(c, f)
+        }
+      })
+      const visibleFields = new Set([...fieldOf].filter(([c]) => !hiddenCols.has(c)).map(([, f]) => f))
+      for (const c of [...hiddenCols]) {
+        const f = fieldOf.get(c)
+        if (f && !visibleFields.has(f)) {
+          hiddenCols.delete(c)
+          visibleFields.add(f)
+          unhidden.push(FIELD_LABEL[f])
+        }
+      }
+    }
     let hiddenRows = 0
     ws.eachRow({ includeEmpty: false }, (row) => {
       // 非表示の行（Excel で隠した行・フィルタで隠れた行）は取り込まない（数は知らせる）
@@ -247,7 +270,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     })
     // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
     const score = lines.slice(0, 30).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
-    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size }
+    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size, unhidden }
   })
   if (!sheets.length) return ''
   // 見出しの言葉が同じだけあるシートが複数なら、名前が「旧版・old・コピー」などでないシート → 左（先）のシート
@@ -255,7 +278,12 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const rank = (x: (typeof sheets)[number]) => x.score * 2 - (stale(x.name) ? 1 : 0)
   const best = sheets.reduce((a, b) => (rank(b) > rank(a) ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
-  hiddenNote = best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : ''
+  hiddenNote = [
+    best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : '',
+    best.unhidden.length ? `隠れていた「${best.unhidden.join('」「')}」の列は、ほかに同じ項目の列が無いので読みました` : '',
+  ]
+    .filter(Boolean)
+    .join('。')
   // 見出しのある別のシートがあれば、名前を知らせる（違うシートを読んだと気づけるように）
   otherSheets = sheets.filter((x) => x !== best && x.score > 0 && x.score >= best.score - 1).map((x) => x.name)
   return best.text

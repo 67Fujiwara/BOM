@@ -25,7 +25,8 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   const row = st.cursorRow && !st.cursorRow.startsWith('g:') ? vm.rows.find((r) => r.id === st.cursorRow) : undefined
   const up = unpublishedCount(p, user.name)
   const hints: Array<[string, string]> = []
-  const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? '編集' : st.mode === 'palette' ? 'パレット' : 'パネル'
+  // Excel と同じく、打ち始めた入力は「入力」（矢印で確定して移動）、Enter・F2 で始めた編集は「編集」（矢印は文字の中）。F2 で切り替え
+  const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? (st.editTyped ? '入力' : '編集') : st.mode === 'palette' ? 'パレット' : 'パネル'
   if (st.mode === 'nav' && row && isActive(row)) {
     const pmCase = pmCaseOf(p, row)
     if (user.role === 'pm' && pmCase !== 'なし') hints.push(['y', '承認'], ['Shift+Y', '却下'], ['Enter', '決定パネル'])

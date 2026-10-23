@@ -140,3 +140,16 @@ describe('ラウンド 10 の取り込み', () => {
     expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
   })
 })
+
+describe('隠した列（ほかに同じ項目の列が無い）', () => {
+  it('数量の列だけを隠していても数量を読む', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRow(['部品名', '型式', '数量'])
+    ws.addRow(['リレー', 'MY4N', 4])
+    ws.getColumn(3).hidden = true
+    const tsv = await xlsxToTsv((await wb.xlsx.writeBuffer()) as ArrayBuffer)
+    expect(parseBomPaste(tsv).rows[0].qtyNeeded).toBe(4)
+  })
+})

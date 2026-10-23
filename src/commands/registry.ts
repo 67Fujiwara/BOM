@@ -104,6 +104,14 @@ function moveCursorRow(delta: number) {
   const s = st()
   const idx = items.findIndex((i) => i.key === s.cursorRow)
   if (idx < 0) {
+    // 選択を外したところ（直してビューから外れた・別のタブの変更）があれば、その位置の行から（先頭へ飛ばない）
+    const resume = resumeRow && items.some((i) => i.key === resumeRow) ? resumeRow : null
+    resumeRow = null
+    if (resume) {
+      set({ cursorRow: resume, detailIndex: 0 })
+      ensureCol()
+      return
+    }
     const firstRow = delta > 0 ? items.find((i) => i.kind === 'row') : [...items].reverse().find((i) => i.kind === 'row')
     set({ cursorRow: (firstRow ?? items[0]).key, detailIndex: 0 })
     ensureCol()
@@ -121,9 +129,12 @@ function ensureCol() {
   const cols = vm().columns
   if (!cols.includes(st().cursorCol)) set({ cursorCol: cols.includes('name') ? 'name' : cols[0] })
 }
+/** 行の選択を外したときの、続きの行（↓ で戻る先） */
+let resumeRow: string | null = null
 function moveCol(delta: number) {
   const cols = vm().columns
-  if (!st().cursorRow) return moveCursorRow(1)
+  // 行を選んでいないときの → ← Tab は行を選ばない（先頭の行の別のセルに続けて打ち込まない）
+  if (!st().cursorRow) return toast('行を選んでいません（↓ で表へ）', 'info')
   const idx = cols.indexOf(st().cursorCol)
   const next = Math.max(0, Math.min(cols.length - 1, (idx < 0 ? 0 : idx) + delta))
   set({ cursorCol: cols[next] })
@@ -149,6 +160,7 @@ export function keepCursorVisible(before: string[], external = false) {
   if (at < 0) return
   // 別のタブの変更で行が消えたときは、黙って隣の行へ移さない（続けて押したキーが別の行に効かないように）。行の選択を外して知らせる
   if (external) {
+    resumeRow = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id)) ?? null
     if (s.mode === 'edit') {
       const v = s.editValue
       cancelEdit()
@@ -291,8 +303,11 @@ export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'dow
         keepCursorVisible(beforeIds)
         return true
       }
+      const i = beforeIds.indexOf(r.id)
+      const now = vm().rows.map((x) => x.id)
+      resumeRow = beforeIds.slice(i + 1).find((id) => now.includes(id)) ?? beforeIds.slice(0, i).reverse().find((id) => now.includes(id)) ?? null
       set({ cursorRow: null })
-      toast(`${r.id} を直したので、このビューから外れました（↓ で表へ、F8 で次の問題へ）`, 'info')
+      toast(`${r.id} を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）`, 'info')
       return false
     }
   } else set({ mode: 'nav', editCandidates: null, editError: null })
@@ -403,15 +418,31 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   }
   const sorted = out.sort((a, b) => a.order - b.order || a.rowId.localeCompare(b.rowId))
   const seen = new Set<string>()
-  return sorted.filter((x) => {
+  const uniq = sorted.filter((x) => {
     const k = x.rowId + x.field
     if (seen.has(k)) return false
     seen.add(k)
     return true
   })
+  // F8 は見えている並び（4 は種別の順に並んでいる）で上から下へ進む。同じ行は列の順。このビューに無い行は最後（一覧の順）
+  const v = vm()
+  const pos = new Map(v.rows.map((x, i) => [x.id, i] as const))
+  const colPos = (f: string) => {
+    const i = v.columns.indexOf(f)
+    return i < 0 ? 999 : i
+  }
+  return uniq
+    .map((x, i) => ({ x, i }))
+    .sort((a, b) => (pos.get(a.x.rowId) ?? 1e9) - (pos.get(b.x.rowId) ?? 1e9) || (pos.has(a.x.rowId) ? colPos(a.x.field) - colPos(b.x.field) : 0) || a.i - b.i)
+    .map((y) => y.x)
 }
 function gotoProblem(delta: 1 | -1): boolean {
-  const list = problemCells()
+  const all = problemCells()
+  // いまのビュー・絞り込みに見えている問題があれば、その中だけを回る（黙ってビューや絞り込みを変えない）
+  const shown = new Set(vm().rows.map((x) => x.id))
+  const visible = all.filter((x) => shown.has(x.rowId))
+  const list = visible.length ? visible : all
+  if (!visible.length && all.length && (st().filter || st().cellFilter || st().view !== 1)) toast('このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります', 'info')
   if (!list.length) {
     toast(`${ROLE_LABEL[st().user().role]}がいま直す問題はありません${st().user().role === 'design' ? '（Ctrl+Enter で公開できます）' : ''}`, 'info')
     return false
@@ -1198,10 +1229,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'move.tab':
       return moveCol(1)
     case 'move.home':
-      if (!s.cursorRow) return moveCursorRow(1)
+      if (!s.cursorRow) return toast('行を選んでいません（↓ で表へ）', 'info')
       return set({ cursorCol: vm().columns[0] })
     case 'move.end':
-      if (!s.cursorRow) return moveCursorRow(1)
+      if (!s.cursorRow) return toast('行を選んでいません（↓ で表へ）', 'info')
       return set({ cursorCol: vm().columns.at(-1)! })
     case 'move.top':
       return setCursorRowAbs('top')
@@ -1644,7 +1675,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
               restoreBackupsSnapshot(before)
               return toast('保存領域が足りないため読み込みませんでした（いまの内容のまま。退避も前のまま）。「退避データを消す」で空きを作ってから読み込んでください', 'err')
             }
-            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
+            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した・直した項目 ${res.warnings.length} 件: ${res.warnings.slice(0, 3).join(' / ')}${res.warnings.length > 3 ? ' ほか' : ''}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
           }
           confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
             if (saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')) return done(true)

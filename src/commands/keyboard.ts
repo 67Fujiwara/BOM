@@ -407,10 +407,13 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
 }
-/** カーソルが 1 キー操作の列（ID・状態・チェックの列）にある、または行を選んでいない */
-export function onCommandCell(): boolean {
+/**
+ * そのキーが 1 キー操作として効く場所か: ID・状態・チェックの列。
+ * 行を選んでいないときは数字（ビュー切替）だけ。英字は行に飛んでから残りが値に入ってしまうので効かせない（F8・Alt を使う）
+ */
+export function onCommandCell(ch = ''): boolean {
   const s = st()
-  if (!visibleCursorRow()) return true
+  if (!visibleCursorRow()) return /^\d$/.test(ch)
   return s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool'
 }
 /** Alt+英字・Alt+数字 → その 1 キー操作（Alt 付きで別に決まっている操作があればそちらが先） */
@@ -432,8 +435,11 @@ function sequenceNext() {
 }
 
 // ---------- 全体のキー処理 ----------
+/** Alt を押したまま Alt+英字・数字のコマンドを続けている間（Alt を離すか押し直すまで）は、Alt+↑↓ を行の移動でなく ↑↓ にする */
+let altChain = false
 export function handleKeyDown(e: KeyboardEvent) {
   if (e.isComposing || e.key === 'Process' || e.keyCode === 229) return // 日本語入力の変換中は何もしない
+  if (!e.altKey || (e.key === 'Alt' && !e.repeat)) altChain = false
   // 修飾キーだけの押下（Shift など）は何もしない（続けて打つ英字の判定を切らない）
   if (['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Hyper', 'Super', 'OS'].includes(e.key)) return
   const key = eventToKey(e)
@@ -441,6 +447,7 @@ export function handleKeyDown(e: KeyboardEvent) {
   const target = e.target as HTMLElement | null
   const inInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement
   // 「戻る」（Alt+← / Alt+→ / Cmd+[ ]）や Ctrl+G 検索などのブラウザ既定動作は、どの場面でも止める（入力中の内容を失わない）
+  if (/^(Ctrl\+)?Alt\+(Shift\+)?([A-Z0-9]|Home|End)$/.test(key)) e.preventDefault()
   if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {
@@ -563,19 +570,22 @@ export function handleKeyDown(e: KeyboardEvent) {
   // ナビモード
   // 英字・数字（Shift 付きも）は、1 キー操作の列でなければ値の打ち始め（下の「割り当ての無い文字」と同じ扱い）
   const typedChar = printable(e) && /^[A-Za-z0-9]$/.test(e.key)
-  const b = typedChar && !onCommandCell() ? undefined : (lookupBinding(key, 'nav') ?? altBinding(key))
+  const chained = altChain && (key === 'Alt+ArrowUp' || key === 'Alt+ArrowDown')
+  const b = typedChar && !onCommandCell(e.key) ? undefined : chained ? lookupBinding(key.slice(4), 'nav') : (lookupBinding(key, 'nav') ?? altBinding(key))
+  if (b && /^Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) altChain = true
   if (b) {
     if (b.id === 'cell.copy' && window.getSelection()?.toString()) return
     e.preventDefault()
     runCommand(b.id, e)
     return
   }
+  if (/^(Ctrl\+)?Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) return toast(`${key} は割り当てがありません（? でキーの一覧）`, 'info')
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault()
     const r = visibleCursorRow()
-    if (!r) return toast('行を選んでください（↓ で先頭の行へ）', 'info')
+    if (!r) return toast('行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）', 'info')
     const err = rows.canEdit(s.cursorCol)
     if (err) return toast(`${err}。1 キー操作は Alt を押しながら（例: Alt+${ch.toLowerCase()}）か、ID の列で`, 'info')
     startEdit(ch)

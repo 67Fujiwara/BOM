@@ -196,6 +196,8 @@ export function parseBomPaste(text: string): PasteResult {
   })
   if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。4 要確認で直してください）`)
   if (badUnit) warnings.push(`単位を読めない行が ${badUnit} 行あります（「個」にしました）`)
+  const noResult = body.reduce((n, l) => n + split(l).filter((c) => c.trim() === '#数式の結果なし').length, 0)
+  if (noResult) warnings.push(`数式の計算結果が入っていないセルが ${noResult} 個あります（Excel で開いて保存し直してから読むと値が入ります）`)
   return { rows, mapping, header: hasHeader ? first : null, delimiter, warnings }
 }
 
@@ -234,7 +236,9 @@ function cellToText(v: unknown): string {
     if (Array.isArray(o.richText)) return (o.richText as Array<{ text?: unknown }>).map((t) => String(t.text ?? '')).join('')
     // エラーのセル（#REF! など）は空にせず、そのまま見せる（数量なら「読めない」として知らせる）
     if ('error' in o) return String(o.error ?? '#エラー')
-    if ('result' in o) return cellToText(o.result)
+    if ('result' in o && o.result !== undefined) return cellToText(o.result)
+    // 計算結果を持たない数式（Excel 以外のツールが書いたファイル）は空にせず印を残す（数量なら「読めない」として知らせる）
+    if ('formula' in o || 'sharedFormula' in o) return '#数式の結果なし'
     if ('text' in o) return cellToText(o.text)
     if ('hyperlink' in o) return String(o.hyperlink)
     return ''

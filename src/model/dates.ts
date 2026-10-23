@@ -19,9 +19,21 @@ export function addDays(s: string, n: number): string {
 export function diffDays(a: string, b: string): number {
   return Math.round((parse(a).getTime() - parse(b).getTime()) / 86400000)
 }
+/** 休日の一覧ごとに、引きやすい形（集合と、平日の休日を並べたもの）を作って持っておく */
+const holidayCache = new WeakMap<string[], { set: Set<string>; weekday: string[] }>()
+function holidayIndex(holidays: string[]) {
+  let c = holidayCache.get(holidays)
+  if (!c) {
+    const set = new Set(holidays)
+    const weekday = [...set].filter((h) => /^\d{4}-\d{2}-\d{2}$/.test(h) && parse(h).getDay() % 6 !== 0).sort()
+    c = { set, weekday }
+    holidayCache.set(holidays, c)
+  }
+  return c
+}
 export function isHoliday(s: string, holidays: string[] = []): boolean {
   const d = parse(s).getDay()
-  return d === 0 || d === 6 || holidays.includes(s)
+  return d === 0 || d === 6 || holidayIndex(holidays).set.has(s)
 }
 /** 営業日を n 日進める */
 export function addBusinessDays(s: string, n: number, holidays: string[] = []): string {
@@ -33,15 +45,29 @@ export function addBusinessDays(s: string, n: number, holidays: string[] = []): 
   }
   return cur
 }
+/** from の翌日から to までの営業日の数（1 日ずつ数えず、週の数と休日の一覧の二分探索で出す） */
 export function businessDaysBetween(from: string, to: string, holidays: string[] = []): number {
   if (to <= from) return 0
-  let n = 0
-  let cur = from
-  while (cur < to) {
-    cur = addDays(cur, 1)
-    if (!isHoliday(cur, holidays)) n++
+  const total = diffDays(to, from)
+  if (!Number.isFinite(total) || total <= 0) return 0
+  let n = Math.floor(total / 7) * 5
+  const startDow = parse(from).getDay()
+  for (let i = 1; i <= total % 7; i++) {
+    const dow = (startDow + i) % 7
+    if (dow !== 0 && dow !== 6) n++
   }
-  return n
+  const wk = holidayIndex(holidays).weekday
+  const upper = (x: string) => {
+    let lo = 0
+    let hi = wk.length
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1
+      if (wk[mid] <= x) lo = mid + 1
+      else hi = mid
+    }
+    return lo
+  }
+  return n - (upper(to.slice(0, 10)) - upper(from.slice(0, 10)))
 }
 export function fmtDate(s?: string | null): string {
   if (!s) return ''

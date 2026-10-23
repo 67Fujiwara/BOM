@@ -205,7 +205,9 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   }
   const r = s.cursorRow ? s.project().rows.find((x) => x.id === s.cursorRow) : undefined
   if (!r) {
+    const v = s.editValue
     cancelEdit()
+    toast(`編集中の行が別のタブで削除されたので、入力「${v}」は保存していません`, 'err')
     return false
   }
   const d = colDef(s.cursorCol)!
@@ -357,9 +359,14 @@ function gotoProblem(delta: 1 | -1): boolean {
     return false
   }
   const s = st()
-  const idx = list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
-  const next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
-  jumpToRow(list[next].rowId, list[next].field)
+  // ID・状態の列で使っているときは列を変えずに行だけ移る（x → n → x … を ID の列で続けられる）
+  const stay = s.cursorCol === 'id' || s.cursorCol === 'status'
+  const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
+  let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
+  // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
+  if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
+  if (stay) jumpToRow(list[next].rowId)
+  else jumpToRow(list[next].rowId, list[next].field)
   return true
 }
 
@@ -884,7 +891,9 @@ function exportBackup(b: Backup) {
   const blob = new Blob([b.raw], { type: 'application/json' })
   const a = document.createElement('a')
   a.href = URL.createObjectURL(blob)
-  a.download = `bom-workspace-backup-${b.at.slice(0, 19).replace(/[:T]/g, '-')}.json`
+  const d = new Date(b.at)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  a.download = `bom-workspace-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.json`
   a.click()
   setTimeout(() => URL.revokeObjectURL(a.href), 5000)
   toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
@@ -906,6 +915,7 @@ function replaceWorkspace(ws: Workspace): boolean {
   }
   st().clearHistory()
   set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
+  ensureCursor()
   return true
 }
 function nextProjectId(): string {
@@ -1201,9 +1211,20 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (!need()) return
       if (rows.setCell(r!.id, 'received', r!.received ? '' : '1', r!.received ? '入荷済を外す' : '入荷済')) toast(`${r!.id}: ${r!.received ? '入荷済を外しました' : '入荷済にしました'}`, 'info')
       return
-    case 'row.toggleHidden':
+    case 'row.toggleHidden': {
       if (!need()) return
-      return rows.toggleHidden(r!.id)
+      // 隠した行がこのビューから消えるなら、カーソルを同じ位置の行（無ければ上の行）へ移す（行を選んでいない状態にしない）
+      const before = vm().rows.map((x) => x.id)
+      const at = before.indexOf(r!.id)
+      rows.toggleHidden(r!.id)
+      const after = vm().rows.map((x) => x.id)
+      if (at >= 0 && !after.includes(r!.id)) {
+        const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
+        if (next) set({ cursorRow: next })
+        else ensureCursor()
+      }
+      return
+    }
     case 'sort.asc':
     case 'sort.desc': {
       if (!s.cursorRow) return toast('並び替える列にカーソルを置いてください（↓ で表へ）', 'info')
@@ -1223,7 +1244,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       }
       const value = cellText(r!, s.cursorCol, vm().ctx).text
       set({ cellFilter: { col: s.cursorCol, value } })
-      return toast(`${colDef(s.cursorCol)?.label} =「${value || '（空）'}」で絞り込みました（f か Esc で解除）`, 'info')
+      return toast(`${colDef(s.cursorCol)?.label} =「${value || '（空）'}」で絞り込みました（Esc か Alt+f で解除）`, 'info')
     }
     case 'columns.panel':
       return openPanel({ kind: 'columns', index: 0 })

@@ -47,7 +47,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (i > 0) hints.unshift(...hints.splice(i, 1))
   }
   // ID・状態・チェックの列以外では英字は入力になるので、英字の操作は Alt を付けて案内する（n は F8）
-  if (st.mode === 'nav' && !onCommandCell()) for (const h of hints) if (/^(Shift\+)?[A-Za-z]$/.test(h[0])) h[0] = h[0] === 'n' ? 'F8' : `Alt+${h[0]}`
+  if (st.mode === 'nav' && !onCommandCell('a')) for (const h of hints) if (/^(Shift\+)?[A-Za-z]$/.test(h[0])) h[0] = h[0] === 'n' ? 'F8' : `Alt+${h[0]}`
   if (!row) for (const h of hints) if (h[0] === 'n') h[0] = 'F8'
   const problemHint = (() => {
     if (!row) return ''

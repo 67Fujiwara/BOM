@@ -1,7 +1,7 @@
 import { useStore } from '@/model/store'
 import type { Issue, IssueKind, Project, Role, Row, Rule } from '@/model/types'
 import { ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, routeSurplusToPm, surplusOf } from '@/model/derive'
+import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, routeSurplusToPm, surplusOf, withdrawFormal } from '@/model/derive'
 import { replaceRow } from './rows'
 import { normalize } from '@/model/lifecycle'
 import { addBusinessDays, todayStr } from '@/model/dates'
@@ -246,6 +246,7 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
     if (choice === 'requote') {
       // 採用中の商社を再見積にしたら、採用の前提（その単価）が無くなるので採用を外して選び直す
       if (r.adoptedSupplierId === supplierId) {
+        withdrawFormal(p, r, ws.suppliers)
         r.adoptedSupplierId = undefined
         r.scoreSnapshot = undefined
         r.flags.contested = false
@@ -287,6 +288,7 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
 
 /** 確認系フラグを外す（x） */
 export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn') {
+  if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げを元の商社に伝えた（確認済）`, 'ok'))
   st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : '確認', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
     if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = undefined

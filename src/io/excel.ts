@@ -141,7 +141,7 @@ function safeName(s: string): string {
 }
 
 /** 商社向けの見積依頼書（概算 / 正式） */
-export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[], kind: 'rough' | 'formal', deadline: string, rev: number, prevNeed?: Map<string, string | null>) {
+export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[], kind: 'rough' | 'formal', deadline: string, rev: number, prevNeed?: Map<string, string | null>, prevSent?: Map<string, { model: string; maker: string; qtyNeeded: number; needOffset: number | null }>) {
   const wb = new ExcelJS.Workbook()
   const sh = wb.addWorksheet(kind === 'rough' ? '概算見積依頼' : '正式見積依頼')
   const reqNo = `${p.id}-${sup.id}-${kind === 'formal' ? 'F' : ''}${rev}`
@@ -170,8 +170,10 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
     for (const r of rows) {
       // 承認待ち・却下の変更セットの Rev は商社向けの差分に使わない（社内で決まっていない・取り消した変更）
       const subs = p.submissions.filter((s) => s.rowIds.includes(r.id) && liveRev(s))
-      const now = subs.at(-1)?.snapshot[r.id]
-      const before = subs.at(-2)?.snapshot[r.id]
+      // この商社に前回送った内容があれば、それと今の値を比べる（間の Rev が備考だけでも、送った後の変更を落とさない）
+      const sent = prevSent?.get(r.id)
+      const now = sent ? r : subs.at(-1)?.snapshot[r.id]
+      const before = sent ?? subs.at(-2)?.snapshot[r.id]
       if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
       // 前回の依頼で送った必要納期と今回の値（案件納期の変更・前倒し日数の変更など）
       const now2 = rowNeedDate(p, r) ?? ''

@@ -604,7 +604,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
                 </div>
               ))}
             </div>
-            {panel.sel === 0 && <AutoInput multiline autoFocus={false} value={d.paste ?? ''} onChange={(v) => setData('paste', v)} placeholder={'例）見出し行つきでそのまま貼れます\n品名\t形式\tメーカー\t員数\nリレー\tMY4N-D2 DC24\tオムロン\t12\n\n貼り付け欄の中では Ctrl+Enter で次へ'} testid="wizard-paste" />}
+            {panel.sel === 0 && <AutoInput multiline autoFocus={false} value={d.paste ?? ''} onChange={(v) => (d.fileName ? st.set({ panel: { ...panel, data: { ...d, paste: v, fileName: '', fileNote: '' } } }) : setData('paste', v))} placeholder={'例）見出し行つきでそのまま貼れます\n品名\t形式\tメーカー\t員数\nリレー\tMY4N-D2 DC24\tオムロン\t12\n\n貼り付け欄の中では Ctrl+Enter で次へ'} testid="wizard-paste" />}
             {panel.sel === 1 && (
               <div style={{ marginTop: 8 }}>
                 <input ref={fileRef} type="file" data-testid="wizard-file" accept=".xlsx,.csv,.tsv,.txt" onChange={(e) => void onFile(e.target.files?.[0])} />

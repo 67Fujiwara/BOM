@@ -248,7 +248,8 @@ export const useStore = create<State>((set, get) => ({
     if (entry.kind === 'publish') {
       // 公開より前の、公開した行の編集は Rev に含まれている。Ctrl+Z の続きでそこへは戻らない（戻すと公開を戻したのを打ち消すだけになる）
       const keys = new Set(entry.rows.map((c) => c.key))
-      const folded = rest.filter((e) => e.projectId === pid && e.kind !== 'publish' && e.rows.length > 0 && e.rows.every((c) => keys.has(c.key) && designEdit(c)) && !e.quotes.length && !e.issues.length && !e.proj.length)
+      // さらに前の公開も、公開を戻したあとの Ctrl+Z では戻さない（知らせと動きをそろえる。前の Rev は購買に伝わっている）
+      const folded = rest.filter((e) => e.projectId === pid && (e.kind === 'publish' || (e.rows.length > 0 && e.rows.every((c) => keys.has(c.key) && designEdit(c)) && !e.quotes.length && !e.issues.length && !e.proj.length)))
       set({ undo: { ...get().undo, [user]: rest.filter((e) => !folded.includes(e)) } })
       const n = revertPublishAsWorking(entry)
       // 公開を戻した操作は Ctrl+Z の履歴に積まない。Ctrl+Y で取り消せる（公開済の値に戻す）ように、やり直す側にだけ積む
@@ -260,7 +261,8 @@ export const useStore = create<State>((set, get) => ({
         set({ undo: { ...get().undo, [user]: und.slice(0, -1) }, redo: { ...get().redo, [user]: [...(get().redo[user] ?? []), inv] } })
         persistHistory()
       }
-      const more = folded.length ? `公開より前の編集 ${folded.length} 件は公開した Rev に含まれているので、Ctrl+Z ではそれより前に戻りません。` : ''
+      const pubs = folded.filter((e) => e.kind === 'publish').length
+      const more = folded.length ? `公開より前の編集${pubs ? `・前の公開 ${pubs} 回` : ''}（${folded.length} 件）は公開した Rev に含まれているので、Ctrl+Z ではそれより前に戻りません。` : ''
       // 公開した取消・置換は購買に伝わっているので戻さない（必要なら行を追加し直す）
       const removed = entry.rows.filter((c) => c.before && c.after && !['cancelled', 'replaced'].includes(c.before.status) && ['cancelled', 'replaced'].includes(c.after.status)).map((c) => c.key)
       const rm = removed.length ? `取消・置換を公開した ${removed.slice(0, 3).join(', ')} は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。` : ''

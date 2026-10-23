@@ -6,7 +6,16 @@ const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 
 const arr = <T,>(v: unknown, fallback: T[] = []): T[] => (Array.isArray(v) ? (v as T[]) : fallback)
 
 const str = (v: unknown): v is string => typeof v === 'string' && v !== ''
-const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null)
+// 文字で書いた数（"1200"）も数として読む
+const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : typeof v === 'string' && /^\s*-?\d+(\.\d+)?\s*$/.test(v) ? Number(v) : null)
+/** 日付を YYYY-MM-DD にそろえる（時刻つき・0 の無い月日も日付の部分を読む）。実在しなければ null */
+const normDate = (v: unknown): string | null => {
+  if (typeof v !== 'string') return null
+  const m = /^\s*(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ]\d{1,2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:?\d{2})?)?\s*$/.exec(v)
+  if (!m) return null
+  const d = `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}`
+  return realDate(d) ? d : null
+}
 /** 見積の単価・数量は 0 以上、納期は 0 以上か -1（取扱なし） */
 const nonNeg = (v: unknown, allowDecline = false): number | null => {
   const n = numOrNull(v)
@@ -64,21 +73,23 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const quotes = quotes0
       .map(idStr)
       .filter((q): q is Record<string, unknown> => isObj(q) && str(q.rowId) && str(q.supplierId) && rowIds.has(q.rowId as string))
-      .map((q) => ({ ...q, validUntil: typeof q.validUntil === 'string' && realDate(q.validUntil) ? q.validUntil : null, formalValidUntil: typeof q.formalValidUntil === 'string' && realDate(q.formalValidUntil) ? q.formalValidUntil : null, stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: nonNeg(q.unitPrice), leadDays: nonNeg(q.leadDays, true), moq: nonNeg(q.moq), quoteQty: nonNeg(q.quoteQty), formalPrice: nonNeg(q.formalPrice), formalLeadDays: nonNeg(q.formalLeadDays, true), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
+      .map((q) => ({ ...q, validUntil: normDate(q.validUntil), formalValidUntil: normDate(q.formalValidUntil), stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: nonNeg(q.unitPrice), leadDays: nonNeg(q.leadDays, true), moq: nonNeg(q.moq), quoteQty: nonNeg(q.quoteQty), formalPrice: nonNeg(q.formalPrice), formalLeadDays: nonNeg(q.formalLeadDays, true), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
     const negs = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'quoteQty', 'formalPrice', 'formalLeadDays'].some((k) => typeof q[k] === 'number' && nonNeg(q[k], k === 'leadDays' || k === 'formalLeadDays') === null)).length
     if (negs) warnings.push(`案件 ${p0.id} の見積 ${negs} 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました`)
-    const badDates = quotes0.filter((q) => isObj(q) && ['validUntil', 'formalValidUntil'].some((k) => typeof q[k] === 'string' && q[k] !== '' && !realDate(q[k] as string))).length
-    if (badDates) warnings.push(`案件 ${p0.id} の見積 ${badDates} 件の有効期限が存在しない日付だったので空にしました`)
-    if (typeof p0.dueDate === 'string' && p0.dueDate !== '' && !realDate(p0.dueDate)) warnings.push(`案件 ${p0.id} の納期「${p0.dueDate}」は存在しない日付なので空にしました（案件設定で入れ直してください）`)
+    const badDates = quotes0.filter((q) => isObj(q) && ['validUntil', 'formalValidUntil'].some((k) => q[k] != null && q[k] !== '' && !normDate(q[k]))).length
+    if (badDates) warnings.push(`案件 ${p0.id} の見積 ${badDates} 件の有効期限が日付（YYYY-MM-DD）として読めないので空にしました`)
+    if (p0.dueDate != null && p0.dueDate !== '' && !normDate(p0.dueDate)) warnings.push(`案件 ${p0.id} の納期「${String(p0.dueDate)}」は日付（YYYY-MM-DD）として読めないので空にしました（案件設定で入れ直してください）`)
     const hol0 = isObj(p0.settings) ? arr<unknown>(p0.settings.holidays) : []
-    const badHol = hol0.filter((x) => !(typeof x === 'string' && realDate(x))).length
-    if (badHol) warnings.push(`案件 ${p0.id} の休日 ${badHol} 件は存在しない日付なので外しました`)
+    const badHol = hol0.filter((x) => !normDate(x)).length
+    if (badHol) warnings.push(`案件 ${p0.id} の休日 ${badHol} 件は日付として読めないので外しました`)
+    const holN = new Set(hol0.map(normDate).filter(Boolean)).size
+    if (holN > 3000) warnings.push(`案件 ${p0.id} の休日 ${holN} 件のうち、3,000 件まで読みました`)
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
     const now = new Date().toISOString()
     const p: Project = {
       ...(p0 as unknown as Project),
       name: typeof p0.name === 'string' ? p0.name : p0.id,
-      dueDate: typeof p0.dueDate === 'string' && realDate(p0.dueDate) ? p0.dueDate : null,
+      dueDate: normDate(p0.dueDate),
       members: isObj(p0.members) ? (p0.members as Project['members']) : { design: '', purchasing: '', pm: '' },
       preferredSupplierIds: arr(p0.preferredSupplierIds),
       supplierIds: arr(p0.supplierIds),
@@ -99,7 +110,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
-      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).filter((x): x is string => typeof x === 'string' && realDate(x)))].slice(0, 3000) })) : { ...DEFAULT_SETTINGS },
+      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).map(normDate).filter((x): x is string => !!x))].slice(0, 3000) })) : { ...DEFAULT_SETTINGS },
       events: arr<Project['events'][number]>(p0.events).filter(isObj).map((ev) => ({ ...ev, by: userOf(ev.by, fallbackUser), text: typeof ev.text === 'string' ? ev.text : '' })),
       createdAt: typeof p0.createdAt === 'string' ? p0.createdAt : now,
       updatedAt: typeof p0.updatedAt === 'string' ? p0.updatedAt : now,

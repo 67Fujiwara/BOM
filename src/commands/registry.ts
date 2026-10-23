@@ -191,8 +191,11 @@ export function jumpToRow(id: string, col?: string, keepProblem = false): boolea
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
   ensureCol()
+  // 飛んだときの見えている位置を覚える（確認済みにして 4 の並びの後ろへ動いても、F8 はもとの位置の次から）
+  lastAnchor = { rowId: id, pos: vm().rows.findIndex((x) => x.id === id), view: st().view }
   return true
 }
+let lastAnchor: { rowId: string; pos: number; view: number } | null = null
 export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
   if (!commitEdit('stay')) return
@@ -475,7 +478,9 @@ function gotoProblem(delta: 1 | -1): boolean {
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
   // カーソルが行にあるときは、その行から下（Shift+F8 は上）でいちばん近い問題（↓・PageDown で動いたあとも、カーソルから数える）。
   // 行を選んでいない（直してビューから外れた など）ときだけ、前に飛んだ位置から続ける
-  if (idx < 0 && !s.cursorRow && lastProblem) {
+  // カーソルが前に飛んだ行のままで、その行の問題が無くなった（確認済みにした・直した。4 では並びの後ろへ動く）ときも、前に飛んだ位置の次から
+  const stillLast = !!lastProblem && s.cursorRow === lastProblem.rowId && !list.some((x) => x.rowId === s.cursorRow)
+  if (idx < 0 && lastProblem && (!s.cursorRow || stillLast)) {
     const lp = lastProblem
     const j = list.findIndex((x) => x.rowId === lp.rowId && x.field === lp.field)
     if (j >= 0) next = (j + delta + list.length) % list.length
@@ -506,7 +511,18 @@ function gotoProblem(delta: 1 | -1): boolean {
     }
     // カーソルの行に問題が無く（直した・確認済みにして、4 の並びの後ろへ動いた など）、見えている並びでその下に問題が無いときや、
     // 行がビューから外れたときは、先頭へ戻らずに BOM の並びでその行より下（上）のいちばん近い問題
-    if (cur == null || (!list.some((x) => x.rowId === curId) && !list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) }))) {
+    // 4 は問題のある行を先に並べるので、問題の無い行からは F8 も Shift+F8 も BOM の並びで数える
+    const anchor = lastAnchor && lastAnchor.rowId === curId && lastAnchor.view === s.view && lastAnchor.pos >= 0 && !list.some((x) => x.rowId === curId) ? lastAnchor.pos : null
+    if (anchor != null) {
+      // 飛んだときの位置から数える（その行が後ろへ動いた分、後ろの行は 1 つ前に詰まっている）
+      let best = -1
+      list.forEach((x, i) => {
+        const q = pos.get(x.rowId)
+        if (q == null || x.rowId === curId) return
+        if (delta > 0 ? q >= anchor && (best < 0 || q < pos.get(list[best].rowId)!) : q < anchor && (best < 0 || q > pos.get(list[best].rowId)!)) best = i
+      })
+      if (best >= 0) next = best
+    } else if (cur == null || (!list.some((x) => x.rowId === curId) && (s.view === 4 || !list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) })))) {
       const bom = new Map(st().project().rows.map((x, i) => [x.id, i] as const))
       const at = bom.get(curId)
       if (at != null) {

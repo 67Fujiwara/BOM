@@ -1,0 +1,119 @@
+[
+  {
+    "case": "W1 A が R004 の理由ダイアログ（2 ミスミ・在庫即納・補足入力中）→ B が R004 を a（推奨採用）→ A Enter",
+    "A0": "view-1/R004 ID/パネル/panel-prompt",
+    "afterB": "view-1/R004 ID/パネル/panel-prompt",
+    "steps": [
+      "Enter→view-1/R004 ID/ナビ"
+    ],
+    "diff": [
+      "R004.status:\"quoted\"→\"selected\"",
+      "R004.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S1\"",
+      "R004.scoreSnapshot:undefined→99.2"
+    ],
+    "toastsOnB": [
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定"
+    ],
+    "toastsA": [
+      "R004 の採用は、理由を入れているあいだに別のタブで「因幡電機」に変わりました。採用しませんでした（見直してからもう一度）"
+    ]
+  },
+  {
+    "case": "W2 A が R030 型式を F2 で編集モード（文字の中を移動中）→ B が同じセルを確定 → A ← → X → Enter",
+    "A0": "view-1/R030 型式/編集[abc]",
+    "afterB": "view-1/R030 型式/編集[abc]",
+    "steps": [
+      "ArrowLeft→view-1/R030 型式/編集[abc]",
+      "T:X→view-1/R030 型式/編集[abXc]",
+      "Enter→view-1/R030 型式/編集[abXc]",
+      "Enter→view-1/R031 型式/ナビ"
+    ],
+    "diff": [
+      "R030.working:undefined→{\"model\":\"abXc\"}"
+    ],
+    "toastsOnB": [],
+    "toastsA": [
+      "このセルは編集中に別のタブで「B-model」に変更されました。もう一度 Enter で上書き、Esc でやめる"
+    ]
+  },
+  {
+    "case": "W3 A 4 で R054 を直して外れた（続きの行 R005）→ B が R005 型式を直す（4 の問題から外れる）→ A ↓",
+    "A0": "view-4/—/ナビ",
+    "afterB": "view-4/—/ナビ",
+    "steps": [
+      "ArrowDown→view-4/R005 必要数/ナビ",
+      "T:9→view-4/R005 必要数/入力[9]",
+      "Enter→view-4/R006 必要数/ナビ"
+    ],
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]",
+      "R005.working:undefined→{\"qtyNeeded\":9}"
+    ],
+    "toastsOnB": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ],
+    "toastsA": []
+  },
+  {
+    "case": "W4 A が R010 部品名を 3 回変える → B が R010 部品名を変える → A リロード → Ctrl+Z ×3",
+    "A0": "view-1/R010 部品名/ナビ",
+    "afterB": "view-1/R010 部品名/ナビ",
+    "steps": [
+      "RELOAD→view-1/R010 部品名/ナビ",
+      "Control+z→view-1/R010 部品名/ナビ",
+      "Control+z→view-1/R010 部品名/ナビ",
+      "Control+z→view-1/R010 部品名/ナビ"
+    ],
+    "diff": [
+      "R010.working:{\"name\":\"A3\"}→{\"name\":\"B-name\"}"
+    ],
+    "toastsOnB": [],
+    "toastsA": []
+  },
+  {
+    "case": "W5 A が R020 型式を打って入力中 → B が JSON を読み込む（同じ内容で置き換え）→ A ↓",
+    "A0": "view-1/R020 型式/入力[TYPED]",
+    "afterB": "view-1/R020 型式/入力[TYPED]",
+    "steps": [
+      "ArrowDown→view-1/R021 型式/ナビ",
+      "Enter→view-1/R021 型式/編集[TH-T18 5A]"
+    ],
+    "diff": [
+      "R020.working:undefined→{\"model\":\"TYPED\"}"
+    ],
+    "toastsOnB": [],
+    "toastsA": []
+  },
+  {
+    "case": "W6 A（購買）9 で R004 単価を F2 で編集モード → B（設計）が R004 を置換（Alt+r）→ A Enter",
+    "A0": "view-9/R004 単価/編集[5]",
+    "afterB": "view-9/R004 単価/編集[5]",
+    "steps": [
+      "Enter→view-9/R005 単価/ナビ",
+      "ArrowDown→view-9/R006 単価/ナビ"
+    ],
+    "diff": [
+      "quotes changed"
+    ],
+    "toastsOnB": [],
+    "toastsA": [
+      "R004 の単価 ¥5 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）"
+    ]
+  },
+  {
+    "case": "W7 A が F8 で 1 の R016 → B が R016・R022 を確認済み（x）→ A F8 ×2",
+    "A0": "view-1/R016 型式/ナビ",
+    "afterB": "view-1/R016 型式/ナビ",
+    "steps": [
+      "F8→view-1/R022 型式/ナビ",
+      "F8→view-1/R041 メーカ/ナビ"
+    ],
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ],
+    "toastsOnB": [],
+    "toastsA": []
+  }
+]

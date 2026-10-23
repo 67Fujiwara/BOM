@@ -1,0 +1,78 @@
+0 r13 holidays {"loadMs":235,"部品名":{"commit":129,"undo":91.9},"必要数":{"commit":92.3,"undo":105.7},"nav":{"down":16.6,"view":54,"space":24.3}}
+0 current holidays {"loadMs":215,"部品名":{"commit":123.3,"undo":94.8},"必要数":{"commit":108.2,"undo":130.2},"nav":{"down":16.5,"view":53.9,"space":30.7}}
+0 r13 plain {"loadMs":256,"部品名":{"commit":112.4,"undo":83.3},"必要数":{"commit":100.8,"undo":90.8},"nav":{"down":16.5,"view":51.9,"space":21.6}}
+0 current plain {"loadMs":242,"部品名":{"commit":100.2,"undo":89.8},"必要数":{"commit":91.2,"undo":92.4},"nav":{"down":16.6,"view":50.2,"space":23.6}}
+1 r13 holidays {"loadMs":300,"部品名":{"commit":131.1,"undo":103.6},"必要数":{"commit":104.3,"undo":104.1},"nav":{"down":16.5,"view":58.9,"space":21.2}}
+1 current holidays {"loadMs":274,"部品名":{"commit":119.5,"undo":95.9},"必要数":{"commit":96.7,"undo":97.8},"nav":{"down":16.7,"view":55.8,"space":30}}
+1 r13 plain {"loadMs":235,"部品名":{"commit":117.9,"undo":99.9},"必要数":{"commit":90.1,"undo":102},"nav":{"down":17,"view":58.8,"space":37.3}}
+1 current plain {"loadMs":277,"部品名":{"commit":109.3,"undo":98.2},"必要数":{"commit":99.8,"undo":99.3},"nav":{"down":16.5,"view":58,"space":24.5}}
+2 r13 holidays {"loadMs":308,"部品名":{"commit":125.9,"undo":101},"必要数":{"commit":123.3,"undo":107.1},"nav":{"down":16.5,"view":52.4,"space":24.2}}
+2 current holidays {"loadMs":322,"部品名":{"commit":125.4,"undo":105.4},"必要数":{"commit":91.9,"undo":93.1},"nav":{"down":16.7,"view":53.5,"space":32.2}}
+2 r13 plain {"loadMs":216,"部品名":{"commit":103.8,"undo":76.8},"必要数":{"commit":93.5,"undo":101},"nav":{"down":16.7,"view":57.5,"space":22.6}}
+2 current plain {"loadMs":271,"部品名":{"commit":117.6,"undo":121.2},"必要数":{"commit":142.5,"undo":93.9},"nav":{"down":16.3,"view":56.8,"space":30.6}}
+3 r13 holidays {"loadMs":282,"部品名":{"commit":110.9,"undo":102.7},"必要数":{"commit":100.6,"undo":101.3},"nav":{"down":15.9,"view":68.1,"space":33.5}}
+3 current holidays {"loadMs":197,"部品名":{"commit":125.8,"undo":106.7},"必要数":{"commit":98.8,"undo":97.8},"nav":{"down":16.7,"view":57.2,"space":30.4}}
+3 r13 plain {"loadMs":322,"部品名":{"commit":98.6,"undo":83.9},"必要数":{"commit":102.7,"undo":118.4},"nav":{"down":16.6,"view":59.7,"space":22.8}}
+3 current plain {"loadMs":204,"部品名":{"commit":91,"undo":111.3},"必要数":{"commit":98,"undo":91.1},"nav":{"down":16.6,"view":57.6,"space":27.5}}
+4 r13 holidays {"loadMs":379,"部品名":{"commit":95.8,"undo":121.5},"必要数":{"commit":122,"undo":101.1},"nav":{"down":16.3,"view":60.2,"space":29.7}}
+4 current holidays {"loadMs":368,"部品名":{"commit":100.7,"undo":113.9},"必要数":{"commit":98.7,"undo":108.4},"nav":{"down":16.7,"view":65,"space":39.3}}
+4 r13 plain {"loadMs":324,"部品名":{"commit":104.1,"undo":101.9},"必要数":{"commit":100.6,"undo":80.7},"nav":{"down":15.6,"view":68.3,"space":36.3}}
+4 current plain {"loadMs":253,"部品名":{"commit":127.8,"undo":109.4},"必要数":{"commit":96.9,"undo":88.6},"nav":{"down":16.5,"view":60.3,"space":32.1}}
+{
+ "r13@holidays": {
+  "loadMs": 300,
+  "name": {
+   "commit": 125.9,
+   "undo": 102.7
+  },
+  "qty": {
+   "commit": 104.3,
+   "undo": 104.1
+  },
+  "down": 16.5,
+  "view": 58.9,
+  "space": 24.3
+ },
+ "current@holidays": {
+  "loadMs": 274,
+  "name": {
+   "commit": 123.3,
+   "undo": 105.4
+  },
+  "qty": {
+   "commit": 98.7,
+   "undo": 97.8
+  },
+  "down": 16.7,
+  "view": 55.8,
+  "space": 30.7
+ },
+ "r13@plain": {
+  "loadMs": 256,
+  "name": {
+   "commit": 104.1,
+   "undo": 83.9
+  },
+  "qty": {
+   "commit": 100.6,
+   "undo": 101
+  },
+  "down": 16.6,
+  "view": 58.8,
+  "space": 22.8
+ },
+ "current@plain": {
+  "loadMs": 253,
+  "name": {
+   "commit": 109.3,
+   "undo": 109.4
+  },
+  "qty": {
+   "commit": 98,
+   "undo": 92.4
+  },
+  "down": 16.5,
+  "view": 57.6,
+  "space": 27.5
+ }
+}

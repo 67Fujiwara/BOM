@@ -1,0 +1,276 @@
+{
+  "summary": {
+    "build-r6@80": {
+      "j": 16.7,
+      "view": 19.4,
+      "space": 16.1,
+      "pageDown": 16.6,
+      "perEnter": 48.5,
+      "perUndo": 18.2
+    },
+    "build-current@80": {
+      "j": 16.6,
+      "view": 22.5,
+      "space": 16.6,
+      "pageDown": 16.7,
+      "perEnter": 46.5,
+      "perUndo": 17
+    },
+    "build-r6@300": {
+      "j": 16.6,
+      "view": 25,
+      "space": 16.6,
+      "pageDown": 16.7,
+      "perEnter": 69.7,
+      "perUndo": 41.2
+    },
+    "build-current@300": {
+      "j": 16.6,
+      "view": 26.2,
+      "space": 16.8,
+      "pageDown": 16.7,
+      "perEnter": 57.8,
+      "perUndo": 23.8
+    },
+    "build-r6@2500": {
+      "j": 16.6,
+      "view": 33.8,
+      "space": 20.1,
+      "pageDown": 17.4,
+      "perEnter": 1240.2,
+      "perUndo": 1160.8
+    },
+    "build-current@2500": {
+      "j": 16.6,
+      "view": 33.9,
+      "space": 23.1,
+      "pageDown": 16.8,
+      "perEnter": 198.1,
+      "perUndo": 110.6
+    }
+  },
+  "lat": {
+    "build-r6": {
+      "隠す（部品名・Alt+h）": {
+        "median": 9,
+        "samples": [
+          8,
+          9,
+          9,
+          11,
+          11
+        ]
+      },
+      "複製（型式・Alt+Shift+D）": {
+        "median": 10,
+        "samples": [
+          8,
+          9,
+          10,
+          12,
+          13
+        ]
+      },
+      "隠す（ID・h）": {
+        "median": 7,
+        "samples": [
+          6,
+          7,
+          7,
+          7,
+          8
+        ]
+      }
+    },
+    "build-current": {
+      "隠す（部品名・Alt+h）": {
+        "median": 9,
+        "samples": [
+          6,
+          7,
+          9,
+          9,
+          9
+        ]
+      },
+      "複製（型式・Alt+Shift+D）": {
+        "median": 9,
+        "samples": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "隠す（ID・h）": {
+        "median": 7,
+        "samples": [
+          7,
+          7,
+          7,
+          8,
+          8
+        ]
+      }
+    }
+  },
+  "raw": {
+    "build-r6@80": [
+      {
+        "j": 16.7,
+        "view": 19.4,
+        "space": 16.1,
+        "pageDown": 16.8,
+        "perEnter": 52.2,
+        "perUndo": 21.4
+      },
+      {
+        "j": 16.7,
+        "view": 25.2,
+        "space": 16.6,
+        "pageDown": 16.6,
+        "perEnter": 48.5,
+        "perUndo": 18.2
+      },
+      {
+        "j": 16.6,
+        "view": 19.3,
+        "space": 15.3,
+        "pageDown": 16.6,
+        "perEnter": 46.8,
+        "perUndo": 16.6
+      }
+    ],
+    "build-current@80": [
+      {
+        "j": 16.6,
+        "view": 23.3,
+        "space": 16.7,
+        "pageDown": 16.6,
+        "perEnter": 47,
+        "perUndo": 19.2
+      },
+      {
+        "j": 16.5,
+        "view": 22.5,
+        "space": 16.6,
+        "pageDown": 16.7,
+        "perEnter": 46.5,
+        "perUndo": 17
+      },
+      {
+        "j": 16.7,
+        "view": 19.7,
+        "space": 16.5,
+        "pageDown": 16.7,
+        "perEnter": 41.3,
+        "perUndo": 16.2
+      }
+    ],
+    "build-r6@300": [
+      {
+        "j": 16.6,
+        "view": 29.9,
+        "space": 16.6,
+        "pageDown": 16.7,
+        "perEnter": 90.1,
+        "perUndo": 41.2
+      },
+      {
+        "j": 16.6,
+        "view": 24.9,
+        "space": 16.5,
+        "pageDown": 16.3,
+        "perEnter": 69.7,
+        "perUndo": 41.6
+      },
+      {
+        "j": 16.7,
+        "view": 25,
+        "space": 16.7,
+        "pageDown": 16.8,
+        "perEnter": 69.7,
+        "perUndo": 34
+      }
+    ],
+    "build-current@300": [
+      {
+        "j": 16.6,
+        "view": 26.2,
+        "space": 16.8,
+        "pageDown": 16.7,
+        "perEnter": 58.5,
+        "perUndo": 28.2
+      },
+      {
+        "j": 16.6,
+        "view": 22.5,
+        "space": 16.8,
+        "pageDown": 16.5,
+        "perEnter": 54.1,
+        "perUndo": 23.8
+      },
+      {
+        "j": 16.6,
+        "view": 27.3,
+        "space": 16.5,
+        "pageDown": 16.7,
+        "perEnter": 57.8,
+        "perUndo": 22.4
+      }
+    ],
+    "build-r6@2500": [
+      {
+        "j": 16.6,
+        "view": 41.3,
+        "space": 20.3,
+        "pageDown": 17.8,
+        "perEnter": 1262.3,
+        "perUndo": 1160.8
+      },
+      {
+        "j": 16.5,
+        "view": 33.8,
+        "space": 20.1,
+        "pageDown": 16.6,
+        "perEnter": 1239.5,
+        "perUndo": 1186.6
+      },
+      {
+        "j": 16.6,
+        "view": 31.6,
+        "space": 18.3,
+        "pageDown": 17.4,
+        "perEnter": 1240.2,
+        "perUndo": 1149
+      }
+    ],
+    "build-current@2500": [
+      {
+        "j": 16.6,
+        "view": 43.3,
+        "space": 23.7,
+        "pageDown": 16.6,
+        "perEnter": 198.1,
+        "perUndo": 110.6
+      },
+      {
+        "j": 16.4,
+        "view": 33.9,
+        "space": 23.1,
+        "pageDown": 18.8,
+        "perEnter": 203.6,
+        "perUndo": 106.8
+      },
+      {
+        "j": 16.7,
+        "view": 30.6,
+        "space": 18.2,
+        "pageDown": 16.8,
+        "perEnter": 188.2,
+        "perUndo": 113.8
+      }
+    ]
+  }
+}

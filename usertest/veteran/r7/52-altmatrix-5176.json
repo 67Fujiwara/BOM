@@ -1,0 +1,3401 @@
+{
+  "matrix": [
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyA",
+      "prevented": true,
+      "effect": "diff:R040.status:\"quoted\"→\"selected\";R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→\"S1\";R0",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyC",
+      "prevented": true,
+      "effect": "panel:panel-columns",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "effect": "chips:部品名 = ファイバユニット ✕",
+      "toast": "部品名 =「ファイバユニット」で絞り込みました（Esc か Alt+f で解除）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "effect": "diff:R040.hidden:false→true",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R041 部品名",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyK",
+      "prevented": true,
+      "effect": "cursor:R039 部品名",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "effect": "cursor:R016 型式",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyR",
+      "prevented": true,
+      "effect": "panel:panel-prompt",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 部品名 ▲ ✕",
+      "toast": "部品名 で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyW",
+      "prevented": true,
+      "effect": "panel:panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（承認は PM）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyA",
+      "prevented": true,
+      "effect": "panel:panel-adopt",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyD",
+      "prevented": true,
+      "effect": "diff:R081:+new;order changed | cursor:R081 部品名",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "effect": "panel:panel-issue",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R041 部品名",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyK",
+      "prevented": true,
+      "effect": "cursor:R039 部品名",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyN",
+      "prevented": true,
+      "effect": "cursor:R061 型式",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に指摘はありません"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 部品名 ▼ ✕",
+      "toast": "部品名 で降順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（却下は PM）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Shift+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyA",
+      "prevented": true,
+      "effect": "diff:R040.status:\"quoted\"→\"selected\";R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→\"S3\";R0",
+      "toast": "R040 を ミスミ で採用（最安（スコア無視））"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+I は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+J は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+K は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyN",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+N は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+R は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyS",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+S は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+X は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Control+Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "F8",
+      "prevented": true,
+      "effect": "cursor:R016 型式",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Shift+F8",
+      "prevented": true,
+      "effect": "cursor:R061 型式",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+F8",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Digit4",
+      "prevented": true,
+      "effect": "view:view-4",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+ArrowDown",
+      "prevented": true,
+      "effect": "diff:order changed",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+ArrowRight",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Home",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Enter",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Space",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・文字を打てる列",
+      "key": "Alt+Slash",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyA",
+      "prevented": true,
+      "effect": "diff:R040.status:\"quoted\"→\"selected\";R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→\"S1\";R0",
+      "toast": "R040 を 因幡電機 で採用（スコア 97.8）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyC",
+      "prevented": true,
+      "effect": "panel:panel-columns",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "effect": "chips:ID = R040 ✕",
+      "toast": "ID =「R040」で絞り込みました（Esc か Alt+f で解除）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "effect": "diff:R040.hidden:false→true",
+      "toast": "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R041 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyK",
+      "prevented": true,
+      "effect": "cursor:R039 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "effect": "cursor:R016 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyR",
+      "prevented": true,
+      "effect": "panel:panel-prompt",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え ID ▲ ✕",
+      "toast": "ID で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyW",
+      "prevented": true,
+      "effect": "panel:panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（承認は PM）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyA",
+      "prevented": true,
+      "effect": "panel:panel-adopt",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyD",
+      "prevented": true,
+      "effect": "diff:R081:+new;order changed | cursor:R081 ID",
+      "toast": "R040 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "effect": "panel:panel-issue",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R041 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyK",
+      "prevented": true,
+      "effect": "cursor:R039 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyN",
+      "prevented": true,
+      "effect": "cursor:R061 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に指摘はありません"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え ID ▼ ✕",
+      "toast": "ID で降順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（却下は PM）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Shift+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyA",
+      "prevented": true,
+      "effect": "diff:R040.status:\"quoted\"→\"selected\";R040.flags:{}→{\"pmPending\":false,\"contested\":false,\"leadNG\":false};R040.orderQty:null→2;R040.adoptedSupplierId:undefined→\"S3\";R0",
+      "toast": "R040 を ミスミ で採用（最安（スコア無視））"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+I は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+J は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+K は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyN",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+N は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+R は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyS",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+S は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+X は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Control+Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "F8",
+      "prevented": true,
+      "effect": "cursor:R016 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Shift+F8",
+      "prevented": true,
+      "effect": "cursor:R061 ID",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+F8",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Digit4",
+      "prevented": true,
+      "effect": "view:view-4",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+ArrowDown",
+      "prevented": true,
+      "effect": "diff:order changed",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+ArrowRight",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Home",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Enter",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Space",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "設計・ID 列",
+      "key": "Alt+Slash",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyC",
+      "prevented": true,
+      "effect": "panel:panel-columns",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "effect": "chips:単価 = ¥8,870 ✕ | 未発行の指摘 0 件",
+      "toast": "単価 =「¥8,870」で絞り込みました（Esc か Alt+f で解除）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "effect": "diff:R005.hidden:false→true | cursor:R006 単価",
+      "toast": "R005 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R006 単価",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyK",
+      "prevented": true,
+      "effect": "cursor:R004 単価",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "effect": "cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（置換は設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 単価 ▲ ✕ | 未発行の指摘 0 件",
+      "toast": "単価 で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyW",
+      "prevented": true,
+      "effect": "panel:panel-weights",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "R005 の差分を確認済にしました（購買として）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（承認は PM）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の複製は設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "effect": "panel:panel-issue",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R006 単価",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyK",
+      "prevented": true,
+      "effect": "cursor:R004 単価",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyN",
+      "prevented": true,
+      "effect": "cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に指摘はありません"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 単価 ▼ ✕ | 未発行の指摘 0 件",
+      "toast": "単価 で降順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中のもの）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（却下は PM）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Shift+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+I は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+J は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+K は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyN",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+N は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+R は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyS",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+S は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+X は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Control+Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "F8",
+      "prevented": true,
+      "effect": "cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Shift+F8",
+      "prevented": true,
+      "effect": "cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+F8",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Digit4",
+      "prevented": true,
+      "effect": "view:view-4 | chips: | cursor:R054 部品名",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+ArrowDown",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の並びは設計）"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+ArrowRight",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Home",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Enter",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Space",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・9 単価",
+      "key": "Alt+Slash",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyC",
+      "prevented": true,
+      "effect": "panel:panel-columns",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "effect": "chips:ロット = （空） ✕",
+      "toast": "ロット =「（空）」で絞り込みました（Esc か Alt+f で解除）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "effect": "diff:R002.hidden:false→true | cursor:R003 ロット",
+      "toast": "R002 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R003 ロット",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyK",
+      "prevented": true,
+      "effect": "cursor:R001 ロット",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "effect": "view:view-1 | cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（置換は設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え ロット ▲ ✕",
+      "toast": "ロット で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyW",
+      "prevented": true,
+      "effect": "panel:panel-weights",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "R002 の差分を確認済にしました（購買として）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（承認は PM）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の複製は設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "effect": "panel:panel-issue",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyJ",
+      "prevented": true,
+      "effect": "cursor:R003 ロット",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyK",
+      "prevented": true,
+      "effect": "cursor:R001 ロット",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyN",
+      "prevented": true,
+      "effect": "view:view-1 | cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に指摘はありません"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え ロット ▼ ✕",
+      "toast": "ロット で降順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中のもの）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（却下は PM）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Shift+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+I は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+J は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+K は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyN",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+N は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+R は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyS",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+S は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+X は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Control+Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "F8",
+      "prevented": true,
+      "effect": "view:view-1 | cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Shift+F8",
+      "prevented": true,
+      "effect": "view:view-1 | cursor:R054 必要数",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+F8",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Digit4",
+      "prevented": true,
+      "effect": "view:view-4 | cursor:R054 部品名",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+ArrowDown",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の並びは設計）"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+ArrowRight",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Home",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Enter",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Space",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "購買・3 ロット",
+      "key": "Alt+Slash",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyC",
+      "prevented": true,
+      "effect": "panel:panel-columns",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "effect": "chips:部品名 = 出力拡張ユニット ✕",
+      "toast": "部品名 =「出力拡張ユニット」で絞り込みました（Esc か Alt+f で解除）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "effect": "diff:R003.hidden:false→true",
+      "toast": "R003 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "effect": "cursor:R003 状態",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（購買の列）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（置換は設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 部品名 ▲ ✕",
+      "toast": "部品名 で昇順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyW",
+      "prevented": true,
+      "effect": "panel:panel-weights",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "R003 の差分を確認済にしました（PMとして）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "納期NG の行では y は使えません（Enter で決定パネル）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の複製は設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "effect": "panel:panel-issue",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyN",
+      "prevented": true,
+      "effect": "cursor:R003 状態",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "この行に指摘はありません"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyS",
+      "prevented": true,
+      "effect": "chips:並び替え 部品名 ▼ ✕",
+      "toast": "部品名 で降順に並べました（もう一度で解除）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "差戻しできる指摘がありません（対応済・回答済・対応中のもの）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyY",
+      "prevented": true,
+      "effect": "panel:panel-prompt",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Shift+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Alt+Shift+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyA",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（選定者は設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyB",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+B は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyC",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+C は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyD",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+D は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyE",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+E は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyF",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+F は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyG",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+G は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyH",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+H は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyI",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+I は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyJ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+J は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyK",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+K は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyL",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+L は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyM",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+M は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyN",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+N は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyO",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+O は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyP",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+P は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyQ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Q は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyR",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+R は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyS",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+S は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyT",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+T は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyU",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+U は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyV",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+V は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyW",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+W は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyX",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+X は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyY",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Y は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Control+Alt+KeyZ",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "Ctrl+Alt+Z は割り当てがありません（? でキーの一覧）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "F8",
+      "prevented": true,
+      "effect": "cursor:R003 状態",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Shift+F8",
+      "prevented": true,
+      "effect": "cursor:R003 状態",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+F8",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Digit4",
+      "prevented": true,
+      "effect": "view:view-4",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+ArrowDown",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "権限なし（行の並びは設計）"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+ArrowRight",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Home",
+      "prevented": true,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Enter",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Space",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    },
+    {
+      "spot": "PM・7",
+      "key": "Alt+Slash",
+      "prevented": false,
+      "effect": "(なし)",
+      "toast": "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    }
+  ],
+  "edit": [
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyH",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyE",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyF",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+Shift+KeyI",
+      "prevented": true,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Control+Alt+KeyA",
+      "prevented": null,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+KeyA",
+      "prevented": null,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "F8",
+      "prevented": false,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+ArrowDown",
+      "prevented": false,
+      "mode": "編集",
+      "edit": "abc",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "編集中（部品名に abc）",
+      "key": "Alt+ArrowUp",
+      "prevented": false,
+      "mode": "編集",
+      "edit": "(no editor)",
+      "panel": null,
+      "cursor": "R040 部品名",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    }
+  ],
+  "inputs": [
+    {
+      "where": "絞り込み欄",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "絞り込み欄",
+      "key": "Alt+KeyH",
+      "prevented": null,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "絞り込み欄",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "絞り込み欄",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "絞り込み欄",
+      "key": "F8",
+      "prevented": false,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "絞り込み欄",
+      "key": "Control+Alt+KeyA",
+      "prevented": null,
+      "value": "abc",
+      "panel": null,
+      "mode": "ナビ",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "Alt+KeyH",
+      "prevented": null,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "F8",
+      "prevented": false,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "パレット",
+      "key": "Control+Alt+KeyA",
+      "prevented": null,
+      "value": "abc",
+      "panel": "panel-palette",
+      "mode": "パレット",
+      "diff": [],
+      "toast": "保存しました（編集は自動で保存されています）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "Alt+KeyX",
+      "prevented": true,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "Alt+KeyH",
+      "prevented": null,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "Alt+KeyN",
+      "prevented": true,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "Alt+KeyD",
+      "prevented": true,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "F8",
+      "prevented": false,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    },
+    {
+      "where": "指摘の本文（購買）",
+      "key": "Control+Alt+KeyA",
+      "prevented": null,
+      "value": "bc",
+      "panel": "panel-issue",
+      "mode": "パネル",
+      "diff": [],
+      "toast": "発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"
+    }
+  ],
+  "errors": []
+}

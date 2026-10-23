@@ -458,3 +458,14 @@ INPUT 絞り込み欄 F8 {"where":"絞り込み欄","key":"F8","prevented":false
 INPUT 絞り込み欄 Control+Alt+KeyA {"where":"絞り込み欄","key":"Control+Alt+KeyA","prevented":null,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
 INPUT パレット Alt+KeyX {"where":"パレット","key":"Alt+KeyX","prevented":true,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
 INPUT パレット Alt+KeyH {"where":"パレット","key":"Alt+KeyH","prevented":null,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット Alt+KeyN {"where":"パレット","key":"Alt+KeyN","prevented":true,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット Alt+KeyD {"where":"パレット","key":"Alt+KeyD","prevented":true,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット F8 {"where":"パレット","key":"F8","prevented":false,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット Control+Alt+KeyA {"where":"パレット","key":"Control+Alt+KeyA","prevented":null,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 指摘の本文（購買） Alt+KeyX {"where":"指摘の本文（購買）","key":"Alt+KeyX","prevented":true,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+INPUT 指摘の本文（購買） Alt+KeyH {"where":"指摘の本文（購買）","key":"Alt+KeyH","prevented":null,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+INPUT 指摘の本文（購買） Alt+KeyN {"where":"指摘の本文（購買）","key":"Alt+KeyN","prevented":true,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+INPUT 指摘の本文（購買） Alt+KeyD {"where":"指摘の本文（購買）","key":"Alt+KeyD","prevented":true,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+INPUT 指摘の本文（購買） F8 {"where":"指摘の本文（購買）","key":"F8","prevented":false,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+INPUT 指摘の本文（購買） Control+Alt+KeyA {"where":"指摘の本文（購買）","key":"Control+Alt+KeyA","prevented":null,"value":"bc","panel":"panel-issue","mode":"パネル","diff":[],"toast":"発注後変更依頼は発注済の行だけです（発注前の変更は型式あいまい・代替提案などで）"}
+errors []

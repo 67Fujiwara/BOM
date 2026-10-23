@@ -82,8 +82,10 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 
 export function detectField(h: string): BomField | null {
   const s = toHalf(h).trim()
-  // 「旧型式」「変更前 数量」「Old P/N」のような前の版の列は使わない（今の値の列と取り違えない）
-  if (/旧|変更前|前回|改訂前|廃止|\bold\b|\bprev(ious)?\b/i.test(s)) return null
+  // 「旧型式」「変更前 数量」「Old P/N」のような前の版の列は使わない（今の値の列と取り違えない）。
+  // 括弧の注記（「型式（旧型式併記）」）は見ない
+  const head = s.replace(/[（(][^）)]*[）)]/g, '').trim()
+  if (/^(旧|変更前|前回|改訂前|廃止|old\b|prev(ious)?\b)/i.test(head)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -151,7 +153,10 @@ export function parseBomPaste(text: string): PasteResult {
 
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
-  const isTotal = (l: string[]) => l.some(isTotalCell) || isSectionLine(l, Math.max(l.length, mapping.length))
+  // 部品名・型式に部品らしい値がある行は、備考などが「以上」「計」でも合計の行にしない
+  const partCols = mapping.map((f, j) => (f === 'name' || f === 'model' ? j : -1)).filter((j) => j >= 0)
+  const looksPart = (l: string[]) => partCols.some((j) => (l[j] ?? '').trim() !== '' && !isTotalCell(l[j] ?? ''))
+  const isTotal = (l: string[]) => (l.some(isTotalCell) && !looksPart(l)) || isSectionLine(l, Math.max(l.length, mapping.length))
   const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
   if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません`)
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
@@ -216,9 +221,13 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     // 非表示の列（Excel で隠した旧型式の列など）も取り込まない
     const hiddenCols = new Set<number>()
     for (let c = 1; c <= ws.columnCount; c++) if (ws.getColumn(c).hidden) hiddenCols.add(c)
+    let hiddenRows = 0
     ws.eachRow({ includeEmpty: false }, (row) => {
-      // 非表示の行（Excel で隠した行）は取り込まない
-      if (row.hidden) return
+      // 非表示の行（Excel で隠した行・フィルタで隠れた行）は取り込まない（数は知らせる）
+      if (row.hidden) {
+        hiddenRows++
+        return
+      }
       // row.values は空のセルが穴（疎な配列）なので、列の数だけ詰めずに並べてから隠した列を外す（filter は穴を飛ばして列がずれる）
       const raw = row.values as unknown[]
       const vals: string[] = []
@@ -227,7 +236,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     })
     // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
     const score = lines.slice(0, 30).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
-    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length }
+    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size }
   })
   if (!sheets.length) return ''
   // 見出しの言葉が同じだけあるシートが複数なら、名前が「旧版・old・コピー」などでないシート → 左（先）のシート
@@ -235,10 +244,13 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const rank = (x: (typeof sheets)[number]) => x.score * 2 - (stale(x.name) ? 1 : 0)
   const best = sheets.reduce((a, b) => (rank(b) > rank(a) ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
+  hiddenNote = best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : ''
   // 見出しのある別のシートがあれば、名前を知らせる（違うシートを読んだと気づけるように）
   otherSheets = sheets.filter((x) => x !== best && x.score > 0 && x.score >= best.score - 1).map((x) => x.name)
   return best.text
 }
+/** 隠した列・行を読まなかったことの案内（空なら無し） */
+export let hiddenNote = ''
 /** 見出しがあって読まなかったシートの名前（案内用） */
 export let otherSheets: string[] = []
 /** 複数シートの xlsx で読んだシートの名前（案内用） */

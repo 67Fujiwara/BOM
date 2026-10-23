@@ -549,7 +549,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
       if (cur?.kind !== 'wizard') return
       st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
       const others = isZip ? pasteIo.otherSheets : []
-      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length ? 'info' : 'ok')
+      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${isZip && pasteIo.hiddenNote ? `。${pasteIo.hiddenNote}` : ''}${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length || (isZip && pasteIo.hiddenNote) ? 'info' : 'ok')
     } catch (err) {
       st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
     }

@@ -283,8 +283,14 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
     // 直したことで行がこのビューから外れた（4 要確認で問題が消えた など）ときは、先頭へ飛ばず、その位置の次の行へ（それが「下へ」）
     if (!vm().rows.some((x) => x.id === r.id)) {
       tabAnchor = null
-      keepCursorVisible(beforeIds)
-      return true
+      // Enter（下へ）なら同じ位置の次の行へ。Tab・Ctrl+. などでは、隣の行の別のセルに続けて書いたり操作したりしないよう、行の選択を外して止める
+      if (dir === 'down') {
+        keepCursorVisible(beforeIds)
+        return true
+      }
+      set({ cursorRow: null })
+      toast(`${r.id} を直したので、このビューから外れました（↓ で表へ、F8 で次の問題へ）`, 'info')
+      return false
     }
   } else set({ mode: 'nav', editCandidates: null, editError: null })
   // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）。
@@ -421,11 +427,17 @@ function gotoProblem(delta: 1 | -1): boolean {
   }
   // 前に飛んだ位置が無い（リロード直後・Ctrl+G や ↓ で来た）ときは、カーソルの行より下（Shift+F8 は上）の最初の問題へ
   else if (idx < 0 && s.cursorRow) {
-    const pos = new Map(s.project().rows.map((x, i) => [x.id, i] as const))
-    const cur = pos.get(s.cursorRow) ?? -1
-    if (cur >= 0) {
-      const k = delta > 0 ? list.findIndex((x) => (pos.get(x.rowId) ?? -1) > cur) : list.map((x, i) => [x, i] as const).reverse().find(([x]) => (pos.get(x.rowId) ?? -1) < cur)?.[1] ?? -1
-      if (k >= 0) next = k
+    // 見えている並びで、カーソルの行（その行の別の列の問題も含む）から下（Shift+F8 は上）でいちばん近い問題
+    const pos = new Map(vm().rows.map((x, i) => [x.id, i] as const))
+    const cur = pos.get(s.cursorRow)
+    if (cur != null) {
+      let best = -1
+      list.forEach((x, i) => {
+        const q = pos.get(x.rowId)
+        if (q == null) return
+        if (delta > 0 ? q >= cur && (best < 0 || q < pos.get(list[best].rowId)!) : q <= cur && (best < 0 || q > pos.get(list[best].rowId)!)) best = i
+      })
+      if (best >= 0) next = best
     }
   }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ

@@ -442,4 +442,9 @@ test('行を選んでいないときの数字はビュー切替だけで、続�
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')
+  // 記号で始まる語（<5mm）も、行を選んでいないときはどこにも入らない
+  await page.keyboard.type('<5mm', { delay: 30 })
+  await expect(page.getByTestId('mode')).toHaveText('ナビ')
+  await page.keyboard.press('1')
+  await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')
 })

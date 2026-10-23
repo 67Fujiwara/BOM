@@ -296,6 +296,10 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
     ['R043', '部品名', 'washer', 60],
     ['R044', '型式', 'AC100V', 60],
     ['R045', '回路記号', 'K1', 60],
+    ['R046', '型式', 'K8AK-AS1', 60],
+    ['R047', '部品名', 'coil', 60],
+    ['R048', '部品名', 'knob', 300],
+    ['R049', '型式', 'ADP3338', 60],
   ]
   for (const [id, col, word, delay] of cases) {
     await gotoCell(page, id, col)
@@ -348,4 +352,19 @@ test('提出済の行の取消は公開するまで購買に見えない', async
   await gotoCell(page, 'R050', '部品名')
   await expect(page.locator('[data-row-id="R050"]')).not.toContainText('取消')
   await expect(page.locator('[data-row-id="R050"]')).toContainText('作業中')
+})
+
+test('英字コマンドを続けて使うとき（x → n、a → j、s → 4）は文字にならない', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R010', '部品名')
+  await page.keyboard.press('s')
+  await page.keyboard.press('4')
+  await expect(page.getByTestId('view-4')).toHaveAttribute('aria-current', 'true')
+  await expect(page.getByTestId('mode')).toHaveText('ナビ')
+  await page.keyboard.press('1')
+  await gotoCell(page, 'R011', '部品名')
+  await page.keyboard.press('h')
+  await page.keyboard.press('j')
+  await expect(page.getByTestId('mode')).toHaveText('ナビ')
+  await expect(page.getByTestId('toast')).toContainText('R011')
 })

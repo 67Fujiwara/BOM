@@ -410,11 +410,11 @@ const NAV_LETTERS = new Set(['j', 'k', 'n'])
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
 }
-function beginBurst(ch: string) {
+function beginBurst(ch: string, at?: number) {
   const s = st()
   const ui: Partial<State> = {}
   for (const k of UI_KEYS) (ui as Record<string, unknown>)[k] = s[k]
-  burst = { at: performance.now(), text: ch, ui, row: s.cursorRow ?? '', col: s.cursorCol }
+  burst = { at: at ?? performance.now(), text: ch, ui, row: s.cursorRow ?? '', col: s.cursorCol }
 }
 /** 待たせていたコマンドを今すぐ実行する（時間切れ・Enter など別のキーが来たとき・クリックの前） */
 export function flushPending() {
@@ -426,10 +426,24 @@ export function flushPending() {
   runCommand(p.id)
 }
 /** 待たせていたコマンドの後に文字が来たら、コマンドはやめて値の打ち始めにする */
+/**
+ * 待っている英字コマンドの次のキーが、コマンドの続き（a → j、x → n、s → 4）か、値の続き（anode、AC100V）か。
+ * 英単語・型番にまず現れない組み合わせだけをコマンドの続きとみなす:
+ * ・j / k / n の前が母音でない（x→n, h→j。an / in / on / ok は値）。母音のあとの j は値にまず無いのでコマンド
+ * ・数字は、小文字のコマンドのあとならビュー切替（s → 4）、大文字（Shift）のあとなら型番（A1, K8AK）
+ */
+function continuesCommand(first: string, next: string): boolean {
+  const vowel = /^[aeiou]$/.test(first)
+  if (next === 'j') return true
+  if (next === 'k' || next === 'n') return !vowel
+  if (/^\d$/.test(next)) return first === first.toLowerCase()
+  return false
+}
 function resolvePending(e: KeyboardEvent): boolean {
   const p = pending
   if (!p) return false
-  if (!printable(e) || e.key === ' ') {
+  if (!printable(e) || e.key === ' ' || continuesCommand(p.ch, e.key)) {
+    // コマンドの続き: 待っていたコマンドを今すぐ実行し、このキーは普通に処理する
     flushPending()
     return false
   }
@@ -442,12 +456,16 @@ function resolvePending(e: KeyboardEvent): boolean {
 /** 移動キーの直後に文字が来たら、移動を戻して上書き編集を始める */
 function resolveBurst(e: KeyboardEvent, key: string): boolean {
   const b = burst
-  if (!b || performance.now() - b.at > BURST_MS || !printable(e) || e.key === ' ') return false
+  if (!b) return false
+  // 押した時刻で比べる（重い画面で処理が遅れても、打つ速さで判定する）
+  const gap = e.timeStamp - b.at
+  if (gap > BURST_MS || !printable(e) || e.key === ' ') return false
   const binding = lookupBinding(key, 'nav')
   const first = b.text
   const upDown = (c: string) => c === 'j' || c === 'k'
-  // 移動のまま続けるもの（j j j / n n / j k / k → 4）。割り当てのあるキーが 250ms より後なら、人が意図して続けた操作
-  if (binding && (e.key === first || /^\d$/.test(e.key) || (upDown(first) && upDown(e.key)) || performance.now() - b.at > 250)) {
+  // 移動のまま続けるもの（j j j / n n / j k / k → 4）と、移動のあとに少し間をおいた英字コマンド（n … x：問題に飛んで確認）。
+  // 間をおかずに続いた英字（knob, kit）は値の打ち始め
+  if (binding && (e.key === first || /^\d$/.test(e.key) || (upDown(first) && upDown(e.key)) || (!NAV_LETTERS.has(e.key) && gap > 450))) {
     burst = null
     return false
   }
@@ -629,7 +647,7 @@ export function handleKeyDown(e: KeyboardEvent) {
       pending = { id: b.id, ch: e.key, timer: window.setTimeout(flushPending, DEFER_MS) }
       return
     }
-    if (typable && nav) beginBurst(e.key)
+    if (typable && nav) beginBurst(e.key, e.timeStamp)
     if (letter && !nav) lastLetterCmd = now
     runCommand(b.id, e)
     return

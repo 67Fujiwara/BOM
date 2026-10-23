@@ -1,0 +1,14 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: Cannot read properties of undefined (reading 'length')
+    at eval (eval at evaluate (:370:30), <anonymous>:1:133)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at backup (/home/user/BOM/usertest/veteran/r4/rerun/06-backup.mjs:11:27)
+    at /home/user/BOM/usertest/veteran/r4/rerun/06-backup.mjs:31:20 {
+  log: []
+}
+
+Node.js v22.22.0

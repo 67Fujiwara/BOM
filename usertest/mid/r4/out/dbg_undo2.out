@@ -1,0 +1,7 @@
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+{
+  len: 1303,
+  parsed: [ 'design:山田' ],
+  ents: [ 'http://localhost:5173/src/model/store.ts?t=1792726493380' ],
+  undo: [ 'design:山田' ]
+}

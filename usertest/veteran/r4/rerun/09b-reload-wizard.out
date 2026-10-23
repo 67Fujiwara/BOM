@@ -1,0 +1,24 @@
+{
+ "draftSavedInSession": {
+  "step": 7,
+  "pasteLen": 8011,
+  "view": 5
+ },
+ "afterReload": {
+  "view": "5変更あり75",
+  "recentBefore": [
+   "ダークモード切替",
+   "ビュー: すべて"
+  ],
+  "recentAfter": [
+   "新しいBOM",
+   "ダークモード切替"
+  ],
+  "wizard": {
+   "panel": "panel-wizard",
+   "id": null,
+   "paste": 8011,
+   "text": "1.案件ID\n2.案件名\n3.納期\n4.社内工程日数\n5.予算（任意）\n6.購買・PM 担当者\n7.希望商社\n8.部品の入れ方\n9.確認して作成\n部品の入れ方\n"
+  }
+ }
+}

@@ -1,0 +1,19 @@
+edit R045 1 true true true   元に戻す: セル編集
+edit R076 1 true true true   元に戻す: セル編集
+insertTyped R045 2 true true true   元に戻す: セル編集 | 元に戻す: 行を追加
+insertTyped R076 2 true true true   元に戻す: セル編集 | 元に戻す: 行を追加
+insertEsc R045 1 true true true   元に戻す: 行を追加
+insertEsc R076 1 true true true   元に戻す: 行を追加
+dup R045 1 true true true   元に戻す: 行を複製
+dup R076 1 true true true   元に戻す: 行を複製
+moveDown R045 1 true true true   元に戻す: 行を移動
+moveDown R076 1 true true true   元に戻す: 行を移動
+moveUp R045 1 true true true   元に戻す: 行を移動
+moveUp R076 1 true true true   元に戻す: 行を移動
+hide R045 1 true true true   元に戻す: 行を隠す/戻す
+hide R076 1 true true true   元に戻す: 行を隠す/戻す
+clear R045 0 false true true   
+clear R076 0 false true true   
+delete R045 1 false true true   元に戻す: 行を削除
+delete R076 1 true true true   元に戻す: 行を削除
+--- console/page errors (08b): 0 (uniq 0)

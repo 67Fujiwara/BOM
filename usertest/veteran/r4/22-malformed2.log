@@ -1,0 +1,56 @@
+CRASH suppliers[0]=null | after import |  | %o %s %s TypeError: Cannot read properties of null (reading 'id') at http://localhost:5173/src/model/selectors.ts?t=1792
+ok    suppliers=[{}]+rest |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers[0].id=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH suppliers[0].name={} | after import |  | %o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection
+ok    suppliers=[5,"x"] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH rules=[null] | after import |  | %o %s %s TypeError: Cannot read properties of null (reading 'enabled') at checkRow (http://localhost:5173/src/model/rule
+ok    rules[0]={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rules[0].pattern=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.model=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.qtyNeeded="abc" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH working.needDateFixed=5 | after import |  | %o %s %s TypeError: s.slice is not a function at fmtDate (http://localhost:5173/src/model/dates.ts:47:12) at cellText (h
+CRASH working.category={} | design:9 | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | %o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection
+ok    working.tags=[1] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    pendingApproval.model={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    flags.leadNG="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    members.design={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ERR   rowWeights.R001="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | `NaN` is an invalid value for the `%s` css style property. width
+ok    preferredSupplierIds=[null] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    supplierIds=[null,{}] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+CRASH quotes[0].validUntil=5 | design:6 | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | %o %s %s TypeError: s.slice is not a function at fmtDate (http://localhost:5173/src/model/dates.ts:47:12) at cellText (h
+CRASH quotes[0].stock={} | design:Space | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | %o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection
+ok    quotes[0].supplierId=unknown |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].dueAt=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].kind=zzz |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].text={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    decisions[0]={kind:zzz} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    events[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    submissions[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    requestRevs={x:"y"} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    caseDecisions=[{}] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.holidays="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.approver=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.history=[null] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.adoptedSupplierId=S999 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.tags=[1,2] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    user.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.id=数値風 "001" |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.id 大文字小文字重複 |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    huge string 2MB in note |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+--- console/page errors (22): 31 (uniq 15)
+   error | fresh | %o  %s  %s  TypeError: Cannot read properties of null (reading 'id')     at http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:50     at Array.find (<anonymous>)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:36)     at http://localhost:5173/src/ui/Gr
+   error | fresh | TypeError: Cannot read properties of null (reading 'id')     at http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:50     at Array.find (<anonymous>)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:36)     at http://localhost:5173/src/ui/Grid.tsx?t=179
+   error | fresh | %o  %s  %s  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInva
+   error | fresh | Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInvalidObjectTyp
+   error | fresh | %o  %s  %s  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInva
+   error | fresh | Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInvalidObjectTyp
+   error | fresh | %o  %s  %s  TypeError: Cannot read properties of null (reading 'enabled')     at checkRow (http://localhost:5173/src/model/rules.ts?t=1792726493368:11:15)     at buildProblems (http://localhost:5173/src/model/views.ts?t=1792726493382:75:16)     at problemsFor (http://localhost:5173/src/model/selecto
+   error | fresh | TypeError: Cannot read properties of null (reading 'enabled')     at checkRow (http://localhost:5173/src/model/rules.ts?t=1792726493368:11:15)     at buildProblems (http://localhost:5173/src/model/views.ts?t=1792726493382:75:16)     at problemsFor (http://localhost:5173/src/model/selectors.ts?t=1792
+   error | fresh | %o  %s  %s  TypeError: s.slice is not a function     at fmtDate (http://localhost:5173/src/model/dates.ts:47:12)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:124:22)     at http://localhost:5173/src/ui/Grid.tsx?t=1792726493393:376:16     at Array.map (<anonymous>)   
+   error | fresh | TypeError: s.slice is not a function     at fmtDate (http://localhost:5173/src/model/dates.ts:47:12)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:124:22)     at http://localhost:5173/src/ui/Grid.tsx?t=1792726493393:376:16     at Array.map (<anonymous>)     at GridRow
+   error | fresh | `NaN` is an invalid value for the `%s` css style property. width
+   error | fresh | %o  %s  %s  TypeError: s.slice is not a function     at fmtDate (http://localhost:5173/src/model/dates.ts:47:12)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:110:72)     at http://localhost:5173/src/ui/Grid.tsx?t=1792726493393:376:16     at Array.map (<anonymous>)   
+   error | fresh | TypeError: s.slice is not a function     at fmtDate (http://localhost:5173/src/model/dates.ts:47:12)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:110:72)     at http://localhost:5173/src/ui/Grid.tsx?t=1792726493393:376:16     at Array.map (<anonymous>)     at GridRow
+   error | fresh | %o  %s  %s  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInva
+   error | fresh | Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.     at throwOnInvalidObjectTypeImpl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab9c1cdb:4852:15)     at throwOnInvalidObjectTyp

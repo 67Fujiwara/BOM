@@ -1,0 +1,56 @@
+{
+  "dev": {
+    "before": {
+      "cursor": "R040 メーカ",
+      "ths": 24,
+      "sorted": 1
+    },
+    "after": {
+      "cursor": "R040 メーカ",
+      "ths": 24,
+      "sorted": 1
+    },
+    "undoAfterReload": "元に戻す: セル編集",
+    "ss": [
+      "bom-pro.history",
+      "bom-pro.ui",
+      "bom-pro.user"
+    ]
+  },
+  "build": {
+    "before": {
+      "cursor": "R040 メーカ",
+      "ths": 24,
+      "sorted": 1
+    },
+    "after": {
+      "cursor": "R040 メーカ",
+      "ths": 24,
+      "sorted": 1
+    },
+    "undoAfterReload": "元に戻す: セル編集",
+    "ss": [
+      "bom-pro.history",
+      "bom-pro.ui",
+      "bom-pro.user"
+    ]
+  },
+  "r3-dev": {
+    "before": {
+      "cursor": "R040 メーカ",
+      "ths": 24,
+      "sorted": 1
+    },
+    "after": {
+      "cursor": "—",
+      "ths": 25,
+      "sorted": 0
+    },
+    "undoAfterReload": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "ss": [
+      "bom-pro.history",
+      "bom-pro.ui",
+      "bom-pro.user"
+    ]
+  }
+}

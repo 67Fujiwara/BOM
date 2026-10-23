@@ -39,6 +39,7 @@ for (const [tag, port] of TARGETS) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
   const errs = []
   page.on('pageerror', (e) => errs.push(e.message))
+  if (process.env.CPU) { const cdp = await page.context().newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: Number(process.env.CPU) }) }
   const url = `http://localhost:${port}/`
   res[tag] = []
   const ONLY = process.env.ONLY ? process.env.ONLY.split(',') : null

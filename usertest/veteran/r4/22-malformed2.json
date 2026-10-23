@@ -1,0 +1,329 @@
+{
+  "cases": [
+    {
+      "name": "suppliers[0]=null",
+      "toast": "",
+      "crashAt": "after import",
+      "reload": {
+        "crash": 1,
+        "buttons": [
+          "再読み込み",
+          "データを JSON で退避",
+          "退避したデータに戻す",
+          "サンプルに戻す"
+        ]
+      },
+      "err": "%o %s %s TypeError: Cannot read properties of null (reading 'id') at http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:50 at Array.find (<anonymo"
+    },
+    {
+      "name": "suppliers=[{}]+rest",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "suppliers[0].id=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "suppliers[0].name={}",
+      "toast": "",
+      "crashAt": "after import",
+      "reload": {
+        "crash": 1,
+        "buttons": [
+          "再読み込み",
+          "データを JSON で退避",
+          "退避したデータに戻す",
+          "サンプルに戻す"
+        ]
+      },
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead. at t"
+    },
+    {
+      "name": "suppliers=[5,\"x\"]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rules=[null]",
+      "toast": "",
+      "crashAt": "after import",
+      "reload": {
+        "crash": 1,
+        "buttons": [
+          "再読み込み",
+          "データを JSON で退避",
+          "退避したデータに戻す",
+          "サンプルに戻す"
+        ]
+      },
+      "err": "%o %s %s TypeError: Cannot read properties of null (reading 'enabled') at checkRow (http://localhost:5173/src/model/rules.ts?t=1792726493368:11:15) at buildProb"
+    },
+    {
+      "name": "rules[0]={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rules[0].pattern=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "working.model=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "working.name={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "working.qtyNeeded=\"abc\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "working.needDateFixed=5",
+      "toast": "",
+      "crashAt": "after import",
+      "reload": {
+        "crash": 1,
+        "buttons": [
+          "再読み込み",
+          "データを JSON で退避",
+          "退避したデータに戻す",
+          "サンプルに戻す"
+        ]
+      },
+      "err": "%o %s %s TypeError: s.slice is not a function at fmtDate (http://localhost:5173/src/model/dates.ts:47:12) at cellText (http://localhost:5173/src/model/selectors"
+    },
+    {
+      "name": "working.category={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": "design:9",
+      "reload": {
+        "crash": 0,
+        "buttons": []
+      },
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead. at t"
+    },
+    {
+      "name": "working.tags=[1]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "pendingApproval.model={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "flags.leadNG=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "members.design={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rowWeights.R001=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": "`NaN` is an invalid value for the `%s` css style property. width"
+    },
+    {
+      "name": "preferredSupplierIds=[null]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "supplierIds=[null,{}]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "quotes[0].validUntil=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": "design:6",
+      "reload": {
+        "crash": 0,
+        "buttons": []
+      },
+      "err": "%o %s %s TypeError: s.slice is not a function at fmtDate (http://localhost:5173/src/model/dates.ts:47:12) at cellText (http://localhost:5173/src/model/selectors"
+    },
+    {
+      "name": "quotes[0].stock={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": "design:Space",
+      "reload": {
+        "crash": 0,
+        "buttons": []
+      },
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead. at t"
+    },
+    {
+      "name": "quotes[0].supplierId=unknown",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].dueAt=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].kind=zzz",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].text={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "decisions[0]={kind:zzz}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "events[0].at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "submissions[0].at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "requestRevs={x:\"y\"}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "caseDecisions=[{}]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "settings.holidays=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "settings.approver=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.history=[null]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.adoptedSupplierId=S999",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.tags=[1,2]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "user.name={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.id=数値風 \"001\"",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.id 大文字小文字重複",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "huge string 2MB in note",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "deep nesting 5000",
+      "err": "stringify Maximum call stack size exceeded"
+    }
+  ]
+}

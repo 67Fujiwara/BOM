@@ -38,3 +38,10 @@ cmd h x {"case":"h then x at 60ms (hide → ack)","mode":"編集","editVal":"hx"
 cmd a 9 {"case":"a then 9 at 60ms (adopt → view 9)","mode":"編集","editVal":"a9","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"}
 cmd f 1 {"case":"f then 1 at 60ms (filter → view 1)","mode":"編集","editVal":"f1","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「f」はコマンドではなく文字の入力として扱いました"}
 cmd s S {"case":"s then S at 60ms (sort asc → desc (Shift+S))","mode":"編集","editVal":"sS","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「s」はコマンドではなく文字の入力として扱いました"}
+cmd c x {"case":"c then x at 60ms (columns → x)","mode":"パネル","editVal":null,"view":[1,1],"sort":null,"panel":"columns","hidden":[0,0],"toast":""}
+adoptBurst 0 {"target":"R004","undoBefore":0,"name":"ab","adopted":null,"status":"quoted","toast":"続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"}
+adoptBurst 205 {"target":"R004","undoBefore":200,"name":"ab","adopted":null,"status":"quoted","toast":"続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"}
+redoAfterBurst {"hiddenBefore":0,"hiddenAfterCtrlY":0,"redoBefore":0,"toast":"やり直す操作がありません"}
+imeInNav {"mode":"ナビ","editVal":null,"name":"ファイバユニット","toast":"保存しました（編集は自動で保存されています）","active":"gridwrap"}
+text NG 14 / 33
+--- console/page errors (04): 0 (uniq 0)

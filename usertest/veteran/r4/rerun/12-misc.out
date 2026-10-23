@@ -1,0 +1,5 @@
+1 move then undo {"moveToast":"","orderAfterMove":["R044","R046","R045","R047"],"undoToast":"元に戻す: 行を移動","orderAfterUndo":["R044","R045","R046","R047"],"R030":"直前の編集"}
+2 pageDown step {"1440x900":{"fullyVisibleRows":21,"pageDownFromR010":"R031"},"1280x720":{"fullyVisibleRows":16,"pageDownFromR010":"R025"},"853x480":{"fullyVisibleRows":9,"pageDownFromR010":"R018"},"1920x1200":{"fullyVisibleRows":30,"pageDownFromR010":"R039"}}
+3 browser find {"near":false,"far":false}
+4 ] without headers {"cursor":"R001 部品名","toast":"分類の見出しがありません（並び替え・要確認・要決定のビューでは分類でまとめません）"}
+--- console/page errors (12): 0 (uniq 0)

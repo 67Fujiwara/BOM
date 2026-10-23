@@ -1,0 +1,706 @@
+{
+  "text": [
+    {
+      "col": "name",
+      "text": "knob",
+      "why": "小文字: k の後の n",
+      "editVal": "knob",
+      "before": "ファイバユニット",
+      "after": "knob",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「k」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "maker",
+      "text": "jst",
+      "why": "小文字: j の後の s",
+      "editVal": "jst",
+      "before": "オムロン",
+      "after": "jst",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「j」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "nand",
+      "why": "n の後の a",
+      "editVal": "nand",
+      "before": "ファイバユニット",
+      "after": "nand",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「n」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "analog",
+      "why": "a の後の n",
+      "editVal": "analog",
+      "before": "ファイバユニット",
+      "after": "analog",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "ssr",
+      "why": "同じ文字の連続",
+      "editVal": "ssr",
+      "before": "ファイバユニット",
+      "after": "ssr",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "hook",
+      "why": "問題なしのはず",
+      "editVal": "hook",
+      "before": "ファイバユニット",
+      "after": "hook",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "relay",
+      "why": "r 始まり",
+      "editVal": "relay",
+      "before": "ファイバユニット",
+      "after": "relay",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「r」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "fuse",
+      "why": "f 始まり",
+      "editVal": "fuse",
+      "before": "ファイバユニット",
+      "after": "fuse",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「f」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "coil",
+      "why": "c 始まり",
+      "editVal": null,
+      "before": "ファイバユニット",
+      "after": "ファイバユニット",
+      "sideEffects": {
+        "panel": [
+          null,
+          "columns"
+        ]
+      },
+      "toast": "保存しました（編集は自動で保存されています）",
+      "ok": false
+    },
+    {
+      "col": "name",
+      "text": "xtal",
+      "why": "x 始まり",
+      "editVal": "xtal",
+      "before": "ファイバユニット",
+      "after": "xtal",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「x」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "wire",
+      "why": "w 始まり",
+      "editVal": null,
+      "before": "ファイバユニット",
+      "after": "ファイバユニット",
+      "sideEffects": {
+        "panel": [
+          null,
+          "weights"
+        ]
+      },
+      "toast": "保存しました（編集は自動で保存されています）",
+      "ok": false
+    },
+    {
+      "col": "name",
+      "text": "oscillator",
+      "why": "o 始まり",
+      "editVal": "oscillator",
+      "before": "ファイバユニット",
+      "after": "oscillator",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「o」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "name",
+      "text": "inductor",
+      "why": "i 始まり",
+      "editVal": "inductor",
+      "before": "ファイバユニット",
+      "after": "inductor",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「i」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "DRV8833",
+      "why": "大文字(Shift): Shift+D 複製",
+      "editVal": "RV8833",
+      "before": "E32-D11 2M",
+      "after": "E32-D11 2M",
+      "sideEffects": {
+        "rows": [
+          80,
+          81
+        ],
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「R」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "model",
+      "text": "STM32F103",
+      "why": "Shift+S 降順",
+      "editVal": "STM32F103",
+      "before": "E32-D11 2M",
+      "after": "STM32F103",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "IRF540N",
+      "why": "Shift+I 指摘",
+      "editVal": null,
+      "before": "E32-D11 2M",
+      "after": "E32-D11 2M",
+      "sideEffects": {
+        "panel": [
+          null,
+          "issue"
+        ]
+      },
+      "toast": "種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）",
+      "ok": false
+    },
+    {
+      "col": "model",
+      "text": "NJM2904",
+      "why": "Shift+N 前の問題",
+      "editVal": "NJM2904",
+      "before": "E32-D11 2M",
+      "after": "NJM2904",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「N」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "maker",
+      "text": "JST",
+      "why": "Shift+J 次の行",
+      "editVal": "JST",
+      "before": "オムロン",
+      "after": "JST",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「J」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "maker",
+      "text": "KEMET",
+      "why": "Shift+K 前の行",
+      "editVal": "KEMET",
+      "before": "オムロン",
+      "after": "KEMET",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「K」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "ADP3338",
+      "why": "Shift+A 商社を選んで採用",
+      "editVal": null,
+      "before": "E32-D11 2M",
+      "after": "E32-D11 2M",
+      "sideEffects": {
+        "view": [
+          1,
+          8
+        ],
+        "adopted": [
+          6,
+          7
+        ]
+      },
+      "toast": "R040 を ミスミ で採用",
+      "ok": false
+    },
+    {
+      "col": "model",
+      "text": "RC0603",
+      "why": "Shift+R 返信",
+      "editVal": "RC0603",
+      "before": "E32-D11 2M",
+      "after": "RC0603",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「R」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "XC6206",
+      "why": "Shift+X 差戻し",
+      "editVal": "XC6206",
+      "before": "E32-D11 2M",
+      "after": "XC6206",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「X」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "maker",
+      "text": "YAGEO",
+      "why": "Shift+Y",
+      "editVal": "YAGEO",
+      "before": "オムロン",
+      "after": "YAGEO",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「Y」はコマンドではなく文字の入力として扱いました",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "MY4N",
+      "why": "割り当てのない大文字",
+      "editVal": "MY4N",
+      "before": "E32-D11 2M",
+      "after": "MY4N",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "保存しました（編集は自動で保存されています）",
+      "ok": true
+    },
+    {
+      "col": "model",
+      "text": "2SC1815",
+      "why": "数字始まり",
+      "editVal": "SC1815",
+      "before": "E32-D11 2M",
+      "after": "SC1815",
+      "sideEffects": {
+        "view": [
+          1,
+          2
+        ],
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "model",
+      "text": "1N4148",
+      "why": "数字始まり",
+      "editVal": null,
+      "before": "E32-D11 2M",
+      "after": "E32-D11 2M",
+      "sideEffects": {
+        "view": [
+          1,
+          8
+        ],
+        "cursorRow": [
+          "R040",
+          "R001"
+        ]
+      },
+      "toast": "保存しました（編集は自動で保存されています）",
+      "ok": false
+    },
+    {
+      "col": "altPolicy",
+      "text": "ka",
+      "why": "選択肢の略号 ka=可",
+      "editVal": "ka",
+      "before": "同等品可",
+      "after": "可",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「k」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "altPolicy",
+      "text": "no",
+      "why": "選択肢の略号 no=不可",
+      "editVal": "no",
+      "before": "同等品可",
+      "after": "不可",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「n」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "makerLock",
+      "text": "nini",
+      "err": "col not found"
+    },
+    {
+      "col": "unit",
+      "text": "ko",
+      "why": "略号 ko=個",
+      "editVal": "ko",
+      "before": "個",
+      "after": "個",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「k」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "procurement",
+      "text": "sh",
+      "why": "略号 sh=指定商社",
+      "editVal": "sh",
+      "before": "相見積",
+      "after": "指定商社",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "altPolicy",
+      "text": "fuka",
+      "why": "略号 fuka=不可",
+      "editVal": "fuka",
+      "before": "同等品可",
+      "after": "不可",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R041"
+        ]
+      },
+      "toast": "続けて打たれたので「f」はコマンドではなく文字の入力として扱いました",
+      "ok": false
+    },
+    {
+      "col": "unit",
+      "text": "k",
+      "why": "1 文字の略号 k=個",
+      "editVal": null,
+      "before": "個",
+      "after": "個",
+      "sideEffects": {
+        "cursorRow": [
+          "R040",
+          "R039"
+        ]
+      },
+      "toast": "保存しました（編集は自動で保存されています）",
+      "ok": false
+    }
+  ],
+  "cmd": [
+    {
+      "case": "r then type new model at 45ms (120ms after r)",
+      "afterR": {
+        "mode": "パネル",
+        "cursor": "R040 型式"
+      },
+      "editVal": "rMY4N-NEW",
+      "R040": {
+        "status": "quoted",
+        "model": "rMY4N-NEW",
+        "orig": "E32-D11 2M"
+      },
+      "newRow": "R080",
+      "newModel": "TZe-231",
+      "toast": "続けて打たれたので「r」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "r then type after 400ms",
+      "R040": {
+        "status": "quoted",
+        "model": "rMY4N-NEW"
+      },
+      "newModel": "TZe-231"
+    },
+    {
+      "case": "s then 4 at 60ms (sort → view 4)",
+      "mode": "編集",
+      "editVal": "s4",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "x then a at 60ms (ack → adopt)",
+      "mode": "編集",
+      "editVal": "xa",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「x」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "h then x at 60ms (hide → ack)",
+      "mode": "編集",
+      "editVal": "hx",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "a then 9 at 60ms (adopt → view 9)",
+      "mode": "編集",
+      "editVal": "a9",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "f then 1 at 60ms (filter → view 1)",
+      "mode": "編集",
+      "editVal": "f1",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「f」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "s then S at 60ms (sort asc → desc (Shift+S))",
+      "mode": "編集",
+      "editVal": "sS",
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": null,
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました"
+    },
+    {
+      "case": "c then x at 60ms (columns → x)",
+      "mode": "パネル",
+      "editVal": null,
+      "view": [
+        1,
+        1
+      ],
+      "sort": null,
+      "panel": "columns",
+      "hidden": [
+        0,
+        0
+      ],
+      "toast": ""
+    }
+  ],
+  "misc": {
+    "adoptBurst_undo0": {
+      "target": "R004",
+      "undoBefore": 0,
+      "name": "ab",
+      "adopted": null,
+      "status": "quoted",
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"
+    },
+    "adoptBurst_undo205": {
+      "target": "R004",
+      "undoBefore": 200,
+      "name": "ab",
+      "adopted": null,
+      "status": "quoted",
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"
+    },
+    "redoAfterBurst": {
+      "hiddenBefore": 0,
+      "hiddenAfterCtrlY": 0,
+      "redoBefore": 0,
+      "toast": "やり直す操作がありません"
+    },
+    "imeInNav": {
+      "mode": "ナビ",
+      "editVal": null,
+      "name": "ファイバユニット",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "active": "gridwrap"
+    }
+  }
+}

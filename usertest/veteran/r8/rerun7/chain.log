@@ -21,3 +21,14 @@
 === 08:06:45 end 61-hide-views.mjs rc=0
 === 08:06:45 start 79-pm.mjs
 === 08:06:59 end 79-pm.mjs rc=0
+=== 08:15:34 end rerun6/31-text.mjs rc=0
+=== 08:15:34 start rerun6/35-malformed3.mjs
+=== 08:18:54 end rerun6/35-malformed3.mjs rc=0
+=== 08:18:54 start rerun6/55-malformed4.mjs
+=== 08:22:03 end rerun6/55-malformed4.mjs rc=0
+=== 08:22:03 start rerun6/36-undo-order.mjs
+=== 08:22:28 end rerun6/36-undo-order.mjs rc=0
+=== 08:22:28 start rerun6/60-files3.mjs
+=== 08:22:34 end rerun6/60-files3.mjs rc=0
+=== 08:22:34 start rerun6/72-files4.mjs
+=== 08:22:51 end rerun6/72-files4.mjs rc=0

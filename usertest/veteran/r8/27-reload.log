@@ -1,0 +1,7 @@
+{"case":"<5mm の途中 0ms でリロード","note":"<5mm","errs":[]}
+{"case":"[代替可] の途中 0ms でリロード","note":"[代替可]","errs":[]}
+{"case":"<5mm の途中 30ms でリロード","note":"<5mm","errs":[]}
+{"case":"[代替可] の途中 30ms でリロード","note":"[代替可]","errs":[]}
+{"case":"<5mm の途中 150ms でリロード","note":"<5mm","errs":[]}
+{"case":"[代替可] の途中 150ms でリロード","note":"[代替可]","errs":[]}
+{"case":"F8 ×6 → リロード → Alt+x → F8","at":"R005 型式","afterReload":"R005 型式","afterF8":"R016 型式"}

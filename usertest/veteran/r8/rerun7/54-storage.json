@@ -1,0 +1,319 @@
+{
+  "steps": [
+    {
+      "s": "S1",
+      "step": "import P-BIG1",
+      "len": 1412458,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 1559434,
+        "keys": {
+          "bom-pro.workspace.v2": 1412478,
+          "bom-pro.workspace.backup": 146956
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      },
+      "main": {
+        "cur": "P-BIG1",
+        "rows": 240,
+        "len": 1412458
+      },
+      "header": "P-BIG1大型案件 P-BIG1納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 "
+    },
+    {
+      "s": "S1",
+      "step": "import P-BIG2",
+      "len": 1412458,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 3010342,
+        "keys": {
+          "bom-pro.workspace.v2": 1412478,
+          "bom-pro.workspace.backup": 1597864
+        },
+        "backups": [
+          "JSON 読み込みの前:1412458:P-BIG1",
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      },
+      "main": {
+        "cur": "P-BIG2",
+        "rows": 240,
+        "len": 1412458
+      },
+      "header": "P-BIG2大型案件 P-BIG2納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 "
+    },
+    {
+      "s": "S1",
+      "step": "import P-BIG3",
+      "len": 1412458,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 4461250,
+        "keys": {
+          "bom-pro.workspace.v2": 1412478,
+          "bom-pro.workspace.backup": 3048772
+        },
+        "backups": [
+          "JSON 読み込みの前:1412458:P-BIG2",
+          "JSON 読み込みの前:1412458:P-BIG1",
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      },
+      "main": {
+        "cur": "P-BIG3",
+        "rows": 240,
+        "len": 1412458
+      },
+      "header": "P-BIG3大型案件 P-BIG3納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 "
+    },
+    {
+      "s": "S1",
+      "step": "import P-BIG4",
+      "len": 2324458,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 5226319,
+        "keys": {
+          "bom-pro.workspace.v2": 2324478,
+          "bom-pro.workspace.backup": 2901841
+        },
+        "backups": [
+          "JSON 読み込みの前:1412458:P-BIG3",
+          "JSON 読み込みの前:1412458:P-BIG2"
+        ]
+      },
+      "main": {
+        "cur": "P-BIG4",
+        "rows": 240,
+        "len": 2324458
+      },
+      "header": "P-BIG4大型案件 P-BIG4納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 "
+    },
+    {
+      "s": "S1",
+      "step": "edit x30 + reload",
+      "firstFail": null,
+      "beforeReload": {
+        "header": "P-BIG4大型案件 P-BIG4納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 ",
+        "main": {
+          "cur": "P-BIG4",
+          "rows": 240,
+          "len": 2330383
+        }
+      },
+      "afterReload": {
+        "cur": "P-BIG4",
+        "edited": 30
+      },
+      "header": "P-BIG4大型案件 P-BIG4納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 ",
+      "usage": {
+        "total": 5232244,
+        "keys": {
+          "bom-pro.workspace.v2": 2330403,
+          "bom-pro.workspace.backup": 2901841
+        },
+        "backups": [
+          "JSON 読み込みの前:1412458:P-BIG3",
+          "JSON 読み込みの前:1412458:P-BIG2"
+        ]
+      }
+    },
+    {
+      "s": "S2",
+      "step": "import P-A",
+      "len": 2299969,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 2446945,
+        "keys": {
+          "bom-pro.workspace.v2": 2299989,
+          "bom-pro.workspace.backup": 146956
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      },
+      "main": {
+        "cur": "P-A",
+        "rows": 240,
+        "len": 2299969
+      },
+      "header": "P-A大型案件 P-A納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥"
+    },
+    {
+      "s": "S2",
+      "step": "edit P-A",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 2447098,
+        "keys": {
+          "bom-pro.workspace.v2": 2300142,
+          "bom-pro.workspace.backup": 146956
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      }
+    },
+    {
+      "s": "S2",
+      "step": "import P-B",
+      "len": 3199009,
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "保存領域が足りないため読み込みませんでした（いまの内容のまま。退避も前のまま）。「退避データを消す」で空きを作ってから読み込んでください",
+      "usage": {
+        "total": 2447098,
+        "keys": {
+          "bom-pro.workspace.v2": 2300142,
+          "bom-pro.workspace.backup": 146956
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      },
+      "main": {
+        "cur": "P-A",
+        "rows": 240,
+        "len": 2300122
+      },
+      "header": "P-A大型案件 P-A納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥"
+    },
+    {
+      "s": "S2",
+      "step": "読み込み前に戻す",
+      "panel": "panel-prompt",
+      "restorePanel": "退避したデータ（10/23 08:20・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避に入れます 1 やめる 2 戻す 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "restoreToast": "保存領域が足りないため読み込みませんでした（いまの内容のまま。退避も前のまま）。「退避データを消す」で空きを作ってから読み込んでください"
+    },
+    {
+      "s": "S2",
+      "step": "after restore attempt",
+      "afterRestore": {
+        "cur": "P-A",
+        "r010": "P-A の大事な編集"
+      },
+      "toast": "やめました（何も変えていません）",
+      "header": "P-A大型案件 P-A納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥",
+      "usage": {
+        "total": 2447098,
+        "keys": {
+          "bom-pro.workspace.v2": 2300142,
+          "bom-pro.workspace.backup": 146956
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041"
+        ]
+      }
+    },
+    {
+      "s": "S3",
+      "step": "broken 2.4M reload",
+      "toast": "保存データを読めなかったのでサンプルを表示しています（JSON として読めません（Unexpected token 'x', ...\"rojects\":[xxxxxxxxxx\"... is not valid JSON））。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）",
+      "usage": {
+        "total": 4800139,
+        "keys": {
+          "bom-pro.workspace.v2": 2400033,
+          "bom-pro.workspace.backup": 2400106
+        },
+        "backups": [
+          "読めなかった保存データ:2400013:undefined"
+        ]
+      }
+    },
+    {
+      "s": "S3",
+      "step": "import P-C 2.6M",
+      "texts": [
+        "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し"
+      ],
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 5146786,
+        "keys": {
+          "bom-pro.workspace.v2": 2599749,
+          "bom-pro.workspace.backup": 2547037
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041",
+          "読めなかった保存データ:2400013:undefined"
+        ]
+      },
+      "main": {
+        "cur": "P-C",
+        "rows": 240,
+        "len": 2599729
+      },
+      "header": "P-C大型案件 P-C納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥"
+    },
+    {
+      "s": "S3",
+      "step": "edit",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "usage": {
+        "total": 5146934,
+        "keys": {
+          "bom-pro.workspace.v2": 2599897,
+          "bom-pro.workspace.backup": 2547037
+        },
+        "backups": [
+          "JSON 読み込みの前:124303:P-2026-041",
+          "読めなかった保存データ:2400013:undefined"
+        ]
+      }
+    },
+    {
+      "s": "S3",
+      "step": "退避データを消す",
+      "items": [
+        "データ退避データを消す（保存領域を空ける）"
+      ],
+      "confirmText": "退避したデータ 2 件をすべて消して保存領域を空けます（読めなかった保存データの退避も消えます。先に「退避したデータを書き出す」で保存できます） 1 やめる 2 2 件を消す 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "toast": "退避したデータ 2 件を消しました",
+      "usage": {
+        "total": 2599897,
+        "keys": {
+          "bom-pro.workspace.v2": 2599897
+        },
+        "backups": []
+      }
+    },
+    {
+      "s": "S3",
+      "step": "edit after clear",
+      "toast": "退避したデータ 2 件を消しました",
+      "usage": {
+        "total": 2600046,
+        "keys": {
+          "bom-pro.workspace.v2": 2600046
+        },
+        "backups": []
+      },
+      "main": {
+        "cur": "P-C",
+        "rows": 240,
+        "len": 2600026
+      }
+    }
+  ],
+  "errors": []
+}

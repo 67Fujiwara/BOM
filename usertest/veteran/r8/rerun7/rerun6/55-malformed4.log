@@ -1,0 +1,43 @@
+ok    row.statusChangedAt="1970-01-01T00:00:00Z"（全行） import 712ms all 5575ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.statusChangedAt="1900-01-01"（全行） import 519ms all 4041ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.statusChangedAt="0100-01-01"（1 行） import 470ms all 3925ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.quotedAt="1970-01-01"（見積済） import 558ms all 4443ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.holidays 20,000 件 import 589ms all 4285ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.formalDays=1e8 import 504ms all 4524ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.processDays=-1e8 import 480ms all 4349ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.selector="bogus" import 522ms all 4145ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    decisions[0] 全部型違い import 533ms all 4502ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    events 全部 rowId={}・at=5 import 455ms all 3690ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].field=123 import 528ms all 3902ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].field="nosuch" import 485ms all 4073ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].kind="未知の種別" import 512ms all 4554ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].dueAt=5・rev="x" import 510ms all 4419ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].by.name={} import 512ms all 4537ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    members.design={} import 497ms all 4380ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    preferredSupplierIds=[{}]・supplierIds=[null,5] import 538ms all 4257ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers id 重複 import 510ms all 4077ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers handledMakers="x" import 578ms all 4501ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rowWeights.R040="x" import 534ms all 4344ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rowWeights.R040={price:"x"} import 475ms all 3890ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row id "__proto__" import 561ms all 4211ms |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row id "constructor"・"toString" import 477ms all 3759ms |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 6 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    submissions snapshot 型違い import 493ms all 4156ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    submissions changeSet 型違い import 501ms all 3822ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    submissions rev 重複・負 import 501ms all 4331ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    requestRevs={S1:{}} import 485ms all 4261ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ERR   quotes supplierId がマスタに無い import 502ms all 4012ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity acros
+ERR   row qtyNeeded=1e308・packQty=0・orderQty=-1 import 508ms all 3799ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | `NaN` is an invalid value for the `%s` css style property. width
+ERR   weights={price:-1e308} import 498ms all 3976ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | `Infinity` is an invalid value for the `%s` css style property. width
+ok    caseDecisions text={} import 519ms all 3755ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    user.name に HTML import 503ms all 3689ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.working.name 100 万字 import 1316ms all 5728ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row status=replaced・replacedBy=自分 import 515ms all 3824ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row ordered=true だが draft import 462ms all 3564ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.flags.leadNG="yes"・contested=5 import 470ms all 3702ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.ackRules に 1 万件 import 582ms all 4315ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rows 1 行も無い案件 import 467ms all 2353ms |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+--- console/page errors (55): 45 (uniq 4)
+   error | fresh | Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. S-NOSUCH
+   error | fresh | `NaN` is an invalid value for the `%s` css style property. width
+   error | fresh | Received NaN for the `%s` attribute. If this is expected, cast the value to a string. children
+   error | fresh | `Infinity` is an invalid value for the `%s` css style property. width

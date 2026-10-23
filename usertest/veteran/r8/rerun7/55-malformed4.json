@@ -1,0 +1,384 @@
+{
+  "cases": [
+    {
+      "name": "row.statusChangedAt=\"1970-01-01T00:00:00Z\"（全行）",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 712,
+      "tAll": 5575,
+      "xss": null
+    },
+    {
+      "name": "row.statusChangedAt=\"1900-01-01\"（全行）",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 519,
+      "tAll": 4041,
+      "xss": null
+    },
+    {
+      "name": "row.statusChangedAt=\"0100-01-01\"（1 行）",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 470,
+      "tAll": 3925,
+      "xss": null
+    },
+    {
+      "name": "row.quotedAt=\"1970-01-01\"（見積済）",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 558,
+      "tAll": 4443,
+      "xss": null
+    },
+    {
+      "name": "settings.holidays 20,000 件",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 589,
+      "tAll": 4285,
+      "xss": null
+    },
+    {
+      "name": "settings.formalDays=1e8",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 504,
+      "tAll": 4524,
+      "xss": null
+    },
+    {
+      "name": "settings.processDays=-1e8",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 480,
+      "tAll": 4349,
+      "xss": null
+    },
+    {
+      "name": "settings.selector=\"bogus\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 522,
+      "tAll": 4145,
+      "xss": null
+    },
+    {
+      "name": "decisions[0] 全部型違い",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 533,
+      "tAll": 4502,
+      "xss": null
+    },
+    {
+      "name": "events 全部 rowId={}・at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 455,
+      "tAll": 3690,
+      "xss": null
+    },
+    {
+      "name": "issues[0].field=123",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 528,
+      "tAll": 3902,
+      "xss": null
+    },
+    {
+      "name": "issues[0].field=\"nosuch\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 485,
+      "tAll": 4073,
+      "xss": null
+    },
+    {
+      "name": "issues[0].kind=\"未知の種別\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 512,
+      "tAll": 4554,
+      "xss": null
+    },
+    {
+      "name": "issues[0].dueAt=5・rev=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 510,
+      "tAll": 4419,
+      "xss": null
+    },
+    {
+      "name": "issues[0].by.name={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 512,
+      "tAll": 4537,
+      "xss": null
+    },
+    {
+      "name": "members.design={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 497,
+      "tAll": 4380,
+      "xss": null
+    },
+    {
+      "name": "preferredSupplierIds=[{}]・supplierIds=[null,5]",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 538,
+      "tAll": 4257,
+      "xss": null
+    },
+    {
+      "name": "suppliers id 重複",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 510,
+      "tAll": 4077,
+      "xss": null
+    },
+    {
+      "name": "suppliers handledMakers=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 578,
+      "tAll": 4501,
+      "xss": null
+    },
+    {
+      "name": "rowWeights.R040=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 534,
+      "tAll": 4344,
+      "xss": null
+    },
+    {
+      "name": "rowWeights.R040={price:\"x\"}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 475,
+      "tAll": 3890,
+      "xss": null
+    },
+    {
+      "name": "row id \"__proto__\"",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 561,
+      "tAll": 4211,
+      "xss": null
+    },
+    {
+      "name": "row id \"constructor\"・\"toString\"",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 6 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 477,
+      "tAll": 3759,
+      "xss": null
+    },
+    {
+      "name": "submissions snapshot 型違い",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 493,
+      "tAll": 4156,
+      "xss": null
+    },
+    {
+      "name": "submissions changeSet 型違い",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 501,
+      "tAll": 3822,
+      "xss": null
+    },
+    {
+      "name": "submissions rev 重複・負",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 501,
+      "tAll": 4331,
+      "xss": null
+    },
+    {
+      "name": "requestRevs={S1:{}}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 485,
+      "tAll": 4261,
+      "xss": null
+    },
+    {
+      "name": "quotes supplierId がマスタに無い",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause chi",
+      "tImport": 502,
+      "tAll": 4012,
+      "xss": null
+    },
+    {
+      "name": "row qtyNeeded=1e308・packQty=0・orderQty=-1",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": "`NaN` is an invalid value for the `%s` css style property. width",
+      "tImport": 508,
+      "tAll": 3799,
+      "xss": null
+    },
+    {
+      "name": "weights={price:-1e308}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": "`Infinity` is an invalid value for the `%s` css style property. width",
+      "tImport": 498,
+      "tAll": 3976,
+      "xss": null
+    },
+    {
+      "name": "caseDecisions text={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 519,
+      "tAll": 3755,
+      "xss": null
+    },
+    {
+      "name": "user.name に HTML",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 503,
+      "tAll": 3689,
+      "xss": null
+    },
+    {
+      "name": "row.working.name 100 万字",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 1316,
+      "tAll": 5728,
+      "xss": null
+    },
+    {
+      "name": "row status=replaced・replacedBy=自分",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 515,
+      "tAll": 3824,
+      "xss": null
+    },
+    {
+      "name": "row ordered=true だが draft",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 462,
+      "tAll": 3564,
+      "xss": null
+    },
+    {
+      "name": "row.flags.leadNG=\"yes\"・contested=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 470,
+      "tAll": 3702,
+      "xss": null
+    },
+    {
+      "name": "row.ackRules に 1 万件",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 582,
+      "tAll": 4315,
+      "xss": null
+    },
+    {
+      "name": "rows 1 行も無い案件",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null,
+      "tImport": 467,
+      "tAll": 2353,
+      "xss": null
+    }
+  ]
+}

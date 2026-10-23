@@ -1,0 +1,284 @@
+{
+  "cases": [
+    {
+      "name": "submissions 末尾 {}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "submissions 末尾 summary 無し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "submissions 末尾 at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rules regex pattern=\"(\"",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: ルールの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rules regex when=\"[\"",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: ルールの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "rules message={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.receivedLot={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.adoptReason={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.adoptedSupplierId={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.lastChangeCause={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.replacedBy=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.replaces={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.publishedRev=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.ltbRequest=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.removal={kind:5}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.flags.pmReason={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.flags.importMismatch={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.flags.countermeasure={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.fromIssue={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.quotedAt=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.statusChangedAt=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.dueAt=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "row.scoreSnapshot=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].proposal={model:{}}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].proposal=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].replies[0].at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].answer={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "issues[0].field={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "decisions[0].text={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "caseDecisions open 型違い",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "events 末尾 at=5",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "suppliers handledMakers 正常＋onTimeRate=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "suppliers color={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "suppliers order=\"x\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "project.name={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "project.id 数字だけ \"123\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "settings.budget=\"1e400\"",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "settings.currency={}",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    },
+    {
+      "name": "members.design=\"x\".repeat(5000)",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": null,
+      "reload": null,
+      "err": null
+    }
+  ]
+}

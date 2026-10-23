@@ -1,0 +1,11 @@
+{"case":"A PageDown 後の値","pages":5,"col":"部品名","word":"1N4148","at":"X0107 部品名","editBefore":"1N4148","saved":"1N4148","ms":480,"after":"X0108 部品名"}
+{"case":"A PageDown 後の値","pages":20,"col":"備考","word":"<5mm","at":"X0528 備考","editBefore":"<5mm","saved":"<5mm","ms":355,"after":"X0529 備考"}
+{"case":"A PageDown 後の値","pages":40,"col":"型式","word":"[A]CN-12","at":"X1369 型式","editBefore":"[A]CN-12","saved":"[A]CN-12","ms":420,"after":"X1370 型式"}
+{"case":"A PageDown 後の値","pages":0,"col":"必要数","word":"3","at":"X1370 必要数","editBefore":"3","saved":3,"ms":309,"after":"X1371 必要数"}
+{"case":"A Ctrl+↓ 後の ?要確認","at":"X2500 備考","saved":"?要確認"}
+{"case":"B F8 ×6","seq":["R016 型式","R009 メーカ","R041 メーカ","R022 型式","R054 必要数","X0086 メーカ"],"perKey":50}
+{"case":"B Alt+x → F8","from":"X0086 メーカ","to":"X0116 メーカ","ms":46}
+{"case":"C Alt+h ×5 / Ctrl+Z ×5 / Ctrl+Y ×5","seq":["X2400 部品名","X2400 部品名","X2400 部品名","X2400 部品名","X2400 部品名","X2400 部品名"],"perHide":149.4,"perUndo":115.2,"perRedo":115.4,"hiddenAfterZ":0,"hiddenAfterY":1}
+{"case":"D 20 手 / Ctrl+Z ×20 / Ctrl+Y ×20","perEdit":155.65,"perUndo":103.95,"perRedo":94.35,"notesAfterZ":0,"notesAfterY":20}
+{"case":"E 2 タブ: B が X2000 を隠す → A のカーソル","cursorA":"X2001 部品名"}
+{"errs":[]}

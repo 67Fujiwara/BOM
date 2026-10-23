@@ -367,6 +367,7 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
   }
   if (row.flags.notation) return '表記修正を確認'
   if (row.flags.orderQtyCheck) return '発注数を確認'
+  if (row.flags.formalWithdrawn && role === 'purchasing') return '正式依頼の取下げを元の商社に伝えた'
   if (row.flags.contested && role === p.settings.selector) return '拮抗を確認'
   if (row.flags.priceCheck) return '単価要確認を確認'
   if (role === 'design') {
@@ -391,6 +392,7 @@ function ackCurrent() {
   }
   if (r.flags.notation) return issues.ackFlag(r.id, 'notation')
   if (r.flags.orderQtyCheck) return issues.ackFlag(r.id, 'orderQtyCheck')
+  if (r.flags.formalWithdrawn && role === 'purchasing') return issues.ackFlag(r.id, 'formalWithdrawn')
   if (r.flags.contested && role === p.settings.selector) return issues.ackFlag(r.id, 'contested')
   if (r.flags.priceCheck) return issues.ackFlag(r.id, 'priceCheck')
   if (role === 'design') {
@@ -430,7 +432,7 @@ function problemCells(): Array<{ rowId: string; field: string }> {
       if (b === role) out.push({ rowId: r.id, field: (i.field as string) ?? 'model', order: kinds.indexOf(i.kind) })
     }
     if (role === 'design') for (const pr of checkRow(r, s.ws.rules, p)) out.push({ rowId: r.id, field: pr.field, order: 20 + (pr.severity === 'error' ? 0 : 1) })
-    if (role === 'purchasing' && (r.flags.reconfirm || r.flags.requote || r.flags.notation || r.flags.orderQtyCheck)) out.push({ rowId: r.id, field: 'model', order: 30 })
+    if (role === 'purchasing' && (r.flags.reconfirm || r.flags.requote || r.flags.notation || r.flags.orderQtyCheck || r.flags.formalWithdrawn)) out.push({ rowId: r.id, field: r.flags.formalWithdrawn && !(r.flags.reconfirm || r.flags.requote || r.flags.notation || r.flags.orderQtyCheck) ? 'status' : 'model', order: 30 })
     if (role === 'pm' && ballOf(p, r) === 'pm') out.push({ rowId: r.id, field: 'status', order: 30 })
   }
   const sorted = out.sort((a, b) => a.order - b.order || a.rowId.localeCompare(b.rowId))

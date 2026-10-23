@@ -34,8 +34,8 @@ export function validQuotes(p: Project, row: Row, today = todayStr()): Quote[] {
 export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = todayStr()): ScoreBreakdown[] {
   // 指定商社・客先指定品は指定先 1 社だけ（スコアで他社を選ばない）
   const fixed = isFixedProcurement(row) ? fixedSupplierId(p, row, suppliers) : null
-  // 相見積は、案件の相見積先にいて取引できる商社だけ（外した・取引不可にした商社は推奨・採用しない。いまの採用は残す）
-  const eligible = (sid: string) => sid === row.adoptedSupplierId || (p.supplierIds.includes(sid) && suppliers.find((s) => s.id === sid)?.tradable !== false)
+  // 相見積は、案件の相見積先にいて取引できる商社だけ（外した商社は推奨・採用しない。いまの採用は相見積先から外しても残す。取引停止の商社は採用中でも外す）
+  const eligible = (sid: string) => suppliers.find((s) => s.id === sid)?.tradable !== false && (sid === row.adoptedSupplierId || p.supplierIds.includes(sid))
   const quotes = validQuotes(p, row, today).filter((q) => (fixed ? q.supplierId === fixed : eligible(q.supplierId)))
   if (quotes.length === 0) return []
   const w = weightsFor(p, row.id)
@@ -70,8 +70,10 @@ export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = to
       }
       if (q.stock === '在庫') reasons.push('在庫即納')
     }
-    const noRecord = !sup || sup.onTimeRate == null
-    const record = noRecord ? 50 : Math.max(0, Math.min(100, sup!.onTimeRate! * 100 - (sup!.defectRate ?? 0) * 200))
+    // 実績: 商社マスタの値。無ければ入荷記録（発注日 + 回答納期 までに入荷したか）から集計する（§8.1）
+    const onTime = sup?.onTimeRate ?? receiptRate(p, q.supplierId)
+    const noRecord = !sup || onTime == null
+    const record = noRecord ? 50 : Math.max(0, Math.min(100, onTime! * 100 - (sup!.defectRate ?? 0) * 200))
     if (noRecord) reasons.push('実績なし')
     let terms = 100
     if (q.moq && q.moq > qty) {
@@ -132,4 +134,16 @@ export function rankedQuotes(p: Project, row: Row, suppliers: Supplier[]): Quote
     return i < 0 ? Number.MAX_SAFE_INTEGER : i
   }
   return p.quotes.filter((q) => q.rowId === row.id && !q.stale).sort((a, b) => rank(a) - rank(b))
+}
+
+/** 入荷記録からの納期遵守率（発注日 + 正式納期（無ければ概算の納期。在庫は 0 日）までに入荷した割合）。記録が無ければ null */
+export function receiptRate(p: Project, supplierId: string): number | null {
+  const done = p.rows.filter((r) => r.received && r.adoptedSupplierId === supplierId && r.orderedAt && r.receivedAt)
+  if (!done.length) return null
+  const ok = done.filter((r) => {
+    const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === supplierId && !x.stale)
+    const lead = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays ?? 0)
+    return r.receivedAt! <= addDays(r.orderedAt!, Math.max(0, lead))
+  }).length
+  return ok / done.length
 }

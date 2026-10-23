@@ -54,6 +54,12 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       if (!isFixedProcurement(r0) && (r0.status === 'submitted' || r0.flags.requote)) r.quoteTargets = quoteTargets(p, r0)
       for (const sid of targetsOf(r0)) {
         if (!wanted(sid)) continue
+        // 再見積要（数量などの変更）で頼み直す商社の前の回答は旧見積にする（新しい回答を待つ。前の回答で見積済にしない）
+        if (r0.flags.requote)
+          for (const q of p2.quotes) if (q.rowId === r.id && q.supplierId === sid && !q.stale && (q.unitPrice != null || q.leadDays != null)) {
+            q.stale = true
+            q.staleModel = r.model
+          }
         if (!p2.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) p2.quotes.push(emptyQuote(r.id, sid))
         // 再見積を頼んだので、要再確認の「再見積」の印は外す
         for (const q of p2.quotes) if (q.rowId === r.id && q.supplierId === sid && !q.stale && q.reconfirm === 'requote') q.reconfirm = undefined
@@ -63,12 +69,15 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       else if (['quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status) && r0.flags.requote) {
         // 概算を取り直す行は、前の採用・正式見積の依頼を外して選び直す（正式依頼中のまま見積済に戻さない）
         if (r.adoptedSupplierId) {
+          // 正式依頼を出していた商社には取り下げを伝える（購買への知らせ）
+          const fq = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && x.formalRequestNo)
+          if (fq && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`
           r.adoptedSupplierId = undefined
           r.scoreSnapshot = undefined
           r.flags.contested = false
           r.flags.formalDiff = false
           r.flags.reissue = false
-          for (const q of p2.quotes.filter((x) => x.rowId === r.id && !x.stale)) {
+          for (const q of p2.quotes.filter((x) => x.rowId === r.id)) {
             q.formalPrice = null
             q.formalLeadDays = null
             q.formalValidUntil = null
@@ -255,7 +264,6 @@ export async function requestFormalQuotes(): Promise<string> {
         if (r.status === 'formalQuoted') setStatus(r, 'formalRequested')
       }
       r.flags.reissue = false
-      r.flags.formalWithdrawn = undefined
       if (r.status === 'selected') setStatus(r, 'formalRequested')
       r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
     }

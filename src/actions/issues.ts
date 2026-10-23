@@ -1,7 +1,7 @@
 import { useStore } from '@/model/store'
 import type { Issue, IssueKind, Project, Role, Row, Rule } from '@/model/types'
 import { ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
+import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, routeSurplusToPm, surplusOf } from '@/model/derive'
 import { replaceRow } from './rows'
 import { normalize } from '@/model/lifecycle'
 import { addBusinessDays, todayStr } from '@/model/dates'
@@ -72,15 +72,14 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
       let body = text
       if (kind === '最小ロット' && !text) {
         // 選定後は採用商社、選定前は MOQ がいちばん効く商社で丸め数量を出す
-        const qs = p.quotes.filter((x) => x.rowId === rowId && !x.stale && x.unitPrice != null)
-        const q = (row.adoptedSupplierId ? qs.find((x) => x.supplierId === row.adoptedSupplierId) : undefined) ?? [...qs].sort((a, b) => (b.moq ?? 0) - (a.moq ?? 0))[0]
+        const { quote: q, rounded: rq, amount } = surplusOf(p, row)
         const need = row.qtyNeeded
-        const rq = roundedQty(need, q?.moq, row.packQty, row.unit)
         const name = q ? (s.ws.suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId) : ''
-        body = `必要数 ${need} → 丸め数量 ${rq}${name ? `（${name}${q?.moq ? ` MOQ ${q.moq}` : ''}）` : ''}、余剰 ${rq - need}（¥${((rq - need) * (q?.unitPrice ?? 0)).toLocaleString()}）`
+        body = `必要数 ${need} → 丸め数量 ${rq}${name ? `（${name}${q?.moq ? ` MOQ ${q.moq}` : ''}）` : ''}、余剰 ${rq - need}（¥${amount.toLocaleString()}）${amount > p.settings.surplusAmount ? `。余剰が閾値 ¥${p.settings.surplusAmount.toLocaleString()} を超えるので、発行すると PM の要決定（閾値超）に載ります` : ''}`
       }
       const i: Issue = { id, rowId, field: field as keyof Row | undefined, kind, text: body, proposal, by: user, at: new Date().toISOString(), status: publishNow ? 'open' : 'draft', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), def.dueDays, p.settings.holidays), rev: p.submissions.at(-1)?.rev }
       p.issues.push(i)
+      if (publishNow) routeSurplusToPm(p, i)
       if (prior) s.toastMsg(`注意: この行の「${kind}」は見送り済（${prior.answer ?? prior.resolution ?? ''}）`, 'info')
     },
     { rowId },
@@ -287,10 +286,11 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
 }
 
 /** 確認系フラグを外す（x） */
-export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck') {
-  st().commit('確認', (p, ws) => {
+export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn') {
+  st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : '確認', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
-    if (r) r.flags[flag] = false
+    if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = undefined
+    else if (r) r.flags[flag as 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck'] = false
     normalize(p, ws)
   })
 }

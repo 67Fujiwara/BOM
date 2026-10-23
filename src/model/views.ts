@@ -60,7 +60,8 @@ export const VIEWS: ViewDef[] = [
 /** 購買の 4（§11）: ボールに関係なく、見積の期限切れ・未回答（回答が揃っていない見積中）を出す */
 function purchasingAttention(r: Row, c: ViewCtx): boolean {
   // 取込の型式不一致は、行のボールに関係なく購買の後始末（§7）
-  if (r.flags.importMismatch || r.flags.orderQtyCheck) return true
+  // 正式依頼を取り下げた行は、元の商社に伝えて x で確認するまで出す
+  if (r.flags.importMismatch || r.flags.orderQtyCheck || r.flags.formalWithdrawn) return true
   // 追加費用が特急・分納の上限を超えた（PM に相談する）
   if (overCap(c.p, r)) return true
   // 指定系の行で、頼んだ商社がすべて辞退した・指定先（いまの依頼先）にまだ頼んでいない（指定先を変えた）

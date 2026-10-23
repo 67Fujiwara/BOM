@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
-import { unpublishedCount, openIssues, isActive, designatedDeclined, fixedSupplierId, overCap } from '@/model/derive'
+import { unpublishedCount, openIssues, isActive, designatedDeclined, fixedSupplierId, overCap, quoteResponses } from '@/model/derive'
 import { formatKey, keyToEventInit } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import { pmCaseOf } from '@/actions/pm'
@@ -38,6 +38,11 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (vm.counts[4]) hints.push(['F8', '次の問題'])
     if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) hints.push(['Ctrl+.', '指定先を変える'])
     if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1) ) hints.push(fixedSupplierId(p, row, st.ws.suppliers) ? ['Ctrl+.', '次の商社に依頼'] : ['Alt+Shift+I', '取引できる商社がすべて辞退: 設計に代替を相談（指摘）'])
+    // 相見積で取引できる商社の回答がすべて辞退（または取引停止の商社だけが回答）: 見積済にならないので次の手を案内
+    if (user.role === 'purchasing' && row.procurement === '相見積' && row.status === 'quoting') {
+      const { answered, total } = quoteResponses(p, row)
+      if (total > 0 && answered === total) hints.push(['Alt+Shift+I', '取引できる商社に有効な見積が無い: 相見積先を足して依頼するか、設計に代替を相談（指摘）'])
+    }
     const ack = nextAckTarget(p, row, user.role)
     if (ack) hints.push(['x', ack])
     if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])
@@ -62,7 +67,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
       // 追加費用の上限超過（PM の判断待ち・却下）
       const oc = overCap(p, row)
       if (oc) return `上限超過 ¥${(row.extraCost ?? 0).toLocaleString()} > ¥${oc.cap.toLocaleString()}${row.flags.capRuled === row.extraCost ? '（PM 却下: 上限内で手配し直す）' : '（PM 判断待ち）'}`
-      if (row.flags.formalWithdrawn) return `正式依頼を取り下げ: ${row.flags.formalWithdrawn}（元の商社に取り下げを伝える）`
+      if (row.flags.formalWithdrawn) return `正式依頼を取り下げ: ${row.flags.formalWithdrawn}（元の商社に取り下げを伝えたら x）`
       return ''
     }
     const kind = iss[0].kind

@@ -122,7 +122,9 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // チェック結果
   const chk = wb.addWorksheet('チェック結果')
   headerRow(chk, [{ header: 'ID', key: 'id', width: 7 }, { header: '列', key: 'field', width: 10 }, { header: '重大度', key: 'sev', width: 8 }, { header: '内容', key: 'msg', width: 40 }, { header: '種別', key: 'kind', width: 12 }, { header: '状態', key: 'status', width: 8 }])
-  for (const pr of checkProject(p, ws.rules).filter((x) => !hide(x.rowId))) {
+  // 設計以外の出力は公開値で判定する（作業中・承認待ちの値をチェック結果に出さない §5）
+  const checked = ws.user.role === 'design' ? p : { ...p, rows: p.rows.map((r) => ({ ...r, ...valuesFor(r, ws.user.role), working: undefined, pendingApproval: undefined })) }
+  for (const pr of checkProject(checked, ws.rules).filter((x) => !hide(x.rowId))) {
     const row = chk.addRow({ id: pr.rowId, field: pr.field, sev: pr.severity === 'error' ? 'エラー' : '警告', msg: pr.message, kind: 'チェック', status: '' })
     row.fill = pr.severity === 'error' ? ERR_FILL : WARN_FILL
   }
@@ -162,7 +164,8 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
     const dh = diff.addRow(['行ID', '項目', '旧', '新'])
     dh.font = { bold: true }
     for (const r of rows) {
-      const subs = p.submissions.filter((s) => s.rowIds.includes(r.id))
+      // 承認待ち・却下の変更セットの Rev は商社向けの差分に使わない（社内で決まっていない・取り消した変更）
+      const subs = p.submissions.filter((s) => s.rowIds.includes(r.id) && liveRev(s))
       const now = subs.at(-1)?.snapshot[r.id]
       const before = subs.at(-2)?.snapshot[r.id]
       if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
@@ -202,4 +205,9 @@ export async function copyFormatted(headers: string[], rows: string[][]) {
   } catch {
     await navigator.clipboard.writeText(tsv)
   }
+}
+
+/** 決まった Rev か（承認待ち・却下の変更セット・取り消した Rev でない） */
+function liveRev(s: Project['submissions'][number]): boolean {
+  return !s.revoked && !(s.changeSet && (!s.changeSet.approved || s.changeSet.rejected))
 }

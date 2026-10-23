@@ -110,6 +110,8 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       caseDecisions: arr<Project['caseDecisions'][number]>(p0.caseDecisions).filter((c) => isObj(c) && str(c.id) && typeof c.kind === 'string' && (c.status === 'open' || c.status === 'done')),
     }
     for (const [k, n] of Object.entries(fixes)) warnings.push(`案件 ${p0.id}: ${k} ${n} 行`)
+    // 前の版で残った「発注済 · 再発行」の印は、読み込んだときに外す（発注後の変更は発注後変更依頼で扱う）
+    for (const r of p.rows) if (r.flags?.reissue && (r.status === 'ordered' || r.status === 'received')) r.flags.reissue = false
     projects.push(p)
   }
   const ids = projects.map((p) => p.id.toLowerCase())

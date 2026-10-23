@@ -93,7 +93,7 @@ export interface RowFlags {
   pmReason?: '例外選定' | '先行採用' | '先行発注判断' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '対策不成立'
   /** 差分超過に PM が対応した時の「商社:正式単価」。同じ値の間は差分超過に戻さない */
   formalDiffKey?: string
-  /** 調達区分・指定先の変更で取り下げた正式依頼（「商社名 依頼No」。購買が元の商社へ取り下げを伝える。次の正式見積の依頼で外れる） */
+  /** 調達区分・指定先の変更で取り下げた正式依頼（「商社名 依頼No」。購買が元の商社へ取り下げを伝える。購買が x で確認すると外れる） */
   formalWithdrawn?: string
   /** 見積回答の取り込みで型式が違った商社（購買が確認する） */
   importMismatch?: string
@@ -138,6 +138,9 @@ export interface Row extends DesignFields {
   scoreSnapshot?: number
   ordered: boolean
   received: boolean
+  /** 発注した日・入荷した日（YYYY-MM-DD。商社の納期遵守の集計に使う §8.1） */
+  orderedAt?: string
+  receivedAt?: string
   receivedLot?: string
   /** 追加費用（特急/送料/分納/その他） */
   extraCost: number | null

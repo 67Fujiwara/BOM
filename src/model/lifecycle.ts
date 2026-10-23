@@ -62,7 +62,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       const fixed = isFixedProcurement(r)
       const want = fixed ? fixedSupplierId(p, { ...r, adoptedSupplierId: undefined }, ws.suppliers) : null
       // 指定商社は指定先を変えたら（設計が直して公開）その商社に。客先指定品は採用した依頼先のまま（スコアで選んだ採用だけ外す）
-      const mismatch = fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）'
+      // 支給品・社内在庫に変えたら、商社の採用・正式依頼は使わない（§3.4: 見積なし）
+      const mismatch = !isQuotable(r) || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
       if (mismatch) {
         // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
         if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
@@ -103,11 +104,16 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.scoreSnapshot = undefined
         r.flags.contested = false
         // 相見積に戻した行は、相見積先すべての回答で見積済を判定する（回答済みの商社に頼み直さない）
-        r.quoteTargets = fixed ? undefined : makerTargets(p, r.maker, ws.suppliers)
-        r.status = fixed || p.quotes.some((x) => x.rowId === r.id && !x.stale) ? 'quoting' : 'submitted'
+        r.quoteTargets = !isQuotable(r) ? [] : fixed ? undefined : makerTargets(p, r.maker, ws.suppliers)
+        r.status = !isQuotable(r) ? 'selected' : fixed || p.quotes.some((x) => x.rowId === r.id && !x.stale) ? 'quoting' : 'submitted'
         r.statusChangedAt = now
         r.dueAt = undefined
       }
+    }
+    // 見積済の相見積の行で、取引できる商社の有効な見積が無くなった（取引停止にした）ら、選べないので見積中に戻す（購買が次の商社に頼む）
+    if (!isFixedProcurement(r) && isQuotable(r) && !r.adoptedSupplierId && r.status === 'quoted' && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1 && ws.suppliers.find((s) => s.id === x.supplierId)?.tradable !== false)) {
+      r.status = 'quoting'
+      r.statusChangedAt = now
     }
     // 指定系に変えた見積済の行で、指定先の有効な見積がまだ無ければ見積中に戻す（指定先に頼む）
     if (isFixedProcurement(r) && !r.adoptedSupplierId && r.status === 'quoted') {

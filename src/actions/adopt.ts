@@ -120,7 +120,7 @@ export function adoptChoose(rowId: string, supplierId: string, reason?: string, 
   // 理由を入れているあいだに別のタブで採用が変わっていたら、黙って上書きしない
   if (expectAdopted !== undefined && (row.adoptedSupplierId ?? null) !== expectAdopted) {
     const now = s.ws.suppliers.find((x) => x.id === row.adoptedSupplierId)?.name ?? 'なし'
-    s.toastMsg(`${row.id} の採用は、理由を入れているあいだに別のタブで「${now}」に変わりました。採用しませんでした（見直してからもう一度）`, 'err')
+    s.toastMsg(`${row.id} の採用は、一覧・理由のダイアログを開いているあいだに別のタブで「${now}」に変わりました。採用しませんでした（見直してからもう一度）`, 'err')
     return false
   }
   const err = canAdopt(p, row, true)
@@ -200,8 +200,10 @@ export function consolidateOptions(): Array<{ label: string; detail: string; sup
   }
   const current = rows.reduce((sum, r) => sum + curOf(r).cost, 0)
   const combos: string[][] = []
-  for (const a of p.supplierIds) combos.push([a])
-  for (let i = 0; i < p.supplierIds.length; i++) for (let j = i + 1; j < p.supplierIds.length; j++) combos.push([p.supplierIds[i], p.supplierIds[j]])
+  // 取引停止の商社は集約の候補にしない
+  const ids0 = p.supplierIds.filter((id) => s.ws.suppliers.find((x) => x.id === id)?.tradable !== false)
+  for (const a of ids0) combos.push([a])
+  for (let i = 0; i < ids0.length; i++) for (let j = i + 1; j < ids0.length; j++) combos.push([ids0[i], ids0[j]])
   const out = combos.map((ids) => {
     let total = 0
     let covered = 0

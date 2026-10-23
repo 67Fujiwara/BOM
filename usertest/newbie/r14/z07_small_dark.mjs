@@ -1,0 +1,20 @@
+// 1024×700 ダーク: 画面の下の行で選択の列の候補、入力/編集の表示、ステータスバー
+import { launch, fresh, T, makeLog, sel, gotoCol, ui, typeReal, sleep, shot, row } from './lib.mjs'
+const { browser, page, errors } = await launch({ viewport: { width: 1024, height: 700 }, colorScheme: 'dark' })
+const { log, save } = makeLog('z07_small_dark')
+await fresh(page)
+// 画面のいちばん下に見えている行を探す
+const lastVisible = await page.evaluate(() => { const rows = [...document.querySelectorAll('[data-row-id]')]; const sb = document.querySelector('[data-testid="status"]').getBoundingClientRect().top; const vis = rows.filter((r) => r.getBoundingClientRect().bottom <= sb); return vis.at(-1)?.getAttribute('data-row-id') })
+log('last visible row', lastVisible)
+await page.mouse.click(10,10); await page.locator('.gridwrap').focus(); await sel(page, lastVisible); await gotoCol(page, '単位'); await sleep(80)
+await page.keyboard.press('Enter'); await sleep(120)
+const geo = await page.evaluate(() => { const c = document.querySelector('[data-testid="candidates"]'); const sb = document.querySelector('[data-testid="status"]').getBoundingClientRect(); if (!c) return null; const r = c.getBoundingClientRect(); return { top: r.top, bottom: r.bottom, statusTop: sb.top, vh: innerHeight, items: [...c.children].map((x) => [x.textContent, Math.round(x.getBoundingClientRect().top), Math.round(x.getBoundingClientRect().bottom)]) } })
+log('candidates', JSON.stringify(geo))
+await shot(page, 'z07_dark_candidates_bottom')
+await page.keyboard.press('Escape')
+await sel(page, 'R030'); await gotoCol(page, '型式'); await typeReal(page, 'AB'); await sleep(50)
+log('mode label', await T.mode(page), '| hints', await T.hints(page))
+const items = await page.evaluate(() => [...document.querySelectorAll('.status .hints > *')].map((e) => [e.textContent, Math.round(e.getBoundingClientRect().left), Math.round(e.getBoundingClientRect().right)]))
+log('hint pos', JSON.stringify(items))
+await shot(page, 'z07_dark_typing')
+save(errors); await browser.close()

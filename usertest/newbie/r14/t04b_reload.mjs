@@ -1,0 +1,11 @@
+import { launch, fresh, T, makeLog, sel, gotoCol, ui } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('t04b_reload')
+await fresh(page); await page.keyboard.press('1')
+await sel(page, 'R041'); await gotoCol(page, '型式'); await page.keyboard.press('s'); await page.waitForTimeout(700)
+await page.keyboard.press('c'); await page.waitForTimeout(700); await page.keyboard.press('ArrowDown'); await page.keyboard.press('ArrowDown'); await page.keyboard.press('ArrowDown'); await page.keyboard.press(' '); await page.keyboard.press('Escape')
+await page.keyboard.press('4'); await page.waitForTimeout(800)
+const b = await ui(page); log('before', JSON.stringify({ view: b.view, cur: b.cursorRow, col: b.cursorCol, sort: b.sort, hidden: b.hiddenCols.length }))
+await page.reload(); await page.getByTestId('grid').waitFor(); await page.waitForTimeout(500)
+const a = await ui(page); log('after', JSON.stringify({ view: a.view, cur: a.cursorRow, col: a.cursorCol, sort: a.sort, hidden: a.hiddenCols.length }))
+save(errors); await browser.close()

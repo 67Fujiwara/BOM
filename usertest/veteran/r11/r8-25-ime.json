@@ -1,0 +1,60 @@
+[
+  {
+    "name": "ナビで IME から打ち始め",
+    "afterIme": {
+      "mode": "ナビ",
+      "edit": null,
+      "cursor": "R040 部品名",
+      "view": "view-1"
+    },
+    "diff": []
+  },
+  {
+    "name": "< で始めてから IME",
+    "afterIme": {
+      "mode": "入力",
+      "edit": "<リレー",
+      "cursor": "R040 備考",
+      "view": "view-1"
+    },
+    "diff": [
+      "R040.working:undefined→{\"note\":\"<リレー\"}"
+    ]
+  },
+  {
+    "name": "[ で始めてから IME",
+    "afterIme": {
+      "mode": "入力",
+      "edit": "[リレー",
+      "cursor": "R040 備考",
+      "view": "view-1"
+    },
+    "diff": [
+      "R040.working:undefined→{\"note\":\"[リレー\"}"
+    ]
+  },
+  {
+    "name": "1 で始めてから IME",
+    "afterIme": {
+      "mode": "入力",
+      "edit": "1リレー",
+      "cursor": "R040 部品名",
+      "view": "view-1"
+    },
+    "diff": [
+      "R040.working:undefined→{\"name\":\"1リレー\"}"
+    ]
+  },
+  {
+    "name": "Enter で編集してから IME",
+    "afterIme": {
+      "mode": "編集",
+      "edit": "リレー",
+      "cursor": "R040 部品名",
+      "view": "view-1"
+    },
+    "diff": [
+      "R040.working:undefined→{\"name\":\"リレー\"}"
+    ]
+  }
+]

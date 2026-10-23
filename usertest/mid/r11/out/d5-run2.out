@@ -1,0 +1,24 @@
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+request → 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+A a → R081 を 因幡電機 で採用（スコア 99.2 / 最安）
+before R081 相見積 st=selected adopt=S1 reason=拮抗 oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 選定済
+before R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 見積済
+publish change → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+after change R081 相見積 st=submitted adopt=- reason=拮抗 oq=4 flags={"requote":true} quotes=[] | 提出済 · 再見積要
+after change R082 相見積 st=quoted adopt=- reason= oq=- flags={"requote":true} quotes=[] | 見積済 · 再見積要
+R081 Ctrl+. ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+R081 keep → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R082 Ctrl+. ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+R082 keep → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after keep R081 相見積 st=quoting adopt=- reason=拮抗 oq=4 flags={} quotes=[] | 見積中 0/0 ball purchasing
+after keep R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[] | 見積済 ball design
+FAIL D5-1 選定済だった A を据え置きにすると旧見積（3 社）が有効に戻り、見積済（選び直し）か選定済になる :: R081 相見積 st=quoting adopt=- reason=拮抗 oq=4 flags={} quotes=[]
+FAIL D5-2 見積済だった B を据え置きにすると旧見積が有効に戻り、選定者が選べる :: R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[]
+R081 design a → 回答 0/0 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）
+R082 design a → 有効な見積がありません
+purch 4 has A/B false false
+request all → 依頼する行がありません（提出済・再見積要の行なし） []
+final R081 相見積 st=quoting adopt=- reason=拮抗 oq=4 flags={} quotes=[] | 見積中 0/0
+final R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[] | 見積済
+FAIL D5-3 据え置きのあとに行き止まりにならない（選定できるか、再見積を依頼できる） :: 依頼する行がありません（提出済・再見積要の行なし）
+== 0/3 PASS

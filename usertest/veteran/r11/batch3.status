@@ -1,3 +1,11 @@
 == 28-latency-new 10:52:48 load=3.86 8.97 10.35
    exit 0 10:56:28 load=4.80 6.09 8.84
 == 13-latency-ab-2500b 10:56:28 load=4.80 6.09 8.84
+   exit 0 11:00:56 load=2.25 5.08 7.88
+== 13-latency-ab-300b 11:00:56 load=2.25 5.08 7.88
+   exit 0 11:01:59 load=1.74 4.40 7.45
+== 14-typed-arrow-latency-5197 11:01:59 load=1.74 4.40 7.45
+   exit 0 11:02:19 load=2.49 4.41 7.39
+== 14-typed-arrow-latency-5198 11:02:19 load=2.49 4.41 7.39
+   exit 0 11:02:40 load=2.56 4.30 7.29
+DONE

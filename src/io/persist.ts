@@ -48,20 +48,26 @@ const BROKEN = '読めなかった保存データ'
 /** 退避を 1 件足す。読めなかった保存データの退避は、後の JSON 読み込みの退避で押し出さない（最大: 読めなかったもの 2 件＋その他 3 件） */
 export function saveBackup(raw: string, reason: string): boolean {
   const list = loadBackups()
-  list.unshift({ at: new Date().toISOString(), reason, raw })
-  const broken = list.filter((b) => b.reason.startsWith(BROKEN) || b.reason.startsWith('一部を外して')).slice(0, 2)
-  const others = list.filter((b) => !broken.includes(b) && !b.reason.startsWith(BROKEN) && !b.reason.startsWith('一部を外して')).slice(0, 3)
-  // 容量が足りなければ古いものから諦める。新しい 1 件も入らなければ失敗を返す（呼び出し側が置き換えを止める）
-  for (let keep = [...broken, ...others].sort((a, b) => b.at.localeCompare(a.at)); keep.length > 0; keep = keep.slice(0, -1)) {
-    if (!keep.includes(list[0])) return false
+  // 同じ中身の退避は重ねない（壊れた画面で「戻す」を押し続けても、良い退避を押し出さない）
+  if (list.some((b) => b.raw === raw)) return true
+  const fresh: Backup = { at: new Date().toISOString(), reason, raw }
+  const isProtected = (b: Backup) => b.reason.startsWith(BROKEN) || b.reason.startsWith('一部を外して')
+  const prot = [fresh, ...list].filter(isProtected).slice(0, 2)
+  let others = [fresh, ...list].filter((b) => !isProtected(b)).slice(0, 3)
+  // 容量が足りなければ、守る退避（読めなかった保存データ）以外の古いものから諦める。
+  // 守る退避を消さないと入らないときは、新しい退避をあきらめて失敗を返す（呼び出し側が置き換えを止める）
+  for (;;) {
+    const keep = [...prot, ...others].sort((a, b) => b.at.localeCompare(a.at))
+    if (!keep.includes(fresh)) return false
     try {
       localStorage.setItem(BACKUP_KEY, JSON.stringify(keep))
       return true
     } catch {
-      /* 次は 1 件減らして試す */
+      const drop = others.filter((b) => b !== fresh).at(-1)
+      if (!drop) return false
+      others = others.filter((b) => b !== drop)
     }
   }
-  return false
 }
 /** 退避の一覧（新しい順） */
 export function loadBackups(): Backup[] {

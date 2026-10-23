@@ -311,7 +311,11 @@ useStore.subscribe((s, prev) => {
 useStore.subscribe((s, prev) => {
   if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.wizardDraft === prev.wizardDraft && s.panel === prev.panel) return
   window.clearTimeout(uiTimer)
-  uiTimer = window.setTimeout(() => {
+  uiTimer = window.setTimeout(writeUi, 200)
+})
+function writeUi() {
+  window.clearTimeout(uiTimer)
+  {
     const st = useStore.getState()
     // ガイドを開いている間は、入れている途中の内容も下書きとして残す
     const wizardDraft = st.panel?.kind === 'wizard' ? { step: st.panel.step, data: st.panel.data, sel: st.panel.sel, picks: st.panel.picks } : st.wizardDraft
@@ -321,8 +325,8 @@ useStore.subscribe((s, prev) => {
     } catch {
       /* 保存できなくても動作は続ける */
     }
-  }, 200)
-})
+  }
+}
 
 /** Undo 履歴はタブごとに保存し、リロードしても残す */
 function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string, UndoEntry[]> } {
@@ -337,7 +341,11 @@ function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string
 let histTimer: number | undefined
 function persistHistory() {
   window.clearTimeout(histTimer)
-  histTimer = window.setTimeout(() => {
+  histTimer = window.setTimeout(writeHistory, 300)
+}
+function writeHistory() {
+  window.clearTimeout(histTimer)
+  {
     const { undo, redo } = useStore.getState()
     const trim = (m: Record<string, UndoEntry[]>) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.slice(-50)]))
     try {
@@ -349,8 +357,14 @@ function persistHistory() {
         /* 入りきらなければ保存しない */
       }
     }
-  }, 300)
+  }
 }
+// リロード・タブを閉じる直前に、まだ書いていない履歴と画面の状態を書く（操作の直後に閉じても Undo を失わない）
+if (typeof window !== 'undefined')
+  window.addEventListener('pagehide', () => {
+    writeHistory()
+    writeUi()
+  })
 
 function labelOf(kind: string, key: string): string {
   if (kind === 'quote') return `${key.split('|')[0]} の見積`
@@ -394,18 +408,45 @@ function mergeFields(now: Row | undefined, from: Row | undefined, to: Row | unde
   return { value: out as unknown as Row }
 }
 
-/** 行を target の並びにする。target に無い行（後から他の人が足した行など）は、いまの直前の行の後ろに置く */
-function reorder(rows: Row[], target: string[]): Row[] {
-  const byId = new Map(rows.map((r) => [r.id, r]))
-  const out = target.filter((id) => byId.has(id)).map((id) => byId.get(id)!)
-  const placed = new Set(out.map((r) => r.id))
-  rows.forEach((r, i) => {
-    if (placed.has(r.id)) return
-    const prev = rows.slice(0, i).reverse().find((x) => placed.has(x.id))
-    const at = prev ? out.findIndex((x) => x.id === prev.id) + 1 : 0
-    out.splice(at, 0, r)
-    placed.add(r.id)
-  })
+/**
+ * この操作で位置が変わった行だけを、target の並びでの直前の行の後ろへ戻す。
+ * 他の人・他のタブが後から動かした行はそのまま（全体を昔の並びに戻さない）
+ */
+function moveBack(rows: Row[], from: string[], target: string[]): Row[] {
+  // 行がとても多いときは比較をやめて、target の並びにそろえる（知らない行は後ろ）
+  if (from.length * target.length > 4e6) {
+    const idx = new Map(target.map((id, i) => [id, i]))
+    return [...rows].sort((a, b) => (idx.get(a.id) ?? Infinity) - (idx.get(b.id) ?? Infinity))
+  }
+  const prevIn = (list: string[], id: string) => list[list.indexOf(id) - 1] ?? null
+  // 動いた行 = 2 つの並びの最長共通部分列に入らない行（入れ替えなら片方の行だけ）
+  const common = new Set(lcs(from.filter((id) => target.includes(id)), target.filter((id) => from.includes(id))))
+  const moved = target.filter((id) => !common.has(id))
+  let out = [...rows]
+  for (const id of moved) {
+    const row = out.find((r) => r.id === id)
+    if (!row) continue
+    out = out.filter((r) => r.id !== id)
+    const prev = prevIn(target, id)
+    const at = prev ? out.findIndex((r) => r.id === prev) + 1 : 0
+    out.splice(at < 0 ? out.length : at, 0, row)
+  }
+  return out
+}
+
+/** 最長共通部分列（行の並びの比較用。行数は数百なので O(n²) で足りる） */
+function lcs(a: string[], b: string[]): string[] {
+  const dp: number[][] = Array.from({ length: a.length + 1 }, () => new Array<number>(b.length + 1).fill(0))
+  for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--) dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1])
+  const out: string[] = []
+  for (let i = 0, j = 0; i < a.length && j < b.length; ) {
+    if (a[i] === b[j]) {
+      out.push(a[i])
+      i++
+      j++
+    } else if (dp[i + 1][j] >= dp[i][j + 1]) i++
+    else j++
+  }
   return out
 }
 
@@ -457,7 +498,7 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
     p.quotes = [...qm.values()]
   }
   for (const c of entry.proj) (p as unknown as Record<string, unknown>)[c.key] = structuredClone(dir === 'undo' ? c.before : c.after)
-  if (entry.order) p.rows = reorder(p.rows, dir === 'undo' ? entry.order.before : entry.order.after)
+  if (entry.order) p.rows = moveBack(p.rows, dir === 'undo' ? entry.order.after : entry.order.before, dir === 'undo' ? entry.order.before : entry.order.after)
   p.version++
   p.updatedAt = new Date().toISOString()
   p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: p.updatedAt, by: st.ws.user, text: `${dir === 'undo' ? '元に戻す' : 'やり直す'}: ${entry.label}` })

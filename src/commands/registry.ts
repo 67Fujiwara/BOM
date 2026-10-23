@@ -168,6 +168,7 @@ export function startEdit(initial?: string) {
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
+  editProject = projectIdentity()
   set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
@@ -187,9 +188,21 @@ export function updateEditValue(v: string) {
   set({ editValue: v, editError: null, editCandidates: d?.kind === 'select' ? candidates(d.options ?? [], v) : null })
 }
 /** 編集を確定する。読めない値なら編集を続けて理由を出す（値を捨てない） */
+/** 編集を始めた案件（別のタブで JSON 読み込みなどにより案件が置き換わったら、確定しない） */
+let editProject = ''
+function projectIdentity(): string {
+  const p = st().project()
+  return `${p.id}|${p.createdAt}`
+}
 export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): boolean {
   const s = st()
   if (s.mode !== 'edit') return true
+  if (editProject && editProject !== projectIdentity()) {
+    const v = s.editValue
+    cancelEdit()
+    toast(`編集中に案件が別のタブで置き換わったので、入力「${v}」は保存していません`, 'err')
+    return false
+  }
   const r = s.cursorRow ? s.project().rows.find((x) => x.id === s.cursorRow) : undefined
   if (!r) {
     cancelEdit()
@@ -1465,12 +1478,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'data.exportBackup': {
       const list = loadBackups()
       if (!list.length) return toast('退避したデータはありません', 'info')
-      const labelOf = (b: (typeof list)[number]) => `${fmtDateTime(b.at)}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      // 同じ分に作った退避も見分けられるよう、番号と秒まで出し、選んだ番号で取り出す
+      const labelOf = (b: (typeof list)[number], i: number) => `#${i + 1} ${b.at.slice(0, 19).replace('T', ' ')}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      const labels = list.map(labelOf)
       const act = (b: (typeof list)[number]) => (id === 'data.exportBackup' ? exportBackup(b) : restoreBackup(b))
       if (list.length === 1) return act(list[0])
-      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: list.map(labelOf), showText: false }, (c) => {
-        const b = list.find((x) => labelOf(x) === c)
-        if (b) act(b)
+      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: labels, showText: false }, (c) => {
+        const i = labels.indexOf(c ?? '')
+        if (i >= 0) act(list[i])
       })
     }
     case 'supplier.add':
@@ -1572,7 +1587,8 @@ export function paletteItems(query: string): PaletteItem[] {
     const id = /^r?\d+$/i.test(m[1]) ? 'R' + m[1].replace(/\D/g, '').padStart(3, '0') : m[1].toUpperCase()
     const row = p.rows.find((x) => x.id === id)
     if (row) {
-      const rest = m[2].trim()
+      // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
+      const rest = m[2].trim().replace(/^を\s*/, '')
       const e = effective(row)
       if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用'))) {
         const scores = scoreRow(p, row, s.ws.suppliers)

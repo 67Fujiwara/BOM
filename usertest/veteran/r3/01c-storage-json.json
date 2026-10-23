@@ -1,0 +1,247 @@
+{
+  "V2-04/partial": {
+    "toast": "保存データの一部を外して読みました: 案件 P-MINE の rows[80] は id が無いので外しました。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）",
+    "backup": {
+      "at": "2026-10-23T02:00:58.118Z",
+      "reason": "一部を外して読み込み",
+      "len": 245036
+    },
+    "idsAfterEdit": [
+      "P-2026-041",
+      "P-MINE"
+    ],
+    "mineRows": 80,
+    "origMineRows": 81
+  },
+  "V2-04/broken": {
+    "toast": "保存データを読めなかったのでサンプルを表示しています（JSON として読めません（Expected ',' or '}' after property value in JSON at position 50 (line 1 column 51)））。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）",
+    "backupReason": "読めなかった保存データ",
+    "exportedFile": "1792720860390-bom-workspace-backup-2026-10-23.json",
+    "exportedEqualsBroken": true,
+    "exportToast": "退避したデータを書き出しました（bom-workspace-backup-2026-10-23.json・読めなかった保存データ）"
+  },
+  "V2-13/malformed": {
+    "issuesNull": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。外した項目: 案件 Y1 の指摘 3 件は形式が読めないので外しました / 案件 Y1 の見積 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "issueByNull": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "issueKindUnknown": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "quoteUnknownSupplier": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "rowFieldTypes": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "",
+      "crash": "画面を表示できませんでした\n\nデータは保存されています。次のどれかを選んでください。\n\nObjects are not valid as a React child (found: object with keys {}). If you ",
+      "views": {},
+      "errors": [
+        "%o\n\n%s\n\n%s\n Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.\n ",
+        "Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.\n    at throwO"
+      ]
+    },
+    "weightsString": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "membersBad": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "decisionsBad": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    },
+    "suppliersBad": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "",
+      "crash": "画面を表示できませんでした\n\nデータは保存されています。次のどれかを選んでください。\n\nCannot read properties of null (reading 'id')\n再読み込みデータを JSON で退避サンプルに戻す",
+      "views": {},
+      "errors": [
+        "%o\n\n%s\n\n%s\n TypeError: Cannot read properties of null (reading 'id')\n    at http://localhost:5173/src/model/selectors.ts?t=1792719571133:135:50\n    at Array.fin",
+        "TypeError: Cannot read properties of null (reading 'id')\n    at http://localhost:5173/src/model/selectors.ts?t=1792719571133:135:50\n    at Array.find (<anonymou"
+      ]
+    },
+    "deep": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crash": null,
+      "views": {},
+      "errors": []
+    }
+  },
+  "V2-15": {
+    "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+    "afterNo": [
+      "P-2026-041"
+    ],
+    "toastYes": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "afterYes": [
+      "P-NEW"
+    ],
+    "ctrlZ": "戻す操作がありません（この案件であなたが行った操作はまだありません）",
+    "restoreConfirm": "退避したデータ（10/23 02:02・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避と入れ替えます\n1\nやめる\n2\n戻す\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+    "restoredIds": [
+      "P-2026-041"
+    ],
+    "r030name": "読込前の値",
+    "swappedBack": [
+      "P-NEW"
+    ]
+  },
+  "V-a": {
+    "truncated": {
+      "confirmText": null,
+      "toast": "JSON として読めません: Unexpected end of JSON input",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "empty": {
+      "confirmText": null,
+      "toast": "読み込めません: projects が配列ではありません",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "arr": {
+      "confirmText": null,
+      "toast": "読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "nul": {
+      "confirmText": null,
+      "toast": "読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "str": {
+      "confirmText": null,
+      "toast": "読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "projEmpty": {
+      "confirmText": null,
+      "toast": "読み込めません: 案件が 1 つもありません",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "dupId": {
+      "confirmText": null,
+      "toast": "読み込めません: 案件 ID が重複しています: a",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "bom": {
+      "confirmText": null,
+      "toast": "JSON として読めません: Unexpected token '﻿', \"﻿{\"project\"... is not valid JSON",
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    },
+    "proto": {
+      "confirmText": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます\n1\nやめる\n2\n置き換える\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し",
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "ids": [
+        "PR"
+      ],
+      "crash": 0,
+      "errors": [],
+      "polluted": null
+    }
+  },
+  "V2-20": {
+    "broken.xlsx": {
+      "err": null,
+      "toast": "",
+      "preview": ""
+    }
+  },
+  "V2-22/replaced": {
+    "replaced": "R030",
+    "toast": "R030 を置換済にし、新しい行 R081 を作りました。型式を入れてください（Ctrl+Z で戻す）",
+    "Shift+D": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": false,
+      "toast": "R030 は置換済の行です。置換先 R081 を複製してください"
+    },
+    "w": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": false,
+      "toast": "R030 は置換済の行です（重みは変えられません）"
+    },
+    "Alt+ArrowUp": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": true,
+      "toast": "R030 は置換済の行です（重みは変えられません）"
+    },
+    "Alt+ArrowDown": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": true,
+      "toast": "R030 は置換済の行です（重みは変えられません）"
+    },
+    "Shift+Enter": {
+      "panel": null,
+      "mode": "編集",
+      "rowsChanged": true,
+      "toast": "R030 は置換済の行です（重みは変えられません）"
+    },
+    "Enter": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": false,
+      "toast": "R030 は置換済の行です（編集できません）"
+    },
+    "r": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": false,
+      "toast": "R030 は置換済の行です（置換できません）"
+    },
+    "Delete": {
+      "panel": null,
+      "mode": "ナビ",
+      "rowsChanged": false,
+      "toast": "R030 は置換済の行です（編集できません）"
+    }
+  }
+}

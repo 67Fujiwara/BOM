@@ -1,0 +1,69 @@
+{
+  "fieldCrashes": [
+    {
+      "field": "qtyNeeded",
+      "value": {},
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": "design:Space",
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection"
+    },
+    {
+      "field": "unit",
+      "value": {},
+      "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+      "crashAt": "design:Space",
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection"
+    },
+    {
+      "field": "category",
+      "value": {},
+      "toast": "",
+      "crashAt": "after import",
+      "err": "%o %s %s Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection"
+    },
+    {
+      "field": "working",
+      "value": "oops",
+      "toast": "",
+      "crashAt": "after import",
+      "err": "%o %s %s TypeError: Cannot use 'in' operator to search for 'ref' in oops at working (http://localhost:5173/src/model/sel"
+    },
+    {
+      "field": "working",
+      "value": 5,
+      "toast": "",
+      "crashAt": "after import",
+      "err": "%o %s %s TypeError: Cannot use 'in' operator to search for 'ref' in 5 at working (http://localhost:5173/src/model/select"
+    },
+    {
+      "field": "needDateFixed",
+      "value": 5,
+      "toast": "",
+      "crashAt": "after import",
+      "err": "%o %s %s TypeError: s.slice is not a function at fmtDate (http://localhost:5173/src/model/dates.ts:47:12) at cellText (h"
+    }
+  ],
+  "suppliersNull": {
+    "toast": "",
+    "crashAfterImport": 1,
+    "crashAfterReload": 1,
+    "crashButtons": [
+      "再読み込み",
+      "データを JSON で退避",
+      "サンプルに戻す"
+    ],
+    "recovery": {
+      "backupBefore": "JSON 読み込みの前",
+      "afterReset": {
+        "crash": 1,
+        "ids": [
+          "S"
+        ],
+        "backupReason": "JSON 読み込みの前"
+      },
+      "dialogs": [
+        "confirm: サンプルデータに戻します。いまのデータは消えます（先に退避してください）。よろしいですか？"
+      ]
+    }
+  }
+}

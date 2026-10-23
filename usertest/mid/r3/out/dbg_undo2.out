@@ -1,0 +1,6 @@
+{
+  len: 7408,
+  parsed: [ 'design:山田' ],
+  ents: [ 'http://localhost:5173/src/model/store.ts?t=1792719571131' ],
+  undo: []
+}

@@ -1,0 +1,211 @@
+{
+  "create": {
+    "preview": "案件 P-300 案件P-300 / 納期 2027-03-31 / 工程日数 10 / 予算 なし / 購買・PM 佐藤, 鈴木 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 分類 → 分類 / 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量 / 単位 → 単位電源部品1MDL-0001オムロン2個電源部品2MDL-0002",
+    "ms": 160
+  },
+  "pageDown": {
+    "steps": "R020,R040,R060,R079,R099,R119,R138,R158,R178,R197,R217,R237,R256,R276,R296,R300,R300,R300",
+    "notVisible": 0,
+    "blankGaps": 0
+  },
+  "pageUp": {
+    "steps": "R280,R260,分類,R221,R201,R181,R162,R142,R122,R103,R083,R063,R044,R024,R004,分類,分類,分類",
+    "notVisible": 0
+  },
+  "ctrlArrows": {
+    "bottom": {
+      "cur": "R300 部品名",
+      "vis": {
+        "rendered": true,
+        "top": 836,
+        "bottom": 870,
+        "wTop": 119,
+        "wBottom": 870,
+        "inView": true,
+        "left": 522,
+        "right": 718,
+        "wLeft": 220,
+        "wRight": 1440,
+        "hInView": true
+      },
+      "gap": 0
+    },
+    "end": {
+      "cur": "R300 備考",
+      "vis": {
+        "rendered": true,
+        "top": 836,
+        "bottom": 870,
+        "wTop": 119,
+        "wBottom": 870,
+        "inView": true,
+        "left": 1264,
+        "right": 1440,
+        "wLeft": 220,
+        "wRight": 1440,
+        "hInView": true
+      }
+    },
+    "top": {
+      "cur": "分類 電源",
+      "vis": {
+        "rendered": true,
+        "top": 119,
+        "bottom": 153,
+        "wTop": 119,
+        "wBottom": 870,
+        "inView": true,
+        "left": -954,
+        "right": 1440,
+        "wLeft": 220,
+        "wRight": 1440,
+        "hInView": false
+      }
+    }
+  },
+  "detailAtBottom": {
+    "detail": {
+      "detTop": 761,
+      "detBottom": 871,
+      "wBottom": 870,
+      "fully": true,
+      "h": 109
+    },
+    "afterK": true,
+    "afterJ": true
+  },
+  "manyDetails": {
+    "notVisibleDuringJ": 0,
+    "sample": [],
+    "bottomVisible": true,
+    "topVisible": true,
+    "gap": -103
+  },
+  "compact": {
+    "notVisible": 0,
+    "bottom": true,
+    "gap": 0,
+    "rendered": 33
+  },
+  "resize": {
+    "1440x900": {
+      "cur": "R150",
+      "vis": true,
+      "gap": 0,
+      "rendered": 32,
+      "afterJ": true
+    },
+    "853x480": {
+      "cur": "R151",
+      "vis": true,
+      "gap": 0,
+      "rendered": 20,
+      "afterJ": true
+    },
+    "1280x720": {
+      "cur": "R152",
+      "vis": true,
+      "gap": 0,
+      "rendered": 27,
+      "afterJ": true
+    },
+    "1920x1200": {
+      "cur": "R153",
+      "vis": true,
+      "gap": 0,
+      "rendered": 40,
+      "afterJ": true
+    },
+    "1024x1400": {
+      "cur": "R154",
+      "vis": true,
+      "gap": 0,
+      "rendered": 46,
+      "afterJ": true
+    },
+    "683x384": {
+      "cur": "R155",
+      "vis": true,
+      "gap": 0,
+      "rendered": 17,
+      "afterJ": true
+    }
+  },
+  "cursorAfterReorder": {
+    "start": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": true
+    },
+    "sortDesc": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": false
+    },
+    "sortAsc": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": false
+    },
+    "sortOff": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": true
+    },
+    "filterOn": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": true
+    },
+    "filterOff": {
+      "cur": "R150",
+      "rendered": true,
+      "inView": true
+    },
+    "textFilter": {
+      "cur": "R220",
+      "rendered": true,
+      "inView": true
+    },
+    "textFilterEsc": {
+      "cur": "R220",
+      "rendered": false,
+      "inView": false
+    },
+    "slashEsc": {
+      "cur": "R220",
+      "rendered": false,
+      "inView": false
+    },
+    "view4then1": {
+      "cur": "R250",
+      "rendered": true,
+      "inView": true
+    },
+    "catPrevNext": {
+      "cur": "分類",
+      "rendered": true,
+      "inView": true
+    }
+  },
+  "scrollAwayThenEdit": {
+    "mode": "編集",
+    "editorInDom": 0,
+    "vis": {
+      "rendered": false
+    },
+    "active": "gridwrap",
+    "saved": "部品10"
+  },
+  "copyAll": {
+    "lines": 0,
+    "toast": "300 行 × 25 列を書式つきでコピーしました（Excel・メールに貼れます）"
+  },
+  "j299": {
+    "ms": 10001,
+    "perKey": 33.4,
+    "cur": "R295 部品名",
+    "vis": true,
+    "gap": 0
+  }
+}

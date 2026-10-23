@@ -1,0 +1,29 @@
+{
+  "sortDesc": {
+    "cursor": "R060 型式",
+    "cursorVisibleBefore": {
+      "rendered": false
+    },
+    "editorInDom": 0,
+    "storeAfterIme": {
+      "mode": "edit",
+      "editValue": "AB150"
+    },
+    "saved": {
+      "name": "結束バンド 150",
+      "model": "AB150"
+    }
+  },
+  "filterEsc": {
+    "cursor": "—",
+    "cursorVisibleBefore": {
+      "rendered": false
+    },
+    "editorInDom": 0,
+    "storeAfterIme": {
+      "mode": "nav",
+      "editValue": ""
+    },
+    "saved": {}
+  }
+}

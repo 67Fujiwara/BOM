@@ -1,0 +1,22 @@
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=quoted adopted=- quotes=[["S1",356],["S2",null],["S3",null]]
+R045 指定商社 designated=S2 status=quoted adopted=- quotes=[["S1",8811],["S2",10139],["S3",9047]]
+bulk → 採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=selected adopted=- quotes=[["S1",356],["S2",null],["S3",null]]
+R045 指定商社 designated=S2 status=selected adopted=S1 quotes=[["S1",8811],["S2",10139],["S3",9047]]
+FAIL M3 指定商社の行は指定先（S2）以外で採用されない :: R045 指定商社 designated=S2 status=selected adopted=S1 quotes=[["S1",8811],["S2",10139],["S3",9047]]
+Shift+A on 指定商社 → {"kind":"adopt","options":[],"index":0} 採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+new row R081
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+publish dialog 変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter
+publish → 行 6（Rev.2） を公開しました
+R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=selected adopted=- quotes=[["S1",null]]
+request → 5 行 × 3 社に依頼（回答期限 2026-10-28）
+R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=selected adopted=- quotes=[["S1",null]]
+PASS M3 客先指定品の行も指定先 1 社に概算見積を依頼する（§3.4・§7） :: R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=selected adopted=- quotes=[["S1",null]]
+o R034 → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=selected adopted=- quotes=[["S1",356],["S2",null],["S3",null]] header money 概算 ¥18,549,970 / 正式 ¥18,551,526 / 予算 ¥2,800,000 (+562.6%)
+FAIL M3 客先指定品（R034）を正式見積依頼・発注まで進められる :: R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=selected adopted=- quotes=[["S1",356],["S2",null],["S3",null]]
+== 1/3 PASS

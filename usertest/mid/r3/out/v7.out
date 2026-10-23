@@ -1,0 +1,47 @@
+bulk → 採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+contested R005
+purchasing x on contested → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+FAIL M3 拮抗バッジは選定者（設計）だけが外せる :: {"pmPending":false,"contested":false,"leadNG":false}
+publish → 行 5（Rev.2） を公開しました
+request → 5 行 × 3 社に依頼（回答期限 2026-10-28）
+paste → 45 セルを貼り付けました（Ctrl+Z で一度に戻せます）
+R076-78 R076:quoted:{"requote":false,"ltbPending":true} R077:quoted:{"requote":false,"ltbPending":true} R078:quoted:{"requote":false,"ltbPending":true}
+R079 quoting
+Alt+A → R079: 立花エレテック を仮採用。PM の承認待ち（7 要決定）
+PM panel R076: 決定パネル R076（先行発注判断） ["y 先行発注を許可（推奨商社で選定済）","Shift+Y 却下 → 正式見積を待つ"]
+y dialog {"kind":"prompt","title":"決定: 先行発注許可（R076。理由・任意）","options":[],"index":0}
+y → R076: 先行発注許可
+R076 after y selected S1 1 {"requote":false,"ltbPending":false,"early":true,"pmPending":false,"leadNG":true} scores [ 'S1:69.2', 'S2:67.2', 'S3:58.5' ]
+PASS M-07 先行発注判断の y で推奨商社が採用され選定済＋先行
+R079 after y selected S2 {"requote":false,"pmPending":false,"contested":false,"early":true,"ltbPending":false,"leadNG":false}
+o R076 → 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません selected S1 ¥5,000
+o R079 → R079: 発注済にしました ordered S2 ¥777
+FAIL M-07b 先行の行は採用商社・金額つきで発注できる
+ltb request on quoting {"kind":"prompt","title":"先行発注を申請 R080（理由）","options":[],"index":0}
+R080 after ltb request {"requote":false,"ltbPending":true} quoting
+R061 model ＭＴ－２．５ 白 selected
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R020 selected S3
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R025 3 selected R035 6 selected
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish dialog 変更セット（5 行: R003, R020, R025, R035, R061）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter
+publish → 行 5（Rev.3） を公開しました
+R061 submitted adopt undefined oq 2 {"pmPending":false,"contested":true,"leadNG":false,"requote":true} live quotes 0
+R020 submitted adopt undefined oq 2 {"pmPending":false,"contested":false,"leadNG":false,"requote":true} live quotes 0
+R025 selected adopt S1 oq 4 {"pmPending":false,"contested":true,"leadNG":true,"requote":true} live quotes 3
+R035 selected adopt S2 oq 7 {"pmPending":false,"contested":false,"leadNG":false,"priceCheck":true} live quotes 2
+R003 selected adopt S1 oq 3 {"leadNG":true,"requote":true,"orderQtyCheck":true} live quotes 3
+FAIL M3 型式の全角→半角だけの変更は表記修正（見積は有効のまま） :: {"pmPending":false,"contested":true,"leadNG":false,"requote":true}
+PASS S 意味のある型式変更 → 再見積要・採用解除・見積失効
+PASS S 必要数 +33%（>20%）→ 再見積要
+PASS S 必要数 +17%（≤20%）→ 再見積要にしない
+PASS S 発注数を手で変えた行の必要数変更 → 発注数要確認
+formal confirm 正式見積依頼書（社外）を出します: 対象 72 行（拮抗 30 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります
+formal → 72 行 × 3 社に正式見積を依頼
+R025 after formal request formalRequested → formalRequested {"pmPending":false,"contested":true,"leadNG":true,"requote":true,"reissue":false}
+FAIL M3 再見積要（数量 +33%）の行は正式見積依頼から外れる
+== 5/9 PASS

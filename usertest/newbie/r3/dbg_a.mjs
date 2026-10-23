@@ -1,0 +1,12 @@
+import { launch, fresh, T, sel, gotoCol, store, row, ui } from './lib.mjs'
+const { browser, page, errors } = await launch()
+await fresh(page); await page.keyboard.press('1')
+await sel(page, 'R076'); await gotoCol(page, '部品名')
+console.log('before', JSON.stringify(await row(page, 'R076')).slice(0, 300))
+await page.keyboard.type('relay', { delay: 30 })
+console.log(await ui(page))
+await page.keyboard.press('Enter'); await page.waitForTimeout(100)
+console.log(await ui(page), await T.toast(page))
+console.log('after', JSON.stringify(await row(page, 'R076')).slice(0, 300))
+console.log('stored', JSON.stringify((await page.evaluate(() => JSON.parse(localStorage.getItem('bom-pro.workspace.v2'))))?.projects?.[0]?.rows?.find(r => r.id === 'R076')).slice(0, 300))
+await browser.close(); console.log(errors)

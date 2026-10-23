@@ -1,0 +1,2 @@
+panel {"kind":"quickfix","title":"決定パネル R011（例外選定）","options":["y 承認 → 選定済","Shift+Y 却下 → 見積済（選定者へ）","b 次点へ（必要日を満たす最高スコア）"],"index":0}
+after pressing 3 in decision panel: {"kind":"prompt","title":"決定: 次点商社へ（R011。理由・任意）","options":[],"index":0} view 7

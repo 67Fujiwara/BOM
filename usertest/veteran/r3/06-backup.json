@@ -1,0 +1,63 @@
+{
+  "A: one-slot backup overwritten": {
+    "toastOnLoad": "保存データを読めなかったのでサンプルを表示しています（JSON として読めません（Expected ':' after property name in JSON at position 124076 (line 1 column 124077)））。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す",
+    "backupAfterLoad": {
+      "reason": "読めなかった保存データ",
+      "len": 124076,
+      "head": "{\"user\":{\"name\":\"山田\",\"role\":\"design\"},\"projects\":[{\"id\":\"P-R"
+    },
+    "importToast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "backupAfterImport": {
+      "reason": "JSON 読み込みの前",
+      "len": 124122,
+      "head": "{\"user\":{\"name\":\"山田\",\"role\":\"design\"},\"projects\":[{\"id\":\"P-2"
+    },
+    "brokenOriginalStillSomewhere": false,
+    "restoreOffers": "退避したデータ（10/23 02:10・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避と入れ替えます\n1\nやめる\n2\n戻す\n1 〜 数字で選ぶ\nEnter 選択中を確定\nEsc 取り消し"
+  },
+  "A2: reset keeps backup": {
+    "before": {
+      "reason": "読めなかった保存データ",
+      "len": 124109,
+      "head": "{\"user\":{\"name\":\"山田\",\"role\":\"design\"},\"projects\":[{\"id\":\"P-R"
+    },
+    "after": {
+      "reason": "読めなかった保存データ",
+      "len": 124109,
+      "head": "{\"user\":{\"name\":\"山田\",\"role\":\"design\"},\"projects\":[{\"id\":\"P-R"
+    }
+  },
+  "B: crash recovery path": {
+    "crashAfterImport": 1,
+    "crashAfterReload": 1,
+    "paletteOnCrashScreen": null,
+    "tabFocus": "再読み込み",
+    "backupAfterReset": {
+      "reason": "JSON 読み込みの前",
+      "len": 124330,
+      "head": "{\"user\":{\"name\":\"山田\",\"role\":\"design\"},\"projects\":[{\"id\":\"P-2"
+    },
+    "toastAfterReset": "",
+    "restoredR030": "壊れる前の値",
+    "ids": [
+      "P-2026-041"
+    ]
+  },
+  "C: quota": {
+    "bigBytes": 1212197,
+    "importToast": "JSON を読み込みました（案件 10 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "lsSizes": {
+      "bom-pro.workspace.v2": 1212224,
+      "bom-pro.workspace.backup": 1431965
+    },
+    "editToast": "JSON を読み込みました（案件 10 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "editSaved": true,
+    "afterReload": {
+      "names": [
+        "大きい案件 0（新）",
+        "大きい案件 1（新）"
+      ],
+      "hasEdit": true
+    }
+  }
+}

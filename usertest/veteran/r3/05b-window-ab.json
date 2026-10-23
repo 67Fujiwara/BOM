@@ -1,0 +1,26 @@
+{
+  "current": {
+    "cursor": "R060 必要数",
+    "sortDesc": "not rendered",
+    "sortAsc": "visible",
+    "filtered": "visible",
+    "filterCleared": "not rendered",
+    "enterAfterScroll": {
+      "editor": 0,
+      "vis": "not rendered",
+      "active": "gridwrap"
+    }
+  },
+  "r2": {
+    "cursor": "R060 必要数",
+    "sortDesc": "offscreen",
+    "sortAsc": "offscreen",
+    "filtered": "visible",
+    "filterCleared": "not rendered",
+    "enterAfterScroll": {
+      "editor": 1,
+      "vis": "visible",
+      "active": "cell"
+    }
+  }
+}

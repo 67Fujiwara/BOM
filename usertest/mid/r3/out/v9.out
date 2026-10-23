@@ -1,0 +1,21 @@
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+採用 70 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+publish → 行 7（Rev.2） を公開しました
+purchasing 5 has R025,R026 [ 'R025', 'R026' ]
+x → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+PM 5 has R026? true
+PASS M3 5 変更あり は「自分が」未確認の差分（購買の確認で PM の 5 から消えない）
+R025 after formal formalRequested {"pmPending":false,"contested":true,"leadNG":true,"requote":true,"reissue":false}
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-28）
+R025 after rough quoted S1 {"pmPending":false,"contested":true,"leadNG":true,"requote":false,"reissue":false}
+impact ["納期NG になる行: 1（formalRequested 1）","推奨が変わる行: 18（R003, R005, R020, R023, R025, R026, R032, R033）","行必要日が固定の行: 0（）","正式依頼中で必要納期が変わる行（再発行対象）: 73","総額差（推奨で選び直した場合）: ¥-31,491","特急費の概算: 納期NG 1 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）"]
+reissue rows 73 due 2026-11-28
+8 header/toolbar: 再発行対象 73 行提出 Rev.2（山田 10/23, 追加5 / 型式0 / 数量1）
+reissue confirm 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 30 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります
+reissue → 73 行 × 3 社に正式見積を依頼 downloads 3
+sheets [ '正式見積依頼', '差分' ]
+差分 sheet [ '行ID|項目|旧|新' ]
+FAIL S 再発行の依頼書に差分シート（必要納期 旧→新） :: 行ID|項目|旧|新
+purchasing money before/after design cancel (unpublished): 概算 ¥18,550,180 / 正式 ¥18,551,736 / 予算 ¥2,800,000 (+562.6%) → 概算 ¥9,669,780 / 正式 ¥9,671,336 / 予算 ¥2,800,000 (+245.4%)
+FAIL M3 未公開の取消で購買のヘッダー金額が変わらない
+== 1/3 PASS

@@ -1,0 +1,12 @@
+import { launch, log } from './lib.mjs'
+const t = await launch()
+await t.open('design')
+log('view', await t.view(), 'rows', (await t.viewRows()).length)
+log('lamps', await t.lamps())
+log('money', await t.money())
+await t.goto('R020'); log('cur', await t.curRow(), await t.curCol())
+await t.press(' '); log(await t.page.getByTestId('detail').textContent())
+await t.press('Escape')
+await t.press('Control+k'); log(await t.page.locator('[data-testid^=palette]').count())
+await t.press('Escape')
+await t.close()

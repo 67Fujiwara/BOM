@@ -1,0 +1,10 @@
+import { launch, fresh, proj } from './lib.mjs'
+const { browser, page } = await launch()
+await fresh(page)
+const p = await proj(page)
+const by = {}; for (const r of p.rows) (by[r.status] ??= []).push(r.id + (r.working ? '*' : '') + (r.adoptedSupplierId ? '@' + r.adoptedSupplierId : ''))
+console.log(JSON.stringify(by, null, 1))
+console.log('suppliers', p.supplierIds, 'settings', JSON.stringify(p.settings).slice(0, 400))
+console.log('issues', p.issues.map(i => `${i.id}:${i.rowId}:${i.kind}:${i.status}:${i.by.role}`).join(' '))
+console.log('members', JSON.stringify(p.members), 'subs', p.submissions.length, 'decisions', p.decisions.length)
+await browser.close()

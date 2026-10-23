@@ -1,0 +1,137 @@
+[
+  {
+    "col": "name",
+    "text": "knob",
+    "changes": [
+      "R016.model: \"CP30-BA 2P\" → \"ob\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "maker",
+    "text": "jst",
+    "changes": [
+      "R041.maker: \"\" → \"st\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "name",
+    "text": "nand",
+    "changes": [
+      "R016.model: \"CP30-BA 2P\" → \"nd\"",
+      "R016.adopted: null → \"S1\"",
+      "R016.status: \"quoted\" → \"selected\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "name",
+    "text": "ssr",
+    "changes": [
+      "R034.status: \"quoted\" → \"selected\"",
+      "R040.status: \"quoted\" → \"replaced\"",
+      "R081.name: undefined → \"ファイバユニット\"",
+      "R081.model: undefined → \"E32-D11 2M\"",
+      "R081.maker: undefined → \"オムロン\"",
+      "R081.altPolicy: undefined → \"同等品可\"",
+      "R081.unit: undefined → \"個\"",
+      "R081.adopted: undefined → null",
+      "R081.status: undefined → \"draft\""
+    ],
+    "rowsAdded": 1
+  },
+  {
+    "col": "model",
+    "text": "NJM2904",
+    "changes": [
+      "R062.model: \"RCG-M20\" → \"M2904\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "maker",
+    "text": "JST",
+    "changes": [
+      "R041.maker: \"\" → \"T\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "STM32F103",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"TM32F103\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "DRV8833",
+    "changes": [
+      "R034.status: \"quoted\" → \"selected\"",
+      "R081.name: undefined → \"ファイバユニット\"",
+      "R081.model: undefined → \"V8833\"",
+      "R081.maker: undefined → \"オムロン\"",
+      "R081.altPolicy: undefined → \"同等品可\"",
+      "R081.unit: undefined → \"個\"",
+      "R081.adopted: undefined → null",
+      "R081.status: undefined → \"draft\""
+    ],
+    "rowsAdded": 1
+  },
+  {
+    "col": "model",
+    "text": "ADP3338",
+    "changes": [
+      "R040.adopted: null → \"S3\"",
+      "R034.status: \"quoted\" → \"selected\"",
+      "R040.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "altPolicy",
+    "text": "ka",
+    "changes": [
+      "R039.adopted: null → \"S1\"",
+      "R034.status: \"quoted\" → \"selected\"",
+      "R039.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "col": "model",
+    "text": "2SC1815",
+    "changes": [
+      "R040.model: \"E32-D11 2M\" → \"C1815\"",
+      "R034.status: \"quoted\" → \"selected\""
+    ],
+    "rowsAdded": 0
+  },
+  {
+    "case": "f then 1",
+    "st": {
+      "mode": "edit",
+      "editValue": "f1",
+      "cursorRow": "R040",
+      "cellFilter": null
+    },
+    "editorInDom": 0,
+    "vis": {
+      "rendered": false
+    },
+    "afterTyping": {
+      "mode": "edit",
+      "editValue": "f1XYZ"
+    },
+    "savedName": "f1XYZ",
+    "active": "gridwrap"
+  }
+]

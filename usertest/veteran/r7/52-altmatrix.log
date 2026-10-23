@@ -445,3 +445,16 @@ EDIT Alt+KeyE {"where":"編集中（部品名に abc）","key":"Alt+KeyE","preve
 EDIT Alt+KeyF {"where":"編集中（部品名に abc）","key":"Alt+KeyF","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
 EDIT Alt+KeyN {"where":"編集中（部品名に abc）","key":"Alt+KeyN","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
 EDIT Alt+Shift+KeyI {"where":"編集中（部品名に abc）","key":"Alt+Shift+KeyI","prevented":true,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Control+Alt+KeyA {"where":"編集中（部品名に abc）","key":"Control+Alt+KeyA","prevented":null,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+KeyA {"where":"編集中（部品名に abc）","key":"Alt+KeyA","prevented":null,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT F8 {"where":"編集中（部品名に abc）","key":"F8","prevented":false,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+ArrowDown {"where":"編集中（部品名に abc）","key":"Alt+ArrowDown","prevented":false,"mode":"編集","edit":"abc","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+EDIT Alt+ArrowUp {"where":"編集中（部品名に abc）","key":"Alt+ArrowUp","prevented":false,"mode":"編集","edit":"(no editor)","panel":null,"cursor":"R040 部品名","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 Alt+KeyX {"where":"絞り込み欄","key":"Alt+KeyX","prevented":true,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 Alt+KeyH {"where":"絞り込み欄","key":"Alt+KeyH","prevented":null,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 Alt+KeyN {"where":"絞り込み欄","key":"Alt+KeyN","prevented":true,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 Alt+KeyD {"where":"絞り込み欄","key":"Alt+KeyD","prevented":true,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 F8 {"where":"絞り込み欄","key":"F8","prevented":false,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT 絞り込み欄 Control+Alt+KeyA {"where":"絞り込み欄","key":"Control+Alt+KeyA","prevented":null,"value":"abc","panel":null,"mode":"ナビ","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット Alt+KeyX {"where":"パレット","key":"Alt+KeyX","prevented":true,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}
+INPUT パレット Alt+KeyH {"where":"パレット","key":"Alt+KeyH","prevented":null,"value":"abc","panel":"panel-palette","mode":"パレット","diff":[],"toast":"保存しました（編集は自動で保存されています）"}

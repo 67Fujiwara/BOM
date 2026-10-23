@@ -30,3 +30,9 @@ ok    issues[0].field={} |  | JSON を読み込みました（案件 1 件）。
 ok    decisions[0].text={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
 ok    caseDecisions open 型違い |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
 ok    events 末尾 at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers handledMakers 正常＋onTimeRate="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers color={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers order="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    project.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    project.id 数字だけ "123" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.budget="1e400" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 

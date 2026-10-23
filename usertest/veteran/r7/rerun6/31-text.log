@@ -267,3 +267,15 @@ build OK x7r@0 | 備考 | mode 編集 edit "x7r" | cur R040 備考 | view view-1
 build OK x7r@60 | 備考 | mode 編集 edit "x7r" | cur R040 備考 | view view-1 | panel null | chips  | diff   | lag 28
 build OK x7r@450 | 備考 | mode 編集 edit "x7r" | cur R040 備考 | view view-1 | panel null | chips  | diff   | lag 10
 build OK x7r@1000 | 備考 | mode 編集 edit "x7r" | cur R040 備考 | view view-1 | panel null | chips  | diff   | lag 0
+build OK k1@0 | 回路記号 | mode 編集 edit "k1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 12
+build OK k1@60 | 回路記号 | mode 編集 edit "k1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+build OK k1@450 | 回路記号 | mode 編集 edit "k1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+build OK k1@1000 | 回路記号 | mode 編集 edit "k1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+build OK K1@0 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 13
+build OK K1@60 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 3
+build OK K1@450 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 5
+build OK K1@1000 | 回路記号 | mode 編集 edit "K1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+build OK J1@0 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 4
+build OK J1@60 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0
+build OK J1@450 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 1
+build OK J1@1000 | 回路記号 | mode 編集 edit "J1" | cur R040 回路記号 | view view-1 | panel null | chips  | diff   | lag 0

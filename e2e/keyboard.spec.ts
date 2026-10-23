@@ -289,6 +289,21 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
     await expect(page.locator(`[data-row-id="${id}"] td[data-col="model"]`)).toHaveText(word)
   }
   await expect(page.getByTestId('status')).not.toContainText('R081')
+  // ゆっくり打つ（1 文字 0.3 秒）・Shift の英字＋数字・回路記号・c / w で始まる語
+  const cases: Array<[string, string, string, number]> = [
+    ['R041', '部品名', 'anode', 300],
+    ['R042', '部品名', 'cable', 60],
+    ['R043', '部品名', 'washer', 60],
+    ['R044', '型式', 'AC100V', 60],
+    ['R045', '回路記号', 'K1', 60],
+  ]
+  for (const [id, col, word, delay] of cases) {
+    await gotoCell(page, id, col)
+    for (const ch of word) await page.keyboard.press(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, { delay: 10 }), await page.waitForTimeout(delay)
+    await page.keyboard.press('Enter')
+    const key = col === '部品名' ? 'name' : col === '型式' ? 'model' : 'ref'
+    await expect(page.locator(`[data-row-id="${id}"] td[data-col="${key}"]`)).toHaveText(word)
+  }
 })
 
 test('編集中にサイドバーのビューをクリックしても、入力は編集していた行に入る', async ({ page }) => {

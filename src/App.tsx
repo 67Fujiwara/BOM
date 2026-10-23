@@ -7,6 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { commitEdit, handleKeyDown } from '@/commands/registry'
+import { flushPending } from '@/commands/keyboard'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
@@ -86,11 +87,14 @@ function Main() {
       }
     }
     window.addEventListener('beforeunload', unload)
+    // 待たせている英字コマンドは、クリックでカーソルが動く前に実行する（別の行に効かないように）
+    window.addEventListener('pointerdown', flushPending, true)
     // 保存データを読めなかった・一部を外したときは、黙ってサンプルにしない
     if (loadProblem) useStore.getState().toastMsg(loadProblem, 'err')
     return () => {
       window.removeEventListener('keydown', h)
       window.removeEventListener('beforeunload', unload)
+      window.removeEventListener('pointerdown', flushPending, true)
     }
   }, [])
   useEffect(() => {

@@ -85,11 +85,12 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 const VER_SEP = '[\\s_\\-【】\\[\\]［］（）()／/・:：の.]'
 // 「修正前／後」「改定前／後」「改正前／後」「訂正前／後」「差替前／後」「現状／変更案」も
 const CHANGE_STEM = '(?:変更|改訂|改定|改正|修正|訂正|差替|差し替え)'
-const OLD_WORDS = `${CHANGE_STEM}前|前回|旧品|旧版|旧|現在|現行|現状|現|今|前|old|before|prev(?:ious)?|as-?is`
-const NEW_WORDS = `${CHANGE_STEM}後|変更案|新しい|新品|新版|新|変更|改|後|new|after|to-?be`
+const OLD_WORDS = `${CHANGE_STEM}前|前回|旧品|旧版|旧|現在|現行|現状|現|今|前|old|before|prev(?:ious)?|as-?is|was|current`
+// 「変更」だけの語は印にしない（「変更記号」「変更備考」「型式の変更」は変更の内容の列）。「変更型式」は下の頭の印で
+const NEW_WORDS = `${CHANGE_STEM}後|変更案|新しい|新品|新版|新|改|修正|後|new|after|to-?be|is|proposed|revised`
 // 見出しの頭に付く印（新型式・旧品番・現数量・修正前型式）。「新品番」「旧品名」の「品」は項目の一部なので、頭の印は 1 字の新・旧を先に
 const OLD_PREFIX = `${CHANGE_STEM}前|前回|旧|現在|現行|現状|現|old|prev`
-const NEW_PREFIX = `${CHANGE_STEM}後|変更案|新しい|新|変更|改|new`
+const NEW_PREFIX = `${CHANGE_STEM}後|変更案|新しい|新|変更(?=型式|形式|型番|品番|数量|員数|品名|部品名|名称|メーカ)|改|new`
 const verToken = (w: string) => new RegExp(`(^|${VER_SEP})(${w})(?=${VER_SEP}|$)`, 'i')
 // 頭の印は、すぐ後ろが項目の語のときだけ（「Newark P/N」「新光品番」は商社の名前で版の印ではない）
 const FIELD_HEAD = '型式|形式|型番|品番|形番|形名|型名|品名|部品|名称|数量|員数|個数|台数|要数|必要|使用|手配|所要|メーカ|製造|図番|図面|記号|回路|備考|単位|入数|part|p\\/?n|mpn|qty|q\'ty|quantity|model|mfr|maker|manufacturer|desc|item|name|ref|dwg|drawing|note|unit'
@@ -151,12 +152,14 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
   // 表題欄（「品名 | 制御盤A | 数量 | 1台」のようにラベルと値が別のセル）は、見出しの言葉が多くても見出しにしない:
   // 数（単位つきも）だけのセルがある行、見出しの言葉のすぐ右がいつも値になっている行
-  const numCell = (c: string) => /^\s*\d[\d.,]*\s*(台|個|式|枚|本|組|面|セット|set|pcs?|ヶ|ケ)?\s*$/i.test(toHalf(c))
+  // 値のセル: 見出しの言葉（項目・単価・金額・規格 など）でない。「数量 | 1台」の「1台」は値
+  const HEADER_WORD = /^(no\.?|番号|規格|仕様|単価|金額|価格|納期|購入先|仕入先|手配|区分|摘要|小計|合計|計|頁|ページ|サイズ|材質|重量|用途|号機|\d+\s*号機|\d+|price|unitprice|amount|spec|specification|cost|leadtime|vendor|supplier)$/i
+  const valueCell = (c: string) => c.trim() !== '' && !detectField(c) && !HEADER_WORD.test(toHalf(c).replace(/[\s　]+/g, ''))
   const alternating = (l: string[]) => {
     const idx = l.map((_, j) => j).filter((j) => headerField(l[j]))
-    return idx.length >= 2 && idx.every((j) => (l[j + 1] ?? '').trim() !== '' && !headerField(l[j + 1]))
+    return idx.length >= 2 && idx.every((j) => valueCell(l[j + 1] ?? ''))
   }
-  const titleLike = (l: string[]) => l.some(numCell) || alternating(l)
+  const titleLike = (l: string[]) => alternating(l)
   const counts = lines.slice(0, 30).map((l) => (titleLike(l) ? 0 : new Set(l.map(headerField).filter(Boolean)).size))
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
@@ -180,6 +183,8 @@ export function parseBomPaste(text: string): PasteResult {
   const bestRatio = best >= 2 ? Math.min(...tops.map((i) => ratio(lines[i]))) : 0
   const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && (tops.includes(i) || (!titleLike(l) && ratio(l) >= bestRatio - 0.15)))
   const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
+  // 設計変更の様式の上の段（変更前｜変更後）。ページごとに繰り返していたら外す
+  let upperRow: string[] | null = null
   // 2 段の見出しで、上の段がまとめの名前（部品情報｜数量）、下の段が項目と「旧／新」のとき: 下の段の「旧」「新」に上の段の名前を付ける
   if (headerAt > 0) {
     const up = lines[headerAt - 1]
@@ -193,6 +198,7 @@ export function parseBomPaste(text: string): PasteResult {
       })
       if (merged.some((c, j) => c !== h[j])) lines[headerAt] = merged
     } else if (up.some(markOnly)) {
+      upperRow = up
       // 設計変更の様式: 上の段に「変更前」「変更後」（旧／新）を結合し、下の段に項目を繰り返す → 下の段の繰り返した項目に上の段の印を付ける。
       // 上の段にだけある項目（縦に結合した「部品名」）は見出しにする
       const fs = h.map((c) => detectField(c))
@@ -222,7 +228,8 @@ export function parseBomPaste(text: string): PasteResult {
   const twoStage = (top: string[], sub: string[] | undefined): string[] | null => {
     if (!sub) return null
     const same = (j: number) => (sub[j] ?? '').trim() !== '' && (sub[j] ?? '').trim() === (top[j] ?? '').trim()
-    const mark = (c: string) => c.trim() !== '' && (headerVersion(c) !== null || headerRev(c) !== null) && detectField(c) === null
+    // 下の段の小見出し: 版の印・Rev、号機ごとの数量（1号機・2号機・合計）
+    const mark = (c: string) => c.trim() !== '' && detectField(c) === null && (headerVersion(c) !== null || headerRev(c) !== null || /^(\d+\s*号機|号機\s*\d+|[a-z]\s*号機|\d+\s*台目|合計|計|小計|総数|total|sum)$/i.test(toHalf(c).trim()))
     // 単位の注記（「(個)」「(円)」）は印でも部品でもない（まとめるときは無視する）
     const unitNote = (c: string) => /^[（(][^）)]{1,6}[）)]$/.test(c.trim())
     const marks = sub.filter((c, j) => !same(j) && mark(c)).length
@@ -258,7 +265,10 @@ export function parseBomPaste(text: string): PasteResult {
     const baseText = lines[0].map(norm)
     // 数量の列に数のある行は部品の行（見出しの繰り返しではない）
     // 最初の見出しと同じ文字のセルが 1 つも無い行（「型式表示板 / 部品名札 / メーカ銘板」のような部品）も見出しの繰り返しにしない
-    const isRepeat = (l: string[]) => sameHeader(l) && l.some((c) => norm(c) !== '' && baseText.includes(norm(c))) && !l.some((c, j) => baseFields[j] === 'qtyNeeded' && /^\s*\d[\d.,]*\s*$/.test(toHalf(c)))
+    // 見出しの言い方を変えたページ（品名・形式・員数）も、どのセルも見出しの語そのものなら繰り返し
+    const PLAIN = /^(no\.?|番号|部品名|品名|名称|品目|部品|型式|形式|型番|品番|形名|型名|部品番号|メーカ|メーカー|製造元|数量|員数|個数|台数|必要数|使用数|単位|備考|摘要|回路記号|記号|図番|description|part(no|number|name)?|p\/n|mpn|manufacturer|mfr|qty|quantity|unit|remarks?|notes?|ref(des)?)$/i
+    const plain = (c: string) => PLAIN.test(norm(c).replace(/[（(][^）)]*[）)]/g, ''))
+    const isRepeat = (l: string[]) => sameHeader(l) && (l.some((c) => norm(c) !== '' && baseText.includes(norm(c))) || l.filter((c) => c.trim()).every(plain)) && !l.some((c, j) => baseFields[j] === 'qtyNeeded' && /^\s*\d[\d.,]*\s*$/.test(toHalf(c)))
     // ページの見出しの列を、最初の見出しの列に対応させる。同じ文字の見出し → 同じ項目の何番目か の順。
     // 同じ項目の列が複数あれば、版の印（旧／新）の合う列を先に（最初の見出しに印が無ければ新 → 印なし → 旧）。
     // ページの見出しに無い項目の列は空にする（メーカの無いページ・回路記号が 1 ページ目だけ）
@@ -296,8 +306,13 @@ export function parseBomPaste(text: string): PasteResult {
     let perm: number[] | null = null
     let removed = 0
     let reordered = 0
+    const upperKey = upperRow ? upperRow.map(norm).join('\t').replace(/\t+$/, '') : null
     for (let i = 1; i < lines.length; i++) {
       const l = lines[i]
+      if (upperKey && l.map(norm).join('\t').replace(/\t+$/, '') === upperKey) {
+        removed++
+        continue
+      }
       if (isRepeat(l)) {
         removed++
         // ページごとの 2 段の見出しは、下の段も見出しとして外す
@@ -384,7 +399,9 @@ export function parseBomPaste(text: string): PasteResult {
     }
     // Rev が書いてあれば新しい Rev を先に
     const rev = (j: number) => (hasHeader ? (headerRev(first[j] ?? '') ?? -1) : -1)
-    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || a - b)
+    // 号機ごとの数量と「合計」の列があれば合計を
+    const total = (j: number) => (hasHeader && /合計|総数|total|sum/i.test(first[j] ?? '') ? 0 : 1)
+    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || a - b)
     const keep = order[0]
     if (rank(keep) === 0 || rev(keep) >= 0) fallback.set(dup, { keep, others: order.slice(1) })
     mapping = mapping.map((f, j) => (f === dup && j !== keep ? null : f))
@@ -395,12 +412,15 @@ export function parseBomPaste(text: string): PasteResult {
   const noteCol = mapping.indexOf('note')
   const fbs = [...fallback.values()]
   // 新しい版の列の「－」「〃」「同左」「変更なし」は「変えていない」（空と同じ）。「削除」「廃止」は削除の印
-  const SAME = /^(－|-|ー|―|〃|”|同上|同左|変更なし|変更無し|同じ|同)$/
-  const DEL = /^(削除|廃止|削除品|delete[d]?)$/i
+  // （「〃」「同上」は上の行と同じ。下の「〃・同上」で上の行の値にする）
+  const SAME = /^(－|-|ー|―|同左|変更なし|変更無し|同じ|同)$/
+  const DEL = /^(削除|廃止|削除品|撤去|不要|なし|無し|×|✕|delete[d]?)$/i
   const blank = (l: string[], j: number) => (l[j] ?? '').trim() === '' || SAME.test((l[j] ?? '').trim())
   const onlyOld = (l: string[]) => fbs.length > 0 && ((fbs.every((fb) => blank(l, fb.keep)) && fbs.some((fb) => fb.others.some((k) => !blank(l, k)))) || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())))
-  const hasAdds = body.some((l) => fbs.some((fb) => !blank(l, fb.keep) && fb.others.every((k) => blank(l, k))))
-  const deleted = body.filter((l) => onlyOld(l) && (hasAdds || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())) || (noteCol >= 0 && /削除|廃止|delete|remove/i.test(l[noteCol] ?? ''))))
+  // 新しい版の列を変えていない行にも書き写してある表（新と旧が同じ値の行がある）なら、新が空の行は削除。
+  // 変えた行だけ新の列に書く表では、新が空の行は変えていない（削除にしない）
+  const complete = body.some((l) => fbs.some((fb) => !blank(l, fb.keep) && fb.others.some((k) => (l[k] ?? '').trim() === (l[fb.keep] ?? '').trim())))
+  const deleted = body.filter((l) => onlyOld(l) && (complete || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())) || (noteCol >= 0 && /^\s*(削除|廃止|撤去|delete|remove)/i.test(l[noteCol] ?? ''))))
   if (deleted.length) {
     body = body.filter((l) => !deleted.includes(l))
     const ex = deleted[0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')
@@ -410,7 +430,8 @@ export function parseBomPaste(text: string): PasteResult {
   let badUnit = 0
   const fellBack = new Map<BomField, number>()
   // 「〃」「同上」は上の行の値、「同左」は左のセルの値にする
-  const DITTO = /^(〃|”|"|''|同上|同左|仝|ditto)$/i
+  const DITTO = /^(〃|″|”|＂|"|''|同上|同左|上に同じ|左に同じ|仝|ditto)$/i
+  const dittoOf = (v: string) => DITTO.test(v.replace(/[\s　。.]/g, ''))
   const prevVal = new Map<BomField, string>()
   let ditto = 0
   const rows = body.map((line, i) => {
@@ -430,8 +451,9 @@ export function parseBomPaste(text: string): PasteResult {
           fellBack.set(f, (fellBack.get(f) ?? 0) + 1)
         }
       }
-      if (DITTO.test(v)) {
-        v = /同左/.test(v) ? (cells[j - 1] ?? '').trim() : (prevVal.get(f) ?? '')
+      if (dittoOf(v)) {
+        // 同左は、左の列が同じ項目（旧の列）のときだけ左の値。ほかは上の行と同じ
+        v = /同左|左に同じ/.test(v) && j > 0 && detected[j - 1] === f ? (cells[j - 1] ?? '').trim() : (prevVal.get(f) ?? '')
         ditto++
       }
       prevVal.set(f, v)
@@ -532,8 +554,11 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
         // 結合したセルは左上のセルにだけ値を置く（ExcelJS は結合した全部のセルに同じ値を返す。2 段の見出しの形を崩さない）
         const cell = row.getCell(c)
         // 横の結合（見出しの「型式」を 2 列に）は左上だけ。縦に結合したデータ（分類・メーカを何行かまとめた）は各行に同じ値
-        const slave = cell.isMerged && cell.master && cell.master.address !== cell.address && cell.master.row === cell.row
-        vals.push(slave ? '' : cellToText(raw[c]).replace(/[\t\n\r]/g, ' '))
+        // 縦横に結合した範囲（2 行にまたがる表題・区切り）は、各行の左の列だけに値
+        const slave = cell.isMerged && cell.master && cell.master.address !== cell.address && (cell.master.row === cell.row || cell.master.col !== cell.col)
+        const v = slave ? '' : cellToText(raw[c]).replace(/[\t\n\r]/g, ' ')
+        // 「"」を含むセル（〃の代わりの "）は引用符で囲む（囲まないと後ろの行が 1 つのセルにつながる）
+        vals.push(v.includes('"') ? `"${v.replace(/"/g, '""')}"` : v)
       }
       lines.push(vals.join('\t'))
     })
@@ -597,7 +622,12 @@ export function isTotalCell(c0: string): boolean {
   if (/^[（(](小計|合計|総計|計)[）)]$/.test(t)) return true
   // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
   // 「合計 6台分」「合計：6個 / ¥12,000」（数・単位・金額がいくつ続いても）
-  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|合計|amount|qty)?[:：]?([/／,、]?[¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs|ヶ|ケ|コ|品目|品|種|行|件)?分?)*([（(][^）)]*[）)])?$/i.test(t)
+  // 入れ子の繰り返しの正規表現は長い数字で極端に遅くなるので、見出しの語を外した残りを文字の種類だけで見る
+  if (t.length > 60) return false
+  const m = /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|数量|点数|合計|額|数|amount|qty)?[:：]?/i.exec(t)
+  if (!m) return false
+  const rest = t.slice(m[0].length).replace(/[（(][^）)]*[）)]$/, '').replace(/個|点|台|本|枚|式|円|pcs|ヶ|ケ|コ|品目|品|種|行|件|分/gi, '')
+  return /^[\d,.¥￥$/／、]*$/.test(rest) && (rest === '' || /\d/.test(rest))
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。

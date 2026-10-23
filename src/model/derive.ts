@@ -367,3 +367,26 @@ export function routeSurplusToPm(p: Project, issue: Issue): void {
     r.flags.pmReason = '閾値超'
   }
 }
+
+/**
+ * 採用を外す前に呼ぶ: 採用商社に正式見積を依頼していれば「正式依頼取下げ」を付け（購買が元の商社に伝えて x）、
+ * 前の正式回答を消す（選び直して依頼したら新しい回答を待つ）
+ */
+export function withdrawFormal(p: Project, r: Row, suppliers: Supplier[]): void {
+  if (!r.adoptedSupplierId) return
+  const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
+  if (!q) return
+  if (q.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId} ${q.formalRequestNo}`
+  q.formalPrice = null
+  q.formalLeadDays = null
+  q.formalValidUntil = null
+  q.formalDiffReason = ''
+  q.formalRequestNo = undefined
+}
+
+/** 相見積の行で、待つ回答は無いのに取引できる商社の有効な見積が無い（全社辞退・取引停止の商社だけが回答） */
+export function noUsableQuote(p: Project, row: Row): boolean {
+  if (isFixedProcurement(row) || row.status !== 'quoting') return false
+  const { answered, total } = quoteResponses(p, row)
+  return total > 0 && answered >= total && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && knownSuppliers.find((x) => x.id === q.supplierId)?.tradable !== false)
+}

@@ -500,7 +500,9 @@ export function handleKeyDown(e: KeyboardEvent) {
   // 編集中の Alt+↑↓ は表をスクロールさせない（入力欄が見えなくなる）
   if (s.mode === 'edit' && /^Alt\+Arrow(Up|Down)$/.test(key)) e.preventDefault()
   // Ctrl+D・Ctrl+Shift+D でブラウザのブックマークを開かせない（編集中・絞り込み・パレット・ダイアログの欄でも）
-  if (key === 'Ctrl+D' || key === 'Ctrl+Shift+D') e.preventDefault()
+  // macOS のブックマークは Cmd+D。Control+D は欄の中で「後ろの 1 文字を消す」なので止めない
+  const mac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
+  if ((key === 'Ctrl+D' || key === 'Ctrl+Shift+D') && !(mac && e.ctrlKey && !e.metaKey)) e.preventDefault()
   if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+F|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {

@@ -375,9 +375,9 @@ describe('ラウンド 14 の取り込み（ベテラン）', () => {
     const b = parseBomPaste('部品名\t型式\t\t数量\n\tRev.A\tRev.B\t\nリレー\tMY2N\tMY4N\t3')
     expect(b.rows.map((x) => [x.model, x.qtyNeeded])).toEqual([['MY4N', 3]])
   })
-  it('新の列の －・〃・同左・変更なし は変えていない、削除・廃止は取り込まない', () => {
+  it('新の列の －・同左・変更なし は変えていない（〃 は上の行と同じ）、削除・廃止は取り込まない', () => {
     const r = parseBomPaste('部品名\t型式\t新型式\t数量\t新数量\nリレー\tMY2N\tMY4N\t1\t2\n端子台\tXW2B\t－\t3\t〃\nヒューズ\tF-10\t変更なし\t4\t同左\nタイマ\tH3Y\t削除\t1\t削除')
-    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 2], ['端子台', 'XW2B', 3], ['ヒューズ', 'F-10', 4]])
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 2], ['端子台', 'XW2B', 2], ['ヒューズ', 'F-10', 4]])
   })
   it('ページの見出しの旧／新の並びが違っても新の列、見出しの語だけの銘板の行は見出しにしない', () => {
     const a = parseBomPaste('部品名\t型式(旧)\t型式(新)\t数量\nリレー\tMY2N\tMY4N\t1\n部品名\t新型式\t旧型式\t数量\n端子台\tXW2B\tXW2A\t2')
@@ -397,5 +397,76 @@ describe('ラウンド 14 のページの表題（ベテラン）', () => {
   it('項目以外の列が多い見出しの上の表題欄（数量 2台）を見出しにしない', () => {
     const r = parseBomPaste('品名\t制御盤A\t型式\tCP-100\t数量\t2台\tメーカ\t自社\n\nNo\t品名\t型式\tメーカ\t数量\t単位\t単価\t金額\t納期\t購入先\t手配区分\t仕様\t備考\n1\tケーブル\tVCTF 2C\t富士\t20\tm\t100\t2000\t5\tA\t購入\t-\t\n')
     expect(r.rows.map((x) => [x.name, x.qtyNeeded, x.unit])).toEqual([['ケーブル', 20, 'm']])
+  })
+})
+
+describe('ラウンド 15 の取り込み（新人）', () => {
+  it('見積書の形の見出し（品名｜規格｜メーカー｜単価｜数量｜金額）を表題欄にしない', () => {
+    const r = parseBomPaste('品名\t規格\tメーカー\t単価\t数量\t金額\nリレー\tMY4N\tオムロン\t1200\t4\t4800')
+    expect(r.header).not.toBeNull()
+    expect(r.rows.map((x) => [x.name, x.maker, x.qtyNeeded])).toEqual([['リレー', 'オムロン', 4]])
+  })
+  it('変えた行だけ変更後を書く表に追加の行があっても、変えていない行を消さない', () => {
+    const r = parseBomPaste('品名\t型式\t変更後型式\t数量\nリレー\tMY2N\tMY4N\t2\n端子台\tXW2B\t\t3\nタイマ\t\tH3CR\t1')
+    expect(r.rows.map((x) => [x.name, x.model])).toEqual([['リレー', 'MY4N'], ['端子台', 'XW2B'], ['タイマ', 'H3CR']])
+  })
+  it('変更記号・変更備考は回路記号・備考にしない', () => {
+    const r = parseBomPaste('変更記号\t回路記号\t品名\t型式\t数量\t備考\t変更備考\n△1\tK1\tリレー\tMY4N\t2\t予備\t型式変更')
+    expect(r.rows[0]).toMatchObject({ ref: 'K1', note: '予備' })
+  })
+  it('数量を 1号機・2号機・合計 に分けた 2 段の見出し（品名などは縦に結合）は合計の列', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\t\t\n品名\t型式\tメーカー\t1号機\t2号機\t合計\nリレー\tMY4N\tオムロン\t2\t3\t5')
+    expect(r.rows.map((x) => [x.name, x.qtyNeeded])).toEqual([['リレー', 5]])
+  })
+  it('メーカーの列の同左は型式を写さない（上の行の値）、″・同　上・上に同じ も上の行', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N\tオムロン\t1\nソケット\tPYF08A\t同左\t1\nタイマ\tH3CR\t″\t1\nヒューズ\tF-10\t同　上\t1\n端子\tXW2B\t上に同じ\t1')
+    expect(r.rows.map((x) => x.maker)).toEqual(['オムロン', 'オムロン', 'オムロン', 'オムロン', 'オムロン'])
+  })
+  it('新の列の撤去・不要・× は削除', () => {
+    const r = parseBomPaste('部品名\t型式\t新型式\t数量\t新数量\nリレー\tMY2N\tMY4N\t1\t2\nタイマ\tH3Y\t撤去\t1\t\n端子\tXW2A\t×\t1\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+})
+
+describe('ラウンド 15 の取り込み（ベテラン）', () => {
+  it('品名・仕様・数量・単価・金額、No・部品名・仕様・型式・単価・数量・金額、Spec/Price の見出しを表題欄にしない', () => {
+    for (const h of ['品名\t仕様\t数量\t単価\t金額', 'No\t部品名\t仕様\t型式\t単価\t数量\t金額', 'Description\tSpec\tQty\tPrice\tAmount']) {
+      const r = parseBomPaste(`${h}\n${h.startsWith('No') ? '1\tリレー\t4極\tMY4N\t1200\t4\t4800' : 'リレー\t4極\t4\t1200\t4800'}`)
+      expect([h, r.rows[0].qtyNeeded]).toEqual([h, 4])
+    }
+  })
+  it('設計変更の様式の上の段（変更前｜変更後）をページごとに繰り返しても部品にしない', () => {
+    const page = '\t変更前\t\t変更後\t\n部品名\t型式\t数量\t型式\t数量'
+    const r = parseBomPaste(`${page}\nリレー\tMY2N\t1\tMY4N\t2\n${page}\n端子台\tXW2A\t1\tXW2B\t3`)
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 2], ['端子台', 'XW2B', 3]])
+  })
+  it('2 ページ目の見出しの言い方が違っても（品名・形式・メーカー・員数）見出しとして外す', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\nリレー\tMY4N\tオムロン\t1\n品名\t形式\tメーカー\t員数\n端子台\tXW2B\tオムロン\t2')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+  })
+  it('「計」と長い数字のセルでも止まらない', () => {
+    const t0 = Date.now()
+    parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t1\n計' + '1'.repeat(40) + 'x\t\t')
+    expect(Date.now() - t0).toBeLessThan(500)
+  })
+})
+
+describe('ラウンド 15 の xlsx（ベテラン）', () => {
+  it('「"」だけのセルで後ろの行がつながらない、2 行にまたがる表題は 1 行の区切り', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRows([['部品名', '型式', 'メーカ', '数量'], ['リレー', 'MY4N', 'オムロン', 1], ['リレー', 'MY2N', '"', 2], ['■ 電源部', '', '', ''], ['', '', '', ''], ['ヒューズ', 'F-10', 'サトー', 3]])
+    ws.mergeCells('A4:D5')
+    const r = parseBomPaste(await xlsxToTsv((await wb.xlsx.writeBuffer()) as ArrayBuffer))
+    expect(r.rows.map((x) => [x.name, x.maker])).toEqual([['リレー', 'オムロン'], ['リレー', 'オムロン'], ['ヒューズ', 'サトー']])
+  })
+})
+
+describe('ラウンド 15 の版の印（ベテラン）', () => {
+  it('Was/Is・current/proposed・型式(修正) は新しい列', () => {
+    expect(parseBomPaste('Description\tP/N (Was)\tP/N (Is)\tQty\nRelay\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('Description\tcurrent P/N\tproposed P/N\tQty\nRelay\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
+    expect(parseBomPaste('部品名\t型式\t型式(修正)\t数量\nリレー\tMY2N\tMY4N\t1').rows[0].model).toBe('MY4N')
   })
 })

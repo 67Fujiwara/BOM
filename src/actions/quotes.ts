@@ -55,8 +55,9 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       for (const sid of targetsOf(r0)) {
         if (!wanted(sid)) continue
         // 再見積要（数量などの変更）で頼み直す商社の前の回答は旧見積にする（新しい回答を待つ。前の回答で見積済にしない）
+        // 今回頼まない商社の前の回答も旧見積に（数量の違う回答でスコア・見積済にしない。あとで頼めば新しい回答）
         if (r0.flags.requote)
-          for (const q of p2.quotes) if (q.rowId === r.id && q.supplierId === sid && !q.stale && (q.unitPrice != null || q.leadDays != null)) {
+          for (const q of p2.quotes) if (q.rowId === r.id && !q.stale && (q.unitPrice != null || q.leadDays != null)) {
             q.stale = true
             q.staleModel = r.model
           }
@@ -244,6 +245,7 @@ export async function requestFormalQuotes(): Promise<string> {
   const per = new Map<string, Row[]>()
   for (const r of rows) per.set(r.adoptedSupplierId!, [...(per.get(r.adoptedSupplierId!) ?? []), r])
   const prevNeed = new Map<string, string | null>()
+  const prevSent = new Map<string, NonNullable<Quote['formalSent']>>()
   s.commit('正式見積を依頼（社外）', (p2, ws) => {
     for (const sid of per.keys()) p2.requestRevs['F' + sid] = (p2.requestRevs['F' + sid] ?? 0) + 1
     for (const r0 of rows) {
@@ -254,6 +256,8 @@ export async function requestFormalQuotes(): Promise<string> {
         // 前回送った必要納期を差分シートのために残してから、今回の値を記録
         if (q.formalNeedDate !== undefined) prevNeed.set(r.id, q.formalNeedDate)
         q.formalNeedDate = rowNeedDate(p2, r)
+        if (q.formalSent) prevSent.set(r.id, q.formalSent)
+        q.formalSent = { model: r.model, maker: r.maker, qtyNeeded: r.qtyNeeded, needOffset: r.needOffset }
       }
       // 再発行（数量・型式の変更のあと）は前の正式回答を消して、新しい回答を待つ（正式見積済のまま古い単価で止まらない）
       if ((r.flags.reissue || r.status === 'selected') && q) {
@@ -264,6 +268,9 @@ export async function requestFormalQuotes(): Promise<string> {
         if (r.status === 'formalQuoted') setStatus(r, 'formalRequested')
       }
       r.flags.reissue = false
+      // 同じ商社に出し直した（再見積のあとの F2 など）ときは、前の依頼の取下げは要らない（新しい依頼で置き換え）
+      const sname = ws.suppliers.find((x) => x.id === r.adoptedSupplierId)?.name
+      if (sname && r.flags.formalWithdrawn?.startsWith(sname + ' ')) r.flags.formalWithdrawn = undefined
       if (r.status === 'selected') setStatus(r, 'formalRequested')
       r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
     }
@@ -272,7 +279,7 @@ export async function requestFormalQuotes(): Promise<string> {
   const p2 = st().project()
   for (const [sid, rs] of per) {
     const sup = s.ws.suppliers.find((x) => x.id === sid)!
-    await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays), p2.requestRevs['F' + sid] ?? 1, prevNeed)
+    await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays), p2.requestRevs['F' + sid] ?? 1, prevNeed, prevSent)
   }
   return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || pending.length || requote.length ? `。除外: 作業中 ${working.length} 行 / 承認待ち ${pending.length} 行 / 再見積要 ${requote.length} 行` : ''}`
 }

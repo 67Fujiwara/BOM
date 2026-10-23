@@ -211,6 +211,8 @@ export interface Quote {
   reconfirm?: 'keep' | 'requote' | 'proposal'
   /** 要再確認の既定（提案商社＝提案値、他＝再見積） */
   reconfirmDefault?: 'keep' | 'requote' | 'proposal'
+  /** 正式見積の依頼で送った型式・メーカ・必要数・前倒し（再発行時の差分シートは、この商社に前回送った内容と比べる） */
+  formalSent?: { model: string; maker: string; qtyNeeded: number; needOffset: number | null }
   /** 正式見積の依頼で送った必要納期（再発行時の差分シート用） */
   formalNeedDate?: string | null
   /** 再交渉前の正式単価 */

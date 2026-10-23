@@ -1081,7 +1081,8 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   const due = parseDate(d.due ?? '')
   const pd = parseNumber(d.processDays ?? '')
   const bd = parseNumber(d.budget ?? '')
-  const p = newProject(id, d.name?.trim() || '新しいBOM', {
+  // 名前を入れなかったときは案件 ID を付けて、受信箱で見分けられるように
+  const p = newProject(id, d.name?.trim() || `新しいBOM ${id}`, {
     dueDate: due.ok ? due.value : null,
     preferredSupplierIds: picks,
     supplierIds: picks,
@@ -1755,10 +1756,12 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         placeholder: 'JSON の中身を貼り付け（Ctrl+V）、または上の「ファイルを選ぶ」。Ctrl+Enter で読み込み',
         onSubmit: (text) => {
           let raw: unknown
+          // Excel のファイル（中身が PK で始まる zip）は JSON ではない。部品表はガイドから読む
+          if (text.startsWith('PK')) return toast('これは Excel のファイル（.xlsx）です。部品表は Ctrl+K →「新しいBOM」→「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）', 'err')
           try {
             raw = JSON.parse(text)
           } catch (err) {
-            return toast(`JSON として読めません: ${(err as Error).message}`, 'err')
+            return toast(`JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: ${(err as Error).message}）`, 'err')
           }
           const res = sanitizeWorkspace(raw)
           if (!res.ws) return toast(`読み込めません: ${res.error}`, 'err')
@@ -1827,7 +1830,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'role.switch':
       return prompt('役割を切り替え（ログイン）。数字か ↑↓ で役割、氏名を入れて Enter', { digitsSelect: true, options: ['設計', '購買', 'PM'], index: ['design', 'purchasing', 'pm'].indexOf(role), placeholder: '氏名（空なら案件の担当者名）', showText: true }, (choice, name) => {
         // 数字だけの氏名は、選び直すつもりの数字が入ったことが多い（履歴に残る名前になる）
-        if (/^[\d\s０-９]+$/.test(name.trim())) return toast(`氏名が「${name.trim()}」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）`, 'err')
+        if (/^[\d\s０-９]+$/.test(name.trim())) return `氏名が「${name.trim()}」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）`
         switchRole(choice === '購買' ? 'purchasing' : choice === 'PM' ? 'pm' : 'design', name)
       })
     default:
@@ -1869,7 +1872,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'row.insertBelow', label: '行を追加', section: '編集', keywords: '追加 新しい行 挿入 insert' },
   { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 期限 回答期限 予算 重み 担当 相見積先 選定者 閾値 理由' },
   { id: 'settings.confirm', label: '案件設定を確定（PM）', section: '案件' },
-  { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件 取り込み 取込 インポート csv excel xlsx ファイル 貼り付け 読み込む' },
+  { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件 取り込み 取込 インポート csv excel xlsx ファイル 貼り付け 読み込む 読み込み excel読み込み エクセル エクセル読み込み bomを読み込む bom読み込み 部品表を読み込む 部品表読み込み' },
   { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
   { id: 'rule.add', label: 'ルールを追加', section: 'チェック' },
   { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す エクスポート export' },

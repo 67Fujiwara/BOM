@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { ChangeReason, DesignFields, Issue, Project, Removal, Role, Row, Submission } from '@/model/types'
 import { DESIGN_FIELDS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { colDef, supplierOfCol } from '@/model/columns'
-import { effective, fixedSupplierId, makerTargets, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty, routeSurplusToPm } from '@/model/derive'
+import { effective, fixedSupplierId, makerTargets, surplusOf, withdrawFormal, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty, routeSurplusToPm } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { parseTable } from '@/io/paste'
@@ -154,6 +154,13 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   const d = colDef(colKey)!
   const rowId = r.id
   if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
+  // 最小ロットの指摘（直すのは購買）は、発注数を丸め数量以上にしたら対応済（起票者が確認して閉じる）
+  if (colKey === 'orderQty' && typeof value === 'number')
+    for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && (x.status === 'open' || x.status === 'inProgress')))
+      if (value >= surplusOf(p, r).rounded) {
+        i.status = 'fixed'
+        i.resolution = `発注数を ${value} に（丸め）`
+      }
   if (d.perSupplier) {
     // §5: PM 承認待ちの変更セットで足した行は、承認されるまで購買に渡っていない
     if (r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') return `${r.id} は変更セット（Rev.${r.pendingRev ?? ''}）の PM 承認待ちの追加行です。承認されてから見積を入れます`
@@ -220,6 +227,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
 
 /** 取消・置換を公開値に反映する（公開時、または PM の承認時） */
 export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) {
+  // 正式見積を依頼していた行を取消・置換したら、元の商社への正式依頼を取り下げる（購買への知らせ）
+  withdrawFormal(p, r, st().ws.suppliers)
   r.removal = undefined
   r.pendingRemoval = undefined
   r.working = undefined
@@ -282,6 +291,7 @@ export function restoreOrder(rowId: string): string | null {
 
 /** 発注できない理由（発注できるなら null）。§4・§9.1: 正式見積済（または先行発注許可）で、PM の決定待ちが無く、採用商社の有効な見積がある行だけ */
 export function orderBlock(p: Project, r: Row): string | null {
+  if (r.procurement === '支給品' || r.procurement === '社内在庫') return `${r.procurement}の行です（商社に発注しません）`
   if (r.status !== 'formalQuoted' && !r.flags.early) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
   if (r.flags.formalDiff) return '正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません'
   if (r.flags.pmPending || r.pendingApproval || r.pendingRemoval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
@@ -516,6 +526,7 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
         r.flags.pmReason = undefined
       } else {
         r.flags.requote = true
+        withdrawFormal(p, r, st().ws.suppliers)
         r.adoptedSupplierId = undefined
         r.scoreSnapshot = undefined
         // 旧型式の見積は履歴に。新しい型式の見積の枠は、購買が頼み直したときに作る（頼む商社は新しいメーカで選び直す）

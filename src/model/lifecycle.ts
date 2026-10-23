@@ -10,6 +10,11 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     // 発注済の行の再発行の印は使えない（発注後の変更は発注後変更依頼で扱う）。前の版で残った印を外す
     if (r.flags.reissue && ['ordered', 'received'].includes(r.status)) r.flags.reissue = false
     // 見積対象外は選定をスキップして「選定済（固定）」
+    // 見積対象外（支給品・社内在庫）の行に、見積の印（再見積要・要再確認）は要らない
+    if (!isQuotable(r) && (r.flags.requote || r.flags.reconfirm)) {
+      r.flags.requote = false
+      r.flags.reconfirm = false
+    }
     if (!isQuotable(r) && ['submitted', 'quoting', 'quoted'].includes(r.status)) {
       r.status = 'selected'
       r.statusChangedAt = now
@@ -63,7 +68,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       const want = fixed ? fixedSupplierId(p, { ...r, adoptedSupplierId: undefined }, ws.suppliers) : null
       // 指定商社は指定先を変えたら（設計が直して公開）その商社に。客先指定品は採用した依頼先のまま（スコアで選んだ採用だけ外す）
       // 支給品・社内在庫に変えたら、商社の採用・正式依頼は使わない（§3.4: 見積なし）
-      const mismatch = !isQuotable(r) || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
+      const mismatch = !isQuotable(r) || ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.tradable === false || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
       if (mismatch) {
         // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
         if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
@@ -109,6 +114,13 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.statusChangedAt = now
         r.dueAt = undefined
       }
+    }
+    // 支給品・社内在庫から相見積に戻した行（選定済で採用なし）は、見積から出し直す（残っている見積で見積済、無ければ見積中・提出済）
+    if (r.procurement === '相見積' && r.status === 'selected' && !r.adoptedSupplierId && !r.flags.pmPending) {
+      const live = p.quotes.some((x) => x.rowId === r.id && !x.stale)
+      if (!r.quoteTargets?.length) r.quoteTargets = makerTargets(p, r.maker, ws.suppliers)
+      r.status = !live ? 'submitted' : quoteComplete(p, r, today) ? 'quoted' : 'quoting'
+      r.statusChangedAt = now
     }
     // 見積済の相見積の行で、取引できる商社の有効な見積が無くなった（取引停止にした）ら、選べないので見積中に戻す（購買が次の商社に頼む）
     if (!isFixedProcurement(r) && isQuotable(r) && !r.adoptedSupplierId && r.status === 'quoted' && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1 && ws.suppliers.find((s) => s.id === x.supplierId)?.tradable !== false)) {

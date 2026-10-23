@@ -71,7 +71,9 @@ export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = to
       if (q.stock === '在庫') reasons.push('在庫即納')
     }
     // 実績: 商社マスタの値。無ければ入荷記録（発注日 + 回答納期 までに入荷したか）から集計する（§8.1）
-    const onTime = sup?.onTimeRate ?? receiptRate(p, q.supplierId)
+    const rs = sup?.onTimeRate == null ? receiptStats(p, q.supplierId) : null
+    const onTime = sup?.onTimeRate ?? (rs ? rs.ok / rs.total : null)
+    if (rs) reasons.push(`実績: この案件の入荷 ${rs.ok}/${rs.total} 件が納期内`)
     const noRecord = !sup || onTime == null
     const record = noRecord ? 50 : Math.max(0, Math.min(100, onTime! * 100 - (sup!.defectRate ?? 0) * 200))
     if (noRecord) reasons.push('実績なし')
@@ -137,7 +139,7 @@ export function rankedQuotes(p: Project, row: Row, suppliers: Supplier[]): Quote
 }
 
 /** 入荷記録からの納期遵守率（発注日 + 正式納期（無ければ概算の納期。在庫は 0 日）までに入荷した割合）。記録が無ければ null */
-export function receiptRate(p: Project, supplierId: string): number | null {
+export function receiptStats(p: Project, supplierId: string): { ok: number; total: number } | null {
   const done = p.rows.filter((r) => r.received && r.adoptedSupplierId === supplierId && r.orderedAt && r.receivedAt)
   if (!done.length) return null
   const ok = done.filter((r) => {
@@ -145,5 +147,5 @@ export function receiptRate(p: Project, supplierId: string): number | null {
     const lead = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays ?? 0)
     return r.receivedAt! <= addDays(r.orderedAt!, Math.max(0, lead))
   }).length
-  return ok / done.length
+  return { ok, total: done.length }
 }

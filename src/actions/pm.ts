@@ -169,8 +169,14 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
               rr.flags.pmReason = undefined
               if (rr.pendingApproval) {
                 const v = rr.pendingApproval
+                const pre = { ...rr } as unknown as Record<string, unknown>
                 rr.pendingApproval = undefined
                 applyDesignChange(p, rr, v, [], sub?.summary)
+                // 承認待ちのあいだに出した後の Rev（指摘対応など）のスナップショットは承認前の値。承認した値に直す（変更点・差分で戻したように見せない）
+                for (const later of p.submissions.filter((sb) => rev != null && sb.rev > rev && sb.snapshot[rr.id])) {
+                  const snap = later.snapshot[rr.id] as unknown as Record<string, unknown>
+                  for (const [k, nv] of Object.entries(v)) if (JSON.stringify(snap[k]) === JSON.stringify(pre[k])) snap[k] = nv
+                }
               }
               if (rr.pendingRemoval) applyRemoval(p, rr, rr.pendingRemoval, sub)
               rr.pendingRev = undefined
@@ -178,7 +184,8 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           } else {
             r.flags.pmPending = false
             r.flags.pmReason = undefined
-            if (r.status === 'quoted' || r.status === 'quoting') setStatus(r, 'selected')
+            // 採用のある判断（例外選定・先行採用など）だけ選定済に。最小ロットの閾値超など採用の無い行は、選定者が選ぶまで今の状態
+            if ((r.status === 'quoted' || r.status === 'quoting') && r.adoptedSupplierId) setStatus(r, 'selected')
           }
           break
         case '却下':

@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, fixedSupplierId, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, quoteResponses, resolverOfIssue } from './derive'
+import { ball, fixedSupplierId, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, noUsableQuote, quoteResponses, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -36,7 +36,8 @@ export const VIEWS: ViewDef[] = [
     columns: ['id', 'ball', 'ref', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'altPolicy', 'status', 'due', 'waiting'],
     // §11: 役割ごと。自分がボールを持つ行（指摘・選定待ち・拮抗・代替承認待ち・要再確認など）＋設計はチェックNG
     filter: (r, c) => {
-      if (!isActive(r)) return false
+      // 取消・置換した行の正式依頼の取下げは、購買が元の商社に伝えるまで出す
+      if (!isActive(r)) return c.role === 'purchasing' && !!r.flags.formalWithdrawn
       const b = ball(c.p, r)
       if (c.role === 'design') return b === 'design' || (c.problems.get(r.id)?.length ?? 0) > 0 || r.flags.contested === true
       if (c.role === 'purchasing' && purchasingAttention(r, c)) return true
@@ -62,6 +63,8 @@ function purchasingAttention(r: Row, c: ViewCtx): boolean {
   // 取込の型式不一致は、行のボールに関係なく購買の後始末（§7）
   // 正式依頼を取り下げた行は、元の商社に伝えて x で確認するまで出す
   if (r.flags.importMismatch || r.flags.orderQtyCheck || r.flags.formalWithdrawn) return true
+  // 取引できる商社の有効な見積が無い（全社辞退・取引停止）: 購買がほかの商社に頼む
+  if (noUsableQuote(c.p, r)) return true
   // 追加費用が特急・分納の上限を超えた（PM に相談する）
   if (overCap(c.p, r)) return true
   // 指定系の行で、頼んだ商社がすべて辞退した・指定先（いまの依頼先）にまだ頼んでいない（指定先を変えた）

@@ -7,7 +7,9 @@ const arr = <T,>(v: unknown, fallback: T[] = []): T[] => (Array.isArray(v) ? (v 
 
 const str = (v: unknown): v is string => typeof v === 'string' && v !== ''
 // 文字で書いた数（"1200"）も数として読む
-const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : typeof v === 'string' && /^\s*-?\d+(\.\d+)?\s*$/.test(v) ? Number(v) : null)
+// 「1,200」「¥1200」・全角の数字も
+const numText = (v: string) => v.replace(/[０-９．－，]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0)).replace(/[\s,¥￥$円]/g, '')
+const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : typeof v === 'string' && /^-?\d+(\.\d+)?$/.test(numText(v)) ? Number(numText(v)) : null)
 /** 日付を YYYY-MM-DD にそろえる（時刻つき・0 の無い月日も日付の部分を読む）。実在しなければ null */
 const normDate = (v: unknown): string | null => {
   if (typeof v !== 'string') return null
@@ -74,7 +76,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       .map(idStr)
       .filter((q): q is Record<string, unknown> => isObj(q) && str(q.rowId) && str(q.supplierId) && rowIds.has(q.rowId as string))
       .map((q) => ({ ...q, validUntil: normDate(q.validUntil), formalValidUntil: normDate(q.formalValidUntil), stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: nonNeg(q.unitPrice), leadDays: nonNeg(q.leadDays, true), moq: nonNeg(q.moq), quoteQty: nonNeg(q.quoteQty), formalPrice: nonNeg(q.formalPrice), formalLeadDays: nonNeg(q.formalLeadDays, true), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
-    const negs = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'quoteQty', 'formalPrice', 'formalLeadDays'].some((k) => typeof q[k] === 'number' && nonNeg(q[k], k === 'leadDays' || k === 'formalLeadDays') === null)).length
+    const negs = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'quoteQty', 'formalPrice', 'formalLeadDays'].some((k) => numOrNull(q[k]) != null && nonNeg(q[k], k === 'leadDays' || k === 'formalLeadDays') === null)).length
     if (negs) warnings.push(`案件 ${p0.id} の見積 ${negs} 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました`)
     const badDates = quotes0.filter((q) => isObj(q) && ['validUntil', 'formalValidUntil'].some((k) => q[k] != null && q[k] !== '' && !normDate(q[k]))).length
     if (badDates) warnings.push(`案件 ${p0.id} の見積 ${badDates} 件の有効期限が日付（YYYY-MM-DD）として読めないので空にしました`)
@@ -172,7 +174,9 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
   // 日付の項目は、実在する YYYY-MM-DD だけ（「2026-02-30」「明日」は外す）
   for (const k of ['needDateFixed', 'promisedDate']) {
     const v = out[k]
-    if (typeof v === 'string' && v !== '' && !realDate(v)) {
+    // 案件の納期と同じく、時刻つき・0 の無い月日も日付の部分を読む
+    if (typeof v === 'string' && normDate(v)) out[k] = normDate(v)
+    else if (typeof v === 'string' && v !== '') {
       out[k] = null
       note('日付が読めないので外した')
     }
@@ -192,7 +196,8 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
       const def = (base as Record<string, unknown>)[f]
       if (!(f in base)) continue
       if (v === null && (def === null || f === 'needOffset' || f === 'needDateFixed' || f === 'packQty')) kept[f] = null
-      else if (f === 'needDateFixed' ? typeof v === 'string' && realDate(v) : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
+      else if (f === 'needDateFixed' && normDate(v)) kept[f] = normDate(v)
+      else if (f === 'needDateFixed' ? false : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
       else note('作業中の値が読めないので外した')
     }
     // 作業中の必要数・入数も、行の値と同じ範囲に
@@ -218,6 +223,11 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
     // 既定が null の項目（予算・回答期限など）は、null・数値・日付の文字だけ受け付ける
     if (d === null) {
       if (x === null || (typeof x === 'number' && Number.isFinite(x)) || (typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x))) out[k] = x
+      continue
+    }
+    // 設定の数を文字で書いたもの（"10"）も数として読む
+    if (typeof d === 'number' && typeof x === 'string' && numOrNull(x) != null) {
+      out[k] = numOrNull(x)
       continue
     }
     if (typeof d === typeof x) {

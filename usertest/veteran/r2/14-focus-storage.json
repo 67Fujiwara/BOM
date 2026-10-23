@@ -1,0 +1,56 @@
+[
+  {
+    "case": "goto: Tab then type",
+    "activeAfterTab": "BODY",
+    "promptValue": "",
+    "panel": null,
+    "cursor": "—",
+    "toast": ""
+  },
+  {
+    "case": "palette: Shift+Tab then type",
+    "activeAfter": "filter",
+    "paletteQuery": "",
+    "gridFilter": "公開",
+    "panelAfterEnter": "panel-palette",
+    "rowsShown": 0,
+    "activeAfterEnter": "grid"
+  },
+  {
+    "case": "wizard: Tab then type",
+    "activeAfterTab": "BODY",
+    "nameValue": "",
+    "panel": "panel-wizard",
+    "mode": "パネル"
+  },
+  {
+    "case": "settings edit: Tab then type",
+    "activeAfterTab": "BODY",
+    "settingValue": null,
+    "panel": "panel-wizard"
+  },
+  {
+    "case": "invalid localStorage → silent sample → overwrite",
+    "shownAfterReload": {
+      "header": "P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）",
+      "toast": "",
+      "crash": 0
+    },
+    "lsProjectsBeforeEdit": [
+      "P-2026-041",
+      "P-MINE"
+    ],
+    "lsProjectsAfterOneEdit": [
+      "P-2026-041"
+    ],
+    "errors": []
+  },
+  {
+    "case": "issue.by null",
+    "importToast": "JSON を読み込みました（案件 1 件）",
+    "crashOnOpen": 1,
+    "crashText": "画面を表示できませんでしたデータは保存されています。次のどれかを選んでください。Cannot read properties of null (reading 'role')再読み込みデータを JSON で退避サンプルに戻す",
+    "crashOnView4AfterReload": 0,
+    "crashOnOpenAfterReload": 1
+  }
+]

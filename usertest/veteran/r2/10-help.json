@@ -1,0 +1,226 @@
+{
+  "help": {
+    "entries": 72,
+    "keys": 77,
+    "missingLabel": [],
+    "missingKey": [],
+    "fit": {
+      "top": 108,
+      "bottom": 719.796875,
+      "vh": 900,
+      "scrollable": {
+        "sh": 1382,
+        "ch": 576,
+        "cls": "body"
+      }
+    },
+    "fit720": {
+      "top": 86.390625,
+      "bottom": 582.984375,
+      "vh": 720,
+      "scrollable": {
+        "sh": 1382,
+        "ch": 461,
+        "cls": "body"
+      }
+    },
+    "scrollBefore": [
+      0
+    ],
+    "scrollAfterKeys": [
+      0
+    ]
+  },
+  "palette": {
+    "keymapNotFirst": [
+      {
+        "id": "palette.open",
+        "label": "コマンドパレットを開く",
+        "first": "受信箱・案件を切り替える",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "project.switch",
+        "label": "案件を切り替える",
+        "first": "新しいBOM",
+        "positionOfSelf": -1
+      },
+      {
+        "id": "project.save",
+        "label": "一時保存",
+        "first": "保存",
+        "positionOfSelf": -1
+      },
+      {
+        "id": "help",
+        "label": "ショートカット一覧",
+        "first": "受信箱・案件を切り替える",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "escape",
+        "label": "1段階戻る",
+        "first": "元に戻す",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "wizard.back",
+        "label": "新規BOMガイドで1つ前の段階へ",
+        "first": "新しいBOM",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "row.toggleOpen",
+        "label": "行を開く・閉じる（相見積の比較と履歴）",
+        "first": "概算見積を依頼",
+        "positionOfSelf": 2
+      },
+      {
+        "id": "view.2",
+        "label": "ビュー: 購買提出用",
+        "first": "公開（提出 / 指摘を発行）",
+        "positionOfSelf": 2
+      },
+      {
+        "id": "view.6",
+        "label": "ビュー: 商社別",
+        "first": "商社を追加",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "view.8",
+        "label": "ビュー: 正式見積",
+        "first": "概算見積を依頼",
+        "positionOfSelf": 2
+      },
+      {
+        "id": "row.insertBelow",
+        "label": "下に行を追加して部品名を編集",
+        "first": "行を追加",
+        "positionOfSelf": -1
+      },
+      {
+        "id": "cell.copy",
+        "label": "セルをコピー",
+        "first": "表示中の行と列を書式つきでコピー",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "cell.paste",
+        "label": "貼り付け（Excelの複数セルも可）",
+        "first": "Excelで出力",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "adopt.best",
+        "label": "推奨（最高スコア）で採用。見積済のみ",
+        "first": "概算見積を依頼",
+        "positionOfSelf": -1
+      },
+      {
+        "id": "adopt.choose",
+        "label": "商社を選んで採用（1〜9）",
+        "first": "未採用を推奨で一括採用",
+        "positionOfSelf": 3
+      },
+      {
+        "id": "row.replace",
+        "label": "置き換え品を作る",
+        "first": "新しいBOM",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "adopt.cheapest",
+        "label": "最安で採用（スコア無視）。見積中なら先行採用",
+        "first": "概算見積を依頼",
+        "positionOfSelf": -1
+      },
+      {
+        "id": "pm.approve",
+        "label": "承認 / 受入 / 許可（PM）",
+        "first": "役割を切り替え（ログイン）",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "pm.reject",
+        "label": "却下 / 受入（遅延許容）/ 現状維持（PM）",
+        "first": "役割を切り替え（ログイン）",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "weights.row",
+        "label": "この行だけ重みを変える",
+        "first": "案件設定",
+        "positionOfSelf": 1
+      },
+      {
+        "id": "view.9",
+        "label": "ビュー: 購買作業",
+        "first": "役割を切り替え（ログイン）",
+        "positionOfSelf": 1
+      }
+    ],
+    "staticNotFirst": [
+      {
+        "typed": "見積回答を取り込む",
+        "first": "概算見積を依頼",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "未採用を最安で一括採用（スコア無視）",
+        "first": "未採用を推奨で一括採用",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "正式見積を依頼（社外）",
+        "first": "概算見積を依頼",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "選定記録を出力（社内）",
+        "first": "未採用を推奨で一括採用",
+        "positionOfSelf": 2
+      },
+      {
+        "typed": "行を削除（提出済なら取消）",
+        "first": "公開（提出 / 指摘を発行）",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "案件設定を確定（PM）",
+        "first": "案件設定",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "受信箱・案件を切り替える",
+        "first": "新しいBOM",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "ルールを追加",
+        "first": "行を追加",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "JSON を書き出す",
+        "first": "公開（提出 / 指摘を発行）",
+        "positionOfSelf": 2
+      },
+      {
+        "typed": "商社を追加",
+        "first": "行を追加",
+        "positionOfSelf": 1
+      },
+      {
+        "typed": "ショートカット一覧（ヘルプ）",
+        "first": "受信箱・案件を切り替える",
+        "positionOfSelf": 1
+      }
+    ],
+    "recentTop": [
+      "ダークモード切替",
+      "コンパクト表示切替",
+      "ビュー: すべて"
+    ]
+  }
+}

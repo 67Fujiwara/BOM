@@ -25,6 +25,12 @@ export function toHalfWidth(s: string): string {
 }
 
 /** 1行に対してルールを評価する。working（作業中）の値を優先 */
+/** 商社マスタ（指定先が実在するかを見るため。ストアが読み込み・変更のたびに渡す） */
+let supplierMaster: Array<{ id: string; name: string }> = []
+export function setSupplierMaster(list: Array<{ id: string; name: string }>) {
+  supplierMaster = list
+}
+
 export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
   const out: Problem[] = []
   if (row.status === 'cancelled' || row.status === 'replaced') return out
@@ -44,6 +50,11 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
     switch (rule.type) {
       case 'designated':
         if ((e.procurement === '指定商社' || e.procurement === '客先指定品') && str.trim() === '') push([])
+        // 指定商社の指定先は商社マスタから（§3.1）。誤記のまま別の商社に依頼しない
+        else if (e.procurement === '指定商社' && supplierMaster.length && !supplierMaster.some((x) => x.id === str.trim() || x.name === str.trim())) {
+          const near = supplierMaster.find((x) => x.name.startsWith(str.trim().slice(0, 2)))
+          out.push({ rowId: row.id, field, ruleId: rule.id, severity: 'error', message: `指定先「${str}」は商社マスタにありません（${supplierMaster.map((x) => x.name).join(' / ')}）`, fixes: near ? [{ label: `「${near.name}」にする`, apply: () => ({ designated: near.id }) }] : [] })
+        }
         break
       case 'required':
         if (str.trim() === '') {
@@ -71,7 +82,8 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         }
         break
       case 'duplicate':
-        if (str && project.rows.some((r) => r.id !== row.id && r.status !== 'cancelled' && r.status !== 'replaced' && String(effective(r)[field as keyof typeof e] ?? '') === str)) push([])
+        // 取消・置換の作業中の行と、置換の元と先（同じ部品位置を引き継ぐ）どうしは重複に数えない
+        if (str && project.rows.some((r) => r.id !== row.id && r.status !== 'cancelled' && r.status !== 'replaced' && !r.removal && !r.pendingRemoval && !row.removal && !row.pendingRemoval && r.replaces !== row.id && row.replaces !== r.id && String(effective(r)[field as keyof typeof e] ?? '') === str)) push([])
         break
       case 'packMultiple':
         // 単位が「パック」なら数量はパック数。個数で数える単位で入数があるときだけ倍数を確かめる

@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { STATUS_LABEL, ROLE_LABEL } from '@/model/types'
-import { adoptedQuote, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
+import { adoptedQuote, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
 const FILL = (argb: string): ExcelJS.Fill => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } })
@@ -66,7 +66,10 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     if (!isActive(r) && target === 'supplier') continue
     // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
     if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
-    if (target === 'supplier' && supplierId && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === supplierId && !q.stale) && r.adoptedSupplierId !== supplierId) continue
+    if (target === 'supplier' && supplierId) {
+      // 指定商社・客先指定品は指定先の商社のファイルにだけ出す
+      if (isFixedProcurement(r) ? fixedSupplierId(p, r, ws.suppliers) !== supplierId : !p.quotes.some((q) => q.rowId === r.id && q.supplierId === supplierId && !q.stale) && r.adoptedSupplierId !== supplierId) continue
+    }
     // 隠した行は社内・商社向けでは出さない。保管用は全行
     if (r.hidden && target !== 'archive') continue
     // 設計の作業中（未公開）の値は、設計が社内用に出すときだけ。商社向け・保管用・購買や PM の出力は公開値

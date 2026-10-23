@@ -33,7 +33,9 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
     return suppliers.find((x) => x.id === d || x.name === d)?.id ?? null
   }
   if (row.procurement === '客先指定品') {
-    const q = p.quotes.find((x) => x.rowId === row.id && !x.stale && x.unitPrice != null)
+    // 一度決まった商社（採用済み・見積を依頼した商社）は、値を入れた順番で変えない
+    if (row.adoptedSupplierId) return row.adoptedSupplierId
+    const q = p.quotes.find((x) => x.rowId === row.id && !x.stale)
     if (q) return q.supplierId
     const handling = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).find((x) => x?.handledMakers.includes(row.maker))
     return handling?.id ?? p.supplierIds[0] ?? null
@@ -73,6 +75,9 @@ export function ball(p: Project, row: Row): Role | null {
   if (f.importMismatch) return 'purchasing'
   const issues = openIssues(p, row.id)
   if (issues.some((i) => i.bounceCount >= 2 && i.status === 'open' && !i.pmRuled)) return 'pm'
+  // 発注後変更依頼は PM の承認待ち（§6.2 A＝PM）
+  if (issues.some((i) => i.kind === '発注後変更依頼' && (i.status === 'open' || i.status === 'inProgress') && !i.pmRuled) && !f.orderCancelApproved) return 'pm'
+  if (f.orderCancelApproved) return 'purchasing'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'design')) return 'design'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'purchasing')) return 'purchasing'
   const pending = issues.find((i) => i.status === 'fixed' || i.status === 'answered')

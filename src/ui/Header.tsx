@@ -1,6 +1,6 @@
 import { useStore } from '@/model/store'
 import { ROLE_LABEL, ROLES } from '@/model/types'
-import { ballCounts, daysLeft, designBreakdown, isOverdue, totals, fmtYen } from '@/model/derive'
+import { ballCounts, daysLeft, designBreakdown, isOverdue, isQuotable, totals, fmtYen } from '@/model/derive'
 import type { ViewModel } from '@/model/selectors'
 import { syncEnabled } from '@/io/persist'
 import { runCommand, switchRole } from '@/commands/registry'
@@ -20,6 +20,9 @@ export function Header({ vm }: { vm: ViewModel }) {
   const warns = all.filter((x) => x.severity === 'warn').length
   const overdue = p.rows.filter((r) => isOverdue(p, r)).length
   const db = designBreakdown(p)
+  // 見積の進み具合（§3.4 の分母: 支給品・社内在庫を除き、指定系を含む）
+  const quotable = p.rows.filter((r) => isQuotable(r) && r.status !== 'draft')
+  const quotedN = quotable.filter((r) => ['quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status)).length
   const pct = t.budget && Number.isFinite(t.budget) && t.budget > 0 ? ((t.formal - t.budget) / t.budget) * 100 : null
   const adoptedN = p.rows.filter((r) => r.adoptedSupplierId && r.status !== 'cancelled' && r.status !== 'replaced').length
   return (
@@ -46,10 +49,20 @@ export function Header({ vm }: { vm: ViewModel }) {
       <span className="lamps" data-testid="lamps">
         <span className={'lamp ' + (user.role === 'design' ? 'accent keep' : '')} title={`設計待ちの内訳: 指摘の対応 ${db.issues}・選定待ち ${db.selecting}・その他 ${db.other}`}>
           設計待ち {bc.design}
-          {user.role === 'design' && (db.issues || db.selecting) ? <span className="lamp-sub">（指摘 {db.issues}・選定待ち {db.selecting}）</span> : null}
+          {user.role === 'design' && (db.issues || db.selecting) ? (
+            <span className="lamp-sub">
+              （指摘 {db.issues}・選定待ち {db.selecting}
+              {db.other ? `・その他 ${db.other}` : ''}）
+            </span>
+          ) : null}
         </span>
         <span className={'lamp ' + (user.role === 'purchasing' ? 'accent keep' : '')}>購買待ち {bc.purchasing}</span>
         <span className={'lamp ' + (user.role === 'pm' ? 'accent keep' : '')}>PM待ち {bc.pm}</span>
+        {user.role !== 'design' && quotable.length > 0 && (
+          <span className="lamp keep" title="見積済以降の行 / 見積の対象（提出済の相見積・指定系）" data-testid="quote-progress">
+            見積済 {quotedN}/{quotable.length}
+          </span>
+        )}
         <span className={'lamp keep keep-narrow ' + (errs ? 'err' : '')}>エラー {errs}</span>
         <span className={'lamp keep ' + (warns ? 'warn' : '')}>警告 {warns}</span>
         {overdue > 0 && <span className="lamp err keep keep-narrow">期限超過 {overdue}</span>}

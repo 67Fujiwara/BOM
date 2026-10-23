@@ -69,6 +69,8 @@ export interface RowFlags {
   formalDiff?: boolean
   /** 対策区分（納期NGに PM が割当） */
   countermeasure?: '商社変更' | '代替品検討' | '分納・特急' | '受入'
+  /** 発注後変更依頼を PM が承認した（購買が発注を取り消せる。§9.1） */
+  orderCancelApproved?: boolean
   /** 単価要確認（数量変更が閾値内だが MOQ をまたぐ等） */
   priceCheck?: boolean
   /** 表記修正（正規化後の型式が同じ。見積は有効のまま） */
@@ -149,6 +151,8 @@ export interface Row extends DesignFields {
   /** PM 承認待ちの変更セット（承認されるまで公開値には反映しない） */
   pendingApproval?: Partial<DesignFields>
   pendingRev?: number
+  /** 購買の先行発注の申請（PM の判断材料。設計の採用理由とは別に残す） */
+  ltbRequest?: { reason: string; amount: number | null; by: string; at: string }
   /** 設計の作業中の取消・置換（公開するまで購買には「設計作業中」だけ見える） */
   removal?: Removal
   /** PM 承認待ちの取消・置換 */

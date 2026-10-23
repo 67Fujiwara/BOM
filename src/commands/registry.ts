@@ -14,6 +14,7 @@ import * as pm from '@/actions/pm'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
+import { normalize, setStatus } from '@/model/lifecycle'
 import { loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
@@ -373,13 +374,16 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
         {
           label: '再見積要: 据え置き（旧見積を有効に戻す）',
           run: () =>
-            s.commit('再見積要: 据え置き', (p2) => {
+            s.commit('再見積要: 据え置き', (p2, ws) => {
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
               for (const q of p2.quotes.filter((x) => x.rowId === r.id && x.stale)) {
                 const live = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === q.supplierId && !x.stale)
                 if (live && live.unitPrice == null) Object.assign(live, { unitPrice: q.unitPrice, leadDays: q.leadDays, moq: q.moq, stock: q.stock, validUntil: q.validUntil })
               }
+              // 旧見積が戻ったので、提出済に戻っていた行は見積済へ進める（選定者が選び直す）
+              if (rr.status === 'submitted') setStatus(rr, 'quoting')
+              normalize(p2, ws)
             }),
         },
         { label: '再見積要: 再見積（概算見積を依頼）', run: () => runCommand('quotes.request') },
@@ -536,7 +540,9 @@ function decisionPanel(r: Row) {
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
   const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => decideWithReason(r.id, o.kind) }))
   // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）`, rowId: r.id, field: 'status', index: -1, options })
+  // 先行発注の申請は、理由と金額を見て決められるように題に出す
+  const req = c === '先行発注判断' && r.ltbRequest ? ` 申請: ${r.ltbRequest.reason}${r.ltbRequest.amount != null ? `（¥${r.ltbRequest.amount.toLocaleString()}）` : ''}・${r.ltbRequest.by}` : ''
+  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）${req}`, rowId: r.id, field: 'status', index: -1, options })
 }
 function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
   const s = st()
@@ -926,10 +932,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         kind: 'export',
         index: 0,
         options: [
+          // 番号は仕様の 1 社内 / 2 商社向け / 3 保管用。商社ごとの商社向けは 4 以降
           { label: '社内（採用・金額・状態つき）', run: () => void import('@/io/excel').then(done('internal')) },
-          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
           { label: '商社向け: 全商社共通（提出済の全行・価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
           { label: '保管用（全列・商社別見積つき）', run: () => void import('@/io/excel').then(done('archive')) },
+          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
         ],
       })
     }
@@ -1039,6 +1046,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (it?.kind === 'quote') return quoteActionPanel(r, it.supplierId)
       }
       if (role === 'pm' && r && pm.pmCaseOf(p, r) !== 'なし') return decisionPanel(r)
+      // PM が 7 で決めることの無い行に Enter: 次の手を案内する（「権限なし」で止めない）
+      if (role === 'pm' && r && s.view === 7 && rows.canEdit(s.cursorCol)) {
+        const ans = p.issues.find((i) => i.rowId === r.id && (i.status === 'answered' || i.status === 'fixed') && i.by.role === 'pm')
+        return toast(`${r.id} に要決定はありません${ans ? `（${ans.id} は${ans.status === 'answered' ? '回答済' : '対応済'}。x で受け入れ、Space で中身を見る）` : '（Space で詳細、n で次の要決定へ）'}`, 'info')
+      }
       return startEdit()
     case 'cell.clear': {
       if (!need()) return
@@ -1339,7 +1351,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         return prompt(`先行発注を申請 ${r!.id}（理由と金額）`, { requireText: true, placeholder: '理由（例: 長納期のため正式見積を待てない）', extra: { 金額: String(est) } }, (_c, t, ex) => {
           const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
           if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
-          pm.requestEarlyOrder(r!.id, `${t}（金額 ¥${amt.value.toLocaleString()}）`)
+          pm.requestEarlyOrder(r!.id, t, amt.value)
         })
       }
     case 'project.new': {

@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import type { Issue, Project, Quote, Row, User, Workspace } from './types'
 import { DESIGN_FIELDS } from './types'
 import { makeWorkspace } from './sample'
+import { setSupplierMaster } from './rules'
 import type { Mode } from '@/keys/keymap'
 import { loadIfChangedElsewhere, loadWorkspace, saveWorkspace } from '@/io/persist'
 
@@ -299,6 +300,11 @@ function loadUiField<K extends 'recentCommands' | 'wizardDraft'>(k: K): UiSaved[
   return readUi()[k] as UiSaved[K] | undefined
 }
 let uiTimer: number | undefined
+// 指定先のチェックに使う商社マスタ
+setSupplierMaster(useStore.getState().ws.suppliers)
+useStore.subscribe((s, prev) => {
+  if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)
+})
 useStore.subscribe((s, prev) => {
   if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.wizardDraft === prev.wizardDraft && s.panel === prev.panel) return
   window.clearTimeout(uiTimer)

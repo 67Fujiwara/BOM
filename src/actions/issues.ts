@@ -237,6 +237,16 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
     if (!q) return
     q.reconfirm = choice
     if (choice === 'requote') {
+      // 採用中の商社を再見積にしたら、採用の前提（その単価）が無くなるので採用を外して選び直す
+      if (r.adoptedSupplierId === supplierId) {
+        r.adoptedSupplierId = undefined
+        r.scoreSnapshot = undefined
+        r.flags.contested = false
+        if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
+          r.status = 'quoting'
+          r.statusChangedAt = new Date().toISOString()
+        }
+      }
       q.unitPrice = null
       q.leadDays = null
       q.moq = null

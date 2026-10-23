@@ -149,6 +149,11 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       if (block) return colKey === 'received' ? `入荷にできません（発注前の行）: ${block}` : block
     }
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
+    // 発注の取り消しは、発注後変更依頼を PM が承認したときだけ（§9.1）。押し間違いは Ctrl+Z で戻す
+    if (colKey === 'ordered' && value === false && r.ordered) {
+      if (!r.flags.orderCancelApproved) return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+      r.flags.orderCancelApproved = false
+    }
     ;(r as unknown as Record<string, unknown>)[colKey] = value
     if (colKey === 'received' && value === true) r.ordered = true
     if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, r.flags.early ? 'selected' : 'formalQuoted')

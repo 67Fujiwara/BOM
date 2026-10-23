@@ -18,7 +18,12 @@ function pushDecision(p: Project, by: User, kind: DecisionKind, reason: string, 
 }
 
 /** 要決定の種別（§9.1） */
-export type PmCase = '例外選定' | '先行採用' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '先行発注判断' | '対策不成立' | 'なし'
+export type PmCase = '例外選定' | '先行採用' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '先行発注判断' | '対策不成立' | '発注後変更依頼' | 'なし'
+
+/** 購買が起票した発注後変更依頼で、PM の判断がまだのもの */
+export function openChangeAfterOrder(p: Project, row: Row) {
+  return p.issues.find((i) => i.rowId === row.id && i.kind === '発注後変更依頼' && ['open', 'inProgress'].includes(i.status) && !i.pmRuled)
+}
 
 export function pmCaseOf(p: Project, row: Row): PmCase {
   const f = row.flags
@@ -26,6 +31,7 @@ export function pmCaseOf(p: Project, row: Row): PmCase {
   if (f.formalDiff) return '差分超過'
   if (f.pmPending) return f.pmReason === '変更セット' ? '変更セット' : f.pmReason === '先行採用' ? '先行採用' : f.pmReason === '閾値超' ? '閾値超' : f.pmReason === '再選定提案' ? '再選定提案' : '例外選定'
   if (f.ltbPending) return '先行発注判断'
+  if (openChangeAfterOrder(p, row) && !f.orderCancelApproved) return '発注後変更依頼'
   if (f.leadNG && !f.countermeasure) return '納期NG'
   if (p.issues.some((i) => i.rowId === row.id && i.status === 'open' && i.bounceCount >= 2 && !i.pmRuled)) return '差戻し2回目'
   return 'なし'
@@ -45,6 +51,8 @@ export function pmOptions(c: PmCase, row?: Row): PmOption[] {
       return [{ key: 'y', label: '承認 → 選定済', kind: '承認' }, { key: 'Y', label: '却下 → 見積済（選定者へ）', kind: '却下' }, { key: 'b', label: '次点へ（必要日を満たす最高スコア）', kind: '次点商社へ' }]
     case '先行採用':
       return [{ key: 'y', label: '先行発注を許可（選んだ商社のまま選定済）', kind: '先行発注許可' }, { key: 'Y', label: '却下 → 元の状態', kind: '却下' }]
+    case '発注後変更依頼':
+      return [{ key: 'y', label: '承認 → 購買が発注を取り消し、設計が r で置き換える', kind: '承認' }, { key: 'Y', label: '却下 → 元の発注のまま受入', kind: '却下' }]
     case '先行発注判断':
       return [{ key: 'y', label: '先行発注を許可（推奨商社で選定済）', kind: '先行発注許可' }, { key: 'Y', label: '却下 → 正式見積を待つ', kind: '却下' }]
     case '変更セット':
@@ -105,8 +113,23 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
       if (needsExternalApproval(p, r) && (kind === '受入' || kind === '承認') && !extra?.external?.approver?.trim()) return (err = '上長決裁の条件に該当します。承認者・日付・決裁書 No. を入力してください')
       const d = pushDecision(p, user, kind, reason, rowId, { external: extra?.external, payload: extra?.amount != null ? { amount: extra.amount } : undefined })
       const today = todayStr()
+      // 対策不成立への決定で、もとになった PM の依頼（コスト超過・数量見直し・納期NG の指摘）は決着（§16）
+      if (c === '対策不成立')
+        for (const i of p.issues)
+          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '納期NG') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+            i.status = 'confirmed'
+            i.resolution = `PM の決定: ${kind}`
+          }
       switch (kind) {
         case '承認':
+          if (c === '発注後変更依頼') {
+            const i = openChangeAfterOrder(p, r)!
+            i.pmRuled = true
+            i.status = 'inProgress'
+            i.resolution = 'PM 承認: 発注取消・代替品へ'
+            r.flags.orderCancelApproved = true
+            break
+          }
           if (c === '変更セット') {
             const rev = r.pendingRev
             const sub = p.submissions.find((sb) => sb.rev === rev)
@@ -133,6 +156,15 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           }
           break
         case '却下':
+          if (c === '発注後変更依頼') {
+            const i = openChangeAfterOrder(p, r)!
+            i.pmRuled = true
+            i.status = 'wontfix'
+            i.resolution = 'PM 却下: 元の発注のまま受入'
+            r.flags.countermeasure = '受入'
+            r.flags.leadNG = false
+            break
+          }
           if (c === '変更セット') {
             const rev = r.pendingRev
             const sub = p.submissions.find((sb) => sb.rev === rev)
@@ -173,6 +205,11 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           }
           break
         case '先行発注許可': {
+          // 申請の理由・金額を決定の記録に残す
+          if (r.ltbRequest) {
+            d.payload = { ...(d.payload ?? {}), amount: r.ltbRequest.amount, request: r.ltbRequest.reason }
+            if (!d.reason) d.reason = `申請: ${r.ltbRequest.reason}`
+          }
           if (r.flags.requote) return (err = '型式・数量の変更で見積が失効しています（再見積要）。見積を取り直してから判断してください')
           const adoptedValid = r.adoptedSupplierId && p.quotes.some((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale && x.unitPrice != null)
           if (r.adoptedSupplierId && !adoptedValid) r.adoptedSupplierId = undefined
@@ -405,14 +442,15 @@ export function applySettings(patch: Partial<Project['settings']> & { dueDate?: 
 }
 
 /** 購買: 先行発注を申請 */
-export function requestEarlyOrder(rowId: string, reason: string) {
+export function requestEarlyOrder(rowId: string, reason: string, amount: number | null = null) {
   const s = st()
   s.commit('先行発注を申請', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
     if (!r) return
     if (r.flags.ltbPending) return `${rowId} はもう PM の判断待ちです`
     r.flags.ltbPending = true
-    r.adoptReason = reason
+    // 設計の採用理由は変えず、申請は別に残す（PM の決定パネル・決定の記録に出す）
+    r.ltbRequest = { reason, amount, by: s.user().name, at: new Date().toISOString() }
     normalize(p, ws)
   }, { rowId })
 }

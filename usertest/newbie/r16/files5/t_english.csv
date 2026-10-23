@@ -1,0 +1,4 @@
+Item,Qty,Reference,Description,Manufacturer,Manufacturer Part Number
+1,4,"K1,K2,K3,K4",Relay,Omron,MY4N-D2
+2,2,"T1,T2",Timer,Omron,H3CR-A8
+3,1,CB1,Breaker,Mitsubishi,NF32-SV

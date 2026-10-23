@@ -1,0 +1,12 @@
+== A: 設計が自分で作った問題だけ（R030 型式を空にする）→ Ctrl+. → あとで → Ctrl+Enter
+  [Delete maker] mode=nav view=1 cur=R030/maker panel=null |  | toast: R030 メーカ を空にしました（Ctrl+Z で戻す）
+  [Ctrl+.] mode=panel view=1 cur=R030/maker panel=quickfix | 直し方の候補 R030 表示灯 白 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: R030 メーカ を空にしました（Ctrl+Z で戻す）
+  あとで option = 2
+  [pick あとで] mode=nav view=1 cur=R030/maker panel=null |  | toast: R030 メーカ を空にしました（Ctrl+Z で戻す）
+  R030 deferred ["rule.maker.required"]
+  [Ctrl+Enter] mode=nav view=1 cur=R030/maker panel=null |  | toast: 公開できません: エラー 1 件（R030 メーカが空です … F8 で移動して直す）
+== B: 表で Shift+→（あとで）→ Ctrl+Enter
+  [Shift+→] mode=nav view=1 cur=R041/maker panel=null |  | toast: あとで: メーカが空です（「あとで」が残っている行は公開できません）
+  [Ctrl+Enter] mode=nav view=1 cur=R041/maker panel=null |  | toast: 公開できません: エラー 1 件（R031 メーカが空です … F8 で移動して直す）
+
+ERRORS:

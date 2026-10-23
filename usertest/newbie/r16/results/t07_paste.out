@@ -1,0 +1,41 @@
+[noHeader2] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 部品名 / 2列目 → 数量 ⚠ 見出しが無いので、列を「部品名・数量」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください MY4N 4 個 H3CR-A8 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|MY4N|||4個|ref=|} {|H3CR-A8|||2個|ref=|}
+[noHeader3] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 部品名 / 2列目 → 型式 / 3列目 → 数量 ⚠ 見出しが無いので、列を「部品名・型式・数量」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください リレー MY4N 4 個 タイマ H3CR-A8 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|リレー|MY4N||4個|ref=|} {|タイマ|H3CR-A8||2個|ref=|}
+[noHeader3b] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 部品名 / 2列目 → 型式 / 3列目 → メーカ ⚠ 見出しが無いので、列を「部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください リレー MY4N オムロン 1 個 タイマ H3CR-A8 オムロン 1 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|リレー|MY4N|オムロン|1個|ref=|} {|タイマ|H3CR-A8|オムロン|1個|ref=|}
+[noHeader4] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 部品名 / 2列目 → 型式 / 3列目 → メーカ / 4列目 → 数量 ⚠ 見出しが無いので、列を「部品名・型式・メーカ・数量」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください リレー MY4N オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|リレー|MY4N|オムロン|4個|ref=|} {|タイマ|H3CR-A8|オムロン|2個|ref=|}
+[modelFirst] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 部品名 / 2列目 → 型式 / 3列目 → メーカ / 4列目 → 数量 ⚠ 見出しが無いので、列を「部品名・型式・メーカ・数量」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください MY4N リレー オムロン 4 個 H3CR-A8 タイマ オムロン 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|MY4N|リレー|オムロン|4個|ref=|} {|H3CR-A8|タイマ|オムロン|2個|ref=|}
+[qtyFirst] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しなし） 列の対応: 1列目 → 数量 / 2列目 → 部品名 / 3列目 → 型式 / 4列目 → メーカ ⚠ 見出しが無いので、列を「数量・部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください リレー MY4N オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|リレー|MY4N|オムロン|4個|ref=|} {|タイマ|H3CR-A8|オムロン|2個|ref=|}
+[titlePaste] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 形式 → 型式 / メーカー → メーカ / 員数 → 数量 ⚠ 見出しより上の 1 行（表題など）は取り込みません リレー MY4N オムロン 4 個 タイマ H3CR オムロン 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=2: {|リレー|MY4N|オムロン|4個|ref=|} {|タイマ|H3CR|オムロン|2個|ref=|}
+[titleBlock] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: No → （使わない） / 品名 → 部品名 / 形式 → 型式 / メーカー → メーカ / 員数 → 数量 ⚠ 見出しより上の 1 行（表題など）は取り込みません リレー MY4N オムロン 4 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=1: {|リレー|MY4N|オムロン|4個|ref=|}
+[english] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: Part Name → 部品名 / Part No → 型式 / Mfr → メーカ / Qty → 数量 Relay MY4N Omron 4 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=1: {|Relay|MY4N|Omron|4個|ref=|}
+[englishB] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: Description → 部品名 / Manufacturer Part Number → 型式 / Manufacturer → メーカ / Quantity → 数量 / Designator → 回路記号 Relay MY4N Omron 4 個 K1 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=1: {|Relay|MY4N|Omron|4個|ref=K1|}
+[refFirst] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: 記号 → 回路記号 / 品名 → 部品名 / 形式 → 型式 / メーカー → メーカ / 員数 → 数量 リレー MY4N オムロン 4 個 K1 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=1: {|リレー|MY4N|オムロン|4個|ref=K1|}
+[qtyUnit] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 形式 → 型式 / メーカー → メーカ / 員数 → 数量 / 単位 → 単位 電線 KIV 1.25 住友電装 20 m リレー MY4N オムロン 4 個 バンド T18R ヘラマン 1 パック Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=3: {|電線|KIV 1.25|住友電装|20m|ref=|} {|リレー|MY4N|オムロン|4個|ref=|} {|バンド|T18R|ヘラマン|1パック|ref=|}
+[fullwidth] pasted ok=true | Enter in textarea -> still paste | foot: 空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る）
+   preview: 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 形式 → 型式 / メーカー → メーカ / 員数 → 数量 リレー ＭＹ４Ｎ オムロン 4 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+   rows=1: {|リレー|ＭＹ４Ｎ|オムロン|4個|ref=|}
+
+ERRORS:

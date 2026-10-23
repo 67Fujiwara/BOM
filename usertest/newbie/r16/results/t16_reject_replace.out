@@ -1,0 +1,10 @@
+R001 before R001:selected ordered=false adopted=S1 flags={}
+published: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに） | R001:selected removal={"kind":"replace","by":"R081"} ordered=false adopted=S1 flags={} | R081:draft replaces=R001 ordered=false adopted=undefined flags={"reconfirm":true}
+rejected: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘 | R001:selected removal={"kind":"replace","by":"R081"} ordered=false adopted=S1 flags={} | R081:draft replaces=R001 ordered=false adopted=undefined flags={"reconfirm":true}
+header P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)設計待ち 70購買待ち 10PM待ち 1見積済 75/80エラー 3警告 3期限超過 1設計購買PM鈴木Ctrl+K コマンド?
+formal confirm 正式見積依頼書（社外）を出します: 対象 5 行。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+after formal: 4 行 × 2 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行 | R001:selected removal={"kind":"replace","by":"R081"} ordered=false adopted=S1 flags={} | R081:draft replaces=R001 ordered=false adopted=undefined flags={"reconfirm":true}
+purchasing sees new row R081 設計 2 制御 PLC CPUユニット FX5U-32MR/ES-NEW 三菱電機 1 個 相見積 不可 11/11 下書き · 要再確認 
+o (order) on new row -> 権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1 | R081:draft replaces=R001 ordered=false adopted=undefined flags={"reconfirm":true}
+
+ERRORS:

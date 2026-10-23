@@ -1,0 +1,20 @@
+== A. 購買 6: R033 S1 単価 106 を Enter → 95 → Enter
+  before S1:106/12 S2:96/23 S3:101/25 | R033 quoted
+  [typed] role=purchasing mode=edit view=6 cur=R033/q.unitPrice@S1 edit="95" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing mode=edit view=6 cur=R034/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  after S1:95/12 S2:96/23 S3:101/25
+  row text R033 タッチパネル 7インチ GS2107-WTBD 三菱電機 1 個 見積済 ¥95 12日 受注生産 11/26 ¥96 23日 取寄 12/16 ¥101 25日 取寄 11/25
+  detail 相見積・スコア内訳 （必要日 11/11 / 必要数 1個 / 基準日 10/22） 商社 単価 納期 MOQ 在庫 丸め/余剰 スコア 価格点 納期点 実績点 条件点 備考 1. 因幡電機 ¥95 12日 受注生産 1 99.2 100 100 96 100 最安 / 手入力 / 期限 11/26 2. 立花エレテック ¥96 23日 取寄 1 79.6 99 40 90 100 納期NG(3日超過) / 期限 12/16 3. ミスミ ¥101 25日 取寄 1 57.6 94 0 50* 100 納期NG(5日超過) / 実績なし / 期限 11/25 指摘 （↓ で指摘・見積を選んで 
+== B. 設計: 起動 → ↓ → サイドの「4 要確認」のつもりで 4 → Enter
+  [↓] role=design mode=nav view=1 cur=R001/name edit="" | toast: null
+  [4] role=design mode=edit view=1 cur=R001/name edit="4" | toast: null
+  [Enter] role=design mode=nav view=1 cur=R002/name edit="4" | toast: null
+  R001 PLC CPUユニット {"name":"4"}
+  Ctrl+Enter null 変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4
+== C. 設計: 6 で商社別 → 続けて 4（要確認に戻るつもり）
+  [6] role=design mode=nav view=6 cur=null/name edit="" | toast: null
+  [4] role=design mode=nav view=4 cur=null/name edit="" | toast: null
+  [Enter] role=design mode=nav view=4 cur=null/name edit="" | toast: 行を選んでください（↓ で先頭の行へ）
+  changed 
+
+ERRORS:

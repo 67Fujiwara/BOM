@@ -1,0 +1,11 @@
+import { launch, fresh, makeLog, shot, sel, gotoCol, typeReal, sleep } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('y02b_select_shot')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '調達区分')
+await typeReal(page, 'sh'); await sleep(80)
+const c1 = await page.locator('.cell-editor, .editor, td.editing').first().innerText().catch(() => '')
+await shot(page, 'y02b_sh_typed')
+await page.keyboard.press('ArrowDown'); await sleep(80); await shot(page, 'y02b_sh_down')
+const html = await page.locator('[data-row-id="R030"]').first().innerHTML()
+log('cell html after ↓: ' + html.replace(/\s+/g, ' ').slice(0, 1200))
+save(errors); await browser.close()

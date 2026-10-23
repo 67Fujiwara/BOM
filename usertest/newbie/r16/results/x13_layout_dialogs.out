@@ -1,0 +1,20 @@
+[light] issue: {"top":84,"bottom":451,"h":367,"scrollH":365,"clientH":365,"overflowY":"hidden","foot":[416,450],"vh":700}
+[light] decision: {"top":84,"bottom":333,"h":249,"scrollH":247,"clientH":247,"overflowY":"hidden","foot":[299,332],"vh":700}
+[light] decision_e: {"top":84,"bottom":287,"h":203,"scrollH":201,"clientH":201,"overflowY":"hidden","foot":[252,286],"vh":700}
+[light] help: {"top":84,"bottom":568,"h":484,"scrollH":482,"clientH":482,"overflowY":"hidden","foot":[533,567],"vh":700}
+[light] palette: {"top":84,"bottom":616,"h":532,"scrollH":530,"clientH":530,"overflowY":"hidden","foot":[144,164],"vh":700}
+[light] wizard_preview: {"top":84,"bottom":450,"h":366,"scrollH":364,"clientH":364,"overflowY":"hidden","foot":[416,449],"vh":700}
+[light] adopt: {"top":84,"bottom":268,"h":184,"scrollH":182,"clientH":182,"overflowY":"hidden","foot":[233,267],"vh":700}
+[light] replace: {"top":84,"bottom":221,"h":137,"scrollH":135,"clientH":135,"overflowY":"hidden","foot":[187,220],"vh":700}
+[light] settings: {"top":84,"bottom":568,"h":484,"scrollH":482,"clientH":482,"overflowY":"hidden","foot":[533,567],"vh":700}
+[dark] issue: {"top":84,"bottom":451,"h":367,"scrollH":365,"clientH":365,"overflowY":"hidden","foot":[416,450],"vh":700}
+[dark] decision: {"top":84,"bottom":333,"h":249,"scrollH":247,"clientH":247,"overflowY":"hidden","foot":[299,332],"vh":700}
+[dark] decision_e: {"top":84,"bottom":287,"h":203,"scrollH":201,"clientH":201,"overflowY":"hidden","foot":[252,286],"vh":700}
+[dark] help: {"top":84,"bottom":568,"h":484,"scrollH":482,"clientH":482,"overflowY":"hidden","foot":[533,567],"vh":700}
+[dark] palette: {"top":84,"bottom":616,"h":532,"scrollH":530,"clientH":530,"overflowY":"hidden","foot":[144,164],"vh":700}
+[dark] wizard_preview: {"top":84,"bottom":450,"h":366,"scrollH":364,"clientH":364,"overflowY":"hidden","foot":[416,449],"vh":700}
+[dark] adopt: {"top":84,"bottom":268,"h":184,"scrollH":182,"clientH":182,"overflowY":"hidden","foot":[233,267],"vh":700}
+[dark] replace: {"top":84,"bottom":221,"h":137,"scrollH":135,"clientH":135,"overflowY":"hidden","foot":[187,220],"vh":700}
+[dark] settings: {"top":84,"bottom":568,"h":484,"scrollH":482,"clientH":482,"overflowY":"hidden","foot":[533,567],"vh":700}
+
+ERRORS:

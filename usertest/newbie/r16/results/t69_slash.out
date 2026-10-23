@@ -1,0 +1,6 @@
+  placeholder: 絞り込み（Ctrl+F でここへ。Enter で表に戻る、Esc で解除）
+  after / mode edit "/" | focused filter? cell
+  after Enter nav R002 name filter= ""
+  R001 working {"name":"/relay"}
+
+ERRORS:

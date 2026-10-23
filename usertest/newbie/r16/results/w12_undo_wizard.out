@@ -1,0 +1,16 @@
+  created projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"} | toast 新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+  after edit projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+  Ctrl+Z #1: 元に戻す: セル編集 | projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+  Ctrl+Z #2: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+  Ctrl+Z #3: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+  Ctrl+Z #4: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+  reload projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=0 first={"n":"リレー","s":"draft"}
+== 公開 → Ctrl+Z → リロード
+  publish 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel null
+  after publish projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=1 first={"n":"リレー","s":"submitted"}
+  Ctrl+Z 前の公開（公開）には戻せる値の変更がありません（行の追加だけ）。追加した行を戻すときは Shift+Delete で取消してください。公開より前の操作 1 件は、Ctrl+Z ではもう戻りません（公開した Rev に含まれています）。 projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=1 first={"n":"リレー","s":"submitted"}
+  Ctrl+Z 2 戻す操作がありません（この案件であなたが行った操作はまだありません） projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=1 first={"n":"リレー","s":"submitted"}
+  reload projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=1 first={"n":"リレー","s":"submitted"}
+  Ctrl+Y after reload やり直す操作がありません projects=P-2026-041,P-2026-002 cur=P-2026-002 rows=2 subs=1 first={"n":"リレー","s":"submitted"}
+
+ERRORS:

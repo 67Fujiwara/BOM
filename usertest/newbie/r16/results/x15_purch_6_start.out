@@ -1,0 +1,22 @@
+== Alt+6 → 1200
+  [opened] mode=nav view=6 cur=R004/q.unitPrice@S1 edit="" | cursorbar=R004 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] mode=edit view=6 cur=R004/q.unitPrice@S1 edit="1200" | cursorbar=R004 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R005/q.unitPrice@S1 edit="" | cursorbar=R005 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  quote changes: R004@S1 price=1200 formal=null
+== Alt+6 → ↓ → 1200
+  [opened] mode=nav view=6 cur=R005/q.unitPrice@S1 edit="" | cursorbar=R005 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] mode=edit view=6 cur=R005/q.unitPrice@S1 edit="1200" | cursorbar=R005 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R006/q.unitPrice@S1 edit="" | cursorbar=R006 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R005 の単価 ¥1,200 は他社（¥10,512 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  quote changes: R005@S1 price=1200 formal=null
+== サイドの 6 をクリック → 1200
+  [opened] mode=nav view=6 cur=R004/q.unitPrice@S1 edit="" | cursorbar=R004 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] mode=edit view=6 cur=R004/q.unitPrice@S1 edit="1200" | cursorbar=R004 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R005/q.unitPrice@S1 edit="" | cursorbar=R005 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  quote changes: R004@S1 price=1200 formal=null
+== Alt+8 → 1500
+  [opened] mode=nav view=8 cur=R001/q.formalPrice@A edit="" | cursorbar=R001 正式単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] mode=edit view=8 cur=R001/q.formalPrice@A edit="1500" | cursorbar=R001 正式単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=8 cur=R002/q.formalPrice@A edit="" | cursorbar=R002 正式単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R001 の正式単価 ¥1,500（概算から +927%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+  quote changes: R001@S1 price=146 formal=1500
+
+ERRORS:

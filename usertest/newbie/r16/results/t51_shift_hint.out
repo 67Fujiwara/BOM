@@ -1,0 +1,23 @@
+== A. PM: 7 の要決定の行で Shift+Y（却下のつもり）→ 案内「例: Alt+y」→ Alt+y
+  [open] role=pm mode=nav view=7 cur=R003/name panel=null sort=null | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  before R003 selected decisions 0
+  [Shift+Y] role=pm mode=panel view=7 cur=R003/name panel=prompt sort=null | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Alt+y (案内どおり)] role=pm mode=panel view=7 cur=R003/name panel=prompt sort=null | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  panel: 決定: 受入（R003。理由・任意） Enter 確定 Esc 取り消し
+  after R003 selected decisions 0 []
+== A2. PM: 7 で別の行（承認系）を探して Shift+Y → Alt+y
+  7 rows R003
+  R003: selected -> selected | Shift+Y: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | Alt+y: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | panel: 決定: 受入（R003。理由・任意） Enter 確定 Esc 取り消し
+== B. 設計: 単価で Shift+R（指摘に返信のつもり）→ Alt+r
+  [Shift+R] role=design mode=nav view=1 cur=R016/unitPrice panel=null sort=null | toast: この列は自動計算です。「指摘に返信」は Alt+Shift+R（または ID の列で R）。キーの一覧は F1
+  [Alt+r] role=design mode=panel view=1 cur=R016/unitPrice panel=prompt sort=null | toast: この列は自動計算です。「指摘に返信」は Alt+Shift+R（または ID の列で R）。キーの一覧は F1
+  panel: R016 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+== C. 設計: 金額で Shift+S（降順のつもり）→ Alt+s
+  [Shift+S] role=design mode=nav view=1 cur=R016/amount panel=null sort=null | toast: この列は自動計算です。「今の列で並び替え（降順）」は Alt+Shift+S（または ID の列で S）。キーの一覧は F1
+  [Alt+s] role=design mode=nav view=1 cur=R016/amount panel=null sort={"col":"amount","dir":"asc"} | toast: 金額 で昇順に並べました（もう一度で解除）
+== D. 設計: スコアで Shift+A（商社を選んで）→ Alt+a
+  [Shift+A] role=design mode=nav view=1 cur=R005/score panel=null sort=null | toast: この列は自動計算です。「商社を選んで採用（1〜9）」は Alt+Shift+A（または ID の列で A）。キーの一覧は F1
+  [Alt+a] role=design mode=nav view=1 cur=R005/score panel=null sort=null | toast: R005 を ミスミ で採用（スコア 83.8 / 実績なし）
+  R005 quoted/undefined -> selected/S3
+
+ERRORS:

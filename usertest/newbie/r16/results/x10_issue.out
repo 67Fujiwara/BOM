@@ -1,0 +1,27 @@
+  [at R030 型式] role=purchasing mode=nav view=1 cur=R030/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Alt+Shift+I] role=purchasing mode=panel view=1 cur=R030/model panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対応 購買 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 k 等の頭文字 / ↑↓ Enter で種 | hints: F1ヘルプ | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter (何も選ばず)] role=purchasing mode=panel view=1 cur=R030/model panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | hints: F1ヘルプ | toast: null
+  [Enter 2] role=purchasing mode=panel view=1 cur=R030/model panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | hints: F1ヘルプ | toast: 本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）
+  [typed romaji] role=purchasing mode=panel view=1 cur=R030/model panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | hints: F1ヘルプ | toast: 本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）
+  [Enter 3] role=purchasing mode=nav view=1 cur=R030/model panel=null | undefined | hints: Ctrl+Enter指摘 1 件を発行 F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: I-006 型式あいまい を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  [Enter 4] role=purchasing mode=nav view=1 cur=R030/model panel=null | undefined | hints: Ctrl+Enter指摘 1 件を発行 F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  issues: I-001:R016/model/型式あいまい/open I-002:R022/model/廃番/open I-003:R009/maker/メーカ未記入/open I-004:R054/qtyNeeded/最小ロット/open I-005:R041/maker/メーカ未記入/open I-006:R030/model/型式あいまい/draft
+  [Ctrl+Enter] role=purchasing mode=nav view=1 cur=R030/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 指摘 1 件 を公開しました
+  issues: I-001:R016/model/型式あいまい/open I-002:R022/model/廃番/open I-003:R009/maker/メーカ未記入/open I-004:R054/qtyNeeded/最小ロット/open I-005:R041/maker/メーカ未記入/open I-006:R030/model/型式あいまい/open
+== 設計: 4 → F8 → Space で指摘を見る → Shift+R（返信）→ 打つ → Enter
+  [design] role=design mode=nav view=4 cur=R030/model panel=null | undefined | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [Space] role=design mode=nav view=4 cur=R030/model panel=null | undefined | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space閉じる | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [Alt+Shift+R] role=design mode=panel view=4 cur=R030/model panel=replyIssue | 返信 I-006 Enter 送信 Esc 閉じる | hints: F1ヘルプ | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [reply Enter] role=design mode=nav view=4 cur=R030/model panel=null | undefined | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space閉じる | toast: 返信しました（相手の受信箱に出ます）
+  issues: I-001:R016/model/型式あいまい/open I-002:R022/model/廃番/open I-003:R009/maker/メーカ未記入/open I-004:R054/qtyNeeded/最小ロット/open I-005:R041/maker/メーカ未記入/open I-006:R030/model/型式あいまい/open
+  [Ctrl+Enter] role=design mode=panel view=4 cur=R009/model panel=prompt | 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: null
+  [reason] role=design mode=nav view=4 cur=R009/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: 行 6（Rev.2・3） を公開しました
+  issues: I-001:R016/model/型式あいまい/open I-002:R022/model/廃番/open I-003:R009/maker/メーカ未記入/open I-004:R054/qtyNeeded/最小ロット/open I-005:R041/maker/メーカ未記入/open I-006:R030/model/型式あいまい/fixed
+== 購買: 4 → 対応済の指摘を確認（x は Alt+x）
+  [purch 4] role=purchasing mode=nav view=4 cur=R030/name panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く Alt+x指摘を確認済に | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [F8] role=purchasing mode=nav view=4 cur=R030/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く Alt+x指摘を確認済に | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [x] role=purchasing mode=nav view=4 cur=R030/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く Alt+x指摘を確認済に | toast: 権限なし（設計の列）。「警告を確認済みにする / 外す」は Alt+x（または ID の列で x）。キーの一覧は F1
+  [Alt+x] role=purchasing mode=nav view=4 cur=R030/model panel=null | undefined | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「警告を確認済みにする / 外す」は Alt+x（または ID の列で x）。キーの一覧は F1
+  issues: I-001:R016/model/型式あいまい/open I-002:R022/model/廃番/open I-003:R009/maker/メーカ未記入/open I-004:R054/qtyNeeded/最小ロット/open I-005:R041/maker/メーカ未記入/open I-006:R030/model/型式あいまい/confirmed
+
+ERRORS:

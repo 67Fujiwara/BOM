@@ -62,6 +62,7 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     cols.push({ header: '追加費用', key: 'extraCost', width: 10 }, { header: 'スコア', key: 'score', width: 7 })
   }
   headerRow(sheet, cols)
+  let written = 0
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
     // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も購買には出さない（§5。承認する PM には出す）
@@ -78,18 +79,21 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     const e = target === 'internal' ? valuesFor(r, ws.user.role) : r
     const q = adoptedQuote(p, r)
     const amt = lineAmount(p, r)
-    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status], ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
+    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status] + (e !== r && r.working && Object.keys(r.working).length ? '（作業中の値・未公開）' : ''), ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
     if (target === 'archive') for (const sid of p.supplierIds) {
       const qq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
       rec[`q.${sid}.price`] = qq?.unitPrice ?? ''
       rec[`q.${sid}.lead`] = qq?.leadDays ?? ''
       rec[`q.${sid}.moq`] = qq?.moq ?? ''
     }
+    written++
     const row = sheet.addRow(rec)
     if (!isActive(r)) row.font = { strike: true, color: { argb: 'FF888888' } }
     const sup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId)
     if (sup && target !== 'supplier') row.getCell('adopted').fill = FILL('FF' + sup.color.slice(1) + '')
   }
+  // 商社向けに出す行が無ければファイルを作らない（見出しだけのファイルを商社に送らない）
+  if (target === 'supplier' && !written) throw new Error('商社向けに出す行がありません（公開した行だけが出ます。設計が Ctrl+Enter で公開してから）')
   if (target !== 'supplier') addInternalSheets(wb, ws, p)
   const buf = await wb.xlsx.writeBuffer()
   const suffix = target === 'supplier' ? `_${ws.suppliers.find((s) => s.id === supplierId)?.name ?? '商社向け'}` : target === 'archive' ? '_保管用' : ''

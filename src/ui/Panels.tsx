@@ -301,6 +301,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                     // 文字の欄もあるダイアログでは、選択肢をクリックしたら文字の欄へ（続けて打った番号・理由が欄に入る）
                     st.set({ panel: { ...(useStore.getState().panel as typeof panel), index: i, textTouched: true } })
                     document.querySelector<HTMLElement>('[data-testid="prompt-text"]')?.focus()
+                    useStore.getState().toastMsg(`「${o}」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）`, 'info')
                   }}>
                     <kbd>{panel.showText && !panel.digitsSelect ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
                   </div>

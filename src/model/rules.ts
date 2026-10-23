@@ -171,11 +171,17 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
     if (/^#(REF!|DIV\/0!|N\/A|VALUE!|NAME\?|NUM!|NULL!|SPILL!|CALC!|エラー|数式の結果なし)/i.test(v.trim())) out.push({ rowId: row.id, field: f, ruleId: 'sys.excel.error', severity: 'error', message: v.startsWith('#数式') ? '数式の計算結果が入っていないセルでした（元のファイルを Excel で開いて保存し直してから読むか、正しい値を入れてください）' : `Excel のエラー値「${v}」のままです（元の表で直してから貼り直すか、正しい値を入れてください）`, fixes: [] })
   }
   // 型式・メーカが「未定」「TBD」「-」のままの行は、そのまま購買に見積を頼めない（決まってから公開するか、承知のうえで確認済みに）
-  const TBD = 'sys.tbd'
+  // 確認済みは欄と値ごと（メーカの「-」を確認済みにしても、型式の「未定」や別の値は改めて警告する）
   for (const f of ['model', 'maker'] as const) {
     const v = String(e[f] ?? '').trim()
-    if (v && /^[（(【\[]?\s*(未定|tbd|tba|検討中|調整中|未決|確認中|不明|[-－―ー?？]+)\s*[）)】\]]?$/i.test(v) && !row.ackRules.includes(TBD))
+    const TBD = `sys.tbd.${f}:${v}`
+    if (v && /^[（(【\[]?\s*(未定|tbd|tba|n\/?a|検討中|調整中|未決|確認中|要確認|不明|後日(連絡|決定)?|[-－―ー?？]+)\s*[）)】\]]?$|^tbd\b|^(未定|後日)/i.test(v) && !row.ackRules.includes(TBD))
       out.push({ rowId: row.id, field: f, ruleId: TBD, severity: 'warn', message: `${f === 'model' ? '型式' : 'メーカ'}が「${v}」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）`, fixes: [] })
+  }
+  // 「〃」「同上」「同左」は値ではない（上の行・左の欄の値を入れる）
+  for (const f of ['name', 'model', 'maker'] as const) {
+    const v = String(e[f] ?? '').trim()
+    if (/^(〃|”|"|''|同上|同左|仝|ditto)$/i.test(v)) out.push({ rowId: row.id, field: f, ruleId: 'sys.ditto', severity: 'error', message: `「${v}」は値ではありません（上の行と同じなら、その値を入れてください）`, fixes: [] })
   }
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'

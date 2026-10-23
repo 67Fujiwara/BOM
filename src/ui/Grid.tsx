@@ -158,6 +158,8 @@ export function Grid({ vm }: { vm: ViewModel }) {
                   className={(d?.numeric ? 'num ' : '') + (st.sort?.col === c ? 'sorted ' : '') + 'sortable'}
                   title={`${d?.label ?? c}（クリックで並び替え。キーは s / Shift+S）${d?.editableBy.length ? ` 書ける役割: ${d.editableBy.map((r) => ROLE_LABEL[r]).join('・')}` : ' 自動計算'}`}
                   onClick={() => {
+                    // 編集中なら先に確定する（ほかのクリックと同じ。打っている行が並べ替えで見えなくならないように）
+                    if (useStore.getState().mode === 'edit' && commitEdit('stay') === false) return
                     const cur = useStore.getState().sort
                     const dir = cur?.col === c && cur.dir === 'asc' ? 'desc' : cur?.col === c && cur.dir === 'desc' ? null : 'asc'
                     st.set({ sort: dir ? { col: c, dir } : null })

@@ -307,3 +307,39 @@ describe('ラウンド 13 の取り込み（表題欄）', () => {
     expect(s.rows.map((x) => [x.model, x.maker, x.qtyNeeded])).toEqual([['MY4N', 'オムロン', 4]])
   })
 })
+
+describe('ラウンド 14 の取り込み（新人）', () => {
+  it('変更図の削除の行（新の列が空・備考に削除、追加の行がある表）は取り込まない', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\t変更\nタイマ\tH3Y-2\t\tオムロン\t1\t\t削除\n端子台\t\tXW2B-20G4\tオムロン\t\t2\t追加')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N-D2', 4], ['端子台', 'XW2B-20G4', 2]])
+    expect(r.warnings[0]).toContain('削除された部品')
+  })
+  it('〃・同上は上の行、同左は左のセルの値', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N-D2\t〃\t2\nタイマ\tH3CR-A8\t同上\t1\n〃\tH3CR-A8N\t〃\t1')
+    expect(r.rows.map((x) => [x.name, x.maker])).toEqual([['リレー', 'オムロン'], ['リレー', 'オムロン'], ['タイマ', 'オムロン'], ['タイマ', 'オムロン']])
+    expect(r.warnings.join()).toContain('〃')
+  })
+  it('表題欄「品名｜第4ライン制御盤｜型式｜CP-4L｜数量｜1台｜備考｜客先」を見出しにしない', () => {
+    const r = parseBomPaste('品名\t第4ライン制御盤\t型式\tCP-4L\t数量\t1台\t備考\t客先 ABC\n作成\t山田\t承認\t田中\n\nNo\t品名\t形式\tメーカー\t員数\n1\tリレー\tMY4N-D2 DC24\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N-D2 DC24', 4], ['タイマ', 'H3CR-A8', 2]])
+  })
+  it('以下次葉・製品名つきのページの表題・部品点数合計・合計 6 ヶ・以上 2 品目を部品にしない', () => {
+    const r = parseBomPaste('部品名\t型式\t数量\nリレー\tMY4N\t2\n-以下次葉-\t\t\n制御盤A 部品表 2/2\t\t\n部品点数合計 2\t\t\n合計 6 ヶ\t\t\n以上 2 品目\t\t\n端子台\tXW2B\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'XW2B'])
+  })
+})
+
+describe('ラウンド 14 の xlsx（新人）', () => {
+  it('縦に結合したデータのセル（分類・メーカ）は各行に値、横に結合した見出しは左上だけ', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRows([['分類', '品名', '型式', '', 'メーカー', '数量'], ['制御', 'リレー', 'MY4N', '', 'オムロン', 2], ['', 'タイマ', 'H3CR', '', '', 1], ['', 'リレー', 'MY2N', '', '', 3]])
+    ws.mergeCells('C1:D1')
+    ws.mergeCells('A2:A4')
+    ws.mergeCells('E2:E4')
+    const tsv = await xlsxToTsv((await wb.xlsx.writeBuffer()) as ArrayBuffer)
+    const r = parseBomPaste(tsv)
+    expect(r.rows.map((x) => [x.category, x.name, x.maker])).toEqual([['制御', 'リレー', 'オムロン'], ['制御', 'タイマ', 'オムロン'], ['制御', 'リレー', 'オムロン']])
+  })
+})

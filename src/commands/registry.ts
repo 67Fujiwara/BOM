@@ -1810,6 +1810,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       })
     case 'role.switch':
       return prompt('役割を切り替え（ログイン）。数字か ↑↓ で役割、氏名を入れて Enter', { digitsSelect: true, options: ['設計', '購買', 'PM'], index: ['design', 'purchasing', 'pm'].indexOf(role), placeholder: '氏名（空なら案件の担当者名）', showText: true }, (choice, name) => {
+        // 数字だけの氏名は、選び直すつもりの数字が入ったことが多い（履歴に残る名前になる）
+        if (/^[\d\s０-９]+$/.test(name.trim())) return toast(`氏名が「${name.trim()}」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）`, 'err')
         switchRole(choice === '購買' ? 'purchasing' : choice === 'PM' ? 'pm' : 'design', name)
       })
     default:

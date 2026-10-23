@@ -148,7 +148,15 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しの行を上から探す（表題・依頼No などの行が先にあってもよい）
   const filled = (l: string[]) => l.filter((c) => c.trim() !== '').length
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
-  const counts = lines.slice(0, 30).map((l) => new Set(l.map(headerField).filter(Boolean)).size)
+  // 表題欄（「品名 | 制御盤A | 数量 | 1台」のようにラベルと値が別のセル）は、見出しの言葉が多くても見出しにしない:
+  // 数（単位つきも）だけのセルがある行、見出しの言葉のすぐ右がいつも値になっている行
+  const numCell = (c: string) => /^\s*\d[\d.,]*\s*(台|個|式|枚|本|組|面|セット|set|pcs?|ヶ|ケ)?\s*$/i.test(toHalf(c))
+  const alternating = (l: string[]) => {
+    const idx = l.map((_, j) => j).filter((j) => headerField(l[j]))
+    return idx.length >= 2 && idx.every((j) => (l[j + 1] ?? '').trim() !== '' && !headerField(l[j + 1]))
+  }
+  const titleLike = (l: string[]) => l.some(numCell) || alternating(l)
+  const counts = lines.slice(0, 30).map((l) => (titleLike(l) ? 0 : new Set(l.map(headerField).filter(Boolean)).size))
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
   const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
@@ -163,15 +171,13 @@ export function parseBomPaste(text: string): PasteResult {
     for (const x of f) if (bestSet.has(x)) both++
     return both >= Math.ceil(Math.max(f.size, bestSet.size) * 0.6)
   }
-  // 表題欄（「品名 | 制御盤A | 数量 | 2」のようにラベルと値が別のセル）は、見出しの言葉が重なっても見出しにしない:
-  // 数だけのセルがある行、値のセルの割合がいちばん見出しらしい行より目立って多い行
-  const numCell = (c: string) => /^\s*\d[\d.,]*\s*$/.test(toHalf(c))
+  // 繰り返しの見出しを探すときも、表題欄・値のセルの割合がいちばん見出しらしい行より目立って多い行は見出しにしない
   const ratio = (l: string[]) => {
     const f = l.filter((c) => c.trim() !== '')
     return f.length ? f.filter((c) => headerField(c)).length / f.length : 0
   }
   const bestRatio = best >= 2 ? Math.min(...tops.map((i) => ratio(lines[i]))) : 0
-  const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && (tops.includes(i) || (!l.some(numCell) && ratio(l) >= bestRatio - 0.15)))
+  const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && (tops.includes(i) || (!titleLike(l) && ratio(l) >= bestRatio - 0.15)))
   const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
   // 2 段の見出しで、上の段がまとめの名前（部品情報｜数量）、下の段が項目と「旧／新」のとき: 下の段の「旧」「新」に上の段の名前を付ける
   if (headerAt > 0) {
@@ -328,7 +334,7 @@ export function parseBomPaste(text: string): PasteResult {
   const mappedEmpty = (l: string[]) => mapping.every((f, j) => !f || (l[j] ?? '').trim() === '')
   const blanks = lines.slice(hasHeader ? 1 : 0).filter((l) => !isTotal(l) && mappedEmpty(l)).length
   if (blanks) warnings.push(`部品の列がすべて空の ${blanks} 行（ページ番号・表題など）は取り込みません`)
-  const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l) && !mappedEmpty(l))
+  let body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l) && !mappedEmpty(l))
   // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
   mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
   // 同じ項目に当たる列が 2 つあれば、左の列を使う（番号だけの列を外したあとで判定する）
@@ -351,9 +357,26 @@ export function parseBomPaste(text: string): PasteResult {
     mapping = mapping.map((f, j) => (f === dup && j !== keep ? null : f))
     warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が ${cols.length} つあります。「${(hasHeader ? first[keep] : '') || '左の列'}」の列を使います`)
   }
+  // 変更図で、新しい版の列がどれも空で前の版の列だけに値がある行は「削除」の部品。
+  // 備考に「削除・廃止」とある行と、追加の行（前の版が空で新しい版に値）がある表のそういう行は取り込まない
+  const noteCol = mapping.indexOf('note')
+  const fbs = [...fallback.values()]
+  const blank = (l: string[], j: number) => (l[j] ?? '').trim() === ''
+  const onlyOld = (l: string[]) => fbs.length > 0 && fbs.every((fb) => blank(l, fb.keep)) && fbs.some((fb) => fb.others.some((k) => !blank(l, k)))
+  const hasAdds = body.some((l) => fbs.some((fb) => !blank(l, fb.keep) && fb.others.every((k) => blank(l, k))))
+  const deleted = body.filter((l) => onlyOld(l) && (hasAdds || (noteCol >= 0 && /削除|廃止|delete|remove/i.test(l[noteCol] ?? ''))))
+  if (deleted.length) {
+    body = body.filter((l) => !deleted.includes(l))
+    const ex = deleted[0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')
+    warnings.unshift(`新しい版の列が空で前の版だけに値がある ${deleted.length} 行（例: ${ex}）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）`)
+  }
   let badQty = 0
   let badUnit = 0
   const fellBack = new Map<BomField, number>()
+  // 「〃」「同上」は上の行の値、「同左」は左のセルの値にする
+  const DITTO = /^(〃|”|"|''|同上|同左|仝|ditto)$/i
+  const prevVal = new Map<BomField, string>()
+  let ditto = 0
   const rows = body.map((line, i) => {
     const cells = split(line)
     const r: Partial<Row> = { qtyNeeded: 1, unit: '個' }
@@ -370,6 +393,11 @@ export function parseBomPaste(text: string): PasteResult {
           fellBack.set(f, (fellBack.get(f) ?? 0) + 1)
         }
       }
+      if (DITTO.test(v)) {
+        v = /同左/.test(v) ? (cells[j - 1] ?? '').trim() : (prevVal.get(f) ?? '')
+        ditto++
+      }
+      prevVal.set(f, v)
       if (f === 'qtyNeeded') {
         const n = parseNumber(v, { min: 0, max: 1e9 })
         if (!n.ok || n.value == null) {
@@ -395,7 +423,8 @@ export function parseBomPaste(text: string): PasteResult {
     void i
     return r
   })
-  for (const [f, n] of fellBack) warnings.push(`「${first[fallback.get(f)!.keep] ?? FIELD_LABEL[f]}」が空の ${n} 行は、ほかの「${FIELD_LABEL[f]}」の列の値を使いました`)
+  if (ditto) warnings.unshift(`「〃」「同上」「同左」の ${ditto} セルは、上の行（同左は左のセル）の値にしました`)
+  for (const [f, n] of fellBack) warnings.unshift(`「${first[fallback.get(f)!.keep] ?? FIELD_LABEL[f]}」が空の ${n} 行は、ほかの「${FIELD_LABEL[f]}」の列の値を使いました`)
   if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。4 要確認で直してください）`)
   if (badUnit) warnings.push(`単位を読めない行が ${badUnit} 行あります（「個」にしました）`)
   const noResult = body.reduce((n, l) => n + split(l).filter((c) => c.trim() === '#数式の結果なし').length, 0)
@@ -465,7 +494,8 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
         if (hiddenCols.has(c)) continue
         // 結合したセルは左上のセルにだけ値を置く（ExcelJS は結合した全部のセルに同じ値を返す。2 段の見出しの形を崩さない）
         const cell = row.getCell(c)
-        const slave = cell.isMerged && cell.master && cell.master.address !== cell.address
+        // 横の結合（見出しの「型式」を 2 列に）は左上だけ。縦に結合したデータ（分類・メーカを何行かまとめた）は各行に同じ値
+        const slave = cell.isMerged && cell.master && cell.master.address !== cell.address && cell.master.row === cell.row
         vals.push(slave ? '' : cellToText(raw[c]).replace(/[\t\n\r]/g, ' '))
       }
       lines.push(vals.join('\t'))
@@ -526,11 +556,11 @@ export function isTotalCell(c0: string): boolean {
   if (!t && c.trim().length >= 3) return true
   if (/^(以下余白|以下空白|以上)(です|でございます)?$/.test(t)) return true
   // 「以上、2点」「（合計）」
-  if (/^以上[、,]?[\d,.]*(点|個|行|件)?$/.test(t)) return true
+  if (/^以上[、,]?[\d,.]*(点|個|行|件|品目|品|種)?$/.test(t)) return true
   if (/^[（(](小計|合計|総計|計)[）)]$/.test(t)) return true
   // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
   // 「合計 6台分」「合計：6個 / ¥12,000」（数・単位・金額がいくつ続いても）
-  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([/／,、]?[¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?分?)*([（(][^）)]*[）)])?$/i.test(t)
+  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|合計|amount|qty)?[:：]?([/／,、]?[¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs|ヶ|ケ|コ|品目|品|種|行|件)?分?)*([（(][^）)]*[）)])?$/i.test(t)
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。
@@ -553,10 +583,12 @@ export function isSectionLine(cells: string[], width = cells.length): boolean {
       // ページごとの表題・ページ番号（部品表 (2/3)・P.2・2 / 3 ページ）
       PAGE_TITLE.test(filled[0]) ||
       PAGE_NO.test(filled[0]) ||
+      // 製品名つきのページの表題（「制御盤A 部品表 2/2」「制御盤A 部品表（続き）」）
+      /(部品表|部品リスト|部品一覧|bom|parts\s*list).*([(（]?\s*\d+\s*([/／]|of)\s*\d+\s*[)）]?|続き|その\s*\d+|page\s*\d+|p\.\s*\d+)\s*$/i.test(filled[0]) ||
       // 「- 1 -」「Page 1 of 2」「（次頁へ続く）」「※ 注記」
       /^[-－—]\s*\d+\s*[-－—]$/.test(filled[0]) ||
       /^page\s*\d+\s*(of|\/)\s*\d+$/i.test(filled[0]) ||
-      /(次頁|次ページ|前頁|前ページ|次葉).*(続|へ|つづ)|以下次頁|^[（(]?\s*(続く|つづく|続き)\s*[）)]?$/.test(filled[0]) ||
+      /(次頁|次ページ|前頁|前ページ|次葉).*(続|へ|つづ)|以下次(頁|葉|ページ)|^[（(]?\s*(続く|つづく|続き)\s*[）)]?$/.test(filled[0]) ||
       /^[※＊*]\s*\S/.test(filled[0]))
   )
 }

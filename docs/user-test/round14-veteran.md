@@ -154,3 +154,9 @@
     - 2 つのタブで同じ案件 ID・大文字小文字だけ違う ID で同時に作ると、後の方は「案件ID「P-DUP」はもうあります」で止まり、JSON の書き出し → 読み込みも通る（`91-twotab-wizard.json` T1・T2 × 2 回）
     - 意地の悪い JSON（行 ID が `constructor`・`__proto__`・`toString`・`hasOwnProperty`、行の重みが文字、members が数、10 万段の入れ子、公開の記録の日時が文字）でも pageerror・console error は 0 件。その行へ Ctrl+G で移れ、6・重みのパネル・指摘・公開の操作でも壊れない（`85-json-r14`・`85b-json-protoid`）
     - 選択肢をクリックしたあとの ↓・数字・テンキー・Shift+Tab・続けてクリックは一貫している（`90-dialog-r14` H1〜H8）
+
+---
+
+## 4. 合計と上位 3 件
+
+（確認中）

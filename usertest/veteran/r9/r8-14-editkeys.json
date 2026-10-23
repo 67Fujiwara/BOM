@@ -1,0 +1,762 @@
+[
+  {
+    "col": "備考",
+    "key": "F8",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "F8:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "F8",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "F8:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Shift+F8",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Shift:false",
+      "F8:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Shift+F8",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Shift:false",
+      "F8:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "F1",
+    "afterKey": {
+      "mode": "パネル",
+      "edit": null,
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": "panel-help",
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "パネル",
+      "edit": null,
+      "cursor": "R040 備考",
+      "panel": "panel-help",
+      "filter": ""
+    },
+    "prev": [
+      "F1:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"note\":\"abc\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "F1",
+    "afterKey": {
+      "mode": "パネル",
+      "edit": null,
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": "panel-help",
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "パネル",
+      "edit": null,
+      "cursor": "R040 必要数",
+      "panel": "panel-help",
+      "filter": ""
+    },
+    "prev": [
+      "F1:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"qtyNeeded\":42}"
+    ],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+x",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "x:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+x",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "x:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+n",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "n:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+n",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "n:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+h",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "h:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+h",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "h:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+4",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+4",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+/",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "/:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+/",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "/:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+Shift+Slash",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "Shift:false",
+      "?:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+Shift+Slash",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "Shift:false",
+      "?:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+BracketRight",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "]:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+BracketRight",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "]:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Control+.",
+    "afterKey": {
+      "mode": "ナビ",
+      "edit": null,
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "Z",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Control:false",
+      ".:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"note\":\"abc\"}"
+    ],
+    "toasts": [
+      "R040 に直し方の候補はありません"
+    ]
+  },
+  {
+    "col": "必要数",
+    "key": "Control+.",
+    "afterKey": {
+      "mode": "ナビ",
+      "edit": null,
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Control:false",
+      ".:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"qtyNeeded\":42}"
+    ],
+    "toasts": [
+      "R040 に直し方の候補はありません"
+    ]
+  },
+  {
+    "col": "備考",
+    "key": "Control+k",
+    "afterKey": {
+      "mode": "パレット",
+      "edit": null,
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": "panel-palette",
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "パレット",
+      "edit": null,
+      "cursor": "R040 備考",
+      "panel": "panel-palette",
+      "filter": ""
+    },
+    "prev": [
+      "Control:false",
+      "k:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"note\":\"abc\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Control+k",
+    "afterKey": {
+      "mode": "パレット",
+      "edit": null,
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": "panel-palette",
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "パレット",
+      "edit": null,
+      "cursor": "R040 必要数",
+      "panel": "panel-palette",
+      "filter": ""
+    },
+    "prev": [
+      "Control:false",
+      "k:true"
+    ],
+    "diff": [
+      "R040.working:undefined→{\"qtyNeeded\":42}"
+    ],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "F2",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "F2:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "F2",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "F2:false"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+ArrowUp",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "ArrowUp:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+ArrowUp",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "ArrowUp:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "備考",
+    "key": "Alt+ArrowDown",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "abc",
+      "cursor": "R040 備考",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "abcZ",
+      "cursor": "R040 備考",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "ArrowDown:true"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "col": "必要数",
+    "key": "Alt+ArrowDown",
+    "afterKey": {
+      "mode": "編集",
+      "edit": "42",
+      "cursor": "R040 必要数",
+      "view": "view-1",
+      "panel": null,
+      "filter": ""
+    },
+    "afterZ": {
+      "mode": "編集",
+      "edit": "42Z",
+      "cursor": "R040 必要数",
+      "panel": null,
+      "filter": ""
+    },
+    "prev": [
+      "Alt:false",
+      "ArrowDown:true"
+    ],
+    "diff": [],
+    "toasts": []
+  }
+]

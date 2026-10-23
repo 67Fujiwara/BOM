@@ -53,4 +53,4 @@ await run('Q F8 で R005 → ↓↓↓ → F8', 4, ['F8TO:R005', 'ArrowDown', 'A
 await run('R F8 で R022 → PageDown → F8', 1, ['F8TO:R022', 'PageDown', 'PageDown', 'F8'], '画面の先の問題（R054/R061）')
 await run('S F8 で R005 → Alt+1 → Ctrl+End → F8', 4, ['F8TO:R005', 'Alt+1', 'Control+End', 'F8'], '先頭へ回る（R005 以降は無い）?')
 console.log('errors', JSON.stringify(env.errs.slice(0, 5)))
-saveJson('12-f8flow.json', out); await env.browser.close()
+saveJson(`12-f8flow-${port}.json`, out); await env.browser.close()

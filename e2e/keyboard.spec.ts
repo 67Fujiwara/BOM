@@ -59,7 +59,7 @@ test('編集モード中は1キー操作が効かず、Enter で確定して下�
   await page.keyboard.press('Home')
   while (!(await page.getByTestId('cursor').textContent())!.includes('部品名')) await page.keyboard.press('ArrowRight')
   await page.keyboard.press('Enter')
-  await expect(page.getByTestId('mode')).toHaveText('編集')
+  await expect(page.getByTestId('mode')).toHaveText(/入力|編集/)
   await page.keyboard.press('Control+a')
   await page.keyboard.type('a1o2h3')
   await expect(page.getByTestId('cell-editor')).toHaveValue('a1o2h3')
@@ -373,7 +373,7 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   await expect(page.getByTestId('toast')).toContainText('R011')
   // 同じセルで Alt なしの英字は値の入力
   await page.keyboard.press('h')
-  await expect(page.getByTestId('mode')).toHaveText('編集')
+  await expect(page.getByTestId('mode')).toHaveText(/入力|編集/)
   await page.keyboard.press('Escape')
   // 数字で始まる値（1N4148・3M）も入力。別の行に書かない
   await gotoCell(page, 'R012', '型式')
@@ -418,7 +418,7 @@ test('Enter で始めた数値の編集は上書き、書けない列の数字�
   await page.keyboard.press('ArrowDown')
   await page.keyboard.press('y')
   await expect(page.getByTestId('toast')).not.toContainText('権限なし')
-  await expect(page.getByTestId('mode')).not.toHaveText('編集')
+  await expect(page.getByTestId('mode')).not.toHaveText(/入力|編集/)
 })
 
 test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにそのまま入る', async ({ page }) => {
@@ -447,4 +447,17 @@ test('行を選んでいないときの数字はビュー切替だけで、続�
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')
+})
+
+test('選択の列で打って ↓ は、打った値（言い換えも）で確定して下の行へ', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R070', '単位')
+  await page.keyboard.type('pcs', { delay: 30 })
+  await page.keyboard.press('ArrowDown')
+  await expect(page.locator('[data-row-id="R070"] td[data-col="unit"]')).toHaveText('個')
+  await expect(page.getByTestId('cursor')).toContainText('R071')
+  await gotoCell(page, 'R070', '調達区分')
+  await page.keyboard.type('sh', { delay: 30 })
+  await page.keyboard.press('ArrowDown')
+  await expect(page.locator('[data-row-id="R070"] td[data-col="procurement"]')).toHaveText('指定商社')
 })

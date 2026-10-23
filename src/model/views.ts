@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, resolverOfIssue } from './derive'
+import { ball, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, quoteResponses, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -26,7 +26,8 @@ export interface ViewCtx {
 const DESIGN_COLS = ['id', 'ball', 'ref', 'category', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'procurement', 'altPolicy', 'needDate', 'note', 'status']
 
 export const VIEWS: ViewDef[] = [
-  { id: 1, label: 'すべて', filter: () => true },
+  // §5: PM 承認待ちの変更セットで足した行は、承認まで購買には見せない（設計・PM には見せる）
+  { id: 1, label: 'すべて', filter: (r, c) => c.role !== 'purchasing' || !(r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') },
   { id: 2, label: '購買提出用', columns: [...DESIGN_COLS, 'due'], filter: (r) => isActive(r) && !r.hidden },
   { id: 3, label: '発注・入荷', columns: ['id', 'ball', 'name', 'model', 'maker', 'orderQty', 'unit', 'adopted', 'unitPrice', 'amount', 'lead', 'ordered', 'received', 'promisedDate', 'receivedLot', 'status'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   {
@@ -74,9 +75,11 @@ function purchasingAttention(r: Row, c: ViewCtx): boolean {
   const expired = qs.some((q) => q.unitPrice != null && q.validUntil != null && q.validUntil < today && (!r.adoptedSupplierId || q.supplierId === r.adoptedSupplierId))
   if (expired) return true
   if (r.status !== 'quoting') return false
-  const answered = qs.filter((q) => q.unitPrice != null || q.leadDays != null).length
+  const { answered, total } = quoteResponses(c.p, r)
   const deadlinePassed = !!c.p.settings.quoteDeadline && c.p.settings.quoteDeadline < today
-  return answered < qs.length && (answered > 0 || deadlinePassed)
+  // 頼むつもりでまだ頼んでいない商社がある行も出す（購買が残りに依頼する）
+  const unasked = (r.quoteTargets ?? []).some((id) => c.p.supplierIds.includes(id) && !qs.some((q) => q.supplierId === id))
+  return unasked || (answered < total && (answered > 0 || deadlinePassed))
 }
 
 function kindOrder(r: Row, c: ViewCtx): number {

@@ -14,9 +14,27 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     }
     // 採用した商社があとから「取扱なし」（辞退）になったら採用を外す（§3.2・§8.1: 辞退は選定の対象外）。
     // 相見積は選び直し（見積済）、指定系は次の商社・指定先の変更へ（見積中）。発注済は発注後変更依頼で扱う
-    if (r.adoptedSupplierId && ['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
+    // PM 承認待ちの仮の採用（先行採用・例外選定・閾値超）も同じ
+    const tentative = r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断'].includes(r.flags.pmReason ?? '')
+    if (r.adoptedSupplierId && (['selected', 'formalRequested', 'formalQuoted'].includes(r.status) || tentative)) {
       const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (aq && aq.leadDays === -1) {
+        if (tentative) {
+          r.flags.pmPending = false
+          r.flags.pmReason = undefined
+          r.flags.ltbPending = false
+        }
+        // PM がこの商社の納期・価格について出した依頼（納期NG・コスト超過）は取り下げ（選び直しで判定し直す）
+        for (const i of p.issues)
+          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+            i.status = 'confirmed'
+            i.resolution = '採用商社の辞退で取り下げ（選び直し）'
+          }
+        // 特急・分納の手配もこの商社とのもの
+        if (!r.ordered) {
+          r.extraCost = null
+          r.extraCostKind = ''
+        }
         r.adoptedSupplierId = undefined
         r.adoptReason = undefined
         r.scoreSnapshot = undefined
@@ -30,7 +48,33 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.flags.countermeasure = undefined
         r.dueAt = undefined
         const others = p.quotes.some((x) => x.rowId === r.id && !x.stale && x.supplierId !== aq.supplierId && x.unitPrice != null && x.leadDays !== -1)
-        r.status = isFixedProcurement(r) || !others ? 'quoting' : 'quoted'
+        r.status = isFixedProcurement(r) || !others || !quoteComplete(p, r, today) ? 'quoting' : 'quoted'
+        r.statusChangedAt = now
+      }
+    }
+    // 調達区分を変えた行: 指定先（固定）の採用は相見積では使わない（ほかの商社にも頼み直す）。
+    // 相見積の採用は、指定系に変えたら指定先でなければ外す。発注済は発注後変更依頼で扱う
+    if (r.adoptedSupplierId && !['ordered', 'received'].includes(r.status)) {
+      const fixed = isFixedProcurement(r)
+      const want = fixed ? fixedSupplierId(p, { ...r, adoptedSupplierId: undefined }, ws.suppliers) : null
+      // 指定商社は指定先を変えたら（設計が直して公開）その商社に。客先指定品は採用した依頼先のまま（スコアで選んだ採用だけ外す）
+      const mismatch = fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）'
+      if (mismatch) {
+        r.adoptedSupplierId = undefined
+        r.adoptReason = undefined
+        r.scoreSnapshot = undefined
+        r.flags.contested = false
+        r.quoteTargets = undefined
+        r.status = fixed ? 'quoting' : 'submitted'
+        r.statusChangedAt = now
+        r.dueAt = undefined
+      }
+    }
+    // 指定系に変えた見積済の行で、指定先の有効な見積がまだ無ければ見積中に戻す（指定先に頼む）
+    if (isFixedProcurement(r) && !r.adoptedSupplierId && r.status === 'quoted') {
+      const sid = fixedSupplierId(p, r, ws.suppliers)
+      if (!p.quotes.some((x) => x.rowId === r.id && !x.stale && x.supplierId === sid && x.unitPrice != null && x.leadDays !== -1)) {
+        r.status = 'quoting'
         r.statusChangedAt = now
       }
     }

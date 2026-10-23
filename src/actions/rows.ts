@@ -128,6 +128,11 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
         st().toastMsg(`${r.id} の正式単価 ¥${q.formalPrice.toLocaleString()}${pct != null ? `（概算から ${pct > 0 ? '+' : ''}${pct}%）` : ''}${early ? '。まだ正式見積を依頼していない行です' : ''}。桁・行を確かめてください`, 'err')
     }
   }
+  // 発注数が必要数よりけた違いに多い（単価を打つつもりで発注数に入れた など）
+  if (ok && colKey === 'orderQty' && typeof value === 'number') {
+    const r = st().project().rows.find((x) => x.id === rowId)
+    if (r && value > Math.max(r.qtyNeeded * 10, r.qtyNeeded + 100)) st().toastMsg(`${rowId} の発注数 ${value} は必要数 ${r.qtyNeeded} の ${Math.round(value / Math.max(1, r.qtyNeeded))} 倍です。列（発注数）を確かめてください（Ctrl+Z で戻す）`, 'err')
+  }
   // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
   if (ok && colKey === 'extraCost' && typeof value === 'number') {
     const p = st().project()
@@ -496,11 +501,12 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
         r.flags.requote = true
         r.adoptedSupplierId = undefined
         r.scoreSnapshot = undefined
+        // 旧型式の見積は履歴に。新しい型式の見積の枠は、購買が頼み直したときに作る（頼む商社は新しいメーカで選び直す）
         for (const q of p.quotes.filter((x) => x.rowId === r.id && !x.stale)) {
           q.stale = true
           q.staleModel = before.model
-          p.quotes.push(emptyQuote(r.id, q.supplierId))
         }
+        r.quoteTargets = undefined
         if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) setStatus(r, 'submitted')
         // 採用・先行採用・先行発注・差分超過の判断は旧型式に対するもの。新しい型式で見積から出し直す
         r.flags.early = undefined
@@ -675,12 +681,14 @@ export function quoteTargets(p: Project, r: Row): string[] {
   }
   // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない）。
   // メーカを扱うと登録した商社が 1 社も無いとき（表記ゆれ・マスタ未登録）は、取りこぼさないよう全社に頼む
-  if (!e.maker) return p.supplierIds
   const sups = st().ws.suppliers
+  // 商社マスタで取引不可にした商社には頼まない
+  const ids = p.supplierIds.filter((id) => sups.find((x) => x.id === id)?.tradable !== false)
+  if (!e.maker) return ids
   const listed = (id: string) => (sups.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0
-  const explicit = p.supplierIds.filter((id) => listed(id) && handlesMaker(sups.find((x) => x.id === id)!.handledMakers, e.maker))
-  if (!explicit.length) return p.supplierIds
-  return p.supplierIds.filter((id) => !listed(id) || explicit.includes(id))
+  const explicit = ids.filter((id) => listed(id) && handlesMaker(sups.find((x) => x.id === id)!.handledMakers, e.maker))
+  if (!explicit.length) return ids
+  return ids.filter((id) => !listed(id) || explicit.includes(id))
 }
 
 function pick(e: DesignFields): DesignFields {

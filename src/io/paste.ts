@@ -86,6 +86,8 @@ export function detectField(h: string): BomField | null {
   // 括弧の注記（「型式（旧型式併記）」）は見ない
   const head = s.replace(/[（(][^）)]*[）)]/g, '').trim()
   if (/^(旧|変更前|前回|改訂前|廃止|old\b|prev(ious)?\b)/i.test(head)) return null
+  // 括弧の注記が「旧」「変更前」「old」だけのもの（型式（旧）・型式(old)・型式（変更前））も前の版の列
+  if (/[（(]\s*(旧|旧版|変更前|前回|改訂前|廃止|old|prev(ious)?|before)\s*[）)]/i.test(s)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -108,13 +110,22 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
   const counts = lines.slice(0, 30).map((l) => new Set(l.map(detectField).filter(Boolean)).size)
   const best = Math.max(0, ...counts)
-  // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）
-  const headerAt = best >= 2 ? counts.lastIndexOf(best) : -1
+  // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
+  const tops = counts.map((n, i) => (n === best ? i : -1)).filter((i) => i >= 0)
+  const same = tops.length > 1 && tops.every((i) => lines[i].join('\t').trim() === lines[tops[0]].join('\t').trim())
+  const headerAt = best >= 2 ? (same ? tops[0] : tops[tops.length - 1]) : -1
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
     warnings.push(`見出しより上の ${headerAt} 行（表題など）は取り込みません`)
     lines = lines.slice(headerAt)
+  }
+  if (headerAt >= 0) {
+    // ページごとに繰り返した同じ見出しの行は外す（部品にしない）
+    const h = lines[0].join('\t').trim()
+    const before = lines.length
+    lines = [lines[0], ...lines.slice(1).filter((l) => l.join('\t').trim() !== h)]
+    if (lines.length < before) warnings.push(`繰り返しの見出し ${before - lines.length} 行は取り込みません`)
   } else if (headerAt < 0 && !singleHeader) {
     // 見出しが無い表で、先頭の 1 セルだけの行（表題）は飛ばす
     const width = Math.max(...lines.map((l) => filled(l)))
@@ -221,6 +232,29 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     // 非表示の列（Excel で隠した旧型式の列など）も取り込まない
     const hiddenCols = new Set<number>()
     for (let c = 1; c <= ws.columnCount; c++) if (ws.getColumn(c).hidden) hiddenCols.add(c)
+    // 隠した列でも、その項目（数量・型式など）の列がほかに無ければ読む（隠しただけで数量が全部 1 にならない）
+    const unhidden: string[] = []
+    if (hiddenCols.size) {
+      const fieldOf = new Map<number, BomField>()
+      let n = 0
+      ws.eachRow({ includeEmpty: false }, (row) => {
+        if (n++ >= 30) return
+        const raw = row.values as unknown[]
+        for (let c = 1; c < raw.length; c++) {
+          const f = detectField(cellToText(raw[c]))
+          if (f && !fieldOf.has(c)) fieldOf.set(c, f)
+        }
+      })
+      const visibleFields = new Set([...fieldOf].filter(([c]) => !hiddenCols.has(c)).map(([, f]) => f))
+      for (const c of [...hiddenCols]) {
+        const f = fieldOf.get(c)
+        if (f && !visibleFields.has(f)) {
+          hiddenCols.delete(c)
+          visibleFields.add(f)
+          unhidden.push(FIELD_LABEL[f])
+        }
+      }
+    }
     let hiddenRows = 0
     ws.eachRow({ includeEmpty: false }, (row) => {
       // 非表示の行（Excel で隠した行・フィルタで隠れた行）は取り込まない（数は知らせる）
@@ -236,7 +270,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     })
     // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
     const score = lines.slice(0, 30).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
-    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size }
+    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size, unhidden }
   })
   if (!sheets.length) return ''
   // 見出しの言葉が同じだけあるシートが複数なら、名前が「旧版・old・コピー」などでないシート → 左（先）のシート
@@ -244,7 +278,12 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const rank = (x: (typeof sheets)[number]) => x.score * 2 - (stale(x.name) ? 1 : 0)
   const best = sheets.reduce((a, b) => (rank(b) > rank(a) ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
-  hiddenNote = best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : ''
+  hiddenNote = [
+    best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : '',
+    best.unhidden.length ? `隠れていた「${best.unhidden.join('」「')}」の列は、ほかに同じ項目の列が無いので読みました` : '',
+  ]
+    .filter(Boolean)
+    .join('。')
   // 見出しのある別のシートがあれば、名前を知らせる（違うシートを読んだと気づけるように）
   otherSheets = sheets.filter((x) => x !== best && x.score > 0 && x.score >= best.score - 1).map((x) => x.name)
   return best.text
@@ -278,10 +317,12 @@ function cellToText(v: unknown): string {
 /** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
 export function isTotalCell(c: string): boolean {
   // 空白と飾り（【】＜＞＊-＝ など）を外してから見る（「【合計】」「＊合計＊」「-- 以下余白 --」）
-  const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*\-－ー—―=＝~～・]/g, '')
+  const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*※\-－ー—―=＝~～・_＿]/g, '')
+  // 飾りだけのセル（「＝＝＝＝」「----」）は区切り
+  if (!t && c.trim().length >= 3) return true
   if (/^(以下余白|以下空白|以上)$/.test(t)) return true
-  // 「計：6個」「合計 6点」「合計数量 6」のように、同じセルに数・単位が続くものも
-  return /^(小計|合計|総計|総合計|計|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
+  // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
+  return /^(小計|合計|総計|総合計|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。

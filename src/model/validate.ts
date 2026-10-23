@@ -32,7 +32,9 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     // id の無い行・重複した行は外して読み、何を外したかを知らせる（1 行の欠陥で全体を捨てない）
     const rows: Partial<Row>[] = []
     const seenRow = new Set<string>()
-    for (const [ri, r] of arr<unknown>(p0.rows).entries()) {
+    for (const [ri, r0] of arr<unknown>(p0.rows).entries()) {
+      // 数字の id（R を付けずに書いた 81 など）は文字にして読む
+      const r = isObj(r0) && typeof r0.id === 'number' && Number.isFinite(r0.id) ? { ...r0, id: String(r0.id) } : r0
       if (!isObj(r) || !str(r.id)) warnings.push(`案件 ${p0.id} の rows[${ri}] は id が無いので外しました`)
       else if (seenRow.has(r.id)) warnings.push(`案件 ${p0.id} の行 ${r.id} が重複していたので 2 つ目以降を外しました`)
       else {
@@ -41,6 +43,8 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       }
     }
     const rowIds = seenRow
+    // 値を直して読んだ項目（数量の無い・読めない・負の値、存在しない日付）を数えて知らせる
+    const fixes: Record<string, number> = {}
     const fallbackUser = { name: '不明', role: 'design' as const }
     const issues0 = arr<unknown>(p0.issues)
     const issues = issues0
@@ -60,7 +64,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       members: isObj(p0.members) ? (p0.members as Project['members']) : { design: '', purchasing: '', pm: '' },
       preferredSupplierIds: arr(p0.preferredSupplierIds),
       supplierIds: arr(p0.supplierIds),
-      rows: rows.map((r) => coerceRow(r as Record<string, unknown>)),
+      rows: rows.map((r) => coerceRow(r as Record<string, unknown>, fixes)),
       quotes,
       issues,
       submissions: arr<Project['submissions'][number]>(p0.submissions).filter((x) => isObj(x) && typeof (x as { rev?: unknown }).rev === 'number').map((s) => ({
@@ -87,6 +91,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       nextDecisionNo: Number(p0.nextDecisionNo) || arr(p0.decisions).length + 1,
       caseDecisions: arr<Project['caseDecisions'][number]>(p0.caseDecisions).filter((c) => isObj(c) && str(c.id) && typeof c.kind === 'string' && (c.status === 'open' || c.status === 'done')),
     }
+    for (const [k, n] of Object.entries(fixes)) warnings.push(`案件 ${p0.id}: ${k} ${n} 行`)
     projects.push(p)
   }
   const ids = projects.map((p) => p.id.toLowerCase())
@@ -99,7 +104,11 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
 
 const STATUSES = ['draft', 'submitted', 'quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received', 'cancelled', 'replaced']
 /** 行の各項目を既定の型にそろえる（数値の欄に文字・文字の欄に数値やオブジェクトが入った JSON でも画面が壊れないように） */
-function coerceRow(r: Record<string, unknown>): Row {
+function coerceRow(r: Record<string, unknown>, fixes: Record<string, number> = {}): Row {
+  const note = (k: string) => (fixes[k] = (fixes[k] ?? 0) + 1)
+  const q = r.qtyNeeded
+  if (q === undefined || q === null || (typeof q === 'number' && !Number.isFinite(q)) || (typeof q !== 'number' && !Number.isFinite(Number(q)))) note('必要数が無い・読めないので 1 にした')
+  else if (Number(q) < 0) note('必要数が負なので 0 にした')
   const base = newRow(r.id as string) as unknown as Record<string, unknown>
   const out: Record<string, unknown> = { ...base, ...r }
   for (const [k, def] of Object.entries(base)) {
@@ -113,6 +122,15 @@ function coerceRow(r: Record<string, unknown>): Row {
   for (const k of ['lastChangeCause', 'replaces', 'replacedBy', 'adoptReason', 'fromIssue', 'adoptedSupplierId', 'statusChangedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = undefined
   for (const k of ['packQty', 'orderQty', 'needOffset', 'extraCost', 'scoreSnapshot']) if (out[k] != null && (typeof out[k] !== 'number' || !Number.isFinite(out[k] as number))) out[k] = null
   for (const k of ['needDateFixed', 'promisedDate', 'dueAt', 'quotedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = null
+  if (typeof out.qtyNeeded === 'number' && out.qtyNeeded < 0) out.qtyNeeded = 0
+  // 日付の項目は、実在する YYYY-MM-DD だけ（「2026-02-30」「明日」は外す）
+  for (const k of ['needDateFixed', 'promisedDate']) {
+    const v = out[k]
+    if (typeof v === 'string' && v !== '' && !realDate(v)) {
+      out[k] = null
+      note('日付が読めないので外した')
+    }
+  }
   if (!STATUSES.includes(String(out.status))) out.status = 'draft'
   out.flags = isObj(r.flags) ? r.flags : {}
   out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
@@ -200,4 +218,11 @@ function clampSettings<T extends object>(st: T): T {
   for (const k of ['externalApprovalBudgetPct', 'exceptionPct', 'formalDiffPct', 'qtyTolerancePct', 'tieThreshold']) clamp(k, 0, 100)
   for (const k of ['externalApprovalAmount', 'exceptionAmount', 'formalDiffAmount', 'surplusAmount', 'budget']) clamp(k, 0, 1e12)
   return out as unknown as T
+}
+
+function realDate(v: string): boolean {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(v)
+  if (!m) return false
+  const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]))
+  return d.getFullYear() === Number(m[1]) && d.getMonth() === Number(m[2]) - 1 && d.getDate() === Number(m[3])
 }

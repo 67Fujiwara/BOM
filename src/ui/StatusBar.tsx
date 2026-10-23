@@ -25,7 +25,8 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   const row = st.cursorRow && !st.cursorRow.startsWith('g:') ? vm.rows.find((r) => r.id === st.cursorRow) : undefined
   const up = unpublishedCount(p, user.name)
   const hints: Array<[string, string]> = []
-  const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? '編集' : st.mode === 'palette' ? 'パレット' : 'パネル'
+  // Excel と同じく、打ち始めた入力は「入力」（矢印で確定して移動）、Enter・F2 で始めた編集は「編集」（矢印は文字の中）。F2 で切り替え
+  const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? (st.editTyped ? '入力' : '編集') : st.mode === 'palette' ? 'パレット' : 'パネル'
   if (st.mode === 'nav' && row && isActive(row)) {
     const pmCase = pmCaseOf(p, row)
     if (user.role === 'pm' && pmCase !== 'なし') hints.push(['y', '承認'], ['Shift+Y', '却下'], ['Enter', '決定パネル'])
@@ -36,7 +37,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : user.role !== 'purchasing' && openIssues(p, row.id).length ? '開いて指摘を見る' : '開く'])
     if (vm.counts[4]) hints.push(['F8', '次の問題'])
     if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) hints.push(['Ctrl+.', '指定先を変える'])
-    if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1) && fixedSupplierId(p, row, st.ws.suppliers)) hints.push(['Ctrl+.', '次の商社に依頼'])
+    if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1) ) hints.push(fixedSupplierId(p, row, st.ws.suppliers) ? ['Ctrl+.', '次の商社に依頼'] : ['Alt+Shift+I', '取引できる商社がすべて辞退: 設計に代替を相談（指摘）'])
     const ack = nextAckTarget(p, row, user.role)
     if (ack) hints.push(['x', ack])
     if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])

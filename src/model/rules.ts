@@ -175,13 +175,13 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
   for (const f of ['model', 'maker'] as const) {
     const v = String(e[f] ?? '').trim()
     const TBD = `sys.tbd.${f}:${v}`
-    if (v && /^[（(【\[]?\s*(未定|tbd|tba|n\/?a|検討中|調整中|未決|確認中|要確認|不明|後日(連絡|決定)?|[-－―ー?？]+)\s*[）)】\]]?$|^tbd\b|^(未定|後日)/i.test(v) && !row.ackRules.includes(TBD))
+    if (v && (/^[（(【\[]?\s*(未定|未決定|未確定|tbd|tba|n\/?a|検討中|要検討|選定中|調整中|未決|確認中|要確認|保留|仮|不明|後日(連絡|決定)?|[-－―ー?？]+|[xX×]{2,}|[○〇●◯]+)\s*[）)】\]]?$|^tbd\b|^(後日|仮[:：\s])|未定|未決定|未確定/i.test(v)) && !row.ackRules.includes(TBD))
       out.push({ rowId: row.id, field: f, ruleId: TBD, severity: 'warn', message: `${f === 'model' ? '型式' : 'メーカ'}が「${v}」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）`, fixes: [] })
   }
   // 「〃」「同上」「同左」は値ではない（上の行・左の欄の値を入れる）
   for (const f of ['name', 'model', 'maker'] as const) {
     const v = String(e[f] ?? '').trim()
-    if (/^(〃|”|"|''|同上|同左|仝|ditto)$/i.test(v)) out.push({ rowId: row.id, field: f, ruleId: 'sys.ditto', severity: 'error', message: `「${v}」は値ではありません（上の行と同じなら、その値を入れてください）`, fixes: [] })
+    if (/^(〃|″|”|＂|"|''|同上|同左|上に同じ|左に同じ|仝|ditto)$/i.test(v.replace(/[\s　。.]/g, ''))) out.push({ rowId: row.id, field: f, ruleId: 'sys.ditto', severity: 'error', message: `「${v}」は値ではありません（上の行と同じなら、その値を入れてください）`, fixes: [] })
   }
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'

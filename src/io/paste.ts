@@ -86,10 +86,11 @@ const VER_SEP = '[\\s_\\-【】\\[\\]［］（）()／/・:：の.]'
 // 「修正前／後」「改定前／後」「改正前／後」「訂正前／後」「差替前／後」「現状／変更案」も
 const CHANGE_STEM = '(?:変更|改訂|改定|改正|修正|訂正|差替|差し替え)'
 const OLD_WORDS = `${CHANGE_STEM}前|前回|旧品|旧版|旧|現在|現行|現状|現|今|前|old|before|prev(?:ious)?|as-?is`
-const NEW_WORDS = `${CHANGE_STEM}後|変更案|新しい|新品|新版|新|変更|改|後|new|after|to-?be`
+// 「変更」だけの語は印にしない（「変更記号」「変更備考」「型式の変更」は変更の内容の列）。「変更型式」は下の頭の印で
+const NEW_WORDS = `${CHANGE_STEM}後|変更案|新しい|新品|新版|新|改|後|new|after|to-?be`
 // 見出しの頭に付く印（新型式・旧品番・現数量・修正前型式）。「新品番」「旧品名」の「品」は項目の一部なので、頭の印は 1 字の新・旧を先に
 const OLD_PREFIX = `${CHANGE_STEM}前|前回|旧|現在|現行|現状|現|old|prev`
-const NEW_PREFIX = `${CHANGE_STEM}後|変更案|新しい|新|変更|改|new`
+const NEW_PREFIX = `${CHANGE_STEM}後|変更案|新しい|新|変更(?=型式|形式|型番|品番|数量|員数|品名|部品名|名称|メーカ)|改|new`
 const verToken = (w: string) => new RegExp(`(^|${VER_SEP})(${w})(?=${VER_SEP}|$)`, 'i')
 // 頭の印は、すぐ後ろが項目の語のときだけ（「Newark P/N」「新光品番」は商社の名前で版の印ではない）
 const FIELD_HEAD = '型式|形式|型番|品番|形番|形名|型名|品名|部品|名称|数量|員数|個数|台数|要数|必要|使用|手配|所要|メーカ|製造|図番|図面|記号|回路|備考|単位|入数|part|p\\/?n|mpn|qty|q\'ty|quantity|model|mfr|maker|manufacturer|desc|item|name|ref|dwg|drawing|note|unit'
@@ -151,12 +152,14 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しは、上から 30 行のうち見出しの言葉が最も多い行（表題欄の「品名 / 図番」より、本当の見出しの方が多い）
   // 表題欄（「品名 | 制御盤A | 数量 | 1台」のようにラベルと値が別のセル）は、見出しの言葉が多くても見出しにしない:
   // 数（単位つきも）だけのセルがある行、見出しの言葉のすぐ右がいつも値になっている行
-  const numCell = (c: string) => /^\s*\d[\d.,]*\s*(台|個|式|枚|本|組|面|セット|set|pcs?|ヶ|ケ)?\s*$/i.test(toHalf(c))
+  // 値のセル: 見出しの言葉（項目・単価・金額・規格 など）でない。「数量 | 1台」の「1台」は値
+  const HEADER_WORD = /^(no\.?|番号|規格|仕様|単価|金額|価格|納期|購入先|仕入先|手配|区分|摘要|小計|合計|計|頁|ページ|サイズ|材質|重量|用途|号機|\d+\s*号機|price|amount|spec|cost)$/i
+  const valueCell = (c: string) => c.trim() !== '' && !headerField(c) && !HEADER_WORD.test(toHalf(c).replace(/[\s　]+/g, ''))
   const alternating = (l: string[]) => {
     const idx = l.map((_, j) => j).filter((j) => headerField(l[j]))
-    return idx.length >= 2 && idx.every((j) => (l[j + 1] ?? '').trim() !== '' && !headerField(l[j + 1]))
+    return idx.length >= 2 && idx.every((j) => valueCell(l[j + 1] ?? ''))
   }
-  const titleLike = (l: string[]) => l.some(numCell) || alternating(l)
+  const titleLike = (l: string[]) => alternating(l)
   const counts = lines.slice(0, 30).map((l) => (titleLike(l) ? 0 : new Set(l.map(headerField).filter(Boolean)).size))
   const best = Math.max(0, ...counts)
   // 同じ数なら下の行（表題欄の下に本当の見出しがあるのが普通）。ただしページごとに同じ見出しを繰り返した表は最初の見出し
@@ -222,7 +225,8 @@ export function parseBomPaste(text: string): PasteResult {
   const twoStage = (top: string[], sub: string[] | undefined): string[] | null => {
     if (!sub) return null
     const same = (j: number) => (sub[j] ?? '').trim() !== '' && (sub[j] ?? '').trim() === (top[j] ?? '').trim()
-    const mark = (c: string) => c.trim() !== '' && (headerVersion(c) !== null || headerRev(c) !== null) && detectField(c) === null
+    // 下の段の小見出し: 版の印・Rev、号機ごとの数量（1号機・2号機・合計）
+    const mark = (c: string) => c.trim() !== '' && detectField(c) === null && (headerVersion(c) !== null || headerRev(c) !== null || /^(\d+\s*号機|号機\s*\d+|[a-z]\s*号機|\d+\s*台目|合計|計|小計|総数|total|sum)$/i.test(toHalf(c).trim()))
     // 単位の注記（「(個)」「(円)」）は印でも部品でもない（まとめるときは無視する）
     const unitNote = (c: string) => /^[（(][^）)]{1,6}[）)]$/.test(c.trim())
     const marks = sub.filter((c, j) => !same(j) && mark(c)).length
@@ -384,7 +388,9 @@ export function parseBomPaste(text: string): PasteResult {
     }
     // Rev が書いてあれば新しい Rev を先に
     const rev = (j: number) => (hasHeader ? (headerRev(first[j] ?? '') ?? -1) : -1)
-    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || a - b)
+    // 号機ごとの数量と「合計」の列があれば合計を
+    const total = (j: number) => (hasHeader && /合計|総数|total|sum/i.test(first[j] ?? '') ? 0 : 1)
+    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || a - b)
     const keep = order[0]
     if (rank(keep) === 0 || rev(keep) >= 0) fallback.set(dup, { keep, others: order.slice(1) })
     mapping = mapping.map((f, j) => (f === dup && j !== keep ? null : f))
@@ -396,11 +402,13 @@ export function parseBomPaste(text: string): PasteResult {
   const fbs = [...fallback.values()]
   // 新しい版の列の「－」「〃」「同左」「変更なし」は「変えていない」（空と同じ）。「削除」「廃止」は削除の印
   const SAME = /^(－|-|ー|―|〃|”|同上|同左|変更なし|変更無し|同じ|同)$/
-  const DEL = /^(削除|廃止|削除品|delete[d]?)$/i
+  const DEL = /^(削除|廃止|削除品|撤去|不要|なし|無し|×|✕|delete[d]?)$/i
   const blank = (l: string[], j: number) => (l[j] ?? '').trim() === '' || SAME.test((l[j] ?? '').trim())
   const onlyOld = (l: string[]) => fbs.length > 0 && ((fbs.every((fb) => blank(l, fb.keep)) && fbs.some((fb) => fb.others.some((k) => !blank(l, k)))) || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())))
-  const hasAdds = body.some((l) => fbs.some((fb) => !blank(l, fb.keep) && fb.others.every((k) => blank(l, k))))
-  const deleted = body.filter((l) => onlyOld(l) && (hasAdds || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())) || (noteCol >= 0 && /削除|廃止|delete|remove/i.test(l[noteCol] ?? ''))))
+  // 新しい版の列を変えていない行にも書き写してある表（新と旧が同じ値の行がある）なら、新が空の行は削除。
+  // 変えた行だけ新の列に書く表では、新が空の行は変えていない（削除にしない）
+  const complete = body.some((l) => fbs.some((fb) => !blank(l, fb.keep) && fb.others.some((k) => (l[k] ?? '').trim() === (l[fb.keep] ?? '').trim())))
+  const deleted = body.filter((l) => onlyOld(l) && (complete || fbs.some((fb) => DEL.test((l[fb.keep] ?? '').trim())) || (noteCol >= 0 && /削除|廃止|delete|remove/i.test(l[noteCol] ?? ''))))
   if (deleted.length) {
     body = body.filter((l) => !deleted.includes(l))
     const ex = deleted[0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')
@@ -410,7 +418,8 @@ export function parseBomPaste(text: string): PasteResult {
   let badUnit = 0
   const fellBack = new Map<BomField, number>()
   // 「〃」「同上」は上の行の値、「同左」は左のセルの値にする
-  const DITTO = /^(〃|”|"|''|同上|同左|仝|ditto)$/i
+  const DITTO = /^(〃|″|”|＂|"|''|同上|同左|上に同じ|左に同じ|仝|ditto)$/i
+  const dittoOf = (v: string) => DITTO.test(v.replace(/[\s　。.]/g, ''))
   const prevVal = new Map<BomField, string>()
   let ditto = 0
   const rows = body.map((line, i) => {
@@ -430,8 +439,9 @@ export function parseBomPaste(text: string): PasteResult {
           fellBack.set(f, (fellBack.get(f) ?? 0) + 1)
         }
       }
-      if (DITTO.test(v)) {
-        v = /同左/.test(v) ? (cells[j - 1] ?? '').trim() : (prevVal.get(f) ?? '')
+      if (dittoOf(v)) {
+        // 同左は、左の列が同じ項目（旧の列）のときだけ左の値。ほかは上の行と同じ
+        v = /同左|左に同じ/.test(v) && j > 0 && detected[j - 1] === f ? (cells[j - 1] ?? '').trim() : (prevVal.get(f) ?? '')
         ditto++
       }
       prevVal.set(f, v)

@@ -399,3 +399,31 @@ describe('ラウンド 14 のページの表題（ベテラン）', () => {
     expect(r.rows.map((x) => [x.name, x.qtyNeeded, x.unit])).toEqual([['ケーブル', 20, 'm']])
   })
 })
+
+describe('ラウンド 15 の取り込み（新人）', () => {
+  it('見積書の形の見出し（品名｜規格｜メーカー｜単価｜数量｜金額）を表題欄にしない', () => {
+    const r = parseBomPaste('品名\t規格\tメーカー\t単価\t数量\t金額\nリレー\tMY4N\tオムロン\t1200\t4\t4800')
+    expect(r.header).not.toBeNull()
+    expect(r.rows.map((x) => [x.name, x.maker, x.qtyNeeded])).toEqual([['リレー', 'オムロン', 4]])
+  })
+  it('変えた行だけ変更後を書く表に追加の行があっても、変えていない行を消さない', () => {
+    const r = parseBomPaste('品名\t型式\t変更後型式\t数量\nリレー\tMY2N\tMY4N\t2\n端子台\tXW2B\t\t3\nタイマ\t\tH3CR\t1')
+    expect(r.rows.map((x) => [x.name, x.model])).toEqual([['リレー', 'MY4N'], ['端子台', 'XW2B'], ['タイマ', 'H3CR']])
+  })
+  it('変更記号・変更備考は回路記号・備考にしない', () => {
+    const r = parseBomPaste('変更記号\t回路記号\t品名\t型式\t数量\t備考\t変更備考\n△1\tK1\tリレー\tMY4N\t2\t予備\t型式変更')
+    expect(r.rows[0]).toMatchObject({ ref: 'K1', note: '予備' })
+  })
+  it('数量を 1号機・2号機・合計 に分けた 2 段の見出し（品名などは縦に結合）は合計の列', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\t\t\n品名\t型式\tメーカー\t1号機\t2号機\t合計\nリレー\tMY4N\tオムロン\t2\t3\t5')
+    expect(r.rows.map((x) => [x.name, x.qtyNeeded])).toEqual([['リレー', 5]])
+  })
+  it('メーカーの列の同左は型式を写さない（上の行の値）、″・同　上・上に同じ も上の行', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N\tオムロン\t1\nソケット\tPYF08A\t同左\t1\nタイマ\tH3CR\t″\t1\nヒューズ\tF-10\t同　上\t1\n端子\tXW2B\t上に同じ\t1')
+    expect(r.rows.map((x) => x.maker)).toEqual(['オムロン', 'オムロン', 'オムロン', 'オムロン', 'オムロン'])
+  })
+  it('新の列の撤去・不要・× は削除', () => {
+    const r = parseBomPaste('部品名\t型式\t新型式\t数量\t新数量\nリレー\tMY2N\tMY4N\t1\t2\nタイマ\tH3Y\t撤去\t1\t\n端子\tXW2A\t×\t1\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+})

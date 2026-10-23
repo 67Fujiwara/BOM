@@ -1,0 +1,847 @@
+[
+  {
+    "case": "P4 A 公開のダイアログ（R010 PUB-A を含む）→ B が R010 部品名をさらに PUB-B に → A 2 Enter",
+    "expect": "公開する値が変わったことを知らせる（または B の値で公開と知らせる）",
+    "A0": "view-1/R011 部品名/パネル/panel-prompt",
+    "afterB": "view-1/R011 部品名/パネル/panel-prompt",
+    "rowAfterB": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-B",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "セル編集"
+      ]
+    },
+    "steps": [
+      "2→view-1/R011 部品名/パネル/panel-prompt",
+      "Enter→view-1/R011 部品名/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-B",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "セル編集"
+      ]
+    },
+    "diff": [
+      "R010.working:{\"name\":\"PUB-A\"}→{\"name\":\"PUB-B\"}"
+    ],
+    "toastsA": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "ダイアログを開いたあとに、公開する行が別のタブで変わりました（取消・値の変更）。公開していません。もう一度 Ctrl+Enter で中身を確かめてから公開してください"
+    ]
+  },
+  {
+    "case": "P4 A 公開のダイアログ（R010 PUB-A を含む）→ B が R010 部品名をさらに PUB-B に → A 2 Enter（公開の記録）",
+    "sub": {
+      "revs": "1",
+      "last": {
+        "rev": 1,
+        "rowIds": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006",
+          "R007",
+          "R008",
+          "R009",
+          "R010",
+          "R011",
+          "R012",
+          "R013",
+          "R014",
+          "R015",
+          "R016",
+          "R017",
+          "R018",
+          "R019",
+          "R020",
+          "R021",
+          "R022",
+          "R023",
+          "R024",
+          "R025",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R030",
+          "R031",
+          "R032",
+          "R033",
+          "R034",
+          "R035",
+          "R036",
+          "R037",
+          "R038",
+          "R039",
+          "R040",
+          "R041",
+          "R042",
+          "R043",
+          "R044",
+          "R045",
+          "R046",
+          "R047",
+          "R048",
+          "R049",
+          "R050",
+          "R051",
+          "R052",
+          "R053",
+          "R054",
+          "R055",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060",
+          "R061",
+          "R062",
+          "R063",
+          "R064",
+          "R065",
+          "R066",
+          "R067",
+          "R068",
+          "R069",
+          "R070",
+          "R071",
+          "R072",
+          "R073",
+          "R074",
+          "R075"
+        ],
+        "causes": {}
+      },
+      "unpublished": [
+        "R010"
+      ]
+    }
+  },
+  {
+    "case": "P5 A 公開のダイアログ → B が R010（ダイアログの行）を取消（Shift+Delete）→ A 2 Enter",
+    "expect": "名前の変更として開いた行が取消として公開されるなら知らせる",
+    "A0": "view-1/R011 部品名/パネル/panel-prompt",
+    "afterB": "view-1/R011 部品名/パネル/panel-prompt",
+    "rowAfterB": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "行を削除"
+      ]
+    },
+    "steps": [
+      "2→view-1/R011 部品名/パネル/panel-prompt",
+      "Enter→view-1/R011 部品名/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "行を削除"
+      ]
+    },
+    "diff": [
+      "R010.removal:undefined→{\"kind\":\"cancel\"}"
+    ],
+    "toastsA": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "ダイアログを開いたあとに、公開する行が別のタブで変わりました（取消・値の変更）。公開していません。もう一度 Ctrl+Enter で中身を確かめてから公開してください"
+    ]
+  },
+  {
+    "case": "P5 A 公開のダイアログ → B が R010（ダイアログの行）を取消（Shift+Delete）→ A 2 Enter（公開の記録）",
+    "sub": {
+      "revs": "1",
+      "last": {
+        "rev": 1,
+        "rowIds": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006",
+          "R007",
+          "R008",
+          "R009",
+          "R010",
+          "R011",
+          "R012",
+          "R013",
+          "R014",
+          "R015",
+          "R016",
+          "R017",
+          "R018",
+          "R019",
+          "R020",
+          "R021",
+          "R022",
+          "R023",
+          "R024",
+          "R025",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R030",
+          "R031",
+          "R032",
+          "R033",
+          "R034",
+          "R035",
+          "R036",
+          "R037",
+          "R038",
+          "R039",
+          "R040",
+          "R041",
+          "R042",
+          "R043",
+          "R044",
+          "R045",
+          "R046",
+          "R047",
+          "R048",
+          "R049",
+          "R050",
+          "R051",
+          "R052",
+          "R053",
+          "R054",
+          "R055",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060",
+          "R061",
+          "R062",
+          "R063",
+          "R064",
+          "R065",
+          "R066",
+          "R067",
+          "R068",
+          "R069",
+          "R070",
+          "R071",
+          "R072",
+          "R073",
+          "R074",
+          "R075"
+        ],
+        "causes": {}
+      },
+      "unpublished": [
+        "R010"
+      ]
+    }
+  },
+  {
+    "case": "P6 A 公開のダイアログ → B が R076（追加の行）を隠す → A 2 Enter",
+    "expect": "?",
+    "A0": "view-1/R011 部品名/パネル/panel-prompt",
+    "afterB": "view-1/R011 部品名/パネル/panel-prompt",
+    "rowAfterB": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "行を隠す/戻す"
+      ]
+    },
+    "steps": [
+      "2→view-1/R011 部品名/パネル/panel-prompt",
+      "Enter→view-1/R011 部品名/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集",
+        "行を隠す/戻す"
+      ]
+    },
+    "diff": [
+      "R076.hidden:false→true"
+    ],
+    "toastsA": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "ダイアログを開いたあとに、公開する行が別のタブで変わりました（取消・値の変更）。公開していません。もう一度 Ctrl+Enter で中身を確かめてから公開してください"
+    ]
+  },
+  {
+    "case": "P6 A 公開のダイアログ → B が R076（追加の行）を隠す → A 2 Enter（公開の記録）",
+    "sub": {
+      "revs": "1",
+      "last": {
+        "rev": 1,
+        "rowIds": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006",
+          "R007",
+          "R008",
+          "R009",
+          "R010",
+          "R011",
+          "R012",
+          "R013",
+          "R014",
+          "R015",
+          "R016",
+          "R017",
+          "R018",
+          "R019",
+          "R020",
+          "R021",
+          "R022",
+          "R023",
+          "R024",
+          "R025",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R030",
+          "R031",
+          "R032",
+          "R033",
+          "R034",
+          "R035",
+          "R036",
+          "R037",
+          "R038",
+          "R039",
+          "R040",
+          "R041",
+          "R042",
+          "R043",
+          "R044",
+          "R045",
+          "R046",
+          "R047",
+          "R048",
+          "R049",
+          "R050",
+          "R051",
+          "R052",
+          "R053",
+          "R054",
+          "R055",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060",
+          "R061",
+          "R062",
+          "R063",
+          "R064",
+          "R065",
+          "R066",
+          "R067",
+          "R068",
+          "R069",
+          "R070",
+          "R071",
+          "R072",
+          "R073",
+          "R074",
+          "R075"
+        ],
+        "causes": {}
+      },
+      "unpublished": [
+        "R010"
+      ]
+    }
+  },
+  {
+    "case": "P7 A 公開のダイアログ → B が R010 部品名を元（端子台エンドカバー）に戻す → A 2 Enter",
+    "expect": "変更の無くなった行は公開しない",
+    "A0": "view-1/R011 部品名/パネル/panel-prompt",
+    "afterB": "view-1/R011 部品名/パネル/panel-prompt",
+    "rowAfterB": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集"
+      ]
+    },
+    "steps": [
+      "2→view-1/R011 部品名/パネル/panel-prompt",
+      "Enter→view-1/R011 部品名/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1,2",
+      "events": [
+        "セル編集",
+        "公開 Rev.2（追加5 / 型式0 / 数量0 / その他1 / 取消0）",
+        "公開"
+      ]
+    },
+    "diff": [
+      "R010.name:\"端子台エンドカバー\"→\"PUB-A\"",
+      "R010.publishedRev:1→2",
+      "R010.lastChangeCause:undefined→\"変更セット #2\"",
+      "R010.working:{\"name\":\"PUB-A\"}→undefined",
+      "R076.status:\"draft\"→\"submitted\"",
+      "R076.flags:{}→{\"renegotiating\":false}",
+      "R076.publishedRev:undefined→2",
+      "R076.dueAt:undefined→\"2026-10-26\""
+    ],
+    "toastsA": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "行 6（Rev.2） を公開しました"
+    ]
+  },
+  {
+    "case": "P7 A 公開のダイアログ → B が R010 部品名を元（端子台エンドカバー）に戻す → A 2 Enter（公開の記録）",
+    "sub": {
+      "revs": "1,2",
+      "last": {
+        "rev": 2,
+        "rowIds": [
+          "R010",
+          "R076",
+          "R077",
+          "R078",
+          "R079",
+          "R080"
+        ],
+        "causes": {
+          "R010": "変更セット #2",
+          "R076": "追加",
+          "R077": "追加",
+          "R078": "追加",
+          "R079": "追加",
+          "R080": "追加"
+        },
+        "reason": "設計起因"
+      },
+      "unpublished": []
+    }
+  },
+  {
+    "case": "P8 A 公開のダイアログ → B（購買）が R076 の発注数を入れる → A 2 Enter",
+    "expect": "影響なし",
+    "A0": "view-1/R011 部品名/パネル/panel-prompt",
+    "afterB": "view-1/R011 部品名/パネル/panel-prompt",
+    "rowAfterB": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "セル編集"
+      ]
+    },
+    "steps": [
+      "2→view-1/R011 部品名/パネル/panel-prompt",
+      "Enter→view-1/R011 部品名/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "reason": null,
+      "pm": null,
+      "hidden": false,
+      "requote": false,
+      "model": "D-PT 2,5",
+      "name": "PUB-A",
+      "stale": 0,
+      "revs": "1,2",
+      "events": [
+        "セル編集",
+        "公開 Rev.2（追加5 / 型式0 / 数量0 / その他1 / 取消0）",
+        "公開"
+      ]
+    },
+    "diff": [
+      "R010.name:\"端子台エンドカバー\"→\"PUB-A\"",
+      "R010.publishedRev:1→2",
+      "R010.lastChangeCause:undefined→\"変更セット #2\"",
+      "R010.working:{\"name\":\"PUB-A\"}→undefined",
+      "R076.status:\"draft\"→\"submitted\"",
+      "R076.flags:{}→{\"renegotiating\":false}",
+      "R076.dueAt:undefined→\"2026-10-26\"",
+      "R076.publishedRev:undefined→2"
+    ],
+    "toastsA": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "行 6（Rev.2） を公開しました"
+    ]
+  },
+  {
+    "case": "P8 A 公開のダイアログ → B（購買）が R076 の発注数を入れる → A 2 Enter（公開の記録）",
+    "sub": {
+      "revs": "1,2",
+      "last": {
+        "rev": 2,
+        "rowIds": [
+          "R010",
+          "R076",
+          "R077",
+          "R078",
+          "R079",
+          "R080"
+        ],
+        "causes": {
+          "R010": "変更セット #2",
+          "R076": "追加",
+          "R077": "追加",
+          "R078": "追加",
+          "R079": "追加",
+          "R080": "追加"
+        },
+        "reason": "設計起因"
+      },
+      "unpublished": []
+    }
+  },
+  {
+    "case": "U2 B（購買）が R004 を理由つきで 2 位を採用 → A（購買）が R004 で a",
+    "expect": "推奨で上書きしない（Alt+Shift+A を案内）",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  },
+  {
+    "case": "U3 B が理由つきで採用 → A が Ctrl+Alt+A（最安）",
+    "expect": "上書きするなら理由の採用が消えると知らせる",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "Control+Alt+a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  },
+  {
+    "case": "U4 B が理由つきで採用 → A がパレット「未採用を推奨で一括採用」",
+    "expect": "R004 は上書きしない",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "PAL:未採用を推奨で一括採用→view-1/R004 ID/パネル/panel-prompt",
+      "Enter→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "やめました（何も変えていません）"
+    ]
+  },
+  {
+    "case": "U5 A が R004 で Shift+A のパネル（商社を選ぶ）を開いたまま → B が理由つきで採用 → A 1（推奨）",
+    "expect": "別のタブの理由つき採用を黙って上書きしない",
+    "A0": "view-1/R004 ID/パネル/panel-adopt",
+    "afterB": "view-1/R004 ID/パネル/panel-adopt",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "1→view-1/R004 ID/ナビ",
+      "Enter→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "R004 の採用は、理由を入れているあいだに別のタブで「ミスミ」に変わりました。採用しませんでした（見直してからもう一度）",
+      "この列は自動計算です"
+    ]
+  },
+  {
+    "case": "U6 同じタブ: 理由つきで 2 位を採用 → a",
+    "expect": "上書きしない（案内）",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  }
+]

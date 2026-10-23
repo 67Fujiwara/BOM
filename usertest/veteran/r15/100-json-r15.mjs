@@ -1,0 +1,41 @@
+// ラウンド15: JSON の文字の数・日付の読み方（V14-10 の修正: 文字の数は数に、時刻つき・0 の無い月日も日付）の境目
+import { open, reset, sleep, logger } from './lib15.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const pg = env.page; const log = logger(`100-json-r15-${port}${process.env.RUN ?? ""}.json`)
+const LSK = 'bom-pro.workspace.v2'
+const toast = () => pg.evaluate(() => (document.querySelector('[data-testid="toast-float"]') ?? document.querySelector('[data-testid="toast"]'))?.textContent?.slice(0, 600) ?? '')
+await reset(env)
+const base = await pg.evaluate((k) => JSON.parse(localStorage.getItem(k)), LSK)
+async function imp(name, mutate, pick, raw) {
+  await reset(env)
+  const w = structuredClone(base); const p = w.projects.find((x) => x.id === w.currentProjectId); mutate?.(p, w)
+  await pg.keyboard.press('Control+k'); await pg.getByTestId('palette-input').fill('JSON を読み込む'); await sleep(80); await pg.keyboard.press('Enter'); await sleep(150)
+  const text = raw ? raw(w) : JSON.stringify(w)
+  await pg.evaluate((t) => { const el = document.querySelector('[data-testid="import-text"]'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(el, t); el.dispatchEvent(new Event('input', { bubbles: true })) }, text)
+  await pg.getByTestId('import-text').focus(); const t0 = Date.now(); await pg.keyboard.press('Control+Enter'); await sleep(250)
+  if (await pg.evaluate(() => !!document.querySelector('[data-testid="panel-prompt"]'))) { await pg.keyboard.press('2'); await sleep(400) }
+  const ms = Date.now() - t0
+  const t = await toast()
+  const after = await pg.evaluate(([k, ids]) => { const w = JSON.parse(localStorage.getItem(k)); const p = w.projects.find((x) => x.id === w.currentProjectId); const o = { rows: p.rows.length, issues: p.issues.length, quotes: p.quotes.length, issueIds: p.issues.slice(-2).map((i) => `${i.id}:${i.rowId}`) }; for (const id of ids) { const r = p.rows.find((x) => x.id === id); o[id] = r ? { qty: r.qtyNeeded, wq: r.working?.qtyNeeded, need: r.needDateFixed, wneed: r.working?.needDateFixed, pack: r.packQty, wpack: r.working?.packQty, order: r.orderQty, q: p.quotes.filter((q) => q.rowId === id).map((q) => q.unitPrice + '/' + q.leadDays).join(' ') } : null } return o }, [LSK, pick ?? []])
+  const shown = await pg.evaluate((ids) => ids.map((id) => { const tr = document.querySelector(`[data-testid="grid"] [data-row-id="${id}"]`); return tr ? `${id}: ${tr.textContent.replace(/\s+/g, ' ').slice(0, 150)}` : `${id}: (表示なし)` }), pick ?? [])
+  log({ name, ms, toast: t, after, shown, panel: await pg.evaluate(() => document.querySelector('[data-testid^="panel-"]')?.dataset.testid ?? null) })
+  await pg.keyboard.press('Escape')
+}
+const R = (p, id) => p.rows.find((r) => r.id === id)
+const proj = async () => pg.evaluate(() => { const w = JSON.parse(localStorage.getItem('bom-pro.workspace.v2')); const p = w.projects.find((x) => x.id === w.currentProjectId); return { due: p.dueDate, budget: p.settings.budget, processDays: p.settings.processDays, hol: p.settings.holidays.length, R010need: p.rows.find((r) => r.id === 'R010')?.needDateFixed, R010wneed: p.rows.find((r) => r.id === 'R010')?.working?.needDateFixed, R004q: p.quotes.filter((q) => q.rowId === 'R004').map((q) => `${q.unitPrice}/${q.leadDays}/${q.validUntil}`) } })
+const q4 = (p) => p.quotes.filter((q) => q.rowId === 'R004')
+await imp('J1 見積の単価 "1,200"・"¥1200"・"１２００"（全角）', (p) => { const qs = q4(p); qs[0].unitPrice = '1,200'; qs[1].unitPrice = '¥1200'; qs[2].unitPrice = '１２００' }, ['R004']); log({ name: 'J1 値', v: await proj() })
+await imp('J2 見積の単価 "-5"（文字の負の値）・"1e3"・" 1200 "', (p) => { const qs = q4(p); qs[0].unitPrice = '-5'; qs[1].unitPrice = '1e3'; qs[2].unitPrice = ' 1200 ' }, ['R004']); log({ name: 'J2 値', v: await proj() })
+await imp('J3 見積の leadDays "-1"（取扱なし）・"-1.5"', (p) => { const qs = q4(p); qs[0].leadDays = '-1'; qs[1].leadDays = '-1.5' }, ['R004']); log({ name: 'J3 値', v: await proj() })
+await imp('J4 行の必要日 needDateFixed "2026-1-5"・時刻つき（納期は読める形）', (p) => { R(p, 'R010').needDateFixed = '2026-1-5'; R(p, 'R011').needDateFixed = '2026-11-11T00:00:00Z' }, ['R010', 'R011']); log({ name: 'J4 値', v: await proj() })
+await imp('J5 作業中の必要日 working.needDateFixed "2026-11-11T00:00:00Z"', (p) => { R(p, 'R010').working = { needDateFixed: '2026-11-11T00:00:00Z' } }, ['R010']); log({ name: 'J5 値', v: await proj() })
+await imp('J6 設定の予算 "1200000"・工程日数 "5"（文字の数）', (p) => { p.settings.budget = '1200000'; p.settings.processDays = '5' }, []); log({ name: 'J6 値', v: await proj() })
+await imp('J7 納期 "2026-11-11T23:30:00-05:00"・休日 "2026-1-5" と "2026-01-05"（同じ日）', (p) => { p.dueDate = '2026-11-11T23:30:00-05:00'; p.settings.holidays = ['2026-1-5', '2026-01-05', '2026-01-06T00:00:00Z'] }, []); log({ name: 'J7 値', v: await proj() })
+await imp('J8 納期 "2026/11/11"・"11/11/2026"・"令和8年11月11日"', (p) => { p.dueDate = '2026/11/11' }, []); log({ name: 'J8 値', v: await proj() })
+await imp('J9 見積の有効期限 validUntil "2026-12-1"・46337（数）・"2026-12-01T09:00"', (p) => { const qs = q4(p); qs[0].validUntil = '2026-12-1'; qs[1].validUntil = 46337; qs[2].validUntil = '2026-12-01T09:00' }, ['R004']); log({ name: 'J9 値', v: await proj() })
+await imp('J10 行の必要数 "1,000"・"１２"（全角）・" 12 "', (p) => { R(p, 'R010').qtyNeeded = '1,000'; R(p, 'R011').qtyNeeded = '１２'; R(p, 'R012').qtyNeeded = ' 12 ' }, ['R010', 'R011', 'R012'])
+await imp('J11 見積の単価 "99999999999999999999"（1e20 の文字）・"0.0000001"', (p) => { const qs = q4(p); qs[0].unitPrice = '99999999999999999999'; qs[1].unitPrice = '0.0000001' }, ['R004']); log({ name: 'J11 値', v: await proj() })
+await imp('J12 休日 3,001 件（重複 1 件を含む）', (p) => { const a = []; const d = new Date(2026, 0, 1); for (let i = 0; i < 3000; i++) { a.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`); d.setDate(d.getDate() + 1) } a.push('2026-1-1'); p.settings.holidays = a }, []); log({ name: 'J12 値', v: await proj() })
+console.log('errors', JSON.stringify(env.errs.slice(0, 8)))
+log({ name: 'console/pageerror', errs: env.errs.slice(0, 20) })
+log.save(); await env.browser.close()

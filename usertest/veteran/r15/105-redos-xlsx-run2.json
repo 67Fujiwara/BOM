@@ -1,0 +1,26 @@
+[
+  {
+    "n": 20,
+    "loadMs": 382,
+    "previewMs": 160,
+    "errs": []
+  },
+  {
+    "n": 24,
+    "loadMs": 154,
+    "previewMs": 1579,
+    "errs": []
+  },
+  {
+    "n": 26,
+    "loadMs": 121,
+    "previewMs": 5945,
+    "errs": []
+  },
+  {
+    "n": 28,
+    "loadMs": 136,
+    "previewMs": 24898,
+    "errs": []
+  }
+]

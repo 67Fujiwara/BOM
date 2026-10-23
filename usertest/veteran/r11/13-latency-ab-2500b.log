@@ -3,3 +3,6 @@
 0 r10 epoch {"loadMs":342,"部品名":{"commit":143.3,"undo":100.7},"必要数":{"commit":156.1,"undo":117.9},"nav":{"down":17.7,"view":97.6,"space":37.6}}
 0 current epoch {"loadMs":527,"部品名":{"commit":137.2,"undo":114.4},"必要数":{"commit":132.2,"undo":93.2},"nav":{"down":15.5,"view":65.3,"space":37.6}}
 0 r10 regex {"loadMs":3819,"部品名":{"commit":160,"undo":144.6},"必要数":{"commit":133.1,"undo":87.9},"nav":{"down":16.3,"view":56.3,"space":38.6}}
+0 current regex {"loadMs":2822,"部品名":{"commit":99.7,"undo":103.7},"必要数":{"commit":103.8,"undo":85.3},"nav":{"down":15.9,"view":49.9,"space":22.4}}
+0 r10 holidays {"loadMs":196,"部品名":{"commit":102.7,"undo":95.5},"必要数":{"commit":91.2,"undo":78.6},"nav":{"down":16.5,"view":56.1,"space":22.5}}
+0 current holidays {"loadMs":239,"部品名":{"commit":101.8,"undo":87.4},"必要数":{"commit":96.3,"undo":83.5},"nav":{"down":16.3,"view":49.4,"space":20.7}}

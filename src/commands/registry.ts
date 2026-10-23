@@ -580,6 +580,8 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
       if (!dd.ok) return dd.error
     }
     let amount: number | undefined
+    // 特急・分納は上限金額を入れる（§9.1「上限入力」）
+    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim()) return '特急・分納の上限金額を入れてください（例: 30000）'
     if (extra?.['上限金額']) {
       const n = parseNumber(extra['上限金額'], { min: 0, label: '上限金額' })
       if (!n.ok) return n.error
@@ -1309,7 +1311,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (!dl.value) return `回答期限を日付で入れてください（空なら ${def}）`
         if (dl.value < todayStr()) return `回答期限 ${dl.value} が過去の日付です`
         const sids = !choice || choice === allLabel ? ids : [choice.split(' ')[0]]
-        void quotes.requestRoughQuotes(sids, dl.value).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
+        void quotes.requestRoughQuotes(sids, dl.value, !choice || choice === allLabel).then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok'))
       })
     }
     case 'quotes.import': {

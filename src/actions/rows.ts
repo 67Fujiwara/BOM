@@ -151,8 +151,16 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
     // 発注の取り消しは、発注後変更依頼を PM が承認したときだけ（§9.1）。押し間違いは Ctrl+Z で戻す
     if (colKey === 'ordered' && value === false && r.ordered) {
-      if (!r.flags.orderCancelApproved) return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+      const req = p.issues.find((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
+      if (!r.flags.orderCancelApproved || !req) {
+        r.flags.orderCancelApproved = false
+        return '発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+      }
+      // 発注を取り消したら、設計が置き換え品を作る番（設計の 4 に出る。§9.1）
       r.flags.orderCancelApproved = false
+      r.flags.countermeasure = '代替品検討'
+      req.status = 'confirmed'
+      req.resolution = '発注を取り消し、設計が置き換え品を作る（r）'
     }
     ;(r as unknown as Record<string, unknown>)[colKey] = value
     if (colKey === 'received' && value === true) r.ordered = true

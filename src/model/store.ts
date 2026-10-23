@@ -465,6 +465,8 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
     const from = (dir === 'undo' ? c.after : c.before) as Row | undefined
     const to = (dir === 'undo' ? c.before : c.after) as Row | undefined
     const now = cur.rows.get(c.key) as Row | undefined
+    // 発注後変更依頼（PM の判断）がある行の発注は、Ctrl+Z で外さない（PM の却下を迂回しない。§9.1）
+    if (now?.ordered && from?.ordered && to && !to.ordered && p.issues.some((i) => i.rowId === c.key && i.kind === '発注後変更依頼')) return `${c.key} の発注（発注後変更依頼で PM が判断しています）`
     const m = mergeFields(now, from, to)
     if (typeof m === 'string') return `${c.key} の${m}`
     rowValues.set(c.key, m.value)

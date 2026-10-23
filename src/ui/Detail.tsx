@@ -3,7 +3,7 @@ import type { Row } from '@/model/types'
 import { ISSUE_STATUS_LABEL, ROLE_LABEL } from '@/model/types'
 import type { ViewModel } from '@/model/selectors'
 import { rankedQuotes, scoreRow } from '@/model/score'
-import { effective, fmtYen, roundedQty, rowNeedDate } from '@/model/derive'
+import { decisionExtra, effective, fmtYen, roundedQty, rowNeedDate } from '@/model/derive'
 import { fmtDate, fmtDateTime } from '@/model/dates'
 import { pmCaseOf } from '@/actions/pm'
 import { commitEdit, runCommand } from '@/commands/registry'
@@ -155,7 +155,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
           <ul className="history">
             {decisions.map((d) => (
               <li key={d.id}>
-                <span className="who">{d.by.name}</span> {fmtDateTime(d.at)} <b>{d.kind}</b> {d.reason} {d.external ? `（決裁: ${d.external.approver} ${d.external.date} ${d.external.ref}）` : ''}
+                <span className="who">{d.by.name}</span> {fmtDateTime(d.at)} <b>{d.kind}</b> {d.reason} {decisionExtra(d) ? `（${decisionExtra(d)}）` : ''} {d.external ? `（決裁: ${d.external.approver} ${d.external.date} ${d.external.ref}）` : ''}
               </li>
             ))}
             {events.map((ev) => (

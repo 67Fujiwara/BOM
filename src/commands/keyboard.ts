@@ -115,6 +115,8 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
           const err = issues.canRaise(row, def.kind)
           if (err) return (toast(err, 'err'), true)
           set({ panel: { ...panel, step: 'text', issueKind: def.kind } })
+          // 頭文字で選んだときは、その文字が本文ではなく種別に使われたことを知らせる
+          if (key.length === 1 && !/^[1-9]$/.test(key)) toast(`「${key}」で種別「${def.kind}」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）`, 'info')
           return true
         }
         if (key.length === 1 || /^Shift\+[A-Z]$/.test(key)) toast(`種別を選んでください: ${defs.map((d) => `${d.key} ${d.kind}`).join(' / ')}（↑↓ と Enter でも選べます）`, 'info')

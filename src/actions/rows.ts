@@ -675,7 +675,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     // Rev.1 で案件設定確定を PM の要決定に載せる
     if (revs.includes(1) && !p.settings.pmConfirmed && !p.caseDecisions.some((c) => c.kind === '案件設定確定')) p.caseDecisions.push({ id: 'C1', kind: '案件設定確定', status: 'open', at: now })
     normalize(p, ws)
-    msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました'
+    msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました' + (revs.length === 1 && revs[0] === 1 && !changeSet ? '（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）' : '')
   }, { kind: plan.rows.length ? 'publish' : 'normal' })
   s.toastMsg(msg, 'ok')
   return true

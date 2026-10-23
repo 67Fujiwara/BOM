@@ -67,7 +67,7 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
     const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
     let cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id))
     // 案件の相見積先がすべて辞退したら、商社マスタの中から（メーカを扱う商社を先に）
-    if (!cands.length) cands = suppliers.filter((x) => !declined.has(x.id))
+    if (!cands.length) cands = suppliers.filter((x) => !declined.has(x.id) && x.tradable !== false)
     return (cands.find((x) => handlesMaker(x.handledMakers, row.maker)) ?? cands.find((x) => !x.handledMakers.length) ?? cands[0])?.id ?? null
   }
   return null
@@ -250,7 +250,9 @@ export function roundedQty(qtyNeeded: number, moq: number | null | undefined, pa
 
 export function quoteResponses(p: Project, row: Row): { answered: number; total: number } {
   const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
-  return { answered: qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length, total: qs.length }
+  // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）
+  const ids = new Set([...qs.map((q) => q.supplierId), ...(row.quoteTargets ?? [])])
+  return { answered: qs.filter((q) => q.unitPrice != null || q.leadDays === -1).length, total: ids.size }
 }
 
 /** 見積済の成立条件 */

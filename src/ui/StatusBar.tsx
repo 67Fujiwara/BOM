@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
-import { unpublishedCount, openIssues, isActive, designatedDeclined } from '@/model/derive'
+import { unpublishedCount, openIssues, isActive, designatedDeclined, fixedSupplierId, overCap } from '@/model/derive'
 import { formatKey, keyToEventInit } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import { pmCaseOf } from '@/actions/pm'
@@ -36,7 +36,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : user.role !== 'purchasing' && openIssues(p, row.id).length ? '開いて指摘を見る' : '開く'])
     if (vm.counts[4]) hints.push(['F8', '次の問題'])
     if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) hints.push(['Ctrl+.', '指定先を変える'])
-    if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1)) hints.push(['Ctrl+.', '次の商社に依頼'])
+    if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1) && fixedSupplierId(p, row, st.ws.suppliers)) hints.push(['Ctrl+.', '次の商社に依頼'])
     const ack = nextAckTarget(p, row, user.role)
     if (ack) hints.push(['x', ack])
     if (user.role === 'design' && up.rows) hints.push(['Ctrl+Enter', `公開 ${up.rows} 行`])
@@ -57,7 +57,12 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   const problemHint = (() => {
     if (!row) return ''
     const iss = openIssues(p, row.id).filter((i) => i.status === 'open' || i.status === 'inProgress')
-    if (!iss.length) return ''
+    if (!iss.length) {
+      // 追加費用の上限超過（PM の判断待ち・却下）
+      const oc = overCap(p, row)
+      if (oc) return `上限超過 ¥${(row.extraCost ?? 0).toLocaleString()} > ¥${oc.cap.toLocaleString()}${row.flags.capRuled === row.extraCost ? '（PM 却下: 上限内で手配し直す）' : '（PM 判断待ち）'}`
+      return ''
+    }
     const kind = iss[0].kind
     const all = p.rows.flatMap((r) => openIssues(p, r.id).filter((i) => (i.status === 'open' || i.status === 'inProgress') && i.kind === kind))
     const idx = all.findIndex((i) => i.rowId === row.id)

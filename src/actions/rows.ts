@@ -157,8 +157,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
     if (f === 'unitPrice' && q.quoteQty == null) q.quoteQty = orderQty(r)
     if (f === 'unitPrice' || f === 'leadDays') q.source = '手入力'
     if (r.status === 'submitted' && value != null) {
-      // 依頼書を出さずに回答を入れ始めた（電話・メールで頼んだ）行は、相見積先すべてに頼んだものとして回答を待つ（1 社の回答だけで見積済にしない）
-      if (!isFixedProcurement(r)) for (const t of quoteTargets(p, r)) if (!p.quotes.some((x) => x.rowId === rowId && x.supplierId === t && !x.stale)) p.quotes.push(emptyQuote(rowId, t))
+      // 依頼書を出さずに回答を入れ始めた（電話・メールで頼んだ）行も、相見積先すべての回答を待つ（1 社の回答だけで見積済にしない。残りの商社には後から依頼できる）
+      if (!isFixedProcurement(r)) r.quoteTargets = quoteTargets(p, r)
       setStatus(r, 'quoting')
     }
   } else if (d.design) {
@@ -173,6 +173,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       r.working = Object.keys(w).length ? (w as Partial<DesignFields>) : undefined
     }
   } else {
+    // 追加費用を入れ直したら、前の PM の却下は効かない（同じ額に戻しても、もう一度 PM が決める）
+    if (colKey === 'extraCost') r.flags.capRuled = undefined
     // 発注（o）・発注を飛ばした入荷（i）は、同じ条件で止める
     if ((colKey === 'ordered' || colKey === 'received') && value === true && !r.ordered) {
       const block = orderBlock(p, r)

@@ -116,6 +116,7 @@ function coerceRow(r: Record<string, unknown>): Row {
   if (!STATUSES.includes(String(out.status))) out.status = 'draft'
   out.flags = isObj(r.flags) ? r.flags : {}
   out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
+  out.quoteTargets = r.quoteTargets === undefined ? undefined : arr<unknown>(r.quoteTargets).filter((x): x is string => typeof x === 'string')
   out.deferredRules = arr<unknown>(r.deferredRules).filter((x) => typeof x === 'string')
   for (const k of ['working', 'pendingApproval', 'removal', 'pendingRemoval']) if (out[k] != null && !isObj(out[k])) out[k] = undefined
   // 作業中・承認待ちの値も、行の項目と同じ型にそろえる（型の違う値は捨てる）

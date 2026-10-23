@@ -130,6 +130,8 @@ export interface Row extends DesignFields {
   orderQty: number | null
   adoptedSupplierId?: string
   adoptReason?: string
+  /** 概算を頼むつもりの商社（最初に依頼・回答を入れたときの相見積先。あとで案件に足した商社は含めない）。回答待ちの数と、まだ頼んでいない商社の判定に使う */
+  quoteTargets?: string[]
   /** 選定時のスコア（固定） */
   scoreSnapshot?: number
   ordered: boolean

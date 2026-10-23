@@ -469,7 +469,9 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
   if (role === 'purchasing' && r.procurement === '客先指定品' && !r.adoptedSupplierId && r.status === 'quoting') {
     const qs = p.quotes.filter((q) => q.rowId === r.id && !q.stale)
     const next = fixedSupplierId(p, r, s.ws.suppliers)
-    if (qs.length && qs.every((q) => q.leadDays === -1) && next) opts.push({ label: `次の商社 ${s.ws.suppliers.find((x) => x.id === next)?.name ?? next} に依頼する（概算見積を依頼）`, run: () => runCommand('quotes.request') })
+    const nx = next ? s.ws.suppliers.find((x) => x.id === next) : undefined
+    const note = nx && nx.handledMakers.length && !handlesMaker(nx.handledMakers, r.maker) ? `。${r.maker} は取扱メーカに無い商社です` : ''
+    if (qs.length && qs.every((q) => q.leadDays === -1) && next) opts.push({ label: `次の商社 ${nx?.name ?? next} に依頼する（概算見積を依頼${p.supplierIds.includes(next) ? '' : '。依頼先で「相見積先すべて」を選ぶ'}）${note}`, run: () => runCommand('quotes.request') })
   }
   if (role === 'design') {
     const prs: Problem[] = checkRow(r, s.ws.rules, p)
@@ -1628,7 +1630,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (!rows.awaitingReplacement(s.project(), r0) && !notYet) return toast(`${r0.id} は発注後変更依頼の承認で発注を取り消す・取り消した行ではありません`, 'info')
       return confirmDanger(`${r0.id} を${notYet ? '発注済のまま残します' : '発注済に戻します'}。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, notYet ? '発注済のまま残す' : '発注済に戻す', () => {
         const e = rows.restoreOrder(r0.id)
-        toast(e ?? `${r0.id} を発注済に戻しました（キャンセル不可）`, e ? 'err' : 'ok')
+        toast(e ?? `${r0.id} を${notYet ? '発注済のまま残しました' : '発注済に戻しました'}（キャンセル不可）`, e ? 'err' : 'ok')
       })
     }
     case 'data.clearBackups': {

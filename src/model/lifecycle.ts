@@ -25,7 +25,12 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.flags.early = undefined
         aq.formalPrice = null
         aq.formalLeadDays = null
-        r.status = isFixedProcurement(r) ? 'quoting' : 'quoted'
+        // 納期NG・期限は辞退した商社の見積に対するもの。選び直しのあとで判定し直す
+        r.flags.leadNG = false
+        r.flags.countermeasure = undefined
+        r.dueAt = undefined
+        const others = p.quotes.some((x) => x.rowId === r.id && !x.stale && x.supplierId !== aq.supplierId && x.unitPrice != null && x.leadDays !== -1)
+        r.status = isFixedProcurement(r) || !others ? 'quoting' : 'quoted'
         r.statusChangedAt = now
       }
     }
@@ -49,7 +54,9 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       }
     }
     // 見積中 → 見積済（指定系の行は、指定先の有効な見積が来たとき。辞退だけなら購買が次の商社に頼むまで見積中のまま）
-    const fixedWaiting = isFixedProcurement(r) && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1)
+    // 指定系の行は指定先（いまの依頼先）の有効な見積だけを見る（ほかの商社の見積があっても見積済にしない）
+    const fixedSid = isFixedProcurement(r) ? fixedSupplierId(p, r, ws.suppliers) : null
+    const fixedWaiting = isFixedProcurement(r) && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.supplierId === fixedSid && x.unitPrice != null && x.leadDays !== -1)
     if (r.status === 'quoting' && !fixedWaiting && quoteComplete(p, r, today)) {
       r.status = 'quoted'
       r.statusChangedAt = now

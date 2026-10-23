@@ -124,7 +124,7 @@ function PanelBody({ panel }: { panel: Panel }) {
             <p className="muted" style={{ margin: '0 0 10px', fontSize: 12 }}>
               迷ったら <kbd>Ctrl+K</kbd> で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は <kbd>Ctrl+Z</kbd> で戻せます（あなた自身の操作だけ）。
               <br />
-              表の中の英字・数字は、ID・状態・チェック（発注・入荷）の列ではそのまま 1 キー操作、それ以外の列では値の入力です（Excel と同じ）。下の一覧のキーは、いまのセルで押せる形（必要なら Alt 付き）で出しています。PM（書ける列が無い）はどの列でもそのまま 1 キー操作、自分が書けない列では数字はビュー切替です。どの列でも <kbd>Alt</kbd> を押しながらなら 1 キー操作です（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+a</kbd> 推奨で採用、<kbd>Alt+Shift+I</kbd> 指摘、<kbd>Alt+4</kbd> 要確認）。次の問題は <kbd>F8</kbd>、最安で採用は <kbd>Ctrl+Alt+A</kbd>。
+              表の中の英字・数字は、ID・状態の列ではそのまま 1 キー操作、文字を打てるセルでは値の入力です（Excel と同じ）。自分が書けない列・発注と入荷の列で打った英字・数字は、操作の名前と Alt の形を知らせるだけです（発注・入荷は Enter で切り替え）。PM は数字でビューを切り替え、7 では y / Shift+Y がどの列でも効きます。打って始めた入力は矢印で確定して隣のセルへ、Enter で始めた編集では矢印は文字の中を動きます。下の一覧のキーは、いまのセルで押せる形（必要なら Alt 付き）で出しています。どの列でも <kbd>Alt</kbd> を押しながらなら 1 キー操作です（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+a</kbd> 推奨で採用、<kbd>Alt+Shift+I</kbd> 指摘、<kbd>Alt+4</kbd> 要確認）。次の問題は <kbd>F8</kbd>、最安で採用は <kbd>Ctrl+Alt+A</kbd>。
             </p>
             <div className="help-cols" data-testid="help">
               {sections.map((sec) => (
@@ -549,7 +549,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
       if (cur?.kind !== 'wizard') return
       st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, inputMode: '1' }, error: undefined } })
       const others = isZip ? pasteIo.otherSheets : []
-      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length ? 'info' : 'ok')
+      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${isZip && pasteIo.hiddenNote ? `。${pasteIo.hiddenNote}` : ''}${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length || (isZip && pasteIo.hiddenNote) ? 'info' : 'ok')
     } catch (err) {
       st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
     }
@@ -604,7 +604,7 @@ function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
                 {d.fileName && <div className="muted">読み込み済み: {d.fileName}（{(d.paste ?? '').split('\n').filter(Boolean).length} 行）</div>}
               </div>
             )}
-            <div className="muted" style={{ marginTop: 6 }}>1〜3 で選ぶ（貼り付け欄にいるときは Tab で外に出られます）。Enter で次へ</div>
+            <div className="muted" style={{ marginTop: 6 }}>1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ</div>
           </>
         )}
         {step === 8 && (

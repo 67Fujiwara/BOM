@@ -73,6 +73,8 @@ export interface State {
   editAuto?: boolean
   /** Enter で始めた数値・日付の編集は値を全選択して始める（打ち直しが上書きになる。Excel の打ち直しと同じ結果） */
   editSelectAll?: boolean
+  /** 打ち始めた（または 6・8 で自動で始めた）入力。Excel の「入力モード」と同じく、矢印キーで確定して隣のセルへ（Enter で始めた編集では矢印は文字の中を動く） */
+  editTyped?: boolean
   panel: Panel | null
   toast: { text: string; kind: 'ok' | 'err' | 'info'; at: number } | null
   revView: number | null

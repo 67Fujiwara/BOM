@@ -28,7 +28,7 @@ const SELECT_ALIASES: Record<string, Record<string, string>> = {
   procurement: { a: '相見積', ai: '相見積', sh: '指定商社', k: '客先指定品', kyaku: '客先指定品', shi: '支給品', z: '社内在庫', zaiko: '社内在庫' },
   altPolicy: { k: '可', ka: '可', d: '同等品可', f: '不可', fuka: '不可', no: '不可', ng: '不可', kyaku: '客先承認要' },
   makerLock: { s: '指定', shitei: '指定', r: '推奨', suisho: '推奨', n: '任意', nini: '任意' },
-  'q.stock': { z: '在庫', zaiko: '在庫', t: '取寄', toriyose: '取寄', j: '受注生産' },
+  'q.stock': { z: '在庫', zaiko: '在庫', あり: '在庫', 有: '在庫', 有り: '在庫', 在庫あり: '在庫', 在庫有: '在庫', 即納: '在庫', stock: '在庫', instock: '在庫', t: '取寄', toriyose: '取寄', 取り寄せ: '取寄', 取寄せ: '取寄', j: '受注生産', 受注: '受注生産', bto: '受注生産' },
   extraCostKind: { t: '特急', s: '送料', b: '分納', o: 'その他' },
 }
 
@@ -60,7 +60,9 @@ export function parseValue(colKey: string, raw: string): Parsed<unknown> {
         if (dd) return { ok: true, value: Number(dd[1]) }
         const w = /^(\d+)\s*(週間?|w|weeks?)$/i.exec(s)
         if (w) return { ok: true, value: Number(w[1]) * 7 }
-        const mo = /^(\d+)\s*(ヶ月|か月|カ月|ヵ月)$/.exec(s)
+        const bd = /^(\d+)\s*営業日$/.exec(s)
+        if (bd) return { ok: true, value: Number(bd[1]) }
+        const mo = /^(\d+)\s*(ヶ月|か月|カ月|ヵ月|ケ月|m|months?)$/i.exec(s)
         if (mo) return { ok: true, value: Number(mo[1]) * 30 }
       }
       return parseNumber(raw, NUM_RULES[base] ?? { label: d.label })
@@ -112,6 +114,20 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     },
     { rowId },
   )
+  // 入れた値は残すが、見落としやすいものは知らせる（止めはしない）
+  if (ok && colKey.startsWith('q.')) {
+    const p = st().project()
+    const r = p.rows.find((x) => x.id === rowId)
+    const sid = supplierOfCol(colKey)
+    const q = r && sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === (sid === 'A' ? r.adoptedSupplierId : sid) && !x.stale) : undefined
+    if (q && colKey.startsWith('q.validUntil') && q.validUntil && q.validUntil < todayStr()) st().toastMsg(`有効期限 ${q.validUntil} はもう過ぎています（期限切れの見積として扱います）`, 'err')
+    if (r && q && colKey.startsWith('q.formalPrice') && q.formalPrice != null) {
+      const early = !['formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status)
+      const pct = q.unitPrice ? Math.round(((q.formalPrice - q.unitPrice) / q.unitPrice) * 100) : null
+      if (early || (pct != null && Math.abs(pct) >= 50))
+        st().toastMsg(`${r.id} の正式単価 ¥${q.formalPrice.toLocaleString()}${pct != null ? `（概算から ${pct > 0 ? '+' : ''}${pct}%）` : ''}${early ? '。まだ正式見積を依頼していない行です' : ''}。桁・行を確かめてください`, 'err')
+    }
+  }
   // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
   if (ok && colKey === 'extraCost' && typeof value === 'number') {
     const p = st().project()
@@ -141,8 +157,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
     if (f === 'unitPrice' && q.quoteQty == null) q.quoteQty = orderQty(r)
     if (f === 'unitPrice' || f === 'leadDays') q.source = '手入力'
     if (r.status === 'submitted' && value != null) {
-      // 依頼書を出さずに回答を入れ始めた（電話・メールで頼んだ）行は、相見積先すべてに頼んだものとして回答を待つ（1 社の回答だけで見積済にしない）
-      if (!isFixedProcurement(r)) for (const t of quoteTargets(p, r)) if (!p.quotes.some((x) => x.rowId === rowId && x.supplierId === t && !x.stale)) p.quotes.push(emptyQuote(rowId, t))
+      // 依頼書を出さずに回答を入れ始めた（電話・メールで頼んだ）行も、相見積先すべての回答を待つ（1 社の回答だけで見積済にしない。残りの商社には後から依頼できる）
+      if (!isFixedProcurement(r)) r.quoteTargets = quoteTargets(p, r)
       setStatus(r, 'quoting')
     }
   } else if (d.design) {
@@ -157,6 +173,8 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       r.working = Object.keys(w).length ? (w as Partial<DesignFields>) : undefined
     }
   } else {
+    // 追加費用を入れ直したら、前の PM の却下は効かない（同じ額に戻しても、もう一度 PM が決める）
+    if (colKey === 'extraCost') r.flags.capRuled = undefined
     // 発注（o）・発注を飛ばした入荷（i）は、同じ条件で止める
     if ((colKey === 'ordered' || colKey === 'received') && value === true && !r.ordered) {
       const block = orderBlock(p, r)

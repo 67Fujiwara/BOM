@@ -73,11 +73,17 @@ export function safeRegex(src: string): RegExp | null {
   regexCache.set(src, re)
   return re
 }
-/** 実際の値で遅かったルールも、それ以降は飛ばす */
+/** 実際の値で遅かったルールも、それ以降は飛ばす（1 回で 30ms 超、または 20 回以上の平均が 1ms 超。全行で判定するので 1 行あたりの重さが効く） */
+const regexCost = new Map<string, { n: number; ms: number }>()
 function timedTest(re: RegExp, src: string, s: string): boolean {
   const t = performance.now()
   const ok = re.test(s)
-  if (performance.now() - t > 30) regexCache.set(src, null)
+  const dt = performance.now() - t
+  const c = regexCost.get(src) ?? { n: 0, ms: 0 }
+  c.n++
+  c.ms += dt
+  regexCost.set(src, c)
+  if (dt > 30 || (c.n >= 20 && c.ms / c.n > 1)) regexCache.set(src, null)
   return ok
 }
 

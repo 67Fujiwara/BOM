@@ -44,6 +44,8 @@ export interface UndoEntry {
   quotes: Change<Quote>[]
   issues: Change<Issue>[]
   proj: Change<unknown>[]
+  /** 行の並び（行の移動・挿入・複製を戻すとき、元の位置に戻すため） */
+  order?: { before: string[]; after: string[] }
 }
 
 /** Undo で追う案件レベルの項目（events・version・連番は追わない） */
@@ -73,6 +75,8 @@ export interface State {
   revView: number | null
   sequence: boolean
   undo: Record<string, UndoEntry[]>
+  /** 取り消せる操作を記録するたびに増える番号（履歴が上限で頭打ちでも、操作が増えたことが分かる） */
+  undoSeq: number
   redo: Record<string, UndoEntry[]>
   recentCommands: string[]
   detailIndex: number
@@ -145,6 +149,7 @@ export const useStore = create<State>((set, get) => ({
   revView: null,
   sequence: false,
   undo: loadHistory().undo,
+  undoSeq: 0,
   redo: loadHistory().redo,
   recentCommands: loadUiField('recentCommands') ?? [],
   detailIndex: 0,
@@ -186,14 +191,17 @@ export const useStore = create<State>((set, get) => ({
     const after = entities(np)
     const user = ws.user
     const entry: UndoEntry = { projectId: p.id, by: user.name, label, kind: opts.kind ?? 'normal', rows: diffMaps(before.rows, after.rows), quotes: diffMaps(before.quotes, after.quotes), issues: diffMaps(before.issues, after.issues), proj: diffMaps(before.proj, after.proj) }
+    const orderBefore = [...before.rows.keys()]
+    const orderAfter = np.rows.map((r) => r.id)
+    if (orderBefore.join() !== orderAfter.join()) entry.order = { before: orderBefore, after: orderAfter }
     np.version++
     np.updatedAt = new Date().toISOString()
     if (!opts.silent) np.events.push({ id: (np.events.at(-1)?.id ?? 0) + 1, at: np.updatedAt, by: user, rowId: opts.rowId, text: label, undoable: opts.undoable !== false })
     if (np.events.length > 2000) np.events.splice(0, np.events.length - 2000)
-    const changed = entry.rows.length + entry.quotes.length + entry.issues.length + entry.proj.length > 0
+    const changed = entry.rows.length + entry.quotes.length + entry.issues.length + entry.proj.length > 0 || !!entry.order
     const uk = userKey(user)
     const undo = changed && opts.undoable !== false ? { ...st.undo, [uk]: [...(st.undo[uk] ?? []), entry].slice(-200) } : st.undo
-    set({ ws: next, undo, redo: changed ? { ...st.redo, [uk]: [] } : st.redo })
+    set({ ws: next, undo, undoSeq: undo !== st.undo ? st.undoSeq + 1 : st.undoSeq, redo: changed ? { ...st.redo, [uk]: [] } : st.redo })
     persistHistory()
     if (!saveWorkspace(next)) get().toastMsg('保存領域がいっぱいで保存できませんでした。Ctrl+K → JSON を書き出す で退避してください', 'err')
     return true
@@ -342,6 +350,9 @@ function labelOf(kind: string, key: string): string {
 }
 
 /** 現在が after と一致するときだけ before に戻す。一つでも食い違えば何も変えず、食い違った箇所を返す */
+/** 衝突の知らせに出す項目名 */
+const FIELD_LABEL_JA: Record<string, string> = { ref: '回路記号', drawing: '図面番号', category: '分類', name: '部品名', model: '型式', maker: 'メーカ', qtyNeeded: '必要数', unit: '単位', packQty: '入数', procurement: '調達区分', makerLock: 'メーカ指定', altPolicy: '代替可否', designated: '指定先', needOffset: '必要日(前倒し)', needDateFixed: '必要日(固定)', tags: '規格', note: '備考', status: '状態', orderQty: '発注数', adoptedSupplierId: '採用', ordered: '発注', received: '入荷', promisedDate: '入荷予定', receivedLot: 'ロット', extraCost: '追加費用', hidden: '非表示' }
+
 /** now（いまの値）に from→to の変更を項目ごとに当てる。from から変わっている項目に触れるなら、その項目名を返す */
 function mergeFields(now: Row | undefined, from: Row | undefined, to: Row | undefined): { value: Row | undefined } | string {
   if (!from || !to) return sameJson(now, from) ? { value: to } : '行の追加・削除'
@@ -352,25 +363,41 @@ function mergeFields(now: Row | undefined, from: Row | undefined, to: Row | unde
   const n = now as unknown as Record<string, unknown>
   for (const k of new Set([...Object.keys(f), ...Object.keys(t)])) {
     if (sameJson(f[k], t[k])) continue
-    if (k === 'flags') {
-      const ff = (f.flags ?? {}) as Record<string, unknown>
-      const tf = (t.flags ?? {}) as Record<string, unknown>
-      const nf = (n.flags ?? {}) as Record<string, unknown>
+    // フラグ・作業中の値・承認待ちの値は、中の項目ごとに突き合わせる（別の列の作業中の変更とはぶつからない）
+    if (k === 'flags' || k === 'working' || k === 'pendingApproval') {
+      const ff = (f[k] ?? {}) as Record<string, unknown>
+      const tf = (t[k] ?? {}) as Record<string, unknown>
+      const nf = (n[k] ?? {}) as Record<string, unknown>
       const of = { ...nf }
       for (const fk of new Set([...Object.keys(ff), ...Object.keys(tf)])) {
         if (sameJson(ff[fk], tf[fk])) continue
-        if (!sameJson(nf[fk], ff[fk])) return `状態（${fk}）`
+        if (!sameJson(nf[fk], ff[fk])) return k === 'flags' ? `状態（${fk}）` : `「${FIELD_LABEL_JA[fk] ?? fk}」`
         if (tf[fk] === undefined) delete of[fk]
         else of[fk] = structuredClone(tf[fk])
       }
-      out.flags = of
+      out[k] = k === 'flags' || Object.keys(of).length ? of : undefined
       continue
     }
-    if (!sameJson(n[k], f[k])) return `「${k}」`
+    if (!sameJson(n[k], f[k])) return `「${FIELD_LABEL_JA[k] ?? k}」`
     if (t[k] === undefined) delete out[k]
     else out[k] = structuredClone(t[k])
   }
   return { value: out as unknown as Row }
+}
+
+/** 行を target の並びにする。target に無い行（後から他の人が足した行など）は、いまの直前の行の後ろに置く */
+function reorder(rows: Row[], target: string[]): Row[] {
+  const byId = new Map(rows.map((r) => [r.id, r]))
+  const out = target.filter((id) => byId.has(id)).map((id) => byId.get(id)!)
+  const placed = new Set(out.map((r) => r.id))
+  rows.forEach((r, i) => {
+    if (placed.has(r.id)) return
+    const prev = rows.slice(0, i).reverse().find((x) => placed.has(x.id))
+    const at = prev ? out.findIndex((x) => x.id === prev.id) + 1 : 0
+    out.splice(at, 0, r)
+    placed.add(r.id)
+  })
+  return out
 }
 
 function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
@@ -421,6 +448,7 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
     p.quotes = [...qm.values()]
   }
   for (const c of entry.proj) (p as unknown as Record<string, unknown>)[c.key] = structuredClone(dir === 'undo' ? c.before : c.after)
+  if (entry.order) p.rows = reorder(p.rows, dir === 'undo' ? entry.order.before : entry.order.after)
   p.version++
   p.updatedAt = new Date().toISOString()
   p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: p.updatedAt, by: st.ws.user, text: `${dir === 'undo' ? '元に戻す' : 'やり直す'}: ${entry.label}` })

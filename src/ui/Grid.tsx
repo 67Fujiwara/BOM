@@ -113,7 +113,7 @@ export function Grid({ vm }: { vm: ViewModel }) {
       else if (right > el.scrollLeft + el.clientWidth) el.scrollLeft = right - el.clientWidth
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [st.cursorRow, st.cursorCol, st.view])
+  }, [st.cursorRow, st.cursorCol, st.view, st.sort, st.filter, st.cellFilter, st.mode])
 
   // Space で開いた詳細が画面の外に出ないようにする
   useLayoutEffect(() => {
@@ -122,6 +122,10 @@ export function Grid({ vm }: { vm: ViewModel }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [st.openRows, st.cursorRow, st.detailIndex])
 
+  // 編集を始めた行が描く範囲の外だった（マウスでスクロールした・並び替えた）ときも、描いたあとで入力欄にフォーカスする
+  useEffect(() => {
+    if (st.mode === 'edit' && inputRef.current && document.activeElement !== inputRef.current && !st.panel) inputRef.current.focus()
+  })
   useEffect(() => {
     if (st.mode === 'edit') inputRef.current?.focus()
     else if (st.mode === 'nav' && !st.panel && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') wrap.current?.focus({ preventScroll: true })

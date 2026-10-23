@@ -60,14 +60,14 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       members: isObj(p0.members) ? (p0.members as Project['members']) : { design: '', purchasing: '', pm: '' },
       preferredSupplierIds: arr(p0.preferredSupplierIds),
       supplierIds: arr(p0.supplierIds),
-      rows: rows.map((r) => ({ ...newRow(r.id as string), ...r, flags: isObj(r.flags) ? r.flags : {}, ackRules: arr(r.ackRules), deferredRules: arr(r.deferredRules) }) as Row),
+      rows: rows.map((r) => coerceRow(r as Record<string, unknown>)),
       quotes,
       issues,
       submissions: arr<Project['submissions'][number]>(p0.submissions).filter(isObj).map((s) => ({ ...s, rowIds: arr(s.rowIds), acked: arr(s.acked), causes: isObj(s.causes) ? s.causes : {}, snapshot: isObj(s.snapshot) ? s.snapshot : {} })),
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
-      weights: isObj(p0.weights) ? { ...DEFAULT_WEIGHTS, ...(p0.weights as object) } : { ...DEFAULT_WEIGHTS },
+      weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
-      settings: isObj(p0.settings) ? { ...DEFAULT_SETTINGS, ...(p0.settings as object), holidays: arr(p0.settings.holidays) } : { ...DEFAULT_SETTINGS },
+      settings: isObj(p0.settings) ? coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: arr<unknown>(p0.settings.holidays).filter((x) => typeof x === 'string') }) : { ...DEFAULT_SETTINGS },
       events: arr<Project['events'][number]>(p0.events).filter(isObj).map((ev) => ({ ...ev, by: userOf(ev.by, fallbackUser), text: typeof ev.text === 'string' ? ev.text : '' })),
       createdAt: typeof p0.createdAt === 'string' ? p0.createdAt : now,
       updatedAt: typeof p0.updatedAt === 'string' ? p0.updatedAt : now,
@@ -85,4 +85,47 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
   const user = isObj(raw.user) && typeof raw.user.name === 'string' && ['design', 'purchasing', 'pm'].includes(String(raw.user.role)) ? (raw.user as unknown as Workspace['user']) : { name: '山田', role: 'design' as const }
   const currentProjectId = typeof raw.currentProjectId === 'string' && projects.some((p) => p.id === raw.currentProjectId) ? raw.currentProjectId : projects[0].id
   return { warnings, ws: { user, projects, suppliers: arr(raw.suppliers, SAMPLE_SUPPLIERS).length ? arr(raw.suppliers, SAMPLE_SUPPLIERS) : SAMPLE_SUPPLIERS, rules: Array.isArray(raw.rules) ? (raw.rules as Workspace['rules']) : DEFAULT_RULES, currentProjectId } }
+}
+
+const STATUSES = ['draft', 'submitted', 'quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received', 'cancelled', 'replaced']
+/** 行の各項目を既定の型にそろえる（数値の欄に文字・文字の欄に数値やオブジェクトが入った JSON でも画面が壊れないように） */
+function coerceRow(r: Record<string, unknown>): Row {
+  const base = newRow(r.id as string) as unknown as Record<string, unknown>
+  const out: Record<string, unknown> = { ...base, ...r }
+  for (const [k, def] of Object.entries(base)) {
+    const v = out[k]
+    if (v === undefined) continue
+    if (typeof def === 'string' && typeof v !== 'string') out[k] = v == null || typeof v === 'object' ? def : String(v)
+    else if (typeof def === 'number' && (typeof v !== 'number' || !Number.isFinite(v))) out[k] = Number.isFinite(Number(v)) && v !== null && typeof v !== 'object' && v !== '' ? Number(v) : def
+    else if (typeof def === 'boolean' && typeof v !== 'boolean') out[k] = v === true || v === 'true' || v === 1
+  }
+  for (const k of ['packQty', 'orderQty', 'needOffset', 'extraCost', 'scoreSnapshot']) if (out[k] != null && (typeof out[k] !== 'number' || !Number.isFinite(out[k] as number))) out[k] = null
+  for (const k of ['needDateFixed', 'promisedDate', 'dueAt', 'quotedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = null
+  if (!STATUSES.includes(String(out.status))) out.status = 'draft'
+  out.flags = isObj(r.flags) ? r.flags : {}
+  out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
+  out.deferredRules = arr<unknown>(r.deferredRules).filter((x) => typeof x === 'string')
+  for (const k of ['working', 'pendingApproval', 'removal', 'pendingRemoval']) if (out[k] != null && !isObj(out[k])) out[k] = undefined
+  return out as unknown as Row
+}
+
+/** 既定値と同じ型の値だけを残す（型の違う値は既定値に戻す） */
+function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
+  const out = { ...def } as Record<string, unknown>
+  for (const [k, d] of Object.entries(def)) {
+    const x = v[k]
+    if (x === undefined) continue
+    // 既定が null の項目（予算・回答期限など）は、null・数値・日付の文字だけ受け付ける
+    if (d === null) {
+      if (x === null || (typeof x === 'number' && Number.isFinite(x)) || (typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x))) out[k] = x
+      continue
+    }
+    if (typeof d === typeof x) {
+      if (typeof x === 'number' && !Number.isFinite(x)) continue
+      if (Array.isArray(d) !== Array.isArray(x)) continue
+      out[k] = x
+    }
+  }
+  for (const [k, x] of Object.entries(v)) if (!(k in out)) out[k] = x
+  return out as T
 }

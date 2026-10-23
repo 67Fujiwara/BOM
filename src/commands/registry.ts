@@ -14,7 +14,7 @@ import * as pm from '@/actions/pm'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
-import { loadBackup, resetWorkspace, saveBackup } from '@/io/persist'
+import { loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
@@ -81,6 +81,13 @@ function confirmDanger(title: string, yesLabel: string, run: () => void) {
 // ---------- 移動 ----------
 function navItems() {
   return vm().items.filter((i) => i.kind !== 'detail')
+}
+/** 1 画面に見えている行数（PageUp / PageDown の移動量） */
+function pageRows(): number {
+  const wrap = document.querySelector<HTMLElement>('.gridwrap')
+  const head = wrap?.querySelector<HTMLElement>('table.grid > thead')?.offsetHeight ?? 30
+  const row = wrap?.querySelector<HTMLElement>('table.grid > tbody > tr.row')?.offsetHeight ?? 30
+  return wrap ? Math.max(1, Math.floor((wrap.clientHeight - head) / row) - 1) : 20
 }
 function moveCursorToRow(delta: 1 | -1) {
   const items = navItems()
@@ -822,6 +829,32 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   if (first) jumpToRow(first.rowId, first.field)
   toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、n で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
 }
+function restoreBackup(b: Backup) {
+  let res: ReturnType<typeof sanitizeWorkspace>
+  try {
+    res = sanitizeWorkspace(JSON.parse(b.raw))
+  } catch (err) {
+    return toast(`退避したデータは JSON として読めません（${(err as Error).message}）。「退避したデータを書き出す」で取り出して直してください`, 'err')
+  }
+  if (!res.ws) return toast(`退避したデータを読めません: ${res.error}。「退避したデータを書き出す」で取り出せます`, 'err')
+  const ws = res.ws
+  const cur = st().ws
+  confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
+    const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
+    replaceWorkspace(ws)
+    toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
+  })
+}
+function exportBackup(b: Backup) {
+  const blob = new Blob([b.raw], { type: 'application/json' })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = `bom-workspace-backup-${b.at.slice(0, 19).replace(/[:T]/g, '-')}.json`
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000)
+  toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
+}
+
 /** ワークスペースを丸ごと置き換える（JSON 読み込み・退避からの復元）。Undo 履歴は別の内容のものなので消す */
 function replaceWorkspace(ws: Workspace) {
   st().commitWs('', (w) => {
@@ -977,9 +1010,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'move.bottom':
       return setCursorRowAbs('bottom')
     case 'move.pageUp':
-      return moveCursorRow(-20)
+      return moveCursorRow(-pageRows())
     case 'move.pageDown':
-      return moveCursorRow(20)
+      return moveCursorRow(pageRows())
     case 'row.toggleOpen': {
       if (s.cursorRow?.startsWith('g:')) {
         const cat = s.cursorRow.split(':')[1]
@@ -1395,41 +1428,28 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           if (!res.ws) return toast(`読み込めません: ${res.error}`, 'err')
           const ws = res.ws
           const cur = st().ws
-          confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
-            saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')
+          const done = (backedUp: boolean) => {
             replaceWorkspace(ws)
-            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}。戻すときは Ctrl+K →「読み込み前に戻す」`, res.warnings?.length ? 'info' : 'ok')
+            toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
+          }
+          confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {
+            if (saveBackup(JSON.stringify(cur), 'JSON 読み込みの前')) return done(true)
+            // 退避できないまま置き換えない（戻せると言って戻せない状態にしない）
+            confirmDanger('保存領域がいっぱいで、いまの内容を退避できませんでした。先に Ctrl+K →「JSON を書き出す」で保存してから読み込むのが安全です', '退避せずに置き換える（戻せません）', () => done(false))
           })
         },
       })
-    case 'data.restoreBackup': {
-      const b = loadBackup()
-      if (!b) return toast('退避したデータはありません', 'info')
-      let res: ReturnType<typeof sanitizeWorkspace>
-      try {
-        res = sanitizeWorkspace(JSON.parse(b.raw))
-      } catch (err) {
-        return toast(`退避したデータは JSON として読めません（${(err as Error).message}）。「退避したデータを書き出す」で取り出して直してください`, 'err')
-      }
-      if (!res.ws) return toast(`退避したデータを読めません: ${res.error}。「退避したデータを書き出す」で取り出せます`, 'err')
-      const ws = res.ws
-      const cur = st().ws
-      return confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避と入れ替えます`, '戻す', () => {
-        saveBackup(JSON.stringify(cur), '退避からの復元の前')
-        replaceWorkspace(ws)
-        toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）`, 'ok')
-      })
-    }
+    case 'data.restoreBackup':
     case 'data.exportBackup': {
-      const b = loadBackup()
-      if (!b) return toast('退避したデータはありません', 'info')
-      const blob = new Blob([b.raw], { type: 'application/json' })
-      const a = document.createElement('a')
-      a.href = URL.createObjectURL(blob)
-      a.download = `bom-workspace-backup-${b.at.slice(0, 10)}.json`
-      a.click()
-      setTimeout(() => URL.revokeObjectURL(a.href), 5000)
-      return toast(`退避したデータを書き出しました（${a.download}・${b.reason}）`, 'ok')
+      const list = loadBackups()
+      if (!list.length) return toast('退避したデータはありません', 'info')
+      const labelOf = (b: (typeof list)[number]) => `${fmtDateTime(b.at)}・${b.reason}（${Math.round(b.raw.length / 1024)}KB）`
+      const act = (b: (typeof list)[number]) => (id === 'data.exportBackup' ? exportBackup(b) : restoreBackup(b))
+      if (list.length === 1) return act(list[0])
+      return prompt(id === 'data.exportBackup' ? '書き出す退避データ（数字か ↑↓ で選ぶ）' : '戻す退避データ（数字か ↑↓ で選ぶ）', { options: list.map(labelOf), showText: false }, (c) => {
+        const b = list.find((x) => labelOf(x) === c)
+        if (b) act(b)
+      })
     }
     case 'supplier.add':
       if (role !== 'purchasing') return toast('権限なし（商社マスタは購買）', 'err')

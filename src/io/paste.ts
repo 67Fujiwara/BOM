@@ -185,6 +185,8 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const sheets = wb.worksheets.map((ws) => {
     const lines: string[] = []
     ws.eachRow({ includeEmpty: false }, (row) => {
+      // 非表示の行（Excel で隠した行）は取り込まない
+      if (row.hidden) return
       const vals = (row.values as unknown[]).slice(1).map((v) => cellToText(v).replace(/[\t\n\r]/g, ' '))
       lines.push(vals.join('\t'))
     })

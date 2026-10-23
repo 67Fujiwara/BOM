@@ -393,12 +393,11 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
 // 直後（BURST_MS 以内）に続けて文字が来たら「入力していた」とみなし、コマンドを取り消して上書き編集にする。
 const BURST_MS = 600
 const UI_KEYS = ['cursorRow', 'cursorCol', 'view', 'sort', 'filter', 'cellFilter', 'collapsed', 'openRows', 'detailIndex', 'revView'] as const
-type Burst = { at: number; text: string; ui: Partial<State>; undoLen: number; row: string; col: string }
+type Burst = { at: number; text: string; ui: Partial<State>; seq: number; row: string; col: string }
 let burst: Burst | null = null
 let digitHintShown = false
 /** 続けて押しても移動とみなすキー（j j k / n n など。Shift 付きも） */
 const NAV_LETTERS = new Set(['j', 'k', 'n', 'J', 'K', 'N'])
-const undoLen = () => (st().undo[userKey(st().ws.user)] ?? []).length
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
 }
@@ -406,19 +405,22 @@ function beginBurst(ch: string) {
   const s = st()
   const ui: Partial<State> = {}
   for (const k of UI_KEYS) (ui as Record<string, unknown>)[k] = s[k]
-  burst = { at: performance.now(), text: ch, ui, undoLen: undoLen(), row: s.cursorRow ?? '', col: s.cursorCol }
+  burst = { at: performance.now(), text: ch, ui, seq: s.undoSeq, row: s.cursorRow ?? '', col: s.cursorCol }
 }
 /** 続けて打たれた文字なら、前のコマンドを取り消して上書き編集を始める */
 function resolveBurst(e: KeyboardEvent, key: string): boolean {
   const b = burst
   if (!b || performance.now() - b.at > BURST_MS || !printable(e) || e.key === ' ') return false
   const binding = lookupBinding(key, 'nav')
-  // 移動キー（j k n）どうしの連続（j j k / n n）だけはコマンドとして続ける。
-  // それ以外は、文字を打てるセルで英字コマンドの直後（BURST_MS 以内）に文字が続いたら入力とみなす
-  // （a のあと n、k のあと i、Shift+N のあと E … も入力。anode / kit / NEC）
   const first = b.text.at(-1) ?? ''
-  // 移動キーのあとの数字（k → 4 のビュー切替）もコマンドのまま
-  if (binding && NAV_LETTERS.has(first) && (NAV_LETTERS.has(e.key) || /^\d$/.test(e.key))) {
+  const gap = performance.now() - b.at
+  // そのままコマンドとして続けるもの:
+  // ・同じ移動キーの連打（j j j / n n）、j と k の行き来、移動キーのあとの数字（k → 4 のビュー切替）
+  // ・割り当てのあるキーが 250ms より後に来たとき（人が意図して続けた操作）
+  // それ以外（割り当ての無い文字は BURST_MS 以内、割り当てのあるキーは 250ms 以内）は、打っていた文字とみなす
+  // （knob・NJM2904・DRV8833・anode・NEC など。n と j/k の組み合わせも文字）
+  const upDown = (c: string) => 'jkJK'.includes(c)
+  if (binding && ((NAV_LETTERS.has(first) && (e.key === first || /^\d$/.test(e.key) || (upDown(first) && upDown(e.key)))) || gap > 250)) {
     burst = null
     return false
   }
@@ -426,7 +428,14 @@ function resolveBurst(e: KeyboardEvent, key: string): boolean {
   burst = null
   if (st().panel) closePanel()
   if (st().mode === 'edit') cancelEdit()
-  if (undoLen() > b.undoLen) st().undoLast()
+  if (st().undoSeq > b.seq) {
+    // コマンドで変わったものを戻し、やり直し（Ctrl+Y）にも残さない
+    const uk = userKey(st().ws.user)
+    const before = (st().redo[uk] ?? []).length
+    st().undoLast()
+    const redo = st().redo[uk] ?? []
+    if (redo.length > before) set({ redo: { ...st().redo, [uk]: redo.slice(0, -1) } })
+  }
   set({ ...b.ui, cursorRow: b.row, cursorCol: b.col })
   if (rows.canEdit(b.col)) return true
   startEdit(b.text + e.key)

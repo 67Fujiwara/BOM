@@ -271,7 +271,7 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R033"] td[data-col="name"]')).toHaveText('nut')
   // 2 文字目が移動キー（anode / kit）、Shift 付きの英字（NEC）
-  for (const [id, word] of [['R034', 'anode'], ['R035', 'kit']] as const) {
+  for (const [id, word] of [['R034', 'anode'], ['R035', 'kit'], ['R037', 'knob']] as const) {
     await gotoCell(page, id, '部品名')
     await page.keyboard.type(word, { delay: 60 })
     await page.keyboard.press('Enter')
@@ -281,6 +281,14 @@ test('英字で始まる値をいきなり打っても、先頭の文字がコ�
   for (const k of ['Shift+N', 'Shift+E', 'Shift+C']) await page.keyboard.press(k, { delay: 20 })
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R036"] td[data-col="name"]')).toHaveText('NEC')
+  // Shift で打つ型番（1 文字目が Shift+N / Shift+D のコマンド）
+  for (const [id, word] of [['R038', 'NJM2904'], ['R039', 'DRV8833']] as const) {
+    await gotoCell(page, id, '型式')
+    for (const ch of word) await page.keyboard.press(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, { delay: 15 })
+    await page.keyboard.press('Enter')
+    await expect(page.locator(`[data-row-id="${id}"] td[data-col="model"]`)).toHaveText(word)
+  }
+  await expect(page.getByTestId('status')).not.toContainText('R081')
 })
 
 test('編集中にサイドバーのビューをクリックしても、入力は編集していた行に入る', async ({ page }) => {

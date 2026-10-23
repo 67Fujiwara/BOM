@@ -1,7 +1,7 @@
 import { isSectionLine, isTotalCell } from '@/io/paste'
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
-import { fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
+import { addWithdrawn, noUsableQuote, fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { emptyQuote } from '@/model/sample'
 import { parseValue, quoteTargets } from './rows'
@@ -29,12 +29,14 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   // 頼むつもりで、まだ頼んでいない商社（最初の依頼を一部の商社だけにした・回答を手で入れ始めた行）。あとで案件に足した商社は入れない
   const tradable = (sid: string) => p.supplierIds.includes(sid) && s.ws.suppliers.find((x) => x.id === sid)?.tradable !== false
   const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : (r.quoteTargets ?? []).filter((sid) => tradable(sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
-  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid))) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
+  // 相見積で、取引できる商社の有効な見積が無い（全社辞退）行は、まだその行に頼んでいない商社に頼める
+  const others = (r: Row) => (!noUsableQuote(p, r) ? [] : (all ? p.supplierIds : supplierIds).filter((sid) => s.ws.suppliers.find((x) => x.id === sid)?.tradable !== false && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
+  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid)) || others(r).length > 0) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
   const perSupplier = new Map<string, Row[]>()
   // 再見積の商社だけを頼み直す行は、その商社だけに送る
-  const targetsOf = (r: Row) => (r.status === 'submitted' || r.flags.requote ? quoteTargets(p, r) : [...awaitingRequote(r), ...needsNextFixed(r), ...unasked(r)])
+  const targetsOf = (r: Row) => (r.status === 'submitted' || r.flags.requote ? quoteTargets(p, r) : [...awaitingRequote(r), ...needsNextFixed(r), ...unasked(r), ...others(r)])
   // 「相見積先すべて」のときは、指定先が案件の相見積先に無い指定系の行も、その指定先に頼む
   const wanted = (sid: string) => all || supplierIds.includes(sid)
   // すでに回答をもらっている商社には、その行の依頼書を出し直さない
@@ -52,6 +54,9 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
       const r = p2.rows.find((x) => x.id === r0.id)!
       // 最初の依頼で、頼むつもりの商社（相見積先）を覚える
       if (!isFixedProcurement(r0) && (r0.status === 'submitted' || r0.flags.requote)) r.quoteTargets = quoteTargets(p, r0)
+      // 全社辞退の行で新しく頼んだ商社も、頼むつもりの商社に入れる
+      const extra = others(r0).filter(wanted)
+      if (extra.length) r.quoteTargets = [...new Set([...(r.quoteTargets ?? []), ...extra])]
       for (const sid of targetsOf(r0)) {
         if (!wanted(sid)) continue
         // 再見積要（数量などの変更）で頼み直す商社の前の回答は旧見積にする（新しい回答を待つ。前の回答で見積済にしない）
@@ -61,7 +66,11 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
             q.stale = true
             q.staleModel = r.model
           }
-        if (!p2.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) p2.quotes.push(emptyQuote(r.id, sid))
+        if (!p2.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)) {
+          // この商社に前回送った正式見積の内容は引き継ぐ（再発行の差分シートで比べる）
+          const sent = [...p2.quotes].reverse().find((q) => q.rowId === r.id && q.supplierId === sid && (q.formalSent || q.formalNeedDate !== undefined))
+          p2.quotes.push({ ...emptyQuote(r.id, sid), ...(sent ? { formalSent: sent.formalSent, formalNeedDate: sent.formalNeedDate } : {}) })
+        }
         // 再見積を頼んだので、要再確認の「再見積」の印は外す
         for (const q of p2.quotes) if (q.rowId === r.id && q.supplierId === sid && !q.stale && q.reconfirm === 'requote') q.reconfirm = undefined
       }
@@ -72,7 +81,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
         if (r.adoptedSupplierId) {
           // 正式依頼を出していた商社には取り下げを伝える（購買への知らせ）
           const fq = p2.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && x.formalRequestNo)
-          if (fq && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`
+          if (fq && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = addWithdrawn(r.flags.formalWithdrawn, `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`)
           r.adoptedSupplierId = undefined
           r.scoreSnapshot = undefined
           r.flags.contested = false
@@ -235,7 +244,8 @@ export async function requestFormalQuotes(): Promise<string> {
   const s = st()
   if (s.user().role !== 'purchasing') return '権限なし（正式見積の依頼は購買）'
   const p = s.project()
-  const target = p.rows.filter((r) => isActive(r) && r.adoptedSupplierId && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
+  // 取引停止の商社・支給品・社内在庫の行には依頼しない
+  const target = p.rows.filter((r) => isActive(r) && isQuotable(r) && r.adoptedSupplierId && s.ws.suppliers.find((x) => x.id === r.adoptedSupplierId)?.tradable !== false && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
   const working = target.filter((r) => hasWork(r) || r.pendingRemoval)
   const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
   // 再見積要の行は概算が失効している。概算を取り直して採用し直してから正式見積へ
@@ -270,7 +280,10 @@ export async function requestFormalQuotes(): Promise<string> {
       r.flags.reissue = false
       // 同じ商社に出し直した（再見積のあとの F2 など）ときは、前の依頼の取下げは要らない（新しい依頼で置き換え）
       const sname = ws.suppliers.find((x) => x.id === r.adoptedSupplierId)?.name
-      if (sname && r.flags.formalWithdrawn?.startsWith(sname + ' ')) r.flags.formalWithdrawn = undefined
+      if (sname && r.flags.formalWithdrawn) {
+        const rest = r.flags.formalWithdrawn.split(' / ').filter((x) => !x.startsWith(sname + ' '))
+        r.flags.formalWithdrawn = rest.length ? rest.join(' / ') : undefined
+      }
       if (r.status === 'selected') setStatus(r, 'formalRequested')
       r.dueAt = addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays)
     }

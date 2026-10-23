@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Decision, DecisionKind, Issue, Project, Row, ScoreWeights, User } from '@/model/types'
 import { ISSUE_KINDS } from '@/model/types'
 import { nextBest, scoreRow } from '@/model/score'
-import { capPending, effective, isActive, overCap, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
+import { addWithdrawn, capPending, effective, isActive, overCap, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { addBusinessDays, addDays, todayStr } from '@/model/dates'
 import { applyDesignChange, applyRemoval } from './rows'
@@ -182,6 +182,12 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
               rr.pendingRev = undefined
             }
           } else {
+            // 最小ロットの閾値超を承認したら、その指摘は決着（余剰を受け入れる。発注数は丸めた数）
+            if (c === '閾値超')
+              for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && ['open', 'inProgress', 'fixed'].includes(x.status))) {
+                i.status = 'confirmed'
+                i.resolution = 'PM の決定: 余剰を受け入れる（発注数は丸めた数）'
+              }
             r.flags.pmPending = false
             r.flags.pmReason = undefined
             // 採用のある判断（例外選定・先行採用など）だけ選定済に。最小ロットの閾値超など採用の無い行は、選定者が選ぶまで今の状態
@@ -232,6 +238,15 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           } else if (c === '閾値超') {
             r.flags.pmPending = false
             r.flags.pmReason = undefined
+            // 余剰を受け入れないので、先に丸めた発注数は必要数に戻し、最小ロットの指摘は購買に戻す（ほかの商社・数量で手配し直す）
+            if (r.orderQty != null && r.orderQty > r.qtyNeeded && !r.ordered) {
+              r.orderQty = r.qtyNeeded
+              r.flags.orderQtyCheck = true
+            }
+            for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && x.status === 'fixed')) {
+              i.status = 'open'
+              i.resolution = 'PM の決定: 余剰は受け入れない（発注数を戻した）'
+            }
           } else if (c === '先行発注判断') {
             r.flags.ltbPending = false
           } else {
@@ -290,7 +305,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           // 前の商社への正式依頼は取り下げる（購買に知らせる）。前の正式回答も外す
           const fq = from ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === from && !x.stale) : undefined
           if (fq) {
-            if (fq.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`
+            if (fq.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = addWithdrawn(r.flags.formalWithdrawn, `${ws.suppliers.find((x) => x.id === fq.supplierId)?.name ?? fq.supplierId} ${fq.formalRequestNo}`)
             fq.formalPrice = null
             fq.formalLeadDays = null
             fq.formalValidUntil = null

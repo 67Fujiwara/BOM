@@ -36,7 +36,11 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     // Space は 1 つだけ出す（指摘があれば「開いて指摘を見る」）
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : user.role !== 'purchasing' && openIssues(p, row.id).length ? '開いて指摘を見る' : '開く'])
     if (vm.counts[4]) hints.push(['F8', '次の問題'])
-    if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) hints.push(['Ctrl+.', '指定先を変える'])
+    if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) {
+      const d = (row.designated ?? '').trim()
+      const stopped = st.ws.suppliers.find((x) => (x.id === d || x.name === d) && x.tradable === false)
+      hints.push(['Ctrl+.', stopped ? `指定先 ${stopped.name} は取引停止（商社マスタ）: 指定先を変える` : '指定先を変える'])
+    }
     if (user.role === 'purchasing' && row.procurement === '客先指定品' && !row.adoptedSupplierId && row.status === 'quoting' && p.quotes.some((q) => q.rowId === row.id && !q.stale) && p.quotes.filter((q) => q.rowId === row.id && !q.stale).every((q) => q.leadDays === -1) ) hints.push(fixedSupplierId(p, row, st.ws.suppliers) ? ['Ctrl+.', '次の商社に依頼'] : ['Alt+Shift+I', '取引できる商社がすべて辞退: 設計に代替を相談（指摘）'])
     // 相見積で取引できる商社の回答がすべて辞退（または取引停止の商社だけが回答）: 見積済にならないので次の手を案内
     if (user.role === 'purchasing' && row.procurement === '相見積' && row.status === 'quoting') {

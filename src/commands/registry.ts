@@ -5,8 +5,8 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
-import { checkRow, type Problem } from '@/model/rules'
+import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues } from '@/model/derive'
+import { checkRow, setSupplierMaster, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
 import * as adopt from '@/actions/adopt'
@@ -426,7 +426,11 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   const out: Array<{ rowId: string; field: string; order: number }> = []
   const kinds = ISSUE_KINDS.map((k) => k.kind)
   for (const r of p.rows) {
-    if (!isActive(r)) continue
+    // 取消・置換した行の正式依頼の取下げも、購買の F8 で回る
+    if (!isActive(r)) {
+      if (role === 'purchasing' && r.flags.formalWithdrawn) out.push({ rowId: r.id, field: 'status', order: 30 })
+      continue
+    }
     const changed = Object.keys(r.working ?? {})
     for (const i of openIssues(p, r.id)) {
       const b = i.status === 'open' || i.status === 'inProgress' ? issues.issueBallRole(i) : i.by.role
@@ -573,6 +577,12 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
         }),
     })
   }
+  // 相見積で取引できる商社の有効な見積が無い（全社辞退）: ほかの商社に頼むか、設計に代替を相談
+  if (role === 'purchasing' && r.procurement === '相見積' && noUsableQuote(p, r))
+    opts.push(
+      { label: 'ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ Ctrl+K →「案件設定」で足す）', run: () => runCommand('quotes.request') },
+      { label: '設計に代替を相談する（指摘を起票）', run: () => void issues.raiseIssue(r.id, 'model', '代替提案', '取引できる商社がすべて辞退しました。代替品を検討してください', undefined, true) },
+    )
   // 客先指定品の依頼先が辞退: 購買が次の商社（メーカを扱う商社）に頼み直す
   if (role === 'purchasing' && r.procurement === '客先指定品' && !r.adoptedSupplierId && r.status === 'quoting') {
     const qs = p.quotes.filter((q) => q.rowId === r.id && !q.stale)
@@ -999,13 +1009,15 @@ function saveSettings(draft: Record<string, string>) {
   }
   const role = s.user().role
   for (const f of settingsFieldsOf(p)) if (f.key in draft && ((f.owner === 'PM' && role !== 'pm') || (f.owner === '購買' && role === 'design'))) return toast(`権限なし（${f.label} は ${f.owner} 項目）`, 'err')
-  extraCommits.forEach((f) => f())
   if (!Object.keys(patch).length) {
+    extraCommits.forEach((f) => f())
     closePanel()
     return toast(extraCommits.length ? '案件設定を保存しました' : '変更はありません', 'info')
   }
   const needImpact = 'dueDate' in patch || 'processDays' in patch || 'weights' in patch
+  // 担当者などのほかの変更も、理由を入れて確定したときにまとめて保存する（Esc で取りやめたら何も保存しない）
   const finish = (reason: string, opts?: { fixedNeed?: 'shift' | 'keep'; proposeReselect?: boolean }) => {
+    extraCommits.forEach((f) => f())
     pm.applySettings(patch as Parameters<typeof pm.applySettings>[0], reason, opts)
     closePanel()
     toast('案件設定を保存しました', 'ok')
@@ -1757,6 +1769,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         onSubmit: (text) => {
           let raw: unknown
           // Excel のファイル（中身が PK で始まる zip）は JSON ではない。部品表はガイドから読む
+          // 表（タブ区切り・CSV）を貼った・選んだときも、部品表はガイドから
+          if (!/^\s*[{[]/.test(text) && (text.includes('\t') || /^[^\n]*,[^\n]*\n/.test(text))) return toast('これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）', 'err')
           if (text.startsWith('PK')) return toast('これは Excel のファイル（.xlsx）です。部品表は Ctrl+K →「新しいBOM」→「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）', 'err')
           try {
             raw = JSON.parse(text)
@@ -1768,6 +1782,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           const ws = res.ws
           const cur = st().ws
           const before = backupsSnapshot()
+          // 読み込んだ内容を今の規則で整える（取引停止にした商社の採用・見積済の判定など。読み込んだ直後の依頼に古い状態を使わない）
+          setSupplierMaster(ws.suppliers)
+          for (const pj of ws.projects) normalize(pj, ws)
+          setSupplierMaster(st().ws.suppliers)
           const done = (backedUp: boolean) => {
             if (!replaceWorkspace(ws)) {
               // 読み込みをやめたので、今とった退避も取り消す（前の「読み込み前」の退避を押し出したままにしない）

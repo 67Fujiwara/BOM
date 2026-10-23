@@ -312,6 +312,8 @@ export function designatedDeclined(p: Project, row: Row): boolean {
   const d = (row.designated ?? '').trim()
   // 指定先は商社 ID でも商社名でも書ける（画面はどちらも商社名で出す）
   const id = knownSuppliers.find((x) => x.id === d || x.name === d)?.id ?? d
+  // 指定先を商社マスタで取引停止にした行も、設計が指定先を変える
+  if (!!d && knownSuppliers.find((x) => x.id === id)?.tradable === false) return true
   return !!d && p.quotes.some((q) => q.rowId === row.id && !q.stale && q.supplierId === id && q.leadDays === -1)
 }
 /** 商社マスタ（指定先の名前から ID を引くため。ストアが読み込み・変更のたびに渡す） */
@@ -376,7 +378,7 @@ export function withdrawFormal(p: Project, r: Row, suppliers: Supplier[]): void 
   if (!r.adoptedSupplierId) return
   const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
   if (!q) return
-  if (q.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = `${suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId} ${q.formalRequestNo}`
+  if (q.formalRequestNo && ['formalRequested', 'formalQuoted'].includes(r.status)) r.flags.formalWithdrawn = addWithdrawn(r.flags.formalWithdrawn, `${suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId} ${q.formalRequestNo}`)
   q.formalPrice = null
   q.formalLeadDays = null
   q.formalValidUntil = null
@@ -389,4 +391,10 @@ export function noUsableQuote(p: Project, row: Row): boolean {
   if (isFixedProcurement(row) || row.status !== 'quoting') return false
   const { answered, total } = quoteResponses(p, row)
   return total > 0 && answered >= total && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && knownSuppliers.find((x) => x.id === q.supplierId)?.tradable !== false)
+}
+
+/** 正式依頼の取下げの印に足す（まだ伝えていない前の取下げを消さない。「商社 依頼No / 商社 依頼No」） */
+export function addWithdrawn(cur: string | undefined, add: string): string {
+  const list = (cur ?? '').split(' / ').filter(Boolean)
+  return list.includes(add) ? list.join(' / ') : [...list, add].join(' / ')
 }

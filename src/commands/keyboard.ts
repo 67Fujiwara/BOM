@@ -197,7 +197,9 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         const err = panel.onSubmit(choice, panel.text, panel.extra)
         if (typeof err === 'string') {
           // エラーなら入れた内容を残したままダイアログを開き直す
-          set({ panel: { ...panel, error: err }, mode: 'panel' })
+          // 選択肢つきのダイアログで数字だけの文字を断ったときは、文字の欄を空にして選択肢に戻す（案内どおり Shift+Tab → 数字 で選べるように）
+          const digitsOnly = !!panel.options && /^[\d０-９\s]+$/.test(panel.text.trim())
+          set({ panel: { ...panel, error: err, ...(digitsOnly ? { text: '', textTouched: false } : {}) }, mode: 'panel' })
           toast(err, 'err')
         }
       }
@@ -503,6 +505,8 @@ export function handleKeyDown(e: KeyboardEvent) {
   // macOS のブックマークは Cmd+D。Control+D は欄の中で「後ろの 1 文字を消す」なので止めない
   const mac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
   if ((key === 'Ctrl+D' || key === 'Ctrl+Shift+D') && !(mac && e.ctrlKey && !e.metaKey)) e.preventDefault()
+  // macOS の入力欄・セルの編集中の Control+英字（Control+E 行末・K 行末まで消す・F 1 文字進む・P 上 など）は文字の操作。アプリの操作（Cmd）にしない
+  if (mac && e.ctrlKey && !e.metaKey && !e.altKey && inInput && /^[a-z]$/i.test(e.key)) return
   if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+F|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {

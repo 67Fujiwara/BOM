@@ -1,0 +1,17 @@
+{"name":"holidays 毎日 10 年（今日から）","loadMs":441,"toast":"","keysMs":2972,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"holidays 毎日 10 年 + 300 行","loadMs":604,"toast":"","keysMs":6593,"slow":["ArrowDown:406","ArrowDown:329","Alt+4:378","Alt+1:880","Enter:344","x:304","Alt+9:459","Alt+3:430","Space:404","Alt+1:310","F1:385"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"holidays 変な文字","loadMs":181,"toast":"","keysMs":1356,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"settings 数字が文字（\"1e8\"・\"-5\"）","loadMs":323,"toast":"","keysMs":1782,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"settings 負の巨大値","loadMs":253,"toast":"","keysMs":1467,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"statusChangedAt が文字でない・日付でない","loadMs":164,"toast":"","keysMs":1315,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"dueAt 9999-99-99 / dueDate 0000-00-00","loadMs":335,"toast":"","keysMs":1734,"slow":["F1:334"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"needDateFixed 2026-02-30・+275760","loadMs":323,"toast":"","keysMs":1874,"slow":["Alt+4:301"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"同じ ID の行・空の ID・__proto__","loadMs":270,"toast":"保存データの一部を外して読みました: 案件 P-2026-041 の行 R001 が重複していたので 2 つ目以降を外しました / 案件 P-2026-041 の rows[2] は id が無いので外しました ほか 1 件。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）","keysMs":1884,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"文字の列に物・配列・数","loadMs":236,"toast":"","keysMs":1560,"slow":["F1:442"],"alive":true,"cursor":"R055 必要数","errs":[]}
+{"name":"packQty 1e-300・0・-1、qtyNeeded 1e300","loadMs":300,"toast":"","keysMs":2011,"slow":["Alt+4:324","Escape:314"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"見積 leadDays 1e15・unitPrice -1・moq 0・商社不明","loadMs":290,"toast":"","keysMs":2034,"slow":["Alt+9:397"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"指摘 field=__proto__・rowId 無し・status 不明","loadMs":276,"toast":"保存データの一部を外して読みました: 案件 P-2026-041 の指摘 1 件は形式が読めないので外しました。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）","keysMs":1494,"slow":[],"alive":true,"cursor":"R001 部品名","errs":[]}
+{"name":"ルールの正規表現が重い ^([A-Z0-9]+-?)+$（型式 22 文字＋!）","loadMs":474,"toast":"","keysMs":2160,"slow":["Alt+1:312"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"ルールの正規表現が重い（型式 26 文字＋!）","loadMs":4973,"toast":"","keysMs":8980,"slow":["ArrowDown:877","F8:676","Enter:1091","Control+z:1227","Alt+3:820","Space:848","Alt+1:824","Escape:976","Escape:1020"],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"user.role=admin・currentProjectId 無し","loadMs":220,"toast":"","keysMs":1638,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}
+{"name":"projects 空","loadMs":263,"toast":"保存データを読めなかったのでサンプルを表示しています（案件が 1 つもありません）。元のデータは退避しました（Ctrl+K →「退避したデータを書き出す」）","keysMs":1265,"slow":[],"alive":true,"cursor":"R001 型式","errs":[]}

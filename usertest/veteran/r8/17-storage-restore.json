@@ -1,0 +1,224 @@
+[
+  {
+    "case": "R1 空き 100000 文字で「読み込み前に戻す」",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 2867772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit 100000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ],
+      "used": 5142138
+    },
+    "result": {
+      "panel": "退避したデータ（10/23 16:51・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避に入れます 1 やめる 2 戻す 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "退避したデータに戻しました（案件 1 件）。いまの内容は容量不足で退避できませんでした"
+    },
+    "after": {
+      "main": {
+        "cur": "P-T",
+        "projects": [
+          "P-T"
+        ],
+        "r010": "端子台エンドカバー"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "case": "R2 空き 100000 文字で小さい JSON（P-S）を読み込む",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 2867772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 100000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    },
+    "result": {
+      "confirm": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "やめました（何も変えていません）"
+    },
+    "after": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 100000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "case": "R1 空き 600000 文字で「読み込み前に戻す」",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 2367772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit 600000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ],
+      "used": 4642138
+    },
+    "result": {
+      "panel": "退避したデータ（10/23 16:51・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避に入れます 1 やめる 2 戻す 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "退避したデータに戻しました（案件 1 件）。いまの内容は容量不足で退避できませんでした"
+    },
+    "after": {
+      "main": {
+        "cur": "P-T",
+        "projects": [
+          "P-T"
+        ],
+        "r010": "端子台エンドカバー"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "case": "R2 空き 600000 文字で小さい JSON（P-S）を読み込む",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 2367772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 600000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    },
+    "result": {
+      "confirm": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "やめました（何も変えていません）"
+    },
+    "after": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 600000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "case": "R1 空き 1500000 文字で「読み込み前に戻す」",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 1467772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit 1500000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ],
+      "used": 3742139
+    },
+    "result": {
+      "panel": "退避したデータ（10/23 16:51・JSON 読み込みの前・案件 1 件）に戻します。いまの内容は退避に入れます 1 やめる 2 戻す 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "退避したデータに戻しました（案件 1 件）。いまの内容は容量不足で退避できませんでした"
+    },
+    "after": {
+      "main": {
+        "cur": "P-T",
+        "projects": [
+          "P-T"
+        ],
+        "r010": "端子台エンドカバー"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "case": "R2 空き 1500000 文字で小さい JSON（P-S）を読み込む",
+    "fill": {
+      "capBefore": 2967772,
+      "filled": 1467772
+    },
+    "before": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 1500000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    },
+    "result": {
+      "confirm": "全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます 1 やめる 2 置き換える 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し",
+      "second": null,
+      "toast": "やめました（何も変えていません）"
+    },
+    "after": {
+      "main": {
+        "cur": "P-A",
+        "projects": [
+          "P-A"
+        ],
+        "r010": "P-A edit2 1500000"
+      },
+      "backups": [
+        "JSON 読み込みの前:236449:P-T"
+      ]
+    }
+  },
+  {
+    "errs": []
+  }
+]

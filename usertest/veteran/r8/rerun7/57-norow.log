@@ -1,0 +1,10 @@
+{"label":"起動直後","word":"Analog","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"label":"起動直後","word":"Knowles","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"label":"起動直後","word":"snubber","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"label":"起動直後","word":"nxp","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"label":"起動直後","word":"hook","cursor":["—","—"],"mode":"ナビ","edit":null,"panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）"}
+{"label":"JSON 読み込み直後","word":"Analog","cursor":["R001 部品名","R001 部品名"],"mode":"編集","edit":"Analog","panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":["R001.working:undefined→{\"name\":\"Analog\"}"],"toast":"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"}
+{"label":"案件切替","projPanel":"P-2026-041\n第3ライン 搬送制御盤\n納期 2026-11-21 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/23 08:04 佐藤\nあなた宛 73\n＋\n新しいBOM を作る\nEnter 開く\n↑ / ↓ 選択\nEsc 閉じる","cursor":"R001 部品名"}
+{"label":"案件の切り替え直後","word":"Analog","cursor":["R001 部品名","R001 部品名"],"mode":"パネル","edit":null,"panel":"panel-wizard","view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":null,"toast":"保存しました（編集は自動で保存されています）"}
+{"label":"ビュー 7 に切り替えた直後（設計）","word":"Analog","cursor":["R001 部品名","R001 部品名"],"mode":"編集","edit":"7Analog","panel":null,"view":["view-1","view-1"],"chips":"","diffBeforeEnter":[],"afterEnter":["R001.working:undefined→{\"name\":\"7Analog\"}"],"toast":"保存しました（編集は自動で保存されています）"}
+{"errors":[]}

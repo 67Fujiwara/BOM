@@ -1,0 +1,8 @@
+build-current sample {"down":30,"view":21,"space":16,"enter":69,"load":null}
+build-current 2025-10-23T00:00:00.000Z {"down":16,"view":16,"space":17,"enter":58,"load":176}
+build-current 2000-01-01T00:00:00.000Z {"down":21,"view":14,"space":17,"enter":55,"load":163}
+build-current 1970-01-01T00:00:00.000Z {"down":19,"view":17,"space":17,"enter":56,"load":127}
+build-r7 sample {"down":17,"view":17,"space":18,"enter":74,"load":null}
+build-r7 2025-10-23T00:00:00.000Z {"down":11,"view":14,"space":16,"enter":58,"load":126}
+build-r7 2000-01-01T00:00:00.000Z {"down":12,"view":17,"space":17,"enter":52,"load":170}
+build-r7 1970-01-01T00:00:00.000Z {"down":15,"view":17,"space":17,"enter":59,"load":128}

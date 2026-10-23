@@ -1,0 +1,32 @@
+publish → [変更セット（8 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+R081 指定商社 des=オムロン直販 st=submitted adopt=- reason= quotes=[["S5",null,null]]
+R082 指定商社 des=立花エレテック st=submitted adopt=- reason= quotes=[["S2",null,null]]
+R083 客先指定品 des=客先承認 KS-9 st=submitted adopt=- reason= quotes=[["S2",null,null]]
+U4-04 lamp 見積済 75/83 hand 75/83
+request options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+request(S1 only) → 5 行 × 1 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は全社に依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+R081 指定商社 des=オムロン直販 st=submitted adopt=- reason= quotes=[["S5",null,null]]
+R082 指定商社 des=立花エレテック st=submitted adopt=- reason= quotes=[["S2",null,null]]
+R083 客先指定品 des=客先承認 KS-9 st=submitted adopt=- reason= quotes=[["S2",null,null]]
+files [{"sup":"因幡電機","ids":["R076","R077","R078","R079","R080"]}]
+PASS X4-1 因幡だけに依頼したとき、立花指定の行は依頼していないので見積中にしない :: R082 指定商社 des=立花エレテック st=submitted adopt=- reason= quotes=[["S2",null,null]]
+request(all) → 3 行 × 2 社に依頼（回答期限 2026-10-28）
+R081 指定商社 des=オムロン直販 st=quoting adopt=- reason= quotes=[["S5",null,null]]
+R082 指定商社 des=立花エレテック st=quoting adopt=- reason= quotes=[["S2",null,null]]
+R083 客先指定品 des=客先承認 KS-9 st=quoting adopt=- reason= quotes=[["S2",null,null]]
+files [{"sup":"オムロン直販","ids":["R081"]},{"sup":"立花エレテック","ids":["R082","R083"]}]
+PASS X4-2 指定先（オムロン直販）が案件の相見積先に無くても、依頼せずに見積中にしない :: R081 指定商社 des=オムロン直販 st=quoting adopt=- reason= quotes=[["S5",null,null]] / files ["オムロン直販","立花エレテック"]
+U4-04 lamp after requests 見積済 75/83
+c requested to [ 'S2' ]
+decline 3 行 × 2 社に依頼（回答期限 2026-10-28）
+after decline R083 客先指定品 des=客先承認 KS-9 st=quoting adopt=- reason= quotes=[["S2",null,-1]]
+3 行 × 2 社に依頼（回答期限 2026-10-28）
+3 行 × 2 社に依頼（回答期限 2026-10-28）
+after other answers R083 客先指定品 des=客先承認 KS-9 st=selected adopt=S1 reason=指定先（固定） quotes=[["S2",null,-1],["S1",1500,7]] ball 購買
+purch Ctrl+. on c undefined
+detail c 相見積・スコア内訳 （必要日 11/11 / 必要数 4個 / 基準日 10/23）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥1,5007日4 99.210010096100最安 / 手入力立花エレテック辞退—手入力採用: 因幡電機  理由: 指定先（固定） 指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴佐藤 10/23 07:33 セル編集佐藤 10/23 07:33 セル編集佐藤 10/23 07:33 セル編集山田 10/23 07:33 セル編集山田 10/23 07:33 セル編集山
+design Shift+A on c null 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+design a on c 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+final c R083 客先指定品 des=客先承認 KS-9 st=selected adopt=S1 reason=指定先（固定） quotes=[["S2",null,-1],["S1",1500,7]]
+PASS X4-3 客先指定品の既定の依頼先が辞退したとき、購買が別の商社を指定して進められる（§3.1 購買が 6 で 1 社を指定） :: R083 客先指定品 des=客先承認 KS-9 st=selected adopt=S1 reason=指定先（固定） quotes=[["S2",null,-1],["S1",1500,7]]
+== 3/3 PASS

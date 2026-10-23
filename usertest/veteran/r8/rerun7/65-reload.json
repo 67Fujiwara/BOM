@@ -1,0 +1,105 @@
+[
+  {
+    "case": "英字で始めた編集の途中で 0ms 後にリロード",
+    "r040": {
+      "name": "Coil-R6",
+      "hidden": false,
+      "n": 80
+    },
+    "errs": []
+  },
+  {
+    "case": "英字で始めた編集の途中で 30ms 後にリロード",
+    "r040": {
+      "name": "Coil-R6",
+      "hidden": false,
+      "n": 80
+    },
+    "errs": []
+  },
+  {
+    "case": "英字で始めた編集の途中で 150ms 後にリロード",
+    "r040": {
+      "name": "Coil-R6",
+      "hidden": false,
+      "n": 80
+    },
+    "errs": []
+  },
+  {
+    "case": "Alt+h の 0ms 後にリロード → Ctrl+Z",
+    "before": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "afterReload": {
+      "name": "ファイバユニット",
+      "hidden": true,
+      "n": 80
+    },
+    "afterUndo": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "toast": "元に戻す: 行を隠す/戻す"
+  },
+  {
+    "case": "Alt+h の 100ms 後にリロード → Ctrl+Z",
+    "before": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "afterReload": {
+      "name": "ファイバユニット",
+      "hidden": true,
+      "n": 80
+    },
+    "afterUndo": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "toast": "元に戻す: 行を隠す/戻す"
+  },
+  {
+    "case": "Alt+Shift+D の 0ms 後にリロード → Ctrl+Z",
+    "before": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "afterReload": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 81
+    },
+    "afterUndo": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "toast": "元に戻す: 行を複製"
+  },
+  {
+    "case": "Alt+Shift+D の 100ms 後にリロード → Ctrl+Z",
+    "before": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "afterReload": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 81
+    },
+    "afterUndo": {
+      "name": "ファイバユニット",
+      "hidden": false,
+      "n": 80
+    },
+    "toast": "元に戻す: 行を複製"
+  }
+]

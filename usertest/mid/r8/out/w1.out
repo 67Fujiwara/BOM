@@ -1,0 +1,39 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+rows A(d) B(q) C(ok) D(accept) R048 R053 R056 R052
+R048 EDIT-ERR 74 行 × 3 社に正式見積を依頼
+R053 EDIT-ERR 74 行 × 3 社に正式見積を依頼
+R052 EDIT-ERR 74 行 × 3 社に正式見積を依頼
+R056 EDIT-ERR 74 行 × 3 社に正式見積を依頼
+flags R048:formalQuoted:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":true} | R053:formalQuoted:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":true} | R056:formalQuoted:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} | R052:formalQuoted:{"pmPending":false,"contested":true,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":true}
+d R048 R048: 設計へ代替依頼
+q R053 R053: 数量見直し依頼
+y R052 R052: 受入 {"承認者":"","日付":"2026-10-23","決裁書No":""}
+o A → I-006（コスト超過）の結論が出ていません。対応・確認が済んでから発注します
+o B → I-007（数量見直し依頼）の結論が出ていません。対応・確認が済んでから発注します
+o C → R056: 発注済にしました
+o D → R052: 発注済にしました
+i A → 入荷にできません（発注前の行）: I-006（コスト超過）の結論が出ていません。対応・確認が済んでから発注します
+PASS W1-1 d / q を出した行は o でも i でも発注できない
+PASS W1-2 受入した差分超過の行・閾値内の行は発注できる :: ordered,ordered
+R048 design panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+R053 design panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 数量変更不可（対策不成立として PM へ）"]
+after 7: R048:{"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:70880"} issues=I-006:コスト超過:answered | R053:{"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:11218"} issues=I-007:数量見直し依頼:answered
+ball A PM B PM
+受入 A R048: 受入 {"承認者":"","日付":"2026-10-23","決裁書No":""}
+受入 B R053: 受入
+after 受入: R048:formalQuoted{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:70880","countermeasure":"受入"} issues=I-006:コスト超過:confirmed ball= | R053:formalQuoted{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:11218","countermeasure":"受入"} issues=I-007:数量見直し依頼:confirmed ball=
+ball A 購買 B 購買
+PM 7 has A,B false false
+o A after 受入 → R048: 発注済にしました
+o B after 受入 → R053: 発注済にしました
+PASS W1-3 対策不成立を PM が受入れたら発注できる（§9.1） :: R048: 発注済にしました / R053: 発注済にしました
+purchasing 4 has A/B? []
+PM status bar on A: ナビR048 部品名PM 鈴木: 要決定 10役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプSpace開くF8次の問題
+PM Enter on A: null 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+PM x on A → R048 の差分を確認済にしました（PMとして）
+A issue after PM x [ 'I-006:confirmed:PM の決定: 受入' ]
+o A after PM x → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+PM Ctrl+Z → 元に戻す: 差分を確認済
+A after PM undo ordered {"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:70880","countermeasure":"受入"} [ 'confirmed' ]
+== 3/3 PASS

@@ -1,0 +1,332 @@
+{
+  "p5176": [
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "?要確認",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "?要確認",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"?要確認\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "/N 指定",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "/N 指定",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"/N 指定\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "[代替可]",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "[代替可]",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"[代替可]\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "<5mm",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "<5mm",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"<5mm\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": ">85℃",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": ">85℃",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\">85℃\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "型式",
+      "word": "[A]CN-12",
+      "cursor": [
+        "R040 型式",
+        "R040 型式"
+      ],
+      "mode": "編集",
+      "edit": "[A]CN-12",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"model\":\"[A]CN-12\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "部品名",
+      "word": "<高さ制限>",
+      "cursor": [
+        "R040 部品名",
+        "R040 部品名"
+      ],
+      "mode": "編集",
+      "edit": "<高さ制限>",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"name\":\"<高さ制限>\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "必要数",
+      "word": "<10",
+      "cursor": [
+        "R040 必要数",
+        "R040 必要数"
+      ],
+      "mode": "編集",
+      "edit": "<10",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": []
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": " 先頭空白",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "ナビ",
+      "edit": null,
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": []
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "#2 ロット",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "#2 ロット",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"#2 ロット\"}"
+      ]
+    },
+    {
+      "case": "A 記号で始まる値",
+      "col": "備考",
+      "word": "-40℃",
+      "cursor": [
+        "R040 備考",
+        "R040 備考"
+      ],
+      "mode": "編集",
+      "edit": "-40℃",
+      "panel": null,
+      "view": "view-1",
+      "chips": "",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "saved": [
+        "R040.working:undefined→{\"note\":\"-40℃\"}"
+      ]
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+m → µ",
+      "cell": "10µF",
+      "palette": "10µ",
+      "filter": "/10µ"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+z → Ω",
+      "cell": "10ΩF",
+      "palette": "10Ω",
+      "filter": "/10Ω"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+Shift+8 → °",
+      "cell": "10°F",
+      "palette": "10°",
+      "filter": "/10°"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+5 → ∞",
+      "cell": "10∞F",
+      "palette": "10∞",
+      "filter": "/10∞"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+r → ®",
+      "cell": "10®F",
+      "palette": "10®",
+      "filter": "/10®"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+m（独）→ µ",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "/10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+q（独）→ @",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "/10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+e（独）→ €",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "/10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+7（独）→ {",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "/10"
+    },
+    {
+      "errors": []
+    }
+  ],
+  "p5198": [
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+m → µ",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+z → Ω",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+Shift+8 → °",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+5 → ∞",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "mac Option+r → ®",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+m（独）→ µ",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+q（独）→ @",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+e（独）→ €",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "case": "B 特殊文字",
+      "name": "win AltGr+7（独）→ {",
+      "cell": "10F",
+      "palette": "10",
+      "filter": "10"
+    },
+    {
+      "errors": []
+    }
+  ]
+}

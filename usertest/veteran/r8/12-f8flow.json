@@ -1,0 +1,303 @@
+[
+  {
+    "name": "A 一覧の順番",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "F8→R061 型式",
+      "F8→R016 型式"
+    ],
+    "expect": "一覧の順",
+    "last": "R016 型式",
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "B F8 で R005 → 型式を直して Enter（下へ移る）→ F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "FIX:R005→R005 型式(編集)",
+      "Enter→R006 型式",
+      "F8→R016 型式"
+    ],
+    "expect": "R061",
+    "last": "R016 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "C F8 で R005 → 型式を直して Tab（右へ移る）→ F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "FIX:R005→R005 型式(編集)",
+      "Tab→R005 メーカ",
+      "F8→R061 型式"
+    ],
+    "expect": "R061",
+    "last": "R061 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "D F8 で R005 → 直して Enter → ↑ で戻る → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "FIX:R005→R005 型式(編集)",
+      "Enter→R006 型式",
+      "ArrowUp→R005 型式",
+      "F8→R061 型式"
+    ],
+    "expect": "R061",
+    "last": "R061 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "E F8 で R005 → Alt+x → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "Alt+x→R005 型式",
+      "F8→R061 型式"
+    ],
+    "expect": "R061",
+    "last": "R061 型式",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "F F8 で R005 → Ctrl+. → 1 → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "Control+.→R005 型式(パネル)[panel-quickfix]",
+      "1→R005 型式",
+      "Enter→R005 型式(編集)",
+      "F8→R005 型式(編集)"
+    ],
+    "expect": "R061",
+    "last": "R005 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "G Ctrl+G で R005 型式 → 直して Tab → Shift+Tab → F8",
+    "seq": [
+      "G:R005→R005 部品名",
+      "C:型式→R005 型式",
+      "FIX:R005→R005 型式(編集)",
+      "Tab→R005 メーカ",
+      "Shift+Tab→R005 型式",
+      "F8→R016 型式"
+    ],
+    "expect": "R061",
+    "last": "R016 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "H Ctrl+G で R005 ID → x → n",
+    "seq": [
+      "G:R005→R005 部品名",
+      "Home→R005 ID",
+      "x→R005 ID",
+      "n→R016 ID"
+    ],
+    "expect": "R061",
+    "last": "R016 ID",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "I 4 で ↓ を押して R005 → ID で x → F8",
+    "seq": [
+      "Control+ArrowUp→R016 部品名",
+      "ArrowDown→R009 部品名",
+      "Home→R009 ID",
+      "ArrowDown→R041 ID",
+      "ArrowDown→R022 ID",
+      "ArrowDown→R054 ID",
+      "ArrowDown→R005 ID",
+      "x→R005 ID",
+      "F8→R016 ID"
+    ],
+    "expect": "カーソルの行の次",
+    "last": "R016 ID",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "J F8 で R005 → Alt+x → Ctrl+Z → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "Alt+x→R005 型式",
+      "Control+z→R005 型式",
+      "F8→R061 型式"
+    ],
+    "expect": "R061",
+    "last": "R061 型式",
+    "diff": [],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります",
+      "元に戻す: 警告を確認済み"
+    ]
+  },
+  {
+    "name": "K F8 で R005 → Alt+x → Shift+F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "Alt+x→R005 型式",
+      "Shift+F8→R054 必要数"
+    ],
+    "expect": "R054",
+    "last": "R054 必要数",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "L F8 で R054 → 必要数を直して Enter → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "T:5→R054 必要数(編集)",
+      "Enter→R016 必要数",
+      "F8→R016 型式"
+    ],
+    "expect": "R005",
+    "last": "R016 型式",
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "M F8 で R061（最後）→ Alt+x → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "F8→R061 型式",
+      "Alt+x→R061 型式",
+      "F8→R016 型式"
+    ],
+    "expect": "R016（先頭に回る）",
+    "last": "R016 型式",
+    "diff": [
+      "R061.ackRules:[]→[\"rule.model.fw\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式に全角文字が含まれています"
+    ]
+  },
+  {
+    "name": "N F8 で R041 → Ctrl+G R005 → Alt+x → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "G:R005→R005 メーカ",
+      "Alt+x→R005 メーカ",
+      "F8→R016 型式"
+    ],
+    "expect": "R061",
+    "last": "R016 型式",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "O F8 で R005 → Alt+x → Alt+1 → Alt+4 → F8",
+    "seq": [
+      "F8→R016 型式",
+      "F8→R009 メーカ",
+      "F8→R041 メーカ",
+      "F8→R022 型式",
+      "F8→R054 必要数",
+      "F8→R005 型式",
+      "Alt+x→R005 型式",
+      "Alt+1→R005 型式",
+      "Alt+4→R005 型式",
+      "F8→R061 型式"
+    ],
+    "expect": "R061?",
+    "last": "R061 型式",
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  }
+]

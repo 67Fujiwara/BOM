@@ -1,0 +1,11 @@
+{"case":"T1 B が R005 を確認済み（A の 4 から消える）→ A が型式を打って Enter","cursorBeforeTyping":"R005 型式","diff":["R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"],"toasts":["保存しました（編集は自動で保存されています）"]}
+{"case":"T2 B が R005 を確認済み → A の ID 列で x","cursorBefore":"R005 ID","cursorAfter":"R005 ID","diff":[],"toasts":["保存しました（編集は自動で保存されています）","この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"]}
+{"case":"T3 B が R030 を隠す → A で Alt+Shift+D","cursorBefore":"R031 部品名","panel":null,"cursorAfter":"R081 部品名","diff":["R081:+new","order changed"],"toasts":["保存しました（編集は自動で保存されています）","R031 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"]}
+{"case":"T3 B が R030 を隠す → A で Alt+h","cursorBefore":"R031 部品名","panel":null,"cursorAfter":"R032 部品名","diff":["R031.hidden:false→true"],"toasts":["保存しました（編集は自動で保存されています）","R031 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"]}
+{"case":"T3 B が R030 を隠す → A で Shift+Delete","cursorBefore":"R031 部品名","panel":null,"cursorAfter":"R031 部品名","diff":["R031.removal:undefined→{\"kind\":\"cancel\"}"],"toasts":["保存しました（編集は自動で保存されています）","R031 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）"]}
+{"case":"T4 A が R030 を編集中 → B が R030 を隠す → A が def Enter","whileHidden":{"mode":"編集","edit":null,"cursor":"—"},"afterDef":{"mode":"編集","edit":null,"editorVisible":false},"afterEnter":{"cursor":"R001 部品名","mode":"ナビ"},"diff":["R030.hidden:false→true","R030.working:undefined→{\"name\":\"abcdef\"}"],"toasts":["保存しました（編集は自動で保存されています）"]}
+{"case":"T5 A が R030 を編集中 → B が move → A が def Enter","cursorAfter":"R032 部品名","diff":["R030.working:undefined→{\"name\":\"abcdef\"}","order changed"],"toasts":["保存しました（編集は自動で保存されています）"]}
+{"case":"T5 A が R030 を編集中 → B が delete-above → A が def Enter","cursorAfter":"R031 部品名","diff":["R029.removal:undefined→{\"kind\":\"cancel\"}","R030.working:undefined→{\"name\":\"abcdef\"}"],"toasts":["保存しました（編集は自動で保存されています）"]}
+{"case":"T6 B が R054 必要数を直す（A の 4 から消える）→ A が 7 Enter","cursorBefore":"R005 必要数","diff":["R005.working:undefined→{\"qtyNeeded\":7}"],"toasts":["保存しました（編集は自動で保存されています）"]}
+{"case":"T7 A 隠す → B 部品名 → A Ctrl+Z / Ctrl+Y","afterZ":["R040.working:undefined→{\"name\":\"B-edit\"}"],"afterY":["R040.hidden:false→true","R040.working:undefined→{\"name\":\"B-edit\"}"],"toasts":["R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）","元に戻す: 行を隠す/戻す","やり直す: 行を隠す/戻す"]}
+{"errors":[]}

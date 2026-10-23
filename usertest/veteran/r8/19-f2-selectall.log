@@ -1,0 +1,8 @@
+{"label":"Enter→5→Enter（上書き）","col":"必要数","before":"2","after":"5","steps":["Enter→編集[2]","T:5→編集[5]","Enter→ナビ"],"toasts":[]}
+{"label":"F2→Backspace→Enter（Excel では最後の 1 文字を消す）","col":"必要数","before":"2","after":"2","steps":["F2→編集[2]","Backspace→編集[]","Enter→ナビ"],"toasts":[]}
+{"label":"F2→0→Enter（Excel では末尾に 0 を足す＝10 倍）","col":"必要数","before":"2","after":"0","steps":["F2→編集[2]","T:0→編集[0]","Enter→ナビ"],"toasts":[]}
+{"label":"Enter→End→0→Enter","col":"必要数","before":"2","after":"20","steps":["Enter→編集[2]","End→編集[2]","T:0→編集[20]","Enter→ナビ"],"toasts":[]}
+{"label":"日付 Enter→上書き","col":"必要日(固定)","before":"null","after":"null","steps":["Enter→編集[2026-12-01]","T:2026-12-24→編集[2026-12-012026-12-24]","Enter→ナビ"],"toasts":[]}
+{"label":"日付 F2→BS BS→15→Enter（Excel では日だけ直す）","col":"必要日(固定)","before":"null","after":"null","steps":["F2→編集[2026-12-01]","Backspace→編集[2026-12-0]","Backspace→編集[2026-12-]","T:15→編集[2026-12-15]","Enter→ナビ"],"toasts":[]}
+{"label":"文字 F2→X（末尾に足す）","col":"部品名","before":"\"ファイバユニット\"","after":"\"ファイバユニットX\"","steps":["F2→編集[ファイバユニット]","T:X→編集[ファイバユニットX]","Enter→ナビ"],"toasts":[]}
+{"label":"文字 Enter→X（末尾に足す）","col":"部品名","before":"\"ファイバユニット\"","after":"\"ファイバユニットX\"","steps":["Enter→編集[ファイバユニット]","T:X→編集[ファイバユニットX]","Enter→ナビ"],"toasts":[]}

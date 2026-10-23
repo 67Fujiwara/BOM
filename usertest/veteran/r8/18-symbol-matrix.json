@@ -1,0 +1,37 @@
+[
+  {
+    "role": "design",
+    "col": "必要日(固定)",
+    "err": "col not found"
+  },
+  {
+    "role": "design",
+    "col": "必要日(固定)",
+    "err": "col not found"
+  },
+  {
+    "role": "design",
+    "col": "規格",
+    "err": "col not found"
+  },
+  {
+    "role": "design",
+    "col": "規格",
+    "err": "col not found"
+  },
+  {
+    "role": "purchasing",
+    "col": "追加費用",
+    "err": "col not found"
+  },
+  {
+    "role": "purchasing",
+    "col": "追加費用",
+    "err": "col not found"
+  },
+  {
+    "total": 448,
+    "bad": 0,
+    "errs": []
+  }
+]

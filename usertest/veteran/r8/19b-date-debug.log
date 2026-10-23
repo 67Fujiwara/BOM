@@ -1,0 +1,4 @@
+必要日(固定) {"setupDiff":["R040.working:undefined→{\"note\":\"2026-12-01\"}"],"sel":{"v":"2026-12-01","s":10,"e":10,"type":"text","active":true},"afterType":"2026-12-017"}
+必要数 {"setupDiff":[],"sel":{"v":"2","s":0,"e":1,"type":"text","active":true},"afterType":"7"}
+入数 {"setupDiff":[],"sel":{"v":"","s":0,"e":0,"type":"text","active":true},"afterType":"7"}
+必要日(前倒し) {"setupDiff":[],"sel":{"v":"","s":0,"e":0,"type":"text","active":true},"afterType":"7"}

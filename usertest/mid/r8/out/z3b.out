@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+leadNG rows R003,R021,R032,R044,R046
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+g H → R021: 再交渉
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R021, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+H after qty change R021:formalRequested:ord=false:adopt=S2:lead=20:flead=null:fp=null:{"pmPending":false,"contested":false,"leadNG":false,"reissue":true,"formalDiff":false,"renegotiating":true,"requote":true} issues=I-006:納期NG:confirmed
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は全社に依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+H after rough R021:quoting:ord=false:adopt=-:lead=undefined:flead=undefined:fp=undefined:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"renegotiating":false,"requote":false} issues=I-006:納期NG:confirmed
+H after answers (60 days) R021:quoted:ord=false:adopt=-:lead=undefined:flead=undefined:fp=undefined:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"renegotiating":false,"requote":false,"ltbPending":true} issues=I-006:納期NG:confirmed
+design a H → R021 を 因幡電機 で採用（スコア 69.2 / 最安・納期NG(41日超過)）
+H selected R021:selected:ord=false:adopt=S1:lead=60:flead=null:fp=null:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"formalDiff":false,"renegotiating":false,"requote":false,"ltbPending":true} issues=I-006:納期NG:confirmed
+PM panel H "決定パネル R021（先行発注判断）" ["y 先行発注を許可（推奨商社で選定済）","Shift+Y 却下 → 正式見積を待つ"]
+PM Shift+Y H → R021: 却下
+H after ltb reject R021:selected:ord=false:adopt=S1:lead=60:flead=null:fp=null:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"formalDiff":false,"renegotiating":false,"requote":false,"ltbPending":false} issues=I-006:納期NG:confirmed
+formal → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+H formalRequested R021:formalRequested:ord=false:adopt=S1:lead=60:flead=null:fp=null:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"formalDiff":false,"renegotiating":false,"requote":false,"ltbPending":false} issues=I-006:納期NG:confirmed
+PASS Z3b-1 再交渉の後に概算から取り直した行は、次の正式依頼中も納期NG（60 日で間に合わない）が PM の 7 に出る（前の再交渉の印で隠れない） :: selected leadNG=true → formalRequested leadNG=true PM7=true renegotiating=false
+o K R001: 発注済にしました
+publish → 指摘 1 件 を公開しました
+PM y → R001: 承認
+unorder K → R001: 発注済を外しました
+Ctrl+Z 1 → 元に戻す: セル編集
+Ctrl+Z 2 → 元に戻す: 発注済を外す
+K after Ctrl+Z x2 R001:ordered:ord=true:adopt=S1:lead=19:flead=null:fp=146:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} issues=I-007:発注後変更依頼:inProgress
+== 1/1 PASS

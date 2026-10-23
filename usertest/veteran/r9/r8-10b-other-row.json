@@ -1,0 +1,162 @@
+[
+  {
+    "port": 5176,
+    "row": "R078",
+    "col": "単価",
+    "word": "6pcs",
+    "found": true,
+    "steps": [
+      "6→view-1/R078 単価/ナビ",
+      "p→view-1/R078 単価/ナビ",
+      "c→view-1/R078 単価/ナビ",
+      "s→view-1/R078 単価/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5176,
+    "row": "R078",
+    "col": "金額",
+    "word": "61",
+    "found": true,
+    "steps": [
+      "6→view-1/R078 金額/ナビ",
+      "1→view-1/R078 金額/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5176,
+    "row": "R030",
+    "col": "単価",
+    "word": "8pcs",
+    "found": true,
+    "steps": [
+      "8→view-1/R030 単価/ナビ",
+      "p→view-1/R030 単価/ナビ",
+      "c→view-1/R030 単価/ナビ",
+      "s→view-1/R030 単価/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5176,
+    "row": "R030",
+    "col": "ボール",
+    "word": "4x",
+    "found": true,
+    "steps": [
+      "4→view-1/R030 ボール/ナビ",
+      "x→view-1/R030 ボール/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5176,
+    "row": "R070",
+    "col": "スコア",
+    "word": "9.5",
+    "found": true,
+    "steps": [
+      "9→view-1/R070 スコア/ナビ",
+      ".→view-1/R070 スコア/ナビ",
+      "5→view-1/R070 スコア/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5176,
+    "row": "R030",
+    "col": "納期",
+    "word": "6週",
+    "found": true,
+    "steps": [
+      "6→view-1/R030 納期/ナビ",
+      "週→view-1/R030 納期/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5196,
+    "row": "R078",
+    "col": "単価",
+    "word": "6pcs",
+    "found": true,
+    "steps": [
+      "6→view-6/R001 部品名/ナビ",
+      "p→view-6/R001 部品名/編集[p]",
+      "c→view-6/R001 部品名/編集[pc]",
+      "s→view-6/R001 部品名/編集[pcs]"
+    ],
+    "diff": [
+      "R001.working:undefined→{\"name\":\"pcs\"}"
+    ]
+  },
+  {
+    "port": 5196,
+    "row": "R078",
+    "col": "金額",
+    "word": "61",
+    "found": true,
+    "steps": [
+      "6→view-6/R001 部品名/ナビ",
+      "1→view-6/R001 部品名/編集[1]"
+    ],
+    "diff": [
+      "R001.working:undefined→{\"name\":\"1\"}"
+    ]
+  },
+  {
+    "port": 5196,
+    "row": "R030",
+    "col": "単価",
+    "word": "8pcs",
+    "found": true,
+    "steps": [
+      "8→view-8/R001 単価/ナビ",
+      "p→view-8/R001 単価/ナビ",
+      "c→view-8/R001 単価/ナビ",
+      "s→view-8/R001 単価/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5196,
+    "row": "R030",
+    "col": "ボール",
+    "word": "4x",
+    "found": true,
+    "steps": [
+      "4→view-4/R030 ボール/ナビ",
+      "x→view-4/R030 ボール/ナビ"
+    ],
+    "diff": []
+  },
+  {
+    "port": 5196,
+    "row": "R070",
+    "col": "スコア",
+    "word": "9.5",
+    "found": true,
+    "steps": [
+      "9→view-9/R070 部品名/ナビ",
+      ".→view-9/R070 部品名/編集[.]",
+      "5→view-9/R070 部品名/編集[.5]"
+    ],
+    "diff": [
+      "R070.working:undefined→{\"name\":\".5\"}"
+    ]
+  },
+  {
+    "port": 5196,
+    "row": "R030",
+    "col": "納期",
+    "word": "6週",
+    "found": true,
+    "steps": [
+      "6→view-6/R030 部品名/ナビ",
+      "週→view-6/R030 部品名/ナビ"
+    ],
+    "diff": []
+  }
+]

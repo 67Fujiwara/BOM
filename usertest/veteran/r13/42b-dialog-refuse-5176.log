@@ -1,0 +1,5 @@
+{"name":"R1 変更セット Tab → 2026-012 → Enter（断られる）→ 案内どおり 2 → Enter","seq":["Tab→sel= text=","T:2026-012→sel= text=2026-012","Enter→sel= text=2026-012","2→sel= text=2026-0122","Enter→sel= text=2026-0122"],"result":{"last":"null","r004":null},"toasts":["保存しました（編集は自動で保存されています）","↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"]}
+{"name":"R2 変更セット 番号から「ECN-12」→ Enter（断られる）→ 2 → Enter","seq":["T:ECN-12→sel= text=ECN-12","Enter→sel= text=ECN-12","2→sel= text=ECN-122","Enter→sel= text=ECN-122"],"result":{"last":"null","r004":null},"toasts":["保存しました（編集は自動で保存されています）","↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"]}
+{"name":"R3 採用理由 補足「急ぎ」→ Enter（断られる）→ 2 → Enter","seq":["T:急ぎ→sel= text=急ぎ","Enter→sel= text=急ぎ","2→sel= text=急ぎ2","Enter→sel= text=急ぎ2"],"result":{"last":"null","r004":null},"toasts":["保存しました（編集は自動で保存されています）","↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"]}
+{"name":"R4 採用理由 補足「急ぎ」→ Enter（断られる）→ ↓ → Enter","seq":["T:急ぎ→sel= text=急ぎ","Enter→sel= text=急ぎ","ArrowDown→sel=1 納期 text=急ぎ","Enter→closed"],"result":{"last":"null","r004":"納期: 急ぎ"},"toasts":["保存しました（編集は自動で保存されています）","↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）","R004: ミスミ を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）"]}
+errors []

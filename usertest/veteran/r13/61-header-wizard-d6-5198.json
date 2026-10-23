@@ -1,0 +1,34 @@
+[
+  {
+    "id": "d6b-newark-right",
+    "note": "「Mfr P/N」が左、「Newark P/N」が右",
+    "expect": "Mfr P/N を型式",
+    "toast": "d6b-newark-right.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-H0 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Mfr P/N → 型式 / Newark P/N → （使わない） / Manufacturer → メーカ / Qty → 数量⚠ 「型式」に当たる列が 2 つあります。「Mfr P/N」の列を使いますRelayMY4NOmron12個TerminalXW2BOmron2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "Relay / MY4N / Omron / 12",
+        "Terminal / XW2B / Omron / 2"
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  },
+  {
+    "id": "d6c-shinko",
+    "note": "見出し「新光P/N」（商社名が「新」で始まる）と「メーカ型番」",
+    "expect": "メーカ型番を型式",
+    "toast": "d6c-shinko.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-H1 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / メーカ型番 → （使わない） / 新光品番 → 型式 / メーカ → メーカ / 数量 → 数量⚠ 「型式」に当たる列が 2 つあります。「新光品番」の列を使いますリレーSK-001オムロン12個端子台SK-002オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "リレー / SK-001 / オムロン / 12",
+        "端子台 / SK-002 / オムロン / 2"
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  }
+]

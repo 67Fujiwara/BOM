@@ -1,0 +1,14 @@
+c1-all == 6/6 PASS
+c3 == 4/4 PASS
+c1-min2 == 6/6 PASS
+c4 == 3/3 PASS
+c1-deadline == 5/5 PASS
+c5 == 4/4 PASS
+c2 == 4/4 PASS
+c6 == 3/3 PASS
+c7 == 1/1 PASS
+c2b-all == 4/4 PASS
+c8 == 3/3 PASS
+c2b-all-direct == 2/2 PASS
+c9 == 2/2 PASS
+DONE

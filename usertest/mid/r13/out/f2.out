@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+before R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] | 正式見積済 case なし
+before R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 差分超過 case 差分超過
+PM 7 has Y before true
+publish 指定 → [変更セット（7 行: R001, R002, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+after 指定 R001 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] | 選定済 case なし fno [["S1","P-2026-041-S1-F1",146],["S2",null,null],["S3",null,null]]
+after 指定 R002 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]] | 選定済 · 差分超過 case 差分超過 fno [["S1","P-2026-041-S1-F1",40700],["S2",null,null],["S3",null,null]]
+PM 7 has Y after switch true
+purch 8 has X/Y true true
+purch status bar ナビR001 正式単価購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+FAIL F2-1 差分超過の行を別の商社の指定商社にしたら、前の商社の差分超過で PM の 7 に残らない :: formalDiff=true in7=true
+publish 相見積 → [変更セット（2 行: R001, R002）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+after back R001 相見積 st=quoted adopt=- reason= oq=2 flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] | 見積済 ball design
+after back R002 相見積 st=quoted adopt=- reason= oq=2 flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]] | 見積済 · 差分超過 ball pm
+R001 design a → R001 を 因幡電機 で採用（スコア 99.2 / 最安）
+R002 design a → R002 を 因幡電機 で採用（スコア 96.2 / 在庫即納）
+after a R001 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] | 選定済
+after a R002 相見積 st=selected adopt=S1 reason=拮抗 oq=2 flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]] | 選定済 · 差分超過
+formal again → 正式見積依頼書（社外）を出します: 対象 2 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 2 行 × 1 社に正式見積を依頼
+after formal again R001 相見積 st=formalQuoted adopt=S1 reason= oq=1 flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] | 正式見積済 case なし
+after formal again R002 相見積 st=formalQuoted adopt=S1 reason=拮抗 oq=2 flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 差分超過 case 差分超過
+PM 7 has X/Y false true
+FAIL F2-2 相見積に戻して選び直した行の正式見積を依頼したら、前の正式単価で即「正式見積済」にならない（回答待ち） :: R001 相見積 st=formalQuoted adopt=S1 reason= oq=1 flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+FAIL F2-3 差分超過だった行も、前の正式単価で即「正式見積済・差分超過」にならない :: R002 相見積 st=formalQuoted adopt=S1 reason=拮抗 oq=2 flags={"formalDiff":true} quotes=[["S1",407,0,40700],["S2",418,0,null],["S3",376,23,null]]
+== 0/3 PASS

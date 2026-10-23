@@ -1,0 +1,264 @@
+[
+  {
+    "case": "U2 B（購買）が R004 を理由つきで 2 位を採用 → A（購買）が R004 で a",
+    "expect": "推奨で上書きしない（Alt+Shift+A を案内）",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  },
+  {
+    "case": "U3 B が理由つきで採用 → A が Ctrl+Alt+A（最安）",
+    "expect": "上書きするなら理由の採用が消えると知らせる",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "Control+Alt+a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  },
+  {
+    "case": "U4 B が理由つきで採用 → A がパレット「未採用を推奨で一括採用」",
+    "expect": "R004 は上書きしない",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "PAL:未採用を推奨で一括採用→view-1/R004 ID/パネル/panel-prompt",
+      "Enter→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "やめました（何も変えていません）"
+    ]
+  },
+  {
+    "case": "U5 A が R004 で Shift+A のパネル（商社を選ぶ）を開いたまま → B が理由つきで採用 → A 1（推奨）",
+    "expect": "別のタブの理由つき採用を黙って上書きしない",
+    "A0": "view-1/R004 ID/パネル/panel-adopt",
+    "afterB": "view-1/R004 ID/パネル/panel-adopt",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "1→view-1/R004 ID/ナビ",
+      "Enter→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [
+      "R004.flags:{}→{\"pmPending\":true,\"pmReason\":\"例外選定\",\"contested\":false}",
+      "R004.orderQty:null→1",
+      "R004.adoptedSupplierId:undefined→\"S3\"",
+      "R004.adoptReason:undefined→\"納期\"",
+      "R004.scoreSnapshot:undefined→86.1"
+    ],
+    "toastsA": [
+      "PM承認待ちの行です",
+      "この列は自動計算です"
+    ]
+  },
+  {
+    "case": "U6 同じタブ: 理由つきで 2 位を採用 → a",
+    "expect": "上書きしない（案内）",
+    "A0": "view-1/R004 ID/ナビ",
+    "afterB": "view-1/R004 ID/ナビ",
+    "rowAfterB": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "steps": [
+      "a→view-1/R004 ID/ナビ"
+    ],
+    "rowFinal": {
+      "status": "quoted",
+      "adopted": "ミスミ",
+      "reason": "納期",
+      "pm": "例外選定",
+      "hidden": false,
+      "requote": false,
+      "model": "FX5-4AD",
+      "name": "アナログ入力",
+      "stale": 0,
+      "revs": "1",
+      "events": [
+        "提出 Rev.1（75行）",
+        "概算見積を依頼（因幡電機・立花エレテック・ミスミ）",
+        "採用 ミスミ（納期） PM承認待ち"
+      ]
+    },
+    "diff": [],
+    "toastsA": [
+      "PM承認待ちの行です"
+    ]
+  }
+]

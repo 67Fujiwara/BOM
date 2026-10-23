@@ -1,0 +1,15 @@
+import { launch, fresh, T, makeLog, ui, typeReal, proj, sleep, shot, gotoCol } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('x17_formal')
+const st = async (tag) => { const u = await ui(page); log(`  [${tag}] mode=${u.mode} view=${u.view} cur=${u.cursorRow}/${u.cursorCol} edit=${JSON.stringify(u.editValue)} | cursorbar=${await T.cursor(page)} | toast: ${await T.toast(page)}`) }
+await fresh(page, 'purchasing'); await page.keyboard.press('Alt+8'); await sleep(150)
+const heads = await page.locator('thead th').allInnerTexts(); log('  8 columns:', heads.join(' | '))
+log('  rows:', (await page.getByTestId('row').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id')))).join(','))
+await page.keyboard.press('ArrowDown'); await sleep(50); await st('↓')
+for (let i = 0; i < 25; i++) { const c = await T.cursor(page); if (/正式/.test(c)) break; await page.keyboard.press('ArrowRight') } await st('at 正式?')
+const p0 = await proj(page)
+await typeReal(page, '1450', 30); await page.keyboard.press('Enter'); await sleep(120); await st('1450 Enter')
+const p1 = await proj(page); log('  changed:', p1.quotes.filter((q) => !q.stale && JSON.stringify(p0.quotes.find((x) => x.rowId === q.rowId && x.supplierId === q.supplierId && !x.stale)) !== JSON.stringify(q)).map((q) => `${q.rowId}@${q.supplierId} formal=${q.formalPrice} price=${q.unitPrice}`).join(', '))
+const r = p1.rows.find((x) => x.id === (p1.quotes.find((q) => q.formalPrice === 1450)?.rowId)); log('  row', r?.id, r?.status, JSON.stringify(r?.flags))
+await shot(page, 'x17_formal')
+save(errors); await browser.close()

@@ -1,0 +1,390 @@
+[
+  {
+    "name": "Z1 入力 abc → Ctrl+Z → ↓",
+    "expect": "セルは元のまま・R011 へ",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+z→v1/R010 部品名",
+      "ArrowDown→v1/R011 部品名"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z2 入力 abc → Ctrl+Z → Ctrl+Z（2 回目は前の操作を戻す）",
+    "expect": "1 回目: 入力取り消し、2 回目: X1 を戻す",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:X1→v1/R010 部品名(入力:X1)",
+      "Enter→v1/R011 部品名",
+      "ArrowUp→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+z→v1/R010 部品名",
+      "Control+z→v1/R010 部品名"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）",
+      "元に戻す: セル編集"
+    ]
+  },
+  {
+    "name": "Z3 入力 abc → F2（編集）→ de → Ctrl+Z → Enter",
+    "expect": "編集モードはブラウザの取り消し（abcde → abc か元）",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "F2→v1/R010 部品名(編集:abc)",
+      "T:de→v1/R010 部品名(編集:abcde)",
+      "Control+z→v1/R010 部品名",
+      "Enter→v1/R010 部品名(編集:端子台エンドカバー)"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z4 Enter で編集 → End → XY → Ctrl+Z → Enter",
+    "expect": "ブラウザの取り消し（XY が消える）・確定",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "Enter→v1/R010 部品名(編集:端子台エンドカバー)",
+      "End→v1/R010 部品名(編集:端子台エンドカバー)",
+      "T:XY→v1/R010 部品名(編集:端子台エンドカバーXY)",
+      "Control+z→v1/R010 部品名(編集:端子台エンドカバー)",
+      "Enter→v1/R011 部品名"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Z5 Enter で編集 → F2（入力）→ Ctrl+Z",
+    "expect": "入力モードに切り替えたら入力ごと取り消し（元の値）",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "Enter→v1/R010 部品名(編集:端子台エンドカバー)",
+      "T:XY→v1/R010 部品名(編集:端子台エンドカバーXY)",
+      "F2→v1/R010 部品名(入力:端子台エンドカバーXY)",
+      "Control+z→v1/R010 部品名",
+      "ArrowDown→v1/R011 部品名"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z6 入力 数 12 → Ctrl+Z → Enter",
+    "expect": "取り消し・Enter は下へ（値は元）",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:必要数→v1/R010 必要数",
+      "T:12→v1/R010 必要数(入力:12)",
+      "Control+z→v1/R010 必要数",
+      "Enter→v1/R010 必要数(編集:12)"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z7 入力 abc → Meta+Z（mac の Cmd+Z）",
+    "expect": "入力ごと取り消し",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Meta+z→v1/R010 部品名",
+      "ArrowDown→v1/R011 部品名"
+    ],
+    "diff": [],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z8 入力 abc → Ctrl+Shift+Z",
+    "expect": "?（やり直しのキー。値はそのまま確定 or 何もしない）",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+Shift+Z→v1/R010 部品名(入力:abc)",
+      "Enter→v1/R011 部品名"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"abc\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "Z9 入力 abc → Ctrl+Y",
+    "expect": "?",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+y→v1/R010 部品名(入力:abc)",
+      "Enter→v1/R011 部品名"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"abc\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "Z10 入力 abc → Ctrl+Z → Ctrl+Y",
+    "expect": "Ctrl+Y はやり直す操作がない（X1 は残る）",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:X1→v1/R010 部品名(入力:X1)",
+      "Enter→v1/R011 部品名",
+      "ArrowUp→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+z→v1/R010 部品名",
+      "Control+y→v1/R010 部品名"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"X1\"}"
+    ],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）",
+      "やり直す操作がありません"
+    ]
+  },
+  {
+    "name": "Z11 購買 単価 入力 → Ctrl+Z",
+    "expect": "単価は元のまま",
+    "seq": [
+      "start→v9/R004 単価",
+      "G:R004→v9/R004 単価",
+      "C:単価→v9/R004 単価",
+      "T:3333→v9/R004 単価(入力:3333)",
+      "Control+z→v9/R004 単価",
+      "ArrowDown→v9/R005 単価"
+    ],
+    "diff": [],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z12 入力 → Ctrl+Z → 打ち直し → Enter",
+    "expect": "def が入る",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:部品名→v1/R010 部品名",
+      "T:abc→v1/R010 部品名(入力:abc)",
+      "Control+z→v1/R010 部品名",
+      "T:def→v1/R010 部品名(入力:def)",
+      "Enter→v1/R011 部品名"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"def\"}"
+    ],
+    "toasts": [
+      "入力を取り消しました（セルは元のまま）"
+    ]
+  },
+  {
+    "name": "Z13 入力 日付 → Ctrl+Z",
+    "expect": "元のまま",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:必要日→v1/R010 必要日",
+      "T:2026-12-01→v1/R010 必要日",
+      "Control+z→v1/R010 必要日",
+      "ArrowDown→v1/R011 必要日"
+    ],
+    "diff": [],
+    "toasts": [
+      "この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）。「ビュー: 購買提出用」は Alt+2（または ID の列で 2）。キーの一覧は F1",
+      "この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1",
+      "この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）。「ビュー: すべて」は Alt+1（または ID の列で 1）。キーの一覧は F1",
+      "戻す操作がありません（この案件であなたが行った操作はまだありません）"
+    ]
+  },
+  {
+    "name": "S1 調達区分 Enter → ↓ → Enter",
+    "expect": "2 番目の候補が入る",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "Enter→v1/R011 調達区分"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S2 調達区分 Enter → ↓ ↓ ↑ → Enter",
+    "expect": "2 番目",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "ArrowDown→v1/R010 調達区分(編集:指定商社)",
+      "ArrowUp→v1/R010 調達区分(編集:客先指定品)",
+      "Enter→v1/R011 調達区分"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S3 調達区分 Enter → ↓ → Esc",
+    "expect": "元のまま",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "Escape→v1/R010 調達区分"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "S4 調達区分 Enter → ↓ → Tab",
+    "expect": "2 番目が入って右へ",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "Tab→v1/R010 代替可否"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S5 調達区分 Enter → 指 → ↓ → Enter",
+    "expect": "指で絞った候補の 2 番目",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "T:指→v1/R010 調達区分(編集:指)",
+      "ArrowDown→v1/R010 調達区分(編集:指定商社)",
+      "Enter→v1/R011 調達区分"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"指定商社\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S6 調達区分 入力「相」→ ↓（確定して下へ）",
+    "expect": "相見積 が入って R011 へ",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "T:相→v1/R010 調達区分",
+      "ArrowDown→v1/R011 調達区分"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "S7 調達区分 Enter → ↓ → Ctrl+Z → Enter",
+    "expect": "ブラウザの取り消し？ 値は？",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "Control+z→v1/R010 調達区分(編集:客先指定品)",
+      "Enter→v1/R011 調達区分"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S8 単位 F2 → ↓ → ↓ → Enter",
+    "expect": "3 番目の単位",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:単位→v1/R010 単位",
+      "F2→v1/R010 単位(編集:個)",
+      "ArrowDown→v1/R010 単位(編集:本)",
+      "ArrowDown→v1/R010 単位(編集:m)",
+      "Enter→v1/R011 単位"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S9 調達区分 Enter → ↓ → F2（入力へ）→ ↓",
+    "expect": "候補 2 を確定して下へ",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:調達区分→v1/R010 調達区分",
+      "Enter→v1/R010 調達区分(編集:相見積)",
+      "ArrowDown→v1/R010 調達区分(編集:客先指定品)",
+      "F2→v1/R010 調達区分(入力:客先指定品)",
+      "ArrowDown→v1/R011 調達区分"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "S10 メーカ指定 Enter → ↓ ×5 → Enter",
+    "expect": "一周して?",
+    "seq": [
+      "start→v1/—",
+      "G:R010→v1/R010 部品名",
+      "C:メーカ指定→v1/R010 備考",
+      "Enter→v1/R010 備考(編集:)",
+      "REP:5*ArrowDown→v1/R010 備考(編集:)",
+      "Enter→v1/R011 備考"
+    ],
+    "diff": [],
+    "toasts": []
+  }
+]

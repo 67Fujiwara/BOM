@@ -1,0 +1,61 @@
+publish → [変更セット（22 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更] 行 22（Rev.2） を公開しました
+request panel 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+request → 22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+  R081 OMRON → S1,S2,S3 (expect S1,S2,S3)
+  R082 omron → S1,S2,S3 (expect S1,S2,S3)
+  R083 オムロン株式会社 → S1,S2,S3 (expect S1,S2,S3)
+  R084 ｵﾑﾛﾝ → S1,S2,S3 (expect S1,S2,S3)
+  R085 オムロン(株) → S1,S2,S3 (expect S1,S2,S3)
+  R086 三菱 → S1,S2,S3 (expect S1,S2,S3)
+  R087 Mitsubishi Electric → S1,S2,S3 (expect S1,S2,S3)
+  R088 PATLITE → S1,S3 (expect S1,S3)
+  R089 Panasonic → S2,S3 (expect S2,S3)
+  R090 Phoenix Contact → S1,S2,S3 (expect S1,S2,S3)
+  R091 ワイドミュラー → S1,S2,S3 (expect S1,S2,S3)
+  R092 音羽 → S2,S3 (expect S2,S3)
+  R093 TDK → S1,S2,S3 (expect ?)
+  R094 住友 → S1,S3 (expect ?)
+  R095 三菱電線 → S1,S2,S3 (expect ?)
+PASS A2-1 OMRON → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 omron → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 オムロン株式会社 → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 ｵﾑﾛﾝ → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 オムロン(株) → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 三菱 → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 Mitsubishi Electric → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 PATLITE → S1,S3 :: S1,S3
+PASS A2-1 Panasonic → S2,S3 :: S2,S3
+PASS A2-1 Phoenix Contact → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 ワイドミュラー → S1,S2,S3 :: S1,S2,S3
+PASS A2-1 音羽 → S2,S3 :: S2,S3
+PASS A2-2 (U7-03) 結果に「メーカを扱わない商社には頼まない行」 :: 22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+FAIL A2-3 (M7-02) 結果に「扱う商社がマスタに無い行は全社に依頼」 :: 22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+sent 相見積 rows 20 narrowed (<3社) R088:PATLITE R089:Panasonic R092:音羽 R094:住友
+message counts 4 5
+PASS A2-4 結果の「頼まない行 n 行」が実際に絞った行数と一致 :: 4 vs 4
+  file 因幡電機 download rows 19 has PATLITE row true
+  file 立花エレテック download rows 19 has PATLITE row false
+  file ミスミ download rows 20 has PATLITE row true
+D R096 客先指定品 maker=パナソニック st=quoting adopt=- reason= quotes=[["S2",null,null]]
+E R097 客先指定品 maker=パトライト st=quoting adopt=- reason= quotes=[["S1",null,null]]
+PASS A2-5 客先指定品（パナソニック）は扱う立花に依頼 :: S2
+PASS A2-6 客先指定品（パトライト）は扱う因幡に依頼 :: S1
+D decline EDIT-ERR 22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+D after decline R096 客先指定品 maker=パナソニック st=quoting adopt=- reason= quotes=[["S2",null,-1]] ball 購買
+purch 4 has D true sb ナビR096 ID購買 佐藤: 未発行 0 件22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）?ヘルプF8次の問題Shift+I指摘Space開くCtrl+.次の商社に依頼
+Ctrl+. D ["次の商社 ミスミ に依頼する（概算見積を依頼。依頼先で「S3 ミスミ」か「相見積先すべて」を選ぶ）"]
+PASS A2-7 (U7-02) ステータスバーに「次の商社に依頼」 :: ナビR096 ID購買 佐藤: 未発行 0 件22 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 4 行（例: R088「PATLITE」→ 因幡電機・ミスミ）。メーカを扱う商社がマスタに無い行 5 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）?ヘルプF8次の問題Shift+I指摘Space開くCt
+PASS A2-8 (U7-02) Ctrl+. に「次の商社 X に依頼する」 :: ["次の商社 ミスミ に依頼する（概算見積を依頼。依頼先で「S3 ミスミ」か「相見積先すべて」を選ぶ）"]
+next supplier named ミスミ
+PASS A2-9 (U6-05) 次の依頼先がパナソニックを扱わない商社（因幡）でない :: ミスミ
+after choose prompt 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+next request → 1 行 × 1 社に依頼（回答期限 2026-10-28）
+D after next request R096 客先指定品 maker=パナソニック st=quoting adopt=- reason= quotes=[["S2",null,-1],["S3",null,null]]
+PASS A2-10 Ctrl+. の「次の商社に依頼」で、名前の出た商社に依頼される :: S3 1 行 × 1 社に依頼（回答期限 2026-10-28）
+D after 2nd decline R096 客先指定品 maker=パナソニック st=quoting adopt=- reason= quotes=[["S2",null,-1],["S3",null,-1]] sb ナビR096 ID購買 佐藤: 未発行 0 件?ヘルプF8次の問題Shift+I指摘Space開くCtrl+.次の商社に依頼 qf ["次の商社 因幡電機 に依頼する（概算見積を依頼。依頼先で「S1 因幡電機」か「相見積先すべて」を選ぶ）。パナソニック は取扱メーカに無い商社です"]
+left suppliers [ 'S1' ]
+3rd request 1 行 × 1 社に依頼（回答期限 2026-10-28）
+D all declined R096 客先指定品 maker=パナソニック st=quoting adopt=- reason= quotes=[["S2",null,-1],["S3",null,-1],["S1",null,-1]] ball 購買 sb ナビR096 ID購買 佐藤: 未発行 0 件?ヘルプF8次の問題Shift+I指摘Space開くCtrl+.次の商社に依頼 qf ["次の商社 RSコンポーネンツ に依頼する（概算見積を依頼。依頼先で「S4 RSコンポーネンツ」か「相見積先すべて」を選ぶ）"] request → 1 行 × 1 社に依頼（回答期限 2026-10-28）
+all declined: design4 false pm7 false
+FAIL A2-11 客先指定品で案件の商社が全社辞退したら、誰かのボールで次の手（設計・PM に相談、商社を足す）が出る :: de4=false pm7=false sb=ナビR096 ID購買 佐藤: 未発行 0 件?ヘルプF8次の問題Shift+I指摘Space開くCtrl+.次の商社に依頼
+== 20/22 PASS

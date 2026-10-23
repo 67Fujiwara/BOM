@@ -1,0 +1,12 @@
+{"name":"K1 4: F8 → Shift+→（あとで）","expect":"今の問題をあとで（次へ）","seq":["start→v4/—","F8→v4/R016 型式","Shift+ArrowRight→v4/R009 メーカ","Shift+ArrowRight→v4/R041 メーカ"],"diff":["R009.deferredRules:[]→[\"rule.maker.required\"]","R016.deferredRules:[]→[\"rule.model.cp30\"]"],"toasts":["あとで: CP30 は定格電流（例: 10A）まで書いてください（「あとで」が残っている行は公開できません）","あとで: メーカが空です（「あとで」が残っている行は公開できません）"]}
+{"name":"K2 4: F8 → Shift+←","expect":"範囲選択はない（知らせ）","seq":["start→v4/—","F8→v4/R016 型式","Shift+ArrowLeft→v4/R016 型式"],"diff":[],"toasts":["セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）"]}
+{"name":"K3 1: R010 部品名 入力中 Shift+→","expect":"入力の中の文字選択（ブラウザ）or 確定","seq":["start→v1/—","G:R010→v1/R010 部品名","T:abc→v1/R010 部品名(入力:abc)","Shift+ArrowRight→v1/R010 部品名(入力:abc)","Enter→v1/R011 部品名"],"diff":["R010.working:undefined→{\"name\":\"abc\"}"],"toasts":[]}
+{"name":"K4 1: R010 部品名 入力中 Ctrl+D","expect":"ブックマークにしない","seq":["start→v1/—","G:R010→v1/R010 部品名","T:abc→v1/R010 部品名(入力:abc)","Control+d→v1/R010 部品名(入力:abc)","Enter→v1/R011 部品名"],"diff":["R010.working:undefined→{\"name\":\"abc\"}"],"toasts":[]}
+{"name":"K5 1: 行なし Ctrl+End → 7 → Enter","expect":"最後の行へ（行を選ぶ操作）","seq":["start→v1/—","Control+End→v1/R080 部品名","T:7→v1/R080 部品名(入力:7)","Enter→v1/R080 部品名"],"diff":["R080.name:\"ラベルプリンタテープ\"→\"7\""],"toasts":[]}
+{"name":"K6 1: 行なし Ctrl+Home","expect":"先頭の行へ","seq":["start→v1/—","Control+Home→v1/分類 制御"],"diff":[],"toasts":[]}
+{"name":"K7 7（PM）: Shift+↓","expect":"知らせ","seq":["start→v7/R003 部品名","ArrowDown→v7/R003 部品名","Shift+ArrowDown→v7/R003 部品名"],"diff":[],"toasts":["セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）"]}
+{"name":"K8 9（購買）: Ctrl+D（ID の列）","expect":"行の複製の案内（購買は？）","seq":["start→v9/R004 単価","ArrowDown→v9/R005 単価","Home→v9/R005 ID","Control+d→v9/R005 ID"],"diff":[],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました","Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）"]}
+{"name":"K9 1: R010 Shift+D（ID の列）→ Ctrl+Z","expect":"複製 → 戻す","seq":["start→v1/—","G:R010→v1/R010 部品名","Home→v1/R010 ID","Shift+D→v1/R081 ID","Control+z→v1/R011 ID"],"diff":[],"toasts":["R010 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）","元に戻す: 行を複製"]}
+{"name":"K10 4: F8 → Alt+Shift+→","expect":"?","seq":["start→v4/—","F8→v4/R016 型式","Alt+Shift+ArrowRight→v4/R016 型式"],"diff":[],"toasts":[]}
+{"name":"K11 Ctrl+D の既定動作（ナビ / 入力中）","prev":[{"key":"d","code":"KeyD","alt":false,"ctrl":true,"shift":false,"prevented":true,"target":"DIV"},{"key":"d","code":"KeyD","alt":false,"ctrl":true,"shift":false,"prevented":false,"target":"INPUT"}]}
+errors []

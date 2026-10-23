@@ -82,6 +82,8 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 
 export function detectField(h: string): BomField | null {
   const s = toHalf(h).trim()
+  // 「旧型式」「変更前 数量」「Old P/N」のような前の版の列は使わない（今の値の列と取り違えない）
+  if (/旧|変更前|前回|改訂前|廃止|\bold\b|\bprev(ious)?\b/i.test(s)) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
@@ -149,9 +151,9 @@ export function parseBomPaste(text: string): PasteResult {
 
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
-  const isTotal = (l: string[]) => l.some(isTotalCell)
+  const isTotal = (l: string[]) => l.some(isTotalCell) || isSectionLine(l)
   const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
-  if (totals) warnings.push(`小計・合計の ${totals} 行は取り込みません`)
+  if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません`)
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
   // 見出しが「Item」「No」でも中身が番号だけの列は部品名にしない（行番号の列）
   mapping = mapping.map((f, j) => (f === 'name' && body.length > 0 && body.every((l) => /^\s*\d+\s*$/.test(l[j] ?? '')) ? null : f))
@@ -207,15 +209,21 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const wb = new ExcelJS.Workbook()
   await wb.xlsx.load(buf)
   // シートが複数あるときは、見出し（部品名・型式・数量 など）のあるシートを読む（表紙・改訂履歴を部品にしない）
-  const sheets = wb.worksheets.map((ws) => {
+  // 非表示のシート（旧版を隠したもの）は読まない。すべて非表示なら全部から選ぶ
+  const visible = wb.worksheets.filter((ws) => ws.state === undefined || ws.state === 'visible')
+  const sheets = (visible.length ? visible : wb.worksheets).map((ws) => {
     const lines: string[] = []
+    // 非表示の列（Excel で隠した旧型式の列など）も取り込まない
+    const hiddenCols = new Set<number>()
+    for (let c = 1; c <= ws.columnCount; c++) if (ws.getColumn(c).hidden) hiddenCols.add(c)
     ws.eachRow({ includeEmpty: false }, (row) => {
       // 非表示の行（Excel で隠した行）は取り込まない
       if (row.hidden) return
-      const vals = (row.values as unknown[]).slice(1).map((v) => cellToText(v).replace(/[\t\n\r]/g, ' '))
+      const vals = (row.values as unknown[]).slice(1).map((v) => cellToText(v).replace(/[\t\n\r]/g, ' ')).filter((_, j) => !hiddenCols.has(j + 1))
       lines.push(vals.join('\t'))
     })
-    const score = lines.slice(0, 10).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
+    // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
+    const score = lines.slice(0, 30).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
     return { name: ws.name, text: lines.join('\n'), score, rows: lines.length }
   })
   if (!sheets.length) return ''
@@ -254,5 +262,12 @@ function cellToText(v: unknown): string {
 
 /** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
 export function isTotalCell(c: string): boolean {
-  return /^(小計|合計|総計|計|total|sub\s*total|grand\s*total)(金額|額|数|数量|点数|amount|qty)?\s*[:：]?$/i.test(c.trim())
+  const t = c.replace(/[\s　]/g, '')
+  if (/^(以下余白|以下空白|以上)$/.test(t)) return true
+  return /^(小計|合計|総計|総合計|計|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([（(][^）)]*[）)])?$/i.test(t)
+}
+/** 区切り・分類の見出しの行（「■ 制御部」「【電源】」だけが入った行）。部品ではない */
+export function isSectionLine(cells: string[]): boolean {
+  const filled = cells.map((c) => c.trim()).filter(Boolean)
+  return cells.length > 1 && filled.length === 1 && /^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0])
 }

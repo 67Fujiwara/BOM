@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Decision, DecisionKind, Issue, Project, Row, ScoreWeights, User } from '@/model/types'
 import { ISSUE_KINDS } from '@/model/types'
 import { nextBest, scoreRow } from '@/model/score'
-import { effective, isActive, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
+import { capPending, effective, isActive, overCap, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { addBusinessDays, addDays, todayStr } from '@/model/dates'
 import { applyDesignChange, applyRemoval } from './rows'
@@ -18,7 +18,7 @@ function pushDecision(p: Project, by: User, kind: DecisionKind, reason: string, 
 }
 
 /** 要決定の種別（§9.1） */
-export type PmCase = '例外選定' | '先行採用' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '先行発注判断' | '対策不成立' | '発注後変更依頼' | 'なし'
+export type PmCase = '例外選定' | '先行採用' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '先行発注判断' | '対策不成立' | '発注後変更依頼' | '上限超過' | 'なし'
 
 /** 購買が起票した発注後変更依頼で、PM の判断がまだのもの */
 export function openChangeAfterOrder(p: Project, row: Row) {
@@ -34,6 +34,7 @@ export function pmCaseOf(p: Project, row: Row): PmCase {
   if (openChangeAfterOrder(p, row) && !f.orderCancelApproved) return '発注後変更依頼'
   if (f.leadNG && !f.countermeasure) return '納期NG'
   if (p.issues.some((i) => i.rowId === row.id && i.status === 'open' && i.bounceCount >= 2 && !i.pmRuled)) return '差戻し2回目'
+  if (capPending(p, row)) return '上限超過'
   return 'なし'
 }
 
@@ -79,6 +80,11 @@ export function pmOptions(c: PmCase, row?: Row): PmOption[] {
       return [{ key: 'y', label: '購買の指摘を支持 → 設計へ', kind: '指摘を支持' }, { key: 'Y', label: '設計の回答を支持 → 確認済', kind: '回答を支持' }]
     case '閾値超':
       return [{ key: 'y', label: '承認（余剰 / 価格差を受入）', kind: '承認' }, { key: 'Y', label: '却下 → 起票者に戻す', kind: '却下' }, { key: 'q', label: '数量見直し依頼', kind: '数量見直し依頼' }, { key: 'd', label: '設計へ代替依頼', kind: '設計へ代替依頼' }]
+    case '上限超過': {
+      const oc = row ? overCap(st().project(), row) : null
+      const amt = row?.extraCost != null ? `¥${row.extraCost.toLocaleString()}` : '実費'
+      return [{ key: 'y', label: `追加費用 ${amt} を承認（上限${oc ? ` ¥${oc.cap.toLocaleString()}` : ''}を実費まで引き上げ）`, kind: '承認' }, { key: 'Y', label: '却下 → 購買が上限内で手配し直す', kind: '却下' }]
+    }
     case '再選定提案':
       return [{ key: 'y', label: '再選定 → 見積済（選定者へ）', kind: '再選定' }, { key: 'Y', label: '現状維持', kind: '現状維持' }]
     default:
@@ -131,6 +137,11 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           }
       switch (kind) {
         case '承認':
+          if (c === '上限超過') {
+            d.payload = { ...(d.payload ?? {}), amount: r.extraCost ?? 0, cap: true }
+            r.flags.capRuled = undefined
+            break
+          }
           if (c === '発注後変更依頼') {
             const i = openChangeAfterOrder(p, r)!
             i.pmRuled = true
@@ -171,6 +182,10 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           }
           break
         case '却下':
+          if (c === '上限超過') {
+            r.flags.capRuled = r.extraCost ?? undefined
+            break
+          }
           if (c === '発注後変更依頼') {
             const i = openChangeAfterOrder(p, r)!
             i.pmRuled = true

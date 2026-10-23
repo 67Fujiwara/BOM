@@ -386,21 +386,24 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   await expect(page.locator('[data-row-id="R013"]')).not.toHaveClass(/hidden-row/)
 })
 
-test('Enter で始めた数値の編集は上書き、書けない列の数字はビュー切替、案内は Shift を残す、PM は 7 で y が効く', async ({ page }) => {
+test('Enter で始めた数値の編集は上書き、書けない列の数字は案内、案内は Shift を残す、PM は 7 で y が効く', async ({ page }) => {
   await open(page)
   await gotoCell(page, 'R030', '必要数')
   await page.keyboard.press('Enter')
   await page.keyboard.press('3')
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R030"] td[data-col="qtyNeeded"]')).toHaveText('3')
-  // 購買: 書けない部品名の列で数字はビュー切替、Shift+I は「Alt+Shift+I」と案内する
+  // 購買: 書けない部品名の列で数字は案内だけ（打った単語の残りが切り替えた先のセルに入らない）、Alt+数字で切り替え。Shift+I は「Alt+Shift+I」と案内する
   await page.locator('.role button', { hasText: '購買' }).click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('1')
   await gotoCell(page, 'R013', '部品名')
   await page.keyboard.press('4')
+  await expect(page.getByTestId('toast')).toContainText('Alt+4')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
+  await page.keyboard.press('Alt+4')
   await expect(page.getByTestId('view-4')).toHaveAttribute('aria-current', 'true')
-  await page.keyboard.press('1')
+  await page.keyboard.press('Alt+1')
   await gotoCell(page, 'R013', '部品名')
   await page.keyboard.press('Shift+I')
   await expect(page.getByTestId('toast')).toContainText('Alt+Shift+I')
@@ -425,4 +428,14 @@ test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにその�
   await page.keyboard.type('[A]CN-12', { delay: 30 })
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R001"] td[data-col="model"]')).toHaveText('[A]CN-12')
+})
+
+test('行を選んでいないときの数字はビュー切替だけで、続けて打った文字はどの行にも入らない', async ({ page }) => {
+  await open(page)
+  const before = await page.locator('[data-row-id="R001"] td[data-col="name"]').textContent()
+  await page.keyboard.type('47', { delay: 30 })
+  await expect(page.getByTestId('view-7')).toHaveAttribute('aria-current', 'true')
+  await expect(page.getByTestId('mode')).toHaveText('ナビ')
+  await page.keyboard.press('1')
+  await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')
 })

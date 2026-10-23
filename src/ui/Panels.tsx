@@ -109,7 +109,7 @@ function PanelBody({ panel }: { panel: Panel }) {
                 </span>
               </div>
             ))}
-            {items.length === 0 && <div className="item muted">該当する操作がありません。? でショートカット一覧、「ヘルプ」と打つと使い方</div>}
+            {items.length === 0 && <div className="item muted">該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方</div>}
           </div>
           <Foot items={[['Enter', '実行'], ['ArrowUp', '/ ↓ 選択'], ['Escape', '閉じる']]} />
         </div>

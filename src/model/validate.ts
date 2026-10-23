@@ -77,7 +77,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
-      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: arr<unknown>(p0.settings.holidays).filter((x) => typeof x === 'string') })) : { ...DEFAULT_SETTINGS },
+      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).filter((x): x is string => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x)))].slice(0, 3000) })) : { ...DEFAULT_SETTINGS },
       events: arr<Project['events'][number]>(p0.events).filter(isObj).map((ev) => ({ ...ev, by: userOf(ev.by, fallbackUser), text: typeof ev.text === 'string' ? ev.text : '' })),
       createdAt: typeof p0.createdAt === 'string' ? p0.createdAt : now,
       updatedAt: typeof p0.updatedAt === 'string' ? p0.updatedAt : now,

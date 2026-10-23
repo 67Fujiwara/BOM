@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -139,19 +139,32 @@ export function ensureCursor() {
  * カーソルの行がこのビューから消えたら（自分や別のタブが隠した・状態が変わった）、同じ位置の行（無ければ上の行）へ移す。
  * 行を選んでいない状態にしない（英字が効かなくなる）。before は変わる前に見えていた行の ID
  */
-export function keepCursorVisible(before: string[]) {
+export function keepCursorVisible(before: string[], external = false) {
   const s = st()
   const cur = s.cursorRow
-  if (!cur || cur.startsWith('g:') || s.mode === 'edit') return
+  if (!cur || cur.startsWith('g:')) return
   const after = vm().rows.map((x) => x.id)
   if (after.includes(cur)) return
   const at = before.indexOf(cur)
   if (at < 0) return
+  // 別のタブの変更で行が消えたときは、黙って隣の行へ移さない（続けて押したキーが別の行に効かないように）。行の選択を外して知らせる
+  if (external) {
+    if (s.mode === 'edit') {
+      const v = s.editValue
+      cancelEdit()
+      toast(`編集中の ${cur} が別のタブの変更でこのビューから外れたので、入力「${v}」は保存していません（Ctrl+G ${cur} で行へ）`, 'err')
+    } else toast(`${cur} が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G ${cur} でその行へ）`, 'info')
+    set({ cursorRow: null })
+    return
+  }
+  if (s.mode === 'edit') return
   const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
   if (next) set({ cursorRow: next })
   else ensureCursor()
 }
 export function jumpToRow(id: string, col?: string) {
+  // Ctrl+G・パレットなどで別の行へ飛んだら、F8 は飛んだ先から数え直す
+  lastProblem = null
   const s = st()
   const p = s.project()
   const r = p.rows.find((x) => x.id === id)
@@ -185,7 +198,7 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -258,8 +271,15 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
       toast(`${parsed.error}（直して Enter、やめるときは Esc）`, 'err')
       return false
     }
+    const beforeIds = vm().rows.map((x) => x.id)
     set({ mode: 'nav', editCandidates: null, editError: null })
     if (!rows.setCell(r.id, col, value)) return false
+    // 直したことで行がこのビューから外れた（4 要確認で問題が消えた など）ときは、先頭へ飛ばず、その位置の次の行へ（それが「下へ」）
+    if (!vm().rows.some((x) => x.id === r.id)) {
+      tabAnchor = null
+      keepCursorVisible(beforeIds)
+      return true
+    }
   } else set({ mode: 'nav', editCandidates: null, editError: null })
   // Enter の連続入力は次のデータ行へ（分類の見出しで止まらない）。
   // Tab で右へ入れてきた後の Enter は、Excel と同じく Tab を始めた列に戻る（単価 Tab 納期 Tab MOQ Enter → 次の行の単価）
@@ -351,8 +371,11 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   const kinds = ISSUE_KINDS.map((k) => k.kind)
   for (const r of p.rows) {
     if (!isActive(r)) continue
+    const changed = Object.keys(r.working ?? {})
     for (const i of openIssues(p, r.id)) {
       const b = i.status === 'open' || i.status === 'inProgress' ? issues.issueBallRole(i) : i.by.role
+      // 設計が直して公開を待っている指摘（指摘のセルが作業中で変わった）は、もう直す問題として回らない
+      if (role === 'design' && b === 'design' && (i.field ? changed.includes(i.field as string) : changed.includes('model') || changed.includes('maker'))) continue
       if (b === role) out.push({ rowId: r.id, field: (i.field as string) ?? 'model', order: kinds.indexOf(i.kind) })
     }
     if (role === 'design') for (const pr of checkRow(r, s.ws.rules, p)) out.push({ rowId: r.id, field: pr.field, order: 20 + (pr.severity === 'error' ? 0 : 1) })
@@ -380,19 +403,35 @@ function gotoProblem(delta: 1 | -1): boolean {
   const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
   // 直した・確認した問題は一覧から消えるので、前に飛んだ位置から続ける（先頭に戻って間の問題を飛ばさない）
-  if (idx < 0 && lastProblem && lastProblem.rowId === s.cursorRow) {
-    const at = Math.min(lastProblem.idx, list.length) // 消えた問題の次は同じ番号に詰まっている
-    next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
+  // （直したあと Enter で下の行へ移っていても同じ）
+  if (idx < 0 && lastProblem) {
+    const lp = lastProblem
+    const j = list.findIndex((x) => x.rowId === lp.rowId && x.field === lp.field)
+    if (j >= 0) next = (j + delta + list.length) % list.length
+    else {
+      const at = Math.min(lp.idx, list.length) // 消えた問題の次は同じ番号に詰まっている
+      next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
+    }
+  }
+  // 前に飛んだ位置が無い（リロード直後・Ctrl+G や ↓ で来た）ときは、カーソルの行より下（Shift+F8 は上）の最初の問題へ
+  else if (idx < 0 && s.cursorRow) {
+    const pos = new Map(s.project().rows.map((x, i) => [x.id, i] as const))
+    const cur = pos.get(s.cursorRow) ?? -1
+    if (cur >= 0) {
+      const k = delta > 0 ? list.findIndex((x) => (pos.get(x.rowId) ?? -1) > cur) : list.map((x, i) => [x, i] as const).reverse().find(([x]) => (pos.get(x.rowId) ?? -1) < cur)?.[1] ?? -1
+      if (k >= 0) next = k
+    }
   }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
-  lastProblem = { rowId: list[next].rowId, idx: next }
   if (stay) jumpToRow(list[next].rowId)
   else jumpToRow(list[next].rowId, list[next].field)
+  // jumpToRow は「前に飛んだ位置」を消すので、そのあとで覚える
+  lastProblem = { rowId: list[next].rowId, field: list[next].field, idx: next }
   return true
 }
 /** 最後に F8 / n で飛んだ問題（行と一覧の中の番号） */
-let lastProblem: { rowId: string; idx: number } | null = null
+let lastProblem: { rowId: string; field: string; idx: number } | null = null
 
 // ---------- Ctrl+. 候補 ----------
 export function quickfixOptions(r: Row, field: string): PanelOption[] {
@@ -406,12 +445,16 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
   if (role === 'design' && r.procurement === '指定商社' && designatedDeclined(p, r)) {
     const cur = s.ws.suppliers.find((x) => x.id === r.designated || x.name === r.designated)
     const declined = new Set(p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.leadDays === -1).map((q) => q.supplierId))
-    const names = s.ws.suppliers.filter((x) => !declined.has(x.id)).map((x) => x.name)
+    // メーカを扱う商社を先に。扱わない（取扱メーカに無い）商社はそうと分かるように
+    const cands = s.ws.suppliers.filter((x) => !declined.has(x.id))
+    const carries = (x: (typeof cands)[number]) => !x.handledMakers.length || handlesMaker(x.handledMakers, r.maker)
+    const labelOf = new Map(cands.map((x) => [carries(x) ? x.name : `${x.name}（${r.maker || 'メーカ'} は取扱メーカに無い）`, x] as const))
+    const names = [...cands.filter(carries), ...cands.filter((x) => !carries(x))].map((x) => [...labelOf].find(([, v]) => v === x)![0])
     opts.push({
       label: `指定先を変える（${cur?.name ?? r.designated} が取扱なしと回答）`,
       run: () =>
         prompt(`${r.id} の新しい指定先（公開すると購買が新しい指定先に依頼します）`, { options: names }, (c) => {
-          const sp = s.ws.suppliers.find((x) => x.name === c)
+          const sp = c ? labelOf.get(c) : undefined
           if (sp && rows.setCell(r.id, 'designated', sp.id, '指定先を変える')) toast(`${r.id} の指定先を ${sp.name} にしました（Ctrl+Enter で公開）`, 'ok')
         }),
     })
@@ -636,7 +679,12 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
     }
     let amount: number | undefined
     // 特急・分納は上限金額を入れる（§9.1「上限入力」）
-    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim()) return '特急・分納の上限金額を入れてください（例: 30000）'
+    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim())
+      return /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()
+        ? `「${text.trim()}」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください`
+        : '特急・分納の上限金額を入れてください（Tab で下の「上限金額」の欄へ。例: 30000）'
+    // 理由の欄に金額だけを入れたまま確定しない（理由が「50000」と残らないように）
+    if (kind === '特急・分納' && /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()) return '理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）'
     if (extra?.['上限金額']) {
       const n = parseNumber(extra['上限金額'], { min: 0, label: '上限金額' })
       if (!n.ok) return n.error
@@ -927,12 +975,16 @@ function restoreBackup(b: Backup) {
   const cur = st().ws
   confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
     const before = backupsSnapshot()
-    const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
-    if (!replaceWorkspace(ws)) {
-      restoreBackupsSnapshot(before)
-      return toast('保存領域が足りないため戻せませんでした（いまの内容のまま。退避も前のまま）', 'err')
+    const go = (backedUp: boolean) => {
+      if (!replaceWorkspace(ws)) {
+        restoreBackupsSnapshot(before)
+        return toast('保存領域が足りないため戻せませんでした（いまの内容のまま。退避も前のまま）', 'err')
+      }
+      toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は退避していません'}`, backedUp ? 'ok' : 'info')
     }
-    toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
+    if (saveBackup(JSON.stringify(cur), '退避からの復元の前')) return go(true)
+    // 退避できないまま戻さない（JSON の読み込みと同じく、もう一度確かめる）
+    confirmDanger('保存領域がいっぱいで、いまの内容を退避できませんでした。戻すといまの内容は失われます。先に Ctrl+K →「JSON を書き出す」で保存するのが安全です', '退避せずに戻す（いまの内容は戻せません）', () => go(false))
   })
 }
 function exportBackup(b: Backup) {
@@ -1012,9 +1064,14 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       s.commitWs('', () => {})
       return toast('保存しました（編集は自動で保存されています）', 'ok')
     case 'undo':
-      return s.undoLast()
-    case 'redo':
-      return s.redoLast()
+    case 'redo': {
+      // 戻した・やり直した結果、カーソルの行が消えた（置換で作った行など）ときは近くの行へ
+      const before = vm().rows.map((x) => x.id)
+      if (id === 'undo') s.undoLast()
+      else s.redoLast()
+      keepCursorVisible(before)
+      return
+    }
     case 'export.excel': {
       const done = (label: string, sid?: string) => (m: typeof import('@/io/excel')) =>
         m
@@ -1560,8 +1617,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'order.restore': {
       if (!need()) return
       const r0 = r!
-      if (!rows.awaitingReplacement(s.project(), r0)) return toast(`${r0.id} は発注を取り消して置き換えを待っている行ではありません`, 'info')
-      return confirmDanger(`${r0.id} を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, '発注済に戻す', () => {
+      if (s.user().role !== 'purchasing') return toast('権限なし（発注は購買）', 'err')
+      const notYet = rows.cancelApprovedNotYet(s.project(), r0)
+      if (!rows.awaitingReplacement(s.project(), r0) && !notYet) return toast(`${r0.id} は発注後変更依頼の承認で発注を取り消す・取り消した行ではありません`, 'info')
+      return confirmDanger(`${r0.id} を${notYet ? '発注済のまま残します' : '発注済に戻します'}。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）`, notYet ? '発注済のまま残す' : '発注済に戻す', () => {
         const e = rows.restoreOrder(r0.id)
         toast(e ?? `${r0.id} を発注済に戻しました（キャンセル不可）`, e ? 'err' : 'ok')
       })
@@ -1604,7 +1663,13 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         switchRole(choice === '購買' ? 'purchasing' : choice === 'PM' ? 'pm' : 'design', name)
       })
     default:
-      if (id.startsWith('view.')) return setView(Number(id.slice(5)) as ViewId)
+      if (id.startsWith('view.')) {
+        // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
+        const noRow = !cursorRow()
+        setView(Number(id.slice(5)) as ViewId)
+        if (noRow && e && !e.altKey && /^\d$/.test(e.key)) set({ cursorRow: null })
+        return
+      }
       toast(`未実装: ${id}`, 'err')
   }
 }
@@ -1654,7 +1719,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'theme.toggle', label: 'ダークモード切替', section: '表示', keywords: 'ダーク 暗い 暗く 明るく ライト テーマ 色' },
   { id: 'density.toggle', label: 'コンパクト表示切替', section: '表示', keywords: '行の高さ 小さく 大きく 文字 拡大 縮小 見やすく' },
   { id: 'sort.asc', label: '今の列で並び替え', section: '表示', desc: 's 昇順 / Shift+S 降順。列見出しのクリックでも', keywords: 'ソート sort 並べ替え 順番' },
-  { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: '/ で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
+  { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: 'Ctrl+F で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },
   { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },

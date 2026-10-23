@@ -1,4 +1,4 @@
-import { isTotalCell } from '@/io/paste'
+import { isSectionLine, isTotalCell } from '@/io/paste'
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
 import { fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
@@ -25,12 +25,14 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
     const sid = fixedSupplierId(p, r, s.ws.suppliers)
     return sid && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale) ? [sid] : []
   }
-  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
+  // 相見積の行で、まだ頼んでいない商社（前に一部の商社だけに頼んだ）。あとから頼める
+  const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : quoteTargets(p, r).filter((sid) => !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
+  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid))) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
   const perSupplier = new Map<string, Row[]>()
   // 再見積の商社だけを頼み直す行は、その商社だけに送る
-  const targetsOf = (r: Row) => (r.status === 'submitted' || r.flags.requote ? quoteTargets(p, r) : [...awaitingRequote(r), ...needsNextFixed(r)])
+  const targetsOf = (r: Row) => (r.status === 'submitted' || r.flags.requote ? quoteTargets(p, r) : [...awaitingRequote(r), ...needsNextFixed(r), ...unasked(r)])
   // 「相見積先すべて」のときは、指定先が案件の相見積先に無い指定系の行も、その指定先に頼む
   const wanted = (sid: string) => all || supplierIds.includes(sid)
   for (const r of rows) for (const sid of targetsOf(r)) if (wanted(sid)) perSupplier.set(sid, [...(perSupplier.get(sid) ?? []), r])
@@ -50,7 +52,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
         for (const q of p2.quotes) if (q.rowId === r.id && q.supplierId === sid && !q.stale && q.reconfirm === 'requote') q.reconfirm = undefined
       }
       r.flags.requote = false
-      if (r.status === 'submitted' || (r.status === 'quoted' && needsNextFixed(r0).length)) setStatus(r, 'quoting')
+      if (r.status === 'submitted' || (r.status === 'quoted' && (needsNextFixed(r0).length || unasked(r0).length))) setStatus(r, 'quoting')
       else if (['quoted', 'selected', 'formalRequested', 'formalQuoted'].includes(r.status) && r0.flags.requote) {
         // 概算を取り直す行は、前の採用・正式見積の依頼を外して選び直す（正式依頼中のまま見積済に戻さない）
         if (r.adoptedSupplierId) {
@@ -85,7 +87,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   const name = (id: string) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id
   const notes = [
     narrowed.length ? `メーカを扱わない商社には頼まない行 ${narrowed.length} 行（例: ${narrowed[0].id}「${narrowed[0].maker}」→ ${targetsOf(narrowed[0]).filter((x) => asked.includes(x)).map(name).join('・')}）` : '',
-    unknownMaker.length ? `メーカを扱う商社がマスタに無い行 ${unknownMaker.length} 行は全社に依頼（例: ${unknownMaker[0].id}「${unknownMaker[0].maker}」。商社マスタの取扱メーカに足すと絞れます）` : '',
+    unknownMaker.length ? `メーカを扱う商社がマスタに無い行 ${unknownMaker.length} 行は、選んだ商社すべてに依頼（例: ${unknownMaker[0].id}「${unknownMaker[0].maker}」。商社マスタの取扱メーカに足すと絞れます）` : '',
   ].filter(Boolean)
   return `${sent.size} 行 × ${perSupplier.size} 社に依頼（回答期限 ${deadline}）${excluded ? `。作業中 ${excluded} 行を除外` : ''}${notes.length ? `。${notes.join('。')}` : ''}`
 }
@@ -105,12 +107,14 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
   const lines = text.replace(/\r/g, '').split('\n').filter((l) => l.trim())
   if (!lines.length) return res
   // 依頼書のシートを丸ごと貼ったとき（表題・依頼No の行が先にある）も、見出しの行を探す
+  // 見出しの「単価（円）」「納期(日)」のような単位の注記・空白は外して見る
+  const headCell = (h: string) => h.replace(/[（(][^）)]*[）)]/g, '').replace(/[\s　]/g, '')
   const isHeader = (l: string) => {
-    const hs = l.split('\t').map((h) => h.trim())
+    const hs = l.split('\t').map(headCell)
     return (hs.includes('行ID') || hs.includes('ID')) && hs.includes('単価')
   }
   const headerAt = lines.slice(0, 20).findIndex(isHeader)
-  const header = (headerAt >= 0 ? lines[headerAt] : lines[0]).split('\t').map((h) => h.trim())
+  const header = (headerAt >= 0 ? lines[headerAt] : lines[0]).split('\t').map(headCell)
   const idx = (...names: string[]) => header.findIndex((h) => names.includes(h))
   const col = { id: idx('行ID', 'ID'), model: idx('型式'), price: idx('単価'), lead: idx('納期'), moq: idx('MOQ'), stock: idx('在庫区分', '在庫'), qty: idx('見積数量'), valid: idx('有効期限'), altModel: idx('代替型式'), altMaker: idx('代替メーカ', '代替メーカー'), altPrice: idx('代替単価'), altLead: idx('代替納期') }
   const hasHeader = col.id >= 0 && col.price >= 0
@@ -129,11 +133,11 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
     for (const line of body) {
       const cells = line.split('\t')
       // 小計・合計の行は回答ではない
-      if (cells.some(isTotalCell)) continue
+      if (cells.some(isTotalCell) || isSectionLine(cells)) continue
       const id = (hasHeader ? get(cells, col.id) : get(cells, 0)).toUpperCase()
       const r = p.rows.find((x) => x.id === id)
       if (!r || !isActive(r)) {
-        res.unmatched.push(id || line.slice(0, 20))
+        res.unmatched.push(id || line.replace(/\t+/g, ' ').trim().slice(0, 20))
         continue
       }
       if (r.status === 'ordered' || r.status === 'received') {
@@ -186,7 +190,11 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
           res.proposals++
         }
       }
-      if (r.status === 'submitted') setStatus(r, 'quoting')
+      if (r.status === 'submitted') {
+        // 依頼書なしで回答を取り込んだ行も、相見積先すべての回答を待つ（1 社の回答だけで見積済にしない）
+        if (!isFixedProcurement(r)) for (const t of quoteTargets(p, r)) if (!p.quotes.some((x) => x.rowId === r.id && x.supplierId === t && !x.stale)) p.quotes.push(emptyQuote(r.id, t))
+        setStatus(r, 'quoting')
+      }
     }
     normalize(p, ws)
   })

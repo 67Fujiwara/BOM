@@ -249,7 +249,7 @@ function EmptyState({ vm, role }: { vm: ViewModel; role: string }) {
       {msg[st.view] ?? 'この条件に合う行はありません。'}
       <br />
       <span className="muted">
-        <kbd>1</kbd> すべて <kbd>?</kbd> ショートカット一覧 <kbd>Ctrl+K</kbd> 操作を名前で探す
+        <kbd>1</kbd> すべて <kbd>F1</kbd> ショートカット一覧 <kbd>Ctrl+K</kbd> 操作を名前で探す
       </span>
     </div>
   )

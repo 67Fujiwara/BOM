@@ -56,6 +56,31 @@ function rowsByValue(rows: Row[], field: string): Map<string, Row[]> {
   return idx
 }
 
+/** 正規表現のルールは一度だけ組み立てて持つ。読めない・極端に遅い（入れ子の繰り返しなど）ものは null（判定で飛ばす） */
+const regexCache = new Map<string, RegExp | null>()
+export function safeRegex(src: string): RegExp | null {
+  if (regexCache.has(src)) return regexCache.get(src)!
+  let re: RegExp | null = null
+  try {
+    re = new RegExp(src)
+    // 型番によくある形の長い文字で試し、遅いものは使わない（1 キーごとに全行で判定するので）
+    const t = performance.now()
+    for (const probe of ['a'.repeat(28) + '!', '0'.repeat(28) + '!', 'A-'.repeat(14) + '!', 'aA0-'.repeat(8) + '#']) re.test(probe)
+    if (performance.now() - t > 20) re = null
+  } catch {
+    re = null
+  }
+  regexCache.set(src, re)
+  return re
+}
+/** 実際の値で遅かったルールも、それ以降は飛ばす */
+function timedTest(re: RegExp, src: string, s: string): boolean {
+  const t = performance.now()
+  const ok = re.test(s)
+  if (performance.now() - t > 30) regexCache.set(src, null)
+  return ok
+}
+
 export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
   const out: Problem[] = []
   if (row.status === 'cancelled' || row.status === 'replaced') return out
@@ -103,9 +128,10 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
       case 'regex':
         // 書き方の誤ったルール（正規表現として読めない）は、画面を止めずに飛ばす
         try {
-          if (rule.pattern && str && (!rule.maker || rule.maker === e.maker) && (!rule.when || new RegExp(rule.when).test(str))) {
-            const re = new RegExp(rule.pattern)
-            if (!re.test(str)) push([])
+          const when = rule.when ? safeRegex(rule.when) : null
+          const re = rule.pattern ? safeRegex(rule.pattern) : null
+          if (re && str && (!rule.maker || rule.maker === e.maker) && (!rule.when || (when && timedTest(when, rule.when, str)))) {
+            if (!timedTest(re, rule.pattern!, str)) push([])
           }
         } catch {
           /* 読めないルールは無視 */

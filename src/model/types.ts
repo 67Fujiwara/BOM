@@ -71,6 +71,8 @@ export interface RowFlags {
   countermeasure?: '商社変更' | '代替品検討' | '分納・特急' | '受入'
   /** PM の再交渉で正式見積の回答待ち（回答が来るまで納期NG を PM に出し直さない） */
   renegotiating?: boolean
+  /** 特急・分納の上限超過を PM が却下したときの追加費用（同じ額のあいだは PM の 7 に出さない） */
+  capRuled?: number
   /** 発注後変更依頼を PM が承認した（購買が発注を取り消せる。§9.1） */
   orderCancelApproved?: boolean
   /** 単価要確認（数量変更が閾値内だが MOQ をまたぐ等） */

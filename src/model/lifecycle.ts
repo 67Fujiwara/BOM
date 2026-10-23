@@ -12,6 +12,23 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       r.status = 'selected'
       r.statusChangedAt = now
     }
+    // 採用した商社があとから「取扱なし」（辞退）になったら採用を外す（§3.2・§8.1: 辞退は選定の対象外）。
+    // 相見積は選び直し（見積済）、指定系は次の商社・指定先の変更へ（見積中）。発注済は発注後変更依頼で扱う
+    if (r.adoptedSupplierId && ['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
+      const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
+      if (aq && aq.leadDays === -1) {
+        r.adoptedSupplierId = undefined
+        r.adoptReason = undefined
+        r.scoreSnapshot = undefined
+        r.flags.contested = false
+        r.flags.formalDiff = false
+        r.flags.early = undefined
+        aq.formalPrice = null
+        aq.formalLeadDays = null
+        r.status = isFixedProcurement(r) ? 'quoting' : 'quoted'
+        r.statusChangedAt = now
+      }
+    }
     // 指定商社・客先指定品: 指定先の有効な見積が来たら、スコアなしで指定先を採用して選定済（§3.4）
     if (isFixedProcurement(r) && !r.adoptedSupplierId && !r.flags.pmPending && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
       const sid = fixedSupplierId(p, r, ws.suppliers)

@@ -12,6 +12,7 @@
   --accent-soft: #e6ecfb;
   --accent-fg: #ffffff;
   --err: #d02a3c;
+  --err-solid: #c42536;
   --err-soft: #fbe8ea;
   --warn: #e39a00;
   /* 文字に使う警告色（淡い背景の上でも読める濃さ） */
@@ -45,6 +46,7 @@
     --accent-soft: #1d2a47;
     --accent-fg: #0b1020;
     --err: #ef6b78;
+    --err-solid: #b3243a;
     --err-soft: #3a1b20;
     --warn: #f0b429;
   --warn-text: #f0b429;
@@ -71,6 +73,7 @@
   --accent-soft: #1d2a47;
   --accent-fg: #0b1020;
   --err: #ef6b78;
+  --err-solid: #b3243a;
   --err-soft: #3a1b20;
   --warn: #f0b429;
   --warn-soft: #3a2e12;

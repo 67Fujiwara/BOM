@@ -87,3 +87,14 @@ describe('合計の行', () => {
     expect(r.rows.length).toBe(1)
   })
 })
+
+describe('合計・区切りの行（表記ゆれ）', () => {
+  it('「合　計」「小 計」「合計（税抜）」「総合計」「以下余白」「■ 制御部」を飛ばす', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\n■ 制御部\t\t\t\nリレー\tMY4N\tオムロン\t2\n\t\t合　計\t2\n\t\t小 計\t2\n\t\t合計（税抜）\t9\n\t\t総合計\t9\n以下余白\t\t\t')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N'])
+  })
+  it('1 列だけの貼り付けでは、記号で始まる値を区切りとみなさない', () => {
+    const r = parseBomPaste('型式\n【A】CN-12\nMY4N')
+    expect(r.rows.length).toBe(2)
+  })
+})

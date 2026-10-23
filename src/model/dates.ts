@@ -36,13 +36,27 @@ export function isHoliday(s: string, holidays: string[] = []): boolean {
   return d === 0 || d === 6 || holidayIndex(holidays).set.has(s)
 }
 /** 営業日を n 日進める */
+const addCache = new WeakMap<string[], Map<string, string>>()
 export function addBusinessDays(s: string, n: number, holidays: string[] = []): string {
+  // 同じ日付・日数は何度も聞かれる（行ごと・描画ごと）ので覚えておく
+  let memo = addCache.get(holidays)
+  if (!memo) addCache.set(holidays, (memo = new Map()))
+  const key = `${s.slice(0, 10)}|${n}`
+  const hit = memo.get(key)
+  if (hit !== undefined) return hit
+  const out = addBusinessDaysRaw(s, n, holidays)
+  if (memo.size > 5000) memo.clear()
+  memo.set(key, out)
+  return out
+}
+function addBusinessDaysRaw(s: string, n: number, holidays: string[]): string {
   // 日付の文字を毎日作り直さず、Date を 1 つ進める（休日の一覧があるときだけ文字にして引く）
   const set = holidayIndex(holidays).set
   const d = parse(s)
   if (Number.isNaN(d.getTime())) return s
   let left = Math.min(Math.max(0, Math.floor(n)), 3650)
-  while (left > 0) {
+  // 休日が続きすぎる（全日が休日の一覧など）ときに止まらないよう、進める日数にも上限
+  for (let guard = 0; left > 0 && guard < 20000; guard++) {
     d.setDate(d.getDate() + 1)
     const w = d.getDay()
     if (w !== 0 && w !== 6 && (set.size === 0 || !set.has(toStr(d)))) left--

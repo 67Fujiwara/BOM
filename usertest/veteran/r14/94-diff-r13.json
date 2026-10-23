@@ -1,0 +1,264 @@
+{
+  "41-norow-view-5176.log": {
+    "lines": [
+      17,
+      17
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "47-excel-new.log": {
+    "lines": [
+      12,
+      12
+    ],
+    "diffs": 4,
+    "first": [
+      {
+        "i": 0,
+        "r12": "{\"f\":\"x1-hidden-qty-visible-insu.xlsx\",\"loadMs\":0,\"toast\":\"x1-hidden-qty-visible-insu.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 備考 → 備考 / 員数 → 数量リレーMY4Nオムロン12個端子台XW2Bオムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\"",
+        "r13": "{\"f\":\"x1-hidden-qty-visible-insu.xlsx\",\"loadMs\":0,\"toast\":\"x1-hidden-qty-visible-insu.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列（「数量」）は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 備考 → 備考 / 員数 → 数量⚠ Excel で隠した列 1 列（「数量」）は読んでいません（要るときは Excel で再表示してから読んでください）リレーMY4Nオムロン12個端子台X"
+      },
+      {
+        "i": 7,
+        "r12": "{\"f\":\"x6-name-only-buhinhyo.xlsx\",\"loadMs\":0,\"toast\":\"x6-name-only-buhinhyo.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 小計・合計・区切りの 1 行は取り込みませんリレーMY4N-D2 DC24オムロン12個部品表ホルダー A40個BOM ラベル0個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"ro",
+        "r13": "{\"f\":\"x6-name-only-buhinhyo.xlsx\",\"loadMs\":0,\"toast\":\"x6-name-only-buhinhyo.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 小計・合計・区切りの 1 行は取り込みません（例: 「P2」）リレーMY4N-D2 DC24オムロン12個部品表ホルダー A40個BOM ラベル0個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"crea"
+      },
+      {
+        "i": 9,
+        "r12": "{\"f\":\"x8-pages-title-pageno.xlsx\",\"loadMs\":0,\"toast\":\"x8-pages-title-pageno.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 6 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 見出しより上の 1 行（表題など）は取り込みません⚠ 繰り返しの見出し 2 行は取り込みません⚠ 小計・合計・区切りの 2 行は取り込みませんリレー1MY1オムロン1個端子台1XW1オムロン10個リレー2MY2オムロン2個端子台2XW2オムロン20個リレー3MY3オムロン3個… ほか 1 行Enter で作成",
+        "r13": "{\"f\":\"x8-pages-title-pageno.xlsx\",\"loadMs\":0,\"toast\":\"x8-pages-title-pageno.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 6 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 見出しより上の 1 行（表題など）は取り込みません⚠ 繰り返しの見出し 2 行は取り込みません⚠ 小計・合計・区切りの 2 行は取り込みません（例: 「部品表 (2/3) P.2」「部品表 (3/3) P.3」）リレー1MY1オムロン1個端子台1XW1オムロン10個リレー2MY2オムロン2個端子台2XW2オム"
+      },
+      {
+        "i": 11,
+        "r12": "{\"f\":\"x10-hidden-model-visible-empty.xlsx\",\"loadMs\":0,\"toast\":\"x10-hidden-model-visible-empty.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 品番 → 型式 / メーカ → メーカ / 員数 → 数量リレーオムロン12個端子台オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\"",
+        "r13": "{\"f\":\"x10-hidden-model-visible-empty.xlsx\",\"loadMs\":0,\"toast\":\"x10-hidden-model-visible-empty.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列（「型式」）は読んでいません（要るときは Excel で再表示してから読んでください）\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 品番 → 型式 / メーカ → メーカ / 員数 → 数量⚠ Excel で隠した列 1 列（「型式」）は読んでいません（要るときは Excel で再表示してから読んでください）リレーオムロン12個端子台オムロン2個E"
+      }
+    ]
+  },
+  "27-files8.log": {
+    "lines": [
+      14,
+      14
+    ],
+    "diffs": 8,
+    "first": [
+      {
+        "i": 0,
+        "r12": "{\"f\":\"title-daisu-qty-hidden.xlsx\",\"loadMs\":0,\"toast\":\"title-daisu-qty-hidden.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します",
+        "r13": "{\"f\":\"title-daisu-qty-hidden.xlsx\",\"loadMs\":0,\"toast\":\"title-daisu-qty-hidden.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要"
+      },
+      {
+        "i": 1,
+        "r12": "{\"f\":\"title-suryo-qty-hidden.xlsx\",\"loadMs\":0,\"toast\":\"title-suryo-qty-hidden.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します",
+        "r13": "{\"f\":\"title-suryo-qty-hidden.xlsx\",\"loadMs\":0,\"toast\":\"title-suryo-qty-hidden.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要"
+      },
+      {
+        "i": 2,
+        "r12": "{\"f\":\"qty-hidden-control.xlsx\",\"loadMs\":0,\"toast\":\"qty-hidden-control.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"crea",
+        "r13": "{\"f\":\"qty-hidden-control.xlsx\",\"loadMs\":0,\"toast\":\"qty-hidden-control.xlsx を読み込みました。Enter で次へ。隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 隠れていた「数量」の列は、ほかに同じ項目の列が無いので読みました⚠ 見出しより上の 1 行（表題など）は取り込みませんリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を "
+      },
+      {
+        "i": 3,
+        "r12": "{\"f\":\"model-hidden-only.xlsx\",\"loadMs\":0,\"toast\":\"model-hidden-only.xlsx を読み込みました。Enter で次へ。隠れていた「型式」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量リレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":2,\"sample\":[[\"リレ",
+        "r13": "{\"f\":\"model-hidden-only.xlsx\",\"loadMs\":0,\"toast\":\"model-hidden-only.xlsx を読み込みました。Enter で次へ。隠れていた「型式」の列は、ほかに同じ項目の列が無いので読みました\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 員数 → 数量⚠ 隠れていた「型式」の列は、ほかに同じ項目の列が無いので読みましたリレーMY4N-D2 DC24オムロン12個端子台XW2B-20G4オムロン2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\","
+      }
+    ]
+  },
+  "45b-twotab-publish-5176.log": {
+    "lines": [
+      2,
+      2
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "45-twotab-conflict-5176.log": {
+    "lines": [
+      13,
+      13
+    ],
+    "diffs": 6,
+    "first": [
+      {
+        "i": 0,
+        "r12": "{\"case\":\"C1 V11-06 そのまま: A 理由入力中 → B が R004 を a（推奨採用）→ A Enter\",\"expect\":\"採用しない（知らせる）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"selected\",\"adopted\":\"因幡電機\",\"reason\":null,\"pm\":null,\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"推奨採用 因幡電機 スコア99.",
+        "r13": "{\"case\":\"C1 V11-06 そのまま: A 理由入力中 → B が R004 を a（推奨採用）→ A Enter\",\"expect\":\"採用しない（知らせる）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"selected\",\"adopted\":\"因幡電機\",\"reason\":null,\"pm\":null,\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"推奨採用 因幡電機 スコア99."
+      },
+      {
+        "i": 1,
+        "r12": "{\"case\":\"C2 A 理由入力中 → B が同じミスミを理由つきで採用 → A Enter\",\"expect\":\"採用は同じなので知らせだけ（理由は？）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"adopted\":\"ミスミ\",\"reason\":\"納期\",\"pm\":\"例外選定\",\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"採用 ミスミ（納期） PM承認待ち\"]},\"s",
+        "r13": "{\"case\":\"C2 A 理由入力中 → B が同じミスミを理由つきで採用 → A Enter\",\"expect\":\"採用は同じなので知らせだけ（理由は？）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"adopted\":\"ミスミ\",\"reason\":\"納期\",\"pm\":\"例外選定\",\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"採用 ミスミ（納期） PM承認待ち\"]},\"s"
+      },
+      {
+        "i": 3,
+        "r12": "{\"case\":\"C4 A 理由入力中 → B（設計）が R004 を隠す → A Enter\",\"expect\":\"?（隠した行は採用しない？）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"reason\":null,\"pm\":null,\"hidden\":true,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"行を隠す/戻す\"]},\"steps\":[\"Enter→view-1/R004 ID/ナビ\"],\"",
+        "r13": "{\"case\":\"C4 A 理由入力中 → B（設計）が R004 を隠す → A Enter\",\"expect\":\"?（隠した行は採用しない？）\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"reason\":null,\"pm\":null,\"hidden\":true,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"行を隠す/戻す\"]},\"steps\":[\"Enter→view-1/R004 ID/ナビ\"],\""
+      },
+      {
+        "i": 4,
+        "r12": "{\"case\":\"C5 A 理由入力中 → B（設計）が R004 を取消（Shift+Delete）→ A Enter\",\"expect\":\"取消の行は採用しない\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"reason\":null,\"pm\":null,\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"行を削除\"]},\"steps\":[\"Enter→view-1/R004 ID",
+        "r13": "{\"case\":\"C5 A 理由入力中 → B（設計）が R004 を取消（Shift+Delete）→ A Enter\",\"expect\":\"取消の行は採用しない\",\"A0\":\"view-1/R004 ID/パネル/panel-prompt\",\"afterB\":\"view-1/R004 ID/パネル/panel-prompt\",\"rowAfterB\":{\"status\":\"quoted\",\"reason\":null,\"pm\":null,\"hidden\":false,\"requote\":false,\"model\":\"FX5-4AD\",\"name\":\"アナログ入力\",\"stale\":0,\"revs\":\"1\",\"events\":[\"提出 Rev.1（75行）\",\"概算見積を依頼（因幡電機・立花エレテック・ミスミ）\",\"行を削除\"]},\"steps\":[\"Enter→view-1/R004 ID"
+      }
+    ]
+  },
+  "22-dialog-digits2-5176.log": {
+    "lines": [
+      12,
+      12
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "09-dialog-digits-5176.log": {
+    "lines": [
+      3,
+      3
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "42-dialog-tab-5176.log": {
+    "lines": [
+      23,
+      23
+    ],
+    "diffs": 13,
+    "first": [
+      {
+        "i": 0,
+        "r12": "{\"name\":\"D1 理由 2 → Tab → 「3日で入る」→ Enter\",\"expect\":\"在庫即納: 3日で入る\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"T:3日で入る→{sel=2 在庫即納 text=3日で入る focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"在庫即納: 3日で入る\",\"status\":\"quoted\",\"subs\":[\"1\"],\"user\":\"{\\\"name",
+        "r13": "{\"name\":\"D1 理由 2 → Tab → 「3日で入る」→ Enter\",\"expect\":\"在庫即納: 3日で入る\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"T:3日で入る→{sel=2 在庫即納 text=3日で入る focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"在庫即納: 3日で入る\",\"status\":\"quoted\",\"subs\":[\"1\"],\"user\":\"{\\\"name"
+      },
+      {
+        "i": 1,
+        "r12": "{\"name\":\"D2 理由 2 → 3（選び直し）→ Tab → 「5日」→ Enter\",\"expect\":\"3 番: 5日\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"3→{sel=3 実績/品質 text= focus=text}\",\"Tab→{sel=3 実績/品質 text= focus=text}\",\"T:5日→{sel=3 実績/品質 text=5日 focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"実績/品質: 5日\",\"status\":\"quote",
+        "r13": "{\"name\":\"D2 理由 2 → 3（選び直し）→ Tab → 「5日」→ Enter\",\"expect\":\"3 番: 5日\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"3→{sel=3 実績/品質 text= focus=text}\",\"Tab→{sel=3 実績/品質 text= focus=text}\",\"T:5日→{sel=3 実績/品質 text=5日 focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"実績/品質: 5日\",\"status\":\"quote"
+      },
+      {
+        "i": 3,
+        "r12": "{\"name\":\"D4 理由 Tab → 2（選ぶ前に Tab）→ Enter\",\"expect\":\"理由 未選択・補足「2」→ その他: 2 ?\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"Tab→{sel= text= focus=text}\",\"2→{sel= text=2 focus=text}\",\"Enter→{sel= text=2 focus=text}\"],\"result\":{\"reason\":null,\"status\":\"quoted\",\"subs\":[\"1\"],\"user\":\"{\\\"name\\\":\\\"山田\\\",\\\"role\\\":\\\"design\\\"}\",\"name\":\"アナログ入力\"",
+        "r13": "{\"name\":\"D4 理由 Tab → 2（選ぶ前に Tab）→ Enter\",\"expect\":\"理由 未選択・補足「2」→ その他: 2 ?\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"Tab→{sel= text= focus=text}\",\"2→{sel= text=2 focus=text}\",\"Enter→{sel= text=2 focus=text}\"],\"result\":{\"reason\":null,\"status\":\"quoted\",\"subs\":[\"1\"],\"user\":\"{\\\"name\\\":\\\"山田\\\",\\\"role\\\":\\\"design\\\"}\",\"name\":\"アナログ入力\""
+      },
+      {
+        "i": 4,
+        "r12": "{\"name\":\"D5 理由 2 → Tab → Tab（ボタンへ）→ 「3日」→ Enter\",\"expect\":\"3日 がどこかに入る（捨てない）\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"T:3日→{sel=2 在庫即納 text=3日 focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"在庫即納: 3日\",\"statu",
+        "r13": "{\"name\":\"D5 理由 2 → Tab → Tab（ボタンへ）→ 「3日」→ Enter\",\"expect\":\"3日 がどこかに入る（捨てない）\",\"seq\":[\"Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}\",\"2→{sel= text= focus=text}\",\"2→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"Tab→{sel=2 在庫即納 text= focus=text}\",\"T:3日→{sel=2 在庫即納 text=3日 focus=text}\",\"Enter→ナビ\"],\"result\":{\"adopted\":\"S3\",\"reason\":\"在庫即納: 3日\",\"statu"
+      }
+    ]
+  },
+  "42b-dialog-refuse-5176.log": {
+    "lines": [
+      4,
+      4
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 0,
+        "r12": "{\"name\":\"R1 変更セット Tab → 2026-012 → Enter（断られる）→ 案内どおり 2 → Enter\",\"seq\":[\"Tab→sel= text=\",\"T:2026-012→sel= text=2026-012\",\"Enter→sel= text=2026-012\",\"2→sel= text=2026-0122\",\"Enter→sel= text=2026-0122\"],\"result\":{\"last\":\"null\",\"r004\":null},\"toasts\":[\"保存しました（編集は自動で保存されています）\",\"↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）\"]}",
+        "r13": "{\"name\":\"R1 変更セット Tab → 2026-012 → Enter（断られる）→ 案内どおり 2 → Enter\",\"seq\":[\"Tab→sel= text=\",\"T:2026-012→sel= text=2026-012\",\"Enter→sel= text=2026-012\",\"2→sel= text=2026-0122\",\"Enter→sel= text=2026-0122\"],\"result\":{\"last\":\"null\",\"r004\":null},\"toasts\":[\"文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）\",\"↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）\"]}"
+      }
+    ]
+  },
+  "44-storage-flag-5176.log": {
+    "lines": [
+      11,
+      11
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "43-typed-ctrlz-5176.log": {
+    "lines": [
+      23,
+      23
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "46-json-new-5176.log": {
+    "lines": [
+      15,
+      15
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 2,
+        "r12": "{\"name\":\"K3 見積の単価 -100・納期 -5・単価 1e15・最小発注 -1\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 2 件に負の値（単価・納期・MOQ）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"null/12 null/null 1000000000000000/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個",
+        "r13": "{\"name\":\"K3 見積の単価 -100・納期 -5・単価 1e15・最小発注 -1\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 3 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"null/12 null/null null/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積"
+      }
+    ]
+  },
+  "29-json-new-5176.log": {
+    "lines": [
+      7,
+      7
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 3,
+        "r12": "{\"name\":\"J4 見積の単価 -100・納期 -5・単価 \\\"abc\\\"\",\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 2 件に負の値（単価・納期・MOQ）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/11見積済10/232日\"]}",
+        "r13": "{\"name\":\"J4 見積の単価 -100・納期 -5・単価 \\\"abc\\\"\",\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 2 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/11見積済10/232日\"]}"
+      }
+    ]
+  },
+  "40-f8-cursor-5176.log": {
+    "lines": [
+      35,
+      35
+    ],
+    "diffs": 2,
+    "first": [
+      {
+        "i": 23,
+        "r12": "{\"name\":\"D2 4: Ctrl+G R005 → C:型式 → x → F8（V7-03）\",\"expect\":\"R061 か次の問題（先頭へ戻らない）\",\"seq\":[\"start→v4/—\",\"G:R005→v4/R005 部品名\",\"C:型式→v4/R005 型式\",\"Alt+x→v4/R005 型式\",\"F8→v4/R016 型式\"],\"diff\":[\"R005.ackRules:[]→[\\\"rule.model.ws\\\"]\"],\"toasts\":[\"確認済みにしました: 型式の前後に空白があります\"]}",
+        "r13": "{\"name\":\"D2 4: Ctrl+G R005 → C:型式 → x → F8（V7-03）\",\"expect\":\"R061 か次の問題（先頭へ戻らない）\",\"seq\":[\"start→v4/—\",\"G:R005→v4/R005 部品名\",\"C:型式→v4/R005 型式\",\"Alt+x→v4/R005 型式\",\"F8→v4/R009 メーカ\"],\"diff\":[\"R005.ackRules:[]→[\\\"rule.model.ws\\\"]\"],\"toasts\":[\"確認済みにしました: 型式の前後に空白があります\"]}"
+      },
+      {
+        "i": 28,
+        "r12": "{\"name\":\"D7 4: Ctrl+G R005 → 型式を直して Tab → Shift+Tab → F8\",\"expect\":\"R005 の次の問題（R009）\",\"seq\":[\"start→v4/—\",\"G:R005→v4/R005 部品名\",\"C:型式→v4/R005 型式\",\"T:MY4N-GS DC24→v4/R005 型式(入力:MY4N-GS DC24)\",\"Tab→v4/R005 メーカ\",\"Shift+Tab→v4/R005 型式\",\"F8→v4/R016 型式\"],\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-GS DC24\\\"}\"],\"toasts\":[]}",
+        "r13": "{\"name\":\"D7 4: Ctrl+G R005 → 型式を直して Tab → Shift+Tab → F8\",\"expect\":\"R005 の次の問題（R009）\",\"seq\":[\"start→v4/—\",\"G:R005→v4/R005 部品名\",\"C:型式→v4/R005 型式\",\"T:MY4N-GS DC24→v4/R005 型式(入力:MY4N-GS DC24)\",\"Tab→v4/R005 メーカ\",\"Shift+Tab→v4/R005 型式\",\"F8→v4/R009 メーカ\"],\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-GS DC24\\\"}\"],\"toasts\":[]}"
+      }
+    ]
+  },
+  "20-f8-more-5176.log": {
+    "lines": [
+      21,
+      21
+    ],
+    "diffs": 0,
+    "first": []
+  },
+  "r9-12-f8flow.log": {
+    "lines": [
+      26,
+      26
+    ],
+    "diffs": 9,
+    "first": [
+      {
+        "i": 8,
+        "r12": "{\"name\":\"B F8 で R005 → 直して Enter → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Enter→R006 型式\",\"F8→R016 型式\"],\"expect\":\"R061\",\"last\":\"R016 型式\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}",
+        "r13": "{\"name\":\"B F8 で R005 → 直して Enter → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Enter→R006 型式\",\"F8→R009 メーカ\"],\"expect\":\"R061\",\"last\":\"R009 メーカ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}"
+      },
+      {
+        "i": 9,
+        "r12": "{\"name\":\"C F8 で R005 → 直して Tab → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Tab→R005 メーカ\",\"F8→R016 型式\"],\"expect\":\"R061\",\"last\":\"R016 型式\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}",
+        "r13": "{\"name\":\"C F8 で R005 → 直して Tab → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Tab→R005 メーカ\",\"F8→R009 メーカ\"],\"expect\":\"R061\",\"last\":\"R009 メーカ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}"
+      },
+      {
+        "i": 10,
+        "r12": "{\"name\":\"D F8 で R005 → 直して Enter → ↑ → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Enter→R006 型式\",\"ArrowUp→R005 型式\",\"F8→R016 型式\"],\"expect\":\"R061\",\"last\":\"R016 型式\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}",
+        "r13": "{\"name\":\"D F8 で R005 → 直して Enter → ↑ → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"FIX:R005→R005 型式(編集)\",\"Enter→R006 型式\",\"ArrowUp→R005 型式\",\"F8→R009 メーカ\"],\"expect\":\"R061\",\"last\":\"R009 メーカ\",\"diff\":[\"R005.working:undefined→{\\\"model\\\":\\\"MY4N-D2 DC24\\\"}\"],\"toasts\":[]}"
+      },
+      {
+        "i": 11,
+        "r12": "{\"name\":\"E F8 で R005 → Alt+x → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"Alt+x→R005 型式\",\"F8→R016 型式\"],\"expect\":\"R061\",\"last\":\"R016 型式\",\"diff\":[\"R005.ackRules:[]→[\\\"rule.model.ws\\\"]\"],\"toasts\":[\"確認済みにしました: 型式の前後に空白があります\"]}",
+        "r13": "{\"name\":\"E F8 で R005 → Alt+x → F8\",\"seq\":[\"start→—\",\"F8TO:R005→R005 型式\",\"Alt+x→R005 型式\",\"F8→R009 メーカ\"],\"expect\":\"R061\",\"last\":\"R009 メーカ\",\"diff\":[\"R005.ackRules:[]→[\\\"rule.model.ws\\\"]\"],\"toasts\":[\"確認済みにしました: 型式の前後に空白があります\"]}"
+      }
+    ]
+  }
+}

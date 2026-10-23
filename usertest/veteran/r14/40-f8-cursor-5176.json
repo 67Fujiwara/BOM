@@ -1,0 +1,479 @@
+[
+  {
+    "name": "A1 1: F8（R005）→ ↓×15 → F8",
+    "expect": "R022",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "REP:15*ArrowDown→v1/R019 型式",
+      "F8→v1/R022 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A2 1: F8×4（R022）→ ↑×15 → F8",
+    "expect": "R009",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ",
+      "F8→v1/R016 型式",
+      "F8→v1/R022 型式",
+      "REP:15*ArrowUp→v1/R008 型式",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A3 1: F8（R005）→ PageDown → F8",
+    "expect": "PageDown 先より下",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "PageDown→v1/分類 操作",
+      "F8→v1/R041 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A4 2: F8 → ↓×20 → F8",
+    "expect": "R024 より下（R041）",
+    "seq": [
+      "start→v2/—",
+      "F8→v2/R005 型式",
+      "REP:20*ArrowDown→v2/R024 型式",
+      "F8→v2/R041 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A5 1: F8 → ↓×15 → Shift+F8",
+    "expect": "R016（R020 より上で最も近い）",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "REP:15*ArrowDown→v1/R019 型式",
+      "Shift+F8→v1/R016 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A6 1: F8 → Ctrl+End → Shift+F8",
+    "expect": "R061",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "Control+End→v1/R080 型式",
+      "Shift+F8→v1/R061 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A7 1: F8 → Ctrl+↓ → F8",
+    "expect": "R005（一周）",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "Control+ArrowDown→v1/R080 型式",
+      "F8→v1/R005 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A8 1: F8 → PageDown ×2 → PageUp → F8",
+    "expect": "カーソルより下",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "PageDown→v1/分類 操作",
+      "PageDown→v1/R044 型式",
+      "PageUp→v1/分類 操作",
+      "F8→v1/R041 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A9 1: R005 の部品名（型式の左）で F8",
+    "expect": "R005 型式",
+    "seq": [
+      "start→v1/—",
+      "G:R005→v1/R005 部品名",
+      "C:部品名→v1/R005 部品名",
+      "F8→v1/R005 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A10 1: R005 の備考（型式の右）で F8",
+    "expect": "R005 型式（同じ行）か R009？",
+    "seq": [
+      "start→v1/—",
+      "G:R005→v1/R005 部品名",
+      "C:備考→v1/R005 備考",
+      "F8→v1/R005 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A11 1: R005 の ID の列で F8 → F8",
+    "expect": "R005 型式 → R009（ID の列は行の問題に入る）",
+    "seq": [
+      "start→v1/—",
+      "G:R005→v1/R005 部品名",
+      "Home→v1/R005 ID",
+      "F8→v1/R009 ID",
+      "F8→v1/R016 ID"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A12 1: j/k で動いたあとの F8",
+    "expect": "R010 より下（R016）",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "j→v1/R005 型式(入力:j)",
+      "j→v1/R005 型式(入力:jj)",
+      "j→v1/R005 型式(入力:jjj)",
+      "j→v1/R005 型式(入力:jjjj)",
+      "j→v1/R005 型式(入力:jjjjj)",
+      "F8→v1/R005 型式(入力:jjjjj)"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "A13 1: F8 → ↓ → Shift+F8 → Shift+F8",
+    "expect": "R009 → R005",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ",
+      "ArrowDown→v1/R010 メーカ",
+      "Shift+F8→v1/R009 メーカ",
+      "Shift+F8→v1/R005 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "B1 1: F8×2（R009）→ 絞り込み「リレー」→ F8",
+    "expect": "絞り込みの中の先頭（カーソル行が残っていればその下）",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ",
+      "F:リレー→v1/R005 メーカ{f=リレー}",
+      "F8→v1/R005 型式{f=リレー}"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "B2 1: 絞り込み「R0」→ ↓×10 → F8",
+    "expect": "カーソルより下の問題",
+    "seq": [
+      "start→v1/—",
+      "F:R0→v1/R001 部品名{f=R0}",
+      "REP:10*ArrowDown→v1/R011 部品名{f=R0}",
+      "F8→v1/R016 型式{f=R0}"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "B3 1: ID 降順（Ctrl+Shift+S?）→ F8 → ↓×5 → F8",
+    "expect": "見えている並びでカーソルより下",
+    "seq": [
+      "start→v1/—",
+      "PAL:並べ替え→v1/—",
+      "Enter→v1/—",
+      "F8→v1/R005 型式",
+      "REP:5*ArrowDown→v1/R010 型式",
+      "F8→v1/R016 型式"
+    ],
+    "diff": [],
+    "toasts": [
+      "並び替える列にカーソルを置いてください（↓ で表へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "B4 1: 絞り込み「リレー」→ Esc で解除 → F8",
+    "expect": "カーソル行より下",
+    "seq": [
+      "start→v1/—",
+      "F:リレー→v1/R005 部品名{f=リレー}",
+      "ArrowDown→v1/R006 部品名{f=リレー}",
+      "Control+f→v1/R006 部品名{f=リレー}",
+      "Escape→v1/R006 部品名",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "C1 3: F8 → F8 → F8",
+    "expect": "R005 → R009 → R016",
+    "seq": [
+      "start→v3/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ",
+      "F8→v1/R016 型式"
+    ],
+    "diff": [],
+    "toasts": [
+      "このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります"
+    ]
+  },
+  {
+    "name": "C2 7: F8 → F8",
+    "expect": "R005 → R009",
+    "seq": [
+      "start→v7/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": [
+      "このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります"
+    ]
+  },
+  {
+    "name": "C3 1: 絞り込み「ヒューズ」→ F8 → F8",
+    "expect": "R005 → R009",
+    "seq": [
+      "start→v1/—",
+      "F:ヒューズ→v1/—{f=ヒューズ}",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": [
+      "「ヒューズ」に合う行はありません（Esc で解除）",
+      "このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります"
+    ]
+  },
+  {
+    "name": "C4 3: Shift+F8",
+    "expect": "R061（最後）",
+    "seq": [
+      "start→v3/—",
+      "Shift+F8→v1/R061 型式"
+    ],
+    "diff": [],
+    "toasts": [
+      "このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります"
+    ]
+  },
+  {
+    "name": "C5 9: F8",
+    "expect": "9 の並び / 1 の先頭",
+    "seq": [
+      "start→v9/—",
+      "F8→v9/R005 型式",
+      "F8→v9/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "D1 4: F8 → ↓×3 → F8",
+    "expect": "4 の並びでカーソルより下",
+    "seq": [
+      "start→v4/—",
+      "F8→v4/R016 型式",
+      "REP:3*ArrowDown→v4/R022 型式",
+      "F8→v4/R054 必要数"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "D2 4: Ctrl+G R005 → C:型式 → x → F8（V7-03）",
+    "expect": "R061 か次の問題（先頭へ戻らない）",
+    "seq": [
+      "start→v4/—",
+      "G:R005→v4/R005 部品名",
+      "C:型式→v4/R005 型式",
+      "Alt+x→v4/R005 型式",
+      "F8→v4/R009 メーカ"
+    ],
+    "diff": [
+      "R005.ackRules:[]→[\"rule.model.ws\"]"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ]
+  },
+  {
+    "name": "D3 4: Ctrl+G R005 → x → n（V7-03）",
+    "expect": "R005 の次（R061）",
+    "seq": [
+      "start→v4/—",
+      "G:R005→v4/R005 部品名",
+      "x→v4/R005 部品名(入力:x)",
+      "n→v4/R005 部品名(入力:xn)"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "D4 4: F8（R005 型式）→ 直す（T:MY4N-GS DC24 Enter）→ F8",
+    "expect": "直した問題の次（R009）",
+    "seq": [
+      "start→v4/—",
+      "F8→v4/R016 型式",
+      "T:MY4N-GS DC24→v4/R016 型式(入力:MY4N-GS DC24)",
+      "Enter→v4/R009 型式",
+      "F8→v4/R009 メーカ"
+    ],
+    "diff": [
+      "R016.working:undefined→{\"model\":\"MY4N-GS DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "D5 1: F8（R005 型式）→ 直す → Enter → F8",
+    "expect": "R009",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "T:MY4N-GS DC24→v1/R005 型式(入力:MY4N-GS DC24)",
+      "Enter→v1/R006 型式",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-GS DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "D6 4: F8 → F8（R009）→ Alt+x → F8",
+    "expect": "R016",
+    "seq": [
+      "start→v4/—",
+      "F8→v4/R016 型式",
+      "F8→v4/R009 メーカ",
+      "Alt+x→v4/R009 メーカ",
+      "F8→v4/R041 メーカ"
+    ],
+    "diff": [],
+    "toasts": [
+      "エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）"
+    ]
+  },
+  {
+    "name": "D7 4: Ctrl+G R005 → 型式を直して Tab → Shift+Tab → F8",
+    "expect": "R005 の次の問題（R009）",
+    "seq": [
+      "start→v4/—",
+      "G:R005→v4/R005 部品名",
+      "C:型式→v4/R005 型式",
+      "T:MY4N-GS DC24→v4/R005 型式(入力:MY4N-GS DC24)",
+      "Tab→v4/R005 メーカ",
+      "Shift+Tab→v4/R005 型式",
+      "F8→v4/R009 メーカ"
+    ],
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-GS DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "E1 購買 1: F8 → ↓×10 → F8",
+    "expect": "カーソルより下",
+    "seq": [
+      "start→v1/R004 入荷予定",
+      "F8→v1/R054 必要数",
+      "REP:10*ArrowDown→v1/R064 必要数",
+      "F8→v1/R054 必要数"
+    ],
+    "diff": [],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
+  },
+  {
+    "name": "E2 購買 4: F8 → F8 → ↑ → F8",
+    "expect": "2 回目と同じ行",
+    "seq": [
+      "start→v4/R054 部品名",
+      "F8→v4/R054 必要数",
+      "F8→v4/R054 必要数",
+      "ArrowUp→v4/R054 必要数",
+      "F8→v4/R054 必要数"
+    ],
+    "diff": [],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
+  },
+  {
+    "name": "E3 PM 7: F8 → F8",
+    "expect": "PM の問題",
+    "seq": [
+      "start→v7/R003 部品名",
+      "F8→v7/R003 状態",
+      "F8→v7/R003 状態"
+    ],
+    "diff": [],
+    "toasts": [
+      "役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"
+    ]
+  },
+  {
+    "name": "E4 1: F8 → ↓×15 → リロード → F8",
+    "expect": "R022（リロードしても同じ）",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "REP:15*ArrowDown→v1/R019 型式",
+      "RELOAD→v1/R019 型式",
+      "F8→v1/R022 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "E5 1: F8（R005 型式）→ 直す → Ctrl+Z → F8",
+    "expect": "Ctrl+Z で戻った行の下",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "T:MY4N-GS DC24→v1/R005 型式(入力:MY4N-GS DC24)",
+      "Enter→v1/R006 型式",
+      "Control+z→v1/R006 型式",
+      "F8→v1/R009 メーカ"
+    ],
+    "diff": [],
+    "toasts": [
+      "元に戻す: セル編集"
+    ]
+  },
+  {
+    "name": "E6 1: Esc で選択を外したあと F8（行なし）",
+    "expect": "前の F8 の次か先頭",
+    "seq": [
+      "start→v1/—",
+      "F8→v1/R005 型式",
+      "F8→v1/R009 メーカ",
+      "Escape→v1/R009 メーカ",
+      "Escape→v1/R009 メーカ",
+      "F8→v1/R016 型式"
+    ],
+    "diff": [],
+    "toasts": []
+  }
+]

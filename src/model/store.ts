@@ -251,11 +251,13 @@ export const useStore = create<State>((set, get) => ({
       const curRows = st.project().rows
       const moved = entry.rows.find((c) => {
         const now = curRows.find((x) => x.id === c.key)
-        return now && c.after && (c.after as Row).publishedRev !== now.publishedRev
+        // 公開し直された、または別のタブ・他の人が作業中の値を入れた（戻すと黙って上書きする）
+        return now && c.after && ((c.after as Row).publishedRev !== now.publishedRev || JSON.stringify((c.after as Row).working ?? null) !== JSON.stringify(now.working ?? null))
       })
       if (moved) {
-        set({ undo: { ...get().undo, [user]: rest } })
-        return st.toastMsg(`戻せません: ${moved.key} は、この公開のあとに公開し直されています（別のタブ・他の人）。この公開は戻さずに飛ばしました`, 'err')
+        // この公開より前の操作も、公開した Rev に含まれているので Ctrl+Z では戻さない（「別の操作で変わっています」を続けて出さない）
+        set({ undo: { ...get().undo, [user]: rest.filter((e) => e.projectId !== pid) } })
+        return st.toastMsg(`戻せません: ${moved.key} は、この公開のあとに別のタブ・他の人が変えています（公開し直し・作業中の値）。この公開と、それより前の操作は Ctrl+Z では戻しません`, 'err')
       }
       // 公開より前の編集は Rev に含まれている。Ctrl+Z の続きでそこへは戻らない（戻すと公開を戻したのを打ち消すだけになる）
       // さらに前の公開も、公開を戻したあとの Ctrl+Z では戻さない（知らせと動きをそろえる。前の Rev は購買に伝わっている）

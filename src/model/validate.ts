@@ -8,7 +8,11 @@ const arr = <T,>(v: unknown, fallback: T[] = []): T[] => (Array.isArray(v) ? (v 
 const str = (v: unknown): v is string => typeof v === 'string' && v !== ''
 // 文字で書いた数（"1200"）も数として読む
 // 「1,200」「¥1200」・全角の数字も
-const numText = (v: string) => v.replace(/[０-９．－，]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0)).replace(/[\s,¥￥$円]/g, '')
+// コンマは 3 けたごとの区切りのときだけ外す（「12,5」「1,2,3」は数として読まない）
+const numText = (v: string) => {
+  const t = v.replace(/[０-９．－，]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0)).replace(/[\s¥￥$円]/g, '')
+  return /^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(t) ? t.replace(/,/g, '') : t
+}
 const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : typeof v === 'string' && /^-?\d+(\.\d+)?$/.test(numText(v)) ? Number(numText(v)) : null)
 /** 日付を YYYY-MM-DD にそろえる（時刻つき・0 の無い月日も日付の部分を読む）。実在しなければ null */
 const normDate = (v: unknown): string | null => {
@@ -87,6 +91,11 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const holN = new Set(hol0.map(normDate).filter(Boolean)).size
     if (holN > 3000) warnings.push(`案件 ${p0.id} の休日 ${holN} 件のうち、3,000 件まで読みました`)
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
+    // 設定の値が範囲の外なら直して知らせる（工程日数 1,000 → 365 など）
+    const coerced = isObj(p0.settings) ? coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).map(normDate).filter((x): x is string => !!x))].slice(0, 3000) }) : { ...DEFAULT_SETTINGS }
+    const settings0 = isObj(p0.settings) ? clampSettings(coerced) : coerced
+    const clamped = Object.keys(settings0).filter((k) => typeof (coerced as unknown as Record<string, unknown>)[k] === 'number' && (coerced as unknown as Record<string, unknown>)[k] !== (settings0 as unknown as Record<string, unknown>)[k])
+    if (clamped.length) warnings.push(`案件 ${p0.id} の設定 ${clamped.map((k) => `${k}: ${(coerced as unknown as Record<string, unknown>)[k]} → ${(settings0 as unknown as Record<string, unknown>)[k]}`).join(' / ')} は範囲の外なので直しました`)
     const now = new Date().toISOString()
     const p: Project = {
       ...(p0 as unknown as Project),
@@ -112,7 +121,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
-      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).map(normDate).filter((x): x is string => !!x))].slice(0, 3000) })) : { ...DEFAULT_SETTINGS },
+      settings: settings0,
       events: arr<Project['events'][number]>(p0.events).filter(isObj).map((ev) => ({ ...ev, by: userOf(ev.by, fallbackUser), text: typeof ev.text === 'string' ? ev.text : '' })),
       createdAt: typeof p0.createdAt === 'string' ? p0.createdAt : now,
       updatedAt: typeof p0.updatedAt === 'string' ? p0.updatedAt : now,
@@ -223,6 +232,7 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
     // 既定が null の項目（予算・回答期限など）は、null・数値・日付の文字だけ受け付ける
     if (d === null) {
       if (x === null || (typeof x === 'number' && Number.isFinite(x)) || (typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x))) out[k] = x
+      else if (typeof x === 'string' && numOrNull(x) != null) out[k] = numOrNull(x)
       continue
     }
     // 設定の数を文字で書いたもの（"10"）も数として読む

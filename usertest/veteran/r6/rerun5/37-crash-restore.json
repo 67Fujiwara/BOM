@@ -1,0 +1,26 @@
+{
+  "A": {
+    "crashAfterImport": 0,
+    "steps": [
+      {
+        "i": 0,
+        "note": "no restore button",
+        "crash": 0
+      }
+    ]
+  },
+  "B": {
+    "crashOnLoad": 0,
+    "backupsAtCrash": [
+      "一部を外して読み込み:P-GOOD",
+      "JSON 読み込みの前:P-2026-041"
+    ],
+    "steps": [
+      {
+        "i": 0,
+        "note": "no restore button",
+        "crash": 0
+      }
+    ]
+  }
+}

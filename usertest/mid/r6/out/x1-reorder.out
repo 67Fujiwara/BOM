@@ -1,0 +1,38 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+o → R001: 発注済にしました
+ordered+late R001:ordered:ord=true:adopt=S1:{"leadNG":true,"reissue":false,"formalDiff":false} issues=
+PM d → R001: 設計へ代替依頼
+after answer R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered ball PM
+PM 7 has row (answered only)? true
+U4-03 PM Enter → null | R001 に要決定はありません（I-006 は回答済。x で受け入れ、Space で中身を見る）
+issue publish → 指摘 1 件 を公開しました
+after h R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered,I-007:発注後変更依頼:open ball PM
+un-order before approval → 発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+PASS X1-1 承認前は発注済を外せない :: R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討"} issues=I-006:納期NG:answered,I-007:発注後変更依頼:open
+PM 7 has row? true
+PM panel "決定パネル R001（発注後変更依頼）" ["y 承認 → 購買が発注を取り消し、設計が r で置き換える","Shift+Y 却下 → 元の発注のまま受入"]
+PASS X1-2 発注後変更依頼が PM の 7 に載り、決定パネルが出る
+PM y → R001: 承認 {"承認者":"","日付":"2026-10-23","決裁書No":""}
+after approve R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":true} issues=I-006:納期NG:answered,I-007:発注後変更依頼:inProgress:ruled ball 購買
+decisions [["設計へ代替依頼","代替品を検討",null],["承認","代替品へ切替を承認","部長 田中"]]
+PM 7 still has row? false
+purch 4 has row? true
+purch 9 has row? false
+purch status bar ナビR001 部品名発注後変更依頼 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたShift+I指摘Space開く?ヘルプ
+un-order after approval → R001: 発注済を外しました
+after un-order R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":false} issues=I-006:納期NG:answered,I-007:発注後変更依頼:confirmed:ruled ball PM
+PASS X1-3 承認後は購買が発注を外せる
+re-order → R001: 発注済にしました
+!! re-ordered; Ctrl+Z
+Ctrl+Z → 戻せません: R001 の発注（発注後変更依頼で PM が判断しています） を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください
+after ctrl+z R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":false} issues=I-006:納期NG:answered,I-007:発注後変更依頼:confirmed:ruled
+o again → 発注済を外すには、発注後変更依頼（Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+after o again R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"formalDiff":false,"formalDiffKey":"S1:146","pmPending":false,"countermeasure":"代替品検討","orderCancelApproved":false} issues=I-006:納期NG:answered,I-007:発注後変更依頼:confirmed:ruled
+design 4 has row? false ball PM
+FAIL X1-4 発注を外した行は設計（r で置き換える）のボール・4 に出る :: PM
+PM 7 has row after unorder? true
+PM 4 has row? true
+design r → 発注済の行は置換できません（発注後変更依頼を起票）
+new row undefined
+== 3/4 PASS

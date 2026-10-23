@@ -1,0 +1,30 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+selected & leadNG R003,R021,R032,R044,R046
+PM panel D 決定パネル R003（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","e 特急・分納（上限入力）"]
+g on D → 使えるキー: Shift+Y / b / e（↑↓ と Enter でも選べます）
+D R003:selected:adopt=S1:lead=24:fp=null:prevfp=undefined:{"leadNG":false,"formalDiff":false,"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} due=undefined issues=I-006:納期NG:answered
+PASS Y3-1 正式依頼前の対策不成立の決定パネルに g（再交渉）が無く、g を押しても状態が変わらない
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 0 行・承認待ち 1 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+G before R021:formalRequested:adopt=S2:lead=20:fp=null:prevfp=undefined:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false} due=2026-11-03 issues=
+PM d G → R021: 設計へ代替依頼
+G 対策不成立 R021:formalRequested:adopt=S2:lead=20:fp=null:prevfp=undefined:{"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"代替品検討"} due=2026-11-03 issues=I-007:納期NG:answered
+PM panel G 決定パネル R021（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","g 再交渉（購買へ）","e 特急・分納（上限入力）"]
+PM g G → R021: 再交渉
+G after g R021:formalRequested:adopt=S2:lead=20:fp=null:prevfp=null:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"代替品検討"} due=2026-10-30 issues=I-007:納期NG:confirmed ball 設計
+G purch4 false purch8 true design4 true
+FAIL Y3-2 正式依頼中の納期NG の対策不成立に g → ボールは購買（交渉）。設計（代替なしと答えた）に戻らない :: ball=設計 design4=true cm=代替品検討
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+G after formal answer (same lead) R021:formalQuoted:adopt=S2:lead=20:fp=10094:prevfp=null:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"代替品検討"} due=2026-10-30 issues=I-007:納期NG:confirmed ball 設計
+PM 7 has G? false
+o G → R021: 発注済にしました
+G R021:ordered:adopt=S2:lead=20:fp=10094:prevfp=null:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"formalDiff":false,"countermeasure":"代替品検討"} due=2026-10-30 issues=I-007:納期NG:confirmed
+FAIL Y3-3 再交渉で納期が縮まなかった行は、納期NG（PM の決定待ち）に戻り、受入なしに発注されない :: PM7=false ordered=true
+PM panel F ["y 受入 → 正式見積済","b 次点商社へ","g 再交渉（購買へ）","d 設計へ代替依頼（コスト超過を起票）","q 数量見直し依頼（設計へ）"]
+PM g F → R001: 再交渉
+F after g R001:formalRequested:adopt=S1:lead=19:fp=null:prevfp=20219:{"leadNG":false,"reissue":false,"formalDiff":false,"pmPending":false} due=2026-10-30 issues= ball 購買
+purch 8 has F true
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+F after re-entry R001:formalQuoted:adopt=S1:lead=19:fp=146:prevfp=20219:{"leadNG":false,"reissue":false,"formalDiff":false,"pmPending":false} due=2026-10-30 issues=
+PASS Y3-4 差分超過 g → 購買が交渉後の単価を入れると閾値内で正式見積済
+detail F 決定・履歴鈴木 10/23 05:44 再交渉 価格を再交渉  佐藤 10/23 05:44 セル編集鈴木 10/23 05:44 決定: 再交渉佐藤 10/23 05:44 セル編集
+== 2/4 PASS

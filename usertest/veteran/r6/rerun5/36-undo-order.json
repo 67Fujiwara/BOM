@@ -1,0 +1,152 @@
+[
+  {
+    "n": 80,
+    "rows": 80,
+    "start": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        59
+      ]
+    ],
+    "afterMoves": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterUndo2": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterRedo2": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "undoMsFor2": 169,
+    "redoMsFor2": 161,
+    "R045back": true,
+    "R060keptByB": true,
+    "R060afterRedo": true
+  },
+  {
+    "n": 2100,
+    "rows": 2100,
+    "start": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        59
+      ]
+    ],
+    "afterMoves": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterUndo2": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterRedo2": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "undoMsFor2": 2298,
+    "redoMsFor2": 1960,
+    "R045back": true,
+    "R060keptByB": true,
+    "R060afterRedo": true
+  },
+  {
+    "n": 3000,
+    "rows": 3000,
+    "start": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        59
+      ]
+    ],
+    "afterMoves": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterUndo2": [
+      [
+        "R045",
+        44
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "afterRedo2": [
+      [
+        "R045",
+        46
+      ],
+      [
+        "R060",
+        56
+      ]
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "undoMsFor2": 4910,
+    "redoMsFor2": 4612,
+    "R045back": true,
+    "R060keptByB": true,
+    "R060afterRedo": true
+  }
+]

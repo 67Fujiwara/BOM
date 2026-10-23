@@ -1,0 +1,28 @@
+before R045 指定商社 st=selected adopt=S2 reason=指定先（固定） snap=- | R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） snap=-
+design a R045 → R045 を 立花エレテック で採用（スコア 98 / 最安）
+design a R034 → R034 を 因幡電機 で採用（スコア 99.2 / 最安）
+after R045 指定商社 st=selected adopt=S2 reason= snap=98 | R034 客先指定品 st=selected adopt=S1 reason= snap=99.2
+FAIL Y5-1 指定系の行（スコア無・固定、§3.4）に a を押しても採用理由「指定先（固定）」が消えずスコアが付かない :: R045 指定商社 st=selected adopt=S2 reason= snap=98 | R034 客先指定品 st=selected adopt=S1 reason= snap=99.2
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+rough all → 7 行 × 3 社に依頼（回答期限 2026-10-28）
+R081 パトライト requested to 因幡電機(扱う), 立花エレテック(扱わない), ミスミ(取扱メーカ未登録)
+R082 音羽電機 requested to 因幡電機(扱わない), 立花エレテック(扱う), ミスミ(取扱メーカ未登録)
+FAIL Y5-2 相見積の行は、行のメーカを扱わない商社（取扱メーカ登録あり）に依頼しない（§7「行のメーカから依頼可能な商社を自動で絞る」） :: R081→立花エレテック, R082→因幡電機
+file 因幡電機 R076,R077,R078,R079,R080,R081,R082
+file 立花エレテック R076,R077,R078,R079,R080,R081,R082
+file ミスミ R076,R077,R078,R079,R080,R081,R082
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 7
+design 4 34 {"設計":28,"購買":1,"PM":5}
+purch 4 2 {"購買":2}
+pm 4 10 {"PM":10}
+pm 7 10 pm4 not in 7  7 not in 4 
+design 4 rows whose ball is not 設計 6 R054:購買:selected: R025:PM:selected:contested/leadNG R038:PM:selected:contested/leadNG R039:PM:selected:contested/leadNG R055:PM:selected:contested/leadNG R064:PM:selected:contested/leadNG
+X R081 R081 相見積 st=quoting adopt=- reason= snap=-
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+design publish → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+X after design change R081 相見積 st=quoting adopt=- reason= snap=- {"requote":true} [["S1",15000,10,true],["S2",null,null,true],["S3",null,null,true],["S1",null,null,false],["S2",null,null,false],["S3",null,null,false]]
+purch Ctrl+Z #1 → 戻せません: R081 の見積 を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください
+X [["S1",15000,10,true],["S2",null,null,true],["S3",null,null,true],["S1",null,null,false],["S2",null,null,false],["S3",null,null,false]] model LR6-302WJBW-RYGB
+PASS Y5-3 購買の Ctrl+Z は設計の公開した型式を戻さない（自分の操作だけ、§1）
+== 1/3 PASS

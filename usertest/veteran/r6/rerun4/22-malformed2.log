@@ -1,0 +1,42 @@
+ok    suppliers[0]=null |  | JSON を読み込みました（案件 1 件）。外した項目: 商社マスタの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers=[{}]+rest |  | JSON を読み込みました（案件 1 件）。外した項目: 商社マスタの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers[0].id=5 |  | JSON を読み込みました（案件 1 件）。外した項目: 商社マスタの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers[0].name={} |  | JSON を読み込みました（案件 1 件）。外した項目: 商社マスタの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    suppliers=[5,"x"] |  | JSON を読み込みました（案件 1 件）。外した項目: 商社マスタの 2 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rules=[null] |  | JSON を読み込みました（案件 1 件）。外した項目: ルールの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rules[0]={} |  | JSON を読み込みました（案件 1 件）。外した項目: ルールの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    rules[0].pattern=5 |  | JSON を読み込みました（案件 1 件）。外した項目: ルールの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.model=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.qtyNeeded="abc" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.needDateFixed=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.category={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    working.tags=[1] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    pendingApproval.model={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    flags.leadNG="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    members.design={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ERR   rowWeights.R001="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | `NaN` is an invalid value for the `%s` css style property. width
+ok    preferredSupplierIds=[null] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    supplierIds=[null,{}] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    quotes[0].validUntil=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    quotes[0].stock={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    quotes[0].supplierId=unknown |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].dueAt=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].kind=zzz |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    issues[0].text={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    decisions[0]={kind:zzz} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    events[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    submissions[0].at=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    requestRevs={x:"y"} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    caseDecisions=[{}] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.holidays="x" |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    settings.approver=5 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.history=[null] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.adoptedSupplierId=S999 |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.tags=[1,2] |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    user.name={} |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.id=数値風 "001" |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    row.id 大文字小文字重複 |  | JSON を読み込みました（案件 1 件）。外した項目: 案件 P-BAD の見積 3 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+ok    huge string 2MB in note |  | JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | 
+--- console/page errors (22): 1 (uniq 1)
+   error | fresh | `NaN` is an invalid value for the `%s` css style property. width

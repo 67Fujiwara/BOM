@@ -1,0 +1,100 @@
+[
+  {
+    "key": "Alt+Enter",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "F8",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Shift+F8",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Alt+KeyX",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Alt+KeyN",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Alt+KeyH",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Control+Alt+KeyA",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "key": "Alt+ArrowDown",
+    "mode": "編集",
+    "edit": "abcde",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "seq": "h Backspace",
+    "mode": "編集",
+    "edit": "",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "seq": "h Escape",
+    "mode": "ナビ",
+    "edit": null,
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "seq": "A Enter",
+    "mode": "ナビ",
+    "edit": null,
+    "cursor": "R041 備考",
+    "diff": [
+      "R040.working:undefined→{\"note\":\"A\"}"
+    ],
+    "toast": "保存しました（編集は自動で保存されています）"
+  },
+  {
+    "seq": "h Delete",
+    "mode": "編集",
+    "edit": "h",
+    "cursor": "R040 備考",
+    "diff": [],
+    "toast": "保存しました（編集は自動で保存されています）"
+  }
+]

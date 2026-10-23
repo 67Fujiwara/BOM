@@ -1,0 +1,36 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 74 行 × 3 社に正式見積を依頼
+o R005 → R005: 発注済にしました ordered
+settings panel kind settings
+settings: 案件設定 （PM 項目は PM、購買項目は購買が変更。確定済）PM案件名第3ライン 搬送制御盤PM案件納期2026-11-21PM社内工程日数（この案件）10PM予算2800000PM重み（価格,納期,実績,条件）40,30,20,10PM選定者（設計 / 購買）設計PM設計変更は PM 承認が必要いいえPM上長決裁:
+impact: ["納期NG になる行: 54（formalRequested 50 / ordered 1 / formalQuoted 3）","推奨が変わる行: 32（R001, R005, R006, R008, R019, R023, R025, R026）","行必要日が固定の行: 0（）","正式依頼中で必要納期が変わる行（再発行対象）: 74","総額差（推奨で選び直した場合）: +¥604,951","特急費の概算: 納期NG 54 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）"]
+PASS M-29 影響試算に総額差・特急費概算
+reason dialog: {"kind":"prompt","title":"変更理由（必須）","options":[],"index":0}
+2nd: {"kind":"prompt","title":"推奨が変わる 32 行を 7 に再選定提案として載せますか","options":["載せる","載せない"],"index":0}
+due 2026-11-07 budget 100000000
+leadNG rows R001:formalRequested R003:formalRequested R004:formalRequested R006:formalQuoted R007:formalQuoted R008:formalRequested R009:formalRequested R010:formalRequested R011:formalRequested R013:formalQuoted R016:formalRequested R019:formalRequested R021:formalRequested R023:formalRequested R025:formalRequested R026:formalRequested R027:formalRequested R028:formalRequested R029:formalRequested R030:formalRequested R031:formalRequested R032:formalRequested R033:formalRequested R034:formalRequested R035:formalRequested R036:formalRequested R038:formalRequested R039:formalRequested R040:formalRequested R042:formalRequested R043:formalRequested R044:formalRequested R045:formalRequested R046:formalRequested R049:formalRequested R050:formalRequested R051:formalRequested R053:formalRequested R054:formalRequested R055:formalRequested R056:formalRequested R057:formalRequested R058:formalRequested R059:formalRequested R060:formalRequested R062:formalRequested R063:formalRequested R064:formalRequested R066:formalRequested R069:formalRequested R072:formalRequested R074:formalRequested R075:formalRequested
+PM 7: 53
+need 2026-10-28
+rows: b R001 noB R004 p R003 d R008 e R009 Y R010
+b panel ["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"] → R001: 次点商社へ S2 lead 0 在庫 arrive 2026-10-23 need 2026-10-28 selected {"leadNG":false,"reissue":true,"formalDiff":false,"pmPending":false,"countermeasure":"商社変更"}
+PASS M-20 b 次点は必要日を満たす商社
+b on no-candidate row R004 → 必要日を満たす次点の商社がありません（有効期限切れなら再見積を依頼。受入・特急・代替依頼から選んでください） {"pmPending":false,"contested":false,"leadNG":true,"reissue":true}
+p → R003: 委譲 formalRequested {"leadNG":false,"reissue":true,"delegated":true,"countermeasure":"商社変更"}
+d → R008: 設計へ代替依頼 {"pmPending":false,"contested":false,"leadNG":false,"reissue":true,"formalDiff":false,"countermeasure":"代替品検討"} [ '納期NG:open:2026-10-26' ] ball 設計
+PASS M-19 PM の d（納期NG）で起票された指摘は設計のボール
+PASS M-34b 納期NG の指摘の期限は 1 営業日（§6.2） :: 2026-10-26 vs 2026-10-26
+e prompt extra {"上限金額":""} → R009: 特急・分納 {"id":"D-005","rowId":"R009","kind":"特急・分納","by":{"role":"pm","name":"鈴木"},"at":"2026-10-23T05:39:29.541Z","reason":"特急で","payload":{"amount":50000}}
+PASS M-01e e の上限金額が決定に記録される
+R005 ordered
+役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R005 after promised 2026-11-02 {"pmPending":false,"contested":true,"leadNG":true,"reissue":false,"formalDiff":false}
+purchasing Shift+A on 委譲 row: {"kind":"adopt","options":[],"index":0} 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after reselect selected S3 納期 {"leadNG":false,"reissue":true,"delegated":false,"countermeasure":"商社変更","pmPending":false,"contested":false}
+PASS M-21 委譲された正式依頼中の行を購買が選び直せる（PM 承認不要） :: selected {"leadNG":false,"reissue":true,"delegated":false,"countermeasure":"商社変更","pmPending":false,"contested":false}
+PM panel R005 ordered NG: 決定パネル R005（納期NG） ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+PASS M-18 発注済の納期NG は e / d / 受入 だけ（b・p なし）
+Y → R010: 受入 {"pmPending":false,"contested":true,"leadNG":false,"reissue":true,"countermeasure":"受入"}
+design panel 納期NG: ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+PM panel 対策不成立(納期): 決定パネル R008（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","g 再交渉（購買へ）","e 特急・分納（上限入力）"]
+R008 {"pmPending":true,"pmReason":"対策不成立","contested":false,"leadNG":false,"reissue":true,"formalDiff":false,"countermeasure":"代替品検討"} status-cell 正式依頼中 · 指摘·再発行·PM承認待ち·代替品検討
+== 7/7 PASS

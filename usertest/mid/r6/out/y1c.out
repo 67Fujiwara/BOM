@@ -1,0 +1,10 @@
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-28）
+after decline R081 quoted ball 設計 status cell 見積済
+purch 4 has c false lamps 設計待ち 69購買待ち 11PM待ち 1見積済 76/81エラー 3警告 3期限超過 1
+purch status bar ナビR081 部品名購買 佐藤: 未発行 0 件数字キーはビュー切替です。納期に数値を入れるときは Enter か F2 で編集してから打ってください（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）Shift+I指摘Space開く?ヘルプ
+design 4 has c true lamps 設計待ち 69（指摘 4・選定待ち 65）購買待ち 11PM待ち 1エラー 3警告 3期限超過 1
+design a → 有効な見積がありません
+design Shift+A → null 有効な見積がありません（未回答・辞退・期限切れのみ）
+FAIL Y1c-1 客先指定品の依頼先が辞退した行は、次の依頼をする購買のボール（購買の 4）になる :: ball=設計 purch4=false design4=true
+== 0/1 PASS

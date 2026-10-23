@@ -34,7 +34,9 @@ export function validQuotes(p: Project, row: Row, today = todayStr()): Quote[] {
 export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = todayStr()): ScoreBreakdown[] {
   // 指定商社・客先指定品は指定先 1 社だけ（スコアで他社を選ばない）
   const fixed = isFixedProcurement(row) ? fixedSupplierId(p, row, suppliers) : null
-  const quotes = validQuotes(p, row, today).filter((q) => !fixed || q.supplierId === fixed)
+  // 相見積は、案件の相見積先にいて取引できる商社だけ（外した・取引不可にした商社は推奨・採用しない。いまの採用は残す）
+  const eligible = (sid: string) => sid === row.adoptedSupplierId || (p.supplierIds.includes(sid) && suppliers.find((s) => s.id === sid)?.tradable !== false)
+  const quotes = validQuotes(p, row, today).filter((q) => (fixed ? q.supplierId === fixed : eligible(q.supplierId)))
   if (quotes.length === 0) return []
   const w = weightsFor(p, row.id)
   const sum = w.price + w.lead + w.record + w.terms || 1

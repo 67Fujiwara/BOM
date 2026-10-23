@@ -212,6 +212,7 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       if (f.reissue) flags.push('再発行')
       if (f.pmPending) flags.push('PM承認待ち')
       if (f.formalDiff) flags.push('差分超過')
+      if (f.formalWithdrawn) flags.push('正式依頼取下げ')
       if (f.leadNG) flags.push('納期NG')
       if (f.ltbPending) flags.push('先行発注判断')
       if (f.altPending) flags.push('代替承認待ち')

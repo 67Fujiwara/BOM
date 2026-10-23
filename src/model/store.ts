@@ -19,7 +19,7 @@ export type Panel =
   | { kind: 'help' }
   | { kind: 'columns'; index: number }
   | { kind: 'issue'; rowId: string; field: string; step: 'kind' | 'text' | 'proposal'; issueKind?: string; index: number; text: string; proposal: { model: string; maker: string; supplierId: string; unitPrice: string; leadDays: string } }
-  | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string }
+  | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string; /** 開いたときの採用（別のタブで変わっていたら上書きしない） */ was?: string | null }
   | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; /** 文字欄に移った・文字を打った（以後の数字は文字として欄に入る。それまでは数字で選び直せる） */ textTouched?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
   | { kind: 'wizard'; step: number; data: Record<string, string>; sel: number; picks: string[]; error?: string }
   | { kind: 'inbox'; index: number; query: string }
@@ -242,16 +242,29 @@ export const useStore = create<State>((set, get) => ({
         idx = i
         break
       }
-    if (idx < 0) return st.toastMsg('戻す操作がありません（この案件であなたが行った操作はまだありません）', 'info')
+    if (idx < 0) return st.toastMsg((st.redo[user] ?? []).some((e) => e.projectId === pid) ? 'これ以上戻す操作がありません（Ctrl+Y でやり直せます）' : '戻す操作がありません（この案件であなたが行った操作はまだありません）', 'info')
     const entry = stack[idx]
     const rest = [...stack.slice(0, idx), ...stack.slice(idx + 1)]
     if (entry.kind === 'publish') {
-      set({ undo: { ...get().undo, [user]: rest } })
+      // 公開より前の、公開した行の編集は Rev に含まれている。Ctrl+Z の続きでそこへは戻らない（戻すと公開を戻したのを打ち消すだけになる）
+      const keys = new Set(entry.rows.map((c) => c.key))
+      const folded = rest.filter((e) => e.projectId === pid && e.kind !== 'publish' && e.rows.length > 0 && e.rows.every((c) => keys.has(c.key) && designEdit(c)) && !e.quotes.length && !e.issues.length && !e.proj.length)
+      set({ undo: { ...get().undo, [user]: rest.filter((e) => !folded.includes(e)) } })
       const n = revertPublishAsWorking(entry)
+      // 公開を戻した操作は Ctrl+Z の履歴に積まない。Ctrl+Y で取り消せる（公開済の値に戻す）ように、やり直す側にだけ積む
+      const und = get().undo[user] ?? []
+      const rv = und.at(-1)
+      if (n > 0 && rv && rv.label === '公開を戻す（未公開として積む）' && rv.projectId === pid) {
+        const flip = <T,>(cs: Change<T>[]) => cs.map((c) => ({ ...c, before: c.after, after: c.before }))
+        const inv: UndoEntry = { ...rv, label: '公開を戻したのを取り消す（公開済の値に戻す）', rows: flip(rv.rows), quotes: flip(rv.quotes), issues: flip(rv.issues), proj: flip(rv.proj), order: rv.order && { before: rv.order.after, after: rv.order.before } }
+        set({ undo: { ...get().undo, [user]: und.slice(0, -1) }, redo: { ...get().redo, [user]: [...(get().redo[user] ?? []), inv] } })
+        persistHistory()
+      }
+      const more = folded.length ? `公開より前の編集 ${folded.length} 件は公開した Rev に含まれているので、Ctrl+Z ではそれより前に戻りません。` : ''
       // 公開した取消・置換は購買に伝わっているので戻さない（必要なら行を追加し直す）
       const removed = entry.rows.filter((c) => c.before && c.after && !['cancelled', 'replaced'].includes(c.before.status) && ['cancelled', 'replaced'].includes(c.after.status)).map((c) => c.key)
       const rm = removed.length ? `取消・置換を公開した ${removed.slice(0, 3).join(', ')} は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。` : ''
-      return st.toastMsg(n > 0 ? `${rm}公開済の値を戻しました。Rev は残し、未公開として ${n} 行に積みました（Ctrl+Enter で Rev+1 として公開）` : rm || '公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください', 'info')
+      return st.toastMsg(n > 0 ? `${rm}公開済の値を戻しました。Rev は残し、未公開として ${n} 行に積みました（Ctrl+Enter で Rev+1 として公開。取り消すときは Ctrl+Y）。${more}` : rm || `公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください。${more}`, 'info')
     }
     const conflict = applyEntry(entry, 'undo')
     if (conflict) {
@@ -556,6 +569,13 @@ function applyEntry(entry: UndoEntry, dir: 'undo' | 'redo'): string | null {
   useStore.setState({ ws: next })
   if (!saveTracked(next)) useStore.getState().toastMsg('保存領域がいっぱいで保存できませんでした（リロードすると消えます）', 'err')
   return null
+}
+
+/** 設計の値の編集だけの変更か（隠す・発注・採用などは公開の Rev に含まれない） */
+function designEdit(c: Change<Row>): boolean {
+  const b = (c.before ?? {}) as unknown as Record<string, unknown>
+  const a = (c.after ?? {}) as unknown as Record<string, unknown>
+  return !['hidden', 'ordered', 'received', 'adoptedSupplierId', 'orderQty', 'extraCost', 'removal', 'pendingRemoval'].some((k) => !sameJson(b[k], a[k]))
 }
 
 /** 公開の Ctrl+Z: Rev は消さず、公開前の設計列を作業中として積む（flow-design §1） */

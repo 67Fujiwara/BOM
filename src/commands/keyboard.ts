@@ -115,6 +115,8 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
           const err = issues.canRaise(row, def.kind)
           if (err) return (toast(err, 'err'), true)
           set({ panel: { ...panel, step: 'text', issueKind: def.kind } })
+          // 頭文字で選んだときは、その文字が本文ではなく種別に使われたことを知らせる
+          if (key.length === 1 && !/^[1-9]$/.test(key)) toast(`「${key}」で種別「${def.kind}」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）`, 'info')
           return true
         }
         if (key.length === 1 || /^Shift\+[A-Z]$/.test(key)) toast(`種別を選んでください: ${defs.map((d) => `${d.key} ${d.kind}`).join(' / ')}（↑↓ と Enter でも選べます）`, 'info')
@@ -169,9 +171,9 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       if (n >= 0 && scores[n]) {
         const sc = scores[n]
         closePanel()
-        if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId)
+        const was = panel.was !== undefined ? panel.was : (row.adoptedSupplierId ?? null)
+        if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId, undefined, was)
         else {
-          const was = row.adoptedSupplierId ?? null
           prompt(row.status === 'quoting' ? '先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter' : '1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
         }
         return true
@@ -454,6 +456,10 @@ function altBinding(key: string) {
 /** 順番に直すモード: 次の問題へ進んで候補を開く。無ければ終わる */
 /** 順番に直すモードで回った問題（一周したら黙って二周目に入らずに終わる） */
 const seqSeen = new Set<string>()
+/** 順番に直すモードを始め直すとき、前の回で回った問題を忘れる */
+export function resetSequence() {
+  seqSeen.clear()
+}
 function sequenceNext() {
   if (!st().sequence) return seqSeen.clear()
   const here = `${st().cursorRow}|${st().cursorCol}`
@@ -493,6 +499,8 @@ export function handleKeyDown(e: KeyboardEvent) {
   if (key === 'F1') e.preventDefault()
   // 編集中の Alt+↑↓ は表をスクロールさせない（入力欄が見えなくなる）
   if (s.mode === 'edit' && /^Alt\+Arrow(Up|Down)$/.test(key)) e.preventDefault()
+  // 編集中の Ctrl+D でブラウザのブックマークを開かせない
+  if (s.mode === 'edit' && key === 'Ctrl+D') e.preventDefault()
   if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+F|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {
@@ -555,6 +563,7 @@ export function handleKeyDown(e: KeyboardEvent) {
       // 文字の欄と選択肢を行き来する: Tab で欄へ（以後の数字は文字）、Shift+Tab で選択肢へ（数字で選ぶ）
       if (s.panel.kind === 'prompt' && s.panel.showText && s.panel.digitsSelect && s.panel.options) {
         set({ panel: { ...s.panel, textTouched: key === 'Tab' } })
+        toast(key === 'Tab' ? '文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）' : '選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）', 'info')
         e.preventDefault()
         const input = document.querySelector<HTMLElement>('[data-testid="prompt-text"]')
         if (key === 'Tab') input?.focus()

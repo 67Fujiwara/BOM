@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { ChangeReason, DesignFields, Issue, Project, Removal, Role, Row, Submission } from '@/model/types'
 import { DESIGN_FIELDS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { colDef, supplierOfCol } from '@/model/columns'
-import { effective, fixedSupplierId, handlesMaker, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
+import { effective, fixedSupplierId, makerTargets, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { parseTable } from '@/io/paste'
@@ -283,6 +283,8 @@ export function orderBlock(p: Project, r: Row): string | null {
   if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
   if (awaitingReplacement(p, r)) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
+  // 正式依頼のあとに数量・型式・必要日が変わった行は、いまの値で正式見積を取り直してから（前の正式単価は前の数量のもの）
+  if (r.flags.reissue) return '取下げ・再発行対象の行です（正式依頼のあとに数量・型式・必要日が変更）。Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します'
   // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない
   const waiting = p.issues.find((i) => i.rowId === r.id && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '発注後変更依頼') && ['open', 'inProgress', 'answered'].includes(i.status))
   if (waiting) return `${waiting.id}（${waiting.kind}）の結論が出ていません。対応・確認が済んでから発注します`
@@ -673,7 +675,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     // Rev.1 で案件設定確定を PM の要決定に載せる
     if (revs.includes(1) && !p.settings.pmConfirmed && !p.caseDecisions.some((c) => c.kind === '案件設定確定')) p.caseDecisions.push({ id: 'C1', kind: '案件設定確定', status: 'open', at: now })
     normalize(p, ws)
-    msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました'
+    msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました' + (revs.length === 1 && revs[0] === 1 && !changeSet ? '（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）' : '')
   }, { kind: plan.rows.length ? 'publish' : 'normal' })
   s.toastMsg(msg, 'ok')
   return true
@@ -687,16 +689,7 @@ export function quoteTargets(p: Project, r: Row): string[] {
     const sid = fixedSupplierId(p, { ...r, ...e } as Row, st().ws.suppliers)
     return sid ? [sid] : p.supplierIds.slice(0, 1)
   }
-  // §7: 行のメーカを扱う商社に絞る（扱うメーカが登録されていない商社は絞らない）。
-  // メーカを扱うと登録した商社が 1 社も無いとき（表記ゆれ・マスタ未登録）は、取りこぼさないよう全社に頼む
-  const sups = st().ws.suppliers
-  // 商社マスタで取引不可にした商社には頼まない
-  const ids = p.supplierIds.filter((id) => sups.find((x) => x.id === id)?.tradable !== false)
-  if (!e.maker) return ids
-  const listed = (id: string) => (sups.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0
-  const explicit = ids.filter((id) => listed(id) && handlesMaker(sups.find((x) => x.id === id)!.handledMakers, e.maker))
-  if (!explicit.length) return ids
-  return ids.filter((id) => !listed(id) || explicit.includes(id))
+  return makerTargets(p, e.maker, st().ws.suppliers)
 }
 
 function pick(e: DesignFields): DesignFields {

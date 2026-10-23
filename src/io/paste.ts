@@ -82,16 +82,29 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
 
 // 見出しの版の印（旧・現行・変更前・old ／ 新・変更後・改・new）。区切り（空白・_・括弧・／）で区切られた語、または見出しの頭
 const VER_SEP = '[\\s_\\-【】\\[\\]［］（）()／/・:：]'
-const OLD_WORDS = '変更前|改訂前|前回|旧品|旧版|旧|現行|現|old|before|prev(?:ious)?'
-const NEW_WORDS = '変更後|改訂後|新品|新版|新|変更|改|new|after'
+// 「修正前／後」「改定前／後」「改正前／後」「訂正前／後」「差替前／後」「現状／変更案」も
+const CHANGE_STEM = '(?:変更|改訂|改定|改正|修正|訂正|差替|差し替え)'
+const OLD_WORDS = `${CHANGE_STEM}前|前回|旧品|旧版|旧|現行|現状|現|前|old|before|prev(?:ious)?|as-?is`
+const NEW_WORDS = `${CHANGE_STEM}後|変更案|新品|新版|新|変更|改|後|new|after|to-?be`
+// 見出しの頭に付く印（新型式・旧品番・現数量・修正前型式）。「新品番」「旧品名」の「品」は項目の一部なので、頭の印は 1 字の新・旧を先に
+const OLD_PREFIX = `${CHANGE_STEM}前|前回|旧|現行|現状|現|old|prev`
+const NEW_PREFIX = `${CHANGE_STEM}後|変更案|新|変更|改|new`
 const verToken = (w: string) => new RegExp(`(^|${VER_SEP})(${w})(?=${VER_SEP}|$)`, 'i')
-const verPrefix = (w: string) => new RegExp(`^(${w})(?=[^\\s_\\-（(])`, 'i')
+// 頭の印は、すぐ後ろが項目の語のときだけ（「Newark P/N」「新光品番」は商社の名前で版の印ではない）
+const FIELD_HEAD = '型式|形式|型番|品番|形番|形名|型名|品名|部品|名称|数量|員数|個数|要数|必要|使用|手配|所要|メーカ|製造|part|p\\/?n|mpn|qty|q\'ty|quantity|model|mfr|maker|manufacturer|desc|item|name'
+const verPrefix = (w: string) => new RegExp(`^(${w})(?=${FIELD_HEAD})`, 'i')
 /** 見出しが前の版（old）・新しい版（new）の列か。「型式（旧型式併記）」のような注記の中の語は見ない */
 export function headerVersion(h: string): 'old' | 'new' | null {
   const s = toHalf(h).trim()
-  if (verToken(OLD_WORDS).test(s) || verPrefix(OLD_WORDS).test(s)) return 'old'
-  if (verToken(NEW_WORDS).test(s) || verPrefix(NEW_WORDS).test(s)) return 'new'
+  if (verToken(OLD_WORDS).test(s) || verPrefix(OLD_PREFIX).test(s)) return 'old'
+  if (verToken(NEW_WORDS).test(s) || verPrefix(NEW_PREFIX).test(s)) return 'new'
   return null
+}
+/** 見出しの Rev（Rev.A・Rev.2）。同じ項目の列が複数あれば、新しい Rev の列を使う */
+export function headerRev(h: string): number | null {
+  const m = /rev\.?\s*([a-z]|\d+)\b/i.exec(toHalf(h))
+  if (!m) return null
+  return /\d/.test(m[1]) ? Number(m[1]) : m[1].toUpperCase().charCodeAt(0) - 64
 }
 /**
  * 見出しのセルとして見るときの項目（見出しを探すとき用）。値の入ったセル（「名称未定」「型式未定」「品名：制御盤」「数量：1台」）は見出しにしない
@@ -100,6 +113,8 @@ export function headerField(c: string): BomField | null {
   const t = toHalf(c).trim()
   if (!t || t.length > 24) return null
   if (/未定|tbd|予定|検討中|調整中|確認中|不明/i.test(t)) return null
+  // 「品番なし」「メーカ不問」「メーカー支給」「型番別紙」「同等品」は値（部品の行）で、見出しではない
+  if (/なし|無し|不問|支給|別紙|同等|相当/.test(t)) return null
   if (/[:：]\s*\S/.test(t)) return null
   if (/\d{2,}/.test(t)) return null
   return detectField(t)
@@ -107,12 +122,14 @@ export function headerField(c: string): BomField | null {
 export function detectField(h: string): BomField | null {
   // 版の印を外してから項目を見る（「現数量」「型式（旧）」「新型式」も数量・型式。どちらを使うかは列を選ぶときに決める）
   let s = toHalf(h).trim()
-  s = s.replace(verToken(OLD_WORDS), ' ').replace(verToken(NEW_WORDS), ' ').replace(verPrefix(OLD_WORDS), '').replace(verPrefix(NEW_WORDS), '').replace(/[（(]\s*[）)]|【\s*】|\[\s*\]/g, '').trim()
+  s = s.replace(/rev\.?\s*([a-z]|\d+)\b/gi, ' ').replace(verToken(OLD_WORDS), ' ').replace(verToken(NEW_WORDS), ' ').replace(verPrefix(OLD_PREFIX), '').replace(verPrefix(NEW_PREFIX), '').replace(/[（(]\s*[）)]|【\s*】|\[\s*\]/g, '').trim()
+  // 字の間の空白（品 名・メ ー カ・数　量）を詰める
+  s = s.replace(/[\s　]+/g, '')
   if (!s) return null
   // 「Manufacturer Part Number」「メーカ型番」のように、部品番号を表す語を含む見出しは型式
   if (/part\s*(no|number|#)|p\/n|\bmpn\b|型番|品番|形番|型式|形式/i.test(s)) return 'model'
   // 数量は語の途中でも（使用個数・手配数量・必要個数・員数合計）
-  if (/数量|員数|個数|必要数|使用数|所要数|手配数|\bq'?ty\b|q\.ty|quantity/i.test(s) && !/単価|金額|価格/.test(s)) return 'qtyNeeded'
+  if (/数量|員数|個数|要数|必要数|使用数|所要数|手配数|所要量|使用量|必要量|q'?ty|q\.ty|quantity/i.test(s) && !/単価|金額|価格/.test(s)) return 'qtyNeeded'
   for (const [f, re] of Object.entries(HEADER_SYNONYMS) as Array<[BomField, RegExp]>) if (re.test(s)) return f
   return null
 }
@@ -146,32 +163,115 @@ export function parseBomPaste(text: string): PasteResult {
     for (const x of f) if (bestSet.has(x)) both++
     return both >= Math.ceil(Math.max(f.size, bestSet.size) * 0.6)
   }
-  const firstSame = lines.slice(0, 30).findIndex(sameHeader)
+  // 表題欄（「品名 | 制御盤A | 数量 | 2」のようにラベルと値が別のセル）は、見出しの言葉が重なっても見出しにしない:
+  // 数だけのセルがある行、値のセルの割合がいちばん見出しらしい行より目立って多い行
+  const numCell = (c: string) => /^\s*\d[\d.,]*\s*$/.test(toHalf(c))
+  const ratio = (l: string[]) => {
+    const f = l.filter((c) => c.trim() !== '')
+    return f.length ? f.filter((c) => headerField(c)).length / f.length : 0
+  }
+  const bestRatio = best >= 2 ? Math.min(...tops.map((i) => ratio(lines[i]))) : 0
+  const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && (tops.includes(i) || (!l.some(numCell) && ratio(l) >= bestRatio - 0.15)))
   const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
+  // 2 段の見出しで、上の段がまとめの名前（部品情報｜数量）、下の段が項目と「旧／新」のとき: 下の段の「旧」「新」に上の段の名前を付ける
+  if (headerAt > 0) {
+    const up = lines[headerAt - 1]
+    const h = lines[headerAt]
+    const markOnly = (c: string) => c.trim() !== '' && headerVersion(c) !== null && detectField(c) === null
+    if (h.some(markOnly)) {
+      let carry = ''
+      const merged = h.map((c, j) => {
+        if ((up[j] ?? '').trim()) carry = up[j].trim()
+        return markOnly(c) && carry ? `${carry}（${c.trim()}）` : c
+      })
+      if (merged.some((c, j) => c !== h[j])) lines[headerAt] = merged
+    }
+  }
   // 1 列だけの貼り付けは、1 行目が「部品名」などの見出しそのものなら見出し
   const singleHeader = headerAt < 0 && lines[0].length === 1 && !!detectField(lines[0][0]) && lines[0][0].trim().length <= 8
   if (headerAt > 0) {
     warnings.push(`見出しより上の ${headerAt} 行（表題など）は取り込みません`)
     lines = lines.slice(headerAt)
   }
+  // 2 段の見出し（上の段に「型式」「数量」を結合、下の段に「旧／新」「変更前／変更後」）は 1 段にまとめる。
+  // 下の段で上の段と同じ文字のセル（縦に結合した「部品名」の繰り返し）は数えない
+  const twoStage = (top: string[], sub: string[] | undefined): string[] | null => {
+    if (!sub) return null
+    const same = (j: number) => (sub[j] ?? '').trim() !== '' && (sub[j] ?? '').trim() === (top[j] ?? '').trim()
+    const mark = (c: string) => c.trim() !== '' && headerVersion(c) !== null && detectField(c) === null
+    const marks = sub.filter((c, j) => !same(j) && mark(c)).length
+    const others = sub.filter((c, j) => c.trim() !== '' && !same(j) && !mark(c)).length
+    if (marks < 2 || others > 0) return null
+    let carry = ''
+    return Array.from({ length: Math.max(top.length, sub.length) }, (_, j) => {
+      const c = top[j] ?? ''
+      if (c.trim()) carry = c.trim()
+      const sc = same(j) ? '' : (sub[j] ?? '').trim()
+      const base = c.trim() || (sc ? carry : '')
+      return sc ? `${base}（${sc}）` : c
+    })
+  }
+  if (headerAt >= 0 && lines.length > 1) {
+    const m = twoStage(lines[0], lines[1])
+    if (m) {
+      lines = [m, ...lines.slice(2)]
+      warnings.push('2 段の見出しを 1 段にまとめて読みました')
+    }
+  }
   if (headerAt >= 0) {
     // ページごとに繰り返した同じ見出しの行は外す（部品にしない）。2 ページ目以降の見出しで列の並びが違えば、
     // そのページの行を最初の見出しの並びに並べ直す（No の列が増えた・数量と単位が入れ替わった など）
     const baseFields = lines[0].map(headerField)
+    const norm = (c: string) => toHalf(c).replace(/[\s　]+/g, '').toLowerCase()
+    const baseText = lines[0].map(norm)
+    // 数量の列に数のある行は部品の行（見出しの繰り返しではない）
+    const isRepeat = (l: string[]) => sameHeader(l) && !l.some((c, j) => baseFields[j] === 'qtyNeeded' && /^\s*\d[\d.,]*\s*$/.test(toHalf(c)))
+    // ページの見出しの列を、最初の見出しの列に対応させる。同じ文字の見出し → 同じ項目の何番目か の順。
+    // 最初の見出しにある項目がページの見出しに無ければ並べ直さない（見出しと見誤った行で列を消さない）
+    const permOf = (h: string[]): number[] | null => {
+      const f = h.map(headerField)
+      const ht = h.map(norm)
+      const used = new Set<number>()
+      const pm = baseText.map((t) => {
+        if (!t) return -2
+        const k = ht.findIndex((x, kk) => x === t && !used.has(kk))
+        if (k < 0) return -2
+        used.add(k)
+        return k
+      })
+      for (let j = 0; j < pm.length; j++) {
+        if (pm[j] !== -2) continue
+        const bf = baseFields[j]
+        if (!bf) {
+          pm[j] = -3
+          continue
+        }
+        const k = f.findIndex((x, kk) => x === bf && !used.has(kk))
+        if (k < 0) return null
+        used.add(k)
+        pm[j] = k
+      }
+      return pm.every((k, j) => k === j || k === -3) ? null : pm
+    }
     const out: string[][] = [lines[0]]
     let perm: number[] | null = null
     let removed = 0
     let reordered = 0
-    for (const l of lines.slice(1)) {
-      if (sameHeader(l)) {
+    for (let i = 1; i < lines.length; i++) {
+      const l = lines[i]
+      if (isRepeat(l)) {
         removed++
-        const f = l.map(headerField)
-        const pm = baseFields.map((bf, j) => (bf ? f.indexOf(bf) : j))
-        perm = pm.every((k, j) => k === j) ? null : pm
+        // ページごとの 2 段の見出しは、下の段も見出しとして外す
+        const m = twoStage(l, lines[i + 1])
+        if (m) {
+          removed++
+          i++
+        }
+        perm = permOf(m ?? l)
         continue
       }
       if (perm) reordered++
-      out.push(perm ? perm.map((k, j) => (k >= 0 ? (l[k] ?? '') : baseFields[j] ? '' : (l[j] ?? ''))) : l)
+      out.push(perm ? perm.map((k, j) => (k >= 0 ? (l[k] ?? '') : k === -3 ? (l[j] ?? '') : '')) : l)
     }
     lines = out
     if (removed) warnings.push(`繰り返しの見出し ${removed} 行は取り込みません${reordered ? `（列の並びが違うページの ${reordered} 行は、最初の見出しの並びに直しました）` : ''}`)
@@ -183,22 +283,6 @@ export function parseBomPaste(text: string): PasteResult {
     if (skip) {
       warnings.push(`表題らしい先頭の ${skip} 行は取り込みません`)
       lines = lines.slice(skip)
-    }
-  }
-  // 2 段の見出し（上の段に「型式」「数量」を結合、下の段に「旧／新」「変更前／変更後」）は 1 段にまとめる
-  if (headerAt >= 0 && lines.length > 1) {
-    const sub2 = lines[1]
-    const marks = sub2.filter((c) => c.trim() !== '' && headerVersion(c) !== null && detectField(c) === null).length
-    const others = sub2.filter((c) => c.trim() !== '' && !(headerVersion(c) !== null && detectField(c) === null)).length
-    if (marks >= 2 && others === 0) {
-      let carry = ''
-      const merged = lines[0].map((c, j) => {
-        if (c.trim()) carry = c.trim()
-        const base = c.trim() || (sub2[j]?.trim() ? carry : '')
-        return sub2[j]?.trim() ? `${base}（${sub2[j].trim()}）` : c
-      })
-      lines = [merged, ...lines.slice(2)]
-      warnings.push('2 段の見出しを 1 段にまとめて読みました')
     }
   }
   const first = split(lines[0])
@@ -228,13 +312,18 @@ export function parseBomPaste(text: string): PasteResult {
   }
 
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
+  // 数量の列が無いと全部 1 になる。黙らない
+  if (hasHeader && !mapping.includes('qtyNeeded')) warnings.push('見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）')
   // 小計・合計の行は部品ではない
   // 部品名・型式に部品らしい値がある行は、備考などが「以上」「計」でも合計の行にしない
   const partCols = mapping.map((f, j) => (f === 'name' || f === 'model' ? j : -1)).filter((j) => j >= 0)
   const looksPart = (l: string[]) => partCols.some((j) => (l[j] ?? '').trim() !== '' && !isTotalCell(l[j] ?? ''))
   const isTotal = (l: string[]) => (l.some(isTotalCell) && !looksPart(l)) || isSectionLine(l, Math.max(l.length, mapping.length))
-  const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
-  if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません`)
+  const totalLines = lines.slice(hasHeader ? 1 : 0).filter(isTotal)
+  const totals = totalLines.length
+  // 外した行の中身も例に出す（「＊予備ヒューズ」のような部品を外していないか確かめられるように）
+  const ex = totalLines.slice(0, 2).map((l) => l.map((c) => c.trim()).filter(Boolean).join(' ').slice(0, 20))
+  if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません（例: 「${ex.join('」「')}」${totals > 2 ? ' ほか' : ''}）`)
   // 使う列がすべて空の行（使わない列にだけあるページ番号・表題など）は部品にしない
   const mappedEmpty = (l: string[]) => mapping.every((f, j) => !f || (l[j] ?? '').trim() === '')
   const blanks = lines.slice(hasHeader ? 1 : 0).filter((l) => !isTotal(l) && mappedEmpty(l)).length
@@ -246,18 +335,25 @@ export function parseBomPaste(text: string): PasteResult {
   // 見出しに「新」「変更後」「new」とある列があればそれを（現型式／新型式）、無ければ左の列を使う
   // 項目ごとに（型式も数量も）。新しい版の印の列 → 印の無い列 → 前の版の列 の順で、同じなら左
   const used = mapping.filter(Boolean)
+  // 新しい版の列が空の行は、ほかの版の列の値を使う（変えた行だけ「変更後」を書く BOM）
+  const fallback = new Map<BomField, { keep: number; others: number[] }>()
   for (const dup of [...new Set(used.filter((f, i) => used.indexOf(f) !== i))] as BomField[]) {
     const cols = mapping.map((f, j) => (f === dup ? j : -1)).filter((j) => j >= 0)
     const rank = (j: number) => {
       const v = hasHeader ? headerVersion(first[j] ?? '') : null
       return v === 'new' ? 0 : v === null ? 1 : 2
     }
-    const keep = [...cols].sort((a, b) => rank(a) - rank(b) || a - b)[0]
+    // Rev が書いてあれば新しい Rev を先に
+    const rev = (j: number) => (hasHeader ? (headerRev(first[j] ?? '') ?? -1) : -1)
+    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || a - b)
+    const keep = order[0]
+    if (rank(keep) === 0 || rev(keep) >= 0) fallback.set(dup, { keep, others: order.slice(1) })
     mapping = mapping.map((f, j) => (f === dup && j !== keep ? null : f))
     warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が ${cols.length} つあります。「${(hasHeader ? first[keep] : '') || '左の列'}」の列を使います`)
   }
   let badQty = 0
   let badUnit = 0
+  const fellBack = new Map<BomField, number>()
   const rows = body.map((line, i) => {
     const cells = split(line)
     const r: Partial<Row> = { qtyNeeded: 1, unit: '個' }
@@ -265,7 +361,15 @@ export function parseBomPaste(text: string): PasteResult {
     mapping.forEach((f, j) => {
       if (!f || seen.has(f)) return
       seen.add(f)
-      const v = (cells[j] ?? '').trim()
+      let v = (cells[j] ?? '').trim()
+      const fb = fallback.get(f)
+      if (!v && fb) {
+        const k = fb.others.find((x) => (cells[x] ?? '').trim() !== '')
+        if (k != null) {
+          v = (cells[k] ?? '').trim()
+          fellBack.set(f, (fellBack.get(f) ?? 0) + 1)
+        }
+      }
       if (f === 'qtyNeeded') {
         const n = parseNumber(v, { min: 0, max: 1e9 })
         if (!n.ok || n.value == null) {
@@ -291,6 +395,7 @@ export function parseBomPaste(text: string): PasteResult {
     void i
     return r
   })
+  for (const [f, n] of fellBack) warnings.push(`「${first[fallback.get(f)!.keep] ?? FIELD_LABEL[f]}」が空の ${n} 行は、ほかの「${FIELD_LABEL[f]}」の列の値を使いました`)
   if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。4 要確認で直してください）`)
   if (badUnit) warnings.push(`単位を読めない行が ${badUnit} 行あります（「個」にしました）`)
   const noResult = body.reduce((n, l) => n + split(l).filter((c) => c.trim() === '#数式の結果なし').length, 0)
@@ -313,6 +418,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     for (let c = 1; c <= ws.columnCount; c++) if (ws.getColumn(c).hidden) hiddenCols.add(c)
     // 隠した列でも、その項目（数量・型式など）の列がほかに無ければ読む（隠しただけで数量が全部 1 にならない）
     const unhidden: string[] = []
+    let hiddenNames: string[] = []
     if (hiddenCols.size) {
       // 見出しの行（上から 30 行で見出しの言葉が最も多い行）の列だけを見る（表題の「台数 2台」などを見出しにしない）
       let fieldOf = new Map<number, BomField>()
@@ -343,6 +449,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
           unhidden.push(FIELD_LABEL[f])
         }
       }
+      hiddenNames = [...hiddenCols].map((c) => (headerCells.get(c) ?? '').trim()).filter(Boolean)
     }
     let hiddenRows = 0
     ws.eachRow({ includeEmpty: false }, (row) => {
@@ -354,12 +461,18 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
       // row.values は空のセルが穴（疎な配列）なので、列の数だけ詰めずに並べてから隠した列を外す（filter は穴を飛ばして列がずれる）
       const raw = row.values as unknown[]
       const vals: string[] = []
-      for (let c = 1; c < raw.length; c++) if (!hiddenCols.has(c)) vals.push(cellToText(raw[c]).replace(/[\t\n\r]/g, ' '))
+      for (let c = 1; c < raw.length; c++) {
+        if (hiddenCols.has(c)) continue
+        // 結合したセルは左上のセルにだけ値を置く（ExcelJS は結合した全部のセルに同じ値を返す。2 段の見出しの形を崩さない）
+        const cell = row.getCell(c)
+        const slave = cell.isMerged && cell.master && cell.master.address !== cell.address
+        vals.push(slave ? '' : cellToText(raw[c]).replace(/[\t\n\r]/g, ' '))
+      }
       lines.push(vals.join('\t'))
     })
     // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
     const score = lines.slice(0, 30).reduce((m, l) => Math.max(m, l.split('\t').map(detectField).filter(Boolean).length), 0)
-    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size, unhidden }
+    return { name: ws.name, text: lines.join('\n'), score, rows: lines.length, hiddenRows, hiddenCols: hiddenCols.size, hiddenNames, unhidden }
   })
   if (!sheets.length) return ''
   // 見出しの言葉が同じだけあるシートが複数なら、名前が「旧版・old・コピー」などでないシート → 左（先）のシート
@@ -368,7 +481,7 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
   const best = sheets.reduce((a, b) => (rank(b) > rank(a) ? b : a))
   lastSheetName = sheets.length > 1 ? best.name : null
   hiddenNote = [
-    best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : '',
+    best.hiddenCols || best.hiddenRows ? `Excel で隠した${best.hiddenCols ? `列 ${best.hiddenCols} 列${best.hiddenNames.length ? `（「${best.hiddenNames.slice(0, 3).join('」「')}」${best.hiddenNames.length > 3 ? ' ほか' : ''}）` : ''}` : ''}${best.hiddenCols && best.hiddenRows ? '・' : ''}${best.hiddenRows ? `行 ${best.hiddenRows} 行` : ''}は読んでいません（要るときは Excel で再表示してから読んでください）` : '',
     best.unhidden.length ? `隠れていた「${best.unhidden.join('」「')}」の列は、ほかに同じ項目の列が無いので読みました` : '',
   ]
     .filter(Boolean)
@@ -404,7 +517,9 @@ function cellToText(v: unknown): string {
 }
 
 /** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
-export function isTotalCell(c: string): boolean {
+export function isTotalCell(c0: string): boolean {
+  // 全角の数字・記号は半角にしてから見る（「計 ６」）
+  const c = toHalf(c0)
   // 空白と飾り（【】＜＞＊-＝ など）を外してから見る（「【合計】」「＊合計＊」「-- 以下余白 --」）
   const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*※\-－ー—―=＝~～・_＿]/g, '')
   // 飾りだけのセル（「＝＝＝＝」「----」）は区切り
@@ -414,18 +529,22 @@ export function isTotalCell(c: string): boolean {
   if (/^以上[、,]?[\d,.]*(点|個|行|件)?$/.test(t)) return true
   if (/^[（(](小計|合計|総計|計)[）)]$/.test(t)) return true
   // 「計：6個」「合計 6点」「合計数量 6」「合計金額 ¥12,000」「部品点数 3」のように、同じセルに数・単位が続くものも
-  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?)*([（(][^）)]*[）)])?$/i.test(t)
+  // 「合計 6台分」「合計：6個 / ¥12,000」（数・単位・金額がいくつ続いても）
+  return /^(員数|数量|部品|金額)?(小計|合計|総計|総合計|総数量|総数|計|部品点数|点数|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([/／,、]?[¥￥$]?[\d,.]+(個|点|台|本|枚|式|円|pcs)?分?)*([（(][^）)]*[）)])?$/i.test(t)
 }
 /**
  * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。
  * width は表の列の数（xlsx は行の右の空のセルが無いので、セルの数では見ない）。1 列だけの表では使わない
  */
-const PAGE_TITLE = /^(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|BOM)\s*([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|\d+\s*(ページ|頁)|p\.?\s*\d+)?$/i
-const PAGE_NO = /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+(\s*(of|\/)\s*\d+)?)$/i
+const PAGE_TITLE = /^(部品表|部品リスト|部品一覧|parts\s*list|bill\s*of\s*materials|BOM)\s*([(（]?\s*\d+\s*([/／]|of)\s*\d+\s*[)）]?|\d+\s*(ページ|頁)|p\.?\s*\d+(\s*[/／]\s*\d+)?|page\s*\d+(\s*(of|\/)\s*\d+)?|その\s*\d+|[(（]?\s*(続き|続|つづき)\s*[)）]?)?$/i
+const PAGE_NO = /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+(\s*[/／]\s*\d+)?|\d+\s*(ページ|頁)|page\s*\d+(\s*(of|\/)\s*\d+)?)$/i
 export function isSectionLine(cells: string[], width = cells.length): boolean {
-  const filled = cells.map((c) => c.trim()).filter(Boolean)
+  // 全角の数字・記号は半角にしてから見る（「－２－」）
+  const filled = cells.map((c) => toHalf(c).trim()).filter(Boolean)
   // ページの表題とページ番号だけの行（「部品表 (2/3)」と「P.2」）
   if (width > 1 && filled.length === 2 && filled.every((c) => PAGE_TITLE.test(c) || PAGE_NO.test(c))) return true
+  // 表題・製品名・ページ番号の行（「部品表 (2/2)」「制御盤A」「P.2」）
+  if (width > 1 && filled.length === 3 && filled.some((c) => PAGE_TITLE.test(c)) && filled.some((c) => PAGE_NO.test(c))) return true
   return (
     width > 1 &&
     filled.length === 1 &&
@@ -433,11 +552,11 @@ export function isSectionLine(cells: string[], width = cells.length): boolean {
       /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]) ||
       // ページごとの表題・ページ番号（部品表 (2/3)・P.2・2 / 3 ページ）
       PAGE_TITLE.test(filled[0]) ||
-      /^([(（]?\s*\d+\s*[/／]\s*\d+\s*[)）]?|p\.?\s*\d+|\d+\s*(ページ|頁)|page\s*\d+)(\s*(ページ|頁))?$/i.test(filled[0]) ||
+      PAGE_NO.test(filled[0]) ||
       // 「- 1 -」「Page 1 of 2」「（次頁へ続く）」「※ 注記」
       /^[-－—]\s*\d+\s*[-－—]$/.test(filled[0]) ||
       /^page\s*\d+\s*(of|\/)\s*\d+$/i.test(filled[0]) ||
-      /(次頁|次ページ|前頁|前ページ|次葉).*(続|へ)|^[（(]?\s*(続く|つづく|続き)\s*[）)]?$/.test(filled[0]) ||
+      /(次頁|次ページ|前頁|前ページ|次葉).*(続|へ|つづ)|以下次頁|^[（(]?\s*(続く|つづく|続き)\s*[）)]?$/.test(filled[0]) ||
       /^[※＊*]\s*\S/.test(filled[0]))
   )
 }

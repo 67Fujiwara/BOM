@@ -332,3 +332,14 @@ export function capPending(p: Project, r: Row): boolean {
 export function pendingAdd(r: Row): boolean {
   return !!r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted'
 }
+
+/** 相見積の依頼先: 案件の相見積先のうち取引できる商社を、行のメーカで絞る（§7）。
+ *  扱うメーカが登録されていない商社は絞らない。メーカを扱うと登録した商社が 1 社も無いとき（表記ゆれ・マスタ未登録）は、取りこぼさないよう全社 */
+export function makerTargets(p: Project, maker: string | undefined | null, suppliers: Supplier[]): string[] {
+  const ids = p.supplierIds.filter((id) => suppliers.find((x) => x.id === id)?.tradable !== false)
+  if (!maker) return ids
+  const listed = (id: string) => (suppliers.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0
+  const explicit = ids.filter((id) => listed(id) && handlesMaker(suppliers.find((x) => x.id === id)!.handledMakers, maker))
+  if (!explicit.length) return ids
+  return ids.filter((id) => !listed(id) || explicit.includes(id))
+}

@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, pendingAdd, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
+import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -197,6 +197,8 @@ export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
   if (!commitEdit('stay')) return
   set({ view: v, detailIndex: 0, revView: null })
+  // 6 商社別・8 正式見積は相見積先の列で入れる。相見積先が無ければ理由を知らせる
+  if ((v === 6 || v === 8) && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
   if (!vm().rows.some((r) => r.id === st().cursorRow)) set({ cursorRow: null })
   ensureCursor()
   // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 6・8 を開くと単価、9 なら発注数）。ID・状態の列にいるときはそのまま
@@ -330,7 +332,10 @@ export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'dow
     tabAnchor = null
     moveCursorToRow(1)
     // 最後の行（下に行が無い）では列を戻さない（同じ行の最初の値を上書きしない）
-    if (st().cursorRow === r.id) return true
+    if (st().cursorRow === r.id) {
+      if (st().user().role === 'design') toast('最後の行です。下に行を足すときは Shift+Enter', 'info')
+      return true
+    }
     if (anchor && vm().columns.includes(anchor)) set({ cursorCol: anchor })
   } else if (dir === 'up') {
     tabAnchor = null
@@ -497,6 +502,21 @@ function gotoProblem(delta: 1 | -1): boolean {
       })
       if (best >= 0) next = best
     }
+    // カーソルの行に問題が無く（直した・確認済みにして、4 の並びの後ろへ動いた など）、見えている並びでその下に問題が無いときや、
+    // 行がビューから外れたときは、先頭へ戻らずに BOM の並びでその行より下（上）のいちばん近い問題
+    if (cur == null || (!list.some((x) => x.rowId === curId) && !list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) }))) {
+      const bom = new Map(st().project().rows.map((x, i) => [x.id, i] as const))
+      const at = bom.get(curId)
+      if (at != null) {
+        let best = -1
+        list.forEach((x, i) => {
+          const q = bom.get(x.rowId)
+          if (q == null || x.rowId === curId) return
+          if (delta > 0 ? q > at && (best < 0 || q < bom.get(list[best].rowId)!) : q < at && (best < 0 || q > bom.get(list[best].rowId)!)) best = i
+        })
+        if (best >= 0) next = best
+      }
+    }
   }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
@@ -572,7 +592,6 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
           label: '再見積要: 据え置き（旧見積を有効に戻す）',
           run: () =>
             s.commit('再見積要: 据え置き', (p2, ws) => {
-              queueMicrotask(() => toast(`${r.id} の旧見積を戻しました（概算。選定は選び直し、正式見積は依頼し直します）`, 'info'))
               const rr = p2.rows.find((x) => x.id === r.id)!
               rr.flags.requote = false
               // 商社ごとにいちばん新しい旧見積を、有効な見積として戻す（見積の枠が無ければ作る）
@@ -591,6 +610,11 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
               // 旧見積が戻ったので、提出済に戻っていた行は見積中へ（揃っていれば見積済。選定者が選び直す）
               if (rr.status === 'submitted' || rr.status === 'quoted') setStatus(rr, 'quoting')
               normalize(p2, ws)
+              // 採用を残した行（数量の変更など）と、採用を外した行（型式の変更など）で知らせを分ける
+              const msg = rr.adoptedSupplierId
+                ? `${r.id} の旧見積を戻しました（概算。採用はそのまま${rr.flags.reissue ? '。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します' : ''}）`
+                : `${r.id} の旧見積を戻しました（概算。選定は選び直し、正式見積は依頼し直します）`
+              queueMicrotask(() => toast(msg, 'info'))
             }),
         },
         { label: '再見積要: 再見積（概算見積を依頼）', run: () => runCommand('quotes.request') },
@@ -729,7 +753,8 @@ export function publishFlow(rowIds?: string[]) {
   const plan = rows.planPublish(s.project(), s.ws.rules, user, rowIds)
   if (plan.rows.length === 0 && plan.draftIssues.length === 0) {
     const errs = user.role === 'design' ? s.project().rows.filter((r) => isActive(r) && checkRow(r, s.ws.rules, s.project()).some((x) => x.severity === 'error')).length : 0
-    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（F8 で移動）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Alt+Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
+    const blank = user.role === 'design' ? s.project().rows.filter((r) => r.status === 'draft' && r.publishedRev == null && !r.name && !r.model).length : 0
+    return toast(user.role === 'design' ? `公開するもの（下書き・未公開の変更）はありません${errs ? `。エラーのある行が ${errs} 行あります（F8 で移動）` : ''}${blank ? `。部品名も型式も無い下書きの行 ${blank} 行は公開しません（入れてから Ctrl+Enter）` : ''}` : user.role === 'purchasing' ? '発行する下書きの指摘はありません（Alt+Shift+I で起票）' : '公開するものはありません（PM は y / Shift+Y で決定）', 'info')
   }
   // 先にゲートを確かめる（理由を聞いてから拒否しない）
   const gate = plan.blockedErrors[0] ?? plan.blockedWarnings[0]
@@ -738,14 +763,26 @@ export function publishFlow(rowIds?: string[]) {
   if (plan.deferred.length) return toast(`公開できません: 「あとで」にした問題が ${plan.deferred.length} 行に残っています（${plan.deferred[0]}）`, 'err')
   // ダイアログを開いたときの行だけを公開する（開いているあいだに別のタブで変わった・足した行を、同じ理由で一緒に出さない）
   const ids = rowIds ?? [...plan.rows.map((r) => r.id), ...plan.cancelled]
+  // 開いたあとに別のタブでその行の中身（取消・値）が変わったら、確定の前に止めて確かめ直させる
+  const sig = () => {
+    const p2 = st().project()
+    return JSON.stringify(ids.map((id) => { const r = p2.rows.find((x) => x.id === id); return r && [r.status, r.working ?? null, r.removal ?? null, r.pendingRemoval ?? null, r.hidden ?? false] }))
+  }
+  const before = sig()
+  const changed = () => {
+    if (sig() === before) return false
+    toast('ダイアログを開いたあとに、公開する行が別のタブで変わりました（取消・値の変更）。公開していません。もう一度 Ctrl+Enter で中身を確かめてから公開してください', 'err')
+    return true
+  }
   if (plan.nonIssueChanges.length && user.role === 'design') {
     prompt(`変更セット（${plan.nonIssueChanges.length} 行: ${plan.nonIssueChanges.slice(0, 5).join(', ')}${plan.nonIssueChanges.length > 5 ? ' …' : ''}）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter`, { options: [...CHANGE_REASONS], index: -1, placeholder: '変更番号（任意。例: ECN-2026-012）', showText: true, digitsSelect: true }, (choice, text) => {
+      if (changed()) return
       rows.publish(ids, { reason: (choice as ChangeReason) ?? 'その他', changeNo: text })
     })
     return
   }
   if (plan.canAppend && plan.rows.length) {
-    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new'))
+    prompt('公開の Rev（購買がまだ確認していない直前の Rev があります）', { options: ['新しい Rev', '直前の Rev に追記'], showText: false }, (choice) => void (!changed() && rows.publish(ids, undefined, choice === '直前の Rev に追記' ? 'append' : 'new')))
     return
   }
   rows.publish(rowIds)
@@ -1053,7 +1090,8 @@ function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
   closePanel()
   ensureCursor()
   const problems = p.rows.filter((r) => checkRow(r, st().ws.rules, p).length).length
-  const note = warnings.length ? `。注意: ${warnings[0]}` : ''
+  // 注意はいくつあっても件数と先頭の 2 つを出す（1 つ目だけで、数量の列が無い などを見落とさない）
+  const note = warnings.length ? `。注意 ${warnings.length} 件: ${warnings.slice(0, 2).join(' / ')}${warnings.length > 2 ? ' ほか' : ''}` : ''
   if (s.ws.user.role !== 'design') {
     setView(1)
     return toast(`${p.name}（${p.rows.length} 行）を作成しました。行の追加・編集は設計が行います（Ctrl+K → 役割 で設計に切り替え）${note}`, 'info')
@@ -1400,7 +1438,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const err = adopt.canAdopt(p, r!, true)
       if (err) return toast(err, 'err')
       if (!scoreRow(p, r!, s.ws.suppliers).length) return toast('有効な見積がありません（未回答・辞退・期限切れのみ）', 'err')
-      return openPanel({ kind: 'adopt', rowId: r!.id, index: 0 })
+      return openPanel({ kind: 'adopt', rowId: r!.id, index: 0, was: r!.adoptedSupplierId ?? null })
     }
     case 'row.replace': {
       if (!need()) return
@@ -1464,7 +1502,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'issue.ack':
       return ackCurrent()
     case 'issue.sequence': {
-      if (!gotoProblem(1)) return
+      // カーソルが問題のセルにいればそこから、いなければ次の問題から。前の回で回った問題は数え直す
+      resetSequence()
+      const here = problemCells().some((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
+      if (!here && !gotoProblem(1)) return
       set({ sequence: true })
       if (cursorRow()) openQuickfix()
       return
@@ -1866,7 +1907,8 @@ export function paletteItems(query: string): PaletteItem[] {
       // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
       // 表示どおりの「R040 を置換」「R040 へジャンプ」「R040 を 因幡電機 で採用」でも当たる
       const rest = m[2].trim().replace(/^[をへ]\s*/, '')
-      const e = effective(row)
+      // 役割に見せる値（設計の作業中・承認待ちの値は設計にだけ）
+      const e = valuesFor(row, s.user().role)
       if (!adopt.canAdopt(p, row) && (!rest || '採用'.startsWith(rest) || rest.startsWith('採用') || /で採用/.test(rest))) {
         const scores = scoreRow(p, row, s.ws.suppliers)
         const supQ = rest.replace(/^採用\s*/, '').replace(/\s*で採用.*$/, '').replace(/\s*スコア.*$/, '').trim()
@@ -1974,5 +2016,6 @@ export function colsForPanel() {
 }
 
 export { handleKeyDown } from './keyboard'
+import { resetSequence } from './keyboard'
 export { issues as issueActions, rows as rowActions, ROLE_LABEL, KEYMAP, eventToKey, lookupBinding, ISSUE_KINDS, VIEWS, cursorRow as visibleCursorRow, moveCursorRow, gotoProblem, problemCells, openQuickfix, prompt, confirmDanger, decisionPanel, saveSettings, createProjectFromWizard, nextProjectId }
 export type { IssueKind }

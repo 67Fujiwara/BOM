@@ -1,0 +1,20 @@
+publish → [変更セット（8 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+D before request R082 指定商社 st=submitted adopt=- reason= oq=- flags={} quotes=[] | 提出済
+D status bar ナビR082 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+all → 8 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 5 行（例: R076「ラトック」→ 因幡電機・立花エレテック）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",["R081"]],["立花エレテック",["R083"]],["ミスミ",["R082"]]]
+after request R081 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] | 見積中 0/1
+after request R082 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S3",null,null,null]] | 見積中 0/1
+after request R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S2",null,null,null]] | 見積中 0/1
+FAIL E5-1 取引不可の商社（ミスミ）を指定先にした指定商社の行は、ミスミに依頼書を出さない（取引不可と知らせる） :: ["因幡電機","立花エレテック","ミスミ"] 8 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱わない商社には頼まない行 5 行（例: R076「ラトック」→ 因幡電機・立花エレテック）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+purch 4 has K/D/E false false false
+E after S1 typed 見積中 0/1
+E after S2 R083 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",1000,5,null],["S1",900,4,null]] | 選定済
+PASS E5-2 指定商社（立花）の行の進み具合に、指定先でない因幡の回答を数えない :: 見積中 0/1
+K first ["S1"] 見積中 0/1
+K after decline R081 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,-1,null]] | 見積中 0/1 ball purchasing
+purch 4 has K true
+all → 1 行 × 1 社に依頼（回答期限 2026-10-28） [["立花エレテック",["R081"]]]
+K next ["S2"] 見積中 0/1
+PASS E5-3 客先指定品で最初の商社が辞退したら、次の商社の回答待ち（0/1）として購買の 4 に出て、次の商社に依頼書を出せる :: 見積中 0/1 in4=true next=S2
+K final R081 客先指定品 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",null,-1,null],["S2",1200,6,null]] | 選定済
+== 2/3 PASS

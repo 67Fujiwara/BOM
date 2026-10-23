@@ -1,0 +1,20 @@
+// b6: 依頼書なしで 1 社の回答を手入力・取り込みした行に、あとから残りの商社へ依頼書を出せるか（M8-01 の続き）
+import { launch, check, log, summary } from './lib.mjs'
+import { helpers } from './h.mjs'
+const t = await launch(); const { page } = t; const h = helpers(t)
+await t.open('design'); await t.press('1')
+const A = await h.addRow('R080', '電話で頼んだリレー', 'G2R-1 DC24', 'オムロン', '相見積')
+const B = await h.addRow(A, 'メールで来た回答', 'G2R-2 DC24', 'オムロン', '相見積')
+log('publish →', await t.publish('1'))
+await t.role('purchasing'); await t.press('6')
+log('A typed S1', await h.q(A, 'S1', 1500, 5))
+log('B import S2', await h.importAnswers('S2', ['行ID\t型式\t単価\t納期\tMOQ', `${B}\tG2R-2 DC24\t1600\t6\t`].join('\n')))
+let p = await t.proj(); log(h.show(p, A), '|', await t.cellText(A, 'status')); log(h.show(p, B), '|', await t.cellText(B, 'status'))
+const rq = await h.requestTo(null); p = await t.proj()
+log('相見積先すべて →', rq.msg, JSON.stringify(rq.f.map((f) => [f.sup, f.ids.filter((x) => [A, B].includes(x))])))
+const gotA = rq.f.filter((f) => f.ids.includes(A)).map((f) => f.sup), gotB = rq.f.filter((f) => f.ids.includes(B)).map((f) => f.sup)
+check('B6-1 手入力で始めた行 A の残りの商社（立花・ミスミ）に依頼書が出る', gotA.includes('立花エレテック') && gotA.includes('ミスミ'), JSON.stringify(gotA))
+check('B6-2 取り込みで始めた行 B の残りの商社（因幡・ミスミ）に依頼書が出る', gotB.includes('因幡電機') && gotB.includes('ミスミ'), JSON.stringify(gotB))
+const r2 = await h.requestTo('S2'); log('立花だけ →', r2.msg, JSON.stringify(r2.f.map((f) => [f.sup, f.ids.filter((x) => [A, B].includes(x))])))
+p = await t.proj(); log(h.show(p, A), '|', await t.cellText(A, 'status'))
+summary(); await t.close()

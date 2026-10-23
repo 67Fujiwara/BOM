@@ -1,0 +1,15 @@
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+all → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+A quoted R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 見積済
+publish 指定 → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+A 指定 R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 選定済
+publish 相見積 → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+A back R081 相見積 st=submitted adopt=- reason= oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 提出済 ball purchasing targets undefined
+design a → 見積前の行です（購買が概算見積を依頼・回答待ち）
+purch 9 has A true
+purch 4 has A false
+all again → 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください） []
+A after request R081 相見積 st=submitted adopt=- reason= oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 提出済 ball purchasing
+design a → 見積前の行です（購買が概算見積を依頼・回答待ち）
+FAIL E2-1 3 社が回答済みの行を相見積に戻したら、回答済みの見積で見積済に進むか、依頼して見積中になる（提出済で止まらない） :: submitted / a: 見積前の行です（購買が概算見積を依頼・回答待ち） / request: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+== 0/1 PASS

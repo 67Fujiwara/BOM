@@ -3,3 +3,7 @@
 r13-60-header-unit.ts head exit 0
 r13-60-header-unit.ts r15b exit 0
 == 87-roundtrip 18:11:00 load=4.11 10.91 16.26
+   exit 0 18:11:15
+== 88-wizard-stale 18:11:15 load=4.09 10.57 16.06
+   exit 0 18:11:24
+DONE

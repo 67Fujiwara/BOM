@@ -1,0 +1,595 @@
+[
+  {
+    "name": "行を隠す Alt+h",
+    "how": "b",
+    "seq": [
+      "Alt+h→R010 ID/ナビ"
+    ],
+    "toasts": [
+      "R010 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"
+    ],
+    "lastShown": "R010 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "行を追加 Shift+Enter → 部品名 abc Enter",
+    "how": "b",
+    "seq": [
+      "Shift+Enter→R081 部品名/入力",
+      "T:abc→R081 部品名/入力",
+      "Enter→R081 部品名/ナビ"
+    ],
+    "toasts": [
+      "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"
+    ],
+    "lastShown": "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": false
+  },
+  {
+    "name": "行を複製 Shift+D",
+    "how": "b",
+    "seq": [
+      "Shift+D→R081 ID/ナビ"
+    ],
+    "toasts": [
+      "R010 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）"
+    ],
+    "lastShown": "R010 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "行を削除 Shift+Delete（取消・作業中）",
+    "how": "b",
+    "seq": [
+      "Shift+Delete→R010 ID/ナビ"
+    ],
+    "toasts": [
+      "R010 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）"
+    ],
+    "lastShown": "R010 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "置換 Alt+r → 型式 → Enter",
+    "how": "b",
+    "seq": [
+      "Alt+r→R010 ID/パネル{panel-prompt}",
+      "T:NEW-MODEL→R010 ID/パネル{panel-prompt}",
+      "Enter→R081 型式/ナビ"
+    ],
+    "toasts": [
+      "R010 の置き換え品 R081 を作りました（公開すると R010 は置換済になります。Ctrl+Z で戻す）"
+    ],
+    "lastShown": "R010 の置き換え品 R081 を作りました（公開すると R010 は置換済になります。Ctrl+Z で戻す）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "警告を確認済み Alt+x（R005 型式）",
+    "how": "b",
+    "seq": [
+      "Alt+x→R005 型式/ナビ"
+    ],
+    "toasts": [
+      "確認済みにしました: 型式の前後に空白があります"
+    ],
+    "lastShown": "確認済みにしました: 型式の前後に空白があります",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "あとで Shift+→（R005 型式）",
+    "how": "b",
+    "seq": [
+      "Shift+ArrowRight→R009 メーカ/ナビ"
+    ],
+    "toasts": [
+      "あとで: 型式の前後に空白があります（「あとで」が残っている行は公開できません）"
+    ],
+    "lastShown": "あとで: 型式の前後に空白があります（「あとで」が残っている行は公開できません）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "セルを空にする Delete（R010 部品名）",
+    "how": "b",
+    "seq": [
+      "Delete→R010 部品名/ナビ"
+    ],
+    "toasts": [
+      "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"
+    ],
+    "lastShown": "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": false
+  },
+  {
+    "name": "指摘を起票 Alt+Shift+I → q → 本文 → Enter",
+    "how": "b",
+    "seq": [
+      "Alt+Shift+I→R010 ID/パネル{panel-issue}",
+      "q→R010 ID/パネル{panel-issue}",
+      "T:確認お願いします→R010 ID/パネル{panel-issue}",
+      "Enter→R010 ID/ナビ"
+    ],
+    "toasts": [
+      "I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行"
+    ],
+    "lastShown": "I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "公開 Ctrl+Enter（R010 部品名を変えてから）",
+    "how": "b",
+    "seq": [
+      "Control+Enter→R010 部品名/パネル{panel-prompt}",
+      "Enter→R010 部品名/パネル{panel-prompt}"
+    ],
+    "toasts": [
+      "数字（1〜6）か ↑↓ で選んでから Enter"
+    ],
+    "lastShown": "数字（1〜6）か ↑↓ で選んでから Enter",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 567,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 567,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "Ctrl+Z（R010 部品名を変えてから）",
+    "how": "b",
+    "seq": [
+      "Control+z→R010 部品名/ナビ"
+    ],
+    "toasts": [
+      "元に戻す: セル編集"
+    ],
+    "lastShown": "元に戻す: セル編集",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 568,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 568,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "購買 推奨で採用 Alt+a（R004）",
+    "how": "b",
+    "seq": [
+      "Alt+a→R004 ID/ナビ"
+    ],
+    "toasts": [
+      "権限なし（選定者は設計）"
+    ],
+    "lastShown": "権限なし（選定者は設計）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "購買 単価 打って Enter（R004 9）",
+    "how": "b",
+    "seq": [
+      "T:3333→R004 単価/入力",
+      "Enter→R004 単価/ナビ"
+    ],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+      "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"
+    ],
+    "lastShown": "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": false
+  },
+  {
+    "name": "行の重み w → 1 → Enter",
+    "how": "b",
+    "seq": [
+      "Alt+w→R010 ID/パネル{panel-weights}",
+      "1→R010 ID/パネル{panel-weights}",
+      "Enter→R010 ID/パネル{panel-weights}"
+    ],
+    "toasts": [],
+    "lastShown": "保存しました（編集は自動で保存されています）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "貼り付け 2 行（R079 部品名）",
+    "how": "b",
+    "seq": [
+      "Control+v→R079 部品名/ナビ"
+    ],
+    "toasts": [
+      "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"
+    ],
+    "lastShown": "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": false
+  },
+  {
+    "name": "実容量 (a): 行を追加 Shift+Enter → abc Enter",
+    "how": "a",
+    "seq": [
+      "Shift+Enter→R081 部品名/入力",
+      "T:abc→R081 部品名/入力",
+      "Enter→R081 部品名/ナビ"
+    ],
+    "toasts": [
+      "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"
+    ],
+    "lastShown": "保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": false
+  },
+  {
+    "name": "実容量 (a): 置換 Alt+r",
+    "how": "a",
+    "seq": [
+      "Alt+r→R010 ID/パネル{panel-prompt}",
+      "T:NEW-MODEL-LONG-NAME-0123456789→R010 ID/パネル{panel-prompt}",
+      "Enter→R081 型式/ナビ"
+    ],
+    "toasts": [
+      "R010 の置き換え品 R081 を作りました（公開すると R010 は置換済になります。Ctrl+Z で戻す）"
+    ],
+    "lastShown": "R010 の置き換え品 R081 を作りました（公開すると R010 は置換済になります。Ctrl+Z で戻す）",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  },
+  {
+    "name": "実容量 (a): 指摘を起票",
+    "how": "a",
+    "seq": [
+      "Alt+Shift+I→R010 ID/パネル{panel-issue}",
+      "q→R010 ID/パネル{panel-issue}",
+      "T:確認お願いします。長めの本文を入れて容量を超えるようにする。→R010 ID/パネル{panel-issue}",
+      "Enter→R010 ID/ナビ"
+    ],
+    "toasts": [
+      "I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行"
+    ],
+    "lastShown": "I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行",
+    "before": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterStored": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "r010": 542,
+      "subs": 1
+    },
+    "afterReload": {
+      "rows": 80,
+      "issues": 5,
+      "hidden": "",
+      "subs": 1
+    },
+    "successShownLast": true
+  }
+]

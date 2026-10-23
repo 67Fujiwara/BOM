@@ -1,0 +1,22 @@
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=selected adopted=S1 quotes=[["S1",356],["S2",null],["S3",null]]
+R045 指定商社 designated=S2 status=selected adopted=S2 quotes=[["S1",8811],["S2",10139],["S3",9047]]
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=selected adopted=S1 quotes=[["S1",356],["S2",null],["S3",null]]
+R045 指定商社 designated=S2 status=selected adopted=S2 quotes=[["S1",8811],["S2",10139],["S3",9047]]
+PASS M3 指定商社の行は指定先（S2）以外で採用されない :: R045 指定商社 designated=S2 status=selected adopted=S2 quotes=[["S1",8811],["S2",10139],["S3",9047]]
+Shift+A on 指定商社 → null 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+new row R081
+指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+publish dialog 変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter
+publish → 行 6（Rev.2） を公開しました
+R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=submitted adopted=- quotes=[]
+request → 6 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=quoting adopted=- quotes=[["S1",null]]
+PASS M3 客先指定品の行も指定先 1 社に概算見積を依頼する（§3.4・§7） :: R081 客先指定品 designated=オムロン / 客先承認 KS-1 status=quoting adopted=- quotes=[["S1",null]]
+o R034 → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=formalRequested adopted=S1 quotes=[["S1",356],["S2",null],["S3",null]] header money 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%)
+PASS M3 客先指定品（R034）を正式見積依頼・発注まで進められる :: R034 客先指定品 designated=オムロン / 客先承認 KS-2026-118 status=formalRequested adopted=S1 quotes=[["S1",356],["S2",null],["S3",null]]
+== 3/3 PASS

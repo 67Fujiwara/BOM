@@ -1,0 +1,32 @@
+0 r10 {"f8_view1":51.2,"shiftF8_view1":41.6,"f8_view4":29.3,"f8_filter":45.6,"commit_first10":117.7,"commit_last10":91.4,"histChars":69998,"undo_200hist":109.4,"redo_200hist":92.7,"f2_toggle":16.6}
+0 current {"f8_view1":40.1,"shiftF8_view1":39.4,"f8_view4":17.3,"f8_filter":22,"commit_first10":124.8,"commit_last10":81.3,"histChars":279646,"undo_200hist":102,"redo_200hist":97.7,"f2_toggle":16.5}
+1 r10 {"f8_view1":51.5,"shiftF8_view1":34.9,"f8_view4":17.2,"f8_filter":35.4,"commit_first10":136,"commit_last10":84.6,"histChars":69998,"undo_200hist":85.1,"redo_200hist":92.5,"f2_toggle":15}
+1 current {"f8_view1":48,"shiftF8_view1":31,"f8_view4":16.8,"f8_filter":22.3,"commit_first10":122.9,"commit_last10":104.4,"histChars":279646,"undo_200hist":87.5,"redo_200hist":88.2,"f2_toggle":16.4}
+2 r10 {"f8_view1":48.9,"shiftF8_view1":35,"f8_view4":18.9,"f8_filter":35.2,"commit_first10":123.2,"commit_last10":88.3,"histChars":69998,"undo_200hist":87.8,"redo_200hist":84.5,"f2_toggle":16.6}
+2 current {"f8_view1":37.2,"shiftF8_view1":27.4,"f8_view4":23.6,"f8_filter":19,"commit_first10":97.4,"commit_last10":149,"histChars":279646,"undo_200hist":133.5,"redo_200hist":126.2,"f2_toggle":18.7}
+{
+ "r10": {
+  "f8_view1": 51.2,
+  "shiftF8_view1": 35,
+  "f8_view4": 18.9,
+  "f8_filter": 35.4,
+  "commit_first10": 123.2,
+  "commit_last10": 88.3,
+  "histChars": 69998,
+  "undo_200hist": 87.8,
+  "redo_200hist": 92.5,
+  "f2_toggle": 16.6
+ },
+ "current": {
+  "f8_view1": 40.1,
+  "shiftF8_view1": 31,
+  "f8_view4": 17.3,
+  "f8_filter": 22,
+  "commit_first10": 122.9,
+  "commit_last10": 104.4,
+  "histChars": 279646,
+  "undo_200hist": 102,
+  "redo_200hist": 97.7,
+  "f2_toggle": 16.5
+ }
+}

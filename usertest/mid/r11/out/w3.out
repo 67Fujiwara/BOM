@@ -1,0 +1,30 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+approval ON true
+r R060 → R060 の置き換え品 R081 を作りました（公開すると R060 は置換済になります。Ctrl+Z で戻す）
+new R081 ref 配60 R060 ref 配60
+problems on new row []
+PASS W3-1 置換で作った行に、置換元との回路記号の重複警告が出ない
+cancel R050 → R050 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+publish try → [変更セット（8 行: R050, R060, R081, R076, R077 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+pending R050:selected:{"kind":"cancel"} R060:selected:{"kind":"replace","by":"R081"} R081:submitted:null R076:submitted:null R077:submitted:null R078:submitted:null R079:submitted:null R080:submitted:null
+purch R050 選定済 · PM承認待ち·拮抗 | R060 選定済 · PM承認待ち·拮抗 | R081 提出済 · 要再確認·PM承認待ち | money 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%) → 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%)
+purch 9 has new row? false
+rough → 依頼する行がありません（提出済・再見積要の行なし）
+new row after rough submitted
+formal → 正式見積依頼書（社外）を出します: 対象 72 行（拮抗 30 行を含む）。作業中 2 行・承認待ち 2 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 72 行 × 3 社に正式見積を依頼。除外: 作業中 2 行 / 承認待ち 2 行 / 再見積要 0 行
+R050 after formal selected {"pmPending":true,"pmReason":"変更セット","contested":true,"leadNG":false}
+PASS W3-2 取消の承認待ちの R050 は正式見積依頼から外れる
+Shift+Delete on pending → R050 の取消・置換は PM の承認待ちです
+PM 7 has R050,R060,new true true true
+PM panel R050 {"kind":"quickfix","title":"決定パネル R050（変更セット）","options":["y 承認 → Rev.2 の変更セット 8 行まとめて公開値に反映","Shift+Y 却下 → Rev.2 の変更セット 8 行まとめて設計の作業中に戻す"],"index":-1}
+y R050 → R050・Rev.2 の変更セット 8 行まとめて: 承認
+after approve R050:cancelled:pm=false R060:replaced:pm=false R081:submitted:pm=false
+PASS W3-3 PM 承認で同じ変更セットの取消・置換・新行がまとめて反映
+purch money after approve 概算 ¥18,503,622 / 正式 ¥18,505,178 / 予算 ¥2,800,000 (+560.9%)
+purch 5 cause R050 Rev.2 取消 R060 Rev.2 置換 → R081 R081 Rev.2 置換 R060
+design Ctrl+Z → 公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してください | status ナビR016 部品名型式あいまい 1/1設計 山田: 未公開 0 行 / 指摘 0公開は取り消せません。追加した行を戻すときは Shift+Delete で取消してくださいF1ヘルプF8次の問題Ent
+after design undo R050:cancelled:pm=false:rm=null R060:replaced:pm=false:rm=null R081:submitted:pm=false:rm=null subs 1,2
+PM Ctrl+Z → 元に戻す: 決定: 承認
+after PM undo R050:selected:pm=true:rm={"kind":"cancel"} R060:selected:pm=true:rm={"kind":"replace","by":"R081"} R081:submitted:pm=true:rm=null
+PM Ctrl+Y → やり直す: 決定: 承認
+== 3/3 PASS

@@ -1,0 +1,34 @@
+publish → [変更セット（9 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 9（Rev.2） を公開しました
+request all → 9 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",300,5,null],["S2",280,6,null],["S3",320,4,null]]
+R082 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=4 flags={} quotes=[["S1",500,5,null]]
+R083 客先指定品 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",700,5,null]]
+R084 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",null,null,null],["S3",null,null,null]]
+publish change → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+A after switch R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",300,5,null],["S2",280,6,null],["S3",320,4,null]]
+Shift+A panel {"kind":"adopt","options":[],"index":0}
+after 1 {"kind":"prompt","title":"先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter","options":["納期","在庫即納","実績/品質","集約","客先指定","その他"],"index":-1}
+step {"kind":"prompt","title":"先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter","options":["納期","在庫即納","実績/品質","集約","客先指定","その他"],"index":0}
+step null
+D early → R084: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+R084 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",1200,5,null],["S2",null,null,null],["S3",null,null,null]]
+PM y D → R084: 先行発注許可
+R084 相見積 st=selected adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"early":true} quotes=[["S1",1200,5,null],["S2",null,null,null],["S3",null,null,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 9 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 9 行 × 2 社に正式見積を依頼
+C formal EDIT-ERR 9 行 × 2 社に正式見積を依頼
+before decline R081 指定商社 st=formalRequested adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",300,5,null],["S2",280,6,null],["S3",320,4,null]]
+before decline R082 指定商社 st=formalRequested adopt=S1 reason=指定先（固定） oq=4 flags={} quotes=[["S1",500,5,null]]
+before decline R083 客先指定品 st=formalQuoted adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",700,5,720]]
+before decline R084 相見積 st=formalRequested adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"early":true} quotes=[["S1",1200,5,null],["S2",null,null,null],["S3",null,null,null]]
+after decline R081 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",300,5,null],["S2",280,-1,null],["S3",320,4,null]] ball design case なし
+after decline R082 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",500,-1,null]] ball design case なし
+after decline R083 客先指定品 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S2",700,-1,null]] ball purchasing case なし
+after decline R084 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",1200,-1,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing case なし
+PASS B4-1 相見積から切り替えた指定商社: 指定先の辞退で見積中・設計のボール（他社の見積で見積済・先行発注判断にならない） :: R081 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",300,5,null],["S2",280,-1,null],["S3",320,4,null]]
+PASS B4-2 最初から指定商社: 指定先の辞退で見積中・設計のボール :: R082 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",500,-1,null]]
+PASS B4-3 客先指定品（正式見積済）: 辞退で見積中・購買のボール・正式単価が消える :: R083 客先指定品 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S2",700,-1,null]]
+PASS B4-4 先行採用の行: 採用商社の辞退で、ほかの商社の回答待ち（見積中）に戻る（見積済にしない） :: R084 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",1200,-1,null],["S2",null,null,null],["S3",null,null,null]]
+C status bar ナビR083 ID購買 佐藤: 未発行 0 件?ヘルプF8次の問題Shift+I指摘Space開くCtrl+.次の商社に依頼
+C Ctrl+. ["次の商社 ミスミ に依頼する（概算見積を依頼。依頼先で「S3 ミスミ」か「相見積先すべて」を選ぶ）"]
+design 4 has A/B true true
+== 4/4 PASS

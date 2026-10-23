@@ -1,0 +1,5 @@
+0 r10 plain {"loadMs":338,"部品名":{"commit":160.5,"undo":147.9},"必要数":{"commit":149.6,"undo":111.2},"nav":{"down":19.9,"view":79.4,"space":48.6}}
+0 current plain {"loadMs":307,"部品名":{"commit":164.1,"undo":184.5},"必要数":{"commit":122.6,"undo":168.7},"nav":{"down":13.5,"view":85.1,"space":41.2}}
+0 r10 epoch {"loadMs":342,"部品名":{"commit":143.3,"undo":100.7},"必要数":{"commit":156.1,"undo":117.9},"nav":{"down":17.7,"view":97.6,"space":37.6}}
+0 current epoch {"loadMs":527,"部品名":{"commit":137.2,"undo":114.4},"必要数":{"commit":132.2,"undo":93.2},"nav":{"down":15.5,"view":65.3,"space":37.6}}
+0 r10 regex {"loadMs":3819,"部品名":{"commit":160,"undo":144.6},"必要数":{"commit":133.1,"undo":87.9},"nav":{"down":16.3,"view":56.3,"space":38.6}}

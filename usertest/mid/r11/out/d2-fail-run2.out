@@ -1,0 +1,12 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+PM d → R003: 設計へ代替依頼
+issue panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+X 対策不成立 R003 相見積 st=selected adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] [["I-006","納期NG","answered","pm"]] case 対策不成立
+decline → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after decline R003 相見積 st=quoted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"対策不成立"} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] [["I-006","納期NG","confirmed","pm"]] ball pm case 対策不成立 renegotiating undefined
+PM panel {"kind":"quickfix","title":"決定パネル R003（対策不成立）","options":["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","e 特急・分納（上限入力）"],"index":-1}
+PM b → R003: 次点商社へ
+X after b R003 相見積 st=quoted adopt=S2 reason=次点へ（対策不成立） oq=2 flags={"countermeasure":"商社変更"} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] | 見積済 · 商社変更 ball purchasing
+design a → R003 を 立花エレテック で採用（スコア 98 / 最安）
+FAIL D2-1 対策不成立で PM の 7 に載った行で採用商社が辞退したら、採用の無い行を対策不成立のまま PM に残さない（選定者に戻す） :: in7=true R003 相見積 st=quoted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"対策不成立"} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]]
+== 0/1 PASS

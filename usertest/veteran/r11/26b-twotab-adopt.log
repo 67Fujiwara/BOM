@@ -1,0 +1,4 @@
+after B a: {"st":"selected","sup":"S1","pm":false,"snap":99.2} R004 を 因幡電機 で採用（スコア 99.2 / 最安）
+A state {"mode":"パネル","edit":null,"cursor":"R004 ID","view":"view-1","panel":"panel-prompt","toast":"「在庫即納」を選びました。必要なら入れて Enter で確定","active":"INPUT.q","filter":""}
+after A Enter: {"st":"selected","sup":"S3","reason":"在庫即納: 3日で入る","pm":true,"snap":86.1} R004: ミスミ を仮採用（在庫即納: 3日で入る）。PM の承認待ち（7 要決定）
+[]

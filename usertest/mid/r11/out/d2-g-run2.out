@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X diff R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] case 差分超過
+PM g → R001: 再交渉
+X after PM R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"renegotiating":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] [] case なし
+decline → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after decline R001 相見積 st=quoted adopt=- reason= oq=- flags={"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] [] ball design case なし renegotiating true
+FAIL D2-3 再交渉中に採用商社が辞退したら、再交渉の印を外し（選び直し）、正式依頼中・PM の 7 に残さない :: R001 相見積 st=quoted adopt=- reason= oq=- flags={"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] reneg=true
+purch 8 has X false
+late sid S3 idx 2
+adopt panel {"kind":"adopt","options":[],"index":0} adopt → R001 を ミスミ で採用（その他: 辞退のため）
+X after reselect R001 相見積 st=selected adopt=S3 reason=その他: 辞退のため oq=1 flags={"leadNG":true,"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] reneg true case 納期NG
+X selected R001 相見積 st=selected adopt=S3 reason=その他: 辞退のため oq=1 flags={"leadNG":true,"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] leadNG true
+PM Shift+Y? skip
+formal again → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+X after formal R001 相見積 st=formalRequested adopt=S3 reason=その他: 辞退のため oq=1 flags={"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] reneg true leadNG false
+FAIL D2-4 選び直した間に合わない商社へ正式見積を依頼したら、正式依頼中でも納期NG が出る（前の再交渉の印で隠れない） :: R001 相見積 st=formalRequested adopt=S3 reason=その他: 辞退のため oq=1 flags={"renegotiating":true} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]]
+== 0/2 PASS

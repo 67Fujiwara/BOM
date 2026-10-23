@@ -1,0 +1,8 @@
+5176 Alt+1 → ZZ Enter ["Alt+1→view-1/R001 必要数/ナビ","T:ZZ→view-1/R001 必要数/入力","Enter→view-1/R001 必要数/入力"] []
+5176 1 → ZZ Enter ["1→view-1/—/ナビ","T:ZZ→view-1/—/ナビ","Enter→view-1/—/ナビ"] []
+5176 Alt+2 → ZZ Enter ["Alt+2→view-2/R001 必要数/ナビ","T:ZZ→view-2/R001 必要数/入力","Enter→view-2/R001 必要数/入力"] []
+5176 Shift+Enter ["Shift+Enter→view-4/R081 部品名/入力","T:new→view-4/R081 部品名/入力","Enter→view-4/R005 部品名/ナビ"] ["R081:+new","order changed"]
+5198 Alt+1 → ZZ Enter ["Alt+1→view-1/R001 必要数/ナビ","T:ZZ→view-1/R001 必要数/編集","Enter→view-1/R001 必要数/編集"] []
+5198 1 → ZZ Enter ["1→view-1/—/ナビ","T:ZZ→view-1/—/ナビ","Enter→view-1/—/ナビ"] []
+5198 Alt+2 → ZZ Enter ["Alt+2→view-2/R001 必要数/ナビ","T:ZZ→view-2/R001 必要数/編集","Enter→view-2/R001 必要数/編集"] []
+5198 Shift+Enter ["Shift+Enter→view-4/R081 部品名/編集","T:new→view-4/R081 部品名/編集","Enter→view-4/R005 部品名/ナビ"] ["R081:+new","order changed"]

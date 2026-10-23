@@ -1,0 +1,13 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X diff R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] case 差分超過
+PM q → R001: 数量見直し依頼
+X after PM R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiffKey":"S1:20219"} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] [["I-006","数量見直し依頼","open","pm"]] case なし
+decline → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after decline R001 相見積 st=quoted adopt=- reason= oq=- flags={"formalDiffKey":"S1:20219"} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] [["I-006","数量見直し依頼","open","pm"]] ball design case なし renegotiating false
+open 数量見直し ["I-006"]
+issue panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 数量変更不可（対策不成立として PM へ）"]
+X after 数量変更不可 R001 相見積 st=quoted adopt=- reason= oq=- flags={"formalDiffKey":"S1:20219","pmPending":true,"pmReason":"対策不成立"} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] [["I-006","数量見直し依頼","answered","pm"]] case 対策不成立
+PM panel {"kind":"quickfix","title":"決定パネル R001（対策不成立）","options":["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","e 特急・分納（上限入力）"],"index":-1}
+FAIL D2-2 差分超過への数量見直し依頼のあとで採用商社が辞退したら、採用の無い行が「数量変更不可」で対策不成立として PM の 7 に載らない :: answered=true in7=true
+== 0/1 PASS

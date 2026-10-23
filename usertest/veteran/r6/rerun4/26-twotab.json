@@ -1,0 +1,148 @@
+[
+  {
+    "case": "1 A move, B edits neighbour, A undo",
+    "afterMove": [
+      "R044",
+      "R046",
+      "R045",
+      "R047"
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "orderA": [
+      "R044",
+      "R045",
+      "R046",
+      "R047"
+    ],
+    "orderB": [
+      "R044",
+      "R045",
+      "R046",
+      "R047"
+    ],
+    "R046": "B-46"
+  },
+  {
+    "case": "2 both move, A undo/redo",
+    "before": [
+      "R044",
+      "R046",
+      "R045",
+      "R047",
+      "R050",
+      "R048",
+      "R049",
+      "R051"
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "afterUndo": [
+      "R044",
+      "R045",
+      "R046",
+      "R047",
+      "R050",
+      "R048",
+      "R049",
+      "R051"
+    ],
+    "redoToast": "やり直す: 行を移動",
+    "afterRedo": [
+      "R044",
+      "R046",
+      "R045",
+      "R047",
+      "R050",
+      "R048",
+      "R049",
+      "R051"
+    ],
+    "B_sees": [
+      "R044",
+      "R046",
+      "R045",
+      "R047",
+      "R050",
+      "R048",
+      "R049",
+      "R051"
+    ]
+  },
+  {
+    "case": "3 A move, B inserts below, A undo",
+    "before": [
+      "R044",
+      "R046",
+      "R045",
+      "R081",
+      "R047"
+    ],
+    "undoToast": "元に戻す: 行を移動",
+    "after": [
+      "R044",
+      "R045",
+      "R046",
+      "R081",
+      "R047"
+    ],
+    "all": 81
+  },
+  {
+    "case": "4 A deletes draft, B moves neighbour, A undo",
+    "start": [
+      "R075",
+      "R076",
+      "R077",
+      "R078"
+    ],
+    "undoToast": "元に戻す: 行を削除",
+    "after": [
+      "R074",
+      "R077",
+      "R075",
+      "R076",
+      "R078"
+    ]
+  },
+  {
+    "case": "5 working per-field merge",
+    "t1": "元に戻す: セル編集",
+    "s1": {
+      "name": "光電センサ 反射",
+      "model": "B-model"
+    },
+    "t2": "元に戻す: セル編集",
+    "s2": {
+      "name": "光電センサ 反射",
+      "model": "E3Z-D62 2M"
+    }
+  },
+  {
+    "case": "6 A redo after B changed same cell",
+    "toast": "やり直せません: R038 の「部品名」 を後から別の操作が変更しています",
+    "R038": "B-38"
+  },
+  {
+    "case": "7 move x5 then undo x5",
+    "afterMoves": [
+      "R044",
+      "R046",
+      "R047",
+      "R048",
+      "R049",
+      "R050",
+      "R045",
+      "R051"
+    ],
+    "B_dom": [],
+    "afterUndo": [
+      "R044",
+      "R045",
+      "R046",
+      "R047",
+      "R048",
+      "R049",
+      "R050",
+      "R051"
+    ]
+  }
+]

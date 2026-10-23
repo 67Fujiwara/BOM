@@ -47,7 +47,7 @@ async function tryWizard(f) {
   const n0 = errors.length
   const t0 = Date.now()
   if (await page.getByTestId('wizard-file').count()) { await page.getByTestId('wizard-file').setInputFiles(P(f)); }
-  await sleep(/far|xfd/.test(f) ? 8000 : 800)
+  const tl0 = Date.now(); for (let i = 0; i < 120; i++) { if (/読み込みました|読めませんでした/.test(await toastNow(page)) || /読み込み済み/.test(await page.locator('[data-testid="panel-wizard"]').innerText().catch(() => ''))) break; await sleep(250) } console.log('loadMs', f, Date.now() - tl0)
   const toast = (await toastNow(page)).slice(0, 200)
   if (/読み込みました/.test(toast)) { await page.keyboard.press('Enter'); await sleep(f === '5000.tsv' ? 1500 : 200) }
   const prev = (await page.getByTestId('wizard-preview').textContent({ timeout: 2000 }).catch(() => '')) ?? ''

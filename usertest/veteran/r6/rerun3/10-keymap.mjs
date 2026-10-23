@@ -34,7 +34,7 @@ for (const role of process.env.SKIP_NAV ? [] : ['design', 'purchasing', 'pm']) {
   for (const v of '123456789') {
     for (const { id, key } of KEYS) {
       await page.keyboard.press(v)
-      await page.keyboard.press('Control+ArrowUp'); await page.keyboard.press('j')
+      await page.keyboard.press('Control+ArrowUp'); await page.keyboard.press('ArrowDown') // ラウンド6: j は文字を打てる列では値になる
       await snap()
       const n = errors.length
       try { await page.keyboard.press(toPress(key)) } catch (e) { out.nav.push({ role, v, key, err: e.message }); continue }
@@ -84,23 +84,23 @@ out.counts.edit = total
 const PANEL_OPEN = {
   palette: async () => page.keyboard.press('Control+k'),
   help: async () => page.keyboard.press('?'),
-  columns: async () => page.keyboard.press('c'),
+  columns: async () => page.keyboard.press('Alt+KeyC'),
   goto: async () => page.keyboard.press('Control+g'),
-  issue_kind: async () => { await setRole(page, 'purchasing'); await goto(page, 'R030'); await page.keyboard.press('Shift+I') },
-  issue_text: async () => { await setRole(page, 'purchasing'); await goto(page, 'R030'); await page.keyboard.press('Shift+I'); await page.keyboard.press('k') },
-  adopt: async () => { await setRole(page, 'design'); await goto(page, 'R020'); await page.keyboard.press('Shift+A') },
+  issue_kind: async () => { await setRole(page, 'purchasing'); await goto(page, 'R030'); await page.keyboard.press('Alt+Shift+KeyI') },
+  issue_text: async () => { await setRole(page, 'purchasing'); await goto(page, 'R030'); await page.keyboard.press('Alt+Shift+KeyI'); await page.keyboard.press('k') },
+  adopt: async () => { await setRole(page, 'design'); await goto(page, 'R020'); await page.keyboard.press('Alt+Shift+KeyA') },
   wizard: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('新しいBOM'); await page.keyboard.press('Enter') },
   wizard_paste: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('新しいBOM'); await page.keyboard.press('Enter'); await page.getByTestId('wizard-id').fill('P-KEY' + Math.floor(Math.random() * 1e6)); for (let i = 0; i < 7; i++) await page.keyboard.press('Enter'); await page.keyboard.press('1') },
   inbox: async () => page.keyboard.press('Control+p'),
   settings: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('案件設定'); await page.keyboard.press('Enter') },
   settings_edit: async () => { await setRole(page, 'pm'); await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('案件設定'); await page.keyboard.press('Enter'); await page.keyboard.press('Enter') },
-  quickfix: async () => { await setRole(page, 'design'); await page.keyboard.press('4'); await page.keyboard.press('n'); await page.keyboard.press('Control+Period') },
+  quickfix: async () => { await setRole(page, 'design'); await page.keyboard.press('4'); await page.keyboard.press('F8'); await page.keyboard.press('Control+Period') },
   history: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('履歴'); await page.keyboard.press('Enter') },
-  weights: async () => { await goto(page, 'R020'); await page.keyboard.press('w') },
+  weights: async () => { await goto(page, 'R020'); await page.keyboard.press('Alt+KeyW') },
   export: async () => page.keyboard.press('Control+e'),
   import: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('JSON を読み込む'); await page.keyboard.press('Enter') },
   confirm: async () => { await page.keyboard.press('Control+k'); await page.getByTestId('palette-input').fill('サンプルデータに戻す'); await page.keyboard.press('Enter') },
-  reply: async () => { await goto(page, 'R016'); await page.keyboard.press('Shift+R') },
+  reply: async () => { await goto(page, 'R016'); await page.keyboard.press('Alt+Shift+KeyR') },
 }
 const PKEYS = ['Control+s', 'Control+p', 'Control+e', 'Control+g', 'Control+Shift+C', 'Control+Shift+F', 'Tab', 'Shift+Tab', 'Space', 'Backspace', 'Alt+ArrowLeft', 'PageDown', 'End', 'F2', 'Control+Enter', 'Control+z', 'Control+y', 'Control+Period', 'Control+ArrowDown', '/']
 total = 0

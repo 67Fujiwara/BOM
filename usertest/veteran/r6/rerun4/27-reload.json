@@ -1,0 +1,36 @@
+{
+  "reloadMidBurst": {
+    "name": "knob",
+    "dialogs": 0,
+    "mode": "ナビ"
+  },
+  "reloadInReplace": {
+    "rows": 80,
+    "R040": "rMY4N-HALF",
+    "panel": null
+  },
+  "reloadAfterMoves": {
+    "movedPersisted": true,
+    "undoneToStart": true,
+    "toast": "元に戻す: 行を移動"
+  },
+  "reloadInImportConfirm": {
+    "panelBefore": "panel-prompt",
+    "project": "P-2026-041"
+  },
+  "paste300": {
+    "n0": 80,
+    "n1": 379,
+    "ms": 173,
+    "confirm": null,
+    "toast": "1500 セルを貼り付けました（299 行追加）（Ctrl+Z で一度に戻せます）",
+    "last": [
+      "R379",
+      "貼付300",
+      "PM-300"
+    ],
+    "afterUndo": 80,
+    "undoMs": 96,
+    "R080": "ラベルプリンタテープ"
+  }
+}

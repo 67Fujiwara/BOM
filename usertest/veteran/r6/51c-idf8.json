@@ -1,0 +1,80 @@
+[
+  {
+    "toks": "x F8 x F8",
+    "g": 0,
+    "cursor": [
+      "R016 ID",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  },
+  {
+    "toks": "x F8 x F8",
+    "g": 450,
+    "cursor": [
+      "R016 ID",
+      "R016 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  },
+  {
+    "toks": "x S-n x",
+    "g": 0,
+    "cursor": [
+      "R016 ID",
+      "R061 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  },
+  {
+    "toks": "x S-n x",
+    "g": 450,
+    "cursor": [
+      "R016 ID",
+      "R061 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  },
+  {
+    "toks": "x S-F8 x",
+    "g": 0,
+    "cursor": [
+      "R016 ID",
+      "R061 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  },
+  {
+    "toks": "x S-F8 x",
+    "g": 450,
+    "cursor": [
+      "R016 ID",
+      "R061 型式"
+    ],
+    "mode": "編集",
+    "edit": "x",
+    "diff": [
+      "R016.ackRules:[]→[\"rule.model.cp30\"]"
+    ]
+  }
+]

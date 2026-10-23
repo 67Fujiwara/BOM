@@ -1,0 +1,6 @@
+1 {"name":"knob","dialogs":0,"mode":"ナビ"}
+2 {"rows":80,"R040":"rMY4N-HALF","panel":null}
+3 {"movedPersisted":true,"undoneToStart":true,"toast":"元に戻す: 行を移動"}
+4 {"panelBefore":"panel-prompt","project":"P-2026-041"}
+5 {"n0":80,"n1":379,"ms":173,"confirm":null,"toast":"1500 セルを貼り付けました（299 行追加）（Ctrl+Z で一度に戻せます）","last":["R379","貼付300","PM-300"],"afterUndo":80,"undoMs":96,"R080":"ラベルプリンタテープ"}
+--- console/page errors (27): 0 (uniq 0)

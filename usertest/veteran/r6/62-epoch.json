@@ -1,0 +1,58 @@
+{
+  "build-current sample": {
+    "down": 20,
+    "view": 47,
+    "space": 37,
+    "enter": 82,
+    "load": null
+  },
+  "build-current 2025-10-23T00:00:00.000Z": {
+    "down": 10,
+    "view": 41,
+    "space": 37,
+    "enter": 118,
+    "load": 396
+  },
+  "build-current 2000-01-01T00:00:00.000Z": {
+    "down": 29,
+    "view": 303,
+    "space": 312,
+    "enter": 527,
+    "load": 461
+  },
+  "build-current 1970-01-01T00:00:00.000Z": {
+    "down": 33,
+    "view": 613,
+    "space": 564,
+    "enter": 1009,
+    "load": 813
+  },
+  "build-r5 sample": {
+    "down": 15,
+    "view": 36,
+    "space": 43,
+    "enter": 70,
+    "load": null
+  },
+  "build-r5 2025-10-23T00:00:00.000Z": {
+    "down": 9,
+    "view": 45,
+    "space": 44,
+    "enter": 115,
+    "load": 143
+  },
+  "build-r5 2000-01-01T00:00:00.000Z": {
+    "down": 23,
+    "view": 337,
+    "space": 261,
+    "enter": 501,
+    "load": 432
+  },
+  "build-r5 1970-01-01T00:00:00.000Z": {
+    "down": 33,
+    "view": 547,
+    "space": 525,
+    "enter": 981,
+    "load": 729
+  }
+}

@@ -313,3 +313,17 @@
 {"name":"設計 分類の見出し","w":"<5mm","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
 {"name":"設計 分類の見出し","w":"<5mm","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
 {"name":"設計 分類の見出し","w":">85","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":">85","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"[A]1","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"[A]1","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"/30","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"/30","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"?x","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"?x","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"-5","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"-5","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"+5","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"+5","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"#3","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"#3","gap":40,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}
+{"name":"設計 分類の見出し","w":"@x","gap":0,"editable":false,"start":"分類 制御","after":"view-1/分類 制御/ナビ","diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"],"bad":false}

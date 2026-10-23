@@ -413,3 +413,16 @@ test('Enter で始めた数値の編集は上書き、書けない列の数字�
   await expect(page.getByTestId('toast')).not.toContainText('権限なし')
   await expect(page.getByTestId('mode')).not.toHaveText('編集')
 })
+
+test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにそのまま入る', async ({ page }) => {
+  await open(page)
+  await gotoCell(page, 'R040', '型式')
+  await page.keyboard.type('<5mm', { delay: 30 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R040"] td[data-col="model"]')).toHaveText('<5mm')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
+  await gotoCell(page, 'R001', '型式')
+  await page.keyboard.type('[A]CN-12', { delay: 30 })
+  await page.keyboard.press('Enter')
+  await expect(page.locator('[data-row-id="R001"] td[data-col="model"]')).toHaveText('[A]CN-12')
+})

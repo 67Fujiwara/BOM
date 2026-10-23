@@ -413,15 +413,20 @@ function printable(e: KeyboardEvent): boolean {
  */
 export function onCommandCell(ch = ''): boolean {
   const s = st()
-  if (!visibleCursorRow()) return /^\d$/.test(ch)
+  // 記号（? / [ ] < > など）。文字を打てるセルでは値の打ち始め（<5mm・[A]CN-12）、それ以外では 1 キー操作
+  const sym = ch !== '' && !/^[A-Za-z0-9]$/.test(ch)
+  if (!visibleCursorRow()) return /^\d$/.test(ch) || sym
   if (s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool') return true
-  // 自分が書けない列では、数字はビュー切替（値にならないので、打ち間違えても何も書き換わらない）
-  if (/^\d$/.test(ch) && rows.canEdit(s.cursorCol)) return true
+  // 自分が書けない列では、数字・記号は 1 キー操作（値にならないので、打ち間違えても何も書き換わらない）
+  if ((/^\d$/.test(ch) || sym) && rows.canEdit(s.cursorCol)) return true
   // このビューに自分が書ける列が 1 つも無いとき（PM はどの列も書かない）は、どの列でも 1 キー操作（§9.1: 7 の y / Shift+Y）
   return !vm().columns.some((c) => !rows.canEdit(c))
 }
 /** Alt+英字・Alt+数字 → その 1 キー操作（Alt 付きで別に決まっている操作があればそちらが先） */
 function altBinding(key: string) {
+  // Alt+記号（Alt+/ 絞り込み・Alt+? ヘルプ・Alt+[ 分類）は、その記号の 1 キー操作
+  const sym = /^Alt\+([^A-Za-z0-9 ])$/.exec(key)
+  if (sym) return lookupBinding(sym[1], 'nav')
   const m = /^Alt\+(Shift\+)?([A-Z0-9])$/.exec(key)
   if (!m) return undefined
   if (/\d/.test(m[2])) return m[1] ? undefined : lookupBinding(m[2], 'nav')
@@ -451,7 +456,11 @@ export function handleKeyDown(e: KeyboardEvent) {
   const target = e.target as HTMLElement | null
   const inInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement
   // 「戻る」（Alt+← / Alt+→ / Cmd+[ ]）や Ctrl+G 検索などのブラウザ既定動作は、どの場面でも止める（入力中の内容を失わない）
-  if (/^(Ctrl\+)?Alt\+(Shift\+)?([A-Z0-9]|Home|End)$/.test(key)) e.preventDefault()
+  // ただし入力欄で OS が文字を作ったとき（macOS の Option+m の µ・Option+z の Ω など）は、その文字を入れる
+  const osChar = e.altKey && e.key.length === 1 && !/^[A-Za-z0-9]$/.test(e.key)
+  if (/^(Ctrl\+)?Alt\+(Shift\+)?([A-Z0-9]|Home|End)$/.test(key) && !(inInput && osChar)) e.preventDefault()
+  // 編集中の Alt+↑↓ は表をスクロールさせない（入力欄が見えなくなる）
+  if (s.mode === 'edit' && /^Alt\+Arrow(Up|Down)$/.test(key)) e.preventDefault()
   if (/^(Alt\+Arrow(Left|Right)|Ctrl\+\[|Ctrl\+\]|Ctrl\+G|Ctrl\+Shift\+[CF]|Ctrl\+\.|Ctrl\+Shift\+\.|Ctrl\+P|Ctrl\+S|Ctrl\+E)$/.test(key) || (key === 'Ctrl+A' && !inInput)) e.preventDefault()
   // ヘッダーのボタンなどにフォーカスがあるときの Space/Enter は表の操作として扱う（ボタンを二度押さない）
   if (target instanceof HTMLButtonElement && (key === ' ' || key === 'Enter')) {
@@ -573,7 +582,7 @@ export function handleKeyDown(e: KeyboardEvent) {
   if (inInput) return
   // ナビモード
   // 英字・数字（Shift 付きも）は、1 キー操作の列でなければ値の打ち始め（下の「割り当ての無い文字」と同じ扱い）
-  const typedChar = printable(e) && /^[A-Za-z0-9]$/.test(e.key)
+  const typedChar = printable(e) && e.key !== ' '
   const chained = altChain && (key === 'Alt+ArrowUp' || key === 'Alt+ArrowDown')
   const b = typedChar && !onCommandCell(e.key) ? undefined : chained ? lookupBinding(key.slice(4), 'nav') : (lookupBinding(key, 'nav') ?? altBinding(key))
   if (b && /^Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) altChain = true

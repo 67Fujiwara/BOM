@@ -15,7 +15,7 @@ import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
 import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
 import { normalize, setStatus } from '@/model/lifecycle'
-import { clearBackups, loadBackups, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
+import { backupsSnapshot, clearBackups, loadBackups, restoreBackupsSnapshot, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
@@ -134,6 +134,22 @@ export function ensureCursor() {
   if (!items.length) return
   if (!s.cursorRow || !items.some((i) => i.key === s.cursorRow)) set({ cursorRow: items.find((i) => i.kind === 'row')?.key ?? items[0].key })
   ensureCol()
+}
+/**
+ * カーソルの行がこのビューから消えたら（自分や別のタブが隠した・状態が変わった）、同じ位置の行（無ければ上の行）へ移す。
+ * 行を選んでいない状態にしない（英字が効かなくなる）。before は変わる前に見えていた行の ID
+ */
+export function keepCursorVisible(before: string[]) {
+  const s = st()
+  const cur = s.cursorRow
+  if (!cur || cur.startsWith('g:') || s.mode === 'edit') return
+  const after = vm().rows.map((x) => x.id)
+  if (after.includes(cur)) return
+  const at = before.indexOf(cur)
+  if (at < 0) return
+  const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
+  if (next) set({ cursorRow: next })
+  else ensureCursor()
 }
 export function jumpToRow(id: string, col?: string) {
   const s = st()
@@ -363,12 +379,20 @@ function gotoProblem(delta: 1 | -1): boolean {
   const stay = s.cursorCol === 'id' || s.cursorCol === 'status'
   const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
+  // 直した・確認した問題は一覧から消えるので、前に飛んだ位置から続ける（先頭に戻って間の問題を飛ばさない）
+  if (idx < 0 && lastProblem && lastProblem.rowId === s.cursorRow) {
+    const at = Math.min(lastProblem.idx, list.length) // 消えた問題の次は同じ番号に詰まっている
+    next = delta > 0 ? at % list.length : (at - 1 + list.length) % list.length
+  }
   // 列を変えないときは、同じ行の別の問題を飛ばして次の行へ
   if (stay && idx >= 0) while (list[next].rowId === s.cursorRow && next !== idx) next = (next + delta + list.length) % list.length
+  lastProblem = { rowId: list[next].rowId, idx: next }
   if (stay) jumpToRow(list[next].rowId)
   else jumpToRow(list[next].rowId, list[next].field)
   return true
 }
+/** 最後に F8 / n で飛んだ問題（行と一覧の中の番号） */
+let lastProblem: { rowId: string; idx: number } | null = null
 
 // ---------- Ctrl+. 候補 ----------
 export function quickfixOptions(r: Row, field: string): PanelOption[] {
@@ -902,8 +926,12 @@ function restoreBackup(b: Backup) {
   const ws = res.ws
   const cur = st().ws
   confirmDanger(`退避したデータ（${fmtDateTime(b.at)}・${b.reason}・案件 ${ws.projects.length} 件）に戻します。いまの内容は退避に入れます`, '戻す', () => {
+    const before = backupsSnapshot()
     const backedUp = saveBackup(JSON.stringify(cur), '退避からの復元の前')
-    if (!replaceWorkspace(ws)) return toast('保存領域が足りないため戻せませんでした（いまの内容のまま）', 'err')
+    if (!replaceWorkspace(ws)) {
+      restoreBackupsSnapshot(before)
+      return toast('保存領域が足りないため戻せませんでした（いまの内容のまま。退避も前のまま）', 'err')
+    }
     toast(`退避したデータに戻しました（案件 ${ws.projects.length} 件）${backedUp ? '' : '。いまの内容は容量不足で退避できませんでした'}`, backedUp ? 'ok' : 'info')
   })
 }
@@ -1233,16 +1261,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       return
     case 'row.toggleHidden': {
       if (!need()) return
-      // 隠した行がこのビューから消えるなら、カーソルを同じ位置の行（無ければ上の行）へ移す（行を選んでいない状態にしない）
       const before = vm().rows.map((x) => x.id)
-      const at = before.indexOf(r!.id)
       rows.toggleHidden(r!.id)
-      const after = vm().rows.map((x) => x.id)
-      if (at >= 0 && !after.includes(r!.id)) {
-        const next = before.slice(at + 1).find((id) => after.includes(id)) ?? before.slice(0, at).reverse().find((id) => after.includes(id))
-        if (next) set({ cursorRow: next })
-        else ensureCursor()
-      }
+      keepCursorVisible(before)
       return
     }
     case 'sort.asc':
@@ -1520,8 +1541,13 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           if (!res.ws) return toast(`読み込めません: ${res.error}`, 'err')
           const ws = res.ws
           const cur = st().ws
+          const before = backupsSnapshot()
           const done = (backedUp: boolean) => {
-            if (!replaceWorkspace(ws)) return toast('保存領域が足りないため読み込みませんでした（いまの内容のまま）。「退避データを消す」で空きを作ってから読み込んでください', 'err')
+            if (!replaceWorkspace(ws)) {
+              // 読み込みをやめたので、今とった退避も取り消す（前の「読み込み前」の退避を押し出したままにしない）
+              restoreBackupsSnapshot(before)
+              return toast('保存領域が足りないため読み込みませんでした（いまの内容のまま。退避も前のまま）。「退避データを消す」で空きを作ってから読み込んでください', 'err')
+            }
             toast(`JSON を読み込みました（案件 ${ws.projects.length} 件）${res.warnings?.length ? `。外した項目: ${res.warnings.slice(0, 2).join(' / ')}` : ''}${backedUp ? '。戻すときは Ctrl+K →「読み込み前に戻す」' : '（退避なし）'}`, res.warnings?.length ? 'info' : 'ok')
           }
           confirmDanger(`全案件（いま ${cur.projects.length} 件）を JSON の ${ws.projects.length} 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます`, '置き換える', () => {

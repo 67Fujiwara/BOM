@@ -5,7 +5,7 @@ import { onCommandCell } from '@/commands/keyboard'
 
 /** 英字・数字 1 キーの操作は、いまのセルで素のキーが値になるなら Alt 付きで見せる（§14.1） */
 function navKey(k: string): string {
-  if (!/^(Shift\+)?[A-Za-z0-9]$/.test(k)) return k
+  if (!/^(Shift\+)?[A-Za-z0-9]$/.test(k) && !/^[^A-Za-z0-9 ]$/.test(k)) return k
   return onCommandCell(k.slice(-1)) ? k : `Alt+${k}`
 }
 import { COLUMNS } from '@/model/columns'

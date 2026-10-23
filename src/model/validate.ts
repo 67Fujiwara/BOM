@@ -77,7 +77,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
-      settings: isObj(p0.settings) ? coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: arr<unknown>(p0.settings.holidays).filter((x) => typeof x === 'string') }) : { ...DEFAULT_SETTINGS },
+      settings: isObj(p0.settings) ? clampSettings(coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: arr<unknown>(p0.settings.holidays).filter((x) => typeof x === 'string') })) : { ...DEFAULT_SETTINGS },
       events: arr<Project['events'][number]>(p0.events).filter(isObj).map((ev) => ({ ...ev, by: userOf(ev.by, fallbackUser), text: typeof ev.text === 'string' ? ev.text : '' })),
       createdAt: typeof p0.createdAt === 'string' ? p0.createdAt : now,
       updatedAt: typeof p0.updatedAt === 'string' ? p0.updatedAt : now,
@@ -152,7 +152,7 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
     }
   }
   for (const [k, x] of Object.entries(v)) if (!(k in out)) out[k] = x
-  return out as T
+  return out as unknown as T
 }
 
 /** 商社マスタ: id と名前が文字の商社だけ。足りない項目は既定で補う。1 社も無ければサンプルの商社 */
@@ -184,4 +184,19 @@ function rulesOf(v: unknown, warnings: string[]): Workspace['rules'] {
   const ok = v.filter((x): x is Workspace['rules'][number] => isObj(x) && str(x.id) && str(x.type) && str(x.field) && typeof x.message === 'string' && regexOk(x.pattern) && regexOk(x.when))
   if (ok.length < v.length) warnings.push(`ルールの ${v.length - ok.length} 件は形式が読めないので外しました`)
   return ok
+}
+
+/** 案件設定の日数・金額を、設定画面と同じ範囲に収める（JSON の 1e8 日などで処理が止まらないように） */
+function clampSettings<T extends object>(st: T): T {
+  const out = { ...st } as unknown as Record<string, unknown>
+  const clamp = (k: string, min: number, max: number, int = false) => {
+    const v = out[k]
+    if (typeof v !== 'number' || !Number.isFinite(v)) return
+    const c = Math.min(max, Math.max(min, int ? Math.round(v) : v))
+    out[k] = c
+  }
+  for (const k of ['processDays', 'quoteDays', 'formalDays', 'leadMarginDays']) clamp(k, 0, 365, true)
+  for (const k of ['externalApprovalBudgetPct', 'exceptionPct', 'formalDiffPct', 'qtyTolerancePct', 'tieThreshold']) clamp(k, 0, 100)
+  for (const k of ['externalApprovalAmount', 'exceptionAmount', 'formalDiffAmount', 'surplusAmount', 'budget']) clamp(k, 0, 1e12)
+  return out as unknown as T
 }

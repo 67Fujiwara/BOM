@@ -52,6 +52,8 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   // ID・状態・チェックの列以外では英字は入力になるので、英字の操作は Alt を付けて案内する（n は F8）
   if (st.mode === 'nav' && !onCommandCell('a')) for (const h of hints) if (/^(Shift\+)?[A-Za-z]$/.test(h[0])) h[0] = h[0] === 'n' ? 'F8' : `Alt+${h[0]}`
   if (!row) for (const h of hints) if (h[0] === 'n') h[0] = 'F8'
+  // 文字を打てるセルでは ? も値になるので、ヘルプは F1 で案内する
+  if (st.mode === 'nav' && !onCommandCell('?')) for (const h of hints) if (h[0] === '?') h[0] = 'F1'
   const problemHint = (() => {
     if (!row) return ''
     const iss = openIssues(p, row.id).filter((i) => i.status === 'open' || i.status === 'inProgress')

@@ -1,0 +1,75 @@
+suppliers S1:因幡電機:三菱電機/オムロン/フエニックス/TDKラムダ/住友電装/ニチフ/パトライト/興和化成 | S2:立花エレテック:三菱電機/オムロン/フエニックス/TDKラムダ/音羽電機/パナソニック/オリエンタルモーター | S3:ミスミ: | S4:RSコンポーネンツ: | S5:オムロン直販:オムロン project sups [ 'S1', 'S2', 'S3' ]
+fixed rows in sample [ 'R034', 'R045' ]
+R034 客先指定品 des=オムロン / 客先承認 KS-2026-118 maker=オムロン st=selected adopt=S1 oq=1 reason=指定先（固定） quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+R045 指定商社 des=S2 maker=オムロン st=selected adopt=S2 oq=1 reason=指定先（固定） quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+money 概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)
+hand rough 23692
+PASS W2-1 ヘッダー概算に指定系の行も含まれ、手計算と一致 :: 概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%) vs 23692
+Shift+A R045 → {"kind":"adopt","options":[],"index":0} 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R045 detail: 相見積・スコア内訳 （必要日 11/11 / 必要数 1個 / 基準日 10/22）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 立花エレテック¥10,13912日取寄1 9810010090100最安 / 期限 12/11因幡電機¥8,81116日受注生産1期限 12/09ミスミ¥9,04728日取寄1期限 12/19採用: 立花エレテック  理由: 指定先（固定） 指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴
+R081 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R082 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R083 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+problems k3 []
+publish → [変更セット（8 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=submitted adopt=- oq=null reason= quotes=[["S1",null,null]]
+R082 指定商社 des=立花エレテック maker=三菱電機 st=submitted adopt=- oq=null reason= quotes=[["S2",null,null]]
+R083 指定商社 des=立花エレテク maker=オムロン st=submitted adopt=- oq=null reason= quotes=[["S1",null,null]]
+request → 8 行 × 3 社に依頼（回答期限 2026-10-28）
+request files {"download":["R076","R077","R078","R079","R080"]}
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=quoting adopt=- oq=null reason= quotes=[["S1",null,null]]
+R082 指定商社 des=立花エレテック maker=三菱電機 st=quoting adopt=- oq=null reason= quotes=[["S2",null,null]]
+R083 指定商社 des=立花エレテク maker=オムロン st=quoting adopt=- oq=null reason= quotes=[["S1",null,null]]
+PASS W2-2 客先指定品はメーカ（オムロン）を扱う第 1 商社 1 社にだけ依頼 :: S1
+PASS W2-3 指定商社（立花）は立花 1 社にだけ依頼 :: S2
+W2-x 指定先の誤記（立花エレテク）の行の依頼先 S1
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+after entering OTHER supplier first: R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S1",null,null],["S2",500,3]]
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-10-28）
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S1",800,5],["S2",500,3]]
+R082 指定商社 des=立花エレテック maker=三菱電機 st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S2",12000,5],["S1",9000,5]]
+FAIL W2-4 客先指定品は指定（依頼）先の見積で選定済（スコアなし） :: R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S1",800,5],["S2",500,3]]
+PASS W2-5 指定商社は指定先 S2 で選定済（安い S1 があっても） :: R082 指定商社 des=立花エレテック maker=三菱電機 st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S2",12000,5],["S1",9000,5]]
+consolidate 因幡電機 :: 67/76 行を集約（残りはいまの採用のまま）、総額 ¥18,744,877（差 +¥155,594）、最長納期 27 日
+apply → 集約: 63 行を付け替え（PM承認待ち 8）
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=selected adopt=S1 oq=4 reason=集約 quotes=[["S1",800,5],["S2",500,3]]
+R082 指定商社 des=立花エレテック maker=三菱電機 st=selected adopt=S2 oq=4 reason=指定先（固定） quotes=[["S2",12000,5],["S1",9000,5]]
+R045 指定商社 des=S2 maker=オムロン st=selected adopt=S2 oq=1 reason=指定先（固定） quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+R034 客先指定品 des=オムロン / 客先承認 KS-2026-118 maker=オムロン st=selected adopt=S1 oq=1 reason=指定先（固定） quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+PASS W2-6 集約（因幡のみ）でも指定商社・客先指定品の採用は変わらない
+formal → 正式見積依頼書（社外）を出します: 対象 61 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 61 行 × 2 社に正式見積を依頼
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=formalRequested adopt=S1 oq=4 reason=集約 quotes=[["S1",800,5],["S2",500,3]] "P-2026-041-S1-F1"
+R034 客先指定品 des=オムロン / 客先承認 KS-2026-118 maker=オムロン st=formalRequested adopt=S1 oq=1 reason=指定先（固定） quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+EDIT-ERR 61 行 × 2 社に正式見積を依頼
+o k1 → R081: 発注済にしました
+o R034 → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+R081 客先指定品 des=客先承認 KS-1 maker=オムロン st=ordered adopt=S1 oq=4 reason=集約 quotes=[["S1",800,5],["S2",500,3]]
+R034 客先指定品 des=オムロン / 客先承認 KS-2026-118 maker=オムロン st=formalRequested adopt=S1 oq=1 reason=指定先（固定） quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+PASS W2-7 客先指定品を正式見積 → 発注まで進められる
+export options ["社内（採用・金額・状態つき）","商社向け: 因幡電機（その商社に頼む行だけ・価格列なし）","商社向け: 立花エレテック（その商社に頼む行だけ・価格列なし）","商社向け: ミスミ（その商社に頼む行だけ・価格列なし）","商社向け: 全商社共通（提出済の全行・価格列なし）","保管用（全列・商社別見積つき）"]
+S1 file download 83 has k2(立花指定)? true has R045? true hdr ID|回路記号|図面番号|分類|部品名|型式|メーカ|必要数|単位|入数|調達区分|メーカ指定|代替可否|必要日|備考
+S2 file download 82 has k2? true has R045? true
+FAIL W2-8 商社向け（因幡）に立花指定の行が出ない
+PASS W2-9 商社向け（立花）に立花指定の行が出る
+== 7/9 PASS

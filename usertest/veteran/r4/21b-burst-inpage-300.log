@@ -1,0 +1,18 @@
+dev OK DRV8833 | mode 編集 edit "DRV8833" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"DRV8833"}]}} | maxLag 266 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+dev OK STM32F103 | mode 編集 edit "STM32F103" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"STM32F103"}]}} | maxLag 657 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+dev NG S1 | mode ナビ edit null | panel null | rows 300→300 | changed  | maxLag 341 | 型式 で降順に並べました（もう一度で解除）
+dev OK NJM2904 | mode 編集 edit "NJM2904" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"NJM2904"}]}} | maxLag 237 | 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
+dev OK knob | mode 編集 edit "knob" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"knob"}]}} | maxLag 5 | 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+dev OK hook | mode 編集 edit "hook" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"hook"}]}} | maxLag 241 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+dev OK fuse | mode 編集 edit "fuse" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"fuse"}]}} | maxLag 152 | 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+dev OK xtal | mode 編集 edit "xtal" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"xtal"}]}} | maxLag 234 | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+dev errors []
+build OK DRV8833 | mode 編集 edit "DRV8833" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"DRV8833"}]}} | maxLag 48 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+build OK STM32F103 | mode 編集 edit "STM32F103" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"STM32F103"}]}} | maxLag 260 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+build OK S1 | mode 編集 edit "S1" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"S1"}]}} | maxLag 54 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+build OK NJM2904 | mode 編集 edit "NJM2904" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"model":"NJM2904"}]}} | maxLag 31 | 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
+build OK knob | mode 編集 edit "knob" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"knob"}]}} | maxLag 1 | 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+build OK hook | mode 編集 edit "hook" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"hook"}]}} | maxLag 21 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+build OK fuse | mode 編集 edit "fuse" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"fuse"}]}} | maxLag 36 | 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+build OK xtal | mode 編集 edit "xtal" | panel null | rows 300→300 | changed {"id":"R040","ch":{"working":[null,{"name":"xtal"}]}} | maxLag 3 | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+build errors []

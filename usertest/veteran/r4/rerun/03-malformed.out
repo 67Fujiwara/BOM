@@ -1,0 +1,6 @@
+[]
+suppliersNull {"toast":"","crashAfterImport":1,"crashAfterReload":1,"crashButtons":["再読み込み","データを JSON で退避","退避したデータに戻す","サンプルに戻す"],"recovery":{"afterReset":{"crash":1,"ids":["S"]},"dialogs":["confirm: サンプルデータに戻します。いまのデータは退避に入れます（あとで「退避したデータに戻す」で戻せます）。よろしいですか？"]}}
+--- console/page errors (03): 5 (uniq 3)
+   error | fresh | %o  %s  %s  TypeError: Cannot read properties of null (reading 'id')     at http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:50     at Array.find (<anonymous>)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:36)     at http://localhost:5173/src/ui/Gr
+   error | fresh | TypeError: Cannot read properties of null (reading 'id')     at http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:50     at Array.find (<anonymous>)     at cellText (http://localhost:5173/src/model/selectors.ts?t=1792726493382:135:36)     at http://localhost:5173/src/ui/Grid.tsx?t=179
+   dialog | fresh | confirm: サンプルデータに戻します。いまのデータは退避に入れます（あとで「退避したデータに戻す」で戻せます）。よろしいですか？

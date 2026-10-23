@@ -1,0 +1,2710 @@
+{
+  "dev": [
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "K1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R039 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 1
+        },
+        {
+          "k": "1",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "J1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R041 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "J12",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R041 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 12
+        },
+        {
+          "k": "2",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "N1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R061 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 77
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "k1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R039 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "k",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "K3HB-X",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R001 型式",
+      "mode": "編集",
+      "editVal": "HB-X",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R001\",\"ch\":{\"working\":[null,{\"model\":\"HB-X\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 0
+        },
+        {
+          "k": "H",
+          "lag": 0
+        },
+        {
+          "k": "B",
+          "lag": 17
+        },
+        {
+          "k": "-",
+          "lag": 14
+        },
+        {
+          "k": "X",
+          "lag": 22
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "J7KN-10",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R003 型式",
+      "mode": "編集",
+      "editVal": "KN-10",
+      "panel": null,
+      "toast": "続けて打たれたので「K」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R003\",\"ch\":{\"working\":[null,{\"model\":\"KN-10\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "7",
+          "lag": 8
+        },
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "N",
+          "lag": 8
+        },
+        {
+          "k": "-",
+          "lag": 3
+        },
+        {
+          "k": "1",
+          "lag": 0
+        },
+        {
+          "k": "0",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "K8AK-AS1",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R001 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "R001 を 因幡電機 で採用",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R001\",\"ch\":{\"flags\":[{\"leadNG\":false},{\"leadNG\":false,\"pmPending\":false,\"contested\":false}],\"orderQty\":[null,1],\"scoreSnapshot\":[88,99.2]}}"
+      ],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "8",
+          "lag": 0
+        },
+        {
+          "k": "A",
+          "lag": 19
+        },
+        {
+          "k": "K",
+          "lag": 12
+        },
+        {
+          "k": "-",
+          "lag": 1
+        },
+        {
+          "k": "A",
+          "lag": 1
+        },
+        {
+          "k": "S",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "ADP3338",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "R040 を ミスミ で採用",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        7
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"status\":[\"quoted\",\"selected\"],\"flags\":[{},{\"pmPending\":false,\"contested\":false,\"leadNG\":false}],\"orderQty\":[null,2],\"statusChangedAt\":[\"2026-10-21T03:46:48.825Z\",\"2026-10-23T03:46:50.137Z\"],\"adoptedSupplierId\":[null,\"S3\"],\"adoptReason\":[null,\"実績/品質\"],\"scoreSnapshot\":[null,90]}}"
+      ],
+      "lags": [
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "P",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 108
+        },
+        {
+          "k": "8",
+          "lag": 122
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "AD8605",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-adopt",
+      "toast": "1〜3 で商社を選んでください",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "D",
+          "lag": 1
+        },
+        {
+          "k": "8",
+          "lag": 0
+        },
+        {
+          "k": "6",
+          "lag": 0
+        },
+        {
+          "k": "0",
+          "lag": 0
+        },
+        {
+          "k": "5",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "INA219",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-issue",
+      "toast": "種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "I",
+          "lag": 0
+        },
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "A",
+          "lag": 87
+        },
+        {
+          "k": "2",
+          "lag": 78
+        },
+        {
+          "k": "1",
+          "lag": 68
+        },
+        {
+          "k": "9",
+          "lag": 24
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "メーカ",
+      "rid": "R040",
+      "text": "wago",
+      "kind": "text",
+      "cursorBefore": "R040 メーカ",
+      "cursorAfter": "R040 メーカ",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "w",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "g",
+          "lag": 21
+        },
+        {
+          "k": "o",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "coil",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-columns",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "c",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "i",
+          "lag": 56
+        },
+        {
+          "k": "l",
+          "lag": 11
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "wire",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "w",
+          "lag": 0
+        },
+        {
+          "k": "i",
+          "lag": 0
+        },
+        {
+          "k": "r",
+          "lag": 0
+        },
+        {
+          "k": "e",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "DRV8833",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "DRV8833",
+      "panel": null,
+      "toast": "続けて打たれたので「D」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"DRV8833\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "R",
+          "lag": 122
+        },
+        {
+          "k": "V",
+          "lag": 202
+        },
+        {
+          "k": "8",
+          "lag": 179
+        },
+        {
+          "k": "8",
+          "lag": 155
+        },
+        {
+          "k": "3",
+          "lag": 129
+        },
+        {
+          "k": "3",
+          "lag": 103
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "STM32F103",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "STM32F103",
+      "panel": null,
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"STM32F103\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "S",
+          "lag": 1
+        },
+        {
+          "k": "T",
+          "lag": 281
+        },
+        {
+          "k": "M",
+          "lag": 380
+        },
+        {
+          "k": "3",
+          "lag": 373
+        },
+        {
+          "k": "2",
+          "lag": 352
+        },
+        {
+          "k": "F",
+          "lag": 360
+        },
+        {
+          "k": "1",
+          "lag": 340
+        },
+        {
+          "k": "0",
+          "lag": 317
+        },
+        {
+          "k": "3",
+          "lag": 293
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "S1",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "S1",
+      "panel": null,
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"S1\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "S",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 150
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "NJM2904",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "NJM2904",
+      "panel": null,
+      "toast": "続けて打たれたので「N」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"NJM2904\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "J",
+          "lag": 72
+        },
+        {
+          "k": "M",
+          "lag": 80
+        },
+        {
+          "k": "2",
+          "lag": 75
+        },
+        {
+          "k": "9",
+          "lag": 55
+        },
+        {
+          "k": "0",
+          "lag": 48
+        },
+        {
+          "k": "4",
+          "lag": 26
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "knob",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "knob",
+      "panel": null,
+      "toast": "続けて打たれたので「k」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"knob\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "k",
+          "lag": 0
+        },
+        {
+          "k": "n",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 1
+        },
+        {
+          "k": "b",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "hook",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "hook",
+      "panel": null,
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"hook\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "h",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 10
+        },
+        {
+          "k": "o",
+          "lag": 66
+        },
+        {
+          "k": "k",
+          "lag": 41
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "relay",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "relay",
+      "panel": null,
+      "toast": "続けて打たれたので「r」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"relay\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "r",
+          "lag": 0
+        },
+        {
+          "k": "e",
+          "lag": 1
+        },
+        {
+          "k": "l",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "y",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "fuse",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "fuse",
+      "panel": null,
+      "toast": "続けて打たれたので「f」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"fuse\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "f",
+          "lag": 0
+        },
+        {
+          "k": "u",
+          "lag": 10
+        },
+        {
+          "k": "s",
+          "lag": 147
+        },
+        {
+          "k": "e",
+          "lag": 121
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "oscillator",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "oscillator",
+      "panel": null,
+      "toast": "続けて打たれたので「o」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"oscillator\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "s",
+          "lag": 1
+        },
+        {
+          "k": "c",
+          "lag": 0
+        },
+        {
+          "k": "i",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "t",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "r",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "xtal",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "xtal",
+      "panel": null,
+      "toast": "続けて打たれたので「x」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"xtal\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "x",
+          "lag": 0
+        },
+        {
+          "k": "t",
+          "lag": 1
+        },
+        {
+          "k": "a",
+          "lag": 16
+        },
+        {
+          "k": "l",
+          "lag": 25
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "hjhjhj",
+      "kind": "cmd",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "hjhjhj",
+      "panel": null,
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"hjhjhj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "h",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 90
+        },
+        {
+          "k": "h",
+          "lag": 162
+        },
+        {
+          "k": "j",
+          "lag": 139
+        },
+        {
+          "k": "h",
+          "lag": 114
+        },
+        {
+          "k": "j",
+          "lag": 88
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "ajaj",
+      "kind": "cmd",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "ajaj",
+      "panel": null,
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"ajaj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "a",
+          "lag": 2
+        },
+        {
+          "k": "j",
+          "lag": 87
+        },
+        {
+          "k": "a",
+          "lag": 187
+        },
+        {
+          "k": "j",
+          "lag": 175
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "s4",
+      "kind": "cmd",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "s4",
+      "panel": null,
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"s4\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "s",
+          "lag": 0
+        },
+        {
+          "k": "4",
+          "lag": 125
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "Dj",
+      "kind": "cmd",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "Dj",
+      "panel": null,
+      "toast": "続けて打たれたので「D」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"Dj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 78
+        }
+      ],
+      "ok": false
+    }
+  ],
+  "build": [
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "K1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R039 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "J1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R041 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 3
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "J12",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R041 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        },
+        {
+          "k": "2",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "N1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R061 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 5
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "回路記号",
+      "rid": "R040",
+      "text": "k1",
+      "kind": "text",
+      "cursorBefore": "R040 回路記号",
+      "cursorAfter": "R039 回路記号",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "k",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "K3HB-X",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R001 型式",
+      "mode": "編集",
+      "editVal": "HB-X",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R001\",\"ch\":{\"working\":[null,{\"model\":\"HB-X\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 0
+        },
+        {
+          "k": "H",
+          "lag": 19
+        },
+        {
+          "k": "B",
+          "lag": 0
+        },
+        {
+          "k": "-",
+          "lag": 0
+        },
+        {
+          "k": "X",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "J7KN-10",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R003 型式",
+      "mode": "編集",
+      "editVal": "KN-10",
+      "panel": null,
+      "toast": "続けて打たれたので「K」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R003\",\"ch\":{\"working\":[null,{\"model\":\"KN-10\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "J",
+          "lag": 0
+        },
+        {
+          "k": "7",
+          "lag": 1
+        },
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "-",
+          "lag": 1
+        },
+        {
+          "k": "1",
+          "lag": 0
+        },
+        {
+          "k": "0",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "K8AK-AS1",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R001 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "R001 を 因幡電機 で採用",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R001\",\"ch\":{\"flags\":[{\"leadNG\":false},{\"leadNG\":false,\"pmPending\":false,\"contested\":false}],\"orderQty\":[null,1],\"scoreSnapshot\":[88,99.2]}}"
+      ],
+      "lags": [
+        {
+          "k": "K",
+          "lag": 0
+        },
+        {
+          "k": "8",
+          "lag": 0
+        },
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "K",
+          "lag": 1
+        },
+        {
+          "k": "-",
+          "lag": 0
+        },
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "S",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "ADP3338",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "ナビ",
+      "editVal": null,
+      "panel": null,
+      "toast": "R040 を ミスミ で採用",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        7
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"status\":[\"quoted\",\"selected\"],\"flags\":[{},{\"pmPending\":false,\"contested\":false,\"leadNG\":false}],\"orderQty\":[null,2],\"statusChangedAt\":[\"2026-10-21T03:48:06.612Z\",\"2026-10-23T03:48:07.291Z\"],\"adoptedSupplierId\":[null,\"S3\"],\"adoptReason\":[null,\"実績/品質\"],\"scoreSnapshot\":[null,90]}}"
+      ],
+      "lags": [
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "P",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 1
+        },
+        {
+          "k": "3",
+          "lag": 1
+        },
+        {
+          "k": "3",
+          "lag": 41
+        },
+        {
+          "k": "8",
+          "lag": 5
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "AD8605",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-adopt",
+      "toast": "1〜3 で商社を選んでください",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "A",
+          "lag": 0
+        },
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "8",
+          "lag": 1
+        },
+        {
+          "k": "6",
+          "lag": 1
+        },
+        {
+          "k": "0",
+          "lag": 1
+        },
+        {
+          "k": "5",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "INA219",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-issue",
+      "toast": "種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "I",
+          "lag": 0
+        },
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "A",
+          "lag": 20
+        },
+        {
+          "k": "2",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        },
+        {
+          "k": "9",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "メーカ",
+      "rid": "R040",
+      "text": "wago",
+      "kind": "text",
+      "cursorBefore": "R040 メーカ",
+      "cursorAfter": "R040 メーカ",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "w",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "g",
+          "lag": 6
+        },
+        {
+          "k": "o",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "coil",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-columns",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "c",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 1
+        },
+        {
+          "k": "i",
+          "lag": 25
+        },
+        {
+          "k": "l",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "wire",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "パネル",
+      "editVal": null,
+      "panel": "panel-weights",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [],
+      "lags": [
+        {
+          "k": "w",
+          "lag": 0
+        },
+        {
+          "k": "i",
+          "lag": 0
+        },
+        {
+          "k": "r",
+          "lag": 0
+        },
+        {
+          "k": "e",
+          "lag": 5
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "DRV8833",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "DRV8833",
+      "panel": null,
+      "toast": "続けて打たれたので「D」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"DRV8833\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "R",
+          "lag": 0
+        },
+        {
+          "k": "V",
+          "lag": 0
+        },
+        {
+          "k": "8",
+          "lag": 0
+        },
+        {
+          "k": "8",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 1
+        },
+        {
+          "k": "3",
+          "lag": 1
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "STM32F103",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "STM32F103",
+      "panel": null,
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"STM32F103\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "S",
+          "lag": 0
+        },
+        {
+          "k": "T",
+          "lag": 24
+        },
+        {
+          "k": "M",
+          "lag": 43
+        },
+        {
+          "k": "3",
+          "lag": 2
+        },
+        {
+          "k": "2",
+          "lag": 0
+        },
+        {
+          "k": "F",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 0
+        },
+        {
+          "k": "0",
+          "lag": 0
+        },
+        {
+          "k": "3",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "S1",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "S1",
+      "panel": null,
+      "toast": "続けて打たれたので「S」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"S1\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "S",
+          "lag": 0
+        },
+        {
+          "k": "1",
+          "lag": 10
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "NJM2904",
+      "kind": "text",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "NJM2904",
+      "panel": null,
+      "toast": "続けて打たれたので「N」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"NJM2904\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "N",
+          "lag": 0
+        },
+        {
+          "k": "J",
+          "lag": 2
+        },
+        {
+          "k": "M",
+          "lag": 0
+        },
+        {
+          "k": "2",
+          "lag": 11
+        },
+        {
+          "k": "9",
+          "lag": 1
+        },
+        {
+          "k": "0",
+          "lag": 1
+        },
+        {
+          "k": "4",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "knob",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "knob",
+      "panel": null,
+      "toast": "続けて打たれたので「k」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"knob\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "k",
+          "lag": 1
+        },
+        {
+          "k": "n",
+          "lag": 1
+        },
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "b",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "hook",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "hook",
+      "panel": null,
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"hook\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "h",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 12
+        },
+        {
+          "k": "k",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "relay",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "relay",
+      "panel": null,
+      "toast": "続けて打たれたので「r」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"relay\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "r",
+          "lag": 0
+        },
+        {
+          "k": "e",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 1
+        },
+        {
+          "k": "a",
+          "lag": 1
+        },
+        {
+          "k": "y",
+          "lag": 0
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "fuse",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "fuse",
+      "panel": null,
+      "toast": "続けて打たれたので「f」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"fuse\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "f",
+          "lag": 0
+        },
+        {
+          "k": "u",
+          "lag": 3
+        },
+        {
+          "k": "s",
+          "lag": 51
+        },
+        {
+          "k": "e",
+          "lag": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "oscillator",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "oscillator",
+      "panel": null,
+      "toast": "続けて打たれたので「o」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"oscillator\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "s",
+          "lag": 0
+        },
+        {
+          "k": "c",
+          "lag": 0
+        },
+        {
+          "k": "i",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 1
+        },
+        {
+          "k": "t",
+          "lag": 0
+        },
+        {
+          "k": "o",
+          "lag": 0
+        },
+        {
+          "k": "r",
+          "lag": 1
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "xtal",
+      "kind": "text",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "xtal",
+      "panel": null,
+      "toast": "続けて打たれたので「x」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"xtal\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "x",
+          "lag": 3
+        },
+        {
+          "k": "t",
+          "lag": 1
+        },
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "l",
+          "lag": 1
+        }
+      ],
+      "ok": true
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "hjhjhj",
+      "kind": "cmd",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "hjhjhj",
+      "panel": null,
+      "toast": "続けて打たれたので「h」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"hjhjhj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "h",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 0
+        },
+        {
+          "k": "h",
+          "lag": 1
+        },
+        {
+          "k": "j",
+          "lag": 1
+        },
+        {
+          "k": "h",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 1
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "部品名",
+      "rid": "R040",
+      "text": "ajaj",
+      "kind": "cmd",
+      "cursorBefore": "R040 部品名",
+      "cursorAfter": "R040 部品名",
+      "mode": "編集",
+      "editVal": "ajaj",
+      "panel": null,
+      "toast": "続けて打たれたので「a」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"name\":\"ajaj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "a",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 0
+        },
+        {
+          "k": "a",
+          "lag": 7
+        },
+        {
+          "k": "j",
+          "lag": 0
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "s4",
+      "kind": "cmd",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "s4",
+      "panel": null,
+      "toast": "続けて打たれたので「s」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"s4\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "s",
+          "lag": 0
+        },
+        {
+          "k": "4",
+          "lag": 16
+        }
+      ],
+      "ok": false
+    },
+    {
+      "colLabel": "型式",
+      "rid": "R040",
+      "text": "Dj",
+      "kind": "cmd",
+      "cursorBefore": "R040 型式",
+      "cursorAfter": "R040 型式",
+      "mode": "編集",
+      "editVal": "Dj",
+      "panel": null,
+      "toast": "続けて打たれたので「D」はコマンドではなく文字の入力として扱いました",
+      "rows": [
+        80,
+        80
+      ],
+      "hidden": [
+        [],
+        []
+      ],
+      "adopted": [
+        6,
+        6
+      ],
+      "changedRows": [
+        "{\"id\":\"R040\",\"ch\":{\"working\":[null,{\"model\":\"Dj\"}]}}"
+      ],
+      "lags": [
+        {
+          "k": "D",
+          "lag": 0
+        },
+        {
+          "k": "j",
+          "lag": 7
+        }
+      ],
+      "ok": false
+    }
+  ]
+}

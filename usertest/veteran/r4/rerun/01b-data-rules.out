@@ -1,0 +1,11 @@
+V2-02/direct {"toast":"取り込み 3 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 5 件（R033 単価: 単価は 0 以上にしてください: 「-500」、R033 納期: 納期（日）は 0 以上にしてください: 「-3」 …。その行は取り込んでいません）","stillOpen":null,"memory":["R030:1200/14/10","R031:1200/14/null","R032:1200/0/null","R033:106/12/null","R034:356/18/null"],"nanInUi":false,"errors":[]}
+V2-02/goodOnly {"toast":"取り込み 2 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0","memory":["R030:1200/14/10","R031:1200/14/null"],"panel":null}
+V2-02/wholeSheet {"toast":"取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0","memory":["R032:980/10/1"],"panel":null}
+V2-14 {"toast":"取り込み 0 行 / 突合不能 1（R005） / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 1 件（R001: 発注済の行には取り込みません（変えるときは発注後変更依頼）。その行は取り込んでいません）","r001q":[146],"r005q":[8870]}
+V2-03/A {"afterPublish":{"status":"submitted","flags":{"leadNG":false,"requote":true,"reissue":true}},"pmToast":"","oToast":"正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）","status":"submitted","ordered":false,"flags":{"leadNG":false,"requote":true,"reissue":true}}
+V2-03/B {"earlyToast":"R076: 因幡電機 を仮採用。PM の承認待ち（7 要決定）","afterChange":{"status":"quoting","flags":{"contested":false,"requote":true}},"pmToast":"","oToast":"正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）","status":"quoting","ordered":false,"flags":{"contested":false,"requote":true}}
+V2-22 {"orderedEnter":{"mode":"ナビ","toast":"R001 は発注済以降の行です。設計列は変えられません（Shift+I → h 発注後変更依頼）"}}
+V2-21 {"必要数:0x10":{"mode":"編集","err":"必要数として読めません: 「0x10」","stored":2},"必要数:0b11":{"mode":"編集","err":"必要数として読めません: 「0b11」","stored":2},"必要数:0o7":{"mode":"編集","err":"必要数として読めません: 「0o7」","stored":2},"必要数:1e3":{"mode":"編集","err":"必要数として読めません: 「1e3」","stored":2},"必要数:Infinity":{"mode":"編集","err":"必要数として読めません: 「Infinity」","stored":2},"必要数: 12 ":{"mode":"ナビ","stored":12},"必要数:12.5":{"mode":"ナビ","stored":12.5},"必要数:1_000":{"mode":"編集","err":"必要数として読めません: 「1_000」","stored":12.5},"前倒し日数":"col not found"}
+V2-12 {"R039note":"1行目 2行目","R040note":"","toast":"4 セルを貼り付けました（Ctrl+Z で一度に戻せます）","R041":["名前A つづき","MODEL-A"],"R042":["名前B","MODEL-B"]}
+V2-24 {"firstAsc":"NF32-SV 3P 30A","tailAsc":["XS5W-D421-D81-F","XS6W-6LSZH8SS300CM-Y",""],"firstDesc":"XS6W-6LSZH8SS300CM-Y"}
+--- console/page errors (01b): 0 (uniq 0)

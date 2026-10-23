@@ -1,0 +1,25 @@
+{
+  "fieldCrashes": [],
+  "suppliersNull": {
+    "toast": "",
+    "crashAfterImport": 1,
+    "crashAfterReload": 1,
+    "crashButtons": [
+      "再読み込み",
+      "データを JSON で退避",
+      "退避したデータに戻す",
+      "サンプルに戻す"
+    ],
+    "recovery": {
+      "afterReset": {
+        "crash": 1,
+        "ids": [
+          "S"
+        ]
+      },
+      "dialogs": [
+        "confirm: サンプルデータに戻します。いまのデータは退避に入れます（あとで「退避したデータに戻す」で戻せます）。よろしいですか？"
+      ]
+    }
+  }
+}

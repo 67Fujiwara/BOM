@@ -1,0 +1,40 @@
+OK  name knob → "knob" {"cursorRow":["R040","R041"]} 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+OK  maker jst → "jst" {"cursorRow":["R040","R041"]} 続けて打たれたので「j」はコマンドではなく文字の入力として扱いました
+OK  name nand → "nand" {"cursorRow":["R040","R041"]} 続けて打たれたので「n」はコマンドではなく文字の入力として扱いました
+OK  name analog → "analog" {"cursorRow":["R040","R041"]} 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
+OK  name ssr → "ssr" {"cursorRow":["R040","R041"]} 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
+OK  name hook → "hook" {"cursorRow":["R040","R041"]} 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+OK  name relay → "relay" {"cursorRow":["R040","R041"]} 続けて打たれたので「r」はコマンドではなく文字の入力として扱いました
+OK  name fuse → "fuse" {"cursorRow":["R040","R041"]} 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+NG  name coil → "ファイバユニット" {"panel":[null,"columns"]} 保存しました（編集は自動で保存されています）
+OK  name xtal → "xtal" {"cursorRow":["R040","R041"]} 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+NG  name wire → "ファイバユニット" {"panel":[null,"weights"]} 保存しました（編集は自動で保存されています）
+OK  name oscillator → "oscillator" {"cursorRow":["R040","R041"]} 続けて打たれたので「o」はコマンドではなく文字の入力として扱いました
+OK  name inductor → "inductor" {"cursorRow":["R040","R041"]} 続けて打たれたので「i」はコマンドではなく文字の入力として扱いました
+NG  model DRV8833 → "E32-D11 2M" {"rows":[80,81],"cursorRow":["R040","R041"]} 続けて打たれたので「R」はコマンドではなく文字の入力として扱いました
+OK  model STM32F103 → "STM32F103" {"cursorRow":["R040","R041"]} 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+NG  model IRF540N → "E32-D11 2M" {"panel":[null,"issue"]} 種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
+OK  model NJM2904 → "NJM2904" {"cursorRow":["R040","R041"]} 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
+OK  maker JST → "JST" {"cursorRow":["R040","R041"]} 続けて打たれたので「J」はコマンドではなく文字の入力として扱いました
+OK  maker KEMET → "KEMET" {"cursorRow":["R040","R041"]} 続けて打たれたので「K」はコマンドではなく文字の入力として扱いました
+NG  model ADP3338 → "E32-D11 2M" {"view":[1,8],"adopted":[6,7]} R040 を ミスミ で採用
+OK  model RC0603 → "RC0603" {"cursorRow":["R040","R041"]} 続けて打たれたので「R」はコマンドではなく文字の入力として扱いました
+OK  model XC6206 → "XC6206" {"cursorRow":["R040","R041"]} 続けて打たれたので「X」はコマンドではなく文字の入力として扱いました
+OK  maker YAGEO → "YAGEO" {"cursorRow":["R040","R041"]} 続けて打たれたので「Y」はコマンドではなく文字の入力として扱いました
+OK  model MY4N → "MY4N" {"cursorRow":["R040","R041"]} 保存しました（編集は自動で保存されています）
+NG  model 2SC1815 → "SC1815" {"view":[1,2],"cursorRow":["R040","R041"]} 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+NG  model 1N4148 → "E32-D11 2M" {"view":[1,8],"cursorRow":["R040","R001"]} 保存しました（編集は自動で保存されています）
+NG  altPolicy ka → "可" {"cursorRow":["R040","R041"]} 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+NG  altPolicy no → "不可" {"cursorRow":["R040","R041"]} 続けて打たれたので「n」はコマンドではなく文字の入力として扱いました
+NG  unit ko → "個" {"cursorRow":["R040","R041"]} 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+NG  procurement sh → "指定商社" {"cursorRow":["R040","R041"]} 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
+NG  altPolicy fuka → "不可" {"cursorRow":["R040","R041"]} 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+NG  unit k → "個" {"cursorRow":["R040","R039"]} 保存しました（編集は自動で保存されています）
+r+type {"case":"r then type new model at 45ms (120ms after r)","afterR":{"mode":"パネル","cursor":"R040 型式"},"editVal":"rMY4N-NEW","R040":{"status":"quoted","model":"rMY4N-NEW","orig":"E32-D11 2M"},"newRow":"R080","newModel":"TZe-231","toast":"続けて打たれたので「r」はコマンドではなく文字の入力として扱いました"}
+r+400+type {"case":"r then type after 400ms","R040":{"status":"quoted","model":"rMY4N-NEW"},"newModel":"TZe-231"}
+cmd s 4 {"case":"s then 4 at 60ms (sort → view 4)","mode":"編集","editVal":"s4","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「s」はコマンドではなく文字の入力として扱いました"}
+cmd x a {"case":"x then a at 60ms (ack → adopt)","mode":"編集","editVal":"xa","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「x」はコマンドではなく文字の入力として扱いました"}
+cmd h x {"case":"h then x at 60ms (hide → ack)","mode":"編集","editVal":"hx","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「h」はコマンドではなく文字の入力として扱いました"}
+cmd a 9 {"case":"a then 9 at 60ms (adopt → view 9)","mode":"編集","editVal":"a9","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「a」はコマンドではなく文字の入力として扱いました"}
+cmd f 1 {"case":"f then 1 at 60ms (filter → view 1)","mode":"編集","editVal":"f1","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「f」はコマンドではなく文字の入力として扱いました"}
+cmd s S {"case":"s then S at 60ms (sort asc → desc (Shift+S))","mode":"編集","editVal":"sS","view":[1,1],"sort":null,"panel":null,"hidden":[0,0],"toast":"続けて打たれたので「s」はコマンドではなく文字の入力として扱いました"}

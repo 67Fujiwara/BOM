@@ -1,0 +1,11 @@
+import { launch, fresh, goto, toColKey, sleep, toastNow, storeState } from './lib.mjs'
+const { browser, page } = await launch()
+await fresh(page)
+await goto(page, 'R030'); await toColKey(page, 'name'); await page.keyboard.press('Enter'); await page.keyboard.press('Control+a'); await page.keyboard.type('H1'); await page.keyboard.press('Enter'); await sleep(800)
+console.log('mem undo', await storeState(page, (s) => JSON.stringify(Object.fromEntries(Object.entries(s.undo).map(([k, v]) => [k, v.length])))))
+console.log('ss keys', await page.evaluate(() => Object.keys(sessionStorage).map((k) => k + ':' + sessionStorage.getItem(k).length)))
+await page.reload(); await page.waitForSelector('[data-testid="grid"]'); await page.locator('.gridwrap').focus()
+console.log('after reload mem undo', await storeState(page, (s) => JSON.stringify(Object.fromEntries(Object.entries(s.undo).map(([k, v]) => [k, v.length]))) + ' user ' + JSON.stringify(s.ws.user)))
+console.log('ss keys', await page.evaluate(() => Object.keys(sessionStorage).map((k) => k + ':' + sessionStorage.getItem(k).length)))
+await page.keyboard.press('Control+z'); await sleep(50); console.log(await toastNow(page))
+await browser.close()

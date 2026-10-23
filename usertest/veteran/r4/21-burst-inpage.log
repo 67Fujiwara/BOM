@@ -1,0 +1,58 @@
+dev NG K1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 1 | 保存しました（編集は自動で保存されています）
+dev NG J1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 0 | 保存しました（編集は自動で保存されています）
+dev NG J12 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 12 | 保存しました（編集は自動で保存されています）
+dev NG N1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 77 | 保存しました（編集は自動で保存されています）
+dev NG k1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 0 | 保存しました（編集は自動で保存されています）
+dev NG K3HB-X | mode 編集 edit "HB-X" | panel null | rows 80→80 | changed {"id":"R001","ch":{"working":[null,{"model":"HB-X"}]}} | maxLag 22 | 保存しました（編集は自動で保存されています）
+dev NG J7KN-10 | mode 編集 edit "KN-10" | panel null | rows 80→80 | changed {"id":"R003","ch":{"working":[null,{"model":"KN-10"}]}} | maxLag 8 | 続けて打たれたので「K」はコマンドではなく文字の入力として扱いました
+dev NG K8AK-AS1 | mode ナビ edit null | panel null | rows 80→80 | changed {"id":"R001","ch":{"flags":[{"leadNG":false},{"leadNG":false,"pmPending":false,"contested":false}],"orderQty":[null,1],"scoreSnapshot":[88,99.2]}} | maxLag 19 | R001 を 因幡電機 で採用
+dev NG ADP3338 | mode ナビ edit null | panel null | rows 80→80 | changed {"id":"R040","ch":{"status":["quoted","selected"],"flags":[{},{"pmPending":false,"contested":false,"leadNG":false}],"orderQty":[null,2],"statusChangedAt":["2026-10-21T03:46:48.825Z","2026-10-23T03:46:50.137Z"],"adoptedSupplierId":[null,"S3"],"adoptRe | maxLag 122 | R040 を ミスミ で採用
+dev NG AD8605 | mode パネル edit null | panel panel-adopt | rows 80→80 | changed  | maxLag 1 | 1〜3 で商社を選んでください
+dev NG INA219 | mode パネル edit null | panel panel-issue | rows 80→80 | changed  | maxLag 87 | 種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
+dev NG wago | mode パネル edit null | panel panel-weights | rows 80→80 | changed  | maxLag 21 | 保存しました（編集は自動で保存されています）
+dev NG coil | mode パネル edit null | panel panel-columns | rows 80→80 | changed  | maxLag 56 | 保存しました（編集は自動で保存されています）
+dev NG wire | mode パネル edit null | panel panel-weights | rows 80→80 | changed  | maxLag 0 | 保存しました（編集は自動で保存されています）
+dev OK DRV8833 | mode 編集 edit "DRV8833" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"DRV8833"}]}} | maxLag 202 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+dev OK STM32F103 | mode 編集 edit "STM32F103" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"STM32F103"}]}} | maxLag 380 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+dev OK S1 | mode 編集 edit "S1" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"S1"}]}} | maxLag 150 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+dev OK NJM2904 | mode 編集 edit "NJM2904" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"NJM2904"}]}} | maxLag 80 | 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
+dev OK knob | mode 編集 edit "knob" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"knob"}]}} | maxLag 1 | 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+dev OK hook | mode 編集 edit "hook" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"hook"}]}} | maxLag 66 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+dev OK relay | mode 編集 edit "relay" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"relay"}]}} | maxLag 1 | 続けて打たれたので「r」はコマンドではなく文字の入力として扱いました
+dev OK fuse | mode 編集 edit "fuse" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"fuse"}]}} | maxLag 147 | 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+dev OK oscillator | mode 編集 edit "oscillator" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"oscillator"}]}} | maxLag 1 | 続けて打たれたので「o」はコマンドではなく文字の入力として扱いました
+dev OK xtal | mode 編集 edit "xtal" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"xtal"}]}} | maxLag 25 | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+dev NG hjhjhj | mode 編集 edit "hjhjhj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"hjhjhj"}]}} | maxLag 162 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+dev NG ajaj | mode 編集 edit "ajaj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"ajaj"}]}} | maxLag 187 | 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
+dev NG s4 | mode 編集 edit "s4" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"s4"}]}} | maxLag 125 | 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
+dev NG Dj | mode 編集 edit "Dj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"Dj"}]}} | maxLag 78 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+dev errors []
+build NG K1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 1 | 保存しました（編集は自動で保存されています）
+build NG J1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 3 | 保存しました（編集は自動で保存されています）
+build NG J12 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 1 | 保存しました（編集は自動で保存されています）
+build NG N1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 5 | 保存しました（編集は自動で保存されています）
+build NG k1 | mode ナビ edit null | panel null | rows 80→80 | changed  | maxLag 0 | 保存しました（編集は自動で保存されています）
+build NG K3HB-X | mode 編集 edit "HB-X" | panel null | rows 80→80 | changed {"id":"R001","ch":{"working":[null,{"model":"HB-X"}]}} | maxLag 19 | 保存しました（編集は自動で保存されています）
+build NG J7KN-10 | mode 編集 edit "KN-10" | panel null | rows 80→80 | changed {"id":"R003","ch":{"working":[null,{"model":"KN-10"}]}} | maxLag 1 | 続けて打たれたので「K」はコマンドではなく文字の入力として扱いました
+build NG K8AK-AS1 | mode ナビ edit null | panel null | rows 80→80 | changed {"id":"R001","ch":{"flags":[{"leadNG":false},{"leadNG":false,"pmPending":false,"contested":false}],"orderQty":[null,1],"scoreSnapshot":[88,99.2]}} | maxLag 1 | R001 を 因幡電機 で採用
+build NG ADP3338 | mode ナビ edit null | panel null | rows 80→80 | changed {"id":"R040","ch":{"status":["quoted","selected"],"flags":[{},{"pmPending":false,"contested":false,"leadNG":false}],"orderQty":[null,2],"statusChangedAt":["2026-10-21T03:48:06.612Z","2026-10-23T03:48:07.291Z"],"adoptedSupplierId":[null,"S3"],"adoptRe | maxLag 41 | R040 を ミスミ で採用
+build NG AD8605 | mode パネル edit null | panel panel-adopt | rows 80→80 | changed  | maxLag 1 | 1〜3 で商社を選んでください
+build NG INA219 | mode パネル edit null | panel panel-issue | rows 80→80 | changed  | maxLag 20 | 種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
+build NG wago | mode パネル edit null | panel panel-weights | rows 80→80 | changed  | maxLag 6 | 保存しました（編集は自動で保存されています）
+build NG coil | mode パネル edit null | panel panel-columns | rows 80→80 | changed  | maxLag 25 | 保存しました（編集は自動で保存されています）
+build NG wire | mode パネル edit null | panel panel-weights | rows 80→80 | changed  | maxLag 5 | 保存しました（編集は自動で保存されています）
+build OK DRV8833 | mode 編集 edit "DRV8833" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"DRV8833"}]}} | maxLag 1 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+build OK STM32F103 | mode 編集 edit "STM32F103" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"STM32F103"}]}} | maxLag 43 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+build OK S1 | mode 編集 edit "S1" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"S1"}]}} | maxLag 10 | 続けて打たれたので「S」はコマンドではなく文字の入力として扱いました
+build OK NJM2904 | mode 編集 edit "NJM2904" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"NJM2904"}]}} | maxLag 11 | 続けて打たれたので「N」はコマンドではなく文字の入力として扱いました
+build OK knob | mode 編集 edit "knob" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"knob"}]}} | maxLag 1 | 続けて打たれたので「k」はコマンドではなく文字の入力として扱いました
+build OK hook | mode 編集 edit "hook" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"hook"}]}} | maxLag 12 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+build OK relay | mode 編集 edit "relay" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"relay"}]}} | maxLag 1 | 続けて打たれたので「r」はコマンドではなく文字の入力として扱いました
+build OK fuse | mode 編集 edit "fuse" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"fuse"}]}} | maxLag 51 | 続けて打たれたので「f」はコマンドではなく文字の入力として扱いました
+build OK oscillator | mode 編集 edit "oscillator" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"oscillator"}]}} | maxLag 1 | 続けて打たれたので「o」はコマンドではなく文字の入力として扱いました
+build OK xtal | mode 編集 edit "xtal" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"xtal"}]}} | maxLag 3 | 続けて打たれたので「x」はコマンドではなく文字の入力として扱いました
+build NG hjhjhj | mode 編集 edit "hjhjhj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"hjhjhj"}]}} | maxLag 1 | 続けて打たれたので「h」はコマンドではなく文字の入力として扱いました
+build NG ajaj | mode 編集 edit "ajaj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"name":"ajaj"}]}} | maxLag 7 | 続けて打たれたので「a」はコマンドではなく文字の入力として扱いました
+build NG s4 | mode 編集 edit "s4" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"s4"}]}} | maxLag 16 | 続けて打たれたので「s」はコマンドではなく文字の入力として扱いました
+build NG Dj | mode 編集 edit "Dj" | panel null | rows 80→80 | changed {"id":"R040","ch":{"working":[null,{"model":"Dj"}]}} | maxLag 7 | 続けて打たれたので「D」はコマンドではなく文字の入力として扱いました
+build errors []

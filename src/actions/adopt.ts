@@ -73,6 +73,12 @@ export function adoptBest(rowId: string): boolean {
     s.toastMsg('有効な見積がありません', 'err')
     return false
   }
+  // 理由をつけて別の商社を採用してある行（自分か別のタブ）を、推奨で黙って上書きしない
+  if (row.adoptedSupplierId && row.adoptedSupplierId !== scores[0].supplierId && row.adoptReason && row.adoptReason !== '拮抗') {
+    const now = s.ws.suppliers.find((x) => x.id === row.adoptedSupplierId)?.name ?? row.adoptedSupplierId
+    s.toastMsg(`${row.id} は「${now}」で採用済みです（${row.adoptReason}）。変えるときは Alt+Shift+A で商社を選び直す`, 'err')
+    return false
+  }
   if (row.quotedAt && businessDaysBetween(row.quotedAt, todayStr(), p.settings.holidays) >= 5) s.toastMsg('注意: 見積済から5営業日以上経過（納期スコアの基準日が古い）', 'info')
   const best = scores[0]
   const sup = s.ws.suppliers.find((x) => x.id === best.supplierId)

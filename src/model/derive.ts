@@ -327,3 +327,8 @@ export function overCap(p: Project, r: Row): { cap: number; decisionId: string }
 export function capPending(p: Project, r: Row): boolean {
   return !!overCap(p, r) && r.flags.capRuled !== r.extraCost
 }
+
+/** PM 承認待ちの変更セットで足した行（承認まで購買には見せない。§5） */
+export function pendingAdd(r: Row): boolean {
+  return !!r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted'
+}

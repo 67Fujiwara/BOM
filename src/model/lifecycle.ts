@@ -28,7 +28,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.flags.renegotiating = false
         // PM がこの商社の納期・価格について出した依頼（納期NG・コスト超過）は取り下げ（選び直しで判定し直す）
         for (const i of p.issues)
-          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
             i.status = 'confirmed'
             i.resolution = '採用商社の辞退で取り下げ（選び直し）'
           }
@@ -69,12 +69,27 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
           r.flags.ltbPending = false
         }
         r.flags.renegotiating = false
+        // 前の商社への対策（特急・分納の追加費用・対策区分・納期NG・PM の依頼）も、この採用ごと取り下げる
+        r.flags.countermeasure = undefined
+        r.flags.early = undefined
+        r.flags.delegated = undefined
+        r.flags.leadNG = false
+        if (!r.ordered) {
+          r.extraCost = null
+          r.extraCostKind = ''
+        }
+        for (const i of p.issues)
+          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+            i.status = 'confirmed'
+            i.resolution = '調達区分・指定先の変更で取り下げ（選び直し）'
+          }
         r.adoptedSupplierId = undefined
         r.adoptReason = undefined
         r.scoreSnapshot = undefined
         r.flags.contested = false
-        r.quoteTargets = undefined
-        r.status = fixed ? 'quoting' : 'submitted'
+        // 相見積に戻した行は、相見積先すべての回答で見積済を判定する（回答済みの商社に頼み直さない）
+        r.quoteTargets = fixed ? undefined : p.supplierIds.filter((id) => ws.suppliers.find((x) => x.id === id)?.tradable !== false)
+        r.status = fixed || p.quotes.some((x) => x.rowId === r.id && !x.stale) ? 'quoting' : 'submitted'
         r.statusChangedAt = now
         r.dueAt = undefined
       }

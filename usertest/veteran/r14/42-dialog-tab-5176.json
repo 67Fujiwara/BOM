@@ -1,0 +1,590 @@
+[
+  {
+    "name": "D1 理由 2 → Tab → 「3日で入る」→ Enter",
+    "expect": "在庫即納: 3日で入る",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "T:3日で入る→{sel=2 在庫即納 text=3日で入る focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: 3日で入る",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（在庫即納: 3日で入る）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D2 理由 2 → 3（選び直し）→ Tab → 「5日」→ Enter",
+    "expect": "3 番: 5日",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "3→{sel=3 実績/品質 text= focus=text}",
+      "Tab→{sel=3 実績/品質 text= focus=text}",
+      "T:5日→{sel=3 実績/品質 text=5日 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質: 5日",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（実績/品質: 5日）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D3 理由 2 →「3日で入る」（Tab なし）→ Enter",
+    "expect": "仕様: 3 を選び直し「日で入る」",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "T:3日で入る→{sel=3 実績/品質 text=日で入る focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質: 日で入る",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（実績/品質: 日で入る）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D4 理由 Tab → 2（選ぶ前に Tab）→ Enter",
+    "expect": "理由 未選択・補足「2」→ その他: 2 ?",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "Tab→{sel= text= focus=text}",
+      "2→{sel= text=2 focus=text}",
+      "Enter→{sel= text=2 focus=text}"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"
+    ]
+  },
+  {
+    "name": "D5 理由 2 → Tab → Tab（ボタンへ）→ 「3日」→ Enter",
+    "expect": "3日 がどこかに入る（捨てない）",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "T:3日→{sel=2 在庫即納 text=3日 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: 3日",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（在庫即納: 3日）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D6 理由 2 → Shift+Tab →「3日」→ Enter",
+    "expect": "在庫即納: 3日 か ボタン",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Shift+Tab→{sel=2 在庫即納 text= focus=text}",
+      "T:3日→{sel=3 実績/品質 text=日 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質: 日",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）",
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（実績/品質: 日）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D7 理由 2 → a → Backspace → 3 → Enter",
+    "expect": "在庫即納: 3（文字を打ったあとは文字）",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "T:a→{sel=2 在庫即納 text=a focus=text}",
+      "Backspace→{sel=2 在庫即納 text= focus=text}",
+      "3→{sel=2 在庫即納 text=3 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: 3",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（在庫即納: 3）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D8 理由 2 → Tab → 3 → ↓ → 4 → Enter",
+    "expect": "↓ のあと 4 は文字",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "3→{sel=2 在庫即納 text=3 focus=text}",
+      "ArrowDown→{sel=3 実績/品質 text=3 focus=text}",
+      "4→{sel=3 実績/品質 text=34 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質: 34",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（実績/品質: 34）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D9 理由 テンキー 2 → テンキー 3 → Tab → テンキー 5 → Enter",
+    "expect": "3 番: 5",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "NP:2→{sel=2 在庫即納 text= focus=text}",
+      "NP:3→{sel=3 実績/品質 text= focus=text}",
+      "Tab→{sel=3 実績/品質 text= focus=text}",
+      "NP:5→{sel=3 実績/品質 text=5 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質: 5",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（実績/品質: 5）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D10 理由 2 → IME「３日で入る」（全角）→ Enter",
+    "expect": "在庫即納: ３日で入る",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "IME:３日で入る→{sel=2 在庫即納 text=３日で入る focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: ３日で入る",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（在庫即納: ３日で入る）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D11 理由 2 → 補足を貼り付け「3日で入る」→ Enter",
+    "expect": "在庫即納: 3日で入る",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "CLIP:3日で入る→{sel=2 在庫即納 text= focus=text}",
+      "Control+v→{sel=2 在庫即納 text=3日で入る focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: 3日で入る",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（在庫即納: 3日で入る）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D12 理由 2 → Tab → 「3日」→ Backspace×2 → 4 → Enter",
+    "expect": "在庫即納: 4（欄に移ったあとは文字）",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "T:3日→{sel=2 在庫即納 text=3日 focus=text}",
+      "Backspace→{sel=2 在庫即納 text=3 focus=text}",
+      "Backspace→{sel=2 在庫即納 text= focus=text}",
+      "4→{sel=2 在庫即納 text=4 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "在庫即納: 4",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「在庫即納」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "R004: ミスミ を仮採用（在庫即納: 4）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D13 理由 2 → Esc → もう一度 Shift+A 2 → 3 → Enter",
+    "expect": "3 番（前のダイアログの Tab を引き継がない）",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "2→{sel=2 在庫即納 text= focus=text}",
+      "Tab→{sel=2 在庫即納 text= focus=text}",
+      "Escape→ナビ",
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "3→{sel=3 実績/品質 text= focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "adopted": "S3",
+      "reason": "実績/品質",
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "R004: ミスミ を仮採用（実績/品質）。PM の承認待ち（7 要決定）"
+    ]
+  },
+  {
+    "name": "D14 理由 0（範囲外）→ Enter",
+    "expect": "0 は？",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      "0→{sel= text=0 focus=text}",
+      "Enter→{sel= text=0 focus=text}"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"
+    ]
+  },
+  {
+    "name": "D15 理由 Space → Enter",
+    "expect": "?",
+    "seq": [
+      "Shift+A→{sel=1因幡電機¥2,621 / 12日 / スコア 99.2 最 text=null focus=DIV:IDボール回路記号分類部}",
+      "2→{sel= text= focus=text}",
+      " →{sel= text=  focus=text}",
+      "Enter→{sel= text=  focus=text}"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"
+    ]
+  },
+  {
+    "name": "E1 変更セット Tab → 「2026-012」→ Enter",
+    "expect": "その他・2026-012",
+    "seq": [
+      "Control+Enter→{sel= text= focus=text}",
+      "Tab→{sel= text= focus=text}",
+      "T:2026-012→{sel= text=2026-012 focus=text}",
+      "Enter→{sel= text=2026-012 focus=text}"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "端子台エンドカバー"
+    },
+    "toasts": [
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ）"
+    ]
+  },
+  {
+    "name": "E2 変更セット 2 → Tab → 「2026-012」→ Enter",
+    "expect": "2 番・2026-012",
+    "seq": [
+      "Control+Enter→{sel= text= focus=text}",
+      "2→{sel=2 設計起因 text= focus=text}",
+      "Tab→{sel=2 設計起因 text= focus=text}",
+      "T:2026-012→{sel=2 設計起因 text=2026-012 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "{\"reason\":\"設計起因\",\"changeNo\":\"2026-012\",\"approved\":true}"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "端子台エンドカバー"
+    },
+    "toasts": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "行 5（Rev.2） を公開しました"
+    ]
+  },
+  {
+    "name": "E3 変更セット 「2026-012」（Tab なし）→ Enter",
+    "expect": "仕様: 2 番・026-012（案内あり）",
+    "seq": [
+      "Control+Enter→{sel= text= focus=text}",
+      "T:2026-012→{sel=2 設計起因 text=026-012 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "{\"reason\":\"設計起因\",\"changeNo\":\"026-012\",\"approved\":true}"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "端子台エンドカバー"
+    },
+    "toasts": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "行 5（Rev.2） を公開しました"
+    ]
+  },
+  {
+    "name": "E4 変更セット 2 → 1 → 0（0 は？）→ Enter",
+    "expect": "?",
+    "seq": [
+      "Control+Enter→{sel= text= focus=text}",
+      "2→{sel=2 設計起因 text= focus=text}",
+      "1→{sel=1 客先要求 text= focus=text}",
+      "0→{sel=1 客先要求 text=0 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "{\"reason\":\"客先要求\",\"changeNo\":\"0\",\"approved\":true}"
+      ],
+      "user": "{\"name\":\"山田\",\"role\":\"design\"}",
+      "name": "端子台エンドカバー"
+    },
+    "toasts": [
+      "「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "行 5（Rev.2） を公開しました"
+    ]
+  },
+  {
+    "name": "F1 役割 2 → Tab → 「2号 佐藤」→ Enter",
+    "expect": "購買・2号 佐藤",
+    "seq": [
+      "PAL:役割を切り替え→{sel=1 設計 text= focus=text}",
+      "2→{sel=2 購買 text= focus=text}",
+      "Tab→{sel=2 購買 text= focus=text}",
+      "T:2号 佐藤→{sel=2 購買 text=2号 佐藤 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"role\":\"purchasing\",\"name\":\"2号 佐藤\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「購買」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "役割: 購買（2号 佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
+  },
+  {
+    "name": "F2 役割 Tab →「3班 鈴木」→ Enter",
+    "expect": "設計のまま・3班 鈴木",
+    "seq": [
+      "PAL:役割を切り替え→{sel=1 設計 text= focus=text}",
+      "Tab→{sel=1 設計 text= focus=text}",
+      "T:3班 鈴木→{sel=1 設計 text=3班 鈴木 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"role\":\"design\",\"name\":\"3班 鈴木\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）",
+      "役割: 設計（3班 鈴木）。既定のビュー 4 要確認 を開きました"
+    ]
+  },
+  {
+    "name": "F3 役割 「3班 鈴木」（Tab なし）→ Enter",
+    "expect": "仕様: PM・班 鈴木",
+    "seq": [
+      "PAL:役割を切り替え→{sel=1 設計 text= focus=text}",
+      "T:3班 鈴木→{sel=3 PM text=班 鈴木 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"role\":\"pm\",\"name\":\"班 鈴木\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定",
+      "役割: PM（班 鈴木）。既定のビュー 7 要決定 を開きました"
+    ]
+  },
+  {
+    "name": "F4 役割 鈴木 → Backspace×2 → 3 → Enter",
+    "expect": "設計・3",
+    "seq": [
+      "PAL:役割を切り替え→{sel=1 設計 text= focus=text}",
+      "T:鈴木→{sel=1 設計 text=鈴木 focus=text}",
+      "Backspace→{sel=1 設計 text=鈴 focus=text}",
+      "Backspace→{sel=1 設計 text= focus=text}",
+      "3→{sel=1 設計 text=3 focus=text}",
+      "Enter→ナビ"
+    ],
+    "result": {
+      "reason": null,
+      "status": "quoted",
+      "subs": [
+        "1"
+      ],
+      "user": "{\"role\":\"design\",\"name\":\"3\"}",
+      "name": "アナログ入力"
+    },
+    "toasts": [
+      "役割: 設計（3）。既定のビュー 4 要確認 を開きました"
+    ]
+  }
+]

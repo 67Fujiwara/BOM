@@ -1,0 +1,33 @@
+// ラウンド12: 打って始めた入力（入力）と Enter/F2 で始めた編集（編集）の Ctrl+Z（N11-03 の修正）と、選択の列の候補（N11-02）
+import { open, logger } from './lib14.mjs'
+import { scenario } from './run14.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const log = logger(`43-typed-ctrlz-${port}.json`)
+const S = (name, toks, expect, o = {}) => scenario(env, log, name, { toks, expect, ...o })
+const G = (row, col) => [`G:${row}`, `C:${col}`]
+await S('Z1 入力 abc → Ctrl+Z → ↓', [...G('R010', '部品名'), 'T:abc', 'Control+z', 'ArrowDown'], 'セルは元のまま・R011 へ')
+await S('Z2 入力 abc → Ctrl+Z → Ctrl+Z（2 回目は前の操作を戻す）', [...G('R010', '部品名'), 'T:X1', 'Enter', 'ArrowUp', 'T:abc', 'Control+z', 'Control+z'], '1 回目: 入力取り消し、2 回目: X1 を戻す')
+await S('Z3 入力 abc → F2（編集）→ de → Ctrl+Z → Enter', [...G('R010', '部品名'), 'T:abc', 'F2', 'T:de', 'Control+z', 'Enter'], '編集モードはブラウザの取り消し（abcde → abc か元）')
+await S('Z4 Enter で編集 → End → XY → Ctrl+Z → Enter', [...G('R010', '部品名'), 'Enter', 'End', 'T:XY', 'Control+z', 'Enter'], 'ブラウザの取り消し（XY が消える）・確定')
+await S('Z5 Enter で編集 → F2（入力）→ Ctrl+Z', [...G('R010', '部品名'), 'Enter', 'T:XY', 'F2', 'Control+z', 'ArrowDown'], '入力モードに切り替えたら入力ごと取り消し（元の値）')
+await S('Z6 入力 数 12 → Ctrl+Z → Enter', [...G('R010', '必要数'), 'T:12', 'Control+z', 'Enter'], '取り消し・Enter は下へ（値は元）')
+await S('Z7 入力 abc → Meta+Z（mac の Cmd+Z）', [...G('R010', '部品名'), 'T:abc', 'Meta+z', 'ArrowDown'], '入力ごと取り消し')
+await S('Z8 入力 abc → Ctrl+Shift+Z', [...G('R010', '部品名'), 'T:abc', 'Control+Shift+Z', 'Enter'], '?（やり直しのキー。値はそのまま確定 or 何もしない）')
+await S('Z9 入力 abc → Ctrl+Y', [...G('R010', '部品名'), 'T:abc', 'Control+y', 'Enter'], '?')
+await S('Z10 入力 abc → Ctrl+Z → Ctrl+Y', [...G('R010', '部品名'), 'T:X1', 'Enter', 'ArrowUp', 'T:abc', 'Control+z', 'Control+y'], 'Ctrl+Y はやり直す操作がない（X1 は残る）')
+await S('Z11 購買 単価 入力 → Ctrl+Z', [...G('R004', '単価'), 'T:3333', 'Control+z', 'ArrowDown'], '単価は元のまま', { role: 'purchasing', view: 9 })
+await S('Z12 入力 → Ctrl+Z → 打ち直し → Enter', [...G('R010', '部品名'), 'T:abc', 'Control+z', 'T:def', 'Enter'], 'def が入る')
+await S('Z13 入力 日付 → Ctrl+Z', [...G('R010', '必要日'), 'T:2026-12-01', 'Control+z', 'ArrowDown'], '元のまま')
+// 選択の列
+await S('S1 調達区分 Enter → ↓ → Enter', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'Enter'], '2 番目の候補が入る')
+await S('S2 調達区分 Enter → ↓ ↓ ↑ → Enter', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'ArrowDown', 'ArrowUp', 'Enter'], '2 番目')
+await S('S3 調達区分 Enter → ↓ → Esc', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'Escape'], '元のまま')
+await S('S4 調達区分 Enter → ↓ → Tab', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'Tab'], '2 番目が入って右へ')
+await S('S5 調達区分 Enter → 指 → ↓ → Enter', [...G('R010', '調達区分'), 'Enter', 'T:指', 'ArrowDown', 'Enter'], '指で絞った候補の 2 番目')
+await S('S6 調達区分 入力「相」→ ↓（確定して下へ）', [...G('R010', '調達区分'), 'T:相', 'ArrowDown'], '相見積 が入って R011 へ')
+await S('S7 調達区分 Enter → ↓ → Ctrl+Z → Enter', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'Control+z', 'Enter'], 'ブラウザの取り消し？ 値は？')
+await S('S8 単位 F2 → ↓ → ↓ → Enter', [...G('R010', '単位'), 'F2', 'ArrowDown', 'ArrowDown', 'Enter'], '3 番目の単位')
+await S('S9 調達区分 Enter → ↓ → F2（入力へ）→ ↓', [...G('R010', '調達区分'), 'Enter', 'ArrowDown', 'F2', 'ArrowDown'], '候補 2 を確定して下へ')
+await S('S10 メーカ指定 Enter → ↓ ×5 → Enter', [...G('R010', 'メーカ指定'), 'Enter', 'REP:5*ArrowDown', 'Enter'], '一周して?')
+console.log('errors', JSON.stringify(env.errs.slice(0, 5)))
+log.save(); await env.browser.close()

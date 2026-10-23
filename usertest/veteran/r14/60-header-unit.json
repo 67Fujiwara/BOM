@@ -1,0 +1,738 @@
+[
+  {
+    "id": "a1-nashi-fumon",
+    "note": "型式「品番なし」メーカ「メーカ不問」部品名「部品取付板」",
+    "expect": "4 部品",
+    "n": 4,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "部品取付板 / 品番なし / メーカ不問 / 1",
+      "結束バンド / 型式なし / メーカー支給 / 50",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "a2-3col-katashikinashi",
+    "note": "3 列（部品名・型式・数量）に「部品取付板 / 型式なし / 1」",
+    "expect": "3 部品",
+    "n": 3,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "部品取付板 / 型式なし /  / 1",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "a3-maker-shikyu",
+    "note": "「部品箱 / 型番別紙 / メーカー支給 / 1」",
+    "expect": "3 部品",
+    "n": 3,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "部品箱 / 型番別紙 / メーカー支給 / 1",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "a4-memory-unit",
+    "note": "部品名「メモリカード」「ユニットクーラー」「デバイスネットケーブル」（備考・分類・回路記号の言葉で始まる）",
+    "expect": "4 部品",
+    "n": 4,
+    "mapping": "name,model,maker,qtyNeeded,note,ref",
+    "header": "部品名|型式|メーカ|員数|備考|回路記号",
+    "warnings": [],
+    "rows": [
+      "メモリカード / SD-1G / パナソニック / 1",
+      "ユニットクーラー / ENC-U / アピステ / 1",
+      "デバイスネットケーブル / DN-5 / オムロン / 2",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "a5-model-word",
+    "note": "型式「Model S」「Part No. 別紙」・メーカ「Maker free」",
+    "expect": "3 部品",
+    "n": 3,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "Part Name|Model|Maker|Qty",
+    "warnings": [],
+    "rows": [
+      "Relay / MY4N / Omron / 12",
+      "Part kit / Model S / Maker free / 1",
+      "Terminal / XW2B / Omron / 2"
+    ]
+  },
+  {
+    "id": "b1-title-sepcells-3col",
+    "note": "表題「品名 | 制御盤A | 数量 | 2」（別のセル）＋見出し「部品名・型式・数量」",
+    "expect": "型式 MY4N・XW2B",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "b2-title-sepcells-4col",
+    "note": "表題「品名 | 制御盤A | メーカ | 自社 | 数量 | 2」＋ 4 項目の見出し",
+    "expect": "型式を読む",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "b3-title-vertical",
+    "note": "縦の表題欄（品名 / 図番 / 台数）＋見出し",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "見出しより上の 3 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "b4-title-colon-space",
+    "note": "表題「品名 ： 制御盤A」「数量 : 2 台」（コロンの後に空白）",
+    "expect": "型式を読む",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "b5-title-bracket",
+    "note": "表題「【品名】制御盤A」「【数量】2台」",
+    "expect": "型式を読む",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "c1-oldnew-repeat",
+    "note": "見出し「部品名・型式(旧)・型式(新)・数量」をページごとに繰り返す",
+    "expect": "全ページで新しい型式",
+    "n": 4,
+    "mapping": "name,,model,qtyNeeded",
+    "header": "部品名|型式(旧)|型式(新)|数量",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「型式(新)」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2",
+      "ヒューズ / F-NEW /  / 4",
+      "電源 / S8-NEW /  / 1"
+    ]
+  },
+  {
+    "id": "c2-oldnew-qty-repeat",
+    "note": "「部品名・型式・数量(変更前)・数量(変更後)」をページごとに",
+    "expect": "全ページで変更後の数量",
+    "n": 2,
+    "mapping": "name,model,,qtyNeeded",
+    "header": "部品名|型式|数量(変更前)|数量(変更後)",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません",
+      "「数量」に当たる列が 2 つあります。「数量(変更後)」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "c3-two-model-cols-repeat",
+    "note": "「社内品番・部品名・メーカ型番・メーカ・数量」をページごとに（型式の言葉が 2 列）",
+    "expect": "同じ列を読む",
+    "n": 2,
+    "mapping": "model,name,,maker,qtyNeeded",
+    "header": "社内品番|部品名|メーカ型番|メーカ|数量",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「社内品番」の列を使います"
+    ],
+    "rows": [
+      "リレー / K-001 / オムロン / 12",
+      "端子台 / K-002 / オムロン / 2"
+    ]
+  },
+  {
+    "id": "c4-page2-missing-col",
+    "note": "2 ページ目の見出しにメーカの列が無い",
+    "expect": "2 ページ目はメーカ空・数量 2",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / 2 / 0"
+    ]
+  },
+  {
+    "id": "c5-page2-qty-10dai",
+    "note": "2 ページ目の見出し「数量(10台分)」",
+    "expect": "数量 20",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量(10台分)",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 120",
+      "端子台 / XW2B /  / 20"
+    ]
+  },
+  {
+    "id": "c6-page2-fullwidth-title",
+    "note": "「部品表（２／３）」（全角の数字）＋「Ｐ．２」",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません",
+      "小計・合計・区切りの 1 行は取り込みません（例: 「部品表（２／３） Ｐ．２」）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "c7-page-title-variants",
+    "note": "「部品表 その2」「BOM (2 of 3)」「部品リスト Page 2」「部品表(続き)」",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "小計・合計・区切りの 4 行は取り込みません（例: 「部品表 その2」「BOM (2 of 3)」 ほか）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "c8-title-with-product",
+    "note": "各ページの上「部品表 (2/3) | 制御盤A | P.2」",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません",
+      "繰り返しの見出し 1 行は取り込みません",
+      "小計・合計・区切りの 1 行は取り込みません（例: 「部品表 (2/2) 制御盤A P.2」）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "c9-page2-shift-plus-noheader-name",
+    "note": "2 ページ目は No の列が増え、見出しの部品名が「品名（続き）」",
+    "expect": "端子台 XW2B 2",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません（列の並びが違うページの 1 行は、最初の見出しの並びに直しました）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "d1-ver-in-data",
+    "note": "最初の部品の行が「新設 | 改造」（変更区分の列だけ）",
+    "expect": "見出しを 2 段にしない",
+    "n": 2,
+    "mapping": "category,,name,model,qtyNeeded",
+    "header": "区分|変更|部品名|型式|数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "d1b-ver-only-row",
+    "note": "最初の行が「新 | 新」だけ（変更区分の印）",
+    "expect": "2 段にしない",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded,category,",
+    "header": "部品名|型式|数量|区分（新）|版（新）",
+    "warnings": [
+      "2 段の見出しを 1 段にまとめて読みました"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "d2-2stage-with-unit",
+    "note": "2 段の見出しの下の段に「旧・新・旧・新」と単位の「(個)」",
+    "expect": "新しい型式・数量",
+    "n": 3,
+    "mapping": "name,model,,qtyNeeded,,unit",
+    "header": "部品名|型式||数量||単位",
+    "warnings": [
+      "数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）",
+      "単位を読めない行が 1 行あります（「個」にしました）"
+    ],
+    "rows": [
+      " / 旧 /  / 0",
+      "リレー / MY2N /  / 10",
+      "端子台 / XW2A /  / 1"
+    ]
+  },
+  {
+    "id": "d3-2stage-mae-ato",
+    "note": "2 段の見出しの下の段「前・後」",
+    "expect": "後の値",
+    "n": 2,
+    "mapping": "name,,model,,qtyNeeded",
+    "header": "部品名|型式（前）|型式（後）|数量（前）|数量（後）",
+    "warnings": [
+      "2 段の見出しを 1 段にまとめて読みました",
+      "「型式」に当たる列が 2 つあります。「型式（後）」の列を使います",
+      "「数量」に当たる列が 2 つあります。「数量（後）」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "d4-hensyu-cols",
+    "note": "見出し「変更内容」「変更理由」と「型式」「数量」",
+    "expect": "普通に読む",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded,,",
+    "header": "部品名|型式|数量|変更内容|変更理由",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "d5-genkou-shin",
+    "note": "見出し「現行型式」「新型式」「現行数量」「新数量」（左が新）＝新が左",
+    "expect": "新",
+    "n": 2,
+    "mapping": "name,model,,qtyNeeded,",
+    "header": "部品名|新型式|現行型式|新数量|現行数量",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「新型式」の列を使います",
+      "「数量」に当たる列が 2 つあります。「新数量」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "d6-newark",
+    "note": "見出し「Newark P/N」「Mfr P/N」（New で始まる商社名）",
+    "expect": "Mfr P/N を型式",
+    "n": 2,
+    "mapping": "name,model,,maker,qtyNeeded",
+    "header": "Description|Newark P/N|Mfr P/N|Manufacturer|Qty",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「Newark P/N」の列を使います"
+    ],
+    "rows": [
+      "Relay / 12AB345 / Omron / 12",
+      "Terminal / 34CD567 / Omron / 2"
+    ]
+  },
+  {
+    "id": "d7-kaitei",
+    "note": "見出し「改訂記号」「部品名」「型式」「数量」",
+    "expect": "普通",
+    "n": 2,
+    "mapping": ",name,model,qtyNeeded",
+    "header": "改訂記号|部品名|型式|数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "e1-wide-per-unit",
+    "note": "号機ごとの数量「数量(1号機)」「数量(2号機)」「合計数量」",
+    "expect": "合計数量を読む（または知らせる）",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded,,,",
+    "header": "部品名|型式|メーカ|数量(1号機)|数量(2号機)|数量(3号機)|合計数量",
+    "warnings": [
+      "「数量」に当たる列が 4 つあります。「数量(1号機)」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 4",
+      "端子台 / XW2B / オムロン / 1"
+    ]
+  },
+  {
+    "id": "e2-long-headers",
+    "note": "Digi-Key 形式の長い見出し",
+    "expect": "型式・メーカ・数量を読む",
+    "n": 2,
+    "mapping": ",qtyNeeded,model,maker,name,,ref",
+    "header": "Index|Quantity|Manufacturer Part Number (MPN)|Manufacturer Name|Description|Customer Reference|Reference Designator(s)",
+    "warnings": [],
+    "rows": [
+      "Relay / MY4N / Omron / 12",
+      "Terminal / XW2B / Omron / 2"
+    ]
+  },
+  {
+    "id": "e3-long-headers-repeat",
+    "note": "Digi-Key 形式＋2 ページ目は列の順が違う",
+    "expect": "2 ページ目も正しく",
+    "n": 2,
+    "mapping": ",qtyNeeded,model,maker,name",
+    "header": "Index|Quantity|Manufacturer Part Number (MPN)|Manufacturer Name|Description",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません（列の並びが違うページの 1 行は、最初の見出しの並びに直しました）"
+    ],
+    "rows": [
+      "Relay / MY4N / Omron / 12",
+      "Terminal / XW2B / Omron / 2"
+    ]
+  },
+  {
+    "id": "e4-header-digits",
+    "note": "見出し「2024年度 数量」「型式(10桁)」",
+    "expect": "読む",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式(10桁)|メーカ|2024年度 数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "e5-yotei-header",
+    "note": "見出し「部品名・型式・メーカ・手配予定数」",
+    "expect": "数量を読む（または知らせる）",
+    "n": 2,
+    "mapping": "name,model,maker,",
+    "header": "部品名|型式|メーカ|手配予定数",
+    "warnings": [
+      "見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 1",
+      "端子台 / XW2B / オムロン / 1"
+    ]
+  },
+  {
+    "id": "f1-star-part",
+    "note": "部品名だけの行「＊予備ヒューズ」「※別途支給品」",
+    "expect": "?",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "小計・合計・区切りの 2 行は取り込みません（例: 「＊予備ヒューズ」「※別途支給品」）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "f2-zoku",
+    "note": "部品名「続き」で始まる？「（続く）」",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "小計・合計・区切りの 1 行は取り込みません（例: 「（続く）」）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "a6-v1202-orig",
+    "note": "V12-02 の元の形（名称未定・型式未定・メーカ未定／部品取付板・品番未定・メーカ不問）",
+    "expect": "4 部品",
+    "n": 4,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "名称未定 / 型式未定 / メーカ未定 / 2",
+      "部品取付板 / 品番未定 / メーカ不問 / 1",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "a7-buhinmei-seal",
+    "note": "3 列「部品名シール / 品番なし / 2」が途中に 1 行、後ろに 30 部品",
+    "expect": "32 部品・数量そのまま",
+    "n": 32,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "部品名シール / 品番なし /  / 2",
+      "端子台0 / XW2B-0 /  / 1",
+      "端子台1 / XW2B-1 /  / 2",
+      "端子台2 / XW2B-2 /  / 3",
+      "端子台3 / XW2B-3 /  / 4",
+      "端子台4 / XW2B-4 /  / 5",
+      "端子台5 / XW2B-5 /  / 6",
+      "端子台6 / XW2B-6 /  / 7",
+      "端子台7 / XW2B-7 /  / 8",
+      "端子台8 / XW2B-8 /  / 9",
+      "端子台9 / XW2B-9 /  / 10",
+      "端子台10 / XW2B-10 /  / 11",
+      "端子台11 / XW2B-11 /  / 12",
+      "端子台12 / XW2B-12 /  / 13",
+      "端子台13 / XW2B-13 /  / 14",
+      "端子台14 / XW2B-14 /  / 15",
+      "端子台15 / XW2B-15 /  / 16",
+      "端子台16 / XW2B-16 /  / 17",
+      "端子台17 / XW2B-17 /  / 18",
+      "端子台18 / XW2B-18 /  / 19",
+      "端子台19 / XW2B-19 /  / 20",
+      "端子台20 / XW2B-20 /  / 21",
+      "端子台21 / XW2B-21 /  / 22",
+      "端子台22 / XW2B-22 /  / 23",
+      "端子台23 / XW2B-23 /  / 24",
+      "端子台24 / XW2B-24 /  / 25",
+      "端子台25 / XW2B-25 /  / 26",
+      "端子台26 / XW2B-26 /  / 27",
+      "端子台27 / XW2B-27 /  / 28",
+      "端子台28 / XW2B-28 /  / 29",
+      "端子台29 / XW2B-29 /  / 30"
+    ]
+  },
+  {
+    "id": "c10-page2-reorder-10dai",
+    "note": "2 ページ目は列の順が違い、数量の見出しが「数量(10台分)」",
+    "expect": "端子台 XW2B 20",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|数量(10台分)",
+    "warnings": [
+      "繰り返しの見出し 1 行は取り込みません（列の並びが違うページの 1 行は、最初の見出しの並びに直しました）"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 120",
+      "端子台 / XW2B / オムロン / 20"
+    ]
+  },
+  {
+    "id": "d8-mouser-left",
+    "note": "「Mouser P/N」が「Mfr P/N」の左",
+    "expect": "Mfr P/N を型式（または知らせる）",
+    "n": 2,
+    "mapping": "name,model,,maker,qtyNeeded",
+    "header": "Description|Mouser P/N|Mfr P/N|Manufacturer|Qty",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「Mouser P/N」の列を使います"
+    ],
+    "rows": [
+      "Relay / 653-MY4N / Omron / 12",
+      "Terminal / 653-XW2B / Omron / 2"
+    ]
+  },
+  {
+    "id": "h2-new-only-changed",
+    "note": "「型式」「新型式」：新型式は変えた行だけ埋まる",
+    "expect": "変えていない行は型式の値",
+    "n": 3,
+    "mapping": "name,,model,qtyNeeded",
+    "header": "部品名|型式|新型式|数量",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「新型式」の列を使います",
+      "「新型式」が空の 2 行は、ほかの「型式」の列の値を使いました"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2",
+      "ヒューズ / F-10 /  / 4"
+    ]
+  },
+  {
+    "id": "h3-new-qty-only-changed",
+    "note": "「数量」「変更後数量」：変更後は変えた行だけ",
+    "expect": "変えていない行は数量の値",
+    "n": 3,
+    "mapping": "name,model,,qtyNeeded",
+    "header": "部品名|型式|数量|変更後数量",
+    "warnings": [
+      "「数量」に当たる列が 2 つあります。「変更後数量」の列を使います",
+      "「変更後数量」が空の 2 行は、ほかの「数量」の列の値を使いました"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2",
+      "ヒューズ / F-10 /  / 4"
+    ]
+  },
+  {
+    "id": "h4-old-only",
+    "note": "見出しに「旧型式」の列だけ（新の列なし）＋「型式」なし",
+    "expect": "?",
+    "n": 2,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|旧型式|数量",
+    "warnings": [],
+    "rows": [
+      "リレー / MY2N /  / 12",
+      "端子台 / XW2A /  / 2"
+    ]
+  },
+  {
+    "id": "i1-2stage-repeat",
+    "note": "2 段の見出し（型式・数量の下に旧／新）をページごとに繰り返す",
+    "expect": "全ページで新・下の段を部品にしない",
+    "n": 2,
+    "mapping": "name,,model,,qtyNeeded",
+    "header": "部品名|型式（旧）|型式（新）|数量（旧）|数量（新）",
+    "warnings": [
+      "2 段の見出しを 1 段にまとめて読みました",
+      "繰り返しの見出し 2 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「型式（新）」の列を使います",
+      "「数量」に当たる列が 2 つあります。「数量（新）」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N /  / 12",
+      "端子台 / XW2B /  / 2"
+    ]
+  },
+  {
+    "id": "i3-wide-60",
+    "note": "60 列の表（項目は 41〜46 列目、ほかは号機ごとの空き列）",
+    "expect": "2 部品",
+    "n": 2,
+    "mapping": ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,name,model,maker,qtyNeeded,unit,note,,,,,,,,,,,,,,",
+    "header": "C1|C2|C3|C4|C5|C6|C7|C8|C9|C10|C11|C12|C13|C14|C15|C16|C17|C18|C19|C20|C21|C22|C23|C24|C25|C26|C27|C28|C29|C30|C31|C32|C33|C34|C35|C36|C37|C38|C39|C40|部品名|型式|メーカ|数量|単位|備考|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14",
+    "warnings": [],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "i4-title-24rows",
+    "note": "表題欄 24 行（ラベルと値が別のセル: 品名・図番・数量・作成・承認…）のあとに見出し",
+    "expect": "2 部品・型式あり",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|数量",
+    "warnings": [
+      "見出しより上の 24 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "i5-title-label-value-4",
+    "note": "表題「品名 | 制御盤A | 型式 | CP-100 | 数量 | 1」（ラベルと値が別のセル）＋ 4 項目の見出し",
+    "expect": "型式 MY4N",
+    "n": 2,
+    "mapping": "name,model,maker,qtyNeeded",
+    "header": "部品名|型式|メーカ|員数",
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  },
+  {
+    "id": "d6b-newark-right",
+    "note": "「Mfr P/N」が左、「Newark P/N」が右",
+    "expect": "Mfr P/N を型式",
+    "n": 2,
+    "mapping": "name,model,,maker,qtyNeeded",
+    "header": "Description|Mfr P/N|Newark P/N|Manufacturer|Qty",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「Mfr P/N」の列を使います"
+    ],
+    "rows": [
+      "Relay / MY4N / Omron / 12",
+      "Terminal / XW2B / Omron / 2"
+    ]
+  },
+  {
+    "id": "d6c-shinko",
+    "note": "見出し「新光P/N」（商社名が「新」で始まる）と「メーカ型番」",
+    "expect": "メーカ型番を型式",
+    "n": 2,
+    "mapping": "name,model,,maker,qtyNeeded",
+    "header": "部品名|メーカ型番|新光品番|メーカ|数量",
+    "warnings": [
+      "「型式」に当たる列が 2 つあります。「メーカ型番」の列を使います"
+    ],
+    "rows": [
+      "リレー / MY4N / オムロン / 12",
+      "端子台 / XW2B / オムロン / 2"
+    ]
+  }
+]

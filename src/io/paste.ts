@@ -151,7 +151,7 @@ export function parseBomPaste(text: string): PasteResult {
 
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
   // 小計・合計の行は部品ではない
-  const isTotal = (l: string[]) => l.some(isTotalCell) || isSectionLine(l)
+  const isTotal = (l: string[]) => l.some(isTotalCell) || isSectionLine(l, Math.max(l.length, mapping.length))
   const totals = lines.slice(hasHeader ? 1 : 0).filter(isTotal).length
   if (totals) warnings.push(`小計・合計・区切りの ${totals} 行は取り込みません`)
   const body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l))
@@ -219,7 +219,10 @@ export async function xlsxToTsv(buf: ArrayBuffer): Promise<string> {
     ws.eachRow({ includeEmpty: false }, (row) => {
       // 非表示の行（Excel で隠した行）は取り込まない
       if (row.hidden) return
-      const vals = (row.values as unknown[]).slice(1).map((v) => cellToText(v).replace(/[\t\n\r]/g, ' ')).filter((_, j) => !hiddenCols.has(j + 1))
+      // row.values は空のセルが穴（疎な配列）なので、列の数だけ詰めずに並べてから隠した列を外す（filter は穴を飛ばして列がずれる）
+      const raw = row.values as unknown[]
+      const vals: string[] = []
+      for (let c = 1; c < raw.length; c++) if (!hiddenCols.has(c)) vals.push(cellToText(raw[c]).replace(/[\t\n\r]/g, ' '))
       lines.push(vals.join('\t'))
     })
     // 見出しは上から 30 行まで探す（貼り付けの見出し探しと同じ。表題欄が長いシート）
@@ -262,12 +265,17 @@ function cellToText(v: unknown): string {
 
 /** 小計・合計の行のラベル（「合計」「合計金額」「Grand Total:」など。どの列にあっても） */
 export function isTotalCell(c: string): boolean {
-  const t = c.replace(/[\s　]/g, '')
+  // 空白と飾り（【】＜＞＊-＝ など）を外してから見る（「【合計】」「＊合計＊」「-- 以下余白 --」）
+  const t = c.replace(/[\s　【】［］\[\]<>＜＞〈〉《》＊*\-－ー—―=＝~～・]/g, '')
   if (/^(以下余白|以下空白|以上)$/.test(t)) return true
-  return /^(小計|合計|総計|総合計|計|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([（(][^）)]*[）)])?$/i.test(t)
+  // 「計：6個」「合計 6点」「合計数量 6」のように、同じセルに数・単位が続くものも
+  return /^(小計|合計|総計|総合計|計|total|subtotal|grandtotal)(金額|額|数|数量|点数|amount|qty)?[:：]?([\d,.]+(個|点|台|本|枚|式|円|pcs)?)?([（(][^）)]*[）)])?$/i.test(t)
 }
-/** 区切り・分類の見出しの行（「■ 制御部」「【電源】」だけが入った行）。部品ではない */
-export function isSectionLine(cells: string[]): boolean {
+/**
+ * 区切り・分類の見出しの行（「■ 制御部」「【電源】」「<端子部>」「1. 制御部」だけが入った行）。部品ではない。
+ * width は表の列の数（xlsx は行の右の空のセルが無いので、セルの数では見ない）。1 列だけの表では使わない
+ */
+export function isSectionLine(cells: string[], width = cells.length): boolean {
   const filled = cells.map((c) => c.trim()).filter(Boolean)
-  return cells.length > 1 && filled.length === 1 && /^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0])
+  return width > 1 && filled.length === 1 && (/^[■□◆◇●○▼▽▲△★☆【［]/.test(filled[0]) || /^([<＜〈《][^>＞〉》]+[>＞〉》]|\d+[.．、]\s*[^\d\s].*)$/.test(filled[0]))
 }

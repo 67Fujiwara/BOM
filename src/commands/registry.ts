@@ -162,9 +162,9 @@ export function keepCursorVisible(before: string[], external = false) {
   if (next) set({ cursorRow: next })
   else ensureCursor()
 }
-export function jumpToRow(id: string, col?: string) {
-  // Ctrl+G・パレットなどで別の行へ飛んだら、F8 は飛んだ先から数え直す
-  lastProblem = null
+export function jumpToRow(id: string, col?: string, keepProblem = false) {
+  // Ctrl+G・パレットなどで別の行へ飛んだら、F8 は飛んだ先から数え直す（直し方の候補から同じ問題のセルへ移るときは続ける）
+  if (!keepProblem) lastProblem = null
   const s = st()
   const p = s.project()
   const r = p.rows.find((x) => x.id === id)
@@ -181,6 +181,12 @@ export function setView(v: ViewId) {
   set({ view: v, detailIndex: 0, revView: null })
   if (!vm().rows.some((r) => r.id === st().cursorRow)) set({ cursorRow: null })
   ensureCursor()
+  // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 6・8 を開くと単価、9 なら発注数）。ID・状態の列にいるときはそのまま
+  const c = st().cursorCol
+  if (c !== 'id' && c !== 'status' && rows.canEdit(c)) {
+    const mine = vm().columns.find((k) => !rows.canEdit(k) && colDef(k)?.kind !== 'bool')
+    if (mine) set({ cursorCol: mine })
+  }
 }
 
 // ---------- 編集 ----------
@@ -198,7 +204,7 @@ export function startEdit(initial?: string) {
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
   editProject = projectIdentity()
-  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editTyped: initial !== undefined, editSelectAll: initial === undefined && value !== '' && (d.kind === 'num' || d.kind === 'date' || d.kind === 'select'), editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -473,12 +479,12 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
         opts.push({
           label: `${pr.message}: 編集する`,
           run: () => {
-            jumpToRow(r.id, pr.field)
+            jumpToRow(r.id, pr.field, true)
             startEdit()
           },
         })
       if (pr.severity === 'warn') opts.push({ label: `${pr.message}: 確認済みにする（x）`, run: () => rows.ackRule(r.id, pr.ruleId) })
-      opts.push({ label: `${pr.message}: あとで（Shift+→）`, run: () => rows.deferRule(r.id, pr.ruleId) })
+      opts.push({ label: `${pr.message}: あとで（公開を止めない。表では Shift+→）`, run: () => rows.deferRule(r.id, pr.ruleId) })
     }
   }
   if (role === 'purchasing') {
@@ -1665,7 +1671,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     default:
       if (id.startsWith('view.')) {
         // 行を選んでいないときに素の数字で切り替えたら、行は選ばないまま（続けて打った文字が先頭の行のセルに入らない。↓ で表へ）
-        const noRow = !cursorRow()
+        const noRow = !st().cursorRow
         setView(Number(id.slice(5)) as ViewId)
         if (noRow && e && !e.altKey && /^\d$/.test(e.key)) set({ cursorRow: null })
         return
@@ -1718,7 +1724,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'history', label: '履歴', section: '案件', keywords: 'ログ 変更履歴 誰が' },
   { id: 'theme.toggle', label: 'ダークモード切替', section: '表示', keywords: 'ダーク 暗い 暗く 明るく ライト テーマ 色' },
   { id: 'density.toggle', label: 'コンパクト表示切替', section: '表示', keywords: '行の高さ 小さく 大きく 文字 拡大 縮小 見やすく' },
-  { id: 'sort.asc', label: '今の列で並び替え', section: '表示', desc: 's 昇順 / Shift+S 降順。列見出しのクリックでも', keywords: 'ソート sort 並べ替え 順番' },
+  { id: 'sort.asc', label: '今の列で並び替え', section: '表示', desc: 'ID の列で s 昇順 / Shift+S 降順（ほかの列では Alt+s / Alt+Shift+S）。列見出しのクリックでも', keywords: 'ソート sort 並べ替え 順番' },
   { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: 'Ctrl+F で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },

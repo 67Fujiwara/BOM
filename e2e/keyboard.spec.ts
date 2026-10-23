@@ -105,7 +105,9 @@ test('設計: 4 要確認 → n → 直す → Ctrl+Enter で公開すると指�
   await expect(page.getByTestId('prompt-options')).toContainText('客先要求')
   await page.keyboard.press('Enter')
   await expect(page.getByTestId('toast')).toContainText('選んでから Enter')
-  await page.keyboard.press('2') // 設計起因
+  await page.keyboard.press('2') // 設計起因（文字欄もあるダイアログでは数字は選ぶだけ）
+  await expect(page.getByTestId('toast')).toContainText('設計起因')
+  await page.keyboard.press('Enter')
   await expect(page.getByTestId('toast')).toContainText('公開しました')
   await expect(page.getByTestId('status')).toContainText('未公開 0 行')
   // 公開後：購買に切り替えて 5 変更あり → x
@@ -153,7 +155,9 @@ test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要�
   expect(n).toBeGreaterThan(1)
   await page.keyboard.press(String(n)) // 最下位の商社
   await expect(page.getByTestId('prompt-options')).toBeVisible()
-  await page.keyboard.press('1') // 理由: 納期（数字で選ぶ。Enter だけでは進まない）
+  await page.keyboard.press('1') // 理由: 納期（数字で選び、Enter で確定。Enter だけでは進まない）
+  await page.keyboard.press('Enter')
+  await expect(page.getByTestId('prompt-options')).toHaveCount(0)
   const toast = await page.getByTestId('toast').textContent()
   const row = page.locator('[data-row-id="R020"]')
   if (toast?.includes('PM')) {

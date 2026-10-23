@@ -200,7 +200,8 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       const digitPick = panel.options && /^[1-9]$/.test(key) && (!panel.showText || (panel.digitsSelect && !panel.text))
       if (digitPick) {
         if (Number(key) > n) return (toast(`1〜${n} で選んでください`, 'info'), true)
-        if (panel.showText && panel.requireText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), true)
+        // 文字欄もあるダイアログ（理由・氏名を入れる）では、数字は選ぶだけ。確定は Enter（続けて打った文字が背後の表に入らない）
+        if (panel.showText) return (set({ panel: { ...panel, index: Number(key) - 1 } }), toast(`「${panel.options![Number(key) - 1]}」を選びました。${panel.requireText ? '理由を入れて' : '必要なら入れて'} Enter で確定`, 'info'), true)
         submit(panel.options![Number(key) - 1])
         return true
       }
@@ -415,8 +416,12 @@ export function onCommandCell(ch = ''): boolean {
   const s = st()
   // 記号（? / [ ] < > など）。文字を打てるセルでは値の打ち始め（<5mm・[A]CN-12）、それ以外では 1 キー操作
   const sym = ch !== '' && !/^[A-Za-z0-9]$/.test(ch)
+  // 分類の見出しの行: 記号（[ ] で分類を移る）だけ。数字・英字は案内（見出しでビューが変わって選択が外れない）
+  if (s.cursorRow?.startsWith('g:')) return sym
   if (!visibleCursorRow()) return /^\d$/.test(ch) || sym
-  if (s.cursorCol === 'id' || s.cursorCol === 'status' || colDef(s.cursorCol)?.kind === 'bool') return true
+  if (s.cursorCol === 'id' || s.cursorCol === 'status') return true
+  // 発注・入荷のチェックの列は Enter で切り替える。英字は打った単語が操作にならないよう案内（数字・記号は 1 キー操作）
+  if (colDef(s.cursorCol)?.kind === 'bool') return !/^[A-Za-z]$/.test(ch)
   // 自分が書けない列では、記号は 1 キー操作。数字のビュー切替は、どの列も書かない PM だけ（ほかの役割は切り替えた先の文字を打てるセルに残りの数字・英字が入るので、Alt+数字か ID の列で）
   if (sym && rows.canEdit(s.cursorCol)) return true
   if (/^\d$/.test(ch) && s.user().role === 'pm') return true
@@ -571,7 +576,21 @@ export function handleKeyDown(e: KeyboardEvent) {
           e.preventDefault()
           const rot = key === 'ArrowDown' ? [...c.slice(1), c[0]] : [c[c.length - 1], ...c.slice(0, -1)]
           set({ editCandidates: rot })
+          return
         }
+        // 打って始めた入力は、矢印で確定して上下のセルへ（Excel と同じ。前の値に足さない）
+        if (s.editTyped) {
+          e.preventDefault()
+          if (key === 'ArrowDown') commitEdit('down')
+          else if (commitEdit('stay')) runCommand('move.up')
+        }
+        return
+      }
+      case 'ArrowLeft':
+      case 'ArrowRight': {
+        if (!s.editTyped) return
+        e.preventDefault()
+        if (commitEdit('stay')) runCommand(key === 'ArrowLeft' ? 'move.left' : 'move.right')
         return
       }
     }
@@ -612,12 +631,14 @@ export function handleKeyDown(e: KeyboardEvent) {
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault()
     const r = visibleCursorRow()
-    if (!r) return toast('行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）', 'info')
+    if (!r) return toast(s.cursorRow?.startsWith('g:') ? '分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）' : '行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。英字の 1 キー操作は Alt を押しながら）', 'info')
+    const bound = lookupBinding(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, 'nav')
+    const alt = /[A-Z]/.test(ch) ? `Alt+Shift+${ch}` : `Alt+${ch}`
+    // チェックの列（発注・入荷）は Enter で切り替える。打った文字では切り替えない
+    if (colDef(s.cursorCol)?.kind === 'bool') return toast(`${colDef(s.cursorCol)!.label}の列は Enter で切り替えます。${bound ? `「${bound.label}」は ${alt}` : '1 キー操作は Alt を押しながら'}`, 'info')
     const err = rows.canEdit(s.cursorCol)
     if (err) {
       // 打ったキーの操作名も書く（単語を打ったときに、最後の文字の操作を知らずに Alt で押さないように）
-      const alt = /[A-Z]/.test(ch) ? `Alt+Shift+${ch}` : `Alt+${ch}`
-      const bound = lookupBinding(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch, 'nav')
       return toast(`${err}。${bound ? `「${bound.label}」は ${alt}（または ID の列で ${ch}）` : '1 キー操作は Alt を押しながらか、ID の列で'}。キーの一覧は F1`, 'info')
     }
     startEdit(ch)

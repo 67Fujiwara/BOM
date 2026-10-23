@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseBomPaste } from './paste'
+import { parseBomPaste, xlsxToTsv } from './paste'
 
 describe('parseBomPaste', () => {
   it('detects Excel-style headers (品名・形式・メーカー・員数)', () => {
@@ -96,5 +96,31 @@ describe('合計・区切りの行（表記ゆれ）', () => {
   it('1 列だけの貼り付けでは、記号で始まる値を区切りとみなさない', () => {
     const r = parseBomPaste('型式\n【A】CN-12\nMY4N')
     expect(r.rows.length).toBe(2)
+  })
+})
+
+describe('xlsxToTsv', () => {
+  it('途中の空のセルで右の値がずれない。隠した列は外す', async () => {
+    const ExcelJS = (await import('exceljs')).default
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('BOM')
+    ws.addRow(['部品名', '旧型式', '型式', 'メーカ', '備考', '数量'])
+    ws.addRow(['リレー', 'MY2N-OLD', 'MY4N', 'オムロン', null, 4])
+    ws.addRow(['タイマ', null, 'H3CR', null, null, 3])
+    ws.getColumn(2).hidden = true
+    const buf = await wb.xlsx.writeBuffer()
+    const tsv = await xlsxToTsv(buf as ArrayBuffer)
+    const lines = tsv.split('\n').map((l) => l.split('\t'))
+    expect(lines[1]).toEqual(['リレー', 'MY4N', 'オムロン', '', '4'])
+    expect(lines[2]).toEqual(['タイマ', 'H3CR', '', '', '3'])
+    const r = parseBomPaste(tsv)
+    expect(r.rows.map((x) => [x.model, x.maker, x.qtyNeeded])).toEqual([['MY4N', 'オムロン', 4], ['H3CR', '', 3]])
+  })
+})
+
+describe('合計・区切りの行（ラウンド 9 の表記）', () => {
+  it('飾り・数・単位つきの合計、<端子部>・1. 制御部・右が空の区切りを飛ばす', () => {
+    const r = parseBomPaste('No\t部品名\t型式\tメーカ\t数量\n【電源部】\n1\tリレー\tMY4N\tオムロン\t2\n\t計：6個\t\t\t\n\t【合計】\t\t\t6\n\t＜合計＞\t\t\t6\n\t合計 6点\n\t＊合計＊\t\t\t6\n\t-- 以下余白 --\n\t合計数量 6\n1. 制御部\n<端子部>\n2\tヒューズ\tF-1.5A\tサトー\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'F-1.5A'])
   })
 })

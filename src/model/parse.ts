@@ -72,7 +72,9 @@ export function parseDate(raw: string, opts: { label?: string; allowUndecided?: 
   if (plus) return { ok: true, value: addDays(todayStr(), Number(plus[1])) }
   let y: number, m: number, d: number
   let mm: RegExpExecArray | null
-  if ((mm = /^(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})日?$/.exec(s))) [y, m, d] = [Number(mm[1]), Number(mm[2]), Number(mm[3])]
+  // 和暦（令和 8 年 11 月 30 日・R8.11.30）
+  if ((mm = /^(令和|R)\s*(\d{1,2}|元)[-/.年](\d{1,2})[-/.月](\d{1,2})日?$/i.exec(s))) [y, m, d] = [2018 + (mm[2] === '元' ? 1 : Number(mm[2])), Number(mm[3]), Number(mm[4])]
+  else if ((mm = /^(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})日?$/.exec(s))) [y, m, d] = [Number(mm[1]), Number(mm[2]), Number(mm[3])]
   else if ((mm = /^(\d{4})(\d{2})(\d{2})$/.exec(s))) [y, m, d] = [Number(mm[1]), Number(mm[2]), Number(mm[3])]
   else if ((mm = /^(\d{1,2})[-/.月](\d{1,2})日?$/.exec(s))) {
     const t = todayStr()

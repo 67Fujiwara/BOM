@@ -275,3 +275,10 @@ build OK Intersil@300 | メーカ | mode 編集 edit "Intersil" | cur R040 メ�
 build OK Intersil@380 | メーカ | mode 編集 edit "Intersil" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 1
 build OK Intersil@450 | メーカ | mode 編集 edit "Intersil" | cur R040 メーカ | view view-1 | panel null | chips  | diff   | lag 1
 build OK Inductor@60 | 部品名 | mode 編集 edit "Inductor" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+build OK Inductor@150 | 部品名 | mode 編集 edit "Inductor" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+build OK Inductor@300 | 部品名 | mode 編集 edit "Inductor" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 2
+build OK Inductor@380 | 部品名 | mode 編集 edit "Inductor" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+build OK Inductor@450 | 部品名 | mode 編集 edit "Inductor" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+build OK Antenna@60 | 部品名 | mode 編集 edit "Antenna" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 0
+build OK Antenna@150 | 部品名 | mode 編集 edit "Antenna" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1
+build OK Antenna@300 | 部品名 | mode 編集 edit "Antenna" | cur R040 部品名 | view view-1 | panel null | chips  | diff   | lag 1

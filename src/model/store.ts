@@ -5,6 +5,10 @@ import { makeWorkspace } from './sample'
 import type { Mode } from '@/keys/keymap'
 import { loadIfChangedElsewhere, loadWorkspace, saveWorkspace } from '@/io/persist'
 
+// 保存キーはストアを作る前に定義する（ストアの初期値を読むときに使う。後ろで定義すると初期化前参照で黙って空になる）
+const UI_KEY = 'bom-pro.ui'
+const HISTORY_KEY = 'bom-pro.history'
+
 export type ViewId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 export type PanelOption = { label: string; run: () => void; key?: string; hint?: string }
@@ -62,6 +66,8 @@ export interface State {
   editError: string | null
   /** 編集を始めたときの値（別のタブで変わっていないかを確定時に確かめる） */
   editBase: string | null
+  /** 6・8 で確定後に自動で始めた入力（空のまま確定したら何も変えない） */
+  editAuto?: boolean
   panel: Panel | null
   toast: { text: string; kind: 'ok' | 'err' | 'info'; at: number } | null
   revView: number | null
@@ -265,7 +271,6 @@ export function userKey(u: User): string {
 }
 
 // ---------- 画面の状態（タブごと。リロードしても同じビュー・セル・ガイドの途中から） ----------
-const UI_KEY = 'bom-pro.ui'
 type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands' | 'wizardDraft'>
 function readUi(): Partial<UiSaved> {
   try {
@@ -302,7 +307,6 @@ useStore.subscribe((s, prev) => {
   }, 200)
 })
 
-const HISTORY_KEY = 'bom-pro.history'
 /** Undo 履歴はタブごとに保存し、リロードしても残す */
 function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string, UndoEntry[]> } {
   try {

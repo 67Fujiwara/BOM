@@ -4,7 +4,7 @@ import { buildViewModel, cellText } from '@/model/selectors'
 import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { VIEWS } from '@/model/views'
+import { VIEWS, isAcked } from '@/model/views'
 import { ball as ballOf, effective, isActive, openIssues } from '@/model/derive'
 import { checkRow, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
@@ -156,7 +156,7 @@ export function startEdit(initial?: string) {
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
-  set({ mode: 'edit', editValue: value, editError: null, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
+  set({ mode: 'edit', editValue: value, editError: null, editAuto: false, editBase: String(cur.raw ?? ''), editCandidates: d.kind === 'select' ? candidates(d.options ?? [], initial ?? '') : null })
 }
 function toggleBool(r: Row, col: string) {
   const v = (r as unknown as Record<string, unknown>)[col] === true
@@ -191,6 +191,8 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   }
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const now = String(cur.raw ?? '')
+  // 自動で始めた入力を空のまま確定したら、値は変えずに移動だけ
+  if (s.editAuto && value.trim() === '') value = now
   // 編集している間に、別のタブ（別の人）が同じセルを変えていたら、黙って上書きしない
   if (s.editBase != null && now !== s.editBase && value !== now) {
     set({ editBase: now, editError: `別のタブで「${now || '（空）'}」に変更されています` })
@@ -220,6 +222,12 @@ export function commitEdit(dir: 'down' | 'right' | 'left' | 'stay' = 'down'): bo
   if (dir === 'down') moveCursorToRow(1)
   else if (dir === 'right') moveCol(1)
   else if (dir === 'left') moveCol(-1)
+  // 6 商社別・8 正式見積: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
+  const n = st()
+  if (dir !== 'stay' && (n.view === 6 || n.view === 8) && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
+    startEdit('')
+    set({ editAuto: true })
+  }
   return true
 }
 export function cancelEdit() {
@@ -236,14 +244,14 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
   }
   if (row.flags.notation) return '表記修正を確認'
   if (row.flags.orderQtyCheck) return '発注数を確認'
-  if (row.flags.contested) return '拮抗を確認'
+  if (row.flags.contested && role === p.settings.selector) return '拮抗を確認'
   if (row.flags.priceCheck) return '単価要確認を確認'
   if (role === 'design') {
     const prs = checkRow(row, st().ws.rules, p)
     const pr = prs.find((x) => x.severity === 'warn' && x.field === st().cursorCol) ?? prs.find((x) => x.severity === 'warn')
     if (pr) return row.ackRules.includes(pr.ruleId) ? '警告の確認済みを外す' : '警告を確認済み'
   }
-  if (st().view === 5 && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !sb.acked.includes(row.id))) return '差分を確認済'
+  if (st().view === 5 && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
   return null
 }
 function ackCurrent() {
@@ -260,7 +268,7 @@ function ackCurrent() {
   }
   if (r.flags.notation) return issues.ackFlag(r.id, 'notation')
   if (r.flags.orderQtyCheck) return issues.ackFlag(r.id, 'orderQtyCheck')
-  if (r.flags.contested) return issues.ackFlag(r.id, 'contested')
+  if (r.flags.contested && role === p.settings.selector) return issues.ackFlag(r.id, 'contested')
   if (r.flags.priceCheck) return issues.ackFlag(r.id, 'priceCheck')
   if (role === 'design') {
     const prs = checkRow(r, s.ws.rules, p)
@@ -271,11 +279,13 @@ function ackCurrent() {
     }
     if (prs.some((x) => x.severity === 'error')) return toast('エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）', 'err')
   }
-  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !sb.acked.includes(r.id)) && (s.view === 5 || role !== 'design')) {
+  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !isAcked(sb, r.id, role)) && (s.view === 5 || role !== 'design')) {
+    // 確認は自分の役割の分だけ。Rev を選んでいればその Rev だけ
+    const rev = s.revView
     s.commit('差分を確認済', (p2) => {
-      for (const sub of p2.submissions) if (sub.rowIds.includes(r.id) && !sub.acked.includes(r.id)) sub.acked.push(r.id)
+      for (const sub of p2.submissions) if (sub.rowIds.includes(r.id) && !isAcked(sub, r.id, role) && (rev == null || sub.rev === rev)) sub.acked.push(`${r.id}@${role}`)
     })
-    return toast(`${r.id} の差分を確認済にしました`, 'info')
+    return toast(`${r.id} の差分を確認済にしました（${ROLE_LABEL[role]}として${rev != null ? `・Rev.${rev}` : ''}）`, 'info')
   }
   toast('この行に確認するもの（対応済の指摘・警告・表記修正など）はありません', 'info')
 }
@@ -418,7 +428,8 @@ function issueActionPanel(issueId: string) {
         }),
     })
     if (i.proposal) options.push({ key: '4', label: `提案 ${i.proposal.model} を適用（置換）`, run: () => void issues.applyProposal(i.id) })
-    if (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼')
+    // 対策不成立は、PM の決定から出た指摘への回答だけ（購買の依頼には「直さず回答」で返す。§6.3）
+    if ((i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && i.by.role === 'pm')
       options.push({
         key: '7',
         label: `${i.kind === '数量見直し依頼' ? '数量変更不可' : '代替なし'}（対策不成立として PM へ）`,
@@ -870,13 +881,19 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'redo':
       return s.redoLast()
     case 'export.excel': {
-      const done = (label: string) => (m: typeof import('@/io/excel')) => m.exportBomExcel(s.ws, p, label === 'internal' ? 'internal' : label === 'supplier' ? 'supplier' : 'archive').then(() => toast(`Excel を出力しました（${label === 'internal' ? '社内' : label === 'supplier' ? '商社向け' : '保管用'}、BOM・変更点・チェック結果の 3 シート）`, 'ok')).catch((err: Error) => toast(`Excel を出力できませんでした: ${err.message}`, 'err'))
+      const done = (label: string, sid?: string) => (m: typeof import('@/io/excel')) =>
+        m
+          .exportBomExcel(s.ws, p, label === 'internal' ? 'internal' : label === 'supplier' ? 'supplier' : 'archive', sid)
+          .then(() => toast(`Excel を出力しました（${label === 'internal' ? '社内、BOM・変更点・チェック結果の 3 シート' : label === 'supplier' ? `商社向け${sid ? `・${s.ws.suppliers.find((x) => x.id === sid)?.name}` : ''}、BOM シートのみ・価格なし` : '保管用、全列'}）`, 'ok'))
+          .catch((err: Error) => toast(`Excel を出力できませんでした: ${err.message}`, 'err'))
+      const sups = p.supplierIds.map((id) => s.ws.suppliers.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x)
       return openPanel({
         kind: 'export',
         index: 0,
         options: [
           { label: '社内（採用・金額・状態つき）', run: () => void import('@/io/excel').then(done('internal')) },
-          { label: '商社向け（価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
+          ...sups.map((x) => ({ label: `商社向け: ${x.name}（その商社に頼む行だけ・価格列なし）`, run: () => void import('@/io/excel').then(done('supplier', x.id)) })),
+          { label: '商社向け: 全商社共通（提出済の全行・価格列なし）', run: () => void import('@/io/excel').then(done('supplier')) },
           { label: '保管用（全列・商社別見積つき）', run: () => void import('@/io/excel').then(done('archive')) },
         ],
       })
@@ -1233,7 +1250,9 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           onSubmit: (text) => {
             if (!text.trim()) return toast('貼り付けが空です', 'err')
             const res = quotes.importQuoteAnswers(text, sid)
-            toast(`取り込み ${res.updated} 行 / 突合不能 ${res.unmatched.length}${res.unmatched.length ? `（${res.unmatched.slice(0, 3).join(', ')}）` : ''} / 型式不一致 ${res.modelMismatch.length} / 代替提案の下書き ${res.proposals}`, res.unmatched.length || res.modelMismatch.length ? 'info' : 'ok')
+            // 読めない値で飛ばした行も必ず知らせる（黙って捨てない）
+            const errs = res.errors.length ? ` / 読めない値 ${res.errors.length} 件（${res.errors.slice(0, 2).join('、')}${res.errors.length > 2 ? ' …' : ''}。その行は取り込んでいません）` : ''
+            toast(`取り込み ${res.updated} 行 / 突合不能 ${res.unmatched.length}${res.unmatched.length ? `（${res.unmatched.slice(0, 3).join(', ')}）` : ''} / 型式不一致 ${res.modelMismatch.length} / 代替提案の下書き ${res.proposals}${errs}`, res.errors.length ? 'err' : res.unmatched.length || res.modelMismatch.length ? 'info' : 'ok')
           },
         })
       })
@@ -1271,7 +1290,17 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'ltb.request':
       if (!need()) return
       if (role !== 'purchasing') return toast('権限なし（先行発注の申請は購買）', 'err')
-      return prompt(`先行発注を申請 ${r!.id}（理由）`, { requireText: true }, (_c, t) => pm.requestEarlyOrder(r!.id, t))
+      {
+        // PM が判断できるのは有効な見積がある行だけ（§4）。金額の目安は推奨の見積から
+        const best = scoreRow(p, r!, s.ws.suppliers)[0]
+        if (!best) return toast(`${r!.id} には有効な見積がありません。見積が揃ってから申請します`, 'info')
+        const est = Math.round((best.quote.unitPrice ?? 0) * best.roundedQty)
+        return prompt(`先行発注を申請 ${r!.id}（理由と金額）`, { requireText: true, placeholder: '理由（例: 長納期のため正式見積を待てない）', extra: { 金額: String(est) } }, (_c, t, ex) => {
+          const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
+          if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
+          pm.requestEarlyOrder(r!.id, `${t}（金額 ¥${amt.value.toLocaleString()}）`)
+        })
+      }
     case 'project.new': {
       const d = s.wizardDraft
       if (d) toast('途中まで入れた内容を戻しました（Esc で中止しても内容は残ります）', 'info')

@@ -215,7 +215,7 @@ export function applyProposal(issueId: string): string | null {
       issue.movedTo = newId
       // 同じ行の他の提案は「見送り（この提案を適用）」にして起票者に知らせる
       for (const o of p2.issues)
-        if (o.id !== issueId && o.rowId === i.rowId && o.proposal && o.movedTo === newId) {
+        if (o.id !== issueId && o.rowId === i.rowId && o.proposal && ['open', 'inProgress', 'answered'].includes(o.status)) {
           o.status = 'wontfix'
           o.resolution = `見送り（${issueId} を適用）`
           o.replies.push({ by: s.user(), at: new Date().toISOString(), text: `${issueId} の提案を適用したので、この提案は見送りました` })
@@ -256,7 +256,9 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
     const remaining = p.quotes.filter((x) => x.rowId === rowId && !x.stale && !x.reconfirm)
     if (remaining.length === 0) {
       r.flags.reconfirm = false
-      if (p.quotes.some((x) => x.rowId === rowId && !x.stale && x.reconfirm === 'requote') && r.status !== 'draft') {
+      // 再見積があれば見積中へ。据え置き・提案値だけでも、残した見積で見積済に進める（normalize が判定）
+      const requote = p.quotes.some((x) => x.rowId === rowId && !x.stale && x.reconfirm === 'requote')
+      if ((requote && r.status !== 'draft') || r.status === 'submitted') {
         r.status = 'quoting'
         r.statusChangedAt = new Date().toISOString()
       }

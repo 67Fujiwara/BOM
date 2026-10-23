@@ -46,6 +46,7 @@ export function Header({ vm }: { vm: ViewModel }) {
       <span className="lamps" data-testid="lamps">
         <span className={'lamp ' + (user.role === 'design' ? 'accent keep' : '')} title={`設計待ちの内訳: 指摘の対応 ${db.issues}・選定待ち ${db.selecting}・その他 ${db.other}`}>
           設計待ち {bc.design}
+          {user.role === 'design' && (db.issues || db.selecting) ? <span className="lamp-sub">（指摘 {db.issues}・選定待ち {db.selecting}）</span> : null}
         </span>
         <span className={'lamp ' + (user.role === 'purchasing' ? 'accent keep' : '')}>購買待ち {bc.purchasing}</span>
         <span className={'lamp ' + (user.role === 'pm' ? 'accent keep' : '')}>PM待ち {bc.pm}</span>

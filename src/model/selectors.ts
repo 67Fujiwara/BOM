@@ -216,6 +216,10 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       if (f.countermeasure) flags.push(f.countermeasure)
       if (f.delegated) flags.push('委譲')
       if (row.working && Object.keys(row.working).length) flags.push('作業中●')
+      // 取消・置換の作業中: 設計には中身を、他の役割には「作業中」だけ見せる（§5）
+      const rm = row.removal ?? row.pendingRemoval
+      if (rm && ctx.role === 'design') flags.unshift(rm.kind === 'cancel' ? '取消予定' : `置換予定 →${rm.by}`)
+      else if (row.removal && !flags.includes('作業中●')) flags.push('作業中●')
       let text = STATUS_LABEL[row.status]
       if (row.status === 'quoting') {
         const qs = p.quotes.filter((q) => q.rowId === row.id && !q.stale)

@@ -265,7 +265,7 @@ interface RowProps {
 }
 
 const GridRow = memo(function GridRow({ row: r, cols, ctx, sel, cursorCol, editing, editValue, editError, candidates, cursorRef, inputRef, suppliers }: RowProps) {
-  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' ? 'rejected' : ''].filter(Boolean).join(' ')
+  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' || (ctx.role === 'design' && (r.removal || r.pendingRemoval)) ? 'rejected' : ''].filter(Boolean).join(' ')
   return (
     <tr className={cls} data-testid="row" data-row-id={r.id}>
       {cols.map((c) => {

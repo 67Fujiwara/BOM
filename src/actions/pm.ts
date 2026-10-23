@@ -1,10 +1,11 @@
 import { useStore } from '@/model/store'
 import type { Decision, DecisionKind, Issue, Project, Row, ScoreWeights, User } from '@/model/types'
+import { ISSUE_KINDS } from '@/model/types'
 import { nextBest, scoreRow } from '@/model/score'
 import { effective, isActive, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { addBusinessDays, addDays, todayStr } from '@/model/dates'
-import { applyDesignChange } from './rows'
+import { applyDesignChange, applyRemoval } from './rows'
 
 function st() {
   return useStore.getState()
@@ -83,7 +84,7 @@ function formalKey(p: Project, r: Row): string | undefined {
 }
 
 function newIssue(p: Project, rowId: string, kind: Issue['kind'], field: string, text: string, by: User, at: string): Issue {
-  const i: Issue = { id: 'I-' + String(p.nextIssueNo++).padStart(3, '0'), rowId, field: field as keyof Row, kind, text, by, at, status: 'open', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), 2, p.settings.holidays), rev: p.submissions.at(-1)?.rev }
+  const i: Issue = { id: 'I-' + String(p.nextIssueNo++).padStart(3, '0'), rowId, field: field as keyof Row, kind, text, by, at, status: 'open', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), ISSUE_KINDS.find((k) => k.kind === kind)?.dueDays ?? 2, p.settings.holidays), rev: p.submissions.at(-1)?.rev }
   p.issues.push(i)
   return i
 }
@@ -122,6 +123,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
                 rr.pendingApproval = undefined
                 applyDesignChange(p, rr, v, [], sub?.summary)
               }
+              if (rr.pendingRemoval) applyRemoval(p, rr, rr.pendingRemoval, sub)
               rr.pendingRev = undefined
             }
           } else {
@@ -139,11 +141,16 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
             for (const rr of p.rows.filter((x) => x.pendingRev === rev && x.flags.pmPending && x.flags.pmReason === '変更セット')) {
               rr.flags.pmPending = false
               rr.flags.pmReason = undefined
+              if (rr.pendingRemoval) {
+                // 取消・置換も公開値はそのまま。設計の作業中に戻す
+                rr.removal = rr.pendingRemoval
+                rr.pendingRemoval = undefined
+              }
               if (rr.pendingApproval) {
                 // 公開値はそのまま。変更は設計の作業中に戻す（見積は失わない）
                 rr.working = { ...rr.pendingApproval, ...(rr.working ?? {}) }
                 rr.pendingApproval = undefined
-              } else if (rr.status === 'submitted') {
+              } else if (rr.status === 'submitted' && rr.publishedRev === rev && !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id))) {
                 // 承認待ちだった追加行は下書きに戻す
                 setStatus(rr, 'draft')
                 rr.publishedRev = undefined
@@ -390,7 +397,7 @@ export function applySettings(patch: Partial<Project['settings']> & { dueDate?: 
       if (sub) for (const r of p.rows) if (isActive(r) && rowNeedDate(p, r) !== oldNeed.get(r.id)) {
         if (!sub.rowIds.includes(r.id)) sub.rowIds.push(r.id)
         sub.causes[r.id] = '案件納期変更'
-        sub.acked = sub.acked.filter((x) => x !== r.id)
+        sub.acked = sub.acked.filter((x) => x !== r.id && !x.startsWith(r.id + '@'))
       }
     }
     normalize(p, ws)

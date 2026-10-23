@@ -64,6 +64,9 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   headerRow(sheet, cols)
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
+    // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
+    if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
+    if (target === 'supplier' && supplierId && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === supplierId && !q.stale) && r.adoptedSupplierId !== supplierId) continue
     // 隠した行は社内・商社向けでは出さない。保管用は全行
     if (r.hidden && target !== 'archive') continue
     // 設計の作業中（未公開）の値は、設計が社内用に出すときだけ。商社向け・保管用・購買や PM の出力は公開値
@@ -122,7 +125,7 @@ function safeName(s: string): string {
 }
 
 /** 商社向けの見積依頼書（概算 / 正式） */
-export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[], kind: 'rough' | 'formal', deadline: string, rev: number) {
+export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[], kind: 'rough' | 'formal', deadline: string, rev: number, prevNeed?: Map<string, string | null>) {
   const wb = new ExcelJS.Workbook()
   const sh = wb.addWorksheet(kind === 'rough' ? '概算見積依頼' : '正式見積依頼')
   const reqNo = `${p.id}-${sup.id}-${kind === 'formal' ? 'F' : ''}${rev}`
@@ -153,7 +156,10 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
       const now = subs.at(-1)?.snapshot[r.id]
       const before = subs.at(-2)?.snapshot[r.id]
       if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
-      if (r.flags.reissue || r.lastChangeCause === '案件納期変更') diff.addRow([r.id, '必要納期', '', rowNeedDate(p, r) ?? ''])
+      // 前回の依頼で送った必要納期と今回の値（案件納期の変更・前倒し日数の変更など）
+      const now2 = rowNeedDate(p, r) ?? ''
+      const prev = prevNeed?.get(r.id)
+      if (prev !== undefined && (prev ?? '') !== now2) diff.addRow([r.id, '必要納期', prev ?? '', now2])
     }
   }
   const buf = await wb.xlsx.writeBuffer()

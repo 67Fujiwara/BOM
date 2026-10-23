@@ -213,7 +213,8 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       if (!opts.length) return key === 'Enter' ? (closePanel(), true) : true
       let idx = key === 'Enter' ? panel.index : -1
       if (idx < 0) idx = opts.findIndex((o) => o.key === key)
-      if (idx < 0 && /^[1-9]$/.test(key)) idx = Number(key) - 1
+      // キーの決まった選択肢（決定パネルの y / b / g …）では、数字を並び順の選択に使わない
+      if (idx < 0 && /^[1-9]$/.test(key) && !opts.some((o) => o.key && !/^\d$/.test(o.key))) idx = Number(key) - 1
       if (idx >= 0 && opts[idx]) {
         closePanel()
         opts[idx].run()
@@ -400,7 +401,6 @@ const BURST_MS = 350
 const UI_KEYS = ['cursorRow', 'cursorCol', 'view', 'sort', 'filter', 'cellFilter', 'collapsed', 'openRows', 'detailIndex', 'revView'] as const
 type Burst = { at: number; text: string; ui: Partial<State>; undoLen: number; row: string; col: string }
 let burst: Burst | null = null
-let digitHintShown = false
 /** 続けて押しても移動とみなすキー（j j k / x n など） */
 const NAV_LETTERS = new Set(['j', 'k', 'n'])
 const undoLen = () => (st().undo[userKey(st().ws.user)] ?? []).length
@@ -557,17 +557,7 @@ export function handleKeyDown(e: KeyboardEvent) {
     e.preventDefault()
     if (b.id.startsWith('view.')) {
       const d = colDef(s.cursorCol)
-      // 6 商社別・8 正式見積の数値セルでは、数字はそのまま値の入力（単価→Tab→納期 と続けて打てる）
-      if ((s.view === 6 || s.view === 8) && visibleCursorRow() && d?.numeric && !rows.canEdit(s.cursorCol)) {
-        burst = null
-        startEdit(e.key)
-        if (!digitHintShown) {
-          digitHintShown = true
-          toast('この表の数値セルでは、数字はそのまま値の入力です（ビューを替えるときは Esc → Home で部品名の列へ移ってから数字、またはサイドバー）', 'info')
-        }
-        return
-      }
-      if (s.cursorRow && d?.numeric && !rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください`, 'info')
+      if (s.cursorRow && d?.numeric && !rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください${s.view === 6 || s.view === 8 ? '（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）' : ''}`, 'info')
     }
     const letter = /^[a-z]$/.test(key)
     const editable = letter && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)

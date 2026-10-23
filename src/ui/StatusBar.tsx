@@ -3,7 +3,7 @@ import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
 import { unpublishedCount, openIssues, isActive } from '@/model/derive'
-import { formatKey } from '@/keys/keymap'
+import { formatKey, keyToEventInit } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import { pmCaseOf } from '@/actions/pm'
 import { canAdopt } from '@/actions/adopt'
@@ -70,7 +70,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
         )}
         <span className="hints">
           {hints.map(([k, l]) => (
-            <span key={k + l}>
+            <span key={k + l} className="clickable" title={`${formatKey(k)} を押すのと同じ`} onMouseDown={(e) => e.preventDefault()} onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', keyToEventInit(k)))}>
               <b>{formatKey(k)}</b>
               {l}
             </span>

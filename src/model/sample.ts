@@ -288,7 +288,7 @@ export const DEFAULT_RULES: Rule[] = [
   { id: 'rule.model.ws', name: '型式の前後に空白なし', field: 'model', type: 'noWhitespace', severity: 'warn', message: '型式の前後に空白があります', owner: 'system', scope: 'all', enabled: true },
   { id: 'rule.model.fw', name: '型式に全角文字なし', field: 'model', type: 'noFullWidth', severity: 'warn', message: '型式に全角文字が含まれています', owner: 'system', scope: 'all', enabled: true },
   { id: 'rule.ref.dup', name: '回路記号の重複なし', field: 'ref', type: 'duplicate', severity: 'warn', message: '回路記号が他の行と重複しています', owner: 'system', scope: 'all', enabled: true },
-  { id: 'rule.pack.multiple', name: '数量は入数の倍数', field: 'qtyNeeded', type: 'packMultiple', severity: 'warn', message: 'パック品の数量が入数の倍数ではありません', fromIssueKind: '最小ロット', owner: 'system', scope: 'all', enabled: true },
+  { id: 'rule.pack.multiple', name: '数量は入数の倍数', field: 'qtyNeeded', type: 'packMultiple', severity: 'warn', message: '数量が入数の倍数ではありません（パック売りなら単位をパックに）', fromIssueKind: '最小ロット', owner: 'system', scope: 'all', enabled: true },
   { id: 'rule.alt.consistent', name: '同一型式で代替可否が一致', field: 'altPolicy', type: 'altConsistent', severity: 'warn', message: '同じ型式の行と代替可否が違います', owner: 'system', scope: 'all', enabled: true },
   { id: 'rule.model.cp30', name: 'CP30は定格電流まで書く', field: 'model', type: 'regex', pattern: '^CP30-.*\\d+A$', when: '^CP30', maker: '三菱電機', severity: 'warn', message: 'CP30 は定格電流（例: 10A）まで書いてください', fromIssueKind: '型式あいまい', owner: '佐藤', scope: 'all', enabled: true },
 ]

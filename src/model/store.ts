@@ -15,17 +15,17 @@ export type Panel =
   | { kind: 'columns'; index: number }
   | { kind: 'issue'; rowId: string; field: string; step: 'kind' | 'text' | 'proposal'; issueKind?: string; index: number; text: string; proposal: { model: string; maker: string; supplierId: string; unitPrice: string; leadDays: string } }
   | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string }
-  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; onSubmit: (choice: string | null, text: string) => void; extra?: Record<string, string>; danger?: boolean }
+  | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
   | { kind: 'wizard'; step: number; data: Record<string, string>; sel: number; picks: string[]; error?: string }
   | { kind: 'inbox'; index: number; query: string }
-  | { kind: 'settings'; index: number; draft: Record<string, string>; editing: boolean; value: string; error?: string }
+  | { kind: 'settings'; index: number; draft: Record<string, string>; editing: boolean; value: string; error?: string; discardArmed?: boolean }
   | { kind: 'quickfix'; title: string; rowId: string; field: string; index: number; options: PanelOption[] }
   | { kind: 'history'; rowId: string; index: number }
   | { kind: 'weights'; rowId: string; index: number }
   | { kind: 'impact'; title: string; lines: string[]; onConfirm: () => void }
   | { kind: 'consolidate'; index: number; options: Array<{ label: string; detail: string; run: () => void }> }
   | { kind: 'export'; index: number; options: PanelOption[] }
-  | { kind: 'import'; text: string; title: string; onSubmit: (text: string) => void }
+  | { kind: 'import'; text: string; title: string; onSubmit: (text: string) => void; accept?: string; placeholder?: string }
   | { kind: 'rule'; rowId: string; field: string; index: number; options: PanelOption[] }
   | { kind: 'replyIssue'; issueId: string; text: string }
 
@@ -60,6 +60,8 @@ export interface State {
   editValue: string
   editCandidates: string[] | null
   editError: string | null
+  /** 編集を始めたときの値（別のタブで変わっていないかを確定時に確かめる） */
+  editBase: string | null
   panel: Panel | null
   toast: { text: string; kind: 'ok' | 'err' | 'info'; at: number } | null
   revView: number | null
@@ -74,7 +76,7 @@ export interface State {
   set: (p: Partial<State>) => void
   project: () => Project
   user: () => User
-  commit: (label: string, fn: (p: Project, ws: Workspace) => void | string, opts?: { rowId?: string; undoable?: boolean; silent?: boolean; kind?: UndoEntry['kind'] }) => boolean
+  commit: (label: string, fn: (p: Project, ws: Workspace) => void | string, opts?: { rowId?: string; undoable?: boolean; silent?: boolean; kind?: UndoEntry['kind']; quietError?: boolean }) => boolean
   commitWs: (label: string, fn: (ws: Workspace) => void) => void
   undoLast: () => void
   redoLast: () => void
@@ -122,28 +124,26 @@ function entities(p: Project) {
 export const useStore = create<State>((set, get) => ({
   ws: loadWorkspace() ?? makeWorkspace(),
   mode: 'nav',
-  view: 1,
-  cursorRow: null,
-  cursorCol: 'name',
   openRows: [],
   collapsed: [],
-  sort: null,
+  ...loadUi(),
   filter: '',
   cellFilter: null,
-  hiddenCols: ['drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff'],
+  hiddenCols: loadUiCols() ?? ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff'],
   editValue: '',
   editCandidates: null,
   editError: null,
+  editBase: null,
   panel: null,
   toast: null,
   revView: null,
   sequence: false,
-  undo: {},
-  redo: {},
-  recentCommands: [],
+  undo: loadHistory().undo,
+  redo: loadHistory().redo,
+  recentCommands: loadUiField('recentCommands') ?? [],
   detailIndex: 0,
   clipboard: null,
-  wizardDraft: null,
+  wizardDraft: loadUiField('wizardDraft') ?? null,
   set: (p) => set(p),
   project: () => {
     const ws = get().ws
@@ -174,7 +174,7 @@ export const useStore = create<State>((set, get) => ({
     }
     if (typeof result === 'string') {
       if (latest) set({ ws })
-      get().toastMsg(result, 'err')
+      if (!opts.quietError) get().toastMsg(result, 'err')
       return false
     }
     const after = entities(np)
@@ -185,8 +185,10 @@ export const useStore = create<State>((set, get) => ({
     if (!opts.silent) np.events.push({ id: (np.events.at(-1)?.id ?? 0) + 1, at: np.updatedAt, by: user, rowId: opts.rowId, text: label, undoable: opts.undoable !== false })
     if (np.events.length > 2000) np.events.splice(0, np.events.length - 2000)
     const changed = entry.rows.length + entry.quotes.length + entry.issues.length + entry.proj.length > 0
-    const undo = changed && opts.undoable !== false ? { ...st.undo, [user.name]: [...(st.undo[user.name] ?? []), entry].slice(-200) } : st.undo
-    set({ ws: next, undo, redo: changed ? { ...st.redo, [user.name]: [] } : st.redo })
+    const uk = userKey(user)
+    const undo = changed && opts.undoable !== false ? { ...st.undo, [uk]: [...(st.undo[uk] ?? []), entry].slice(-200) } : st.undo
+    set({ ws: next, undo, redo: changed ? { ...st.redo, [uk]: [] } : st.redo })
+    persistHistory()
     if (!saveWorkspace(next)) get().toastMsg('保存領域がいっぱいで保存できませんでした。Ctrl+K → JSON を書き出す で退避してください', 'err')
     return true
   },
@@ -201,7 +203,7 @@ export const useStore = create<State>((set, get) => ({
   },
   undoLast: () => {
     const st = get()
-    const user = st.ws.user.name
+    const user = userKey(st.ws.user)
     const pid = st.ws.currentProjectId
     const stack = st.undo[user] ?? []
     let idx = -1
@@ -224,11 +226,12 @@ export const useStore = create<State>((set, get) => ({
       return st.toastMsg(`戻せません: ${conflict} を後から別の操作（他の人を含む）が変更しています。行を開いて履歴を確認してください`, 'err')
     }
     set({ undo: { ...get().undo, [user]: rest }, redo: { ...get().redo, [user]: [...(get().redo[user] ?? []), entry] } })
+    persistHistory()
     st.toastMsg(`元に戻す: ${entry.label}`, 'info')
   },
   redoLast: () => {
     const st = get()
-    const user = st.ws.user.name
+    const user = userKey(st.ws.user)
     const pid = st.ws.currentProjectId
     const stack = st.redo[user] ?? []
     let idx = -1
@@ -246,11 +249,87 @@ export const useStore = create<State>((set, get) => ({
       return st.toastMsg(`やり直せません: ${conflict} を後から別の操作が変更しています`, 'err')
     }
     set({ redo: { ...get().redo, [user]: rest }, undo: { ...get().undo, [user]: [...(get().undo[user] ?? []), entry] } })
+    persistHistory()
     st.toastMsg(`やり直す: ${entry.label}`, 'info')
   },
-  clearHistory: () => set({ undo: {}, redo: {} }),
+  clearHistory: () => {
+    set({ undo: {}, redo: {} })
+    persistHistory()
+  },
   toastMsg: (text, kind = 'ok') => set({ toast: { text, kind, at: Date.now() } }),
 }))
+
+/** Undo 履歴は「役割:氏名」ごと（同じ氏名でも役割が違えば別） */
+export function userKey(u: User): string {
+  return `${u.role}:${u.name}`
+}
+
+// ---------- 画面の状態（タブごと。リロードしても同じビュー・セル・ガイドの途中から） ----------
+const UI_KEY = 'bom-pro.ui'
+type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands' | 'wizardDraft'>
+function readUi(): Partial<UiSaved> {
+  try {
+    return JSON.parse(sessionStorage.getItem(UI_KEY) ?? '{}') ?? {}
+  } catch {
+    return {}
+  }
+}
+function loadUi(): Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort'> {
+  const u = readUi()
+  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 9 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
+}
+function loadUiCols(): string[] | null {
+  const c = readUi().hiddenCols
+  return Array.isArray(c) && c.every((x) => typeof x === 'string') ? c : null
+}
+function loadUiField<K extends 'recentCommands' | 'wizardDraft'>(k: K): UiSaved[K] | undefined {
+  return readUi()[k] as UiSaved[K] | undefined
+}
+let uiTimer: number | undefined
+useStore.subscribe((s, prev) => {
+  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.wizardDraft === prev.wizardDraft && s.panel === prev.panel) return
+  window.clearTimeout(uiTimer)
+  uiTimer = window.setTimeout(() => {
+    const st = useStore.getState()
+    // ガイドを開いている間は、入れている途中の内容も下書きとして残す
+    const wizardDraft = st.panel?.kind === 'wizard' ? { step: st.panel.step, data: st.panel.data, sel: st.panel.sel, picks: st.panel.picks } : st.wizardDraft
+    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands, wizardDraft }
+    try {
+      sessionStorage.setItem(UI_KEY, JSON.stringify(saved))
+    } catch {
+      /* 保存できなくても動作は続ける */
+    }
+  }, 200)
+})
+
+const HISTORY_KEY = 'bom-pro.history'
+/** Undo 履歴はタブごとに保存し、リロードしても残す */
+function loadHistory(): { undo: Record<string, UndoEntry[]>; redo: Record<string, UndoEntry[]> } {
+  try {
+    const raw = sessionStorage.getItem(HISTORY_KEY)
+    if (raw) return JSON.parse(raw)
+  } catch {
+    /* noop */
+  }
+  return { undo: {}, redo: {} }
+}
+let histTimer: number | undefined
+function persistHistory() {
+  window.clearTimeout(histTimer)
+  histTimer = window.setTimeout(() => {
+    const { undo, redo } = useStore.getState()
+    const trim = (m: Record<string, UndoEntry[]>) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.slice(-50)]))
+    try {
+      sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: trim(undo), redo: trim(redo) }))
+    } catch {
+      try {
+        sessionStorage.setItem(HISTORY_KEY, JSON.stringify({ undo: Object.fromEntries(Object.entries(undo).map(([k, v]) => [k, v.slice(-10)])), redo: {} }))
+      } catch {
+        /* 入りきらなければ保存しない */
+      }
+    }
+  }, 300)
+}
 
 function labelOf(kind: string, key: string): string {
   if (kind === 'quote') return `${key.split('|')[0]} の見積`

@@ -27,15 +27,25 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (row.status === 'draft') return '下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます'
   if (row.status === 'submitted') return '見積前の行です（購買が概算見積を依頼・回答待ち）'
   if (!isActive(row)) return '取消・置換済の行は採用できません'
+  // PM が購買に再選定を委譲した行は、正式依頼中・正式見積済でも選び直せる
+  if (row.flags.delegated && role === 'purchasing' && ['selected', 'formalRequested', 'formalQuoted'].includes(row.status)) return null
   if (!['quoted', 'selected', 'quoting'].includes(row.status)) return '正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）'
   return null
 }
 
 function applyAdoption(_p: Project, r: Row, chosen: ScoreBreakdown, reason: string | undefined, pending: boolean, pmReason?: Row['flags']['pmReason']) {
+  const wasDelegated = r.flags.delegated && ['formalRequested', 'formalQuoted'].includes(r.status)
   r.adoptedSupplierId = chosen.supplierId
   r.adoptReason = reason
   r.scoreSnapshot = chosen.total
-  r.orderQty = roundedQty(effective(r).qtyNeeded, chosen.quote.moq, effective(r).packQty)
+  r.orderQty = roundedQty(r.qtyNeeded, chosen.quote.moq, r.packQty, r.unit)
+  if (r.flags.delegated) {
+    // 委譲された再選定は PM の決定が承認を兼ねる（例外閾値の承認は不要）
+    pending = false
+    r.flags.delegated = false
+    r.flags.formalDiffKey = undefined
+  }
+  if (wasDelegated) setStatus(r, 'selected')
   if (pending) {
     r.flags.pmPending = true
     r.flags.pmReason = pmReason ?? '例外選定'
@@ -165,16 +175,17 @@ export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contest
   return result
 }
 
-/** 商社集約の試算 */
+/** 商社集約の試算。対象は採用を変えられる行だけ。集約先が扱わない行はいまの採用（無ければ推奨）のまま比べる */
 export function consolidateOptions(): Array<{ label: string; detail: string; supplierIds: string[]; delta: number }> {
   const s = st()
   const p = s.project()
-  const rows = p.rows.filter((r) => r.status === 'quoted' || r.status === 'selected')
-  const current = rows.reduce((sum, r) => {
+  const rows = p.rows.filter((r) => (r.status === 'quoted' || r.status === 'selected') && !canAdopt(p, r))
+  const curOf = (r: Row) => {
     const sc = scoreRow(p, r, s.ws.suppliers)
     const a = r.adoptedSupplierId ? sc.find((x) => x.supplierId === r.adoptedSupplierId) : sc[0]
-    return sum + (a ? a.effectivePrice * effective(r).qtyNeeded : 0)
-  }, 0)
+    return a ? { cost: a.effectivePrice * r.qtyNeeded, lead: a.quote.stock === '在庫' ? 0 : (a.quote.leadDays ?? 0) } : { cost: 0, lead: 0 }
+  }
+  const current = rows.reduce((sum, r) => sum + curOf(r).cost, 0)
   const combos: string[][] = []
   for (const a of p.supplierIds) combos.push([a])
   for (let i = 0; i < p.supplierIds.length; i++) for (let j = i + 1; j < p.supplierIds.length; j++) combos.push([p.supplierIds[i], p.supplierIds[j]])
@@ -184,14 +195,20 @@ export function consolidateOptions(): Array<{ label: string; detail: string; sup
     let worstLead = 0
     for (const r of rows) {
       const sc = scoreRow(p, r, s.ws.suppliers).filter((x) => ids.includes(x.supplierId))
-      if (!sc.length) continue
+      if (!sc.length) {
+        const c = curOf(r)
+        total += c.cost
+        worstLead = Math.max(worstLead, c.lead)
+        continue
+      }
       covered++
       const best = [...sc].sort((a, b) => a.effectivePrice - b.effectivePrice)[0]
-      total += best.effectivePrice * effective(r).qtyNeeded
-      worstLead = Math.max(worstLead, best.quote.leadDays ?? 0)
+      total += best.effectivePrice * r.qtyNeeded
+      worstLead = Math.max(worstLead, best.quote.stock === '在庫' ? 0 : (best.quote.leadDays ?? 0))
     }
     const names = ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join(' + ')
-    return { label: names, detail: `対象 ${covered}/${rows.length} 行、総額 ¥${Math.round(total).toLocaleString()}（差 ${total - current >= 0 ? '+' : ''}¥${Math.round(total - current).toLocaleString()}）、最長納期 ${worstLead} 日`, supplierIds: ids, delta: total - current }
+    const delta = total - current
+    return { label: names, detail: `${covered}/${rows.length} 行を集約（残りはいまの採用のまま）、総額 ¥${Math.round(total).toLocaleString()}（差 ${delta >= 0 ? '+' : ''}¥${Math.round(delta).toLocaleString()}）、最長納期 ${worstLead} 日`, supplierIds: ids, delta }
   })
   return out.sort((a, b) => a.delta - b.delta)
 }
@@ -200,13 +217,21 @@ export function applyConsolidation(supplierIds: string[]) {
   const s = st()
   let n = 0
   let pending = 0
+  let skipped = 0
+  const p0 = s.project()
   s.commit('商社を集約', (p, ws) => {
     for (const r of p.rows) {
       if (!(r.status === 'quoted' || r.status === 'selected')) continue
+      // 作業中・承認待ち・委譲中など、採用を変えられない行は飛ばす
+      if (canAdopt(p0, p0.rows.find((x) => x.id === r.id)!)) {
+        skipped++
+        continue
+      }
       const scores = scoreRow(p, r, ws.suppliers)
       const sc = scores.filter((x) => supplierIds.includes(x.supplierId))
       if (!sc.length) continue
       const chosen = [...sc].sort((a, b) => a.effectivePrice - b.effectivePrice)[0]
+      if (chosen.supplierId === r.adoptedSupplierId) continue
       const pend = needsPmApproval(p, r, scores, chosen)
       applyAdoption(p, r, chosen, '集約', pend)
       n++
@@ -214,7 +239,7 @@ export function applyConsolidation(supplierIds: string[]) {
     }
     normalize(p, ws)
   })
-  s.toastMsg(`集約: ${n} 行を付け替え（PM承認待ち ${pending}）`, 'ok')
+  s.toastMsg(`集約: ${n} 行を付け替え（PM承認待ち ${pending}${skipped ? `、作業中・承認待ちの ${skipped} 行は対象外` : ''}）`, 'ok')
 }
 
 export function rowScores(p: Project, row: Row) {

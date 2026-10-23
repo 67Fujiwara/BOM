@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, isActive, isOverdue, openIssues } from './derive'
+import { ball, isActive, isOverdue, openIssues, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import type { ViewId } from './store'
 
@@ -32,15 +32,17 @@ export const VIEWS: ViewDef[] = [
     id: 4,
     label: '要確認',
     columns: ['id', 'ball', 'ref', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'altPolicy', 'status', 'due', 'waiting'],
+    // §11: 役割ごと。自分がボールを持つ行（指摘・選定待ち・拮抗・代替承認待ち・要再確認など）＋設計はチェックNG
     filter: (r, c) => {
       if (!isActive(r)) return false
-      const issues = openIssues(c.p, r.id)
-      if (c.role === 'purchasing') return issues.some((i) => i.status === 'fixed' || i.status === 'answered' || (i.status === 'open' && i.by.role !== 'purchasing')) || r.flags.reconfirm === true || r.flags.requote === true || isOverdue(c.p, r) || (c.p.issues.some((i) => i.rowId === r.id && i.status === 'draft'))
-      return issues.some((i) => i.status === 'open' || i.status === 'answered' && i.by.role === 'design') || (c.problems.get(r.id)?.length ?? 0) > 0 || r.flags.countermeasure === '代替品検討' || r.flags.altPending === true
+      const b = ball(c.p, r)
+      if (c.role === 'design') return b === 'design' || (c.problems.get(r.id)?.length ?? 0) > 0 || r.flags.contested === true
+      if (c.role === 'purchasing') return b === 'purchasing' && (r.flags.reconfirm === true || r.flags.requote === true || r.flags.notation === true || r.flags.orderQtyCheck === true || r.flags.importMismatch != null || isOverdue(c.p, r) || openIssues(c.p, r.id).some((i) => i.status === 'fixed' || i.status === 'answered' || ((i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'purchasing'))) || c.p.issues.some((i) => i.rowId === r.id && i.status === 'draft' && i.by.name === c.ws.user.name)
+      return b === 'pm'
     },
     defaultSort: (a, b, c) => kindOrder(a, c) - kindOrder(b, c) || a.id.localeCompare(b.id),
   },
-  { id: 5, label: '変更あり', columns: ['id', 'ball', 'ref', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'status'], filter: (r, c) => changedInRev(r, c) },
+  { id: 5, label: '変更あり', columns: ['id', 'ball', 'cause', 'ref', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'status'], filter: (r, c) => changedInRev(r, c) },
   { id: 6, label: '商社別', columns: ['id', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'status'], filter: (r) => isActive(r) && r.status !== 'draft' },
   {
     id: 7,
@@ -60,14 +62,21 @@ function kindOrder(r: Row, c: ViewCtx): number {
   return 30
 }
 
+/** 5 変更あり: 既定は Rev をまたいで未確認の差分すべて。Rev を選んだらその Rev だけ（§5） */
 export function changedInRev(r: Row, c: ViewCtx): boolean {
-  const subs = c.p.submissions
-  if (subs.length === 0) return false
-  const rev = c.rev ?? subs.at(-1)!.rev
-  const sub = subs.find((s) => s.rev === rev)
-  if (!sub) return false
-  if (sub.acked.includes(r.id)) return false
-  return sub.rowIds.includes(r.id)
+  const subs = c.p.submissions.filter((s) => !s.revoked)
+  if (c.rev != null) {
+    const sub = subs.find((s) => s.rev === c.rev)
+    return !!sub && sub.rowIds.includes(r.id)
+  }
+  return subs.some((s) => s.rowIds.includes(r.id) && !s.acked.includes(r.id))
+}
+
+/** 行の最新の起因（指摘 ID / 変更セット / 追加 / 取消 / 案件納期変更） */
+export function causeOf(r: Row, c: ViewCtx): string {
+  const subs = c.p.submissions.filter((s) => !s.revoked && s.rowIds.includes(r.id) && (c.rev == null ? !s.acked.includes(r.id) : s.rev === c.rev))
+  const sub = subs.at(-1)
+  return sub ? `Rev.${sub.rev} ${sub.causes[r.id] ?? ''}`.trim() : ''
 }
 
 export function viewDef(id: ViewId): ViewDef {

@@ -2,10 +2,11 @@ import { useStore } from '@/model/store'
 import type { Row } from '@/model/types'
 import { ISSUE_STATUS_LABEL, ROLE_LABEL } from '@/model/types'
 import type { ViewModel } from '@/model/selectors'
-import { scoreRow } from '@/model/score'
+import { rankedQuotes, scoreRow } from '@/model/score'
 import { effective, fmtYen, roundedQty, rowNeedDate } from '@/model/derive'
 import { fmtDate, fmtDateTime } from '@/model/dates'
 import { pmCaseOf } from '@/actions/pm'
+import { commitEdit, runCommand } from '@/commands/registry'
 
 export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
   const st = useStore()
@@ -13,13 +14,18 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
   // 設計以外には公開済の値を見せる（作業中の値は設計だけ）
   const e = vm.ctx.role === 'design' ? effective(row) : row
   const scores = scoreRow(p, row, st.ws.suppliers)
-  const quotes = p.quotes.filter((q) => q.rowId === row.id && !q.stale)
+  const quotes = rankedQuotes(p, row, st.ws.suppliers)
   const stale = p.quotes.filter((q) => q.rowId === row.id && q.stale)
   // 他の人の下書き（未発行）の指摘は見せない
   const issues = p.issues.filter((i) => i.rowId === row.id && (i.status !== 'draft' || i.by.name === st.ws.user.name))
   const decisions = p.decisions.filter((d) => d.rowId === row.id)
   const events = p.events.filter((ev) => ev.rowId === row.id).slice(-8).reverse()
   const focused = st.cursorRow === row.id && st.detailIndex > 0
+  // 詳細の指摘・見積をクリックで選ぶ（↓ で選ぶのと同じ。続く Enter でアクション）
+  const pick = (index: number) => {
+    if (useStore.getState().mode === 'edit' && !commitEdit('stay')) return
+    useStore.getState().set({ cursorRow: row.id, detailIndex: index })
+  }
   const pmCase = pmCaseOf(p, row)
   const need = rowNeedDate(p, row)
   return (
@@ -52,11 +58,11 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
                 const sup = st.ws.suppliers.find((s) => s.id === q.supplierId)
                 const sc = scores.find((x) => x.supplierId === q.supplierId)
                 const rank = sc ? scores.indexOf(sc) + 1 : null
-                const rq = roundedQty(e.qtyNeeded, q.moq, e.packQty)
+                const rq = sc?.roundedQty ?? roundedQty(e.qtyNeeded, q.moq, e.packQty, e.unit)
                 const surplus = rq - e.qtyNeeded
                 const isFocus = focused && st.detailIndex === issues.length + qi + 1
                 return (
-                  <tr key={q.supplierId} className={(rank === 1 ? 'best ' : '') + (row.adoptedSupplierId === q.supplierId ? 'adopted ' : '') + (isFocus ? 'focus' : '')}>
+                  <tr key={q.supplierId} className={'clickable ' + (rank === 1 ? 'best ' : '') + (row.adoptedSupplierId === q.supplierId ? 'adopted ' : '') + (isFocus ? 'focus' : '')} title="クリックで選択、ダブルクリック（または Enter）で見積のアクション" onClick={() => pick(issues.length + qi + 1)} onDoubleClick={() => (pick(issues.length + qi + 1), runCommand('cell.edit'))}>
                     <td>
                       <span className="supplier-dot" style={{ background: sup?.color }} />
                       {rank ? `${rank}. ` : ''}
@@ -67,7 +73,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
                     <td className="num">{q.leadDays == null ? '' : q.leadDays === -1 ? '—' : q.stock === '在庫' || q.leadDays === 0 ? '即納' : `${q.leadDays}日`}</td>
                     <td className="num">{q.moq ?? ''}</td>
                     <td>{q.stock ?? ''}</td>
-                    <td className="num">{q.unitPrice != null ? `${rq}${surplus ? ` (+${surplus})` : ''}` : ''}</td>
+                    <td className="num" title={surplus && sc ? `必要数 ${e.qtyNeeded} を MOQ・入数で切り上げ。余り ${surplus} 個ぶん ${fmtYen(sc.surplusAmount, p.settings.currency)}` : undefined}>{q.unitPrice != null ? `${rq}${surplus ? ` (+${surplus}${sc ? ` ${fmtYen(sc.surplusAmount, p.settings.currency)}` : ''})` : ''}` : ''}</td>
                     <td className="num">
                       {sc ? (
                         <>
@@ -122,7 +128,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
             {issues.map((i, idx) => {
               const isFocus = focused && st.detailIndex === idx + 1
               return (
-                <li key={i.id} className={(i.status === 'confirmed' || i.status === 'wontfix' || i.status === 'fixed' ? 'done ' : i.status === 'draft' || i.status === 'answered' ? 'warn ' : '') + (isFocus ? 'focus' : '')} style={isFocus ? { outline: '2px solid var(--accent)' } : undefined}>
+                <li key={i.id} onClick={() => pick(idx + 1)} onDoubleClick={() => (pick(idx + 1), runCommand('cell.edit'))} title="クリックで選択、ダブルクリック（または Enter）で指摘のアクション" className={'clickable ' + (i.status === 'confirmed' || i.status === 'wontfix' || i.status === 'fixed' ? 'done ' : i.status === 'draft' || i.status === 'answered' ? 'warn ' : '') + (isFocus ? 'focus' : '')} style={isFocus ? { outline: '2px solid var(--accent)' } : undefined}>
                   <div>
                     <b>{i.id}</b> {i.kind} <span className="chip muted">{ISSUE_STATUS_LABEL[i.status]}</span> {i.field ? <span className="muted">[{i.field}]</span> : null} {i.text}
                     {i.proposal && (

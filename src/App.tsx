@@ -6,7 +6,7 @@ import { Side } from '@/ui/Side'
 import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
-import { handleKeyDown } from '@/commands/registry'
+import { commitEdit, handleKeyDown } from '@/commands/registry'
 import { STORAGE_KEY, loadUser, parseWorkspace, resetWorkspace, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
@@ -62,7 +62,19 @@ function Main() {
   useEffect(() => {
     const h = (e: KeyboardEvent) => handleKeyDown(e)
     window.addEventListener('keydown', h)
-    return () => window.removeEventListener('keydown', h)
+    // 編集中にリロード・タブを閉じたら、入れていた値を確定する。読めない値なら確認を出す
+    const unload = (e: BeforeUnloadEvent) => {
+      if (useStore.getState().mode !== 'edit') return
+      if (!commitEdit('stay')) {
+        e.preventDefault()
+        e.returnValue = ''
+      }
+    }
+    window.addEventListener('beforeunload', unload)
+    return () => {
+      window.removeEventListener('keydown', h)
+      window.removeEventListener('beforeunload', unload)
+    }
   }, [])
   useEffect(() => {
     try {

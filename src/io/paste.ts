@@ -9,7 +9,7 @@ export const FIELD_LABEL: Record<BomField, string> = { category: '分類', name:
 /** 見出しの言い換え（Excel でよく使われる表記） */
 const HEADER_SYNONYMS: Record<BomField, RegExp> = {
   category: /^(分類|区分|カテゴリ|種別|ユニット)/,
-  name: /^(部品名|品名|名称|品目|部品|名前|item|description)/i,
+  name: /^(部品名|品名|名称|品目|部品|名前|item|description|part(\s*name)?$|name$)/i,
   model: /^(型式|形式|型番|品番|形名|型名|部品番号|part\s*no|p\/n|mpn|model)/i,
   maker: /^(メーカ|メーカー|製造元|製造者|maker|mfr|manufacturer|vendor)/i,
   qtyNeeded: /^(数量|員数|個数|台数|必要数|qty|quantity|数)/i,
@@ -75,7 +75,20 @@ export function parseBomPaste(text: string): PasteResult {
   else if (delimiter === 'none') {
     mapping = ['name']
     warnings.push('タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）')
-  } else mapping = DEFAULT_ORDER.slice(0, Math.max(...lines.map((l) => split(l).length)))
+  } else {
+    const width = Math.max(...lines.map((l) => split(l).length))
+    // 見出しが無いときは、数字ばかりの列を数量とみなし、その左に 部品名・型式・メーカ（列が多ければ分類も）を当てる
+    const numericCol = Array.from({ length: width }, (_, i) => i).find((i) => {
+      const vals = lines.map((l) => split(l)[i] ?? '').filter((v) => v.trim() !== '')
+      return vals.length > 0 && vals.every((v) => { const r = parseNumber(v); return r.ok && r.value != null })
+    })
+    if (numericCol != null && numericCol >= 1 && numericCol <= 4) {
+      const before = (['category', 'name', 'model', 'maker'] as BomField[]).slice(4 - numericCol)
+      const after = (['unit', 'ref', 'note'] as BomField[]).slice(0, Math.max(0, width - numericCol - 1))
+      mapping = [...before, 'qtyNeeded', ...after]
+    } else mapping = DEFAULT_ORDER.slice(0, width)
+    warnings.push(`見出しが無いので、列を「${mapping.map((f) => (f ? FIELD_LABEL[f] : '（使わない）')).join('・')}」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください`)
+  }
   const used = mapping.filter(Boolean)
   const dup = used.find((f, i) => used.indexOf(f) !== i)
   if (dup) warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が 2 つあります。左の列を使います`)

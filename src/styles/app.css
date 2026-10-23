@@ -47,8 +47,8 @@ kbd {
 .header .hdr-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
 .header .btn.icon { padding: 4px 9px; font-weight: 700; }
 @media (max-width: 1380px) { .header .hdr-money { display: none; } }
-@media (max-width: 1180px) { .header .hdr-user, .header .hdr-cmd-label, .header .pid { display: none; } .header .lamps .lamp:nth-child(n+4) { display: none; } }
-@media (max-width: 900px) { .header .lamps { display: none; } }
+@media (max-width: 1180px) { .header .hdr-user, .header .hdr-cmd-label, .header .pid { display: none; } .header .lamps .lamp:not(.keep) { display: none; } }
+@media (max-width: 900px) { .header .lamps .lamp:not(.keep-narrow) { display: none; } }
 .role { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .role button { border: 0; background: transparent; padding: 3px 10px; cursor: pointer; color: var(--fg-muted); white-space: nowrap; }
 .role button[aria-pressed='true'] { background: var(--accent); color: var(--accent-fg); }
@@ -79,7 +79,7 @@ kbd {
 /* ---------- grid ---------- */
 .gridwrap { flex: 1; overflow: auto; outline: none; position: relative; }
 table.grid { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; }
-table.grid th, table.grid td { height: var(--row-h); padding: 0 8px; border-bottom: 1px solid var(--line); border-right: 1px solid transparent; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+table.grid > thead > tr > th, table.grid > tbody > tr > td { height: var(--row-h); padding: 0 8px; border-bottom: 1px solid var(--line); border-right: 1px solid transparent; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
 table.grid th { position: sticky; top: 0; z-index: 2; background: var(--bg-elev); color: var(--fg-muted); font-weight: 400; text-align: left; font-size: 12px; border-bottom: 1px solid var(--line-strong); }
 table.grid th.sorted { color: var(--accent); }
 table.grid th.num { text-align: right; }
@@ -98,7 +98,7 @@ table.grid td.num input.cell { text-align: right; font-family: var(--font-mono);
 table.grid td.mono, table.grid td.model, table.grid td.id { font-family: var(--font-mono); }
 table.grid tr.group td { background: var(--bg-sunken); color: var(--fg-muted); font-size: 12px; position: sticky; z-index: 1; }
 table.grid tr.group.sel td { box-shadow: inset 0 0 0 2px var(--sel-cell); }
-table.grid tr.detail td { background: var(--bg-elev); padding: 10px 16px 14px 36px; height: auto; white-space: normal; border-bottom: 1px solid var(--line-strong); }
+table.grid > tbody > tr.detail > td { background: var(--bg-elev); padding: 10px 16px 14px 36px; height: auto; white-space: normal; border-bottom: 1px solid var(--line-strong); }
 .status-pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; background: var(--bg-sunken); color: var(--fg-muted); }
 .status-pill.s-quoting, .status-pill.s-submitted { background: var(--accent-soft); color: var(--accent); }
 .status-pill.s-quoted { background: var(--warn-soft); color: var(--warn); }
@@ -132,12 +132,13 @@ table.quotes tr.adopted td:first-child::before { content: '✓ '; color: var(--o
 .issues li .meta { color: var(--fg-muted); font-size: 11px; }
 
 /* ---------- status bar ---------- */
-.status { grid-area: status; display: flex; align-items: center; gap: 14px; padding: 0 12px; border-top: 1px solid var(--line); background: var(--bg-elev); font-size: 12px; color: var(--fg-muted); }
+.status { grid-area: status; display: flex; align-items: center; gap: 14px; padding: 0 12px; white-space: nowrap; overflow: hidden; min-width: 0; border-top: 1px solid var(--line); background: var(--bg-elev); font-size: 12px; color: var(--fg-muted); }
 .status .mode { font-weight: 700; padding: 2px 8px; border-radius: 4px; background: var(--bg-sunken); color: var(--fg); min-width: 44px; text-align: center; }
 .status .mode.edit { background: var(--warn-soft); color: var(--warn); }
 .status .mode.palette, .status .mode.panel { background: var(--accent-soft); color: var(--accent); }
 .status .cell { font-family: var(--font-mono); color: var(--fg); }
-.status .hints { display: flex; gap: 12px; margin-left: auto; }
+.status .hints { display: flex; gap: 12px; margin-left: auto; overflow: hidden; min-width: 0; flex-shrink: 1; }
+.status .hints span { white-space: nowrap; flex-shrink: 0; }
 .status .hints span b { font-family: var(--font-mono); color: var(--fg); font-weight: 400; margin-right: 3px; }
 .status .toast { color: var(--ok); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 0 1 auto; }
 .status .toast.err { color: var(--err); }
@@ -192,12 +193,12 @@ table.quotes tr.adopted td:first-child::before { content: '✓ '; color: var(--o
 th.sortable { cursor: pointer; }
 th.sortable:hover { color: var(--fg); }
 /* 行の詳細は表の横幅に関係なく画面内に固定して見せる */
-table.grid tr.detail td { padding: 0; }
+table.grid > tbody > tr.detail > td { padding: 0; }
 table.grid tr.detail .detail-inner { position: sticky; left: 0; width: var(--gw, 100%); max-width: var(--gw, 100%); padding: 10px 16px 14px 24px; box-sizing: border-box; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; }
 @media (max-width: 1200px) { .detail-grid { grid-template-columns: minmax(0, 1fr); } }
 .detail .quotes-wrap { overflow-x: auto; }
-table.quotes th, table.quotes td { white-space: nowrap; }
+table.quotes th, table.quotes td { white-space: nowrap; padding: 4px 10px; }
 table.quotes tr.focus td, .issues li.focus { outline: 2px solid var(--accent); outline-offset: -2px; }
 /* トースト: 見落とさない大きさで表の下に浮かせる */
 .toast-float { position: fixed; left: 50%; bottom: 40px; transform: translateX(-50%); max-width: min(900px, 92vw); padding: 9px 16px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 13px; box-shadow: var(--shadow); z-index: 60; pointer-events: none; animation: pop var(--dur) ease-out; }

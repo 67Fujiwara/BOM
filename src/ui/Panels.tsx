@@ -3,7 +3,7 @@ import { useStore, type Panel } from '@/model/store'
 import { KEYMAP, formatKey } from '@/keys/keymap'
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
-import { colsForPanel, paletteItems, closePanel, WIZ_KEYS } from '@/commands/registry'
+import { colsForPanel, paletteItems, WIZ_KEYS } from '@/commands/registry'
 import { issueKindsFor } from '@/commands/keyboard'
 import { ballCounts, effective, fmtYen } from '@/model/derive'
 import { scoreRow } from '@/model/score'
@@ -23,7 +23,7 @@ export function Panels() {
   const panel = st.panel
   if (!panel) return null
   return (
-    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => e.target === e.currentTarget && closePanel()}>
+    <div className="overlay" data-testid={`panel-${panel.kind}`} onMouseDown={(e) => e.target === e.currentTarget && press('Escape')}>
       <PanelBody panel={panel} />
     </div>
   )
@@ -247,7 +247,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.step === 'kind' ? [['k', '等の頭文字 / ↑↓ Enter で種別'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ...(proposalKind && panel.step === 'text' ? ([['Tab', '提案欄']] as Array<[string, string]>) : []), ['Escape', '閉じる']]} />
+          <Foot items={panel.step === 'kind' ? [['k', '等の頭文字 / ↑↓ Enter で種別'], ['Escape', '閉じる']] : [['Enter', '起票（下書き）'], ['Ctrl+Enter', '起票して次の行へ'], ...(proposalKind && panel.step === 'text' ? ([['Tab', '提案欄']] as Array<[string, string]>) : []), ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -286,7 +286,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               <div className="panel-list" data-testid="prompt-options" ref={listRef}>
                 {panel.options.map((o, i) => (
                   <div key={o} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), !panel.showText && press('Enter'))}>
-                    <kbd>{panel.showText ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
+                    <kbd>{panel.showText && !panel.digitsSelect ? (i === panel.index ? '▶' : '·') : i + 1}</kbd> <span>{o}</span>
                   </div>
                 ))}
               </div>
@@ -303,7 +303,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               </div>
             )}
           </div>
-          <Foot items={panel.showText && panel.options ? [['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
+          <Foot items={panel.showText && panel.options ? [...(panel.digitsSelect ? ([['1', '〜 数字で選ぶ']] as Array<[string, string]>) : []), ['ArrowUp', '/ ↓ 選択'], ['Enter', '確定'], ['Escape', '取り消し']] : panel.options ? [['1', '〜 数字で選ぶ'], ['Enter', '選択中を確定'], ['Escape', '取り消し']] : [['Enter', '確定'], ['Escape', '取り消し']]} />
         </div>
       )
     case 'quickfix':
@@ -353,7 +353,26 @@ function PanelBody({ panel }: { panel: Panel }) {
         <div className="dialog wide" role="dialog" aria-label={panel.title}>
           <div className="body wizard">
             <h3 style={{ margin: '0 0 8px', fontSize: 14 }}>{panel.title}</h3>
-            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder="Excel からコピーして貼り付け（Ctrl+V）。Ctrl+Enter で取り込み" testid="import-text" />
+            {panel.accept && (
+              <label className="btn" style={{ display: 'inline-block', marginBottom: 8, cursor: 'pointer' }}>
+                ファイルを選ぶ
+                <input
+                  type="file"
+                  accept={panel.accept}
+                  data-testid="import-file"
+                  style={{ display: 'none' }}
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0]
+                    if (!f) return
+                    const text = await f.text()
+                    const cur = useStore.getState().panel
+                    if (cur?.kind === 'import') useStore.getState().set({ panel: { ...cur, text } })
+                    useStore.getState().toastMsg(`${f.name} を読み込みました（Ctrl+Enter で反映）`, 'info')
+                  }}
+                />
+              </label>
+            )}
+            <AutoInput multiline value={panel.text} onChange={(v) => st.set({ panel: { ...panel, text: v } })} placeholder={panel.placeholder ?? 'Excel からコピーして貼り付け（Ctrl+V）。Ctrl+Enter で取り込み'} testid="import-text" />
           </div>
           <Foot items={[['Ctrl+Enter', '取り込む'], ['Escape', '閉じる']]} />
         </div>

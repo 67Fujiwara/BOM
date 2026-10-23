@@ -388,95 +388,25 @@ function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string,
   return false
 }
 
-// ---------- 英字を続けて打ったときの扱い ----------
-// 文字を打てるセルで英字を打つと、1 文字目が a/h/o などのコマンドとして動いてしまう（Excel の癖で値を打ち始めたとき）。
-// ・移動以外の英字コマンド（Shift 付きも）は、すぐには実行せず DEFER_MS だけ待つ。その間に次の文字が来たら
-//   値の打ち始めとして上書き編集にする（何も実行していないので取り消すものが無い）。来なければコマンドを実行する。
-//   直前にもコマンドを実行していた（コマンドを続けて使っている）ときは待たずに実行する（x → n → x … の速い操作）。
-// ・移動キー（j / k / n）はすぐ動かす。直後（BURST_MS 以内）に別の文字が来たら、移動を戻して上書き編集にする。
-//   同じ移動キーの連打・j と k の行き来・移動キーのあとの数字（k → 4 のビュー切替）は移動のまま。
-const DEFER_MS = 400
-const BURST_MS = 600
-const CHAIN_MS = 1500
-const UI_KEYS = ['cursorRow', 'cursorCol', 'view', 'sort', 'filter', 'cellFilter', 'collapsed', 'openRows', 'detailIndex', 'revView'] as const
-type Burst = { at: number; text: string; ui: Partial<State>; row: string; col: string }
-let burst: Burst | null = null
-let pending: { id: string; ch: string; timer: number } | null = null
-/** 最後に実行した移動以外の英字コマンドの時刻（続けて使っている間は待たない） */
-let lastLetterCmd = -Infinity
+// ---------- 英字の扱い ----------
+// 文字を打てるセルでは、英字は（Shift 付きも）いつでも値の打ち始め（Excel と同じ。仕様「いきなり文字を打つ＝編集」）。
+// 英字のコマンドは、文字を打てないセル（ID・ボール・状態・自動計算・他の役割の列）ではそのまま、
+// どのセルでも Alt を押しながら（Alt+x・Alt+Shift+I）使える。打つ速さには左右されない。
 let digitHintShown = false
-/** すぐ動かす移動キー（小文字だけ。Shift 付き J/K/N は他の英字と同じく待つ） */
-const NAV_LETTERS = new Set(['j', 'k', 'n'])
 function printable(e: KeyboardEvent): boolean {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
 }
-function beginBurst(ch: string, at?: number) {
+/** カーソルのセルに、いまの役割で文字を打てるか */
+export function cursorTypable(): boolean {
   const s = st()
-  const ui: Partial<State> = {}
-  for (const k of UI_KEYS) (ui as Record<string, unknown>)[k] = s[k]
-  burst = { at: at ?? performance.now(), text: ch, ui, row: s.cursorRow ?? '', col: s.cursorCol }
+  const kind = colDef(s.cursorCol)?.kind
+  return kind !== undefined && kind !== 'bool' && kind !== 'computed' && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
 }
-/** 待たせていたコマンドを今すぐ実行する（時間切れ・Enter など別のキーが来たとき・クリックの前） */
-export function flushPending() {
-  const p = pending
-  if (!p) return
-  clearTimeout(p.timer)
-  pending = null
-  lastLetterCmd = performance.now()
-  runCommand(p.id)
-}
-/** 待たせていたコマンドの後に文字が来たら、コマンドはやめて値の打ち始めにする */
-/**
- * 待っている英字コマンドの次のキーが、コマンドの続き（a → j、x → n、s → 4）か、値の続き（anode、AC100V）か。
- * 英単語・型番にまず現れない組み合わせだけをコマンドの続きとみなす:
- * ・j / k / n の前が母音でない（x→n, h→j。an / in / on / ok は値）。母音のあとの j は値にまず無いのでコマンド
- * ・数字は、小文字のコマンドのあとならビュー切替（s → 4）、大文字（Shift）のあとなら型番（A1, K8AK）
- */
-function continuesCommand(first: string, next: string): boolean {
-  const vowel = /^[aeiou]$/.test(first)
-  if (next === 'j') return true
-  if (next === 'k' || next === 'n') return !vowel
-  if (/^\d$/.test(next)) return first === first.toLowerCase()
-  return false
-}
-function resolvePending(e: KeyboardEvent): boolean {
-  const p = pending
-  if (!p) return false
-  if (!printable(e) || e.key === ' ' || continuesCommand(p.ch, e.key)) {
-    // コマンドの続き: 待っていたコマンドを今すぐ実行し、このキーは普通に処理する
-    flushPending()
-    return false
-  }
-  clearTimeout(p.timer)
-  pending = null
-  e.preventDefault()
-  startEdit(p.ch + e.key)
-  return true
-}
-/** 移動キーの直後に文字が来たら、移動を戻して上書き編集を始める */
-function resolveBurst(e: KeyboardEvent, key: string): boolean {
-  const b = burst
-  if (!b) return false
-  // 押した時刻で比べる（重い画面で処理が遅れても、打つ速さで判定する）
-  const gap = e.timeStamp - b.at
-  if (gap > BURST_MS || !printable(e) || e.key === ' ') return false
-  const binding = lookupBinding(key, 'nav')
-  const first = b.text
-  const upDown = (c: string) => c === 'j' || c === 'k'
-  // 移動のまま続けるもの（j j j / n n / j k / k → 4）と、移動のあとに少し間をおいた英字コマンド（n … x：問題に飛んで確認）。
-  // 間をおかずに続いた英字（knob, kit）は値の打ち始め
-  if (binding && (e.key === first || /^\d$/.test(e.key) || (upDown(first) && upDown(e.key)) || (!NAV_LETTERS.has(e.key) && gap > 450))) {
-    burst = null
-    return false
-  }
-  e.preventDefault()
-  burst = null
-  if (st().panel) closePanel()
-  if (st().mode === 'edit') cancelEdit()
-  set({ ...b.ui, cursorRow: b.row, cursorCol: b.col })
-  if (rows.canEdit(b.col)) return true
-  startEdit(b.text + e.key)
-  return true
+/** Alt+英字 → 英字のコマンド（Alt+A のように Alt 付きで決まっている操作はそちらが先） */
+function altLetterBinding(key: string) {
+  const m = /^Alt\+(Shift\+)?([A-Z])$/.exec(key)
+  if (!m) return undefined
+  return lookupBinding(m[1] ? `Shift+${m[2]}` : m[2].toLowerCase(), 'nav')
 }
 
 /** 順番に直すモード: 次の問題へ進んで候補を開く。無ければ終わる */
@@ -495,8 +425,6 @@ export function handleKeyDown(e: KeyboardEvent) {
   // 修飾キーだけの押下（Shift など）は何もしない（続けて打つ英字の判定を切らない）
   if (['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Hyper', 'Super', 'OS'].includes(e.key)) return
   const key = eventToKey(e)
-  if (resolvePending(e)) return
-  if (resolveBurst(e, key)) return
   const s = st()
   const target = e.target as HTMLElement | null
   const inInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement
@@ -621,7 +549,9 @@ export function handleKeyDown(e: KeyboardEvent) {
   }
   if (inInput) return
   // ナビモード
-  const b = lookupBinding(key, 'nav')
+  const letter = /^(Shift\+)?[A-Za-z]$/.test(key) && /^[A-Za-z]$/.test(e.key)
+  // 文字を打てるセルでの英字は、コマンドではなく値の打ち始め（下の「割り当ての無い文字」と同じ扱い）
+  const b = letter && cursorTypable() ? undefined : (lookupBinding(key, 'nav') ?? altLetterBinding(key))
   if (b) {
     if (b.id === 'cell.copy' && window.getSelection()?.toString()) return
     e.preventDefault()
@@ -634,25 +564,9 @@ export function handleKeyDown(e: KeyboardEvent) {
         else if (!rows.canEdit(s.cursorCol)) toast(`数字キーはビュー切替です。${d.label}に数値を入れるときは Enter か F2 で編集してから打ってください${s.view === 6 || s.view === 8 ? '（6・8 では確定後の Enter / Tab で次のセルの入力が続きます）' : ''}`, 'info')
       }
     }
-    // 英字（Shift 付きも）のコマンドで、カーソルが文字を打てるセル（チェック・自動計算の列以外）にあるとき
-    const letter = /^(Shift\+)?[A-Za-z]$/.test(key) && /^[A-Za-z]$/.test(e.key)
-    const kind = colDef(s.cursorCol)?.kind
-    const typable = letter && kind !== 'bool' && kind !== 'computed' && !!visibleCursorRow() && !rows.canEdit(s.cursorCol)
-    const nav = NAV_LETTERS.has(key)
-    const now = performance.now()
-    // 移動以外の英字コマンドを続けて使っている間（x → n → x …）は待たない。移動キーを挟んでもよい
-    const chaining = now - lastLetterCmd < CHAIN_MS
-    burst = null
-    if (typable && !nav && !chaining) {
-      pending = { id: b.id, ch: e.key, timer: window.setTimeout(flushPending, DEFER_MS) }
-      return
-    }
-    if (typable && nav) beginBurst(e.key, e.timeStamp)
-    if (letter && !nav) lastLetterCmd = now
     runCommand(b.id, e)
     return
   }
-  burst = null
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key
   if (ch.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {

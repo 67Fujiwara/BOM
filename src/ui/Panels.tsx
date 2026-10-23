@@ -116,6 +116,8 @@ function PanelBody({ panel }: { panel: Panel }) {
             <h3 style={{ margin: '0 0 4px' }}>ショートカット一覧</h3>
             <p className="muted" style={{ margin: '0 0 10px', fontSize: 12 }}>
               迷ったら <kbd>Ctrl+K</kbd> で操作を名前で探せます。1 キーの操作は表の上（ナビモード）でだけ効き、セルの編集中は効きません。すべての操作は <kbd>Ctrl+Z</kbd> で戻せます（あなた自身の操作だけ）。
+              <br />
+              文字を打てるセルでは、英字は値の入力になります（Excel と同じ）。英字の操作は <kbd>Alt</kbd> を押しながら（例: <kbd>Alt+x</kbd> 確認済み、<kbd>Alt+Shift+I</kbd> 指摘）、または ID・状態などの列で押します。次の問題は <kbd>F8</kbd>、推奨で採用は <kbd>Ctrl+Alt+A</kbd> でも使えます。
             </p>
             <div className="help-cols" data-testid="help">
               {sections.map((sec) => (

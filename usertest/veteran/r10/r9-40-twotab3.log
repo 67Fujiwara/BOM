@@ -1,0 +1,4 @@
+{"case":"X1 A が R030 で Shift+Delete の確認を開いたまま → B が R030 を隠す → A 2","panelBefore":null,"afterB":"view-2/—/ナビ","panelAfterB":null,"panelAfter2":null,"afterA":"view-2/—/ナビ","diff":["R030.hidden:false→true"],"toasts":["R030 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）","R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）"]}
+{"case":"X2 選択が外れた直後に 12 Enter（必要数のつもり）","afterB":"view-2/—/ナビ","seq":["1→view-1/—/ナビ","2→view-2/—/ナビ","Enter→view-2/—/ナビ"],"diff":[],"toasts":["R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）","行を選んでください（↓ で先頭の行へ）"]}
+{"case":"X3 選択が外れた直後に ↓","afterB":"view-2/—/ナビ","seq":["ArrowDown→view-2/R001 必要数/ナビ"],"diff":[],"toasts":["R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）"]}
+{"case":"X4 選択が外れた直後に Alt+h","afterB":"view-2/—/ナビ","seq":["Alt+h→view-2/—/ナビ"],"diff":[],"toasts":["R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）","行を選んでください（↓ で先頭の行へ）"]}

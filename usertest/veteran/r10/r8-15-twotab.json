@@ -1,0 +1,130 @@
+[
+  {
+    "case": "T1 B が R005 を確認済み（A の 4 から消える）→ A が型式を打って Enter",
+    "cursorBeforeTyping": "R005 型式",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": [
+      "保存しました（編集は自動で保存されています）"
+    ]
+  },
+  {
+    "case": "T2 B が R005 を確認済み → A の ID 列で x",
+    "cursorBefore": "R005 ID",
+    "cursorAfter": "R005 ID",
+    "diff": [],
+    "toasts": [
+      "保存しました（編集は自動で保存されています）",
+      "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+    ]
+  },
+  {
+    "case": "T3 B が R030 を隠す → A で Alt+Shift+D",
+    "cursorBefore": "—",
+    "panel": null,
+    "cursorAfter": "—",
+    "diff": [],
+    "toasts": [
+      "R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "case": "T3 B が R030 を隠す → A で Alt+h",
+    "cursorBefore": "—",
+    "panel": null,
+    "cursorAfter": "—",
+    "diff": [],
+    "toasts": [
+      "R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "case": "T3 B が R030 を隠す → A で Shift+Delete",
+    "cursorBefore": "—",
+    "panel": null,
+    "cursorAfter": "—",
+    "diff": [],
+    "toasts": [
+      "R030 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R030 でその行へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "case": "T4 A が R030 を編集中 → B が R030 を隠す → A が def Enter",
+    "whileHidden": {
+      "mode": "ナビ",
+      "edit": null,
+      "cursor": "—"
+    },
+    "afterDef": {
+      "mode": "ナビ",
+      "edit": null,
+      "editorVisible": false
+    },
+    "afterEnter": {
+      "cursor": "—",
+      "mode": "ナビ"
+    },
+    "diff": [
+      "R030.hidden:false→true"
+    ],
+    "toasts": [
+      "保存しました（編集は自動で保存されています）",
+      "編集中の R030 が別のタブの変更でこのビューから外れたので、入力「abc」は保存していません（Ctrl+G R030 で行へ）",
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "case": "T5 A が R030 を編集中 → B が move → A が def Enter",
+    "cursorAfter": "R032 部品名",
+    "diff": [
+      "R030.working:undefined→{\"name\":\"abcdef\"}",
+      "order changed"
+    ],
+    "toasts": [
+      "保存しました（編集は自動で保存されています）"
+    ]
+  },
+  {
+    "case": "T5 A が R030 を編集中 → B が delete-above → A が def Enter",
+    "cursorAfter": "R031 部品名",
+    "diff": [
+      "R029.removal:undefined→{\"kind\":\"cancel\"}",
+      "R030.working:undefined→{\"name\":\"abcdef\"}"
+    ],
+    "toasts": [
+      "保存しました（編集は自動で保存されています）"
+    ]
+  },
+  {
+    "case": "T6 B が R054 必要数を直す（A の 4 から消える）→ A が 7 Enter",
+    "cursorBefore": "—",
+    "diff": [],
+    "toasts": [
+      "R054 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R054 でその行へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "case": "T7 A 隠す → B 部品名 → A Ctrl+Z / Ctrl+Y",
+    "afterZ": [
+      "R040.working:undefined→{\"name\":\"B-edit\"}"
+    ],
+    "afterY": [
+      "R040.hidden:false→true",
+      "R040.working:undefined→{\"name\":\"B-edit\"}"
+    ],
+    "toasts": [
+      "R040 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）",
+      "元に戻す: 行を隠す/戻す",
+      "やり直す: 行を隠す/戻す"
+    ]
+  },
+  {
+    "errors": []
+  }
+]

@@ -1,0 +1,22 @@
+w5 == 7/8 PASS
+v10 == 3/3 PASS
+v9 == 3/3 PASS
+v11 == 1/1 PASS
+v4 == 7/7 PASS
+v7 Node.js v22.22.0
+v2 R050 (購買起票の数量見直し依頼) に 7 対策不成立 が出る: false
+a1 == 9/9 PASS
+a6 == 1/1 PASS
+v8 Node.js v22.22.0
+a3b == 4/4 PASS
+a7 == 2/2 PASS
+a1on == 10/10 PASS
+a4 == 8/8 PASS
+a8 == 2/2 PASS
+v1b == 7/7 PASS
+a5 == 5/5 PASS
+a2 == 20/22 PASS
+v5 == 10/10 PASS
+a3 == 9/9 PASS
+w7 == 2/3 PASS
+DONE

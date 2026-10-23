@@ -1,0 +1,13 @@
+c1-all-run2 == 1/6 PASS
+c4-run2 == 0/3 PASS
+c5-run2 == 1/4 PASS
+c2b-all-direct-run2 == 0/2 PASS
+c6-run2 == 2/3 PASS
+c2b-all-run2 == 1/4 PASS
+c8-run2 == 0/3 PASS
+c9-run2 == 0/2 PASS
+c3-run2 == 2/4 PASS
+v7 == 9/9 PASS
+v8 == 8/9 PASS
+v6 paletteMiss []
+DONE

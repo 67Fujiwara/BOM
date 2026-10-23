@@ -1,0 +1,26 @@
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+rule → 案件設定を保存しました
+request all → 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+A R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] | 見積中 2/3
+C R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",800,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3
+A early → R081: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+C early → R082: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+PM y A → R081: 先行発注許可
+A R081 相見積 st=selected adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"early":true} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]]
+C R082 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",800,5,null],["S2",null,null,null],["S3",null,null,null]]
+A after decline R081 相見積 st=quoted adopt=- reason= oq=4 flags={} quotes=[["S1",1200,-1,null],["S2",1300,6,null],["S3",null,null,null]] | 見積済 ball design
+FAIL C4-1 (全社) 一部未回答（ミスミ）のまま先行採用した商社が辞退 → 見積中（回答 2/3）。見積済にしない（§4 完了条件） :: quoted
+C after decline R082 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",800,-1,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3 · PM承認待ち ball pm case 先行採用
+PM 7 has C true
+FAIL C4-2 PM 承認待ちの先行採用の商社が辞退したら、仮採用を外して PM の 7 から下ろす（辞退した商社の先行発注を許可させない） :: R082 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",800,-1,null],["S2",null,null,null],["S3",null,null,null]]
+PM Enter C {"kind":"quickfix","title":"決定パネル R082（先行採用）","options":["y 先行発注を許可（選んだ商社のまま選定済）","Shift+Y 却下 → 元の状態"],"index":-1}
+PM y C → R082: 先行発注許可
+C after PM y R082 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",800,-1,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3
+exception row R011 R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+exc after decline R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,-1,null]] ball pm case 例外選定
+PM 7 has exc true
+FAIL C4-3 PM 承認待ちの例外選定の商社が辞退したら、仮採用を外して選定者に戻す（PM に辞退した商社の承認を求めない） :: R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,-1,null]]
+PM Enter exc {"kind":"quickfix","title":"決定パネル R011（例外選定）","options":["y 承認 → 選定済","Shift+Y 却下 → 見積済（選定者へ）","b 次点へ（必要日を満たす最高スコア）"],"index":-1}
+PM y exc → R011: 承認
+exc after PM y R011 相見積 st=quoted adopt=- reason= oq=48 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,-1,null]] | 見積済 [["承認",""]]
+== 0/3 PASS

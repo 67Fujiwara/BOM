@@ -1,0 +1,701 @@
+[
+  {
+    "name": "typed 部品名 ArrowRight",
+    "seq": [
+      "start→R010 部品名",
+      "T:Xa→R010 部品名/編集[Xa|2-2]",
+      "ArrowRight→R010 型式/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"Xa\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 部品名 ArrowLeft",
+    "seq": [
+      "start→R010 部品名",
+      "T:Xa→R010 部品名/編集[Xa|2-2]",
+      "ArrowLeft→R010 分類/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"Xa\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 部品名 ArrowUp",
+    "seq": [
+      "start→R010 部品名",
+      "T:Xa→R010 部品名/編集[Xa|2-2]",
+      "ArrowUp→R009 部品名/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"Xa\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 部品名 ArrowDown",
+    "seq": [
+      "start→R010 部品名",
+      "T:Xa→R010 部品名/編集[Xa|2-2]",
+      "ArrowDown→R011 部品名/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"Xa\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 ArrowRight",
+    "seq": [
+      "start→R010 必要数",
+      "T:7→R010 必要数/編集[7|1-1]",
+      "ArrowRight→R010 単位/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"qtyNeeded\":7}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 ArrowLeft",
+    "seq": [
+      "start→R010 必要数",
+      "T:7→R010 必要数/編集[7|1-1]",
+      "ArrowLeft→R010 メーカ/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"qtyNeeded\":7}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 ArrowUp",
+    "seq": [
+      "start→R010 必要数",
+      "T:7→R010 必要数/編集[7|1-1]",
+      "ArrowUp→R009 必要数/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"qtyNeeded\":7}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 ArrowDown",
+    "seq": [
+      "start→R010 必要数",
+      "T:7→R010 必要数/編集[7|1-1]",
+      "ArrowDown→R011 必要数/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"qtyNeeded\":7}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 単位 ArrowRight",
+    "seq": [
+      "start→R010 単位",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowRight→R010 調達区分/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 単位 ArrowLeft",
+    "seq": [
+      "start→R010 単位",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowLeft→R010 必要数/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 単位 ArrowUp",
+    "seq": [
+      "start→R010 単位",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowUp→R009 単位/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 単位 ArrowDown",
+    "seq": [
+      "start→R010 単位",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowDown→R011 単位/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要日(固定) ArrowRight",
+    "seq": [
+      "start→R010 備考",
+      "T:2026/12/1→R010 備考/編集[2026/12/1|9-9]",
+      "ArrowRight→R010 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"2026/12/1\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要日(固定) ArrowLeft",
+    "seq": [
+      "start→R010 備考",
+      "T:2026/12/1→R010 備考/編集[2026/12/1|9-9]",
+      "ArrowLeft→R010 ロット/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"2026/12/1\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要日(固定) ArrowUp",
+    "seq": [
+      "start→R010 備考",
+      "T:2026/12/1→R010 備考/編集[2026/12/1|9-9]",
+      "ArrowUp→R009 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"2026/12/1\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要日(固定) ArrowDown",
+    "seq": [
+      "start→R010 備考",
+      "T:2026/12/1→R010 備考/編集[2026/12/1|9-9]",
+      "ArrowDown→R011 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"2026/12/1\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 調達区分 ArrowRight",
+    "seq": [
+      "start→R010 調達区分",
+      "T:客→R010 調達区分/ナビ",
+      "ArrowRight→R010 代替可否/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 調達区分 ArrowLeft",
+    "seq": [
+      "start→R010 調達区分",
+      "T:客→R010 調達区分/ナビ",
+      "ArrowLeft→R010 単位/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 調達区分 ArrowUp",
+    "seq": [
+      "start→R010 調達区分",
+      "T:客→R010 調達区分/ナビ",
+      "ArrowUp→R009 調達区分/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 調達区分 ArrowDown",
+    "seq": [
+      "start→R010 調達区分",
+      "T:客→R010 調達区分/ナビ",
+      "ArrowDown→R011 調達区分/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 備考 ArrowRight",
+    "seq": [
+      "start→R010 備考",
+      "T:<5→R010 備考/編集[<5|2-2]",
+      "ArrowRight→R010 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"<5\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 備考 ArrowLeft",
+    "seq": [
+      "start→R010 備考",
+      "T:<5→R010 備考/編集[<5|2-2]",
+      "ArrowLeft→R010 ロット/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"<5\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 備考 ArrowUp",
+    "seq": [
+      "start→R010 備考",
+      "T:<5→R010 備考/編集[<5|2-2]",
+      "ArrowUp→R009 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"<5\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 備考 ArrowDown",
+    "seq": [
+      "start→R010 備考",
+      "T:<5→R010 備考/編集[<5|2-2]",
+      "ArrowDown→R011 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"<5\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 部品名 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 部品名",
+      "F2→R010 部品名/編集[端子台エンドカバー|9-9]",
+      "T:Xa→R010 部品名/編集[端子台エンドカバーXa|11-11]",
+      "ArrowLeft→R010 部品名/編集[端子台エンドカバーXa|10-10]",
+      "ArrowLeft→R010 部品名/編集[端子台エンドカバーXa|9-9]",
+      "ArrowRight→R010 部品名/編集[端子台エンドカバーXa|10-10]",
+      "ArrowUp→R010 部品名/編集[端子台エンドカバーXa|0-0]",
+      "ArrowDown→R010 部品名/編集[端子台エンドカバーXa|11-11]",
+      "Enter→R011 部品名/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"端子台エンドカバーXa\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 必要数 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 必要数",
+      "F2→R010 必要数/編集[12|0-2]",
+      "T:7→R010 必要数/編集[7|1-1]",
+      "ArrowLeft→R010 必要数/編集[7|0-0]",
+      "ArrowLeft→R010 必要数/編集[7|0-0]",
+      "ArrowRight→R010 必要数/編集[7|1-1]",
+      "ArrowUp→R010 必要数/編集[7|0-0]",
+      "ArrowDown→R010 必要数/編集[7|1-1]",
+      "Enter→R011 必要数/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"qtyNeeded\":7}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 単位 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 単位",
+      "F2→R010 単位/編集[個|0-1]",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowLeft→R010 単位/編集[m|0-0]",
+      "ArrowLeft→R010 単位/編集[m|0-0]",
+      "ArrowRight→R010 単位/編集[m|1-1]",
+      "ArrowUp→R010 単位/編集[m|0-0]",
+      "ArrowDown→R010 単位/編集[m|1-1]",
+      "Enter→R011 単位/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 必要日(固定) 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 備考",
+      "F2→R010 備考/編集[|0-0]",
+      "T:2026/12/1→R010 備考/編集[2026/12/1|9-9]",
+      "ArrowLeft→R010 備考/編集[2026/12/1|8-8]",
+      "ArrowLeft→R010 備考/編集[2026/12/1|7-7]",
+      "ArrowRight→R010 備考/編集[2026/12/1|8-8]",
+      "ArrowUp→R010 備考/編集[2026/12/1|0-0]",
+      "ArrowDown→R010 備考/編集[2026/12/1|9-9]",
+      "Enter→R011 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"2026/12/1\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 調達区分 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 調達区分",
+      "F2→R010 調達区分/編集[相見積|0-3]",
+      "T:客→R010 調達区分/編集[客|1-1]",
+      "ArrowLeft→R010 調達区分/編集[客|0-0]",
+      "ArrowLeft→R010 調達区分/編集[客|0-0]",
+      "ArrowRight→R010 調達区分/編集[客|1-1]",
+      "ArrowUp→R010 調達区分/編集[客|0-0]",
+      "ArrowDown→R010 調達区分/編集[客|1-1]",
+      "Enter→R011 調達区分/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"procurement\":\"客先指定品\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "F2 備考 打って ← ← → ↑ ↓ Enter",
+    "seq": [
+      "start→R010 備考",
+      "F2→R010 備考/編集[|0-0]",
+      "T:<5→R010 備考/編集[<5|2-2]",
+      "ArrowLeft→R010 備考/編集[<5|1-1]",
+      "ArrowLeft→R010 備考/編集[<5|0-0]",
+      "ArrowRight→R010 備考/編集[<5|1-1]",
+      "ArrowUp→R010 備考/編集[<5|0-0]",
+      "ArrowDown→R010 備考/編集[<5|2-2]",
+      "Enter→R011 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"<5\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 部品名",
+      "Enter→R010 部品名/編集[端子台エンドカバー|9-9]",
+      "ArrowLeft→R010 部品名/編集[端子台エンドカバー|8-8]",
+      "ArrowRight→R010 部品名/編集[端子台エンドカバー|9-9]",
+      "Enter→R011 部品名/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 必要数",
+      "Enter→R010 必要数/編集[12|0-2]",
+      "ArrowLeft→R010 必要数/編集[12|0-0]",
+      "ArrowRight→R010 必要数/編集[12|1-1]",
+      "Enter→R011 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 単位",
+      "Enter→R010 単位/編集[個|0-1]",
+      "ArrowLeft→R010 単位/編集[個|0-0]",
+      "ArrowRight→R010 単位/編集[個|1-1]",
+      "Enter→R011 単位/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 備考",
+      "Enter→R010 備考/編集[|0-0]",
+      "ArrowLeft→R010 備考/編集[|0-0]",
+      "ArrowRight→R010 備考/編集[|0-0]",
+      "Enter→R011 備考/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 調達区分",
+      "Enter→R010 調達区分/編集[相見積|0-3]",
+      "ArrowLeft→R010 調達区分/編集[相見積|0-0]",
+      "ArrowRight→R010 調達区分/編集[相見積|1-1]",
+      "Enter→R011 調達区分/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "Enter で始めて ← → Enter",
+    "seq": [
+      "start→R010 備考",
+      "Enter→R010 備考/編集[|0-0]",
+      "ArrowLeft→R010 備考/編集[|0-0]",
+      "ArrowRight→R010 備考/編集[|0-0]",
+      "Enter→R011 備考/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → F2 → ←（Excel は F2 で編集モードへ）",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N→R010 型式/編集[MY4N|4-4]",
+      "F2→R010 型式/編集[MY4N|4-4]",
+      "ArrowLeft→R010 部品名/ナビ",
+      "T:X→R010 部品名/編集[X|1-1]",
+      "Enter→R011 部品名/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"model\":\"MY4N\",\"name\":\"X\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → Home → X → Enter",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N→R010 型式/編集[MY4N|4-4]",
+      "Home→R010 型式/編集[MY4N|0-0]",
+      "T:X→R010 型式/編集[XMY4N|1-1]",
+      "Enter→R011 型式/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"model\":\"XMY4N\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → End → Enter",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N→R010 型式/編集[MY4N|4-4]",
+      "End→R010 型式/編集[MY4N|4-4]",
+      "Enter→R011 型式/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"model\":\"MY4N\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → Shift+← → Enter",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N→R010 型式/編集[MY4N|4-4]",
+      "Shift+ArrowLeft→R010 型式/編集[MY4N|3-4]",
+      "Enter→R011 型式/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"model\":\"MY4N\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → Ctrl+← → Enter",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N AB→R010 型式/編集[MY4N AB|7-7]",
+      "Control+ArrowLeft→R010 型式/編集[MY4N AB|5-5]",
+      "Enter→R011 型式/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"model\":\"MY4N AB\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 型式 → Alt+↓",
+    "seq": [
+      "start→R010 型式",
+      "T:MY4N→R010 型式/編集[MY4N|4-4]",
+      "Alt+ArrowDown→R010 型式/編集[MY4N|4-4]"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 abc → ↓（読めない）→ Esc",
+    "seq": [
+      "start→R010 必要数",
+      "T:abc→R010 必要数/編集[abc|3-3]",
+      "ArrowDown→R010 必要数/編集[abc|3-3]",
+      "Escape→R010 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "必要数として読めません: 「abc」（直して Enter、やめるときは Esc）"
+    ]
+  },
+  {
+    "name": "typed 必要数 12 ↓ 34 ↓ 56 ↓（ページ内 0ms）",
+    "seq": [
+      "start→R010 必要数",
+      "M:1 2 ArrowDown 3 4 ArrowDown 5 6 ArrowDown→R013 必要数/ナビ"
+    ],
+    "diff": [
+      "R011.working:undefined→{\"qtyNeeded\":34}",
+      "R012.working:undefined→{\"qtyNeeded\":56}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "typed 必要数 12 → 34 → （ページ内 0ms・右へ）",
+    "seq": [
+      "start→R010 部品名",
+      "M:a b ArrowRight c d ArrowRight→R010 メーカ/ナビ",
+      "Escape→R010 メーカ/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"name\":\"ab\",\"model\":\"cd\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "R001 で typed ↑（上が無い）",
+    "seq": [
+      "start→R001 必要数",
+      "T:9→R001 必要数/編集[9|1-1]",
+      "ArrowUp→分類 制御/ナビ"
+    ],
+    "diff": [
+      "R001.working:undefined→{\"qtyNeeded\":9}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "最後の列で typed →",
+    "seq": [
+      "start→R010 備考",
+      "End→R010 備考/ナビ",
+      "T:z→R010 備考/編集[z|1-1]",
+      "ArrowRight→R010 備考/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"note\":\"z\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "単位 m 候補 ↓ で回す → → で確定",
+    "seq": [
+      "start→R010 単位",
+      "T:m→R010 単位/編集[m|1-1]",
+      "ArrowDown→R011 単位/ナビ",
+      "ArrowRight→R011 調達区分/ナビ"
+    ],
+    "diff": [
+      "R010.working:undefined→{\"unit\":\"m\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "4 で R054 必要数 typed 5 → →（直して外れる）→ 7",
+    "seq": [
+      "start→R054 必要数",
+      "T:5→R054 必要数/編集[5|1-1]",
+      "ArrowRight→—/ナビ",
+      "T:7→—/ナビ",
+      "Enter→—/ナビ"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で表へ、F8 で次の問題へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "4 で R054 必要数 typed 5 → ↑（直して外れる）",
+    "seq": [
+      "start→R054 必要数",
+      "T:5→R054 必要数/編集[5|1-1]",
+      "ArrowUp→—/ナビ",
+      "T:7→—/ナビ",
+      "Enter→—/ナビ"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で表へ、F8 で次の問題へ）",
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "4 で R054 必要数 typed 5 → ↓（直して外れる）",
+    "seq": [
+      "start→R054 必要数",
+      "T:5→R054 必要数/編集[5|1-1]",
+      "ArrowDown→R005 必要数/ナビ"
+    ],
+    "diff": [
+      "R054.working:undefined→{\"qtyNeeded\":5}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "4 で R005 型式 typed 直す → ↑（行が 4 の中で動く）",
+    "seq": [
+      "start→R005 型式",
+      "T:MY4N-GS DC24→R005 型式/編集[MY4N-GS DC24|12-12]",
+      "ArrowUp→R004 型式/ナビ"
+    ],
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N-GS DC24\"}"
+    ],
+    "toasts": []
+  },
+  {
+    "name": "購買 9 発注数 typed 10 → →",
+    "seq": [
+      "start→R020 発注数",
+      "T:10→R020 発注数/編集[10|2-2]",
+      "ArrowRight→R020 状態/ナビ"
+    ],
+    "diff": [
+      "R020.orderQty:null→10"
+    ],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
+  },
+  {
+    "name": "購買 3 入荷予定 typed 2026/12/1 → ←",
+    "seq": [
+      "start→R001 入荷予定",
+      "T:2026/12/1→R001 入荷予定/編集[2026/12/1|9-9]",
+      "ArrowLeft→R001 入荷/ナビ"
+    ],
+    "diff": [
+      "R001.promisedDate:undefined→\"2026-12-01\""
+    ],
+    "toasts": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+approval ON → 案件設定を保存しました
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] pendingRev 2
+R082 指定商社 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+purch view 6 has A/B false false 
+purch view 9 has A/B false false 
+purch view 1 has A/B true true name=承認待ち追加A model=G2R-1 DC24 status=提出済 · PM承認待ち
+purch view 4 has A/B false false 
+PASS B5-1 購買の 6 に承認待ちの追加行が出ない
+PASS B5-2 購買の 9（購買作業）にも承認待ちの追加行の部品名・型式は出ない（承認待ちの変更ありだけ） :: in9=false model=
+view1 typed → ERR colKey not found q.unitPrice@S1 view=1 R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+import → 取り込み 0 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 2 件（R081: 変更セットの PM 承認待ちの追加行です（承認されてから取り込みます）、R082: 変更セットの PM 承認待ちの追加行です（承認されてから取り込みます）。その行は取り込んでいません）
+R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+R082 指定商社 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+PASS B5-3 承認待ちの追加行には見積回答を取り込まない（状態は提出済のまま） :: submitted/submitted
+request → 依頼する行がありません（提出済・再見積要の行なし） []
+PM 7 has A true case 変更セット
+y → R081・Rev.2 の変更セット 7 行まとめて: 承認
+after PM R081 相見積 st=submitted adopt=- reason= oq=- flags={} quotes=[]
+R082 指定商社 st=submitted adopt=- reason= oq=- flags={} quotes=[]
+request after approve → 7 行 × 3 社に依頼（回答期限 2026-10-28）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",["R081","R082"]],["立花エレテック",["R081"]],["ミスミ",["R081"]]] R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] R082 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]]
+PASS B5-4 承認後は依頼でき、A は 3 社・B は因幡だけに依頼
+== 4/4 PASS

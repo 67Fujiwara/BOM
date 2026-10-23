@@ -1,0 +1,124 @@
+{"role":"design","how":"数字 4","k":"Enter","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"F2","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Space","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Shift+Enter","before":"—","after":{"cursor":"R081 部品名","view":"view-4","mode":"編集","panel":null},"diff":["R081:+new","order changed"],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Shift+Delete","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Delete","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Backspace","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Control+c","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Control+v","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Control+.","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Control+z","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["戻す操作がありません（この案件であなたが行った操作はまだありません）"]}
+{"role":"design","how":"数字 4","k":"Control+y","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["やり直す操作がありません"]}
+{"role":"design","how":"数字 4","k":"Control+d","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Alt+h","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+x","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+Shift+D","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+Shift+I","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+a","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+o","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+i","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+w","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+r","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+f","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+s","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["並び替える列にカーソルを置いてください（↓ で表へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+ArrowUp","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Alt+ArrowDown","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ）"]}
+{"role":"design","how":"数字 4","k":"Home","before":"—","after":{"cursor":"R016 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"End","before":"—","after":{"cursor":"R016 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Tab","before":"—","after":{"cursor":"R016 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"PageDown","before":"—","after":{"cursor":"R016 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Control+End","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"F8","before":"—","after":{"cursor":"R016 型式","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Shift+F8","before":"—","after":{"cursor":"R061 型式","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"x","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"]}
+{"role":"design","how":"数字 4","k":"h","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"]}
+{"role":"design","how":"数字 4","k":"y","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"]}
+{"role":"design","how":"数字 4","k":"Shift+Y","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"]}
+{"role":"design","how":"数字 4","k":"Escape","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Control+Enter","before":"—","after":{"cursor":"—","view":"view-4","mode":"パネル","panel":"panel-prompt"},"diff":[],"toasts":[]}
+{"role":"design","how":"数字 4","k":"Control+Shift+C","before":"—","after":{"cursor":"—","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["74 行 × 12 列を書式つきでコピーしました（Excel・メールに貼れます）"]}
+{"role":"design","how":"数字 4","k":"F1","before":"—","after":{"cursor":"—","view":"view-4","mode":"パネル","panel":"panel-help"},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Enter","before":"R004 発注数","after":{"cursor":"R005 発注数","view":"view-9","mode":"ナビ","panel":null},"diff":["R004.orderQty:null→4"],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"role":"purchasing","how":"数字 4","k":"F2","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Space","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Shift+Enter","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Shift+Delete","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Delete","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Backspace","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Control+c","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Control+v","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Control+.","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"ナビ","panel":null},"diff":["R004.orderQty:null→4"],"toasts":["R004 に直し方の候補はありません"]}
+{"role":"purchasing","how":"数字 4","k":"Control+z","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Control+y","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Control+d","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+h","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+x","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+Shift+D","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+Shift+I","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+a","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+o","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+i","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+w","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+r","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+f","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+s","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+ArrowUp","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Alt+ArrowDown","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Home","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"End","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Tab","before":"R004 発注数","after":{"cursor":"R004 状態","view":"view-9","mode":"ナビ","panel":null},"diff":["R004.orderQty:null→4"],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"role":"purchasing","how":"数字 4","k":"PageDown","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"role":"purchasing","how":"数字 4","k":"Control+End","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"F8","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Shift+F8","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"x","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"h","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"y","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Shift+Y","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"編集","panel":null},"diff":[],"toasts":[]}
+{"role":"purchasing","how":"数字 4","k":"Escape","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"role":"purchasing","how":"数字 4","k":"Control+Enter","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"ナビ","panel":null},"diff":["R004.orderQty:null→4"],"toasts":["発行する下書きの指摘はありません（Alt+Shift+I で起票）"]}
+{"role":"purchasing","how":"数字 4","k":"Control+Shift+C","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"ナビ","panel":null},"diff":["R004.orderQty:null→4"],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました","69 行 × 28 列を書式つきでコピーしました（Excel・メールに貼れます）"]}
+{"role":"purchasing","how":"数字 4","k":"F1","before":"R004 発注数","after":{"cursor":"R004 発注数","view":"view-9","mode":"パネル","panel":"panel-help"},"diff":["R004.orderQty:null→4"],"toasts":["役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Enter","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"パネル","panel":"panel-quickfix"},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"F2","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"パネル","panel":"panel-quickfix"},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Space","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Shift+Enter","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（行の追加は設計）"]}
+{"role":"pm","how":"数字 4","k":"Shift+Delete","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（行の削除は設計）"]}
+{"role":"pm","how":"数字 4","k":"Delete","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）"]}
+{"role":"pm","how":"数字 4","k":"Backspace","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）"]}
+{"role":"pm","how":"数字 4","k":"Control+c","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["コピー: 出力拡張ユニット"]}
+{"role":"pm","how":"数字 4","k":"Control+v","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["0 セルを貼り付けました。書けない列 2 セルは飛ばしました（Ctrl+Z で一度に戻せます）"]}
+{"role":"pm","how":"数字 4","k":"Control+.","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["R003 に直し方の候補はありません"]}
+{"role":"pm","how":"数字 4","k":"Control+z","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["戻す操作がありません（この案件であなたが行った操作はまだありません）"]}
+{"role":"pm","how":"数字 4","k":"Control+y","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["やり直す操作がありません"]}
+{"role":"pm","how":"数字 4","k":"Control+d","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"pm","how":"数字 4","k":"Alt+h","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":["R003.hidden:false→true"],"toasts":["R003 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"]}
+{"role":"pm","how":"数字 4","k":"Alt+x","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["R003 の差分を確認済にしました（PMとして）"]}
+{"role":"pm","how":"数字 4","k":"Alt+Shift+D","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（行の複製は設計）"]}
+{"role":"pm","how":"数字 4","k":"Alt+Shift+I","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"パネル","panel":"panel-issue"},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Alt+a","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（選定者は設計）"]}
+{"role":"pm","how":"数字 4","k":"Alt+o","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（購買の列）"]}
+{"role":"pm","how":"数字 4","k":"Alt+i","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（購買の列）"]}
+{"role":"pm","how":"数字 4","k":"Alt+w","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"パネル","panel":"panel-weights"},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Alt+r","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（置換は設計）"]}
+{"role":"pm","how":"数字 4","k":"Alt+f","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["部品名 =「出力拡張ユニット」で絞り込みました（Esc か Alt+f で解除）"]}
+{"role":"pm","how":"数字 4","k":"Alt+s","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["部品名 で昇順に並べました（もう一度で解除）"]}
+{"role":"pm","how":"数字 4","k":"Alt+ArrowUp","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（行の並びは設計）"]}
+{"role":"pm","how":"数字 4","k":"Alt+ArrowDown","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（行の並びは設計）"]}
+{"role":"pm","how":"数字 4","k":"Home","before":"R003 部品名","after":{"cursor":"R003 ID","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"End","before":"R003 部品名","after":{"cursor":"R003 待ち","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Tab","before":"R003 部品名","after":{"cursor":"R003 型式","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"PageDown","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"pm","how":"数字 4","k":"Control+End","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"pm","how":"数字 4","k":"F8","before":"R003 部品名","after":{"cursor":"R003 状態","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"Shift+F8","before":"R003 部品名","after":{"cursor":"R003 状態","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"role":"pm","how":"数字 4","k":"x","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）。「警告を確認済みにする / 外す」は Alt+x（または ID の列で x）。キーの一覧は F1"]}
+{"role":"pm","how":"数字 4","k":"h","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）。「行を隠す / 戻す」は Alt+h（または ID の列で h）。キーの一覧は F1"]}
+{"role":"pm","how":"数字 4","k":"y","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）。「承認 / 受入 / 許可（PM）」は Alt+y（または ID の列で y）。キーの一覧は F1"]}
+{"role":"pm","how":"数字 4","k":"Shift+Y","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["権限なし（設計の列）。「却下 / 受入（遅延許容）/ 現状維持（PM）」は Alt+Shift+Y（または ID の列で Y）。キーの一覧は F1"]}
+{"role":"pm","how":"数字 4","k":"Escape","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":[]}
+{"role":"pm","how":"数字 4","k":"Control+Enter","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["公開するものはありません（PM は y / Shift+Y で決定）"]}
+{"role":"pm","how":"数字 4","k":"Control+Shift+C","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"ナビ","panel":null},"diff":[],"toasts":["1 行 × 12 列を書式つきでコピーしました（Excel・メールに貼れます）"]}
+{"role":"pm","how":"数字 4","k":"F1","before":"R003 部品名","after":{"cursor":"R003 部品名","view":"view-4","mode":"パネル","panel":"panel-help"},"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+errors []

@@ -1,0 +1,12 @@
+{"port":5176,"row":"R078","col":"単価","word":"6pcs","found":true,"steps":["6→view-1/R078 単価/ナビ","p→view-1/R078 単価/ナビ","c→view-1/R078 単価/ナビ","s→view-1/R078 単価/ナビ"],"diff":[]}
+{"port":5176,"row":"R078","col":"金額","word":"61","found":true,"steps":["6→view-1/R078 金額/ナビ","1→view-1/R078 金額/ナビ"],"diff":[]}
+{"port":5176,"row":"R030","col":"単価","word":"8pcs","found":true,"steps":["8→view-1/R030 単価/ナビ","p→view-1/R030 単価/ナビ","c→view-1/R030 単価/ナビ","s→view-1/R030 単価/ナビ"],"diff":[]}
+{"port":5176,"row":"R030","col":"ボール","word":"4x","found":true,"steps":["4→view-1/R030 ボール/ナビ","x→view-1/R030 ボール/ナビ"],"diff":[]}
+{"port":5176,"row":"R070","col":"スコア","word":"9.5","found":true,"steps":["9→view-1/R070 スコア/ナビ",".→view-1/R070 スコア/ナビ","5→view-1/R070 スコア/ナビ"],"diff":[]}
+{"port":5176,"row":"R030","col":"納期","word":"6週","found":true,"steps":["6→view-1/R030 納期/ナビ","週→view-1/R030 納期/ナビ"],"diff":[]}
+{"port":5196,"row":"R078","col":"単価","word":"6pcs","found":true,"steps":["6→view-1/R078 単価/ナビ","p→view-1/R078 単価/ナビ","c→view-1/R078 単価/ナビ","s→view-1/R078 単価/ナビ"],"diff":[]}
+{"port":5196,"row":"R078","col":"金額","word":"61","found":true,"steps":["6→view-1/R078 金額/ナビ","1→view-1/R078 金額/ナビ"],"diff":[]}
+{"port":5196,"row":"R030","col":"単価","word":"8pcs","found":true,"steps":["8→view-1/R030 単価/ナビ","p→view-1/R030 単価/ナビ","c→view-1/R030 単価/ナビ","s→view-1/R030 単価/ナビ"],"diff":[]}
+{"port":5196,"row":"R030","col":"ボール","word":"4x","found":true,"steps":["4→view-1/R030 ボール/ナビ","x→view-1/R030 ボール/ナビ"],"diff":[]}
+{"port":5196,"row":"R070","col":"スコア","word":"9.5","found":true,"steps":["9→view-1/R070 スコア/ナビ",".→view-1/R070 スコア/ナビ","5→view-1/R070 スコア/ナビ"],"diff":[]}
+{"port":5196,"row":"R030","col":"納期","word":"6週","found":true,"steps":["6→view-1/R030 納期/ナビ","週→view-1/R030 納期/ナビ"],"diff":[]}

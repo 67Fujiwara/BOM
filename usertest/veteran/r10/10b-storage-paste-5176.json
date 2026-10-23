@@ -1,0 +1,38 @@
+[
+  {
+    "case": "空き 20000 で 300 行を貼り付け",
+    "fill": {
+      "cap": 5118163,
+      "filled": 5098163
+    },
+    "toasts": [
+      "1200 セルを貼り付けました（299 行追加）（Ctrl+Z で一度に戻せます）"
+    ],
+    "storedRowsBeforeReload": 80,
+    "rowsAfterReload": 80
+  },
+  {
+    "case": "空き 60000 で 300 行を貼り付け",
+    "fill": {
+      "cap": 5118163,
+      "filled": 5058163
+    },
+    "toasts": [
+      "1200 セルを貼り付けました（299 行追加）（Ctrl+Z で一度に戻せます）"
+    ],
+    "storedRowsBeforeReload": 80,
+    "rowsAfterReload": 80
+  },
+  {
+    "case": "空き 200000 で 1000 行を貼り付け",
+    "fill": {
+      "cap": 5118163,
+      "filled": 4918163
+    },
+    "toasts": [
+      "4000 セルを貼り付けました（999 行追加）（Ctrl+Z で一度に戻せます）"
+    ],
+    "storedRowsBeforeReload": 80,
+    "rowsAfterReload": 80
+  }
+]

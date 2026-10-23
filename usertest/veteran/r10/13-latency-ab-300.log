@@ -1,0 +1,70 @@
+0 r9 plain {"loadMs":217,"部品名":{"commit":26.7,"undo":21.2},"必要数":{"commit":23.3,"undo":18.1},"nav":{"down":16.9,"view":37.5,"space":23.2}}
+0 current plain {"loadMs":262,"部品名":{"commit":31.3,"undo":20.2},"必要数":{"commit":29.4,"undo":18.5},"nav":{"down":15.9,"view":37.8,"space":24.4}}
+0 r9 holidays {"loadMs":202,"部品名":{"commit":31.7,"undo":23},"必要数":{"commit":33.8,"undo":19.4},"nav":{"down":16.5,"view":29.2,"space":33}}
+0 current holidays {"loadMs":185,"部品名":{"commit":39.1,"undo":26.1},"必要数":{"commit":31.5,"undo":28.4},"nav":{"down":16.4,"view":35.1,"space":31.1}}
+1 r9 plain {"loadMs":180,"部品名":{"commit":27.3,"undo":17.3},"必要数":{"commit":21.1,"undo":17},"nav":{"down":16.6,"view":32.5,"space":26.7}}
+1 current plain {"loadMs":240,"部品名":{"commit":43.4,"undo":25.3},"必要数":{"commit":28.9,"undo":26.7},"nav":{"down":15.4,"view":45.1,"space":31.6}}
+1 r9 holidays {"loadMs":214,"部品名":{"commit":43.3,"undo":41.9},"必要数":{"commit":26.3,"undo":17.9},"nav":{"down":16.4,"view":27.5,"space":15.7}}
+1 current holidays {"loadMs":138,"部品名":{"commit":28.6,"undo":19},"必要数":{"commit":27.7,"undo":18.1},"nav":{"down":16.6,"view":28.4,"space":24.3}}
+2 r9 plain {"loadMs":160,"部品名":{"commit":22.6,"undo":19},"必要数":{"commit":20.8,"undo":20.3},"nav":{"down":16.9,"view":31.1,"space":20.2}}
+2 current plain {"loadMs":155,"部品名":{"commit":25.9,"undo":17.9},"必要数":{"commit":24.5,"undo":16.6},"nav":{"down":15,"view":41.1,"space":29.2}}
+2 r9 holidays {"loadMs":193,"部品名":{"commit":37.6,"undo":23.3},"必要数":{"commit":32.9,"undo":26.2},"nav":{"down":16.3,"view":41,"space":22.1}}
+2 current holidays {"loadMs":265,"部品名":{"commit":43.4,"undo":28},"必要数":{"commit":31,"undo":27.4},"nav":{"down":16.9,"view":36.7,"space":35.1}}
+{
+ "r9@plain": {
+  "loadMs": 180,
+  "name": {
+   "commit": 26.7,
+   "undo": 19
+  },
+  "qty": {
+   "commit": 21.1,
+   "undo": 18.1
+  },
+  "down": 16.9,
+  "view": 32.5,
+  "space": 23.2
+ },
+ "current@plain": {
+  "loadMs": 240,
+  "name": {
+   "commit": 31.3,
+   "undo": 20.2
+  },
+  "qty": {
+   "commit": 28.9,
+   "undo": 18.5
+  },
+  "down": 15.4,
+  "view": 41.1,
+  "space": 29.2
+ },
+ "r9@holidays": {
+  "loadMs": 202,
+  "name": {
+   "commit": 37.6,
+   "undo": 23.3
+  },
+  "qty": {
+   "commit": 32.9,
+   "undo": 19.4
+  },
+  "down": 16.4,
+  "view": 29.2,
+  "space": 22.1
+ },
+ "current@holidays": {
+  "loadMs": 185,
+  "name": {
+   "commit": 39.1,
+   "undo": 26.1
+  },
+  "qty": {
+   "commit": 31,
+   "undo": 27.4
+  },
+  "down": 16.6,
+  "view": 35.1,
+  "space": 31.1
+ }
+}

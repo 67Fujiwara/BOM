@@ -1,0 +1,21 @@
+sample: quoted (unadopted) 69 R004,R005,R006,R007,R008,R009,R010,R011,R012,R014 supplierIds ["S1","S2","S3"]
+design 4 quoted rows before 69
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+Ctrl+. ["次の商社 ミスミ に依頼する（概算見積を依頼）"]
+choose ミスミ index 3
+request → 1 行 × 1 社に依頼（回答期限 2026-10-28）
+Ctrl+. ["次の商社 因幡電機 に依頼する（概算見積を依頼）。パナソニック は取扱メーカに無い商社です"]
+choose 因幡電機 index 1
+request → 1 行 × 1 社に依頼（回答期限 2026-10-28）
+Ctrl+. ["次の商社 RSコンポーネンツ に依頼する（概算見積を依頼。依頼先で「相見積先すべて」を選ぶ）"]
+choose RSコンポーネンツ index 4
+request → 1 行 × 1 社に依頼（回答期限 2026-10-28）
+K R081 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S2",null,-1,null],["S3",null,-1,null],["S1",null,-1,null],["S4",null,null,null]]
+supplierIds now ["S1","S2","S3"]
+publish → [変更セット（1 行: R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+相見積先すべて → 1 行 × 3 社に依頼（回答期限 2026-10-28） options[0] 相見積先すべて（因幡電機・立花エレテック・ミスミ）
+files [["因幡電機",1],["ミスミ",1],["立花エレテック",1]]
+reopened (見積済 → 見積中) 0  R004 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+design 4 quoted rows after 69
+PASS B2-1 (quickfix) 1 行のために RS に頼んだあと、いつもの「相見積先すべて」で選定待ちの見積済の行が RS に送られ見積中に戻らない :: 0 行が見積中に戻った / 設計の 4 69 → 69
+== 1/1 PASS

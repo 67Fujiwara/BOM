@@ -1,0 +1,7 @@
+n2-addappr-run2 == 12/12 PASS
+n2-addpartial-run2 == 13/13 PASS
+n3-nextb-run2 == 4/5 PASS
+n4-diff-direct-run2 == 0/1 PASS
+n11-addcancel-rej-run2 == 2/4 PASS
+n13-run2 == 6/6 PASS
+DONE

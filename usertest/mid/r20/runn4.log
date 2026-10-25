@@ -1,0 +1,7 @@
+n4-rm-prompt == 1/1 PASS
+n4-cs-prompt == 0/1 PASS
+n4-diff-open == 0/1 PASS
+n4-diff-prompt == 0/1 PASS
+n4-diff-back == 1/1 PASS
+n4-diff-within == 1/1 PASS
+DONE

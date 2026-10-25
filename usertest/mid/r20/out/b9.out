@@ -1,0 +1,21 @@
+suppliers [["S1","因幡電機",true,"三菱電機/オムロン/フエニックス/TDKラムダ/住友電装/ニチフ/パトライト/興和化成"],["S2","立花エレテック",true,"三菱電機/オムロン/フエニックス/TDKラムダ/音羽電機/パナソニック/オリエンタルモーター"],["S3","ミスミ",true,""],["S4","RSコンポーネンツ",false,""],["S5","オムロン直販",true,"オムロン"]]
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after S2 declined: sb hint=Ctrl+.次の商社に依頼 Ctrl+.=["次の商社 ミスミ に依頼する（概算見積を依頼。依頼先で「S3 ミスミ」か「相見積先すべて」を選ぶ）"]
+  request panel options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S5 オムロン直販"] choose ミスミ 3
+  request → 1 行 × 1 社に依頼（回答期限 2026-10-30）
+after S3 declined: sb hint=Ctrl+.次の商社に依頼 Ctrl+.=["次の商社 因幡電機 に依頼する（概算見積を依頼。依頼先で「S1 因幡電機」か「相見積先すべて」を選ぶ）。パナソニック は取扱メーカに無い商社です"]
+  request panel options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S5 オムロン直販"] choose 因幡電機 1
+  request → 1 行 × 1 社に依頼（回答期限 2026-10-30）
+after S1 declined: sb hint=Ctrl+.次の商社に依頼 Ctrl+.=["次の商社 オムロン直販 に依頼する（概算見積を依頼。依頼先で「S5 オムロン直販」か「相見積先すべて」を選ぶ）。パナソニック は取扱メーカに無い商社です"]
+  request panel options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S5 オムロン直販"] choose オムロン直販 4
+  request → 1 行 × 1 社に依頼（回答期限 2026-10-30）
+after S5 declined: sb hint=開くAlt+Shift+I取引できる商社がすべて辞退: 設計に代替を相談（指摘） Ctrl+.=undefined
+no quickfix; toast R081 に直し方の候補はありません
+chain S2 → S3 → S1 → S5 R081 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S2",null,-1,null],["S3",null,-1,null],["S1",null,-1,null],["S5",null,-1,null]] ball purchasing
+PASS B9-1 取引不可の RS には次の依頼先として案内しない・依頼しない :: S2 → S3 → S1 → S5 / RS quote false
+FAIL B9-2 パナソニックを扱わないと登録された直販（オムロン直販）に黙って頼まない（頼むなら扱わない旨を示す） :: S2 → S3 → S1 → S5
+purchasing 4 has K true
+design 4 has K false
+pm 7 has K false
+final status bar ナビR081 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くAlt+Shift+I取引できる商社がすべて辞退: 設計に代替を相談（指摘）
+== 1/2 PASS

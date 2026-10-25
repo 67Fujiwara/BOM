@@ -1,0 +1,24 @@
+created → 中堅R20盤（3 行）を作成しました。Ctrl+Enter で提出します
+dueDate null rows 3 confirmed false
+PASS N5-0 納期の入力どおり（未定＝null） :: null
+publish → 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+subs 1 caseDecisions [{"id":"C1","kind":"案件設定確定","status":"open","at":"2026-10-25T12:19:29.983Z"}]
+PASS N5-1 提出 Rev.1 で案件設定確定が PM の 7 に載る :: [{"id":"C1","kind":"案件設定確定","status":"open","at":"2026-10-25T12:19:29.983Z"}]
+design 7 y → 権限なし（案件設定の確定は PM）
+PASS N5-2-design design の y では確定しない
+purchasing 7 y → 権限なし（案件設定の確定は PM）
+PASS N5-2-purchasing purchasing の y では確定しない
+PM 7 items case:C1
+PASS N5-3 PM の 7 に案件の行 :: case:C1
+status bar ナビ—PM 鈴木: 要決定 1役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプ↓表へF8次の問題
+cursorRow case:C1 status bar on case row ナビ—PM 鈴木: 要決定 1役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプ↓表へF8次の問題
+y → 案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます） | kind info | confirmed true | decisions [["鈴木","既定で確定"]]
+PASS N5-6 y で案件設定を確定（決定の記録 1 件・案件の要決定が済）
+PASS N5-7 納期が未定のまま確定したと知らせる（情報） :: 案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます）
+PM 7 after 
+PASS N5-8 確定後、7 から案件の行が消える
+settings confirm panel {"kind":"impact","title":"影響試算（確定前）","options":[],"lines":["納期NG になる行: 0（なし）","推奨が変わる行: 0（）","行必要日が固定の行: 0（）","正式依頼中で必要納期が変わる行（再発行対象）: 0","総額差（推奨で選び直した場合）: +¥0","特急費の概算: 納期NG 0 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）"]}
+dueDate now 2026-11-02 toast 案件設定を保存しました
+PASS N5-9 案件設定で納期を入れられる :: 2026-11-02
+ERRORS []
+== 9/9 PASS

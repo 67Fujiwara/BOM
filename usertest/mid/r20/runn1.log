@@ -1,0 +1,9 @@
+n1-cancelfirst == 11/11 PASS
+n1-cancelappr == 12/12 PASS
+n1-cancel2 == 12/12 PASS
+n1-cancelrej == 13/13 PASS
+n1-replappr == 13/13 PASS
+n1-replrej == 14/14 PASS
+n1-chain3rej == 13/13 PASS
+n1-chain3appr == 13/13 PASS
+DONE

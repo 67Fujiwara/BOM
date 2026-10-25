@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+L R003
+e → R003: 特急・分納
+45000 {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+raw y panel 決定: 承認（R003。理由・任意）。上長決裁の条件に該当: 承認者を入れてください
+after y {"id":"D-002","rowId":"R003","kind":"承認","by":{"role":"pm","name":"鈴木"},"at":"2026-10-25T12:26:58.865Z","reason":"実費で承認","external":{"approver":"部長","date":"2026-10-25","ref":"K-9"},"payload":{"amount":45000,"cap":true}} R003: 承認
+after approve {"in7":false,"c7":9,"hdr":"9","sb":"9","case":"なし"}
+PASS B7-1 PM の素の y で上限超過を承認 → 7 から消え、上限が ¥45,000 に :: {"in7":false,"c7":9,"hdr":"9","sb":"9","case":"なし"}
+detail 決定・履歴鈴木 10/25 12:26 特急・分納 特急で （上限 ¥30,000） 鈴木 10/25 12:26 承認 実費で承認 （金額 ¥45,000） （決裁: 部長 2026-10-25 K-9）鈴木 10/25 12:26 決定: 承認佐藤 10/25 12:26 セル編集鈴木 10/25 12:26 決定: 特急・分納
+50000 {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+PASS B7-2 引き上げた上限を再び超えたら 7 に戻る（上限 ¥45,000） :: {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+PASS B7-3 ヘッダーの PM待ちとステータスバーの要決定が一致 :: {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+after reject {"leadNG":false,"countermeasure":"分納・特急","pmPending":false,"capRuled":50000} R003: 却下
+after reject {"in7":false,"c7":9,"hdr":"9","sb":"9","case":"なし"}
+purch 4 has L true ナビR003 ID上限超過 ¥50,000 > ¥45,000（PM 却下: 上限内で手配し直す）購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+PASS B7-4 却下で 7 から消え、購買の 4 に「上限内で手配し直す」行として残る :: in7=false pu4=true
+PM Ctrl+Z → 元に戻す: 決定: 却下
+after undo {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+PASS B7-5 PM の Ctrl+Z で却下を戻すと 7 に戻る :: {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+PM Ctrl+Y → やり直す: 決定: 却下
+44000 {"in7":false,"c7":9,"hdr":"9","sb":"9","case":"なし"}
+PASS B7-6 上限内に下げたら 7 に出ない :: {"in7":false,"c7":9,"hdr":"9","sb":"9","case":"なし"}
+purch 4 has L after 44000 false
+50000 again (was rejected) {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+PASS B7-7 却下された額を購買がもう一度入れたら、PM の 7 に出る（黙って通らない） :: {"in7":true,"c7":10,"hdr":"10","sb":"10","case":"上限超過"}
+== 7/7 PASS

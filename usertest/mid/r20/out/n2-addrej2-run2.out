@@ -1,0 +1,36 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+N R081 N2 null
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+after Rev.c [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",null,""]] R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] pendingRev 3
+N name → 行 2（Rev.3） を公開しました
+publish Rev.d → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]]
+PASS N2-0 不変条件
+PASS N2-1 N は Rev.4 の承認待ち、Rev.c に N は Rev.4（以降）にまとめた印 :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]]
+panel N 決定パネル R081（変更セット Rev.4（Rev.3 の変更をまとめた））
+PASS N2-2 N の決定パネルはまとめた Rev を出す :: 決定パネル R081（変更セット Rev.4（Rev.3 の変更をまとめた））
+PM y R035 → R035・Rev.3 の変更セット 1 行まとめて: 承認
+Rev.c approved first [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]] R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+PASS N2-2c 不変条件
+PM Shift+Y R081 → R081・Rev.4 の変更セット 1 行まとめて: 却下
+after reject [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R081",null,"revoked"]] R081 相見積 st=submitted adopt=- reason= oq=- flags={} quotes=[] name 追加行N status submitted publishedRev 4
+FAIL N2-3 却下で N は下書き（提出前）に戻り、公開の印・承認待ちの印なし、部品名は設計の最新値 :: submitted pub=4 pm=false name=追加行N w={"name":"追加行N2"} pa=null
+PASS N2-3c 不変条件
+FAIL N2-3d 購買の 9 に N は出ない
+PASS N2-3e 概算見積の依頼に N は出ない
+PASS N2-4 Rev.c は先に承認済、D の必要数が公開値
+publish again → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.5） を公開しました
+after republish [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R081",null,"revoked"],[5,"客先要求","pend","R081",null,""]] R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+PASS N2-5c 不変条件
+final [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R081",null,"revoked"],[5,"客先要求","pend","R081",null,""]]
+design 変更点 N [[3,"客先要求","追加: 追加行N G3VM-61A1","Rev 4 にまとめた"],[4,"廃番・入手難","","却下"],[5,"客先要求","",""]]
+PASS N2-X-design-1 変更点：Rev.3 の N（追加）は「まとめた」か（購買は承認されたものだけ） :: [3,"客先要求","追加: 追加行N G3VM-61A1","Rev 4 にまとめた"]
+purchasing 変更点 N []
+PASS N2-X-purchasing-1 変更点：Rev.3 の N（追加）は「まとめた」か（購買は承認されたものだけ） :: null
+pm 変更点 N [[3,"客先要求","追加: 追加行N G3VM-61A1","Rev 4 にまとめた"],[4,"廃番・入手難","","却下"],[5,"客先要求","",""]]
+PASS N2-X-pm-1 変更点：Rev.3 の N（追加）は「まとめた」か（購買は承認されたものだけ） :: [3,"客先要求","追加: 追加行N G3VM-61A1","Rev 4 にまとめた"]
+ERRORS []
+== 11/13 PASS

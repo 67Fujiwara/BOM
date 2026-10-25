@@ -1,0 +1,6 @@
+n3 n3-a a
+n3 n3-shiftA shiftA
+n3 n3-swap swap
+n3 n3-consol consol
+n3 n3-fixed fixed
+n3 n3-nextb nextb

@@ -1,0 +1,5 @@
+n6-multi == 5/5 PASS
+n6-cancel == 3/3 PASS
+n6-replace == 3/3 PASS
+n6-undo == 6/6 PASS
+DONE

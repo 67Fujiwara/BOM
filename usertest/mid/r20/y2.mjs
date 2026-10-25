@@ -1,0 +1,51 @@
+// y2: 発注後変更依頼の出口（M5-03〜05 の再検証）: 承認 → 発注を外す → Ctrl+Z / Ctrl+Y、ボールの行き先、PM の x、設計の r
+import { launch, check, log, summary } from './lib.mjs'
+const t = await launch()
+const { page } = t
+await t.open('design')
+log('bulk →', await t.bulk())
+await t.role('purchasing'); log('formal →', await t.requestFormal())
+let p = await t.proj()
+const [A, B] = p.rows.filter((r) => r.status === 'formalRequested' && !r.flags.leadNG && !r.flags.contested).map((r) => r.id)
+const st = (p, rid) => { const r = p.rows.find((x) => x.id === rid); return `${rid}:${r.status}:ord=${!!r.ordered}:cm=${r.flags.countermeasure ?? '-'}:oca=${!!r.flags.orderCancelApproved} issues=${p.issues.filter((i) => i.rowId === rid).map((i) => `${i.id}:${i.kind}:${i.status}${i.pmRuled ? ':ruled' : ''}`).join(',')}` }
+await t.press('8')
+for (const id of [A, B]) { const r0 = p.rows.find((r) => r.id === id); const q0 = p.quotes.find((q) => q.rowId === id && q.supplierId === r0.adoptedSupplierId && !q.stale); await t.setCellKey(id, 'q.formalPrice@A', String(q0.unitPrice)); await t.press('Escape') }
+await t.press('Escape')
+await page.getByTestId('view-3').click(); await page.locator('.gridwrap').focus()
+log('o A →', await t.order(A)); log('o B →', await t.order(B))
+// ---- A: 納期NG なしで、購買が発注後変更依頼（設計変更の相談）→ PM 承認 → 発注を外す → ボール
+await t.press('1'); await t.goto(A); await t.press('Shift+I'); await t.press('h'); await page.waitForTimeout(60); await page.getByTestId('issue-text').fill('客先仕様変更で別型式に切替えたい'); await page.getByTestId('issue-text').press('Enter'); await page.waitForTimeout(60)
+log('publish →', await t.publish())
+await t.role('pm'); await t.press('7'); let res = await t.yes(A, '承認'); log('PM y →', res.toast)
+await t.role('purchasing'); await page.getByTestId('view-3').click(); await page.locator('.gridwrap').focus(); await t.goto(A); await t.colKey('ordered'); await t.press('o'); await page.waitForTimeout(60); log('un-order A →', await t.toast())
+p = await t.proj(); log('A after un-order', st(p, A), 'ball', await t.cellText(A, 'ball'))
+await t.role('design'); await t.press('4'); const d4 = (await t.viewRows()).includes(A); log('design 4 has A?', d4, 'ball', await t.cellText(A, 'ball'))
+await t.goto(A); log('design status bar on A', (await t.status()).slice(0, 200))
+check('Y2-1 （納期NG なし）発注を外した行は設計のボール・設計の 4（r で置き換える）', d4 && (await t.cellText(A, 'ball')) === '設計')
+// ---- A: 購買が外したあと Ctrl+Z（押し間違いの取り消し）→ Ctrl+Y（やり直し）
+await t.role('purchasing')
+await t.press('Control+z'); await page.waitForTimeout(100); log('purch Ctrl+Z →', await t.toast()); p = await t.proj(); log('A', st(p, A))
+await t.press('Control+y'); await page.waitForTimeout(100); const redo = await t.toast(); log('purch Ctrl+Y →', redo); p = await t.proj(); log('A', st(p, A))
+await page.getByTestId('view-3').click(); await page.locator('.gridwrap').focus(); await t.goto(A); await t.colKey('ordered'); await t.press('o'); await page.waitForTimeout(60); const o2 = await t.toast(); log('o again →', o2); p = await t.proj(); log('A', st(p, A))
+await t.shot('y2-undo-redo-unorder')
+check('Y2-2 承認済みで外した発注を Ctrl+Z で戻したあと、Ctrl+Y（または o）でもう一度外せる', !p.rows.find((r) => r.id === A).ordered, `redo=${redo} / o=${o2}`)
+// ---- B: 発注済の納期NG → PM d → 設計が候補を回答 → 購買 h → PM 承認 → 外す → ボール
+await t.showCol('promisedDate'); await t.setCellKey(B, 'promisedDate', '2026-12-20'); await t.press('Escape')
+await t.role('pm'); await t.press('7'); res = await t.decide(B, 'd', '代替品を検討'); log('PM d →', res.toast)
+await t.role('design'); await t.press('1'); await t.goto(B); await t.press(' '); await t.press('ArrowDown'); await t.press('Enter'); await page.waitForTimeout(80)
+await t.press('2'); await page.waitForTimeout(60); await t.promptFill('代替候補: XYZ-123（オムロン）'); await page.getByTestId('prompt-text').press('Enter'); await page.waitForTimeout(80); await t.press('Escape'); await t.press('Escape')
+await t.role('purchasing'); await t.press('1'); await t.goto(B); await t.press('Shift+I'); await t.press('h'); await page.waitForTimeout(60); await page.getByTestId('issue-text').fill('XYZ-123 に切替え'); await page.getByTestId('issue-text').press('Enter'); await page.waitForTimeout(60); log('publish →', await t.publish())
+await t.role('pm'); await t.press('7'); res = await t.yes(B, '承認'); log('PM y →', res.toast)
+p = await t.proj(); log('B after approve', st(p, B), 'ball', await t.cellText(B, 'ball'))
+await t.role('purchasing'); await page.getByTestId('view-3').click(); await page.locator('.gridwrap').focus(); await t.goto(B); await t.colKey('ordered'); await t.press('o'); await page.waitForTimeout(60); log('un-order B →', await t.toast())
+p = await t.proj(); log('B after un-order', st(p, B), 'ball', await t.cellText(B, 'ball'))
+await t.role('design'); await t.press('4'); const d4b = (await t.viewRows()).includes(B); log('design 4 has B?', d4b, 'ball', await t.cellText(B, 'ball'))
+await t.shot('y2-design4-after-unorder-leadNG')
+check('Y2-3 （納期NG・PM d の経路）発注を外した行は設計のボール・設計の 4（§9.1 末尾）', d4b, `ball=${await t.cellText(B, 'ball')} ${st(p, B)}`)
+await t.role('pm'); await t.press('7'); const pm7 = (await t.viewRows()).includes(B); log('PM 7 has B?', pm7)
+if (pm7) { await t.goto(B); await t.press('Enter'); await page.waitForTimeout(80); log('PM Enter →', JSON.stringify((await t.panel())?.title), await t.toast()); if (await t.panel()) await t.press('Escape') }
+await t.press('4'); log('PM 4 has B?', (await t.viewRows()).includes(B))
+await t.goto(B); await t.press('x'); await page.waitForTimeout(80); log('PM x →', await t.toast())
+p = await t.proj(); log('B after PM x', st(p, B), 'ball', await t.cellText(B, 'ball'))
+await t.role('design'); await t.press('4'); log('design 4 has B after PM x?', (await t.viewRows()).includes(B))
+summary(); await t.close()

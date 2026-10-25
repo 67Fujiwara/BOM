@@ -1,0 +1,14 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+cands 35
+X R001 相見積 st=selected adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+Y R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+adopted S1 declines → EDIT-ERR 74 行 × 3 社に正式見積を依頼
+Y after R001 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] ball design
+PASS N10-1 正式依頼中の採用先が辞退したら採用が外れる（辞退した商社への取下げ連絡は要らないので記録は任意） :: R001 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]]
+INFO formalWithdrawn = (なし)
+PASS N10-2 状態は見積済（ほかの商社の見積あり）で、選定者のボール :: R001 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]] ball=design
+design a → R001 を 立花エレテック で採用（スコア 77.2 / 在庫即納・MOQ 2） R001 相見積 st=selected adopt=S2 reason= oq=2 flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]]
+PASS N10-3 設計が a で別の商社を選び直せる（辞退した商社は選ばない） :: R001 相見積 st=selected adopt=S2 reason= oq=2 flags={} quotes=[["S1",146,-1,null],["S2",123,0,null],["S3",149,23,null]]
+ERRORS []
+== 3/3 PASS

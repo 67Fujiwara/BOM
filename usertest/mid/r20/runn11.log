@@ -1,0 +1,5 @@
+n11-addcancel-rej == 2/4 PASS
+n11-addcancel-appr == 5/5 PASS
+n11-repladd == 5/5 PASS
+n11-cancelagain == 6/6 PASS
+DONE

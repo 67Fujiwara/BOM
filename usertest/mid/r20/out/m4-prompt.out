@@ -1,0 +1,15 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.a → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+B panel {"kind":"prompt","title":"決定: 承認（R011・Rev.3 の変更セット 1 行まとめて。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[]}
+A name → 行 1（Rev.3） を公開しました
+B name → 行 1（Rev.3） を公開しました
+publish Rev.b → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を公開しました
+B panel after A publish {"kind":"prompt","title":"決定: 承認（R011・Rev.3 の変更セット 1 行まとめて。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[]}
+B y → R011・Rev.3 の変更セット 1 行まとめて: 承認
+after [[2,"appr","R076,R077,R078,R079,R080",null],[3,"merged→4","R011",{"R011":4}],[4,"appr","R011,R035",null]] A 25 NAME-A2 B NAME-B2 C 近接センサ M12 A pending false
+FAIL M4P-1 PM が Rev.a（A の必要数）を見て始めた決定の確定で、見ていない Rev.b の B の部品名まで承認されない（決めずに知らせる） :: B name=NAME-B2 A name=NAME-A2 toast=R011・Rev.3 の変更セット 1 行まとめて: 承認
+ERRORS []
+== 0/1 PASS

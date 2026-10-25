@@ -1,0 +1,16 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+B qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.a → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+B prompt {"kind":"prompt","title":"決定: 承認（R011・Rev.3 の変更セット 2 行まとめて。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[]}
+A name → 行 2（Rev.3） を公開しました
+B name → 行 2（Rev.3） を公開しました
+publish Rev.b → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を公開しました
+B panel after {"kind":"prompt","title":"決定: 承認（R011・Rev.3 の変更セット 2 行まとめて。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[]}
+B Enter → R011・Rev.3 の変更セット 2 行まとめて: 承認
+after [[2,"appr","R076,R077,R078,R079,R080",null],[3,"merged→4","R011,R035",{"R011":4,"R035":4}],[4,"appr","R011,R035",null]] A 25 NAME-A2 selected B 7 NAME-B2 selected
+FAIL N4-1 理由の欄を開いたあとに Rev.b が出たら、確定で Rev.b（B の部品名）まで承認されない :: A name=NAME-A2 B name=NAME-B2 toast=R011・Rev.3 の変更セット 2 行まとめて: 承認
+ERRORS []
+== 0/1 PASS

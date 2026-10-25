@@ -1,0 +1,34 @@
+publish → [変更セット（10 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更] 行 10（Rev.2） を公開しました
+rule → 案件設定を保存しました
+all → 10 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",["R081","R082","R084","R085"]],["立花エレテック",["R081","R082","R083","R084"]],["ミスミ",["R081","R082","R084"]]]
+F asked S1
+B a → R082 を 因幡電機 で採用（スコア 99.2 / 最安）
+D Shift+A 3 → R084: ミスミ を仮採用（その他: あえて）。PM の承認待ち（7 要決定）
+before R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3 ball purchasing case なし
+before R082 相見積 st=selected adopt=S1 reason=拮抗 oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 選定済 ball purchasing case なし
+before R083 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",800,5,null]] | 選定済 ball purchasing case なし
+before R084 相見積 st=quoted adopt=S3 reason=その他: あえて oq=4 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",5000,7,null]] | 見積済 · PM承認待ち ball pm case 例外選定
+before R085 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=4 flags={} quotes=[["S1",2000,5,null]] | 選定済 ball purchasing case なし
+publish switch → [変更セット（5 行: R081, R082, R083, R084, R085）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.3） を公開しました
+after R081 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 0/1 ball purchasing case なし
+after R082 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]] | 選定済 ball purchasing case なし
+after R083 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S2",800,5,null]] | 見積中 0/1 ball purchasing case なし
+after R084 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",5000,7,null]] | 選定済 ball purchasing case なし
+after R085 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",2000,5,null]] | 見積中 1/3 ball purchasing case なし
+PASS D3-1 見積中の相見積の行を指定商社（立花）にしたら、立花の回答待ちの見積中（購買のボール） :: quoting
+PASS D3-2 選定済（因幡）の行を、見積のある立花の指定商社にしたら、立花で選定済（指定先（固定））・発注数も立花の値 :: R082 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",1200,7,null]]
+PASS D3-3 指定先を因幡に変えた行は因幡の回答待ち（見積中）。立花の採用は外れる :: R083 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S2",800,5,null]]
+PASS D3-4 例外選定（ミスミ、PM 承認待ち）の行を立花の指定商社にしたら、例外選定の PM 承認待ちを残さない（立花で選定済） :: R084 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1000,5,null],["S2",1100,6,null],["S3",5000,7,null]]
+PASS D3-5 客先指定品（選定済）を相見積にしたら、指定先（固定）の採用を外して相見積先に頼み直す :: R085 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",2000,5,null]]
+purch 4 has A/C false true C status 見積中 0/1
+PASS D3-10 指定先を因幡に変えた C（因幡にまだ頼んでいない）が購買の 4 に出る、または状態が回答待ちと分かる（「見積中 1/1」で全部答えたように見せない） :: in4=true 見積中 0/1
+PM 7 has []
+all after switch → 2 行 × 3 社に依頼（回答期限 2026-10-30） [["因幡電機",["R083"]],["立花エレテック",["R085"]],["ミスミ",["R085"]]]
+PASS D3-6 指定先を変えた C は因幡に依頼書が出る :: [["因幡電機",["R083"]],["立花エレテック",["R085"]],["ミスミ",["R085"]]]
+PASS D3-7 相見積にした F は相見積先（まだ頼んでいない商社）に依頼書が出る :: [["因幡電機",false],["立花エレテック",true],["ミスミ",true]]
+after request R081 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 0/1 ball purchasing case なし
+after request R083 指定商社 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S2",800,5,null],["S1",null,null,null]] | 見積中 0/1 ball purchasing case なし
+after request R085 相見積 st=quoting adopt=- reason= oq=4 flags={} quotes=[["S1",2000,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3 ball purchasing case なし
+A after S2 R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1500,5,null],["S2",1300,6,null],["S3",null,null,null]] | 選定済 ball purchasing case なし
+PASS D3-8 指定商社にした A は立花の回答で選定済（指定先（固定）） :: R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S1",1500,5,null],["S2",1300,6,null],["S3",null,null,null]] | 選定済 ball purchasing case なし
+== 9/9 PASS

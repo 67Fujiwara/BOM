@@ -1,0 +1,20 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] surplusAmount 20000
+moq R004 S1 100 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → I-006 最小ロット を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行 | text 
+publish → 指摘 1 件 を公開しました
+X after R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","open","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]] ball pm case 閾値超
+PM 7 has X true
+PASS I5-0 余剰が閾値超の最小ロットは PM の 7 に「閾値超」で載る :: in7=true case=閾値超
+PM Shift+Y → R004: 却下 | prompt 決定: 却下（R004。理由・必須）
+X after Shift+Y R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] | 選定済 · 指摘 ball purchasing case なし issues [["I-006","最小ロット","open","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行"]]
+PASS I5-6 PM の却下で行は起票者（購買）に戻り、7 から外れる :: ball=purchasing case=なし
+moq R001 S1 6 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → I-007 最小ロット を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行 | text 
+publish → 指摘 1 件 を公開しました
+small R001 相見積 st=selected adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] issues [["I-007","最小ロット","open","必要数 1 → 丸め数量 6（因幡電機 MOQ 6）、余剰 5（¥730）"]] case なし
+PASS I5-7 余剰が閾値以下の最小ロットは PM に載らない（購買が丸める） :: case=なし
+orderQty 100 after PM reject → R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配してください。PM にもう一度相談するときは、いまの最小ロットの指摘を見送り（Ctrl+. →「見送り」）にしてから起票し直します | R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] case なし
+INFO 却下後に発注数 100 止まる
+ERRORS []
+== 3/3 PASS

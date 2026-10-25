@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+decline S2 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S3 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+case 閾値超 R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+PM Shift+Y → R011: 却下
+after reject R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]] [["I-006","最小ロット","open"]]
+a → R011 を 因幡電機 で採用（スコア 91.6 / 最安・MOQ 100） | R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]] case なし
+PASS M3S-1 PM が却下した因幡の余剰を、選定者が a で因幡に採り直しても発注数が黙って 100 にならない（必要数のまま・知らせる・PM に戻す） :: R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]] toast=R011 を 因幡電機 で採用（スコア 91.6 / 最安・MOQ 100）
+PM 7 has X false
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+formal X [["R011","エンドクランプ","CLIPFIX 35","フエニックス",24,"個"]] 3
+PASS M3S-2 PM が却下した余剰（因幡 100）で正式見積の依頼書が出ない :: [["R011","エンドクランプ","CLIPFIX 35","フエニックス",24,"個"]]
+ERRORS []
+== 2/2 PASS

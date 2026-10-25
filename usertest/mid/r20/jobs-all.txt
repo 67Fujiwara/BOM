@@ -1,0 +1,220 @@
+v1 v1
+v1b v1b
+v2 v2
+v3 v3
+v4 v4
+v5 v5
+v6 v6
+v7 v7
+v8 v8
+v9 v9
+v10 v10
+v11 v11
+w1 w1
+w2 w2
+w3 w3
+w4 w4
+w5 w5
+w6 w6
+w7 w7
+w8 w8
+x1 x1
+x1 x1on on
+x1 x1-reorder off reorder
+x2 x2
+x3 x3
+x4 x4
+x5 x5
+x6 x6
+x6b x6b
+y1 y1
+y1b y1b
+y1c y1c
+y2 y2
+y3 y3
+y4 y4
+y5 y5
+y6 y6
+z1 z1
+z1b z1b
+z2 z2
+z3 z3
+z3b z3b
+z4 z4
+a1 a1
+a1 a1on on
+a2 a2
+a3 a3
+a3b a3b
+a4 a4
+a5 a5
+a6 a6
+a7 a7
+a8 a8
+b1 b1-all all
+b1 b1-min2 min2
+b1 b1-deadline deadline
+b2 b2-pick pick
+b2 b2-quickfix quickfix
+b3 b3
+b4 b4
+b5 b5
+b5 b5-reject reject
+b6 b6
+b7 b7
+b8 b8
+b9 b9
+c1 c1-all all
+c1 c1-min2 min2
+c1 c1-deadline deadline
+c2 c2
+c2b c2b-all all
+c2b c2b-all-direct all direct
+c3 c3
+c4 c4
+c5 c5
+c6 c6
+c7 c7
+c8 c8
+c9 c9
+d1 d1-remove remove
+d1 d1-tradable tradable
+d2 d2-fail fail
+d2 d2-fail-b fail b
+d2 d2-q q
+d2 d2-g g
+d3 d3-main main
+d3 d3-main-b main b
+d3 d3-formal formal
+d4 d4
+d5 d5
+e1 e1-remove remove
+e1 e1-rule rule
+e2 e2
+e3 e3
+e4 e4
+e5 e5
+e6 e6
+e7 e7
+e8 e8
+f1 f1
+f2 f2
+f2b f2b
+f3 f3
+f3b f3b
+f4 f4
+f5 f5
+f5b f5b
+f7 f7
+f8 f8
+f9 f9
+f10 f10
+f11 f11
+g1 g1-designated designated
+g1 g1-supply supply
+g2 g2
+g3 g3-adopted adopted
+g3 g3-reselect reselect
+g3 g3-quoted quoted
+g4 g4
+g5 g5-fixrev fixrev
+g5 g5-reject reject
+g5 g5-due due
+g6 g6-requote requote
+g6 g6-model model
+g7 g7-record record
+g7 g7-minlot minlot
+g7 g7-ltb ltb
+g8 g8-tabs tabs
+g8 g8-wipcheck wipcheck
+i1 i1
+i2 i2
+i3 i3
+i4 i4
+i5 i5-sel sel
+i5 i5-quoted quoted
+i5 i5-reject reject
+i6 i6
+i7 i7-approve approve
+i7 i7-multi multi
+i7 i7-ack ack
+i8 i8
+i9 i9-supplyreq supplyreq
+i9 i9-partial partial
+j1 j1
+j2 j2
+j3 j3
+j4 j4
+j5 j5
+j6 j6
+j7 j7-samefield samefield
+j7 j7-reject reject
+j8 j8
+j9 j9
+j10 j10
+j11 j11
+j12 j12
+j13 j13
+k1 k1
+k2 k2
+k3 k3
+k3b k3b
+k4 k4-reject reject
+k4 k4-approve approve
+k5 k5
+k6 k6-reject reject
+k6 k6-two two
+k6 k6-empty empty
+k7 k7-approve approve
+k7 k7-reject reject
+k8 k8
+k9 k9
+k10 k10
+k11 k11-decline decline
+k11 k11-stop stop
+k12 k12
+k13 k13-approve approve
+k13 k13-reject reject
+l1 l1-block block
+l1 l1-qty qty
+l1 l1-readopt readopt
+l1 l1-pre pre
+l2 l2-approve approve
+l2 l2-reject reject
+l2 l2-partial partial
+l3 l3-rough rough
+l3 l3-qty qty
+l3 l3-manual manual
+l4 l4
+l5 l5-formal formal
+l5 l5-pending pending
+l6 l6
+l7 l7
+l8 l8
+l8b l8b
+l9 l9
+l10 l10-surplus surplus
+l10 l10-cs cs
+l11 l11
+m1 m1-cfirst cfirst
+m1 m1-dfirst dfirst
+m1 m1-dreject dreject
+m1 m1-crej crej
+m1 m1-chain chain
+m2 m2-approve approve
+m2 m2-reject reject
+m3 m3-qtycheck qtycheck
+m3 m3-same same
+m3 m3-approved approved
+m4 m4-cs cs
+m4 m4-prompt prompt
+m4 m4-unrelated unrelated
+m4 m4-exc exc
+m4 m4-diff diff
+m5 m5-impact impact
+m5 m5-receipt receipt
+m6 m6-selector selector
+m6 m6-designated designated
+m7 m7
+m8 m8-cancel cancel
+m8 m8-add add

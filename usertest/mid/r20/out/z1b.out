@@ -1,0 +1,35 @@
+cells as displayed: G1 designated 因幡電機 / G2 因幡電機
+publish → [変更セット（11 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更] 行 11（Rev.2） を公開しました
+request → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R081 指定商社 maker=フエニックス des=S1 st=quoting adopt=- quotes=[["S1",null,null]]
+R082 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- quotes=[["S1",null,null]]
+R083 相見積 maker=omron des= st=quoting adopt=- quotes=[["S1",null,null],["S2",null,null],["S3",null,null]]
+R084 相見積 maker=オムロン株式会社 des= st=quoting adopt=- quotes=[["S1",null,null],["S2",null,null],["S3",null,null]]
+R085 相見積 maker=三菱 des= st=quoting adopt=- quotes=[["S1",null,null],["S2",null,null],["S3",null,null]]
+R086 相見積 maker=パトライト des= st=quoting adopt=- quotes=[["S1",null,null],["S3",null,null]]
+PASS Z1b-1 メーカ表記の揺れ（omron / オムロン株式会社 / 三菱）でも扱う商社に依頼される :: R083:S1,S2,S3 R084:S1,S2,S3 R085:S1,S2,S3
+rule deadline
+P1 after 2 answers R086 相見積 maker=パトライト des= st=quoted adopt=- quotes=[["S1",900,5],["S3",950,5]] status cell 見積済
+PASS Z1b-2 メーカで絞った行は、依頼した商社（2 社）の回答で見積済（扱わない商社の回答を待たない） :: R086 相見積 maker=パトライト des= st=quoted adopt=- quotes=[["S1",900,5],["S3",950,5]]
+{
+ "R081": {
+  "ball": "設計",
+  "st": "quoting",
+  "pu4": true,
+  "de4": true,
+  "sb": "ナビR081 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える"
+ },
+ "R082": {
+  "ball": "設計",
+  "st": "quoting",
+  "pu4": true,
+  "de4": true,
+  "sb": "ナビR082 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える"
+ }
+}
+PASS Z1b-3 指定先を ID（S1）で書いた指定商社の辞退 → ボール設計・設計の 4 :: {"ball":"設計","st":"quoting","pu4":true,"de4":true,"sb":"ナビR081 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える"}
+PASS Z1b-4 指定先を名前（因幡電機）で書いた指定商社の辞退 → ボール設計・設計の 4（ID と同じ扱い） :: {"ball":"設計","st":"quoting","pu4":true,"de4":true,"sb":"ナビR082 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える"}
+purch re-request → 依頼する行がありません（提出済・再見積要の行なし）
+purch status on G2 ナビR082 ID購買 佐藤: 未発行 0 件依頼する行がありません（提出済・再見積要の行なし）?ヘルプF8次の問題Shift+I指摘Space開く
+purch Ctrl+. G2 undefined
+== 4/4 PASS

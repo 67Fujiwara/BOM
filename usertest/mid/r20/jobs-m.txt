@@ -1,0 +1,22 @@
+m1 m1-cfirst cfirst
+m1 m1-dfirst dfirst
+m1 m1-dreject dreject
+m1 m1-crej crej
+m1 m1-chain chain
+m2 m2-approve approve
+m2 m2-reject reject
+m3 m3-qtycheck qtycheck
+m3 m3-same same
+m3 m3-approved approved
+m4 m4-cs cs
+m4 m4-prompt prompt
+m4 m4-unrelated unrelated
+m4 m4-exc exc
+m4 m4-diff diff
+m5 m5-impact impact
+m5 m5-receipt receipt
+m6 m6-selector selector
+m6 m6-designated designated
+m7 m7
+m8 m8-cancel cancel
+m8 m8-add add

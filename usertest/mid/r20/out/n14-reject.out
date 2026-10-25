@@ -1,0 +1,21 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+C R001 D R002 sid S1
+C proc → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+C designated → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish Rev.c → [変更セット（1 行: R001）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+after Rev.c [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R001",null,""]] R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] pa {"procurement":"指定商社","designated":"立花エレテック"}
+PASS N14-0 不変条件
+purchasing sees C R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+PASS N14-1 承認待ちのあいだ、購買の公開値は元のまま（相見積・因幡・正式依頼中） :: R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+formal again →  → 依頼できる行がありません（選定済・再発行対象の行なし）
+formal request ids 0 false
+PASS N14-2 承認待ちの C は正式見積の依頼書に出ない（承認待ちは自動除外） :: ids=0
+PM Shift+Y R001 → R001・Rev.3 の変更セット 1 行まとめて: 却下
+C after reject R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] {"procurement":"指定商社","designated":"立花エレテック"}
+PASS N14-3 却下で C は元の相見積・因幡・正式依頼中のまま。切り替えは作業中に戻る :: R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] w={"procurement":"指定商社","designated":"立花エレテック"}
+PASS N14-3c 不変条件
+ERRORS []
+== 5/5 PASS

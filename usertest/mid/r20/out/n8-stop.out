@@ -1,0 +1,23 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+S S1 A R001 B R002 C R004
+order R001 R001: 発注済にしました
+order R002 R002: 発注済にしました
+A R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] 2026-10-26
+receive A R001: 入荷済にしました
+C before R004 相見積 st=formalRequested adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+import stop S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+A R001 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+B R002 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+C R004 相見積 st=quoted adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機","formalWithdrawn":"因幡電機 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS N8-1 取引停止にしても発注済（B）の採用・状態は変わらない :: R002 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+PASS N8-2 入荷済（A）も変わらない :: R001 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+PASS N8-3 発注前（C・正式依頼中）の採用は外れ、正式依頼の取下げが記録される :: R004 相見積 st=quoted adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機","formalWithdrawn":"因幡電機 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+receive B (停止後) R002: 入荷済にしました
+stats {"ok":2,"total":2} R002 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+PASS N8-4 停止後も発注済の行は入荷でき、実績に数える（2/2 または納期内の数） :: {"ok":2,"total":2}
+import resume JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+C after resume R004 相見積 st=quoted adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機","formalWithdrawn":"因幡電機 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS N8-5 取引再開で外した採用は黙って戻らない（C は選び直し） :: R004 相見積 st=quoted adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機","formalWithdrawn":"因幡電機 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+ERRORS []
+== 5/5 PASS

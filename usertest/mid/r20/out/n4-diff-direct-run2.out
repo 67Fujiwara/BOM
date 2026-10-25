@@ -1,0 +1,12 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+formal price → 20292 EDIT-ERR R001 の正式単価 ¥20,292（概算から +13799%）。桁・行を確かめてください
+X R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20292],["S2",123,0,null],["S3",149,23,null]] case 差分超過
+B panel {"kind":"prompt","title":"決定: 受入（R001。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[]}
+A formal price → 50730 EDIT-ERR R001 の正式単価 ¥50,730（概算から +34647%）。桁・行を確かめてください
+X after A R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,50730],["S2",123,0,null],["S3",149,23,null]] case 差分超過 status formalQuoted
+B → R001: 受入
+after R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiffKey":"S1:50730"} quotes=[["S1",146,19,50730],["S2",123,0,null],["S3",149,23,null]] status formalQuoted formalPrice 50730 decisions [["受入","差額を確認して受入"]]
+FAIL N4-1 PM が見た正式単価 20292 と違う 50730 は受け入れられない（決めずに知らせる）。受入の決定が残らない :: status=formalQuoted price=50730 toast=R001: 受入
+ERRORS []
+== 0/1 PASS

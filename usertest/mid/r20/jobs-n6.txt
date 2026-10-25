@@ -1,0 +1,4 @@
+n6 n6-multi multi
+n6 n6-cancel cancel
+n6 n6-replace replace
+n6 n6-undo undo

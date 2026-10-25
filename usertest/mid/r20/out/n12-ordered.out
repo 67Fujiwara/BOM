@@ -1,0 +1,11 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+order → R001: 発注済にしました
+X R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+design edit ordered row → R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）
+PASS N12-1 設計の案内は「購買に伝えてください…購買が Alt+Shift+I → h」 :: R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）
+purchasing edit ordered row → 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+pm edit ordered row → 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+PASS N12-2 発注済の行の必要数は変わらない
+ERRORS []
+== 2/2 PASS

@@ -1,0 +1,27 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 → 指摘 1 件 を公開しました
+PM Shift+Y → R011: 却下
+after reject R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS N3-0 却下で発注数は必要数 24、却下の印は因幡 :: R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+Shift+A S2 (rank 1) → R011 を 立花エレテック で採用 | R011 相見積 st=selected adopt=S2 reason= oq=24 flags={"leadNG":true,"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X after formal R011 相見積 st=formalRequested adopt=S2 reason= oq=24 flags={"leadNG":true,"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+formal price x3 → EDIT-ERR R011 の正式単価 ¥32,805（概算から +3409%）。桁・行を確かめてください
+case 差分超過 R011 相見積 st=formalQuoted adopt=S2 reason= oq=24 flags={"leadNG":true,"surplusRejected":"S1","orderQtyCheck":true,"formalDiff":true} quotes=[["S1",935,16,null],["S2",935,28,32805],["S3",973,27,null]]
+panel ["y 受入 → 正式見積済","b 次点商社へ","g 再交渉（購買へ）","d 設計へ代替依頼（コスト超過を起票）","q 数量見直し依頼（設計へ）"]
+b → R011: 次点商社へ
+after adopt R011 相見積 st=selected adopt=S1 reason=次点へ（差分超過） oq=100 flags={"surplusRejected":"S1","orderQtyCheck":true,"formalWithdrawn":"立花エレテック P-2026-041-S2-F1"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case なし
+FAIL N3-1 因幡（S1）を採り直しても発注数は必要数 24（却下した 100 に戻らない） :: R011 相見積 st=selected adopt=S1 reason=次点へ（差分超過） oq=100 flags={"surplusRejected":"S1","orderQtyCheck":true,"formalWithdrawn":"立花エレテック P-2026-041-S2-F1"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS N3-1b PM の 7 に黙って載らない／載るなら理由が分かる :: case=なし
+qty +2 → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after qty R011 相見積 st=selected adopt=S1 reason=次点へ（差分超過） oq=26 flags={"surplusRejected":"S1","orderQtyCheck":true,"formalWithdrawn":"立花エレテック P-2026-041-S2-F1","priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS N3-2 必要数 26 で発注数 26（丸めない） :: R011 相見積 st=selected adopt=S1 reason=次点へ（差分超過） oq=26 flags={"surplusRejected":"S1","orderQtyCheck":true,"formalWithdrawn":"立花エレテック P-2026-041-S2-F1","priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+formal X [["R011","エンドクランプ","CLIPFIX 35","フエニックス",26,"個"]]
+PASS N3-3 正式見積の依頼書に因幡の 100 が出ない :: [["R011","エンドクランプ","CLIPFIX 35","フエニックス",26,"個"]]
+ERRORS []
+== 4/5 PASS

@@ -1,0 +1,110 @@
+[
+ [
+  "A1 changed-only-qty-rows-copy-model",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t型式変更\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t2\t数量変更 1→2\nソケット\tPYF14A\tPYF14A\tオムロン\t4\t数量変更 2→4\n端子台\tXW2B-20G4\t\tオムロン\t4\t\nランプ\tL-1\t\tIDEC\t1\t"
+ ],
+ [
+  "A2 changed-only-maker-rows-copy-model",
+  "品名\t型式（旧）\t型式（新）\tメーカー（旧）\tメーカー（新）\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t\t4\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\tパナソニック\t2\nソケット\tPYF14A\tPYF14A\tオムロン\tIDEC\t4\n端子台\tXW2B-20G4\t\tオムロン\t\t4\nランプ\tL-1\t\tIDEC\t\t1\nヒューズ\tF-5A\t\t富士電機\t\t3"
+ ],
+ [
+  "B1 note-not-delete-words",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\t\tオムロン\t1\t削除不要\nランプ\tL-1\t\tIDEC\t1\t撤去不要（流用）\nソケット\tPYF14A\t\tオムロン\t2\t削除取消（Rev.2で復活）\nブレーカ\tNF32-SV\t\t三菱電機\t1\t廃止取りやめ\n端子台\tXW2B-20G4\t\tオムロン\t4\t削除無\nスイッチ\tA22-FR\t\tオムロン\t2\t廃止品から変更済"
+ ],
+ [
+  "B2 note-delete-other-words",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\t\tオムロン\t1\t不要\nランプ\tL-1\t\tIDEC\t1\t要削除\nソケット\tPYF14A\t\tオムロン\t2\t削除します\nブレーカ\tNF32-SV\t\t三菱電機\t1\tRev.1 削除\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "C1 new-col-delete-variants6",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t削除済\tオムロン\t1\t\nランプ\tL-1\t削除（R012に置換）\tIDEC\t1\t\nソケット\tPYF14A\tなし\tオムロン\t2\t0\nブレーカ\tNF32-SV\t撤去済\t三菱電機\t1\t\nスイッチ\tA22-FR\t－\tオムロン\t2\t0\n端子台\tXW2B-20G4\tXW2B-20G4\tオムロン\t4\t4"
+ ],
+ [
+  "C2 full-copy-delete-dash-2rows",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t1\nブレーカ\tNF32-SV\t－\t三菱電機\t1\t－\n端子台\tXW2B-20G4\tXW2B-20G4\tオムロン\t4\t4\nランプ\tL-1\t－\tIDEC\t1\t－"
+ ],
+ [
+  "Q1 suryo-daisu",
+  "品名\t型式\tメーカー\t数量\t台数\nリレー\tMY4N-D2\tオムロン\t2\t3\nタイマ\tH3CR-A8\tオムロン\t1\t3"
+ ],
+ [
+  "Q2 insu-daisu-noTotal",
+  "品名\t型式\tメーカー\t員数\t台数\nリレー\tMY4N-D2\tオムロン\t2\t3\nタイマ\tH3CR-A8\tオムロン\t1\t3"
+ ],
+ [
+  "Q3 daime-1tier",
+  "品名\t型式\tメーカー\t1台目\t2台目\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "Q4 gouki-total-blank",
+  "品名\t型式\tメーカー\t1号機\t2号機\t合計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t"
+ ],
+ [
+  "Q5 gouki-ditto-first-col",
+  "品名\t型式\tメーカー\t1号機数量\t2号機数量\nリレー\tMY4N-D2\tオムロン\t2\t2\nリレー\tMY2N\tオムロン\t〃\t1\nタイマ\tH3CR-A8\tオムロン\t1\t〃"
+ ],
+ [
+  "Q6 gouki-units-in-cells",
+  "品名\t型式\tメーカー\t1号機\t2号機\nリレー\tMY4N-D2\tオムロン\t2個\t2個\nタイマ\tH3CR-A8\tオムロン\t1個\t－"
+ ],
+ [
+  "Q7 single-qty-plus-and-yobi",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t４＋１\nタイマ\tH3CR-A8\tオムロン\t2（予備含む）\nソケット\tPYF14A\tオムロン\t2(予備1)"
+ ],
+ [
+  "Q8 hitsuyou-hacchu-moq",
+  "品名\t型式\tメーカー\t必要数\t発注数\nリレー\tMY4N-D2\tオムロン\t6\t10\nタイマ\tH3CR-A8\tオムロン\t3\t5"
+ ],
+ [
+  "D1 maker-DNP-daini-insatsu",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "D2 jissou-umu",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t有\nタイマ\tH3CR-A8\tオムロン\t1\t無\nランプ\tL-1\tIDEC\t1\tしない"
+ ],
+ [
+  "D3 note-mijissou-variants",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\t未実装（将来用）\nランプ\tL-1\tIDEC\t1\t実装しない\nソケット\tPYF14A\tオムロン\t2\tDNP"
+ ],
+ [
+  "S1 sign-colon-cells",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n作成：山田\t承認：鈴木\t検図：佐藤\t"
+ ],
+ [
+  "S2 sign-label-row-and-name-row",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n\t\t\t\n承認\t検図\t作成\t\n鈴木\t佐藤\t山田\t"
+ ],
+ [
+  "S3 sign-with-date",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n設計\t山田\t2026/10/20\t"
+ ],
+ [
+  "S4 revision-block-below",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n\t\t\t\n改訂\t日付\t内容\t担当\n1\t2026/10/01\t初版\t山田\n2\t2026/10/20\tタイマ追加\t山田"
+ ],
+ [
+  "M1 cell-trailing-newline",
+  "品名\t型式\tメーカー\t数量\n\"リレー\n\"\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "M2 cell-leading-newline",
+  "品名\t型式\tメーカー\t数量\nリレー\t\"\nMY4N-D2\"\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "M3 cell-blank-line-inside",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t\"旧 MY2N\n\n変更 Rev.1\"\nタイマ\tH3CR-A8\tオムロン\t2\t"
+ ],
+ [
+  "M4 note-two-line-with-inch",
+  "品名\t型式\tメーカー\t数量\t備考\nホース\tH-1/2\tニッタ\t2\t\"1/2\"\" 用\n長さ 2m\"\nタイマ\tH3CR-A8\tオムロン\t2\t"
+ ],
+ [
+  "E1 altium-comment-description",
+  "Comment\tDescription\tDesignator\tFootprint\tLibRef\tQuantity\tManufacturer\tManufacturer Part Number\n10k\tChip Resistor\tR1, R2\t0603\tRES\t2\tKOA\tRK73H1JTTD1002F\n100n\tChip Capacitor\tC1\t0603\tCAP\t1\tMurata\tGRM188R71H104KA93D"
+ ],
+ [
+  "E2 kicad-default-grouped",
+  "\"Item\",\"Qty\",\"Reference(s)\",\"Value\",\"LibPart\",\"Footprint\",\"Datasheet\",\"MPN\",\"Manufacturer\"\n\"1\",\"2\",\"R1, R2\",\"10k\",\"Device:R\",\"Resistor_SMD:R_0603\",\"~\",\"RK73H1JTTD1002F\",\"KOA\"\n\"2\",\"1\",\"C1\",\"100n\",\"Device:C\",\"Capacitor_SMD:C_0603\",\"~\",\"GRM188R71H104KA93D\",\"Murata\""
+ ]
+]

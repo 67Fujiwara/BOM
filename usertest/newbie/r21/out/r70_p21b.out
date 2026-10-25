@@ -1,0 +1,395 @@
+[B-hdr 「変更区分」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更種別」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更種別」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更の種類」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更の種類」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更種類」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更種類」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「改訂区分」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「改訂区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「改訂種別」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「改訂種別」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「ECN区分」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「ECN区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「ECN種別」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「ECN種別」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「ecn区分」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「ecn区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「区分」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「種別」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「種別」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「処置」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「処置」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「処置区分」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「処置区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「改訂」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「Rev区分」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更内容区分」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=note,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「変更タイプ」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「修正区分」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「Change Type」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「ChangeType」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「ECN Type」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-hdr 「Action」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除済」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除済 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除済み」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除済み 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除品」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除品 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除する」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除する 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除します」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除します 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除対象」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除対象 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「廃止」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 廃止 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「廃止品」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 廃止品 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「撤去」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 撤去 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「撤去済」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 撤去済 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「撤去済み」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 撤去済み 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「取消」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 取消 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「取り消し」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 取り消し 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「欠番」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 欠番 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「不要」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 不要 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「×」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: × 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「✕」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: ✕ 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「del」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: del 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Del」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: Del 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「DEL」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: DEL 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「deleted」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: deleted 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Deleted」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: Deleted 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「remove」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: remove 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Remove」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: Remove 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Removed」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: Removed 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「除却」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 除却 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「除外」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 除外 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「抹消」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 抹消 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「D」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: D 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「d」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: d 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「（削除）」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: （削除） 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除 」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「 削除」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除(R012へ)」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削除済(Rev.2)」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「ｻｸｼﾞｮ」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削　除」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削　除 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「x」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「X」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Ｘ」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「✗」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「✖」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「✘」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「−」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「DELETE」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: DELETE 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「Delete」] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: Delete 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「DELETED」] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 P-10:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: DELETED 部品1 P-10）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「DEL.」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「ー」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「削」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「ﾃﾞﾘｰﾄ」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「消」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「取外し」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「取り外し」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「取外」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「廃番」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「廃止予定」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-val 変更区分「不使用」] MISMATCH
+   new: MY4N-D2:4 P-10:1 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 XW2B-20G4:4
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「〃」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「同上」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「"」 under 削除] MISMATCH
+   new: MY4N-D2:4 L-1:1 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   exp: MY4N-D2:4 PYF14A:2
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「変更区分」が削除の 1 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「々」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「仝」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「ditto」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「〃〃」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 「〃 」 under 削除] OK (old≠new)
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 L-1:1 PYF14A:2
+   warn: 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto under 削除済] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1 L-1:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 2 行（例: 削除済 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto first row 〃 then 削除] OK
+   new: MY4N-D2:4 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ditto 〃 under 変更 (stay)] OK
+   new: MY4N-D2:4 H3CR-A9:1 | map=-,name,-,model,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「変更区分」が削除の 1 行（例: 削除 ランプ L-1）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-ord 「変更」列 ○/×（変更の有無）] MISMATCH (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「変更」が削除の 2 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません
+[B-ord 「変更」列 有/無] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「変更」が削除の 1 行（例: 端子台 XW2B-20G4 オムロン）は、削除された部品として取り込みません
+[B-ord 「変更区分」列 × = 変更なし] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「変更区分」が削除の 2 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません
+[B-ord 「区分」列 A/B/C/D（購買ランク）] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | map=category,name,model,maker,qtyNeeded
+   warn: 
+[B-ord 「区分」列 新規/流用/D] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=-,name,model,maker,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「区分」が削除の 1 行（例: D 端子台 XW2B-20G4）は、削除された部品として取り込みません
+[B-ord 「区分」列 追加/変更/不要 のみ] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=-,name,model,maker,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「区分」が削除の 1 行（例: 不要 端子台 XW2B-20G4）は、削除された部品として取り込みません
+[B-ord 「処置」列 交換/継続] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=-,name,model,maker,qtyNeeded
+   warn: 
+[B-ord 「種別」列 電線/機器] OK
+   new: MY4N-D2:4 VCTF 2sq:10 | map=category,name,model,maker,qtyNeeded
+   warn: 
+[B-kind + note 削除 (both)] OK
+   new: MY4N-D2:4 | map=-,name,-,model,qtyNeeded,note
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: 変更なし タイマ H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「変更区分」が削除の 1 行（例: 削除 ランプ L-1）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-kind blank cells (sparse merged)] INFO
+   new: MY4N-D2:4 H3CR-A9:1 PYF14A:2 XW2B-20G4:4 | map=-,name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除 ランプ L-1）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B-kind 追加 only] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=-,name,model,qtyNeeded
+   warn: 
+[B-kind 変更区分 in the middle] OK (old≠new)
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,-,-,model,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: タイマ H3CR-A8 削除済）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+MISMATCHES 32

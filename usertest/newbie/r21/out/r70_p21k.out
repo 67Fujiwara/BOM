@@ -1,0 +1,26 @@
+[K1 2 multi-line cells in one row (品名+備考 w/ 4 commas)] MISMATCH (old≠new)
+   new: MY4N-D2:4 納期注意:0 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4 H3CR-A8:1
+   old: "リレー:0 MY4N-D2:4 納期注意:0 H3CR-A8:1
+   warn: 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[K2 2 multi-line cells in one row (3 cols narrow)] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 
+[K3 品名 multi + 備考 multi (commas 2)] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: "リレー:0 MY4N-D2:4 H3CR-A8:1
+   warn: 
+[K4 3 cols: 品名 multi + 備考 multi w/ commas] MISMATCH (old≠new)
+   new: リレー (小型):4 要確認:0 タイマ (大型):1 c:0 | map=name,qtyNeeded,note
+   exp: リレー (小型):4 タイマ (大型):1
+   old: "リレー:0 (小型)":4 要確認:0 "タイマ:0 (大型)":1 c:0
+   warn: 数量を読めない行が 2 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[K5 メーカー multi + 備考 multi (Excel CSV, 4 cols)] OK (old≠new)
+   new: リレー:4 タイマ:1 | map=name,maker,qtyNeeded,note
+   old: リレー:0 Inc.":0 タイマ:0 Inc.":0
+   warn: 
+[K6 品名 multi + 型式 with comma + 備考 multi] OK (old≠new)
+   new: MY4N-D2, 5A:4 | map=name,model,qtyNeeded,note
+   old: "リレー:0 MY4N-D2, 5A:4 左":0
+   warn: 
+MISMATCHES 2

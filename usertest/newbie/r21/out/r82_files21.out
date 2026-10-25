@@ -1,0 +1,79 @@
+[c1_excel_tab_in_cell.csv] load toast: c1_excel_tab_in_cell.csv を読み込みました。Enter で次へ
+   preview: 取り込む行: 5 行（カンマ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 ランプ L-1 IDEC 2 個 ソケット PYF14A オムロン 2 個 ヒューズ F-5A ミスミ 3 個 
+   created rows=5: {||リレー|MY4N-D2|オムロン|4個|盤内	上段} {||タイマ|H3CR-A8|オムロン|1個|} {||ランプ|L-1|IDEC|2個|} {||ソケット|PYF14A|オムロン|2個|} {||ヒューズ|F-5A|ミスミ|3個|}
+   toast=新しいBOM P-2026-002（5 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 5（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1 R003:submitted:rev1 R004:submitted:rev1 R005:submitted:rev1
+[c2_multiline_and_comma_quoted.csv] load toast: c2_multiline_and_comma_quoted.csv を読み込みました。Enter で次へ
+   preview: 取り込む行: 4 行（カンマ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 Omron, Inc. 4 個 タイマ H3CR-A8 Omron, Inc. 1 個 ランプ L-1 IDEC 2 個 ソケット PYF14A Omron, Inc. 2 個 
+   created rows=4: {||リレー|MY4N-D2|Omron, Inc.|4個|1行目 2行目} {||タイマ|H3CR-A8|Omron, Inc.|1個|} {||ランプ|L-1|IDEC|2個|a, b c, d, e} {||ソケット|PYF14A|Omron, Inc.|2個|}
+   toast=新しいBOM P-2026-002（4 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 4（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1 R003:submitted:rev1 R004:submitted:rev1
+[c3_sjis_halfkana_total.csv] load toast: c3_sjis_halfkana_total.csv を読み込みました。Enter で次へ
+   preview: 取り込む行: 3 行（カンマ区切り、見出しあり） 列の対応: ﾋﾝﾒｲ → 部品名 / ｶﾀｼｷ → 型式 / ﾒｰｶｰ → メーカ / ｽｳﾘﾖｳ → 数量 ﾘﾚｰ MY4N-D2 ｵﾑﾛﾝ 4 個 ﾀｲﾏ H3CR-A8 ｵﾑﾛﾝ 1 個 ｺﾞｳｹｲ 5 個 
+   created rows=3: {||ﾘﾚｰ|MY4N-D2|ｵﾑﾛﾝ|4個|} {||ﾀｲﾏ|H3CR-A8|ｵﾑﾛﾝ|1個|} {||ｺﾞｳｹｲ|||5個|}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+   problems: R003:e/model/型式が空です;e/maker/メーカが空です
+   Ctrl+Enter -> 公開できません: エラー 2 件（R003 型式が空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev-
+[c4_title_comma.csv] load toast: c4_title_comma.csv を読み込みました。Enter で次へ
+   preview: 取り込む行: 2 行（カンマ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 ⚠ 見出しより上の 2 行（表題など）は取り込みません リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 見出しより上の 2 行（表題など）は取り込みません
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[f1_change_content_and_note.xlsx] load toast: f1_change_content_and_note.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 4 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式（旧） → （使わない） / 型式（新） → 型式 / 数量 → 数量 / 変更内容 → （使わない） / 備考 → 備考 ⚠ 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました ⚠ 見出しより上の 1 行（表題など）は取り込みません ⚠ 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います ⚠ 「備考」に当たる列が 2 つあります。「備考」の列を使います リレー MY4N-D2 4 個 タイマ H3CR-A8 1 個 端子台 XW2B-20G4 4 個 ランプ L-1 2 個 
+   created rows=4: {||リレー|MY4N-D2||4個|盤内上段} {||タイマ|H3CR-A8||1個|盤内下段} {||端子台|XW2B-20G4||4個|} {||ランプ|L-1||2個|}
+   toast=新しいBOM P-2026-002（4 行）を作成しました。問題のある行 4 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 4 件: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 見出しより上の 1 行（表題など）は取り込みません ほか
+   problems: R001:e/maker/メーカが空です | R002:e/maker/メーカが空です | R003:e/maker/メーカが空です | R004:e/maker/メーカが空です
+   Ctrl+Enter -> 公開できません: エラー 4 件（R001 メーカが空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev- R004:draft:rev-
+[f2_kaitei_kubun_merged_ditto.xlsx] load toast: f2_kaitei_kubun_merged_ditto.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: 改訂区分 → （使わない） / 品名 → 部品名 / 型式（旧） → （使わない） / 型式（新） → 型式 / 数量 → 数量 ⚠ 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました ⚠ 「改訂区分」が削除の 3 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません ⚠ 見出しより上の 1 行（表題など）は取り込みません ⚠ 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います リレー MY4N-D2 4 個 端子台 XW2B-20G4 4 個 電線 VCTF 2sq 10 個 
+   created rows=3: {||リレー|MY4N-D2||4個|} {||端子台|XW2B-20G4||4個|} {||電線|VCTF 2sq||10個|}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 4 件: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「改訂区分」が削除の 3 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません ほか
+   problems: R001:e/maker/メーカが空です | R002:e/maker/メーカが空です | R003:e/maker/メーカが空です
+   Ctrl+Enter -> 公開できません: エラー 3 件（R001 メーカが空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev-
+[f3_copy_and_marks.xlsx] load toast: f3_copy_and_marks.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 7 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式（旧） → （使わない） / 型式（新） → 型式 / メーカー → メーカ / 数量（旧） → （使わない） / 数量（新） → 数量 ⚠ 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました ⚠ 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました ⚠ 削除かどうか決められない 4 行（例: タイマ H3CR-A8 そのまま）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません） ⚠ 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います ⚠ 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 端子台 XW2B-20G4 オムロン 4 個 ランプ L-1 IDEC 2 個 ソケット PYF14A オムロン 2 個 … ほか 2 行 
+   created rows=7: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|【削除？】} {||端子台|XW2B-20G4|オムロン|4個|【削除？】} {||ランプ|L-1|IDEC|2個|【削除？】} {||ソケット|PYF14A|オムロン|2個|} {||ヒューズ|F-5A|ミスミ|3個|【削除？】} {||電線|VCTF 2sq|住電|10個|}
+   toast=新しいBOM P-2026-002（7 行）を作成しました。問題のある行 4 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 5 件: 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました ほか
+   problems: R002:e/note/取り込みで、変えていない部品か削除した部品か分からなかった行 | R003:e/note/取り込みで、変えていない部品か削除した部品か分からなかった行 | R004:e/note/取り込みで、変えていない部品か削除した部品か分からなかった行 | R006:e/note/取り込みで、変えていない部品か削除した部品か分からなかった行
+   Ctrl+Enter -> 公開できません: エラー 4 件（R002 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、要る部品なら Ctrl+.（直し方の一覧）で「要る部品」を選んでください（備考の【削除？】が消えます。備考の列は Ctrl+K →「列の表示」で出せます） … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev- R004:draft:rev- R005:draft:rev- R006:draft:rev- R007:draft:rev-
+[f4_unit_columns_title.xlsx] load toast: f4_unit_columns_title.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / Unit1 → 数量 / Unit2 → （使わない） ⚠ 数量の列 2 つ（「Unit1」「Unit2」）を足して数量にしました ⚠ 見出しより上の 1 行（表題など）は取り込みません ⚠ 小計・合計・区切りの 1 行は取り込みません（例: 「合計 3 3」） リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|2個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 3 件: 数量の列 2 つ（「Unit1」「Unit2」）を足して数量にしました / 見出しより上の 1 行（表題など）は取り込みません ほか
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[f4b_daigo_columns.xlsx] load toast: f4b_daigo_columns.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 第1号機 → 数量 / 第2号機 → （使わない） / 予備 → （使わない） ⚠ 数量の列 3 つ（「第1号機」「第2号機」「予備」）を足して数量にしました リレー MY4N-D2 オムロン 5 個 タイマ H3CR-A8 オムロン 2 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|5個|} {||タイマ|H3CR-A8|オムロン|2個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 数量の列 3 つ（「第1号機」「第2号機」「予備」）を足して数量にしました
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[f8_ordinary_real.xlsx] load toast: f8_ordinary_real.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 9 行（タブ区切り、見出しあり） 列の対応: No → （使わない） / 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 単位 → 単位 / 備考 → 備考 ⚠ 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI→HDMI」）は、→ の右（新）の値にしました 電磁リレー MY4N-D2 DC24V オムロン 4 個 ケーブル HDMI エレコム 2 本 ケーブル USB-A→USB-C 変換ケーブル エレコム 2 本 電線 UL1007 AWG22 (赤→黒) 住電 10 m ダイオード 1N4007 (>100V) ON 10 個 … ほか 4 行 
+   created rows=9: {||電磁リレー|MY4N-D2 DC24V|オムロン|4個|盤内上段} {||ケーブル|HDMI|エレコム|2本|} {||ケーブル|USB-A→USB-C 変換ケーブル|エレコム|2本|} {||電線|UL1007 AWG22 (赤→黒)|住電|10m|} {||ダイオード|1N4007 (>100V)|ON|10個|} {||タイマ|H3CR-A8|オムロン|1個|削除予定} {||ランプ|AL6M-M4 (赤)|IDEC|2個|削除に変更} {||フィルム|DNP 反射フィルム RF-200|ミスミ|2個|} {||ヒューズ|F-5A|ミスミ|3個|DNP 将来用}
+   toast=新しいBOM P-2026-002（9 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI→HDMI」）は、→ の右（新）の値にしました
+   problems: (問題なし)
+   Ctrl+Enter -> 行 9（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1 R003:submitted:rev1 R004:submitted:rev1 R005:submitted:rev1 R006:submitted:rev1 R007:submitted:rev1 R008:submitted:rev1 R009:submitted:rev1
+[f9_kind_values.xlsx] load toast: f9_kind_values.xlsx を読み込みました。Enter で次へ
+   preview: 取り込む行: 6 行（タブ区切り、見出しあり） 列の対応: 変更区分 → （使わない） / 品名 → 部品名 / 型式（旧） → （使わない） / 型式（新） → 型式 / 数量 → 数量 ⚠ 「型式（新）」が空の 5 行は、ほかの「型式」の列の値を使いました ⚠ 「変更区分」が削除の 1 行（例: 削除済 スイッチ A22-10M）は、削除された部品として取り込みません ⚠ 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います リレー MY4N-D2 4 個 タイマ H3CR-A8 1 個 ランプ L-1 2 個 ソケット PYF14A 2 個 ヒューズ F-5A 3 個 … ほか 1 行 
+   created rows=6: {||リレー|MY4N-D2||4個|} {||タイマ|H3CR-A8||1個|} {||ランプ|L-1||2個|} {||ソケット|PYF14A||2個|} {||ヒューズ|F-5A||3個|} {||端子台|XW2B-20G4||4個|}
+   toast=新しいBOM P-2026-002（6 行）を作成しました。問題のある行 6 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 3 件: 「型式（新）」が空の 5 行は、ほかの「型式」の列の値を使いました / 「変更区分」が削除の 1 行（例: 削除済 スイッチ A22-10M）は、削除された部品として取り込みません ほか
+   problems: R001:e/maker/メーカが空です | R002:e/maker/メーカが空です | R003:e/maker/メーカが空です | R004:e/maker/メーカが空です | R005:e/maker/メーカが空です | R006:e/maker/メーカが空です
+   Ctrl+Enter -> 公開できません: エラー 6 件（R001 メーカが空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev- R004:draft:rev- R005:draft:rev- R006:draft:rev-
+
+ERRORS:

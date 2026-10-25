@@ -1,0 +1,201 @@
+[C-model 「USB-A→USB-C 変換ケーブル」] INFO (old≠new)
+   new: MY4N-D2:4 USB-A→USB-C 変換ケーブル:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 USB-C 変換ケーブル:1
+   warn: 
+[C-model 「USB-A→USB-C」] INFO
+   new: MY4N-D2:4 USB-C:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「USB-A→USB-C」）は、→ の右（新）の値にしました
+[C-model 「USB-A -> USB-C」] INFO
+   new: MY4N-D2:4 USB-C:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「USB-A -> USB-C」）は、→ の右（新）の値にしました
+[C-model 「USB-A → USB-C」] INFO
+   new: MY4N-D2:4 USB-C:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「USB-A → USB-C」）は、→ の右（新）の値にしました
+[C-model 「RS232C->USB変換」] INFO (old≠new)
+   new: MY4N-D2:4 RS232C->USB変換:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 USB変換:1
+   warn: 
+[C-model 「RS232C->USB」] INFO
+   new: MY4N-D2:4 USB:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS232C->USB」）は、→ の右（新）の値にしました
+[C-model 「DB9->RJ45」] INFO
+   new: MY4N-D2:4 RJ45:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DB9->RJ45」）は、→ の右（新）の値にしました
+[C-model 「D-sub9→RJ45」] INFO
+   new: MY4N-D2:4 RJ45:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「D-sub9→RJ45」）は、→ の右（新）の値にしました
+[C-model 「DVI→HDMI」] INFO
+   new: MY4N-D2:4 HDMI:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI→HDMI」）は、→ の右（新）の値にしました
+[C-model 「HDMI->VGA」] INFO
+   new: MY4N-D2:4 VGA:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「HDMI->VGA」）は、→ の右（新）の値にしました
+[C-model 「M12→M8 変換」] INFO (old≠new)
+   new: MY4N-D2:4 M12→M8 変換:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 M8 変換:1
+   warn: 
+[C-model 「M12→M8」] INFO
+   new: MY4N-D2:4 M8:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「M12→M8」）は、→ の右（新）の値にしました
+[C-model 「M12-M8」] INFO
+   new: MY4N-D2:4 M12-M8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「AC100V>DC24V」] INFO (old≠new)
+   new: MY4N-D2:4 AC100V>DC24V:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 DC24V:1
+   warn: 
+[C-model 「AC100V→DC24V」] INFO
+   new: MY4N-D2:4 DC24V:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「AC100V→DC24V」）は、→ の右（新）の値にしました
+[C-model 「AC100V-DC24V変換」] INFO
+   new: MY4N-D2:4 AC100V-DC24V変換:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「PT1/4>φ6」] INFO (old≠new)
+   new: MY4N-D2:4 PT1/4>φ6:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 φ6:1
+   warn: 
+[C-model 「PT1/4→φ6」] INFO (old≠new)
+   new: MY4N-D2:4 PT1/4→φ6:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 φ6:1
+   warn: 
+[C-model 「1N4007 (>100V)」] INFO (old≠new)
+   new: MY4N-D2:4 1N4007 (>100V):1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 100V):1
+   warn: 
+[C-model 「UL1007 AWG22 (赤→黒)」] INFO (old≠new)
+   new: MY4N-D2:4 UL1007 AWG22 (赤→黒):1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 黒):1
+   warn: 
+[C-model 「UL1007 AWG22 赤→黒」] INFO (old≠new)
+   new: MY4N-D2:4 UL1007 AWG22 赤→黒:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 黒:1
+   warn: 
+[C-model 「3.5mm→6.3mm」] INFO
+   new: MY4N-D2:4 6.3mm:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「3.5mm→6.3mm」）は、→ の右（新）の値にしました
+[C-model 「3.5mm→6.3mm 変換プラグ」] INFO (old≠new)
+   new: MY4N-D2:4 3.5mm→6.3mm 変換プラグ:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 6.3mm 変換プラグ:1
+   warn: 
+[C-model 「XLR→TRS」] INFO
+   new: MY4N-D2:4 TRS:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「XLR→TRS」）は、→ の右（新）の値にしました
+[C-model 「XLR(F)→TRS」] INFO (old≠new)
+   new: MY4N-D2:4 XLR(F)→TRS:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 TRS:1
+   warn: 
+[C-model 「RJ45→M12」] INFO
+   new: MY4N-D2:4 M12:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RJ45→M12」）は、→ の右（新）の値にしました
+[C-model 「MY2N→MY4N-D2」] INFO
+   new: MY4N-D2:4 MY4N-D2:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[C-model 「MY2N ⇒ MY4N-D2」] INFO
+   new: MY4N-D2:4 MY4N-D2:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「MY2N ⇒ MY4N-D2」）は、→ の右（新）の値にしました
+[C-model 「H3CR-A ->H3CR-A8」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「H3CR-A ->H3CR-A8」）は、→ の右（新）の値にしました
+[C-model 「L-0＞L-1」] INFO (old≠new)
+   new: MY4N-D2:4 L-0＞L-1:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 L-1:1
+   warn: 
+[C-model 「L-0>L-1」] INFO (old≠new)
+   new: MY4N-D2:4 L-0>L-1:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 L-1:1
+   warn: 
+[C-model 「SW-1<->SW-2」] INFO (old≠new)
+   new: MY4N-D2:4 SW-1<->SW-2:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 SW-2:1
+   warn: 
+[C-model 「A→B→C」] INFO
+   new: MY4N-D2:4 A→B→C:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「→MY4N-D2」] INFO
+   new: MY4N-D2:4 →MY4N-D2:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「MY4N-D2→」] INFO
+   new: MY4N-D2:4 MY4N-D2→:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「>=5A」] INFO
+   new: MY4N-D2:4 >=5A:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「<5A」] INFO
+   new: MY4N-D2:4 <5A:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「≧5A」] INFO
+   new: MY4N-D2:4 ≧5A:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-model 「IN>OUT」] INFO (old≠new)
+   new: MY4N-D2:4 IN>OUT:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 OUT:1
+   warn: 
+[C-model 「in→out」] INFO
+   new: MY4N-D2:4 out:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「in→out」）は、→ の右（新）の値にしました
+[C-model 「1→2」] INFO
+   new: MY4N-D2:4 2:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「1→2」）は、→ の右（新）の値にしました
+[C-model 「DC24V→5V 0.5A」] INFO (old≠new)
+   new: MY4N-D2:4 DC24V→5V 0.5A:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 5V 0.5A:1
+   warn: 
+[C-model 「ケーブル(A→B)」] INFO (old≠new)
+   new: MY4N-D2:4 ケーブル(A→B):1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 B):1
+   warn: 
+[C-model 「A-B->C」] INFO
+   new: MY4N-D2:4 C:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「A-B->C」）は、→ の右（新）の値にしました
+[C-model 「100→200V」] INFO
+   new: MY4N-D2:4 200V:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「100→200V」）は、→ の右（新）の値にしました
+[C-model 「CAT5e→CAT6」] INFO
+   new: MY4N-D2:4 CAT6:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「CAT5e→CAT6」）は、→ の右（新）の値にしました
+[C-model 「Φ6→Φ8」] INFO (old≠new)
+   new: MY4N-D2:4 Φ6→Φ8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 Φ8:1
+   warn: 
+[C-model 「6φ→8φ」] INFO (old≠new)
+   new: MY4N-D2:4 6φ→8φ:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 8φ:1
+   warn: 
+[C-model 「24VDC→12VDC」] INFO
+   new: MY4N-D2:4 12VDC:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「24VDC→12VDC」）は、→ の右（新）の値にしました
+[C-model 「RS-485→RS-232C」] INFO
+   new: MY4N-D2:4 RS-232C:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-485→RS-232C」）は、→ の右（新）の値にしました
+[C-model 「CC-Link→Ethernet」] INFO
+   new: MY4N-D2:4 Ethernet:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「CC-Link→Ethernet」）は、→ の右（新）の値にしました
+[C-model 「M3x8→M3x10」] INFO
+   new: MY4N-D2:4 M3x10:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「M3x8→M3x10」）は、→ の右（新）の値にしました
+[C-model 「M3×8→M3×10」] INFO (old≠new)
+   new: MY4N-D2:4 M3×8→M3×10:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 M3×10:1
+   warn: 
+[C-model 「ＵＳＢ-A→ＵＳＢ-Ｃ」] INFO
+   new: MY4N-D2:4 ＵＳＢ-Ｃ:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「ＵＳＢ-A→ＵＳＢ-Ｃ」）は、→ の右（新）の値にしました
+[C-model 「EtherCAT→PROFINET」] INFO
+   new: MY4N-D2:4 PROFINET:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「EtherCAT→PROFINET」）は、→ の右（新）の値にしました
+[C-qty 「4→6」] INFO
+   new: MY4N-D2:6 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「4→6」）は、→ の右（新）の値にしました
+[C-maker 「オムロン→三菱」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-maker 「Phoenix Contact→Weidmuller」] INFO
+   new: UT 2,5:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-name 「USB-A→USB-C」品名] INFO
+   new: UC-100:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[C-ord symbols] INFO
+   new: 1/4W 10kΩ ±5%:10 M4×10 SUS304 (P=0.7):20 UL1007 AWG22 (赤/黒):5 1N4007 (DO-41):10 USB 3.0 A-B (2m):2 10µF/25V φ6.3×L11:4 AC100V 120×120×38 (50/60Hz):1 M3×8 <なべ小ねじ>:50 A22-10M ¥1,200:2 TB-2.5/3 [黒]:10 t=1.6 {SUS}:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+MISMATCHES 0

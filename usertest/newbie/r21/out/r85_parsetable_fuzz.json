@@ -1,0 +1,58 @@
+{
+ "N": 4000,
+ "stats": {
+  "old": {
+   "csv": 589,
+   "tsv": 0
+  },
+  "new": {
+   "csv": 233,
+   "tsv": 0
+  }
+ },
+ "onlyOld": 520,
+ "onlyNew": [
+  {
+   "kind": "csv",
+   "text": "型式,品名,単位\r\nオムロン,\"1,200\",4\r\n\"x\ny, z\",MY4N-D2,\"n1\nn2\nn3\"\r\n盤内上段,,\"Omron, Inc.\"\r\nUL1007 AWG22 (赤/黒),\"n1\nn2\nn3\",\"a, b\nc, d\"\r\nUL1007 AWG22 (赤/黒),\"客先支給, 要確認\",\"line1\nline2\"\r\n\"Omron, Inc.\",,UL1007 AWG22 (赤/黒)\r\n\"line1\nline2\",リレー,\"1,200\"\r\n盤内上段,リレー,\"x\ny, z\"\r\n\"1,200\",\"Omron, Inc.\",\"1,200\"\r\n\"a, b\nc, d\",オムロン,MY4N-D2\r\n盤内上段,\"10k, 1%\",\"line1\nline2\"\r\nオムロン,\"a, b\nc, d\",\r\n盤内上段,盤内上段,\"line1\nline2\"\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "メーカー,備考,備考\r\n\"n1\nn2\nn3\",4,オムロン\r\n\"x\ny, z\",\"客先支給, 要確認\",オムロン\r\n\"注1\n注2\n注3\n注4\",\"a, b\nc, d\",MY4N-D2\r\n,\"10k, 1%\",\"1,200\"\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "備考,単位,型式\r\n\"a, b\nc, d\",\"a, b\nc, d\",UL1007 AWG22 (赤/黒)\r\n\"x\ny, z\",\"客先支給, 要確認\",\"客先支給, 要確認\"\r\nUL1007 AWG22 (赤/黒),\"x\ny, z\",\"Omron, Inc.\"\r\n,,\"x\ny, z\"\r\n\"a, b\",\"客先支給, 要確認\",UL1007 AWG22 (赤/黒)\r\n\"x\ny, z\",\"Omron, Inc.\",\r\n\"10k, 1%\",盤内上段,\r\n\"a, b\",MY4N-D2,\"注1\n注2\n注3\n注4\"\r\nMY4N-D2,\"a, b\",オムロン\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "分類,メーカー,型式\r\n4,\"1,200\",\"Omron, Inc.\"\r\n\"10k, 1%\",\"Omron, Inc.\",\r\n\"x\ny, z\",,\r\n\"a, b\",\"10k, 1%\",\"a, b\"\r\n4,\"注1\n注2\n注3\n注4\",\r\n,リレー,\r\n盤内上段,\"注1\n注2\n注3\n注4\",\"10k, 1%\"\r\n\"Omron, Inc.\",\"1,200\",\"客先支給, 要確認\"\r\nリレー,\"n1\nn2\nn3\",\"a, b\nc, d\"\r\n\"a, b\",\"Omron, Inc.\",4\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "メーカー,数量,型式\r\n\"a, b\nc, d\",,\"n1\nn2\nn3\"\r\nUL1007 AWG22 (赤/黒),4,\"x\ny, z\"\r\nリレー,\"客先支給, 要確認\",\"line1\nline2\"\r\nUL1007 AWG22 (赤/黒),\"n1\nn2\nn3\",\"a, b\nc, d\"\r\n,4,\r\n,4,\"客先支給, 要確認\"\r\n\"line1\nline2\",\"a, b\",\"10k, 1%\"\r\n\"注1\n注2\n注3\n注4\",\"line1\nline2\",\"Omron, Inc.\"\r\n"
+  }
+ ],
+ "failsNew": [
+  {
+   "kind": "csv",
+   "text": "型式,品名,単位\r\nオムロン,\"1,200\",4\r\n\"x\ny, z\",MY4N-D2,\"n1\nn2\nn3\"\r\n盤内上段,,\"Omron, Inc.\"\r\nUL1007 AWG22 (赤/黒),\"n1\nn2\nn3\",\"a, b\nc, d\"\r\nUL1007 AWG22 (赤/黒),\"客先支給, 要確認\",\"line1\nline2\"\r\n\"Omron, Inc.\",,UL1007 AWG22 (赤/黒)\r\n\"line1\nline2\",リレー,\"1,200\"\r\n盤内上段,リレー,\"x\ny, z\"\r\n\"1,200\",\"Omron, Inc.\",\"1,200\"\r\n\"a, b\nc, d\",オムロン,MY4N-D2\r\n盤内上段,\"10k, 1%\",\"line1\nline2\"\r\nオムロン,\"a, b\nc, d\",\r\n盤内上段,盤内上段,\"line1\nline2\"\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "品名,分類,品名\r\nUL1007 AWG22 (赤/黒),\"x\ny, z\",\"line1\nline2\"\r\n\"1,200\",,\"a, b\"\r\n\"a, b\nc, d\",\"10k, 1%\",UL1007 AWG22 (赤/黒)\r\nMY4N-D2,\"line1\nline2\",\r\n\"line1\nline2\",UL1007 AWG22 (赤/黒),リレー\r\n\"客先支給, 要確認\",,\"x\ny, z\"\r\n4,MY4N-D2,\"a, b\"\r\n\"a, b\nc, d\",MY4N-D2,\"a, b\nc, d\"\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "メーカー,備考,備考\r\n\"n1\nn2\nn3\",4,オムロン\r\n\"x\ny, z\",\"客先支給, 要確認\",オムロン\r\n\"注1\n注2\n注3\n注4\",\"a, b\nc, d\",MY4N-D2\r\n,\"10k, 1%\",\"1,200\"\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "備考,単位,型式\r\n\"a, b\nc, d\",\"a, b\nc, d\",UL1007 AWG22 (赤/黒)\r\n\"x\ny, z\",\"客先支給, 要確認\",\"客先支給, 要確認\"\r\nUL1007 AWG22 (赤/黒),\"x\ny, z\",\"Omron, Inc.\"\r\n,,\"x\ny, z\"\r\n\"a, b\",\"客先支給, 要確認\",UL1007 AWG22 (赤/黒)\r\n\"x\ny, z\",\"Omron, Inc.\",\r\n\"10k, 1%\",盤内上段,\r\n\"a, b\",MY4N-D2,\"注1\n注2\n注3\n注4\"\r\nMY4N-D2,\"a, b\",オムロン\r\n"
+  },
+  {
+   "kind": "csv",
+   "text": "分類,メーカー,型式\r\n4,\"1,200\",\"Omron, Inc.\"\r\n\"10k, 1%\",\"Omron, Inc.\",\r\n\"x\ny, z\",,\r\n\"a, b\",\"10k, 1%\",\"a, b\"\r\n4,\"注1\n注2\n注3\n注4\",\r\n,リレー,\r\n盤内上段,\"注1\n注2\n注3\n注4\",\"10k, 1%\"\r\n\"Omron, Inc.\",\"1,200\",\"客先支給, 要確認\"\r\nリレー,\"n1\nn2\nn3\",\"a, b\nc, d\"\r\n\"a, b\",\"Omron, Inc.\",4\r\n"
+  }
+ ]
+}

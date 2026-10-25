@@ -1,0 +1,428 @@
+[F-dnp 備考「未実装」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装品」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装部品」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装です」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装のこと」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装とする」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装予定」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装（将来用）」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装(Rev.B)」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「非実装」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「非実装品」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装しない」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装しないこと」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装しない部品」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装なし」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装無し」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装せず」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「実装不要」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「dnp」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP (将来用)」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP（将来用）」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP 将来用」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 備考「DNP、将来用」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP:将来用」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP/未実装」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP品」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP部品」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP対象」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP 反射フィルム」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 備考「DNP(Rev.B で実装)」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP（解除）」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DNP解除」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP→実装」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP を解除」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 備考「Not Fitted」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「NOT FITTED (spare)」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「Do not place」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「DO NOT POPULATE」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「N/F」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「NF」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「NP」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「Not mounted」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装基板」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装時は短絡」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装の場合は短絡」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装箇所あり」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装でも可」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装でない」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装ではない」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装品なし」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「実装済」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「実装品」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「実装あり」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「要実装」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「実装は後日」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「DNP 品」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 備考「未実装 (将来用)」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 備考「未実装　品」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未 実装」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装の部品」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装部品あり」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 備考「未実装部品です」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F-dnp 部品名「未実装品」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 部品名「DNP」] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 部品名「DNP 将来用」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 部品名「未実装です」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 部品名ふつう「DNP 反射フィルム」] OK (old≠new)
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 部品名ふつう「DNP RF-100」] OK (old≠new)
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 部品名ふつう「DNP（大日本印刷）」] MISMATCH
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 RF-200:2
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp 部品名ふつう「DNP フィルム」] OK (old≠new)
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 
+[F-dnp 部品名ふつう「DNPフィルム」] OK
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-dnp 部品名ふつう「DNP-100」] OK
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-dnp 実装の列] INFO
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[F-dnp メーカー DNP] OK
+   new: RF-200:2 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-mach 第1号機|第2号機] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量の列 2 つ（「第1号機」「第2号機」）を足して数量にしました
+[F-mach Unit1|Unit2] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量の列 2 つ（「Unit1」「Unit2」）を足して数量にしました
+[F-mach unit 1|unit 2] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量の列 2 つ（「unit 1」「unit 2」）を足して数量にしました
+[F-mach UNIT1|UNIT2|UNIT3] INFO (old≠new)
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量の列 3 つ（「UNIT1」「UNIT2」「UNIT3」）を足して数量にしました
+[F-mach Unit-1|Unit-2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,unit,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください） / 「単位」に当たる列が 2 つあります。「Unit-1」の列を使います / 単位を読めない行が 2 行あります（「個」にしました）
+[F-mach U1|U2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach 1号機|2号機] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1号機」「2号機」）を足して数量にしました
+[F-mach No.1|No.2] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「No.1」「No.2」）を足して数量にしました
+[F-mach #1|#2] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「#1」「#2」）を足して数量にしました
+[F-mach 第1号機|第2号機|予備] INFO (old≠new)
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-
+   old: MY4N-D2:2 H3CR-A8:1
+   warn: 数量の列 3 つ（「第1号機」「第2号機」「予備」）を足して数量にしました
+[F-mach Unit1|Unit2|合計] INFO (old≠new)
+   new: MY4N-D2:2 H3CR-A8:1 | map=name,model,maker,-,-,qtyNeeded
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量は「合計」の列を使います（空の行は号機の数を足します）
+[F-mach 第一号機|第二号機] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach １号機|２号機] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「１号機」「２号機」）を足して数量にしました
+[F-mach 第１号機|第２号機] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 数量の列 2 つ（「第１号機」「第２号機」）を足して数量にしました
+[F-mach Machine1|Machine2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach M1|M2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach 1台目|2台目] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1台目」「2台目」）を足して数量にしました
+[F-mach ﾕﾆｯﾄ1|ﾕﾆｯﾄ2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,category,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください） / 「分類」に当たる列が 2 つあります。「ﾕﾆｯﾄ1」の列を使います
+[F-mach ユニット1|ユニット2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,category,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください） / 「分類」に当たる列が 2 つあります。「ユニット1」の列を使います
+[F-mach 盤1|盤2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach A号機|B号機] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「A号機」「B号機」）を足して数量にしました
+[F-mach Line1|Line2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach ライン1|ライン2] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach 1号機分|2号機分] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-mach 1号機用|2号機用|予備] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「1号機用」「2号機用」「予備」）を足して数量にしました
+[F-unit 「Unit」列は単位] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,unit
+   warn: 
+[F-unit 「Unit1」単独列] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 
+[F-kana qty 「ｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana qty 「ｽｳﾘﾖｳ」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 
+[F-kana qty 「ｽｳ」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 
+[F-kana qty 「ﾀﾞｲｽｳ」] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   old: MY4N-D2:1 H3CR-A8:1
+   warn: 
+[F-kana qty 「ｺｽｳ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana qty 「ｲﾝｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ﾋﾂﾖｳｽｳ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana qty 「ﾋﾂﾖｳｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｼﾖｳｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｼﾖｳｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｼﾖｳｺｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｾｲｻｸﾀﾞｲｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ﾊﾟｰﾂｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｹﾞﾝｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ｼﾝｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ﾃﾊｲｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ﾊｯﾁｭｳｽｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana qty 「ﾊｯﾁｭｳｽｳﾘｮｳ」] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[F-kana heads 「ﾋﾝﾒｲ|ｶﾀﾊﾞﾝ|ﾒｰｶ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana heads 「ﾌﾞﾋﾝﾒｲ|ｹｲｼｷ|ﾒｰｶｰ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana heads 「ﾒｲｼﾖｳ|ｶﾀｼｷ|ｾｲｿﾞｳﾒｰｶｰ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=-,model,-,qtyNeeded
+   warn: 
+[F-kana heads 「ﾋﾝﾒｲ|ﾋﾝﾊﾞﾝ|ﾒｰｶ-」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana heads 「ﾋﾝ ﾒｲ|ｶﾀ ｼｷ|ﾒｰ ｶｰ」] INFO
+   new: :4 :1 | map=-,-,maker,qtyNeeded
+   warn: 見出しに「部品名」「型式」に当たる列がありません
+[F-kana heads 「ﾋﾝﾒｲ|ｶﾀｼｷ|ｼｮｳｼｬ」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,-,qtyNeeded
+   warn: 
+[F-kana 合計行 ｺﾞｳｹｲ] INFO
+   new: MY4N-D2:4 H3CR-A8:1 ｺﾞｳｹｲ:5 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana 合計行 全角 ゴウケイ] INFO
+   new: MY4N-D2:4 H3CR-A8:1 ゴウケイ:5 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana 合計行 合計] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 小計・合計・区切りの 1 行は取り込みません（例: 「合計 5」）
+[F-kana 合計行 ｿﾞｳｹｲ/ｿｳｹｲ/ﾄｰﾀﾙ] INFO
+   new: MY4N-D2:4 H3CR-A8:1 ｿｳｹｲ:5 ﾄｰﾀﾙ:5 ｼｮｳｹｲ:5 ｶﾞｯｹｲ:5 ｿﾞｳｹｲ:5 | map=name,model,maker,qtyNeeded
+   warn: 
+[F-kana 備考 ﾋﾞｺｳ ﾄﾞｳﾆｭｳ] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded,note
+   warn: 
+[F-kana 単位 ﾀﾝｲ ｺ ﾎﾟﾝ] INFO
+   new: MY4N-D2:4 VCTF-2sq:10 | map=name,model,qtyNeeded,unit
+   warn: 単位を読めない行が 1 行あります（「個」にしました）
+MISMATCHES 1

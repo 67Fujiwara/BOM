@@ -1,0 +1,38 @@
+[M-title 1 lines(no tab, with comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 1 行（表題など）は取り込みません
+[M-title 3 lines(no tab, with comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 3 行（表題など）は取り込みません
+[M-title 4 lines(no tab, with comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 4 行（表題など）は取り込みません
+[M-title 5 lines(no tab, with comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 5 行（表題など）は取り込みません
+[M-title 6 lines(no tab, with comma) + header + 4 rows] MISMATCH (old≠new)
+   new: 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 品名	型式	メーカー	数量:1 リレー	MY4N-D2	オムロン	4:1 タイマ	H3CR-A8	オムロン	1:1 端子台	XW2B-20G4	オムロン	4:1 ランプ	L-1	IDEC	2:1 | map=name,model
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   warn: 見出しが無いので、列を「部品名・型式」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[M-title 8 lines(no tab, with comma) + header + 4 rows] MISMATCH (old≠new)
+   new: 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 盤用です:1 品名	型式	メーカー	数量:1 リレー	MY4N-D2	オムロン	4:1 タイマ	H3CR-A8	オムロン	1:1 端子台	XW2B-20G4	オムロン	4:1 ランプ	L-1	IDEC	2:1 | map=name,model
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   warn: 見出しが無いので、列を「部品名・型式」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[M-title 3 lines(no tab, no comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 3 行（表題など）は取り込みません
+[M-title 6 lines(no tab, no comma) + header + 4 rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 6 行（表題など）は取り込みません
+[M-footer 3 lines(no tab, with comma)] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 備考1: 納期は, 別途:0 備考2: 納期は, 別途:0 備考3: 納期は, 別途:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   warn: 
+[M-footer 6 lines(no tab, with comma)] MISMATCH (old≠new)
+   new: 品名	型式	メーカー	数量:1 リレー	MY4N-D2	オムロン	4:1 タイマ	H3CR-A8	オムロン	1:1 端子台	XW2B-20G4	オムロン	4:1 ランプ	L-1	IDEC	2:1 別途:1 別途:1 別途:1 別途:1 別途:1 別途:1 | map=name,model
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2
+   old: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 備考1: 納期は, 別途:0 備考2: 納期は, 別途:0 備考3: 納期は, 別途:0 備考4: 納期は, 別途:0 備考5: 納期は, 別途:0 備考6: 納期は, 別途:0
+   warn: 見出しが無いので、列を「部品名・型式」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+MISMATCHES 4

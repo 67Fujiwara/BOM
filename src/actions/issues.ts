@@ -288,10 +288,12 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
 
 /** 確認系フラグを外す（x） */
 export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn') {
-  if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げを元の商社に伝えた（確認済）`, 'ok'))
+  // 取下げが複数あるときは 1 つずつ（x 1 回で 1 社）。どの商社のどの依頼か知らせる
+  const list0 = (st().project().rows.find((x) => x.id === rowId)?.flags.formalWithdrawn ?? '').split(' / ').filter(Boolean)
+  if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げ（${list0[0] ?? ''}）を伝えた（確認済）${list0.length > 1 ? `。残り ${list0.length - 1} 件: ${list0.slice(1).join(' / ')}（続けて x）` : ''}`, 'ok'))
   st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : '確認', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
-    if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = undefined
+    if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = list0.length > 1 ? list0.slice(1).join(' / ') : undefined
     else if (r) r.flags[flag as 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck'] = false
     normalize(p, ws)
   })

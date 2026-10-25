@@ -183,6 +183,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
             }
           } else {
             // 最小ロットの閾値超を承認したら、その指摘は決着（余剰を受け入れる。発注数は丸めた数）
+            if (c === '閾値超') r.flags.surplusRejected = undefined
             if (c === '閾値超')
               for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && ['open', 'inProgress', 'fixed'].includes(x.status))) {
                 i.status = 'confirmed'
@@ -238,7 +239,9 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           } else if (c === '閾値超') {
             r.flags.pmPending = false
             r.flags.pmReason = undefined
-            // 余剰を受け入れないので、先に丸めた発注数は必要数に戻し、最小ロットの指摘は購買に戻す（ほかの商社・数量で手配し直す）
+            // 余剰を受け入れないので、先に丸めた発注数は必要数に戻し、最小ロットの指摘は購買に戻す（ほかの商社・数量で手配し直す）。
+            // 却下を覚えて、同じ商社のまま発注数を丸め直せないようにする
+            r.flags.surplusRejected = r.adoptedSupplierId ?? '-'
             if (r.orderQty != null && r.orderQty > r.qtyNeeded && !r.ordered) {
               r.orderQty = r.qtyNeeded
               r.flags.orderQtyCheck = true

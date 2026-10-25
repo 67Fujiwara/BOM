@@ -32,9 +32,26 @@ const ISSUE_STATUS_OK = ['draft', 'open', 'inProgress', 'fixed', 'answered', 'co
 const userOf = (v: unknown, fallback: Workspace['user']): Workspace['user'] => (isObj(v) && typeof v.name === 'string' && ROLES_OK.includes(String(v.role)) ? (v as unknown as Workspace['user']) : fallback)
 
 /** 読み込んだワークスペースを検証し、欠けている項目を既定値で補う。直せない項目は外して warnings に、全体が読めなければ error を返す */
-export function sanitizeWorkspace(raw: unknown): { ws?: Workspace; error?: string; warnings?: string[] } {
+/** 深すぎる入れ子（数千段の配列など）は外す（複製・保存で止まらないように）。外した数を返す */
+function pruneDeep(v: unknown, depth: number, cut: { n: number }): unknown {
+  if (v === null || typeof v !== 'object') return v
+  if (depth > 40) {
+    cut.n++
+    return null
+  }
+  if (Array.isArray(v)) return v.map((x) => pruneDeep(x, depth + 1, cut))
+  const o: Record<string, unknown> = {}
+  for (const [k, x] of Object.entries(v as Record<string, unknown>)) o[k] = pruneDeep(x, depth + 1, cut)
+  return o
+}
+
+export function sanitizeWorkspace(raw0: unknown): { ws?: Workspace; error?: string; warnings?: string[] } {
   try {
-    return sanitizeInner(raw)
+    const cut = { n: 0 }
+    const raw = pruneDeep(raw0, 0, cut)
+    const res = sanitizeInner(raw)
+    if (cut.n && res.ws) res.warnings = [...(res.warnings ?? []), `入れ子が深すぎる値 ${cut.n} 個は外しました`]
+    return res
   } catch (e) {
     return { error: `データの形式が読めません: ${(e as Error).message}` }
   }
@@ -92,9 +109,11 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     if (holN > 3000) warnings.push(`案件 ${p0.id} の休日 ${holN} 件のうち、3,000 件まで読みました`)
     if (quotes.length < quotes0.length) warnings.push(`案件 ${p0.id} の見積 ${quotes0.length - quotes.length} 件は形式が読めないので外しました`)
     // 設定の値が範囲の外なら直して知らせる（工程日数 1,000 → 365 など）
-    const coerced = isObj(p0.settings) ? coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).map(normDate).filter((x): x is string => !!x))].slice(0, 3000) }) : { ...DEFAULT_SETTINGS }
+    const badSettings: string[] = []
+    const coerced = isObj(p0.settings) ? coerceLike(DEFAULT_SETTINGS, { ...(p0.settings as object), holidays: [...new Set(arr<unknown>(p0.settings.holidays).map(normDate).filter((x): x is string => !!x))].slice(0, 3000) }, badSettings) : { ...DEFAULT_SETTINGS }
+    if (badSettings.length) warnings.push(`案件 ${p0.id} の設定 ${badSettings.join('・')} は読めない値なので既定にしました`)
     const settings0 = isObj(p0.settings) ? clampSettings(coerced) : coerced
-    const clamped = Object.keys(settings0).filter((k) => typeof (coerced as unknown as Record<string, unknown>)[k] === 'number' && (coerced as unknown as Record<string, unknown>)[k] !== (settings0 as unknown as Record<string, unknown>)[k])
+    const clamped = Object.keys(settings0).filter((k) => typeof (coerced as unknown as Record<string, unknown>)[k] === 'number' && Math.abs(((coerced as unknown as Record<string, number>)[k]) - ((settings0 as unknown as Record<string, number>)[k] ?? 0)) >= 1)
     if (clamped.length) warnings.push(`案件 ${p0.id} の設定 ${clamped.map((k) => `${k}: ${(coerced as unknown as Record<string, unknown>)[k]} → ${(settings0 as unknown as Record<string, unknown>)[k]}`).join(' / ')} は範囲の外なので直しました`)
     const now = new Date().toISOString()
     const p: Project = {
@@ -191,7 +210,18 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
     }
   }
   if (!STATUSES.includes(String(out.status))) out.status = 'draft'
-  out.flags = isObj(r.flags) ? r.flags : {}
+  // 印の型をそろえる（文字の印に true・{} などが入っていると、整えるときに止まる）
+  const STR_FLAGS = ['formalWithdrawn', 'droppedStopped', 'surplusRejected', 'importMismatch', 'pmReason', 'countermeasure', 'formalDiffKey']
+  const f0 = isObj(r.flags) ? r.flags : {}
+  const flags: Record<string, unknown> = {}
+  for (const [k, v] of Object.entries(f0)) {
+    if (STR_FLAGS.includes(k)) {
+      if (typeof v === 'string' && v) flags[k] = v
+    } else if (k === 'capRuled') {
+      if (typeof v === 'number' && Number.isFinite(v)) flags[k] = v
+    } else if (typeof v === 'boolean') flags[k] = v
+  }
+  out.flags = flags
   out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
   out.quoteTargets = r.quoteTargets === undefined ? undefined : arr<unknown>(r.quoteTargets).filter((x): x is string => typeof x === 'string')
   out.deferredRules = arr<unknown>(r.deferredRules).filter((x) => typeof x === 'string')
@@ -224,17 +254,24 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
 }
 
 /** 既定値と同じ型の値だけを残す（型の違う値は既定値に戻す） */
-function coerceLike<T extends object>(def: T, v: Record<string, unknown>): T {
+function coerceLike<T extends object>(def: T, v: Record<string, unknown>, bad?: string[]): T {
   const out = { ...def } as Record<string, unknown>
   for (const [k, d] of Object.entries(def)) {
     const x = v[k]
     if (x === undefined) continue
-    // 既定が null の項目（予算・回答期限など）は、null・数値・日付の文字だけ受け付ける
+    // 既定が null の項目（予算・回答期限など）は、null・数値・日付の文字だけ受け付ける。日付の項目は日付だけ
     if (d === null) {
-      if (x === null || (typeof x === 'number' && Number.isFinite(x)) || (typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x))) out[k] = x
+      const dateKey = /deadline|date/i.test(k)
+      if (x === null) out[k] = x
+      else if (dateKey) {
+        if (normDate(x)) out[k] = normDate(x)
+        else bad?.push(k)
+      } else if (typeof x === 'number' && Number.isFinite(x)) out[k] = x
       else if (typeof x === 'string' && numOrNull(x) != null) out[k] = numOrNull(x)
+      else if (x !== '') bad?.push(k)
       continue
     }
+    if (typeof d === 'number' && typeof x === 'string' && numOrNull(x) == null && x.trim() !== '') bad?.push(k)
     // 設定の数を文字で書いたもの（"10"）も数として読む
     if (typeof d === 'number' && typeof x === 'string' && numOrNull(x) != null) {
       out[k] = numOrNull(x)

@@ -120,11 +120,11 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
       const cause = sub.causes[id] ?? ''
       if (cause.startsWith('置換')) detail = cause
-      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
+      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy', 'procurement', 'designated', 'makerLock', 'unit', 'category'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
       const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)
-      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : '' })
+      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${sub.changeSet.supersededBy} にまとめた` : '' })
       row.fill = CHG_FILL
     }
   }
@@ -178,8 +178,11 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
       const subs = p.submissions.filter((s) => s.rowIds.includes(r.id) && liveRev(s))
       // この商社に前回送った内容があれば、それと今の値を比べる（間の Rev が備考だけでも、送った後の変更を落とさない）
       const sent = prevSent?.get(r.id)
-      const now = sent ? r : subs.at(-1)?.snapshot[r.id]
-      const before = sent ?? subs.at(-2)?.snapshot[r.id]
+      // この商社に前回送っていない行（今回はじめて頼む行）は旧の値を出さない
+      // （前回送った必要納期も無い＝この商社にはまだ正式見積を頼んでいない）
+      const firstTime = prevSent !== undefined && !sent && !prevNeed?.has(r.id)
+      const now = sent ? r : firstTime ? undefined : subs.at(-1)?.snapshot[r.id]
+      const before = sent ?? (firstTime ? undefined : subs.at(-2)?.snapshot[r.id])
       if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
       // 前回の依頼で送った必要納期と今回の値（案件納期の変更・前倒し日数の変更など）
       const now2 = rowNeedDate(p, r) ?? ''
@@ -221,5 +224,5 @@ export async function copyFormatted(headers: string[], rows: string[][]) {
 
 /** 決まった Rev か（承認待ち・却下の変更セット・取り消した Rev でない） */
 function liveRev(s: Project['submissions'][number]): boolean {
-  return !s.revoked && !(s.changeSet && (!s.changeSet.approved || s.changeSet.rejected))
+  return !s.revoked && !(s.changeSet && (!s.changeSet.approved || s.changeSet.rejected || s.changeSet.supersededBy != null))
 }

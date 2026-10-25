@@ -93,6 +93,10 @@ export interface RowFlags {
   pmReason?: '例外選定' | '先行採用' | '先行発注判断' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '対策不成立'
   /** 差分超過に PM が対応した時の「商社:正式単価」。同じ値の間は差分超過に戻さない */
   formalDiffKey?: string
+  /** PM が最小ロットの余剰（閾値超）を却下した（発注数を必要数より多くしない。採用商社が変わったら外す） */
+  surplusRejected?: string
+  /** 取引停止で外した採用商社の名前（ステータスバーで理由を出す。選び直したら外す） */
+  droppedStopped?: string
   /** 調達区分・指定先の変更で取り下げた正式依頼（「商社名 依頼No」。購買が元の商社へ取り下げを伝える。購買が x で確認すると外れる） */
   formalWithdrawn?: string
   /** 見積回答の取り込みで型式が違った商社（購買が確認する） */
@@ -314,7 +318,7 @@ export interface Submission {
   /** 差分の要約 */
   summary: { added: number; modelChanged: number; qtyChanged: number; other: number; cancelled: number }
   /** 変更セット（指摘対応でない変更があるとき） */
-  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; decisionId?: string; rejected?: boolean }
+  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; decisionId?: string; rejected?: boolean; /** 承認前に同じ行のあとの変更セットにまとめた（その Rev の決定に従う） */ supersededBy?: number }
   /** 却下などで取り消された Rev */
   revoked?: boolean
   /** 提出時のスナップショット（設計列） */

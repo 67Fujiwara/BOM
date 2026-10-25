@@ -155,6 +155,9 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   const rowId = r.id
   if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
   // 最小ロットの指摘（直すのは購買）は、発注数を丸め数量以上にしたら対応済（起票者が確認して閉じる）
+  // PM が余剰を却下した行（採用商社が同じ）は、発注数を必要数より多くしない
+  if (colKey === 'orderQty' && typeof value === 'number' && r.flags.surplusRejected && r.flags.surplusRejected === (r.adoptedSupplierId ?? '-') && value > r.qtyNeeded)
+    return `${r.id} は PM が最小ロットの余剰を却下しています（発注数は必要数 ${r.qtyNeeded} まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す）`
   // ただし余剰が閾値を超えて PM の判断待ちのあいだは対応済にしない（PM が却下したら戻す）
   if (colKey === 'orderQty' && typeof value === 'number' && !(r.flags.pmPending && r.flags.pmReason === '閾値超'))
     for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && (x.status === 'open' || x.status === 'inProgress')))
@@ -664,7 +667,13 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           if (isCs && needsApproval) {
             // PM の承認まで公開値は変えない（購買には「承認待ちの変更あり」だけ見える）
             r.pendingApproval = { ...(r.pendingApproval ?? {}), ...values }
+            // 承認待ちの前の変更セットの行をまとめたら、その行がもう残っていない前の Rev は「まとめた」にする（あとの Rev の決定に従う）
+            const oldRev = r.pendingRev
             r.pendingRev = sub.rev
+            if (oldRev != null && oldRev !== sub.rev && !p.rows.some((x) => x.pendingRev === oldRev)) {
+              const old = p.submissions.find((x) => x.rev === oldRev)
+              if (old?.changeSet) old.changeSet.supersededBy = sub.rev
+            }
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'
             sub.summary.other++

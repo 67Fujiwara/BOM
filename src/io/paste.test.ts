@@ -892,7 +892,7 @@ describe('ラウンド 20 の取り込み（新人）', () => {
     expect(r.rows.map((x) => x.note ?? '')).toEqual(['', '', '【削除？】', '', '【削除？】'])
   })
   it('N20-04 削除（保留）・削除（しない）・撤去（再取付）・削除→保留 は残す、削除（Rev.1）・削除→不要 は削除', () => {
-    const keep = ['削除（保留）', '削除（しない）', '削除（不要）', '削除（要確認）', '削除（検討中）', '撤去（再取付）', '取外し（再利用）', '削除→保留', '削除→再追加']
+    const keep = ['削除（保留）', '削除（しない）', '削除（要確認）', '削除（検討中）', '撤去（再取付）', '取外し（再利用）', '削除→保留', '削除→再追加']
     const r = sheet(keep)
     expect(r.rows.filter((x) => !(x.note ?? '').startsWith('【削除？】')).map((x) => x.name)).toEqual(['リレー', ...keep.map((_, i) => `部品${i}`), '端子台'])
     expect(sheet(['削除（Rev.1）', '削除→不要']).rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
@@ -1021,5 +1021,40 @@ describe('ラウンド 21 の取り込み（新人）', () => {
   it('N21-11 見出しが「変更」で ○/× の列があるふつうの BOM は、× の部品を外さない', () => {
     const r = parseBomPaste('品名\t型式\t数量\t変更\nリレー\tA\t1\t○\nタイマ\tB\t1\t×\nランプ\tC\t1\t○')
     expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', 'ランプ'])
+  })
+})
+
+describe('ラウンド 21 の取り込み（ベテラン）', () => {
+  const sheet = (notes: string[]) => parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量\t備考', 'リレー\tMY2N\tMY4N\t1\t', ...notes.map((n, i) => `部品${i}\tP-${i}\t\t1\t${n}`), '端子台\tXW2B\t\t4\t'].join('\n'))
+  const kept = (r: ReturnType<typeof sheet>) => r.rows.filter((x) => !(x.note ?? '').startsWith('【削除？】')).map((x) => x.name)
+  const asked = (r: ReturnType<typeof sheet>) => r.rows.filter((x) => (x.note ?? '').startsWith('【削除？】')).length
+  it('V21-01 タブ区切りの表の上に説明の行が多く、コンマが入っていてもタブ区切りと読む', () => {
+    const title = Array.from({ length: 10 }, (_, i) => `説明${i}, 盤用`)
+    const parts = Array.from({ length: 8 }, (_, i) => `部品${i}\tM-${i}\tオムロン\t${i + 1}`)
+    const r = parseBomPaste([...title, '品名\t型式\tメーカー\t数量', ...parts].join('\n'))
+    expect(r.rows.length).toBe(8)
+  })
+  it('V21-02 コンマ区切りの「"」（〃）の行が続いても行をつなげない', () => {
+    const r = parseBomPaste('品名,型式,メーカー,数量\nリレーA,MY4N,オムロン,1\nリレーB,MY4N,",2\nリレーC,MY4N,",3\nグランド,OA-W16 3/4",オーム電機,3')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレーA', 'リレーB', 'リレーC', 'グランド'])
+  })
+  it('V21-05 削除（予定なし）・削除（対象外）・削除（変更なし）・撤去（予定なし）は残す、削除（不要）・一部の削除は聞く', () => {
+    const keep = ['削除（予定なし）', '削除（対象外）', '削除（変更なし）', '撤去（予定なし）']
+    expect(kept(sheet(keep))).toEqual(['リレー', ...keep.map((_, i) => `部品${i}`), '端子台'])
+    expect(asked(sheet(['削除（不要）', '削除（一部）', '一部削除', '削除（2個中1個）']))).toBe(4)
+  })
+  it('V21-05 不要の為削除・不要に付き削除・全削除・一式削除 は削除', () => {
+    expect(kept(sheet(['不要の為削除', '不要に付き削除', '全削除', '一式削除']))).toEqual(['リレー', '端子台'])
+  })
+  it('V21-06 取外し可能・撤去スペース確保 は聞かずに残す', () => {
+    const notes = ['取外し可能', '撤去スペース確保', '取外し容易', '撤去場所は右側']
+    const r = sheet(notes)
+    expect(asked(r)).toBe(0)
+    expect(r.rows.length).toBe(2 + notes.length)
+  })
+  it('V21-10 設変区分・Change の見出しと Del. の値', () => {
+    for (const h of ['設変区分', 'Change', '対応']) {
+      expect(parseBomPaste(`${h}\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N\t4\nDel.\tタイマ\tH3Y\t\t1`).rows.map((x) => x.name), h).toEqual(['リレー'])
+    }
   })
 })

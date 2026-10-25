@@ -44,7 +44,7 @@ export function parseNumber(raw: string, opts: { min?: number; max?: number; int
     s = s.slice(0, -1)
   }
   // 16 進（0x10）・指数（1e3）などは数値として受け付けない
-  let n = s === '' && unit ? 1 : /^[+-]?(\d+\.?\d*|\.\d+)$/.test(s) ? Number(s) : NaN
+  let n = s === '' && unit ? 1 : /^[+-]?(\d+(?:\.\d*)?|\.\d+)$/.test(s) ? Number(s) : NaN
   if (!Number.isFinite(n)) {
     const k = kanjiNumber(s)
     if (k == null) return { ok: false, error: `${opts.label ?? '数値'}として読めません: 「${raw}」` }

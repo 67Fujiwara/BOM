@@ -29,10 +29,14 @@ p = await t.proj(); log('requestRevs', JSON.stringify(p.requestRevs))
 const sname = (await t.ws()).suppliers.find((s) => s.id === SID).name
 log('rows referencing', SID, 'adopted', p.rows.filter((r) => r.adoptedSupplierId === SID).length, 'designated', p.rows.filter((r) => (r.designated ?? '').trim() === SID).length, 'quoteTargets', p.rows.filter((r) => (r.quoteTargets ?? []).includes(SID)).length, 'quotes', p.quotes.filter((q) => q.supplierId === SID).length)
 // 消す
+const adoptedBeforeIds = p.rows.filter((r) => r.adoptedSupplierId === SID && !['ordered', 'received'].includes(r.status) && r.procurement === '相見積').map((r) => r.id)
 const msg = await importWs(t, (ws) => { ws.suppliers = ws.suppliers.filter((s) => s.id !== SID) })
 log('import →', msg); p = await t.proj(); const ws = await t.ws()
 const rf = refs(p, ws.suppliers); log('refs', JSON.stringify(rf.slice(0, 12)), 'n=', rf.length, 'soft', refs(p, ws.suppliers, true).length)
 check(`${tag}-1 マスタに無い商社を指す参照が残らない（採用・quoteTargets・指定先）`, rf.length === 0, rf.slice(0, 8))
+{ const pp = await t.proj(); const lost = pp.rows.filter((r) => adoptedBeforeIds.includes(r.id) && !r.adoptedSupplierId); const noted = lost.filter((r) => r.flags.droppedStopped || r.flags.formalWithdrawn)
+  log('採用を外された行', lost.length, 'うち知らせ(droppedStopped／取下げ)付き', noted.length)
+  check(`${tag}-2b マスタから消えて採用が外れた相見積の行（${lost.length} 行）に、取引停止のときと同じ「採用を外した」知らせ（droppedStopped）が付く`, lost.length > 0 && lost.every((r) => !!r.flags.droppedStopped), `知らせ付き ${noted.length}/${lost.length}（${JSON.stringify(lost[0]?.flags)}）`) }
 const bad = await scanViews(t); log('bad cells', bad.length, JSON.stringify(bad.slice(0, 8)))
 check(`${tag}-2 全ビュー×3 役割の文字に undefined/NaN/null が出ない`, bad.length === 0, bad.slice(0, 8))
 const sk = await stuck(t); log('stuck', JSON.stringify(sk.slice(0, 10)))

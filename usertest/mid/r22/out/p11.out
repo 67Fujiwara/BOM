@@ -3,13 +3,16 @@ X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=
 qty x3 → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
 publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
 X after publish R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"leadNG":true,"requote":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
-rough → 6 行 × 3 社に依頼（回答期限 2026-11-25）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社 [["立花エレテック",true],["因幡電機",true],["ミスミ",true]]
+rough → 6 行 × 3 社に依頼（回答期限 2026-11-25）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社 [["因幡電機",true],["立花エレテック",true],["ミスミ",true]]
 X after rough R003 相見積 st=quoting adopt=- reason= oq=11 flags={"leadNG":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball pm
 FAIL P11-1 概算を取り直したあと、採用が外れた行に納期NG の印が残らない（採用なしの納期NG にならない） :: R003 相見積 st=quoting adopt=- reason= oq=11 flags={"leadNG":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
 in PM 7 true
 PM panel {"kind":"quickfix","title":"決定パネル R003（納期NG）","options":["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"],"index":-1}
 PASS P11-2 PM の 7 に載る行は決定パネルに選べる選択肢がある :: {"kind":"quickfix","title":"決定パネル R003（納期NG）","options":["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"],"index":-1}
+after b: panel {"kind":"prompt","title":"決定: 次点商社へ（R003。理由・任意）","options":[],"index":0} toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+after decision R003 相見積 st=quoting adopt=- reason= oq=11 flags={"leadNG":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] | toast 必要日を満たす次点の商社がありません（有効期限切れなら再見積を依頼。受入・特急・代替依頼から選んでください） | decisions []
+PASS P11-2b 採用の無い行で b（次点へ）を押しても、嘘の決定（次点商社へ）が記録されない :: []
 PASS P11-3 固まる行がない :: []
 ERRORS []
 PASS P11-9 console error なし :: []
-== 3/4 PASS
+== 4/5 PASS

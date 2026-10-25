@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pm_decide: R046 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:formal_price: R044 x3 EDIT-ERR R044 の正式単価 ¥8,505（概算から +200%）。桁
+3:add_row: R081 を入れて Enter] 行 1（Rev.3） を公開しました
+4:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+5:edit_qty: R050 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+6:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+8:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+9:bulk: 採用 15 / 拮抗 6（要見直し）/ 承認要 0 / スキップ 14
+10:replace_row: R061 R061 の置き換え品 R082 を作りました（公開すると R061 は置換済に / ）を入れて Ente] 行 3（Rev.4） を公開しました
+11:formal_price: R022 x1.5 EDIT-ERR R022 の正式単価 ¥22,434（概算から +50%）。桁
+12:formal_price: R040 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+13:toggle_approval: OFF 案件設定を保存しました
+14:next_day: +3d
+15:order: R013 R013: 発注済にしました
+16:undo: purchasing 元に戻す: 発注済
+17:order: R022 R022: 発注済にしました
+18:pm_decide: R005 Shift+Y R005: 受入
+19:add_row: R083 を入れて Enter] 行 1（Rev.5） を公開しました
+20:formal: になります → 14 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 2 行 / 再見積要 0 行
+21:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 14
+22:switch_proc: R071→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+23:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:rough: 依頼する行がありません（提出済・再見積要の行なし）
+25:master_stop: S3 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 2 行・再見積要 0 行は除外）
+28:receive: R022 R022: 入荷済にしました
+29:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+31:formal_price: R048 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:formal_price: R015 x3 EDIT-ERR R015 の正式単価 ¥90,255（概算から +200%）。
+33:pm_decide: R005 y R005: 先行発注許可
+34:excel: design 3 sheets
+35:order: R013 R013: 発注済にしました
+36:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+37:decline: R067 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+38:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+39:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+PASS F2-133a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

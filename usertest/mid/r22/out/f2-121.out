@@ -1,0 +1,42 @@
+0:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:edit_qty: R074 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+2:cancel_row: R071 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+3:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+4:edit_qty: R063 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+5:undo: purchasing 戻せません: R071 の「状態」 は、この操作の後に別の操作（あなたの別の操作
+6:order: R013 R013: 発注済にしました
+7:order: none
+8:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+9:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+10:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+11:consolidate: やめました（何も変えていません）
+12:switch_proc: R046→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+13:reload: reload
+14:replace_row: R052 R052 の置き換え品 R081 を作りました（公開すると R052 は置換済に / 更番号（任意）を入れ] 行 4（Rev.3） を公開しました
+15:reload: reload
+16:order: none
+17:excel: purchasing 3 sheets
+18:rough: 7 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+19:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:pick_supplier: R005 1〜1 で商社を選んでください
+21:order: none
+22:pick_supplier: R073 1〜1 で商社を選んでください
+23:switch_proc: R003→支給品 を入れて Enter] 行 1（Rev.4） を公開しました
+24:replace_row: R025 R025 の置き換え品 R082 を作りました（公開すると R025 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+25:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:formal_price: R045 x1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+27:excel: pm 3 sheets
+28:replace_row: R066 R066 の置き換え品 R083 を作りました（公開すると R066 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+29:consolidate: やめました（何も変えていません）
+30:order: R045 R045: 発注済にしました
+31:bulk: 採用 43 / 拮抗 18（要見直し）/ 承認要 0 / スキップ 9
+32:withdraw_x: R028 R028: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+33:order: none
+34:formal: になります → 38 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 6 行 / 再見積要 0 行
+35:cancel_row: R060 を入れて Enter] 行 1（Rev.7） を公開しました
+36:receive: R045 R045: 入荷済にしました
+37:edit_qty: R031 を入れて Enter] 行 1（Rev.8） を公開しました
+38:edit_qty: R027 を入れて Enter] 行 1（Rev.9） を公開しました
+39:edit_qty: R012 行 1（Rev.9） を公開しました
+PASS F2-121 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

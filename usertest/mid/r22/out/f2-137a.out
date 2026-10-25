@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:edit_qty: R046 を入れて Enter] 行 1（Rev.3） を公開しました
+1:add_row: R081 を入れて Enter] 行 1（Rev.4） を公開しました
+2:decline: none
+3:pick_supplier: none
+4:order: R013 R013: 発注済にしました
+5:order: none
+6:receive: R013 R013: 入荷済にしました
+7:pm_decide: R081 y R081・Rev.4 の変更セット 1 行まとめて: 承認
+8:switch_proc: R020→支給品 を入れて Enter] 行 1（Rev.5） を公開しました
+9:reload: reload
+10:switch_proc: R010→指定商社 を入れて Enter] 行 1（Rev.6） を公開しました
+11:withdraw_x: none
+12:formal_price: R036 x1.5 EDIT-ERR R036 の正式単価 ¥4,116（概算から +50%）。桁・
+13:decline: none
+14:undo: purchasing 元に戻す: セル編集
+15:next_day: +3d
+16:pick_supplier: none
+17:excel: design 1 sheets
+18:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+19:pick_supplier: none
+20:replace_row: R046 R046 の置き換え品 R082 を作りました（公開すると R046 は置換済に / を入れて Enter] 行 2（Rev.7） を公開しました
+21:pick_supplier: none
+22:edit_qty: R039 を入れて Enter] 行 1（Rev.8） を公開しました
+23:add_row: R083 を入れて Enter] 行 1（Rev.9） を公開しました
+24:switch_proc: R076→客先指定品 入れて Enter] 行 1（Rev.10） を公開しました
+25:formal_price: R064 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:switch_proc: R023→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+28:add_row: R084 入れて Enter] 行 1（Rev.11） を公開しました
+29:withdraw_x: none
+30:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+31:pm_decide: R084 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+32:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:order: R064 R064: 発注済にしました
+34:receive: R064 R064: 入荷済にしました
+35:withdraw_x: none
+36:pm_decide: R007 y 納期NG の行では y は使えません（Enter で決定パネル）
+37:switch_proc: R011→客先指定品 入れて Enter] 行 1（Rev.12） を公開しました
+38:pick_supplier: none
+39:add_row: R085 入れて Enter] 行 1（Rev.13） を公開しました
+PASS F2-137a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:reload: reload
+1:withdraw_x: none
+2:pick_supplier: none
+3:pm_decide: R021 b R021: 次点商社へ
+4:undo: design 戻せません: R004 の「状態」 は、この操作の後に別の操作（あなたの別の操作
+5:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+6:decline: none
+7:order: R013 R013: 発注済にしました
+8:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:next_day: +1d
+10:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+11:pm_decide: R025 Shift+Y R025: 受入
+12:order: none
+13:add_row: R081 を入れて Enter] 行 1（Rev.3） を公開しました
+14:consolidate: やめました（何も変えていません）
+15:bulk: 採用 6 / 拮抗 4（要見直し）/ 承認要 0 / スキップ 0
+16:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+17:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+18:switch_proc: R049→社内在庫 を入れて Enter] 行 1（Rev.4） を公開しました
+19:edit_qty: R041 1 件（R041 メーカが空です … F8 で移動して直す）
+20:receive: R013 R013: 入荷済にしました
+21:receive: none
+22:switch_proc: R043→社内在庫 1 件（R041 メーカが空です … F8 で移動して直す）
+23:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+24:switch_proc: R027→社内在庫 1 件（R041 メーカが空です … F8 で移動して直す）
+25:switch_proc: R025→社内在庫 1 件（R041 メーカが空です … F8 で移動して直す）
+26:switch_proc: R050→客先指定品 1 件（R041 メーカが空です … F8 で移動して直す）
+27:add_row: R082 1 件（R041 メーカが空です … F8 で移動して直す）
+28:decline: none
+29:consolidate: やめました（何も変えていません）
+30:withdraw_x: R021 R021: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+31:pm_decide: R032 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+32:receive: none
+33:order: none
+34:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+35:receive: none
+36:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+37:formal_price: R037 x1.5 EDIT-ERR R037 の正式単価 ¥9,141（概算から +50%）。桁・
+38:next_day: +9d
+39:formal: 」になります → 3 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 3 行 / 再見積要 0 行
+PASS F2-145a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

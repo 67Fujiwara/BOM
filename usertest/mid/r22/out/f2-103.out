@@ -6,3 +6,37 @@
 5:switch_proc: R022→客先指定品 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
 6:formal_price: none
 7:formal_price: none
+8:consolidate: やめました（何も変えていません）
+9:pick_supplier: R013 R013: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+10:edit_qty: R040 を入れて Enter] 行 1（Rev.3） を公開しました
+11:edit_qty: R001 を入れて Enter] 行 1（Rev.4） を公開しました
+12:consolidate: やめました（何も変えていません）
+13:formal_price: none
+14:order: none
+15:rough: 8 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+16:rough: 依頼する行がありません（提出済・再見積要の行なし）
+17:pick_supplier: R028 R028: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+18:pick_supplier: R058 R058 を 立花エレテック で採用
+19:pm_decide: R046 b R046: 次点商社へ
+20:pm_decide: R064 y R064: 先行発注許可
+21:formal_price: none
+22:consolidate: やめました（何も変えていません）
+23:pick_supplier: R044 R044 を ミスミ で採用
+24:bulk: 採用 29 / 拮抗 6（要見直し）/ 承認要 0 / スキップ 14
+25:formal: になります → 63 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+26:switch_proc: R074→指定商社 を入れて Enter] 行 1（Rev.5） を公開しました
+27:switch_proc: R062→客先指定品 を入れて Enter] 行 1（Rev.6） を公開しました
+28:edit_qty: R034 を入れて Enter] 行 1（Rev.7） を公開しました
+29:formal_price: R067 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+30:switch_proc: R023→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+31:pm_decide: R028 y R028: 承認
+32:pm_decide: R015 y 納期NG の行では y は使えません（Enter で決定パネル）
+33:formal_price: R014 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+34:switch_proc: R005→社内在庫 前後に空白があります … 直すか Alt+x で確認済みに）
+35:switch_proc: R072→支給品 公開できません: 未確認の警告 1 件（R005 型式の前後
+36:rough: 1 行 × 1 社に依頼（回答期限 2026-10-31）
+37:edit_qty: R049 前後に空白があります … 直すか Alt+x で確認済みに）
+38:formal: 」になります → 2 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+39:order: R067 R067: 発注済にしました
+PASS F2-103 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

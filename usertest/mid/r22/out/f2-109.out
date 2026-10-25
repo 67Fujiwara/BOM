@@ -1,0 +1,42 @@
+0:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+1:switch_proc: R044→指定商社 一括で採用できる行がありません（見積済で未採用の行なし）
+2:decline: none
+3:add_row: R081 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+4:replace_row: R004 R004 の置き換え品 R082 を作りました（公開すると R004 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+5:decline: none
+6:pick_supplier: none
+7:order: R013 R013: 発注済にしました
+8:undo: purchasing 元に戻す: 発注済
+9:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+10:cancel_row: R038 を入れて Enter] 行 1（Rev.4） を公開しました
+11:replace_row: R077 R077 の置き換え品 R083 を作りました（公開すると R077 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+12:undo: design 取消・置換を公開した R077 は戻せません（購買に伝わっています。同じ部品が要
+13:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+14:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+15:switch_proc: R050→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+16:rough: 5 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+17:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+18:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+19:receive: none
+20:pm_decide: R032 y R032: 先行発注許可
+21:reload: reload
+22:bulk: 採用 5 / 拮抗 3（要見直し）/ 承認要 0 / スキップ 5
+23:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+24:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+25:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+26:pm_decide: R044 Shift+Y R044: 受入
+27:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+28:edit_qty: R054 一括で採用できる行がありません（見積済で未採用の行なし）
+29:edit_qty: R040 を入れて Enter] 行 2（Rev.7） を公開しました
+30:decline: R078 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+31:pick_supplier: none
+32:pm_decide: R055 y 納期NG の行では y は使えません（Enter で決定パネル）
+33:formal_price: R011 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+34:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+35:cancel_row: R058 を入れて Enter] 行 1（Rev.8） を公開しました
+36:formal_price: R060 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+37:withdraw_x: R056 R056: 正式依頼の取下げ（ミスミ P-2026-041-S3-F1）を伝えた（確認済）
+38:pm_decide: R055 y 納期NG の行では y は使えません（Enter で決定パネル）
+39:order: R011 R011: 発注済にしました
+PASS F2-109 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

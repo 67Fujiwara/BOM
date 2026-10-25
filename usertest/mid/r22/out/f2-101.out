@@ -8,3 +8,35 @@
 7:order: none
 8:edit_qty: R055 
 9:excel: design 3 sheets
+10:add_row: R081 を入れて Enter] 行 2（Rev.4） を公開しました
+11:formal_price: R057 x1.5 EDIT-ERR R057 の正式単価 ¥167（概算から +50%）。桁・行を
+12:pm_decide: R054 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+13:consolidate: やめました（何も変えていません）
+14:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+15:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+16:consolidate: やめました（何も変えていません）
+17:decline: R004 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+18:next_day: +8d
+19:bulk: 採用 58 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+20:pick_supplier: none
+21:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+22:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+23:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+24:undo: purchasing 元に戻す: セル編集
+25:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:decline: R030 S1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+27:excel: purchasing 3 sheets
+28:receive: none
+29:order: R057 R057: 発注済にしました
+30:decline: R058 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+31:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+32:switch_proc: R004→社内在庫 を入れて Enter] 行 2（Rev.5） を公開しました
+33:switch_proc: R052→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+34:rough: 6 行 × 2 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+35:reload: reload
+36:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+37:switch_proc: R007→相見積 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+38:bulk: 採用 6 / 拮抗 2（要見直し）/ 承認要 0 / スキップ 6
+39:pick_supplier: none
+PASS F2-101 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

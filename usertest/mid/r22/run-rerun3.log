@@ -1,0 +1,7 @@
+p11-run3 == 3/4 PASS
+p11-run2 == 3/4 PASS
+f2 == 3/3 PASS
+p1-S3-sel-run2 == 8/10 PASS
+p1-S1-sel-run2 == 8/10 PASS
+p2-selected-支給品-approve-run2 == 13/14 PASS
+DONE

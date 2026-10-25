@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:order: R013 R013: 発注済にしました
+1:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+2:receive: R013 R013: 入荷済にしました
+3:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:pm_decide: R039 Shift+Y R039: 受入
+5:edit_qty: R024 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+6:formal_price: R029 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+7:add_row: R081 を入れて Enter] 行 2（Rev.3） を公開しました
+8:receive: none
+9:edit_qty: R005 前後に空白があります … 直すか Alt+x で確認済みに）
+10:edit_qty: R080 前後に空白があります … 直すか Alt+x で確認済みに）
+11:rough: 4 行 × 2 社に依頼（回答期限 2026-10-31）。作業中 1 行を除外。メーカを扱う商社がマスタに無い行 3 
+12:pm_decide: R029 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+13:edit_qty: R039 前後に空白があります … 直すか Alt+x で確認済みに）
+14:pm_decide: R038 b R038: 次点商社へ
+15:bulk: 採用 5 / 拮抗 4（要見直し）/ 承認要 0 / スキップ 5
+16:pm_decide: R003 Shift+Y R003: 受入
+17:cancel_row: R037 前後に空白があります … 直すか Alt+x で確認済みに）
+18:pick_supplier: R005 設計作業中の行は選定できません（公開を待つ）
+19:order: R029 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+20:pm_decide: R020 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:cancel_row: R054 前後に空白があります … 直すか Alt+x で確認済みに）
+22:undo: pm 元に戻す: 決定: 受入
+23:edit_qty: R012 前後に空白があります … 直すか Alt+x で確認済みに）
+24:receive: none
+25:formal: 」になります → 4 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 2 行 / 再見積要 0 行
+26:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:pm_decide: R032 y R032: 先行発注許可
+28:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+29:formal_price: R050 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+30:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+31:formal_price: R037 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+32:receive: none
+33:edit_qty: R058 前後に空白があります … 直すか Alt+x で確認済みに）
+34:undo: purchasing 元に戻す: セル編集
+35:toggle_approval: OFF 案件設定を保存しました
+36:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+37:excel: purchasing 3 sheets
+38:order: R037 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+39:pick_supplier: R058 設計作業中の行は選定できません（公開を待つ）
+PASS F2-125a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

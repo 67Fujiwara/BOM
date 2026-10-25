@@ -1,0 +1,42 @@
+0:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+1:excel: pm 3 sheets
+2:order: R013 R013: 発注済にしました
+3:add_row: R081 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+4:receive: R013 R013: 入荷済にしました
+5:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+6:formal_price: none
+7:order: none
+8:pick_supplier: none
+9:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+10:replace_row: R055 R055 の置き換え品 R082 を作りました（公開すると R055 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+11:consolidate: やめました（何も変えていません）
+12:reload: reload
+13:cancel_row: R018 を入れて Enter] 行 1（Rev.4） を公開しました
+14:add_row: R083 を入れて Enter] 行 1（Rev.5） を公開しました
+15:pick_supplier: R054 1〜2 で商社を選んでください
+16:replace_row: R075 R075 の置き換え品 R084 を作りました（公開すると R075 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+17:receive: none
+18:pm_decide: R026 Shift+Y R026: 却下
+19:formal_price: none
+20:cancel_row: R022 を入れて Enter] 行 1（Rev.7） を公開しました
+21:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+22:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+23:switch_proc: R010→相見積 ありません。エラーのある行が 4 行あります（F8 で移動）
+24:formal_price: none
+25:cancel_row: R007 を入れて Enter] 行 1（Rev.8） を公開しました
+26:pick_supplier: R043 R043 を ミスミ で採用
+27:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+28:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:switch_proc: R076→客先指定品 を入れて Enter] 行 1（Rev.9） を公開しました
+30:cancel_row: R063 入れて Enter] 行 1（Rev.10） を公開しました
+31:pick_supplier: R024 R024 を ミスミ で採用
+32:switch_proc: R026→指定商社 入れて Enter] 行 1（Rev.11） を公開しました
+33:rough: 7 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 3 行は、選んだ商社すべて
+34:replace_row: R069 R069 の置き換え品 R085 を作りました（公開すると R069 は置換済に / 入れて Enter] 行 2（Rev.12） を公開しました
+35:withdraw_x: none
+36:decline: R041 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+37:receive: none
+38:replace_row: R053 R053 の置き換え品 R086 を作りました（公開すると R053 は置換済に / 入れて Enter] 行 2（Rev.13） を公開しました
+39:next_day: +3d
+PASS F2-107 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

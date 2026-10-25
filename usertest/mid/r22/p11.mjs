@@ -17,6 +17,9 @@ await t.role('purchasing'); const r = await h.requestTo(null); log('rough →', 
 p = await t.proj(); const rX = p.rows.find((x) => x.id === X); log('X after rough', h.show(p, X).slice(0, 260), 'ball', await h.ballOf(X))
 check(`${tag}-1 概算を取り直したあと、採用が外れた行に納期NG の印が残らない（採用なしの納期NG にならない）`, !(rX.flags.leadNG && !rX.adoptedSupplierId), h.show(p, X).slice(0, 220))
 await t.role('pm'); await t.press('7'); const in7 = (await t.viewRows()).includes(X); log('in PM 7', in7)
-if (in7) { await t.goto(X); await t.press('Enter'); await page.waitForTimeout(150); const pn = await t.panel(); log('PM panel', JSON.stringify(pn)?.slice(0, 400)); check(`${tag}-2 PM の 7 に載る行は決定パネルに選べる選択肢がある`, !!pn && (pn.options?.length ?? 0) > 0 || !!pn?.lines, JSON.stringify(pn)?.slice(0, 200)); await t.press('Escape'); if (await t.panel()) await t.press('Escape') }
+if (in7) { await t.goto(X); await t.press('Enter'); await page.waitForTimeout(150); const pn = await t.panel(); log('PM panel', JSON.stringify(pn)?.slice(0, 400)); check(`${tag}-2 PM の 7 に載る行は決定パネルに選べる選択肢がある`, !!pn && (pn.options?.length ?? 0) > 0 || !!pn?.lines, JSON.stringify(pn)?.slice(0, 200)); await t.press('b'); await page.waitForTimeout(150); const pb = await t.panel(); log('after b: panel', JSON.stringify(pb)?.slice(0, 200), 'toast', (await t.toast()).slice(0, 120)); if (pb?.kind === 'prompt') { try { await t.promptFill('次点') } catch {} ; await page.getByTestId('prompt-text').press('Enter'); await page.waitForTimeout(200) }
+  p = await t.proj(); log('after decision', h.show(p, X).slice(0, 220), '| toast', (await t.toast()).slice(0, 120), '| decisions', JSON.stringify(p.decisions.filter((d) => d.rowId === X).map((d) => d.kind)))
+  check(`${tag}-2b 採用の無い行で b（次点へ）を押しても、嘘の決定（次点商社へ）が記録されない`, !p.decisions.some((d) => d.rowId === X && d.kind === '次点商社へ'), JSON.stringify(p.decisions.filter((d) => d.rowId === X).map((d) => d.kind)))
+  if (await t.panel()) await t.press('Escape'); if (await t.panel()) await t.press('Escape') }
 const sk = await stuck(t); check(`${tag}-3 固まる行がない`, sk.length === 0, sk.slice(0, 4))
 errs(t, tag + '-9'); summary(); await t.close()

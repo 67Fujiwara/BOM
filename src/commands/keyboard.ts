@@ -470,8 +470,20 @@ function sequenceNext() {
   const here = `${st().cursorRow}|${st().cursorCol}`
   seqSeen.add(here)
   if (problemCells().length && gotoProblem(1) && visibleCursorRow()) {
+    // 「あとで」「飛ばす」で問題が残った行に戻ってしまうときは、行を 1 つ下げて次の問題を探す（一周の判定は行ごと）
+    const stillKeys = new Set(problemCells().map((x) => `${x.rowId}|${x.field}`))
+    const rowsWithProblem = new Set(problemCells().map((x) => x.rowId))
+    const seenRows = new Set([...seqSeen].filter((k) => { const [r, c] = k.split('|'); return c === 'id' || c === 'status' ? rowsWithProblem.has(r) : stillKeys.has(k) }).map((k) => k.split('|')[0]))
+    for (let guard = 0; guard < 400 && seenRows.has(st().cursorRow ?? '') && seenRows.size < 400; guard++) {
+      const before = st().cursorRow
+      moveCursorRow(1)
+      if (st().cursorRow === before) break
+      gotoProblem(1)
+      if (!visibleCursorRow()) break
+      if (st().cursorRow === [...seqSeen][0]?.split('|')[0] && guard > 0) break
+    }
     const next = `${st().cursorRow}|${st().cursorCol}`
-    if (seqSeen.has(next)) {
+    if (seqSeen.has(next) || seenRows.has(st().cursorRow ?? '')) {
       set({ sequence: false })
       seqSeen.clear()
       return toast(`順番に直すモード: 一周しました（残りの問題 ${problemCells().length} 件はそのまま。F8 で回れます）`, 'ok')

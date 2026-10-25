@@ -111,7 +111,36 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
   // 列の区切りの数（見出しの列の数 − 1）: 引用符の無い行でいちばん多い数（1 行目が表題・複数行の見出しでも決まる）
   const counts = new Map<number, number>()
   for (const l of src.split('\n')) if (l.trim() && !l.includes('"') && l.includes(delim)) counts.set(l.split(delim).length - 1, (counts.get(l.split(delim).length - 1) ?? 0) + 1)
-  const width = [...counts.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]?.[0] ?? (src.split('\n')[0] ?? '').split(delim).length - 1
+  let width = [...counts.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]?.[0] ?? (src.split('\n')[0] ?? '').split(delim).length - 1
+  // 引用符のない行が少ない（ほとんどの行に引用符のセルがある）ときは、引用符を見ながら数えた 1 件あたりの区切りの数の最頻値
+  {
+    const lines = src.split('\n').filter((l) => l.trim())
+    const quoteFree = lines.filter((l) => !l.includes('"')).length
+    if (lines.length > 0 && quoteFree * 2 < lines.length) {
+      const rec = new Map<number, number>()
+      let q = false
+      let n = 0
+      let any = false
+      for (let k = 0; k < src.length; k++) {
+        const c = src[k]
+        if (c === '"') {
+          if (q && src[k + 1] === '"') k++
+          else q = !q
+          any = true
+        } else if (!q && c === delim) {
+          n++
+          any = true
+        } else if (!q && c === '\n') {
+          if (any) rec.set(n, (rec.get(n) ?? 0) + 1)
+          n = 0
+          any = false
+        } else any = true
+      }
+      if (any) rec.set(n, (rec.get(n) ?? 0) + 1)
+      const best = [...rec.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]
+      if (best && best[0] > 0) width = best[0]
+    }
+  }
   for (let i = 0; i < src.length; i++) {
     const ch = src[i]
     if (quoted) {
@@ -227,7 +256,7 @@ function trimMarks(v: string): string {
   let b = 0
   let e = v.length
   while (b < e && /[\s　（(【\[※*＊]/.test(v[b])) b++
-  while (e > b && /[\s　）)】\]]/.test(v[e - 1])) e--
+  while (e > b && /[\s　）)】\]※*＊]/.test(v[e - 1])) e--
   return v.slice(b, e)
 }
 
@@ -249,7 +278,13 @@ export function parseBomPaste(text: string): PasteResult {
   const delimiter: PasteResult['delimiter'] = !raw.includes('\t')
     ? raw.includes(',') ? 'comma' : 'none'
     : !raw.includes(',') ? 'tab'
-    : headerHit('\t') !== headerHit(',') ? (headerHit('\t') ? 'tab' : 'comma')
+    : headerHit('\t') !== headerHit(',') ? ((): 'tab' | 'comma' => {
+        // 見出しの語がある側を採る。ただし反対側の表がずっと整っているとき（見出しの無い表の 1 行目だけが「部品名, 型式, 数量」）は反対側
+        const hit: 'tab' | 'comma' = headerHit('\t') ? 'tab' : 'comma'
+        const ch = consistency(hit === 'tab' ? '\t' : ',') * (hit === 'tab' ? 2 : 1)
+        const co = consistency(hit === 'tab' ? ',' : '\t') * (hit === 'tab' ? 1 : 2)
+        return ch * 5 < co ? (hit === 'tab' ? 'comma' : 'tab') : hit
+      })()
     : consistency('\t') * 2 >= consistency(',') ? 'tab' : 'comma'
   const table = delimiter === 'none' ? raw.split('\n').map((l) => [l]) : parseTable(raw, delimiter === 'tab' ? '\t' : ',')
   let lines = table.filter((r) => r.some((c) => c.trim() !== ''))
@@ -540,6 +575,9 @@ export function parseBomPaste(text: string): PasteResult {
   const kindVal = (v: string) => toHalf(v).trim()
   const kv0 = (v: string) => v.replace(/[\s（）()【】\[\]]/g, '')
   const kindIsDel = (v: string) => KIND_DEL.test(kv0(v)) || delWord(v, true) || /^(取外し?|取り外し|廃番|廃止予定|不使用|[xｘ✗−ー削消]|del\.?|delete\.?)$/i.test(kv0(v))
+  // 削除の語（はっきりしたもの）。あいまいな見出しの列では、廃止・不要などの生活サイクルの語は削除にしない
+  const STRONG_DEL = /^(削除|削除済み?|削除品|削除する|削除します|削除対象|delete[d]?|del\.?|撤去|撤去済み?|取外し?|除却|除外|抹消)$/i
+  let kindMode: 'clear' | 'vague' | null = null
   const kindCol = !hasHeader
     ? -1
     : first.findIndex((c, j) => {
@@ -551,10 +589,13 @@ export function parseBomPaste(text: string): PasteResult {
         if (!clear && !vague) return false
         const vals = body.map((l) => kindVal(l[j] ?? '')).filter(Boolean)
         const word = (v: string) => KIND_WORD.test(kv0(v))
-        if (clear) return vals.some((v) => /^(追加|変更|削除|廃止|新規)$/.test(kv0(v)) || kindIsDel(v) || /^(add|new)$/i.test(kv0(v)))
+        // はっきり変更区分の見出しでも、値が ○/×・要/不要・x/-・A〜D のようなふつうの印だけなら区分の列ではない（追加・変更などの語か、削除の語がひとつはあること）
+        if (clear) { const ok = vals.some((v) => (word(v) && !/^(同上|〃|-|－)$/.test(kv0(v))) || STRONG_DEL.test(kv0(v)) || /^(add|new)$/i.test(kv0(v))); kindMode = ok ? 'clear' : null; return ok }
         const known = vals.filter((v) => kindIsDel(v) || word(v)).length
         // ふつうの BOM の 新規/継続/廃止・汎用/専用/不要・New/Existing/Deleted の列と区別するため、追加／変更の語と削除の語の両方が、はっきりした語であるときだけ
-        return vals.length > 0 && known >= vals.length * 0.4 && vals.some((v) => /^(追加|変更|修正|設変|add(ed)?|mod(ify|ified)?|chg|change[d]?|update[d]?)$/i.test(kv0(v))) && vals.some((v) => /^(削除|delete[d]?|del\.?|d|撤去|取外し?|[×✕])$/i.test(kv0(v)))
+        const okV = vals.length > 0 && known >= vals.length * 0.4 && vals.some((v) => /^(追加|変更|修正|設変|add(ed)?|mod(ify|ified)?|chg|change[d]?|update[d]?)$/i.test(kv0(v))) && vals.some((v) => /^(削除|delete[d]?|del\.?|d|撤去|取外し?|[×✕])$/i.test(kv0(v)))
+        kindMode = okV ? 'vague' : null
+        return okV
       })
   if (kindCol >= 0) {
     mapping[kindCol] = null
@@ -566,7 +607,7 @@ export function parseBomPaste(text: string): PasteResult {
       prevKind = v
       return v
     }
-    const gone = body.filter((l) => kindIsDel(kindOf(l)))
+    const gone = body.filter((l) => (kindMode === 'vague' ? STRONG_DEL.test(kv0(kindOf(l))) || /^[×✕dD]$/.test(kv0(kindOf(l))) : kindIsDel(kindOf(l))))
     if (gone.length) {
       body = body.filter((l) => !gone.includes(l))
       warnings.unshift(`「${first[kindCol]}」が削除の ${gone.length} 行（例: ${gone[0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')}）は、削除された部品として取り込みません`)
@@ -1121,6 +1162,8 @@ function delClass(v0: string, strict = false): 'del' | 'keep' | 'ask' | null {
     // 文の終わりの削除（「不要のため削除」「Rev.2で削除」「B版にて削除」「→削除」「ユニットごと削除」「全て削除でお願いします」「この部品は削除です」）
     const tail = new RegExp(`^(.*?)(削除|廃止|撤去|取外し|取り外し)${END}?$`).exec(v)
     if (tail && tail[1] && /(ため|為|で|にて|により|につき|に付き|に伴い|による|に伴う|、|,|版|\s|→|⇒|ごと|品|ユニット|全|一式|全て|すべて|全部|全数|を|は|も|から)$/.test(tail[1])) {
+      // 「保護フィルムを取外し」「旧図面を廃止」「他盤から撤去」は別のものの話かもしれない。この部品／全て／〜台目から のときだけ削除、それ以外は聞く
+      if (/(を|は|も|から)$/.test(tail[1]) && !/(この部品|本部品|当部品|当該部品|この行|本品|これ|全て|すべて|全部|全数|[0-9０-９]+台目|[0-9０-９]+号機)(を|は|も|から)$/.test(tail[1])) return 'ask'
       // 承認後は・次回から・将来・場合・〜なら などの条件つき・先の話は、いまの削除ではないので聞く
       if (/(後|次回|以降|将来|いずれ|あと|時|場合|なら|たら|れば|承認|確認|決定|検討)(は|から|に|で|も)?$/.test(tail[1])) return 'ask'
       return /一部|半分/.test(tail[1]) ? 'ask' : 'del'

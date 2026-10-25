@@ -315,7 +315,7 @@ function suppliersOf(v: unknown, warnings: string[]): Workspace['suppliers'] {
     .filter((x): x is Record<string, unknown> => isObj(x) && str(x.id) && str(x.name))
     .map((x, i) => {
       const def = SAMPLE_SUPPLIERS[i % SAMPLE_SUPPLIERS.length]
-      return { ...def, ...x, color: typeof x.color === 'string' ? x.color : def.color, order: typeof x.order === 'number' ? x.order : i, kind: x.kind === '直販' ? '直販' : '商社', tradable: x.tradable !== false, avl: x.avl !== false, handledMakers: arr<unknown>(x.handledMakers).filter((m) => typeof m === 'string'), onTimeRate: typeof x.onTimeRate === 'number' && Number.isFinite(x.onTimeRate) ? x.onTimeRate : null } as Workspace['suppliers'][number]
+      return { ...def, ...x, color: typeof x.color === 'string' ? x.color : def.color, order: typeof x.order === 'number' ? x.order : i, kind: x.kind === '直販' ? '直販' : '商社', tradable: x.tradable !== false, avl: x.avl !== false, handledMakers: arr<unknown>(x.handledMakers).filter((m) => typeof m === 'string'), onTimeRate: typeof x.onTimeRate === 'number' && Number.isFinite(x.onTimeRate) ? x.onTimeRate : null, defectRate: typeof x.defectRate === 'number' && Number.isFinite(x.defectRate) ? x.defectRate : null } as Workspace['suppliers'][number]
     })
   if (ok.length < list.length) warnings.push(`商社マスタの ${list.length - ok.length} 件は形式が読めないので外しました`)
   return ok.length ? ok : SAMPLE_SUPPLIERS

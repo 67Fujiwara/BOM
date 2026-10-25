@@ -1206,3 +1206,36 @@ describe('ラウンド 23 の取り込み（新人）', () => {
     }
   })
 })
+
+describe('ラウンド 23 の取り込み（ベテラン）', () => {
+  const sheet = (notes: string[]) => parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量\t備考', 'リレー\tMY2N\tMY4N\t1\t', ...notes.map((n, i) => `部品${i}\tP-${i}\t\t1\t${n}`), '端子台\tXW2B\t\t4\t'].join('\n'))
+  it('V23-01 他のものについての「…を取外し」「…から撤去」は、その部品の削除にしない（聞く）', () => {
+    const notes = ['保護フィルムを取外し', '旧図面を廃止', '仮設配線を撤去', '他盤から撤去']
+    const r = sheet(notes)
+    expect(r.rows.filter((x) => (x.name ?? '').startsWith('部品')).length).toBe(notes.length)
+  })
+  it('V23-02 変更区分の見出しでも ○/×・要/不要・x/-・A〜D の値の列は区分にしない', () => {
+    for (const [h, vals] of [['変更区分', ['○', '×', '○']], ['対応区分', ['要', '不要', '要']], ['更新区分', ['x', '-', 'x']], ['設変区分', ['A', 'B', 'D']]] as Array<[string, string[]]>) {
+      const r = parseBomPaste(`品名\t型式\t数量\t${h}\nA\tA\t1\t${vals[0]}\nB\tB\t1\t${vals[1]}\nC\tC\t1\t${vals[2]}`)
+      expect(r.rows.length, h).toBe(3)
+    }
+  })
+  it('V23-03 あいまいな見出しの 使用中/廃止/新規 は廃止を削除にしない（追加・削除の語が一緒にあっても、削除は削除の語だけ）', () => {
+    const r = parseBomPaste('品名\t型式\t数量\tステータス\nA\tA\t1\t使用中\nB\tB\t1\t廃止\nC\tC\t1\t新規\nD\tD\t1\t追加\nE\tE\t1\t削除')
+    expect(r.rows.map((x) => x.name)).toEqual(['A', 'B', 'C', 'D'])
+  })
+  it('V23-06 見出しの無いタブ区切りで、1 行目が「部品名, 型式, 数量」でもタブ区切りと読む', () => {
+    const lines = Array.from({ length: 6 }, (_, i) => `部品${i}\tM-${i}\tオムロン\t${i + 1}`)
+    const r = parseBomPaste(['部品名, 型式, 数量', ...lines].join('\n'))
+    expect(r.delimiter).toBe('tab')
+  })
+  it('V23-05 引用符つきの設計記号が毎行にあり、複数行の備考が混ざる EDA 風 CSV の行数が合う', () => {
+    const rows = Array.from({ length: 12 }, (_, i) => (i % 4 === 1 ? `部品${i},M-${i},"R${i}1, R${i}2",1,"注意\n中\n終わり"` : `部品${i},M-${i},"R${i}1, R${i}2",1,`))
+    const r = parseBomPaste(['部品名,型式,回路記号,数量,備考', ...rows].join('\n'))
+    expect(r.rows.length).toBe(12)
+  })
+  it('V23-07 DNP* ・ 未実装※ も外す', () => {
+    const r = parseBomPaste('品名\t型式\t数量\t備考\nA\tA\t1\t\nB\tB\t1\tDNP*\nC\tC\t1\t未実装※')
+    expect(r.rows.map((x) => x.name)).toEqual(['A'])
+  })
+})

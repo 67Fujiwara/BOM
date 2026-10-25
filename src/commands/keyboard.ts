@@ -476,13 +476,14 @@ function sequenceNext() {
     const shownCols = new Set<string>(vmModel().columns)
     const hiddenProblemRows = new Set(problemCells().filter((x) => !shownCols.has(x.field as string)).map((x) => x.rowId))
     const seenRows = new Set([...seqSeen].filter((k) => { const [r, c] = k.split('|'); return c === 'id' || c === 'status' || hiddenProblemRows.has(r) ? rowsWithProblem.has(r) : stillKeys.has(k) }).map((k) => k.split('|')[0]))
-    for (let guard = 0; guard < 400 && seenRows.has(st().cursorRow ?? '') && seenRows.size < 400; guard++) {
-      const before = st().cursorRow
-      moveCursorRow(1)
-      if (st().cursorRow === before) break
-      gotoProblem(1)
-      if (!visibleCursorRow()) break
-      if (st().cursorRow === [...seqSeen][0]?.split('|')[0] && guard > 0) break
+    if (seenRows.has(st().cursorRow ?? '')) {
+      // まだ見ていない行の、最初の問題へ飛ぶ（このカーソルより下を先に、無ければ上へ戻って）
+      const order = vmModel().rows.map((r) => r.id)
+      const pos = new Map(order.map((id, i) => [id, i] as const))
+      const curPos = pos.get(st().cursorRow ?? '') ?? -1
+      const cands = problemCells().filter((x) => !seenRows.has(x.rowId) && pos.has(x.rowId)).sort((a, b) => pos.get(a.rowId)! - pos.get(b.rowId)!)
+      const pick = cands.find((x) => pos.get(x.rowId)! > curPos) ?? cands[0]
+      if (pick) jumpToRow(pick.rowId, pick.field as string)
     }
     const next = `${st().cursorRow}|${st().cursorCol}`
     if (seqSeen.has(next) || seenRows.has(st().cursorRow ?? '')) {

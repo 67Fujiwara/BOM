@@ -398,6 +398,6 @@ export function noUsableQuote(p: Project, row: Row): boolean {
 
 /** 正式依頼の取下げの印に足す（まだ伝えていない前の取下げを消さない。「商社 依頼No / 商社 依頼No」） */
 export function addWithdrawn(cur: string | undefined, add: string): string {
-  const list = (cur ?? '').split(' / ').filter(Boolean)
+  const list = (typeof cur === 'string' ? cur : '').split(' / ').filter(Boolean)
   return list.includes(add) ? list.join(' / ') : [...list, add].join(' / ')
 }

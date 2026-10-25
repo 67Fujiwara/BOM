@@ -355,10 +355,13 @@ let uiTimer: number | undefined
 // 指定先のチェックに使う商社マスタ
 setSupplierMaster(useStore.getState().ws.suppliers)
 // 読み込んだデータの状態・フラグを今の規則で整え直す（取引停止にした商社・前の版で残った印。保存は次の操作のとき）
-{
+// 整えられなかったら（壊れた値）いまのまま開く（白い画面にしない）
+try {
   const ws0 = structuredClone(useStore.getState().ws)
   for (const p of ws0.projects) normalize(p, ws0)
   if (JSON.stringify(ws0.projects) !== JSON.stringify(useStore.getState().ws.projects)) useStore.setState({ ws: ws0 })
+} catch (e) {
+  console.warn('起動時の整え直しを飛ばしました', e)
 }
 useStore.subscribe((s, prev) => {
   if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)

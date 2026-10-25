@@ -609,3 +609,37 @@ describe('ラウンド 17 の取り込み（新人）', () => {
     expect(r.rows[0]).toMatchObject({ name: '10k', qtyNeeded: 2 })
   })
 })
+
+describe('ラウンド 17 の取り込み（ベテラン）', () => {
+  it('V17-03 CSV・タブ区切りの「"」（〃）や 1/2" で行がつながらない', () => {
+    const csv = parseBomPaste('部品名,型式,メーカ,数量\nリレーA,MY4N,オムロン,4\nリレーB,MY2N,",4\n端子台,XW2B,オムロン,2\nヒューズ,F-10,",4\nランプ,L-1,IDEC,1')
+    expect(csv.rows.map((x) => [x.name, x.maker])).toEqual([['リレーA', 'オムロン'], ['リレーB', 'オムロン'], ['端子台', 'オムロン'], ['ヒューズ', 'オムロン'], ['ランプ', 'IDEC']])
+    const tsv = parseBomPaste('部品名\t型式\t数量\t備考\nリレー\tMY4N\t1\t予備\nタイマ\tH3CR\t2\t"\n"\tH3CR-B\t3\t\nグランド 1/2"\tG-1\t1\t')
+    expect(tsv.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', 'タイマ', 'グランド 1/2"'])
+  })
+  it('V17-04 縦の表題欄の下の EDA・属性の見出し', () => {
+    const r = parseBomPaste('図番\t品名\t作成日\t作成者\nD-123\t制御基板A\t2026-10-01\t山田\n\nDescription\tValue\tMPN\tFootprint\tQty\tDNP\nCap\t10uF\tGRM188\t0603\t10\t')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['Cap', 'GRM188', 10]])
+    const s = parseBomPaste('品名\t図番\n制御盤A\tD-1\n部品名\t寸法\t型式\t定格\t数量\t発注先\nリレー\t30x20\tMY4N\tDC24V\t12\tA社')
+    expect(s.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['リレー', 'MY4N', 12]])
+  })
+  it('V17-05 書き写した表で 3 行の削除、変えた行だけの表で 4/5 行を変えた', () => {
+    const cp = parseBomPaste(['品名\t旧型式\t新型式\t旧数量\t新数量', ...Array.from({ length: 10 }, (_, i) => (i < 3 ? `P${i}\tA${i}\t\t1\t` : `P${i}\tA${i}\tA${i}\t1\t1`))].join('\n'))
+    expect(cp.rows.length).toBe(7)
+    const sp = parseBomPaste(['品名\t旧型式\t新型式\t数量', ...Array.from({ length: 5 }, (_, i) => (i < 4 ? `P${i}\tA${i}\tB${i}\t1` : `P${i}\tA${i}\t\t1`))].join('\n'))
+    expect(sp.rows.length).toBe(5)
+  })
+  it('V17-07 旧の列の〃は上の行の旧の値', () => {
+    const r = parseBomPaste('部品名\t旧型式\t新型式\t数量\nリレーA\tMY2N\tMY4N\t1\nリレーB\t〃\t\t1\nリレーC\t〃\t－\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N', 'MY2N', 'MY2N'])
+  })
+  it('V17-08 1号機・2号機・予備、旧／新×号機、1 段の 数量 #1・数量 #2 は足す', () => {
+    expect(parseBomPaste('品名\t型式\t1号機\t2号機\t予備\nリレー\tMY4N\t2\t2\t1').rows[0].qtyNeeded).toBe(5)
+    expect(parseBomPaste('品名\t型式\t数量 #1\t数量 #2\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(5)
+    expect(parseBomPaste('品名\t型式\t旧1号機\t旧2号機\t新1号機\t新2号機\nリレー\tMY4N\t1\t1\t2\t3').rows[0].qtyNeeded).toBe(5)
+  })
+  it('V17-09 号機の数量の〃は上の行の値', () => {
+    const r = parseBomPaste('品名\t型式\t1号機\t2号機\nリレー\tMY4N\t2\t3\nタイマ\tH3CR\t〃\t1')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([5, 3])
+  })
+})

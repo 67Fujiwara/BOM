@@ -42,3 +42,31 @@ describe('sanitizeWorkspace', () => {
     expect(res.ws!.projects[0].caseDecisions).toHaveLength(0)
   })
 })
+
+describe('ラウンド 17（ベテラン）', () => {
+  it('V17-01 文字の印に true・{}・0 が入っていても整えられる', async () => {
+    const res = sanitizeWorkspace({
+      suppliers: [{ id: 'S1', name: '因幡', tradable: false }, { id: 'S2', name: '立花' }],
+      projects: [{ id: 'X', supplierIds: ['S1', 'S2'], rows: [{ id: 'R001', name: 'a', model: 'b', procurement: '相見積', status: 'formalRequested', adoptedSupplierId: 'S1', publishedRev: 1, flags: { formalWithdrawn: true, droppedStopped: {}, surplusRejected: 0, reissue: 'x' } }], quotes: [{ rowId: 'R001', supplierId: 'S1', unitPrice: 10, leadDays: 5, formalRequestNo: 'F1' }] }],
+    })
+    const r = res.ws!.projects[0].rows[0]
+    expect(r.flags).toEqual({})
+    const { normalize } = await import('./lifecycle')
+    expect(() => normalize(res.ws!.projects[0], res.ws!)).not.toThrow()
+  })
+  it('V17-02 数千段の入れ子は外して読む', () => {
+    let deep: unknown = []
+    for (let i = 0; i < 5000; i++) deep = [deep]
+    const res = sanitizeWorkspace({ projects: [{ id: 'X', rows: [{ id: 'R001', name: 'a' }], junk: deep }] })
+    expect(res.ws).toBeTruthy()
+    expect(() => structuredClone(res.ws)).not.toThrow()
+    expect(res.warnings?.join()).toContain('入れ子')
+  })
+  it('V17-11 / V17-12 回答期限の数字は日付として読む、読めない数は知らせる、丸めは範囲の外と言わない', () => {
+    const res = sanitizeWorkspace({ projects: [{ id: 'X', rows: [{ id: 'R001', name: 'a' }], settings: { quoteDeadline: '2026-12-01', processDays: 10.6, budget: 'たくさん' } }] })
+    const s = res.ws!.projects[0].settings
+    expect(s.quoteDeadline).toBe('2026-12-01')
+    expect(res.warnings?.join() ?? '').not.toContain('processDays')
+    expect(res.warnings?.join() ?? '').toContain('budget')
+  })
+})

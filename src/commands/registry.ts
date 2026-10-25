@@ -1787,7 +1787,12 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           const before = backupsSnapshot()
           // 読み込んだ内容を今の規則で整える（取引停止にした商社の採用・見積済の判定など。読み込んだ直後の依頼に古い状態を使わない）
           setSupplierMaster(ws.suppliers)
-          for (const pj of ws.projects) normalize(pj, ws)
+          try {
+            for (const pj of ws.projects) normalize(pj, ws)
+          } catch (e) {
+            setSupplierMaster(st().ws.suppliers)
+            return toast(`読み込んだデータを整えられないので読み込みませんでした（${(e as Error).message}）。いまの内容のままです`, 'err')
+          }
           setSupplierMaster(st().ws.suppliers)
           const done = (backedUp: boolean) => {
             if (!replaceWorkspace(ws)) {

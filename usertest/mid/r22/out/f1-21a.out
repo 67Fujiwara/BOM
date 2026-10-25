@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pick_supplier: R005 R005 を 立花エレテック で採用（その他: fuzz）
+1:order: R013 R013: 発注済にしました
+2:decline: R063 S3 EDIT-ERR R013: 発注済にしました
+3:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:bulk: 採用 71 / 拮抗 10（要見直し）/ 承認要 0 / スキップ 1
+5:pm_decide: R011 y 納期NG の行では y は使えません（Enter で決定パネル）
+6:switch_proc: R080→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+7:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+8:switch_proc: R071→社内在庫 を入れて Enter] 行 1（Rev.4） を公開しました
+9:decline: none
+10:switch_proc: R041→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+11:next_day: +3d
+12:pm_decide: R023 y 納期NG の行では y は使えません（Enter で決定パネル）
+13:decline: none
+14:formal_price: none
+15:decline: none
+16:formal_price: none
+17:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+18:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+19:switch_proc: R069→支給品 を入れて Enter] 行 1（Rev.5） を公開しました
+20:edit_qty: R026 を入れて Enter] 行 1（Rev.6） を公開しました
+21:switch_proc: R008→指定商社 を入れて Enter] 行 1（Rev.7） を公開しました
+22:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:toggle_approval: OFF 案件設定を保存しました
+24:add_row: R081 を入れて Enter] 行 1（Rev.8） を公開しました
+25:add_row: R082 を入れて Enter] 行 1（Rev.9） を公開しました
+26:bulk: 採用 51 / 拮抗 12（要見直し）/ 承認要 0 / スキップ 9
+27:replace_row: R006 R006 の置き換え品 R083 を作りました（公開すると R006 は置換済に / 入れて Enter] 行 2（Rev.10） を公開しました
+28:pm_decide: R007 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+29:pm_decide: R005 y R005: 先行発注許可
+30:pm_decide: R033 y R033: 先行発注許可
+31:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+32:add_row: R084 入れて Enter] 行 1（Rev.11） を公開しました
+33:formal: になります → 55 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 9 行 / 再見積要 0 行
+34:switch_proc: R058→指定商社 入れて Enter] 行 1（Rev.12） を公開しました
+35:pick_supplier: R071 PM承認待ちの行です
+36:formal_price: R075 x1.05 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+37:pm_decide: R036 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+38:next_day: +4d
+39:pm_decide: R007 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+PASS F1-21a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

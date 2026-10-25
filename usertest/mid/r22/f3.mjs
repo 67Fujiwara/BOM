@@ -1,0 +1,31 @@
+// f3: 相見積先の編集（外す → 戻す）で行の状態が見直されるか。外した商社の回答がスコア・推奨に残るか
+import { launch, check, log, summary } from './lib.mjs'
+import { helpers } from './h.mjs'
+const t = await launch(); const { page } = t; const h = helpers(t)
+await t.open('design'); await t.press('1')
+const A = await h.addRow('R080', 'テスト用リレーF3', 'G2R-1 DC24', 'オムロン', '相見積')
+log('publish →', await t.publish('1'))
+await t.role('purchasing'); log('rule →', await h.setting('quoteCompleteRule', '全社', '完了条件'))
+log('all →', (await h.requestTo(null)).msg)
+await t.press('6'); log(await h.q(A, 'S1', 1500, 5)); log(await h.q(A, 'S2', 1400, 6))
+let p = await t.proj(); log('A start', h.show(p, A), '|', await h.status(A))
+log('remove S3 →', await h.setting('supplierIds', 'S1,S2', '外す'))
+p = await t.proj(); log('A after remove', h.show(p, A), '|', await h.status(A), 'supplierIds', JSON.stringify(p.supplierIds))
+log('re-add S3 →', await h.setting('supplierIds', 'S1,S2,S3', '戻す'))
+p = await t.proj(); const a2 = p.rows.find((r) => r.id === A); log('A after re-add', h.show(p, A), '|', await h.status(A))
+// サンプルの見積済の行で、ミスミ（S3）が推奨の行
+const topS3 = await page.evaluate(async () => { const sc = await import(window.__m('/src/model/score.ts')); const s = (await import(window.__m('/src/model/store.ts'))).useStore.getState(); const p = s.project(); return p.rows.filter((r) => r.status === 'quoted' && r.procurement === '相見積').filter((r) => sc.scoreRow(p, r, s.ws.suppliers)[0]?.supplierId === 'S3').map((r) => r.id) })
+log('quoted rows whose top is S3', topS3.slice(0, 5).join(','), topS3.length)
+log('remove S3 again →', await h.setting('supplierIds', 'S1,S2', '外す'))
+const B = topS3[0]
+p = await t.proj(); log('B', h.show(p, B), '|', await h.status(B))
+await t.role('design'); await t.press('1'); await t.goto(B); await t.press('Space'); await page.waitForTimeout(100); const det = (await page.locator('[data-testid=detail]').count()) ? (await page.getByTestId('detail').textContent()).slice(0, 300) : ''; await t.press('Escape')
+log('detail B', det)
+await t.goto(B); await t.press('a'); await page.waitForTimeout(80); const ta = await t.toast(); log('design a B →', ta)
+p = await t.proj(); log('B after a', h.show(p, B))
+log('bulk →', await t.bulk())
+p = await t.proj(); const s3adopt = p.rows.filter((r) => r.adoptedSupplierId === 'S3' && r.procurement === '相見積').map((r) => r.id); log('rows adopted at S3 after removal + bulk', s3adopt.length, s3adopt.slice(0, 5).join(','))
+check('F3-1 相見積先から外した商社（ミスミ）を、設計の a・一括採用が推奨として採用しない', !s3adopt.length && p.rows.find((r) => r.id === B).adoptedSupplierId !== 'S3', `${ta} / bulk S3=${s3adopt.length}`)
+check('F3-2 外した商社を戻したら、その商社の回答待ち（見積中 2/3）に戻る（全社回答の条件）、または見積済のまま', ['quoting', 'quoted'].includes(a2.status), a2.status)
+await t.shot('f3')
+summary(); await t.close()

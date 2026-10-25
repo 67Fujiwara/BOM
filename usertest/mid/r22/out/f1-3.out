@@ -1,0 +1,42 @@
+0:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:decline: R016 S2 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+2:order: R013 R013: 発注済にしました
+3:bulk: 採用 69 / 拮抗 3（要見直し）/ 承認要 0 / スキップ 1
+4:replace_row: R032 R032 の置き換え品 R081 を作りました（公開すると R032 は置換済に / ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+5:excel: purchasing 3 sheets
+6:rough: 5 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+7:cancel_row: R061 を入れて Enter] 行 1（Rev.3） を公開しました
+8:pick_supplier: none
+9:excel: pm 3 sheets
+10:switch_proc: R049→指定商社 を入れて Enter] 行 1（Rev.4） を公開しました
+11:withdraw_x: none
+12:formal: （拮抗 3 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 71 行 × 2 社に正式見積を依頼
+13:edit_qty: R057 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+14:cancel_row: R050 を入れて Enter] 行 2（Rev.5） を公開しました
+15:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+16:order: none
+17:edit_qty: R029 ありません。エラーのある行が 3 行あります（F8 で移動）
+18:next_day: +3d
+19:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+20:order: none
+21:formal_price: R014 x1.05 EDIT-ERR 依頼できる行がありません（選定済・再発行対象の行なし。作業中 
+22:receive: R013 R013: 入荷済にしました
+23:pm_decide: R007 Shift+Y R007: 受入
+24:reload: reload
+25:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+26:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+27:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+28:add_row: R082 を入れて Enter] 行 1（Rev.6） を公開しました
+29:excel: purchasing 1 sheets
+30:receive: none
+31:decline: R080 S3 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:receive: none
+33:formal_price: R064 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+34:pm_decide: R001 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+35:pick_supplier: none
+36:edit_qty: R003 を入れて Enter] 行 1（Rev.7） を公開しました
+37:pm_decide: R034 y 納期NG の行では y は使えません（Enter で決定パネル）
+38:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 2 行は除外）
+39:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+PASS F1-3 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,86 @@
+[
+  {
+    "rows": 80,
+    "gap": 120,
+    "ms": 3413,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 80,
+    "gap": 40,
+    "ms": 1947,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 80,
+    "gap": 15,
+    "ms": 2535,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}"
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 120,
+    "ms": 3725,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}",
+      "X081.status:\"quoted\"→\"quoting\"",
+      "X082.status:\"quoted\"→\"quoting\"",
+      "X083.status:\"quoted\"→\"quoting\"",
+      "X084.status:\"quoted\"→\"quoting\""
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 40,
+    "ms": 2891,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}",
+      "X081.status:\"quoted\"→\"quoting\"",
+      "X082.status:\"quoted\"→\"quoting\"",
+      "X083.status:\"quoted\"→\"quoting\"",
+      "X084.status:\"quoted\"→\"quoting\""
+    ]
+  },
+  {
+    "rows": 300,
+    "gap": 15,
+    "ms": 2221,
+    "end": "R016 型式/ナビ",
+    "diff": [
+      "R005.working:undefined→{\"model\":\"MY4N\"}",
+      "R009.working:undefined→{\"maker\":\"OMRON\"}",
+      "R016.ackRules:[]→[\"rule.model.cp30\"]",
+      "R022.working:undefined→{\"model\":\"7\"}",
+      "X081.status:\"quoted\"→\"quoting\"",
+      "X082.status:\"quoted\"→\"quoting\"",
+      "X083.status:\"quoted\"→\"quoting\"",
+      "X084.status:\"quoted\"→\"quoting\""
+    ]
+  }
+]

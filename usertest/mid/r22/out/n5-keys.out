@@ -1,0 +1,26 @@
+created → 中堅R20盤（3 行）を作成しました。Ctrl+Enter で提出します
+dueDate 2026-12-25 rows 3 confirmed false
+PASS N5-0 納期の入力どおり（2026-12-25） :: 2026-12-25
+publish → 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+subs 1 caseDecisions [{"id":"C1","kind":"案件設定確定","status":"open","at":"2026-10-25T18:00:01.237Z"}]
+PASS N5-1 提出 Rev.1 で案件設定確定が PM の 7 に載る :: [{"id":"C1","kind":"案件設定確定","status":"open","at":"2026-10-25T18:00:01.237Z"}]
+design 7 y → 権限なし（案件設定の確定は PM）
+PASS N5-2-design design の y では確定しない
+purchasing 7 y → 権限なし（案件設定の確定は PM）
+PASS N5-2-purchasing purchasing の y では確定しない
+PM 7 items case:C1
+PASS N5-3 PM の 7 に案件の行 :: case:C1
+status bar ナビ—PM 鈴木: 要決定 1役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプ↓表へF8次の問題
+cursorRow case:C1 status bar on case row ナビ—PM 鈴木: 要決定 1役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプ↓表へF8次の問題
+Shift+Y → 案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く） confirmed false
+PASS N5-4 案件の行の Shift+Y で確定しない（却下の意味は無い） :: 案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く）
+Enter → {"kind":"settings","options":[],"index":0}
+PASS N5-5 案件の行の Enter で案件設定が開く :: {"kind":"settings","options":[],"index":0}
+y → 案件設定を確定しました（購買・設計に伝わります） | kind ok | confirmed true | decisions [["鈴木","既定で確定"]]
+PASS N5-6 y で案件設定を確定（決定の記録 1 件・案件の要決定が済）
+PASS N5-7 納期ありの確定は ok の知らせ（未定の警告は出ない） :: 案件設定を確定しました（購買・設計に伝わります）
+PM 7 after 
+PASS N5-8 確定後、7 から案件の行が消える
+y again → 行を選んでください（↓ で先頭の行へ）
+ERRORS []
+== 10/10 PASS

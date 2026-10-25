@@ -1,0 +1,9 @@
+defaultPrevented {"Ctrl+r":false,"Ctrl+-":false,"Ctrl++":false,"Ctrl+0":false,"Ctrl+f":true,"Ctrl+l":false,"Ctrl+t":false,"Ctrl+w":false,"Ctrl+p":true,"Ctrl+s":true,"F5":false,"Ctrl+Shift+r":false}
+PASS N12-1 Ctrl+R・Ctrl+- は止めない（再読み込み・縮小がブラウザに通る） :: {"Ctrl+r":false,"Ctrl+-":false,"Ctrl++":false,"Ctrl+0":false,"Ctrl+f":true,"Ctrl+l":false,"Ctrl+t":false,"Ctrl+w":false,"Ctrl+p":true,"Ctrl+s":true,"F5":false,"Ctrl+Shift+r":false}
+PASS N12-2 F5 も止めない :: {"Ctrl+r":false,"Ctrl+-":false,"Ctrl++":false,"Ctrl+0":false,"Ctrl+f":true,"Ctrl+l":false,"Ctrl+t":false,"Ctrl+w":false,"Ctrl+p":true,"Ctrl+s":true,"F5":false,"Ctrl+Shift+r":false}
+PASS N12-3 Ctrl+L・Ctrl+T・Ctrl+W（アドレス欄・タブ）も止めない :: {"Ctrl+r":false,"Ctrl+-":false,"Ctrl++":false,"Ctrl+0":false,"Ctrl+f":true,"Ctrl+l":false,"Ctrl+t":false,"Ctrl+w":false,"Ctrl+p":true,"Ctrl+s":true,"F5":false,"Ctrl+Shift+r":false}
+PASS N12-4 Ctrl+0・Ctrl++ （拡大縮小）も止めない :: {"Ctrl+r":false,"Ctrl+-":false,"Ctrl++":false,"Ctrl+0":false,"Ctrl+f":true,"Ctrl+l":false,"Ctrl+t":false,"Ctrl+w":false,"Ctrl+p":true,"Ctrl+s":true,"F5":false,"Ctrl+Shift+r":false}
+Ctrl+R on numeric cell false
+PASS N12-5 数値セルでも Ctrl+R は止めない :: false
+ERRORS []
+== 5/5 PASS

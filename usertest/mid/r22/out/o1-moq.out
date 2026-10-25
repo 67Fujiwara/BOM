@@ -1,0 +1,13 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish → 指摘 1 件 を公開しました
+orderQty 100 → 指摘 1 件 を公開しました
+X R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case 閾値超
+B prompt {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+purchasing orderQty 500 → R011 の発注数 500 は必要数 24 の 21 倍です。列（発注数）を確かめてください（Ctrl+Z で戻す）
+X now R011 相見積 st=selected adopt=S1 reason= oq=500 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case 閾値超
+B Enter → R011 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+after R011 相見積 st=selected adopt=S1 reason= oq=500 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] decisions []
+PASS O1-moq-1 PM が見た発注数（100）と違う 500 を、確認なしに承認しない :: orderQty=500 toast=R011 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+ERRORS []
+== 1/1 PASS

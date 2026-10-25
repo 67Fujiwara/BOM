@@ -1,0 +1,33 @@
+ditto-line m=2500 len=5040 table 53ms n=4
+ditto-line-bom m=2500 len=5040 bom 120ms n=3
+commaquote-line m=2500 len=12540 table 378ms n=4
+ditto-line m=5000 len=10040 table 146ms n=4
+ditto-line-bom m=5000 len=10040 bom 210ms n=3
+commaquote-line m=5000 len=25040 table 1020ms n=4
+ditto-line m=10000 len=20040 table 626ms n=4
+ditto-line-bom m=10000 len=20040 bom 811ms n=3
+commaquote-line m=10000 len=50040 table 5665ms n=4
+ditto-line m=20000 len=40040 table 3701ms n=4
+ditto-line-bom m=20000 len=40040 bom 3983ms n=3
+commaquote-line m=20000 len=100040 table 21955ms n=4
+ditto-line m=40000 len=80040 table 14016ms n=4
+ditto-line-bom m=40000 len=80040 bom 14404ms n=3
+commaquote-line m=40000 len=200040 table 87428ms n=4
+tsv refs=2 rows=2500 len=55294 bom 209ms n=2500
+tsv refs=5 rows=2500 len=85294 bom 169ms n=2500
+csv tabs=5 rows=2500 len=75294 bom 110ms n=2500
+tsv-ml rows=2500 len=72792 bom 316ms n=2500
+csv-open-quote rows=2500 len=48546 bom 150ms n=2500
+csv-inch rows=2500 len=55156 bom 163ms n=2500
+tsv refs=2 rows=10000 len=227794 bom 447ms n=10000
+tsv refs=5 rows=10000 len=347794 bom 378ms n=10000
+csv tabs=5 rows=10000 len=307794 bom 536ms n=10000
+tsv-ml rows=10000 len=297792 bom 701ms n=10000
+csv-open-quote rows=10000 len=200796 bom 486ms n=10000
+csv-inch rows=10000 len=223906 bom 579ms n=10000
+tsv refs=2 rows=40000 len=977794 bom 1919ms n=40000
+tsv refs=5 rows=40000 len=1457794 bom 1995ms n=40000
+csv tabs=5 rows=40000 len=1297794 bom 1974ms n=40000
+tsv-ml rows=40000 len=1257792 bom 2223ms n=40000
+csv-open-quote rows=40000 len=869796 bom 2167ms n=40000
+csv-inch rows=40000 len=928906 bom 2788ms n=40000

@@ -1,0 +1,42 @@
+0:cancel_row: R003 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:pick_supplier: R016 R016 を 因幡電機 で採用
+2:receive: none
+3:cancel_row: R046 を入れて Enter] 行 1（Rev.3） を公開しました
+4:pm_decide: empty
+5:add_row: R081 unpublished
+6:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+7:edit_qty: R042 を入れて Enter] 行 2（Rev.4） を公開しました
+8:edit_qty: R048 行 2（Rev.4） を公開しました
+9:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+10:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
+11:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
+12:order: R013 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+13:formal_price: R016 x1 EDIT-ERR 納期NG の行です。対策（PM の受入・別商社など）が決まるま
+14:decline: R071 S2 EDIT-ERR 納期NG の行です。対策（PM の受入・別商社など）が決まるま
+15:undo: design 元に戻す: セル編集
+16:excel: pm 1 sheets
+17:edit_qty: R031 を入れて Enter] 行 1（Rev.5） を公開しました
+18:replace_row: R002 R002 の置き換え品 R082 を作りました（公開すると R002 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+19:decline: R017 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+20:withdraw_x: R002 R002: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+21:formal_price: R034 x1 EDIT-ERR R002: 正式依頼の取下げ（因幡電機 P-2026-041-
+22:edit_qty: R034 を入れて Enter] 行 1（Rev.7） を公開しました
+23:receive: none
+24:pm_decide: R013 b R013: 次点商社へ
+25:pick_supplier: R062 R062: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+26:bulk: 採用 66 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 0
+27:withdraw_x: R013 R013: 正式依頼の取下げ（因幡電機 P-2026-041-S1-1）を伝えた（確認済）
+28:next_day: +1d
+29:pick_supplier: R062 PM承認待ちの行です
+30:formal_price: R001 x3 EDIT-ERR R001 の正式単価 ¥438（概算から +200%）。桁・行
+31:rough: 8 行 × 3 社に依頼（回答期限 2026-11-01）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+32:switch_proc: R014→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+33:formal_price: R001 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+34:pm_decide: R034 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+35:formal_price: R045 x1.5 EDIT-ERR R045 の正式単価 ¥15,209（概算から +50%）。桁
+36:switch_proc: R016→相見積 を入れて Enter] 行 1（Rev.8） を公開しました
+37:switch_proc: R078→社内在庫 を入れて Enter] 行 1（Rev.9） を公開しました
+38:formal_price: R016 x1.5 EDIT-ERR R016 の正式単価 ¥128,445（概算から +50%）。
+39:pick_supplier: R062 PM承認待ちの行です
+PASS F1-8 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,27 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+leadNG rows R003,R032,R044,R046
+PM e R003 R003: 特急・分納
+PM p R032 R032: 委譲
+PM Shift+Y R044 R044: 受入
+E extra 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+before decline R003 相見積 st=selected adopt=S1 reason= oq=- flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] cm 分納・特急 extra 20000
+before decline R032 相見積 st=selected adopt=S3 reason=納期 oq=1 flags={"delegated":true,"countermeasure":"商社変更"} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] cm 商社変更 extra null
+before decline R044 相見積 st=selected adopt=S1 reason= oq=2 flags={"countermeasure":"受入"} quotes=[["S1",2835,20,null],["S2",3099,22,null],["S3",3213,5,null]] cm 受入 extra null
+decline R003 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline R032 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline R044 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after decline R003 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] cm undefined extra null ball design case なし | 見積済
+after decline R032 相見積 st=quoted adopt=- reason= oq=1 flags={"delegated":true} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,-1,null]] cm undefined extra null ball purchasing case なし | 見積済 · 委譲
+after decline R044 相見積 st=quoted adopt=- reason= oq=2 flags={} quotes=[["S1",2835,-1,null],["S2",3099,22,null],["S3",3213,5,null]] cm undefined extra null ball design case なし | 見積済
+money 概算 ¥18,571,654 / 正式 ¥18,573,210 / 予算 ¥2,800,000 (+563.3%) → 概算 ¥18,470,591 / 正式 ¥18,472,147 / 予算 ¥2,800,000 (+559.7%)
+PASS F4-1 (e) 採用商社が辞退したら特急費・対策区分を残さない :: extra=null cm=undefined
+PASS F4-2 (受入) 採用商社が辞退したら「受入（遅延許容）」を残さない（選び直した商社で判定し直す） :: cm=undefined
+PASS F4-3 (p 委譲) 辞退後も購買が選び直せる（委譲中のボールは購買、または選定者） :: {"pmPending":false,"contested":false,"leadNG":false,"delegated":true,"renegotiating":false,"formalDiff":false}
+design a A → R044 を ミスミ で採用（スコア 88.6 / 実績なし）
+design a E → R003 を 立花エレテック で採用（スコア 98 / 最安）
+purch a P → R032 を 因幡電機 で採用（スコア 69.2 / 最安・納期NG(6日超過)）
+after reselect R003 相見積 st=selected adopt=S2 reason= oq=2 flags={} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] cm undefined | 選定済 case なし
+after reselect R032 相見積 st=selected adopt=S1 reason=拮抗 oq=1 flags={"leadNG":true} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,-1,null]] cm undefined | 選定済 · 納期NG case 納期NG
+after reselect R044 相見積 st=selected adopt=S3 reason=拮抗 oq=2 flags={} quotes=[["S1",2835,-1,null],["S2",3099,22,null],["S3",3213,5,null]] cm undefined | 選定済 case なし
+PM 7 has E/P/A false true false
+== 3/3 PASS

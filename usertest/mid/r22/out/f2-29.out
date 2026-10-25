@@ -1,0 +1,42 @@
+0:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:cancel_row: R046 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+2:pick_supplier: none
+3:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+4:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+5:consolidate: やめました（何も変えていません）
+6:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+7:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+8:next_day: +1d
+9:pick_supplier: none
+10:edit_qty: R040 を入れて Enter] 行 1（Rev.3） を公開しました
+11:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+12:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+13:formal_price: R008 x1.05 EDIT-ERR 戻す操作がありません（この案件で戻せるあなたの操作は残っていま
+14:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+15:switch_proc: R012→支給品 を入れて Enter] 行 1（Rev.4） を公開しました
+16:add_row: R081 を入れて Enter] 行 1（Rev.5） を公開しました
+17:formal_price: R030 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+18:edit_qty: R036 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+19:excel: purchasing 1 sheets
+20:formal_price: R002 x1.5 EDIT-ERR R002 の正式単価 ¥611（概算から +50%）。桁・行を
+21:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+22:edit_qty: R024 を入れて Enter] 行 2（Rev.6） を公開しました
+23:pick_supplier: none
+24:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+25:reload: reload
+26:decline: none
+27:add_row: R082 を入れて Enter] 行 1（Rev.7） を公開しました
+28:replace_row: R008 R008 の置き換え品 R083 を作りました（公開すると R008 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+29:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+31:pick_supplier: none
+32:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+33:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+34:formal_price: R061 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+35:cancel_row: R033 を入れて Enter] 行 1（Rev.9） を公開しました
+36:bulk: 採用 15 / 拮抗 1（要見直し）/ 承認要 0 / スキップ 9
+37:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+38:add_row: R084 入れて Enter] 行 1（Rev.10） を公開しました
+39:edit_qty: R062 行 1（Rev.10） を公開しました
+PASS F2-29 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,19 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+N replace → R081 の置き換え品 R082 を作りました（公開すると R081 は置換済になります。Ctrl+Z で戻す）
+N2 R082
+publish Rev.d → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"客先要求","pend","R081,R082",null,""]] N R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] pendingRev 4 {"kind":"replace","by":"R082"} N2 R082 相見積 st=submitted adopt=- reason= oq=- flags={"reconfirm":true,"pmPending":true,"pmReason":"変更セット"} quotes=[]
+PASS N11-0 不変条件
+PM y R081 → R081・Rev.4 の変更セット 2 行まとめて: 承認
+after [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"客先要求","appr","R081,R082",null,""]] N R081 相見積 st=replaced adopt=- reason= oq=- flags={} quotes=[] replaced N2 R082 相見積 st=submitted adopt=- reason= oq=- flags={"reconfirm":true} quotes=[] submitted
+PASS N11-1c 不変条件
+PASS N11-1 承認されていない追加 N の置換を承認すると N は置換済・N2 が公開 :: replaced submitted
+PASS N11-2 Rev.c の追加は D だけ承認待ちで残る
+PM y R035 → R035・Rev.3 の変更セット 1 行まとめて: 承認
+PASS N11-3c 不変条件
+ERRORS []
+== 5/5 PASS

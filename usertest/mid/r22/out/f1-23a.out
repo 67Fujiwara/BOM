@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+1:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:switch_proc: R016→社内在庫 ）まで書いてください … 直すか Alt+x で確認済みに）
+3:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 1
+4:pm_decide: R044 b R044: 次点商社へ
+5:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 1
+6:withdraw_x: none
+7:receive: none
+8:switch_proc: R034→支給品 ）まで書いてください … 直すか Alt+x で確認済みに）
+9:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+10:pm_decide: R054 Shift+Y R054: 却下
+11:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+12:withdraw_x: R045 R045: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+13:edit_qty: R026 ）まで書いてください … 直すか Alt+x で確認済みに）
+14:pick_supplier: R046 R046 を ミスミ で採用
+15:add_row: R081 ）まで書いてください … 直すか Alt+x で確認済みに）
+16:pm_decide: R064 y 納期NG の行では y は使えません（Enter で決定パネル）
+17:switch_proc: R067→指定商社 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+18:switch_proc: R046→社内在庫 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+19:cancel_row: R037 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+20:pick_supplier: R074 R074 を 因幡電機 で採用
+21:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+22:withdraw_x: none
+23:pm_decide: R003 b R003: 次点商社へ
+24:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+25:undo: design 元に戻す: 採用 因幡電機
+26:decline: R018 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+27:undo: design 元に戻す: 行を削除
+28:add_row: R082 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+29:edit_qty: R057 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+30:pm_decide: R064 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:pm_decide: R026 y R026: 先行発注許可
+32:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:edit_qty: R030 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+34:pm_decide: R005 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+35:cancel_row: R026 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+36:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+37:formal: になります → 36 行 × 1 社に正式見積を依頼。除外: 作業中 2 行 / 承認待ち 0 行 / 再見積要 0 行
+38:decline: R042 S3 EDIT-ERR 36 行 × 1 社に正式見積を依頼。除外: 作業中 2 行 
+39:undo: purchasing 元に戻す: セル編集
+PASS F1-23a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,436 @@
+[
+  {
+    "gone": "S3",
+    "role": "purchasing",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:13"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "purchasing",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "purchasing",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:13"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "因幡電機 単価",
+      "因幡電機 納期",
+      "因幡電機 MOQ",
+      "立花エレテック 単価",
+      "立花エレテック 納期"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "purchasing",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・因幡電機、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "design",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:13"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "design",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "design",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:13"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "因幡電機 単価",
+      "因幡電機 納期",
+      "因幡電機 MOQ",
+      "立花エレテック 単価",
+      "立花エレテック 納期"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S3",
+    "role": "design",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・因幡電機、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "purchasing",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:14"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "purchasing",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "purchasing",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:14"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "ミスミ 単価",
+      "ミスミ 納期",
+      "ミスミ MOQ"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "purchasing",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・ミスミ、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "design",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:14"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "design",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "design",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:14"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "ミスミ 単価",
+      "ミスミ 納期",
+      "ミスミ MOQ"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2",
+    "role": "design",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・ミスミ、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "purchasing",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:12"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "purchasing",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "purchasing",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:12"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "因幡電機 単価",
+      "因幡電機 納期",
+      "因幡電機 MOQ",
+      "立花エレテック 単価",
+      "立花エレテック 納期"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "purchasing",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・因幡電機、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "design",
+    "key": "1",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:12"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（社内、BOM・変更点・チェック結果の 3 シート）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "design",
+    "key": "2",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:76"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け、BOM シートのみ・価格なし）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "design",
+    "key": "3",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:81",
+      "変更点:76",
+      "チェック結果:12"
+    ],
+    "headers": [
+      "単価",
+      "正式単価",
+      "納期(日)",
+      "因幡電機 単価",
+      "因幡電機 納期",
+      "因幡電機 MOQ",
+      "立花エレテック 単価",
+      "立花エレテック 納期"
+    ],
+    "bad": [],
+    "toast": "Excel を出力しました（保管用、全列）",
+    "errs": []
+  },
+  {
+    "gone": "S1+S2+S3+S4+S5",
+    "role": "design",
+    "key": "4",
+    "download": true,
+    "name": "download",
+    "sheets": [
+      "BOM:74"
+    ],
+    "headers": [],
+    "bad": [],
+    "toast": "Excel を出力しました（商社向け・因幡電機、BOM シートのみ・価格なし）",
+    "errs": []
+  }
+]

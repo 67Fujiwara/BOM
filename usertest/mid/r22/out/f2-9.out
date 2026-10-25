@@ -1,0 +1,44 @@
+0:withdraw_x: none
+1:switch_proc: R017→相見積  で選び、変更番号（] 行 5（Rev.2） を公開しました
+2:decline: none
+3:withdraw_x: none
+4:pick_supplier: none
+5:edit_qty: R067 行 5（Rev.2） を公開しました
+6:order: R003 R003: 発注済にしました
+7:undo: design 元に戻す: セル編集
+8:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+9:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+10:pm_decide: R054 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+11:formal_price: R051 x3 EDIT-ERR R051 の正式単価 ¥2,250（概算から +200%）。桁
+12:excel: design 3 sheets
+13:switch_proc: R018→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+14:formal_price: R031 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+15:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+16:next_day: +1d
+17:order: R031 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+18:edit_qty: R004 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+19:add_row: R081 を入れて Enter] 行 2（Rev.3） を公開しました
+20:add_row: R082 を入れて Enter] 行 1（Rev.4） を公開しました
+21:next_day: +4d
+22:edit_qty: R014 行 1（Rev.4） を公開しました
+23:switch_proc: R015→支給品 行 1（Rev.4） を公開しました
+24:excel: pm 1 sheets
+25:formal_price: R023 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:switch_proc: R060→指定商社 ）を入れて Ente] 行 3（Rev.5） を公開しました
+27:reload: reload
+28:next_day: +12d
+29:switch_proc: R067→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+31:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+32:switch_proc: R013→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+33:rough: 8 行 × 3 社に依頼（回答期限 2026-11-12）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+VIOLATION after #34 (rough): ["R004 納期NG なのに採用なし"]
+  history: ["26:switch_proc: R060→指定商社 ）を入れて Ente] 行 3（Rev.5） を公開しました","27:reload: reload","28:next_day: +12d","29:switch_proc: R067→支給品 を入れて Enter] 行 1（Rev.6） を公開しました","30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）","31:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct","32:switch_proc: R013→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）","33:rough: 8 行 × 3 社に依頼（回答期限 2026-11-12）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて"]
+34:decline: R066 S3 EDIT-ERR 8 行 × 3 社に依頼（回答期限 2026-11-12）。メ
+35:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+36:edit_qty: R010 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+37:pm_decide: R005 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+38:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+39:order: R013 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+FAIL F2-9 不変条件の違反なし（40 操作） :: violations=1
+== 0/1 PASS

@@ -1,0 +1,42 @@
+0:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:next_day: +3d
+2:edit_qty: R042 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+3:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+4:replace_row: R018 R018 の置き換え品 R081 を作りました（公開すると R018 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+5:pick_supplier: R041 R041 を 因幡電機 で採用（その他: fuzz）
+6:receive: none
+7:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:pm_decide: R034 y 納期NG の行では y は使えません（Enter で決定パネル）
+9:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+10:order: R013 R013: 発注済にしました
+11:add_row: R082 を入れて Enter] 行 1（Rev.4） を公開しました
+12:formal_price: none
+13:rough: 7 行 × 2 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+14:switch_proc: R070→支給品 を入れて Enter] 行 1（Rev.5） を公開しました
+15:edit_qty: R032 を入れて Enter] 行 1（Rev.6） を公開しました
+16:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:next_day: +6d
+18:pick_supplier: R002 1〜1 で商社を選んでください
+19:pm_decide: R045 y 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+20:cancel_row: R010 を入れて Enter] 行 1（Rev.7） を公開しました
+21:edit_qty: R044 を入れて Enter] 行 1（Rev.8） を公開しました
+22:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:formal_price: none
+24:formal_price: none
+25:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+26:pm_decide: R045 y R045: 先行発注許可
+27:rough: 2 行 × 2 社に依頼（回答期限 2026-11-06）。見積済だった 2 行は、新しく頼んだ商社の回答を待つため見積
+28:edit_qty: R048 を入れて Enter] 行 1（Rev.9） を公開しました
+29:excel: design 1 sheets
+30:rough: 1 行 × 2 社に依頼（回答期限 2026-11-06）。見積済だった 1 行は、新しく頼んだ商社の回答を待つため見積
+31:edit_qty: R031 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+32:switch_proc: R006→支給品 入れて Enter] 行 2（Rev.10） を公開しました
+33:formal_price: none
+34:cancel_row: R052 入れて Enter] 行 1（Rev.11） を公開しました
+35:undo: purchasing 元に戻す: 概算見積を依頼（立花エレテック・ミスミ）
+36:undo: pm 元に戻す: 決定: 先行発注許可
+37:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+38:formal_price: none
+39:reload: reload
+PASS F1-12 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

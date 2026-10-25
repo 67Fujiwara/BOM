@@ -1,0 +1,42 @@
+0:pick_supplier: none
+1:edit_qty: R036 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+2:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+3:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:bulk: 採用 36 / 拮抗 8（要見直し）/ 承認要 0 / スキップ 6
+6:replace_row: R008 R008 の置き換え品 R081 を作りました（公開すると R008 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+7:switch_proc: R080→指定商社 を入れて Enter] 行 1（Rev.4） を公開しました
+8:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+9:switch_proc: R071→社内在庫 を入れて Enter] 行 1（Rev.5） を公開しました
+10:decline: R012 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+11:cancel_row: R016 を入れて Enter] 行 1（Rev.6） を公開しました
+12:receive: R002 R002: 入荷済にしました
+13:pm_decide: R033 y 納期NG の行では y は使えません（Enter で決定パネル）
+14:decline: R030 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+15:formal_price: R062 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+16:undo: design 取消・置換を公開した R016 は戻せません（購買に伝わっています。同じ部品が要
+17:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+18:edit_qty: R027 を入れて Enter] 行 1（Rev.7） を公開しました
+19:switch_proc: R010→指定商社 を入れて Enter] 行 1（Rev.8） を公開しました
+20:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+21:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+22:add_row: R082 を入れて Enter] 行 1（Rev.9） を公開しました
+23:add_row: R083 入れて Enter] 行 1（Rev.10） を公開しました
+24:replace_row: R006 R006 の置き換え品 R084 を作りました（公開すると R006 は置換済に / 入れて Enter] 行 2（Rev.11） を公開しました
+25:decline: R020 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:pm_decide: R005 y R005: 先行発注許可
+27:order: R062 R062: 発注済にしました
+28:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:pm_decide: R032 y R032: 先行発注許可
+30:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+31:formal_price: R014 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+32:formal: になります → 25 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 2 行 / 再見積要 2 行
+33:switch_proc: R058→指定商社 入れて Enter] 行 1（Rev.12） を公開しました
+34:pick_supplier: R065 R065 を 因幡電機 で採用
+35:order: R014 R014: 発注済にしました
+36:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 2 行 / 再見積要 2 行
+37:switch_proc: R059→客先指定品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+38:next_day: +1d
+39:decline: R004 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+PASS F2-21 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

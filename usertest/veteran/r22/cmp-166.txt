@@ -1,0 +1,9 @@
+
+### DP4-dnp-note-words — 備考「DNP 手配」「DNP 品」「DNP製」「DNP (大日本印刷)」「※DNP 手配」「DNP」
+期待: 備考に DNP の語が入っていても実装しない部品とは限らない（手配先メモ）。「DNP」だけの行は外す
+  A n=2 C / M-3 /  / 1 / 個 /  /  / DNP製 | E / M-5 /  / 1 / 個 /  /  / ※DNP 手配
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 4 行は取り込みません
+  B n=4 A / M-1 /  / 1 / 個 /  /  / DNP 手配 | B / M-2 /  / 1 / 個 /  /  / DNP 品 | C / M-3 /  / 1 / 個 /  /  / DNP製 | E / M-5 /  / 1 / 個 /  /  / ※DNP 手配
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 2 行は取り込みません
+
+166: 8 shapes, 1 differ

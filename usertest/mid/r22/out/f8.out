@@ -1,0 +1,12 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+hide via palette {"items":["R001R001 を置換PLC CPUユニット FX5U-32MR/ESAlt+r","R001R001 を発注PLC CPUユニット FX5U-32MR/ESAlt+o","R001R001 を入荷PLC CPUユニット FX5U-32MR/ESAlt+i"],"toast":"R001 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）"}
+H hidden true
+view 1 cursor R002
+palette H を発注 → {"items":["R001R001 を隠すPLC CPUユニット FX5U-32MR/ESAlt+h","R001R001 を置換PLC CPUユニット FX5U-32MR/ESAlt+r","R001R001 を発注PLC CPUユニット FX5U-32MR/ESAlt+o"],"toast":"R001: 発注済にしました"} view 1 cursor R001
+H ordered true C ordered false
+PASS F8-1 隠した行 H にパレットで「発注」→ H が発注済、カーソルの行 C は変わらない :: H=true C=false
+palette H を隠す（戻す）→ {"items":["R001R001 を発注PLC CPUユニット FX5U-32MR/ESAlt+o","R001R001 を隠すPLC CPUユニット FX5U-32MR/ESAlt+h","R001R001 を置換PLC CPUユニット FX5U-32MR/ESAlt+r"],"toast":"R001 を表示に戻しました"}
+H hidden false C hidden false
+PASS F8-2 隠した行をパレットで戻すと H が戻り、C は隠れない
+== 2/2 PASS

@@ -1,0 +1,42 @@
+0:receive: none
+1:receive: none
+2:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+3:switch_proc: R065→指定商社 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+4:edit_qty: R071 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+5:switch_proc: R027→社内在庫 を入れて Enter] 行 1（Rev.3） を公開しました
+6:order: R013 R013: 発注済にしました
+7:edit_qty: R053 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+8:pick_supplier: R028 R028 を 因幡電機 で採用
+9:add_row: R081 を入れて Enter] 行 2（Rev.4） を公開しました
+10:edit_qty: R053 行 2（Rev.4） を公開しました
+11:excel: design 3 sheets
+12:decline: R040 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+13:rough: 6 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+14:edit_qty: R021 を入れて Enter] 行 2（Rev.5） を公開しました
+15:formal_price: none
+16:excel: pm 3 sheets
+17:edit_qty: R027 を入れて Enter] 行 1（Rev.6） を公開しました
+18:pm_decide: R003 Shift+Y R003: 受入
+19:next_day: +3d
+20:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+21:formal_price: none
+22:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:cancel_row: R032 を入れて Enter] 行 2（Rev.7） を公開しました
+24:order: none
+25:next_day: +11d
+26:excel: pm 3 sheets
+27:receive: R013 R013: 入荷済にしました
+28:formal_price: none
+29:bulk: 採用 64 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 6
+30:order: none
+31:pm_decide: R019 Shift+Y R019: 受入
+32:add_row: R082 unpublished
+33:undo: design 元に戻す: セル編集
+34:withdraw_x: none
+35:excel: pm 3 sheets
+36:add_row: R083 を入れて Enter] 行 2（Rev.8） を公開しました
+37:pick_supplier: none
+38:pick_supplier: none
+39:edit_qty: R074 行 2（Rev.8） を公開しました
+PASS F1-1 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

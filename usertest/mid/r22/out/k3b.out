@@ -1,0 +1,8 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X after stop R034 客先指定品 st=quoting adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機"} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 0/1 ball purchasing case なし
+X need date 2026-11-13 formalDays 7
+PM 7 has X false
+scoreRow (推奨) []
+PASS K3B-1 取引停止の商社（因幡）がスコアの推奨に出ない（客先指定品の指定先でも） :: []
+ERRORS []
+== 1/1 PASS

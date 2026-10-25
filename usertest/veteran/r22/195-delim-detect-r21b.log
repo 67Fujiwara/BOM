@@ -1,0 +1,15 @@
+NG  T1-tsv-title10-comma exp=tab/8 got=comma/18 ["制御盤A /  /  / 1","2026-10-25 /  /  / 1","作成 山田 /  /  / 1"]
+NG  T2-tsv-title6-comma exp=tab/4 got=comma/10 ["制御盤A /  /  / 1","2026-10-25 /  /  / 1","作成 山田 /  /  / 1"]
+ok  T3-tsv-title3-comma exp=tab/4 got=tab/4 
+NG  T4-xlsx-title10-comma exp=tab/8 got=comma/18 ["制御盤A /  /  / 1","2026-10-25 /  /  / 1","作成 山田 /  /  / 1"]
+ok  T5-xlsx-sections exp=tab/10 got=tab/10 
+NG  T6-xlsx-name-only-rows exp=tab/12 got=comma/13 ["部品名\t型式\tメーカ\t数量\t備考 /  /  / 1","部品1 /  /  / 1","部品2 /  /  / 1"]
+NG  T7-tsv-multiline-cells-comma exp=tab/10 got=comma/31 ["部品名\t型式\tメーカ\t数量\t備考 /  /  / 1","部品1\tM-1\tOmron / Inc.\t1\t\"1行目 /  / 1","2行目 /  /  / 1"]
+ok  T8-tsv-multiline-nocomma exp=tab/10 got=tab/10 
+NG  T9-csv-tab-indent exp=comma/5 got=tab/6 [" / 部品名,型式,メーカ,数量,備考 /  / 1"," / 部品1,M-1,オムロン,1, /  / 1"," / 部品2,M-2,Omron, Inc.,2, /  / 1"]
+NG  T10-csv-trailing-tab exp=comma/5 got=tab/6 ["部品名,型式,メーカ,数量,備考 /  /  / 1","部品1,M-1,オムロン,1, /  /  / 1","部品2,M-2,Omron, Inc.,2, /  /  / 1"]
+ok  T11-csv-tab-in-note-half exp=comma/10 got=comma/10 
+ok  T12-csv-tab-in-note-quoted-multiline exp=comma/6 got=comma/6 
+NG  T13-tsv-one-comma-all-multiline-lines exp=tab/6 got=comma/18 ["部品0 /  /  / 1","y /  /  / 1","z\" /  /  / 1"]
+ok  T14-tsv-exact-half exp=tab/3 got=tab/3 
+ok  T15-tsv-commas-everywhere exp=tab/6 got=tab/6 

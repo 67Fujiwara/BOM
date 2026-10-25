@@ -1,0 +1,31 @@
+[
+  {
+    "step": "created",
+    "rows": 300,
+    "flagged": 90,
+    "nameOne": 0,
+    "noteOne": 0,
+    "deferred": 0
+  },
+  {
+    "step": "burst-done",
+    "ms": 38818,
+    "rows": 300,
+    "flagged": 0,
+    "nameOne": 0,
+    "noteOne": 0,
+    "deferred": 0,
+    "panel": null,
+    "mode": "ナビ"
+  },
+  {
+    "step": "after-cleanup",
+    "rows": 300,
+    "flagged": 0,
+    "nameOne": 0,
+    "noteOne": 0,
+    "deferred": 0,
+    "panel": null,
+    "mode": "ナビ"
+  }
+]

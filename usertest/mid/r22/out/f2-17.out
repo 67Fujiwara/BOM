@@ -1,0 +1,42 @@
+0:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:rough: 依頼する行がありません（提出済・再見積要の行なし）
+2:undo: design 戻せません: R004 の「状態」 は、この操作の後に別の操作（あなたの別の操作
+3:edit_qty: R063 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+4:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+5:add_row: R081 を入れて Enter] 行 2（Rev.3） を公開しました
+6:switch_proc: R013→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+7:reload: reload
+8:decline: none
+9:rough: 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+10:rough: 依頼する行がありません（提出済・再見積要の行なし）
+11:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+12:cancel_row: R037 を入れて Enter] 行 2（Rev.4） を公開しました
+13:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+14:edit_qty: R052 を入れて Enter] 行 1（Rev.5） を公開しました
+15:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+16:receive: none
+17:switch_proc: R060→社内在庫 を入れて Enter] 行 1（Rev.6） を公開しました
+18:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+19:pick_supplier: none
+20:cancel_row: R052 を入れて Enter] 行 1（Rev.7） を公開しました
+21:pm_decide: R025 b R025: 次点商社へ
+22:order: none
+23:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:formal_price: R075 x1.05 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:excel: purchasing 3 sheets
+26:pm_decide: R032 y R032: 先行発注許可
+27:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+28:receive: none
+29:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:pm_decide: R064 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+31:withdraw_x: R025 R025: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+32:withdraw_x: R020 R020: 正式依頼の取下げ（S3 P-2026-041-S3-F1）を伝えた（確認済）
+33:add_row: R082 を入れて Enter] 行 1（Rev.8） を公開しました
+34:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+35:next_day: +1d
+36:master_stop: S3 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+37:rough: 依頼する行がありません（提出済・再見積要の行なし）
+38:decline: R073 S3 EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+39:pm_decide: R046 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+PASS F2-17 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

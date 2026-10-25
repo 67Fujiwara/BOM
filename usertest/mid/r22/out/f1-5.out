@@ -1,0 +1,42 @@
+0:pick_supplier: R020 R020: 因幡電機 を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+1:bulk: 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+2:withdraw_x: none
+3:edit_qty: R069 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / ス
+4:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+5:pm_decide: R039 b R039: 次点商社へ
+6:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+7:rough: 依頼する行がありません（提出済・再見積要の行なし）
+8:order: R013 R013: 発注済にしました
+9:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+10:order: none
+11:switch_proc: R052→客先指定品 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+12:formal_price: none
+13:formal_price: none
+14:order: none
+15:decline: R042 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+16:next_day: +3d
+17:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+18:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+19:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:add_row: R081 を入れて Enter] 行 1（Rev.3） を公開しました
+21:receive: R013 R013: 入荷済にしました
+22:switch_proc: R022→客先指定品 を入れて Enter] 行 1（Rev.4） を公開しました
+23:pm_decide: R023 y 納期NG の行では y は使えません（Enter で決定パネル）
+24:rough: 7 行 × 2 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+25:formal: 拮抗 23 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 47 行 × 2 社に正式見積を依頼
+26:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:formal_price: R031 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+28:add_row: R082 を入れて Enter] 行 1（Rev.5） を公開しました
+29:receive: none
+30:add_row: R083 を入れて Enter] 行 1（Rev.6） を公開しました
+31:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+32:consolidate: やめました（何も変えていません）
+33:pick_supplier: R066 R066 を 立花エレテック で採用
+34:switch_proc: R054→支給品 件（R054 必要数が0以下です … F8 で移動して直す）
+35:undo: design 元に戻す: セル編集
+36:edit_qty: R076 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+37:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+38:receive: none
+39:edit_qty: R024 を入れて Enter] 行 2（Rev.7） を公開しました
+PASS F1-5 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

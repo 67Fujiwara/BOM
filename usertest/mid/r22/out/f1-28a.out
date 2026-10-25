@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:edit_qty: R062 を入れて Enter] 行 1（Rev.3） を公開しました
+1:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+2:toggle_approval: OFF 案件設定を保存しました
+3:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+4:pick_supplier: R058 R058 を 立花エレテック で採用（その他: fuzz）
+5:order: R013 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+6:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:switch_proc: R032→客先指定品 を入れて Enter] 行 1（Rev.4） を公開しました
+8:toggle_approval: ON 案件設定を保存しました
+9:decline: R025 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+10:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+11:withdraw_x: none
+12:receive: none
+13:pm_decide: R032 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+14:bulk: 採用 66 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 6
+15:switch_proc: R050→相見積 を入れて Enter] 行 1（Rev.5） を公開しました
+16:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+17:receive: none
+18:toggle_approval: OFF 案件設定を保存しました
+19:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 6
+20:switch_proc: R061→客先指定品 文字が含まれています … 直すか Alt+x で確認済みに）
+21:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+22:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+23:replace_row: R051 R051 の置き換え品 R081 を作りました（公開すると R051 は置換済に / 文字が含まれています … 直すか Alt+x で確認済みに）
+24:formal: になります → 70 行 × 3 社に正式見積を依頼。除外: 作業中 2 行 / 承認待ち 1 行 / 再見積要 0 行
+25:edit_qty: R074 文字が含まれています … 直すか Alt+x で確認済みに）
+26:consolidate: やめました（何も変えていません）
+27:pick_supplier: R062 PM承認待ちの行です
+28:formal_price: R065 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+29:receive: none
+30:excel: pm 3 sheets
+31:add_row: R082 文字が含まれています … 直すか Alt+x で確認済みに）
+32:switch_proc: R067→客先指定品 文字が含まれています … 直すか Alt+x で確認済みに）
+33:formal:  行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 依頼する行がありません（選定済・再発行対象なし）
+34:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:undo: pm 元に戻す: 案件設定を変更
+36:withdraw_x: none
+37:withdraw_x: none
+38:receive: none
+39:toggle_approval: OFF 案件設定を保存しました
+PASS F1-28a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

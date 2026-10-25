@@ -1,0 +1,3 @@
+p=0.01: noisy notes on unchanged rows=21 rows=2500 flagged=21 cpuMs=314
+p=0.05: noisy notes on unchanged rows=112 rows=2500 flagged=112 cpuMs=280
+p=0.1: noisy notes on unchanged rows=224 rows=2500 flagged=224 cpuMs=196

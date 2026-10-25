@@ -1,0 +1,14 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "例外選定"
+B prompt {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PASS P10-exc-stop-y-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+A stops S3 JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+state before B Enter R011 相見積 st=quoted adopt=- reason= oq=48 flags={"droppedStopped":"ミスミ","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "先行発注判断"
+B Enter → R011 の要決定が、パネルを開いたあとに別のタブで変わりました（例外選定 → 先行発注判断）。決めていません。開き直してください
+after R011 相見積 st=quoted adopt=- reason= oq=48 flags={"droppedStopped":"ミスミ","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] new decisions [] B panel null
+PASS P10-exc-stop-y-1 採用商社が取引停止で外れたあとの確定は決まらない（見ていない状態） :: decisions=[] toast=R011 の要決定が、パネルを開いたあとに別のタブで変わりました（例外選定 → 先行発注判断）。決めていません。開き直してください adopt=undefined st=quoted
+PASS P10-exc-stop-y-2 取引停止の商社が、承認・却下の決定で選定済として固定されない :: R011 相見積 st=quoted adopt=- reason= oq=48 flags={"droppedStopped":"ミスミ","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS P10-exc-stop-y-3 toast に undefined/NaN が出ない :: R011 の要決定が、パネルを開いたあとに別のタブで変わりました（例外選定 → 先行発注判断）。決めていません。開き直してください
+ERRORS [] []
+PASS P10-exc-stop-y-9 console error なし :: []
+== 5/5 PASS

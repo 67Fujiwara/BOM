@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:undo: pm 元に戻す: 案件設定を変更
+1:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:pm_decide: R003 b R003: 次点商社へ
+3:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+4:undo: pm 元に戻す: 決定: 次点商社へ
+5:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+6:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+7:next_day: +8d
+8:switch_proc: R047→支給品 を入れて Enter] 行 1（Rev.3） を公開しました
+9:pick_supplier: R040 R040 を 立花エレテック で採用（その他: fuzz）
+10:add_row: R081 を入れて Enter] 行 1（Rev.4） を公開しました
+11:bulk: 採用 67 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 5
+12:formal: 拮抗 31 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼
+13:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+14:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+15:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+16:edit_qty: R063 を入れて Enter] 行 1（Rev.5） を公開しました
+17:pm_decide: R011 y 納期NG の行では y は使えません（Enter で決定パネル）
+18:edit_qty: R016 ）まで書いてください … 直すか Alt+x で確認済みに）
+19:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+20:rough: 1 行 × 3 社に依頼（回答期限 2026-11-08）
+21:receive: none
+22:cancel_row: R065 ）まで書いてください … 直すか Alt+x で確認済みに）
+23:pick_supplier: none
+24:decline: R077 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:decline: R078 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:withdraw_x: R063 R063: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+27:formal_price: R004 x1.5 EDIT-ERR R004 の正式単価 ¥3,932（概算から +50%）。桁・
+28:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:reload: reload
+30:replace_row: R071 R071 の置き換え品 R082 を作りました（公開すると R071 は置換済に / ）まで書いてください … 直すか Alt+x で確認済みに）
+31:next_day: +9d
+32:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:next_day: +12d
+34:decline: R062 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+35:edit_qty: R064 ）まで書いてください … 直すか Alt+x で確認済みに）
+36:receive: none
+37:formal_price: R069 x3 R069 の正式単価 ¥30,012（概算から +200%）。桁・行を確かめてく
+38:switch_proc: R066→社内在庫 ）まで書いてください … 直すか Alt+x で確認済みに）
+39:excel: design 3 sheets
+PASS F1-24a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

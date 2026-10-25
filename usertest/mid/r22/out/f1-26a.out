@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:switch_proc: R054→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+1:toggle_approval: OFF 案件設定を保存しました
+2:switch_proc: R009→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+3:pm_decide: R003 Shift+Y R003: 受入
+4:undo: pm 元に戻す: 決定: 受入
+5:receive: none
+6:replace_row: R013 R013 の置き換え品 R081 を作りました（公開すると R013 は置換済に / 2 件（R009 メーカが空です … F8 で移動して直す）
+7:pick_supplier: R027 1〜2 で商社を選んでください
+8:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:edit_qty: R054 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+10:order: R013 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+11:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+12:cancel_row: R030 1 件（R009 メーカが空です … F8 で移動して直す）
+13:order: R013 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+14:reload: reload
+15:edit_qty: R003 1 件（R009 メーカが空です … F8 で移動して直す）
+16:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:formal_price: R013 x1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+18:edit_qty: R012 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+19:order: R013 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+20:receive: none
+21:formal_price: R013 x1 EDIT-ERR 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから
+22:switch_proc: R072→支給品 1 件（R009 メーカが空です … F8 で移動して直す）
+23:pm_decide: R003 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+24:receive: none
+25:pick_supplier: R026 R026 を 因幡電機 で採用
+26:add_row: R082 1 件（R009 メーカが空です … F8 で移動して直す）
+27:pm_decide: R026 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+28:withdraw_x: none
+29:receive: none
+30:add_row: R083 1 件（R009 メーカが空です … F8 で移動して直す）
+31:edit_qty: R049 1 件（R009 メーカが空です … F8 で移動して直す）
+32:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:decline: R006 S1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+34:order: R013 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+35:decline: R073 S1 EDIT-ERR 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから
+36:edit_qty: R034 1 件（R009 メーカが空です … F8 で移動して直す）
+37:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+38:edit_qty: R045 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+39:reload: reload
+PASS F1-26a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

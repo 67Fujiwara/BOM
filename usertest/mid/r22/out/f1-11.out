@@ -1,0 +1,42 @@
+0:consolidate: やめました（何も変えていません）
+1:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:bulk: 採用 69 / 拮抗 3（要見直し）/ 承認要 0 / スキップ 1
+3:edit_qty: R036 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+4:pm_decide: R043 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+5:add_row: R081 を入れて Enter] 行 1（Rev.3） を公開しました
+6:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+7:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 1
+8:switch_proc: R063→支給品 を入れて Enter] 行 1（Rev.4） を公開しました
+9:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+10:replace_row: R050 R050 の置き換え品 R082 を作りました（公開すると R050 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+11:replace_row: R009 R009 の置き換え品 R083 を作りました（公開すると R009 は置換済に / 1 件（R083 メーカが空です … F8 で移動して直す）
+12:withdraw_x: none
+13:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+14:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+15:switch_proc: R074→相見積 1 件（R083 メーカが空です … F8 で移動して直す）
+16:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+17:cancel_row: R058 1 件（R083 メーカが空です … F8 で移動して直す）
+18:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+19:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+20:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:withdraw_x: none
+22:next_day: +8d
+23:switch_proc: R044→指定商社 1 件（R083 メーカが空です … F8 で移動して直す）
+24:pick_supplier: none
+25:receive: none
+26:formal_price: R013 x1.5 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+27:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+28:reload: reload
+29:pick_supplier: none
+30:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:switch_proc: R056→客先指定品 1 件（R083 メーカが空です … F8 で移動して直す）
+32:withdraw_x: none
+33:add_row: R084 1 件（R083 メーカが空です … F8 で移動して直す）
+34:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 1
+35:edit_qty: R031 1 件（R083 メーカが空です … F8 で移動して直す）
+36:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+37:switch_proc: R027→支給品 1 件（R083 メーカが空です … F8 で移動して直す）
+38:formal: になります → 64 行 × 2 社に正式見積を依頼。除外: 作業中 6 行 / 承認待ち 0 行 / 再見積要 1 行
+39:pm_decide: R011 Shift+Y R011: 受入
+PASS F1-11 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

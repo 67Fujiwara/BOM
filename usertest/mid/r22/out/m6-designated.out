@@ -1,0 +1,29 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D R020 相見積 st=selected adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+proc → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+designated → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → [変更セット（6 行: R020, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+D after 指定 R020 指定商社 st=selected adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+D formal R020 指定商社 st=formalRequested adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] formalRequested
+import stop S3 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+D after stop R020 指定商社 st=quoted adopt=- reason= oq=2 flags={"droppedStopped":"ミスミ","formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] quoted wd ミスミ P-2026-041-S3-F1
+D purch sb ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。設計が指定先を変えます。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+D design sb ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。設計が指定先を変えます。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先 ミスミ は取引停止（商社マスタ）: 指定先を変える
+PASS M6D-1 指定商社の行：購買・設計のステータスバーに「設計が指定先を変えます」と取下げの依頼No（ミスミ P-2026-041-S3-F） :: ["ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。設計が指定先を変えます。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた","ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。設計が指定先を変えます。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先 ミスミ は取引停止（商社マスタ）: 指定先を変える"]
+ball design design 4 true
+PASS M6D-2 ボールは設計（指定先を変える）で設計の 4 に出る :: {"ball":"design","d4":true}
+designated 立花 → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（1 行: R020）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+D after 立花 R020 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"leadNG":true,"droppedStopped":"ミスミ","formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] selected
+rough → 5 行 × 2 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["立花エレテック",false],["因幡電機",false]] ["相見積先すべて（因幡電機・立花エレテック）","S1 因幡電機","S2 立花エレテック","S4 RSコンポーネンツ","S5 オムロン直販"]
+D after rough R020 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"leadNG":true,"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] selected
+D after S2 answer R020 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"leadNG":true,"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] selected
+PASS M6D-3 立花を指定先にすると立花の見積で立花を採用（選定済） :: R020 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"leadNG":true,"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+formal 2 → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+files [["立花エレテック",true]]
+PASS M6D-4 正式見積の依頼書は立花に D、ミスミには出ない :: [["立花エレテック",1]]
+D purch sb after ナビR020 ID正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（元の商社に取り下げを伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件1 行 × 1 社に正式見積を依頼?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+PASS M6D-5 ミスミへの取下げ（依頼No）は x まで残る :: ナビR020 ID正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（元の商社に取り下げを伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件1 行 × 1 社に正式見積を依頼?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+ERRORS []
+== 5/5 PASS

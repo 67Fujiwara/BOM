@@ -1,0 +1,37 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しまし
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+start: proc=相見積 st=selected adopt=S1 oq=4 total=18551654 ball=purchasing 購買待ち=42 見積済 75/80 in9=false in8=true in3=true flags={} wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+→支給品: proc=支給品 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-supply-I2a 採用商社・発注数・納期NG・差分超過を持たない :: →支給品: proc=支給品 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-supply-I2b 総額（概算）から外れる :: 18551654 → 18377946
+FAIL O3-selected-supply-I2c 購買の 8・3 に出ない（商社に頼まない行） :: in8=false in3=true st=selected
+PASS O3-selected-supply-I2d 購買待ちに数えない（購買は何もできない） :: ball=null 購買待ち 42 → 41
+PASS O3-selected-supply-I3 見積済の分母から外れる :: 見積済 75/80 → 見積済 74/79
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+→相見積(戻す): proc=相見積 st=quoted adopt=- oq=4 total=18377946 ball=design 購買待ち=41 見積済 75/80 in9=true in8=false in3=false flags={} wd=
+PASS O3-selected-back-I1 相見積に戻すと採用なしの選定済のまま残らない :: →相見積(戻す): proc=相見積 st=quoted adopt=- oq=4 total=18377946 ball=design 購買待ち=41 見積済 75/80 in9=true in8=false in3=false flags={} wd=
+PASS O3-selected-back-1 戻した行は購買の作業（9）に出るか選定待ち（設計）のボール :: →相見積(戻す): proc=相見積 st=quoted adopt=- oq=4 total=18377946 ball=design 購買待ち=41 見積済 75/80 in9=true in8=false in3=false flags={} wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.5） を公開しました
+→社内在庫: proc=社内在庫 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-stock-I2a 採用商社・発注数・納期NG・差分超過を持たない :: →社内在庫: proc=社内在庫 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-stock-I2b 総額（概算）から外れる :: 18551654 → 18377946
+FAIL O3-selected-stock-I2c 購買の 8・3 に出ない（商社に頼まない行） :: in8=false in3=true st=selected
+PASS O3-selected-stock-I2d 購買待ちに数えない（購買は何もできない） :: ball=null 購買待ち 42 → 41
+PASS O3-selected-stock-I3 見積済の分母から外れる :: 見積済 75/80 → 見積済 74/79
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.6） を公開しました
+→指定商社(立花): proc=指定商社 st=selected adopt=S2 oq=4 total=18585950 ball=purchasing 購買待ち=42 見積済 75/80 in9=false in8=true in3=true flags={} wd=
+PASS O3-selected-fixed-I1 指定商社に切り替えた行は採用先が指定先（立花）か、見積の依頼待ち :: →指定商社(立花): proc=指定商社 st=selected adopt=S2 oq=4 total=18585950 ball=purchasing 購買待ち=42 見積済 75/80 in9=false in8=true in3=true flags={} wd=
+PASS O3-selected-fixed-1 総額に含める（§3.4） :: →指定商社(立花): proc=指定商社 st=selected adopt=S2 oq=4 total=18585950 ball=purchasing 購買待ち=42 見積済 75/80 in9=false in8=true in3=true flags={} wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.7） を公開しました
+→支給品(指定商社から): proc=支給品 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-supply2-I2a 採用商社・発注数・納期NG・差分超過を持たない :: →支給品(指定商社から): proc=支給品 st=selected adopt=- oq=4 total=18377946 ball=null 購買待ち=41 見積済 74/79 in9=false in8=false in3=true flags={} wd=
+PASS O3-selected-supply2-I2b 総額（概算）から外れる :: 18551654 → 18377946
+FAIL O3-selected-supply2-I2c 購買の 8・3 に出ない（商社に頼まない行） :: in8=false in3=true st=selected
+PASS O3-selected-supply2-I2d 購買待ちに数えない（購買は何もできない） :: ball=null 購買待ち 42 → 41
+PASS O3-selected-supply2-I3 見積済の分母から外れる :: 見積済 75/80 → 見積済 74/79
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.8） を公開しました
+→相見積(最後): proc=相見積 st=quoted adopt=- oq=4 total=18377946 ball=design 購買待ち=41 見積済 75/80 in9=true in8=false in3=false flags={} wd=
+PASS O3-selected-last-I1 最後に相見積に戻しても採用なしの選定済のまま残らない :: →相見積(最後): proc=相見積 st=quoted adopt=- oq=4 total=18377946 ball=design 購買待ち=41 見積済 75/80 in9=true in8=false in3=false flags={} wd=
+ERRORS []
+== 17/20 PASS

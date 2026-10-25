@@ -1,0 +1,9 @@
+{
+  "src": "/home/user/BOM/src",
+  "seed": 22,
+  "N": 3000,
+  "accepted": 2970,
+  "rejected": 30,
+  "normFail": 0,
+  "distinctErrors": []
+}

@@ -1,0 +1,42 @@
+0:consolidate: やめました（何も変えていません）
+1:rough: 依頼する行がありません（提出済・再見積要の行なし）
+2:order: R004 R004: 発注済にしました
+3:decline: none
+4:undo: purchasing 元に戻す: 発注済
+5:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+7:add_row: R081 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+8:withdraw_x: none
+9:order: R013 R013: 発注済にしました
+10:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+11:formal_price: R026 x1.5 EDIT-ERR R026 の正式単価 ¥668（概算から +50%）。桁・行を
+12:excel: purchasing 3 sheets
+13:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+14:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+15:order: R004 R004: 発注済にしました
+16:withdraw_x: none
+17:formal_price: R033 x1 EDIT-ERR R004: 発注済にしました
+18:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+19:cancel_row: R028 を入れて Enter] 行 1（Rev.3） を公開しました
+20:pm_decide: R044 b R044: 次点商社へ
+21:undo: design 取消・置換を公開した R028 は戻せません（購買に伝わっています。同じ部品が要
+22:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:order: R003 R003: 発注済にしました
+24:order: R026 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+25:receive: R001 R001: 入荷済にしました
+26:consolidate: やめました（何も変えていません）
+27:pick_supplier: R032 R032 を 立花エレテック で採用（その他: fuzz）
+28:reload: reload
+29:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:pm_decide: R026 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:order: R026 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+32:cancel_row: R017 を入れて Enter] 行 1（Rev.4） を公開しました
+33:pm_decide: R026 y 納期NG の行では y は使えません（Enter で決定パネル）
+34:replace_row: R035 R035 の置き換え品 R082 を作りました（公開すると R035 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+35:receive: R003 R003: 入荷済にしました
+36:edit_qty: R046 を入れて Enter] 行 1（Rev.6） を公開しました
+37:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+38:replace_row: R003 発注済の行は置換できません（発注後変更依頼を起票） / ありません。エラーのある行が 3 行あります（F8 で移動）
+39:withdraw_x: R023 R023: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+PASS F2-33 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

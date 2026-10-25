@@ -1,0 +1,185 @@
+[
+  {
+    "variant": "none",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "none",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "none",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuote",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuote",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuote",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuoteMany",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuoteMany",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupQuoteMany",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupRowId",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupRowId",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupRowId",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupSupplier",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupSupplier",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupSupplier",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupSupplierIds",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": [
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. "
+    ]
+  },
+  {
+    "variant": "dupSupplierIds",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": [
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. "
+    ]
+  },
+  {
+    "variant": "dupSupplierIds",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": [
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. ",
+      "console: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. "
+    ]
+  },
+  {
+    "variant": "dupTargets",
+    "role": "design",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupTargets",
+    "role": "purchasing",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  },
+  {
+    "variant": "dupTargets",
+    "role": "pm",
+    "grid": true,
+    "crash": "",
+    "steps": [],
+    "errs": []
+  }
+]

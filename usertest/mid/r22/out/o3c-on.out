@@ -1,0 +1,19 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+before {"wait":11,"prog":"見積済 75/80"}
+publish → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+PM y R081 R081・Rev.3 の変更セット 2 行まとめて: 承認
+PM y R082 R082 は要決定ではありません（7 要決定ビューの行で使えます）
+S R081 支給品 st=selected adopt=- reason= oq=- flags={} quotes=[]
+K R082 社内在庫 st=selected adopt=- reason= oq=- flags={} quotes=[]
+after {"wait":11,"prog":"見積済 75/80"}
+R081 支給品 st selected ball null views {"3":true,"8":false,"9":false}
+FAIL O3C-on-R081-1 支給品の新規行：購買の 3・8・9 に出ない（商社に頼まない） :: {"3":true,"8":false,"9":false} st=selected
+PASS O3C-on-R081-2 支給品の新規行：購買のボールでない :: ball=null
+R082 社内在庫 st selected ball null views {"3":true,"8":false,"9":false}
+FAIL O3C-on-R082-1 社内在庫の新規行：購買の 3・8・9 に出ない（商社に頼まない） :: {"3":true,"8":false,"9":false} st=selected
+PASS O3C-on-R082-2 社内在庫の新規行：購買のボールでない :: ball=null
+PASS O3C-on-3 購買待ちが 2 行分増えていない :: 11 → 11
+PASS O3C-on-4 見積済の分母に含めない :: 見積済 75/80 → 見積済 75/80
+ERRORS []
+== 4/6 PASS

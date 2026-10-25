@@ -1,0 +1,23 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+decline S2 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S3 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 → 指摘 1 件 を公開しました
+PM Shift+Y → R011: 却下
+after reject R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+PASS N3-0 却下で発注数は必要数 24、却下の印は因幡 :: R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+Shift+A S1 (rank 1) → R011 を 因幡電機 で採用 | R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+after adopt R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]] case なし
+PASS N3-1 因幡（S1）を採り直しても発注数は必要数 24（却下した 100 に戻らない） :: R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+PASS N3-1b PM の 7 に黙って載らない／載るなら理由が分かる :: case=なし
+qty +2 → R011 を 因幡電機 で採用
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after qty R011 相見積 st=selected adopt=S1 reason= oq=26 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+PASS N3-2 必要数 26 で発注数 26（丸めない） :: R011 相見積 st=selected adopt=S1 reason= oq=26 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,-1,null],["S3",973,-1,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+formal X [["R011","エンドクランプ","CLIPFIX 35","フエニックス",26,"個"]]
+PASS N3-3 正式見積の依頼書に因幡の 100 が出ない :: [["R011","エンドクランプ","CLIPFIX 35","フエニックス",26,"個"]]
+ERRORS []
+== 5/5 PASS

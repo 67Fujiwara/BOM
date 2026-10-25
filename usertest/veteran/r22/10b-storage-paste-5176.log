@@ -1,0 +1,4 @@
+{"case":"空き 20000 で 300 行を貼り付け","fill":{"cap":5118163,"filled":5098163},"toasts":["保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"],"storedRowsBeforeReload":80,"rowsAfterReload":80}
+{"case":"空き 60000 で 300 行を貼り付け","fill":{"cap":5118163,"filled":5058163},"toasts":["保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"],"storedRowsBeforeReload":80,"rowsAfterReload":80}
+{"case":"空き 200000 で 1000 行を貼り付け","fill":{"cap":5118163,"filled":4918163},"toasts":["保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください"],"storedRowsBeforeReload":80,"rowsAfterReload":80}
+errors []

@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:consolidate: やめました（何も変えていません）
+1:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+4:cancel_row: R036 を入れて Enter] 行 1（Rev.3） を公開しました
+5:decline: R019 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+6:replace_row: R040 R040 の置き換え品 R081 を作りました（公開すると R040 は置換済に / を入れて Enter] 行 2（Rev.4） を公開しました
+7:replace_row: R010 R010 の置き換え品 R082 を作りました（公開すると R010 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+8:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:cancel_row: R040 ありません。エラーのある行が 3 行あります（F8 で移動）
+10:edit_qty: R050 を入れて Enter] 行 1（Rev.6） を公開しました
+11:toggle_approval: OFF 案件設定を保存しました
+12:decline: R018 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+13:receive: none
+14:withdraw_x: R013 R013: 正式依頼の取下げ（S1 P-2026-041-S1-1）を伝えた（確認済）
+15:rough: 依頼する行がありません（提出済・再見積要の行なし）
+16:order: none
+17:order: none
+18:next_day: +1d
+19:consolidate: やめました（何も変えていません）
+20:edit_qty: R055 を入れて Enter] 行 1（Rev.7） を公開しました
+21:replace_row: R029 R029 の置き換え品 R083 を作りました（公開すると R029 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+22:excel: design 3 sheets
+23:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:rough: 1 行 × 2 社に依頼（回答期限 2026-11-01）。見積済だった 1 行は、新しく頼んだ商社の回答を待つため見積
+25:formal_price: none
+26:excel: pm 1 sheets
+27:order: none
+28:pm_decide: R010 Shift+Y R010・Rev.5 の変更セット 2 行まとめて: 却下
+29:reload: reload
+30:edit_qty: R078 ）を入れて Ente] 行 3（Rev.9） を公開しました
+31:switch_proc: R069→支給品 行 3（Rev.9） を公開しました
+32:order: none
+33:formal_price: none
+34:switch_proc: R034→客先指定品 入れて Enter] 行 2（Rev.10） を公開しました
+35:order: none
+36:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+37:formal_price: none
+38:reload: reload
+39:decline: R058 S1 EDIT-ERR 
+PASS F1-27a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,23 @@
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A R001 相見積 st=selected adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] B R002 相見積 st=selected adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+A qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish cs1 → [変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A name → 行 6（Rev.2） を公開しました
+B name → 行 6（Rev.2） を公開しました
+publish cs2 → [変更セット（2 行: R001, R002）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+before PM subs [[2,"pend",["R001","R076","R077","R078","R079","R080"],""],[3,"pend",["R001","R002"],""]] A pending {"qtyNeeded":2,"name":"NAME-A2"} pendingRev 3
+PM 7 has A,B true true
+PM Shift+Y A → R001・Rev.3 の変更セット 2 行まとめて: 却下
+after subs [[2,"pend",["R001","R076","R077","R078","R079","R080"],""],[3,"rej",["R001","R002"],"revoked"]] A 1 PLC CPUユニット working {"qtyNeeded":2,"name":"NAME-A2"} B 入力拡張ユニット B working {"name":"NAME-B2"} B pmPending false
+PASS K7-4 却下で A の公開値は元のまま、2 つの変更（必要数・部品名）が設計の作業中に戻る :: qty=1 name=PLC CPUユニット working={"qtyNeeded":2,"name":"NAME-A2"}
+FAIL K7-5 却下したあと「承認待ち」のまま残る変更セットの Rev が無い（Rev.a も却下） :: [[2,"pend",["R001","R076","R077","R078","R079","R080"],""],[3,"rej",["R001","R002"],"revoked"]]
+PM 7 after reject has B false
+INFO B（Rev.b のもう 1 行） 入力拡張ユニット pmPending false working {"name":"NAME-B2"}
+PM y Rev.a via R076 → R076・Rev.2 の変更セット 5 行まとめて: 承認
+after Rev.a approve subs [[2,"appr",["R001","R076","R077","R078","R079","R080"],""],[3,"rej",["R001","R002"],"revoked"]] A qty 1 name PLC CPUユニット working {"qtyNeeded":2,"name":"NAME-A2"}
+purch 変更点 A (final) [[1,"","","",""],["","決定","却下","客先未確定",""]]
+PASS K7-6 Rev.a（A の必要数・理由「客先要求」）の決定と A の公開値・変更点が食い違わない（承認済の Rev.a に A の必要数の変更が載るなら公開値も変わっている） :: {"qty":1}
+PASS K7-7 A の必要数の変更が、別の理由の変更セット（Rev.b）の変更として記録されない :: null
+ERRORS []
+== 3/4 PASS

@@ -1,0 +1,13 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]]
+import stop S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+rough S2 → 依頼する行がありません（提出済・再見積要の行なし） []
+X asked S2 R034 客先指定品 st=quoting adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機"} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] quoting fixed S2
+import reenable S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+X after reenable R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={"droppedStopped":"因幡電機"} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] st selected fixed S1 | sb ナビR034 ID購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題Shift+I指摘Space開く
+INFO 因幡を戻したあとの依頼先 S1 採用 S1
+INFO L5P-1 立花に頼んで（サンプルは最初から 3 社に依頼済）回答待ちのあいだに因幡を取引可に戻すと、因幡の前の見積で選定済に戻る true
+S2 answer EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 / EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+X after S2 answer R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]] st selected fixed S1
+ERRORS []
+== 0/0 PASS

@@ -1,0 +1,38 @@
+// j9: 取引停止（M15-04 の修正）を発注済・正式依頼中・選定済の相見積の行で同時に
+//   O1: ミスミに発注済 → 入荷できる・実績に入る  O2: 正式依頼中 → 取下げ・選び直し  O3: 選定済（正式依頼の前）→ 選び直し
+import { launch, check, log, summary } from './lib.mjs'
+import { helpers } from './h.mjs'
+const t = await launch(); const { page } = t; const h = helpers(t)
+await t.open('design'); log('bulk →', await t.bulk())
+let p = await t.proj()
+const s3 = p.rows.filter((r) => r.adoptedSupplierId === 'S3' && r.status === 'selected' && r.procurement === '相見積' && !r.flags.leadNG && !r.flags.contested && p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.unitPrice != null && q.leadDays >= 0).length === 3).map((r) => r.id)
+const [O1, O2, O3] = s3; log('O1', O1, 'O2', O2, 'O3', O3)
+await t.press('1'); await t.showCol('note'); log('O3 note (working) →', await t.setCellKey(O3, 'note', '確認中'))
+await t.role('purchasing'); log('formal →', await t.requestFormal())
+p = await t.proj(); const q1 = p.quotes.find((x) => x.rowId === O1 && x.supplierId === 'S3' && !x.stale)
+await t.press('8'); await t.setCellKey(O1, 'q.formalPrice@A', String(q1.unitPrice)); await t.press('Escape'); await t.press('Escape')
+await t.press('3'); log('order O1 →', await t.order(O1))
+await t.role('design'); await t.press('1'); await t.goto(O3); await t.press('Home'); log('publish O3 →', await t.publish('1'))
+p = await t.proj(); for (const id of [O1, O2, O3]) log('before stop', h.show(p, id), '|', await h.status(id))
+const ws = await t.ws(); ws.suppliers = ws.suppliers.map((s) => (s.id === 'S3' ? { ...s, tradable: false } : s)); await t.open('purchasing', ws)
+// 何か 1 つ操作（commit）してから状態を見る（読み込み直後は整合を取らないことがあるため）
+await t.press('1'); await t.goto(O1); await t.press('Home')
+p = await t.proj(); for (const id of [O1, O2, O3]) log('after stop (load)', h.show(p, id), 'withdrawn=', p.rows.find((r) => r.id === id).flags.formalWithdrawn ?? '-', '|', await h.status(id), 'ball', await h.ballOf(id))
+const loadSt = Object.fromEntries([O2, O3].map((id) => [id, p.rows.find((r) => r.id === id).adoptedSupplierId ?? null]))
+log('INFO 読み込み直後の O2・O3 の採用', JSON.stringify(loadSt))
+await t.press('3'); await t.goto(O1); await t.colKey('received'); await t.press('Enter'); await page.waitForTimeout(100); const mr = await t.toast()
+p = await t.proj(); const r1 = p.rows.find((r) => r.id === O1)
+for (const id of [O1, O2, O3]) log('after receive', h.show(p, id), 'withdrawn=', p.rows.find((r) => r.id === id).flags.formalWithdrawn ?? '-', '|', await h.status(id), 'ball', await h.ballOf(id))
+log('receive O1 →', mr)
+check('J9-1 取引停止の前に発注した行は、採用・発注のまま入荷できる（取下げ・選び直しにしない）', r1.status === 'received' && r1.adoptedSupplierId === 'S3' && !r1.flags.formalWithdrawn, `${h.show(p, O1)} ${mr}`)
+const r2 = p.rows.find((r) => r.id === O2), r3 = p.rows.find((r) => r.id === O3)
+check('J9-2 正式依頼中の行は採用が外れ「正式依頼取下げ（ミスミ）」、選び直しへ', !r2.adoptedSupplierId && /ミスミ/.test(r2.flags.formalWithdrawn ?? '') && ['quoted', 'quoting'].includes(r2.status), h.show(p, O2))
+check('J9-3 選定済の行は採用が外れ、選び直しへ（取下げは付かない）', !r3.adoptedSupplierId && !r3.flags.formalWithdrawn && ['quoted', 'quoting'].includes(r3.status), h.show(p, O3))
+check('J9-4 読み込み直後（操作の前）から、取引停止の商社の採用は表示上も外れている', !loadSt[O2] && !loadSt[O3], JSON.stringify(loadSt))
+await t.role('design'); await t.press('4'); const d4 = await t.viewRows(); log('design 4 has O2,O3', d4.includes(O2), d4.includes(O3))
+for (const id of [O2, O3]) { await t.press('1'); await t.goto(id); await t.press('a'); await page.waitForTimeout(80); log('design a', id, '→', await t.toast()) }
+p = await t.proj(); for (const id of [O2, O3]) log('after a', h.show(p, id), '|', await h.status(id))
+check('J9-5 選び直しで取引停止の商社（ミスミ）は選ばれない', [O2, O3].every((id) => { const r = p.rows.find((x) => x.id === id); return r.adoptedSupplierId && r.adoptedSupplierId !== 'S3' }), JSON.stringify([O2, O3].map((id) => p.rows.find((x) => x.id === id).adoptedSupplierId)))
+log('ERRORS', JSON.stringify(t.errors))
+await t.shot('j9')
+summary(); await t.close()

@@ -1,0 +1,44 @@
+0:formal_price: R008 x3 EDIT-ERR R008 の正式単価 ¥130,281（概算から +200%）
+1:cancel_row: R011 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+2:next_day: +8d
+3:edit_qty: R075 を入れて Enter] 行 1（Rev.3） を公開しました
+4:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+5:rough: 5 行 × 3 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+6:order: R013 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+7:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+8:edit_qty: R022 を入れて Enter] 行 2（Rev.4） を公開しました
+9:edit_qty: R030 を入れて Enter] 行 1（Rev.5） を公開しました
+10:undo: purchasing 元に戻す: 概算見積を依頼（因幡電機・立花エレテック・ミスミ）
+11:formal_price: R033 x3 EDIT-ERR R033 の正式単価 ¥318（概算から +200%）。桁・行
+12:receive: none
+13:formal_price: R017 x1.5 EDIT-ERR R017 の正式単価 ¥162（概算から +50%）。桁・行を
+14:formal_price: R024 x3 EDIT-ERR R024 の正式単価 ¥193,878（概算から +200%）
+15:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+16:edit_qty: R051 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+17:edit_qty: R072 を入れて Enter] 行 2（Rev.6） を公開しました
+18:switch_proc: R054→指定商社 件（R054 必要数が0以下です … F8 で移動して直す）
+19:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:switch_proc: R042→支給品 件（R054 必要数が0以下です … F8 で移動して直す）
+22:rough: 10 行 × 3 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべ
+VIOLATION after #23 (rough): ["R030 納期NG なのに採用なし","R051 納期NG なのに採用なし","R072 納期NG なのに採用なし"]
+  history: ["15:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct","16:edit_qty: R051 役割: 設計（山田）。既定のビュー 4 要確認 を開きました","17:edit_qty: R072 を入れて Enter] 行 2（Rev.6） を公開しました","18:switch_proc: R054→指定商社 件（R054 必要数が0以下です … F8 で移動して直す）","19:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct","20:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）","21:switch_proc: R042→支給品 件（R054 必要数が0以下です … F8 で移動して直す）","22:rough: 10 行 × 3 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべ"]
+23:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+25:pm_decide: R005 y R005: 先行発注許可
+26:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+28:receive: none
+29:pm_decide: R013 b R013: 次点商社へ
+30:formal_price: R063 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+31:order: R033 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+32:pm_decide: R004 Shift+Y R004: 受入
+33:edit_qty: R056 件（R054 必要数が0以下です … F8 で移動して直す）
+34:switch_proc: R033→社内在庫 公開できません: エラー 1 件（R054 必要数が0以下で
+35:receive: none
+36:excel: design 3 sheets
+37:bulk: 採用 4 / 拮抗 2（要見直し）/ 承認要 0 / スキップ 11
+38:formal: 」になります → 3 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 3 行 / 再見積要 0 行
+39:formal_price: R009 x1 EDIT-ERR 3 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 /
+FAIL F2-25 不変条件の違反なし（40 操作） :: violations=1
+== 0/1 PASS

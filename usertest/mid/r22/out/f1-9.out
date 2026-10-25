@@ -1,0 +1,42 @@
+0:withdraw_x: none
+1:switch_proc: R016→相見積  で選び、変更番号（] 行 5（Rev.2） を公開しました
+2:decline: R072 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:edit_qty: R067 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+4:bulk: 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+5:order: R013 R013: 発注済にしました
+6:edit_qty: R056 を入れて Enter] 行 2（Rev.3） を公開しました
+7:formal_price: none
+8:pm_decide: R044 b R044: 次点商社へ
+9:formal_price: none
+10:pm_decide: R046 y 納期NG の行では y は使えません（Enter で決定パネル）
+11:edit_qty: R079 を入れて Enter] 行 1（Rev.4） を公開しました
+12:switch_proc: R037→社内在庫 を入れて Enter] 行 1（Rev.5） を公開しました
+13:switch_proc: R059→客先指定品 を入れて Enter] 行 1（Rev.6） を公開しました
+14:next_day: +1d
+15:order: none
+16:pm_decide: R046 y 納期NG の行では y は使えません（Enter で決定パネル）
+17:edit_qty: R062 を入れて Enter] 行 1（Rev.7） を公開しました
+18:edit_qty: R040 を入れて Enter] 行 1（Rev.8） を公開しました
+19:formal_price: none
+20:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:next_day: +4d
+22:edit_qty: R014 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+23:switch_proc: R012→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+24:excel: pm 1 sheets
+25:formal_price: none
+26:pick_supplier: R067 R067: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+27:switch_proc: R060→指定商社 ）を入れて Ente] 行 3（Rev.9） を公開しました
+28:reload: reload
+29:next_day: +12d
+30:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+31:pick_supplier: R067 PM承認待ちの行です
+32:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+33:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+34:switch_proc: R010→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+35:rough: 9 行 × 3 社に依頼（回答期限 2026-11-12）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+36:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+37:edit_qty: R006 入れて Enter] 行 1（Rev.10） を公開しました
+38:pm_decide: R003 b R003: 次点商社へ
+39:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+PASS F1-9 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

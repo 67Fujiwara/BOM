@@ -1,0 +1,63 @@
+n1 n1-cancelappr cancelappr
+n1 n1-cancelfirst cancelfirst
+n1 n1-cancelrej cancelrej
+n1 n1-cancel2 cancel2
+n1 n1-replappr replappr
+n1 n1-replrej replrej
+n1 n1-chain3rej chain3
+n1 n1-chain3appr chain3 approve
+n2 n2-addappr addappr
+n2 n2-addrej addrej
+n2 n2-addpartial addpartial
+n2 n2-addcrej addcrej
+n2 n2-addchain addchain
+n3 n3-a a
+n3 n3-shiftA shiftA
+n3 n3-swap swap
+n3 n3-consol consol
+n3 n3-fixed fixed
+n3 n3-nextb nextb
+n4 n4-cs-prompt cs-prompt
+n4 n4-rm-prompt rm-prompt
+n4 n4-diff-open diff-open
+n4 n4-diff-prompt diff-prompt
+n4 n4-diff-back diff-back
+n4 n4-diff-within diff-within
+n4 n4-cs-prompt-panel cs-prompt panel
+n4 n4-diff-direct diff-direct
+n4 n4-diff-open2 diff-open
+n4 n4-diff-prompt2 diff-prompt
+n5 n5-due due
+n5 n5-nodue nodue
+n5 n5-keys keys
+n6 n6-multi multi
+n6 n6-cancel cancel
+n6 n6-replace replace
+n6 n6-undo undo
+n7 n7-formal formal
+n7 n7-formalq formalq
+n8 n8-toggle toggle
+n8 n8-stop stop
+n9 n9-approve approve
+n9 n9-reject reject
+n10 n10-declall declall
+n10 n10-declsel declsel
+n11 n11-addcancel-rej addcancel
+n11 n11-addcancel-appr addcancel approve
+n11 n11-repladd repladd
+n11 n11-cancelagain cancelagain
+n12 n12-offset offset
+n12 n12-ordered ordered
+n12 n12-keys keys
+n12 n12-consol consol
+n14 n14-chain chain
+n14 n14-formal formal
+n14 n14-reject reject
+n15 n15-appr appr
+n15 n15-rej rej
+n15 n15-rev rev
+n16 n16-supply 支給品
+n16 n16-stock 社内在庫
+n13 n13
+n17 n17
+n7 n7-selected selected

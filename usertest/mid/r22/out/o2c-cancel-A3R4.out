@@ -1,0 +1,22 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を
+publish Rev.d → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]] | N R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] 
+PASS O2C-cancel-A3R4-0 不変条件
+PM A3 R035 → R035・Rev.3 の変更セット 1 行まとめて: 承認 | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]] | N submitted 
+PASS O2C-cancel-A3R4-after-A3 不変条件
+PM R4 R081 → R081・Rev.4 の変更セット 1 行まとめて: 却下 | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R081",null,"revoked"]] | N draft 
+PASS O2C-cancel-A3R4-after-R4 不変条件
+final N R081 相見積 st=draft adopt=- reason= oq=- flags={} quotes=[] | removal null | N2 -
+PASS O2C-cancel-A3R4-1 Rev.d 却下で N は下書き（removal・承認待ちなし） :: draft removal=undefined pub=undefined
+PASS O2C-cancel-A3R4-2 Rev.c は D だけに効く（A3） :: D q=7 w=null
+PASS O2C-cancel-A3R4-3 承認待ちの変更セットが残らない :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R081",null,"revoked"]]
+purchasing 9 N false N2 false rough N false N2 false
+PASS O2C-cancel-A3R4-4 取消／却下後の N が購買の 9・概算の依頼に出ない :: in9=false rough=false
+purchasing 変更点 N/N2 []
+PASS O2C-cancel-A3R4-6 却下で下書きに戻った N・N2 は購買の変更点に出ない（M20-06） :: []
+ERRORS []
+== 8/8 PASS

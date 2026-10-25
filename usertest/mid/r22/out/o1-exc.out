@@ -1,0 +1,9 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+exception row R011 R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+B prompt {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+design re-pick 2 → PM承認待ちの行です | R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+B Enter → R011: 承認
+after R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] decisions [["承認","例外を承認"]]
+PASS O1-exc-1 PM が見た例外選定の商社（S3）と違う商社に選び直された（S3）あとの y は、確認なしに承認しない :: before=S3 now=S3 toast=R011: 承認 decisions=["承認"]
+ERRORS []
+== 1/1 PASS

@@ -17,7 +17,7 @@ await pg.goto(URL); await pg.waitForSelector('[data-testid="grid"]')
 const out = []
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const limit = Number(process.env.LIMIT ?? items.length)
-for (let k = 0; k < Math.min(limit, items.length); k++) {
+for (let k = Number(process.env.START ?? 0); k < Math.min(limit, items.length); k++) {
   const it = items[k]
   for (const role of ['design', 'purchasing', 'pm']) {
     errs = []

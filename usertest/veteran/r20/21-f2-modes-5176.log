@@ -28,3 +28,10 @@
 {"name":"行なし（4 で R054 を直して外れた）→ F2","expect":"Enter で次の行へ（外れたとき）→ F2","seq":["start(true)→R054 必要数","T:5→R054 必要数/入力[5|1-1]","Enter→R005 必要数/ナビ","F2→R005 必要数/編集[12|0-2]"],"diff":["R054.working:undefined→{\"qtyNeeded\":5}"],"toasts":[]}
 {"name":"行なし（4 で 5 → →）→ F2 → T:x","expect":"何もしない・知らせる","seq":["start(true)→R054 必要数","T:5→R054 必要数/入力[5|1-1]","ArrowRight→—/ナビ","F2→—/ナビ","T:x→—/ナビ"],"diff":["R054.working:undefined→{\"qtyNeeded\":5}"],"toasts":["R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）","行を選んでください（↓ で先頭の行へ）","行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"]}
 {"name":"見出し（分類）→ F2","expect":"見出しの知らせ","seq":["start(true)→R013 部品名","ArrowUp→分類 電源/ナビ","F2→分類 電源/ナビ","T:a→分類 電源/ナビ"],"diff":[],"toasts":["分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）"]}
+{"name":"購買の 部品名（書けない）→ F2","expect":"理由の知らせ","seq":["start(true)→R010 部品名","F2→R010 部品名/ナビ"],"diff":[],"toasts":["権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘"]}
+{"name":"設計の 発注（チェック）→ F2","expect":"?","seq":["start(true)→R001 発注","F2→R001 発注/ナビ"],"diff":[],"toasts":["権限なし（購買の列）"]}
+{"name":"ID の列 → F2","expect":"?","seq":["start(true)→R010 ID","F2→R010 ID/ナビ"],"diff":[],"toasts":["この列は自動計算です"]}
+{"name":"PM 7 → F2","expect":"?","seq":["start(true)→R003 部品名","F2→R003 部品名/パネル{panel-quickfix}"],"diff":[],"toasts":["役割: PM（鈴木）。既定のビュー 7 要決定 を開きました"]}
+{"name":"打って ab → F2 ×5 → →","expect":"奇数回で 編集 → → は文字の中","seq":["start(true)→R010 部品名","T:ab→R010 部品名/入力[ab|2-2]","F2→R010 部品名/編集[ab|2-2]","F2→R010 部品名/入力[ab|2-2]","F2→R010 部品名/編集[ab|2-2]","F2→R010 部品名/入力[ab|2-2]","F2→R010 部品名/編集[ab|2-2]","ArrowRight→R010 部品名/編集[ab|2-2]"],"diff":[],"toasts":[]}
+{"name":"打って ab → F2 → Esc","expect":"取り消し","seq":["start(true)→R010 部品名","T:ab→R010 部品名/入力[ab|2-2]","F2→R010 部品名/編集[ab|2-2]","Escape→R010 部品名/ナビ"],"diff":[],"toasts":[]}
+errors []

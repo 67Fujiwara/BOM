@@ -1,0 +1,20 @@
+--- src/commands/keyboard.ts	2026-10-25 12:04:01.060035931 +0000
++++ /tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/v20-patch/src/commands/keyboard.ts	2026-10-25 14:13:36.078594602 +0000
+@@ -428,7 +428,7 @@
+   // 分類の見出しの行: [ ] で分類を移るだけ。ほかは案内（見出しでビューが変わって選択が外れない）
+   if (s.cursorRow?.startsWith('g:')) return ch === '[' || ch === ']'
+   // PM の 7 の「案件設定確定」の行: 案内どおり y（Shift+Y）で既定のまま確定
+-  if (s.cursorRow?.startsWith('case:')) return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y')
++  if (s.cursorRow?.startsWith('case:')) return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y' || /^\d$/.test(ch))
+   // 行を選んでいないとき: 数字（ビュー切替）だけ。記号・英字は案内（「<5mm」の残りが行に入らない）
+   if (!visibleCursorRow()) return /^\d$/.test(ch)
+   if (s.cursorCol === 'id' || s.cursorCol === 'status') return true
+@@ -436,7 +436,7 @@
+   // 例外: どの列も書かない PM の数字（ビュー切替）
+   if (/^\d$/.test(ch) && s.user().role === 'pm') return true
+   // §9.1: PM の 7 では y / Shift+Y がどの列でもそのまま効く（ほかの英字は単語を打ったときに 1 文字ずつ操作にならないよう Alt）
+-  return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y')
++  return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y' || /^\d$/.test(ch))
+ }
+ /** macOS の Option+記号は別の文字（÷ ¿ “ ‘ ≤ ≥）になるので、キーの位置から記号の操作を引く */
+ function altCodeBinding(e: KeyboardEvent) {

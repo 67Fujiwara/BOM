@@ -1,0 +1,20 @@
+0:early_adopt: none
+1:next_day: +8d
+2:early_adopt: none
+3:excel: purchasing 3 sheets
+4:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:edit_qty: R007 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+6:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:withdraw_x: R013 R013: 正式依頼の取下げ（因幡電機 P-2026-041-S1-1）を伝えた（確認済）
+8:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:decline: R060 S1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+10:bulk: 採用 72 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 1
+11:switch_proc: R006→相見積 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+12:formal_price: none
+13:formal: になります → 73 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+14:rename_supplier: S2→ミスミ グループ JSON を読み込みました（案件 1 件
+15:decline: R007 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+16:decline: R007 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+17:bulk: 採用 1 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0
+18:formal_price: R044 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+19:pm_measure: R007 d R007: 設計へ代替依頼

@@ -1,0 +1,52 @@
+0:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+1:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+2:edit_qty: R032 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+3:edit_qty: R074 行 6（Rev.2） を公開しました
+4:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+5:edit_qty: R075 を入れて Enter] 行 2（Rev.3） を公開しました
+6:switch_proc: R064→客先指定品 を入れて Enter] 行 1（Rev.4） を公開しました
+7:withdraw_x: none
+8:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 0
+9:add_row: R081 unpublished
+10:order: R013 R013: 発注済にしました
+11:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+12:consolidate: やめました（何も変えていません）
+13:edit_qty: R036 やめました（何も変えていません）
+14:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+15:withdraw_x: none
+16:edit_qty: R060 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+17:switch_proc: R031→客先指定品 更番号（任意）を入れ] 行 4（Rev.5） を公開しました
+18:undo: purchasing 元に戻す: 発注済
+19:pm_decide: R046 Shift+Y R046: 受入
+20:cancel_row: R039 を入れて Enter] 行 1（Rev.6） を公開しました
+21:formal_price: R002 x1.5 EDIT-ERR R002 の正式単価 ¥611（概算から +50%）。桁・行を
+22:switch_proc: R075→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+23:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:consolidate: やめました（何も変えていません）
+25:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+26:replace_row: R041 R041 の置き換え品 R082 を作りました（公開すると R041 は置換済に / 1 件（R082 メーカが空です … F8 で移動して直す）
+27:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+28:switch_proc: R071→客先指定品 1 件（R082 メーカが空です … F8 で移動して直す）
+29:pm_decide: R055 y 納期NG の行では y は使えません（Enter で決定パネル）
+30:order: none
+31:pick_supplier: R004 R004: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+32:bulk: 採用 33 / 拮抗 16（要見直し）/ 承認要 0 / スキップ 6
+33:switch_proc: R045→客先指定品 1 件（R082 メーカが空です … F8 で移動して直す）
+34:next_day: +1d
+35:formal_price: R045 x3 EDIT-ERR R045 の正式単価 ¥30,417（概算から +200%）。
+36:requote_cycle: R043 82 メーカが空です … F8 で移動して直す） / 9 行 × 3 社に依頼（回答期限 2026-11-01）。メーカを扱う商社がマ
+37:rough: 依頼する行がありません（提出済・再見積要の行なし）
+38:edit_qty: R031 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+39:next_day: +2d
+40:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+41:decline: R032 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+42:requote_cycle: R026 82 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+43:pick_supplier: R019 R019 を 因幡電機 で採用
+44:replace_row: R071 R071 の置き換え品 R083 を作りました（公開すると R071 は置換済に / 1 件（R082 メーカが空です … F8 で移動して直す）
+45:requote_cycle: R010 82 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+46:bulk: 採用 16 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 25
+47:decline: R079 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+48:excel: design 1 sheets
+49:rough: 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-220 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

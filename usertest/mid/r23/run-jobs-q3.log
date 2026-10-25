@@ -1,0 +1,21 @@
+q3-selected-z == 15/15 PASS
+q3-selected-s == 15/15 PASS
+q3-formal-s == 17/17 PASS
+q3-formal-z == 17/17 PASS
+q3-formalq-s == 17/17 PASS
+q3-formalq-z == 17/17 PASS
+q3-fixed-s Node.js v22.22.0
+q3-fixed-z Node.js v22.22.0
+q2-rej == 5/7 PASS
+q2-appr == 6/7 PASS
+q2-rej-appr == 5/7 PASS
+q2-appr-rej == 5/7 PASS
+q1-ltb == 11/14 PASS
+q2-chain == 5/7 PASS
+q1-exc == 12/12 PASS
+q1-early == 12/13 PASS
+q1-ng-fail == 12/12 PASS
+q1-ng-a == 12/12 PASS
+q1-exc-a == 12/12 PASS
+q1-ltb-a == 11/14 PASS
+DONE

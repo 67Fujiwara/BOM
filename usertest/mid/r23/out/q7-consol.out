@@ -1,0 +1,21 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+need 2026-11-14 adopted lead 24 alt S2 4
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PM e → R003: 特急・分納
+extraCost → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after PM R003 相見積 st=selected adopt=S1 reason= oq=- flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] extra 20000  cm 分納・特急
+consolidate panel ["因幡電機 + 立花エレテック :: 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,495,156（差 ¥-35,632）、最長納期 27 日","因幡電機 + ミスミ :: 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,645,998（差 +¥115,210）、最長納期 28 日","因幡電機 :: 65/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,683,182（差 +¥152,394）、最長納期
+consolidate idx 3
+confirm panel {"kind":"prompt","title":"「立花エレテック」に集約します。見積済・選定済の行の採用を付け替えます（採用していなかった行も採用します。戻すときは Ctrl+Z）","options":["やめる","集約する"],"index":0}
+consolidate → 集約: 45 行を付け替え（PM承認待ち 17）
+score order ["S2"] alt idx 0
+X after re-adopt R003 相見積 st=selected adopt=S2 reason=集約 oq=2 flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] extra 20000  cm 分納・特急 early undefined
+money 概算 ¥18,571,654 / 正式 ¥18,573,210 / 予算 ¥2,800,000 (+563.3%) → 概算 ¥19,699,108 / 正式 ¥19,700,664 / 予算 ¥2,800,000 (+603.6%) ball purchasing case なし
+new supplier lead 4 late? true
+FAIL Q7-consol-1 前の商社への追加費用（特急・分納）が新しい採用に持ち越されない :: extra=20000 
+FAIL Q7-consol-2 前の商社への対策区分（受入／特急・分納／代替品検討）が新しい採用に持ち越されない（新しい商社が間に合わなければ納期NG としてPM に出る） :: late=true leadNG=false cm=分納・特急 early=undefined
+PASS Q7-consol-3 前の商社への「特急」の印（early）が持ち越されない :: undefined
+PASS Q7-consol-4 固まる行がない :: []
+ERRORS []
+PASS Q7-consol-99 console error なし :: []
+== 3/5 PASS

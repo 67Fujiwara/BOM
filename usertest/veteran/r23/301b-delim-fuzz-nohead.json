@@ -1,0 +1,1341 @@
+{
+ "stat": {
+  "N/tsv/half": {
+   "n": 406,
+   "bad": 0
+  },
+  "H/tsv/none/eda": {
+   "n": 101,
+   "bad": 0
+  },
+  "N/tsv/const/eda": {
+   "n": 100,
+   "bad": 0
+  },
+  "N/tsvq/var": {
+   "n": 202,
+   "bad": 0
+  },
+  "H/csv/const/eda": {
+   "n": 103,
+   "bad": 0
+  },
+  "H/csv/half": {
+   "n": 388,
+   "bad": 0
+  },
+  "H/tsv/var": {
+   "n": 399,
+   "bad": 0
+  },
+  "H/csv/var": {
+   "n": 404,
+   "bad": 0
+  },
+  "N/csvq/none/eda": {
+   "n": 37,
+   "bad": 0
+  },
+  "H/tsv/none": {
+   "n": 395,
+   "bad": 0
+  },
+  "N/tsv/none/eda": {
+   "n": 100,
+   "bad": 0
+  },
+  "N/csvq/const": {
+   "n": 212,
+   "bad": 36
+  },
+  "H/tsv/const": {
+   "n": 417,
+   "bad": 0
+  },
+  "H/tsvq/half": {
+   "n": 196,
+   "bad": 0
+  },
+  "H/csv/var/eda": {
+   "n": 111,
+   "bad": 0
+  },
+  "N/csv/var": {
+   "n": 417,
+   "bad": 13
+  },
+  "N/tsvq/none": {
+   "n": 209,
+   "bad": 0
+  },
+  "N/csvq/none": {
+   "n": 208,
+   "bad": 0
+  },
+  "H/csv/none/eda": {
+   "n": 98,
+   "bad": 0
+  },
+  "N/csv/half/eda": {
+   "n": 93,
+   "bad": 5
+  },
+  "H/tsv/half": {
+   "n": 401,
+   "bad": 0
+  },
+  "N/csv/none": {
+   "n": 415,
+   "bad": 0
+  },
+  "N/csv/var/eda": {
+   "n": 97,
+   "bad": 0
+  },
+  "N/csvq/var": {
+   "n": 212,
+   "bad": 8
+  },
+  "H/csvq/const": {
+   "n": 195,
+   "bad": 0
+  },
+  "N/tsvq/half": {
+   "n": 202,
+   "bad": 0
+  },
+  "H/tsvq/var/eda": {
+   "n": 63,
+   "bad": 0
+  },
+  "N/tsvq/const": {
+   "n": 172,
+   "bad": 4
+  },
+  "N/csv/half": {
+   "n": 386,
+   "bad": 45
+  },
+  "N/csv/const": {
+   "n": 413,
+   "bad": 49
+  },
+  "H/tsv/half/eda": {
+   "n": 97,
+   "bad": 0
+  },
+  "H/tsvq/none": {
+   "n": 196,
+   "bad": 0
+  },
+  "N/tsv/const": {
+   "n": 377,
+   "bad": 7
+  },
+  "N/csvq/const/eda": {
+   "n": 52,
+   "bad": 1
+  },
+  "N/csvq/half": {
+   "n": 214,
+   "bad": 25
+  },
+  "H/csv/none": {
+   "n": 377,
+   "bad": 0
+  },
+  "N/csv/none/eda": {
+   "n": 87,
+   "bad": 0
+  },
+  "H/csvq/none": {
+   "n": 181,
+   "bad": 0
+  },
+  "N/tsv/var": {
+   "n": 420,
+   "bad": 0
+  },
+  "H/tsvq/var": {
+   "n": 225,
+   "bad": 0
+  },
+  "H/tsvq/none/eda": {
+   "n": 45,
+   "bad": 0
+  },
+  "N/csvq/half/eda": {
+   "n": 49,
+   "bad": 3
+  },
+  "N/tsv/none": {
+   "n": 431,
+   "bad": 0
+  },
+  "N/csv/const/eda": {
+   "n": 85,
+   "bad": 5
+  },
+  "N/tsv/half/eda": {
+   "n": 99,
+   "bad": 0
+  },
+  "H/csv/const": {
+   "n": 387,
+   "bad": 0
+  },
+  "H/csvq/half": {
+   "n": 179,
+   "bad": 0
+  },
+  "H/csvq/var": {
+   "n": 213,
+   "bad": 0
+  },
+  "N/tsv/var/eda": {
+   "n": 111,
+   "bad": 0
+  },
+  "H/csvq/var/eda": {
+   "n": 44,
+   "bad": 0
+  },
+  "H/csvq/const/eda": {
+   "n": 59,
+   "bad": 0
+  },
+  "H/csvq/half/eda": {
+   "n": 41,
+   "bad": 0
+  },
+  "H/tsv/const/eda": {
+   "n": 103,
+   "bad": 0
+  },
+  "H/csvq/none/eda": {
+   "n": 51,
+   "bad": 0
+  },
+  "N/tsvq/half/eda": {
+   "n": 54,
+   "bad": 0
+  },
+  "H/tsvq/const": {
+   "n": 209,
+   "bad": 0
+  },
+  "N/tsvq/none/eda": {
+   "n": 45,
+   "bad": 0
+  },
+  "N/csvq/var/eda": {
+   "n": 43,
+   "bad": 1
+  },
+  "H/csv/half/eda": {
+   "n": 91,
+   "bad": 0
+  },
+  "H/tsvq/half/eda": {
+   "n": 46,
+   "bad": 0
+  },
+  "H/tsvq/const/eda": {
+   "n": 55,
+   "bad": 0
+  },
+  "N/tsvq/var/eda": {
+   "n": 39,
+   "bad": 0
+  },
+  "N/tsvq/const/eda": {
+   "n": 56,
+   "bad": 0
+  },
+  "H/tsv/var/eda": {
+   "n": 87,
+   "bad": 0
+  }
+ },
+ "bad": [
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "var",
+   "crossK": 8,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 14,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\nP0,R0\tx1\tx2\tx3,1,M-0\nP1,R1\tx1\tx2\tx3,2,M-1\nP2,R2\tx1\tx2,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7,4,M-3\nP4,R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\tx10,1,M-5\nP6,R6\tx1\tx2\tx3,2,M-6\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "var",
+   "crossK": 8,
+   "nTitle": 2,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 9,
+   "text": "2026-10-25\n制御盤A\nP0,M-0,1,R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP2,M-2,3,R2\tx1\tx2\tx3\tx4\nP3,M-3,4,R3\tx1\tx2\tx3\nP4,M-4,5,R4\tx1\tx2\tx3\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP6,M-6,2,R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,3,R7\tx1\tx2\tx3\nP8,M-8,4,R8\tx1\tx2\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 6,
+   "text": "P0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,2,R6\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 35,
+   "text": "制御盤A\n制御盤A\n部品表\n制御盤A\n部品表\n2026-10-25\n制御盤A\n部品表\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\tx5\tx6\nP16,M-16,2,R16\nP17,M-17,3,R17\tx1\tx2\tx3\tx4\tx5\tx6\nP18,M-18,4,R18\nP19,M-19,5,R19\tx1\tx2\tx3\tx4\tx5\tx6\nP20,M-2"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 20,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\nP0,M-0,オムロン,1,メモ\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,オムロン,3,メモ\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,オムロン,5,メモ\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,オムロン,2,メモ\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\nP8,M-8,オムロン,4,メモ\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\nP10,M-10,オムロン,1,メモ\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\nP12,M-12,オムロン,3,メモ\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 20,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P8\",\"M-8\",\"オムロン"
+  },
+  {
+   "kind": "tsv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "comma",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 32,
+   "text": "P0\tR0,x1, x2, x3, x4, x5, x6, x7, x8\t1\tM-0\nP1\tR1,x1, x2, x3, x4, x5, x6, x7, x8\t2\tM-1\nP2\tR2,x1, x2, x3, x4, x5, x6, x7, x8\t3\tM-2\nP3\tR3,x1, x2, x3, x4, x5, x6, x7, x8\t4\tM-3\nP4\tR4,x1, x2, x3, x4, x5, x6, x7, x8\t5\tM-4\nP5\tR5,x1, x2, x3, x4, x5, x6, x7, x8\t1\tM-5\nP6\tR6,x1, x2, x3, x4, x5, x6, x7, x8\t2\tM-6\nP7\tR7,x1, x2, x3, x4, x5, x6, x7, x8\t3\tM-7\nP8\tR8,x1, x2, x3, x4, x5, x6, x7, x8\t4\tM-8\nP9\tR9,x1, x2, x3, x4, x5, x6, x7, x8\t5\tM-9\nP10\tR10,x1, x2, x3, x4, x5, x6, x7, x8\t1\tM-10\nP11\tR11,x1, x2, x3, x4, "
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 6,
+   "nTitle": 1,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 39,
+   "text": "制御盤A\n\"P0\",\"R0\",\"1\",\"M-0\"\n\"P1\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"2\",\"M-1\"\n\"P2\",\"R2\",\"3\",\"M-2\"\n\"P3\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"4\",\"M-3\"\n\"P4\",\"R4\",\"5\",\"M-4\"\n\"P5\",\"R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"1\",\"M-5\"\n\"P6\",\"R6\",\"2\",\"M-6\"\n\"P7\",\"R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"3\",\"M-7\"\n\"P8\",\"R8\",\"4\",\"M-8\"\n\"P9\",\"R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"5\",\"M-9\"\n\"P10\",\"R10\",\"1\",\"M-10\"\n\"P11\",\"R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"2\",\"M-11\"\n\"P12\",\"R12\",\"3\",\"M-12\"\n\"P13\",\"R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\",\"4\",\"M-13\"\n\"P14\",\"R14\",\"5\",\"M-14\"\n\"P15\",\"R15\tx1\tx2\tx3\tx4\tx5\tx6\tx7\","
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "var",
+   "crossK": 6,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 22,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\nP0,R0\tx1\tx2\tx3\tx4\tx5\tx6,1,M-0\nP1,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7,2,M-1\nP2,R2\tx1\tx2\tx3\tx4\tx5\tx6,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5\tx6,4,M-3\nP4,R4\tx1\tx2\tx3\tx4\tx5\tx6,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5\tx6,1,M-5\nP6,R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7,2,M-6\nP7,R7\tx1\tx2\tx3\tx4,3,M-7\nP8,R8\tx1\tx2\tx3,4,M-8\nP9,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8,5,M-9\nP10,R10\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8,1,M-10\nP11,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8,2,M-11\nP12,R12\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8,3,M-12\nP13,R13\tx1\tx2\tx3\tx4\tx5\tx6\t"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "half",
+   "crossK": 6,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "",
+    "x2",
+    ""
+   ],
+   "n": 25,
+   "text": "\"P0\",\"M-0\",\"オムロン\",\"1\",\"個\",\"R0\",\"メモ\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"個\",\"R1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"個\",\"R2\",\"メモ\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"個\",\"R3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"個\",\"R4\",\"メモ\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"個\",\"R5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"個\",\"R6\",\"メモ\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"個\",\"R7\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"個\",\"R8\",\"メモ\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"個\",\"R9\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"個\",\"R10\",\"メモ\"\n\""
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "制御盤A",
+    "2026-10-25",
+    "2026-10-25",
+    "2026-10-25"
+   ],
+   "n": 33,
+   "text": "部品表\n制御盤A\n2026-10-25\n2026-10-25\n2026-10-25\n制御盤A\n2026-10-25\n部品表\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"個\",\"R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"個\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"個\",\"R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"個\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"個\",\"R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"個\",\"R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メモ\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"個\",\"R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"メ"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 2,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "P0,M-0,1,R0",
+    "P1,M-1,2,R1",
+    "P2,M-2,3,R2"
+   ],
+   "n": 9,
+   "text": "部品表\n客先, X商事\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 1,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "\"P0\",\"M-0\",\"1\",\"R0",
+    "\"P1\",\"M-1\",\"2\",\"R1",
+    "\"P2\",\"M-2\",\"3\",\"R2",
+    "\"P3\",\"M-3\",\"4\",\"R3"
+   ],
+   "n": 36,
+   "text": "\"P0\",\"M-0\",\"1\",\"R0\tx1\tx2\"\n\"P1\",\"M-1\",\"2\",\"R1\tx1\tx2\"\n\"P2\",\"M-2\",\"3\",\"R2\tx1\tx2\"\n\"P3\",\"M-3\",\"4\",\"R3\tx1\tx2\"\n\"P4\",\"M-4\",\"5\",\"R4\tx1\tx2\"\n\"P5\",\"M-5\",\"1\",\"R5\tx1\tx2\"\n\"P6\",\"M-6\",\"2\",\"R6\tx1\tx2\"\n\"P7\",\"M-7\",\"3\",\"R7\tx1\tx2\"\n\"P8\",\"M-8\",\"4\",\"R8\tx1\tx2\"\n\"P9\",\"M-9\",\"5\",\"R9\tx1\tx2\"\n\"P10\",\"M-10\",\"1\",\"R10\tx1\tx2\"\n\"P11\",\"M-11\",\"2\",\"R11\tx1\tx2\"\n\"P12\",\"M-12\",\"3\",\"R12\tx1\tx2\"\n\"P13\",\"M-13\",\"4\",\"R13\tx1\tx2\"\n\"P14\",\"M-14\",\"5\",\"R14\tx1\tx2\"\n\"P15\",\"M-15\",\"1\",\"R15\tx1\tx2\"\n\"P16\",\"M-16\",\"2\",\"R16\tx1\tx2\"\n\"P17\",\"M-17\",\"3\",\"R17\tx1\tx2\"\n\"P18\",\"M"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,qty,ref",
+   "crossMode": "var",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 37,
+   "text": "\"P0\",\"M-0\",\"1\",\"R0\tx1\tx2\tx3\tx4\"\n\"P1\",\"M-1\",\"2\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P2\",\"M-2\",\"3\",\"R2\tx1\tx2\tx3\tx4\tx5\"\n\"P3\",\"M-3\",\"4\",\"R3\tx1\tx2\tx3\tx4\"\n\"P4\",\"M-4\",\"5\",\"R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P5\",\"M-5\",\"1\",\"R5\tx1\tx2\tx3\"\n\"P6\",\"M-6\",\"2\",\"R6\tx1\tx2\tx3\"\n\"P7\",\"M-7\",\"3\",\"R7\tx1\tx2\"\n\"P8\",\"M-8\",\"4\",\"R8\tx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P9\",\"M-9\",\"5\",\"R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P10\",\"M-10\",\"1\",\"R10\tx1\tx2\tx3\tx4\tx5\"\n\"P11\",\"M-11\",\"2\",\"R11\tx1\tx2\tx3\"\n\"P12\",\"M-12\",\"3\",\"R12\tx1\tx2\"\n\"P13\",\"M-13\",\"4\",\"R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": true,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 31,
+   "text": "P0,M-0,オムロン,1,個,R1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP1,M-1,オムロン,2,個,\"R1, R2, R3\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP2,M-2,オムロン,3,個,\"R1, R2, R3\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP3,M-3,オムロン,4,個,\"R1, R2, R3, R4\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP4,M-4,オムロン,5,個,\"R1, R2, R3, R4\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP5,M-5,オムロン,1,個,\"R1, R2, R3, R4, R5\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP6,M-6,オムロン,2,個,\"R1, R2, R3, R4\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP7,M-7,オムロン,3,個,\"R1, R2, R3, R4, R5\",メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP8,M-8,オムロン,4,個,\"R"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 7,
+   "nTitle": 2,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "P0,M-0,オムロン,1,メモ",
+    "P1,M-1,オムロン,2,メモx1",
+    "P2,M-2,オムロン,3,メモ"
+   ],
+   "n": 13,
+   "text": "部品表\n客先, X商事\nP0,M-0,オムロン,1,メモ\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,オムロン,3,メモ\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,オムロン,5,メモ\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,オムロン,2,メモ\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,オムロン,4,メモ\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,オムロン,1,メモ\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 41,
+   "text": "2026-10-25\n2026-10-25\n部品表\n制御盤A\nP0,R0,1,M-0\nP1,R1\tx1\tx2\tx3\tx4\tx5\tx6,2,M-1\nP2,R2,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5\tx6,4,M-3\nP4,R4,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5\tx6,1,M-5\nP6,R6,2,M-6\nP7,R7\tx1\tx2\tx3\tx4\tx5\tx6,3,M-7\nP8,R8,4,M-8\nP9,R9\tx1\tx2\tx3\tx4\tx5\tx6,5,M-9\nP10,R10,1,M-10\nP11,R11\tx1\tx2\tx3\tx4\tx5\tx6,2,M-11\nP12,R12,3,M-12\nP13,R13\tx1\tx2\tx3\tx4\tx5\tx6,4,M-13\nP14,R14,5,M-14\nP15,R15\tx1\tx2\tx3\tx4\tx5\tx6,1,M-15\nP16,R16,2,M-16\nP17,R17\tx1\tx2\tx3\tx4\tx5\tx6,3,M-17\nP18,R18,4,M-18\nP19,R19\tx1\tx2\tx3\tx4\tx5\tx6,5,M-19\nP20,R20,1,M-20\nP21,"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,ref,qty,model",
+   "crossMode": "var",
+   "crossK": 2,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "2026-10-25",
+    "部品表",
+    "2026-10-25",
+    "部品表"
+   ],
+   "n": 26,
+   "text": "部品表\n2026-10-25\n部品表\n2026-10-25\n部品表\n制御盤A\n部品表\n制御盤A\n\"P0\",\"R0\tx1\tx2\",\"1\",\"M-0\"\n\"P1\",\"R1\tx1\tx2\tx3\tx4\",\"2\",\"M-1\"\n\"P2\",\"R2\tx1\tx2\tx3\",\"3\",\"M-2\"\n\"P3\",\"R3\tx1\tx2\tx3\tx4\",\"4\",\"M-3\"\n\"P4\",\"R4\tx1\tx2\tx3\tx4\",\"5\",\"M-4\"\n\"P5\",\"R5\tx1\tx2\tx3\tx4\",\"1\",\"M-5\"\n\"P6\",\"R6\tx1\tx2\",\"2\",\"M-6\"\n\"P7\",\"R7\tx1\tx2\tx3\tx4\",\"3\",\"M-7\"\n\"P8\",\"R8\tx1\tx2\",\"4\",\"M-8\"\n\"P9\",\"R9\tx1\tx2\tx3\tx4\",\"5\",\"M-9\"\n\"P10\",\"R10\tx1\tx2\tx3\",\"1\",\"M-10\"\n\"P11\",\"R11\tx1\tx2\tx3\",\"2\",\"M-11\"\n\"P12\",\"R12\tx1\tx2\tx3\",\"3\",\"M-12\"\n\"P13\",\"R13\tx1\tx2\",\"4\",\"M-13\"\n\"P14\",\"R14\tx1\tx2\tx3\",\"5\",\"M-"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "",
+    "x2",
+    ""
+   ],
+   "n": 31,
+   "text": "P0,M-0,オムロン,1,メモ\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,オムロン,3,メモ\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,オムロン,5,メモ\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,オムロン,2,メモ\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\nP8,M-8,オムロン,4,メモ\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\nP10,M-10,オムロン,1,メモ\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\nP12,M-12,オムロン,3,メモ\nP13,M-13,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\nP14,M-14,オムロン,5,メモ\nP15,M-15,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\nP16,M-16,オムロン,2,メモ\nP17,M-17,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\nP18,M-18,オムロン,4,メモ\nP19,M-"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "制御盤A",
+    "2026-10-25",
+    "2026-10-25",
+    "P0,M-0,1,R0"
+   ],
+   "n": 7,
+   "text": "部品表\n制御盤A\n2026-10-25\n2026-10-25\nP0,M-0,1,R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP2,M-2,3,R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 8,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 5,
+   "text": "2026-10-25\n制御盤A\n部品表\n部品表\n制御盤A\n2026-10-25\n制御盤A\n制御盤A\nP0,R0,1,M-0\nP1,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,2,M-1\nP2,R2,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,4,M-3\nP4,R4,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,1,M-5\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 2,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 37,
+   "text": "P0,M-0,オムロン,1,個,R0\tx1\tx2\tx3,メモ\nP1,M-1,オムロン,2,個,R1\tx1\tx2\tx3,メモ\nP2,M-2,オムロン,3,個,R2\tx1\tx2\tx3,メモ\nP3,M-3,オムロン,4,個,R3\tx1\tx2\tx3,メモ\nP4,M-4,オムロン,5,個,R4\tx1\tx2\tx3,メモ\nP5,M-5,オムロン,1,個,R5\tx1\tx2\tx3,メモ\nP6,M-6,オムロン,2,個,R6\tx1\tx2\tx3,メモ\nP7,M-7,オムロン,3,個,R7\tx1\tx2\tx3,メモ\nP8,M-8,オムロン,4,個,R8\tx1\tx2\tx3,メモ\nP9,M-9,オムロン,5,個,R9\tx1\tx2\tx3,メモ\nP10,M-10,オムロン,1,個,R10\tx1\tx2\tx3,メモ\nP11,M-11,オムロン,2,個,R11\tx1\tx2\tx3,メモ\nP12,M-12,オムロン,3,個,R12\tx1\tx2\tx3,メモ\nP13,M-13,オムロン,4,個,R13\tx1\tx2\tx3,メモ\nP14,M-14,オムロン,5,個,R14\tx1\tx2\tx3,メモ\nP15,M-15,オムロン,1,個,R1"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 2,
+   "nTitle": 2,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "2026-10-25",
+    "P0,M-0,オムロン,1,メモx1",
+    "P1,M-1,オムロン,2,メモx1",
+    "P2,M-2,オムロン,3,メモx1"
+   ],
+   "n": 12,
+   "text": "部品表\n2026-10-25\nP0,M-0,オムロン,1,メモx1\tx2\tx3\nP1,M-1,オムロン,2,メモx1\tx2\tx3\nP2,M-2,オムロン,3,メモx1\tx2\tx3\nP3,M-3,オムロン,4,メモx1\tx2\tx3\nP4,M-4,オムロン,5,メモx1\tx2\tx3\nP5,M-5,オムロン,1,メモx1\tx2\tx3\nP6,M-6,オムロン,2,メモx1\tx2\tx3\nP7,M-7,オムロン,3,メモx1\tx2\tx3\nP8,M-8,オムロン,4,メモx1\tx2\tx3\nP9,M-9,オムロン,5,メモx1\tx2\tx3\nP10,M-10,オムロン,1,メモx1\tx2\tx3\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 8,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 23,
+   "text": "制御盤A\n制御盤A\n部品表\n制御盤A\n制御盤A\n2026-10-25\n部品表\n部品表\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP16,M-16,2,R16\nP17,M-17,3,R17\tx"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 12,
+   "text": "制御盤A\n部品表\n制御盤A\n制御盤A\nP0,M-0,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\t"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 2,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "\"P0\",\"M-0\",\"1\",\"R0\"",
+    "\"P1\",\"M-1\",\"2\",\"R1",
+    "\"P2\",\"M-2\",\"3\",\"R2\""
+   ],
+   "n": 24,
+   "text": "部品表\n客先, X商事\n\"P0\",\"M-0\",\"1\",\"R0\"\n\"P1\",\"M-1\",\"2\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P2\",\"M-2\",\"3\",\"R2\"\n\"P3\",\"M-3\",\"4\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P4\",\"M-4\",\"5\",\"R4\"\n\"P5\",\"M-5\",\"1\",\"R5\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P6\",\"M-6\",\"2\",\"R6\"\n\"P7\",\"M-7\",\"3\",\"R7\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P8\",\"M-8\",\"4\",\"R8\"\n\"P9\",\"M-9\",\"5\",\"R9\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P10\",\"M-10\",\"1\",\"R10\"\n\"P11\",\"M-11\",\"2\",\"R11\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P12\",\"M-12\",\"3\",\"R12\"\n\"P13\",\"M-13\",\"4\",\"R13\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P14\",\"M-14\",\"5\",\"R14\"\n\"P15\",\"M-15\",\"1\",\"R15\tx1\tx2\tx3\tx4\tx5\tx6\"\n\"P16\","
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 15,
+   "text": "制御盤A\n制御盤A\n制御盤A\n部品表\n制御盤A\n部品表\n制御盤A\n部品表\nP0,M-0,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP11,M-11,オムロン,2,メモx1\t"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "",
+    "x2",
+    ""
+   ],
+   "n": 18,
+   "text": "P0,M-0,オムロン,1,メモ\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP2,M-2,オムロン,3,メモ\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP4,M-4,オムロン,5,メモ\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP6,M-6,オムロン,2,メモ\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP8,M-8,オムロン,4,メモ\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP10,M-10,オムロン,1,メモ\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP12,M-12,オムロン,3,メモ\nP13,M-13,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP14,M-14,オムロン,5,メモ\nP15,M-15,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\nP16,M-16"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 2,
+   "nTitle": 1,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "P0,M-0,1,R0",
+    "P1,M-1,2,R1",
+    "P2,M-2,3,R2",
+    "P3,M-3,4,R3"
+   ],
+   "n": 18,
+   "text": "部品表\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\nP16,M-16,2,R16\nP17,M-17,3,R17\tx1\tx2\tx3\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 6,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "",
+    "x2",
+    ""
+   ],
+   "n": 29,
+   "text": "制御盤A\n部品表\n2026-10-25\n2026-10-25\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモ\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモ\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモ\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモ\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモ\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"メモ\"\n\"P11\",\"M-11\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P12\",\"M-12\",\"オムロン\",\""
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 6,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 41,
+   "text": "P0,M-0,1,R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP2,M-2,3,R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP4,M-4,5,R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP6,M-6,2,R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP8,M-8,4,R8\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP10,M-10,1,R10\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP12,M-12,3,R12\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\nP14,M-14,5,R14\tx1\tx2\tx3\tx4"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 7,
+   "nTitle": 1,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "P0,M-0,1,R0",
+    "P1,M-1,2,R1",
+    "P2,M-2,3,R2",
+    "P3,M-3,4,R3"
+   ],
+   "n": 30,
+   "text": "部品表\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP16,M-16,2,R16\nP17,M-17,3,R17\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP18,M-18,4,R18\nP19,M-19,5,R19\tx1\tx2\tx3\tx"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 2,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "2026-10-25",
+    "制御盤A",
+    "2026-10-25",
+    "\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1"
+   ],
+   "n": 30,
+   "text": "部品表\n2026-10-25\n制御盤A\n2026-10-25\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\"\n\"P11\",\"M-11\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\"\n\"P12\",\"M-12\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\"\n\"P13\",\"M"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 3,
+   "nTitle": 2,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "\"P0\",\"M-0\",\"オムロン\",\"1\",\"個\",\"R0",
+    "\"P1\",\"M-1\",\"オムロン\",\"2\",\"個\",\"R1",
+    "\"P2\",\"M-2\",\"オムロン\",\"3\",\"個\",\"R2"
+   ],
+   "n": 31,
+   "text": "部品表\n客先, X商事\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"個\",\"R0\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"個\",\"R1\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"個\",\"R2\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"個\",\"R3\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"個\",\"R4\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"個\",\"R5\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"個\",\"R6\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"個\",\"R7\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"個\",\"R8\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"個\",\"R9\tx1\tx2\tx3\tx4\",\"メモ\"\n\"P10\",\"M"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 3,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 22,
+   "text": "P0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\nP16,M-16,2,R16\nP17,M-17,3,R17\tx1\tx2\tx3\tx4\nP18,M-18,4,R18\nP19,M-19,5,R19\tx1\tx2\tx3\tx4\nP20,M-20,1,R20\nP21,M-21,2,R21\tx1\tx2\tx3\tx4\nP22,M-22,3,R22\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "var",
+   "crossK": 8,
+   "nTitle": 1,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1",
+    "\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1",
+    "\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1",
+    "\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1"
+   ],
+   "n": 12,
+   "text": "部品表\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\tx10\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモx1\tx2\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\tx10\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\tx10\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"メモx1\tx2\tx3"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "部品表",
+    "制御盤A",
+    "2026-10-25",
+    "制御盤A"
+   ],
+   "n": 14,
+   "text": "部品表\n部品表\n制御盤A\n2026-10-25\n制御盤A\n制御盤A\n2026-10-25\n2026-10-25\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,2,R6\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 4,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 4,
+   "text": "制御盤A\n部品表\n制御盤A\n2026-10-25\n2026-10-25\n2026-10-25\n制御盤A\n制御盤A\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"個\",\"R0\",\"メモx1\tx2\tx3\tx4\tx5\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"個\",\"R1\",\"メモx1\tx2\tx3\tx4\tx5\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"個\",\"R2\",\"メモx1\tx2\tx3\tx4\tx5\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"個\",\"R3\",\"メモx1\tx2\tx3\tx4\tx5\"\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "const",
+   "crossK": 4,
+   "nTitle": 8,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "部品表",
+    "制御盤A",
+    "部品表",
+    "2026-10-25"
+   ],
+   "n": 30,
+   "text": "部品表\n部品表\n制御盤A\n部品表\n2026-10-25\n制御盤A\n制御盤A\n制御盤A\nP0,R0\tx1\tx2\tx3\tx4\tx5,1,M-0\nP1,R1\tx1\tx2\tx3\tx4\tx5,2,M-1\nP2,R2\tx1\tx2\tx3\tx4\tx5,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5,4,M-3\nP4,R4\tx1\tx2\tx3\tx4\tx5,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5,1,M-5\nP6,R6\tx1\tx2\tx3\tx4\tx5,2,M-6\nP7,R7\tx1\tx2\tx3\tx4\tx5,3,M-7\nP8,R8\tx1\tx2\tx3\tx4\tx5,4,M-8\nP9,R9\tx1\tx2\tx3\tx4\tx5,5,M-9\nP10,R10\tx1\tx2\tx3\tx4\tx5,1,M-10\nP11,R11\tx1\tx2\tx3\tx4\tx5,2,M-11\nP12,R12\tx1\tx2\tx3\tx4\tx5,3,M-12\nP13,R13\tx1\tx2\tx3\tx4\tx5,4,M-13\nP14,R14\tx1\tx2\tx3\tx4\tx5,5,M-14\nP15,R15\tx1\tx2\tx3\tx4\tx5,1,M-15\nP16,R16"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 21,
+   "text": "P0,R0,1,M-0\nP1,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,2,M-1\nP2,R2,3,M-2\nP3,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,4,M-3\nP4,R4,5,M-4\nP5,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,1,M-5\nP6,R6,2,M-6\nP7,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,3,M-7\nP8,R8,4,M-8\nP9,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,5,M-9\nP10,R10,1,M-10\nP11,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,2,M-11\nP12,R12,3,M-12\nP13,R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,4,M-13\nP14,R14,5,M-14\nP15,R15\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,1,M-15\nP16,R16,2,M-16\nP17,R17\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,3,M-17\nP18,R18,4,M-18\nP1"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 1,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "\"P0\",\"R0\",\"1\",\"M-0\"",
+    "\"P1\",\"R1",
+    "\"P2\",\"R2\",\"3\",\"M-2\"",
+    "\"P3\",\"R3"
+   ],
+   "n": 31,
+   "text": "部品表\n\"P0\",\"R0\",\"1\",\"M-0\"\n\"P1\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\",\"2\",\"M-1\"\n\"P2\",\"R2\",\"3\",\"M-2\"\n\"P3\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\",\"4\",\"M-3\"\n\"P4\",\"R4\",\"5\",\"M-4\"\n\"P5\",\"R5\tx1\tx2\tx3\tx4\tx5\tx6\",\"1\",\"M-5\"\n\"P6\",\"R6\",\"2\",\"M-6\"\n\"P7\",\"R7\tx1\tx2\tx3\tx4\tx5\tx6\",\"3\",\"M-7\"\n\"P8\",\"R8\",\"4\",\"M-8\"\n\"P9\",\"R9\tx1\tx2\tx3\tx4\tx5\tx6\",\"5\",\"M-9\"\n\"P10\",\"R10\",\"1\",\"M-10\"\n\"P11\",\"R11\tx1\tx2\tx3\tx4\tx5\tx6\",\"2\",\"M-11\"\n\"P12\",\"R12\",\"3\",\"M-12\"\n\"P13\",\"R13\tx1\tx2\tx3\tx4\tx5\tx6\",\"4\",\"M-13\"\n\"P14\",\"R14\",\"5\",\"M-14\"\n\"P15\",\"R15\tx1\tx2\tx3\tx4\tx5\tx6\",\"1\",\"M-15\"\n\"P16\",\"R16\",\"2"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,qty,ref",
+   "crossMode": "var",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 4,
+   "text": "\"P0\",\"M-0\",\"1\",\"R0\tx1\tx2\tx3\tx4\tx5\"\n\"P1\",\"M-1\",\"2\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\tx10\"\n\"P2\",\"M-2\",\"3\",\"R2\tx1\tx2\tx3\tx4\"\n\"P3\",\"M-3\",\"4\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 16,
+   "text": "P0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP16,M-16,2,R16\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "const",
+   "crossK": 3,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "制御盤A",
+    "制御盤A",
+    "2026-10-25",
+    "P0,R0"
+   ],
+   "n": 33,
+   "text": "部品表\n制御盤A\n制御盤A\n2026-10-25\nP0,R0\tx1\tx2\tx3\tx4,1,M-0\nP1,R1\tx1\tx2\tx3\tx4,2,M-1\nP2,R2\tx1\tx2\tx3\tx4,3,M-2\nP3,R3\tx1\tx2\tx3\tx4,4,M-3\nP4,R4\tx1\tx2\tx3\tx4,5,M-4\nP5,R5\tx1\tx2\tx3\tx4,1,M-5\nP6,R6\tx1\tx2\tx3\tx4,2,M-6\nP7,R7\tx1\tx2\tx3\tx4,3,M-7\nP8,R8\tx1\tx2\tx3\tx4,4,M-8\nP9,R9\tx1\tx2\tx3\tx4,5,M-9\nP10,R10\tx1\tx2\tx3\tx4,1,M-10\nP11,R11\tx1\tx2\tx3\tx4,2,M-11\nP12,R12\tx1\tx2\tx3\tx4,3,M-12\nP13,R13\tx1\tx2\tx3\tx4,4,M-13\nP14,R14\tx1\tx2\tx3\tx4,5,M-14\nP15,R15\tx1\tx2\tx3\tx4,1,M-15\nP16,R16\tx1\tx2\tx3\tx4,2,M-16\nP17,R17\tx1\tx2\tx3\tx4,3,M-17\nP18,R18\tx1\tx2\tx3\tx4"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 29,
+   "text": "\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\"\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": true,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 22,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\nP0,M-0,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx"
+  },
+  {
+   "kind": "tsv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 2,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "comma",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 33,
+   "text": "制御盤A\n部品表\nP0\tM-0\t1\tR0,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP1\tM-1\t2\tR1,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP2\tM-2\t3\tR2,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP3\tM-3\t4\tR3,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP4\tM-4\t5\tR4,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP5\tM-5\t1\tR5,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP6\tM-6\t2\tR6,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP7\tM-7\t3\tR7,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP8\tM-8\t4\tR8,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP9\tM-9\t5\tR9,x1, x2, x3, x4, x5, x6, x7, x8, x9\nP10\tM-10\t1\tR10,x1, x2"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 10,
+   "text": "P0,M-0,1,R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,3,R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,5,R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,2,R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,4,R8\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 7,
+   "nTitle": 2,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 16,
+   "text": "制御盤A\n部品表\nP0,M-0,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP2,M-2,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP4,M-4,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP6,M-6,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP8,M-8,オムロン,4,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP10,M-10,オムロン,1,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\nP12,M-1"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,ref,qty,model",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 8,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "部品表"
+   ],
+   "n": 10,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n\"P0\",\"R0\",\"1\",\"M-0\"\n\"P1\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\",\"2\",\"M-1\"\n\"P2\",\"R2\",\"3\",\"M-2\"\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 1,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "P0,M-0,オムロン,1,個,R0",
+    "P1,M-1,オムロン,2,個,R1",
+    "P2,M-2,オムロン,3,個,R2",
+    "P3,M-3,オムロン,4,個,R3"
+   ],
+   "n": 21,
+   "text": "部品表\nP0,M-0,オムロン,1,個,R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP1,M-1,オムロン,2,個,R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP2,M-2,オムロン,3,個,R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP3,M-3,オムロン,4,個,R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP4,M-4,オムロン,5,個,R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP5,M-5,オムロン,1,個,R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP6,M-6,オムロン,2,個,R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP7,M-7,オムロン,3,個,R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP8,M-8,オムロン,4,個,R8\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP9,M-9,オムロン,5,個,R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9,メモ\nP10,M-"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,qty,ref",
+   "crossMode": "const",
+   "crossK": 1,
+   "nTitle": 4,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "制御盤A",
+    "制御盤A",
+    "2026-10-25",
+    "\"P0\",\"M-0\",\"1\",\"R0"
+   ],
+   "n": 12,
+   "text": "部品表\n制御盤A\n制御盤A\n2026-10-25\n\"P0\",\"M-0\",\"1\",\"R0\tx1\tx2\"\n\"P1\",\"M-1\",\"2\",\"R1\tx1\tx2\"\n\"P2\",\"M-2\",\"3\",\"R2\tx1\tx2\"\n\"P3\",\"M-3\",\"4\",\"R3\tx1\tx2\"\n\"P4\",\"M-4\",\"5\",\"R4\tx1\tx2\"\n\"P5\",\"M-5\",\"1\",\"R5\tx1\tx2\"\n\"P6\",\"M-6\",\"2\",\"R6\tx1\tx2\"\n\"P7\",\"M-7\",\"3\",\"R7\tx1\tx2\"\n\"P8\",\"M-8\",\"4\",\"R8\tx1\tx2\"\n"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,ref,qty,model",
+   "crossMode": "const",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 22,
+   "text": "\"P0\",\"R0\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"1\",\"M-0\"\n\"P1\",\"R1\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"2\",\"M-1\"\n\"P2\",\"R2\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"3\",\"M-2\"\n\"P3\",\"R3\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"4\",\"M-3\"\n\"P4\",\"R4\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"5\",\"M-4\"\n\"P5\",\"R5\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"1\",\"M-5\"\n\"P6\",\"R6\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"2\",\"M-6\"\n\"P7\",\"R7\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"3\",\"M-7\"\n\"P8\",\"R8\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"4\",\"M-8\"\n\"P9\",\"R9\tx1\tx2\tx3\tx4\tx5\tx6\tx7\tx8\tx9\",\"5\",\"M-9\"\n\"P10\",\"R10\tx1\tx2\tx3\tx4\tx5\tx6\tx"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,qty,ref",
+   "crossMode": "half",
+   "crossK": 5,
+   "nTitle": 1,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "",
+    "x1",
+    ""
+   ],
+   "n": 34,
+   "text": "2026-10-25\nP0,M-0,1,R0\nP1,M-1,2,R1\tx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,3,R2\nP3,M-3,4,R3\tx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,5,R4\nP5,M-5,1,R5\tx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,2,R6\nP7,M-7,3,R7\tx1\tx2\tx3\tx4\tx5\tx6\nP8,M-8,4,R8\nP9,M-9,5,R9\tx1\tx2\tx3\tx4\tx5\tx6\nP10,M-10,1,R10\nP11,M-11,2,R11\tx1\tx2\tx3\tx4\tx5\tx6\nP12,M-12,3,R12\nP13,M-13,4,R13\tx1\tx2\tx3\tx4\tx5\tx6\nP14,M-14,5,R14\nP15,M-15,1,R15\tx1\tx2\tx3\tx4\tx5\tx6\nP16,M-16,2,R16\nP17,M-17,3,R17\tx1\tx2\tx3\tx4\tx5\tx6\nP18,M-18,4,R18\nP19,M-19,5,R19\tx1\tx2\tx3\tx4\tx5\tx6\nP20,M-20,1,R20\nP21,M-21,2,R21\tx1\tx2\tx3\t"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 4,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "",
+    "x2",
+    ""
+   ],
+   "n": 13,
+   "text": "P0,M-0,オムロン,1,メモ\nP1,M-1,オムロン,2,メモx1\tx2\tx3\tx4\tx5\nP2,M-2,オムロン,3,メモ\nP3,M-3,オムロン,4,メモx1\tx2\tx3\tx4\tx5\nP4,M-4,オムロン,5,メモ\nP5,M-5,オムロン,1,メモx1\tx2\tx3\tx4\tx5\nP6,M-6,オムロン,2,メモ\nP7,M-7,オムロン,3,メモx1\tx2\tx3\tx4\tx5\nP8,M-8,オムロン,4,メモ\nP9,M-9,オムロン,5,メモx1\tx2\tx3\tx4\tx5\nP10,M-10,オムロン,1,メモ\nP11,M-11,オムロン,2,メモx1\tx2\tx3\tx4\tx5\nP12,M-12,オムロン,3,メモ\nP13,M-13,オムロン,4,メモx1\tx2\tx3\tx4\tx5\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,ref,qty,model",
+   "crossMode": "var",
+   "crossK": 8,
+   "nTitle": 0,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x1",
+    "x1",
+    "x1"
+   ],
+   "n": 3,
+   "text": "P0,R0\tx1\tx2\tx3,1,M-0\nP1,R1\tx1\tx2\tx3,2,M-1\nP2,R2\tx1\tx2,3,M-2\n"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 5,
+   "nTitle": 0,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "x2",
+    "x2",
+    "x2",
+    "x2"
+   ],
+   "n": 36,
+   "text": "P0,M-0,オムロン,1,個,R0,メモx1\tx2\tx3\tx4\tx5\tx6\nP1,M-1,オムロン,2,個,R1,メモx1\tx2\tx3\tx4\tx5\tx6\nP2,M-2,オムロン,3,個,R2,メモx1\tx2\tx3\tx4\tx5\tx6\nP3,M-3,オムロン,4,個,R3,メモx1\tx2\tx3\tx4\tx5\tx6\nP4,M-4,オムロン,5,個,R4,メモx1\tx2\tx3\tx4\tx5\tx6\nP5,M-5,オムロン,1,個,R5,メモx1\tx2\tx3\tx4\tx5\tx6\nP6,M-6,オムロン,2,個,R6,メモx1\tx2\tx3\tx4\tx5\tx6\nP7,M-7,オムロン,3,個,R7,メモx1\tx2\tx3\tx4\tx5\tx6\nP8,M-8,オムロン,4,個,R8,メモx1\tx2\tx3\tx4\tx5\tx6\nP9,M-9,オムロン,5,個,R9,メモx1\tx2\tx3\tx4\tx5\tx6\nP10,M-10,オムロン,1,個,R10,メモx1\tx2\tx3\tx4\tx5\tx6\nP11,M-11,オムロン,2,個,R11,メモx1\tx2\tx3\tx4\tx5\tx6\nP12,M-12,オムロン,3,個,R12,メモx1"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "half",
+   "crossK": 6,
+   "nTitle": 4,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモ\""
+   ],
+   "n": 42,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモ\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモ\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモ\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモ\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモ\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"メモ\"\n\"P11\",\"M-11\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\tx5\tx6\tx7\"\n\"P12\",\"M-12\",\"オムロン\",\"3"
+  },
+  {
+   "kind": "csv",
+   "cols": "name,model,maker,qty,unit,ref,note",
+   "crossMode": "const",
+   "crossK": 3,
+   "nTitle": 2,
+   "titleCross": false,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "制御盤A",
+    "P0,M-0,オムロン,1,個,R0,メモx1",
+    "P1,M-1,オムロン,2,個,R1,メモx1",
+    "P2,M-2,オムロン,3,個,R2,メモx1"
+   ],
+   "n": 16,
+   "text": "部品表\n制御盤A\nP0,M-0,オムロン,1,個,R0,メモx1\tx2\tx3\tx4\nP1,M-1,オムロン,2,個,R1,メモx1\tx2\tx3\tx4\nP2,M-2,オムロン,3,個,R2,メモx1\tx2\tx3\tx4\nP3,M-3,オムロン,4,個,R3,メモx1\tx2\tx3\tx4\nP4,M-4,オムロン,5,個,R4,メモx1\tx2\tx3\tx4\nP5,M-5,オムロン,1,個,R5,メモx1\tx2\tx3\tx4\nP6,M-6,オムロン,2,個,R6,メモx1\tx2\tx3\tx4\nP7,M-7,オムロン,3,個,R7,メモx1\tx2\tx3\tx4\nP8,M-8,オムロン,4,個,R8,メモx1\tx2\tx3\tx4\nP9,M-9,オムロン,5,個,R9,メモx1\tx2\tx3\tx4\nP10,M-10,オムロン,1,個,R10,メモx1\tx2\tx3\tx4\nP11,M-11,オムロン,2,個,R11,メモx1\tx2\tx3\tx4\nP12,M-12,オムロン,3,個,R12,メモx1\tx2\tx3\tx4\nP13,M-13,オムロン,4,個,R13,メモx1\tx2\tx3\tx4\nP14,M-14,オムロン,5,個"
+  },
+  {
+   "kind": "csvq",
+   "cols": "name,model,maker,qty,note",
+   "crossMode": "const",
+   "crossK": 3,
+   "nTitle": 4,
+   "titleCross": true,
+   "edaStyle": false,
+   "delim": "tab",
+   "got": [
+    "客先, X商事",
+    "納期, 12月",
+    "Rev.2, 山田",
+    "\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1"
+   ],
+   "n": 41,
+   "text": "部品表\n客先, X商事\n納期, 12月\nRev.2, 山田\n\"P0\",\"M-0\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\"\n\"P1\",\"M-1\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\"\n\"P2\",\"M-2\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\"\n\"P3\",\"M-3\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\"\n\"P4\",\"M-4\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\"\n\"P5\",\"M-5\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\"\n\"P6\",\"M-6\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\"\n\"P7\",\"M-7\",\"オムロン\",\"3\",\"メモx1\tx2\tx3\tx4\"\n\"P8\",\"M-8\",\"オムロン\",\"4\",\"メモx1\tx2\tx3\tx4\"\n\"P9\",\"M-9\",\"オムロン\",\"5\",\"メモx1\tx2\tx3\tx4\"\n\"P10\",\"M-10\",\"オムロン\",\"1\",\"メモx1\tx2\tx3\tx4\"\n\"P11\",\"M-11\",\"オムロン\",\"2\",\"メモx1\tx2\tx3\tx4\"\n\"P12\",\"M-1"
+  }
+ ]
+}

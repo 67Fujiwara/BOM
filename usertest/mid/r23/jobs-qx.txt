@@ -1,0 +1,27 @@
+q6 q6-ng-enter ng-enter
+q6 q6-ng-Y ng-Y
+q6 q6-ng-b ng-b
+q6 q6-ng-enterb ng-enterb
+q6 q6-diff-enter diff-enter
+q6 q6-diff-y diff-y
+q6 q6-ltb-y ltb-y
+q6 q6-ltb-enter ltb-enter
+q3 q3-fixed-s fixed 支給品
+q3 q3-fixed-z fixed 社内在庫
+q2 q2-appr appr
+q4 q4
+q1 q1-early early
+q1 q1-exc exc
+q1 q1-ng-fail ng-fail
+q1 q1-ng-a ng 1
+q1 q1-exc-a exc 1
+q1 q1-ltb-a ltb 1
+q1 q1-diff-a diff 1
+q1 q1-ng-e-a ng-e 1
+q1 q1-ng-p ng-p
+q1 q1-ng-d ng-d
+q1 q1-formal formal
+q1 q1-diff diff
+q1 q1-diff-g diff-g
+q1 q1-diff-d diff-d
+q1 q1-ordered ordered

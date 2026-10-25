@@ -1,0 +1,11 @@
+R010 model (WIP) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+R012 maker (WIP) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+purch grid R010 D-PT 2,5 R012 フエニックス
+file:///home/user/BOM/usertest/mid/r23/g8.mjs:41
+  const found = []; const wb = new ExcelJS.Workbook(); await wb.xlsx.readFile(t.downloads[n0].name)
+                                                                                              ^
+
+TypeError: Cannot read properties of undefined (reading 'name')
+    at file:///home/user/BOM/usertest/mid/r23/g8.mjs:41:95
+
+Node.js v22.22.0

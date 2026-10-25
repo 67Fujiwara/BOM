@@ -1,0 +1,41 @@
+rows R081 R082 R083 R084
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 9（Rev.2） を公開しました
+rough to S1 → 9 行 × 1 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） []
+requestRevs {"S1":1}
+  R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"]
+  R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"]
+  R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null
+  R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null
+remove JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+ after R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"] ball purchasing
+ after R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"] ball purchasing
+ after R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null ball purchasing
+ after R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null ball purchasing
+PASS P1C-remove-1 S1 を消して/停止してもボールの無い行・ビューに載らない行がない :: []
+N3 in design 4 true ball purchasing
+N3 problems ["指定先「S1」は商社マスタにありません（立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）"]
+PASS P1C-remove-2 指定先が消えた N3 は設計に「マスタにありません」と出て、設計の 4 に載る :: in4=true ["指定先「S1」は商社マスタにありません（立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）"]
+N3 designated → S2 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+rough to all → 9 行 × 2 社に依頼（回答期限 2026-10-31） [["立花エレテック",["R081","R082","R083","R084"]],["ミスミ",["R081","R082"]]]
+PASS P1C-remove-3 S1 を除く相見積先（S2・S3）に、S1 にしか頼んでいなかった N1・N2 の依頼書が出る :: [["立花エレテック",9],["ミスミ",7]]
+PASS P1C-remove-4 指定先を S2 に直した N3 は S2 宛に出る（S1 宛でない） :: [["立花エレテック",["R083"]],["ミスミ",[]]]
+N4 (客先指定品) in files [["立花エレテック",true],["ミスミ",false]]
+PASS P1C-remove-5 客先指定品 N4 は消えた/停止の S1 宛に出ない :: [["立花エレテック",true],["ミスミ",false]]
+ now R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+ now R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+ now R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null]]
+ now R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null]]
+N1 R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",200,6,null],["S3",200,6,null]]
+PASS P1C-remove-6 S2・S3 が回答すれば N1・N2 は見積済（消えた/停止の S1 の回答を待たない） :: quoted quoted 見積済
+restore S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+publish → を入れて Enter] 行 1（Rev.4） を公開しました
+rough to S1 again → 1 行 × 1 社に依頼（回答期限 2026-10-31） [["因幡電機",1]]
+files download
+PASS P1C-remove-7 S1 を戻して頼むと依頼書ができる（例外なし）。依頼No に S1 :: [["因幡電機",1]]
+PASS P1C-remove-8 依頼書の文字に undefined が出ない :: []
+PASS P1C-remove-9 画面の文字に undefined が出ない :: []
+PASS P1C-remove-10 固まる行がない :: []
+ERRORS []
+PASS P1C-remove-11 console error なし :: []
+== 11/11 PASS

@@ -1,0 +1,20 @@
+q3 q3-selected-s selected 支給品
+q3 q3-selected-z selected 社内在庫
+q3 q3-formal-s formal 支給品
+q3 q3-formal-z formal 社内在庫
+q3 q3-formalq-s formalq 支給品
+q3 q3-formalq-z formalq 社内在庫
+q3 q3-fixed-s fixed 支給品
+q3 q3-fixed-z fixed 社内在庫
+q2 q2-rej rej
+q2 q2-appr appr
+q2 q2-rej-appr rej-appr
+q2 q2-appr-rej appr-rej
+q2 q2-chain chain
+q1 q1-ltb ltb
+q1 q1-early early
+q1 q1-exc exc
+q1 q1-ng-fail ng-fail
+q1 q1-ng-a ng 1
+q1 q1-exc-a exc 1
+q1 q1-ltb-a ltb 1

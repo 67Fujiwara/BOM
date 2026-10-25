@@ -1,0 +1,878 @@
+[
+ {
+  "id": "FROM0",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t他盤から撤去\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM1",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t既設盤から取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM2",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t旧機から取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM3",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t前機種から撤去\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM4",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t流用元から取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM5",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\tA号機から取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM6",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t倉庫から取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM7",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t客先から撤去\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "FROM8",
+  "ok": false,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,対象,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "から＋撤去＝流用元（残すべき）",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t在庫から取り外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "WO0",
+  "ok": true,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "この行自身の削除（新が空）なので削除でよい",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\tケーブルを削除\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "WO1",
+  "ok": true,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "この行自身の削除（新が空）なので削除でよい",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\tカバーを撤去\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "WO2",
+  "ok": true,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "この行自身の削除（新が空）なので削除でよい",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\t配線は削除\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "WO3",
+  "ok": true,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "この行自身の削除（新が空）なので削除でよい",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\tSW2も撤去\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "WO4",
+  "ok": true,
+  "names": "基準A,基準B,基準C,基準D",
+  "expect": "基準A,基準B,基準C,基準D",
+  "delim": "tab",
+  "w": [
+   "「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました",
+   "削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削除された部品として取り込みません（要ると",
+   "「型式」に当たる列が 2 つあります。「新型式」の列を使います"
+  ],
+  "note": "この行自身の削除（新が空）なので削除でよい",
+  "text": "部品名\t旧型式\t新型式\t数量\t備考\n基準A\tMY2N\tMY4N\t1\t型式変更\n基準B\tXA-1\tXA-2\t2\t型式変更\n基準C\tP-1\tP-2\t3\t\n対象\tZZ-100\t\t4\tラベルを取外し\n基準D\tQ-1\t\t5\t"
+ },
+ {
+  "id": "NAME0",
+  "ok": true,
+  "names": "撤去,B",
+  "expect": "撤去,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n撤去\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME1",
+  "ok": true,
+  "names": "取外し,B",
+  "expect": "取外し,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n取外し\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME2",
+  "ok": true,
+  "names": "廃止,B",
+  "expect": "廃止,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n廃止\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME3",
+  "ok": true,
+  "names": "削除,B",
+  "expect": "削除,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n削除\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME4",
+  "ok": true,
+  "names": "ケーブル取外し,B",
+  "expect": "ケーブル取外し,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\nケーブル取外し\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME5",
+  "ok": true,
+  "names": "カバー撤去,B",
+  "expect": "カバー撤去,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\nカバー撤去\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME6",
+  "ok": true,
+  "names": "安全装置を撤去,B",
+  "expect": "安全装置を撤去,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n安全装置を撤去\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME7",
+  "ok": true,
+  "names": "ユニットを廃止,B",
+  "expect": "ユニットを廃止,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\nユニットを廃止\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "NAME8",
+  "ok": true,
+  "names": "電線を取外し,B",
+  "expect": "電線を取外し,B",
+  "delim": "tab",
+  "w": [],
+  "note": "普通の BOM の部品名",
+  "text": "部品名\t型式\t数量\n電線を取外し\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "KINDV0",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: ケーブルを削除 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\nケーブルを削除\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "KINDV1",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: 全て削除 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\n全て削除\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "KINDV2",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: 不要につき削除 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\n不要につき削除\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "KINDV3",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: 一式不要 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\n一式不要\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "KINDV4",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: 全削除 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\n全削除\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "KINDV5",
+  "ok": true,
+  "names": "A,C",
+  "expect": "A,C",
+  "delim": "tab",
+  "w": [
+   "「変更区分」が削除の 1 行（例: この部品は削除 DEL M-2）は、削除された部品として取り込みません"
+  ],
+  "note": "変更区分に文章",
+  "text": "変更区分\t部品名\t型式\t数量\n追加\tA\tM-1\t1\nこの部品は削除\tDEL\tM-2\t1\n変更\tC\tM-3\t1"
+ },
+ {
+  "id": "DNP0",
+  "ok": false,
+  "names": "B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP(大日本印刷)製\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP1",
+  "ok": false,
+  "names": "B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP（凸版比較）\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP2",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP 手配\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP3",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP品\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP4",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP/凸版 比較\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP5",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP:RF-100\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP6",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP 反射フィルム\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP7",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tdnp将来用\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP8",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP 将来用\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP9",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP/未実装\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP10",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP:オプション\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP11",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP-100\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP12",
+  "ok": false,
+  "names": "B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP【反射】\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP13",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t(DNP)\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP14",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t※DNP\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP15",
+  "ok": false,
+  "names": "A,B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP。\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP16",
+  "ok": false,
+  "names": "A,B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP.\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP17",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP不要\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP18",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNPなし\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP19",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP no\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP20",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNPの\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP21",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP-RF\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP22",
+  "ok": false,
+  "names": "B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP[1]\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP23",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNPオプション品\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP24",
+  "ok": true,
+  "names": "A,B",
+  "expect": "A,B",
+  "delim": "tab",
+  "w": [],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP 対応\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP25",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP未\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNP26",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "DNP 備考",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP(未実装)\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM0",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t（未実装）\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM1",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t※未実装\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM2",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t*未実装\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM3",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t【未実装】\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM4",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t[未実装]\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM5",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t((未実装))\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM6",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t※※未実装\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM7",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t　未実装　\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM8",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t（Not Fitted）\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM9",
+  "ok": false,
+  "names": "A,B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t*DNP*\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM10",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t＊DNP\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM11",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t(DNP\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM12",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\tDNP)\nB\tM-2\t1\t"
+ },
+ {
+  "id": "TRIM13",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "trimMarks",
+  "text": "部品名\t型式\t数量\t備考\nA\tM-1\t1\t※(DNP)\nB\tM-2\t1\t"
+ },
+ {
+  "id": "DNPN0",
+  "ok": true,
+  "names": "未実装基板,B",
+  "expect": "未実装基板,B",
+  "delim": "tab",
+  "w": [],
+  "note": "部品名",
+  "text": "部品名\t型式\t数量\n未実装基板\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "DNPN1",
+  "ok": true,
+  "names": "未実装品の検査,B",
+  "expect": "未実装品の検査,B",
+  "delim": "tab",
+  "w": [],
+  "note": "部品名",
+  "text": "部品名\t型式\t数量\n未実装品の検査\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "DNPN2",
+  "ok": true,
+  "names": "Not Fitted Label,B",
+  "expect": "Not Fitted Label,B",
+  "delim": "tab",
+  "w": [],
+  "note": "部品名",
+  "text": "部品名\t型式\t数量\nNot Fitted Label\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "DNPN3",
+  "ok": true,
+  "names": "DNP Label,B",
+  "expect": "DNP Label,B",
+  "delim": "tab",
+  "w": [],
+  "note": "部品名",
+  "text": "部品名\t型式\t数量\nDNP Label\tM-1\t1\nB\tM-2\t1"
+ },
+ {
+  "id": "DNPN4",
+  "ok": true,
+  "names": "B",
+  "expect": "B",
+  "delim": "tab",
+  "w": [
+   "実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません"
+  ],
+  "note": "部品名",
+  "text": "部品名\t型式\t数量\ndnp\tM-1\t1\nB\tM-2\t1"
+ }
+]

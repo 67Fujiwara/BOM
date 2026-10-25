@@ -1,0 +1,31 @@
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rule → 案件設定を保存しました
+request all → 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+early → R081: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+X before R081 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] ball pm case 先行採用 iss [] extra null orderQty 4
+qty → 最後の行です。下に行を足すときは Shift+Enter
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+X after publish R081 相見積 st=quoting adopt=S1 reason=先行採用: 納期: 急ぎ oq=17 flags={"requote":true,"pmPending":true,"pmReason":"先行採用"} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] requote true
+rough → 依頼する行がありません（提出済・再見積要の行なし） []
+in-flight PM case 先行採用 → PM decides, then purchasing re-requests
+PM y (先行採用 on 再見積要) → 型式・数量の変更で見積が失効しています（再見積要）。見積を取り直してから判断してください
+FAIL Q1-early-A PM が y を断られる（再見積要）のに、購買は取り直せない（概算の依頼から PM 承認待ちの行が外れる）→ 案内「見積を取り直してから判断」が実行できない :: msg=型式・数量の変更で見積が失効しています（再見積要）。見積を取り直してから判断してください purchCan=false
+PM → R081: 却下 {"kind":"prompt","title":"決定: 却下（R081。理由・必須）","options":[],"index":0} null
+X after PM R081 相見積 st=quoting adopt=- reason= oq=17 flags={"requote":true} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]]
+rough#2 → 1 行 × 3 社に依頼（回答期限 2026-10-31） [["因幡電機",true],["立花エレテック",true],["ミスミ",true]]
+X after rough#2 R081 相見積 st=quoting adopt=- reason= oq=17 flags={} quotes=[["S3",null,null,null],["S1",null,null,null],["S2",null,null,null]] ball purchasing case なし
+X after rough R081 相見積 st=quoting adopt=- reason= oq=17 flags={} quotes=[["S3",null,null,null],["S1",null,null,null],["S2",null,null,null]] ball purchasing case なし iss [] extra null  orderQty 17
+PASS Q1-early-1 採用が外れている（概算を取り直す行は選び直し） :: R081 相見積 st=quoting adopt=- reason= oq=17 flags={} quotes=[["S3",null,null,null],["S1",null,null,null],["S2",null,null,null]]
+PASS Q1-early-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"renegotiating":false,"requote":false,"pmPending":false,"contested":false,"ltbPending":false}
+PASS Q1-early-3 追加費用（特急・分納）が外れた :: null 
+PASS Q1-early-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {"pm":false,"ltb":false}
+PASS Q1-early-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: []
+PASS Q1-early-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: なし purchasing quoting
+PASS Q1-early-7 PM の 7 に載らない :: false
+PASS Q1-early-8 決定は増えていない（嘘の決定が記録されない） :: 1 → 1
+PASS Q1-early-9 正式回答・依頼Noが全て外れた
+PASS Q1-early-11 不変条件
+PASS Q1-early-12 固まる行がない :: []
+ERRORS []
+PASS Q1-early-99 console error なし :: []
+== 12/13 PASS

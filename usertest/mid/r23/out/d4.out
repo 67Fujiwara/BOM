@@ -1,0 +1,22 @@
+publish S → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+request → 6 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+S before R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",1500,5,null]]
+approval ON → 案件設定を保存しました
+publish → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+A R082 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[]
+S pending R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S2",1500,5,null]] pendingApproval {"procurement":"相見積"}
+PASS D4-1 承認待ちの間は、既存行 S（指定商社・選定済）の採用・状態は変わらない（購買には承認待ちの変更ありだけ） :: R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S2",1500,5,null]]
+purch view 1 has A false 
+purch view 2 has A false 
+purch view 5 has A false 
+purch view 6 has A false 
+purch view 9 has A false 
+PASS D4-2 承認待ちの追加行は購買の 2（購買提出用）にも出ない（§5 承認されるまで購買には「承認待ちの変更あり」だけ） :: {"1":false,"2":false,"5":false,"6":false,"9":false}
+PASS D4-3 承認待ちの追加行は購買の 5（変更あり）にも部品名・型式が出ない :: {"1":false,"2":false,"5":false,"6":false,"9":false}
+Ctrl+G A in view 1 → cursorRow R004 toast R082 は変更セットの PM 承認待ちの行です（承認されると見えます）
+header P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥29,692 / 正式 ¥31,248 / 予算 ¥2,800,000 (-98.9%)設計待ち 68購買待ち 11PM待ち 3見積済 76/82エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+PM 7 has S/A ["R081","R082"]
+S after reject R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",1500,5,null]] working {"procurement":"相見積"}
+A after reject R082 相見積 st=draft adopt=- reason= oq=- flags={} quotes=[]
+PASS D4-4 却下後、S は指定商社・立花で選定済のまま（承認待ちの間に採用が外れていない） :: R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=4 flags={} quotes=[["S2",1500,5,null]]
+== 4/4 PASS

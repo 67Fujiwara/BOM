@@ -1,0 +1,52 @@
+0:pm_decide: R003 Shift+Y R003: 受入
+1:switch_proc: R066→指定商社 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+2:edit_qty: R009 1 件（R009 メーカが空です … F8 で移動して直す）
+3:requote_cycle: R037 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+4:requote_cycle: R028 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+5:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:switch_proc: R029→客先指定品 1 件（R009 メーカが空です … F8 で移動して直す）
+8:bulk: 採用 64 / 拮抗 12（要見直し）/ 承認要 0 / スキップ 5
+9:rough: 依頼する行がありません（提出済・再見積要の行なし）
+10:withdraw_x: none
+11:change_need_date: R014 役割: 設計（山田）。既定のビュー 4 要確認 を開きました unpublished
+12:order: R013 R013: 発注済にしました
+13:excel: pm 3 sheets
+14:order: none
+15:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 5
+16:cancel_row: R053 1 件（R009 メーカが空です … F8 で移動して直す）
+17:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+18:requote_cycle: R017 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+19:pm_decide: R026 Shift+Y R026: 却下
+20:next_day: +1d
+21:requote_cycle: R039 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+22:withdraw_x: none
+23:receive: R013 R013: 入荷済にしました
+24:bulk: 採用 39 / 拮抗 15（要見直し）/ 承認要 0 / スキップ 16
+25:edit_qty: R038 1 件（R009 メーカが空です … F8 で移動して直す）
+26:add_row: R081 1 件（R009 メーカが空です … F8 で移動して直す）
+27:undo: design 元に戻す: セル編集
+28:excel: pm 3 sheets
+29:next_day: +9d
+30:excel: pm 3 sheets
+31:pm_decide: R032 Shift+Y R032: 受入
+32:early_adopt: none
+33:edit_qty: R028 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+34:rough: 依頼する行がありません（提出済・再見積要の行なし）
+35:formal_price: none
+36:replace_row: R057 R057 の置き換え品 R082 を作りました（公開すると R057 は置換済に / 1 件（R009 メーカが空です … F8 で移動して直す）
+37:order: none
+38:pm_decide: R015 Shift+Y R015: 受入
+39:formal_price: none
+40:formal_price: none
+41:edit_qty: R065 1 件（R009 メーカが空です … F8 で移動して直す）
+42:early_adopt: none
+43:rough: 依頼する行がありません（提出済・再見積要の行なし）
+44:order: none
+45:replace_row: R059 R059 の置き換え品 R083 を作りました（公開すると R059 は置換済に / 1 件（R009 メーカが空です … F8 で移動して直す）
+46:next_day: +17d
+47:bulk: 採用 5 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 11
+48:change_need_date: R031 採用 5 / 拮抗 0（要見直し）/ 承認要 0 / スキッ 09 メーカが空です … F8 で移動して直す）
+49:change_need_date: R037 公開できません: エラー 1 件（R009 メーカが空です  09 メーカが空です … F8 で移動して直す）
+PASS F3-213 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

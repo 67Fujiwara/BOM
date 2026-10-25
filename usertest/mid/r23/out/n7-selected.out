@@ -1,0 +1,19 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+start: proc=相見積 des= st=selected adopt=S1 oq=4 line=173708 total=18551654/18553210 ball=purchasing in9=false in8=true fixedSid=null flags={} validQ=3 wd=
+  publish → [変更セット（6 行: R008, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+→指定商社(立花): proc=指定商社 des=立花エレテック st=selected adopt=S2 oq=4 line=208004 total=18585950/18587506 ball=purchasing in9=false in8=true fixedSid=S2 flags={} validQ=3 wd=
+PASS N7-1 指定商社に切り替えても金額が集計に残り、指定先（立花 S2）が固定で採用されるか見積を依頼する状態になる :: →指定商社(立花): proc=指定商社 des=立花エレテック st=selected adopt=S2 oq=4 line=208004 total=18585950/18587506 ball=purchasing in9=false in8=true fixedSid=S2 flags={} validQ=3 wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+→客先指定品: proc=客先指定品 des=フエニックス A-123 st=selected adopt=S2 oq=4 line=208004 total=18585950/18587506 ball=purchasing in9=false in8=true fixedSid=S2 flags={} validQ=3 wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+→支給品: proc=支給品 des=フエニックス A-123 st=selected adopt=- oq=4 line=null total=18377946/18379502 ball=null in9=false in8=false fixedSid=null flags={} validQ=3 wd=
+PASS N7-2 支給品：金額・総額に含めない（§3.4）。購買の 9 に出ない（商社に頼まない） :: →支給品: proc=支給品 des=フエニックス A-123 st=selected adopt=- oq=4 line=null total=18377946/18379502 ball=null in9=false in8=false fixedSid=null flags={} validQ=3 wd=
+PASS N7-2b 支給品：購買の 9 に出ない（正式依頼の取下げを伝える行は除く） :: →支給品: proc=支給品 des=フエニックス A-123 st=selected adopt=- oq=4 line=null total=18377946/18379502 ball=null in9=false in8=false fixedSid=null flags={} validQ=3 wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.5） を公開しました
+→社内在庫: proc=社内在庫 des=フエニックス A-123 st=selected adopt=- oq=4 line=null total=18377946/18379502 ball=null in9=false in8=false fixedSid=null flags={} validQ=3 wd=
+PASS N7-3 社内在庫も同じ（総額に含めない） :: →社内在庫: proc=社内在庫 des=フエニックス A-123 st=selected adopt=- oq=4 line=null total=18377946/18379502 ball=null in9=false in8=false fixedSid=null flags={} validQ=3 wd=
+  publish → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.6） を公開しました
+→相見積(戻す): proc=相見積 des=フエニックス A-123 st=quoted adopt=- oq=4 line=null total=18377946/18379502 ball=design in9=true in8=false fixedSid=null flags={} validQ=3 wd=
+PASS N7-4 相見積に戻すと、見積が有効なら総額に戻る・購買の作業に戻る（見積中／見積済／選定済のいずれか） :: →相見積(戻す): proc=相見積 des=フエニックス A-123 st=quoted adopt=- oq=4 line=null total=18377946/18379502 ball=design in9=true in8=false fixedSid=null flags={} validQ=3 wd=
+ERRORS []
+== 5/5 PASS

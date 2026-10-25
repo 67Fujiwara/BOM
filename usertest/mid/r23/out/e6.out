@@ -1,0 +1,25 @@
+approval ON → 案件設定を保存しました
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] publishedRev 2
+header P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 6PM待ち 7見積済 75/81エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+status ナビR004 入荷予定購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+filter ヒミツ → n/a
+palette R081 ["該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方"]
+palette ヒミツ ["該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方"]
+inbox P-2026-041第3ライン 搬送制御盤納期 2026-11-23 / 提出 Rev.2 / 設計 68 購買 6 PM 7 / 更新 10/25 19:36 山田あなた宛 6＋新しいBOM を作るEnter 開く↑ / ↓ 選択Esc 閉じる
+no download 社内
+excel 商社向け全 download []
+excel 保管用 download []
+PASS E6-1 購買のヘッダー・ステータスバー・絞り込み・パレット・受信箱に、承認待ちの追加行の部品名・型式が出ない :: filter=n/a palette=該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方
+PASS E6-2 購買が出す社内 Excel（BOM・変更点）に、承認待ちの追加行の部品名・型式が出ない
+PASS E6-3 商社向け Excel（全商社共通・社外）に、PM 承認前の追加行を載せない :: []
+palette を発注 → toast 該当する操作がありません（F1 でショートカット一覧） | panel "palette" 該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方Enter 実行↑ / ↓ 選択Esc 閉じる | ordered false hidden false status submitted cursor R004
+palette を開く → toast 該当する操作がありません（F1 でショートカット一覧） | panel "palette" 該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方Enter 実行↑ / ↓ 選択Esc 閉じる | ordered false hidden false status submitted cursor R004
+palette を隠す → toast 該当する操作がありません（F1 でショートカット一覧） | panel "palette" 該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方Enter 実行↑ / ↓ 選択Esc 閉じる | ordered false hidden false status submitted cursor R004
+R004 hidden? false
+formalQuoted row R013
+palette R081 を発注 with cursor on R013 → 該当する操作がありません（F1 でショートカット一覧） | fq ordered false | A ordered false
+PASS E6-5 パレットで承認待ちの行（見えない行）の「発注」を選んでも、カーソルの別の行を発注しない :: R013
+PASS E6-6 パレットで見えない行の「隠す」を選んでも、カーソルの別の行（R004）を隠さない
+PASS E6-4 購買がパレットから承認待ちの追加行を発注・隠すなどの操作をできない :: ordered=false hidden=false
+== 6/6 PASS

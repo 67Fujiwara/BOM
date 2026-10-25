@@ -1,0 +1,5 @@
+q8-qty-reject == 6/6 PASS
+q8-qty-approve == 4/4 PASS
+q8-repl-reject == 6/6 PASS
+q8-repl-approve == 3/3 PASS
+DONE

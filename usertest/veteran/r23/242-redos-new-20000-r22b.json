@@ -1,0 +1,98 @@
+[
+ {
+  "sname": "two-notes",
+  "pname": ",×n",
+  "len": 40070,
+  "ms": 412
+ },
+ {
+  "sname": "two-notes",
+  "pname": "a,b×n",
+  "len": 40070,
+  "ms": 330
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "\",×n",
+  "len": 80036,
+  "ms": 538
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": ",\"×n",
+  "len": 80036,
+  "ms": 605
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "tab×n",
+  "len": 80036,
+  "ms": 520
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": ",×n",
+  "len": 80036,
+  "ms": 598
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "a,b×n",
+  "len": 80036,
+  "ms": 721
+ },
+ {
+  "sname": "header",
+  "pname": "\",×n",
+  "len": 20015,
+  "ms": 3218
+ },
+ {
+  "sname": "header",
+  "pname": ",\"×n",
+  "len": 20015,
+  "ms": 3036
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "\",×n",
+  "len": 40051,
+  "ms": 1522
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": ",\"×n",
+  "len": 40051,
+  "ms": 1678
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "a,b×n",
+  "len": 40051,
+  "ms": 301
+ },
+ {
+  "sname": "tsv-comma",
+  "pname": "\",×n",
+  "len": 20066,
+  "ms": 1482
+ },
+ {
+  "sname": "tsv-comma",
+  "pname": ",\"×n",
+  "len": 20066,
+  "ms": 1495
+ },
+ {
+  "sname": "tsv-title",
+  "pname": "\",×n",
+  "len": 20018,
+  "ms": 3255
+ },
+ {
+  "sname": "tsv-title",
+  "pname": ",\"×n",
+  "len": 20018,
+  "ms": 2945
+ }
+]

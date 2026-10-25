@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:requote_cycle: R016 ください … 直すか Alt+x で確認済みに） / 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+1:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:requote_cycle: R043 ください … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+3:pm_decide: empty
+4:decline: R005 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+5:consolidate: やめました（何も変えていません）
+6:add_row: R081 ）まで書いてください … 直すか Alt+x で確認済みに）
+7:requote_cycle: R028 ください … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+8:replace_row: R073 R073 の置き換え品 R082 を作りました（公開すると R073 は置換済に / ）まで書いてください … 直すか Alt+x で確認済みに）
+9:pick_supplier: R036 R036: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+10:decline: R066 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+11:formal_price: none
+12:pick_supplier: R055 R055 を 立花エレテック で採用
+13:pick_supplier: R073 設計作業中の行は選定できません（公開を待つ）
+14:pm_decide: R036 y R036: 承認
+15:cancel_row: R019 ）まで書いてください … 直すか Alt+x で確認済みに）
+16:cancel_row: R057 ）まで書いてください … 直すか Alt+x で確認済みに）
+17:pick_supplier: R010 R010 を 立花エレテック で採用
+18:bulk: 採用 64 / 拮抗 9（要見直し）/ 承認要 0 / スキップ 12
+19:requote_cycle: R026 ください … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+20:edit_qty: R025 ）まで書いてください … 直すか Alt+x で確認済みに）
+21:order: none
+22:pick_supplier: R016 設計作業中の行は選定できません（公開を待つ）
+23:cancel_row: R080 ）まで書いてください … 直すか Alt+x で確認済みに）
+24:reload: reload
+25:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:early_adopt: R076 有効な見積がありません（未回答・辞退・期限切れのみ）
+27:early_adopt: R037 有効な見積がありません（未回答・辞退・期限切れのみ）
+28:order: none
+29:add_row: R083 ）まで書いてください … 直すか Alt+x で確認済みに）
+30:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+31:undo: design 元に戻す: セル編集
+32:early_adopt: R037 有効な見積がありません（未回答・辞退・期限切れのみ）
+33:edit_qty: R070 有効な見積がありません（未回答・辞退・期限切れのみ）
+34:add_row: R084 ）まで書いてください … 直すか Alt+x で確認済みに）
+35:toggle_approval: OFF 案件設定を保存しました
+36:decline: R052 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+37:edit_qty: R055 ）まで書いてください … 直すか Alt+x で確認済みに）
+38:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+39:formal_price: none
+40:excel: purchasing 3 sheets
+41:order: none
+42:withdraw_x: R013 R013: 正式依頼の取下げ（因幡電機 P-2026-041-S1-1）を伝えた（確認済）
+43:excel: purchasing 3 sheets
+44:pick_supplier: R060 R060 を 立花エレテック で採用（その他: fuzz）
+45:bulk: 採用 44 / 拮抗 16（要見直し）/ 承認要 0 / スキップ 20
+46:decline: R077 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+47:receive: none
+48:pick_supplier: R073 設計作業中の行は選定できません（公開を待つ）
+49:pm_measure: R036 p R036: 委譲
+PASS F3-219a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

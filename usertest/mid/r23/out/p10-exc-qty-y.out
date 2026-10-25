@@ -1,0 +1,14 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "例外選定"
+B prompt {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PASS P10-exc-qty-y-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 承認（R011。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+A qty → R011: ミスミ を仮採用（その他: 評価用）。PM の承認待ち（7 要決定）
+A publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しまし
+state before B Enter R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true,"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "例外選定"
+B Enter → R011 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+after R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定","leadNG":true,"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] new decisions [] B panel null
+PASS P10-exc-qty-y-1 別タブで 必要数 が変わったあとの確定は、PM が見ていない内容を決めない :: decisions=[] toast=R011 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+PASS P10-exc-qty-y-3 toast に undefined/NaN が出ない :: R011 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+ERRORS [] []
+PASS P10-exc-qty-y-9 console error なし :: []
+== 4/4 PASS

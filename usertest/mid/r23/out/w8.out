@@ -1,0 +1,20 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+EDIT-ERR 74 行 × 3 社に正式見積を依頼
+o → R001: 発注済にしました
+R001: 発注済にしました
+R001 ordered {"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false}
+PM d (ordered) → R001: 設計へ代替依頼 ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+issues [ 'I-006:納期NG:open' ]
+design panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+issue publish → 指摘 1 件 を公開しました
+issues [ 'I-006:納期NG:answered', 'I-007:発注後変更依頼:open' ] ball PM
+PM 7 has row? true
+PM Enter → {"kind":"quickfix","title":"決定パネル R001（発注後変更依頼）","options":["y 承認 → 購買が発注を取り消し、設計が Alt+r で置き換える","Shift+Y 却下 → 元の発注のまま受入"],"index":-1} 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+PM y → {"kind":"prompt","title":"決定: 承認（R001。理由・任意）。上長決裁の条件に該当: 承認者を入れてください","options":[],"extra":{"承認者":"","日付":"2026-10-25","決裁書No":""},"index":0} 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+purchasing Shift+Delete → 権限なし（行の削除は設計）
+palette 取消 → null 権限なし（行の削除は設計）
+purchasing o (un-order) → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます） ordered
+design r → 発注済の行は置換できません（発注後変更依頼を起票）
+R001 ordered replaced by undefined
+== 0/0 PASS

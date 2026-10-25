@@ -1,0 +1,17 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X R008 R008 相見積 st=formalQuoted adopt=S1 reason= oq=4 flags={"formalDiff":true} quotes=[["S1",43427,18,106854],["S2",52001,0,null],["S3",44133,22,null]] case "差分超過"
+B prompt {"kind":"prompt","title":"決定: 受入（R008。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PASS Q6-diff-y-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 受入（R008。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+A publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A rough → 6 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて [true,true,true]
+state before B Enter R008 相見積 st=quoting adopt=- reason= oq=17 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] case "なし"
+B Enter → R008 の要決定が、パネルを開いたあとに別のタブで変わりました（差分超過 → なし）。決めていません。開き直してください
+after R008 相見積 st=quoting adopt=- reason= oq=17 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] new decisions [] B panel null ball purchasing case なし
+PASS Q6-diff-y-1 別タブで概算が取り直されたあと、古い決定パネルから決定が記録されない（見ていない状態への受入・次点・承認） :: decisions=[] toast=R008 の要決定が、パネルを開いたあとに別のタブで変わりました（差分超過 → なし）。決めていません。開き直してください
+PASS Q6-diff-y-2 取り直し中の行が、採用なしで受入された・選定済になった状態にならない :: R008 相見積 st=quoting adopt=- reason= oq=17 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q6-diff-y-3 固まる行がない :: []
+PASS Q6-diff-y-4 toast に undefined/NaN が出ない :: R008 の要決定が、パネルを開いたあとに別のタブで変わりました（差分超過 → なし）。決めていません。開き直してください
+ERRORS [] []
+PASS Q6-diff-y-9 console error なし :: []
+== 6/6 PASS

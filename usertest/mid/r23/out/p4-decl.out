@@ -1,0 +1,25 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rough → "6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて"
+Y after 2 declined R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",100,-1,null],["S2",100,-1,null],["S3",null,null,null]] status 見積中 2/3
+Y all declined R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",100,-1,null],["S2",100,-1,null],["S3",null,-1,null]] | status text: 見積中（有効な見積なし） | ball purchasing
+PASS P4-decl-1 3 社とも辞退した行は見積済にならず、購買のボール :: quoting
+PASS P4-decl-2 全社辞退の行は購買の 9 に出る
+quickfix ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ ","設計に代替を相談する（指摘を起票）"]
+PASS P4-decl-3 Ctrl+. に「ほかの商社に依頼する」「設計に代替を相談する」が出る :: ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいな","設計に代替を相談する（指摘を起票）"]
+add S4 → 案件設定を保存しました
+supplierIds [ 'S1', 'S2', 'S3', 'S4' ]
+request S4 → 1 行 × 1 社に依頼（回答期限 2026-10-31） [["RSコンポーネンツ",1,true]]
+PASS P4-decl-4 S4 宛の依頼書に全社辞退の行 R081 が入る :: [["RSコンポーネンツ",["R081"]]]
+PASS P4-decl-4b 依頼書は S4 の 1 通だけ（辞退した 3 社には出さない） :: ["RSコンポーネンツ"]
+S4 price → EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-31）
+S4 lead → EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-31）
+Y after S4 R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",100,-1,null],["S2",100,-1,null],["S3",null,-1,null],["S4",120,7,null]] | status 見積済
+PASS P4-decl-5 S4 の回答で見積済になる（辞退の 3 社は待たない） :: quoted 見積済
+a → R081 を RSコンポーネンツ で採用（スコア 98.7 / 最安） undefined
+PASS P4-decl-6 推奨で採用すると S4 が採用される :: R081 相見積 st=selected adopt=S4 reason= oq=6 flags={} quotes=[["S1",100,-1,null],["S2",100,-1,null],["S3",null,-1,null],["S4",120,7,null]]
+PASS P4-decl-7 画面の文字に undefined が出ない :: []
+PASS P4-decl-8 不変条件
+ERRORS []
+PASS P4-decl-9 console error なし :: []
+== 10/10 PASS

@@ -1,0 +1,76 @@
+NG  FROM0    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM1    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM2    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM3    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM4    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM5    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM6    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM7    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+NG  FROM8    got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,対象,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  WO0      got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  WO1      got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  WO2      got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  WO3      got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  WO4      got=基準A,基準B,基準C,基準D exp=基準A,基準B,基準C,基準D  基準D|Q-1||5|  「新型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 対象 ZZ-100 4）は、削 / 「型式」に当たる列が 2 つあります。「新型式」の列を使います
+ok  NAME0    got=撤去,B exp=撤去,B  B|M-2|1  
+ok  NAME1    got=取外し,B exp=取外し,B  B|M-2|1  
+ok  NAME2    got=廃止,B exp=廃止,B  B|M-2|1  
+ok  NAME3    got=削除,B exp=削除,B  B|M-2|1  
+ok  NAME4    got=ケーブル取外し,B exp=ケーブル取外し,B  B|M-2|1  
+ok  NAME5    got=カバー撤去,B exp=カバー撤去,B  B|M-2|1  
+ok  NAME6    got=安全装置を撤去,B exp=安全装置を撤去,B  B|M-2|1  
+ok  NAME7    got=ユニットを廃止,B exp=ユニットを廃止,B  B|M-2|1  
+ok  NAME8    got=電線を取外し,B exp=電線を取外し,B  B|M-2|1  
+ok  KINDV0   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: ケーブルを削除 DEL M-2）は、削除され
+ok  KINDV1   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: 全て削除 DEL M-2）は、削除された部品
+ok  KINDV2   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: 不要につき削除 DEL M-2）は、削除され
+ok  KINDV3   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: 一式不要 DEL M-2）は、削除された部品
+ok  KINDV4   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: 全削除 DEL M-2）は、削除された部品と
+ok  KINDV5   got=A,C exp=A,C  変更|C|M-3|1  「変更区分」が削除の 1 行（例: この部品は削除 DEL M-2）は、削除され
+NG  DNP0     got=B exp=A,B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+NG  DNP1     got=B exp=A,B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP2     got=A,B exp=A,B  B|M-2|1|  
+ok  DNP3     got=A,B exp=A,B  B|M-2|1|  
+ok  DNP4     got=A,B exp=A,B  B|M-2|1|  
+ok  DNP5     got=A,B exp=A,B  B|M-2|1|  
+ok  DNP6     got=A,B exp=A,B  B|M-2|1|  
+ok  DNP7     got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP8     got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP9     got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP10    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP11    got=A,B exp=A,B  B|M-2|1|  
+NG  DNP12    got=B exp=A,B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP13    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP14    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+NG  DNP15    got=A,B exp=B  B|M-2|1|  
+NG  DNP16    got=A,B exp=B  B|M-2|1|  
+ok  DNP17    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP18    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP19    got=A,B exp=A,B  B|M-2|1|  
+ok  DNP20    got=A,B exp=A,B  B|M-2|1|  
+ok  DNP21    got=A,B exp=A,B  B|M-2|1|  
+NG  DNP22    got=B exp=A,B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP23    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP24    got=A,B exp=A,B  B|M-2|1|  
+ok  DNP25    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNP26    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM0    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM1    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM2    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM3    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM4    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM5    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM6    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM7    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM8    got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+NG  TRIM9    got=A,B exp=B  B|M-2|1|  
+ok  TRIM10   got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM11   got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM12   got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  TRIM13   got=B exp=B  B|M-2|1|  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+ok  DNPN0    got=未実装基板,B exp=未実装基板,B  B|M-2|1  
+ok  DNPN1    got=未実装品の検査,B exp=未実装品の検査,B  B|M-2|1  
+ok  DNPN2    got=Not Fitted Label,B exp=Not Fitted Label,B  B|M-2|1  
+ok  DNPN3    got=DNP Label,B exp=DNP Label,B  B|M-2|1  
+ok  DNPN4    got=B exp=B  B|M-2|1  実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+NG 16 / 75

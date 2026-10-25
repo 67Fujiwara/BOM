@@ -1,0 +1,30 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+start: proc=相見積 st=selected adopt=S1 oq=24 ball=purchasing total=18551654 pend=null wd=- views=p3,p8,d3,d8
+switch → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+pending: proc=相見積 st=selected adopt=S1 oq=24 ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PASS P2-selected-支給品-approve-0 不変条件
+PASS P2-selected-支給品-approve-1 公開すると PM の承認待ち（変更セット）。公開値はまだ相見積で、採用も残る :: pending: proc=相見積 st=selected adopt=S1 oq=24 ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PASS P2-selected-支給品-approve-2 承認待ちのあいだ PM の 7 に載り、ボールは PM :: pending: proc=相見積 st=selected adopt=S1 oq=24 ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PM approve → R011・Rev.3 の変更セット 1 行まとめて: 承認
+after approve: proc=支給品 st=selected adopt=- oq=24 ball=null total=18529214 pend=null wd=- views=
+PASS P2-selected-支給品-approve-3 不変条件
+PASS P2-selected-支給品-approve-4 承認で 支給品 になる（採用・発注数・正式依頼の印を持たない） :: after approve: proc=支給品 st=selected adopt=- oq=24 ball=null total=18529214 pend=null wd=- views=
+PASS P2-selected-支給品-approve-5 支給品 の行は購買の 3・8・9 と PM の 7 に出ない（取下げを伝える行の 9 は除く） :: after approve: proc=支給品 st=selected adopt=- oq=24 ball=null total=18529214 pend=null wd=- views=
+PASS P2-selected-支給品-approve-6 ボールはどの役割にも無い（購買待ちに数えない） :: after approve: proc=支給品 st=selected adopt=- oq=24 ball=null total=18529214 pend=null wd=- views=
+PASS P2-selected-支給品-approve-7 総額（概算）から外れる :: 18551654 → 18529214
+back → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+PM back → R011・Rev.4 の変更セット 1 行まとめて: 承認
+back to 相見積: proc=相見積 st=quoted adopt=- oq=24 ball=design total=18529214 pend=null wd=- views=p9,d9
+PASS P2-selected-支給品-approve-9 不変条件
+PASS P2-selected-支給品-approve-10 相見積に戻した行は採用なしの選定済のまま残らない :: back to 相見積: proc=相見積 st=quoted adopt=- oq=24 ball=design total=18529214 pend=null wd=- views=p9,d9
+PASS P2-selected-支給品-approve-11 戻した行は誰かのボール（購買 9／設計の選定）に載る :: back to 相見積: proc=相見積 st=quoted adopt=- oq=24 ball=design total=18529214 pend=null wd=- views=p9,d9
+PASS P2-selected-支給品-approve-12 固まる行がない :: []
+PASS P2-selected-支給品-approve-13 文字に undefined が出ない :: []
+ERRORS []
+PASS P2-selected-支給品-approve-14 console error なし :: []
+== 14/14 PASS

@@ -1,0 +1,12 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+publish → 指摘 1 件 を公開しました
+case 閾値超
+A mode edit
+B → R004: 却下 B flags {"pmPending":false,"contested":false,"leadNG":false,"surplusRejected":"S1"}
+A mode after B edit A sees surplusRejected S1
+A commit → R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配してください。PM にもう一度相談するときは、いまの最小ロットの指摘を見送り（Ctrl+. →「見送り」）にしてから起票し直します | R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] [["I-006","最小ロット","open"]]
+PASS L10S-1 別のタブで PM が余剰を却下した直後に、開いていた発注数 100 を確定しても入らない（却下が効く・知らせる） :: oq=1 toast=R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配してください。PM にもう一度相談するときは、いまの最小ロットの指摘を見送り（Ctrl+. →「見送り」）にしてから起票し直します
+PASS L10S-2 最小ロットの指摘が対応済にならず購買に残る :: [["I-006","最小ロット","open"]]
+ERRORS []
+== 2/2 PASS

@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:order: R013 R013: 発注済にしました
+1:consolidate: やめました（何も変えていません）
+2:bulk: 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+3:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+4:switch_proc: R063→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+5:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:pick_supplier: R069 R069 を 立花エレテック で採用（その他: fuzz）
+7:toggle_approval: OFF 案件設定を保存しました
+8:switch_proc: R020→支給品 を入れて Enter] 行 1（Rev.3） を公開しました
+9:excel: design 1 sheets
+10:ltb_request: R056 R056: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥619,88
+11:withdraw_x: none
+12:pm_decide: R038 b R038: 次点商社へ
+13:rough: 5 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+14:switch_proc: R078→社内在庫 を入れて Enter] 行 1（Rev.4） を公開しました
+15:decline: R057 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+16:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+17:formal_price: none
+18:pm_measure: R021 p R021: 委譲
+19:requote_cycle: R063 nter] 行 1（Rev.5） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）
+20:pm_measure: R044 e R044: 特急・分納
+21:pick_supplier: R057 1〜2 で商社を選んでください
+22:formal_price: none
+23:order: none
+24:edit_qty: R057 を入れて Enter] 行 1（Rev.6） を公開しました
+25:formal: になります → 67 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+26:pm_decide: R005 y R005: 先行発注許可
+27:formal_price: R028 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+28:decline: R056 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+29:early_adopt: R079 有効な見積がありません（未回答・辞退・期限切れのみ）
+30:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+31:pm_decide: R028 y 納期NG の行では y は使えません（Enter で決定パネル）
+32:switch_proc: R025→社内在庫 を入れて Enter] 行 1（Rev.7） を公開しました
+33:bulk: 採用 3 / 拮抗 1（要見直し）/ 承認要 0 / スキップ 5
+34:pm_decide: R057 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+35:add_row: R081 を入れて Enter] 行 1（Rev.8） を公開しました
+36:edit_qty: R065 行 1（Rev.8） を公開しました
+37:rough: 1 行 × 2 社に依頼（回答期限 2026-10-31）
+38:order: R028 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+39:switch_proc: R066→客先指定品 を入れて Enter] 行 2（Rev.9） を公開しました
+40:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+41:master_stop: S3 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+42:cancel_row: R049 入れて Enter] 行 1（Rev.10） を公開しました
+43:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+44:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 3 行 / 再見積要 1 行
+45:next_day: +3d
+46:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+47:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 3 行・再見積要 1 行は除外）
+48:pm_decide: R032 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+49:formal_price: R015 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+PASS F3-207a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

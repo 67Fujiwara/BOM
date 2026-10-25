@@ -1,0 +1,4 @@
+stopped → (問題なし)
+removed → error:rule.designated.required:指定先「S3」は商社マスタにありません（因幡電機 / 立花エレテック / RSコンポーネンツ / オムロン直販）
+unknownName → error:rule.designated.required:指定先「ゴースト商事」は商社マスタにありません（因幡電機 / 立花エレテック / ミスミ / RSコンポーネンツ / オムロン直販）
+ok → (問題なし)

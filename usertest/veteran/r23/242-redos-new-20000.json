@@ -1,0 +1,50 @@
+[
+ {
+  "sname": "ordinary-name",
+  "pname": "tab×n",
+  "len": 80036,
+  "ms": 738
+ },
+ {
+  "sname": "header",
+  "pname": "\",×n",
+  "len": 20015,
+  "ms": 559
+ },
+ {
+  "sname": "header",
+  "pname": ",\"×n",
+  "len": 20015,
+  "ms": 557
+ },
+ {
+  "sname": "header",
+  "pname": "a,b×n",
+  "len": 20015,
+  "ms": 301
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "\",×n",
+  "len": 40051,
+  "ms": 399
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": ",\"×n",
+  "len": 40051,
+  "ms": 302
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": ",×n",
+  "len": 40051,
+  "ms": 340
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "a,b×n",
+  "len": 40051,
+  "ms": 344
+ }
+]

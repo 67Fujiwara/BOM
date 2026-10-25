@@ -1,0 +1,20 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A R005 B R020
+A note (working) → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 31 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish A → [変更セット（6 行: R005, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+before stop R005 相見積 st=selected adopt=S3 reason= oq=12 flags={} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 選定済
+before stop R020 相見積 st=formalQuoted adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,2935]] | 正式見積済
+after stop R005 相見積 st=quoted adopt=- reason= oq=12 flags={"droppedStopped":"ミスミ","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 見積済 · 先行発注判断 ball pm scores [["S2",75.4],["S1",69.2]]
+after stop R020 相見積 st=quoted adopt=- reason= oq=2 flags={"droppedStopped":"ミスミ","formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] | 見積済 · 正式依頼取下げ ball design scores [["S2",68],["S1",67.2]]
+statusbar A ナビR005 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選定者が選び直します購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+purch 4 has A,B false true
+formal →  → 依頼できる行がありません（選定済・再発行対象の行なし）
+files []
+A after formal R005 相見積 st=quoted adopt=- reason= oq=12 flags={"droppedStopped":"ミスミ","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 見積済 · 先行発注判断
+PASS I4-1 取引停止の商社（ミスミ）で採用中の選定済の行に、黙って正式見積の依頼書を出さない（除外するか、知らせる） ::  → 依頼できる行がありません（選定済・再発行対象の行なし） / []
+order B → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | ordered false
+PASS I4-2 取引停止の商社の正式見積済の行は、黙って発注にしない（止めるか、知らせる） :: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） ordered=false
+PASS I4-3 取引停止の商社で採用中の行に、購買・選定者が気づける印がある（状態の列・ステータスバー・4 のどれか） :: status=見積済 · 先行発注判断 sb=ナビR005 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選定者が選び直します購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました? in4=false
+ERRORS []
+== 3/3 PASS

@@ -1,0 +1,23 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PM d → R003: 設計へ代替依頼
+X before R003 相見積 st=selected adopt=S1 reason= oq=- flags={"countermeasure":"代替品検討"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] ball design case なし iss [["納期NG","open","pm"]] extra null orderQty null
+qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X after publish R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"countermeasure":"代替品検討","requote":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] requote true
+rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました []
+X after rough R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing case なし iss [["納期NG","confirmed","pm"]] extra null  orderQty 11
+PASS Q1-ng-d-1 採用が外れている（概算を取り直す行は選び直し） :: R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q1-ng-d-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"leadNG":false,"formalDiff":false,"pmPending":false,"requote":false,"contested":false,"reissue":false,"renegotiating":false}
+PASS Q1-ng-d-3 追加費用（特急・分納）が外れた :: null 
+PASS Q1-ng-d-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {"pm":false}
+PASS Q1-ng-d-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: [["納期NG","confirmed","pm"]]
+PASS Q1-ng-d-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: なし purchasing quoting
+PASS Q1-ng-d-7 PM の 7 に載らない :: false
+PASS Q1-ng-d-8 決定は増えていない（嘘の決定が記録されない） :: 1 → 1
+PASS Q1-ng-d-9 正式回答・依頼Noが全て外れた
+PASS Q1-ng-d-11 不変条件
+PASS Q1-ng-d-12 固まる行がない :: []
+ERRORS []
+PASS Q1-ng-d-99 console error なし :: []
+== 12/12 PASS

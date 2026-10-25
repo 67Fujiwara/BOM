@@ -1,0 +1,16 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R003 R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] case "納期NG"
+B prompt null
+FAIL Q6-ng-b-0 B に理由の欄が開く :: null
+A publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました []
+state before B Enter R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] case "なし"
+B Enter → R003 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R003 でその行へ）
+after R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] new decisions [] B panel null ball purchasing case なし
+PASS Q6-ng-b-1 別タブで概算が取り直されたあと、古い決定パネルから決定が記録されない（見ていない状態への受入・次点・承認） :: decisions=[] toast=R003 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R003 でその行へ）
+PASS Q6-ng-b-2 取り直し中の行が、採用なしで受入された・選定済になった状態にならない :: R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q6-ng-b-3 固まる行がない :: []
+PASS Q6-ng-b-4 toast に undefined/NaN が出ない :: R003 が別のタブの変更でこのビューから外れました。行の選択を外しました（↓ で表へ、Ctrl+G R003 でその行へ）
+ERRORS [] []
+PASS Q6-ng-b-9 console error なし :: []
+== 5/6 PASS

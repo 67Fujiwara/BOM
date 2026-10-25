@@ -1,0 +1,133 @@
+{
+ "stat": {
+  "tsv/half": {
+   "n": 1355,
+   "bad": 0
+  },
+  "tsv/none/eda": {
+   "n": 322,
+   "bad": 0
+  },
+  "tsv/const/eda": {
+   "n": 334,
+   "bad": 0
+  },
+  "tsvq/var": {
+   "n": 712,
+   "bad": 0
+  },
+  "csv/const/eda": {
+   "n": 308,
+   "bad": 0
+  },
+  "csv/half": {
+   "n": 1271,
+   "bad": 0
+  },
+  "tsv/var": {
+   "n": 1356,
+   "bad": 0
+  },
+  "csv/var": {
+   "n": 1348,
+   "bad": 0
+  },
+  "csvq/none/eda": {
+   "n": 163,
+   "bad": 0
+  },
+  "tsv/none": {
+   "n": 1392,
+   "bad": 0
+  },
+  "csvq/const": {
+   "n": 670,
+   "bad": 0
+  },
+  "tsv/const": {
+   "n": 1296,
+   "bad": 0
+  },
+  "tsvq/half": {
+   "n": 660,
+   "bad": 0
+  },
+  "csv/var/eda": {
+   "n": 331,
+   "bad": 0
+  },
+  "tsvq/none": {
+   "n": 684,
+   "bad": 0
+  },
+  "csvq/none": {
+   "n": 643,
+   "bad": 0
+  },
+  "csv/none/eda": {
+   "n": 326,
+   "bad": 0
+  },
+  "csv/half/eda": {
+   "n": 348,
+   "bad": 0
+  },
+  "csv/none": {
+   "n": 1329,
+   "bad": 0
+  },
+  "csvq/var": {
+   "n": 661,
+   "bad": 0
+  },
+  "tsvq/var/eda": {
+   "n": 180,
+   "bad": 0
+  },
+  "tsvq/const": {
+   "n": 649,
+   "bad": 0
+  },
+  "csv/const": {
+   "n": 1371,
+   "bad": 0
+  },
+  "tsv/half/eda": {
+   "n": 325,
+   "bad": 0
+  },
+  "csvq/const/eda": {
+   "n": 165,
+   "bad": 0
+  },
+  "csvq/half": {
+   "n": 665,
+   "bad": 0
+  },
+  "tsvq/none/eda": {
+   "n": 163,
+   "bad": 0
+  },
+  "csvq/half/eda": {
+   "n": 153,
+   "bad": 0
+  },
+  "tsv/var/eda": {
+   "n": 337,
+   "bad": 0
+  },
+  "csvq/var/eda": {
+   "n": 155,
+   "bad": 0
+  },
+  "tsvq/half/eda": {
+   "n": 157,
+   "bad": 0
+  },
+  "tsvq/const/eda": {
+   "n": 171,
+   "bad": 0
+  }
+ },
+ "bad": []
+}

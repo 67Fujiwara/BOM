@@ -1,0 +1,16 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R003 R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] case "納期NG"
+B prompt {"kind":"prompt","title":"決定: 受入（R003。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PASS Q6-ng-Y-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 受入（R003。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+A publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました []
+state before B Enter R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] case "なし"
+B Enter → R003 の要決定が、パネルを開いたあとに別のタブで変わりました（納期NG → なし）。決めていません。開き直してください
+after R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] new decisions [] B panel null ball purchasing case なし
+PASS Q6-ng-Y-1 別タブで概算が取り直されたあと、古い決定パネルから決定が記録されない（見ていない状態への受入・次点・承認） :: decisions=[] toast=R003 の要決定が、パネルを開いたあとに別のタブで変わりました（納期NG → なし）。決めていません。開き直してください
+PASS Q6-ng-Y-2 取り直し中の行が、採用なしで受入された・選定済になった状態にならない :: R003 相見積 st=quoting adopt=- reason= oq=11 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q6-ng-Y-3 固まる行がない :: []
+PASS Q6-ng-Y-4 toast に undefined/NaN が出ない :: R003 の要決定が、パネルを開いたあとに別のタブで変わりました（納期NG → なし）。決めていません。開き直してください
+ERRORS [] []
+PASS Q6-ng-Y-9 console error なし :: []
+== 6/6 PASS

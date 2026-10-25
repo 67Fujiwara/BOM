@@ -1,0 +1,31 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R001 R001 相見積 st=selected adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+start: proc=相見積 st=selected adopt=S1 oq=- ball=purchasing total=18551654 wd=- views=p3,p5,p8,d3,d5,d8
+switch → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+after 社内在庫: proc=社内在庫 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-0 不変条件
+PASS Q3-selected-社内在庫-1 社内在庫 になる。採用・発注数・正式依頼の印・納期NG を持たない :: after 社内在庫: proc=社内在庫 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-2 社内在庫 の行は購買の 3・8・9 と PM の 7 に出ない（取下げの案内の 9 は除く） :: after 社内在庫: proc=社内在庫 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-3 ボールはどの役割にも無い（購買待ちに数えない） :: after 社内在庫: proc=社内在庫 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-4 総額（概算）から外れる :: 18551654 → 18551508
+PASS Q3-selected-社内在庫-5 状態は選定済のまま（見積もの・発注の対象外） :: after 社内在庫: proc=社内在庫 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+order → 社内在庫の行です（商社に発注しません）
+PASS Q3-selected-社内在庫-8 購買が 社内在庫 の行を発注できない :: 社内在庫の行です（商社に発注しません）
+formal again → 拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼
+PASS Q3-selected-社内在庫-9 正式見積の依頼書に 社内在庫 の行が入らない :: [{"sup":"ミスミ","ids":["R005","R020","R032","R056","R057","R069"]},{"sup":"因幡電機","ids":["R002","R003","R004","R006","R007","R008","R009","R010","R011","R012","R015","R016","R017","R022","R023","R025","R028","R030","R031","R033","R034","R036","R038","R039","R040","R044","R047","R048","R049","R051","R052","R053","R058","R059","R060","R061","R064","R065","R070","R072","R073","R075"]},{"sup":"立花エレテック","ids":["R014","R018","R019","R021","R024","R026","R027","R029","R035","R037","R041","R042","R043","R045","R046","R050","R054","R055","R062","R063","R066","R067","R068","R071","R074"]}]
+purchasing Excel BOM has X true
+back → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+back to 相見積: proc=相見積 st=quoted adopt=- oq=- ball=design total=18551508 wd=- views=p5,p9,d4,d5,d9
+PASS Q3-selected-社内在庫-10 不変条件
+PASS Q3-selected-社内在庫-11 相見積に戻した行は採用なしの選定済のまま残らない :: back to 相見積: proc=相見積 st=quoted adopt=- oq=- ball=design total=18551508 wd=- views=p5,p9,d4,d5,d9
+PASS Q3-selected-社内在庫-12 戻した行は誰かのボールに載り、購買の 9／設計の 4/5 のどこかに出る :: back to 相見積: proc=相見積 st=quoted adopt=- oq=- ball=design total=18551508 wd=- views=p5,p9,d4,d5,d9
+A→B publish → び、変更番号（任意）を入れて Enter] 行 1（Rev.6） を公開しました
+A→B: proc=支給品 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-13 社内在庫 → 支給品 へ直接切り替えても採用を持たず、どのビューにも出ない :: A→B: proc=支給品 st=selected adopt=- oq=- ball=null total=18551508 wd=- views=p5,d5
+PASS Q3-selected-社内在庫-14 固まる行がない :: []
+PASS Q3-selected-社内在庫-15 文字に undefined が出ない :: []
+ERRORS []
+PASS Q3-selected-社内在庫-99 console error なし :: []
+== 15/15 PASS

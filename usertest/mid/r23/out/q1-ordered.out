@@ -1,0 +1,15 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+order → R001: 発注済にしました
+X before R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] ball purchasing case なし iss [] extra null orderQty null
+qty → R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝え
+publish → 079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+X after publish R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] requote undefined
+rough → 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに [["因幡電機",false],["立花エレテック",false],["ミスミ",false]]
+X after rough R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] ball purchasing case なし iss [] extra null  orderQty null
+PASS Q1-ordered-1 発注済の行は概算の取り直しで採用・発注を外さない（発注後変更依頼で扱う） :: R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+PASS Q1-ordered-11 不変条件
+PASS Q1-ordered-12 固まる行がない :: []
+ERRORS []
+PASS Q1-ordered-99 console error なし :: []
+== 4/4 PASS

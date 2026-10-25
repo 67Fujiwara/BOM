@@ -1,0 +1,17 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+order → R001: 発注済にしました
+X R001 R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+start: proc=相見積 st=ordered adopt=S1 oq=- ball=purchasing total=18551654 pend=null wd=- views=p3,p8,d3,d8
+switch → R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、P
+publish → 公開するもの（下書き・未公開の変更）はありません。エラーのある行が 3 行あります（F8 で移動）
+pending: proc=相見積 st=ordered adopt=S1 oq=- ball=purchasing total=18551654 pend=null wd=- views=p3,p8,d3,d8
+PASS P2-ordered-支給品-approve-0 不変条件
+PASS P2-ordered-支給品-approve-1 発注済の行は調達区分を変えられない（設計の列がロック） :: pending: proc=相見積 st=ordered adopt=S1 oq=- ball=purchasing total=18551654 pend=null wd=- views=p3,p8,d3,d8
+PASS P2-ordered-支給品-approve-12 固まる行がない :: []
+PASS P2-ordered-支給品-approve-13 文字に undefined が出ない :: []
+ERRORS []
+PASS P2-ordered-支給品-approve-14 console error なし :: []
+== 5/5 PASS

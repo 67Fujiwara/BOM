@@ -1,0 +1,35 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+order A → R002: 発注済にしました
+order B → R004: 発注済にしました
+A R002 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+B R004 相見積 st=ordered adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,2621],["S2",null,-1,null],["S3",2907,13,null]]
+E(formalRequested) R007 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={"leadNG":true} quotes=[["S1",28664,18,null],["S2",34098,11,null
+S(selected) R001 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,
+import → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+supplierIds ["S1","S2","S3"] preferred ["S1","S2"] requestRevs {"FS1":1,"FS3":1,"FS2":1}
+S R001 相見積 st=quoted adopt=- reason= oq=- flags={"droppedStopped":"S1（商社マスタから削除）"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+E R007 相見積 st=quoted adopt=- reason= oq=2 flags={"droppedStopped":"S1（商社マスタから削除）","formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+status bar S: ナビR001 部品名採用していた S1（商社マスタから削除） は取引停止（商社マスタ）のため採用を外しました。選び直してください設計 山田: 未公開 6 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 6 行F1ヘルプF8次の問題Enter編集Space開く
+status bar E: ナビR007 単価採用していた S1（商社マスタから削除） は取引停止（商社マスタ）のため採用を外しました。選定者が選び直します。正式依頼を取り下げ: S1 P-2026-041-S1-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開くAlt+x正式依頼の取下げを元の商社に伝えた
+PASS Q4-1 削除で採用が外れた選定済の行に知らせが出る（状態バー）。商社の ID が分かる :: ナビR001 部品名採用していた S1（商社マスタから削除） は取引停止（商社マスタ）のため採用を外しました。選び直してください設計 山田: 未公開 6 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 6 行F1ヘルプF8次の問題Enter編集Space開く
+FAIL Q4-2 知らせの言い回しが「削除」に合っている（「S1（商社マスタから削除） は取引停止（商社マスタ）のため」と二重にならない） :: ナビR001 部品名採用していた S1（商社マスタから削除） は取引停止（商社マスタ）のため採用を外しました。選び直してください設計 山田: 未公開 6 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 6 行F1ヘルプF8次の問題Enter編集Space開く
+PASS Q4-3 正式依頼中だった行 E の取下げの記録が商社の ID で出る（undefined なし） :: S1 P-2026-041-S1-F1
+入荷済 R002 {"p3":"S1（商社マスタに無い）","p8":"S1（商社マスタに無い）","d3":"S1（商社マスタに無い）","d8":"S1（商社マスタに無い）"}
+PASS Q4-4 入荷済の行の「採用」の列が空欄でなく、ID を示す :: {"p3":"S1（商社マスタに無い）","p8":"S1（商社マスタに無い）","d3":"S1（商社マスタに無い）","d8":"S1（商社マスタに無い）"}
+発注済 R004 {"p3":"S1（商社マスタに無い）","p8":"S1（商社マスタに無い）","d3":"S1（商社マスタに無い）","d8":"S1（商社マスタに無い）"}
+PASS Q4-4 発注済の行の「採用」の列が空欄でなく、ID を示す :: {"p3":"S1（商社マスタに無い）","p8":"S1（商社マスタに無い）","d3":"S1（商社マスタに無い）","d8":"S1（商社マスタに無い）"}
+selection record A ["R002","入力拡張ユニット","FX5-16EX/ES","S1（商社マスタに無い）","推奨",88,"立花エレテック: 94 / 90 / 100 / 90 / 100　ミスミ: 72 / 100 / 40 / 50 / 100",""]
+PASS Q4-5 選定記録 Excel の採用に ID が出る（空欄でない・undefined なし） :: ["R002","入力拡張ユニット","FX5-16EX/ES","S1（商社マスタに無い）","推奨",88,"立花エレテック: 94 / 90 / 100 / 90 / 100　ミスミ: 72 / 100 / 40 / 50 / 100",""]
+set dueDate → 案件設定を保存しました
+PASS Q4-6 案件設定で納期だけ変えて保存できる（相見積先に消えた S1 が残っていても） :: 2026-12-25 supplierIds=["S1","S2","S3"]
+set supplierIds (add S4) → 商社マスタにありません: S1（S2 立花エレテック / S3 ミスミ / S4 RSコンポーネンツ / S5 オムロン直販）
+supplierIds after ["S1","S2","S3"]
+FAIL Q4-7 [U22-01] 相見積先に消えた商社の ID が残らない（読み込み時に除かれる） :: ["S1","S2","S3"]
+restore → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+E after restore R007 相見積 st=quoted adopt=- reason= oq=2 flags={"droppedStopped":"S1（商社マスタから削除）","formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103 S R001 相見積 st=quoted adopt=- reason= oq=- flags={"droppedStopped":"S1（商社マスタから削除）"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+PASS Q4-8 固まる行がない :: []
+PASS Q4-9 全ビュー×3 役割に undefined なし :: []
+ERRORS []
+PASS Q4-99 console error なし :: []
+== 9/11 PASS

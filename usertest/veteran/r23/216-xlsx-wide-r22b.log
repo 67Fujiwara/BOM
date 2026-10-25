@@ -1,0 +1,8 @@
+{"name":"baseline 2500","fileKB":64,"tsvKB":49,"rows":2500,"cpuMs":726,"wallMs":4984,"err":""}
+{"name":"XFD stray value row1","fileKB":63,"tsvKB":65,"rows":2500,"cpuMs":4668,"wallMs":21039,"err":""}
+{"name":"XFD stray value last row","fileKB":64,"tsvKB":65,"rows":2500,"cpuMs":3442,"wallMs":20538,"err":""}
+{"name":"row 1,000,000 stray","fileKB":64,"tsvKB":49,"rows":2501,"cpuMs":591,"wallMs":3289,"err":""}
+{"name":"200 cols all rows","fileKB":1092,"tsvKB":528,"rows":2500,"cpuMs":5863,"wallMs":42330,"err":""}
+{"name":"hidden cols 3000","fileKB":30,"tsvKB":5,"rows":300,"cpuMs":155,"wallMs":1383,"err":""}
+{"name":"merged cells many","fileKB":23,"tsvKB":11,"rows":500,"cpuMs":286,"wallMs":2007,"err":""}
+{"name":"long text cells 32k","fileKB":9,"tsvKB":3127,"rows":100,"cpuMs":1457,"wallMs":9983,"err":""}

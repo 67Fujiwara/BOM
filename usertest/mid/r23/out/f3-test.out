@@ -1,0 +1,14 @@
+0:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+1:excel: purchasing 3 sheets
+2:switch_proc: R060→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+3:consolidate: やめました（何も変えていません）
+4:rough: 依頼する行がありません（提出済・再見積要の行なし）
+5:formal_price: R013 x1.05 EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+6:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 1
+7:edit_qty: R061 文字が含まれています … 直すか Alt+x で確認済みに）
+8:order: R013 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+9:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+10:order: none
+11:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+PASS F3-777 不変条件の違反なし（12 操作） :: violations=0
+== 1/1 PASS

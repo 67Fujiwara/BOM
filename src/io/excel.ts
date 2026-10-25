@@ -120,7 +120,7 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
       const cause = sub.causes[id] ?? ''
       if (cause.startsWith('置換')) detail = cause
-      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
+      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy', 'procurement', 'designated', 'makerLock', 'unit', 'category'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
       const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)

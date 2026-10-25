@@ -560,3 +560,52 @@ describe('ラウンド 16 の取り込み（ベテラン）', () => {
     expect(r.rows.map((x) => [x.name, x.maker])).toEqual([['リレー', 'オムロン'], ['リレー', 'オムロン'], ['ヒューズ', 'サトー']])
   })
 })
+
+describe('ラウンド 17 の取り込み（新人）', () => {
+  it('N17-01 全行を書き写した変更図で、変更後を空にした 2 行は削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t1\nブレーカ\tNF32-SV\t\t三菱電機\t1\t\n端子台\tXW2B-20G4\tXW2B-20G4\tオムロン\t4\t4\nランプ\tL-1\t\tIDEC\t1\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', '端子台'])
+  })
+  it('N17-02 備考の「削除（Rev.1）」「削除のこと」「廃止（代替なし）」「削除→不要」は削除、「撤去後に再取付」は残す', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N\tオムロン\t1\t\nタイマ\tH3Y\t\tオムロン\t1\t削除（Rev.1）\nランプ\tL-1\t\tIDEC\t1\t廃止（代替なし）\nソケット\tPYF\t\tオムロン\t1\t削除のこと\nヒューズ\tF-1\t\tサトー\t1\t削除→不要\n端子台\tXW2B\t\tオムロン\t2\t撤去後に再取付')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+  })
+  it('N17-03 新の列「－」＋備考「廃止」、新の型式「削除」＋新の数量 0 は削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\t備考\nリレー\tMY2N\tMY4N\tオムロン\t2\t4\t\nヒューズ\tF-10\t削除\tサトー\t1\t0\t\nランプ\tL-1\t－\tIDEC\t1\t－\t廃止\n端子台\tXW2B\t\tオムロン\t2\t\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+  })
+  it('N17-04 1 段の見出しの 員数｜台数｜必要数・数量/台｜製作台数｜手配数・数量(1台分)｜数量(3台分)・1号機数量｜2号機数量・数量 1号機｜数量 2号機', () => {
+    expect(parseBomPaste('品名\t型式\t員数\t台数\t必要数\nリレー\tMY4N\t2\t3\t6').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t数量/台\t製作台数\t手配数\nリレー\tMY4N\t2\t3\t6').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t数量(1台分)\t数量(3台分)\nリレー\tMY4N\t2\t6').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\t1号機数量\t2号機数量\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(5)
+    expect(parseBomPaste('品名\t型式\t数量 1号機\t数量 2号機\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(5)
+    expect(parseBomPaste('品名\t型式\t員数\t台数\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(6)
+    expect(parseBomPaste('品名\t型式\tA号機\tB号機\t合計\nリレー\tMY4N\t2\t3\t5').rows[0].qtyNeeded).toBe(5)
+    expect(parseBomPaste('品名\t型式\t1号機\t2号機\t計\nリレー\tMY4N\t2\t3\t5').rows[0].qtyNeeded).toBe(5)
+  })
+  it('N17-05 / N17-06 号機を足すとき 2(予備1)・2+1 も、予備の列も足す', () => {
+    const r = parseBomPaste('品名\t型式\t数量\t\n\t\t1号機\t2号機\nリレー\tMY4N\t2\t2(予備1)\nソケット\tPYF\t2\t2+1')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([5, 5])
+    const s = parseBomPaste('品名\t型式\tメーカー\t数量\t\t\n\t\t\t1号機\t2号機\t予備\nリレー\tMY4N-D2\tオムロン\t2\t2\t1\nタイマ\tH3CR\tオムロン\t1\t1\t0')
+    expect(s.rows.map((x) => x.qtyNeeded)).toEqual([5, 2])
+  })
+  it('N17-07 DNP・Not Fitted の行は取り込まない', () => {
+    const r = parseBomPaste('Designator\tDescription\tManufacturer\tMPN\tQty\tFitted\nR1, R2\tResistor\tKOA\tRK73\t2\tFitted\nC1\tCapacitor\tMurata\tGRM188\t1\tNot Fitted')
+    expect(r.rows.map((x) => x.name)).toEqual(['Resistor'])
+    const d = parseBomPaste('Designator\tDescription\tMPN\tQty\tDNP\nR1\tResistor\tRK73\t2\t\nC1\tCapacitor\tGRM188\t1\tDNP')
+    expect(d.rows.map((x) => x.name)).toEqual(['Resistor'])
+  })
+  it('N17-08 削除した行のすぐ下の〃は削除した行の値', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\nタイマ\tH3Y-2\t削除\t三菱電機\t1\nブレーカ\tNF32-SV\tNF32-SVF\t〃\t1')
+    expect(r.rows.map((x) => [x.name, x.maker])).toEqual([['リレー', 'オムロン'], ['ブレーカ', '三菱電機']])
+  })
+  it('N17-11 署名欄（作成｜山田｜承認｜鈴木）は部品にしない', () => {
+    const r = parseBomPaste('部品表（1/2）\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n以下余白\n作成\t山田\t承認\t鈴木')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ'])
+  })
+  it('U17-06 KiCad の Reference・Value・Footprint は Value を部品名', () => {
+    const r = parseBomPaste('Reference\tValue\tFootprint\tQty\nR1,R2\t10k\tR_0603\t2')
+    expect(r.rows[0]).toMatchObject({ name: '10k', qtyNeeded: 2 })
+  })
+})

@@ -243,7 +243,7 @@ export const useStore = create<State>((set, get) => ({
         idx = i
         break
       }
-    if (idx < 0) return st.toastMsg((st.redo[user] ?? []).some((e) => e.projectId === pid) ? 'これ以上戻す操作がありません（Ctrl+Y でやり直せます）' : '戻す操作がありません（この案件であなたが行った操作はまだありません）', 'info')
+    if (idx < 0) return st.toastMsg((st.redo[user] ?? []).some((e) => e.projectId === pid) ? 'これ以上戻す操作がありません（Ctrl+Y でやり直せます）' : '戻す操作がありません（この案件で戻せるあなたの操作は残っていません）', 'info')
     const entry = stack[idx]
     const rest = [...stack.slice(0, idx), ...stack.slice(idx + 1)]
     if (entry.kind === 'publish') {

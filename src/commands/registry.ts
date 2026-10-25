@@ -1689,6 +1689,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
           if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
           pm.requestEarlyOrder(r!.id, t, amt.value)
+          toast(`${r!.id}: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥${amt.value.toLocaleString()}）`, 'ok')
         })
       }
     case 'project.new': {

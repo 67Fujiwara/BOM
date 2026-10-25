@@ -1,0 +1,914 @@
+DVI→HDMI 備考=(空) 列=無し old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=(空) 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=(空) 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=(空) 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=(空) 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=(空) 列=対応[済/未/不要/済] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=位置 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=位置 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=位置 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換用 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換用 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換用 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=交換用 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換用 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=交換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=交換用 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=追加 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=追加 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=追加 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=追加 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=追加 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=追加 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=追加 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=修正 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=修正 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=修正 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=修正 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=修正 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=修正 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=修正 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=銘板あり 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=銘板あり 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=銘板あり 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=銘板あり 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=銘板あり 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=銘板あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=銘板あり 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=変更あり 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=変更あり 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=変更あり 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=変更あり 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=変更あり 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=変更あり 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=代替品あり 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=代替品あり 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=代替可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=代替可 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=置換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=置換用 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品番 ABC-1 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=旧品番 ABC-1 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=旧品あり 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=無し old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=旧型は廃止 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=旧型は廃止 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=変更前の型式は不明 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=変更前の型式は不明 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=差し替え不可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=差し替え不可 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=ホスト→デバイス 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=ホスト→デバイス 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=配線: 端子台→PLC 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=配線: 端子台→PLC 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=A→B 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=A→B 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=1→2 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=1→2 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=型式変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=型式変更 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=型番変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=型番変更 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=変更後の型式 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=変更後の型式 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=客先支給 列=無し old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=客先支給 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=客先支給 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=客先支給 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=客先支給 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=客先支給 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=客先支給 列=対応[済/未/不要/済] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=変換アダプタ 列=無し old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=変換アダプタ 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=変換アダプタ 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=変換アダプタ 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=変換アダプタ 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=変換アダプタ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=変換アダプタ 列=対応[済/未/不要/済] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=予備 列=無し old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=予備 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=予備 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=予備 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=予備 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+DVI→HDMI 備考=予備 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=予備 列=対応[済/未/不要/済] old=DVI→HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置変更あり 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置変更あり 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置変更あり 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=位置変更あり 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=位置変更あり 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=位置変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=位置変更あり 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=→ 列=無し old=HDMI new=HDMI
+DVI→HDMI 備考=→ 列=ステータス[量産/試作/廃止/量産] old=HDMI new=HDMI
+DVI→HDMI 備考=→ 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=→ 列=区分[購入品/加工品/流用/新規] old=HDMI new=HDMI
+DVI→HDMI 備考=→ 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=→ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=→ 列=対応[済/未/不要/済] old=HDMI new=HDMI
+DVI→HDMI 備考=交換品 列=無し old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換品 列=ステータス[量産/試作/廃止/量産] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換品 列=ステータス[新規/継続/廃止/継続] old=HDMI new=HDMI
+DVI→HDMI 備考=交換品 列=区分[購入品/加工品/流用/新規] old=HDMI new=DVI→HDMI
+DVI→HDMI 備考=交換品 列=変更区分[追加/追加/変更/追加] old=HDMI new=HDMI
+DVI→HDMI 備考=交換品 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+DVI→HDMI 備考=交換品 列=対応[済/未/不要/済] old=HDMI new=DVI→HDMI
+USB-A→USB-C 備考=(空) 列=無し old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=(空) 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=(空) 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=(空) 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=(空) 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=(空) 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=位置 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=位置 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=位置 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換用 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換用 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換用 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=交換用 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換用 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=交換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=交換用 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=追加 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=追加 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=追加 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=追加 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=追加 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=追加 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=追加 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=修正 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=修正 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=修正 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=修正 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=修正 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=修正 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=修正 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=銘板あり 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=銘板あり 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=銘板あり 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=銘板あり 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=銘板あり 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=銘板あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=銘板あり 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変更あり 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変更あり 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変更あり 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更あり 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変更あり 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=変更あり 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=代替品あり 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=代替品あり 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=代替可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=代替可 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=置換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=置換用 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品番 ABC-1 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=旧品番 ABC-1 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=旧品あり 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=無し old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=旧型は廃止 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=旧型は廃止 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更前の型式は不明 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=変更前の型式は不明 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=差し替え不可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=差し替え不可 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=ホスト→デバイス 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=ホスト→デバイス 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=配線: 端子台→PLC 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=配線: 端子台→PLC 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=A→B 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=A→B 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=1→2 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=1→2 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=型式変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=型式変更 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=型番変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=型番変更 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=変更後の型式 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=変更後の型式 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=客先支給 列=無し old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=客先支給 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=客先支給 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=客先支給 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=客先支給 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=客先支給 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=客先支給 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変換アダプタ 列=無し old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変換アダプタ 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変換アダプタ 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=変換アダプタ 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=変換アダプタ 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=変換アダプタ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=変換アダプタ 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=予備 列=無し old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=予備 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=予備 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=予備 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=予備 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+USB-A→USB-C 備考=予備 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=予備 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置変更あり 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置変更あり 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置変更あり 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=位置変更あり 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=位置変更あり 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=位置変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=位置変更あり 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=→ 列=無し old=USB-C new=USB-C
+USB-A→USB-C 備考=→ 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-C
+USB-A→USB-C 備考=→ 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=→ 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-C
+USB-A→USB-C 備考=→ 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=→ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=→ 列=対応[済/未/不要/済] old=USB-C new=USB-C
+USB-A→USB-C 備考=交換品 列=無し old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換品 列=ステータス[量産/試作/廃止/量産] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換品 列=ステータス[新規/継続/廃止/継続] old=USB-C new=USB-C
+USB-A→USB-C 備考=交換品 列=区分[購入品/加工品/流用/新規] old=USB-C new=USB-A→USB-C
+USB-A→USB-C 備考=交換品 列=変更区分[追加/追加/変更/追加] old=USB-C new=USB-C
+USB-A→USB-C 備考=交換品 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+USB-A→USB-C 備考=交換品 列=対応[済/未/不要/済] old=USB-C new=USB-A→USB-C
+HDMI→VGA 備考=(空) 列=無し old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=(空) 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=(空) 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=(空) 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=(空) 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=(空) 列=対応[済/未/不要/済] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=位置 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=位置 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=位置 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=位置 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換用 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換用 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換用 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=交換用 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換用 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=交換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=交換用 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=追加 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=追加 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=追加 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=追加 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=追加 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=追加 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=追加 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=修正 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=修正 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=修正 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=修正 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=修正 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=修正 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=修正 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=銘板あり 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=銘板あり 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=銘板あり 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=銘板あり 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=銘板あり 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=銘板あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=銘板あり 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=変更あり 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=変更あり 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=変更あり 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=変更あり 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=変更あり 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=変更あり 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=代替品あり 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=代替品あり 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=代替可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=代替可 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=置換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=置換用 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品番 ABC-1 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=旧品番 ABC-1 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=旧品あり 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=無し old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=旧型は廃止 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=旧型は廃止 列=対応[済/未/不要/済] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=無し old=VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=変更前の型式は不明 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=変更前の型式は不明 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=無し old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=差し替え不可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=差し替え不可 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=無し old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=ホスト→デバイス 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=ホスト→デバイス 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=無し old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=配線: 端子台→PLC 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=配線: 端子台→PLC 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=無し old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=A→B 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=A→B 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=無し old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=1→2 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=1→2 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=無し old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=型式変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=型式変更 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=無し old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=型番変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=型番変更 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=無し old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=変更後の型式 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=変更後の型式 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=客先支給 列=無し old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=客先支給 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=客先支給 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=客先支給 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=客先支給 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=客先支給 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=客先支給 列=対応[済/未/不要/済] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=変換アダプタ 列=無し old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=変換アダプタ 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=変換アダプタ 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=変換アダプタ 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=変換アダプタ 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=変換アダプタ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=変換アダプタ 列=対応[済/未/不要/済] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=予備 列=無し old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=予備 列=ステータス[量産/試作/廃止/量産] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=予備 列=ステータス[新規/継続/廃止/継続] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=予備 列=区分[購入品/加工品/流用/新規] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=予備 列=変更区分[追加/追加/変更/追加] old=HDMI→VGA new=VGA
+HDMI→VGA 備考=予備 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=予備 列=対応[済/未/不要/済] old=HDMI→VGA new=HDMI→VGA
+HDMI→VGA 備考=位置変更あり 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置変更あり 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置変更あり 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=位置変更あり 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=位置変更あり 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=位置変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=位置変更あり 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=→ 列=無し old=VGA new=VGA
+HDMI→VGA 備考=→ 列=ステータス[量産/試作/廃止/量産] old=VGA new=VGA
+HDMI→VGA 備考=→ 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=→ 列=区分[購入品/加工品/流用/新規] old=VGA new=VGA
+HDMI→VGA 備考=→ 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=→ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=→ 列=対応[済/未/不要/済] old=VGA new=VGA
+HDMI→VGA 備考=交換品 列=無し old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換品 列=ステータス[量産/試作/廃止/量産] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換品 列=ステータス[新規/継続/廃止/継続] old=VGA new=VGA
+HDMI→VGA 備考=交換品 列=区分[購入品/加工品/流用/新規] old=VGA new=HDMI→VGA
+HDMI→VGA 備考=交換品 列=変更区分[追加/追加/変更/追加] old=VGA new=VGA
+HDMI→VGA 備考=交換品 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+HDMI→VGA 備考=交換品 列=対応[済/未/不要/済] old=VGA new=HDMI→VGA
+RS232C→RS485 備考=(空) 列=無し old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=(空) 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=(空) 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=(空) 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=(空) 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=(空) 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=位置 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=位置 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=位置 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換用 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換用 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換用 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=交換用 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換用 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=交換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=交換用 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=追加 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=追加 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=追加 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=追加 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=追加 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=追加 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=追加 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=修正 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=修正 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=修正 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=修正 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=修正 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=修正 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=修正 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=銘板あり 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=銘板あり 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=銘板あり 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=銘板あり 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=銘板あり 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=銘板あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=銘板あり 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=変更あり 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=変更あり 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=変更あり 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=変更あり 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=変更あり 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=変更あり 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=代替品あり 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=代替品あり 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=代替可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=代替可 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=置換用 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=置換用 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品番 ABC-1 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=旧品番 ABC-1 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧品あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=旧品あり 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=無し old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=旧型は廃止 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=旧型は廃止 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=変更前の型式は不明 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=変更前の型式は不明 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=差し替え不可 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=差し替え不可 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=ホスト→デバイス 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=ホスト→デバイス 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=配線: 端子台→PLC 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=配線: 端子台→PLC 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=A→B 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=A→B 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=1→2 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=1→2 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=型式変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=型式変更 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=型番変更 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=型番変更 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=変更後の型式 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=変更後の型式 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=客先支給 列=無し old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=客先支給 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=客先支給 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=客先支給 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=客先支給 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=客先支給 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=客先支給 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=変換アダプタ 列=無し old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=変換アダプタ 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=変換アダプタ 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=変換アダプタ 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=変換アダプタ 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=変換アダプタ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=変換アダプタ 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=予備 列=無し old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=予備 列=ステータス[量産/試作/廃止/量産] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=予備 列=ステータス[新規/継続/廃止/継続] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=予備 列=区分[購入品/加工品/流用/新規] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=予備 列=変更区分[追加/追加/変更/追加] old=RS232C→RS485 new=RS485
+RS232C→RS485 備考=予備 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=予備 列=対応[済/未/不要/済] old=RS232C→RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置変更あり 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置変更あり 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置変更あり 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=位置変更あり 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=位置変更あり 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=位置変更あり 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=位置変更あり 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=→ 列=無し old=RS485 new=RS485
+RS232C→RS485 備考=→ 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS485
+RS232C→RS485 備考=→ 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=→ 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS485
+RS232C→RS485 備考=→ 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=→ 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=→ 列=対応[済/未/不要/済] old=RS485 new=RS485
+RS232C→RS485 備考=交換品 列=無し old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換品 列=ステータス[量産/試作/廃止/量産] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換品 列=ステータス[新規/継続/廃止/継続] old=RS485 new=RS485
+RS232C→RS485 備考=交換品 列=区分[購入品/加工品/流用/新規] old=RS485 new=RS232C→RS485
+RS232C→RS485 備考=交換品 列=変更区分[追加/追加/変更/追加] old=RS485 new=RS485
+RS232C→RS485 備考=交換品 列=変更区分[追加/削除/変更/追加] old=(row gone) new=(row gone)
+RS232C→RS485 備考=交換品 列=対応[済/未/不要/済] old=RS485 new=RS232C→RS485
+
+CHANGE-SHEET
+変更区分/追加/旧新あり DVI→HDMI: old=MY4N-D2,HDMI new=MY4N-D2,HDMI
+変更区分/追加/型式のみ DVI→HDMI: old=MY4N-D2,DVI→HDMI new=MY4N-D2,HDMI
+変更区分/追加/旧新あり USB-A→USB-C: old=MY4N-D2,USB-C new=MY4N-D2,USB-C
+変更区分/追加/型式のみ USB-A→USB-C: old=MY4N-D2,USB-A→USB-C new=MY4N-D2,USB-C
+変更区分/追加/旧新あり HDMI→VGA: old=MY4N-D2,VGA new=MY4N-D2,VGA
+変更区分/追加/型式のみ HDMI→VGA: old=MY4N-D2,HDMI→VGA new=MY4N-D2,VGA
+変更区分/変更/旧新あり DVI→HDMI: old=MY4N-D2,HDMI new=MY4N-D2,HDMI
+変更区分/変更/型式のみ DVI→HDMI: old=MY4N-D2,DVI→HDMI new=MY4N-D2,HDMI
+変更区分/変更/旧新あり USB-A→USB-C: old=MY4N-D2,USB-C new=MY4N-D2,USB-C
+変更区分/変更/型式のみ USB-A→USB-C: old=MY4N-D2,USB-A→USB-C new=MY4N-D2,USB-C
+変更区分/変更/旧新あり HDMI→VGA: old=MY4N-D2,VGA new=MY4N-D2,VGA
+変更区分/変更/型式のみ HDMI→VGA: old=MY4N-D2,HDMI→VGA new=MY4N-D2,VGA
+更新区分/追加/旧新あり DVI→HDMI: old=MY4N-D2,HDMI,H3CR-A8 new=MY4N-D2,HDMI
+更新区分/追加/型式のみ DVI→HDMI: old=MY4N-D2,DVI→HDMI,H3CR-A8 new=MY4N-D2,HDMI
+更新区分/追加/旧新あり USB-A→USB-C: old=MY4N-D2,USB-C,H3CR-A8 new=MY4N-D2,USB-C
+更新区分/追加/型式のみ USB-A→USB-C: old=MY4N-D2,USB-A→USB-C,H3CR-A8 new=MY4N-D2,USB-C
+更新区分/追加/旧新あり HDMI→VGA: old=MY4N-D2,VGA,H3CR-A8 new=MY4N-D2,VGA
+更新区分/追加/型式のみ HDMI→VGA: old=MY4N-D2,HDMI→VGA,H3CR-A8 new=MY4N-D2,VGA
+Change Type/Add/旧新あり DVI→HDMI: old=MY4N-D2,HDMI,H3CR-A8 new=MY4N-D2,HDMI
+Change Type/Add/型式のみ DVI→HDMI: old=MY4N-D2,DVI→HDMI,H3CR-A8 new=MY4N-D2,HDMI
+Change Type/Add/旧新あり USB-A→USB-C: old=MY4N-D2,USB-C,H3CR-A8 new=MY4N-D2,USB-C
+Change Type/Add/型式のみ USB-A→USB-C: old=MY4N-D2,USB-A→USB-C,H3CR-A8 new=MY4N-D2,USB-C
+Change Type/Add/旧新あり HDMI→VGA: old=MY4N-D2,VGA,H3CR-A8 new=MY4N-D2,VGA
+Change Type/Add/型式のみ HDMI→VGA: old=MY4N-D2,HDMI→VGA,H3CR-A8 new=MY4N-D2,VGA
+
+BAD
+ordinary: old keep → new split (176)
+  DVI→HDMI 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=(空) 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替品あり 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=代替可 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=置換用 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品番 ABC-1 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧品あり 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=無し old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=ステータス[量産/試作/廃止/量産] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=区分[購入品/加工品/流用/新規] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=旧型は廃止 列=対応[済/未/不要/済] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=客先支給 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=客先支給 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=変換アダプタ 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=変換アダプタ 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=予備 列=ステータス[新規/継続/廃止/継続] old=DVI→HDMI new=HDMI
+  DVI→HDMI 備考=予備 列=変更区分[追加/追加/変更/追加] old=DVI→HDMI new=HDMI
+  USB-A→USB-C 備考=(空) 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=(空) 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=無し old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替品あり 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=無し old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=ステータス[新規/継続/廃止/継続] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=区分[購入品/加工品/流用/新規] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=変更区分[追加/追加/変更/追加] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=代替可 列=対応[済/未/不要/済] old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=置換用 列=無し old=USB-A→USB-C new=USB-C
+  USB-A→USB-C 備考=置換用 列=ステータス[量産/試作/廃止/量産] old=USB-A→USB-C new=USB-C
+ordinary: split in both (68e45f7も) (40)
+  DVI→HDMI 備考=変更前の型式は不明 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=差し替え不可 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=ホスト→デバイス 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=配線: 端子台→PLC 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=A→B 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=1→2 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=型式変更 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=型番変更 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=変更後の型式 列=無し old=HDMI new=HDMI
+  DVI→HDMI 備考=→ 列=無し old=HDMI new=HDMI
+  USB-A→USB-C 備考=変更前の型式は不明 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=差し替え不可 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=ホスト→デバイス 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=配線: 端子台→PLC 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=A→B 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=1→2 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=型式変更 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=型番変更 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=変更後の型式 列=無し old=USB-C new=USB-C
+  USB-A→USB-C 備考=→ 列=無し old=USB-C new=USB-C
+  HDMI→VGA 備考=変更前の型式は不明 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=差し替え不可 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=ホスト→デバイス 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=配線: 端子台→PLC 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=A→B 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=1→2 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=型式変更 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=型番変更 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=変更後の型式 列=無し old=VGA new=VGA
+  HDMI→VGA 備考=→ 列=無し old=VGA new=VGA
+  RS232C→RS485 備考=変更前の型式は不明 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=差し替え不可 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=ホスト→デバイス 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=配線: 端子台→PLC 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=A→B 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=1→2 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=型式変更 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=型番変更 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=変更後の型式 列=無し old=RS485 new=RS485
+  RS232C→RS485 備考=→ 列=無し old=RS485 new=RS485

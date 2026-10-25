@@ -1,0 +1,156 @@
+## N22-09 見出し「変更内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更の内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更事項」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更箇所」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「設変内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「改訂内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「修正内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「理由」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更理由」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更点」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更概要」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更詳細」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「設計変更内容」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「変更メモ」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「コメント」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「Comment」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「部品名」に当たる列が 2 つあります。「品名」の列を使います
+## N22-09 見出し「Remarks」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直し / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「Reason」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## N22-09 見出し「Description」に「削除」/「タイマを削除」
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,-,model,qtyNeeded,-
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「部品名」に当たる列が 2 つあります。「品名」の列を使います
+## N22-05 見出し「型式（旧→新）」
+   old(68e45f7): MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | name,model,qtyNeeded
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | name,model,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+## N22-05 見出し「型式」で矢印だけ（変更の証拠なし）
+   old(68e45f7): MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | name,model,qtyNeeded
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | name,model,qtyNeeded
+   warn: 
+## N22-05 変更区分の列＋矢印
+   old(68e45f7): MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | -,name,model,qtyNeeded
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | -,name,model,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+## N22-05 見出し「変更前→変更後」
+   old(68e45f7): MY2N→MY4N-D2:4 XW2B-20G4:4 | name,model,qtyNeeded
+   new: MY4N-D2:4 XW2B-20G4:4 | name,model,qtyNeeded
+   warn: 1 つのセルに「旧→新」と書いた 1 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+## U22-04 見出し「調達区分」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-04 見出し「調達」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-04 見出し「手配区分」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-04 見出し「調達方法」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-04 見出し「調達種別」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-04 見出し「手配方法」支給品/社内在庫/相見積
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 XW2B-20G4:4 | name,model,maker,qtyNeeded,-
+   warn: 
+## U22-05 CSV セルにタブ
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 | name,model,qtyNeeded,note
+   new: MY4N-D2:4 H3CR-A8:1 | name,model,qtyNeeded,note
+   warn: 
+## U22-06 半角カナ ｺﾞｳｹｲ / ｼｮｳｹｲ
+   old(68e45f7): MY4N-D2:4 H3CR-A8:1 ｼｮｳｹｲ:5 ｺﾞｳｹｲ:5 | name,model,maker,qtyNeeded
+   new: MY4N-D2:4 H3CR-A8:1 ｼｮｳｹｲ:5 ｺﾞｳｹｲ:5 | name,model,maker,qtyNeeded
+   warn: 
+## N22-08 CSV 複数行セル 2 つ
+   old(68e45f7): MY4N-D2:4 左":0 H3CR-A8:1 PL-24:2 別手配":0 | name,model,maker,qtyNeeded,note
+   new: MY4N-D2:4 H3CR-A8:1 PL-24:2 | name,model,maker,qtyNeeded,note
+   warn: 
+## U22-07 新の型式「削除してよいか確認」
+   old(68e45f7): MY4N-D2:4 削除してよいか確認:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 削除してよいか確認:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## U22-07 新の型式「削除？」
+   old(68e45f7): MY4N-D2:4 削除？:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 削除？:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## U22-07 新の型式「全削除」
+   old(68e45f7): MY4N-D2:4 全削除:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 全削除）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## U22-07 新の型式「一部削除」
+   old(68e45f7): MY4N-D2:4 一部削除:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 一部削除:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## U22-07 新の型式「削除かも」
+   old(68e45f7): MY4N-D2:4 削除かも:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 削除かも:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+## U22-07 新の型式「削除しない」
+   old(68e45f7): MY4N-D2:4 削除しない:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います

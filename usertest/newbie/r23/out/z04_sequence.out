@@ -1,0 +1,16 @@
+  [step 0] mode=panel cur=R005/model panel=quickfix | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白があります: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 1] mode=panel cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 2] mode=panel cur=R016/model panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格電流（例: 10A）まで書いてください: 編集する 2 CP30 は定格電流（例: 10A）まで書いてください: 確認済みにする（x） 3 CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 3] mode=panel cur=R022/model panel=quickfix | 直し方の候補 R022 サージ保護器 1 購買の提案 LT-C32AC385A を適用して置換（I-002） 2 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 4] mode=panel cur=R041/maker panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 5] mode=panel cur=R054/qtyNeeded panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 6] mode=panel cur=R061/model panel=quickfix | 直し方の候補 R061 マークチューブ 1 型式に全角文字が含まれています: 半角に変換 2 型式に全角文字が含まれています: 確認済みにする（x） 3 型式に全角文字が含まれています: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [step 7] mode=nav cur=R005/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  no skip option
+order R005 → R009 → R016 → R022 → R041 → R054 → R061 → R005
+== あとで を選ぶ → 通知 → Ctrl+Enter
+  [Ctrl+.] mode=panel cur=R030/maker panel=quickfix | 直し方の候補 R030 表示灯 白 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: R030 メーカ を空にしました（Ctrl+Z で戻す）
+  [あとで] mode=nav cur=R030/maker panel=null |  | toast: R030 メーカ を空にしました（Ctrl+Z で戻す）
+  [Ctrl+Enter] mode=nav cur=R030/maker panel=null |  | toast: 公開できません: エラー 1 件（R030 メーカが空です … F8 で移動して直す）
+
+ERRORS:

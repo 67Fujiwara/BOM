@@ -1,0 +1,12 @@
+"a", ×5000 (20KB): old=1394ms new=696ms
+"a", ×20000 (80KB): old=2576ms new=4165ms
+"a", ×50000 (200KB): old=7301ms new=8352ms
+"a","b", ×5000 (40KB): old=1412ms new=2129ms
+"a","b", ×20000 (160KB): old=4696ms new=7965ms
+"a","b", ×50000 (400KB): old=14757ms new=16117ms
+""", ×5000 (20KB): old=1381ms new=1176ms
+""", ×20000 (80KB): old=2654ms new=2369ms
+""", ×50000 (200KB): old=4392ms new=2905ms
+"x,y", ×5000 (30KB): old=1232ms new=853ms
+"x,y", ×20000 (120KB): old=3231ms new=3357ms
+"x,y", ×50000 (300KB): old=7161ms new=10048ms

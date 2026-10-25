@@ -1,0 +1,30 @@
+== 設計: 下書きの行を公開
+  panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  toast: 行 5（Rev.2） を公開しました
+  R076:submitted:adopted=-:targets=null
+  status counts: {"selected":5,"quoted":69,"formalQuoted":1,"submitted":5}
+== 購買: 概算見積を依頼 → Enter
+  toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  R076:quoting:adopted=-:targets=["S1","S2","S3"] quotes S1:-/- S2:-/- S3:-/-
+  取り込み S1: 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0
+  取り込み S2: 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0
+  取り込み S3: 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0
+  R076:quoting:adopted=-:targets=["S1","S2","S3"] quotes S1:-/-1 S2:-/-1 S3:-/-1
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く Alt+Shift+I取引できる商社に有効な見積が無い: 相見積先を足して依頼するか、設計に代替を相談（指摘）
+== Ctrl+. の候補
+  options: 1 ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ Ctrl+K →「案件設定」で足す） || 2 設計に代替を相談する（指摘を起票）
+  after click: panel=概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ） · S1 因幡電機 · S2 立花エレテック · S3 ミスミ · S4 RSコンポーネンツ · S5 オムロン直販 ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast null
+== そのまま Enter（相見積先すべて）
+  toast: 依頼する行がありません（提出済・再見積要の行なし） | panel -
+  R076:quoting:adopted=-:targets=["S1","S2","S3"] quotes S1:-/-1 S2:-/-1 S3:-/-1
+== もう一度 Ctrl+. →「ほかの商社に依頼」→ ↓ で S4 → Enter
+  依頼先: ▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ） | · S1 因幡電機 | · S2 立花エレテック | · S3 ミスミ | · S4 RSコンポーネンツ | · S5 オムロン直販
+  toast: 1 行 × 1 社に依頼（回答期限 2026-10-30） | panel -
+  R076:quoting:adopted=-:targets=["S1","S2","S3","S4"] quotes S1:-/-1 S2:-/-1 S3:-/-1 S4:-/-
+  project supplierIds: ["S1","S2","S3","S4"]
+  status counts: {"selected":5,"quoted":69,"formalQuoted":1,"quoting":5}
+  R001 quotes: S1:146/19 S2:123/0 S3:149/23 / R001:selected:adopted=S1:targets=null
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く
+== 設計に代替を相談（候補の 2 つ目）を見る: 別の新人は辞退の行で Ctrl+. → 設計に代替を相談
+
+ERRORS:

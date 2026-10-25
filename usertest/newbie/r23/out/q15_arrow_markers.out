@@ -1,0 +1,46 @@
+[見出し「型式（旧→新）」] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[見出し「型式(旧→新)」] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[見出し「旧→新」] LEFT/ARROW残り 
+   new: リレー:4 タイマ:1 端子台:4 | 
+[見出し「旧型式→新型式」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[見出し「変更前→変更後」] LEFT/ARROW残り 
+   new: リレー:4 タイマ:1 端子台:4 | 
+[見出し「型式（変更前→変更後）」] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[見出し「型式 旧→新」] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[見出し「型式（旧/新）」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[見出し「型式」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[見出し「型式（変更）」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[見出し「変更後型式」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[見出し「型式（改）」] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[型式 1 列 + 変更区分列(変更/変更/)] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[型式 1 列 + 変更内容列(型式変更/型式変更/)] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[型式 1 列 + 変更理由列(廃番/廃番/)] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[型式 1 列 + 備考列(廃番のため変更/廃番のため変更/)] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[型式 1 列 + 備考列(//)] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[型式 1 列 + 変更区分列(変更/変更/変更なし)] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[型式 1 列 + 区分列(変更/変更/)] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 
+[表題「設計変更表」+ 型式 1 列] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 XW2B-20G4:4 | 見出しより上の 1 行（表題など）は取り込みません
+[全行が矢印 + 備考なし] LEFT/ARROW残り (old≠new) old=MY4N-D2:4 H3CR-A8:1 L-2:2
+   new: MY2N→MY4N-D2:4 H3CR-A7→H3CR-A8:1 L-1→L-2:2 | 
+[数量の矢印（2→4）] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 | 1 つのセルに「旧→新」と書いた 1 セル（例: 「2→4」）は、→ の右（新）の値にしました
+[メーカーの矢印] NEW側 
+   new: MY4N-D2:4 H3CR-A8:1 | 

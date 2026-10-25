@@ -1,0 +1,25 @@
+  [created] view=4 cur=R001/name mode=nav edit="" panel=null | rows=R001{||||} | toast=新しいBOM NEW-1（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  cols: ID|ボール|回路記号|部品名|型式|メーカ|必要数|単位|代替可否|状態|期限|待ち
+  [row1 typed] view=4 cur=R001/maker mode=nav edit="Omron" panel=null | rows=R001{Relay|MY4N|Omron||} | toast=最後の行です。下に行を足すときは Shift+Enter
+  [Shift+Enter] view=4 cur=R002/name mode=edit edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=最後の行です。下に行を足すときは Shift+Enter
+  [Esc] view=4 cur=R002/name mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=最後の行です。下に行を足すときは Shift+Enter
+  [Home] view=4 cur=R002/id mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=最後の行です。下に行を足すときは Shift+Enter
+  [→] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=最後の行です。下に行を足すときは Shift+Enter
+  [S] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「今の列で並び替え（降順）」は Alt+Shift+S（または ID の列で S）。キーの一覧は F1
+  [e] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  [n] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「次の問題へ」は Alt+n（または ID の列で n）。キーの一覧は F1
+  [s] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「今の列で並び替え（昇順）」は Alt+s（または ID の列で s）。キーの一覧は F1
+  [o] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1
+  [r] view=4 cur=R002/ball mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [Tab] view=4 cur=R002/ref mode=nav edit="" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [E] view=4 cur=R002/ref mode=edit edit="E" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [2] view=4 cur=R002/ref mode=edit edit="E2" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [E] view=4 cur=R002/ref mode=edit edit="E2E" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [-] view=4 cur=R002/ref mode=edit edit="E2E-" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [X] view=4 cur=R002/ref mode=edit edit="E2E-X" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [5] view=4 cur=R002/ref mode=edit edit="E2E-X5" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [M] view=4 cur=R002/ref mode=edit edit="E2E-X5M" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=null
+  [E] view=4 cur=R002/ref mode=edit edit="E2E-X5ME" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=null
+  [1] view=4 cur=R002/ref mode=edit edit="E2E-X5ME1" panel=null | rows=R001{Relay|MY4N|Omron||} R002{||||} | toast=null
+
+ERRORS:

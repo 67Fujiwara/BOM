@@ -1,0 +1,36 @@
+change 「※削除部品は取り込まないこと」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「注) 削除品は赤字で表示」 old=MY4N-D2:4 XW2B-20G4:4 注) 削除品は赤字で表示:0 | new=MY4N-D2:4 XW2B-20G4:4 注) 削除品は赤字で表示:0  <<部品になった
+change 「※1 撤去品は別紙参照」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「備考: 廃止予定の部品は別途協議」 old=MY4N-D2:4 XW2B-20G4:4 備考: 廃止予定の部品は別途協議:0 | new=MY4N-D2:4 XW2B-20G4:4 備考: 廃止予定の部品は別途協議:0  <<部品になった
+change 「以上」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「以上です」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「承認: 部長｜課長｜係長」 old=MY4N-D2:4 XW2B-20G4:4 係長:0 | new=MY4N-D2:4 XW2B-20G4:4 係長:0  <<部品になった
+change 「作成: 山田｜検図: 鈴木」 old=MY4N-D2:4 XW2B-20G4:4 検図: 鈴木:0 | new=MY4N-D2:4 XW2B-20G4:4 検図: 鈴木:0  <<部品になった
+change 「- 1 -」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「Page 2/3」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「改訂履歴: Rev.A 初版 / Rev.B 削除1件」 old=MY4N-D2:4 XW2B-20G4:4 改訂履歴: Rev.A 初版 / Rev.B 削除1件:0 | new=MY4N-D2:4 XW2B-20G4:4 改訂履歴: Rev.A 初版 / Rev.B 削除1件:0  <<部品になった
+change 「Rev.B 2026/10/20 山田 タイマ削除」 old=MY4N-D2:4 XW2B-20G4:4 Rev.B 2026/10/20 山田 タイマ削除:0 | new=MY4N-D2:4 XW2B-20G4:4 Rev.B 2026/10/20 山田 タイマ削除:0  <<部品になった
+change 「(次ページへ続く)」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「※赤字は変更箇所」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「削除｜H3CR-A8」 old=MY4N-D2:4 XW2B-20G4:4 H3CR-A8:0 | new=MY4N-D2:4 XW2B-20G4:4 H3CR-A8:0  <<部品になった
+change 「以下余白」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「＊印は客先支給」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+change 「（注）数量は1台分」 old=MY4N-D2:4 XW2B-20G4:4 （注）数量は1台分:0 | new=MY4N-D2:4 XW2B-20G4:4 （注）数量は1台分:0  <<部品になった
+ordinary 「※削除部品は取り込まないこと」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「注) 削除品は赤字で表示」 old=MY4N-D2:4 XW2B-20G4:4 注) 削除品は赤字で表示:0 | new=MY4N-D2:4 XW2B-20G4:4 注) 削除品は赤字で表示:0  <<部品になった
+ordinary 「※1 撤去品は別紙参照」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「備考: 廃止予定の部品は別途協議」 old=MY4N-D2:4 XW2B-20G4:4 備考: 廃止予定の部品は別途協議:0 | new=MY4N-D2:4 XW2B-20G4:4 備考: 廃止予定の部品は別途協議:0  <<部品になった
+ordinary 「以上」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「以上です」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「承認: 部長｜課長｜係長」 old=MY4N-D2:4 XW2B-20G4:4 課長:0 | new=MY4N-D2:4 XW2B-20G4:4 課長:0  <<部品になった
+ordinary 「作成: 山田｜検図: 鈴木」 old=MY4N-D2:4 XW2B-20G4:4 検図: 鈴木:0 | new=MY4N-D2:4 XW2B-20G4:4 検図: 鈴木:0  <<部品になった
+ordinary 「- 1 -」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「Page 2/3」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「改訂履歴: Rev.A 初版 / Rev.B 削除1件」 old=MY4N-D2:4 XW2B-20G4:4 改訂履歴: Rev.A 初版 / Rev.B 削除1件:0 | new=MY4N-D2:4 XW2B-20G4:4 改訂履歴: Rev.A 初版 / Rev.B 削除1件:0  <<部品になった
+ordinary 「Rev.B 2026/10/20 山田 タイマ削除」 old=MY4N-D2:4 XW2B-20G4:4 Rev.B 2026/10/20 山田 タイマ削除:0 | new=MY4N-D2:4 XW2B-20G4:4 Rev.B 2026/10/20 山田 タイマ削除:0  <<部品になった
+ordinary 「(次ページへ続く)」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「※赤字は変更箇所」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「削除｜H3CR-A8」 old=MY4N-D2:4 XW2B-20G4:4 H3CR-A8:0 | new=MY4N-D2:4 XW2B-20G4:4 H3CR-A8:0  <<部品になった
+ordinary 「以下余白」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「＊印は客先支給」 old=MY4N-D2:4 XW2B-20G4:4 | new=MY4N-D2:4 XW2B-20G4:4
+ordinary 「（注）数量は1台分」 old=MY4N-D2:4 XW2B-20G4:4 （注）数量は1台分:0 | new=MY4N-D2:4 XW2B-20G4:4 （注）数量は1台分:0  <<部品になった

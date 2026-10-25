@@ -1,0 +1,18 @@
+plain 1000行 old=701ms(1000行) new=593ms(1000行)
+plain 5000行 old=1276ms(5000行) new=2045ms(5000行)
+plain 20000行 old=5024ms(20000行) new=5983ms(20000行)
+commas 1000行 old=558ms(1000行) new=818ms(1000行)
+commas 5000行 old=2280ms(5000行) new=2340ms(5000行)
+commas 20000行 old=6001ms(20000行) new=6813ms(20000行)
+quotes 1000行 old=635ms(1000行) new=1762ms(1000行)
+quotes 5000行 old=3037ms(5000行) new=3092ms(5000行)
+quotes 20000行 old=10236ms(20000行) new=9249ms(20000行)
+notes 1000行 old=1081ms(800行) new=1871ms(800行)
+notes 5000行 old=2341ms(4000行) new=2623ms(4000行)
+notes 20000行 old=5808ms(16000行) new=7497ms(16000行)
+path quote-comma 200KB old=10325ms new=9138ms
+path paren 80k old=104ms new=93ms
+path close 80k old=233ms new=140ms
+path spaces 80k old=246ms new=267ms
+path dnp marks 80k old=181ms new=165ms
+path arrow 80k old=88ms new=139ms

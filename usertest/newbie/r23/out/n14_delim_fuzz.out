@@ -1,0 +1,15 @@
+N=3000 new: ok 3000 bad 0 / old: ok 2760 bad 240
+new bad examples:
+old bad examples:
+tab pre=12 post=3 h=品名/回路記号 → delim=comma rows=23/7
+tab pre=14 post=5 h=Item/Manufacturer → delim=comma rows=26/6
+tab pre=12 post=1 h=部品名/メーカ → delim=comma rows=17/3
+tab pre=10 post=0 h=Designator/Footprint → delim=comma rows=16/5
+tab pre=13 post=0 h=No/型式 → delim=comma rows=17/3
+tab pre=15 post=0 h=品名/回路記号 → delim=comma rows=21/5
+csv pre=12 post=0 h=Designator/Footprint → delim=tab rows=18/5
+tab pre=15 post=4 h=品名/メーカー → delim=comma rows=24/4
+csv pre=15 post=0 h=品名/回路記号 → delim=tab rows=22/6
+tab pre=13 post=5 h=部品名/メーカ → delim=comma rows=24/5
+tab pre=13 post=0 h=品名/回路記号 → delim=comma rows=21/7
+csv pre=13 post=5 h=Designator/Footprint → delim=tab rows=25/6

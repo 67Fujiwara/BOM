@@ -1,0 +1,27 @@
+OK (old OK) TSV 表題コンマ入り1行: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) TSV 表題コンマ入り3行: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old NG) TSV 表題コンマ入り6行: new delim=tab rows=4 / old delim=comma rows=11 / 期待 tab 4
+OK (old NG) TSV 表題コンマ入り10行: new delim=tab rows=4 / old delim=comma rows=15 / 期待 tab 4
+OK (old NG) TSV 表題コンマ入り20行: new delim=tab rows=4 / old delim=comma rows=25 / 期待 tab 4
+OK (old OK) TSV 回路記号コンマ多: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+NG (old NG) TSV 部品2行＋説明: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 2
+OK (old OK) CSV セルにタブ: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) CSV 見出しにタブ: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) KiCad TSV: new delim=tab rows=2 / old delim=tab rows=2 / 期待 tab 2
+OK (old OK) KiCad CSV 引用: new delim=comma rows=2 / old delim=comma rows=2 / 期待 comma 2
+OK (old OK) Designator TSV: new delim=tab rows=2 / old delim=tab rows=2 / 期待 tab 2
+OK (old OK) TSV 見出し風の表題: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) CSV 見出し＋タブ見出し風の表題: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) TSV 見出しにコンマ: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) CSV 表題にタブ: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) TSV 日付に千位コンマ: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) CSV 千位引用: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) TSV 見出しなしコンマ入り: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) CSV 見出しなし: new delim=comma rows=4 / old delim=comma rows=4 / 期待 comma 4
+OK (old OK) TSV 備考にコンマ全行: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+OK (old OK) TSV EDA タイトルブロック: new delim=tab rows=2 / old delim=tab rows=2 / 期待 tab 2
+OK (old NG) TSV 表題5行にコンマ6個: new delim=tab rows=4 / old delim=comma rows=10 / 期待 tab 4
+OK (old OK) TSV 全角コンマ: new delim=tab rows=4 / old delim=tab rows=4 / 期待 tab 4
+NG (old NG) セミコロン区切り: new delim=none rows=5 / old delim=none rows=5 / 期待 none? 4
+
+NG 2

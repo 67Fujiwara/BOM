@@ -1,0 +1,8 @@
+ステータス 削除/保留/確認中/OK（あいまい見出し・語彙少）: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+Status Delete/Hold/Open/Done: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+対応 削除/済/未/対応中: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+変更区分 削除（保留）/据え置き/型式変更/Add: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+変更区分 保留/確認中/未定/OK（削除なし）: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+更新区分 Cancel/Hold/Keep/Add: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+Action 削除してください/残す/残す/残す: 4行 mapping=name,model,maker,qtyNeeded,- warnings=(なし)
+区分 削除/削除/削除/削除（全部削除）: 4行 mapping=name,model,maker,qtyNeeded,category warnings=(なし)

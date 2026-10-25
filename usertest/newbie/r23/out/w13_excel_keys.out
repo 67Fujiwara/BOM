@@ -1,0 +1,9 @@
+Control+End: cursor=R080 型式 toast=null
+Control+Home: cursor=分類 制御 toast=null
+Control+ArrowDown: cursor=R080 型式 toast=null
+Control+ArrowUp: cursor=分類 制御 toast=null
+cursor R030 必要日
+必要日 11/5: mode=nav toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）。「ビュー: 変更あり」は Alt+5（または ID の列で 5）。キーの一覧は F1 view=1 cursor=R030 必要日
+Enter: mode=nav toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） R030=null
+
+ERRORS:

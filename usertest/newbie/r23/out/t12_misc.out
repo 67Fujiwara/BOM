@@ -1,0 +1,35 @@
+  seq start: view=1 cur=R005/model mode=panel edit="" panel=quickfix | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白があります: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shif | toast=null
+  1 編集する: view=1 cur=R009/maker mode=panel edit="" panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる | toast=null
+  typed: view=1 cur=R041/maker mode=panel edit="" panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終 | toast=1〜3 か ↑↓ と Enter で選んでください
+  Enter: view=1 cur=R041/maker mode=edit edit="" panel=null | undefined | toast=1〜3 か ↑↓ と Enter で選んでください
+  R016 
+  Enter#1: view=1 cur=R054/qtyNeeded mode=panel edit="" panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。E | toast=1〜3 か ↑↓ と Enter で選んでください
+  Enter#2: view=1 cur=R061/model mode=panel edit="" panel=quickfix | 直し方の候補 R061 マークチューブ 1 型式に全角文字が含まれています: 半角に変換 2 型式に全角文字が含まれています: 確認済みにする（x） 3 型式に全角文字が含まれています: あとで（いまは飛ばす。公開までに直すか確認済みに。表 | toast=1〜3 か ↑↓ と Enter で選んでください
+  Enter#3: view=1 cur=R016/model mode=nav edit="" panel=null | undefined | toast=順番に直すモード: 一周しました（残りの問題 3 件はそのまま。F8 で回れます）
+  Enter#4: view=1 cur=R016/model mode=edit edit="CP30-BA 2P" panel=null | undefined | toast=順番に直すモード: 一周しました（残りの問題 3 件はそのまま。F8 で回れます）
+  Esc Esc: view=1 cur=R016/model mode=nav edit="CP30-BA 2P" panel=null | undefined | toast=順番に直すモード: 一周しました（残りの問題 3 件はそのまま。F8 で回れます）
+  working rows R005{"model":"MY4N-D2 DC24"} R054{"qtyNeeded":1} R061{"model":"MT-2.5 白"}
+  n: view=4 cur=null/name mode=nav edit="" panel=null | undefined | toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+  Ctrl+.: view=4 cur=null/name mode=nav edit="" panel=null | undefined | toast=行を選んでください（↓ で先頭の行へ）
+  Enter on quickfix: view=4 cur=null/name mode=nav edit="" panel=null | undefined | toast=行を選んでください（↓ で先頭の行へ）
+  n n: view=4 cur=null/name mode=nav edit="" panel=null | undefined | toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+N3-15 delay 0: mode=nav cursor=R032 R032.working={"name":"GROUPCLICK"} toast=null
+N3-15 delay 30: mode=nav cursor=R032 R032.working={"name":"GROUPCLICK"} toast=null
+N3-15 delay 120: mode=nav cursor=R032 R032.working={"name":"GROUPCLICK"} toast=null
+U2-02 [issue kind] null -> Ctrl+K -> panel-palette
+U2-02 [issue text] null -> Ctrl+K -> panel-palette
+U2-02 [adopt panel] null -> Ctrl+K -> panel-palette
+U2-02 [columns] null -> Ctrl+K -> panel-palette
+U2-02 [weights] null -> Ctrl+K -> panel-palette
+U2-02 [quickfix] panel-quickfix -> Ctrl+K -> panel-palette
+U2-02 [export] panel-export -> Ctrl+K -> panel-palette
+U2-02 [settings] panel-settings -> Ctrl+K -> panel-palette
+U2-02 [help] null -> Ctrl+K -> panel-palette
+U2-02 [inbox] panel-inbox -> Ctrl+K -> panel-palette
+U2-02 [goto] panel-prompt -> Ctrl+K -> panel-palette
+U2-02 [replace r] null -> Ctrl+K -> panel-palette
+U2-02 [publish reason] panel-prompt -> Ctrl+K -> panel-palette
+U2-02 [delete confirm] null -> Ctrl+K -> panel-palette
+detail thead 商社 単価 納期 MOQ 在庫 丸め/余剰 スコア 価格点 納期点 実績点 条件点 備考 
+
+ERRORS:

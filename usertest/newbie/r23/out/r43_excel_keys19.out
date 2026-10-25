@@ -1,0 +1,72 @@
+== A 設計: 表の上（R005 型式）で Excel のキー（直したキーとまだのキー）
+  [Control+x] keys=C+x:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+;] keys=C+;:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+r] keys=C+r:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+-] keys=C+-:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Alt+Enter] keys=A+Enter:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Alt+Enter（セル内改行）はありません。備考などは 1 行で入れてください | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+Shift+=] keys=C+S+=:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+=] keys=C+=:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+Shift+;] keys=C+S+;:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Shift+Space] keys=S+ :browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+Space] keys=C+ :browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [F4] keys=F4:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+h] keys=C+h:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+b] keys=C+b:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+1] keys=C+1:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+y] keys=C+y:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=やり直す操作がありません | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+== B 設計: 知らせのとおり切り取りの代わり（下書きの行 R076 の型式を R077 の型式へ移す: Ctrl+X → 知らせ → Ctrl+C → Delete → R077 で Ctrl+V）
+  before: R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false} | R077{name=シリアルケーブル model=GT09-C30R2-6P maker=三菱電機 qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+x] keys=C+x:browser | mode=nav cur=R076/model edit="" panel=null view=1 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+c] keys=C+c:browser | mode=nav cur=R076/model edit="" panel=null view=1 | toast=コピー: USB-ISO | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Delete] keys=Delete:browser | mode=nav cur=R076/model edit="" panel=null view=1 | toast=R076 型式 を空にしました（Ctrl+Z で戻す） | panel=- | rows 80→80 | R076{name=USBアイソレータ model= maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+v] keys=C+v:browser | mode=nav cur=R077/model edit="" panel=null view=1 | toast=貼り付け: USB-ISO | panel=- | rows 80→80 | R077{name=シリアルケーブル model=USB-ISO maker=三菱電機 qty=1 fixed=- working=null status=draft cancelled=false}
+  after: R076{name=USBアイソレータ model= maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false} | R077{name=シリアルケーブル model=USB-ISO maker=三菱電機 qty=1 fixed=- working=null status=draft cancelled=false}
+  知らせの「Ctrl+Z で戻せます」: Ctrl+Z 2 回
+  [Control+z] keys=C+z:browser | mode=nav cur=R077/model edit="" panel=null view=1 | toast=元に戻す: 貼り付け | panel=- | rows 80→80 | R077{name=シリアルケーブル model=GT09-C30R2-6P maker=三菱電機 qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+z] keys=C+z:browser | mode=nav cur=R077/model edit="" panel=null view=1 | toast=元に戻す: セルを空にする | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+== C 設計: 編集中（打ち始め・F2）に Ctrl+X・Alt+Enter・Ctrl+;・Ctrl+R・Ctrl+-
+  F2: mode=edit cur=R076/name edit="USBアイソレータ" panel=null view=1
+  [Control+x] keys=F2:browser,S+Home:browser,C+x:browser | mode=edit cur=R076/name edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  editValue after Ctrl+X: ""
+  [Control+v] keys=End:browser,C+v:browser | mode=edit cur=R076/name edit="USBアイソレータ" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Alt+Enter] keys=k:browser,a:browser,r:browser,i:browser,A+Enter:browser | mode=edit cur=R076/note edit="kari" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+;] keys=o:browser,k:browser,i:browser,C+;:browser | mode=edit cur=R076/note edit="karioki" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Control+-] keys=C+-:browser | mode=edit cur=R076/note edit="karioki" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Enter] keys=Enter:browser | mode=nav cur=R077/note edit="karioki" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+== D 設計: Ctrl+; の知らせのとおり日付を打つ（必要日の列で 10/25 → 知らせのとおり Ctrl+K「列の表示」で必要日(固定)を出す → 10/25 → Enter）
+  col 必要日 found=true
+  [Control+;] keys=C+;:browser | mode=nav cur=R076/needDate edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  typed 10/25: mode=nav cur=R076/needDate edit="" panel=null view=1 | toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」）。「ビュー: 変更あり」は Alt+5（または ID の列で 5）。キーの一覧は F1
+  列の表示: マウスで「必要日(固定)」をクリック → Esc
+  item now: ● 必要日(固定) 設計
+  R076 col 必要日(固定) found=true
+  [Enter] keys=1:browser,0:browser,/:browser,2:browser,5:browser,Enter:browser | mode=nav cur=R077/needDateFixed edit="10/25" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=2026-10-25 working=null status=draft cancelled=false}
+  R005 col 必要日(固定) found=true
+  [Enter] keys=1:browser,0:browser,/:browser,2:browser,5:browser,Enter:browser | mode=nav cur=R006/needDateFixed edit="10/25" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working={"needDateFixed":"2026-10-25"} status=quoted cancelled=false}
+== E 設計: Ctrl+R の知らせのとおり Alt+Shift+D（行の複製）、Ctrl+- の知らせのとおり Shift+Delete（行の取消）
+  [Control+r] keys=C+r:browser | mode=nav cur=R076/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  [Alt+Shift+D] keys=S+A+Shift:browser,S+A+D:browser | mode=nav cur=R081/model edit="" panel=null view=1 | toast=R076 を複製して R081 を作りました（回路記号は空。Ctrl+Z で戻す） | panel=- | rows 80→81 | R076{name=USBアイソレータ model=USB-ISO maker=ラトック qty=1 fixed=- working=null status=draft cancelled=false}
+  last rows: R078:盤用時計/TK-100/draft R079:盤内温度計/TM-50/draft R080:ラベルプリンタテープ/TZe-231/draft
+  [Control+-] keys=C+-:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 81→81 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Shift+Delete] keys=S+Delete:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=R005 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） | panel=- | rows 81→81 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+== F 購買・PM: 表の上で Ctrl+X・Ctrl+;・Ctrl+R・Ctrl+-（書けない列・書く列）
+  purchasing col 型式 found=true
+  [Control+x] keys=C+x:browser | mode=nav cur=R005/model edit="" panel=null view=9 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+;] keys=C+;:browser | mode=nav cur=R005/model edit="" panel=null view=9 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+r] keys=C+r:browser | mode=nav cur=R005/model edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+-] keys=C+-:browser | mode=nav cur=R005/model edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  purchasing col 発注数 found=true
+  [Control+x] keys=C+x:browser | mode=nav cur=R005/orderQty edit="" panel=null view=9 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+;] keys=C+;:browser | mode=nav cur=R005/orderQty edit="" panel=null view=9 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+r] keys=C+r:browser | mode=nav cur=R005/orderQty edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+-] keys=C+-:browser | mode=nav cur=R005/orderQty edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  maker=オムロン qty=12 fixed=- working=null status=quoted cancelled=false}
+  [Control+x] keys=C+x:browser | mode=nav cur=R003/name edit="" panel=null view=7 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80
+  [Control+-] keys=C+-:browser | mode=nav cur=R003/name edit="" panel=null view=7 | toast=undefined | panel=- | rows 80→80
+  [Alt+Enter] keys=A+Enter:browser | mode=nav cur=R003/name edit="" panel=null view=7 | toast=Alt+Enter（セル内改行）はありません。備考などは 1 行で入れてください | panel=- | rows 80→80
+== G ダイアログ・絞り込みの欄の中で Ctrl+X（文字の切り取りはできるか）
+  [Control+x] keys=C+x:browser | mode=edit cur=R005/name edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80
+  filter value: ""
+  [Control+x] keys=C+x:browser | mode=palette cur=R005/name edit="" panel=palette view=1 | toast=undefined | panel=ビュー ビュー: すべて Alt+1 ビュー ビュー: 購買提出用 Alt+2 ビュー ビュー: 発注・入荷 Alt+3 ビュー ビュー: 要確認 Alt+4 ビュー ビュー: 変更あり Alt+5 ビュー ビュー: 商社別 Alt+6 ビュー ビュー: 要決定 Alt+7 ビュー ビュー: 正式見積 Alt+8 ビュ | rows 80→80
+  palette value: ""
+
+ERRORS:

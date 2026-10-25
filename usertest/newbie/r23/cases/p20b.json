@@ -1,0 +1,311 @@
+[
+ [
+  "P1 part name starts with DNP + space (大日本印刷 film)",
+  "品名\t型式\tメーカー\t数量\nDNP 反射フィルム\tRF-200\tミスミ\t2\nリレー\tMY4N-D2\tオムロン\t4",
+  [
+   "RF-200:2",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P2 model DNP-1234",
+  "品名\t型式\tメーカー\t数量\n反射フィルム\tDNP-1234\t大日本印刷\t2\nリレー\tMY4N-D2\tオムロン\t4",
+  [
+   "DNP-1234:2",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P3 maker 大日本印刷(DNP)",
+  "品名\t型式\tメーカー\t数量\n反射フィルム\tRF-200\t大日本印刷(DNP)\t2\nリレー\tMY4N-D2\tオムロン\t4",
+  [
+   "RF-200:2",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P4 note DNP (将来用) drops",
+  "品名\t型式\tメーカー\t数量\t備考\n反射フィルム\tRF-200\tX\t2\tDNP（将来用）\nリレー\tMY4N-D2\tオムロン\t4\t",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P5 note 「DNP品あり」 not exact",
+  "品名\t型式\tメーカー\t数量\t備考\n反射フィルム\tRF-200\tX\t2\tDNP品あり\nリレー\tMY4N-D2\tオムロン\t4\t",
+  [
+   "RF-200:2",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P6 実装 column ○/×",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t○\nタイマ\tH3CR-A8\tオムロン\t1\t×\nランプ\tL-1\tIDEC\t2\t",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "P7 実装 column あり/なし",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\tあり\nタイマ\tH3CR-A8\tオムロン\t1\tなし\nランプ\tL-1\tIDEC\t2\tあり",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "P8 実装 column 実装/未実装",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t実装\nタイマ\tH3CR-A8\tオムロン\t1\t未実装\nランプ\tL-1\tIDEC\t2\t実装",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "P9 実装 column 取付位置 values (盤内/現場) - 実装 as mounting place",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t盤内\nタイマ\tH3CR-A8\tオムロン\t1\t現場",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "P10 Altium Fitted column Not Fitted",
+  "Comment\tDescription\tDesignator\tQuantity\tFitted\n10k\tResistor\tR1\t1\tFitted\n0R\tResistor\tR2\t1\tNot Fitted"
+ ],
+ [
+  "P11 DNP col header with ○",
+  "品名\t型式\tメーカー\t数量\tDNP\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\t○",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P12 DNP header values DNP/blank",
+  "品名\t型式\tメーカー\t数量\tDNP\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\tDNP",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P13 備考 実装無し / 実装せず / 非実装",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\t実装無し\nランプ\tL-1\tIDEC\t2\t実装せず\nソケット\tPYF14A\tオムロン\t2\t非実装",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P14 備考 実装しない場合あり (sentence)",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t実装しない場合は要連絡",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P15 備考 DNPは別途",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\tDNPは別途手配",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "P16 名称 未実装基板 (V19-05)",
+  "品名\t型式\tメーカー\t数量\n未実装基板\tPCB-1\t自社\t1\nリレー\tMY4N-D2\tオムロン\t4",
+  [
+   "PCB-1:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "Q1 CSV multi-line note last col",
+  "品名,型式,メーカー,数量,備考\nリレー,MY4N-D2,オムロン,4,\"盤内上段\n左側\"\nタイマ,H3CR-A8,オムロン,1,",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "Q2 CSV title row + multi-line note",
+  "制御盤A 部品表,,,,\n,,,,\n品名,型式,メーカー,数量,備考\nリレー,MY4N-D2,オムロン,4,\"盤内上段\n左側\"\nタイマ,H3CR-A8,オムロン,1,",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "Q3 CSV inch marks and ditto \"",
+  "品名,型式,メーカー,数量\nファン 4\",FAN-4,山洋,2\n〃,FAN-5\",山洋,1\nリレー,MY4N-D2,オムロン,4"
+ ],
+ [
+  "Q4 TSV every row has a multi-line cell",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t\"a\nb\"\nタイマ\tH3CR-A8\tオムロン\t1\t\"c\nd\"\nランプ\tL-1\tIDEC\t2\t\"e\nf\"",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1",
+   "L-1:2"
+  ]
+ ],
+ [
+  "Q5 CSV multi-line header cells all",
+  "\"品名\n(部品)\",\"型式\n(新)\",\"メーカー\n(名称)\",\"数量\n(個)\"\nリレー,MY4N-D2,オムロン,4\nタイマ,H3CR-A8,オムロン,1",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "Q6 CSV multi-line cell with quotes inside",
+  "品名,型式,メーカー,数量,備考\nリレー,MY4N-D2,オムロン,4,\"客先指示 \"\"要確認\"\"\n(2号機のみ)\"\nタイマ,H3CR-A8,オムロン,1,",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "Q7 CSV only 2 rows, multi-line cell (width ambiguity)",
+  "品名,型式,数量\n\"リレー\n小型\",MY4N-D2,4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "Q8 TSV multi-line cell with tab? (should not)",
+  "品名\t型式\t数量\nリレー\t\"MY4N-D2\n(DC24V)\"\t4\nタイマ\tH3CR-A8\t2",
+  [
+   "MY4N-D2 (DC24V):4",
+   "H3CR-A8:2"
+  ]
+ ],
+ [
+  "Q9 CSV: multi-line cell containing commas and 4 columns total",
+  "品名,型式,数量\n\"リレー, 小型,\n24V\",MY4N-D2,4\nタイマ,H3CR-A8,2",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:2"
+  ]
+ ],
+ [
+  "Q10 CSV: cell with ditto \" mid-table and a multiline cell later",
+  "品名,型式,数量,備考\nリレー,MY4N-D2,4,\n\",MY4N-D2X,2,\nタイマ,H3CR-A8,1,\"a\nb\""
+ ],
+ [
+  "R1 変更区分 + 旧/新 + 備考 削除 words",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\t備考\n変更\tリレー\tMY2N\tMY4N-D2\t4\t\n削除\tタイマ\tH3CR-A8\t\t1\t\n〃\tランプ\tL-1\t\t1\t\n追加\tソケット\t\tPYF14A\t2\t\n\t端子台\tXW2B-20G4\t\t4\t削除済",
+  [
+   "MY4N-D2:4",
+   "PYF14A:2"
+  ]
+ ],
+ [
+  "R2 sparse change sheet: only changed rows + totals + signature",
+  "設計変更通知書\t\t\t\t\n変更番号\tECN-123\t\t\t\n品名\t型式（変更前）\t型式（変更後）\t数量（変更前）\t数量（変更後）\nリレー\tMY2N\tMY4N-D2\t4\t4\nタイマ\tH3CR-A8\t\t1\t0\n合計\t\t\t5\t4\n作成\t山田\t承認\t鈴木\t",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "R3 qty 0 means deletion",
+  "品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\t4\t4\nタイマ\tH3CR-A8\tH3CR-A8\t1\t0\nランプ\tL-1\t\t2\t",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "R4 per-machine change: 旧1号機/旧2号機/新1号機/新2号機",
+  "品名\t型式\t1号機（旧）\t2号機（旧）\t1号機（新）\t2号機（新）\nリレー\tMY4N-D2\t2\t2\t3\t3\nタイマ\tH3CR-A8\t1\t1\t\t\nランプ\tL-1\t1\t1\t0\t0",
+  [
+   "MY4N-D2:6",
+   "H3CR-A8:2"
+  ]
+ ],
+ [
+  "R5 旧→新 in cells with 変更区分 column",
+  "変更区分\t品名\t型式\t数量\n変更\tリレー\tMY2N→MY4N-D2\t4\n削除\tタイマ\tH3CR-A8\t1\n追加\tランプ\tL-1\t2",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "R6 変更前/変更後 two-tier with 変更区分 first col",
+  "区分\t品名\t変更前\t\t変更後\t\n\t\t型式\t数量\t型式\t数量\n変更\tリレー\tMY2N\t4\tMY4N-D2\t4\n削除\tタイマ\tH3CR-A8\t1\t\t\n追加\tランプ\t\t\tL-1\t2",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ],
+ [
+  "R7 old/new where 新 has 同左 / 変更なし text",
+  "品名\t型式（旧）\t型式（新）\t数量\nリレー\tMY2N\tMY4N-D2\t4\nタイマ\tH3CR-A8\t変更なし\t1\nランプ\tL-1\t同左\t2\nソケット\tPYF14A\t削除\t2",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1",
+   "L-1:2"
+  ]
+ ],
+ [
+  "R8 新 column with 〃 below a change",
+  "品名\t型式（旧）\t型式（新）\t数量\nリレー1\tMY2N\tMY4N-D2\t4\nリレー2\tMY2N\t〃\t4\nタイマ\tH3CR-A8\t\t1",
+  [
+   "MY4N-D2:4",
+   "MY4N-D2:4",
+   "H3CR-A8:1"
+  ]
+ ],
+ [
+  "R9 ECN 一覧: 旧品番/新品番/員数 + 理由 col with 廃止",
+  "No\t旧品番\t新品番\t員数\t理由\n1\tMY2N\tMY4N-D2\t4\tMY2N廃止\n2\tH3CR-A8\t\t1\t\n3\tL-1\t\t2\t",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:1",
+   "L-1:2"
+  ]
+ ],
+ [
+  "R10 変更内容 列に「削除」だけ (変更内容 acts as note)",
+  "品名\t型式（旧）\t型式（新）\t数量\t変更内容\nリレー\tMY2N\tMY4N-D2\t4\t型式変更\nタイマ\tH3CR-A8\t\t1\t削除",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "R11 変更内容 + 備考 where 削除 in 変更内容 only",
+  "品名\t型式（旧）\t型式（新）\t数量\t変更内容\t備考\nリレー\tMY2N\tMY4N-D2\t4\t型式変更\t盤内\nタイマ\tH3CR-A8\t\t1\t削除\t盤内",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "R12 備考 + 変更内容 where 削除 in 備考 (備考 first)",
+  "品名\t型式（旧）\t型式（新）\t数量\t備考\t変更内容\nリレー\tMY2N\tMY4N-D2\t4\t盤内\t型式変更\nタイマ\tH3CR-A8\t\t1\t削除\t",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "R13 ordinary BOM with 変更内容 and 備考 both (note kept?)",
+  "品名\t型式\tメーカー\t数量\t変更内容\t備考\nリレー\tMY4N-D2\tオムロン\t4\t型式変更\t盤内上段"
+ ],
+ [
+  "R14 ordinary BOM with 変更点 and 備考",
+  "品名\t型式\tメーカー\t数量\t変更点\t備考\nリレー\tMY4N-D2\tオムロン\t4\t数量増\t客先指定"
+ ],
+ [
+  "S1 ECN with page header, title, change sheets, totals and signature (all in one)",
+  "部品表（変更）\t\t\t\t\n制御盤A\t製作台数：3台\t\t\tP.1\n品名\t型式（旧）\t型式（新）\t員数\t備考\nリレー\tMY2N\tMY4N-D2\t2\t\nタイマ\tH3CR-A8\t\t1\t削除\n〃\tH3CR-A8N\t\t1\t〃\nランプ\tL-1\t\t2\t\n合計\t\t\t5\t\n作成\t山田\t承認\t鈴木\t"
+ ],
+ [
+  "S2 half-width kana title + 号機 two-tier",
+  "ﾌﾞﾋﾝﾋｮｳ\t\t\t\t\nﾋﾝﾒｲ\tｶﾀｼｷ\tｽｳﾘｮｳ\t\t\n\t\t1\t2\t3\nﾘﾚｰ\tMY4N-D2\t2\t2\t2"
+ ],
+ [
+  "S3 header 型式 duplicated across pages with 変更区分",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n変更区分\t品名\t型式（旧）\t型式（新）\t数量\n削除\tタイマ\tH3CR-A8\t\t1\n追加\tランプ\t\tL-1\t2",
+  [
+   "MY4N-D2:4",
+   "L-1:2"
+  ]
+ ]
+]

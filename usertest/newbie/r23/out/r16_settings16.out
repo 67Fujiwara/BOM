@@ -1,0 +1,42 @@
+  [created] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=null 欄=- | toast: 新しいBOM P-2026-002（1 行）を作成しました。Ctrl+Enter で提出します
+== A 設計のまま 案件設定 → 案件名 で Enter
+  panel: 案件設定 （PM 項目は PM、購買項目は購買が変更。未確定（PM が y で確定）） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計変更は PM 承認が必要 いいえ PM 上長決裁: 行の差額 ≥（円） 3000
+  [Enter on 案件名] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 権限なし（案件名 は PM 項目）
+== B PM に切り替えて 案件名 を直す → Esc で閉じる（Ctrl+Enter を知らない）
+  [案件名 ← 第4ライン 搬送制御盤] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 役割: PM（PM担当）。既定のビュー 7 要決定 を開きました
+  [Esc 1] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 保存していない変更が 1 件あります。Ctrl+Enter で保存、もう一度 Esc で変更を捨てて閉じます
+  [Esc 2] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=null 欄=- | toast: 案件設定の変更を捨てました
+== C もう一度: 案件名 → Enter → Ctrl+Enter
+  [案件名 ← 第4ライン 搬送制御盤] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件設定の変更を捨てました
+  [Ctrl+Enter] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=prompt 欄=- | toast: 案件設定の変更を捨てました
+  panel: 変更理由（必須） Enter 確定 Esc 取り消し
+  [Enter（理由を空のまま）] project=P-2026-002「新しいBOM P-2026-002」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=prompt 欄=- | toast: 入力は必須です
+  [理由を打って Enter] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=null 欄=- | toast: 案件設定を保存しました
+== C2 担当者と案件名を直して Ctrl+Enter → 理由のダイアログで Esc（やめる）
+  [案件名 ← 第5ライン] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件設定を保存しました
+  [担当者 ← 山田,佐藤,鈴木] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件設定を保存しました
+  [Ctrl+Enter] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=prompt 欄=- | toast: undefined
+  panel: 変更理由（必須） Enter 確定 Esc 取り消し
+  [Esc（理由をやめる）] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=null 欄=- | toast: undefined
+== D PM 項目に Excel の書き方で
+  [予算 ← 280万円] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: undefined
+  [予算 ← 2,800,000円] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: undefined
+  [重み ← 40:30:20:10] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄="40:30:20:10" | toast: 重みは「価格,納期,実績,条件」の 4 つを入れてください（例: 40,30,20,10）
+  [Esc（編集を抜ける）] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 重みは「価格,納期,実績,条件」の 4 つを入れてください（例: 40,30,20,10）
+  [重み ← ４０，３０，２０，１０] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 重みは「価格,納期,実績,条件」の 4 つを入れてください（例: 40,30,20,10）
+  [担当者 ← 山田 佐藤 鈴木] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄="山田 佐藤 鈴木" | toast: 担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください
+  [Esc（編集を抜ける）] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください
+  [担当者 ← 山田、佐藤、鈴木] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください
+  [案件納期 ← 11月末] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄="11月末" | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  [Esc（編集を抜ける）] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  [案件納期 ← R8.11.30] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  [案件納期 ← 2026年11月30日] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=settings 欄=- | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  [Ctrl+Enter] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=impact 欄=- | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  panel: 影響試算（確定前） 納期NG になる行: 0（なし） 推奨が変わる行: 0（） 行必要日が固定の行: 0（） 正式依頼中で必要納期が変わる行（再発行対象）: 0 総額差（推奨で選び直した場合）: +¥0 特急費の概算: 納期NG 0 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる） Enter 確定に進む Esc 取り消し
+  [Enter 0] project=P-2026-002「第4ライン 搬送制御盤」 budget=null weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"","pm":""} due=null panel=prompt 欄=- | toast: 案件納期として読めません: 「11月末」（例: 2026-11-30、11/30、未定）
+  panel: 変更理由（必須） Enter 確定 Esc 取り消し
+  [Enter 1] project=P-2026-002「第4ライン 搬送制御盤」 budget=2800000 weights={"price":40,"lead":30,"record":20,"terms":10} members={"design":"山田","purchasing":"佐藤","pm":"鈴木"} due=2026-11-30 panel=null 欄=- | toast: 案件設定を保存しました
+  panel: undefined
+  inbox: P-2026-041 / 第3ライン 搬送制御盤 / 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 19:10 佐藤 / あなた宛 1 / P-2026-002 / 第4ライン 搬送制御盤 / 納期 2026-11-30 / 提出 Rev.0 / 設計 1 購買 0 PM 0 / 更新 10/25 19:11 PM担当 / ＋ / 新しいBOM を作る
+
+ERRORS:

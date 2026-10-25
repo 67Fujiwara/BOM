@@ -1,0 +1,40 @@
+== selected の R001 を 支給品 に
+  before: {"st":"selected","proc":"相見積","ad":"S1","ball":"purchasing","quotable":true,"wd":null,"ordered":false,"received":false,"pend":null} views=1,3,8
+  edit toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+   panel: 変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始
+  publish toast: 行 6（Rev.2） を公開しました
+  after(design): {"st":"selected","proc":"支給品","ad":null,"ball":null,"quotable":false,"wd":null,"ordered":false,"received":false,"pend":null}
+  after(purchasing): {"st":"selected","proc":"支給品","ad":null,"ball":null,"quotable":false,"wd":null,"ordered":false,"received":false,"pend":null} views=1
+  after(pm): views=1,5 header=概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM鈴木Ctrl+K コマンド?
+== selected の R001 を 社内在庫 に
+  before: {"st":"selected","proc":"相見積","ad":"S1","ball":"purchasing","quotable":true,"wd":null,"ordered":false,"received":false,"pend":null} views=1,3,8
+  edit toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+   panel: 変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始
+  publish toast: 行 6（Rev.2） を公開しました
+  after(design): {"st":"selected","proc":"社内在庫","ad":null,"ball":null,"quotable":false,"wd":null,"ordered":false,"received":false,"pend":null}
+  after(purchasing): {"st":"selected","proc":"社内在庫","ad":null,"ball":null,"quotable":false,"wd":null,"ordered":false,"received":false,"pend":null} views=1
+  after(pm): views=1,5 header=概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM鈴木Ctrl+K コマンド?
+[formalRequested/支給品] 該当行なし
+[formalRequested/社内在庫] 該当行なし
+== formalQuoted の R013 を 支給品 に
+  before: {"st":"formalQuoted","proc":"相見積","ad":"S1","ball":"purchasing","quotable":true,"wd":null,"ordered":false,"received":false,"pend":null} views=1,3,8
+  edit toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+   panel: 変更セット（6 行: R013, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始
+  publish toast: 行 6（Rev.2） を公開しました
+  after(design): {"st":"selected","proc":"支給品","ad":null,"ball":null,"quotable":false,"wd":"因幡電機 P-2026-041-S1-1","ordered":false,"received":false,"pend":null}
+  after(purchasing): {"st":"selected","proc":"支給品","ad":null,"ball":null,"quotable":false,"wd":"因幡電機 P-2026-041-S1-1","ordered":false,"received":false,"pend":null} views=1,4,9
+  after(pm): views=1,5,9 header=概算 ¥13,321 / 正式 ¥13,321 / 予算 ¥2,800,000 (-99.5%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM鈴木Ctrl+K コマンド?
+== formalQuoted の R013 を 社内在庫 に
+  before: {"st":"formalQuoted","proc":"相見積","ad":"S1","ball":"purchasing","quotable":true,"wd":null,"ordered":false,"received":false,"pend":null} views=1,3,8
+  edit toast: undefined
+   panel: 変更セット（6 行: R013, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始
+  publish toast: 行 6（Rev.2） を公開しました
+  after(design): {"st":"selected","proc":"社内在庫","ad":null,"ball":null,"quotable":false,"wd":"因幡電機 P-2026-041-S1-1","ordered":false,"received":false,"pend":null}
+  after(purchasing): {"st":"selected","proc":"社内在庫","ad":null,"ball":null,"quotable":false,"wd":"因幡電機 P-2026-041-S1-1","ordered":false,"received":false,"pend":null} views=1,4,9
+  after(pm): views=1,5,9 header=概算 ¥13,321 / 正式 ¥13,321 / 予算 ¥2,800,000 (-99.5%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM鈴木Ctrl+K コマンド?
+[ordered/支給品] 該当行なし
+[ordered/社内在庫] 該当行なし
+[received/支給品] 該当行なし
+[received/社内在庫] 該当行なし
+
+ERRORS:

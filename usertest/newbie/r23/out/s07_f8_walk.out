@@ -1,0 +1,10 @@
+view 4 F8×12: R008/name R008/name R008/name R008/name R008/name R008/name R008/name R008/name R008/name R008/name R008/name R008/name
+   Shift+F8×4: R008/name R008/name R008/name R008/name
+   Ctrl+. → 1: cursor=R008/name panel=null toast=公開できません: エラー 8 件（R008 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、要る部品なら Ctr
+   F8: R009/name
+view 1 F8×12: R008/note R009/note R010/note R011/note R012/note R013/note R014/note R015/note R008/note R009/note R010/note R011/note
+   Shift+F8×4: R010/note R009/note R008/note R015/note
+   Ctrl+. → 1: cursor=R015/note panel=null toast=公開できません: エラー 8 件（R008 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、要る部品なら Ctr
+   F8: R008/note
+
+ERRORS:

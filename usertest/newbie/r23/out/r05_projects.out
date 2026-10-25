@@ -1,0 +1,20 @@
+  [start] project=P-2026-041「第3ライン 搬送制御盤」rows=80 role=design view=1 panel=null cur=null | toast: undefined
+  wizard check: 確認して作成 案件 （自動） 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+  [BOM 1 作成] project=P-2026-002「新しいBOM P-2026-002」rows=2 role=design view=1 panel=null cur=R001 | toast: 新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+  [BOM 1 公開] project=P-2026-002「新しいBOM P-2026-002」rows=2 role=design view=1 panel=null cur=R001 | toast: 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  wizard check: 確認して作成 案件 （自動） 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社 取り込む行: 1 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 ブレーカ NF32-SV 三菱電機 1 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。
+  [BOM 2 作成] project=P-2026-003「新しいBOM P-2026-003」rows=1 role=design view=1 panel=null cur=R001 | toast: 新しいBOM P-2026-003（1 行）を作成しました。Ctrl+Enter で提出します
+  palette 案件: 案件 案件: P-2026-041 第3ライン 搬送制御盤 Ctrl+P 案件 案件: P-2026-002 新しいBOM P-2026-002 Ctrl+P 案件 案件: P-2026-003 新しいBOM P-2026-003 Ctrl+P 案件 案件設定 PM 項目 / 購買項目。納期変更は影響試算つき 案件 案件設定を確定（PM） 案件 新しいBOM 案件 受信箱・案件を切り替える Ctrl+P
+  inbox: P-2026-041 / 第3ライン 搬送制御盤 / 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 19:05 佐藤 / あなた宛 73 / P-2026-002 / 新しいBOM P-2026-002 / 納期 未定 / 提出 Rev.1 / 設計 0 購買 2 PM 1 / 更新 10/25 19:05 山田 / P-2026-003 / 新しいBOM P-2026-003 / 納期 未定 / 提出 Rev.0 / 設計 1 購買 0 PM 0 / 更新 10/25 19:05 / あなた宛 1 / ＋ / 新しいBOM を作る
+  [1 つ目を開く] project=P-2026-041「第3ライン 搬送制御盤」rows=80 role=design view=4 panel=null cur=R004 | toast: 第3ライン 搬送制御盤 を開きました（あなた宛の最初の行 R004）
+  inbox 「新しい」: P-2026-002 / 新しいBOM P-2026-002 / 納期 未定 / 提出 Rev.1 / 設計 0 購買 2 PM 1 / 更新 10/25 19:05 山田 / P-2026-003 / 新しいBOM P-2026-003 / 納期 未定 / 提出 Rev.0 / 設計 1 購買 0 PM 0 / 更新 10/25 19:05 / あなた宛 1 / ＋ / 新しいBOM を作る
+  inbox 「リレー」: 「リレー」に当たる案件はありません / ＋ / 新しいBOM を作る
+  [「リレー」で Enter] project=P-2026-041「第3ライン 搬送制御盤」rows=80 role=design view=4 panel=inbox cur=R004 | toast: 「リレー」に当たる案件はありません（新しく作るときは ↓ で「＋ 新しいBOM」を選んで Enter）
+  [2 つ目を開く] project=P-2026-002「新しいBOM P-2026-002」rows=2 role=design view=4 panel=null cur=null | toast: 新しいBOM P-2026-002 を開きました
+  Ctrl+P panel=panel-inbox P-2026-041 第3ライン 搬送制御盤 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 19:05 佐藤 あなた宛 73 P-2026-002 新しいBOM P-2026-0
+  [reload] project=P-2026-002「新しいBOM P-2026-002」rows=2 role=design view=4 panel=null cur=null | toast: undefined
+  projects: P-2026-041「第3ライン 搬送制御盤」rows=80 rev=1 / P-2026-002「新しいBOM P-2026-002」rows=2 rev=1 / P-2026-003「新しいBOM P-2026-003」rows=1 rev=0
+  [購買] project=P-2026-002「新しいBOM P-2026-002」rows=2 role=purchasing view=9 panel=null cur=R001 | toast: 役割: 購買（購買担当）。既定のビュー 9 購買作業 を開きました
+  inbox(購買): P-2026-041 / 第3ライン 搬送制御盤 / 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 19:05 佐藤 / あなた宛 6 / P-2026-002 / 新しいBOM P-2026-002 / 納期 未定 / 提出 Rev.1 / 設計 0 購買 2 PM 1 / 更新 10/25 19:05 山田 / あなた宛 2 / P-2026-003 / 新しいBOM P-2026-003 / 納期 未定 / 提出 Rev.0 / 設計 1 購買 0 PM 0 / 更新 10/25 19:05 / ＋ / 新しいBOM を作る
+
+ERRORS:

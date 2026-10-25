@@ -1,0 +1,80 @@
+== 1 購買: 正式見積を依頼（2 → Enter）
+  [依頼] role=purchasing view=9 cur=R004/q.unitPrice@S1 mode=nav panel=null |  | toast=5 行 × 2 社に正式見積を依頼
+  R001:formalRequested ordered=false model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false} replacedBy=-
+== 2 購買: 8 正式見積 で R001 の正式単価に概算と同じ単価を打つ
+  概算: 146 円 / 19 日
+  [at 正式単価?] role=purchasing view=8 cur=R001/q.formalPrice@A mode=nav panel=null |  | toast=5 行 × 2 社に正式見積を依頼
+  [正式単価 Enter] role=purchasing view=8 cur=R002/q.formalPrice@A mode=edit panel=null |  | toast=5 行 × 2 社に正式見積を依頼
+  R001:formalQuoted ordered=false model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} replacedBy=-
+  [Esc（自動で始まった次の行の入力をやめる）] role=purchasing view=8 cur=R002/q.formalPrice@A mode=nav panel=null |  | toast=5 行 × 2 社に正式見積を依頼
+== 3 購買: 3 発注・入荷 → R001 の発注の列で Enter
+  col 発注 true
+  [発注 Enter] role=purchasing view=3 cur=R001/ordered mode=nav panel=null |  | toast=R001: 発注済にしました
+  R001:ordered ordered=true model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} replacedBy=-
+== 4 設計の新人: R001 の型式を直そうとする → 案内のとおり Alt+Shift+I → h
+  [型式を打って Enter] role=design view=1 cur=R001/model mode=nav panel=null |  | toast=R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）
+  R001:ordered ordered=true model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} replacedBy=-
+  hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Space開く | status: ナビR001 型式設計 山田: 未公開 5 行 / 指摘 0R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）Ctrl+Enter公開 5 行F1ヘルプF8次の問題Enter編集Space開く
+  [Alt+Shift+I] role=design view=1 cur=R001/model mode=panel panel=issue | 指摘を起票 R001 PLC CPUユニット q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します） k 等の頭文字 / ↑↓ Enter で種別 Esc 閉じる | toast=R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）
+  [h] role=design view=1 cur=R001/model mode=panel panel=issue | 指摘を起票 R001 PLC CPUユニット q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します） k 等の頭文字 / ↑↓ Enter で種別 Esc 閉じる | toast=種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
+== 5 設計の新人: 起票できる「質問」で購買に頼む → Ctrl+Enter
+  [Alt+Shift+I] role=design view=1 cur=R001/model mode=panel panel=issue | 指摘を起票 R001 PLC CPUユニット q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します） k 等の頭文字 / ↑↓ Enter で種別 Esc 閉じる | toast=種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）
+  [質問 Enter] role=design view=1 cur=R001/model mode=nav panel=null |  | toast=I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-006:R001/質問/draft「型式を FX5U-32MT に変えたいです。発注後変更依頼を」
+  [Ctrl+Enter] role=design view=1 cur=R001/model mode=panel panel=prompt | 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast=I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  [2 Enter 0] role=design view=1 cur=R001/model mode=nav panel=null |  | toast=行 5（Rev.2） / 指摘 1 件 を公開しました
+  issues: I-006:R001/質問/open「型式を FX5U-32MT に変えたいです。発注後変更依頼を」
+  R001:ordered ordered=true model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} replacedBy=-
+== 6 購買の新人: R001 で発注後変更依頼（Alt+Shift+I → h → 本文 → Enter → Ctrl+Enter）
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | status: ナビR004 単価購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+  hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | status: ナビR001 型式質問 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  [Alt+Shift+I] role=purchasing view=1 cur=R001/model mode=panel panel=issue | 指摘を起票 R001 PLC CPUユニット k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対応 購買 / 期限 1 営業 | toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [h] role=purchasing view=1 cur=R001/model mode=panel panel=issue | 指摘を起票 R001 PLC CPUユニット 種別: 発注後変更依頼 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast=「h」で種別「発注後変更依頼」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）
+  [本文 Enter] role=purchasing view=1 cur=R001/model mode=nav panel=null |  | toast=I-007 発注後変更依頼 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  [Ctrl+Enter] role=purchasing view=1 cur=R001/model mode=nav panel=null |  | toast=指摘 1 件 を公開しました
+  issues: I-006:R001/質問/open「型式を FX5U-32MT に変えたいです。発注後変更依頼を」 I-007:R001/発注後変更依頼/open「設計から型式変更（FX5U-32MT）の依頼。発注を取り消し」
+  R001:ordered ordered=true model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false} replacedBy=-
+== 7 PM の新人: 7 要決定 → R001 で y（承認）→ 理由 → Enter
+  hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開いて指摘を見る | status: ナビR001 型式質問 1/1PM 鈴木: 要決定 2役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプF8次の問題Alt+y承認Alt+Shift+Y却下Enter決定パネルSpace開いて指摘を見る
+  v7: R001:R001 PM PLC CPUユニット FX5U-32MR/ES 三菱電機 1 因幡電機 88 ¥146 ¥146 +0 / R003:R003 PM 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 因幡電機 88 ¥933 24日 正式依頼中 
+  hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開いて指摘を見る | status: ナビR001 型式質問 1/1PM 鈴木: 要決定 2役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプF8次の問題Alt+y承認Alt+Shift+Y却下Enter決定パネルSpace開いて指摘を見る
+  [Enter（決定パネル）] role=pm view=7 cur=R001/model mode=panel panel=quickfix | 決定パネル R001（発注後変更依頼） y 承認 → 購買が発注を取り消し、設計が Alt+r で置き換える Shift+Y 却下 → 元の発注のまま受入 Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [y] role=pm view=7 cur=R001/model mode=panel panel=prompt | 決定: 承認（R001。理由・任意） Enter 確定 Esc 取り消し | toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Enter 0] role=pm view=7 cur=R001/model mode=nav panel=null |  | toast=R001: 承認
+  issues: I-006:R001/質問/open「型式を FX5U-32MT に変えたいです。発注後変更依頼を」 I-007:R001/発注後変更依頼/inProgress/pmRuled「設計から型式変更（FX5U-32MT）の依頼。発注を取り消し」
+  R001:ordered ordered=true model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} replacedBy=-
+== 8 購買の新人: 案内のとおり発注を外す（3 → R001 の発注で Enter）
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | status: ナビR004 単価購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+  F8 1: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 2: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 3: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 4: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 5: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 6: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 7: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  F8 8: R054/qtyNeeded | ナビR054 必要数最小ロット 1/1購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | status: ナビR001 発注質問 1/1購買 佐藤: 未発行 0 件F1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+  [発注 Enter（外す）] role=purchasing view=3 cur=R001/ordered mode=nav panel=null |  | toast=R001: 発注済を外しました
+  issues: I-006:R001/質問/open「型式を FX5U-32MT に変えたいです。発注後変更依頼を」 I-007:R001/発注後変更依頼/confirmed/pmRuled「設計から型式変更（FX5U-32MT）の依頼。発注を取り消し」
+  R001:formalQuoted ordered=false model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} replacedBy=-
+== 9 設計の新人: 4 要確認 → F8 → 案内のとおり置き換え（Alt+r → 型式 → Enter）→ Ctrl+Enter
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み | status: ナビR016 部品名型式あいまい 1/1設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたF1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開いて指摘を見るAlt+x警告を確認済み
+  [F8] role=design view=4 cur=R016/model mode=nav panel=null |  | toast=役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み | status: ナビR016 型式型式あいまい 1/1設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたF1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開いて指摘を見るAlt+x警告を確認済み
+  hints: F1ヘルプ F8次の問題 Enter編集 Space開いて指摘を見る | status: ナビR001 型式質問 1/1設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたF1ヘルプF8次の問題Enter編集Space開いて指摘を見る
+  [Alt+r] role=design view=1 cur=R001/model mode=panel panel=prompt | R001 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し | toast=役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [置換 Enter] role=design view=1 cur=R081/model mode=nav panel=null |  | toast=R001 の置き換え品 R081 を作りました（公開すると R001 は置換済になります。Ctrl+Z で戻す）
+  last rows: R079:TM-50/submitted/replaces=- R080:TZe-231/submitted/replaces=-
+  R001:formalQuoted ordered=false model=FX5U-32MR/ES working=null removal={"kind":"replace","by":"R081"} flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} replacedBy=-
+  [Ctrl+Enter] role=design view=1 cur=R081/model mode=panel panel=prompt | 変更セット（2 行: R001, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast=R001 の置き換え品 R081 を作りました（公開すると R001 は置換済になります。Ctrl+Z で戻す）
+  [理由 2 Enter] role=design view=1 cur=R081/model mode=nav panel=null |  | toast=行 2（Rev.3） を公開しました
+  issues: I-006:R001/質問/fixed「型式を FX5U-32MT に変えたいです。発注後変更依頼を」 I-007:R001/発注後変更依頼/confirmed/pmRuled「設計から型式変更（FX5U-32MT）の依頼。発注を取り消し」
+  R001:replaced ordered=false model=FX5U-32MR/ES working=null removal=null flags={"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討","formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} replacedBy=R081
+  last rows: R079:TM-50/submitted/replaces=- R080:TZe-231/submitted/replaces=-
+== 10 購買: 元の行と置き換えの行はどこに出るか（9 購買作業・受信箱）
+  hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | status: ナビR081 単価購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+  v9: R001:R001 — PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 相見積 指定 不可 11/13 1 置換済 →R081 · / R081:R081 購買 PLC CPUユニット FX5U-32MT 三菱電機 1 個 相見積 指定 不可 11/13 1 提出済 · 要再確認 10
+  [F8] role=purchasing view=9 cur=R081/model mode=nav panel=null |  | toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | status: ナビR081 型式購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Alt+Shift+I指摘Space開く
+
+ERRORS:

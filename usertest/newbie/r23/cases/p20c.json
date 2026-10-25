@@ -1,0 +1,248 @@
+[
+ [
+  "V-newname keep 「取外しカバー」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t取外しカバー\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「撤去工具」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t撤去工具\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「不要品回収箱」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t不要品回収箱\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「中止ボタン」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t中止ボタン\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「削除用ツール」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t削除用ツール\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「廃止品置場」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t廃止品置場\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「欠番表示板」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t欠番表示板\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「Delタイマ」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\tDelタイマ\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「Remove Tool」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\tRemove Tool\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname keep 「取止めバンド」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t取止めバンド\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "TR-10:1",
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「削除」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t削除\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「削除済」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t削除済\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「削除品」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t削除品\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「撤去」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t撤去\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「廃止」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t廃止\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「不要」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t不要\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「欠番」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t欠番\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「取止め」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t取止め\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「中止」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t中止\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「Del」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\tDel\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newname del 「×」",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t×\tTR-10\tX\t1\nリレー\t\tMY4N-D2\tオムロン\t4",
+  [
+   "MY4N-D2:4"
+  ]
+ ],
+ [
+  "V-newmodel 「削除しました」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t削除しました\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「削除してください」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t削除してください\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「Del.」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tDel.\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「→削除」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t→削除\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「削除（不要）」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t削除（不要）\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「廃止済」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t廃止済\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「撤去済み」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t撤去済み\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「取外し済」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t取外し済\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「不使用」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t不使用\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「なし」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tなし\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「-」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t-\tオムロン\t1"
+ ],
+ [
+  "V-newmodel 「－」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t－\tオムロン\t1"
+ ],
+ [
+  "V-copyrow note 「削除」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t削除\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-copyrow note 「削除済」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t削除済\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-copyrow note 「削除しました」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t削除しました\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-copyrow note 「不要のため削除」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t不要のため削除\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-copyrow note 「削除しない」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t削除しない\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-copyrow note 「」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t\nランプ\tL-1\tL-1\tIDEC\t2\t"
+ ],
+ [
+  "V-qty halfwidth ｺ",
+  "品名\t型式\t数量\nリレー\tMY4N-D2\t4ｺ\nタイマ\tH3CR-A8\t２ｺ",
+  [
+   "MY4N-D2:4",
+   "H3CR-A8:2"
+  ]
+ ],
+ [
+  "V-qty 4個 5本 3ヶ",
+  "品名\t型式\t数量\nリレー\tMY4N-D2\t4個\nケーブル\tCV\t5本\nタイマ\tH3CR-A8\t3ヶ",
+  [
+   "MY4N-D2:4",
+   "CV:5",
+   "H3CR-A8:3"
+  ]
+ ]
+]

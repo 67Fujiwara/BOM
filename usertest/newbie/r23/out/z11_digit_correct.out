@@ -1,0 +1,13 @@
+== 役割: Ctrl+K「役割」→ 2（購買）→ 間違えた、3（PM）→ Enter
+  [2 3] role=design user=山田 mode=panel view=1 panel=prompt | 役割を切り替え（ログイン）。数字か ↑↓ で役割、氏名を入れて Enter 1 設計 2 購買 3 PM 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast: 「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] role=pm user=鈴木 mode=nav view=7 panel=null |  | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  user {"role":"pm","name":"鈴木"}
+== 採用: R005 Alt+Shift+A → 2（立花）→ 理由 2 → 間違えた、1（納期）→ Enter
+  [理由 2 1] role=design user=山田 mode=panel view=1 panel=prompt | 1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter 1 納期 2 在庫即納 3 実績/品質 4 集約 5 客先指定 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] role=design user=山田 mode=nav view=1 panel=null |  | toast: R005 を 立花エレテック で採用（納期）
+  R005 selected S2 "納期"
+== 購買: 指摘の起票で数字（1）を押す
+  [Alt+Shift+I] role=purchasing user=佐藤 mode=panel view=9 panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [1] role=purchasing user=佐藤 mode=panel view=9 panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+
+ERRORS:

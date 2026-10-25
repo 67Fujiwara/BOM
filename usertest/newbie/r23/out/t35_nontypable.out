@@ -1,0 +1,75 @@
+== 購買: 備考（設計の列）に ok
+  [purchasing R013 備考(true)] mode=nav view=1 cur=R013/note edit="1" panel=null sort=null | toast: R004 の単価 ¥1 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed "ok"] mode=nav view=1 cur=R013/note edit="1" panel=null sort=null | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] mode=nav view=1 cur=R013/note edit="1" panel=null sort=null | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+== 購買: 部品名（設計の列）に in stock
+  [purchasing R013 部品名(true)] mode=nav view=1 cur=R013/name edit="1" panel=null sort=null | toast: R004 の単価 ¥1 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed "in stock"] mode=nav view=1 cur=R013/name edit="1" panel=null sort=null | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] mode=nav view=1 cur=R013/name edit="1" panel=null sort=null | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+== 購買: 型式（設計の列）に hold
+  [purchasing R040 型式(true)] mode=nav view=9 cur=R040/model edit="1" panel=null sort=null | toast: R004 の単価 ¥1 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed "hold"] mode=nav view=9 cur=R040/model edit="1" panel=null sort=null | toast: 権限なし（設計の列）。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  [Enter] mode=nav view=9 cur=R040/model edit="1" panel=null sort=null | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+== 設計: 状態の列に ok
+  [design R030 状態(true)] mode=nav view=1 cur=R030/status edit="" panel=null sort=null | toast: null
+  [typed "ok"] mode=nav view=1 cur=R029/status edit="" panel=null sort=null | toast: 権限なし（購買の列）
+  [Enter] mode=nav view=1 cur=R029/status edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: (なし)
+== 設計: ボールの列に hold
+  [design R031 ボール(true)] mode=nav view=1 cur=R031/ball edit="" panel=null sort=null | toast: null
+  [typed "hold"] mode=nav view=1 cur=R031/ball edit="" panel=null sort=null | toast: この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  [Enter] mode=nav view=1 cur=R031/ball edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: (なし)
+== 設計: ロット（購買の列）に ok
+  [design R013 ロット(true)] mode=nav view=1 cur=R013/receivedLot edit="" panel=null sort=null | toast: null
+  [typed "ok"] mode=nav view=1 cur=R013/receivedLot edit="" panel=null sort=null | toast: 権限なし（購買の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] mode=nav view=1 cur=R013/receivedLot edit="" panel=null sort=null | toast: 権限なし（購買の列）
+   changes: (なし)
+== 設計: 単価（自動計算）に sale
+  [design R033 単価(true)] mode=nav view=1 cur=R033/unitPrice edit="" panel=null sort=null | toast: null
+  [typed "sale"] mode=nav view=1 cur=R033/unitPrice edit="" panel=null sort=null | toast: この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  [Enter] mode=nav view=1 cur=R033/unitPrice edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: (なし)
+== PM: 7 で部品名に ok
+  [pm R003 部品名(true)] mode=nav view=7 cur=R003/name edit="" panel=null sort=null | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [typed "ok"] mode=nav view=7 cur=R003/name edit="" panel=null sort=null | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] mode=panel view=7 cur=R003/name edit="" panel=quickfix sort=null | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+   changes: (なし)
+== 設計: 型式に 1N4148
+  [design R035 型式(true)] mode=nav view=1 cur=R035/model edit="" panel=null sort=null | toast: null
+  [typed "1N4148"] mode=edit view=1 cur=R035/model edit="1N4148" panel=null sort=null | toast: null
+  [Enter] mode=nav view=1 cur=R036/model edit="1N4148" panel=null sort=null | toast: null
+   changes: R035: working:  -> {"model":"1N4148"}
+== 設計: 型式に 2SC1815
+  [design R036 型式(true)] mode=nav view=1 cur=R036/model edit="" panel=null sort=null | toast: null
+  [typed "2SC1815"] mode=edit view=1 cur=R036/model edit="2SC1815" panel=null sort=null | toast: null
+  [Enter] mode=nav view=1 cur=R037/model edit="2SC1815" panel=null sort=null | toast: null
+   changes: R036: working:  -> {"model":"2SC1815"}
+== 設計: メーカに 3M
+  [design R037 メーカ(true)] mode=nav view=1 cur=R037/maker edit="" panel=null sort=null | toast: null
+  [typed "3M"] mode=edit view=1 cur=R037/maker edit="3M" panel=null sort=null | toast: null
+  [Enter] mode=nav view=1 cur=R038/maker edit="3M" panel=null sort=null | toast: null
+   changes: R037: working:  -> {"maker":"3M"}
+== 設計: 回路記号に 1K1（番号付き）
+  [design R038 必要数(true)] mode=nav view=1 cur=R038/qtyNeeded edit="" panel=null sort=null | toast: null
+  [typed "12"] mode=edit view=1 cur=R038/qtyNeeded edit="12" panel=null sort=null | toast: null
+  [Enter] mode=nav view=1 cur=R039/qtyNeeded edit="12" panel=null sort=null | toast: null
+   changes: R038: working:  -> {"qtyNeeded":12}
+== U3-06: 1 つずつ入力でボールの列から Sensor
+  [created] mode=nav view=4 cur=R001/name edit="" panel=null sort=null | toast: 新しいBOM NEW-U（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Home →] mode=nav view=4 cur=R001/ball edit="" panel=null sort=null | toast: 新しいBOM NEW-U（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Sensor] mode=nav view=4 cur=R001/ball edit="" panel=null sort=null | toast: この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [done] mode=nav view=4 cur=R001/name edit="Omron" panel=null sort=null | toast: 最後の行です。下に行を足すときは Shift+Enter
+   changes: R001: ref: "" -> "E2E-X5ME1"; name: "" -> "Omron"
+== ID 列で n n n（新人が「ID 列なら英字が効く」と覚えた）
+  [ID] mode=nav view=4 cur=R016/id edit="" panel=null sort=null | toast: null
+  [n#0] mode=nav view=4 cur=R009/id edit="" panel=null sort=null | toast: null
+  [n#1] mode=nav view=4 cur=R041/id edit="" panel=null sort=null | toast: null
+  [n#2] mode=nav view=4 cur=R022/id edit="" panel=null sort=null | toast: null
+  [Enter] mode=nav view=4 cur=R022/id edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: (なし)
+
+ERRORS:

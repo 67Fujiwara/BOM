@@ -1,0 +1,39 @@
+== A: 案件設定確定の行（未確定）で数字
+  [start] role=pm view=7 cur=case:C1/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=役割: PM（PM担当）。既定のビュー 7 要決定 を開きました
+  [digit 3] role=pm view=3 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=役割: PM（PM担当）。既定のビュー 7 要決定 を開きました
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 1] role=pm view=1 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 9] role=pm view=9 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 2] role=pm view=2 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 5] role=pm view=5 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 0] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [digit 8] role=pm view=8 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  hints: F1ヘルプ ↓表へ F8次の問題
+== A2: 列を右へ動かして数字（case 行の列）
+  [→] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでいません（↓ で表へ）
+  [4] role=pm view=4 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでいません（↓ で表へ）
+  [7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでいません（↓ で表へ）
+== A3: 文字を打つ（Excel 風に 5 を打ってから Enter）
+  [insertText 12] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでいません（↓ で表へ）
+  [Esc] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでいません（↓ で表へ）
+== A4: Shift+数字・Ctrl+数字・Alt+数字
+  [Shift+Digit1] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+  [Control+Digit1] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [Alt+Digit2] role=pm view=2 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [Control+Digit7] role=pm view=2 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+== B: y で確定
+  [↓ (戻ったあと)] role=pm view=7 cur=case:C1/name mode=nav panel=null editValue="" | pmConfirmed=false | toast=
+  [y] role=pm view=7 cur=case:C1/name mode=nav panel=null editValue="" | pmConfirmed=true | toast=案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます）
+  hints: F1ヘルプ ↓表へ F8次の問題
+== C: 確定後の数字
+  [digit 1] role=pm view=1 cur=R001/name mode=nav panel=null editValue="" | pmConfirmed=true | toast=
+  [digit 2] role=pm view=2 cur=R001/name mode=nav panel=null editValue="" | pmConfirmed=true | toast=
+  [digit 7] role=pm view=7 cur=null/name mode=nav panel=null editValue="" | pmConfirmed=true | toast=
+
+ERRORS:

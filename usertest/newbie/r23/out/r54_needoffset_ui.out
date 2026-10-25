@@ -1,0 +1,16 @@
+「7」: toast=undefined | needOffset=null ack=[] | warn:必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）
+「+7」: toast=undefined | needOffset=null ack=[] | warn:必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）
+「1」: toast=undefined | needOffset=null ack=[] | warn:必要日(前倒し)が +1 で、案件の必要日より 1 日後ろになります（前倒しは -1。承知のうえなら Alt+x で確認済みに）
+「0」: toast=undefined | needOffset=null ack=[] | 
+「-7」: toast=undefined | needOffset=null ack=[] | 
+== 7 に戻して、公開・Ctrl+. ・Alt+x
+  [Ctrl+Enter] role=design mode=nav cur=R040/needOffset panel=null |  | toast=公開できません: 未確認の警告 1 件（R039 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに） … 直すか Alt+x で確認済みに）
+  [Ctrl+.] role=design mode=panel cur=R039/needOffset panel=quickfix | 直し方の候補 R039 ファイバセンサアンプ 1 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）: 7 日前倒し（-7）にする 2 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）: 確認済みにする（x） 3 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）: あとで（いまは飛ばす。公開までに直すか確認済みに。表では | toast=公開できません: 未確認の警告 1 件（R039 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに） … 直すか Alt+x で確認済みに）
+  [Alt+x] role=design mode=nav cur=R039/needOffset panel=null |  | toast=確認済みにしました: 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）
+needOffset=null ack=["sys.needOffset.plus"] | 
+  [Ctrl+Enter 2] role=design mode=panel cur=R039/needOffset panel=prompt | 変更セット（6 行: R039, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast=確認済みにしました: 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）
+published: R039:quoted:1
+  [purchasing] role=purchasing mode=nav cur=R039/q.unitPrice@S1 panel=null |  | toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く
+
+ERRORS:

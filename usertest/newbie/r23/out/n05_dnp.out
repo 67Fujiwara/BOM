@@ -1,0 +1,100 @@
+X 「DNP」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「dnp」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 将来用」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP将来用」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP:将来用」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP：将来用」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP/未実装」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP・未実装」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 未実装」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 未」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP オプション」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP(オプション)」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP（将来）」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 不要」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP実装しない」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 実装なし」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 実装不要」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP、将来用」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+X 「DNP, 将来用」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+X 「DNP 非実装」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 省略」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP 外す」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP option」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP future」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP NC」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「DNP not fitted」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「(未実装)」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「※未実装」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「【未実装】」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「未実装」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「未実装品」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「実装しません」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+X 「実装しない」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「実装なし」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「Not Fitted」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「Do not place」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+X 「※DNP」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「(DNP)」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「【DNP】」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「＊DNP」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+X 「将来用 DNP」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP製」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP/AGC」 note: old=外 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP（大日本印刷）」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP(大日本印刷)」 note: old=外 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP 手配」 note: old=外 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP手配」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP品」 note: old=外 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP 品」 note: old=外 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP部品」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP対象」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP社」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP 社製」 note: old=外 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNPフォトマスク」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP印刷」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「大日本印刷(DNP)」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「メーカ:DNP」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「仕入先 DNP」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNPに手配」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP経由」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP納期確認」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP未納」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP未着」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP未入荷」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP不良品」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP不足」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP実績あり」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP実績」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNP実機」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「DNPオプション品を購入」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+K 「DNP未手配」 note: old=残 new=外 / 未割当列: 外 / メーカ列: 残
+K 「FPC DNP製」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「実装済」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「実装位置 A3」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「実装方向注意」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「未実装部品の隣」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「ダミー」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「将来用」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「予備」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「オプション」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+K 「不要な場合は削除」 note: old=残 new=残 / 未割当列: 残 / メーカ列: 残
+品名にDNP 「DNP」 → 2行
+品名にDNP 「DNP（大日本印刷）」 → 3行
+品名にDNP 「DNP製」 → 3行
+品名にDNP 「DNP 将来用」 → 3行
+品名にDNP 「DNP-100」 → 3行
+品名にDNP 「DNP_BOX」 → 3行
+型式にDNP 「DNP」 → 2行
+型式にDNP 「DNP（大日本印刷）」 → 3行
+型式にDNP 「DNP製」 → 3行
+型式にDNP 「DNP 将来用」 → 3行
+型式にDNP 「DNP-100」 → 3行
+型式にDNP 「DNP_BOX」 → 3行
+
+BAD
+note K→外れた (7): DNP（大日本印刷）(old=外) / DNP(大日本印刷)(old=外) / DNP未納(old=残) / DNP未着(old=残) / DNP未入荷(old=残) / DNPオプション品を購入(old=残) / DNP未手配(old=残)
+note X→残った (4): DNP、将来用(old=残) / DNP, 将来用(old=残) / 実装しません(old=残) / 将来用 DNP(old=残)
+unmapped K→外れた (7): DNP（大日本印刷） / DNP(大日本印刷) / DNP未納 / DNP未着 / DNP未入荷 / DNPオプション品を購入 / DNP未手配
+maker K→外れた (0): 
+name K→外れた (0): 

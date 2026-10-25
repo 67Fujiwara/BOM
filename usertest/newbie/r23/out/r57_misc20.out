@@ -1,0 +1,17 @@
+== A 【削除？】の行: 表の見出し（備考の列は見えるか）
+  header cells: ID|ボール|回路記号|部品名|型式|メーカ|必要数|単位|代替可否|状態|期限|待ち
+  [R005] mode=nav view=4 cur=R005/name panel=null |  | toast=新しいBOM P-2026-002（7 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 3 件: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: 端子台 XW2B-20G4 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード
+  hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Space開く
+  row text: R005 設計 端子台 XW2B-20G4 オムロン 4 個 同等品可 下書き 
+  [Shift+Delete] mode=nav view=4 cur=R005/name panel=null |  | toast=R005 を削除しました（Ctrl+Z で戻せます）
+  rows: 6
+  [Ctrl+Z] mode=nav view=4 cur=R005/name panel=null |  | toast=元に戻す: 行を削除
+  rows: 7
+== B グリッドに直接 旧→新 を打つ
+  「E3X-HD11→E3X-HD41」 -> toast=undefined | problems R005:w/model/型式の前後に空白があります | R009:e/maker/メーカが空です | R016:w/model/CP30 は定格電流（例: 10A）まで書いてください | R041:e/maker/メーカが空です | R054:e/qtyNeeded/必要数が0以下です | R061:w/model/型式に全角文字が含まれています
+  「USB-A→USB-C」 -> toast=undefined | problems R005:w/model/型式の前後に空白があります | R009:e/maker/メーカが空です | R016:w/model/CP30 は定格電流（例: 10A）まで書いてください | R041:e/maker/メーカが空です | R054:e/qtyNeeded/必要数が0以下です | R061:w/model/型式に全角文字が含まれています
+== C Ctrl+V で 5 行を貼る（半角カナ・矢印を含む）
+  [Ctrl+V] mode=nav view=1 cur=R039/model panel=null |  | toast=5 セルを貼り付けました（Ctrl+Z で一度に戻せます）
+  rows: R039:{"model":"MY4N-D2"} R040:{"model":"USB-A→USB-C 変換ケーブル"} R041:{"model":"ﾀｲﾏ H3CR"} R042:{"model":"削除"} R043:{"model":"MY2N→MY4N-D2"}
+
+ERRORS:

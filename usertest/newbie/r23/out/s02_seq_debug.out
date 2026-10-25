@@ -1,0 +1,16 @@
+== view 4 開始前 cursor=R005/name
+  step 0: cursor=R005/name panel=quickfix 見出し=直し方の候補 R005 未記入1 1 取り込みで、変えていな
+  step 1: パネルなし cursor=R005/name toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+== view 4 開始前 cursor=R005/name
+  step 0: cursor=R005/name panel=quickfix 見出し=直し方の候補 R005 未記入1 1 取り込みで、変えていな
+  step 1: パネルなし cursor=R005/name toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+== view 1 開始前 cursor=R005/note
+  step 0: cursor=R005/note panel=quickfix 見出し=直し方の候補 R005 未記入1 1 取り込みで、変えていな
+  step 1: cursor=R006/note panel=quickfix 見出し=直し方の候補 R006 未記入2 1 取り込みで、変えていな
+  step 2: cursor=R007/note panel=quickfix 見出し=直し方の候補 R007 未記入3 1 取り込みで、変えていな
+  step 3: cursor=R008/note panel=quickfix 見出し=直し方の候補 R008 未記入4 1 取り込みで、変えていな
+  step 4: cursor=R009/note panel=quickfix 見出し=直し方の候補 R009 未記入5 1 取り込みで、変えていな
+  step 5: cursor=R010/note panel=quickfix 見出し=直し方の候補 R010 未記入6 1 取り込みで、変えていな
+  step 6: パネルなし cursor=R005/note toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+
+ERRORS:

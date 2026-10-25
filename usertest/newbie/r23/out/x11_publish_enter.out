@@ -1,0 +1,32 @@
+== view 1: R030 必要数 3 → Ctrl+Enter → 2 Enter
+  [edited] mode=nav view=1 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: null
+  [Ctrl+Enter] mode=panel view=1 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [2] mode=panel view=1 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] mode=nav view=1 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: 行 6（Rev.2） を公開しました
+  R009 working null subs 2
+== view 4: R030 必要数 3 → Ctrl+Enter → 2 Enter
+  [edited] mode=nav view=4 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: null
+  [Ctrl+Enter] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [2] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] mode=nav view=4 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: 行 6（Rev.2） を公開しました
+  R009 working null subs 2
+== view 4: R030 必要数 3 → Ctrl+Enter → Enter
+  [edited] mode=nav view=4 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: null
+  [Ctrl+Enter] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [Enter] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: 数字（1〜6）か ↑↓ で選んでから Enter
+  R009 working null subs 1
+== view 4: R030 必要数 3 → Ctrl+Enter → ArrowDown Enter
+  [edited] mode=nav view=4 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: null
+  [Ctrl+Enter] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [ArrowDown] mode=panel view=4 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [Enter] mode=nav view=4 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: 行 6（Rev.2） を公開しました
+  R009 working null subs 2
+== view 1: R030 必要数 3 → Ctrl+Enter → 2 Enter Enter
+  [edited] mode=nav view=1 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: null
+  [Ctrl+Enter] mode=panel view=1 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: null
+  [2] mode=panel view=1 cur=R031/qtyNeeded edit="3" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜  | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] mode=nav view=1 cur=R031/qtyNeeded edit="3" panel=null | undefined | toast: 行 6（Rev.2） を公開しました
+  [Enter] mode=edit view=1 cur=R031/qtyNeeded edit="2" panel=null | undefined | toast: 行 6（Rev.2） を公開しました
+  R009 working null subs 2
+
+ERRORS:

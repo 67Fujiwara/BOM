@@ -1,0 +1,17 @@
+== 設計: R030 必要数 に 12 ↓ 3 ↓ 5 Enter（3 行に入れるつもり）
+  [12 ↓] role=design mode=nav view=1 cur=R031/qtyNeeded edit="12" | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [3 ↓] role=design mode=nav view=1 cur=R032/qtyNeeded edit="3" | hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [5 Enter] role=design mode=nav view=1 cur=R033/qtyNeeded edit="5" | hints: Ctrl+Enter公開 8 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: R030: working:  -> {"qtyNeeded":12} ; R031: working:  -> {"qtyNeeded":3} ; R032: working:  -> {"qtyNeeded":5}
+== 設計: R030 型式 に MY4N → で右（メーカ）へ → OMRON Enter
+  [MY4N →] role=design mode=nav view=1 cur=R030/maker edit="MY4N" | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  [OMRON Enter] role=design mode=nav view=1 cur=R031/maker edit="OMRON" | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: R030: working:  -> {"model":"MY4N","maker":"OMRON"}
+== 購買 6: 単価 に 120 ↓ 130 ↓ Enter
+  [at price] role=purchasing mode=nav view=6 cur=R033/q.unitPrice@S1 edit="" | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [120 ↓] role=purchasing mode=edit view=6 cur=R034/q.unitPrice@S1 edit="" | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [130 ↓] role=purchasing mode=edit view=6 cur=R035/q.unitPrice@S1 edit="" | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing mode=edit view=6 cur=R036/q.unitPrice@S1 edit="" | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  R033/R034 S1 price [["R033",120],["R034",130],["R035",null]]
+
+ERRORS:

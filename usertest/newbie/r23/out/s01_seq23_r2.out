@@ -1,0 +1,38 @@
+view 4(要求4) all2: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:2
+view 4(要求4) all3: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:3
+view 4(要求4) all1: palette=true flagged 6→0 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 残りの問題はありません
+   trace: R011:1 R012:1 R013:1 R014:1 R015:1 R016:1
+view 4(要求4) mix2-3-1: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:2
+view 4(要求4) mix1-2: palette=true flagged 6→5 steps=2 行の種類=2 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 5 件はそのまま。F8 で回れます）
+   trace: R011:1 R012:2
+view 4(要求4) mix3-1: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:3
+view 4(要求1) all2: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:2
+view 4(要求1) all3: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:3
+view 4(要求1) all1: palette=true flagged 6→0 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 残りの問題はありません
+   trace: R011:1 R012:1 R013:1 R014:1 R015:1 R016:1
+view 4(要求1) mix2-3-1: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:2
+view 4(要求1) mix1-2: palette=true flagged 6→5 steps=2 行の種類=2 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 5 件はそのまま。F8 で回れます）
+   trace: R011:1 R012:2
+view 4(要求1) mix3-1: palette=true flagged 6→6 steps=1 行の種類=1 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:3
+view 9(要求9) all2: palette=true flagged 6→6 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:2 R012:2 R013:2 R014:2 R015:2 R016:2
+view 9(要求9) all3: palette=true flagged 6→6 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+   trace: R011:3 R012:3 R013:3 R014:3 R015:3 R016:3
+view 9(要求9) all1: palette=true flagged 6→0 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 残りの問題はありません
+   trace: R011:1 R012:1 R013:1 R014:1 R015:1 R016:1
+view 9(要求9) mix2-3-1: palette=true flagged 6→4 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 4 件はそのまま。F8 で回れます）
+   trace: R011:2 R012:3 R013:1 R014:2 R015:3 R016:1
+view 9(要求9) mix1-2: palette=true flagged 6→3 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 3 件はそのまま。F8 で回れます）
+   trace: R011:1 R012:2 R013:1 R014:2 R015:1 R016:2
+view 9(要求9) mix3-1: palette=true flagged 6→3 steps=6 行の種類=6 2回以上見た=- end=panel閉じた role=design panel=null | toast=順番に直すモード: 一周しました（残りの問題 3 件はそのまま。F8 で回れます）
+   trace: R011:3 R012:1 R013:3 R014:1 R015:3 R016:1
+
+ERRORS:

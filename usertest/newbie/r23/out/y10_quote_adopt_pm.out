@@ -1,0 +1,35 @@
+publish: 行 5（Rev.2） を公開しました
+quoting rows: R076:submitted,R077:submitted,R078:submitted,R079:submitted,R080:submitted
+suppliers: S1,S2,S3
+  [at] role=purchasing mode=nav view=6 cur=R076/q.unitPrice@S1 edit="" panel=null |  | toast: null
+  cols: ID|部品名|型式|メーカ|必要数|単位|状態|因幡電機 単価|因幡電機 納期|因幡電機 MOQ|因幡電機 在庫|因幡電機 有効期限|立花エレテック 単価|立花エレテック 納期|立花エレテック MOQ|立花エレテック 在庫|立花エレテック 有効期限|ミスミ 単価|ミスミ 納期|ミスミ MOQ|ミスミ 在庫|ミスミ 有効期限
+  before 
+   typed 1200 → now q.leadDays@S1 mode=nav toast=null
+   typed 14 → now q.moq@S1 mode=nav toast=null
+   typed 10 → now q.stock@S1 mode=nav toast=null
+   typed zaiko → now q.validUntil@S1 mode=nav toast=null
+   typed 12/31 → now q.unitPrice@S2 mode=nav toast=null
+   typed 1150 → now q.leadDays@S2 mode=nav toast=null
+   typed 21 → now q.moq@S2 mode=nav toast=null
+   typed 1 → now q.stock@S2 mode=nav toast=null
+   typed toriyose → now q.validUntil@S2 mode=nav toast=null
+   typed 12/31 → now q.unitPrice@S3 mode=nav toast=null
+   typed 1300 → now q.leadDays@S3 mode=nav toast=null
+   typed 7 → now q.moq@S3 mode=nav toast=null
+  after S1:1200/14/10/在庫/2026-12-31 S2:1150/21/1/取寄/2026-12-31 S3:1300/7/null/null/null | status quoted
+  [design at row] role=design mode=nav view=4 cur=R076/name edit="7" panel=null |  | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [Alt+Shift+A] role=design mode=panel view=4 cur=R076/name edit="7" panel=adopt | 商社を選んで採用 R076 USBアイソレータ 1 立花エレテック ¥1,150 / 21日 / スコア 86 最安・納期NG(2日超過)（推奨） 2 ミスミ ¥1,300 / 7日 / スコア 85.4 実績なし 3 因幡電機 ¥1,200 / 即納 / スコア 54 在庫即納・MOQ 10 1 〜9 で選ぶ Enter 採用 Esc 閉じる | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [3 (3 位)] role=design mode=panel view=4 cur=R076/name edit="7" panel=prompt | 1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter 1 納期 2 在庫即納 3 実績/品質 4 集約 5 客先指定 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [1 tanki Enter] role=design mode=nav view=4 cur=R076/name edit="7" panel=null |  | toast: R076: 因幡電機 を仮採用（納期: tanki）。PM の承認待ち（7 要決定）
+  row quoted S1 {"renegotiating":false,"pmPending":true,"pmReason":"例外選定","contested":false} 納期: tanki
+  [pm] role=pm mode=nav view=7 cur=R076/name edit="7" panel=null |  | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  7 rows: R003,R076
+  [y] role=pm mode=panel view=7 cur=R076/name edit="7" panel=prompt | 決定: 承認（R076。理由・任意） Enter 確定 Esc 取り消し | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Enter] role=pm mode=nav view=7 cur=R076/name edit="7" panel=null |  | toast: R076: 承認
+  after y selected S1 {"renegotiating":false,"pmPending":false,"contested":false,"leadNG":false}
+  [Ctrl+Z] role=pm mode=nav view=7 cur=R076/name edit="7" panel=null |  | toast: 元に戻す: 決定: 承認
+  after undo quoted S1 {"renegotiating":false,"pmPending":true,"pmReason":"例外選定","contested":false}
+  [reload] role=pm mode=nav view=7 cur=R076/name edit="" panel=null |  | toast: null
+  after reload quoted S1 {"renegotiating":false,"pmPending":true,"pmReason":"例外選定","contested":false}
+
+ERRORS:

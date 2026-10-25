@@ -1,0 +1,107 @@
+[TSV 上にコンマ入りの表題 1 行] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 1 行（表題など）は取り込みません
+[TSV 下にコンマ入りの注記 1 行] MISMATCH delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 注1: 本表は, 盤用で, 変更時は, 連絡のこと:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10
+   warn: 
+[TSV 上にコンマ入りの表題 3 行] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 3 行（表題など）は取り込みません
+[TSV 下にコンマ入りの注記 3 行] MISMATCH delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 注1: 本表は, 盤用で, 変更時は, 連絡のこと:0 注2: 本表は, 盤用で, 変更時は, 連絡のこと:0 注3: 本表は, 盤用で, 変更時は, 連絡のこと:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10
+   warn: 
+[TSV 上にコンマ入りの表題 6 行] OK (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 :1 :1 :1 :1 :1
+   warn: 見出しより上の 6 行（表題など）は取り込みません
+[TSV 下にコンマ入りの注記 6 行] MISMATCH (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 注1: 本表は, 盤用で, 変更時は, 連絡のこと:0 注2: 本表は, 盤用で, 変更時は, 連絡のこと:0 注3: 本表は, 盤用で, 変更時は, 連絡のこと:0 注4: 本表は, 盤用で, 変更時は, 連絡のこと:0 注5: 本表は, 盤用で, 変更時は, 連絡のこと:0 注6: 本表は, 盤用で, 変更時は, 連絡のこと:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1
+   warn: 
+[TSV 上にコンマ入りの表題 9 行] OK (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 :1 :1 :1 :1 :1
+   warn: 見出しより上の 9 行（表題など）は取り込みません
+[TSV 下にコンマ入りの注記 9 行] MISMATCH (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 注1: 本表は, 盤用で, 変更時は, 連絡のこと:0 注2: 本表は, 盤用で, 変更時は, 連絡のこと:0 注3: 本表は, 盤用で, 変更時は, 連絡のこと:0 注4: 本表は, 盤用で, 変更時は, 連絡のこと:0 注5: 本表は, 盤用で, 変更時は, 連絡のこと:0 注6: 本表は, 盤用で, 変更時は, 連絡のこと:0 注7: 本表は, 盤用で, 変更時は, 連絡のこと:0 注8: 本表は, 盤用で, 変更時は, 連絡のこと:0 注9: 本表は, 盤用で, 変更時は, 連絡のこと:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1
+   warn: 
+[TSV 上にコンマ入りの表題 15 行] OK (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 :1 :1 :1 :1 :1
+   warn: 見出しより上の 15 行（表題など）は取り込みません
+[TSV 下にコンマ入りの注記 15 行] MISMATCH (old≠new) delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 注1: 本表は, 盤用で, 変更時は, 連絡のこと:0 注2: 本表は, 盤用で, 変更時は, 連絡のこと:0 注3: 本表は, 盤用で, 変更時は, 連絡のこと:0 注4: 本表は, 盤用で, 変更時は, 連絡のこと:0 注5: 本表は, 盤用で, 変更時は, 連絡のこと:0 注6: 本表は, 盤用で, 変更時は, 連絡のこと:0 注7: 本表は, 盤用で, 変更時は, 連絡のこと:0 注8: 本表は, 盤用で, 変更時は, 連絡のこと:0 注9: 本表は, 盤用で, 変更時は, 連絡のこと:0 注10: 本表は, 盤用で, 変更時は, 連絡のこと:0 注11: 本表は, 盤用で, 変更時は, 連絡のこと:0 注12: 本表は, 盤用で, 変更時は, 連絡のこと:0 注13: 本表は, 盤用で, 変更時は, 連絡のこと:0 注14: 本表は, 盤用で, 変更時は, 連絡のこと:0 注15: 本表は, 盤用で, 変更時は, 連絡のこと:0 | map=name,model,maker,qtyNeeded
+   exp: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10
+   old: 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1 変更時は:1
+   warn: 
+[TSV 備考に全行 1 個のコンマ] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[TSV 備考に全行 3 個のコンマ] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[TSV 備考に全行 5 個のコンマ] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[TSV 備考に全行 8 個のコンマ] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[TSV 回路記号 C1, C2, C3...] OK delim=tab
+   new: GRM188:6 RK73:3 LM358:1 1N4148:2 | map=ref,name,model,qtyNeeded
+   warn: 
+[TSV 回路記号 全行 6 個以上] OK delim=tab
+   new: GRM188:7 RK73:7 LQM21:7 | map=ref,name,model,qtyNeeded
+   warn: 
+[TSV 単価 1,200 付き] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | map=name,model,maker,qtyNeeded,-
+   warn: 
+[CSV 備考セルにタブ（1 行）] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[CSV 全行の型式にタブ入り] INFO (old≠new) delim=comma
+   new: MY4N	-D2:4 H3CR	-A8:1 XW2B	-20G4:4 | map=name,model,maker,qtyNeeded
+   old: 品名,型式,メーカー,数量:1 -D2,オムロン,4:1 -A8,オムロン,1:1 -20G4,オムロン,4:1
+   warn: 
+[CSV 表題にタブ（Excel 上部のセルが A1 にタブ入り）] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 2 行（表題など）は取り込みません
+[CSV 表題にタブが多数] OK (old≠new) delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 F-5A:10 | map=name,model,maker,qtyNeeded
+   old: abc:1 abc:1 abc:1 abc:1 abc:1 abc:1 abc:1 abc:1 品名,型式,メーカー,数量:1 リレー,MY4N-D2,オムロン,4:1 タイマ,H3CR-A8,オムロン,1:1 端子台,XW2B-20G4,オムロン,4:1 ヒューズ,F-5A,ミスミ,10:1
+   warn: 見出しより上の 8 行（表題など）は取り込みません
+[CSV 〃の"（引用符なし）] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[CSV メーカーが " の行が続く] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 PYF14A:2 XW2B-20G4:4 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 3 セルは、上の行（同左は左のセル）の値にしました
+[CSV 品名が " の行] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[CSV 数量が " (最後の列)] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:4 L-1:4 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[CSV 型式にインチ 3/4" と〃] INFO delim=comma
+   new: PT 3/4":2 3/4" エルボ:2 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[TSV 〃の" 行] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[TSV 〃の" が列頭] INFO delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 4 セルは、上の行（同左は左のセル）の値にしました
+[CSV 複数行セル 品名] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[CSV 複数行セル 備考にコンマ] OK delim=comma
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[TSV 複数行セル 備考にコンマ] OK delim=tab
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+MISMATCHES 5

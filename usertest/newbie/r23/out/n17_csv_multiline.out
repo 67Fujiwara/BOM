@@ -1,0 +1,21 @@
+## 1列目に 2 行ともコンマ
+   old: 3行 MY4N-D2:4 H3CR-A8:1 PL-24:2
+   new: 3行 MY4N-D2:4 H3CR-A8:1 PL-24:2 備考=["","",""]
+## 備考に 2 行ともコンマ
+   old: 2行 MY4N-D2:4 H3CR-A8:1
+   new: 2行 MY4N-D2:4 H3CR-A8:1 備考=["盤内, 上段 左, 右",""]
+## 1列目と備考の両方に（2 行ともコンマ）
+   old: 3行 MY4N-D2:4 右":0 H3CR-A8:1
+   new: 2行 MY4N-D2:4 H3CR-A8:1 備考=["盤内, 上段 左, 右",""]
+## 備考が 3 行（各行コンマ）
+   old: 2行 MY4N-D2:4 H3CR-A8:1
+   new: 2行 MY4N-D2:4 H3CR-A8:1 備考=["a, b c, d e, f",""]
+## 品名 1 列目だけ 2 行ともコンマ・他は単純
+   old: 2行 MY4N-D2:4 H3CR-A8:1
+   new: 2行 MY4N-D2:4 H3CR-A8:1 備考=[null,null]
+## 型式に 2 行ともコンマ
+   old: 2行 MY4N-D2, 24V H3CR-A8, 100V:4 H3CR-A8:1
+   new: 2行 MY4N-D2, 24V H3CR-A8, 100V:4 H3CR-A8:1 備考=[null,null]
+## Excel の「"」エスケープ入り
+   old: 2行 MY4N-D2:4 H3CR-A8:1
+   new: 2行 MY4N-D2:4 H3CR-A8:1 備考=["1/2\" 継手, SUS 長さ, 10",""]

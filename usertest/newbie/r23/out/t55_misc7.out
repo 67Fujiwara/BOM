@@ -1,0 +1,43 @@
+== A. 購買: 見積済の単価を打ち直す（Enter → 新しい値 → Enter）
+  [Alt+6] role=purchasing mode=nav view=6 cur=R004/q.unitPrice@S1 edit="" panel=null filter=""/null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [at price] role=purchasing mode=nav view=6 cur=R033/q.unitPrice@S1 edit="" panel=null filter=""/null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  before null
+  [Enter] role=purchasing mode=edit view=6 cur=R033/q.unitPrice@S1 edit="106" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed 95] role=purchasing mode=edit view=6 cur=R033/q.unitPrice@S1 edit="95" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing mode=edit view=6 cur=R034/q.unitPrice@S1 edit="" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  after null
+  direct typing 97 -> null
+  Ctrl+Z x2 -> null 元に戻す: セル編集
+  status ナビR034 単価購買 佐藤: 未発行 0 件元に戻す: セル編集F1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+== A2. 設計: 必要数を打ち直す（Enter → 3 → Enter）
+  before 2
+  after {"qtyNeeded":3} 2
+  [after] role=design mode=nav view=1 cur=R031/qtyNeeded edit="3" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+== B. Alt+h（4 要確認で）→ カーソル → Ctrl+Z
+  [4] role=design mode=edit view=1 cur=R001/name edit="4" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [↓] role=design mode=nav view=1 cur=R002/name edit="4" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [Alt+h] role=design mode=nav view=1 cur=R002/name edit="4" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: R002 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  hidden R002 true
+  [Ctrl+Z] role=design mode=nav view=1 cur=R002/name edit="4" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: 元に戻す: 行を隠す/戻す
+  hidden after undo false
+== C. 絞り込み 0 行で英字・数字を打つ
+  [filter zzzzz] role=design mode=nav view=1 cur=R002/name edit="/zzzzz" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [typed Omron] role=design mode=edit view=1 cur=R002/name edit="Omron" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [4] role=design mode=edit view=1 cur=R002/name edit="Omron4" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Esc] role=design mode=nav view=1 cur=R002/name edit="Omron4" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [Esc2] role=design mode=nav view=1 cur=R002/name edit="Omron4" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+== D. 順番に直すモードで値を打つ、途中で Esc / Ctrl+K
+  [seq] role=design mode=panel view=1 cur=R005/model edit="" panel=quickfix filter=""/null | hints: F1ヘルプ | toast: null
+  panel 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白があります: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [Enter (編集する)] role=design mode=panel view=1 cur=R009/maker edit="" panel=quickfix filter=""/null | hints: F1ヘルプ | toast: null
+  [Omron Enter] role=design mode=edit view=1 cur=R009/maker edit="" panel=null filter=""/null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 1〜3 か ↑↓ と Enter で選んでください
+  panel null
+  [Ctrl+K in seq] role=design mode=palette view=1 cur=R009/maker edit="" panel=palette filter=""/null | hints: F1ヘルプ | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [Esc] role=design mode=nav view=1 cur=R009/maker edit="" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [Esc2] role=design mode=nav view=1 cur=R009/maker edit="" panel=null filter=""/null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: 1〜3 か ↑↓ と Enter で選んでください
+  R009 maker null
+== E. F8 / Shift+F8 で全部回る（何件で 1 周）
+  F8 x20 R005/model R009/maker R016/model R022/model R041/maker R054/qtyNeeded R061/model R005/model R009/maker R016/model R022/model R041/maker R054/qtyNeeded R061/model R005/model R009/maker R016/model R022/model R041/maker R054/qtyNeeded
+  Shift+F8 x6 R041/maker R022/model R016/model R009/maker R005/model R061/model | view 1 | toast null
+
+ERRORS:

@@ -1,0 +1,160 @@
+clear ordinary 見出し=変更区分 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更区分 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更区分 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更区分 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更区分 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更区分 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更区分 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更区分 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更区分 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更区分 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更種別 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更種別 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更種別 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更種別 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更種別 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更種別 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更種別 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種別 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種別 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=done2[済/済/済/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=order[発注済/手配中/取消/保留] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=kubun2[購入/外注/支給/廃止] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=kubun3[汎用/専用/流用/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=mixed_del[追加/削除/型式変更/削除] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear change 見出し=変更タイプ 値=mixed_del_en[Add/Remove/Replace/Delete] old=4行(リレー,タイマ,端子台,ヒューズ) new=2行(リレー,端子台)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=hold[変更/削除（保留）/追加/継続] old=3行(リレー,端子台,ヒューズ) new=4行(リレー,タイマ,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更タイプ 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更タイプ 値=noword[要/不要/要/要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=mixed_unknown[型式変更/削除/追加/据え置き] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=mixed_unknown2[数量変更/削除/継続使用/変更あり] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=en_std[Add/Change/Remove/No change] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=en_std2[New/Delete/Modify/Same] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=en_abbr[ADD/CHG/DEL/CHG] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=lifecycle2[量産/試作/廃止/量産] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=ox[○/×/○/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,端子台,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear change 見出し=変更種類 値=ox2[○/○/×/○] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,ヒューズ)  <<DIFF
+clear ordinary 見出し=変更種類 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear change 見出し=変更種類 値=done[済/未/対応中/不要] old=4行(リレー,タイマ,端子台,ヒューズ) new=3行(リレー,タイマ,端子台)  <<DIFF
+clear|ordinary|donly: 更新区分:4→0 更新種別:4→0
+clear|change|donly: 更新区分:4→0 更新種別:4→0
+clear|ordinary|holdA: 更新区分:4→3 更新種別:4→3
+clear|change|holdA: 更新区分:4→3 更新種別:4→3
+clear|ordinary|del_only: 更新区分:4→0 更新種別:4→0
+clear|change|del_only: 更新区分:4→0 更新種別:4→0
+clear|ordinary|dit: 更新区分:4→2 更新種別:4→2
+clear|change|dit: 更新区分:4→2 更新種別:4→2
+vague|ordinary|std: ステータス:4→3 Status:4→3
+vague|change|std: ステータス:4→3 Status:4→3
+vague|ordinary|mixed_unknown: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|mixed_unknown: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|mixed_unknown2: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|mixed_unknown2: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|en_std: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|en_std: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|en_std2: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|en_std2: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|en_abbr: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|en_abbr: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|lifecycle: ステータス:4→3 Status:4→3
+vague|change|lifecycle: ステータス:4→3 Status:4→3
+vague|ordinary|kubun3: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|change|kubun3: ステータス:4→3 Status:4→3 対応:4→3 Action:4→3 Change:4→3 区分:4→3 変更:4→3 種別:4→3 処置:4→3 改訂:4→3 設変:4→3
+vague|ordinary|mixed_del: ステータス:4→2 Status:4→2 対応:4→2 Action:4→2 Change:4→2 区分:4→2 変更:4→2 種別:4→2 処置:4→2 改訂:4→2 設変:4→2
+vague|change|mixed_del: ステータス:4→2 Status:4→2 対応:4→2 Action:4→2 Change:4→2 区分:4→2 変更:4→2 種別:4→2 処置:4→2 改訂:4→2 設変:4→2
+vague|ordinary|mixed_del_en: ステータス:4→2 Status:4→2 対応:4→2 Action:4→2 Change:4→2 区分:4→2 変更:4→2 種別:4→2 処置:4→2 改訂:4→2 設変:4→2
+vague|change|mixed_del_en: ステータス:4→2 Status:4→2 対応:4→2 Action:4→2 Change:4→2 区分:4→2 変更:4→2 種別:4→2 処置:4→2 改訂:4→2 設変:4→2
+vague|ordinary|holdA: ステータス:4→3 Status:4→3
+vague|change|holdA: ステータス:4→3 Status:4→3
+vague|ordinary|dit: ステータス:4→2 Status:4→2
+vague|change|dit: ステータス:4→2 Status:4→2
+vague|ordinary|xonly: 対応:3→4 Action:3→4 Change:3→4 区分:3→4 変更:3→4 種別:3→4 処置:3→4 改訂:3→4 設変:3→4
+vague|change|xonly: 対応:3→4 Action:3→4 Change:3→4 区分:3→4 変更:3→4 種別:3→4 処置:3→4 改訂:3→4 設変:3→4
+vague|ordinary|donly: 対応:0→4 Action:0→4 Change:0→4 区分:0→4 変更:0→4 種別:0→4 処置:0→4 改訂:0→4 設変:0→4
+vague|change|donly: 対応:0→4 Action:0→4 Change:0→4 区分:0→4 変更:0→4 種別:0→4 処置:0→4 改訂:0→4 設変:0→4
+vague|ordinary|hold: 対応:3→4 Action:3→4 Change:3→4 区分:3→4 変更:3→4 種別:3→4 処置:3→4 改訂:3→4 設変:3→4
+vague|change|hold: 対応:3→4 Action:3→4 Change:3→4 区分:3→4 変更:3→4 種別:3→4 処置:3→4 改訂:3→4 設変:3→4
+vague|ordinary|del_only: 対応:0→4 Action:0→4 Change:0→4 区分:0→4 変更:0→4 種別:0→4 処置:0→4 改訂:0→4 設変:0→4
+vague|change|del_only: 対応:0→4 Action:0→4 Change:0→4 区分:0→4 変更:0→4 種別:0→4 処置:0→4 改訂:0→4 設変:0→4

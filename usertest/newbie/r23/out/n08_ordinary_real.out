@@ -1,0 +1,242 @@
+組み合わせ 4800、違った 120
+{"区分[購入品/加工品/流用]":15,"対応[済/未/済]":15,"ステータス[新規/継続/継続]":15,"変更[//○]":15,"(追加の列なし)":15,"ステータス[量産/試作/量産]":15,"Action[Order/Hold/Order]":15,"区分[汎用/専用/流用]":15}
+1	区分[購入品/加工品/流用] 備考=廃止予定品のため代替検討中
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	対応[済/未/済] 備考=廃止予定品のため代替検討中
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[新規/継続/継続] 備考=廃止予定品のため代替検討中
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	変更[//○] 備考=廃止予定品のため代替検討中
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	(追加の列なし) 備考=位置変更あり
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=位置変更あり
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=位置変更あり
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=位置変更あり
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=銘板追加
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=銘板追加
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=銘板追加
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=銘板追加
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=交換用
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=交換用
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=交換用
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=交換用
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=交換部品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=交換部品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=交換部品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=交換部品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=長さ変更可
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=長さ変更可
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=長さ変更可
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=長さ変更可
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=R12に置換
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[量産/試作/量産] 備考=R12に置換
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	Action[Order/Hold/Order] 備考=R12に置換
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[汎用/専用/流用] 備考=R12に置換
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[購入品/加工品/流用] 備考=代替品あり
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	対応[済/未/済] 備考=代替品あり
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[新規/継続/継続] 備考=代替品あり
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	変更[//○] 備考=代替品あり
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	(追加の列なし) 備考=代替可
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[量産/試作/量産] 備考=代替可
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	Action[Order/Hold/Order] 備考=代替可
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[汎用/専用/流用] 備考=代替可
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[購入品/加工品/流用] 備考=置換用
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	対応[済/未/済] 備考=置換用
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[新規/継続/継続] 備考=置換用
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	変更[//○] 備考=置換用
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	(追加の列なし) 備考=型式変更なし
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	ステータス[量産/試作/量産] 備考=型式変更なし
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	Action[Order/Hold/Order] 備考=型式変更なし
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[汎用/専用/流用] 備考=型式変更なし
+   RS-232C→USB: old=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 new=P-00,P-10,USB,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「RS-232C→USB」）は
+1	区分[購入品/加工品/流用] 備考=設計変更対応済
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=設計変更対応済
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=設計変更対応済
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=設計変更対応済
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=追加購入品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=追加購入品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=追加購入品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=追加購入品
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=消耗品（定期交換）
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=消耗品（定期交換）
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=消耗品（定期交換）
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=消耗品（定期交換）
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=実装位置 A3
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=実装位置 A3
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=実装位置 A3
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=実装位置 A3
+   RS-232C→USB: old=P-00,P-10,USB,P-30,P-40,P-50 new=P-00,P-10,RS-232C→USB,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=廃止予定品のため代替検討中
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[量産/試作/量産] 備考=廃止予定品のため代替検討中
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	Action[Order/Hold/Order] 備考=廃止予定品のため代替検討中
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[汎用/専用/流用] 備考=廃止予定品のため代替検討中
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[購入品/加工品/流用] 備考=位置変更あり
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=位置変更あり
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=位置変更あり
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=位置変更あり
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=銘板追加
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=銘板追加
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=銘板追加
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=銘板追加
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=交換用
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=交換用
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=交換用
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=交換用
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=交換部品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=交換部品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=交換部品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=交換部品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=長さ変更可
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=長さ変更可
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=長さ変更可
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=長さ変更可
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=R12に置換
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	対応[済/未/済] 備考=R12に置換
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[新規/継続/継続] 備考=R12に置換
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	変更[//○] 備考=R12に置換
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	(追加の列なし) 備考=代替品あり
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[量産/試作/量産] 備考=代替品あり
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	Action[Order/Hold/Order] 備考=代替品あり
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[汎用/専用/流用] 備考=代替品あり
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[購入品/加工品/流用] 備考=代替可
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	対応[済/未/済] 備考=代替可
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[新規/継続/継続] 備考=代替可
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	変更[//○] 備考=代替可
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	(追加の列なし) 備考=置換用
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[量産/試作/量産] 備考=置換用
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	Action[Order/Hold/Order] 備考=置換用
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[汎用/専用/流用] 備考=置換用
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	区分[購入品/加工品/流用] 備考=型式変更なし
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	対応[済/未/済] 備考=型式変更なし
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	ステータス[新規/継続/継続] 備考=型式変更なし
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	変更[//○] 備考=型式変更なし
+   DVI-D→HDMI: old=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 new=P-00,P-10,HDMI,P-30,P-40,P-50 | W: 1 つのセルに「旧→新」と書いた 1 セル（例: 「DVI-D→HDMI」）は、
+1	(追加の列なし) 備考=設計変更対応済
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=設計変更対応済
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=設計変更対応済
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=設計変更対応済
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[購入品/加工品/流用] 備考=追加購入品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	対応[済/未/済] 備考=追加購入品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[新規/継続/継続] 備考=追加購入品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	変更[//○] 備考=追加購入品
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=消耗品（定期交換）
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=消耗品（定期交換）
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=消耗品（定期交換）
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=消耗品（定期交換）
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	(追加の列なし) 備考=実装位置 A3
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	ステータス[量産/試作/量産] 備考=実装位置 A3
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	Action[Order/Hold/Order] 備考=実装位置 A3
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 
+1	区分[汎用/専用/流用] 備考=実装位置 A3
+   DVI-D→HDMI: old=P-00,P-10,HDMI,P-30,P-40,P-50 new=P-00,P-10,DVI-D→HDMI,P-30,P-40,P-50 | W: 

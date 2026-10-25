@@ -1,0 +1,47 @@
+== A. 設計: 型式で Alt+Shift+I → q → 本文 → Ctrl+K → Esc → Esc
+  [Alt+Shift+I] role=design mode=panel view=1 cur=R030/model edit="" panel=issue | toast: null | ptext: 指摘を起票 R030 表示灯 白 q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します） k 等の頭文字 / ↑↓ Enter で種別 Esc 閉じる
+  [q] role=design mode=panel view=1 cur=R030/model edit="" panel=issue | toast: 「q」で種別「質問」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す） | ptext: 指摘を起票 R030 表示灯 白 種別: 質問 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる
+  [body] role=design mode=panel view=1 cur=R030/model edit="" panel=issue | toast: 「q」で種別「質問」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す） | ptext: 指摘を起票 R030 表示灯 白 種別: 質問 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる
+  [Ctrl+K] role=design mode=panel view=1 cur=R030/model edit="" panel=issue | toast: 入力中の内容があります。Enter で確定するか Esc で閉じてから Ctrl+K を押してください | ptext: 指摘を起票 R030 表示灯 白 種別: 質問 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる
+  [Esc1] role=design mode=panel view=1 cur=R030/model edit="" panel=issue | toast: 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | ptext: 指摘を起票 R030 表示灯 白 種別: 質問 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる
+  [Esc2] role=design mode=nav view=1 cur=R030/model edit="" panel=null | toast: 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | ptext: undefined
+  issues 5 -> 5
+== A2. 同じ: 本文 → Enter で起票 → Ctrl+Z
+  [Enter] role=design mode=nav view=1 cur=R030/model edit="" panel=null | toast: I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行 | ptext: undefined
+  issues 5 -> 6
+  [Ctrl+Z] role=design mode=nav view=1 cur=R030/model edit="" panel=null | toast: 元に戻す: 指摘 質問 | ptext: undefined
+  issues after undo 5
+== B. 置換: 部品名で Alt+r → 型式 → Esc → Esc / Enter 連打
+  [Alt+r] role=design mode=panel view=1 cur=R031/name edit="" panel=prompt | toast: null | ptext: R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+  [typed] role=design mode=panel view=1 cur=R031/name edit="" panel=prompt | toast: null | ptext: R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+  [Esc1] role=design mode=panel view=1 cur=R031/name edit="" panel=prompt | toast: 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | ptext: R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+  [Esc2] role=design mode=nav view=1 cur=R031/name edit="" panel=null | toast: 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | ptext: undefined
+  rows 80
+  [Alt+r Enter (空)] role=design mode=panel view=1 cur=R031/name edit="" panel=prompt | toast: 入力は必須です | ptext: R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+  [Enter again] role=design mode=panel view=1 cur=R031/name edit="" panel=prompt | toast: 入力は必須です | ptext: R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+== C. 取消: 公開済の行で Shift+Delete → ダイアログ → Esc / Ctrl+K
+  [Shift+Delete] role=design mode=nav view=1 cur=R031/name edit="" panel=null | toast: R031 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） | ptext: undefined
+  [Ctrl+K] role=design mode=palette view=1 cur=R031/name edit="" panel=palette | toast: R031 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） | ptext: ビュー ビュー: すべて Alt+1 ビュー ビュー: 購買提出用 Alt+2 ビュー ビュー: 発注・入荷 Alt+3 ビュー ビュー: 要確認 Alt+4 ビュー ビュー: 変更あり Alt+5 ビュー ビュー: 商社別 Alt+6 ビュー ビュー: 要決定 Alt+7 ビュー ビュー: 正式見積 Alt+8 ビュ
+  [Esc] role=design mode=nav view=1 cur=R031/name edit="" panel=null | toast: R031 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） | ptext: undefined
+  R031 quoted {"kind":"cancel"}
+== D. PM: 決定パネル → Ctrl+K → Esc → Enter
+  [Enter (決定パネル)] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | ptext: 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [Ctrl+K] role=pm mode=palette view=7 cur=R003/name edit="" panel=palette | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | ptext: ビュー ビュー: すべて 1 ビュー ビュー: 購買提出用 2 ビュー ビュー: 発注・入荷 3 ビュー ビュー: 要確認 4 ビュー ビュー: 変更あり 5 ビュー ビュー: 商社別 6 ビュー ビュー: 要決定 7 ビュー ビュー: 正式見積 8 ビュー ビュー: 購買作業 9 流れ 公開（提出 / 指摘を発行） 
+  [Esc] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | ptext: undefined
+  [Enter again] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | ptext: 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [Enter 3] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix | toast: 使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます） | ptext: 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [Enter 4] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix | toast: 使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます） | ptext: 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  decisions [] R003 selected
+== E. ガイドの途中で Ctrl+K → Esc → もう一度「新しいBOM」
+  [step3] role=design mode=panel view=1 cur=null/name edit="" panel=wizard | toast: null | ptext: 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 納期 2026-11-30 / 11/30 / 未定 納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。 Enter 次
+  [Ctrl+K] role=design mode=palette view=1 cur=null/name edit="" panel=palette | toast: null | ptext: 案件 新しいBOM ビュー ビュー: すべて 1 ビュー ビュー: 購買提出用 2 ビュー ビュー: 発注・入荷 3 ビュー ビュー: 要確認 4 ビュー ビュー: 変更あり 5 ビュー ビュー: 商社別 6 ビュー ビュー: 要決定 7 ビュー ビュー: 正式見積 8 ビュー ビュー: 購買作業 9 流れ 公開（提出
+  [Esc] role=design mode=nav view=1 cur=null/name edit="" panel=null | toast: null | ptext: undefined
+  [reopen] role=design mode=panel view=1 cur=null/name edit="" panel=wizard | toast: 途中まで入れた内容を戻しました（Esc で中止しても内容は残ります） | ptext: 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 納期 2026-11-30 / 11/30 / 未定 納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。 Enter 次
+== F. 購買: Alt+8 → 正式単価に打つ
+  [Alt+8] role=purchasing mode=nav view=8 cur=R001/q.formalPrice@A edit="" panel=null | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました | ptext: undefined
+  rows R001,R002,R003,R013,R034,R045
+  [↓] role=purchasing mode=nav view=8 cur=R002/q.formalPrice@A edit="" panel=null | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました | ptext: undefined
+  [at formal] role=purchasing mode=nav view=8 cur=R002/q.formalPrice@A edit="" panel=null | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました | ptext: undefined
+  [typed] role=purchasing mode=edit view=8 cur=R003/q.formalPrice@A edit="" panel=null | toast: R002 の正式単価 ¥1,500（概算から +269%）。まだ正式見積を依頼していない行です。桁・行を確かめてください | ptext: undefined
+
+ERRORS:

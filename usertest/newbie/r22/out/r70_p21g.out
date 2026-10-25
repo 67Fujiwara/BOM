@@ -1,0 +1,75 @@
+[G-csv tab in one cell] OK
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[G-csv tab in a note (2 rows)] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded,note
+   old: 品名,型式,メーカー,数量,備考:1 上段:1 支給:1 ランプ,L-1,IDEC,2,:1
+   warn: 
+[G-csv tab bare in name] OK
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[G-csv 3 of 4 lines have tab] INFO (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   old: 品名,型式,メーカー,数量:1 ,MY4N-D2,オムロン,4:1 ,H3CR-A8,オムロン,1:1 ,L-1,IDEC,2:1
+   warn: 
+[G-csv multi-line + comma-quoted] OK
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[G-csv multi-line cell w/ many commas (narrow table)] OK
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,qtyNeeded
+   warn: 
+[G-csv multi-line comma cell then comma cell same row] OK
+   new: MY4N-D2, 5A:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[G-csv multi-line cell with blank line inside] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[G-csv ditto 〃 as quote] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[G-csv ditto " alone cell] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[G-csv inch 1/2" in model] INFO
+   new: 1/2" SUS:2 3/4" x 2:3 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[G-csv inch with commas] INFO
+   new: V-1:2 3/4" x 2:3 | map=name,model,maker,qtyNeeded
+   warn: 
+[G-tsv multi-line cell 20 lines with commas] MISMATCH
+   new: 品名	型式	数量	備考:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目":1 タイマ	H3CR-A8	1:1 | map=name,model
+   exp: MY4N-D2:4 H3CR-A8:1
+   warn: 見出しが無いので、列を「部品名・型式」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[G-tsv multi-line cell 6 lines with commas] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded,note
+   old: 品名	型式	数量	備考:1 項目:1 項目:1 項目:1 項目:1 項目:1 項目":1 タイマ	H3CR-A8	1:1
+   warn: 
+[G-tsv multi-line cell 3 lines with commas] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded,note
+   warn: 
+[G-tsv multi-line cell 12 lines no comma] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded,note
+   warn: 
+[G-tsv comma in cells (1,000)] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded,-
+   warn: 
+[G-tsv title block no tabs 30 lines + 5 rows] MISMATCH
+   new: 型式:1 MY4N-D2:1 H3CR-A8:1 L-1:1 | map=name,model,maker
+   exp: MY4N-D2:4 H3CR-A8:1 L-1:2
+   warn: 表題らしい先頭の 30 行は取り込みません / 見出しが無いので、列を「部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[G-tsv title block 3 lines w/ comma then rows] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 見出しより上の 2 行（表題など）は取り込みません
+[G-csv with 1 tab line half (50%)] INFO
+   new: MY4N-D2:4 a	b:0 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 
+[G-tsv Excel quoted newline in name] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 
+[G-tsv 2 col 1 tab] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model
+   warn: 見出しが無いので、列を「部品名・型式」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[G-semicolon] INFO
+   new: リレー;MY4N-D2;4:1 タイマ;H3CR-A8;1:1 | map=model
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+MISMATCHES 2

@@ -1,0 +1,28 @@
+== F 2 つ飛ばして Esc（カーソルは 3 つ目の問題の上）→ そのまま Ctrl+Shift+F
+  problems: R005/model R009/maker R016/model R022/model R041/maker R054/qtyNeeded R061/model
+  [skip2] seq=true cur=R016/model panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格電流（例: 10A）まで書いてください: 編集する 2 CP | toast: null
+  [Esc] seq=false cur=R016/model panel=null |  | toast: null
+  [restart] seq=true cur=R016/model panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格電流（例: 10A）まで書いてください: 編集する 2 CP | toast: null
+  [F restart end] seq=false cur=R016/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  F restart: 開いた問題 7 件 R016 R022 R041 R054 R061 R005 R009
+== G 表の真ん中（R030、問題なし）から Ctrl+Shift+F
+  [start@R030] seq=true cur=R041/maker panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。 | toast: null
+  [G end] seq=false cur=R041/maker panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  G: 開いた問題 7 件 R041 R054 R061 R005 R009 R016 R022
+== H 最初の問題を直し方 1 で直す → Esc → Ctrl+Shift+F
+  [start] seq=true cur=R005/model panel=quickfix | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x）  | toast: null
+  [fix 1] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [Esc] seq=false cur=R009/maker panel=null |  | toast: null
+  problems: R009/maker R016/model R022/model R041/maker R054/qtyNeeded R061/model
+  [restart] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [H restart end] seq=false cur=R009/maker panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+  H restart: 開いた問題 6 件 R009 R016 R022 R041 R054 R061
+== I 1 つ飛ばす → F8（新人は F8 も押す）→ F8 → Ctrl+Shift+F
+  [skip1] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [F8] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [F8 2] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [restart] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [I restart end] seq=false cur=R009/maker panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  I restart: 開いた問題 7 件 R009 R016 R022 R041 R054 R061 R005
+
+ERRORS:

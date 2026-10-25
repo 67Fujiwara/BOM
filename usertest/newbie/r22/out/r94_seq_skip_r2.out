@@ -1,0 +1,11 @@
+view 4 key 2: start cursor=R005/name palette=true panel=quickfix | steps: R005→R005[終了] (panel なし) | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+view 4 key 3: start cursor=R005/name palette=true panel=quickfix | steps: R005→R005[終了] (panel なし) | toast=順番に直すモード: 一周しました（残りの問題 6 件はそのまま。F8 で回れます）
+view 4 key 1: start cursor=R005/name palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 1 key 2: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 1 key 3: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 1 key 1: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 2 key 2: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 2 key 3: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+view 2 key 1: start cursor=R005/note palette=true panel=quickfix | steps: R005→R006 R006→R007 R007→R008 | toast=公開できません: エラー 6 件（R005 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、
+
+ERRORS:

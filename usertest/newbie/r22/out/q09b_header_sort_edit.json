@@ -1,0 +1,31 @@
+{
+  "name": "q09b_header_sort_edit",
+  "findings": [],
+  "errors": [],
+  "lines": [
+    "== A → Enter",
+    "  [typed] mode=edit cur=R030/name sort=null edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=(なし) | toast: null",
+    "  [header click] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "  [after] mode=edit cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "== B → ↓",
+    "  [typed] mode=edit cur=R030/name sort=null edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=(なし) | toast: null",
+    "  [header click] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "  [after] mode=nav cur=R032/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "== C → 続けて打つ「LED」→ Enter",
+    "  [typed] mode=edit cur=R030/name sort=null edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=(なし) | toast: null",
+    "  [header click] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "  [after] mode=edit cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "== D → 見えているセルをクリック",
+    "  [typed] mode=edit cur=R030/name sort=null edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=(なし) | toast: null",
+    "  [header click] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "   first row R070",
+    "  [after] mode=nav cur=R002/model sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "== E → Esc",
+    "  [typed] mode=edit cur=R030/name sort=null edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=(なし) | toast: null",
+    "  [header click] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "  [after] mode=nav cur=R030/name sort={\"col\":\"model\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "== F 編集中にもう一度同じ列の見出し（部品名）をクリック",
+    "  [header 部品名] mode=nav cur=R030/name sort={\"col\":\"name\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=0 focus=DIV.gridwrap 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null",
+    "  [Enter] mode=edit cur=R030/name sort={\"col\":\"name\",\"dir\":\"asc\"} edit=\"表示灯 緑\" editor=1 focus=INPUT.cell 作業中=R030:{\"name\":\"表示灯 緑\"} | toast: null"
+  ]
+}

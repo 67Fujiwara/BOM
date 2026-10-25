@@ -1,0 +1,16 @@
+before header: 概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)設計待ち 73（指摘 4・選定待ち 64・その他 5）購買待ち 6PM待ち 1エラー 3警告 3設計購買PM山田Ctrl+K コマンド?
+R001 row: R001 購買 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 相見積 不可 11/13 因幡電機 88 ¥146 ¥146 19日 選定済 10/27 
+working header: 概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)設計待ち 74（指摘 4・選定待ち 64・その他 6）購買待ち 5PM待ち 1エラー 3警告 3設計購買PM山田Ctrl+K コマンド?
+R001 row: R001 設計 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 支給品 不可 11/13 因幡電機 88 ¥146 ¥146 19日 選定済 · 作業中● 10/27 
+toast 行 6（Rev.2） を公開しました
+published header: 概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68（指摘 4・選定待ち 64）購買待ち 10PM待ち 1エラー 3警告 3設計購買PM山田Ctrl+K コマンド?
+R001 row: R001 — 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 支給品 不可 11/13 選定済 10/27 
+R001 adopted=undefined status=selected quotes=3
+purchasing 5: R001 row: R001 — Rev.2 変更セット #2 制1 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 選定済
+purchasing 1: R001 row: R001 — 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 支給品 不可 11/13 選定済 10/27 
+purchasing 9 count 24
+revert toast 行 1（Rev.3） を公開しました
+R001 after revert: proc=相見積 adopted=undefined status=quoted flags={"leadNG":false,"renegotiating":false,"formalDiff":false,"reissue":false,"contested":false}
+header: 概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 69（指摘 4・選定待ち 65）購買待ち 10PM待ち 1エラー 3警告 3設計購買PM山田Ctrl+K コマンド?
+
+ERRORS:

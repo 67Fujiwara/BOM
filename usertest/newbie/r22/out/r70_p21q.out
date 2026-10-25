@@ -1,0 +1,25 @@
+[Q ｲﾝｽﾞｳ] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 
+[Q ｲﾝｽｳ] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[Q ｼﾖｳｽｳ] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[Q ｹﾞﾝｽｳ] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[Q ｿｳｽｳ] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[H 第一号機|第二号機] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[H 第１号機|第２号機] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,qtyNeeded,-
+   warn: 数量の列 2 つ（「第１号機」「第２号機」）を足して数量にしました
+[H 1号機|2号機] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,qtyNeeded,-
+   warn: 数量の列 2 つ（「1号機」「2号機」）を足して数量にしました
+MISMATCHES 0

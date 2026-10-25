@@ -1,0 +1,89 @@
+[A1 full-copy-2of5-deleted] INFO
+   new: MY4N-D2:2 H3CR-A8:1 NF32-SV:1? XW2B-20G4:4 L-1:1? | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量(新)」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式(新)」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 2 行（例: ブレーカ NF32-SV 三菱電機）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います / 「数量」に当たる列が 2 つあります。「数量(新)」の列を使います
+[A2 full-copy-3of10-deleted] INFO
+   new: MY4N-D2:2 H3CR-A8:1 XW2B-20G4:4 PYF14A:2 A22-FR:2 S8VK-C06024:1 F-80:1 | map=name,-,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 3 行（例: ブレーカ NF32-SV 三菱電機）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います / 「数量」に当たる列が 2 つあります。「数量(新)」の列を使います
+[A3 changed-only-sheet-2rows] INFO
+   new: MY4N-D2:2 NF32-SV:1 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量(新)」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式(新)」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います / 「数量」に当たる列が 2 つあります。「数量(新)」の列を使います
+[A4 full-copy-delete-by-dash-row] INFO
+   new: MY4N-D2:2 H3CR-A8:1 XW2B-20G4:4 | map=name,-,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: ブレーカ NF32-SV －）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います / 「数量」に当たる列が 2 つあります。「数量(新)」の列を使います
+[B1 note-delete-variants5] INFO
+   new: MY4N-D2:2 F-5A:3 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式(新)」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 6 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います
+[B2 note-delete-r16-control] INFO
+   new: MY4N-D2:2 | map=name,-,model,maker,qtyNeeded,note
+   warn: 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います
+[C1 new-col-delete-variants5] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,-,model,maker,-,qtyNeeded
+   old: MY4N-D2:4 →削除:4
+   warn: 削除の印がある・新しい版の列が空の 6 行（例: タイマ H3CR-A8 削除 (Rev1)）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います / 「数量」に当たる列が 2 つあります。「数量(新)」の列を使います
+[D1 ditto-after-deleted-row] INFO
+   new: MY4N-D2:2 NF32-SVF:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3Y-2 削除）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います
+[D2 ditto-after-subtotal] INFO
+   new: MY4N-D2:4 NF32-SV:1 NF63-SV:1 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 小計・合計・区切りの 1 行は取り込みません（例: 「小計 4」）
+[D3 ditto-new-col-first-row] INFO
+   new: MY2N:2 H3CR-A8N:1 H3CR-A8N:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います
+[E1 gouki-1tier-no-total] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1号機数量」「2号機数量」）を足して数量にしました
+[E2 gouki-space-no-total] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量 1号機」「数量 2号機」）を足して数量にしました
+[E3 gouki-2tier-yobi] INFO
+   new: MY4N-D2:5 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「数量（1号機）」「数量（2号機）」「数量（予備）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[E4 gouki-sum-unreadable-cell] INFO
+   new: MY4N-D2:5 H3CR-A8:2 PYF14A:5 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量（1号機）」「数量（2号機）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[E5 per-unit-blank-units] INFO
+   new: MY4N-D2:6 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量（1台当り）」「数量（台数）」）を掛けて数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[E6 three-dai-bun] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量(3台分)」の列を使います
+[E7 gouki-AB-no-total-2tier] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量（A号機）」「数量（B号機）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[E8 gouki-dash-unused] INFO
+   new: MY4N-D2:2 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量（1号機）」「数量（2号機）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[E9 per-unit-1tier-paren] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量(1台当り)」「台数」）を掛けて数量にしました
+[E10 change-sheet-with-gouki] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,-,model,maker,qtyNeeded,-
+   warn: 「型式(新)」が空の 1 行は、ほかの「型式」の列の値を使いました / 数量の列 2 つ（「数量（1号機）」「数量（2号機）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式(新)」の列を使います
+[F1 2tier-genjou-henkouan] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（変更案）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（変更案）」が空の 1 行は、ほかの「型式」の列の値を使いました / 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（変更案）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更案）」の列を使います
+[F2 2tier-before-after-en] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（After）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（After）」が空の 1 行は、ほかの「型式」の列の値を使いました / 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（After）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（After）」の列を使います
+[F3 2tier-kyu-shin-qty-single] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[F4 2tier-henkou-only-model] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（変更）」が空の 1 行は、ほかの「型式」の列の値を使いました / 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（変更）」の列を使います
+[F5 henkou-naiyou-col] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[F6 henkou-col-yes] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-
+   warn: 
+[G1 title-no-other-header] INFO
+   new: 盤名:1 オムロン:1 オムロン:1 | map=category,name,model,maker
+   warn: 見出しが無いので、列を「分類・部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください
+[G2 title-seisaku-daisu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[H1 csv-like-quote-space] INFO
+   new: VCTF 0.75sq:10 VCTF 1.25sq:5 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+MISMATCHES 0

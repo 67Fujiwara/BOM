@@ -1,0 +1,27 @@
+{
+  "name": "q08_tbd_ack",
+  "findings": [],
+  "errors": [],
+  "lines": [
+    "  [created] mode=nav cur=R002/model panel=null |  | toast: 新しいBOM P-2026-002（3 行）を作成しました。問題のある行 2 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します",
+    "  R001[MY4N-D2/オムロン]ack=[]: | R002[未定/未定]ack=[]:w/model;w/maker | R003[XW2B-20G4/-]ack=[]:w/maker",
+    "  [Ctrl+Enter] mode=nav cur=R002/model panel=null |  | toast: 公開できません: 未確認の警告 3 件（R002 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに） … 直すか Alt+x で確認済みに）",
+    "  [F8] mode=nav cur=R002/maker panel=null |  | toast: 公開できません: 未確認の警告 3 件（R002 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに） … 直すか Alt+x で確認済みに）",
+    "  [Alt+x] mode=nav cur=R002/maker panel=null |  | toast: 確認済みにしました: メーカが「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）",
+    "  R001[MY4N-D2/オムロン]ack=[]: | R002[未定/未定]ack=[\"sys.tbd.maker:未定\"]:w/model | R003[XW2B-20G4/-]ack=[]:w/maker",
+    "  [F8] mode=nav cur=R002/model panel=null |  | toast: 確認済みにしました: メーカが「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）",
+    "  [Alt+x] mode=nav cur=R002/model panel=null |  | toast: 確認済みにしました: 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）",
+    "  R001[MY4N-D2/オムロン]ack=[]: | R002[未定/未定]ack=[\"sys.tbd.maker:未定\",\"sys.tbd.model:未定\"]: | R003[XW2B-20G4/-]ack=[]:w/maker",
+    "  [F8] mode=nav cur=R003/maker panel=null |  | toast: 確認済みにしました: 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）",
+    "  [Alt+x] mode=nav cur=R003/maker panel=null |  | toast: 確認済みにしました: メーカが「-」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）",
+    "  R001[MY4N-D2/オムロン]ack=[]: | R002[未定/未定]ack=[\"sys.tbd.maker:未定\",\"sys.tbd.model:未定\"]: | R003[XW2B-20G4/-]ack=[\"sys.tbd.maker:-\"]:",
+    "  [F8] mode=nav cur=R003/maker panel=null |  | toast: 設計がいま直す問題はありません（Ctrl+Enter で公開できます）",
+    "  [Alt+x] mode=nav cur=R003/maker panel=null |  | toast: この行に確認するもの（対応済の指摘・警告・表記修正など）はありません",
+    "  R001[MY4N-D2/オムロン]ack=[]: | R002[未定/未定]ack=[\"sys.tbd.maker:未定\",\"sys.tbd.model:未定\"]: | R003[XW2B-20G4/-]ack=[\"sys.tbd.maker:-\"]:",
+    "  [Ctrl+Enter 2] mode=nav cur=R003/maker panel=null |  | toast: 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）",
+    "  published: R001:submitted:1 R002:submitted:1 R003:submitted:1",
+    "  after edits: R001[MY4N-D2/オムロン]ack=[]:w/model | R002[未定/未定]ack=[\"sys.tbd.maker:未定\",\"sys.tbd.model:未定\"]: | R003[XW2B-20G4/-]ack=[\"sys.tbd.maker:-\"]:w/model",
+    "  [Ctrl+Enter 3] mode=nav cur=R003/model panel=null |  | toast: 公開できません: 未確認の警告 2 件（R001 型式が「TBD」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに） … 直すか Alt+x で確認済みに）",
+    "  purch: R001 設計 リレー MY4N-D2 オムロン 4 個 相見積 推奨 同等品可 4 提出済 · 作業中● 10/26  || R002 設計 ヒューズ 未定 未定 2 個 相見積 推奨 同等品可 2 提出済 · 作業中● 10/26  || R003 設計 端子台 XW2B-20G4 - 3 個 相見積 推奨 同等品可 3 提出済 · 作業中● 10/26 "
+  ]
+}

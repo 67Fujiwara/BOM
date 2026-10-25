@@ -1,0 +1,471 @@
+[E-same 「-」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「-」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「--」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「--」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「－」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「－」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「ー」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「ー」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「―」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「―」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「—」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「—」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「–」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「–」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「−」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「−」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「‐」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「‐」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「‑」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「‑」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「ｰ」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「ｰ」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「─」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「─」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「同左」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同左」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「変更なし」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更なし」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「変更無し」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更無し」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「変更ナシ」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更ナシ」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「そのまま」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「そのまま」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「同じ」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同じ」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「同一」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同一」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「同」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「不変」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「不変」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「据置」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「据置」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「据え置き」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「据え置き」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「現状維持」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「現状維持」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「変更せず」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更せず」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「No change」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「No change」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「no change」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「no change」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「NO CHANGE」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「NO CHANGE」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「unchanged」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「unchanged」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「Unchanged」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「Unchanged」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「same」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「same」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「as is」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「as is」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「AS IS」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「AS IS」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「N.C.」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「N.C.」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「NC」] INFO
+   new: MY4N-D2:2 P-10:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「NC」] INFO
+   new: MY4N-D2:3 H3CR-A8:1 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「n/a」] INFO
+   new: MY4N-D2:2 n/a:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「n/a」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「N/A」] INFO
+   new: MY4N-D2:2 N/A:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「N/A」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「なし」] INFO
+   new: MY4N-D2:2 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: 部品1 P-10 なし）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「なし」] INFO
+   new: MY4N-D2:3 | map=name,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「無し」] INFO
+   new: MY4N-D2:2 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: 部品1 P-10 無し）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「無し」] INFO
+   new: MY4N-D2:3 | map=name,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「ママ」] INFO
+   new: MY4N-D2:2 ママ:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「ママ」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「〃」] INFO
+   new: MY4N-D2:2 MY4N-D2:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「〃」] INFO
+   new: MY4N-D2:3 H3CR-A8:3 | map=name,model,maker,-,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「同上」] INFO
+   new: MY4N-D2:2 MY4N-D2:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同上」] INFO
+   new: MY4N-D2:3 H3CR-A8:3 | map=name,model,maker,-,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「↓」] INFO
+   new: MY4N-D2:2 ↓:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「↓」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「↑」] INFO
+   new: MY4N-D2:2 ↑:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「↑」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「=」] INFO
+   new: MY4N-D2:2 =:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「=」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「＝」] INFO
+   new: MY4N-D2:2 ＝:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「＝」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「.」] INFO
+   new: MY4N-D2:2 .:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「.」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「/」] INFO
+   new: MY4N-D2:2 /:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「/」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「／」] INFO
+   new: MY4N-D2:2 ／:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「／」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「変更不要」] INFO
+   new: MY4N-D2:2 変更不要:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更不要」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「変更なし。」] INFO
+   new: MY4N-D2:2 変更なし。:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更なし。」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「変更 なし」] INFO
+   new: MY4N-D2:2 変更 なし:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更 なし」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「(変更なし)」] INFO
+   new: MY4N-D2:2 (変更なし):1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「(変更なし)」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「※変更なし」] INFO
+   new: MY4N-D2:2 ※変更なし:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「※変更なし」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「N/C」] INFO
+   new: MY4N-D2:2 N/C:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「N/C」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「ナシ」] INFO
+   new: MY4N-D2:2 ナシ:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「ナシ」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「-（変更なし）」] INFO
+   new: MY4N-D2:2 -（変更なし）:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「-（変更なし）」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「変更ありません」] INFO
+   new: MY4N-D2:2 変更ありません:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更ありません」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「変わらず」] INFO
+   new: MY4N-D2:2 変わらず:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変わらず」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-same 「同左。」] INFO
+   new: MY4N-D2:2 MY4N-D2:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「同左。」] INFO
+   new: MY4N-D2:3 H3CR-A8:3 | map=name,model,maker,-,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「左に同じ」] INFO
+   new: MY4N-D2:2 MY4N-D2:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「左に同じ」] INFO
+   new: MY4N-D2:3 H3CR-A8:3 | map=name,model,maker,-,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-same 「変更ないです」] INFO
+   new: MY4N-D2:2 変更ないです:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[E-same-qty 「変更ないです」] INFO
+   new: MY4N-D2:3 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[E-amb copy=1 empty=3 dash=0] INFO
+   new: C-1:1 E-1:1 E-2:1 E-3:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=2 dash=0] INFO
+   new: C-1:1 C-2:1 E-1:1? E-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 2 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=3 dash=0] INFO
+   new: C-1:1 C-2:1 E-1:1? E-2:1? E-3:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=6 dash=0] INFO
+   new: C-1:1 C-2:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? E-6:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 6 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 6 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 6 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=7 dash=0] INFO
+   new: C-1:1 C-2:1 E-1:1 E-2:1 E-3:1 E-4:1 E-5:1 E-6:1 E-7:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 7 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 7 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=3 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 E-1:1? E-2:1? E-3:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=9 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? E-6:1? E-7:1? E-8:1? E-9:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 9 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 9 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 9 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=10 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 E-1:1 E-2:1 E-3:1 E-4:1 E-5:1 E-6:1 E-7:1 E-8:1 E-9:1 E-10:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 10 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 10 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=4 empty=12 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? E-6:1? E-7:1? E-8:1? E-9:1? E-10:1? E-11:1? E-12:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 12 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 12 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 12 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=5 empty=5 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 C-5:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 5 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 5 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 5 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=0 dash=2] INFO
+   new: C-1:1 C-2:1 D-1:1? D-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 2 行（例: D1 D-1 －）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=0 dash=4] INFO
+   new: C-1:1 C-2:1 D-1:1? D-2:1? D-3:1? D-4:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 4 行（例: D1 D-1 －）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=1 dash=2] INFO
+   new: C-1:1 C-2:1 E-1:1? D-1:1? D-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=0 dash=3] INFO
+   new: C-1:1 C-2:1 C-3:1 D-1:1? D-2:1? D-3:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: D1 D-1 －）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=0 dash=9] INFO
+   new: C-1:1 C-2:1 C-3:1 D-1:1? D-2:1? D-3:1? D-4:1? D-5:1? D-6:1? D-7:1? D-8:1? D-9:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 9 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 9 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 9 行（例: D1 D-1 －）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=3 empty=0 dash=10] INFO
+   new: C-1:1 C-2:1 C-3:1 D-1:1 D-2:1 D-3:1 D-4:1 D-5:1 D-6:1 D-7:1 D-8:1 D-9:1 D-10:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 10 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 10 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=2 empty=2 dash=2] INFO
+   new: C-1:1 C-2:1 E-1:1? E-2:1? D-1:1? D-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 4 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=5 empty=5 dash=5] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 C-5:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? D-1:1? D-2:1? D-3:1? D-4:1? D-5:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 10 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 10 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 10 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=6 empty=0 dash=6] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 C-5:1 C-6:1 D-1:1? D-2:1? D-3:1? D-4:1? D-5:1? D-6:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 6 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 6 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 6 行（例: D1 D-1 －）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=6 empty=6 dash=6] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 C-5:1 C-6:1 E-1:1? E-2:1? E-3:1? E-4:1? E-5:1? E-6:1? D-1:1? D-2:1? D-3:1? D-4:1? D-5:1? D-6:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 12 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 12 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 12 行（例: E1 E-1 オムロン）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=8 empty=0 dash=0] INFO
+   new: C-1:1 C-2:1 C-3:1 C-4:1 C-5:1 C-6:1 C-7:1 C-8:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=0 empty=4 dash=0] INFO
+   new: E-1:1 E-2:1 E-3:1 E-4:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=0 empty=0 dash=4] INFO
+   new: D-1:1 D-2:1 D-3:1 D-4:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=1 empty=0 dash=1] INFO
+   new: C-1:1 D-1:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb copy=1 empty=1 dash=1] INFO
+   new: C-1:1 E-1:1 D-1:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb dash 半角 2/2] INFO
+   new: C-1:1 C-2:1 D-1:1? D-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 2 行（例: D1 D-1 -）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb dash ー 2/2] INFO
+   new: C-1:1 C-2:1 D-1:1? D-2:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 2 行（例: D1 D-1 ー）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb dash — 3/3] INFO
+   new: C-1:1 C-2:1 C-3:1 D-1:1? D-2:1? D-3:1? MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 削除かどうか決められない 3 行（例: D1 D-1 —）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb 変更なし 2/2] INFO (old≠new)
+   new: C-1:1 C-2:1 D-1:1 D-2:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   old: C-1:1 C-2:1 D-1:1? D-2:1? MY4N-D2:2
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-amb そのまま 3/3] INFO (old≠new)
+   new: C-1:1 C-2:1 C-3:1 D-1:1 D-2:1 D-3:1 MY4N-D2:2 | map=name,-,model,maker,-,qtyNeeded
+   old: C-1:1 C-2:1 C-3:1 D-1:1? D-2:1? D-3:1? MY4N-D2:2
+   warn: 「数量（新）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-normal 変更図 1 行 新=－] INFO
+   new: MY4N-D2:2 H3CR-A8:1 XW2B-20G6:4 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[E-all-dash] INFO
+   new: MY2N:2 H3CR-A8:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+MISMATCHES 0

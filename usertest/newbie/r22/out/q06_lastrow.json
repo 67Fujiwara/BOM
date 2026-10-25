@@ -1,0 +1,27 @@
+{
+  "name": "q06_lastrow",
+  "findings": [],
+  "errors": [],
+  "lines": [
+    "== A 設計 Ctrl+End → Enter ×3 → 打って Enter → Shift+Enter",
+    "  [Ctrl+End] view=1 mode=nav cur=R080/name rows=80 edit=\"\" | toast: null",
+    "  [Enter1] view=1 mode=edit cur=R080/name rows=80 edit=\"ラベルプリンタテープ\" | toast: null",
+    "  [Enter2] view=1 mode=nav cur=R080/name rows=80 edit=\"ラベルプリンタテープ\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  [Enter3] view=1 mode=edit cur=R080/name rows=80 edit=\"ラベルプリンタテープ\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  [abc Enter] view=1 mode=nav cur=R080/name rows=80 edit=\"abc\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  [Shift+Enter] view=1 mode=edit cur=R081/name rows=81 edit=\"\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  [Relay Enter] view=1 mode=nav cur=R081/name rows=81 edit=\"Relay\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  last rows: R079:盤内温度計/表示 R080:abc/表示 R081:Relay/表示",
+    "== B 4 要確認の最後の行 → 打って Enter → 知らせのとおり Shift+Enter",
+    "  [4 Ctrl+End] view=4 mode=nav cur=R080/name rows=80 edit=\"\" | toast: null",
+    "  [Enter (edit)] view=4 mode=edit cur=R080/name rows=80 edit=\"ラベルプリンタテープ\" | toast: null",
+    "  [Enter (commit)] view=4 mode=nav cur=R080/name rows=80 edit=\"ラベルプリンタテープ\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  [Shift+Enter] view=4 mode=edit cur=R081/name rows=81 edit=\"\" | toast: 最後の行です。下に行を足すときは Shift+Enter",
+    "  new row: {\"ref\":\"\",\"drawing\":\"E-2026-041-04\",\"category\":\"表示\",\"name\":\"\",\"model\":\"\",\"maker\":\"\",\"qtyNeeded\":1,\"unit\":\"個\",\"packQty\":null,\"procurement\":\"相見積\",\"makerLock\":\"推奨\",\"altPolicy\":\"同等品可\",\"designated\":\"\",\"nee",
+    "== C 購買で最後の行 Enter",
+    "  [Ctrl+End] view=9 mode=nav cur=R075/q.unitPrice@S1 rows=80 edit=\"\" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+    "  [Enter Enter] view=9 mode=nav cur=R075/q.unitPrice@S1 rows=80 edit=\"928\" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました",
+    "== D 設計で表の真ん中で Enter（知らせが出ないこと）",
+    "  [R030 Enter Enter] view=1 mode=nav cur=R031/name rows=80 edit=\"表示灯 白\" | toast: null"
+  ]
+}

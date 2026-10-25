@@ -1,0 +1,37 @@
+[K1 kicad-csv] INFO
+   new: 10k:2 STM32F103C8T6:1 | map=ref,name,-,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[K2 altium-tsv] INFO
+   new: Resistor:2 MCU:1 | map=note,name,ref,-,-,qtyNeeded
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[K3 header-cell-linebreak] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[K4 insu-daisu-hitsuyou] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,-,-,qtyNeeded
+   warn: 「数量」に当たる列が 3 つあります。「必要数」の列を使います
+[K5 gouki-1tier-kei-noqtyword] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,-,-,qtyNeeded
+   warn: 数量は「計」の列を使います（空の行は号機の数を足します）
+[K6 qty-ditto] INFO
+   new: MY4N-D2:4 MY2N:4 H3CR-A8:4 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[K7 title-and-signature] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 2 行は取り込みません（例: 「以下余白」「作成 山田 承認 鈴木」）
+[K8 total-variants] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+[K9 machine-and-unit-qty] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,-,-,qtyNeeded
+   warn: 「数量」に当たる列が 3 つあります。「手配数」の列を使います
+[K10 yobi-1tier] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-,-
+   warn: 「数量」に当たる列が 2 つあります。「数量」の列を使います
+[K11 eda-mpn-dnp] INFO
+   new: RK73H1JTTD1002F:2 STM32F103C8T6:1 | map=ref,name,maker,model,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[K12 eda-fitted-col] INFO
+   new: RK73H1JTTD1002F:2 | map=ref,name,maker,model,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+MISMATCHES 0

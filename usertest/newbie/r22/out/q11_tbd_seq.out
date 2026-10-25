@@ -1,0 +1,8 @@
+  [created] mode=nav cur=R002/model panel=null |  | toast: 新しいBOM P-2026-002（3 行）を作成しました。問題のある行 2 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Ctrl+Shift+F] mode=panel cur=R002/model panel=quickfix | 直し方の候補 R002 ヒューズ 1 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: 編集する 2 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: 確認済みにする（x） 3 型式が「未定」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Ente | toast: 新しいBOM P-2026-002（3 行）を作成しました。問題のある行 2 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [2] mode=panel cur=R003/maker panel=quickfix | 直し方の候補 R003 端子台 1 メーカが「TBD」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: 編集する 2 メーカが「TBD」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: 確認済みにする（x） 3 メーカが「TBD」のままです（決めてから公開するか、承知のうえで Alt+x で確認済みに）: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） | toast: 新しいBOM P-2026-002（3 行）を作成しました。問題のある行 2 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [2 again] mode=nav cur=R003/maker panel=null |  | toast: 順番に直すモード: 残りの問題はありません
+  [Ctrl+Enter] mode=nav cur=R003/maker panel=null |  | toast: 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  rows: R001:submitted:MY4N-D2/オムロン ack=[] def=[] | R002:submitted:未定/富士端子 ack=["sys.tbd.model:未定"] def=[] | R003:submitted:XW2B-20G4/TBD ack=["sys.tbd.maker:TBD"] def=[]
+
+ERRORS:

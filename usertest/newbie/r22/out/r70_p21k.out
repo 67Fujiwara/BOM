@@ -1,0 +1,21 @@
+[K1 2 multi-line cells in one row (品名+備考 w/ 4 commas)] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 納期注意:0 H3CR-A8:1
+   warn: 
+[K2 2 multi-line cells in one row (3 cols narrow)] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,qtyNeeded
+   warn: 
+[K3 品名 multi + 備考 multi (commas 2)] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[K4 3 cols: 品名 multi + 備考 multi w/ commas] OK (old≠new)
+   new: リレー (小型):4 タイマ (大型):1 | map=name,qtyNeeded,note
+   old: リレー (小型):4 要確認:0 タイマ (大型):1 c:0
+   warn: 
+[K5 メーカー multi + 備考 multi (Excel CSV, 4 cols)] OK
+   new: リレー:4 タイマ:1 | map=name,maker,qtyNeeded,note
+   warn: 
+[K6 品名 multi + 型式 with comma + 備考 multi] OK
+   new: MY4N-D2, 5A:4 | map=name,model,qtyNeeded,note
+   warn: 
+MISMATCHES 0

@@ -1,0 +1,133 @@
+[B1 note-del-past-polite] INFO
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 5 行（例: 部品1 P-10 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B2 note-del-reason-first] INFO
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 6 行（例: 部品1 P-10 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B3 note-keep-phrases] INFO
+   new: MY4N-D2:4 P-10:1 P-20:1 P-30:1 P-40:1 P-50:1 P-60:1 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 7 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B4 note-other-del-words] INFO
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 5 行（例: 部品1 P-10 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[N1 new-model-del-phrases] INFO
+   new: MY4N-D2:4 XW2B-20G4:4 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 3 行（例: タイマ H3CR-A8 削除しました）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[N2 new-name-starts-with-del-word] INFO
+   new: TR-10:1 BK-2:2 CV-3:2 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[A3 arrow-in-cell] INFO
+   new: MY4N-D2:4 H3CR-A8:2 L-1:1 | map=name,model,maker,qtyNeeded,note
+   warn: 1 つのセルに「旧→新」と書いた 2 セル（例: 「MY2N→MY4N-D2」）は、→ の右（新）の値にしました
+[M1 csv-multiline-header] INFO
+   new: MY4N-D2:4 L-1:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[M2 csv-multiline-header-and-comma-cell] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[M3 tsv-multiline-header] INFO
+   new: MY4N-D2:4 L-1:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[M4 tsv-two-multiline-cells-row] INFO
+   new: MY4N-D2 DC24V:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[M5 tsv-multiline-qty-yobi] INFO
+   new: MY4N-D2:5 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 「2+1」「2(予備1)」のように書いた数量 1 個は、足した数にしました
+[M6 csv-multiline-first-col-comma] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[D1 jissou-maru-batsu] INFO
+   new: MY4N-D2:4 L-1:1 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[D2 jissou-other-values] INFO
+   new: MY4N-D2:4 PYF14A:2 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 2 行は取り込みません
+[D3 note-dnp-variants] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 4 行は取り込みません
+[D4 dnp-header-maru] INFO
+   new: MY4N-D2:4 L-1:1 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[D5 populate-fitted] INFO
+   new: RK73H1JTTD1002F:2 STM32F103C8T6:1 | map=ref,name,maker,model,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[D6 maker-halfkana-DNP] INFO
+   new: MY4N-D2:4 RF-200:2 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[D7 maker-seizoumoto-DNP] INFO
+   new: MY4N-D2:4 RF-200:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[Q1 no1-no2] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「No.1」「No.2」）を足して数量にしました
+[Q2 goukiyou] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1号機用」「2号機用」）を足して数量にしました
+[Q3 suryo-paren-gouki] INFO
+   new: MY4N-D2:5 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「数量(1号機)」「数量(2号機)」「数量(予備)」）を足して数量にしました
+[Q4 gouki-3-blanks] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:3 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「1号機」「2号機」「3号機」）を足して数量にしました
+[Q5 daitousu-daisu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1台当数量」「台数」）を掛けて数量にしました
+[Q6 insu-per-dai-seisakudaisu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「員数/台」「製作台数」）を掛けて数量にしました
+[Q7 suryo-daisu-goukei] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 2 つ（「数量」「台数」）を掛けて数量にしました
+[Q8 two-tier-goukibetsu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「号機別数量（1号機）」「号機別数量（2号機）」「号機別数量（3号機）」）を足して数量にしました / 2 段の見出しを 1 段にまとめて読みました
+[T1 title-colon-one-cell] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T2 title-separate-cells-unit] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T3 title-seisaku-suryo] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T4 title-daisu-with-note] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T5 title-vertical] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 2 行（表題など）は取り込みません
+[T6 title-insu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「員数」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T7 title-daitousu] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「1台当数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T8 title-1daibun-fullwidth] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded
+   warn: 数量の列「数量（1台分）」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[T9 title-plain-suryo] INFO
+   new: MY4N-D2:2 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 見出しより上の 1 行（表題など）は取り込みません
+[T10 daisu-right-of-header] INFO
+   new: MY4N-D2:6 H3CR-A8:3 | map=name,model,maker,qtyNeeded,-,-,-
+   warn: 数量の列「1台当り数量」は 1 台分なので、見出しの右の製作台数 3 台を掛けました / 「数量」に当たる列が 1 つあります。「1台当り数量」の列を使います
+[C1 altium-with-notes-col] INFO
+   new: RK73H1JTTD1002F:2 GRM188R71H104KA93D:1 | map=-,name,ref,qtyNeeded,maker,model,note
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[C2 altium-description-blank] INFO
+   new: RK73H1JTTD1002F:2 SML-310LTT86:1 | map=note,name,ref,qtyNeeded,maker,model
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[C3 jp-comment-col] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-
+   warn: 
+[C4 jp-hinmei-comment-bikou] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-,note
+   warn: 「部品名」に当たる列が 2 つあります。「品名」の列を使います
+[C5 kicad-value-description] INFO
+   new: RK73H1JTTD1002F:2 GRM188R71H104KA93D:1 | map=ref,-,-,qtyNeeded,name,model,maker
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[X1 combined-messy] INFO
+   new: MY4N-D2:4 MY2N:2 L-1:2 | map=name,model,maker,qtyNeeded,note
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 数量の列「1台当り数量」は 1 台分なので、表題の製作台数 2 台を掛けました / 見出しより上の 2 行（表題など）は取り込みません / 繰り返しの見出し 1 行は取り込みません / 小計・合計・区切りの 3 行は取り込みません（例: 「小計 4」「部品表 (2/2)」 ほか） / 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+MISMATCHES 0

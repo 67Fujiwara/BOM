@@ -1,0 +1,177 @@
+D 「一部削除」 chg old=KEEP new=ASK
+D 「一部撤去」 chg old=KEEP new=ASK
+D 「一部を削除」 chg old=KEEP new=KEEP
+D 「半分削除」 chg old=KEEP new=ASK
+D 「2個のうち1個削除」 chg old=KEEP new=KEEP
+D 「1個削除」 chg old=KEEP new=KEEP
+D 「1個減らす」 chg old=KEEP new=KEEP
+D 「不要の為削除」 chg old=KEEP new=DEL
+D 「不要につき削除」 chg old=DEL new=DEL
+D 「不要なので削除」 chg old=DEL new=DEL
+D 「不要なため削除」 chg old=DEL new=DEL
+D 「不要ゆえ削除」 chg old=KEEP new=KEEP
+D 「不要で削除」 chg old=DEL new=DEL
+D 「使わないので削除」 chg old=DEL new=DEL
+D 「使用しないので削除」 chg old=DEL new=DEL
+D 「全削除」 chg old=KEEP new=DEL
+D 「全て削除」 chg old=KEEP new=KEEP
+D 「すべて削除」 chg old=KEEP new=KEEP
+D 「全数削除」 chg old=KEEP new=KEEP
+D 「全部削除」 chg old=KEEP new=KEEP
+D 「全撤去」 chg old=KEEP new=DEL
+D 「一式削除」 chg old=KEEP new=DEL
+D 「一式撤去」 chg old=KEEP new=DEL
+D 「一式取外し」 chg old=KEEP new=DEL
+D 「ユニットごと削除」 chg old=DEL new=DEL
+D 「旧品削除」 chg old=DEL new=DEL
+D 「ケーブル類削除」 chg old=KEEP new=KEEP
+D 「このユニット削除」 chg old=DEL new=DEL
+D 「本品削除」 chg old=DEL new=DEL
+D 「当該品削除」 chg old=DEL new=DEL
+D 「当部品削除」 chg old=DEL new=DEL
+D 「該当部品を削除」 chg old=KEEP new=KEEP
+D 「この部品は削除」 chg old=KEEP new=KEEP
+D 「この部品を削除してください」 chg old=KEEP new=KEEP
+D 「この部品は削除でお願いします」 chg old=KEEP new=KEEP
+D 「こちら削除」 chg old=KEEP new=KEEP
+D 「こちらは削除」 chg old=KEEP new=KEEP
+D 「これは削除」 chg old=KEEP new=KEEP
+D 「本ユニット不要」 chg old=KEEP new=KEEP
+D 「削除対象」 chg old=ASK new=ASK
+D 「削除対象品」 chg old=ASK new=ASK
+D 「削除予定」 chg old=KEEP new=KEEP
+D 「削除する予定」 chg old=ASK new=ASK
+D 「削除予定品」 chg old=KEEP new=KEEP
+K 「取外し可能」 chg old=ASK new=KEEP
+K 「取り外し可能」 chg old=ASK new=KEEP
+K 「取外し可」 chg old=ASK new=KEEP
+K 「撤去スペース確保」 chg old=ASK new=KEEP
+K 「撤去スペース要」 chg old=ASK new=KEEP
+K 「撤去しやすいこと」 chg old=ASK new=KEEP
+K 「撤去が容易」 chg old=ASK new=ASK
+K 「取外し容易」 chg old=ASK new=KEEP
+K 「取外し工具: ドライバ」 chg old=KEEP new=KEEP
+K 「取外し方法は別紙」 chg old=ASK new=KEEP
+K 「取外し手順は別紙」 chg old=ASK new=KEEP
+K 「取外し時は注意」 chg old=KEEP new=KEEP
+K 「削除不要」 chg old=KEEP new=KEEP
+K 「削除は不要」 chg old=KEEP new=KEEP
+K 「削除しないこと」 chg old=KEEP new=KEEP
+K 「削除禁止」 chg old=KEEP new=KEEP
+K 「削除しないでください」 chg old=KEEP new=KEEP
+K 「削除しないで」 chg old=KEEP new=KEEP
+K 「削除はしないでください」 chg old=KEEP new=KEEP
+K 「削除は行わない」 chg old=ASK new=ASK
+K 「削除は不可」 chg old=KEEP new=KEEP
+K 「削除不可」 chg old=KEEP new=KEEP
+K 「削除できない」 chg old=KEEP new=KEEP
+K 「削除できません」 chg old=ASK new=ASK
+K 「削除してはダメ」 chg old=ASK new=ASK
+K 「撤去不可」 chg old=KEEP new=KEEP
+K 「撤去しない」 chg old=KEEP new=KEEP
+K 「撤去はしない」 chg old=KEEP new=KEEP
+K 「撤去は不要」 chg old=KEEP new=KEEP
+K 「撤去不要」 chg old=KEEP new=KEEP
+K 「撤去禁止」 chg old=KEEP new=KEEP
+K 「取外し不可」 chg old=KEEP new=KEEP
+K 「取外し禁止」 chg old=KEEP new=KEEP
+K 「取外ししない」 chg old=KEEP new=KEEP
+K 「取外し不要」 chg old=KEEP new=KEEP
+K 「廃止しない」 chg old=KEEP new=KEEP
+K 「廃止は不要」 chg old=KEEP new=KEEP
+K 「廃止予定なし」 chg old=KEEP new=KEEP
+K 「廃止不可」 chg old=KEEP new=KEEP
+K 「廃止予定はない」 chg old=KEEP new=KEEP
+K 「廃止の予定なし」 chg old=ASK new=ASK
+K 「削除の予定なし」 chg old=ASK new=ASK
+K 「削除の予定はない」 chg old=ASK new=ASK
+K 「削除予定なし」 chg old=KEEP new=KEEP
+K 「削除予定はなし」 chg old=KEEP new=KEEP
+K 「削除予定無し」 chg old=KEEP new=KEEP
+K 「削除予定ではない」 chg old=KEEP new=KEEP
+K 「削除予定じゃない」 chg old=KEEP new=KEEP
+A 「削除してもよい」 chg old=ASK new=ASK
+A 「削除してよいか確認」 chg old=ASK new=ASK
+A 「削除しても可」 chg old=ASK new=ASK
+A 「削除可」 chg old=ASK new=KEEP
+A 「削除でも可」 chg old=ASK new=ASK
+A 「削除できる」 chg old=ASK new=ASK
+A 「削除可能」 chg old=ASK new=KEEP
+A 「削除可能性あり」 chg old=ASK new=KEEP
+A 「削除の可能性」 chg old=ASK new=ASK
+A 「削除の方向」 chg old=ASK new=ASK
+A 「削除方向で調整」 chg old=ASK new=ASK
+A 「削除かも」 chg old=ASK new=ASK
+A 「削除かも？」 chg old=ASK new=ASK
+A 「削除検討」 chg old=KEEP new=KEEP
+A 「削除を検討」 chg old=KEEP new=KEEP
+A 「削除検討中」 chg old=KEEP new=KEEP
+A 「削除要確認」 chg old=ASK new=ASK
+A 「削除について確認中」 chg old=ASK new=ASK
+A 「削除相談」 chg old=ASK new=ASK
+A 「削除の相談」 chg old=ASK new=ASK
+A 「削除希望」 chg old=ASK new=ASK
+A 「削除したい」 chg old=ASK new=ASK
+A 「削除したいです」 chg old=ASK new=ASK
+A 「削除したほうがよい」 chg old=ASK new=ASK
+A 「削除したほうがいい」 chg old=ASK new=ASK
+A 「削除すべき」 chg old=ASK new=ASK
+A 「削除すべきか」 chg old=ASK new=ASK
+A 「削除すべきか確認」 chg old=ASK new=ASK
+A 「削除が望ましい」 chg old=ASK new=ASK
+A 「削除推奨」 chg old=ASK new=ASK
+A 「削除でよいか」 chg old=ASK new=ASK
+A 「削除でいいか」 chg old=ASK new=ASK
+A 「削除でいい？」 chg old=ASK new=ASK
+A 「削除でOK？」 chg old=ASK new=ASK
+
+SUMMARY {
+ "D→notDEL": [
+  "一部削除=ASK(old=KEEP)",
+  "一部撤去=ASK(old=KEEP)",
+  "一部を削除=KEEP(old=KEEP)",
+  "半分削除=ASK(old=KEEP)",
+  "2個のうち1個削除=KEEP(old=KEEP)",
+  "1個削除=KEEP(old=KEEP)",
+  "1個減らす=KEEP(old=KEEP)",
+  "不要ゆえ削除=KEEP(old=KEEP)",
+  "全て削除=KEEP(old=KEEP)",
+  "すべて削除=KEEP(old=KEEP)",
+  "全数削除=KEEP(old=KEEP)",
+  "全部削除=KEEP(old=KEEP)",
+  "ケーブル類削除=KEEP(old=KEEP)",
+  "該当部品を削除=KEEP(old=KEEP)",
+  "この部品は削除=KEEP(old=KEEP)",
+  "この部品を削除してください=KEEP(old=KEEP)",
+  "この部品は削除でお願いします=KEEP(old=KEEP)",
+  "こちら削除=KEEP(old=KEEP)",
+  "こちらは削除=KEEP(old=KEEP)",
+  "これは削除=KEEP(old=KEEP)",
+  "本ユニット不要=KEEP(old=KEEP)",
+  "削除対象=ASK(old=ASK)",
+  "削除対象品=ASK(old=ASK)",
+  "削除予定=KEEP(old=KEEP)",
+  "削除する予定=ASK(old=ASK)",
+  "削除予定品=KEEP(old=KEEP)"
+ ],
+ "K→DEL": [],
+ "K→ASK": [
+  "撤去が容易(old=ASK)",
+  "削除は行わない(old=ASK)",
+  "削除できません(old=ASK)",
+  "削除してはダメ(old=ASK)",
+  "廃止の予定なし(old=ASK)",
+  "削除の予定なし(old=ASK)",
+  "削除の予定はない(old=ASK)"
+ ],
+ "A→DEL": [],
+ "A→KEEP": [
+  "削除可(old=ASK)",
+  "削除可能(old=ASK)",
+  "削除可能性あり(old=ASK)",
+  "削除検討(old=KEEP)",
+  "削除を検討(old=KEEP)",
+  "削除検討中(old=KEEP)"
+ ],
+ "ordChanged": []
+}

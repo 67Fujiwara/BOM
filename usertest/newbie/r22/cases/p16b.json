@@ -1,0 +1,38 @@
+[
+ [
+  "A6 all-changed-delete-blank",
+  "品名\t型式\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t2\nブレーカ\tNF32-SV\t三菱電機\t1\t"
+ ],
+ [
+  "A7 dash-in-new",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t－\tオムロン\t1\t－\nブレーカ\tNF32-SV\t\t三菱電機\t1\t"
+ ],
+ [
+  "A8 dash-in-new-full-copy",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t－\tオムロン\t1\t－\nブレーカ\tNF32-SV\tNF32-SV\t三菱電機\t1\t1"
+ ],
+ [
+  "A9 explicit-unchanged-marks",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t変更なし\tオムロン\t1\t変更なし\nソケット\tPYF14A\t同左\tオムロン\t4\t同左\nブレーカ\tNF32-SV\tNF32-SV\t三菱電機\t1\t1"
+ ],
+ [
+  "A10 explicit-unchanged-only",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t変更なし\tオムロン\t1\t変更なし\nソケット\tPYF14A\t同左\tオムロン\t4\t同左"
+ ],
+ [
+  "V1 genkou-henkou-1tier",
+  "品名\t型式（現行）\t型式（変更）\tメーカー\t数量（現行）\t数量（変更）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "V2 genkou-henkou-2tier",
+  "品名\t型式\t\tメーカー\t数量\t\n\t現行\t変更\t\t現行\t変更\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "V3 henkou-upper-2tier",
+  "\t現行\t\t変更\t\n品名\t型式\t数量\t型式\t数量\nリレー\tMY2N\t2\tMY4N-D2\t4\nタイマ\tH3CR-A8\t1\tH3CR-A8\t1"
+ ],
+ [
+  "T1b ditto-after-unknown",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t〃〃\t1\nソケット\tPYF14A\t同上\t4\nソケット\tPYF08A\t〃\t2"
+ ]
+]

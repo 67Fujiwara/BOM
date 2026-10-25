@@ -1,0 +1,16 @@
+[W-note 「未実装品」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「未実装部品」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「未実装です」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「実装しないこと」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「非実装品」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+MISMATCHES 0

@@ -1,0 +1,146 @@
+[
+ [
+  "A-del2 「削除です」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除です\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-del2 「削除お願いします」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除お願いします\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-del2 「削除完了」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除完了\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-del2 「Rev.B:削除」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\tRev.B:削除\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-keep 「削除（しない）」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除（しない）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-keep 「削除（保留）」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除（保留）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-keep 「撤去（再取付）」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t撤去（再取付）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "A-keep 「取外し（再利用）」",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t取外し（再利用）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "B-kind hdr「変更の種類」 追加/変更/削除",
+  "変更の種類\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n削除\tタイマ\tH3CR-A8\t\t1\n追加\tランプ\t\tL-1\t2\n\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "B-kind 変更区分 値「削除済」",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n削除済\tタイマ\tH3CR-A8\t\t1\n変更なし\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "B-kind 変更区分 値「×」",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n×\tタイマ\tH3CR-A8\t\t1\n変更なし\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "B-kind 変更区分 値「不要」",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n不要\tタイマ\tH3CR-A8\t\t1\n変更なし\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "B-kind 変更区分 値「削除する」",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n削除する\tタイマ\tH3CR-A8\t\t1\n変更なし\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "B-kind ditto under 削除",
+  "変更区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n削除\tタイマ\tH3CR-A8\t\t1\n〃\tランプ\tL-1\t\t1\n追加\tソケット\t\tPYF14A\t2"
+ ],
+ [
+  "C2 3 copies(qty-only rows wrote model) + 3 untouched => marks",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t2\nランプ\tL-1\tL-1\tIDEC\t3\nソケット\tPYF14A\tPYF14A\tオムロン\t2\n端子台\tXW2B-20G4\t\tオムロン\t4\nブレーカ\tNF30\t\t三菱\t1\n電源\tS8VK\t\tオムロン\t1"
+ ],
+ [
+  "C4 3 copies + 9 untouched (boundary)",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t2\nランプ\tL-1\tL-1\tIDEC\t3\nソケット\tPYF14A\tPYF14A\tオムロン\t2\n部品0\tP-0\t\tX\t1\n部品1\tP-1\t\tX\t1\n部品2\tP-2\t\tX\t1\n部品3\tP-3\t\tX\t1\n部品4\tP-4\t\tX\t1\n部品5\tP-5\t\tX\t1\n部品6\tP-6\t\tX\t1\n部品7\tP-7\t\tX\t1\n部品8\tP-8\t\tX\t1"
+ ],
+ [
+  "C6 model+qty versions, maker differs only (N19-04 shape)",
+  "品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\tメーカー\nリレー\tMY2N\tMY4N-D2\t4\t4\tオムロン\nタイマ\tH3CR-A8\tH3CR-A8\t1\t1\tパナソニック\nソケット\tPYF14A\tPYF14A\t2\t2\tIDEC\n端子台\tXW2B-20G4\t\t4\t\tオムロン\nランプ\tL-1\t\t1\t\tIDEC"
+ ],
+ [
+  "D10 数量 (plain) + 製作台数：3台 (not multiplied?)",
+  "製作台数：3台\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "D17 数量(1台)｜製作台数 columns",
+  "品名\t型式\t数量(1台)\t製作台数\nリレー\tMY4N-D2\t2\t3\nタイマ\tH3CR-A8\t1\t3"
+ ],
+ [
+  "D19 製作台数 right of header but 数量 plain",
+  "品名\t型式\tメーカー\t数量\t製作台数\t3\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "E6 第1号機｜第2号機",
+  "品名\t型式\tメーカー\t第1号機\t第2号機\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "E14 Unit1｜Unit2",
+  "品名\t型式\tメーカー\tUnit1\tUnit2\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "F3 ﾌﾞﾋﾝﾒｲ｜ﾋﾝﾊﾞﾝ｜ｽｳﾘﾖｳ (full-size ﾖ)",
+  "ﾌﾞﾋﾝﾒｲ\tﾋﾝﾊﾞﾝ\tｽｳﾘﾖｳ\nﾘﾚｰ\tMY4N-D2\t4\nﾀｲﾏ\tH3CR-A8\t1"
+ ],
+ [
+  "F4 ﾋﾝﾒｲ｜ｶﾀｼｷ｜ﾀﾞｲｽｳ",
+  "ﾋﾝﾒｲ\tｶﾀｼｷ\tﾀﾞｲｽｳ\nﾘﾚｰ\tMY4N-D2\t4\nﾀｲﾏ\tH3CR-A8\t1"
+ ],
+ [
+  "F6 ﾋﾝﾒｲ｜ｶﾀｼｷ｜ｽｳ",
+  "ﾋﾝﾒｲ\tｶﾀｼｷ\tｽｳ\nﾘﾚｰ\tMY4N-D2\t4\nﾀｲﾏ\tH3CR-A8\t1"
+ ],
+ [
+  "F11 ﾋﾝﾒｲ｜ｶﾀｼｷ｜ﾒｰｶｰ｜ｽｳﾘｮｳ title+totals",
+  "ﾌﾞﾋﾝﾋｮｳ\nﾋﾝﾒｲ\tｶﾀｼｷ\tﾒｰｶｰ\tｽｳﾘｮｳ\nﾘﾚｰ\tMY4N-D2\tｵﾑﾛﾝ\t4\nｺﾞｳｹｲ\t\t\t4"
+ ],
+ [
+  "G4 ordinary: USB-A→USB-C 変換ケーブル (model has arrow)",
+  "品名\t型式\tメーカー\t数量\n変換ケーブル\tUSB-A→USB-C 変換ケーブル\tエレコム\t2\nリレー\tMY4N-D2\tオムロン\t4"
+ ],
+ [
+  "G5 ordinary: RS232C->USB変換",
+  "品名\t型式\tメーカー\t数量\n変換器\tRS232C->USB変換\tサンワ\t1"
+ ],
+ [
+  "G8 ordinary: model with (A→B) remark",
+  "品名\t型式\tメーカー\t数量\nケーブル\tUL1007 AWG22 (赤→黒)\tフジクラ\t10"
+ ],
+ [
+  "G15 model with \">\" as 以上 (>=100V)",
+  "品名\t型式\t数量\nダイオード\t1N4007 (>100V)\t10"
+ ],
+ [
+  "H9 KiCad Reference｜Value｜Footprint｜Qty｜Description",
+  "Reference\tValue\tFootprint\tQty\tDescription\nR1,R2\t10k\tR_0603\t2\tResistor\nC1\t100n\tC_0603\t1\tCapacitor"
+ ],
+ [
+  "H13 変更理由 as note and 削除 in 備考",
+  "品名\t型式（旧）\t型式（新）\t数量\t変更理由\t備考\nリレー\tMY2N\tMY4N-D2\t4\t廃番のため\t\nタイマ\tH3CR-A8\t\t1\t\t削除"
+ ],
+ [
+  "P1 part name starts with DNP + space (大日本印刷 film)",
+  "品名\t型式\tメーカー\t数量\nDNP 反射フィルム\tRF-200\tミスミ\t2\nリレー\tMY4N-D2\tオムロン\t4"
+ ],
+ [
+  "Q9 CSV: multi-line cell containing commas and 4 columns total",
+  "品名,型式,数量\n\"リレー, 小型,\n24V\",MY4N-D2,4\nタイマ,H3CR-A8,2"
+ ],
+ [
+  "R13 ordinary BOM with 変更内容 and 備考 both (note kept?)",
+  "品名\t型式\tメーカー\t数量\t変更内容\t備考\nリレー\tMY4N-D2\tオムロン\t4\t型式変更\t盤内上段"
+ ],
+ [
+  "R14 ordinary BOM with 変更点 and 備考",
+  "品名\t型式\tメーカー\t数量\t変更点\t備考\nリレー\tMY4N-D2\tオムロン\t4\t数量増\t客先指定"
+ ]
+]

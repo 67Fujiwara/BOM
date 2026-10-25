@@ -1,0 +1,26 @@
+[H1 ordinary Excel BOM with real notes] INFO (old≠new)
+   new: MY4N-D2 DC24V:4 H3CR-A8 AC100-240V:1 XW2B-20G4:4 USB-A→USB-C 変換ケーブル:2 AL6M-M4 (赤):2 A22-10M:2 UL1007 AWG22 (赤→黒):10 NF32-SV 3P 10A:1 | map=-,name,model,maker,qtyNeeded,unit,note
+   old: MY4N-D2 DC24V:4 H3CR-A8 AC100-240V:1 XW2B-20G4:4 USB-A→USB-C 変換ケーブル:2 AL6M-M4 (赤):2 A22-10M:2 UL1007 AWG22 (赤→黒):10 RJ45:1 NF32-SV 3P 10A:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[H2 ordinary with 変更内容 col] INFO
+   new: MY4N-D2:4 H3CR-A8:1 XW2B-20G4:4 L-1:2 | map=name,model,maker,qtyNeeded,-,note
+   warn: 「備考」に当たる列が 2 つあります。「備考」の列を使います
+[H3 ordinary with 区分 col (mixed)] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=-,name,model,maker,qtyNeeded
+   warn: 「区分」が削除の 1 行（例: 削除 端子台 XW2B-20G4）は、削除された部品として取り込みません
+[H4 EDA KiCad] INFO
+   new: Resistor:3 Capacitor:1 MCU:1 Diode:1 | map=ref,-,-,qtyNeeded,name
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[H5 DNP column + note 未実装品] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 2 行は取り込みません
+[H6 machine qty] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,-,-,qtyNeeded
+   warn: 数量は「合計」の列を使います（空の行は号機の数を足します）
+[H7 spaces & hyphens in model] INFO
+   new: MY4N - D2:4 H3CR - A8:1 RS-485 -> RS-232C 変換器:1 USB - C:2 | map=name,model,maker,qtyNeeded
+   warn: 
+[H8 model w/ - > in qty-like] INFO
+   new: 1/4W 10k-1%:10 AWG22->AWG24 相当:10 M4-0.7×10:20 | map=name,model,maker,qtyNeeded
+   warn: 
+MISMATCHES 0

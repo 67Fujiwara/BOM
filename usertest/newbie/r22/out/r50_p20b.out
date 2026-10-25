@@ -1,0 +1,136 @@
+[P1 part name starts with DNP + space (大日本印刷 film)] OK
+   new: RF-200:2 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[P2 model DNP-1234] OK
+   new: DNP-1234:2 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[P3 maker 大日本印刷(DNP)] OK
+   new: RF-200:2 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[P4 note DNP (将来用) drops] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P5 note 「DNP品あり」 not exact] MISMATCH (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   exp: RF-200:2 MY4N-D2:4
+   old: RF-200:2 MY4N-D2:4
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P6 実装 column ○/×] OK
+   new: MY4N-D2:4 L-1:2 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P7 実装 column あり/なし] OK
+   new: MY4N-D2:4 L-1:2 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P8 実装 column 実装/未実装] OK
+   new: MY4N-D2:4 L-1:2 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P9 実装 column 取付位置 values (盤内/現場) - 実装 as mounting place] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,-
+   warn: 
+[P10 Altium Fitted column Not Fitted] INFO
+   new: Resistor:1 | map=note,name,ref,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません / 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[P11 DNP col header with ○] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P12 DNP header values DNP/blank] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[P13 備考 実装無し / 実装せず / 非実装] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 3 行は取り込みません
+[P14 備考 実装しない場合あり (sentence)] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[P15 備考 DNPは別途] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[P16 名称 未実装基板 (V19-05)] OK
+   new: PCB-1:1 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 
+[Q1 CSV multi-line note last col] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[Q2 CSV title row + multi-line note] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 見出しより上の 1 行（表題など）は取り込みません
+[Q3 CSV inch marks and ditto "] INFO
+   new: FAN-4:2 FAN-5":1 MY4N-D2:4 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[Q4 TSV every row has a multi-line cell] OK
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[Q5 CSV multi-line header cells all] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 
+[Q6 CSV multi-line cell with quotes inside] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[Q7 CSV only 2 rows, multi-line cell (width ambiguity)] OK
+   new: MY4N-D2:4 | map=name,model,qtyNeeded
+   warn: 
+[Q8 TSV multi-line cell with tab? (should not)] OK
+   new: MY4N-D2 (DC24V):4 H3CR-A8:2 | map=name,model,qtyNeeded
+   warn: 
+[Q9 CSV: multi-line cell containing commas and 4 columns total] OK
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,qtyNeeded
+   warn: 
+[Q10 CSV: cell with ditto " mid-table and a multiline cell later] INFO
+   new: MY4N-D2:4 MY4N-D2X:2 H3CR-A8:1 | map=name,model,qtyNeeded,note
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[R1 変更区分 + 旧/新 + 備考 削除 words] OK
+   new: MY4N-D2:4 PYF14A:2 | map=-,name,-,model,qtyNeeded,note
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: 端子台 XW2B-20G4 4）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「変更区分」が削除の 2 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[R2 sparse change sheet: only changed rows + totals + signature] OK
+   new: MY4N-D2:4 | map=name,-,model,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 見出しより上の 2 行（表題など）は取り込みません / 小計・合計・区切りの 2 行は取り込みません（例: 「合計 5 4」「作成 山田 承認 鈴木」） / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更後）」の列を使います
+[R3 qty 0 means deletion] OK
+   new: MY4N-D2:4 L-1:2 | map=name,-,model,-,qtyNeeded
+   warn: 「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[R4 per-machine change: 旧1号機/旧2号機/新1号機/新2号機] MISMATCH
+   new: MY4N-D2:6 H3CR-A8:2 L-1:0 | map=name,model,-,-,qtyNeeded,-
+   exp: MY4N-D2:6 H3CR-A8:2
+   warn: 数量の列 4 つ（「1号機（旧）」「2号機（旧）」「1号機（新）」「2号機（新）」）を足して数量にしました / 新の号機が空の 1 行は、旧の号機の数を足しました
+[R5 旧→新 in cells with 変更区分 column] MISMATCH (old≠new)
+   new: MY2N→MY4N-D2:4 L-1:2 | map=-,name,model,qtyNeeded
+   exp: MY4N-D2:4 L-1:2
+   old: MY4N-D2:4 L-1:2
+   warn: 「変更区分」が削除の 1 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません
+[R6 変更前/変更後 two-tier with 変更区分 first col] OK
+   new: MY4N-D2:4 L-1:2 | map=-,name,-,-,model,qtyNeeded
+   warn: 「区分」が削除の 1 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 見出しより上の 1 行（表題など）は取り込みません / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更後）」の列を使います
+[R7 old/new where 新 has 同左 / 変更なし text] OK
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: ソケット PYF14A 削除）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[R8 新 column with 〃 below a change] OK
+   new: MY4N-D2:4 MY4N-D2:4 H3CR-A8:1 | map=name,-,model,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[R9 ECN 一覧: 旧品番/新品番/員数 + 理由 col with 廃止] OK
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=-,-,model,qtyNeeded,-
+   warn: 「新品番」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「新品番」の列を使います
+[R10 変更内容 列に「削除」だけ (変更内容 acts as note)] OK
+   new: MY4N-D2:4 | map=name,-,model,qtyNeeded,note
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[R11 変更内容 + 備考 where 削除 in 変更内容 only] OK (old≠new)
+   new: MY4N-D2:4 | map=name,-,model,qtyNeeded,-,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「備考」に当たる列が 2 つあります。「備考」の列を使います
+[R12 備考 + 変更内容 where 削除 in 備考 (備考 first)] OK
+   new: MY4N-D2:4 | map=name,-,model,qtyNeeded,note,-
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「備考」に当たる列が 2 つあります。「備考」の列を使います
+[R13 ordinary BOM with 変更内容 and 備考 both (note kept?)] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-,note
+   warn: 「備考」に当たる列が 2 つあります。「備考」の列を使います
+[R14 ordinary BOM with 変更点 and 備考] INFO
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,-,note
+   warn: 「備考」に当たる列が 2 つあります。「備考」の列を使います
+[S1 ECN with page header, title, change sheets, totals and signature (all in one)] INFO
+   new: MY4N-D2:6 L-1:6 | map=name,-,model,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました / 削除の印がある・新しい版の列が空の 2 行（例: タイマ H3CR-A8 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 数量の列「員数」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 2 行（表題など）は取り込みません / 小計・合計・区切りの 2 行は取り込みません（例: 「合計 5」「作成 山田 承認 鈴木」） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[S2 half-width kana title + 号機 two-tier] INFO
+   new: MY4N-D2:6 | map=name,model,qtyNeeded,-,-
+   warn: 数量の列 3 つ（「ｽｳﾘｮｳ（1号機）」「ｽｳﾘｮｳ（2号機）」「ｽｳﾘｮｳ（3号機）」）を足して数量にしました / 見出しより上の 1 行（表題など）は取り込みません / 2 段の見出しを 1 段にまとめて読みました
+[S3 header 型式 duplicated across pages with 変更区分] OK
+   new: MY4N-D2:4 L-1:2 | map=-,name,-,model,qtyNeeded
+   warn: 「変更区分」が削除の 1 行（例: 削除 タイマ H3CR-A8）は、削除された部品として取り込みません / 繰り返しの見出し 1 行は取り込みません / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+MISMATCHES 3

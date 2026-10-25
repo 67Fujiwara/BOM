@@ -1,0 +1,37 @@
+[e1 見積書風（品名｜規格｜メーカー｜単価｜数量｜金額）] INFO
+   new: リレー:4 タイマ:2 | map=-,name,-,maker,-,qtyNeeded,-
+   warn: 
+[e2 品名｜仕様｜型式｜単価｜数量｜金額] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,-,model,-,qtyNeeded,-
+   warn: 
+[e3 見出しの右端に頁｜1] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=-,name,model,maker,qtyNeeded,-,-,-
+   warn: 
+[e4 号機の列が 1｜2｜3] INFO
+   new: MY4N-D2:1 H3CR-A8:1 | map=name,model,maker,-,-,-
+   warn: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[k1 記号｜…｜変更記号] INFO
+   new: MY4N-D2:1 MY4N-D2:1 H3CR-A8:1 | map=ref,name,model,maker,qtyNeeded,-
+   warn: 
+[c1 旧／新：変えない行は新が空＋追加 1 行] INFO
+   new: MY4N-D2:4 H3CR-A8:1 NF32-SV:1 XW2B-20G4:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[c2 変更後だけ書く＋追加 1 行] INFO
+   new: MY4N-D2:4 H3CR-A8:1 NF32-SV:1 XW2B-20G4:2 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「変更後数量」が空の 2 行は、ほかの「数量」の列の値を使いました / 「変更後型式」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います / 「数量」に当たる列が 2 つあります。「変更後数量」の列を使います
+[c3 変更後だけ書く（追加なし）] INFO
+   new: MY4N-D2:4 H3CR-A8:1 NF32-SV:1 | map=name,-,model,maker,-,qtyNeeded
+   warn: 「変更後数量」が空の 2 行は、ほかの「数量」の列の値を使いました / 「変更後型式」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います / 「数量」に当たる列が 2 つあります。「変更後数量」の列を使います
+[c4 削除の別の書き方（撤去・なし・不要・×）] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 4 行（例: ランプ L-1 撤去）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[d1 〃の別の書き方（″・同　上・＂・上に同じ・同上。）] INFO
+   new: MY4N-D2:4 MY2N-D2:2 H3CR-A8:1 PYF14A:4 PYF08A:2 PYF11A:2 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 5 セルは、上の行（同左は左のセル）の値にしました
+[d2 メーカーに「同左」（左は型式）] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded
+   warn: 「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[t1 未定の書き方 その 3] INFO
+   new: 未決定:1 要検討:1 選定中:1 仮:1 未確定:1 保留:1 XXXX:1 ○○:1 別途:1 追って連絡:1 MY4N-D2:1 MY4N-D2:1 | map=name,model,maker,qtyNeeded
+   warn: 
+MISMATCHES 0

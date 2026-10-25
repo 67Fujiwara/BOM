@@ -1,0 +1,153 @@
+備考「DNP製」 | KEEP | KEEP | KEEP
+備考「DNP社製」 | KEEP | KEEP | KEEP
+備考「DNP 製」 | KEEP | DROP | KEEP
+備考「DNP 社製」 | KEEP | DROP | KEEP
+備考「DNP 反射防止フィルム」 | KEEP | DROP | KEEP
+備考「DNP製 反射防止フィルム」 | KEEP | KEEP | KEEP
+備考「DNP指定」 | KEEP | KEEP | KEEP
+備考「DNP 指定品」 | KEEP | DROP | KEEP
+備考「DNP品番 ABC-1」 | KEEP | DROP | KEEP
+備考「DNP 品番: ABC-1」 | KEEP | DROP | KEEP
+備考「DNP（大日本印刷）」 | KEEP | DROP | DROP
+備考「DNP(大日本印刷)製」 | KEEP | DROP | DROP
+備考「DNPフォトマスク」 | KEEP | KEEP | KEEP
+備考「DNP/オムロン共通」 | KEEP | DROP | KEEP
+備考「DNP/AGC」 | KEEP | DROP | KEEP
+備考「DNP:大日本印刷」 | KEEP | DROP | KEEP
+備考「DNP: 大日本印刷製」 | KEEP | DROP | KEEP
+備考「DNP・AGC」 | KEEP | DROP | KEEP
+備考「DNP品あり」 | KEEP | DROP | KEEP
+備考「DNP品を使用」 | KEEP | DROP | KEEP
+備考「DNP品でお願いします」 | KEEP | DROP | KEEP
+備考「DNPの製品」 | KEEP | KEEP | KEEP
+備考「DNPにて購入」 | KEEP | KEEP | KEEP
+備考「DNP納入」 | KEEP | KEEP | KEEP
+備考「DNP 納入品」 | KEEP | DROP | KEEP
+備考「DNP経由」 | KEEP | KEEP | KEEP
+備考「DNP社より支給」 | KEEP | KEEP | KEEP
+備考「DNP 支給」 | KEEP | DROP | KEEP
+備考「DNP」 | DROP | DROP | DROP
+備考「dnp」 | DROP | DROP | DROP
+備考「DNP 将来用」 | DROP | DROP | KEEP
+備考「DNP将来用」 | DROP | KEEP | KEEP
+備考「DNP、将来用」 | DROP | KEEP | KEEP
+備考「DNP:将来用」 | DROP | DROP | KEEP
+備考「DNP/未実装」 | DROP | DROP | KEEP
+備考「DNP品」 | DROP | DROP | KEEP
+備考「DNP部品」 | DROP | KEEP | KEEP
+備考「DNP対象」 | DROP | KEEP | KEEP
+備考「DNP（実装しない）」 | DROP | DROP | DROP
+備考「DNP（将来用）」 | DROP | DROP | DROP
+備考「Do Not Populate」 | DROP | DROP | DROP
+備考「DO NOT PLACE」 | DROP | DROP | DROP
+備考「Not Fitted」 | DROP | DROP | DROP
+備考「NF」 | DROP | KEEP | KEEP
+備考「NP」 | DROP | KEEP | KEEP
+備考「N/P」 | DROP | KEEP | KEEP
+備考「NC」 | DROP | KEEP | KEEP
+備考「non-pop」 | DROP | KEEP | KEEP
+備考「未実装」 | DROP | DROP | DROP
+備考「未実装品」 | DROP | DROP | DROP
+備考「実装しない」 | DROP | DROP | DROP
+備考「実装なし」 | DROP | DROP | DROP
+備考「実装不要」 | DROP | DROP | DROP
+備考「実装しません」 | DROP | KEEP | KEEP
+備考「実装無し」 | DROP | DROP | DROP
+備考「実装せず」 | DROP | DROP | DROP
+備考「非実装」 | DROP | DROP | DROP
+備考「非実装品」 | DROP | DROP | DROP
+備考「オプション（未実装）」 | DROP | KEEP | KEEP
+備考「将来用（未実装）」 | DROP | KEEP | KEEP
+備考「標準では未実装」 | DROP | KEEP | KEEP
+備考「※未実装」 | DROP | KEEP | KEEP
+備考「(未実装)」 | DROP | KEEP | KEEP
+備考「【未実装】」 | DROP | KEEP | KEEP
+備考「DNP※」 | DROP | KEEP | KEEP
+備考「DNP 予備」 | DROP | DROP | KEEP
+備考「DNP(予備)」 | DROP | DROP | DROP
+規格(未知の列)「DNP」 | DROP | DROP | DROP
+規格(未知の列)「DNP 製」 | KEEP | DROP | KEEP
+規格(未知の列)「DNP 将来用」 | DROP | DROP | KEEP
+規格(未知の列)「DNP（大日本印刷）」 | KEEP | DROP | DROP
+規格(未知の列)「DNP品」 | DROP | DROP | KEEP
+規格(未知の列)「DNP/未実装」 | DROP | DROP | KEEP
+規格(未知の列)「DNP納入」 | KEEP | KEEP | KEEP
+品名列「DNP」 | (参考) | DROP | DROP
+品名列「DNP（大日本印刷）」 | (参考) | KEEP | DROP
+品名列「DNP 反射フィルム」 | (参考) | KEEP | KEEP
+品名列「DNP製フィルム」 | (参考) | KEEP | KEEP
+品名列「未実装」 | (参考) | DROP | DROP
+品名列「未実装基板」 | (参考) | KEEP | KEEP
+品名列「DNP品」 | (参考) | KEEP | KEEP
+品名列「Not Fitted」 | (参考) | DROP | DROP
+型式列「DNP」 | (参考) | DROP | DROP
+型式列「DNP-100」 | (参考) | KEEP | KEEP
+型式列「DNP 100」 | (参考) | KEEP | KEEP
+型式列「DNP/AGC」 | (参考) | KEEP | KEEP
+型式列「DNP（予備）」 | (参考) | KEEP | DROP
+型式列「未実装」 | (参考) | DROP | DROP
+型式列「DNP品」 | (参考) | KEEP | KEEP
+メーカー列「DNP」 | (参考) | KEEP | KEEP
+メーカー列「DNP（大日本印刷）」 | (参考) | KEEP | KEEP
+メーカー列「大日本印刷」 | (参考) | KEEP | KEEP
+メーカー列「DNP社」 | (参考) | KEEP | KEEP
+メーカー列「DNP 社」 | (参考) | KEEP | KEEP
+列「DNP」=「x」 | (参考) | DROP | DROP
+列「DNP」=「X」 | (参考) | DROP | DROP
+列「DNP」=「1」 | (参考) | DROP | DROP
+列「DNP」=「yes」 | (参考) | DROP | DROP
+列「DNP」=「Y」 | (参考) | DROP | DROP
+列「DNP」=「DNP」 | (参考) | DROP | DROP
+列「DNP」=「○」 | (参考) | DROP | DROP
+列「DNP」=「●」 | (参考) | DROP | DROP
+列「DNP」=「✓」 | (参考) | DROP | DROP
+列「DNP」=「未実装」 | (参考) | DROP | DROP
+列「DNP」=「しない」 | (参考) | DROP | DROP
+列「DNP」=「true」 | (参考) | DROP | DROP
+列「DNP」=「」 | (参考) | KEEP | KEEP
+列「DNP」=「0」 | (参考) | KEEP | KEEP
+列「DNP」=「no」 | (参考) | KEEP | KEEP
+列「DNP」=「-」 | (参考) | KEEP | KEEP
+列「DNP」=「×」 | (参考) | KEEP | KEEP
+列「実装」=「×」 | (参考) | DROP | DROP
+列「実装」=「未」 | (参考) | DROP | DROP
+列「実装」=「なし」 | (参考) | DROP | DROP
+列「実装」=「無」 | (参考) | DROP | DROP
+列「実装」=「不要」 | (参考) | DROP | DROP
+列「実装」=「○」 | (参考) | KEEP | KEEP
+列「実装」=「有」 | (参考) | KEEP | KEEP
+列「実装」=「あり」 | (参考) | KEEP | KEEP
+列「実装」=「手」 | (参考) | KEEP | KEEP
+列「実装」=「自動」 | (参考) | KEEP | KEEP
+列「実装」=「-」 | (参考) | KEEP | KEEP
+列「実装」=「0」 | (参考) | DROP | DROP
+列「実装」=「1」 | (参考) | KEEP | KEEP
+列「実装」=「未実装」 | (参考) | DROP | DROP
+列「実装」=「しない」 | (参考) | DROP | DROP
+列「実装」=「NO」 | (参考) | DROP | DROP
+列「Fitted」=「No」 | (参考) | DROP | DROP
+列「Fitted」=「N」 | (参考) | DROP | DROP
+列「Fitted」=「NF」 | (参考) | DROP | DROP
+列「Fitted」=「Not Fitted」 | (参考) | DROP | DROP
+列「Fitted」=「×」 | (参考) | DROP | DROP
+列「Fitted」=「0」 | (参考) | DROP | DROP
+列「Fitted」=「false」 | (参考) | DROP | DROP
+列「Fitted」=「Yes」 | (参考) | KEEP | KEEP
+列「Fitted」=「1」 | (参考) | KEEP | KEEP
+列「Fitted」=「Y」 | (参考) | KEEP | KEEP
+列「Fitted」=「○」 | (参考) | KEEP | KEEP
+列「Fitted」=「-」 | (参考) | KEEP | KEEP
+列「実装有無」=「無」 | (参考) | DROP | DROP
+列「実装有無」=「有」 | (参考) | KEEP | KEEP
+列「実装有無」=「×」 | (参考) | DROP | DROP
+列「実装有無」=「○」 | (参考) | KEEP | KEEP
+列「実装有無」=「未実装」 | (参考) | DROP | DROP
+列「Populate」=「no」 | (参考) | DROP | DROP
+列「Populate」=「NO」 | (参考) | DROP | DROP
+列「Populate」=「yes」 | (参考) | KEEP | KEEP
+列「Populate」=「0」 | (参考) | DROP | DROP
+列「Populate」=「1」 | (参考) | KEEP | KEEP
+列「Populate」=「DNP」 | (参考) | DROP | DROP
+列「DNP区分」=「DNP」 | (参考) | DROP | DROP
+列「DNP区分」=「」 | (参考) | KEEP | KEEP
+列「DNP区分」=「実装」 | (参考) | KEEP | KEEP

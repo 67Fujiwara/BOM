@@ -1,0 +1,42 @@
+=== 設計: R001 の調達区分を 支給品 にする
+  before: {"ball":"purchasing","status":"selected","proc":"相見積","adopted":"S1","flags":"","quotable":true,"working":null,"pend":null}
+  goto 調達: true
+  edit mode: 編集 cursor R001 調達区分 panel=null
+  after typing: 編集 | 
+  toast: null
+  after: {"ball":"design","status":"selected","proc":"相見積","adopted":"S1","flags":"","quotable":true,"working":"{\"procurement\":\"支給品\"}","pend":null}
+  status: ナビR002 調達区分設計 山田: 未公開 6 行 / 指摘 0Ctrl+Enter公開 6 行F1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開く
+  Ctrl+Enter -> null | panel 変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+   panel→ - toast=行 6（Rev.2） を公開しました
+  after publish: {"ball":null,"status":"selected","proc":"支給品","flags":"","quotable":false,"working":null,"pend":null}
+  purchasing view 9 header=P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+  Alt+9: 24 rows, R001 なし | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+8: 5 rows, R001 なし | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+5: 24 rows, R001 あり | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+1: 24 rows, R001 あり | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  after (購買): {"ball":null,"status":"selected","proc":"支給品","flags":"","quotable":false,"working":null,"pend":null}
+  view8 rows: R002,R003,R013,R034,R045 (5)
+  palette: 流れ正式見積を依頼（社外）購買。選定済の行を商社ごとに
+  header: P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+=== 設計: R001 の調達区分を 社内在庫 にする
+  before: {"ball":"purchasing","status":"selected","proc":"相見積","adopted":"S1","flags":"","quotable":true,"working":null,"pend":null}
+  goto 調達: true
+  edit mode: 編集 cursor R001 調達区分 panel=null
+  after typing: 編集 | 
+  toast: null
+  after: {"ball":"design","status":"selected","proc":"相見積","adopted":"S1","flags":"","quotable":true,"working":"{\"procurement\":\"社内在庫\"}","pend":null}
+  status: ナビR002 調達区分設計 山田: 未公開 6 行 / 指摘 0Ctrl+Enter公開 6 行F1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開く
+  Ctrl+Enter -> null | panel 変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+   panel→ - toast=行 6（Rev.2） を公開しました
+  after publish: {"ball":null,"status":"selected","proc":"社内在庫","flags":"","quotable":false,"working":null,"pend":null}
+  purchasing view 9 header=P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+  Alt+9: 24 rows, R001 なし | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+8: 5 rows, R001 なし | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+5: 24 rows, R001 あり | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  Alt+1: 24 rows, R001 あり | P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー
+  after (購買): {"ball":null,"status":"selected","proc":"社内在庫","flags":"","quotable":false,"working":null,"pend":null}
+  view8 rows: R002,R003,R013,R034,R045 (5)
+  palette: 流れ正式見積を依頼（社外）購買。選定済の行を商社ごとに
+  header: P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,546 / 正式 ¥25,102 / 予算 ¥2,800,000 (-99.1%)設計待ち 68購買待ち 10PM待ち 1見積済 74/79エラー 3警告 3設計購買PM佐藤Ctrl+K コマンド?
+
+ERRORS:

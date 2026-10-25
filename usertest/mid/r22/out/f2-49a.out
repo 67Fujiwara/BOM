@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal_price: R074 x1.05 EDIT-ERR 74 行 × 3 社に正式見積を依頼
+1:edit_qty: R044 を入れて Enter] 行 1（Rev.3） を公開しました
+2:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:pm_decide: R003 Shift+Y R003: 受入
+5:order: R074 R074: 発注済にしました
+6:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+7:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+9:toggle_approval: OFF 案件設定を保存しました
+10:withdraw_x: R063 R063: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+11:receive: R074 R074: 入荷済にしました
+12:edit_qty: R072 を入れて Enter] 行 1（Rev.4） を公開しました
+13:edit_qty: R072 を入れて Enter] 行 1（Rev.5） を公開しました
+14:receive: none
+15:pm_decide: R032 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+16:decline: R042 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+17:replace_row: R061 R061 の置き換え品 R081 を作りました（公開すると R061 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+18:bulk: 採用 15 / 拮抗 1（要見直し）/ 承認要 0 / スキップ 9
+19:order: R013 R013: 発注済にしました
+20:cancel_row: R004 を入れて Enter] 行 1（Rev.7） を公開しました
+21:toggle_approval: ON 案件設定を保存しました
+22:rough: 6 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+23:next_day: +3d
+24:pick_supplier: none
+25:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:formal: になります → 14 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 2 行 / 再見積要 0 行
+28:replace_row: R065 R065 の置き換え品 R082 を作りました（公開すると R065 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+29:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+31:edit_qty: R065 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+32:formal_price: R025 x1.5 EDIT-ERR R025 の正式単価 ¥158（概算から +50%）。桁・行を
+33:order: R025 R025: 発注済にしました
+34:formal_price: R003 x1 EDIT-ERR R025: 発注済にしました
+35:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+36:edit_qty: R057 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+37:reload: reload
+38:switch_proc: R066→社内在庫 ）を入れて Ente] 行 3（Rev.9） を公開しました
+39:cancel_row: R050 入れて Enter] 行 1（Rev.10） を公開しました
+PASS F2-49a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

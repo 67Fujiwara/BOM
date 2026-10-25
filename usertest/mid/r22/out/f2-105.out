@@ -1,0 +1,6 @@
+0:pick_supplier: none
+1:switch_proc: R078→指定商社  で選び、変更番号（] 行 5（Rev.2） を公開しました
+2:pm_decide: R032 Shift+Y R032: 受入
+3:receive: R001 R001: 入荷済にしました
+4:undo: purchasing 元に戻す: 入荷済
+5:withdraw_x: none

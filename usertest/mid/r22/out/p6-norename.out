@@ -1,0 +1,20 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → ）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+big formal 1 → EDIT-ERR R001 の正式単価 ¥30,438（概算から +20748%）。桁・行を確かめてください
+PM b 1 → R001: 次点商社へ
+X R001 相見積 st=selected adopt=S2 reason=次点へ（差分超過） oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] wd 因幡電機 P-2026-041-S1-F1
+PASS P6-norename-1 1 回目の次点で 因幡電機 への取下げが 1 件 :: 因幡電機 P-2026-041-S1-F1
+formal again → が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+X R001 相見積 st=formalRequested adopt=S2 reason=次点へ（差分超過） oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+big formal 2 → EDIT-ERR R001 の正式単価 ¥30,492（概算から +24690%）。桁・行を確かめてください
+PM b 2 → R001: 次点商社へ
+X R001 相見積 st=selected adopt=S1 reason=次点へ（差分超過） oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1 / 立花エレテック P-2026-041-S2-F2"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] wd 因幡電機 P-2026-041-S1-F1 / 立花エレテック P-2026-041-S2-F2
+PASS P6-norename-2 取下げが 2 件たまる（因幡電機 と 立花エレテック） :: 因幡電機 P-2026-041-S1-F1 / 立花エレテック P-2026-041-S2-F2
+current adopt S1 因幡電機
+formal again → 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+wd after formal again 立花エレテック P-2026-041-S2-F2
+PASS P6-norename-R1 因幡電機 に正式依頼し直したら、因幡電機 への取下げの記録は消える（残りは他社の分だけ） :: 立花エレテック P-2026-041-S2-F2
+ERRORS []
+PASS P6-norename-9 console error なし :: []
+== 4/4 PASS

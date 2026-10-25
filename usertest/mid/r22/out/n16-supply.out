@@ -1,0 +1,11 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R001, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しまし
+X R001 支給品 st=selected adopt=- reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] ball null
+購買待ち before 37 after 41
+purchasing view 3/8 has X true false | status bar ナビR002 発注数購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きましたF1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開く
+status bar on X ナビR001 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+PASS N16-1 支給品に切り替えた行は、購買の待ちに数えない（商社に頼まない行なので購買は何もできない） :: ball=null 購買待ち 37 → 41
+FAIL N16-2 支給品の行は正式見積(8)・発注(3)のビューに出ない :: in3=true in8=false
+ERRORS []
+== 1/2 PASS

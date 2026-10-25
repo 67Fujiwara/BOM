@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:edit_qty: R033 を入れて Enter] 行 1（Rev.3） を公開しました
+1:switch_proc: R046→支給品 を入れて Enter] 行 1（Rev.4） を公開しました
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:pm_decide: R046 Shift+Y R046・Rev.4 の変更セット 1 行まとめて: 却下
+4:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:edit_qty: R001 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+7:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+8:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+10:switch_proc: R031→指定商社 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+11:add_row: R081 unpublished
+12:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+13:consolidate: やめました（何も変えていません）
+14:receive: none
+15:pm_decide: R033 Shift+Y R033・Rev.3 の変更セット 1 行まとめて: 却下
+16:undo: pm 元に戻す: 決定: 却下
+17:withdraw_x: R013 R013: 正式依頼の取下げ（S1 P-2026-041-S1-1）を伝えた（確認済）
+18:undo: design 元に戻す: セル編集
+19:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+20:pm_decide: R033 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+21:undo: design 元に戻す: セル編集
+22:undo: purchasing 元に戻す: 正式依頼の取下げを伝えた
+23:decline: R044 S1 EDIT-ERR 元に戻す: 正式依頼の取下げを伝えた
+24:edit_qty: R023  で選び、変更番号（] 行 5（Rev.5） を公開しました
+25:add_row: R082 を入れて Enter] 行 1（Rev.6） を公開しました
+26:pick_supplier: R044 1〜1 で商社を選んでください
+27:pm_decide: R031 y R031・Rev.5 の変更セット 5 行まとめて: 承認
+28:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:toggle_approval: OFF 案件設定を保存しました
+30:pm_decide: R033 y R033・Rev.3 の変更セット 1 行まとめて: 承認
+31:edit_qty: R005 前後に空白があります … 直すか Alt+x で確認済みに）
+32:undo: design 元に戻す: セル編集
+33:formal_price: R045 x1.5 R045 の正式単価 ¥15,209（概算から +50%）。桁・行を確かめてくだ
+34:rough: 9 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+35:switch_proc: R037→支給品 を入れて Enter] 行 1（Rev.7） を公開しました
+36:pm_decide: R045 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+37:pm_decide: R045 Shift+Y R045: 受入
+38:pm_decide: R082 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+39:pm_decide: R082 y R082・Rev.6 の変更セット 1 行まとめて: 承認
+PASS F2-6a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

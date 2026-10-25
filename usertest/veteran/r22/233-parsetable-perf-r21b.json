@@ -1,0 +1,233 @@
+[
+ {
+  "id": "ditto-line m=2500",
+  "len": 5040,
+  "fn": "table",
+  "ms": 6,
+  "n": 4
+ },
+ {
+  "id": "ditto-line-bom m=2500",
+  "len": 5040,
+  "fn": "bom",
+  "ms": 139,
+  "n": 3
+ },
+ {
+  "id": "commaquote-line m=2500",
+  "len": 12540,
+  "fn": "table",
+  "ms": 6,
+  "n": 4
+ },
+ {
+  "id": "ditto-line m=5000",
+  "len": 10040,
+  "fn": "table",
+  "ms": 2,
+  "n": 4
+ },
+ {
+  "id": "ditto-line-bom m=5000",
+  "len": 10040,
+  "fn": "bom",
+  "ms": 90,
+  "n": 3
+ },
+ {
+  "id": "commaquote-line m=5000",
+  "len": 25040,
+  "fn": "table",
+  "ms": 4,
+  "n": 4
+ },
+ {
+  "id": "ditto-line m=10000",
+  "len": 20040,
+  "fn": "table",
+  "ms": 1,
+  "n": 4
+ },
+ {
+  "id": "ditto-line-bom m=10000",
+  "len": 20040,
+  "fn": "bom",
+  "ms": 114,
+  "n": 3
+ },
+ {
+  "id": "commaquote-line m=10000",
+  "len": 50040,
+  "fn": "table",
+  "ms": 2,
+  "n": 4
+ },
+ {
+  "id": "ditto-line m=20000",
+  "len": 40040,
+  "fn": "table",
+  "ms": 1,
+  "n": 4
+ },
+ {
+  "id": "ditto-line-bom m=20000",
+  "len": 40040,
+  "fn": "bom",
+  "ms": 189,
+  "n": 3
+ },
+ {
+  "id": "commaquote-line m=20000",
+  "len": 100040,
+  "fn": "table",
+  "ms": 3,
+  "n": 4
+ },
+ {
+  "id": "ditto-line m=40000",
+  "len": 80040,
+  "fn": "table",
+  "ms": 2,
+  "n": 4
+ },
+ {
+  "id": "ditto-line-bom m=40000",
+  "len": 80040,
+  "fn": "bom",
+  "ms": 427,
+  "n": 3
+ },
+ {
+  "id": "commaquote-line m=40000",
+  "len": 200040,
+  "fn": "table",
+  "ms": 9,
+  "n": 4
+ },
+ {
+  "id": "tsv refs=2 rows=2500",
+  "len": 55294,
+  "fn": "bom",
+  "ms": 139,
+  "n": 2500
+ },
+ {
+  "id": "tsv refs=5 rows=2500",
+  "len": 85294,
+  "fn": "bom",
+  "ms": 135,
+  "n": 2500
+ },
+ {
+  "id": "csv tabs=5 rows=2500",
+  "len": 75294,
+  "fn": "bom",
+  "ms": 100,
+  "n": 2500
+ },
+ {
+  "id": "tsv-ml rows=2500",
+  "len": 72792,
+  "fn": "bom",
+  "ms": 271,
+  "n": 7501
+ },
+ {
+  "id": "csv-open-quote rows=2500",
+  "len": 48546,
+  "fn": "bom",
+  "ms": 165,
+  "n": 2500
+ },
+ {
+  "id": "csv-inch rows=2500",
+  "len": 55156,
+  "fn": "bom",
+  "ms": 145,
+  "n": 1251
+ },
+ {
+  "id": "tsv refs=2 rows=10000",
+  "len": 227794,
+  "fn": "bom",
+  "ms": 592,
+  "n": 10000
+ },
+ {
+  "id": "tsv refs=5 rows=10000",
+  "len": 347794,
+  "fn": "bom",
+  "ms": 742,
+  "n": 10000
+ },
+ {
+  "id": "csv tabs=5 rows=10000",
+  "len": 307794,
+  "fn": "bom",
+  "ms": 345,
+  "n": 10000
+ },
+ {
+  "id": "tsv-ml rows=10000",
+  "len": 297792,
+  "fn": "bom",
+  "ms": 584,
+  "n": 30001
+ },
+ {
+  "id": "csv-open-quote rows=10000",
+  "len": 200796,
+  "fn": "bom",
+  "ms": 767,
+  "n": 10000
+ },
+ {
+  "id": "csv-inch rows=10000",
+  "len": 223906,
+  "fn": "bom",
+  "ms": 568,
+  "n": 5001
+ },
+ {
+  "id": "tsv refs=2 rows=40000",
+  "len": 977794,
+  "fn": "bom",
+  "ms": 1668,
+  "n": 40000
+ },
+ {
+  "id": "tsv refs=5 rows=40000",
+  "len": 1457794,
+  "fn": "bom",
+  "ms": 2001,
+  "n": 40000
+ },
+ {
+  "id": "csv tabs=5 rows=40000",
+  "len": 1297794,
+  "fn": "bom",
+  "ms": 1611,
+  "n": 40000
+ },
+ {
+  "id": "tsv-ml rows=40000",
+  "len": 1257792,
+  "fn": "bom",
+  "ms": 2238,
+  "n": 120001
+ },
+ {
+  "id": "csv-open-quote rows=40000",
+  "len": 869796,
+  "fn": "bom",
+  "ms": 2311,
+  "n": 40000
+ },
+ {
+  "id": "csv-inch rows=40000",
+  "len": 928906,
+  "fn": "bom",
+  "ms": 2405,
+  "n": 20001
+ }
+]

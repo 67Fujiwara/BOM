@@ -1,0 +1,50 @@
+p1 p1-S1-sel S1 sel
+p1 p1-S1-formal S1 formal
+p1 p1-S2-sel S2 sel
+p1 p1-S2-formal S2 formal
+p1 p1-S3-sel S3 sel
+p1 p1-S3-formal S3 formal
+p1b p1b-remove remove
+p1b p1b-stop stop
+p1c p1c-remove remove
+p1c p1c-stop stop
+p2 p2-selected-支給品-approve selected 支給品 approve
+p2 p2-selected-支給品-reject selected 支給品 reject
+p2 p2-selected-社内在庫-approve selected 社内在庫 approve
+p2 p2-selected-社内在庫-reject selected 社内在庫 reject
+p2 p2-formal-支給品-approve formal 支給品 approve
+p2 p2-formal-支給品-reject formal 支給品 reject
+p2 p2-formal-社内在庫-approve formal 社内在庫 approve
+p2 p2-formal-社内在庫-reject formal 社内在庫 reject
+p2 p2-ordered-支給品-approve ordered 支給品 approve
+p2 p2-ordered-社内在庫-approve ordered 社内在庫 approve
+p3 p3-cancel-A3A4 cancel A3,A4
+p3 p3-cancel-R3A4 cancel R3,A4
+p3 p3-repl-A3A4 repl A3,A4
+p3 p3-repl-R3A4 repl R3,A4
+p3 p3-qty-A3A4 qty A3,A4
+p3 p3-qty-R3A4 qty R3,A4
+p4 p4-decl decl
+p4 p4-requote requote
+p4 p4-reissue reissue
+p5 p5
+p6 p6-slash slash
+p6 p6-stop stop
+p7 p7-none none
+p7 p7-remove remove
+p7 p7-stop stop
+p8 p8-approve-small approve small
+p8 p8-approve-plus approve plus
+p8 p8-approve-big approve big
+p8 p8-reject-small reject small
+p8 p8-reject-plus reject plus
+p8 p8-reject-big reject big
+p9 p9-0 0
+p9 p9-1 1
+p9 p9-2 2
+p9 p9-0s 0 stop
+p10 p10-diff-qty diff-qty
+p10 p10-diff-order diff-order
+p10 p10-exc-stop-y exc-stop-y
+p10 p10-exc-stop-Y exc-stop-Y
+p10 p10-exc-qty-y exc-qty-y

@@ -1,0 +1,28 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+C qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+C cancel → R011 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+publish Rev.d → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"客先要求","pend","R011",null,""]] C R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] {"kind":"cancel"}
+PASS N11-0 不変条件
+C Shift+Delete again → R011 の取消・置換は PM の承認待ちです
+after [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"客先要求","pend","R011",null,""]] C ["selected",4,{"kind":"cancel"},null,null]
+PASS N11-1c 不変条件
+C qty edit → R011 の取消・置換は PM の承認待ちです
+after edit ["selected",4,{"qtyNeeded":25},{"kind":"cancel"},null,{"qtyNeeded":29}]
+PASS N11-2c 不変条件
+Ctrl+Z → 元に戻す: セル編集
+after undo [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"客先要求","pend","R011",null,""]] ["selected",4,{"qtyNeeded":25},{"kind":"cancel"},null,null]
+PASS N11-3c 不変条件
+Ctrl+Z 2 → 前の公開（公開）には戻せる値の変更がありません（行の追加だけ）。追加した行を戻すときは Shift+Delete で取消してください。公開より前の操作（前の公開 2 回を含む） 6 件は、Ctrl+Z ではもう戻りません（公開した Rev に含まれています）。
+after undo2 [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"客先要求","pend","R011",null,""]] ["selected",4,{"qtyNeeded":25},{"kind":"cancel"},null,null]
+PASS N11-4c 不変条件
+PM 7 rows R003,R011,R021,R025,R032,R035,R038,R039,R044,R046,R055,R064
+PM y R011 → R011・Rev.4 の変更セット 1 行まとめて: 承認
+after PM [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"客先要求","appr","R011",null,""]] ["cancelled",null,null]
+PASS N11-5c 不変条件
+ERRORS []
+== 6/6 PASS

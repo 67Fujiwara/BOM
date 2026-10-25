@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pm_decide: R025 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:receive: none
+2:order: R013 R013: 発注済にしました
+3:order: none
+4:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+5:cancel_row: R080 を入れて Enter] 行 1（Rev.3） を公開しました
+6:reload: reload
+7:formal_price: R056 x1.5 EDIT-ERR R056 の正式単価 ¥93,528（概算から +50%）。桁
+8:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:switch_proc: R006→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+10:receive: R013 R013: 入荷済にしました
+11:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+12:toggle_approval: OFF 案件設定を保存しました
+13:undo: pm 元に戻す: 案件設定を変更
+14:pick_supplier: none
+15:add_row: R081 unpublished
+16:order: none
+17:pm_decide: R021 Shift+Y R021: 受入
+18:edit_qty: R057 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+19:cancel_row: R050 ）を入れて Ente] 行 3（Rev.4） を公開しました
+20:edit_qty: R052 を入れて Enter] 行 1（Rev.5） を公開しました
+21:undo: pm 元に戻す: 決定: 受入
+22:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+23:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+24:formal_price: R026 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:reload: reload
+26:add_row: R082 を入れて Enter] 行 1（Rev.6） を公開しました
+27:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+28:replace_row: R023 R023 の置き換え品 R083 を作りました（公開すると R023 は置換済に / を入れて Enter] 行 2（Rev.7） を公開しました
+29:pm_decide: R021 Shift+Y R021: 受入
+30:decline: R079 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+31:formal_price: R002 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:rough: 依頼する行がありません（提出済・再見積要の行なし）
+33:pick_supplier: none
+34:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+35:replace_row: R058 R058 の置き換え品 R084 を作りました（公開すると R058 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+36:edit_qty: R002 を入れて Enter] 行 1（Rev.9） を公開しました
+37:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+38:order: R026 R026: 発注済にしました
+39:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+PASS F2-53a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,16 @@
+replace R001 R001 の置き換え品 R081 を作りました（公開すると R001 は置換済になります。Ctrl+Z で戻す）
+publish ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+new R081 相見積 st=submitted adopt=- reason= oq=- flags={"reconfirm":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+remove JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+quickfix ["要再確認 undefined: 据え置き","要再確認 undefined: 再見積","要再確認 undefined: 据え置き","要再確認 undefined: 再見積","要再確認 ミスミ: 据え置き","要再確認 ミスミ: 再見積"]
+FAIL P1B-remove-1 直し方の候補に undefined が出ない :: ["要再確認 undefined: 据え置き","要再確認 undefined: 再見積","要再確認 undefined: 据え置き","要再確認 undefined: 再見積","要再確認 ミスミ: 据え置き","要再確認 ミスミ: 再見積"]
+  choose 要再確認 undefined: 据え置き → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  choose 要再確認 undefined: 据え置き → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  choose 要再確認 ミスミ: 据え置き → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+PASS P1B-remove-2 据え置きを選び終えると要再確認が外れる（消えた/停止の商社の見積で固まらない） :: R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+PASS P1B-remove-3 画面の文字に undefined が出ない :: []
+PASS P1B-remove-4 Space の詳細に undefined が出ない
+ERRORS []
+PASS P1B-remove-9 console error なし :: []
+== 4/5 PASS

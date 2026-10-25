@@ -1,0 +1,10 @@
+design 5 rows 75
+design x R001 → R001 の差分を確認済にしました（設計として）
+purch x R001 → R001 の差分を確認済にしました（購買として）
+last subs [[1,75,2]]
+PM dueDate → 案件設定を保存しました
+案件納期変更 rows 80 has A true B true
+design 5 has A true Rev.1 案件納期変更 | purch 5 has B true Rev.1 案件納期変更
+PASS I7-4 5 で確認済にした行も、そのあとの案件納期の変更で必要日が変われば設計・購買の 5 に「案件納期変更」で出る（§9.3） :: A=R001 in5=true cause=Rev.1 案件納期変更 / B=R001 in5=true cause=Rev.1 案件納期変更
+ERRORS []
+== 1/1 PASS

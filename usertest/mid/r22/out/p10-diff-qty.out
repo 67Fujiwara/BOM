@@ -1,0 +1,16 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+formal price → EDIT-ERR R008 の正式単価 ¥106,854（概算から +146%）。桁・行を確かめてください
+X R008 R008 相見積 st=formalQuoted adopt=S1 reason= oq=4 flags={"formalDiff":true} quotes=[["S1",43427,18,106854],["S2",52001,0,null],["S3",44133,22,null]] case "差分超過"
+B prompt {"kind":"prompt","title":"決定: 受入（R008。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+PASS P10-diff-qty-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 受入（R008。理由・任意）。上長決裁の条件に該当: 承認者を入れてください"}
+A qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+A publish → [変更セット（6 行: R008, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しまし
+state before B Enter R008 相見積 st=formalQuoted adopt=S1 reason= oq=11 flags={"reissue":true,"formalDiff":true,"requote":true} quotes=[["S1",43427,18,106854],["S2",52001,0,null],["S3",44133,22,null]] case "差分超過"
+B Enter → R008 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+after R008 相見積 st=formalQuoted adopt=S1 reason= oq=11 flags={"reissue":true,"formalDiff":true,"requote":true} quotes=[["S1",43427,18,106854],["S2",52001,0,null],["S3",44133,22,null]] new decisions [] B panel null
+PASS P10-diff-qty-1 別タブで 必要数 が変わったあとの確定は、PM が見ていない内容を決めない :: decisions=[] toast=R008 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+PASS P10-diff-qty-3 toast に undefined/NaN が出ない :: R008 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+ERRORS [] []
+PASS P10-diff-qty-9 console error なし :: []
+== 4/4 PASS

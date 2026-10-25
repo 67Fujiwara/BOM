@@ -1,0 +1,7 @@
+{"case":"R1 打って入力中にリロード","stored":{"v":"TYPED","n":80},"cursor":"R010 部品名","mode":"ナビ","toast":"","afterUndo":{"v":"端子台エンドカバー","n":80}}
+{"case":"R2 確定の直後（0ms）にリロード","stored":{"v":"Q1","n":80},"cursor":"R011 部品名","mode":"ナビ","toast":"","afterUndo":{"v":"端子台エンドカバー","n":80}}
+{"case":"R3 → で確定した直後にリロード","stored":{"v":"Q2","n":80},"cursor":"R010 型式","mode":"ナビ","toast":"","afterUndo":{"v":"端子台エンドカバー","n":80}}
+{"case":"R4 300 行貼り付けの直後にリロード → Ctrl+Z","rowsAfterReload":379,"rowsAfterUndo":80,"toast":"元に戻す: 貼り付け"}
+{"case":"R5 採用理由のダイアログ中にリロード","panel":null,"cursor":"R004 ID","adopted":{"n":80}}
+{"case":"R6 4 で F8 → R041 → リロード → F8","afterReload":"R041 メーカ","afterF8":"R022 型式"}
+errors []

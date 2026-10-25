@@ -1,0 +1,22 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+moq 100 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish → 指摘 1 件 を公開しました
+orderQty 100 → 指摘 1 件 を公開しました
+X R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "閾値超"
+PASS P8-reject-plus-0 前提：余剰（閾値超）で PM の要決定 :: 閾値超
+PM reject → R011: 却下
+after PM R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS P8-reject-plus-1 却下で発注数は必要数 24 に戻る :: oq=24
+qty → 25 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X after qty R011 相見積 st=selected adopt=S1 reason= oq=25 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case "なし" surplusRejected S1
+PASS P8-reject-plus-2 却下した商社（S1）のまま必要数を変えても丸めない（発注数＝必要数 25。n3 と同じ） :: oq=25
+PASS P8-reject-plus-3 不変条件
+PASS P8-reject-plus-4 固まる行がない :: []
+in 7 false
+PASS P8-reject-plus-6 ボール（purchasing）の役割のビューに載る :: ball=purchasing in7=false in9=false
+formal → 拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+after formal R011 相見積 st=formalRequested adopt=S1 reason= oq=25 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+ERRORS []
+PASS P8-reject-plus-9 console error なし :: []
+== 7/7 PASS

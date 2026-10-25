@@ -1,0 +1,85 @@
+{"proc":"支給品","st":"draft","adopted":false,"pub":false,"status":"draft","adoptedAfter":null,"ball":"design","views":"1,2,4,5","hidden":false}
+{"proc":"支給品","st":"draft","adopted":false,"pub":true,"status":"draft","adoptedAfter":null,"ball":"design","views":"1,2,4,5","hidden":false}
+{"proc":"支給品","st":"draft","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"draft","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"submitted","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"submitted","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"submitted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"submitted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoting","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoting","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoting","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoting","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoted","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoted","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"quoted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"selected","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"selected","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"selected","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"selected","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalRequested","adopted":false,"pub":false,"status":"formalRequested","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalRequested","adopted":false,"pub":true,"status":"formalRequested","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalRequested","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalRequested","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalQuoted","adopted":false,"pub":false,"status":"formalQuoted","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalQuoted","adopted":false,"pub":true,"status":"formalQuoted","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"formalQuoted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6,9","hidden":false}
+{"proc":"支給品","st":"formalQuoted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6,9","hidden":false}
+{"proc":"支給品","st":"ordered","adopted":false,"pub":false,"status":"ordered","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"ordered","adopted":false,"pub":true,"status":"ordered","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"ordered","adopted":true,"pub":false,"status":"ordered","adoptedAfter":"S1","ball":"purchasing","views":"1,2,3,5,6,8","hidden":false}
+{"proc":"支給品","st":"ordered","adopted":true,"pub":true,"status":"ordered","adoptedAfter":"S1","ball":"purchasing","views":"1,2,3,5,6,8","hidden":false}
+{"proc":"支給品","st":"received","adopted":false,"pub":false,"status":"received","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"received","adopted":false,"pub":true,"status":"received","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"支給品","st":"received","adopted":true,"pub":false,"status":"received","adoptedAfter":"S1","ball":null,"views":"1,2,3,5,6,8","hidden":false}
+{"proc":"支給品","st":"received","adopted":true,"pub":true,"status":"received","adoptedAfter":"S1","ball":null,"views":"1,2,3,5,6,8","hidden":false}
+{"proc":"社内在庫","st":"draft","adopted":false,"pub":false,"status":"draft","adoptedAfter":null,"ball":"design","views":"1,2,4,5","hidden":false}
+{"proc":"社内在庫","st":"draft","adopted":false,"pub":true,"status":"draft","adoptedAfter":null,"ball":"design","views":"1,2,4,5","hidden":false}
+{"proc":"社内在庫","st":"draft","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"draft","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"submitted","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"submitted","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"submitted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"submitted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoting","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoting","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoting","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoting","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoted","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoted","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"quoted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"selected","adopted":false,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"selected","adopted":false,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"selected","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"selected","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalRequested","adopted":false,"pub":false,"status":"formalRequested","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalRequested","adopted":false,"pub":true,"status":"formalRequested","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalRequested","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalRequested","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalQuoted","adopted":false,"pub":false,"status":"formalQuoted","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalQuoted","adopted":false,"pub":true,"status":"formalQuoted","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"formalQuoted","adopted":true,"pub":false,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6,9","hidden":false}
+{"proc":"社内在庫","st":"formalQuoted","adopted":true,"pub":true,"status":"selected","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6,9","hidden":false}
+{"proc":"社内在庫","st":"ordered","adopted":false,"pub":false,"status":"ordered","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"ordered","adopted":false,"pub":true,"status":"ordered","adoptedAfter":null,"ball":"purchasing","views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"ordered","adopted":true,"pub":false,"status":"ordered","adoptedAfter":"S1","ball":"purchasing","views":"1,2,3,5,6,8","hidden":false}
+{"proc":"社内在庫","st":"ordered","adopted":true,"pub":true,"status":"ordered","adoptedAfter":"S1","ball":"purchasing","views":"1,2,3,5,6,8","hidden":false}
+{"proc":"社内在庫","st":"received","adopted":false,"pub":false,"status":"received","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"received","adopted":false,"pub":true,"status":"received","adoptedAfter":null,"ball":null,"views":"1,2,3,5,6","hidden":false}
+{"proc":"社内在庫","st":"received","adopted":true,"pub":false,"status":"received","adoptedAfter":"S1","ball":null,"views":"1,2,3,5,6,8","hidden":false}
+{"proc":"社内在庫","st":"received","adopted":true,"pub":true,"status":"received","adoptedAfter":"S1","ball":null,"views":"1,2,3,5,6,8","hidden":false}
+ball not null for supplied (non-ordered): 12
+   支給品 draft adopted=false pub=false → status=draft ball=design views=1,2,4,5
+   支給品 draft adopted=false pub=true → status=draft ball=design views=1,2,4,5
+   支給品 formalRequested adopted=false pub=false → status=formalRequested ball=purchasing views=1,2,3,5,6
+   支給品 formalRequested adopted=false pub=true → status=formalRequested ball=purchasing views=1,2,3,5,6
+   支給品 formalQuoted adopted=false pub=false → status=formalQuoted ball=purchasing views=1,2,3,5,6
+   支給品 formalQuoted adopted=false pub=true → status=formalQuoted ball=purchasing views=1,2,3,5,6
+   社内在庫 draft adopted=false pub=false → status=draft ball=design views=1,2,4,5
+   社内在庫 draft adopted=false pub=true → status=draft ball=design views=1,2,4,5
+   社内在庫 formalRequested adopted=false pub=false → status=formalRequested ball=purchasing views=1,2,3,5,6
+   社内在庫 formalRequested adopted=false pub=true → status=formalRequested ball=purchasing views=1,2,3,5,6
+   社内在庫 formalQuoted adopted=false pub=false → status=formalQuoted ball=purchasing views=1,2,3,5,6
+   社内在庫 formalQuoted adopted=false pub=true → status=formalQuoted ball=purchasing views=1,2,3,5,6

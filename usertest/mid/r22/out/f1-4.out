@@ -1,0 +1,42 @@
+0:edit_qty: R059 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+1:add_row: R081 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+2:pm_decide: R003 b R003: 次点商社へ
+3:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:consolidate: やめました（何も変えていません）
+5:pick_supplier: R021 R021: 因幡電機 を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+6:add_row: R082 unpublished
+7:decline: R066 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+8:decline: R073 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+9:edit_qty: R074 を入れて Enter] 行 2（Rev.3） を公開しました
+10:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+11:formal_price: R013 x1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+12:edit_qty: R036 を入れて Enter] 行 1（Rev.4） を公開しました
+13:order: R013 R013: 発注済にしました
+14:next_day: +8d
+15:pm_decide: R021 Shift+Y R021: 却下
+16:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+17:formal_price: none
+18:replace_row: R044 R044 の置き換え品 R083 を作りました（公開すると R044 は置換済に / ）を入れて Ente] 行 3（Rev.5） を公開しました
+19:undo: pm 元に戻す: 決定: 却下
+20:switch_proc: R026→社内在庫 を入れて Enter] 行 1（Rev.6） を公開しました
+21:next_day: +9d
+22:pm_decide: R001 b R001: 次点商社へ
+23:formal_price: none
+24:formal_price: none
+25:decline: R038 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:order: none
+27:edit_qty: R003 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+28:withdraw_x: none
+29:pm_decide: R021 Shift+Y R021: 却下
+30:bulk: 採用 67 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 0
+31:formal_price: none
+32:formal_price: none
+33:pick_supplier: none
+34:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:pick_supplier: none
+36:replace_row: R025 R025 の置き換え品 R084 を作りました（公開すると R025 は置換済に / ）を入れて Ente] 行 3（Rev.7） を公開しました
+37:rough: 9 行 × 3 社に依頼（回答期限 2026-11-09）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+38:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+39:order: none
+PASS F1-4 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

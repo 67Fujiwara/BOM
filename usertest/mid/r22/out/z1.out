@@ -1,0 +1,75 @@
+rows R081 R082 R083 R084 R085 R086 R087
+publish → [変更セット（12 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更] 行 12（Rev.2） を公開しました
+request all → 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） | 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+R081 相見積 maker=パトライト des= st=quoting adopt=- reason= snap=- quotes=[["S1",null,null],["S3",null,null]]
+R082 相見積 maker=音羽電機 des= st=quoting adopt=- reason= snap=- quotes=[["S2",null,null],["S3",null,null]]
+R083 相見積 maker=OMRON des= st=quoting adopt=- reason= snap=- quotes=[["S1",null,null],["S2",null,null],["S3",null,null]]
+R084 客先指定品 maker=パナソニック des=客先承認 KS-9 st=quoting adopt=- reason= snap=- quotes=[["S2",null,null]]
+R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=quoting adopt=- reason= snap=- quotes=[["S1",null,null]]
+R086 指定商社 maker=オムロン des=オムロン直販 st=quoting adopt=- reason= snap=- quotes=[["S5",null,null]]
+R087 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- reason= snap=- quotes=[["S1",null,null]]
+PASS Z1-1 (M6-04) パトライトの行は因幡・ミスミだけに依頼（立花に出さない） :: S1,S3
+PASS Z1-2 (M6-04) 音羽電機の行は立花・ミスミだけに依頼（因幡に出さない） :: S2,S3
+PASS Z1-3 メーカを英字で書いた行（OMRON）も、オムロンを扱う因幡・立花に依頼される :: targets=S1,S2,S3
+FAIL Z1-3b 依頼の確認・結果に、メーカで絞った（除いた）商社が分かる表示がある :: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+E: S2 first EDIT-ERR 12 行 × 4 社に依頼（回答期限 2026-10-30）。メーカを扱わない商社には頼まない行 8 行（例: R076「ラトック」→ 因幡電機・立花エレテック・ミスミ）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+E after S2 R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=quoting adopt=- reason= snap=- quotes=[["S1",null,null],["S2",500,3]]
+E after S1 R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",800,5],["S2",500,3]]
+PASS Z1-4 (M6-01) 依頼先（因幡）が答える前に立花に値を入れても立花で採用されない。因幡の回答で因幡を採用 :: R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",800,5],["S2",500,3]]
+D before decline R084 客先指定品 maker=パナソニック des=客先承認 KS-9 st=quoting adopt=- reason= snap=- quotes=[["S2",null,null]]
+D decline EDIT-ERR 12 行 × 4 社に依頼（回答期限 2026-10-30）。メーカを扱わない商社には頼まない行 8 行（例: R076「ラトック」→ 因幡電機・立花エレテック・ミスミ）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+D after decline R084 客先指定品 maker=パナソニック des=客先承認 KS-9 st=quoting adopt=- reason= snap=- quotes=[["S2",null,-1]] ball 購買
+purch 4 has D true status bar ナビR084 部品名購買 佐藤: 未発行 0 件F1ヘルプF8次の問題Alt+Shift+I指摘Space開くCtrl+.次の商社に依頼
+purch Ctrl+. on D ["次の商社 ミスミ に依頼する（概算見積を依頼。依頼先で「S3 ミスミ」か「相見積先すべて」を選ぶ）"]
+detail D 相見積・スコア内訳 （必要日 11/13 / 必要数 4個）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考立花エレテック辞退—手入力指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴佐藤 10/25 16:57 セル編集山田 10/25 16:55 セル編集山田 10/25 16:55 セル編集山田 10/25 16:55 セル編集山田 10/25 16:55 セル編集山田 10/25 16:55 セル編集山田 10/25 16:54 セル編集山田 10/25 16:54 セル編集最終公開の起因: 追加（Rev.2）
+design 4 has D false lamps 設計待ち 68購買待ち 18PM待ち 1見積済 76/87エラー 3警告 3 progress 見積済 76/87
+PASS Z1-5 (M6-02) 客先指定品の依頼先が辞退 → 見積中のまま・ボール購買・購買の 4 に出る・設計の 4 に出ない :: st=quoting ball=購買 pu4=true de4=false
+PASS Z1-5b 購買の 4 で、辞退した行に「次の商社へ依頼」の案内が出る（ステータスバー・Ctrl+.・詳細のどれか） :: ナビR084 部品名購買 佐藤: 未発行 0 件F1ヘルプF8次の問題Alt+Shift+I指摘Space開くCtrl+.次の商社に依頼
+re-request → 1 行 × 1 社に依頼（回答期限 2026-10-30） [{"sup":"ミスミ","file":"download","ids":["R084"]}]
+D after re-request R084 客先指定品 maker=パナソニック des=客先承認 KS-9 st=quoting adopt=- reason= snap=- quotes=[["S2",null,-1],["S3",null,null]]
+D next to [ 'S3' ] [ 'ミスミ:未登録' ]
+PASS Z1-6 (U6-05) 辞退後の次の依頼先が、パナソニックを扱わない因幡に黙って決まらない（扱う商社が無いことを知らせるか、購買が選ぶ） :: next=S3 msg=1 行 × 1 社に依頼（回答期限 2026-10-30）
+F (直販) enter → EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-30） / EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-30） R086 指定商社 maker=オムロン des=オムロン直販 st=selected adopt=S5 reason=指定先（固定） snap=- quotes=[["S5",2100,6]]
+PASS Z1-7 (M5-01) 6 にオムロン直販の列があり、回答を入れると直販指定の行が S5 で採用 :: R086 指定商社 maker=オムロン des=オムロン直販 st=selected adopt=S5 reason=指定先（固定） snap=- quotes=[["S5",2100,6]]
+import options ["S1 因幡電機","S2 立花エレテック","S3 ミスミ","S5 オムロン直販"]
+PASS Z1-8 (M5-01) 見積回答の取り込みで直販を選べる :: ["S1 因幡電機","S2 立花エレテック","S3 ミスミ","S5 オムロン直販"]
+9 columns q.unitPrice@S1,q.leadDays@S1,q.moq@S1,q.stock@S1,q.unitPrice@S2,q.leadDays@S2,q.moq@S2,q.stock@S2,q.unitPrice@S3,q.leadDays@S3,q.moq@S3,q.stock@S3
+project supplierIds ["S1","S2","S3"]
+G decline 1 行 × 1 社に依頼（回答期限 2026-10-30）
+G after decline R087 指定商社 maker=フエニックス des=因幡電機 st=quoting adopt=- reason= snap=- quotes=[["S1",null,-1]] ball 設計
+design 4 has G true purch4 true status ナビR087 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える
+design Ctrl+. on G ["指定先を変える（因幡電機 が取扱なしと回答）"]
+PASS Z1-9 (U6-04) 指定商社の辞退で設計の 4 に出て、「指定先を変える」の案内がある :: de4=true sb=ナビR087 ID設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きました?ヘルプF8次の問題Space開くCtrl+.指定先を変える
+change designated 最後の行です。下に行を足すときは Shift+Enter
+publish G → [変更セット（1 行: R087）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+G after publish R087 指定商社 maker=フエニックス des=立花エレテック st=quoting adopt=- reason= snap=- quotes=[["S1",null,-1]] ball 購買 {"renegotiating":false,"requote":false}
+purch 4 has G true
+request after designated change → 1 行 × 1 社に依頼（回答期限 2026-10-30） [{"sup":"立花エレテック","file":"download","ids":["R087"]}]
+G R087 指定商社 maker=フエニックス des=立花エレテック st=quoting adopt=- reason= snap=- quotes=[["S1",null,-1],["S2",null,null]]
+PASS Z1-10 指定先を変えて公開すると、新しい指定先（立花）に依頼書が出る :: [{"sup":"立花エレテック","file":"download","ids":["R087"]}]
+G after S2 answer R087 指定商社 maker=フエニックス des=立花エレテック st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",null,-1],["S2",700,4]]
+PASS Z1-11 新しい指定先の回答で指定先（固定）として採用 :: R087 指定商社 maker=フエニックス des=立花エレテック st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",null,-1],["S2",700,4]]
+R045 Alt+a → 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+  before R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+  after  R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+PASS Z1-12 (M6-05) R045 Alt+a で指定先（固定）が消えない・スコアが付かない :: 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+R045 Control+Alt+a → 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+  before R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+  after  R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+PASS Z1-12 (M6-05) R045 Control+Alt+a で指定先（固定）が消えない・スコアが付かない :: 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+R034 Alt+a → 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+  before R034 客先指定品 maker=オムロン des=オムロン / 客先承認 KS-2026-118 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+  after  R034 客先指定品 maker=オムロン des=オムロン / 客先承認 KS-2026-118 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+PASS Z1-12 (M6-05) R034 Alt+a で指定先（固定）が消えない・スコアが付かない :: 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+R085 Alt+a → 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+  before R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",800,5],["S2",500,3]]
+  after  R085 客先指定品 maker=オムロン des=客先承認 KS-1 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",800,5],["S2",500,3]]
+PASS Z1-12 (M6-05) R085 Alt+a で指定先（固定）が消えない・スコアが付かない :: 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+R045 Alt+Shift+A → 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+  before R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+  after  R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]]
+PASS Z1-12 (M6-05) R045 Alt+Shift+A で指定先（固定）が消えない・スコアが付かない :: 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 9
+after bulk R045 指定商社 maker=オムロン des=S2 st=selected adopt=S2 reason=指定先（固定） snap=- quotes=[["S1",8811,16],["S2",10139,12],["S3",9047,28]] R034 客先指定品 maker=オムロン des=オムロン / 客先承認 KS-2026-118 st=selected adopt=S1 reason=指定先（固定） snap=- quotes=[["S1",356,18],["S2",null,null],["S3",null,null]]
+PASS Z1-13 一括採用でも指定系の行は指定先（固定）のまま
+== 18/19 PASS

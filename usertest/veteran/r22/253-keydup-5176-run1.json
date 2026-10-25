@@ -1,0 +1,200 @@
+[
+  {
+    "variant": "removeS3",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "removeS3",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "removeS3AndS1",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "removeS3AndS1",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "removeAll",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "removeAll",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupSupplierIdsOnly",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 2
+    },
+    "first": "console: Encountered two children with the same key, `%s`. K"
+  },
+  {
+    "variant": "dupSupplierIdsOnly",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 2
+    },
+    "first": "console: Encountered two children with the same key, `%s`. K"
+  },
+  {
+    "variant": "dupSupplierIdsRemoved",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupSupplierIdsRemoved",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupPreferred",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupPreferred",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupQuoteRemoved",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupQuoteRemoved",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupTargetsRemoved",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupTargetsRemoved",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupSupplierMaster",
+    "role": "design",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  },
+  {
+    "variant": "dupSupplierMaster",
+    "role": "purchasing",
+    "after": {
+      "load": 0,
+      "views": 0,
+      "概算見積を依頼": 0,
+      "商社を集約": 0
+    },
+    "first": ""
+  }
+]

@@ -1,0 +1,30 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D R035 q 6 E R037
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → を入れて Enter] 行 1（Rev.3） を公開しました
+publish Rev.d → び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","merged→4","R035",{"R035":4},""],[4,"廃番・入手難","pend","R035",null,""]]
+PASS P3-cancel-R3A4-0 不変条件
+D R035 相見積 st=selected adopt=S2 reason= oq=6 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]] new -
+D pendingRev 4 revC 3 revD 4
+   panel for D: "決定パネル R035（変更セット Rev.4（Rev.3 の変更をまとめた））"
+PM R3 → R035・Rev.4 の変更セット 1 行まとめて: 却下 | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","merged→4","R035",{"R035":4},""],[4,"廃番・入手難","rej","R035",null,"revoked"]] | R035 相見積 st=selected adopt=S2 reason= oq=6 flags={} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,
+PASS P3-cancel-R3A4-after-R3 不変条件
+   panel for D: null
+PM A4 → R035 は要決定ではありません（7 要決定ビューの行で使えます） | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","merged→4","R035",{"R035":4},""],[4,"廃番・入手難","rej","R035",null,"revoked"]] | R035 相見積 st=selected adopt=S2 reason= oq=6 flags={} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,
+PASS P3-cancel-R3A4-after-A4 不変条件
+final R035 相見積 st=selected adopt=S2 reason= oq=6 flags={} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]] q 6 {"qtyNeeded":7} 
+PASS P3-cancel-R3A4-1 承認待ちの変更セットが残らない（行に pendingRev なし） :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","merged→4","R035",{"R035":4},""],[4,"廃番・入手難","rej","R035",null,"revoked"]]
+FAIL P3-cancel-R3A4-2 却下で D は取消されない・removal が残らない・必要数は元の 6 :: selected q=6 rem={"kind":"cancel"} prem=null
+design BOM has D true 変更点 D [[1,"","",""],[3,"客先要求","必要数: 6 → 7","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 6 → 7","却下"]]
+PASS P3-cancel-R3A4-X-design-2 変更点の最後の Rev.4 の D の内容が空でない（却下も含め） :: [[1,"","",""],[3,"客先要求","必要数: 6 → 7","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 6 → 7","却下"]]
+purchasing BOM has D true 変更点 D [[1,"","",""]]
+PASS P3-cancel-R3A4-X-purchasing-1 購買の変更点に却下した Rev の D が出ない :: [[1,"","",""]]
+pm BOM has D true 変更点 D [[1,"","",""],[3,"客先要求","必要数: 6 → 7","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 6 → 7","却下"]]
+PASS P3-cancel-R3A4-X-pm-2 変更点の最後の Rev.4 の D の内容が空でない（却下も含め） :: [[1,"","",""],[3,"客先要求","必要数: 6 → 7","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 6 → 7","却下"]]
+PASS P3-cancel-R3A4-Y Excel に undefined/NaN が出ない（チェック結果の内部名は M22-01 として別に数える） :: []
+ERRORS []
+PASS P3-cancel-R3A4-Z console error なし :: []
+== 9/10 PASS

@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:pm_decide: R032 Shift+Y R032: 受入
+2:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+3:receive: R002 R002: 入荷済にしました
+4:order: R003 R003: 発注済にしました
+5:formal_price: R013 x1 EDIT-ERR R003: 発注済にしました
+6:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+7:excel: pm 3 sheets
+8:formal_price: R035 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+9:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+10:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+11:switch_proc: R039→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+12:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+13:switch_proc: R026→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+14:receive: R001 R001: 入荷済にしました
+15:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+16:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+17:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+18:formal_price: R032 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+19:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+20:excel: purchasing 1 sheets
+21:add_row: R081 unpublished
+22:formal_price: R037 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+23:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+24:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+25:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:order: R037 R037: 発注済にしました
+27:order: R035 R035: 発注済にしました
+28:toggle_approval: OFF 案件設定を保存しました
+29:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+30:reload: reload
+31:formal_price: R055 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:order: R055 R055: 発注済にしました
+33:bulk: 採用 35 / 拮抗 8（要見直し）/ 承認要 0 / スキップ 11
+34:cancel_row: R006 を入れて Enter] 行 2（Rev.4） を公開しました
+35:switch_proc: R023→指定商社 を入れて Enter] 行 1（Rev.5） を公開しました
+36:next_day: +1d
+37:pick_supplier: none
+38:switch_proc: R005→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+39:edit_qty: R011 を入れて Enter] 行 1（Rev.6） を公開しました
+PASS F2-57a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

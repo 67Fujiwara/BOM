@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+1:cancel_row: R012 を入れて Enter] 行 1（Rev.3） を公開しました
+2:next_day: +8d
+3:edit_qty: R075 を入れて Enter] 行 1（Rev.4） を公開しました
+4:undo: design 前の公開（公開）には戻せる値の変更がありません（行の追加だけ）。追加した行を戻す
+5:rough: 5 行 × 3 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+6:receive: none
+7:replace_row: R053 R053 の置き換え品 R081 を作りました（公開すると R053 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+8:bulk: 採用 66 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 8
+9:edit_qty: R022 を入れて Enter] 行 1（Rev.6） を公開しました
+10:edit_qty: R030 を入れて Enter] 行 1（Rev.7） を公開しました
+11:undo: purchasing 元に戻す: 概算見積を依頼（因幡電機・立花エレテック・ミスミ）
+12:formal_price: R013 x3 EDIT-ERR 元に戻す: 概算見積を依頼（因幡電機・立花エレテック・ミスミ）
+13:receive: none
+14:order: none
+15:add_row: R082 unpublished
+16:edit_qty: R062 を入れて Enter] 行 2（Rev.8） を公開しました
+17:consolidate: やめました（何も変えていません）
+18:edit_qty: R071 を入れて Enter] 行 1（Rev.9） を公開しました
+19:edit_qty: R011 入れて Enter] 行 1（Rev.10） を公開しました
+20:toggle_approval: OFF 案件設定を保存しました
+21:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+22:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+23:switch_proc: R042→支給品 入れて Enter] 行 1（Rev.11） を公開しました
+24:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+25:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 3
+26:formal: になります → 65 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 5 行 / 再見積要 0 行
+27:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+28:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+29:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+30:pm_decide: R008 b R008: 次点商社へ
+31:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 5 行 / 再見積要 0 行
+32:formal_price: R064 x1 EDIT-ERR 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 /
+33:receive: none
+34:formal_price: R051 x1 EDIT-ERR 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 /
+35:edit_qty: R055 入れて Enter] 行 1（Rev.12） を公開しました
+36:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 5 行・再見積要 1 行は除外）
+37:order: R064 R064: 発注済にしました
+38:receive: R064 R064: 入荷済にしました
+39:excel: design 3 sheets
+PASS F1-25a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

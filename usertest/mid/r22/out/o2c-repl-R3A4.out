@@ -1,0 +1,24 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を
+N replace → R081 の置き換え品 R082 を作りました（公開すると R081 は置換済になります。Ctrl+Z で戻す）
+N2 R082
+publish Rev.d → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081,R082",null,""]] | N R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] | N2 R082 相見積 st=submitted adopt=- reason= oq=- flags={"reconfirm":true,"pmPending":true,"pmReason":"変更セット"} quotes=[]
+PASS O2C-repl-R3A4-0 不変条件
+PM R3 R035 → R035・Rev.3 の変更セット 1 行まとめて: 却下 | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","rej","R035,R081",{"R081":4},"revoked"],[4,"廃番・入手難","pend","R081,R082",null,""]] | N submitted N2 submitted
+PASS O2C-repl-R3A4-after-R3 不変条件
+PM A4 R081 → R081・Rev.4 の変更セット 2 行まとめて: 承認 | [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","rej","R035,R081",{"R081":4},"revoked"],[4,"廃番・入手難","appr","R081,R082",null,""]] | N replaced N2 submitted
+PASS O2C-repl-R3A4-after-A4 不変条件
+final N R081 相見積 st=replaced adopt=- reason= oq=- flags={} quotes=[] | removal null | N2 R082 相見積 st=submitted adopt=- reason= oq=- flags={"reconfirm":true} quotes=[]
+PASS O2C-repl-R3A4-1 Rev.d 承認で N は置換済・N2 が公開 :: replaced submitted
+PASS O2C-repl-R3A4-2 Rev.c は D だけに効く（R3） :: D q=6 w={"qtyNeeded":7}
+PASS O2C-repl-R3A4-3 承認待ちの変更セットが残らない :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","rej","R035,R081",{"R081":4},"revoked"],[4,"廃番・入手難","appr","R081,R082",null,""]]
+purchasing 9 N false N2 true rough N false N2 true
+PASS O2C-repl-R3A4-4 取消／却下後の N が購買の 9・概算の依頼に出ない :: in9=false rough=false
+PASS O2C-repl-R3A4-5 N2 が購買の 9・概算に出るのは Rev.d 承認のときだけ :: in9=true rough=true
+purchasing 変更点 N/N2 [[4,"R081","置換 → R082","鈴木 2026-10-25 / 部長 田中 K-77"],[4,"R082","置換 R081","鈴木 2026-10-25 / 部長 田中 K-77"]]
+ERRORS []
+== 8/8 PASS

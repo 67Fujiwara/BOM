@@ -1,0 +1,44 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:withdraw_x: none
+1:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+2:undo: design 前の公開（公開）には戻せる値の変更がありません（行の追加だけ）。追加した行を戻す
+3:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+5:switch_proc: R024→社内在庫 を入れて Enter] 行 1（Rev.3） を公開しました
+6:reload: reload
+7:formal_price: R045 x1.5 R045 の正式単価 ¥15,209（概算から +50%）。桁・行を確かめてくだ
+8:pm_decide: R024 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+9:edit_qty: R023 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+10:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+11:receive: none
+12:withdraw_x: none
+13:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+14:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+15:switch_proc: R067→相見積 を入れて Enter] 行 1（Rev.4） を公開しました
+16:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:formal_price: R002 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+18:replace_row: R032 R032 の置き換え品 R081 を作りました（公開すると R032 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+19:pick_supplier: R026 R026 を 因幡電機 で採用（その他: fuzz）
+20:formal_price: R034 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+21:cancel_row: R047 を入れて Enter] 行 1（Rev.6） を公開しました
+22:pick_supplier: R009 R009 を 立花エレテック で採用（その他: fuzz）
+23:pm_decide: R024 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+24:order: R002 R002: 発注済にしました
+25:pick_supplier: R069 R069 を ミスミ で採用
+26:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:edit_qty: R081 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+28:formal_price: R003 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+29:edit_qty: R032 を入れて Enter] 行 2（Rev.7） を公開しました
+30:replace_row: R061 R061 の置き換え品 R082 を作りました（公開すると R061 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+31:withdraw_x: R045 R045: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+32:receive: R002 R002: 入荷済にしました
+33:toggle_approval: OFF 案件設定を保存しました
+34:formal: 出します: 対象 4 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 4 行 × 3 社に正式見積を依頼
+35:reload: reload
+36:undo: purchasing 元に戻す: 正式見積を依頼（社外）
+37:withdraw_x: none
+38:add_row: R083 を入れて Enter] 行 1（Rev.9） を公開しました
+39:receive: none
+PASS F1-22a 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

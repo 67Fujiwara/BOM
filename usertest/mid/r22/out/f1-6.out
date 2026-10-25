@@ -1,0 +1,42 @@
+0:edit_qty: R033 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:switch_proc: R046→支給品 を入れて Enter] 行 1（Rev.3） を公開しました
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:pm_decide: R003 Shift+Y R003: 受入
+4:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:edit_qty: R001 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+7:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+8:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+10:switch_proc: R031→指定商社 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+11:add_row: R081 unpublished
+12:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+13:withdraw_x: R013 R013: 正式依頼の取下げ（S1 P-2026-041-S1-1）を伝えた（確認済）
+14:pm_decide: empty
+15:pm_decide: empty
+16:order: none
+17:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+18:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+19:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+20:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+21:pm_decide: empty
+22:cancel_row: R077 更番号（任意）を入れ] 行 4（Rev.4） を公開しました
+23:undo: design 取消・置換を公開した R077 は戻せません（購買に伝わっています。同じ部品が要
+24:pm_decide: empty
+25:decline: R044 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:pick_supplier: none
+28:next_day: +1d
+29:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:excel: design 3 sheets
+31:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 74
+32:pick_supplier: none
+33:receive: none
+34:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+35:pm_decide: empty
+36:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 74
+37:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+38:pm_decide: R011 Shift+Y R011: 却下
+39:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+PASS F1-6 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,16 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+before R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] qty 2 oq null
+publish → [変更セット（6 行: R002, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+keep → R002 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します）
+after keep R002 相見積 st=formalQuoted adopt=S1 reason= oq=10 flags={"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 再発行 qty 10 oq 10
+chip 再発行対象 1 行
+order → 取下げ・再発行対象の行です（正式依頼のあとに数量・型式・必要日が変更）。Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します
+after order R002 相見積 st=formalQuoted adopt=S1 reason= oq=10 flags={"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] ordered false | 正式見積済 · 再発行
+PASS F5-1 必要数を 5 倍にした（取下げ・再発行対象の）行は、正式見積を再発行する前に旧数量の正式単価で発注できない :: ordered=false status=formalQuoted reissue=true
+formal again → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+xlsx download / 正式見積依頼: [null,"正式見積依頼書"] || [null,"依頼No","P-2026-041-S1-F2","宛先","因幡電機"] || [null,"案件","P-2026-041 第3ライン 搬送制御盤","発行日","2026-10-25"] || [null,"回答期限","2026-11-03","必要納期","2026-11-23"] || [null,"通貨","¥","数量","必要数（見積数量の基準）"] || [null,"Rev","2（前回からの差分は「差分」シート）"] || [null,"行ID","部品名","型式","メーカ","発注数","単位","必要日","概算単価","正式単価","正式納期","有効期限","差分理由","支払条件"] || [null,"R002","入力拡張ユニット","FX5-16EX/ES","三菱電機",10,"個","2026-11-13",407,"","","","",""]
+xlsx download / 差分: [null,"行ID","項目","旧","新"] || [null,"R002","必要数","2","10"]
+after formal again R002 相見積 st=formalRequested adopt=S1 reason= oq=10 flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] | 正式依頼中 fno [["S1","P-2026-041-S1-F2",407],["S2",null,null],["S3",null,null]]
+PASS F5-2 再発行の依頼書に差分シート（旧→新）が付く（§9.2） :: download / 正式見積依頼: [null,"正式見積依頼書"] || [null,"依頼No","P-2026- ; download / 差分: [null,"行ID","項目","旧","新"] || [null,"R002","必要
+== 2/2 PASS

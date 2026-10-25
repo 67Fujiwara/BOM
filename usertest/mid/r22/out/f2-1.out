@@ -1,0 +1,42 @@
+0:receive: none
+1:receive: none
+2:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+3:switch_proc: R065→指定商社 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+4:edit_qty: R071 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+5:switch_proc: R027→社内在庫 を入れて Enter] 行 1（Rev.3） を公開しました
+6:order: R013 R013: 発注済にしました
+7:edit_qty: R053 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+8:pick_supplier: R032 R032 を 因幡電機 で採用
+9:add_row: R081 を入れて Enter] 行 2（Rev.4） を公開しました
+10:edit_qty: R053 行 2（Rev.4） を公開しました
+11:excel: design 3 sheets
+12:decline: R056 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+13:rough: 6 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+14:edit_qty: R021 を入れて Enter] 行 2（Rev.5） を公開しました
+15:formal_price: R075 x1.5 R075 の正式単価 ¥1,392（概算から +50%）。桁・行を確かめてくださ
+16:edit_qty: R027 を入れて Enter] 行 1（Rev.6） を公開しました
+17:next_day: +8d
+18:order: R075 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+19:order: R075 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+20:switch_proc: R040→客先指定品 を入れて Enter] 行 1（Rev.7） を公開しました
+21:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 2 行
+22:withdraw_x: R056 R056: 正式依頼の取下げ（ミスミ P-2026-041-S3-F1）を伝えた（確認済）
+23:next_day: +16d
+24:next_day: +17d
+25:receive: R013 R013: 入荷済にしました
+26:formal_price: R021 x1 EDIT-ERR R013: 入荷済にしました
+27:pm_decide: R009 Shift+Y R009: 受入
+28:add_row: R082 unpublished
+29:undo: design 元に戻す: セル編集
+30:excel: pm 3 sheets
+31:pm_decide: R003 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+32:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:bulk: 採用 5 / 拮抗 2（要見直し）/ 承認要 0 / スキップ 6
+34:edit_qty: R025 を入れて Enter] 行 2（Rev.8） を公開しました
+35:formal: 」になります → 3 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 3 行 / 再見積要 3 行
+36:edit_qty: R081 を入れて Enter] 行 1（Rev.9） を公開しました
+37:edit_qty: R050 行 1（Rev.9） を公開しました
+38:excel: pm 3 sheets
+39:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+PASS F2-1 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

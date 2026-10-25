@@ -1,0 +1,8 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+PM d → R003: 設計へ代替依頼
+issue panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+X 対策不成立 R003 相見積 st=selected adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] [["I-006","納期NG","answered","pm"]] case 対策不成立
+decline → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after decline R003 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]] [["I-006","納期NG","confirmed","pm"]] ball design case なし renegotiating false
+PASS D2-1 対策不成立で PM の 7 に載った行で採用商社が辞退したら、採用の無い行を対策不成立のまま PM に残さない（選定者に戻す） :: in7=false R003 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",933,-1,null],["S2",938,4,null],["S3",1085,0,null]]
+== 1/1 PASS

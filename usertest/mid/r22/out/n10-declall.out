@@ -1,0 +1,27 @@
+cands 52
+X R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+decline S1 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S2 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+decline S3 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after all declined R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]] ball purchasing
+PASS N10-1 全社辞退で見積済のまま（選べる見積なし）にならない（見積中に戻る） :: R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]]
+PASS N10-2 購買の 9 に出る
+purch 4 has X true | design 4 has X true
+design a → 取引できる商社の有効な見積がありません（全社辞退・取引停止）。購買がほかの商社に依頼します
+PASS N10-3 設計の a は全社辞退と断る（採用しない） :: 取引できる商社の有効な見積がありません（全社辞退・取引停止）。購買がほかの商社に依頼します
+Ctrl+. options ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ Ctrl+K →「案","設計に代替を相談する（指摘を起票）"]
+PASS N10-4 Ctrl+. に「ほかの商社に依頼する」「設計に代替を相談する」が出る :: ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の","設計に代替を相談する（指摘を起票）"]
+add S4 → 案件設定を保存しました
+supplierIds ["S1","S2","S3","S4"]
+request S4 → 1 行 × 1 社に依頼（回答期限 2026-10-30） [["RSコンポーネンツ",true]]
+PASS N10-5 S4 への依頼書に X が入る（辞退した商社には出さない） :: [{"sup":"RSコンポーネンツ","ids":["R005"]}]
+S4 price EDIT-ERR R005 の単価 ¥900 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） / EDIT-ERR R005 の単価 ¥900 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+X R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,12,null]]
+PASS N10-6 S4 が回答すると見積済になる（辞退 3 社は回答済として数える） :: R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,12,null]]
+design a → R005 を RSコンポーネンツ で採用（スコア 98.7 / 最安） R005 相見積 st=selected adopt=S4 reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,12,null]]
+PASS N10-7 a で S4 を採用 :: R005 相見積 st=selected adopt=S4 reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,12,null]]
+S4 declines → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after adopted supplier declined R005 相見積 st=quoting adopt=- reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,-1,null]] ball purchasing
+PASS N10-8 採用先が辞退したら採用が外れ、見積中に戻る :: R005 相見積 st=quoting adopt=- reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",900,-1,null]]
+ERRORS []
+== 8/8 PASS

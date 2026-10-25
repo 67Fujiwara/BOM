@@ -1,0 +1,42 @@
+0:edit_qty: R001 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:withdraw_x: none
+2:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+3:pick_supplier: R050 R050: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+4:excel: pm 3 sheets
+5:next_day: +3d
+6:rough: 6 行 × 3 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+7:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+8:rough: 依頼する行がありません（提出済・再見積要の行なし）
+9:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 6
+10:edit_qty: R036 を入れて Enter] 行 1（Rev.3） を公開しました
+11:edit_qty: R075 行 1（Rev.3） を公開しました
+12:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+13:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+14:pm_decide: R005 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+15:switch_proc: R027→社内在庫 を入れて Enter] 行 2（Rev.4） を公開しました
+16:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:edit_qty: R035 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+18:switch_proc: R058→相見積 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+19:receive: none
+20:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+22:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:withdraw_x: none
+24:pick_supplier: R014 R014 を 因幡電機 で採用
+25:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:formal: になります → 41 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 2 行
+27:undo: design 戻せません: R014 の「状態」 は、この操作の後に別の操作（あなたの別の操作
+28:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+29:add_row: R081 を入れて Enter] 行 2（Rev.5） を公開しました
+30:pm_decide: R008 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:rough: 3 行 × 1 社に依頼（回答期限 2026-11-03）
+32:decline: R062 S2 EDIT-ERR 3 行 × 1 社に依頼（回答期限 2026-11-03）
+33:undo: purchasing 元に戻す: セル編集
+34:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+35:rough: 依頼する行がありません（提出済・再見積要の行なし）
+36:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+37:reload: reload
+38:order: R013 R013: 発注済にしました
+39:switch_proc: R021→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+PASS F1-7 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

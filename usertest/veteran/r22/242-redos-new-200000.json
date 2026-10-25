@@ -1,0 +1,230 @@
+[
+ {
+  "sname": "two-notes",
+  "pname": "削除（+全角空白×n+）",
+  "len": 400078,
+  "ms": 426
+ },
+ {
+  "sname": "two-notes",
+  "pname": "全角空白×n+削除",
+  "len": 400074,
+  "ms": 331
+ },
+ {
+  "sname": "two-notes",
+  "pname": "削除+。×n",
+  "len": 400074,
+  "ms": 307
+ },
+ {
+  "sname": "two-notes",
+  "pname": "DNP+全角空白×n",
+  "len": 400078,
+  "ms": 319
+ },
+ {
+  "sname": "kind-col-taiou",
+  "pname": "削除（+全角空白×n+）",
+  "len": 400049,
+  "ms": 500
+ },
+ {
+  "sname": "kind-col-taiou",
+  "pname": "全角空白×n+削除",
+  "len": 400045,
+  "ms": 500
+ },
+ {
+  "sname": "kind-col-taiou",
+  "pname": "削除+。×n",
+  "len": 400045,
+  "ms": 361
+ },
+ {
+  "sname": "kind-col-taiou",
+  "pname": "DNP+全角空白×n",
+  "len": 400049,
+  "ms": 389
+ },
+ {
+  "sname": "dnp-col",
+  "pname": "全角空白×n+削除",
+  "len": 200033,
+  "ms": 332
+ },
+ {
+  "sname": "ordinary-note",
+  "pname": "DNP+全角空白×n",
+  "len": 200048,
+  "ms": 307
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除+（×n",
+  "len": 800044,
+  "ms": 350
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除（+）×n",
+  "len": 800048,
+  "ms": 449
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除（+あ×n",
+  "len": 800048,
+  "ms": 370
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除（+（×n+）",
+  "len": 800052,
+  "ms": 331
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除→+空白×n+x",
+  "len": 800052,
+  "ms": 316
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除（+全角空白×n+）",
+  "len": 800052,
+  "ms": 970
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "一部×n+削除",
+  "len": 800044,
+  "ms": 361
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "ため×n",
+  "len": 800044,
+  "ms": 330
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "全角空白×n+削除",
+  "len": 800044,
+  "ms": 845
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "今回×n+削除",
+  "len": 800044,
+  "ms": 320
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "（×n+削除",
+  "len": 800044,
+  "ms": 345
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除+。×n",
+  "len": 800044,
+  "ms": 849
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除+済×n",
+  "len": 800044,
+  "ms": 307
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除+して×n",
+  "len": 800044,
+  "ms": 322
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "削除しない×n",
+  "len": 800036,
+  "ms": 315
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "x+削除×n",
+  "len": 800040,
+  "ms": 302
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "DNP+（×n",
+  "len": 800048,
+  "ms": 354
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "DNP+全角空白×n",
+  "len": 800052,
+  "ms": 1014
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "未実装+（×n",
+  "len": 800048,
+  "ms": 315
+ },
+ {
+  "sname": "ordinary-name",
+  "pname": "A→B×n",
+  "len": 800036,
+  "ms": 326
+ },
+ {
+  "sname": "qty",
+  "pname": "削除（+全角空白×n+）",
+  "len": 200028,
+  "ms": 350
+ },
+ {
+  "sname": "qty",
+  "pname": "全角空白×n+削除",
+  "len": 200026,
+  "ms": 328
+ },
+ {
+  "sname": "qty",
+  "pname": "削除+。×n",
+  "len": 200026,
+  "ms": 362
+ },
+ {
+  "sname": "qty",
+  "pname": "DNP+全角空白×n",
+  "len": 200028,
+  "ms": 301
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "削除（+全角空白×n+）",
+  "len": 400059,
+  "ms": 425
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "全角空白×n+削除",
+  "len": 400055,
+  "ms": 411
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "削除+。×n",
+  "len": 400055,
+  "ms": 501
+ },
+ {
+  "sname": "csv-quoted",
+  "pname": "DNP+全角空白×n",
+  "len": 400059,
+  "ms": 410
+ }
+]

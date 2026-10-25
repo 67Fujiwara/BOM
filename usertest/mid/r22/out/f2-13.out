@@ -1,0 +1,42 @@
+0:edit_qty: R067 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:formal_price: R060 x3 EDIT-ERR R060 の正式単価 ¥10,032（概算から +200%）。
+2:decline: none
+3:formal_price: R070 x1 EDIT-ERR R060 の正式単価 ¥10,032（概算から +200%）。
+4:edit_qty: R023 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+5:next_day: +1d
+6:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:formal_price: R033 x3 EDIT-ERR R033 の正式単価 ¥318（概算から +200%）。桁・行
+8:order: R033 R033: 発注済にしました
+9:switch_proc: R029→相見積 を入れて Enter] 行 1（Rev.3） を公開しました
+10:pm_decide: R026 y R026: 先行発注許可
+11:cancel_row: R001 を入れて Enter] 行 1（Rev.4） を公開しました
+12:edit_qty: R046 を入れて Enter] 行 1（Rev.5） を公開しました
+13:cancel_row: R048 を入れて Enter] 行 1（Rev.6） を公開しました
+14:receive: R033 R033: 入荷済にしました
+15:excel: design 3 sheets
+16:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:order: none
+18:switch_proc: R035→指定商社 を入れて Enter] 行 1（Rev.7） を公開しました
+19:next_day: +4d
+20:order: none
+21:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+22:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:replace_row: R070 R070 の置き換え品 R081 を作りました（公開すると R070 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+24:pm_decide: R026 y 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+25:formal_price: none
+26:order: none
+27:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+28:formal_price: none
+29:add_row: R082 を入れて Enter] 行 1（Rev.9） を公開しました
+30:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+31:edit_qty: R066 入れて Enter] 行 1（Rev.10） を公開しました
+32:withdraw_x: R029 R029: 正式依頼の取下げ（立花エレテック P-2026-041-S2-F1）を伝えた（確認済）
+33:formal_price: none
+34:pm_decide: R054 Shift+Y R054: 却下
+35:edit_qty: R019 入れて Enter] 行 1（Rev.11） を公開しました
+36:order: none
+37:decline: R068 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+38:formal_price: none
+39:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+PASS F2-13 不変条件の違反なし（40 操作） :: violations=0
+== 1/1 PASS

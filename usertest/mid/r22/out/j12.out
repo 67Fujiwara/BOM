@@ -1,0 +1,16 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X Y Z C R001 R002 R003 R007
+publish → [変更セット（9 行: R001, R002, R003, R007, R076 …）の理由。数字か ↑↓ で選び、変更番] 行 9（Rev.2） を公開しました
+after R001 支給品 st=selected adopt=- reason= oq=- flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] | 選定済 · 正式依頼取下げ
+after R002 社内在庫 st=selected adopt=- reason= oq=- flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] | 選定済 · 正式依頼取下げ
+after R003 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] | 選定済 · 正式依頼取下げ
+after R007 相見積 st=cancelled adopt=S1 reason= oq=2 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 取消 · 正式依頼取下げ
+options ["社内（採用・金額・状態つき）","商社向け: 全商社共通（提出済の全行・価格列なし）","保管用（全列・商社別見積つき）","商社向け: 因幡電機（その商社に頼む行だけ・価格列なし）","商社向け: 立花エレテック（その商社に頼む行だけ・価格列なし）","商社向け: ミスミ（その商社に頼む行だけ・価格列なし）"]
+toast Excel を出力しました（商社向け・因幡電機、BOM シートのみ・価格なし）
+因幡 file sheets ["BOM"] head ["ID","回路記号","図面番号","分類","部品名","型式","メーカ","必要数","単位","入数","調達区分","メーカ指定","代替可否","必要日","備考"] rows 70 has X,Y,Z,C [ false, false, false, false ]
+PASS J12-1 因幡向けの Excel に、支給品・社内在庫・立花の指定商社・取消にした行が出ない（因幡に頼む行だけ） :: [["R001",false],["R002",false],["R003",false],["R007",false]]
+PASS J12-2 商社向けに価格・採用・状態の列と社内シートが無い :: {"head":["ID","回路記号","図面番号","分類","部品名","型式","メーカ","必要数","単位","入数","調達区分","メーカ指定","代替可否","必要日","備考"],"sheets":["BOM"]}
+INFO 全商社共通 has X(支給品),Y(社内在庫),C(取消) false false false
+ERRORS []
+== 2/2 PASS

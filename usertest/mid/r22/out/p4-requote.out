@@ -1,0 +1,29 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 依頼中」になります → 74 行 × 3 社に正式見積を依頼
+publish → ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+rough1 → 7 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行
+Y R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",100,5,null]] Z R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",1
+qty 10→30 R081 R082 を 因幡電機 で採用（スコア 99.2 / 最安）
+qty 10→30 R082 R082 を 因幡電機 で採用（スコア 99.2 / 最安）
+publish → を入れて Enter] 行 2（Rev.3） を公開しました
+Y R081 相見積 st=selected adopt=S1 reason=拮抗 oq=30 flags={"requote":true} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",100,5,null]]
+Z R082 相見積 st=selected adopt=S1 reason=拮抗 oq=30 flags={"requote":true} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",100,5,null]]
+PASS P4-requote-1 必要数 +200% の行は再見積要になる :: [{"renegotiating":false,"requote":true,"pmPending":false,"contested":false,"leadNG":false},{"renegotiating":false,"requote":true,"pmPending":false,"contested":false,"leadNG":false}]
+PASS P4-requote-2 再見積要の行は購買の 9 に出る
+Y 据え置き → R081 の旧見積を戻しました（概算。採用はそのまま）
+Y R081 相見積 st=selected adopt=S1 reason=拮抗 oq=30 flags={} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",100,5,null]]
+PASS P4-requote-3 据え置きで再見積要が外れ、旧見積が有効に戻る（見積は stale でない） :: R081 相見積 st=selected adopt=S1 reason=拮抗 oq=30 flags={} quotes=[["S1",100,5,null],["S2",105,5,null],["S3",100,5,null]]
+Z 再見積 → 1 行 × 3 社に依頼（回答期限 2026-10-31）
+Z R082 相見積 st=quoting adopt=- reason=拮抗 oq=30 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+rough2 → 1 行 × 3 社に依頼（回答期限 2026-10-31） [["因幡電機",1],["立花エレテック",1],["ミスミ",1]]
+PASS P4-requote-4 再見積の Z だけ概算を取り直す（Y は含まない） :: [["因幡電機",["R082"]],["立花エレテック",["R082"]],["ミスミ",["R082"]]]
+  file download 概算見積依頼/差分 差分 [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+PASS P4-requote-5 download の差分シート（Rev2）の見出しは 行ID/項目/旧/新、項目名は日本語 :: [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+  file download 概算見積依頼/差分 差分 [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+PASS P4-requote-5 download の差分シート（Rev2）の見出しは 行ID/項目/旧/新、項目名は日本語 :: [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+  file download 概算見積依頼/差分 差分 [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+PASS P4-requote-5 download の差分シート（Rev2）の見出しは 行ID/項目/旧/新、項目名は日本語 :: [["行ID","項目","旧","新"],["R082","必要数","10","30"]]
+PASS P4-requote-6 画面の文字に undefined が出ない :: []
+ERRORS []
+PASS P4-requote-9 console error なし :: []
+== 9/9 PASS

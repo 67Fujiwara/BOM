@@ -1,0 +1,41 @@
+ok  D01-tsv4-refs1 exp=tab/10 got=tab/10 
+ok  D02-tsv3-note1 exp=tab/10 got=tab/10 
+ok  D03-tsv5-half1 exp=tab/10 got=tab/10 
+ok  D01-tsv4-refs2 exp=tab/10 got=tab/10 
+ok  D02-tsv3-note2 exp=tab/10 got=tab/10 
+ok  D03-tsv5-half2 exp=tab/10 got=tab/10 
+ok  D01-tsv4-refs3 exp=tab/10 got=tab/10 
+NG  D02-tsv3-note3 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|","項目1|項目2|項目3|"]
+ok  D03-tsv5-half3 exp=tab/10 got=tab/10 
+NG  D01-tsv4-refs4 exp=tab/10 got=comma/10 ["R1|R2|R3|数量「R4」を読めません","R11|R12|R13|数量「R14」を読めません"]
+NG  D02-tsv3-note4 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|数量「項目4」を読めません","項目1|項目2|項目3|数量「項目4」を読めません"]
+ok  D03-tsv5-half4 exp=tab/10 got=tab/10 
+NG  D01-tsv4-refs5 exp=tab/10 got=comma/10 ["R1|R2|R3|数量「R4」を読めません","R11|R12|R13|数量「R14」を読めません"]
+NG  D02-tsv3-note5 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|数量「項目4」を読めません","項目1|項目2|項目3|数量「項目4」を読めません"]
+ok  D03-tsv5-half5 exp=tab/10 got=tab/10 
+NG  D01-tsv4-refs6 exp=tab/10 got=comma/10 ["R1|R2|R3|数量「R4」を読めません","R11|R12|R13|数量「R14」を読めません"]
+NG  D02-tsv3-note6 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|数量「項目4」を読めません","項目1|項目2|項目3|数量「項目4」を読めません"]
+ok  D03-tsv5-half6 exp=tab/10 got=tab/10 
+NG  D01-tsv4-refs8 exp=tab/10 got=comma/10 ["R1|R2|R3|数量「R4」を読めません","R11|R12|R13|数量「R14」を読めません"]
+NG  D02-tsv3-note8 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|数量「項目4」を読めません","項目1|項目2|項目3|数量「項目4」を読めません"]
+ok  D03-tsv5-half8 exp=tab/10 got=tab/10 
+NG  D01-tsv4-refs12 exp=tab/10 got=comma/10 ["R1|R2|R3|数量「R4」を読めません","R11|R12|R13|数量「R14」を読めません"]
+NG  D02-tsv3-note12 exp=tab/10 got=comma/10 ["項目1|項目2|項目3|数量「項目4」を読めません","項目1|項目2|項目3|数量「項目4」を読めません"]
+NG  D03-tsv5-half12 exp=tab/10 got=comma/9 ["項目1|項目2|項目3|数量「項目4」を読めません","|||"]
+NG  D04-tsv2-comma exp=tab/8 got=comma/8 ["|抵抗||","|抵抗||"]
+NG  D05-tsv3-maker-comma exp=tab/8 got=comma/8 ["0kΩ|1/4W|5%\tM-0\tOmron|数量「Inc.」を読めません","1kΩ|1/4W|5%\tM-1\tOmron|数量「Inc.」を読めません"]
+ok  D06-csv-tab-notes exp=comma/10 got=comma/10 
+NG  D07-csv-tab-notes-5 exp=comma/10 got=tab/10 ["b|c|d|数量「e」を読めません","b|c|d|数量「e」を読めません"]
+NG  D08-csv-quoted-tab-notes exp=comma/10 got=tab/10 ["b|c|d\"|","b|c|d\"|"]
+ok  D09-single-col-comma exp=comma/6 got=comma/6 
+ok  D10-single-col-tab-comma exp=tab/6 got=tab/6 
+ok  D11-ragged-tsv exp=tab/12 got=tab/12 
+ok  D12-tsv-ref-formula exp=tab/10 got=tab/10 
+ok  D13-tsv-eq-tie exp=tab/10 got=tab/10 
+NG  D14-tsv-multiline-ref exp=tab/10 got=comma/31 ["部品名\t型式\t員数\t回路記号|||","部品0\tM-0\t3\t\"R1|R2||"]
+NG  D15-tsv-title-commas exp=tab/10 got=comma/15 ["制御盤A|2026-10-25|Rev.2|数量「山田」を読めません","X商事|納期|12月|数量「急ぎ」を読めません"]
+NG  D16-tsv-big-comma-notes exp=tab/50 got=comma/50 ["黒|白|赤|数量「青」を読めません","黒|白|赤|数量「青」を読めません"]
+NG  D17-tsv-address exp=tab/10 got=comma/10 ["千代田区|1-1|ビル|数量「3F」を読めません","千代田区|1-1|ビル|数量「3F」を読めません"]
+ok  D18-csv-tsv-mix-half exp=comma/10 got=comma/10 
+NG  D19-tsv-onlycomma-cells exp=tab/6 got=comma/6 ["|部品0\tA-1||","|部品1\tA-1||"]
+NG 21 / 40

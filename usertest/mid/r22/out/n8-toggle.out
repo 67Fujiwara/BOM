@@ -1,0 +1,24 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+S S1 A R001 B R002 C R004
+order R001 R001: 発注済にしました
+order R002 R002: 発注済にしました
+A R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] 2026-10-26
+receive A (7 日) R001: 入荷済にしました
+stats {"ok":1,"total":1}
+PASS N8-1 7 日目の入荷（正式納期 10 日）は納期内 1/1 :: {"ok":1,"total":1}
+un-receive A R001: 入荷済を外しました
+stats null R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] receivedAt undefined
+PASS N8-2 入荷を戻すと状態は発注済・記録（入荷日）が消え、実績から外れる :: ordered undefined null
+receive A again (17 日) R001: 入荷済にしました
+PASS N8-3 17 日目に入荷し直すと遅れ 0/1 :: {"ok":0,"total":1} 2026-11-12
+Ctrl+Z → 元に戻す: 入荷済 null R001 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+PASS N8-4 Ctrl+Z で入荷が戻る（発注済・実績なし） :: null ordered
+Ctrl+Y → やり直す: 入荷済 {"ok":0,"total":1}
+PASS N8-5 やり直しで入荷が戻る（0/1） :: {"ok":0,"total":1}
+design edit received A → R001 は発注済以降の行です。設計列は変えられません（変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます）
+PASS N8-6 入荷済の行の必要数は変えられない
+uncheck ordered on received → 入荷済の行です。先に入荷（i）を外してください
+A after R001 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+ERRORS []
+== 6/6 PASS

@@ -1,0 +1,33 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X R008 qty 4 Y R011 qty 24 supplier S1 mode appr
+X qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish Rev.c → [変更セット（1 行: R008）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+PASS O8-0 不変条件
+X R008 相見積 st=formalRequested adopt=S1 reason= oq=4 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,nu
+PASS O8-1 承認待ちの間、X は正式依頼中のまま（再発行対象にならない）。購買の 8 の再発行にも出ない :: R008 相見積 st=formalRequested adopt=S1 reason= oq=4 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,nu
+PASS O8-2 承認待ちの間の正式依頼に X を出さない ::  → 依頼できる行がありません（選定済・再発行対象の行なし）
+PM y X → R008・Rev.3 の変更セット 1 行まとめて: 承認
+PASS O8-3 不変条件
+X R008 相見積 st=formalRequested adopt=S1 reason= oq=6 flags={"reissue":true,"requote":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]]
+PASS O8-3 承認で X は必要数が公開値、取下げ・再発行対象＋再見積要（正式依頼中以降の数量変更） :: R008 相見積 st=formalRequested adopt=S1 reason= oq=6 flags={"reissue":true,"requote":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]]
+purchasing 9 has X true ball purchasing
+formal (requote 中) →  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+PASS O8-4 再見積要の X は正式依頼に出ない（概算を取り直してから） ::  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 1 行は除外）
+rough re-request 6 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",6,true],["立花エレテック",6,true],["ミスミ",6,true]]
+PASS O8-5 概算の取り直しは X を含み、変えていない Y を含まない :: [["因幡電機",true,false],["立花エレテック",true,false],["ミスミ",true,false]]
+X R008 相見積 st=quoting adopt=- reason= oq=6 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+X after answers R008 相見積 st=quoted adopt=- reason= oq=6 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",43500,18,null],["S2",52000,5,null],["S3",44200,22,null]]
+X after a R008 相見積 st=selected adopt=S1 reason= oq=6 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",43500,18,null],["S2",52000,5,null],["S3",44200,22,null]] R008 を 因幡電機 で採用（スコア 99.2 / 最安）
+formal reissue → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+reissue files [{"no":"P-2026-041-S1-F2","ids":["R008"],"rows":[["行ID","項目","旧","新"],["R008","qtyNeeded","4","6"]]}]
+PASS O8-6 再発行の依頼書に X が出る。Rev F2 以降。Y（変えていない）は出ない :: [["P-2026-041-S1-F2",true,false]]
+PASS O8-7 差分シートに X の必要数 旧→新（4 → 6） :: [[["行ID","項目","旧","新"],["R008","qtyNeeded","4","6"]]]
+FAIL O8-7b 商社に渡す差分シートの「項目」が日本語（必要数）で、内部の項目名（qtyNeeded）にならない :: [[["行ID","項目","旧","新"],["R008","qtyNeeded","4","6"]]]
+PASS O8-8 差分シートに X 以外の行（Y など）が載らない :: [[["行ID","項目","旧","新"],["R008","qtyNeeded","4","6"]]]
+X after reissue R008 相見積 st=formalRequested adopt=S1 reason= oq=6 flags={} quotes=[["S1",43500,18,null],["S2",52000,5,null],["S3",44200,22,null]]
+PASS O8-9 不変条件
+ERRORS []
+== 11/12 PASS

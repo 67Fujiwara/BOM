@@ -1,0 +1,10 @@
+o2 o2-A3A4 A3,A4
+o2 o2-A4A3 A4,A3
+o2 o2-A3R4 A3,R4
+o2 o2-R4A3 R4,A3
+o2 o2-R3A4 R3,A4
+o2 o2-A4R3 A4,R3
+o2 o2-R3R4 R3,R4
+o2 o2-R4R3 R4,R3
+o4 o4-remove remove
+o4 o4-stop stop

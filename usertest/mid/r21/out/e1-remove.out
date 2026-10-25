@@ -1,0 +1,13 @@
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rule → 案件設定を保存しました
+all → 案件設定を保存しました
+A before R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",1400,6,null],["S3",null,null,null]] | 見積中 2/3
+supplierIds → 案件設定を保存しました
+A after setting R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",1400,6,null],["S3",null,null,null]] | 見積済 ball design
+purch 4 has A false
+design 4 has A true
+design a → R081 を 立花エレテック で採用（スコア 98 / 最安）
+PASS E1-1 (remove) 設定を変えた直後に、回答の揃った行が見積済になり、選定者が a で選べる :: quoted → a: R081 を 立花エレテック で採用（スコア 98 / 最安）
+A after unrelated edit R081 相見積 st=selected adopt=S2 reason=拮抗 oq=4 flags={} quotes=[["S1",1500,5,null],["S2",1400,6,null],["S3",null,null,null]] | 選定済
+note: unrelated edit promotes → selected
+== 1/1 PASS

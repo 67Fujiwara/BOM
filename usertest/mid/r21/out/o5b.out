@@ -1,0 +1,52 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+E name → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → [変更セット（4 行: R035, R037, R047, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れ] 行 4（Rev.3） を公開しまし
+D R035 相見積 st=selected adopt=S2 reason= oq=6 flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",null,null,null],["S | N true | F removal {"kind":"cancel"} selected
+design 社内 D 必要数=9 E 部品名=承認待ち部品名 N あり=true F あり=true D 状態=選定済
+PASS O5B-社内-design-1 設計の社内 Excel は出した値（D 必要数 9） :: D=9 状態=選定済
+INFO 設計の社内 Excel：承認待ちの値の行の状態の欄は "選定済" （承認待ちの注記なし）
+purchasing 社内 D 必要数=6 E 部品名=近接センサ M12 N あり=false F あり=true D 状態=選定済
+PASS O5B-社内-purchasing-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-社内-purchasing-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-社内-purchasing-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=false
+PASS O5B-社内-purchasing-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+purchasing 変更点 []
+PASS O5B-社内-purchasing-5 購買の変更点に承認待ちの Rev の行（D・E・N・F）が出ない :: []
+pm 社内 D 必要数=6 E 部品名=近接センサ M12 N あり=true F あり=true D 状態=選定済
+pm 変更点 [[3,"R035","必要数: 6 → 9",""],[3,"R037","部品名: 近接センサ M12 → 承認待ち部品名",""],[3,"R047","",""],[3,"R081","追加: 追加行N G3VM-61A1",""]]
+PASS O5B-社内-pm-5 PM の変更点には承認待ちの Rev の行が出る（承認する側） :: [[3,"R035","必要数: 6 → 9",""],[3,"R037","部品名: 近接センサ M12 → 承認待ち部品名",""],[3,"R047","",""],[3,"R081","追加: 追加行N G3VM-61A1",""]]
+design 商社向け共通 D 必要数=6 E 部品名=近接センサ M12 N あり=false F あり=true D 状態=undefined
+PASS O5B-商社向け共通-design-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-商社向け共通-design-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-商社向け共通-design-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=false
+PASS O5B-商社向け共通-design-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+purchasing 商社向け共通 D 必要数=6 E 部品名=近接センサ M12 N あり=false F あり=true D 状態=undefined
+PASS O5B-商社向け共通-purchasing-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-商社向け共通-purchasing-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-商社向け共通-purchasing-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=false
+PASS O5B-商社向け共通-purchasing-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+pm 商社向け共通 D 必要数=6 E 部品名=近接センサ M12 N あり=false F あり=true D 状態=undefined
+PASS O5B-商社向け共通-pm-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-商社向け共通-pm-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-商社向け共通-pm-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=false
+PASS O5B-商社向け共通-pm-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+design 保管用 D 必要数=6 E 部品名=近接センサ M12 N あり=true F あり=true D 状態=選定済
+PASS O5B-保管用-design-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-保管用-design-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-保管用-design-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=true
+PASS O5B-保管用-design-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+purchasing 保管用 D 必要数=6 E 部品名=近接センサ M12 N あり=false F あり=true D 状態=選定済
+PASS O5B-保管用-purchasing-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-保管用-purchasing-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-保管用-purchasing-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=false
+PASS O5B-保管用-purchasing-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+pm 保管用 D 必要数=6 E 部品名=近接センサ M12 N あり=true F あり=true D 状態=選定済
+PASS O5B-保管用-pm-1 公開値だけ（D の必要数は承認前の 6） :: D=6
+PASS O5B-保管用-pm-2 承認待ちの部品名が出ない（E は 近接センサ M12） :: E=近接センサ M12
+PASS O5B-保管用-pm-3 承認待ちの追加行 N が出ない（設計・PM の社内／保管用は承認する側・出した側なので出てよい） :: hasN=true
+PASS O5B-保管用-pm-4 取消待ちの行 F はまだ有効（取消線なし・出ている） :: F=true
+ERRORS []
+== 31/31 PASS

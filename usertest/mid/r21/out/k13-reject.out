@@ -1,0 +1,19 @@
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+C R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+R R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+C delete → R001 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+R replace → R002 の置き換え品 R081 を作りました（公開すると R002 は置換済になります。Ctrl+Z で戻す）
+publish → [変更セット（8 行: R001, R002, R081, R076, R077 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+pending R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] wd - | 正式依頼中 · 取消予定·PM承認待ち
+pending R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] wd - | 正式依頼中 · 置換予定 →R081·PM承認待ち
+PASS K13-0 承認待ちのあいだは取消・置換も取下げもまだ（公開値のまま） :: [["R001","formalRequested",null],["R002","formalRequested",null]]
+PM 7 has C,R true true
+PM Shift+Y → R001・Rev.2 の変更セット 8 行まとめて: 却下
+after reject [["R001","formalRequested",null,"{\"kind\":\"cancel\"}"],["R002","formalRequested",null,"{\"kind\":\"replace\",\"by\":\"R081\"}"]]
+PASS K13-3 却下で正式依頼中のまま、取下げは付かない（取消・置換は設計の作業中に戻る） :: [["R001","formalRequested",null,"{\"kind\":\"cancel\"}"],["R002","formalRequested",null,"{\"kind\":\"replace\",\"by\":\"R081\"}"]]
+置換で作った行 R081 相見積 st=draft adopt=- reason= oq=- flags={"reconfirm":true} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+PASS K13-4 却下した置換で作った新しい行が、購買に見える行（提出済・見積待ち）として残らない :: R081 draft rev=undefined
+ERRORS []
+== 3/3 PASS

@@ -1,0 +1,40 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+S S1 A(入荷済) R001 B(発注済) R002 C(正式依頼中) R004 E(正式見積済) R007
+order R001 R001: 発注済にしました
+order R002 R002: 発注済にしました
+receive A R001: 入荷済にしました
+A R001 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+B R002 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+E R007 相見積 st=formalQuoted adopt=S1 reason= oq=2 flags={} quotes=[["S1",28664,18,28664],["S2",34098,11,null],["S3",33103,14,null]]
+C R004 相見積 st=formalRequested adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+remove S1 因幡電機 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+A R001 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+B R002 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+E R007 相見積 st=quoted adopt=- reason= oq=2 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+C R004 相見積 st=quoted adopt=- reason= oq=1 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS O4-remove-1 発注済（B）・入荷済（A）の採用と状態は変わらない :: R002 相見積 st=ordered adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+PASS O4-remove-2 発注前（C 正式依頼中・E 正式見積済）の採用は外れ、正式依頼の取下げが記録される :: R004 相見積 st=quoted adopt=- reason= oq=1 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2", | R007 相見積 st=quoted adopt=- reason= oq=2 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",28664,18,null],["S2"
+left rows ["R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={\"leadNG\":true,\"formalWithdrawn\":\"S1 P-2026-041-S1-F1\"} quotes=[[\"S1\",356,18,null],[\"S2\",null,null,null],[\"S3\",null,null,null]]"]
+FAIL O4-remove-3 発注前の採用が S に 1 行も残らない（44 行中） :: left=1
+PASS O4-remove-4 取下げの知らせは商社の名前（因幡電機）か依頼 No を含む :: S1 P-2026-041-S1-F1
+採用の列 B(発注済) "" C(取下げ) ""
+FAIL O4-remove-5 発注済の行の「採用」の列が空欄にならない（誰に発注したか見える） :: ""
+rough request panel ["相見積先すべて（S1・立花エレテック・ミスミ）","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+PASS O4-remove-6 概算見積の依頼先に消えた商社が出ない :: ["相見積先すべて（S1・立花エレテック・ミスミ）","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+保管用 見出し ["単価","正式単価","納期(日)","undefined 単価","undefined 納期","undefined MOQ","立花エレテック 単価","立花エレテック 納期","立花エレテック MOQ","ミスミ 単価","ミスミ 納期","ミスミ MOQ"]
+FAIL O4-remove-7 保管用 Excel の見出しに undefined が出ない :: ["undefined 単価","undefined 納期","undefined MOQ"]
+FAIL O4-remove-8 保管用 Excel の B の採用が空欄にならない :: ""
+receive B R002: 入荷済にしました
+PASS O4-remove-9 商社が消えて/停止しても、発注済の行は入荷できる :: R002 相見積 st=received adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+re-bulk → 採用 41 / 拮抗 7（要見直し）/ 承認要 0 / スキップ 0
+formal again 正式見積依頼書（社外）を出します: 対象 17 行（拮抗 6 行を含む）。作業中 0 行・承認待ち 14 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました [["ミスミ",4],["立花エレテック",12]]
+PASS O4-remove-10 選び直しの正式依頼書が消えた/停止の商社宛にならない :: ["ミスミ","立花エレテック"]
+C after re-adopt R004 相見積 st=quoted adopt=- reason= oq=1 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+FAIL O4-remove-11 C は別の商社を採用し直せる :: R004 相見積 st=quoted adopt=- reason= oq=1 flags={"formalWithdrawn":"S1 P-2026-041-S1-F1","ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",
+ERRORS ["[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestFormalQuotes (/src/actions/quotes.ts:247:46)"]
+FAIL O4-remove-12 console error なし :: ["[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestFormalQuotes (/src/actions/quotes.ts:247:46)"]
+== 6/12 PASS
+ERRORS [
+  "[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestFormalQuotes (/src/actions/quotes.ts:247:46)"
+]

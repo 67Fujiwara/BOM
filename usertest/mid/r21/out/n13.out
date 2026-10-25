@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+broken → {"panel":null,"toast":"JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: Expected property name or '}' in JSON at position 16 (line 1 column 17)）","after":"JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: Expected property name or '}' in JSON at position 16 (line 1 column 17)）"}
+PASS N13-1 壊れた JSON は読み込まず知らせる（データは変わらない） :: {"panel":null,"toast":"JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: Expected property name or '}' in JSON at position 16 (line 1 column 17)）","after":"JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: Ex
+empty → {"panel":null,"toast":"読み込めません: projects が配列ではありません","after":"読み込めません: projects が配列ではありません"}
+PASS N13-2 {} は読み込まない（データは変わらない） :: {"panel":null,"toast":"読み込めません: projects が配列ではありません","after":"読み込めません: projects が配列ではありません"}
+array → {"panel":null,"toast":"読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）","after":"読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）"}
+PASS N13-3 配列は読み込まない :: {"panel":null,"toast":"読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）","after":"読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）"}
+S1 removed → {"panel":{"kind":"prompt","title":"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます","options":["やめる","置き換える"]},"toast":"読み込めません: ワークスペースの形式ではありません（{ projects: [...] } が必要）","after":"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"}
+adopted S1 before 44 after 1 status sample [["R034","selected"]]
+FAIL N13-4 商社マスタから消えた商社を採用したままにしない（採用が外れる、または読み込みを断る） :: before=44 after=1 "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」"
+visible rows 9 44
+missing name → {"panel":{"kind":"prompt","title":"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます","options":["やめる","置き換える"]},"toast":"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」","after":"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 商社マスタの 1 件は形式が読めないので外しました。戻すときは Ctrl+K →「読み込み前に戻す」"}
+grid still renders true
+PASS N13-5 商社の名前が無い JSON でも画面が壊れない :: {"panel":{"kind":"prompt","title":"全案件（いま 1 件）を JSON の 1 件で置き換えます。置き換える前の内容は退避し、Ctrl+K →「読み込み前に戻す」で戻せます","options":["やめる","置き換える"]},"toast":"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」","after":"JS
+ERRORS []
+PASS N13-6 console error なし :: []
+== 5/6 PASS

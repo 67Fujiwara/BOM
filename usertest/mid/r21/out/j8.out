@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R001 T R002 G R004
+A panel 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります
+B publish X 支給品 / T 取消 → 行 7（Rev.2） を公開しました
+A confirm → 72 行 × 3 社に正式見積を依頼 [["因幡電機",false,false,41],["ミスミ",false,false,6],["立花エレテック",false,false,25]]
+after (a) R001 支給品 st=selected adopt=- reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] withdrawn= - | 選定済
+after (a) R002 相見積 st=cancelled adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] withdrawn= - | 取消
+after (a) R004 相見積 st=formalRequested adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] withdrawn= - | 正式依頼中
+PASS J8-1 別のタブで支給品にした行・取消した行は、開いていた確認パネルからの正式見積の依頼書に入らない :: [["因幡電機",false,false],["ミスミ",false,false],["立花エレテック",false,false]]
+PASS J8-2 その 2 行に、出していない正式依頼の「取下げ」は付かない :: [null,null]
+A 4 has G before false R004 相見積 st=formalRequested adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+B publish G 取消 → 行 1（Rev.3） を公開しました
+A 4 has G after true R004 相見積 st=cancelled adopt=S1 reason= oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] withdrawn 因幡電機 P-2026-041-S1-F1
+PASS J8-3 別のタブで取消した正式依頼中の行が、開いている購買の 4 に取下げで出る :: in4=true
+A x → R004: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済） | B sees flag null
+PASS J8-4 A の x で外した取下げは B にも伝わる :: null
+ERRORS [] []
+== 4/4 PASS

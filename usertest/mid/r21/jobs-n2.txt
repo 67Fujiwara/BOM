@@ -1,0 +1,5 @@
+n2 n2-addappr addappr
+n2 n2-addrej addrej
+n2 n2-addpartial addpartial
+n2 n2-addcrej addcrej
+n2 n2-addchain addchain

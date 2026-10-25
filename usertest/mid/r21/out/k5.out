@@ -1,0 +1,19 @@
+Q R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish → 指摘 1 件 を公開しました
+PM y → R007: 承認
+Q after y R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済 ball design issues [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+PASS K5-1 選定前の最小ロットを PM が承認したら、指摘は決着し選定者（設計）のボール（M16-08） :: [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]] ball=design
+design 4 has Q true
+ranks [["S2",96.8],["S3",90],["S1",50.3]]
+adopt S1 → R007: 因幡電機 を仮採用（実績/品質: PM 承認済の余剰で因幡）。PM の承認待ち（7 要決定）
+Q after adopt R007 相見積 st=quoted adopt=S1 reason=実績/品質: PM 承認済の余剰で因幡 oq=100 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済 · PM承認待ち case 例外選定 issues [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+INFO PM の要決定 例外選定
+PM y (例外選定) → R007: 承認
+Q after 2nd y R007 相見積 st=selected adopt=S1 reason=実績/品質: PM 承認済の余剰で因幡 oq=100 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 選定済 issues [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+PASS K5-2 PM が余剰を受け入れた因幡で採用したら、発注数は丸め数量 100 :: R007 相見積 st=selected adopt=S1 reason=実績/品質: PM 承認済の余剰で因幡 oq=100 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+PASS K5-3 採用のあとに最小ロットの指摘が開き直らない（PM の承認が残る） :: [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+formal → 正式見積依頼書（社外）を出します: 対象 6 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 6 行 × 2 社に正式見積を依頼 Q rows []
+FAIL K5-4 正式見積の依頼書に因幡・発注数 100 で出る :: []
+ERRORS []
+== 3/4 PASS

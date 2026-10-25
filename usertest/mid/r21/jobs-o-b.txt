@@ -1,0 +1,31 @@
+o2c o2c-cancel-A3A4 cancel A3,A4
+o2c o2c-cancel-A4A3 cancel A4,A3
+o2c o2c-cancel-R4A3 cancel R4,A3
+o2c o2c-cancel-R3A4 cancel R3,A4
+o2c o2c-cancel-R3R4 cancel R3,R4
+o2c o2c-cancel-A3R4 cancel A3,R4
+o2c o2c-repl-A3A4 repl A3,A4
+o2c o2c-repl-A4A3 repl A4,A3
+o2c o2c-repl-R4A3 repl R4,A3
+o2c o2c-repl-R3A4 repl R3,A4
+o2c o2c-repl-R3R4 repl R3,R4
+o2c o2c-repl-A3R4 repl A3,R4
+o3b o3b
+o5b o5b
+o7 o7-due due
+o7 o7-nodue nodue
+o1 o1-panel-gone panel-gone
+o4b o4b
+o4 o4-remove-run2 remove
+o1 o1-moq-run2 moq
+o3 o3-selected-run2 selected
+o3 o3-formal-run2 formal
+o5 o5-rej-run2 rej
+o2 o2-run2-A3A4 A3,A4
+o2 o2-run2-A4A3 A4,A3
+o2 o2-run2-A3R4 A3,R4
+o2 o2-run2-R4A3 R4,A3
+o2 o2-run2-R3A4 R3,A4
+o2 o2-run2-A4R3 A4,R3
+o2 o2-run2-R3R4 R3,R4
+o2 o2-run2-R4R3 R4,R3

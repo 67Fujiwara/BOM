@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+S1 adopted rows 20 X R001 Y R002
+remove S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+X R001 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+Y R002 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]]
+ghost S1 quotes (not stale) 75  project supplierIds ["S1","S2","S3"]
+FAIL O4B-1 消えた商社が案件の相見積先（supplierIds）に残らない :: ["S1","S2","S3"]
+a on X → R001 を undefined で採用（スコア 90 / 最安・実績なし） | R001 相見積 st=quoted adopt=- reason= oq=1 flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+FAIL O4B-2 a の結果、採用は取引できる商社（マスタにある）になる :: adopt=undefined toast=R001 を undefined で採用（スコア 90 / 最安・実績なし）
+Shift+A panel []
+PASS O4B-3 Shift+A の候補に消えた商社が出ない :: []
+bulk again → 採用 38 / 拮抗 18（要見直し）/ 承認要 0 / スキップ 5
+FAIL O4B-4 一括採用のあと、消えた商社を採用した行がない :: ghostAdopt=1
+quoted のまま残った行（S1 以外に有効な見積あり） 10 R001,R004,R011,R015,R033,R036,R048,R051
+FAIL O4B-5 S1 以外に有効な見積がある行は、一括採用で採用される（幽霊の S1 に邪魔されない） :: stuck=10
+publish Z → [変更セット（6 行: R081, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しまし
+rough request → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました ["相見積先すべて（S1・立花エレテック・ミスミ）","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"] []
+Z R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+FAIL O4B-7 概算見積の依頼で console error（消えた商社宛の依頼書の作成失敗）が出ない :: ["[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestRoughQuotes (/src/actions/quotes.ts:85:46)"]
+FAIL O4B-8 Z は依頼された商社（マスタにある 2 社以上）に出る :: []
+ERRORS ["[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestRoughQuotes (/src/actions/quotes.ts:85:46)"]
+FAIL O4B-6 console error なし :: ["[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestRoughQuotes (/src/actions/quotes.ts:85:46)"]
+== 1/8 PASS
+ERRORS [
+  "[pageerror] Cannot read properties of undefined (reading 'id') @ at Module.exportRequestExcel (/src/io/excel.ts:144:32) | at Module.requestRoughQuotes (/src/actions/quotes.ts:85:46)"
+]

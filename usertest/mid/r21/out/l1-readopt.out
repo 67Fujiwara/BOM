@@ -1,0 +1,19 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+PM Shift+Y → R004: 却下
+X after reject R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] oq 1 issues [["I-006","最小ロット","open",""]]
+PASS L1-0 却下で発注数が必要数に戻る（M16-04） :: oq=1 need=1
+ranks [["S3",90],["S1",49.7]]
+adopt other → R004 を ミスミ で採用 R004 相見積 st=selected adopt=S3 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+adopt S1 again → R004: 因幡電機 を仮採用（その他: 因幡に戻す）。PM の承認待ち（7 要決定） R004 相見積 st=selected adopt=S1 reason=その他: 因幡に戻す oq=1 flags={"pmPending":true,"pmReason":"例外選定","surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] case 例外選定 [["I-006","最小ロット","open",""]]
+INFO 例外選定で PM へ 例外選定
+PASS L1R-1 却下のあと因幡に選び直しても、発注数が黙って却下した余剰（100）にならない :: R004 相見積 st=selected adopt=S1 reason=その他: 因幡に戻す oq=1 flags={"pmPending":true,"pmReason":"例外選定","surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] toast=R004: 因幡電機 を仮採用（その他: 因幡に戻す）。PM の承認待ち（7 要決定）
+PM y (例外選定) → R004: 承認
+after R004 相見積 st=selected adopt=S1 reason=その他: 因幡に戻す oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 [["因幡電機","R004","アナログ入力","FX5-4AD","三菱電機",1,"個"]]
+INFO L1R-2 PM が例外選定を承認したあと、因幡 100 で正式見積の依頼書が出る（PM は例外選定として見た） false [["因幡電機","R004","アナログ入力","FX5-4AD","三菱電機",1,"個"]] surplusRejected S1
+ERRORS []
+== 2/2 PASS

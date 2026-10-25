@@ -1,0 +1,27 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+N R081 D R035 M R037
+publish Rev.3 → を入れて Enter] 行 2（Rev.3） を公開しました
+publish Rev.4 → を入れて Enter] 行 2（Rev.4） を公開しました
+publish Rev.5 → を入れて Enter] 行 1（Rev.5） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R037,R081",{"R081":5},""],[5,"その他","pend","R081",null,""]]
+PASS O2D-A5R4A3-0 不変条件
+PASS O2D-A5R4A3-1 前提：N は Rev.5 の承認待ち、D は Rev.3、M は Rev.4 :: N=5 D=3 M=4
+PM A5 R081 → R081・Rev.5 の変更セット 1 行まとめて: 承認 | N submitted pend undefined
+PASS O2D-A5R4A3-after-A5 不変条件
+PM R4 R037 → R037・Rev.4 の変更セット 1 行まとめて: 却下 | N submitted pend undefined
+PASS O2D-A5R4A3-after-R4 不変条件
+PM A3 R035 → R035・Rev.3 の変更セット 1 行まとめて: 承認 | N submitted pend undefined
+PASS O2D-A5R4A3-after-A3 不変条件
+final subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R037,R081",{"R081":5},"revoked"],[5,"その他","appr","R081",null,""]]
+N R081 相見積 st=submitted adopt=- reason= oq=- flags={} quotes=[] name 追加行N3 | D q 7 null | M q 8 {"qtyNeeded":9}
+PASS O2D-A5R4A3-2 Rev.5 承認で N は公開（部品名 追加行N3、承認待ちなし） :: R081 相見積 st=submitted adopt=- reason= oq=- flags={} quotes=[] 追加行N3
+PASS O2D-A5R4A3-3 D は Rev.3 の決定（A）だけ :: D q=7 w=null
+PASS O2D-A5R4A3-4 M は Rev.4 の決定（R）だけ :: M q=8 w={"qtyNeeded":9}
+PASS O2D-A5R4A3-5 承認待ちの変更セットが残らない :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","appr","R035,R081",{"R081":4},""],[4,"廃番・入手難","rej","R037,R081",{"R081":5},"revoked"],[5,"その他","appr","R081",null,""]]
+PASS O2D-A5R4A3-6 購買の 9 に N が出るのは Rev.5 を承認したときだけ :: in9=true
+purchasing 変更点 N [[3,"追加: 追加行N G3VM-61A1","Rev 5 にまとめた"],[5,"","鈴木 2026-10-25 / 部長 田中 K-77"]]
+FAIL O2D-A5R4A3-7 承認した N は購買の変更点に出て、最終の部品名（追加行N3）が内容にある :: [[3,"追加: 追加行N G3VM-61A1","Rev 5 にまとめた"],[5,"","鈴木 2026-10-25 / 部長 田中 K-77"]]
+ERRORS []
+== 10/11 PASS

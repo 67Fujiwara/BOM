@@ -1,0 +1,29 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+selected & leadNG rows R003,R021,R032,R044,R046
+PM d D → R003: 設計へ代替依頼
+D 対策不成立 R003:selected:ord=false:adopt=S1:{"leadNG":false,"formalDiff":false,"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} issues=I-006:納期NG:answered ball PM
+PM panel D 決定パネル R003（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","e 特急・分納（上限入力）"]
+PM g D → 使えるキー: Shift+Y / b / e（↑↓ と Enter でも選べます）
+D after g R003:selected:ord=false:adopt=S1:{"leadNG":false,"formalDiff":false,"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} issues=I-006:納期NG:answered ball PM formalReqNo undefined
+PASS X3-1 正式依頼前の行に「再交渉」しても、正式依頼を出していないのに正式依頼中にならない :: R003:selected:ord=false:adopt=S1:{"leadNG":false,"formalDiff":false,"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} issues=I-006:納期NG:answered
+purch 8 has D? true
+purch 4 has D? false
+design 4 has D? false
+PM b E → R021: 次点商社へ null
+E after b R021:selected:ord=false:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"formalDiff":false,"countermeasure":"商社変更"} issues=I-007:納期NG:confirmed ball 購買
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 0 行・承認待ち 1 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+F diff R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":true} issues=
+PM q F → R001: 数量見直し依頼
+F 対策不成立 R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:20219","pmPending":true,"pmReason":"対策不成立"} issues=I-008:数量見直し依頼:answered
+PM panel F ["Shift+Y 受入（遅延・価格を受け入れる）","b 次点へ","g 再交渉（購買へ）","e 特急・分納（上限入力）"]
+PM b F → R001: 次点商社へ
+F after b R001:selected:ord=false:adopt=S2:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"pmPending":false,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1","countermeasure":"商社変更"} issues=I-008:数量見直し依頼:confirmed ball 購買
+o F → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+o C → R002: 発注済にしました
+PM d C → R002: 設計へ代替依頼
+C 対策不成立 R002:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:407","pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} issues=I-009:納期NG:answered
+PM panel C 決定パネル R002（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","e 特急・分納・納期短縮交渉（購買）"]
+PASS X3-2 発注済の対策不成立は b が無く、e と受入だけ
+PM e C → R002: 特急・分納 {"上限金額":""}
+C after e R002:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:407","pmPending":false,"countermeasure":"分納・特急"} issues=I-009:納期NG:confirmed ball 購買
+== 2/2 PASS

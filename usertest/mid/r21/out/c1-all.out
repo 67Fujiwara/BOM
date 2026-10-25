@@ -1,0 +1,20 @@
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+rule → 案件設定を保存しました
+S1 only → 7 行 × 1 社に依頼（回答期限 2026-10-26）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"]
+A status 見積中 0/3
+PASS C1-1 因幡だけに依頼した行の状態に、相見積先 3 社を分母にした回答数が出る（§4「回答 2/3 を併記」） :: 見積中 0/3
+after S1 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null]] | 見積中 1/3
+PASS C1-2 1 社の回答後の表示は 1/3（頼んでいない 2 社を待っていることが分かる） :: 見積中 1/3
+purchasing 4 has A true
+purch status bar on A ナビR081 ID購買 佐藤: 未発行 0 件7 行 × 1 社に依頼（回答期限 2026-10-26）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）?ヘルプF8次の問題Shift+I指摘Space開く
+PASS C1-3 回答待ちの行（立花・ミスミにまだ頼んでいない）が購買の 4 に出る
+design a → 回答 1/3 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）
+PASS C1-4 a の案内の回答数も 1/3 :: 回答 1/3 待ち（Alt+Shift+A / Ctrl+Alt+A で先行採用）
+after deadline R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null]] | 見積中 1/3 deadline 2026-10-26
+PASS C1-5 (全社) 期限を過ぎても見積中のまま（完了条件どおり） :: quoting
+purchasing 4 after deadline has A true
+PASS C1-6 期限を過ぎて回答待ちのままの行が購買の 4 に出る（頼んでいない商社に依頼する手がかり）
+all → 7 行 × 2 社に依頼（回答期限 2026-11-02） [["立花エレテック",["R081","R082"]],["ミスミ",["R081","R082"]]]
+R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",null,null,null],["S3",null,null,null]] | 見積中 1/3
+== 6/6 PASS

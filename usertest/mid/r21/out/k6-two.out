@@ -1,0 +1,22 @@
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+Y R007 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] name0 タイマ
+Y name (cs) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+Y qty (cs) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish cs → [変更セット（6 行: R007, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+Y pending {"name":"NAME-CS","qtyNeeded":6} subs [[1,"plain",2,"タイマ",null],[2,"pend",6,"NAME-CS","変更セット #2"]]
+question → 指摘 1 件 を公開しました
+Y name (fix) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish fix → 行 1（Rev.3） を公開しました
+Y before PM name NAME-FIX qty 2 pending {"qtyNeeded":6} pmPending true subs [[1,"plain",2,"タイマ",null],[2,"pend",6,"NAME-CS","変更セット #2"],[3,"plain",2,"NAME-FIX","I-006"]]
+PM 7 has Y true case 変更セット statusbar ナビR007 IDPM 鈴木: 要決定 16役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開いて指摘を見る
+PM y → R007・Rev.2 の変更セット 6 行まとめて: 承認
+Y after approve R007 相見積 st=formalRequested adopt=S1 reason= oq=6 flags={"reissue":true,"requote":true} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] name NAME-FIX qty 6 | 正式依頼中 · 指摘·再見積要·再発行 subs [[1,"plain",2,"タイマ",null],[2,"appr",6,"NAME-CS","変更セット #2"],[3,"plain",6,"NAME-FIX","I-006"]]
+PASS K6-3 承認で部品名は NAME-FIX のまま、必要数は変更セットの ×3 :: name=NAME-FIX qty=6
+PASS K6-4 承認した必要数の変更で取下げ・再発行対象（正式依頼中の行の数量変更） :: {"pmPending":false,"contested":false,"leadNG":false,"reissue":true,"requote":true}
+purch 変更点 Y [[1,"2026-10-23 14:56","山田","R007","","","","",""],[2,"2026-10-25 14:57","山田","R007","変更セット #2","客先要求","","部品名: タイマ → NAME-CS / 必要数: 2 → 6","鈴木 2026-10-25 / 部長 田中 K-77"],[3,"2026-10-25 14:57","山田","R007","I-006","指摘対応","","部品名: NAME-CS → NAME-FIX",""],["","2026-10-25 14:57","鈴木","R007","決定","承認","","承認","部長 田中 2026-10-25 K-77"]]
+BOM Y ["R007","制7","E-2026-041-01","制御","NAME-FIX","H3CR-A8 AC100-240","オムロン",6]
+PASS K6-5 変更点に NAME-CS → NAME-FIX（指摘対応の Rev）と必要数の変更（変更セット）が出る :: [[1,"",""],[2,"変更セット #2","部品名: タイマ → NAME-CS / 必要数: 2 → 6"],[3,"I-006","部品名: NAME-CS → NAME-FIX"],["","決定","承認"]]
+ERRORS []
+== 3/3 PASS

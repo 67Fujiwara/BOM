@@ -1,0 +1,52 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+rows R001 R002 R004 R007
+o R001 R001: 発注済にしました
+o R002 R002: 発注済にしました
+o R004 R004: 発注済にしました
+o R007 R007: 発注済にしました
+h A → 指摘 1 件 を公開しました
+PM y A → R001: 承認
+unorder A → R001: 発注済を外しました
+A before restore R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」 ball 設計
+o on A → 発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）
+PASS A3-1 o の止める文に「キャンセル不可で発注に戻す」の案内 :: 発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）
+design restore → {"toast":"権限なし（発注は購買）"}
+PASS A3-2 設計は戻せない（権限なし） :: 権限なし（発注は購買）
+purch restore → {"title":"R001 を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済に戻す"],"toast":"R001 を発注済に戻しました（キャンセル不可）"}
+A after restore R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false} issues=I-006:発注後変更依頼:confirmed:ruled「キャンセル不可（取引先が受けず）。もとの発注のまま」 ball 購買
+PASS A3-3 (M7-03) 購買の「キャンセル不可で発注に戻す」で発注済・対策区分なし・発注後変更依頼は「キャンセル不可」で閉じる :: R001:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false} issues=I-006:発注後変更依頼:confirmed:ruled「キャンセル不可（取引先が受けず）。もとの発注のまま」
+after restore: design4 false pm7 false purch4 false
+PASS A3-4 戻した行は設計の 4・PM の 7 から消える
+detail A 相見積・スコア内訳 （必要日 11/13 / 必要数 1個 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥14619日受注生産1 99.210010096100最安 / 期限 12/21 / 正式 ¥1462. 立花エレテック¥123即納2在庫2 (+1 ¥123) 76.7591009050在庫即納 / MOQ 2 / 期限 12/063. ミスミ¥14923日取寄1 71.2984050*100納期NG(3日超過) / 実績なし / 期限 12/13採用: 因幡電機 スコア 88（固定）  指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）I-006 発注後変更依頼 確認済 [promisedDate] 取消したい購買 佐藤 10/25 14:27 Rev.1 期限 10/26  ／ キャンセル不可（取引先が受けず）。もとの発注のまま  決定・履歴鈴木 10/25 14:27 承認 承認  （決裁: 部長 田中 2026-10-25 K-77）佐藤 10/25 14:27 発注済を外す鈴木 10/25 14:27 決定: 承認佐藤 10/25 14:27 指摘 発注後変更依頼佐藤 10/25 14:27 発注済佐藤 10/25 14:27 セル編集
+PASS A3-5 詳細に「キャンセル不可」の経緯が残る
+events []
+Ctrl+Z after restore → 元に戻す: キャンセル不可で発注に戻す R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」
+PASS A3-6 押し間違いの「戻す」は Ctrl+Z で外した状態に戻せる（または理由が分かる文） :: 元に戻す: キャンセル不可で発注に戻す
+Ctrl+Z #2 → 元に戻す: セル編集 R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」 B lot undefined
+Ctrl+Y → やり直す: セル編集 R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」
+unorder again after restore → 発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」） R001:formalQuoted:ord=false:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」
+h B → 指摘 1 件 を公開しました
+PM y B → R002: 承認
+B approved, still ordered R002:ordered:ord=true:adopt=S1:{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":true} issues=I-007:発注後変更依頼:inProgress:ruled「PM 承認: 発注取消・代替品へ」 ball 購買
+restore B (not unordered) → {"title":"R002 を発注済のまま残します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済のまま残す"],"toast":"やめました（何も変えていません）"}
+B status bar ナビR002 ID発注後変更依頼 1/1購買 佐藤: 未発行 0 件やめました（何も変えていません）?ヘルプF8次の問題Shift+I指摘Space開く Ctrl+. ["I-007 を見送りにする（理由）"] purch4 true
+issue panel B 指摘のアクション I-007 発注後変更依頼 ["1 返信","5 この指摘からルールを作る","6 見送り（理由）"]
+PASS A3-7 承認後まだ外していない行で取引先が断ったとき、依頼を閉じる手段がある（戻す・見送り・案内） :: やめました（何も変えていません） / ["1 返信","5 この指摘からルールを作る","6 見送り（理由）"]
+h C → 指摘 1 件 を公開しました
+PM y C → R004: 承認
+unorder C → R004: 発注済を外しました
+design r C → R004 の置き換え品 R081 を作りました（公開すると R004 は置換済になります。Ctrl+Z で戻す）
+restore C while design replacing → {"title":"R004 を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済に戻す"],"toast":"R004 は設計が置き換えの作業中です。設計に置換先の行 R081 で Shift+Delete を押して置換を取りやめてもらってから戻します"} R004:formalQuoted:ord=false:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-008:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」
+PASS A3-8 設計の置換が作業中なら戻さず理由を出す :: R004 は設計が置き換えの作業中です。設計に置換先の行 R081 で Shift+Delete を押して置換を取りやめてもらってから戻します
+design Shift+Delete on C → R004 は置換の作業中です（置換先 R081 を Shift+Delete で消すと取りやめ） R004:formalQuoted:ord=false:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-008:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」 removal {"kind":"replace","by":"R081"}
+restore C after design cancels → {"title":"R004 を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済に戻す"],"toast":"R004 は設計が置き換えの作業中です。設計に置換先の行 R081 で Shift+Delete を押して置換を取りやめてもらってから戻します"} R004:formalQuoted:ord=false:adopt=S1:{"pmPending":false,"contested":false,"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"orderCancelApproved":false,"countermeasure":"代替品検討"} issues=I-008:発注後変更依頼:confirmed:ruled「発注を取り消し、設計が置き換え品を作る（r）」
+E late R007:ordered:ord=true:adopt=S1:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false} issues=
+PM d E R007: 設計へ代替依頼
+h E → 指摘 1 件 を公開しました
+PM y E → R007: 承認
+unorder E → R007: 発注済を外しました
+restore E → {"title":"R007 を発注済に戻します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済に戻す"],"toast":"R007 を発注済に戻しました（キャンセル不可）"} R007:ordered:ord=true:adopt=S1:{"pmPending":false,"contested":false,"leadNG":true,"reissue":false,"renegotiating":false,"formalDiff":false,"formalDiffKey":"S1:28664","orderCancelApproved":false} issues=I-009:納期NG:confirmed「PM の決定: 発注後変更依頼を承認（代替品へ）」,I-010:発注後変更依頼:confirmed:ruled「キャンセル不可（取引先が受けず）。もとの発注のまま」
+E in PM 7 after restore true "決定パネル R007（納期NG）" ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+PASS A3-9 納期NG の代替がキャンセル不可で戻ったら、発注済の納期NG として PM の 7 に戻り e / 受入 を選べる :: true ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+== 9/9 PASS

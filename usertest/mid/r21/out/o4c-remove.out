@@ -1,0 +1,16 @@
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更
+rule → 案件設定を保存しました
+request all → 7 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社
+A R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] | 見積中 2/3
+PASS O4C-0 前提：S3 未回答で A は見積中（全社回答の条件） :: quoting
+remove S3 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+A R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] | 見積中 2/3
+B R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",800,5,null],["S2",850,6,null],["S3",null,null,null]] | 見積中 2/3
+FAIL O4C-remove-1 S3 を削除にすると、回答のある S1・S2 で見積済になる（S3 の回答を待たない） :: quoting quoting | 見積中 2/3
+decline S3 on A → EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 | R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,-1,null]]
+PASS O4C-remove-1b 購買が消えた商社 S3 の欄に「取扱なし」を入れれば見積済になる（回避策） :: R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,-1,null]]
+purchasing 4 has A false
+a → R081 を 因幡電機 で採用（スコア 99.2 / 最安） | R081 相見積 st=selected adopt=S1 reason=拮抗 oq=4 flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,-1,null]]
+PASS O4C-remove-2 設計の a で S1／S2 のどちらかを採用できる :: R081 相見積 st=selected adopt=S1 reason=拮抗 oq=4 flags={} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,-1,null]]
+ERRORS []
+== 3/4 PASS

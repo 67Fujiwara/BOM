@@ -1,0 +1,8 @@
+o8 o8-appr appr
+o8 o8-rej rej
+o8 o8-appr-run2 appr
+o1 o1-exc exc
+o3c o3c-off off
+o3c o3c-on on
+o4b o4b-run2
+o4 o4-remove-run3 remove

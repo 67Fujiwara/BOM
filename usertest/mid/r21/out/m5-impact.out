@@ -1,0 +1,13 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] Y R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] need X 11/14 due 2026-11-24
+after formal R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+PASS M5I-0 正式納期 15 日（必要日まで 18 日）では X・Y とも納期NG でない :: R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+impact 納期NG になる行: 36（formalQuoted 3 / formalRequested 33）推奨が変わる行: 23（R001, R005, R006, R007, R008, R021, R023, R025）行必要日が固定の行: 0（）正式依頼中で必要納期が変わる行（再発行対象）: 75総額差（推奨で選び直した場合）: +¥323,653特急費の概算: 納期NG 36 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）
+simulate leadNG ids ["R001","R002","R003","R005","R006","R007","R008","R011","R013","R019","R021","R023","R025","R026","R028","R029","R030","R032","R034","R038","R039","R040","R044","R046","R049","R051","R053","R054","R055","R058","R060","R063","R064","R069","R072","R074"]
+PASS M5I-1 影響試算の「納期NG になる行」に、概算在庫・正式納期 15 日の X（と対照の Y）が入る :: {"X":"R002","Y":"R001","sim":["R001","R002","R003","R005","R006","R007","R008","R011","R013","R019","R021","R023","R025","R026","R028","R029","R030","R032","R034","R038","R039","R040","R044","R046","R049","R051","R053","R054","R055","R058","R060","R063","R064","R069","R072","R074"]}
+settings → 案件設定を保存しました
+after R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"leadNG":true,"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] case 納期NG | R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"leadNG":true,"reissue":true} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] case 納期NG due 2026-11-17
+PASS M5I-2 確定後、X（概算在庫・正式 15 日）も納期NG で PM の 7（対照の Y と同じ） :: R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"leadNG":true,"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"leadNG":true,"reissue":true} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+ERRORS []
+== 3/3 PASS

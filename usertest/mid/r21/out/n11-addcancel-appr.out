@@ -1,0 +1,18 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+N cancel → R081 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+publish Rev.d → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"客先要求","pend","R081",null,""]] N R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] pendingRev 4 {"kind":"cancel"} N2 
+PASS N11-0 不変条件
+PM y R081 → R081・Rev.4 の変更セット 1 行まとめて: 承認
+N R081 相見積 st=cancelled adopt=- reason= oq=- flags={} quotes=[] cancelled
+PASS N11-1 承認されていない追加 N の取消を承認すると N は取消 :: cancelled
+PASS N11-1c 不変条件
+PM y R035 → R035・Rev.3 の変更セット 1 行まとめて: 承認
+PASS N11-2c 不変条件
+PASS N11-2 Rev.c の承認で D の必要数が公開値、取消した N は復活しない :: 7 cancelled
+ERRORS []
+== 5/5 PASS

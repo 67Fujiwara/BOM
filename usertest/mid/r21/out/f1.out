@@ -1,0 +1,27 @@
+approval ON → 案件設定を保存しました
+R011 model → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+R010 model (WIP) → 行 6（Rev.2） を公開しました
+R010 name (WIP) → 行 6（Rev.2） を公開しました
+R010 model D-PT 2,5 working {"model":"WIP-ZZZ-999","name":"ナイショ部品"} | R011 model CLIPFIX 35 pendingApproval {"model":"PEND-777"} flags {"pmPending":true,"pmReason":"変更セット"}
+purchasing grid model R010 D-PT 2,5 R011 CLIPFIX 35
+purchasing palette R010 ["R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r","R010R010 を発注端子台エンドカバー D-PT 2,5Alt+o","R010R010 を入荷端子台エンドカバー D-PT 2,5Alt+i"]
+purchasing palette 10 ["R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r","R010R010 を発注端子台エンドカバー D-PT 2,5Alt+o"]
+purchasing palette R011 ["R011R011 を置換エンドクランプ CLIPFIX 35Alt+r","R011R011 を発注エンドクランプ CLIPFIX 35Alt+o","R011R011 を入荷エンドクランプ CLIPFIX 35Alt+i"]
+purchasing excel 社内 []
+purchasing excel 商社向け []
+purchasing excel 保管用 []
+pm grid model R010 D-PT 2,5 R011 CLIPFIX 35
+pm palette R010 ["R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r","R010R010 を発注端子台エンドカバー D-PT 2,5Alt+o","R010R010 を入荷端子台エンドカバー D-PT 2,5Alt+i"]
+pm palette 10 ["R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r","R010R010 を発注端子台エンドカバー D-PT 2,5Alt+o"]
+pm palette R011 ["R011R011 を置換エンドクランプ CLIPFIX 35Alt+r","R011R011 を発注エンドクランプ CLIPFIX 35Alt+o","R011R011 を入荷エンドクランプ CLIPFIX 35Alt+i"]
+pm excel 社内 ["変更点: [null,2,\"2026-10-25 14:45\",\"山田\",\"R011\",\"変更セット #2\",\"客先要求\",\"\",\"型式: CLIPFIX 35 → PEND-777\",\"\"]"]
+pm excel 商社向け []
+pm excel 保管用 ["変更点: [null,2,\"2026-10-25 14:45\",\"山田\",\"R011\",\"変更セット #2\",\"客先要求\",\"\",\"型式: CLIPFIX 35 → PEND-777\",\"\"]"]
+PASS F1-1 購買のパレット（行 ID）に、設計の作業中（未公開）の型式・部品名が出ない :: R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r
+PASS F1-2 購買のパレット（行 ID）に、PM 承認待ちの変更セットの新しい型式が出ない（表の公開値と同じ） :: R011R011 を置換エンドクランプ CLIPFIX 35Alt+r / grid CLIPFIX 35
+PASS F1-3 PM のパレットに設計の作業中（未公開）の値が出ない :: R010R010 を置換端子台エンドカバー D-PT 2,5Alt+r
+PASS F1-4 購買の社内 Excel（変更点）に、PM 承認待ちの変更セットの中身（型式の新旧）が出ない :: []
+PASS F1-5 購買の保管用 Excel に、PM 承認待ちの変更セットの中身が出ない :: []
+PASS F1-6 購買・PM の Excel に設計の作業中（未公開）の値が出ない
+== 6/6 PASS

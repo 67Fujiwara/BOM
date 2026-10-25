@@ -1,0 +1,520 @@
+{
+  "SIZE": 2500,
+  "N": 15,
+  "all": {
+    "r13@plain": [
+      {
+        "loadMs": 429,
+        "部品名": {
+          "commit": 136,
+          "undo": 98.3
+        },
+        "必要数": {
+          "commit": 103.8,
+          "undo": 89.1
+        },
+        "nav": {
+          "down": 16.1,
+          "view": 52.5,
+          "space": 32.5
+        }
+      },
+      {
+        "loadMs": 370,
+        "部品名": {
+          "commit": 102,
+          "undo": 103.4
+        },
+        "必要数": {
+          "commit": 101.7,
+          "undo": 111.6
+        },
+        "nav": {
+          "down": 13.2,
+          "view": 57.2,
+          "space": 31.7
+        }
+      },
+      {
+        "loadMs": 401,
+        "部品名": {
+          "commit": 110.2,
+          "undo": 87.7
+        },
+        "必要数": {
+          "commit": 97.7,
+          "undo": 115
+        },
+        "nav": {
+          "down": 16.7,
+          "view": 55.3,
+          "space": 42.7
+        }
+      }
+    ],
+    "current@plain": [
+      {
+        "loadMs": 361,
+        "部品名": {
+          "commit": 128.1,
+          "undo": 114.7
+        },
+        "必要数": {
+          "commit": 98,
+          "undo": 104.5
+        },
+        "nav": {
+          "down": 16.9,
+          "view": 56.4,
+          "space": 40.4
+        }
+      },
+      {
+        "loadMs": 407,
+        "部品名": {
+          "commit": 107.5,
+          "undo": 90
+        },
+        "必要数": {
+          "commit": 129.7,
+          "undo": 106.1
+        },
+        "nav": {
+          "down": 16.6,
+          "view": 66.9,
+          "space": 32.3
+        }
+      },
+      {
+        "loadMs": 344,
+        "部品名": {
+          "commit": 106.7,
+          "undo": 95.3
+        },
+        "必要数": {
+          "commit": 97.3,
+          "undo": 95
+        },
+        "nav": {
+          "down": 16.6,
+          "view": 57.6,
+          "space": 26.2
+        }
+      }
+    ],
+    "r13@epoch": [
+      {
+        "loadMs": 408,
+        "部品名": {
+          "commit": 104,
+          "undo": 107.6
+        },
+        "必要数": {
+          "commit": 115.9,
+          "undo": 121.3
+        },
+        "nav": {
+          "down": 17.5,
+          "view": 66,
+          "space": 76.5
+        }
+      },
+      {
+        "loadMs": 299,
+        "部品名": {
+          "commit": 115.4,
+          "undo": 82.8
+        },
+        "必要数": {
+          "commit": 100.6,
+          "undo": 96.6
+        },
+        "nav": {
+          "down": 16.3,
+          "view": 58.6,
+          "space": 24.5
+        }
+      },
+      {
+        "loadMs": 282,
+        "部品名": {
+          "commit": 125.3,
+          "undo": 110.5
+        },
+        "必要数": {
+          "commit": 106.4,
+          "undo": 98.4
+        },
+        "nav": {
+          "down": 15.9,
+          "view": 55.3,
+          "space": 32.7
+        }
+      }
+    ],
+    "current@epoch": [
+      {
+        "loadMs": 341,
+        "部品名": {
+          "commit": 140.4,
+          "undo": 113.5
+        },
+        "必要数": {
+          "commit": 109.4,
+          "undo": 100.7
+        },
+        "nav": {
+          "down": 16.8,
+          "view": 56.8,
+          "space": 30.1
+        }
+      },
+      {
+        "loadMs": 263,
+        "部品名": {
+          "commit": 108.5,
+          "undo": 93.4
+        },
+        "必要数": {
+          "commit": 96.7,
+          "undo": 91.6
+        },
+        "nav": {
+          "down": 17.3,
+          "view": 54.5,
+          "space": 26.7
+        }
+      },
+      {
+        "loadMs": 285,
+        "部品名": {
+          "commit": 103.8,
+          "undo": 98.6
+        },
+        "必要数": {
+          "commit": 107.6,
+          "undo": 98.7
+        },
+        "nav": {
+          "down": 16.1,
+          "view": 57.4,
+          "space": 28.3
+        }
+      }
+    ],
+    "r13@regex": [
+      {
+        "loadMs": 2545,
+        "部品名": {
+          "commit": 118,
+          "undo": 94.1
+        },
+        "必要数": {
+          "commit": 101.8,
+          "undo": 108.5
+        },
+        "nav": {
+          "down": 16.5,
+          "view": 74.9,
+          "space": 39.3
+        }
+      },
+      {
+        "loadMs": 2550,
+        "部品名": {
+          "commit": 115.9,
+          "undo": 87.4
+        },
+        "必要数": {
+          "commit": 135.6,
+          "undo": 96.6
+        },
+        "nav": {
+          "down": 16.1,
+          "view": 68.1,
+          "space": 30.9
+        }
+      },
+      {
+        "loadMs": 2598,
+        "部品名": {
+          "commit": 138.1,
+          "undo": 86
+        },
+        "必要数": {
+          "commit": 101.5,
+          "undo": 81.8
+        },
+        "nav": {
+          "down": 16.5,
+          "view": 56.8,
+          "space": 31
+        }
+      }
+    ],
+    "current@regex": [
+      {
+        "loadMs": 2426,
+        "部品名": {
+          "commit": 104.9,
+          "undo": 103.2
+        },
+        "必要数": {
+          "commit": 103.8,
+          "undo": 83.7
+        },
+        "nav": {
+          "down": 17,
+          "view": 59.6,
+          "space": 32.9
+        }
+      },
+      {
+        "loadMs": 2671,
+        "部品名": {
+          "commit": 124.4,
+          "undo": 100.2
+        },
+        "必要数": {
+          "commit": 100,
+          "undo": 88
+        },
+        "nav": {
+          "down": 13,
+          "view": 57.5,
+          "space": 33.4
+        }
+      },
+      {
+        "loadMs": 2500,
+        "部品名": {
+          "commit": 107.2,
+          "undo": 122.5
+        },
+        "必要数": {
+          "commit": 96.4,
+          "undo": 114.7
+        },
+        "nav": {
+          "down": 16.1,
+          "view": 77.6,
+          "space": 27.6
+        }
+      }
+    ],
+    "r13@holidays": [
+      {
+        "loadMs": 406,
+        "部品名": {
+          "commit": 104.5,
+          "undo": 88.5
+        },
+        "必要数": {
+          "commit": 100.9,
+          "undo": 105.6
+        },
+        "nav": {
+          "down": 16.8,
+          "view": 54.7,
+          "space": 25.6
+        }
+      },
+      {
+        "loadMs": 325,
+        "部品名": {
+          "commit": 118.7,
+          "undo": 124.3
+        },
+        "必要数": {
+          "commit": 103.6,
+          "undo": 116
+        },
+        "nav": {
+          "down": 16.6,
+          "view": 61.6,
+          "space": 25.9
+        }
+      },
+      {
+        "loadMs": 361,
+        "部品名": {
+          "commit": 130.8,
+          "undo": 131.5
+        },
+        "必要数": {
+          "commit": 109.8,
+          "undo": 100.6
+        },
+        "nav": {
+          "down": 16.7,
+          "view": 57,
+          "space": 36.7
+        }
+      }
+    ],
+    "current@holidays": [
+      {
+        "loadMs": 563,
+        "部品名": {
+          "commit": 118.4,
+          "undo": 106.5
+        },
+        "必要数": {
+          "commit": 127.1,
+          "undo": 117.8
+        },
+        "nav": {
+          "down": 17.3,
+          "view": 55.2,
+          "space": 42.4
+        }
+      },
+      {
+        "loadMs": 402,
+        "部品名": {
+          "commit": 108.6,
+          "undo": 135.9
+        },
+        "必要数": {
+          "commit": 116.3,
+          "undo": 100.4
+        },
+        "nav": {
+          "down": 17.1,
+          "view": 51.9,
+          "space": 28
+        }
+      },
+      {
+        "loadMs": 331,
+        "部品名": {
+          "commit": 101.1,
+          "undo": 124.1
+        },
+        "必要数": {
+          "commit": 101,
+          "undo": 105.6
+        },
+        "nav": {
+          "down": 16.5,
+          "view": 53.2,
+          "space": 30.6
+        }
+      }
+    ]
+  },
+  "summary": {
+    "r13@plain": {
+      "loadMs": 401,
+      "name": {
+        "commit": 110.2,
+        "undo": 98.3
+      },
+      "qty": {
+        "commit": 101.7,
+        "undo": 111.6
+      },
+      "down": 16.1,
+      "view": 55.3,
+      "space": 32.5
+    },
+    "current@plain": {
+      "loadMs": 361,
+      "name": {
+        "commit": 107.5,
+        "undo": 95.3
+      },
+      "qty": {
+        "commit": 98,
+        "undo": 104.5
+      },
+      "down": 16.6,
+      "view": 57.6,
+      "space": 32.3
+    },
+    "r13@epoch": {
+      "loadMs": 299,
+      "name": {
+        "commit": 115.4,
+        "undo": 107.6
+      },
+      "qty": {
+        "commit": 106.4,
+        "undo": 98.4
+      },
+      "down": 16.3,
+      "view": 58.6,
+      "space": 32.7
+    },
+    "current@epoch": {
+      "loadMs": 285,
+      "name": {
+        "commit": 108.5,
+        "undo": 98.6
+      },
+      "qty": {
+        "commit": 107.6,
+        "undo": 98.7
+      },
+      "down": 16.8,
+      "view": 56.8,
+      "space": 28.3
+    },
+    "r13@regex": {
+      "loadMs": 2550,
+      "name": {
+        "commit": 118,
+        "undo": 87.4
+      },
+      "qty": {
+        "commit": 101.8,
+        "undo": 96.6
+      },
+      "down": 16.5,
+      "view": 68.1,
+      "space": 31
+    },
+    "current@regex": {
+      "loadMs": 2500,
+      "name": {
+        "commit": 107.2,
+        "undo": 103.2
+      },
+      "qty": {
+        "commit": 100,
+        "undo": 88
+      },
+      "down": 16.1,
+      "view": 59.6,
+      "space": 32.9
+    },
+    "r13@holidays": {
+      "loadMs": 361,
+      "name": {
+        "commit": 118.7,
+        "undo": 124.3
+      },
+      "qty": {
+        "commit": 103.6,
+        "undo": 105.6
+      },
+      "down": 16.7,
+      "view": 57,
+      "space": 25.9
+    },
+    "current@holidays": {
+      "loadMs": 402,
+      "name": {
+        "commit": 108.6,
+        "undo": 124.1
+      },
+      "qty": {
+        "commit": 116.3,
+        "undo": 105.6
+      },
+      "down": 17.1,
+      "view": 53.2,
+      "space": 30.6
+    }
+  }
+}

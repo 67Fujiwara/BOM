@@ -1,19 +1,5 @@
-node:internal/fs/promises:1029
-  const result = await PromisePrototypeThen(
-                 ^
-
-Error: ENOENT: no such file or directory, stat '/home/user/BOM/usertest/veteran/r21/dl/m5-2500-pages.xlsx'
-    at async Object.stat (node:internal/fs/promises:1029:18)
-    at async resolvePathsAndDirectoryForInputFiles (/home/user/BOM/node_modules/playwright-core/lib/coreBundle.js:62253:18)
-    at async convertInputFiles (/home/user/BOM/node_modules/playwright-core/lib/coreBundle.js:62272:42)
-    at async _Frame.setInputFiles (/home/user/BOM/node_modules/playwright-core/lib/coreBundle.js:62123:27)
-    at async _Locator.setInputFiles (/home/user/BOM/node_modules/playwright-core/lib/coreBundle.js:60045:16)
-    at async wizardTo (file:///home/user/BOM/usertest/veteran/r21/r13-69-reload-r13.mjs:13:3)
-    at async file:///home/user/BOM/usertest/veteran/r21/r13-69-reload-r13.mjs:17:20 {
-  errno: -2,
-  code: 'ENOENT',
-  syscall: 'stat',
-  path: '/home/user/BOM/usertest/veteran/r21/dl/m5-2500-pages.xlsx'
-}
-
-Node.js v22.22.0
+{"case":"R1 ガイドのプレビュー中にリロード","before":{},"after":{},"panel":null,"toast":""}
+{"case":"R2 2,500 行の作成の Enter 直後にリロード","after":{"nproj":2,"cur":"P-RL1","rows":2500,"revs":0,"r010":"部品10"},"toast":""}
+{"case":"R3 その案件で Ctrl+Z → 直後にリロード","after":{"nproj":2,"cur":"P-RL1","rows":2500,"revs":0,"r010":"部品10"},"toast":""}
+{"case":"R4 公開のダイアログで 2 を選んだままリロード","after":{"nproj":1,"cur":"P-2026-041","rows":80,"revs":1,"r010":"RL"},"panel":null}
+errors []

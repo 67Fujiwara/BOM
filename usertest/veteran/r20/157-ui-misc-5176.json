@@ -1,0 +1,172 @@
+[
+  {
+    "sec": "needOffset",
+    "v": "7",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [
+      "sys.needOffset.plus:warn"
+    ],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "+7",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [
+      "sys.needOffset.plus:warn"
+    ],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "７",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [
+      "sys.needOffset.plus:warn"
+    ],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "-7",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "−7",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "－7",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "0",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "7日前",
+    "needOffset": null,
+    "toast": "必要日(前倒し日数)として読めません: 「7日前」（直して Enter、やめるときは Esc）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "前倒し7",
+    "needOffset": null,
+    "toast": "必要日(前倒し日数)として読めません: 「前倒し7」（直して Enter、やめるときは Esc）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "-7.5",
+    "needOffset": null,
+    "toast": "必要日(前倒し日数)は整数で入れてください: 「-7.5」（直して Enter、やめるときは Esc）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "1e1",
+    "needOffset": null,
+    "toast": "必要日(前倒し日数)として読めません: 「1e1」（直して Enter、やめるときは Esc）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "365",
+    "needOffset": null,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "problems": [
+      "sys.needOffset.plus:warn"
+    ],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "-365",
+    "needOffset": null,
+    "toast": "",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "相見積・スコア内訳 （必要日 11/13 / 必要数 3本 / 基準日 10/24）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考1. 因幡電機¥2,449即納在庫3 99.210010096100最安 / 在庫即納 / 期限 12/192. ミスミ¥2,8813日取寄3 848510050*100",
+    "errs": []
+  },
+  {
+    "sec": "needOffset",
+    "v": "366",
+    "needOffset": null,
+    "toast": "必要日(前倒し日数)が大きすぎます（上限 365）: 「366」（直して Enter、やめるときは Esc）",
+    "problems": [],
+    "plusWarn": false,
+    "detail": "",
+    "errs": []
+  },
+  {
+    "sec": "needOffset-paste",
+    "rows": [
+      null,
+      null,
+      null
+    ],
+    "problems": [
+      [
+        "sys.needOffset.plus:warn"
+      ],
+      [],
+      [
+        "sys.needOffset.plus:warn"
+      ]
+    ],
+    "toast": "3 セルを貼り付けました（Ctrl+Z で一度に戻せます）"
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

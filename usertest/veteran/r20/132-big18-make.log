@@ -1,0 +1,18 @@
+ok [
+  'c1-csv-excel-multiline-comma-300.csv',
+  'c1-oldnew-repeat.xlsx',
+  'c2-oldnew-qty-repeat.xlsx',
+  'c2-tsv-trailing-newline-300.tsv',
+  'c3-eda-value-description-300.xlsx',
+  'c3-two-model-cols-repeat.xlsx',
+  'c4-page2-missing-col.xlsx',
+  'c4-sparse-note-torihazushi-fuyou-300.xlsx',
+  'c5-copy-unit-removed-300.xlsx',
+  'c5-page2-qty-10dai.xlsx',
+  'c6-need-and-order-300.xlsx',
+  'c6-page2-fullwidth-title.xlsx',
+  'c7-maker-dnp-300.xlsx',
+  'c7-page-title-variants.xlsx',
+  'c8-title-with-product.xlsx',
+  'c9-page2-shift-plus-noheader-name.xlsx'
+]

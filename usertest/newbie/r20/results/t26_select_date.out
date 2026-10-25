@@ -1,0 +1,29 @@
+[design] R040 単位(true) "pcs": mid mode=edit edit="pcs" toast=null | after Enter mode=nav err=null
+   changes: (なし)
+[design] R040 単位(true) "set": mid mode=edit edit="set" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"unit":"セット"}
+[design] R040 単位(true) "m": mid mode=edit edit="m" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"unit":"m"}
+[design] R040 単位(true) "PCS": mid mode=edit edit="PCS" toast=null | after Enter mode=nav err=null
+   changes: (なし)
+EXC R040 必要数 4個 Error: keyboard.press: Unknown key: "個"
+[design] R040 必要数(true) "10" (Enter で編集してから): mid mode=edit edit="10" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"qtyNeeded":10}
+[design] R040 入数(false) "100" (Enter で編集してから): mid mode=edit edit="100" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"note":"100"}
+[design] R040 調達区分(true) "shikyu": mid mode=edit edit="shikyu" toast=null | after Enter mode=edit err=調達区分に「shikyu」はありません（相見積 / 客先指定品 / 指定商社 / 支給品 / 社内在庫）（直して Enter、やめるときは Esc）
+   changes: (なし)
+[design] R040 必要日(固定)(false) "11/30" (Enter で編集してから): mid mode=edit edit="11/30" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"note":"11/30"}
+[design] R040 必要日(固定)(false) "2026/11/30" (Enter で編集してから): mid mode=edit edit="2026/11/30" toast=null | after Enter mode=nav err=null
+   changes: R040: working:  -> {"note":"2026/11/30"}
+[purchasing] R013 入荷予定(true) "11/5" (Enter で編集してから): mid mode=edit edit="11/5" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | after Enter mode=nav err=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: promisedDate:  -> "2026-11-05"
+[purchasing] R013 発注数(false) "100pcs" (Enter で編集してから): mid mode=nav edit="3" toast=権限なし（設計の列）。「今の列で並び替え（昇順）」は Alt+s（または ID の列で s）。キーの一覧は F1 | after Enter mode=nav err=権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+[purchasing] R013 追加費用(false) "1,500" (Enter で編集してから): mid mode=nav edit="3" toast=権限なし（設計の列）。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1 | after Enter mode=nav err=権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+[purchasing] R013 費用種別(false) "soryo": mid mode=nav edit="3" toast=権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1 | after Enter mode=nav err=権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+   changes: (なし)
+
+ERRORS:

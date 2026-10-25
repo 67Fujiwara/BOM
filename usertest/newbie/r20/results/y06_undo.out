@@ -1,0 +1,23 @@
+== one
+  after typing mode=nav cur=R031/qtyNeeded [{"qtyNeeded":3},null,null]
+  Ctrl+Z #1: 元に戻す: セル編集 | [null,null,null]
+  Ctrl+Z #2: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | [null,null,null]
+  Ctrl+Z #3: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | [null,null,null]
+  Ctrl+Z #4: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | [null,null,null]
+  store keys ["undo:{\"design:山田\":[]}","undoSeq:1","undoLast:undefined","clearHistory:undefined"]
+== three
+  after typing mode=nav cur=R033/qtyNeeded [{"qtyNeeded":3},{"qtyNeeded":4},{"qtyNeeded":5}]
+  Ctrl+Z #1: 元に戻す: セル編集 | [{"qtyNeeded":3},{"qtyNeeded":4},null]
+  Ctrl+Z #2: 元に戻す: セル編集 | [{"qtyNeeded":3},null,null]
+  Ctrl+Z #3: 元に戻す: セル編集 | [null,null,null]
+  Ctrl+Z #4: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | [null,null,null]
+  store keys ["undo:{\"design:山田\":[]}","undoSeq:3","undoLast:undefined","clearHistory:undefined"]
+== three-slow
+  after typing mode=nav cur=R033/qtyNeeded [{"qtyNeeded":3},{"qtyNeeded":4},{"qtyNeeded":5}]
+  Ctrl+Z #1: 元に戻す: セル編集 | [{"qtyNeeded":3},{"qtyNeeded":4},null]
+  Ctrl+Z #2: 元に戻す: セル編集 | [{"qtyNeeded":3},null,null]
+  Ctrl+Z #3: 元に戻す: セル編集 | [null,null,null]
+  Ctrl+Z #4: これ以上戻す操作がありません（Ctrl+Y でやり直せます） | [null,null,null]
+  store keys ["undo:{\"design:山田\":[]}","undoSeq:3","undoLast:undefined","clearHistory:undefined"]
+
+ERRORS:

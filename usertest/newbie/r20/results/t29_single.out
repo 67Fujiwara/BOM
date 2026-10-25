@@ -1,0 +1,14 @@
+[design] R043 分類 "A" Enter: panel=undefined toast=null | (Enter again) toast=null
+   changes: R043: working:  -> {"category":"A"}
+[design] R043 分類 "B" Enter: panel=undefined toast=null | (Enter again) toast=null
+   changes: R043: working:  -> {"category":"B"}
+[design] R044 回路記号 "R" Enter: panel=undefined toast=null | (Enter again) toast=null
+   changes: R044: working:  -> {"ref":"R"}
+[design] R044 回路記号 "S" Enter: panel=undefined toast=null | (Enter again) toast=null
+   changes: R044: working:  -> {"ref":"S"}
+[purchasing] R013 ロット "A" Enter: panel=undefined toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | (Enter again) toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "A"
+[purchasing] R013 ロット "i" Enter: panel=undefined toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | (Enter again) toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "i"
+
+ERRORS:

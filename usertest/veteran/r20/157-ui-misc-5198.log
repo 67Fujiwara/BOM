@@ -1,0 +1,10 @@
+file:///home/user/BOM/usertest/veteran/r20/157-ui-misc.mjs:30
+  log({ sec: 'needOffset', v, needOffset: r?.needOffset, toast: t, problems: pr, plusWarn: /前倒し.*\+|後ろになります/.test(detail), detail: detail.slice(0, 160), errs: env.errs.filter((e) => e.type !== 'dialog').slice(-2).map((e) => e.text.slice(0, 100)) })
+                                                                                                                                                                                                                                       ^
+
+TypeError: Cannot read properties of undefined (reading 'slice')
+    at file:///home/user/BOM/usertest/veteran/r20/157-ui-misc.mjs:30:232
+    at Array.map (<anonymous>)
+    at file:///home/user/BOM/usertest/veteran/r20/157-ui-misc.mjs:30:214
+
+Node.js v22.22.0

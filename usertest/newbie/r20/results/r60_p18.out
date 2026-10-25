@@ -1,0 +1,83 @@
+[A1 changed-only-qty-rows-copy-model] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個|||型式変更 ||タイマ|H3CR-A8|オムロン|2|個|||数量変更 1→2 ||ソケット|PYF14A|オムロン|4|個|||数量変更 2→4 ||端子台|XW2B-20G4|オムロン|4|個||| ||ランプ|L-1|IDEC|1|個||| | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[A2 changed-only-maker-rows-copy-model] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|パナソニック|2|個||| ||ソケット|PYF14A|IDEC|4|個||| ||端子台|XW2B-20G4|オムロン|4|個||| ||ランプ|L-1|IDEC|1|個||| ||ヒューズ|F-5A|富士電機|3|個||| | map=name,-,model,-,maker,qtyNeeded
+   warn: 「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「メーカー（新）」が空の 4 行は、ほかの「メーカ」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「メーカ」に当たる列が 2 つあります。「メーカー（新）」の列を使います
+[B1 note-not-delete-words] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|1|個|||削除不要 ||ランプ|L-1|IDEC|1|個|||撤去不要（流用） ||ソケット|PYF14A|オムロン|2|個|||削除取消（Rev.2で復活） ||ブレーカ|NF32-SV|三菱電機|1|個|||廃止取りやめ ||端子台|XW2B-20G4|オムロン|4|個|||削除無 ||スイッチ|A22-FR|オムロン|2|個|||廃止品から変更済 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 6 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B2 note-delete-other-words] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||端子台|XW2B-20G4|オムロン|4|個||| | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 4 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[C1 new-col-delete-variants6] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||端子台|XW2B-20G4|オムロン|4|個||| | map=name,-,model,maker,-,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 5 行（例: タイマ H3CR-A8 削除済）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[C2 full-copy-delete-dash-2rows] INFO (old≠new)
+   new: ||リレー|MY4N-D2|オムロン|2|個||| ||タイマ|H3CR-A8|オムロン|1|個||| ||ブレーカ|NF32-SV|三菱電機|1|個||| ||端子台|XW2B-20G4|オムロン|4|個||| ||ランプ|L-1|IDEC|1|個||| | map=name,-,model,maker,-,qtyNeeded
+   old: ||リレー|MY4N-D2|オムロン|2|個||| ||タイマ|H3CR-A8|オムロン|1|個||| ||端子台|XW2B-20G4|オムロン|4|個|||
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[Q1 suryo-daisu] INFO
+   new: ||リレー|MY4N-D2|オムロン|6|個||| ||タイマ|H3CR-A8|オムロン|3|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「数量」「台数」）を掛けて数量にしました
+[Q2 insu-daisu-noTotal] INFO
+   new: ||リレー|MY4N-D2|オムロン|6|個||| ||タイマ|H3CR-A8|オムロン|3|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「員数」「台数」）を掛けて数量にしました
+[Q3 daime-1tier] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1台目」「2台目」）を足して数量にしました
+[Q4 gouki-total-blank] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,-,-,qtyNeeded
+   warn: 数量は「合計」の列を使います（空の行は号機の数を足します）
+[Q5 gouki-ditto-first-col] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||リレー|MY2N|オムロン|3|個||| ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました / 数量の列 2 つ（「1号機数量」「2号機数量」）を足して数量にしました
+[Q6 gouki-units-in-cells] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|1|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 数量の列 2 つ（「1号機」「2号機」）を足して数量にしました
+[Q7 single-qty-plus-and-yobi] INFO
+   new: ||リレー|MY4N-D2|オムロン|5|個||| ||タイマ|H3CR-A8|オムロン|0|個|||数量「2（予備含む）」を読めません ||ソケット|PYF14A|オムロン|3|個||| | map=name,model,maker,qtyNeeded
+   warn: 「2+1」「2(予備1)」のように書いた数量 2 個は、足した数にしました / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[Q8 hitsuyou-hacchu-moq] INFO
+   new: ||リレー|MY4N-D2|オムロン|6|個||| ||タイマ|H3CR-A8|オムロン|3|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 
+[D1 maker-DNP-daini-insatsu] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||反射フィルム|RF-200|DNP|2|個||| ||タイマ|H3CR-A8|オムロン|1|個||| | map=name,model,maker,qtyNeeded
+   warn: 
+[D2 jissou-umu] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| | map=name,model,maker,qtyNeeded,-
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 2 行は取り込みません
+[D3 note-mijissou-variants] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 3 行は取り込みません
+[S1 sign-colon-cells] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| ||作成：山田|承認：鈴木|検図：佐藤|0|個||| | map=name,model,maker,qtyNeeded
+   warn: 
+[S2 sign-label-row-and-name-row] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| ||鈴木|佐藤|山田|0|個||| | map=name,model,maker,qtyNeeded
+   warn: 小計・合計・区切りの 1 行は取り込みません（例: 「承認 検図 作成」）
+[S3 sign-with-date] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| ||設計|山田|2026/10/20|0|個||| | map=name,model,maker,qtyNeeded
+   warn: 
+[S4 revision-block-below] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| ||改訂|日付|内容|0|個|||数量「担当」を読めません ||1|2026/10/01|初版|0|個|||数量「山田」を読めません ||2|2026/10/20|タイマ追加|0|個|||数量「山田」を読めません | map=name,model,maker,qtyNeeded
+   warn: 数量を読めない行が 3 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[M1 cell-trailing-newline] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded
+   warn: 
+[M2 cell-leading-newline] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個||| ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded
+   warn: 
+[M3 cell-blank-line-inside] INFO
+   new: ||リレー|MY4N-D2|オムロン|4|個|||旧 MY2N  変更 Rev.1 ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded,note
+   warn: 
+[M4 note-two-line-with-inch] INFO
+   new: ||ホース|H-1/2|ニッタ|2|個|||1/2" 用 長さ 2m ||タイマ|H3CR-A8|オムロン|2|個||| | map=name,model,maker,qtyNeeded,note
+   warn: 
+[E1 altium-comment-description] INFO
+   new: |R1, R2|Chip Resistor|RK73H1JTTD1002F|KOA|2|個|||10k |C1|Chip Capacitor|GRM188R71H104KA93D|Murata|1|個|||100n | map=note,name,ref,-,-,qtyNeeded,maker,model
+   warn: 「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[E2 kicad-default-grouped] INFO
+   new: |R1, R2|10k|RK73H1JTTD1002F|KOA|2|個||| |C1|100n|GRM188R71H104KA93D|Murata|1|個||| | map=-,qtyNeeded,ref,name,-,-,-,model,maker
+   warn: 
+MISMATCHES 0

@@ -1,0 +1,106 @@
+[W-note 「未実装品」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「未実装部品」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「未実装です」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「未実装（将来用）」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「未実装 将来用」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「実装しないこと」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「実装しない」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「実装不可」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「実装なし」] OK (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「非実装品」] MISMATCH (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   old: MY4N-D2:4
+   warn: 
+[W-note 「DNP品」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「DNP（将来用）」] OK (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「DNP 将来用」] OK (old≠new)
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「DNP可」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「Do Not Populate」] OK
+   new: MY4N-D2:4 | map=name,model,maker,qtyNeeded,note
+   warn: 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[W-note 「NC」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「実装省略」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「実装除外」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「搭載しない」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「搭載なし」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「付けない」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「不実装」] MISMATCH
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   exp: MY4N-D2:4
+   warn: 
+[W-note 「空き」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「未使用」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「実装時は短絡」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「実装位置注意」] OK
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   warn: 
+[W-note 「未実装基板用」] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,model,maker,qtyNeeded,note
+   old: MY4N-D2:4
+   warn: 
+MISMATCHES 14

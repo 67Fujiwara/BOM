@@ -1,0 +1,9 @@
+{
+  "N": 100000,
+  "loadMs": 44,
+  "toast": "redos-100000.csv を読み込みました。Enter で次へ",
+  "enterThenResponsiveMs": 56,
+  "previewAfterMs": 65,
+  "preview": "案件 P-RD 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 数量 → 数量リレーx y1個端子台XW2B2個Enter で作成します。作成後は「4 要確",
+  "errs": []
+}

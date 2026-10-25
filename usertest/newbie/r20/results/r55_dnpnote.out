@@ -1,0 +1,32 @@
+[W-note 「未実装品」] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|未実装品}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[W-note 「未実装部品」] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|未実装部品}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[W-note 「未実装です」] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|未実装です}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[W-note 「実装しないこと」] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|実装しないこと}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[W-note 「非実装品」] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 備考 → 備考 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|1個|非実装品}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+
+ERRORS:

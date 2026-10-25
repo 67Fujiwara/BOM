@@ -1,0 +1,51 @@
+OK  [design/1] R030 部品名(true) "relay" @40ms -> value="relay"
+OK  [design/1] R031 部品名(true) "sensor" @40ms -> value="sensor"
+OK  [design/1] R032 部品名(true) "fuse" @40ms -> value="fuse"
+OK  [design/1] R033 部品名(true) "heater" @40ms -> value="heater"
+OK  [design/1] R034 部品名(true) "snubber" @40ms -> value="snubber"
+OK  [design/1] R035 部品名(true) "nut" @40ms -> value="nut"
+OK  [design/1] R036 部品名(true) "knob" @40ms -> value="knob"
+OK  [design/1] R037 部品名(true) "cable" @40ms -> value="cable"
+OK  [design/1] R038 部品名(true) "terminal" @40ms -> value="terminal"
+OK  [design/1] R039 部品名(true) "Inverter" @40ms -> value="Inverter"
+OK  [design/1] R040 部品名(true) "Encoder" @40ms -> value="Encoder"
+OK  [design/1] R041 部品名(true) "hex nut" @40ms -> value="hex nut"
+OK  [design/1] R042 メーカ(true) "Infineon" @40ms -> value="Infineon"
+OK  [design/1] R043 メーカ(true) "Analog Devices" @40ms -> value="Analog Devices"
+OK  [design/1] R044 メーカ(true) "Anritsu" @40ms -> value="Anritsu"
+OK  [design/1] R045 メーカ(true) "Omron" @40ms -> value="Omron"
+OK  [design/1] R046 メーカ(true) "IDEC" @40ms -> value="IDEC"
+OK  [design/1] R047 メーカ(true) "Phoenix" @40ms -> value="Phoenix"
+OK  [design/1] R048 型式(true) "AC100V" @40ms -> value="AC100V"
+OK  [design/1] R049 型式(true) "MY4N-D2" @40ms -> value="MY4N-D2"
+OK  [design/1] R050 型式(true) "S8VK-G06024" @40ms -> value="S8VK-G06024"
+OK  [design/1] R051 型式(true) "snap-1" @40ms -> value="snap-1"
+OK  [design/1] R052 回路記号(true) "K1" @40ms -> value="K1"
+OK  [design/1] R053 回路記号(true) "J3" @40ms -> value="J3"
+OK  [design/1] R054 回路記号(true) "k1" @40ms -> value="k1"
+OK  [design/1] R055 回路記号(true) "r1" @40ms -> value="r1"
+OK  [design/1] R056 回路記号(true) "c12" @40ms -> value="c12"
+OK  [design/1] R057 回路記号(true) "SW1" @40ms -> value="SW1"
+OK  [design/1] R058 回路記号(true) "CB1" @40ms -> value="CB1"
+OK  [design/1] R059 回路記号(true) "x1" @40ms -> value="x1"
+OK  [design/1] R060 備考(true) "ok" @40ms -> value="ok"
+OK  [design/1] R061 備考(true) "hold" @40ms -> value="hold"
+OK  [design/1] R062 備考(true) "use spare" @40ms -> value="use spare"
+NG  [design/1] R063 図面番号(false) "ED-001" @40ms -> value="E-2026-041-04"
+     mid: mode=edit cur=R063/note edit="ED-001" panel=null toast=null panelText=undefined
+     after Enter: panel=undefined toast=null
+     changes: R063: working:  -> {"note":"ED-001"} ; issues+ - ; ui: - cur=R064/note
+NG  [design/1] R064 規格(false) "UL" @40ms -> value=""
+     mid: mode=edit cur=R064/note edit="UL" panel=null toast=null panelText=undefined
+     after Enter: panel=undefined toast=null
+     changes: R064: working:  -> {"note":"UL"} ; issues+ - ; ui: - cur=R065/note
+OK  [design/1] R065 分類(true) "relay" @40ms -> value="relay"
+OK  [purchasing/3] R013 ロット(true) "ok" @40ms -> value="ok"
+OK  [purchasing/3] R013 ロット(true) "in stock" @40ms -> value="in stock"
+OK  [purchasing/3] R013 ロット(true) "LOT-2026" @40ms -> value="LOT-2026"
+OK  [purchasing/3] R013 ロット(true) "na" @40ms -> value="na"
+OK  [purchasing/3] R013 ロット(true) "hold" @40ms -> value="hold"
+OK  [purchasing/3] R013 ロット(true) "x12" @40ms -> value="x12"
+TOTAL NG 2/42
+
+ERRORS:

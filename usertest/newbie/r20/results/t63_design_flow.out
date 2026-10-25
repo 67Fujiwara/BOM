@@ -1,0 +1,70 @@
+== A. 選択の列を Enter から打ち直す（単位 個→m、調達区分 相見積→指定商社、代替可否）
+  [R030 単位 Enter] mode=edit view=1 cur=R030/unit edit="個" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [typed m] mode=edit view=1 cur=R030/unit edit="m" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [Enter] mode=nav view=1 cur=R031/unit edit="m" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: R030: working:  -> {"unit":"m"}
+  [R031 単位 Enter] mode=edit view=1 cur=R031/unit edit="個" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [typed pcs] mode=edit view=1 cur=R031/unit edit="pcs" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [Enter] mode=nav view=1 cur=R032/unit edit="pcs" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: (なし)
+  [R032 調達区分 Enter] mode=edit view=1 cur=R032/procurement edit="相見積" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [typed sh] mode=edit view=1 cur=R032/procurement edit="sh" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [Enter] mode=nav view=1 cur=R033/procurement edit="sh" panel=null | hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: R032: working:  -> {"procurement":"指定商社"}
+  [R033 代替可否 Enter] mode=edit view=1 cur=R033/altPolicy edit="同等品可" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [typed fuka] mode=edit view=1 cur=R033/altPolicy edit="fuka" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [Enter] mode=nav view=1 cur=R034/altPolicy edit="fuka" panel=null | hints: Ctrl+Enter公開 8 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  CHANGES: R033: working:  -> {"altPolicy":"不可"}
+  [R034 単位 Enter] mode=edit view=1 cur=R034/unit edit="個" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [typed 本] mode=edit view=1 cur=R034/unit edit="本" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [Enter] mode=nav view=1 cur=R035/unit edit="本" panel=null | hints: Ctrl+Enter公開 9 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  CHANGES: R034: working:  -> {"unit":"本"}
+== B. 日付: 必要日(固定) を Enter → 11/30 → Enter / いきなり 2026/12/1
+  col visible false
+== C. F8 で問題へ → いきなり正しい値を打つ → Enter → F8 …（直すたびに F8）
+   fix R005/model <- XYZ-100 10A | toast: null | mode nav
+   fix R009/maker <- オムロン | toast: null | mode edit
+  [still edit] mode=edit view=1 cur=R009/maker edit="" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+   fix R016/model <- XYZ-100 10A | toast: null | mode nav
+   fix R022/model <- XYZ-100 10A | toast: null | mode nav
+   fix R041/maker <- オムロン | toast: null | mode edit
+  [still edit] mode=edit view=1 cur=R041/maker edit="" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+   fix R054/qtyNeeded <- 2 | toast: null | mode nav
+   fix R061/model <- XYZ-100 10A | toast: null | mode nav
+   fix R005/altPolicy <- X | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc） | mode edit
+  [still edit] mode=edit view=1 cur=R005/altPolicy edit="X" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc）
+   fix R009/maker <- オムロン | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc） | mode edit
+  [still edit] mode=edit view=1 cur=R009/maker edit="" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc）
+   fix R016/altPolicy <- X | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc） | mode edit
+  [still edit] mode=edit view=1 cur=R016/altPolicy edit="X" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc）
+  F8 order: R005/model → R009/maker → R016/model → R022/model → R041/maker → R054/qtyNeeded → R061/model → R005/altPolicy → R009/maker → R016/altPolicy
+  [F8 after all] mode=nav view=1 cur=R022/altPolicy edit="X" panel=null | hints: Ctrl+Enter公開 10 行 F1ヘルプ F8次の問題 Enter編集 Space開いて指摘を見る Alt+x警告を確認済み | toast: 代替可否に「X」はありません（可 / 同等品可 / 不可 / 客先承認要）（直して Enter、やめるときは Esc）
+  [Ctrl+Enter] mode=nav view=1 cur=R022/altPolicy edit="X" panel=null | hints: Ctrl+Enter公開 10 行 F1ヘルプ F8次の問題 Enter編集 Space開いて指摘を見る Alt+x警告を確認済み | toast: 公開できません: 未確認の警告 4 件（R005 同じ型式の行と代替可否が違います … 直すか Alt+x で確認済みに）
+  panel null
+== D. 順番に直すモード: Ctrl+Shift+F → Enter（編集する）→ Ctrl+A なしで打つ → Enter → 次 …
+  [seq] mode=panel view=1 cur=R005/model edit="" panel=quickfix | hints: F1ヘルプ | toast: null
+  panel 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白があります: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+   R005/model Enter -> mode=panel edit=""
+  [after fix 0] mode=panel view=1 cur=R009/maker edit="" panel=quickfix | hints: F1ヘルプ | toast: null
+   R009/maker Enter -> mode=edit edit=""
+  [after fix 1] mode=panel view=1 cur=R016/model edit="オムロン" panel=quickfix | hints: F1ヘルプ | toast: null
+   R016/model Enter -> mode=edit edit="CP30-BA 2P"
+  [after fix 2] mode=panel view=1 cur=R022/model edit="NEW-1" panel=quickfix | hints: F1ヘルプ | toast: null
+   R022/model Enter -> mode=panel edit="NEW-1"
+  [after fix 3] mode=panel view=1 cur=R041/maker edit="NEW-1" panel=quickfix | hints: F1ヘルプ | toast: null
+  [Esc] mode=nav view=1 cur=R041/maker edit="NEW-1" panel=null | hints: Ctrl+Enter公開 10 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: null
+== E. 取消（Shift+Delete）→ Ctrl+Enter → Ctrl+Z、置換（Alt+r）→ Ctrl+Z、隠す（Alt+h）→ 4 で見えるか → Ctrl+Z
+  [Shift+Delete] mode=nav view=1 cur=R040/name edit="" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: R040 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+  [Ctrl+Z] mode=nav view=1 cur=R040/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: 元に戻す: 行を削除
+  CHANGES: (なし)
+  [replace] mode=nav view=1 cur=R081/model edit="" panel=null | hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: R040 の置き換え品 R081 を作りました（公開すると R040 は置換済になります。Ctrl+Z で戻す）
+  CHANGES: R040: removal:  -> {"kind":"replace","by":"R081"} ; R081: ref:  -> "セ40"; drawing:  -> "E-2026-041-02"; category:  -> "センサ"; name:  -> "ファイバユニット"; model:  -> "MY4N-GS DC24"; maker:  -> "オムロン"; qtyNeeded:  -> 2; unit:  -> "個"; packQty:  -> null; procurement:  -> "相見積"; makerLock:  -> "推奨"; altPolicy:  -> "同等品可"; designated:  -> ""; needOffset:  -> null; needDateFixed:  -> null; tags:  -> ""; note: 
+  [Ctrl+Z replace] mode=nav view=1 cur=R041/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: 元に戻す: 置換 R040
+  CHANGES after undo: (なし) | rows 80
+  [Alt+h] mode=nav view=1 cur=R041/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: R041 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  [Alt+2] mode=nav view=2 cur=R001/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: R041 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  R041 in view 2: 0
+  [Ctrl+Z] mode=nav view=2 cur=R001/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: 元に戻す: 行を隠す/戻す
+  CHANGES: (なし)
+
+ERRORS:

@@ -1,0 +1,1392 @@
+[
+  {
+    "name": "linux grid Control+r",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+R（右へコピー）はありません。行の複製は Alt+Shift+D",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Shift+r",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Minus",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+-（行の削除）はありません。行の取消は Shift+Delete",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+NumpadSubtract",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+-（行の削除）はありません。行の取消は Shift+Delete",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+NumpadAdd",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Shift+Equal",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Shift+Minus",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+_",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Alt+r",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+Alt+R は割り当てがありません（F1 でキーの一覧）",
+      "kd": [
+        {
+          "k": "Ctrl+Alt+r",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux grid Control+Digit0",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+0",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Shift+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+NumpadSubtract",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+NumpadAdd",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Shift+Equal",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Shift+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+_",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Alt+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+Alt+r",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux editor Control+Digit0",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+0",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Shift+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+NumpadSubtract",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+NumpadAdd",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Shift+Equal",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Shift+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+_",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Alt+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+Alt+r",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux typed Control+Digit0",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+0",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+r",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Shift+r",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Minus",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+NumpadSubtract",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+NumpadAdd",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Shift+Equal",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Shift+Minus",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+_",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Alt+r",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+Alt+r",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux filter Control+Digit0",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+0",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+r",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Shift+r",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+r",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Minus",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+NumpadSubtract",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+-",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+NumpadAdd",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Shift+Equal",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl++",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Shift+Minus",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+_",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Alt+r",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+Alt+r",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "linux palette Control+Digit0",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+0",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

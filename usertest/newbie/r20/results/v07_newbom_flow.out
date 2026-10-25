@@ -1,0 +1,28 @@
+  [created] role=design mode=nav view=1 cur=R001/name edit="" panel=null |  | toast: 新しいBOM P-2026-002（3 行）を作成しました。Ctrl+Enter で提出します
+  project P-2026-002 suppliers [] rows R001:draft:リレー/MY4N-D2/4 R002:draft:タイマ/H3CR-A8/2 R003:draft:端子台/TB-12/3
+  [Ctrl+Enter] role=design mode=nav view=1 cur=R001/name edit="" panel=null |  | toast: 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [published] role=design mode=nav view=1 cur=R002/name edit="ECN-2026-03" panel=null |  | toast: 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  sub  rows R001:submitted:リレー/MY4N-D2/4 R002:submitted:タイマ/H3CR-A8/2 R003:submitted:端子台/TB-12/3
+  [purchasing] role=purchasing mode=nav view=9 cur=R002/orderQty edit="ECN-2026-03" panel=null |  | toast: 役割: 購買（購買担当）。既定のビュー 9 購買作業 を開きました
+  [6] role=purchasing mode=nav view=6 cur=R002/name edit="ECN-2026-03" panel=null |  | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  6 rows: R001,R002,R003
+  cols: ID|部品名|型式|メーカ|必要数|単位|状態
+  [sel R001] role=purchasing mode=nav view=6 cur=R001/name edit="ECN-2026-03" panel=null |  | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  gotoCol 単価 false R001 状態
+  [typed 1200] role=purchasing mode=nav view=2 cur=R001/status edit="ECN-2026-03" panel=null |  | toast: この列は自動計算です
+  quotes R001: 
+  palette 商社: 流れ 商社を集約 1社/2社に集約した総額差を試算 案件 商社を追加 BOM操作 商社を選んで採用（1〜9） Shift+A ビュー ビュー: 商社別 6 流れ 概算見積を依頼 購買。商社向け依頼 Excel を出す 流れ 正式見積を依頼（社外） 購買。選定済の行を商社ごとに
+  palette 希望商社: 案件 商社を追加
+  [商社を追加] role=purchasing mode=panel view=2 cur=R001/status edit="ECN-2026-03" panel=prompt | 商社を追加（名前） Enter 確定 Esc 取り消し | toast: この列は自動計算です
+  [ABC商事 Enter] role=purchasing mode=nav view=2 cur=R001/status edit="ECN-2026-03" panel=null |  | toast: 商社を追加: ABC商事（案件設定の「相見積先」に入れると見積を依頼できます）
+  suppliers now []
+  cols: ID|部品名|型式|メーカ|必要数|単位|状態
+  [at 単価] role=purchasing mode=nav view=6 cur=R001/status edit="ECN-2026-03" panel=null |  | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  [typed 1200] role=purchasing mode=nav view=2 cur=R001/due edit="ECN-2026-03" panel=null |  | toast: この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  [typed 14] role=purchasing mode=nav view=2 cur=R001/due edit="ECN-2026-03" panel=null |  | toast: この列は自動計算です。「ビュー: 要確認」は Alt+4（または ID の列で 4）。キーの一覧は F1
+  [typed 10] role=purchasing mode=nav view=2 cur=R001/due edit="ECN-2026-03" panel=null |  | toast: この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1
+  quotes R001:  | R001:submitted:リレー/MY4N-D2/4 R002:submitted:タイマ/H3CR-A8/2 R003:submitted:端子台/TB-12/3
+  [reload] role=purchasing mode=nav view=2 cur=R001/due edit="" panel=null |  | toast: null
+  after reload quotes R001:  | R001:submitted:リレー/MY4N-D2/4 R002:submitted:タイマ/H3CR-A8/2 R003:submitted:端子台/TB-12/3
+
+ERRORS:

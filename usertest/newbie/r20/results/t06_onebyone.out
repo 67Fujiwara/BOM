@@ -1,0 +1,32 @@
+created: rows=1 R001{|||1個}
+   ui view=4 cursor=R001/name mode=nav edit="" toast=新しいBOM NEW-1（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+after maker Tab: rows=1 R001{リレー|MY4N-D2|オムロン|1個}
+   ui view=4 cursor=R001/qtyNeeded mode=nav edit="オムロン" toast=新しいBOM NEW-1（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+pressed 4 on 必要数: rows=1 R001{リレー|MY4N-D2|オムロン|1個}
+   ui view=4 cursor=R001/qtyNeeded mode=edit edit="4" toast=新しいBOM NEW-1（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+Enter 4 Enter (last row): rows=1 R001{リレー|MY4N-D2|オムロン|4個}
+   ui view=4 cursor=R001/qtyNeeded mode=nav edit="4" toast=最後の行です。下に行を足すときは Shift+Enter
+Home →: rows=1 R001{リレー|MY4N-D2|オムロン|4個}
+   ui view=4 cursor=R001/ball mode=nav edit="4" toast=最後の行です。下に行を足すときは Shift+Enter
+typed タイマ + Enter as 2nd part (overwrites?): rows=1 R001{リレー|MY4N-D2|オムロン|4個}
+   ui view=4 cursor=R001/ball mode=nav edit="4" toast=この列は自動計算です
+Ctrl+Z: rows=1 R001{リレー|MY4N-D2|オムロン|1個}
+   ui view=4 cursor=R001/ball mode=nav edit="4" toast=元に戻す: セル編集
+Shift+Enter: rows=2 R001{リレー|MY4N-D2|オムロン|1個} R002{|||1個}
+   ui view=4 cursor=R002/name mode=edit edit="" toast=元に戻す: セル編集
+2nd row typed: rows=2 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個}
+   ui view=4 cursor=R002/maker mode=nav edit="オムロン" toast=最後の行です。下に行を足すときは Shift+Enter
+Shift+Enter while editing: rows=2 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個}
+   ui view=4 cursor=R002/maker mode=edit edit="オムロン" toast=最後の行です。下に行を足すときは Shift+Enter
+3rd row typed (Sensor / E2E-X5ME1 / Omron): rows=3 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個} R003{Omron|||1個}
+   ui view=4 cursor=R001/ref mode=nav edit="Omron" toast=この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+unit pcs: rows=3 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個} R003{Omron|||1個}
+   ui view=4 cursor=R002/unit mode=nav edit="pcs" toast=最後の行です。下に行を足すときは Shift+Enter
+n: rows=3 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個} R003{Omron|||1個}
+   ui view=4 cursor=R002/unit mode=edit edit="4n" toast=最後の行です。下に行を足すときは Shift+Enter
+Ctrl+. panel null
+publish panel null toast 単位に「4n」はありません（個 / 本 / m / セット / パック / 式）（直して Enter、やめるときは Esc）
+after publish: rows=3 R001{リレー|MY4N-D2|オムロン|1個} R002{タイマ|H3CR-A8|オムロン|1個} R003{Omron|||1個}
+   ui view=4 cursor=R002/unit mode=edit edit="4n" toast=単位に「4n」はありません（個 / 本 / m / セット / パック / 式）（直して Enter、やめるときは Esc）
+
+ERRORS:

@@ -1,0 +1,26 @@
+[
+ [
+  "K1 kubun-col-tsuika-henkou-sakujo",
+  "区分\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N-D2\t4\n削除\tタイマ\tH3CR-A8\t\t1\n追加\tランプ\t\tL-1\t2\n\t端子台\tXW2B-20G4\t\t4"
+ ],
+ [
+  "K2 henkou-kubun-col",
+  "品名\t型式（旧）\t型式（新）\t数量\t変更区分\nリレー\tMY2N\tMY4N-D2\t4\t変更\nタイマ\tH3CR-A8\t\t1\t削除\nランプ\t\tL-1\t2\t追加\n端子台\tXW2B-20G4\t\t4\t"
+ ],
+ [
+  "K3 henkou-kubun-only-new-cols",
+  "品名\t型式\tメーカー\t数量\t変更区分\nリレー\tMY4N-D2\tオムロン\t4\t変更\nタイマ\tH3CR-A8\tオムロン\t1\t削除\nランプ\tL-1\tIDEC\t2\t追加\n端子台\tXW2B-20G4\tオムロン\t4\t"
+ ],
+ [
+  "K4 full-copy-delete-in-note-only",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t型式変更\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t削除\nソケット\tPYF14A\tPYF14A\tオムロン\t2\t\n端子台\tXW2B-20G4\tXW2B-20G4\tオムロン\t4\t"
+ ],
+ [
+  "K5 full-copy-more-deletions-than-copies",
+  "品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\t4\t4\nタイマ\tH3CR-A8\tH3CR-A8\t1\t1\nソケット\tPYF14A\tPYF14A\t2\t2\nランプ\tL-1\t\t1\t\nブレーカ\tNF32-SV\t\t1\t\nヒューズ\tF-5A\t\t3\t\n端子台\tXW2B-20G4\t\t4\t"
+ ],
+ [
+  "K6 sparse-maker-only-change-copies",
+  "品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\tメーカー\nリレー\tMY2N\tMY4N-D2\t4\t4\tオムロン\nタイマ\tH3CR-A8\tH3CR-A8\t1\t1\tパナソニック\nソケット\tPYF14A\tPYF14A\t2\t2\tIDEC\n端子台\tXW2B-20G4\t\t4\t\tオムロン\nランプ\tL-1\t\t1\t\tIDEC"
+ ]
+]

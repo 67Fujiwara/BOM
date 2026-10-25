@@ -1,0 +1,12 @@
+typed 7 ↑ → cur=R025 mode=nav toast=null
+typed 8 ↑ → cur=R024 mode=nav toast=null
+typed 9 ↑ → cur=R023 mode=nav toast=null
+typed 6 ↑ → cur=R022 mode=nav toast=null
+before {"R024":1,"R025":3,"R026":3} after {"R023":6,"R024":9,"R025":8,"R026":7}
+== 同じことを ↓ で（R023 → R024 → R025）
+typed 7 ↓ → cur=R024 mode=nav toast=null
+typed 8 ↓ → cur=R025 mode=nav toast=null
+typed 9 ↓ → cur=R026 mode=nav toast=null
+after {"R023":7,"R024":8,"R025":9}
+
+ERRORS:

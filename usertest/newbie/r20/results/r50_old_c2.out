@@ -1,0 +1,43 @@
+[H5 品名規格メーカー単価数量金額] INFO
+   new: リレー:4 タイマ:2 | map=-,name,-,maker,-,qtyNeeded,-
+   warn: 
+[H6 品名仕様メーカー型式... 見積] INFO
+   new: MY4N-D2:4 | map=name,-,maker,model,-,qtyNeeded,-
+   warn: 
+[H7 page no in header row] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=-,name,model,maker,qtyNeeded,-,-,-
+   warn: 
+[H8 変更記号 col] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=ref,name,model,maker,qtyNeeded,-
+   warn: 
+[H9 改訂記号 col] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=ref,name,model,maker,qtyNeeded,-
+   warn: 
+[H10 変更備考 + 備考] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,note,-
+   warn: 
+[H11 品名 品番 数量 単位 単価] INFO
+   new: MY4N-D2:4 | map=name,model,qtyNeeded,unit,-,-
+   warn: 
+[H12 名称 型番 個数 + 単価 金額 備考] INFO
+   new: MY4N-D2:4 | map=name,model,-,qtyNeeded,-
+   warn: 
+[H13 title block normal] INFO
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 見出しより上の 1 行（表題など）は取り込みません
+[H14 one-line header with 'の' sep: 変更後の型式] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,-,model,maker,qtyNeeded
+   warn: 「変更後の型式」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「変更後の型式」の列を使います
+[H15 変更の有無 col] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 
+[H16 型式の変更 col] INFO
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,maker,qtyNeeded,-
+   warn: 「型式」に当たる列が 2 つあります。「型式」の列を使います
+[H17 今回数量 前回数量] INFO
+   new: MY4N-D2:4 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「今回数量」の列を使います
+[H18 今回の数量 前回の数量] INFO
+   new: MY4N-D2:4 H3CR-A8:0 | map=name,model,maker,-,qtyNeeded
+   warn: 「数量」に当たる列が 2 つあります。「今回の数量」の列を使います
+MISMATCHES 0

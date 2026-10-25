@@ -1,0 +1,41 @@
+== A 設計: ガイドで貼り付けて作り、公開（Rev.1）
+  [design published] role=design view=1 cur=R001/name panel=null | pmConfirmed=false due=null cases=["案件設定確定:open"] decisions= | toast=行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | chips=仮 | 案件設定 未確定（PM）
+  header: P-2026-002 新しいBOM P-2026-002 納期 未定仮 概算 ¥0 / 正式 ¥0 設計待ち 0 購買待ち 2 PM待ち 1 エラー 0 警告 0 設計 購買 PM 山田 Ctrl+K コマンド ?
+== B PM: 7 要決定 → 先頭の行（案件設定確定）で y → もう一度 y
+  [pm start] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=false due=null cases=["案件設定確定:open"] decisions= | toast=役割: PM（PM担当）。既定のビュー 7 要決定 を開きました | chips=仮 | 案件設定 未確定（PM）
+  rows in view: 
+  hints: F1ヘルプ ↓表へ F8次の問題
+  [↓] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=false due=null cases=["案件設定確定:open"] decisions= | toast=役割: PM（PM担当）。既定のビュー 7 要決定 を開きました | chips=仮 | 案件設定 未確定（PM）
+  hints: F1ヘルプ ↓表へ F8次の問題
+  [y 1] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます） | chips=
+  [y 2] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」） | chips=
+  rows in view: 
+  ステータスバーの案内のとおり Alt+y・Enter（案件設定を開く）も
+  [Alt+y] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」） | chips=
+  [Enter] role=pm view=7 cur=case:C1/name panel=settings | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=undefined | chips=
+  panel: 案件設定 （PM 項目は PM、購買項目は購買が変更。確定済） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計変更は PM 承認が必要
+  [Shift+Y] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く） | chips=
+  palette: true
+  [palette 案件設定を確定] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」） | chips=
+  palette again: true
+  [palette 2 回目] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=null cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 | toast=案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」） | chips=
+== C PM: 知らせのとおり Ctrl+K「案件設定」→ 案件納期を 2026-12-25 に → Ctrl+Enter → 理由 → Enter
+  panel: 案件設定 （PM 項目は PM、購買項目は購買が変更。確定済） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計変更は PM 承認が必要 いいえ PM 上長決裁: 行の差額 ≥（円） 300000 PM 上長決裁: 予算比 +（%） 5 PM 担当者（設計,購買,PM） 山田,, 購買 回答期限の既定（日） 5 購買 今回の回答期限 購買 見積完了条件（全社 / 2社以上 / 期限） 期限 購買 拮抗閾値（点） 
+  案件納期 index=1
+  panel: 影響試算（確定前） 納期NG になる行: 0（なし） 推奨が変わる行: 0（） 行必要日が固定の行: 0（） 正式依頼中で必要納期が変わる行（再発行対象）: 0 総額差（推奨で選び直した場合）: +¥0 特急費の概算: 納期NG 0 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる） Enter 確定に進む Esc 取り消し
+  Enter 0: panel=変更理由（必須） Enter 確定 Esc 取り消し | toast=案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」）
+  Enter 1: panel=- | toast=案件設定を保存しました
+  [settings changed] role=pm view=7 cur=case:C1/name panel=null | pmConfirmed=true due=2026-12-25 cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 ; 案件設定変更/客先の納期変更 | toast=案件設定を保存しました | chips=
+== D 購買・設計: 「購買・設計に伝わります」はどこに出ているか（ヘッダー・受信箱・ステータスバー）
+  [purchasing] role=purchasing view=9 cur=R001/orderQty panel=null | pmConfirmed=true due=2026-12-25 cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 ; 案件設定変更/客先の納期変更 | toast=役割: 購買（購買担当）。既定のビュー 9 購買作業 を開きました | chips=未発行の指摘 0 件
+  header: P-2026-002 新しいBOM P-2026-002 納期 あと61日（必要日 あと51日） 概算 ¥0 / 正式 ¥0 設計待ち 0 購買待ち 2 PM待ち 0 見積済 0/2 エラー 0 警告 0 設計 購買 PM 購買担当 Ctrl+K コマンド ?
+  hints: F1ヘルプ Enter編集 Alt+Shift+I指摘 Space開く
+  inbox: P-2026-041 / 第3ライン 搬送制御盤 / 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 12:17 佐藤 / あなた宛 6 / P-2026-002 / 新しいBOM P-2026-002 / 納期 2026-12-25 / 提出 Rev.1 / 設計 0 購買 2 PM 0 / 更新 10/25 12:18 PM担当 / あなた宛 2 / ＋ / 新しいBOM を作る
+  history: 履歴（最新 80 件） PM担当 10/25 12:18 案件設定を変更 PM担当 10/25 12:17 案件設定を確定 山田 10/25 12:17 公開 山田 10/25 12:17 公開 Rev.1（追加2 / 型式0 / 数量0 / その他0 / 取消0） 10/25 12:17 案件を作成 Esc 閉じる
+  [design] role=design view=4 cur=null/ref panel=null | pmConfirmed=true due=2026-12-25 cases=["案件設定確定:done"] decisions=案件設定確定/既定で確定 ; 案件設定変更/客先の納期変更 | toast=役割: 設計（山田）。既定のビュー 4 要確認 を開きました | chips=
+  header: P-2026-002 新しいBOM P-2026-002 納期 あと61日（必要日 あと51日） 概算 ¥0 / 正式 ¥0 設計待ち 0 購買待ち 2 PM待ち 0 エラー 0 警告 0 設計 購買 PM 山田 Ctrl+K コマンド ?
+  hints: F1ヘルプ ↓表へ F8次の問題
+  inbox: P-2026-041 / 第3ライン 搬送制御盤 / 納期 2026-11-23 / 提出 Rev.1 / 設計 73 購買 6 PM 1 / 更新 10/25 12:17 佐藤 / あなた宛 73 / P-2026-002 / 新しいBOM P-2026-002 / 納期 2026-12-25 / 提出 Rev.1 / 設計 0 購買 2 PM 0 / 更新 10/25 12:18 PM担当 / ＋ / 新しいBOM を作る
+  history: 履歴（最新 80 件） PM担当 10/25 12:18 案件設定を変更 PM担当 10/25 12:17 案件設定を確定 山田 10/25 12:17 公開 山田 10/25 12:17 公開 Rev.1（追加2 / 型式0 / 数量0 / その他0 / 取消0） 10/25 12:17 案件を作成 Esc 閉じる
+
+ERRORS:

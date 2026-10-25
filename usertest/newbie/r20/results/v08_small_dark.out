@@ -1,0 +1,8 @@
+scroll 1024,1024,700,700
+wizard 63,110 898x249 bottom=359 preview 81,150 862x195 bottom=345
+preview scroll 195,195,visible
+toast 新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 3 件: 2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います ほか 256,587 512x73 bottom=660
+dialog 172,84 680x339 bottom=423 foot ）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 ↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し
+quickfix 172,84 680x189 bottom=273
+
+ERRORS:

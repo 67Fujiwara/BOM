@@ -1,0 +1,901 @@
+{
+ "tally": {
+  "sparse-empty/1f": {
+   "cases": 432,
+   "casesWrong": 0,
+   "wrongDel": 0,
+   "wrongKeep": 0,
+   "flaggedCases": 15,
+   "rows": 9658
+  },
+  "sparse-empty/2f": {
+   "cases": 293,
+   "casesWrong": 0,
+   "wrongDel": 0,
+   "wrongKeep": 0,
+   "flaggedCases": 0,
+   "rows": 5491
+  },
+  "copy/2f": {
+   "cases": 327,
+   "casesWrong": 34,
+   "wrongDel": 0,
+   "wrongKeep": 186,
+   "flaggedCases": 79,
+   "rows": 5228
+  },
+  "sparse-dash/1f": {
+   "cases": 497,
+   "casesWrong": 0,
+   "wrongDel": 0,
+   "wrongKeep": 0,
+   "flaggedCases": 0,
+   "rows": 9454
+  },
+  "sparse-dash/2f": {
+   "cases": 278,
+   "casesWrong": 0,
+   "wrongDel": 0,
+   "wrongKeep": 0,
+   "flaggedCases": 0,
+   "rows": 5950
+  },
+  "copy/1f": {
+   "cases": 428,
+   "casesWrong": 70,
+   "wrongDel": 0,
+   "wrongKeep": 264,
+   "flaggedCases": 107,
+   "rows": 8445
+  },
+  "copy-dash/1f": {
+   "cases": 440,
+   "casesWrong": 189,
+   "wrongDel": 0,
+   "wrongKeep": 1054,
+   "flaggedCases": 0,
+   "rows": 8592
+  },
+  "copy-dash/2f": {
+   "cases": 305,
+   "casesWrong": 113,
+   "wrongDel": 0,
+   "wrongKeep": 940,
+   "flaggedCases": 0,
+   "rows": 6251
+  }
+ },
+ "cases": [
+  {
+   "i": 16,
+   "key": "copy-dash/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 4,
+    "same": 0,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t5\t削除済\n部品2\tOLD-2\t－\t5\t\n部品3\tOLD-3\tNEW-3\t2\t変更\n部品4\tOLD-4\tNEW-4\t3\tR12→R13\n部品5\tOLD-5\t－\t3\t削除済\n部品6\tOLD-6\t－\t1\t\n"
+  },
+  {
+   "i": 17,
+   "key": "copy-dash/2f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 2,
+    "same": 2,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tOLD-1\t4\t4\n部品2\tOLD-2\tOLD-2\t5\t5\n部品3\tOLD-3\t－\t3\t－\n部品4\tOLD-4\t－\t5\t－\n部品5\tOLD-5\tNEW-5\t1\t2\n"
+  },
+  {
+   "i": 18,
+   "key": "copy-dash/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 4,
+    "same": 2,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t4\t削除済\n部品2\tOLD-2\tOLD-2\t5\t\n部品3\tOLD-3\t－\t2\t\n部品4\tOLD-4\tOLD-4\t6\t\n部品5\tOLD-5\t－\t1\t削除\n部品6\tOLD-6\t－\t2\t削除\n"
+  },
+  {
+   "i": 25,
+   "key": "copy-dash/1f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 3,
+    "same": 2,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tOLD-1\t1\n部品2\tOLD-2\tNEW-2\t3\n部品3\tOLD-3\t－\t3\n部品4\tOLD-4\tNEW-4\t1\n部品5\tOLD-5\tNEW-5\t6\n部品6\tOLD-6\t－\t5\n部品7\tOLD-7\t－\t4\n部品8\tOLD-8\tOLD-8\t2\n"
+  },
+  {
+   "i": 32,
+   "key": "copy-dash/2f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 6,
+   "counts": {
+    "del": 6,
+    "same": 2,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tNEW-1\t1\t2\n部品2\tOLD-2\tOLD-2\t6\t6\n部品3\tOLD-3\t－\t5\t－\n部品4\tOLD-4\t－\t5\t－\n部品5\tOLD-5\t－\t4\t－\n部品6\tOLD-6\tOLD-6\t4\t4\n部品7\tOLD-7\t－\t1\t－\n部品8\tOLD-8\t－\t2\t－\n部品9\tOLD-9\tNEW-9\t4\t5\n部品10\tOLD-10\t－\t4\t－\n部品11\tOLD-11\tNEW-11\t6\t7\n"
+  },
+  {
+   "i": 38,
+   "key": "copy-dash/1f",
+   "n": 13,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 4,
+    "same": 5,
+    "chg": 4,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\tOLD-1\t1\t\n部品2\tOLD-2\t－\t6\t\n部品3\tOLD-3\t－\t2\t不要のため削除\n部品4\tOLD-4\t－\t1\t廃止\n部品5\tOLD-5\t－\t4\t廃止\n部品6\tOLD-6\tNEW-6\t1\t型式変更\n部品7\tOLD-7\tOLD-7\t5\t\n部品8\tOLD-8\tNEW-8\t6\tR12→R13\n部品9\tOLD-9\tNEW-9\t6\t銘板変更\n部品10\tOLD-10\tOLD-10\t2\t\n部品11\tOLD-11\tOLD-11\t3\t\n部品12\tOLD-12\tOLD-12\t6\t盤内\n部品13\tOLD-13\tNEW-13\t5\t銘板変更\n"
+  },
+  {
+   "i": 70,
+   "key": "copy/2f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 5,
+    "same": 0,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\t\t2\t\n部品2\tOLD-2\t\t1\t\n部品3\tOLD-3\t\t1\t\n部品4\tOLD-4\t\t3\t\n部品5\tOLD-5\t\t4\t\n"
+  },
+  {
+   "i": 73,
+   "key": "copy-dash/2f",
+   "n": 139,
+   "wrongDel": 0,
+   "wrongKeep": 73,
+   "counts": {
+    "del": 73,
+    "same": 31,
+    "chg": 35,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 80,
+   "key": "copy-dash/2f",
+   "n": 9,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 4,
+    "same": 2,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\t－\t2\t－\t削除済\n部品2\tOLD-2\tOLD-2\t1\t1\t\n部品3\tOLD-3\t－\t2\t－\t削除済\n部品4\tOLD-4\tOLD-4\t3\t3\t\n部品5\tOLD-5\t－\t5\t－\t\n部品6\tOLD-6\tNEW-6\t4\t5\t位置変更\n部品7\tOLD-7\tNEW-7\t1\t2\tR12→R13\n部品8\tOLD-8\tNEW-8\t1\t2\t銘板変更\n部品9\tOLD-9\t－\t5\t－\t\n"
+  },
+  {
+   "i": 82,
+   "key": "copy-dash/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 6,
+   "counts": {
+    "del": 6,
+    "same": 0,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t－\t2\n部品2\tOLD-2\t－\t5\n部品3\tOLD-3\t－\t3\n部品4\tOLD-4\t－\t6\n部品5\tOLD-5\t－\t5\n部品6\tOLD-6\t－\t2\n"
+  },
+  {
+   "i": 85,
+   "key": "copy-dash/1f",
+   "n": 13,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 7,
+    "same": 4,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t2\t\n部品2\tOLD-2\tNEW-2\t2\t変更\n部品3\tOLD-3\t－\t4\t\n部品4\tOLD-4\tOLD-4\t5\t\n部品5\tOLD-5\t－\t2\t\n部品6\tOLD-6\tNEW-6\t1\t位置変更\n部品7\tOLD-7\t－\t6\t\n部品8\tOLD-8\tOLD-8\t2\t\n部品9\tOLD-9\t－\t3\t削除済\n部品10\tOLD-10\t－\t2\t\n部品11\tOLD-11\t－\t2\t廃止\n部品12\tOLD-12\tOLD-12\t3\t盤内\n部品13\tOLD-13\tOLD-13\t2\t\n"
+  },
+  {
+   "i": 86,
+   "key": "copy/2f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 1,
+    "same": 0,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\tNEW-1\t3\t4\t変更\n部品2\tOLD-2\t\t5\t\t\n部品3\tOLD-3\tNEW-3\t6\t7\t型式変更\n部品4\tOLD-4\tNEW-4\t2\t3\t位置変更\n"
+  },
+  {
+   "i": 87,
+   "key": "copy/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 4,
+    "same": 1,
+    "chg": 6,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t\t3\n部品2\tOLD-2\tOLD-2\t1\n部品3\tOLD-3\t\t3\n部品4\tOLD-4\tNEW-4\t1\n部品5\tOLD-5\tNEW-5\t4\n部品6\tOLD-6\tNEW-6\t6\n部品7\tOLD-7\tNEW-7\t3\n部品8\tOLD-8\tNEW-8\t6\n部品9\tOLD-9\t\t5\n部品10\tOLD-10\t\t5\n部品11\tOLD-11\tNEW-11\t4\n"
+  },
+  {
+   "i": 90,
+   "key": "copy-dash/1f",
+   "n": 20,
+   "wrongDel": 0,
+   "wrongKeep": 8,
+   "counts": {
+    "del": 8,
+    "same": 8,
+    "chg": 4,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 99,
+   "key": "copy-dash/2f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 5,
+    "same": 1,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\t－\t6\t－\t\n部品2\tOLD-2\t－\t6\t－\t\n部品3\tOLD-3\t－\t3\t－\t不要のため削除\n部品4\tOLD-4\tOLD-4\t1\t1\t\n部品5\tOLD-5\t－\t1\t－\t削除\n部品6\tOLD-6\t－\t4\t－\t不要のため削除\n"
+  },
+  {
+   "i": 102,
+   "key": "copy/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 2,
+    "same": 2,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tNEW-1\t3\n部品2\tOLD-2\t\t6\n部品3\tOLD-3\tNEW-3\t4\n部品4\tOLD-4\tOLD-4\t6\n部品5\tOLD-5\t\t1\n部品6\tOLD-6\tOLD-6\t4\n"
+  },
+  {
+   "i": 103,
+   "key": "copy/1f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 4,
+    "same": 1,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tNEW-1\t4\n部品2\tOLD-2\t\t6\n部品3\tOLD-3\tNEW-3\t3\n部品4\tOLD-4\t\t1\n部品5\tOLD-5\t\t3\n部品6\tOLD-6\tOLD-6\t1\n部品7\tOLD-7\tNEW-7\t3\n部品8\tOLD-8\t\t6\n"
+  },
+  {
+   "i": 108,
+   "key": "copy-dash/1f",
+   "n": 61,
+   "wrongDel": 0,
+   "wrongKeep": 6,
+   "counts": {
+    "del": 16,
+    "same": 23,
+    "chg": 22,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 110,
+   "key": "copy/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 3,
+    "same": 2,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t\t2\t不要のため削除\n部品2\tOLD-2\tNEW-2\t2\t\n部品3\tOLD-3\tOLD-3\t4\t\n部品4\tOLD-4\t\t5\t\n部品5\tOLD-5\t\t6\t不要のため削除\n部品6\tOLD-6\tOLD-6\t3\t\n"
+  },
+  {
+   "i": 142,
+   "key": "copy-dash/2f",
+   "n": 30,
+   "wrongDel": 0,
+   "wrongKeep": 16,
+   "counts": {
+    "del": 16,
+    "same": 12,
+    "chg": 2,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 146,
+   "key": "copy-dash/1f",
+   "n": 93,
+   "wrongDel": 0,
+   "wrongKeep": 22,
+   "counts": {
+    "del": 42,
+    "same": 18,
+    "chg": 33,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 162,
+   "key": "copy-dash/2f",
+   "n": 12,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 5,
+    "same": 5,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tOLD-1\t3\t3\n部品2\tOLD-2\tNEW-2\t4\t5\n部品3\tOLD-3\tOLD-3\t5\t5\n部品4\tOLD-4\t－\t6\t－\n部品5\tOLD-5\tOLD-5\t5\t5\n部品6\tOLD-6\tOLD-6\t4\t4\n部品7\tOLD-7\t－\t4\t－\n部品8\tOLD-8\tNEW-8\t4\t5\n部品9\tOLD-9\t－\t5\t－\n部品10\tOLD-10\t－\t3\t－\n部品11\tOLD-11\t－\t5\t－\n部品12\tOLD-12\tOLD-12\t3\t3\n"
+  },
+  {
+   "i": 164,
+   "key": "copy-dash/2f",
+   "n": 14,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 5,
+    "same": 4,
+    "chg": 5,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\tNEW-1\t4\t5\t型式変更\n部品2\tOLD-2\tOLD-2\t3\t3\t盤内\n部品3\tOLD-3\tNEW-3\t5\t6\t銘板変更\n部品4\tOLD-4\tNEW-4\t4\t5\t型式変更\n部品5\tOLD-5\t－\t2\t－\t廃止\n部品6\tOLD-6\tOLD-6\t3\t3\t\n部品7\tOLD-7\t－\t3\t－\t\n部品8\tOLD-8\t－\t1\t－\t\n部品9\tOLD-9\tOLD-9\t1\t1\t\n部品10\tOLD-10\tNEW-10\t6\t7\t\n部品11\tOLD-11\tNEW-11\t6\t7\t銘板変更\n部品12\tOLD-12\tOLD-12\t4\t4\t\n部品13\tOLD-13\t－\t6\t－\t\n部品14\tOLD-14\t－\t6\t－\t\n"
+  },
+  {
+   "i": 174,
+   "key": "copy-dash/1f",
+   "n": 13,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 5,
+    "same": 7,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\tOLD-1\t5\t\n部品2\tOLD-2\tOLD-2\t2\t\n部品3\tOLD-3\tOLD-3\t6\t盤内\n部品4\tOLD-4\tOLD-4\t1\t\n部品5\tOLD-5\t－\t3\t削除\n部品6\tOLD-6\t－\t3\t\n部品7\tOLD-7\tOLD-7\t2\t\n部品8\tOLD-8\tOLD-8\t1\t\n部品9\tOLD-9\t－\t2\t廃止\n部品10\tOLD-10\tNEW-10\t4\t位置変更\n部品11\tOLD-11\t－\t6\t不要のため削除\n部品12\tOLD-12\tOLD-12\t5\t盤内\n部品13\tOLD-13\t－\t1\t廃止\n"
+  },
+  {
+   "i": 175,
+   "key": "copy-dash/1f",
+   "n": 106,
+   "wrongDel": 0,
+   "wrongKeep": 50,
+   "counts": {
+    "del": 50,
+    "same": 42,
+    "chg": 14,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 179,
+   "key": "copy-dash/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 4,
+    "same": 6,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t－\t2\n部品2\tOLD-2\t－\t6\n部品3\tOLD-3\tOLD-3\t6\n部品4\tOLD-4\t－\t4\n部品5\tOLD-5\tOLD-5\t5\n部品6\tOLD-6\tOLD-6\t2\n部品7\tOLD-7\tNEW-7\t6\n部品8\tOLD-8\tOLD-8\t2\n部品9\tOLD-9\tOLD-9\t3\n部品10\tOLD-10\tOLD-10\t4\n部品11\tOLD-11\t－\t2\n"
+  },
+  {
+   "i": 190,
+   "key": "copy-dash/1f",
+   "n": 7,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 2,
+    "same": 3,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t3\t\n部品2\tOLD-2\tOLD-2\t1\t\n部品3\tOLD-3\tOLD-3\t4\t\n部品4\tOLD-4\tOLD-4\t1\t\n部品5\tOLD-5\tNEW-5\t3\t\n部品6\tOLD-6\t－\t4\t\n部品7\tOLD-7\tNEW-7\t2\t位置変更\n"
+  },
+  {
+   "i": 193,
+   "key": "copy-dash/1f",
+   "n": 14,
+   "wrongDel": 0,
+   "wrongKeep": 6,
+   "counts": {
+    "del": 7,
+    "same": 5,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t2\t\n部品2\tOLD-2\tOLD-2\t2\t\n部品3\tOLD-3\tNEW-3\t1\t位置変更\n部品4\tOLD-4\tOLD-4\t5\t\n部品5\tOLD-5\tOLD-5\t3\t\n部品6\tOLD-6\tOLD-6\t2\t盤内\n部品7\tOLD-7\tOLD-7\t5\t\n部品8\tOLD-8\t－\t1\t\n部品9\tOLD-9\tNEW-9\t6\t\n部品10\tOLD-10\t－\t6\t\n部品11\tOLD-11\t－\t3\t削除\n部品12\tOLD-12\t－\t6\t\n部品13\tOLD-13\t－\t5\t\n部品14\tOLD-14\t－\t3\t\n"
+  },
+  {
+   "i": 203,
+   "key": "copy-dash/1f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 5,
+    "same": 2,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tOLD-1\t1\n部品2\tOLD-2\t－\t6\n部品3\tOLD-3\t－\t3\n部品4\tOLD-4\t－\t3\n部品5\tOLD-5\t－\t2\n部品6\tOLD-6\t－\t4\n部品7\tOLD-7\tOLD-7\t3\n部品8\tOLD-8\tNEW-8\t6\n"
+  },
+  {
+   "i": 227,
+   "key": "copy-dash/1f",
+   "n": 6,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 3,
+    "same": 0,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tNEW-1\t2\n部品2\tOLD-2\tNEW-2\t1\n部品3\tOLD-3\t－\t1\n部品4\tOLD-4\t－\t1\n部品5\tOLD-5\tNEW-5\t4\n部品6\tOLD-6\t－\t3\n"
+  },
+  {
+   "i": 237,
+   "key": "copy-dash/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 3,
+    "same": 4,
+    "chg": 4,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\tOLD-1\t1\t\n部品2\tOLD-2\t－\t6\t削除済\n部品3\tOLD-3\tOLD-3\t2\t\n部品4\tOLD-4\tOLD-4\t2\t\n部品5\tOLD-5\tNEW-5\t1\t変更\n部品6\tOLD-6\tNEW-6\t2\t\n部品7\tOLD-7\t－\t3\t\n部品8\tOLD-8\tOLD-8\t5\t\n部品9\tOLD-9\tNEW-9\t2\t\n部品10\tOLD-10\t－\t1\t削除\n部品11\tOLD-11\tNEW-11\t1\t\n"
+  },
+  {
+   "i": 247,
+   "key": "copy-dash/2f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 7,
+    "same": 2,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\tOLD-1\t4\t4\t\n部品2\tOLD-2\t－\t6\t－\t不要のため削除\n部品3\tOLD-3\t－\t2\t－\t不要のため削除\n部品4\tOLD-4\tNEW-4\t4\t5\t\n部品5\tOLD-5\t－\t2\t－\t削除\n部品6\tOLD-6\t－\t3\t－\t\n部品7\tOLD-7\tNEW-7\t6\t7\t位置変更\n部品8\tOLD-8\tOLD-8\t6\t6\t\n部品9\tOLD-9\t－\t4\t－\t廃止\n部品10\tOLD-10\t－\t6\t－\t削除\n部品11\tOLD-11\t－\t6\t－\t削除済\n"
+  },
+  {
+   "i": 250,
+   "key": "copy-dash/2f",
+   "n": 10,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 6,
+    "same": 2,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\t－\t3\t－\t\n部品2\tOLD-2\t－\t6\t－\t\n部品3\tOLD-3\tOLD-3\t3\t3\t盤内\n部品4\tOLD-4\t－\t3\t－\t廃止\n部品5\tOLD-5\t－\t1\t－\t削除済\n部品6\tOLD-6\t－\t4\t－\t\n部品7\tOLD-7\tNEW-7\t4\t5\t型式変更\n部品8\tOLD-8\t－\t4\t－\t削除\n部品9\tOLD-9\tOLD-9\t5\t5\t\n部品10\tOLD-10\tNEW-10\t5\t6\t変更\n"
+  },
+  {
+   "i": 255,
+   "key": "copy-dash/1f",
+   "n": 9,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 5,
+    "same": 3,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t－\t2\n部品2\tOLD-2\t－\t3\n部品3\tOLD-3\tOLD-3\t2\n部品4\tOLD-4\tOLD-4\t4\n部品5\tOLD-5\t－\t4\n部品6\tOLD-6\tOLD-6\t3\n部品7\tOLD-7\t－\t6\n部品8\tOLD-8\t－\t1\n部品9\tOLD-9\tNEW-9\t3\n"
+  },
+  {
+   "i": 259,
+   "key": "copy-dash/2f",
+   "n": 7,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 6,
+    "same": 0,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\tNEW-1\t1\t2\t銘板変更\n部品2\tOLD-2\t－\t3\t－\t\n部品3\tOLD-3\t－\t5\t－\t廃止\n部品4\tOLD-4\t－\t6\t－\t\n部品5\tOLD-5\t－\t1\t－\t\n部品6\tOLD-6\t－\t5\t－\t\n部品7\tOLD-7\t－\t4\t－\t不要のため削除\n"
+  },
+  {
+   "i": 266,
+   "key": "copy/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 7,
+    "same": 2,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\tNEW-1\t6\t\n部品2\tOLD-2\t\t6\t廃止\n部品3\tOLD-3\t\t6\t\n部品4\tOLD-4\tNEW-4\t3\t銘板変更\n部品5\tOLD-5\tOLD-5\t3\t\n部品6\tOLD-6\t\t2\t削除\n部品7\tOLD-7\t\t5\t\n部品8\tOLD-8\t\t1\t廃止\n部品9\tOLD-9\t\t4\t\n部品10\tOLD-10\tOLD-10\t5\t\n部品11\tOLD-11\t\t2\t廃止\n"
+  },
+  {
+   "i": 269,
+   "key": "copy-dash/1f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 4,
+    "same": 2,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tNEW-1\t3\n部品2\tOLD-2\tOLD-2\t1\n部品3\tOLD-3\tOLD-3\t4\n部品4\tOLD-4\tNEW-4\t1\n部品5\tOLD-5\t－\t1\n部品6\tOLD-6\t－\t4\n部品7\tOLD-7\t－\t3\n部品8\tOLD-8\t－\t2\n"
+  },
+  {
+   "i": 273,
+   "key": "copy/1f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 1,
+    "same": 2,
+    "chg": 5,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tNEW-1\t1\n部品2\tOLD-2\tOLD-2\t3\n部品3\tOLD-3\tNEW-3\t5\n部品4\tOLD-4\tOLD-4\t5\n部品5\tOLD-5\tNEW-5\t1\n部品6\tOLD-6\tNEW-6\t4\n部品7\tOLD-7\t\t4\n部品8\tOLD-8\tNEW-8\t3\n"
+  },
+  {
+   "i": 277,
+   "key": "copy-dash/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 5,
+    "same": 4,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t6\t削除\n部品2\tOLD-2\t－\t5\t削除\n部品3\tOLD-3\t－\t1\t\n部品4\tOLD-4\tOLD-4\t4\t\n部品5\tOLD-5\tOLD-5\t6\t\n部品6\tOLD-6\tOLD-6\t6\t\n部品7\tOLD-7\t－\t6\t削除\n部品8\tOLD-8\t－\t3\t削除済\n部品9\tOLD-9\tNEW-9\t1\t\n部品10\tOLD-10\tNEW-10\t4\t銘板変更\n部品11\tOLD-11\tOLD-11\t4\t\n"
+  },
+  {
+   "i": 278,
+   "key": "copy-dash/1f",
+   "n": 51,
+   "wrongDel": 0,
+   "wrongKeep": 14,
+   "counts": {
+    "del": 20,
+    "same": 23,
+    "chg": 8,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 281,
+   "key": "copy-dash/1f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 2,
+    "same": 2,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t6\t\n部品2\tOLD-2\tOLD-2\t4\t\n部品3\tOLD-3\tOLD-3\t5\t\n部品4\tOLD-4\tNEW-4\t3\t位置変更\n部品5\tOLD-5\t－\t3\t削除\n"
+  },
+  {
+   "i": 290,
+   "key": "copy/2f",
+   "n": 9,
+   "wrongDel": 0,
+   "wrongKeep": 5,
+   "counts": {
+    "del": 5,
+    "same": 0,
+    "chg": 4,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tNEW-1\t3\t4\n部品2\tOLD-2\t\t4\t\n部品3\tOLD-3\tNEW-3\t5\t6\n部品4\tOLD-4\t\t6\t\n部品5\tOLD-5\t\t1\t\n部品6\tOLD-6\t\t6\t\n部品7\tOLD-7\t\t1\t\n部品8\tOLD-8\tNEW-8\t4\t5\n部品9\tOLD-9\tNEW-9\t2\t3\n"
+  },
+  {
+   "i": 304,
+   "key": "copy-dash/2f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 1,
+    "same": 1,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tOLD-1\t4\t4\n部品2\tOLD-2\tNEW-2\t3\t4\n部品3\tOLD-3\tNEW-3\t2\t3\n部品4\tOLD-4\t－\t1\t－\n"
+  },
+  {
+   "i": 307,
+   "key": "copy/1f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 2,
+    "same": 1,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tOLD-1\t1\n部品2\tOLD-2\t\t3\n部品3\tOLD-3\t\t3\n部品4\tOLD-4\tNEW-4\t6\n"
+  },
+  {
+   "i": 322,
+   "key": "copy-dash/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 5,
+    "same": 3,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t3\t\n部品2\tOLD-2\tOLD-2\t5\t\n部品3\tOLD-3\t－\t2\t削除\n部品4\tOLD-4\tOLD-4\t6\t\n部品5\tOLD-5\tNEW-5\t4\t型式変更\n部品6\tOLD-6\tNEW-6\t6\t変更\n部品7\tOLD-7\t－\t4\t不要のため削除\n部品8\tOLD-8\t－\t2\t不要のため削除\n部品9\tOLD-9\tOLD-9\t5\t\n部品10\tOLD-10\tNEW-10\t5\t銘板変更\n部品11\tOLD-11\t－\t5\t\n"
+  },
+  {
+   "i": 325,
+   "key": "copy/1f",
+   "n": 14,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 7,
+    "same": 2,
+    "chg": 5,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t\t4\t不要のため削除\n部品2\tOLD-2\tOLD-2\t2\t\n部品3\tOLD-3\tNEW-3\t2\t型式変更\n部品4\tOLD-4\tNEW-4\t5\t変更\n部品5\tOLD-5\tNEW-5\t1\t銘板変更\n部品6\tOLD-6\t\t1\t\n部品7\tOLD-7\t\t6\t削除\n部品8\tOLD-8\t\t5\t削除\n部品9\tOLD-9\tOLD-9\t1\t\n部品10\tOLD-10\tNEW-10\t1\t銘板変更\n部品11\tOLD-11\tNEW-11\t4\t変更\n部品12\tOLD-12\t\t2\t削除済\n部品13\tOLD-13\t\t1\t\n部品14\tOLD-14\t\t2\t廃止\n"
+  },
+  {
+   "i": 332,
+   "key": "copy-dash/2f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 2,
+    "same": 2,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tOLD-1\t6\t6\n部品2\tOLD-2\t－\t2\t－\n部品3\tOLD-3\tOLD-3\t3\t3\n部品4\tOLD-4\t－\t3\t－\n"
+  },
+  {
+   "i": 340,
+   "key": "copy-dash/2f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 4,
+    "same": 1,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\t－\t3\t－\t\n部品2\tOLD-2\tOLD-2\t5\t5\t\n部品3\tOLD-3\t－\t3\t－\t削除済\n部品4\tOLD-4\t－\t2\t－\t\n部品5\tOLD-5\t－\t3\t－\t削除\n"
+  },
+  {
+   "i": 341,
+   "key": "copy-dash/1f",
+   "n": 10,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 3,
+    "same": 4,
+    "chg": 3,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\tOLD-1\t3\n部品2\tOLD-2\tOLD-2\t4\n部品3\tOLD-3\tOLD-3\t1\n部品4\tOLD-4\tNEW-4\t2\n部品5\tOLD-5\tNEW-5\t1\n部品6\tOLD-6\t－\t6\n部品7\tOLD-7\t－\t3\n部品8\tOLD-8\tNEW-8\t3\n部品9\tOLD-9\t－\t3\n部品10\tOLD-10\tOLD-10\t4\n"
+  },
+  {
+   "i": 343,
+   "key": "copy-dash/1f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 1,
+    "same": 2,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t－\t4\n部品2\tOLD-2\tOLD-2\t1\n部品3\tOLD-3\tOLD-3\t6\n部品4\tOLD-4\tNEW-4\t5\n"
+  },
+  {
+   "i": 345,
+   "key": "copy-dash/1f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 4,
+   "counts": {
+    "del": 4,
+    "same": 0,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t－\t5\n部品2\tOLD-2\tNEW-2\t1\n部品3\tOLD-3\t－\t3\n部品4\tOLD-4\t－\t2\n部品5\tOLD-5\t－\t5\n"
+  },
+  {
+   "i": 348,
+   "key": "copy-dash/1f",
+   "n": 12,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 4,
+    "same": 2,
+    "chg": 6,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t4\t廃止\n部品2\tOLD-2\tOLD-2\t4\t\n部品3\tOLD-3\t－\t5\t不要のため削除\n部品4\tOLD-4\t－\t4\t\n部品5\tOLD-5\tOLD-5\t1\t\n部品6\tOLD-6\tNEW-6\t6\t\n部品7\tOLD-7\tNEW-7\t4\t変更\n部品8\tOLD-8\tNEW-8\t3\t位置変更\n部品9\tOLD-9\tNEW-9\t6\t銘板変更\n部品10\tOLD-10\t－\t4\t\n部品11\tOLD-11\tNEW-11\t5\t\n部品12\tOLD-12\tNEW-12\t4\t\n"
+  },
+  {
+   "i": 352,
+   "key": "copy-dash/2f",
+   "n": 8,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 5,
+    "same": 3,
+    "chg": 0,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\t備考\n部品1\tOLD-1\tOLD-1\t1\t1\t\n部品2\tOLD-2\t－\t4\t－\t\n部品3\tOLD-3\t－\t4\t－\t削除\n部品4\tOLD-4\tOLD-4\t3\t3\t\n部品5\tOLD-5\t－\t6\t－\t不要のため削除\n部品6\tOLD-6\t－\t4\t－\t\n部品7\tOLD-7\tOLD-7\t2\t2\t\n部品8\tOLD-8\t－\t5\t－\t廃止\n"
+  },
+  {
+   "i": 353,
+   "key": "copy-dash/2f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 1,
+   "counts": {
+    "del": 1,
+    "same": 1,
+    "chg": 2,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\tOLD-1\t5\t5\n部品2\tOLD-2\t－\t4\t－\n部品3\tOLD-3\tNEW-3\t5\t6\n部品4\tOLD-4\tNEW-4\t4\t5\n"
+  },
+  {
+   "i": 366,
+   "key": "copy/1f",
+   "n": 5,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 3,
+    "same": 1,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\n部品1\tOLD-1\t\t1\n部品2\tOLD-2\tNEW-2\t3\n部品3\tOLD-3\t\t5\n部品4\tOLD-4\t\t6\n部品5\tOLD-5\tOLD-5\t4\n"
+  },
+  {
+   "i": 367,
+   "key": "copy-dash/1f",
+   "n": 4,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 3,
+    "same": 0,
+    "chg": 1,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t－\t5\t廃止\n部品2\tOLD-2\t－\t4\t\n部品3\tOLD-3\t－\t2\t\n部品4\tOLD-4\tNEW-4\t1\t位置変更\n"
+  },
+  {
+   "i": 376,
+   "key": "copy/1f",
+   "n": 11,
+   "wrongDel": 0,
+   "wrongKeep": 2,
+   "counts": {
+    "del": 4,
+    "same": 1,
+    "chg": 6,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t備考\n部品1\tOLD-1\t\t2\t削除\n部品2\tOLD-2\tNEW-2\t6\t位置変更\n部品3\tOLD-3\tNEW-3\t6\t位置変更\n部品4\tOLD-4\tNEW-4\t2\tR12→R13\n部品5\tOLD-5\t\t5\t削除済\n部品6\tOLD-6\t\t5\t\n部品7\tOLD-7\t\t1\t\n部品8\tOLD-8\tNEW-8\t6\t変更\n部品9\tOLD-9\tNEW-9\t6\t変更\n部品10\tOLD-10\tNEW-10\t2\t変更\n部品11\tOLD-11\tOLD-11\t6\t\n"
+  },
+  {
+   "i": 382,
+   "key": "copy-dash/2f",
+   "n": 108,
+   "wrongDel": 0,
+   "wrongKeep": 20,
+   "counts": {
+    "del": 54,
+    "same": 18,
+    "chg": 36,
+    "chgq": 0
+   }
+  },
+  {
+   "i": 391,
+   "key": "copy-dash/2f",
+   "n": 10,
+   "wrongDel": 0,
+   "wrongKeep": 3,
+   "counts": {
+    "del": 3,
+    "same": 2,
+    "chg": 5,
+    "chgq": 0
+   },
+   "text": "部品名\t型式\t変更後型式\t数量\t変更後数量\n部品1\tOLD-1\t－\t6\t－\n部品2\tOLD-2\t－\t5\t－\n部品3\tOLD-3\tNEW-3\t3\t4\n部品4\tOLD-4\tNEW-4\t6\t7\n部品5\tOLD-5\tOLD-5\t5\t5\n部品6\tOLD-6\tNEW-6\t5\t6\n部品7\tOLD-7\tNEW-7\t2\t3\n部品8\tOLD-8\t－\t6\t－\n部品9\tOLD-9\tOLD-9\t1\t1\n部品10\tOLD-10\tNEW-10\t6\t7\n"
+  },
+  {
+   "i": 392,
+   "key": "copy-dash/1f",
+   "n": 52,
+   "wrongDel": 0,
+   "wrongKeep": 12,
+   "counts": {
+    "del": 28,
+    "same": 11,
+    "chg": 13,
+    "chgq": 0
+   }
+  }
+ ]
+}

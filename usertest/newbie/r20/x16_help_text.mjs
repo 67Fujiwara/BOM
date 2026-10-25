@@ -1,0 +1,10 @@
+import { launch, fresh, T, makeLog, ui, sleep, palette } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('x16_help_text')
+await fresh(page); await page.keyboard.press('ArrowDown'); await sleep(50)
+await page.keyboard.press('F1'); await sleep(150)
+const t = await page.locator('.overlay').innerText(); log(t.replace(/\n+/g, ' | ').slice(0, 6000))
+await page.keyboard.press('Escape')
+await palette(page, ''); await sleep(100)
+const items = await page.getByTestId('palette-list').locator('.item').allTextContents(); log('PALETTE', items.length); for (const i of items) log('  ', i.replace(/\s+/g, ' '))
+save(errors); await browser.close()

@@ -1,0 +1,13 @@
+[
+ ["H1 仕様・単価・金額", "品名\t仕様\t型式\t単価\t数量\t金額\nリレー\tDC24V\tMY4N-D2\t1200\t4\t4800\nタイマ\tAC100V\tH3CR-A8\t3000\t2\t6000"],
+ ["H2 規格・色", "部品名\t規格\t型式\t色\t数量\t単価\nランプ\tφ22\tAPW199DS\t赤\t2\t800\nスイッチ\tφ22\tAS6M-2KT\t黒\t1\t1200"],
+ ["H3 号機 1 2 3", "品名\t型式\tメーカー\t1\t2\t3\nリレー\tMY4N-D2\tオムロン\t2\t2\t1\nタイマ\tH3CR-A8\tオムロン\t1\t1\t1"],
+ ["H4 2段 号機", "品名\t型式\tメーカー\t数量\t\t\n\t\t\t1号機\t2号機\t合計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4"],
+ ["D1 変更後だけ+追加", "品名\t型式\t変更後型式\tメーカー\t数量\t変更後数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3Y-2\t\tオムロン\t1\t\n端子台\t\tXW2B-20G4\tオムロン\t\t2"],
+ ["D2 旧新+追加+変更なし行", "品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t\tオムロン\t1\t\nブレーカ\tNF32-SV\t\t三菱電機\t1\t\n端子台\t\tXW2B-20G4\tオムロン\t\t2"],
+ ["D3 削除の別の書き方", "品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3Y-2\t（削除）\tオムロン\t1\t\nランプ\tL-1\t撤去\tIDEC\t1\t\nヒューズ\tF-1A\tなし\t富士\t2\t\nソケット\tPYF14A\t不要\tオムロン\t2\t\nファン\tF-60\t×\t日本電産\t1\t\n端子台\t\tXW2B-20G4\tオムロン\t\t2"],
+ ["T1 ditto variants", "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N-D2\t″\t2\nタイマ\tH3CR-A8\t〃〃\t1\nタイマ\tH3CR-A8N\t同 上\t1\nソケット\tPYF14A\t＂\t4\nソケット\tPYF08A\t上に同じ\t2\nソケット\tPYF11A\t同上。\t2\nソケット\tPYF11B\t々\t2"],
+ ["T2 ditto qty / first row", "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\t〃\t4\nリレー\tMY2N-D2\tオムロン\t〃\nタイマ\tH3CR-A8\t同左\t1"],
+ ["T3 ditto after section", "品名\t型式\tメーカー\t数量\n■制御部\t\t\t\nリレー\tMY4N-D2\tオムロン\t4\n■電源部\t\t\t\nブレーカ\tNF32-SV\t〃\t2"],
+ ["T4 ditto across blank model", "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n〃\tMY2N-D2\t\t2\n〃\tMY3N\t〃\t2"]
+]

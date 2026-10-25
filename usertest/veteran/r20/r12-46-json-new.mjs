@@ -1,0 +1,41 @@
+// ラウンド12: 壊れた JSON の新しい形（V10-08 / V10-09 の修正: 数字の行 ID、作業中の値、範囲、例の行 ID）
+import { open, reset, sleep, logger } from './lib20.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const pg = env.page; const log = logger(`46-json-new-${port}.json`)
+const LSK = 'bom-pro.workspace.v2'
+const toast = () => pg.evaluate(() => (document.querySelector('[data-testid="toast-float"]') ?? document.querySelector('[data-testid="toast"]'))?.textContent?.slice(0, 600) ?? '')
+await reset(env)
+const base = await pg.evaluate((k) => JSON.parse(localStorage.getItem(k)), LSK)
+async function imp(name, mutate, pick, raw) {
+  await reset(env)
+  const w = structuredClone(base); const p = w.projects.find((x) => x.id === w.currentProjectId); mutate?.(p, w)
+  await pg.keyboard.press('Control+k'); await pg.getByTestId('palette-input').fill('JSON を読み込む'); await sleep(80); await pg.keyboard.press('Enter'); await sleep(150)
+  const text = raw ? raw(w) : JSON.stringify(w)
+  await pg.evaluate((t) => { const el = document.querySelector('[data-testid="import-text"]'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(el, t); el.dispatchEvent(new Event('input', { bubbles: true })) }, text)
+  await pg.getByTestId('import-text').focus(); const t0 = Date.now(); await pg.keyboard.press('Control+Enter'); await sleep(250)
+  if (await pg.evaluate(() => !!document.querySelector('[data-testid="panel-prompt"]'))) { await pg.keyboard.press('2'); await sleep(400) }
+  const ms = Date.now() - t0
+  const t = await toast()
+  const after = await pg.evaluate(([k, ids]) => { const w = JSON.parse(localStorage.getItem(k)); const p = w.projects.find((x) => x.id === w.currentProjectId); const o = { rows: p.rows.length, issues: p.issues.length, quotes: p.quotes.length, issueIds: p.issues.slice(-2).map((i) => `${i.id}:${i.rowId}`) }; for (const id of ids) { const r = p.rows.find((x) => x.id === id); o[id] = r ? { qty: r.qtyNeeded, wq: r.working?.qtyNeeded, need: r.needDateFixed, wneed: r.working?.needDateFixed, pack: r.packQty, wpack: r.working?.packQty, order: r.orderQty, q: p.quotes.filter((q) => q.rowId === id).map((q) => q.unitPrice + '/' + q.leadDays).join(' ') } : null } return o }, [LSK, pick ?? []])
+  const shown = await pg.evaluate((ids) => ids.map((id) => { const tr = document.querySelector(`[data-testid="grid"] [data-row-id="${id}"]`); return tr ? `${id}: ${tr.textContent.replace(/\s+/g, ' ').slice(0, 150)}` : `${id}: (表示なし)` }), pick ?? [])
+  log({ name, ms, toast: t, after, shown, panel: await pg.evaluate(() => document.querySelector('[data-testid^="panel-"]')?.dataset.testid ?? null) })
+  await pg.keyboard.press('Escape')
+}
+const R = (p, id) => p.rows.find((r) => r.id === id)
+await imp('K1 作業中の必要日 "2026-02-28T09:00"・"2026-2-3"・"2026-02-28 " (空白)', (p) => { R(p, 'R010').working = { needDateFixed: '2026-02-28T09:00' }; R(p, 'R011').working = { needDateFixed: '2026-2-3' }; R(p, 'R012').working = { needDateFixed: '2026-02-28 ' } }, ['R010', 'R011', 'R012'])
+await imp('K2 行の必要日 "2026-02-28T09:00"・"2026-02-28xyz"', (p) => { R(p, 'R010').needDateFixed = '2026-02-28T09:00'; R(p, 'R011').needDateFixed = '2026-02-28xyz' }, ['R010', 'R011'])
+await imp('K3 見積の単価 -100・納期 -5・単価 1e15・最小発注 -1', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].unitPrice = -100; qs[1].leadDays = -5; qs[2].unitPrice = 1e15; qs[0].moq = -1 }, ['R004'])
+await imp('K4 必要数 "1e12"（文字）・" 5 "・"５"（全角）・"5個"', (p) => { R(p, 'R010').qtyNeeded = '1e12'; R(p, 'R011').qtyNeeded = ' 5 '; R(p, 'R012').qtyNeeded = '５'; R(p, 'R014').qtyNeeded = '5個' }, ['R010', 'R011', 'R012', 'R014'])
+await imp('K5 入数 0.5・"abc"・作業中の入数 0・作業中の必要数 "12"（文字）', (p) => { R(p, 'R010').packQty = 0.5; R(p, 'R011').packQty = 'abc'; R(p, 'R012').working = { packQty: 0 }; R(p, 'R014').working = { qtyNeeded: '12' } }, ['R010', 'R011', 'R012', 'R014'])
+await imp('K6 指摘の id が数字（900）・指摘の rowId が 4.0・見積の rowId " R004"（空白）', (p) => { p.issues.push({ id: 900, rowId: 'R010', kind: '質問', status: 'open', text: 'x', by: { name: '佐藤', role: 'purchasing' }, replies: [], field: 'name' }); const r = R(p, 'R005'); r.id = 5; for (const i of p.issues) if (i.rowId === 'R005') i.rowId = 5.0; p.quotes.filter((q) => q.rowId === 'R004')[0].rowId = ' R004' }, ['R010', '5', 'R004'])
+await imp('K7 数字の行 ID が既存の文字 ID とぶつかる（4 と "4"）', (p) => { const a = structuredClone(R(p, 'R010')); a.id = 4; p.rows.push(a); const b = structuredClone(R(p, 'R011')); b.id = '4'; p.rows.push(b) }, ['4'])
+await imp('K8 作業中の値が配列・null・オブジェクト（working: [] / working: {name: {}}）', (p) => { R(p, 'R010').working = []; R(p, 'R011').working = { name: { x: 1 } }; R(p, 'R012').working = null }, ['R010', 'R011', 'R012'])
+await imp('K9 行が 2,500 行・うち 1,000 行の必要数が -1（例の行 ID と件数）', (p) => { const b = p.rows.filter((r) => r.status === 'draft' || r.status === 'quoted'); while (p.rows.length < 2500) { const r = structuredClone(b[p.rows.length % b.length]); r.id = 'Z' + String(p.rows.length).padStart(4, '0'); if (p.rows.length % 2) r.qtyNeeded = -1; p.rows.push(r) } }, ['Z0081', 'Z0082'])
+await imp('K10 BOM（U+FEFF）付き', null, [], (w) => '﻿' + JSON.stringify(w))
+await imp('K11 末尾にカンマ・コメント（JSON5 風）', null, [], (w) => JSON.stringify(w).replace(/}$/, ',}'))
+await imp('K12 __proto__ を含む行', (p) => { p.rows[3] = JSON.parse(JSON.stringify(p.rows[3]).replace('{', '{"__proto__":{"hidden":true},')) }, ['R004'], (w) => JSON.stringify(w))
+await imp('K13 深い入れ子（working の中に 5,000 段）', null, [], (w) => { let s = JSON.stringify(w); const deep = '['.repeat(5000) + ']'.repeat(5000); return s.replace('"rows":[', `"junk":${deep},"rows":[`) })
+await imp('K14 currentProjectId が無い案件を指す', (p, w) => { w.currentProjectId = 'NOPE' }, [])
+await imp('K15 rows が null・quotes が文字', (p) => { p.quotes = 'abc'; p.issues = null }, [])
+console.log('errors', JSON.stringify(env.errs.slice(0, 8)))
+log.save(); await env.browser.close()

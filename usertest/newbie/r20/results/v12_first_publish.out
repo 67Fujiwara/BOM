@@ -1,0 +1,10 @@
+created: 新しいBOM P-2026-002（3 行）を作成しました。Ctrl+Enter で提出します cursor=R001 部品名
+  [Control+Enter] mode=nav view=1 cur=R001/name edit="" panel=null toast=行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [1] mode=edit view=1 cur=R001/name edit="1" panel=null toast=行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [Tab] mode=nav view=1 cur=R001/model edit="1" panel=null toast=行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [t:ECN-2026-03] mode=edit view=1 cur=R001/model edit="ECN-2026-03" panel=null toast=行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [Enter] mode=nav view=1 cur=R002/name edit="ECN-2026-03" panel=null toast=行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+rows: R001:submitted:リレー/MY4N-D2 working={"name":"1","model":"ECN-2026-03"} | R002:submitted:タイマ/H3CR-A8 working=null | R003:submitted:端子台/TB-12 working=null
+subs: [{"rev":1}]
+
+ERRORS:

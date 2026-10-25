@@ -1,0 +1,66 @@
+{
+ "sparse-empty/1f": {
+  "cases": 432,
+  "casesWrong": 0,
+  "wrongDel": 0,
+  "wrongKeep": 0,
+  "flaggedCases": 15,
+  "rows": 9658
+ },
+ "sparse-empty/2f": {
+  "cases": 293,
+  "casesWrong": 0,
+  "wrongDel": 0,
+  "wrongKeep": 0,
+  "flaggedCases": 0,
+  "rows": 5491
+ },
+ "copy/2f": {
+  "cases": 327,
+  "casesWrong": 34,
+  "wrongDel": 0,
+  "wrongKeep": 186,
+  "flaggedCases": 79,
+  "rows": 5228
+ },
+ "sparse-dash/1f": {
+  "cases": 497,
+  "casesWrong": 0,
+  "wrongDel": 0,
+  "wrongKeep": 0,
+  "flaggedCases": 0,
+  "rows": 9454
+ },
+ "sparse-dash/2f": {
+  "cases": 278,
+  "casesWrong": 0,
+  "wrongDel": 0,
+  "wrongKeep": 0,
+  "flaggedCases": 0,
+  "rows": 5950
+ },
+ "copy/1f": {
+  "cases": 428,
+  "casesWrong": 70,
+  "wrongDel": 0,
+  "wrongKeep": 264,
+  "flaggedCases": 107,
+  "rows": 8445
+ },
+ "copy-dash/1f": {
+  "cases": 440,
+  "casesWrong": 189,
+  "wrongDel": 0,
+  "wrongKeep": 1054,
+  "flaggedCases": 0,
+  "rows": 8592
+ },
+ "copy-dash/2f": {
+  "cases": 305,
+  "casesWrong": 113,
+  "wrongDel": 0,
+  "wrongKeep": 940,
+  "flaggedCases": 0,
+  "rows": 6251
+ }
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "mode": "paste1",
+    "id": "ascii",
+    "val": "\" リレーX \"",
+    "name": "\" リレーX \"",
+    "toast": "\"貼り付け: リレーX\""
+  },
+  {
+    "mode": "paste2",
+    "id": "ascii",
+    "val": "\" リレーX \"",
+    "name": "\" リレーX \"",
+    "model": "\" リレーX M\""
+  },
+  {
+    "mode": "edit",
+    "id": "ascii",
+    "val": "\" リレーX \"",
+    "name": "\" リレーX \""
+  },
+  {
+    "mode": "paste1",
+    "id": "nbsp",
+    "val": "\"<NBSP>リレーX<NBSP>\"",
+    "name": "\"<NBSP>リレーX<NBSP>\"",
+    "toast": "\"貼り付け: リレーX\""
+  },
+  {
+    "mode": "paste2",
+    "id": "nbsp",
+    "val": "\"<NBSP>リレーX<NBSP>\"",
+    "name": "\"<NBSP>リレーX<NBSP>\"",
+    "model": "\"<NBSP>リレーX<NBSP>M\""
+  },
+  {
+    "mode": "edit",
+    "id": "nbsp",
+    "val": "\"<NBSP>リレーX<NBSP>\"",
+    "name": "\"<NBSP>リレーX<NBSP>\""
+  },
+  {
+    "mode": "paste1",
+    "id": "idsp",
+    "val": "\"<IDSP>リレーX<IDSP>\"",
+    "name": "\"<IDSP>リレーX<IDSP>\"",
+    "toast": "\"貼り付け: リレーX\""
+  },
+  {
+    "mode": "paste2",
+    "id": "idsp",
+    "val": "\"<IDSP>リレーX<IDSP>\"",
+    "name": "\"<IDSP>リレーX<IDSP>\"",
+    "model": "\"<IDSP>リレーX<IDSP>M\""
+  },
+  {
+    "mode": "edit",
+    "id": "idsp",
+    "val": "\"<IDSP>リレーX<IDSP>\"",
+    "name": "\"<IDSP>リレーX<IDSP>\""
+  },
+  {
+    "mode": "paste1",
+    "id": "zwsp",
+    "val": "\"<ZWSP>リレーX<ZWSP>\"",
+    "name": "\"<ZWSP>リレーX<ZWSP>\"",
+    "toast": "\"貼り付け: <ZWSP>リレーX<ZWSP>\""
+  },
+  {
+    "mode": "paste2",
+    "id": "zwsp",
+    "val": "\"<ZWSP>リレーX<ZWSP>\"",
+    "name": "\"<ZWSP>リレーX<ZWSP>\"",
+    "model": "\"<ZWSP>リレーX<ZWSP>M\""
+  },
+  {
+    "mode": "edit",
+    "id": "zwsp",
+    "val": "\"<ZWSP>リレーX<ZWSP>\"",
+    "name": "\"<ZWSP>リレーX<ZWSP>\""
+  },
+  {
+    "mode": "paste1",
+    "id": "tabs",
+    "val": "\"リレーX\\t\"",
+    "name": "\"リレーX\"",
+    "toast": "\"2 セルを貼り付けました（Ctrl+Z で一度に戻せます）\""
+  },
+  {
+    "mode": "paste2",
+    "id": "tabs",
+    "val": "\"リレーX\\t\"",
+    "name": "\"盤用時計\"",
+    "model": "\"TK-100\""
+  },
+  {
+    "mode": "edit",
+    "id": "tabs",
+    "val": "\"リレーX\\t\"",
+    "name": "\"リレーX \""
+  },
+  {
+    "mode": "dup",
+    "r78": "\"ZZ-1 \"",
+    "r79": "\"ZZ-1\"",
+    "toast": "\"貼り付け: ZZ-1\""
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

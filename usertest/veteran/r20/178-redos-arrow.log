@@ -1,0 +1,16 @@
+{"n":1000,"name":"model: x+空白n+y","ms":16,"rows":2}
+{"n":1000,"name":"model: 空白n+x","ms":3,"rows":2}
+{"n":1000,"name":"qty: 1+空白n+z","ms":3,"rows":2}
+{"n":1000,"name":"maker: a>+空白n (矢印の右が空白だけ)","ms":2,"rows":2}
+{"n":5000,"name":"model: x+空白n+y","ms":68,"rows":2}
+{"n":5000,"name":"model: 空白n+x","ms":49,"rows":2}
+{"n":5000,"name":"qty: 1+空白n+z","ms":43,"rows":2}
+{"n":5000,"name":"maker: a>+空白n (矢印の右が空白だけ)","ms":3,"rows":2}
+{"n":20000,"name":"model: x+空白n+y","ms":236,"rows":2}
+{"n":20000,"name":"model: 空白n+x","ms":166,"rows":2}
+{"n":20000,"name":"qty: 1+空白n+z","ms":199,"rows":2}
+{"n":20000,"name":"maker: a>+空白n (矢印の右が空白だけ)","ms":4,"rows":2}
+{"n":40000,"name":"model: x+空白n+y","ms":780,"rows":2}
+{"n":40000,"name":"model: 空白n+x","ms":906,"rows":2}
+{"n":40000,"name":"qty: 1+空白n+z","ms":728,"rows":2}
+{"n":40000,"name":"maker: a>+空白n (矢印の右が空白だけ)","ms":9,"rows":2}

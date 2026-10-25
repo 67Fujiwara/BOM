@@ -1,0 +1,50 @@
+[
+ [
+  "K1 kicad-csv",
+  "\"Reference\",\"Value\",\"Footprint\",\"Qty\",\"DNP\"\n\"R1,R2\",\"10k\",\"Resistor_SMD:R_0603\",\"2\",\"\"\n\"C1\",\"100n\",\"Capacitor_SMD:C_0603\",\"1\",\"DNP\"\n\"U1\",\"STM32F103C8T6\",\"Package_QFP:LQFP-48\",\"1\",\"\""
+ ],
+ [
+  "K2 altium-tsv",
+  "Comment\tDescription\tDesignator\tFootprint\tLibRef\tQuantity\n10k\tResistor\tR1, R2\t0603\tRES\t2\nSTM32F103C8T6\tMCU\tU1\tLQFP48\tMCU\t1"
+ ],
+ [
+  "K3 header-cell-linebreak",
+  "\"部品\n名称\"\t型式\t\"メーカー\n名\"\t\"必要\n数量\"\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "K4 insu-daisu-hitsuyou",
+  "品名\t型式\tメーカー\t員数\t台数\t必要数\nリレー\tMY4N-D2\tオムロン\t2\t3\t6\nタイマ\tH3CR-A8\tオムロン\t1\t3\t3"
+ ],
+ [
+  "K5 gouki-1tier-kei-noqtyword",
+  "品名\t型式\tメーカー\t1号機\t2号機\t計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "K6 qty-ditto",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N\tオムロン\t〃\nタイマ\tH3CR-A8\tオムロン\t同上"
+ ],
+ [
+  "K7 title-and-signature",
+  "部品表（1/2）\t\t\t\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n以下余白\t\t\t\n作成\t山田\t承認\t鈴木"
+ ],
+ [
+  "K8 total-variants",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n合計 2品目 6点\t\t\t\n総合計\t\t\t6"
+ ],
+ [
+  "K9 machine-and-unit-qty",
+  "品名\t型式\tメーカー\t数量/台\t製作台数\t手配数\nリレー\tMY4N-D2\tオムロン\t2\t3\t6\nタイマ\tH3CR-A8\tオムロン\t1\t3\t3"
+ ],
+ [
+  "K10 yobi-1tier",
+  "品名\t型式\tメーカー\t数量\t予備\t手配数\nリレー\tMY4N-D2\tオムロン\t4\t1\t5\nタイマ\tH3CR-A8\tオムロン\t2\t0\t2"
+ ],
+ [
+  "K11 eda-mpn-dnp",
+  "Designator\tComment\tManufacturer\tManufacturer Part Number\tQuantity\tDNP\nR1, R2\t10k\tKOA\tRK73H1JTTD1002F\t2\t\nC1\t100n\tMurata\tGRM188R71H104KA93D\t1\tDNP\nU1\tMCU\tST\tSTM32F103C8T6\t1\t"
+ ],
+ [
+  "K12 eda-fitted-col",
+  "Designator\tDescription\tManufacturer\tMPN\tQty\tFitted\nR1, R2\tResistor\tKOA\tRK73H1JTTD1002F\t2\tFitted\nC1\tCapacitor\tMurata\tGRM188R71H104KA93D\t1\tNot Fitted"
+ ]
+]

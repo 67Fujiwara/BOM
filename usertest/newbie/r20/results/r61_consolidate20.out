@@ -1,0 +1,15 @@
+before adopted=6 selected=5
+  [集約 一覧] mode=panel panel=consolidate | 商社を集約（試算。Enter で適用） 1 因幡電機 + 立花エレテック 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,495,156（差 ¥-35,632）、最長納期 27 日 2 因幡電機 + ミスミ 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,645,998（差 +¥115,210）、最長納期 28 日 3 因幡電機 65/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,683,182（差 +¥152,394）、最長納期 27 日 4 立 | toast=undefined
+  [Enter（1 番目）] mode=panel panel=prompt | 「因幡電機 + 立花エレテック」に集約します。見積済・選定済の行の採用を付け替えます（採用していなかった行も採用します。戻すときは Ctrl+Z） 1 やめる 2 集約する 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し | toast=undefined
+  [Enter 連打（確認の既定）] mode=nav panel=null |  | toast=やめました（何も変えていません）
+adopted=6 selected=5
+  [2 を押した] mode=nav panel=null |  | toast=集約: 69 行を付け替え（PM承認待ち 3）
+after 集約 adopted=75 selected=71
+  [Ctrl+Z] mode=nav panel=null |  | toast=元に戻す: 商社を集約
+after undo adopted=6 selected=5
+  [Ctrl+Z 2] mode=nav panel=null |  | toast=これ以上戻す操作がありません（Ctrl+Y でやり直せます）
+after undo2 adopted=6 selected=5
+  [Ctrl+Y] mode=nav panel=null |  | toast=やり直す: 商社を集約
+after redo adopted=75 selected=71
+
+ERRORS:

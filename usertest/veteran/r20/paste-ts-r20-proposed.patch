@@ -1,0 +1,143 @@
+--- src/io/paste.ts	2026-10-25 12:04:01.064035931 +0000
++++ /tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/v20-patch/src/io/paste.ts	2026-10-25 13:19:57.486702042 +0000
+@@ -51,14 +51,27 @@
+       if (!inner.includes('\n')) return true
+       if (!inner.trim()) return false
+       // 行の区切りの数（囲みの外）が列の数と合えば Excel の複数行のセル。多ければ次の行までつながった誤った囲み（〃の代わりの「"」、インチの「"」）
+-      if (width > 0 && delims >= width) return false
+       if (width > 0) {
++        const outside = (t: string) => {
++          let n = 0
++          let q = false
++          for (let k = 0; k < t.length; k++) {
++            if (t[k] === '"') {
++              if (q && t[k + 1] === '"') k++
++              else q = !q
++            } else if (!q && t[k] === delim) n++
++          }
++          return n
++        }
+         const lineStart = src.lastIndexOf('\n', start - 1) + 1
+-        const before = src.slice(lineStart, start).split(delim).length - 1
++        const before = outside(src.slice(lineStart, start))
+         const eol = src.indexOf('\n', j)
+-        const after = src.slice(j + 1, eol < 0 ? src.length : eol).split(delim).length - 1
++        const after = outside(src.slice(j + 1, eol < 0 ? src.length : eol))
+         const sep = before + after
+-        if (sep === width) return true
++        // 開く「"」のすぐ後ろが区切り・改行なら〃の代わり（囲みの始まりではない）
++        const ditto = src[start + 1] === delim || src[start + 1] === '\n'
++        if (!ditto && sep === width) return true
++        if (delims >= width) return false
+         if (sep > width) return false
+       }
+       return delim === '\t' ? delims === 0 : !(width > 0 && delims >= width)
+@@ -76,7 +89,7 @@
+   const src = text.replace(/\r\n?/g, '\n')
+   // 列の区切りの数（見出しの列の数 − 1）: 引用符の無い行でいちばん多い数（1 行目が表題・複数行の見出しでも決まる）
+   const counts = new Map<number, number>()
+-  for (const l of src.split('\n')) if (l.trim() && !l.includes('"')) counts.set(l.split(delim).length - 1, (counts.get(l.split(delim).length - 1) ?? 0) + 1)
++  for (const l of src.split('\n')) if (l.trim() && !l.includes('"') && l.includes(delim)) counts.set(l.split(delim).length - 1, (counts.get(l.split(delim).length - 1) ?? 0) + 1)
+   const width = [...counts.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]?.[0] ?? (src.split('\n')[0] ?? '').split(delim).length - 1
+   for (let i = 0; i < src.length; i++) {
+     const ch = src[i]
+@@ -467,7 +480,7 @@
+   const dnpRow = (l: string[]) =>
+     (dnpCol >= 0 && (dnpHeader ? /^(x|1|yes|y|true|dnp|○|●|✓|未実装|しない)$/i : /^(no|n|0|false|not\s*fitted|nf|dnp|未実装|なし|無し?|しない|非|×|不要|未)$/i).test(toHalf(l[dnpCol] ?? '').trim())) ||
+     // そう書いたセル（メーカの列の「DNP」＝大日本印刷 は除く）
+-    l.some((c, j) => mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装無し|実装なし|実装せず|実装不要)([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || (/^dnp([\s（(【\[].*)?$/i.test(toHalf(c).trim()) && j !== dnpCol)))
++    l.some((c, j) => mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装無し|実装なし|実装せず|実装不要)([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || (/^dnp([\s　]*[（(【\[:：].*)?$/i.test(toHalf(c).trim()) && j !== dnpCol)))
+   const dnp = body.filter(dnpRow).length
+   if (dnp) {
+     body = body.filter((l) => !dnpRow(l))
+@@ -504,7 +517,7 @@
+   // 製作台数の語と数（表題欄・見出しの行の右）
+   const UNITS_LABEL = /^(製作台数|製造台数|生産台数|台数|製作数|製作数量|製造数量|生産数量)[:：]?$/
+   const unitsVal = (c: string) => {
+-    const m = /^(\d+)\s*台?\s*([（(].*)?$/.exec(toHalf(c ?? '').trim())
++    const m = /^(\d+)(?:\s*台)?\s*([（(].*)?$/.exec(toHalf(c ?? '').trim())
+     return m ? Number(m[1]) : null
+   }
+   // 見出しの行の右の「製作台数｜3」（中身の無い列）は見出しでなく製作台数
+@@ -532,7 +545,8 @@
+     const machineHead0 = (j: number) => /(#\s*\d+|^no\.\s*\d+$|\d+\s*号機?|号機\s*\d+|\d+\s*台目|予備)/i.test(toHalf(first[j] ?? ''))
+     // 部品名は Description・品名を Value・Comment より先に（Altium の Comment は値）
+     const vc = (j: number) => (dup === 'name' && hasHeader && /^(value|comment)$/i.test((first[j] ?? '').trim()) ? 1 : 0)
+-    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || vc(a) - vc(b) || a - b)
++    const plainNote = (j: number) => (dup === 'note' && hasHeader && /^(備考|摘要|メモ|note|remarks?)/i.test(toHalf(first[j] ?? '').trim()) ? 0 : 1)
++    const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || vc(a) - vc(b) || plainNote(a) - plainNote(b) || a - b)
+     const keep = order[0]
+     if ((rank(keep) === 0 || rev(keep) >= 0) && !(dup === 'qtyNeeded' && hasHeader && cols.every(machineHead0))) fallback.set(dup, { keep, others: order.slice(1) })
+     // 数量の列が複数（版の印なし）: 合計の列 → 「n 台分」のいちばん多い列 → 号機ごと（予備も）なら足す → 1 台当り×台数 なら掛ける
+@@ -646,7 +660,8 @@
+       }
+     }
+   // 新しい版の列の「－」「同左」「変更なし」は「変えていない」（空と同じ）。「〃」「同上」は上の行と同じ（下で上の行の値にする）
+-  const SAME = /^(－|-|ー|―|同左|変更なし|変更無し|同じ|同)$/
++  const SAME0 = /^(-+|同左|変更なし|変更無し?|変更ナシ|同じ|同一|同|そのまま|不変|据置|据え置き|現状維持|変更せず|no\s*change|unchanged|same|as\s*is|n\.?c\.?)$/i
++  const SAME = { test: (v: string) => SAME0.test(toHalf(v.replace(/[‐‑–—−ーｰ―─－]/g, '-')).trim()) }
+   // 削除の印（新の列）: 削除・廃止・撤去・取外し・不要・不使用・なし・×（括弧・記号つきも）。新の数量の 0 も
+   const DEL = { test: (v: string) => DEL0.test(v.replace(/[\s　（）()【】\[\]ー－\-―※*＊.]/g, '')) || delWord(v, true) }
+   const fbe = [...fallback.entries()]
+@@ -663,7 +678,7 @@
+   const newEmpty = (l: string[]) => fbe.every(([, fb]) => empty(l, fb.keep))
+   // 変えていない行も新の列に書き写す表か: 書き写した行（新と旧がどの項目も同じ）が 2 行以上で、新の列が空の行より多いか同じ
+   // 備考・変更内容に「取付位置変更」「→」など変えた理由を書いた行は、新を旧と同じに書いても書き写しではない（型式以外を変えた行）
+-  const reasoned = (l: string[]) => noteCol >= 0 && /変更|→|⇒|移設|位置|銘板|差替|差し替|交換|修正|追記|追加/.test(cell(l, noteCol))
++  const reasoned = (l: string[]) => noteCol >= 0 && /変更|→|⇒|移設|位置|銘板|差替|差し替|交換|修正|追記|追加/.test(cell(l, noteCol).replace(/(変更|追加|交換|修正|位置|移設|銘板|差替|差し替|追記)(は)?[\s　]*(なし|無し?|不要|ない|せず|無)/g, ''))
+   const copyRow = (l: string[]) => !reasoned(l) && fbe.every(([, fb]) => !blank(l, fb.keep) && fb.others.some((k) => cell(l, k) === cell(l, fb.keep)))
+   const copies = body.filter((l) => hasOld(l) && copyRow(l)).length
+   const empties = body.filter((l) => hasOld(l) && newEmpty(l)).length
+@@ -710,11 +725,25 @@
+       const fb = fallback.get(f)
+       if (fb && (SAME.test(v) || DEL.test(v) || (f === 'qtyNeeded' && j === fb.keep && /^0+(\.0+)?$/.test(v) && deletedSet.has(line)))) v = ''
+       if (f === 'qtyNeeded' && qtyCombine) {
+-        let nums = qtyCombine.cols.map((k) => qtyOf((cells[k] ?? '').trim())).flatMap((n) => (n != null ? [n] : []))
+-        // 新の号機が全部空の行（変えた行だけ新を書く表）は旧の号機を足す
++        // 新の号機が空の列は、対になる旧の号機の数を使う（変えた号機だけ新を書く表）
++        let used = false
++        const nums = qtyCombine.cols
++          .map((k, idx) => {
++            const n = qtyOf((cells[k] ?? '').trim())
++            if (n != null) return n
++            const a = qtyCombine.alt && qtyCombine.alt.length === qtyCombine.cols.length ? qtyCombine.alt[idx] : undefined
++            const m = a != null ? qtyOf((cells[a] ?? '').trim()) : null
++            if (m != null) used = true
++            return m
++          })
++          .flatMap((n) => (n != null ? [n] : []))
++        if (used) altUsed++
+         if (!nums.length && qtyCombine.alt?.length) {
+-          nums = qtyCombine.alt.map((k) => qtyOf((cells[k] ?? '').trim())).flatMap((n) => (n != null ? [n] : []))
+-          if (nums.length) altUsed++
++          const all = qtyCombine.alt.map((k) => qtyOf((cells[k] ?? '').trim())).flatMap((n) => (n != null ? [n] : []))
++          if (all.length) {
++            nums.push(...all)
++            altUsed++
++          }
+         }
+         const tot = qtyCombine.total != null ? qtyOf((cells[qtyCombine.total] ?? '').trim()) : null
+         if (qtyCombine.mode === 'totalOrSum') {
+@@ -746,7 +775,7 @@
+         ditto++
+       }
+       // 1 つのセルに「旧→新」（MY2N→MY4N-D2・1→2）と書いたら新を使う
+-      if ((f === 'model' || f === 'maker' || f === 'qtyNeeded') && /^[^→⇒]+\s*(→|⇒|->|＞|>)\s*[^→⇒]+$/.test(v) && !/^[<>]/.test(v)) {
++      if ((f === 'qtyNeeded' || ((f === 'model' || f === 'maker') && fallback.size > 0)) && /^[^→⇒\s](?:[^→⇒]*[^→⇒\s])?\s*(→|⇒|->|＞|>)\s*[^→⇒\s](?:[^→⇒]*[^→⇒\s])?$/.test(v) && !/^[<>]/.test(v)) {
+         const nv = v.split(/\s*(?:→|⇒|->|＞|>)\s*/).pop()!.trim()
+         if (nv) {
+           arrows.push(v)
+@@ -993,7 +1022,12 @@
+  *  strict（新の列の値＝部品名・型式）は頭の語のみ判定し、文の終わりの削除は見ない */
+ function delWord(v0: string, strict = false): boolean {
+   let v = toHalf(v0).trim().replace(/^[\s　※*＊（(【\[「]+/, '').replace(/^rev\.?\s*[a-z0-9]+\s*/i, '').replace(/^(今回の変更で|今回|本変更で|要)/, '')
+-  v = v.replace(/^[\s　]+/, '').replace(/[\s　。.!！）)】\]」]+$/, '')
++  v = v.replace(/^[\s　]+/, '')
++  {
++    let e = v.length
++    while (e > 0 && /[\s　。.!！）)】\]」]/.test(v[e - 1])) e--
++    v = v.slice(0, e)
++  }
+   if (/^(不要|不使用|欠番|取止め|取り止め|取りやめ|中止|del|delete[d]?|remove[d]?)$/i.test(v)) return true
+   // 削除のあとに続いてよい語（済・します・しました・してください・せよ・のこと・（R012に置換）・→不要）
+   const DONE = /^(済み?|します|しました|した|する|すること|して(ください|下さい)?|せよ|のこと|とする|とします|願います|をお願いします|予定です)?([\s　]*([（(【\[].*|→.*))?$/

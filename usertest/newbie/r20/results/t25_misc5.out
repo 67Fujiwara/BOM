@@ -1,0 +1,29 @@
+== click another row while editing
+  clicked R033: mode=nav cur=R033/model toast=null
+  changes R030: working:  -> {"name":"Relay 24V"}
+  after typing MY2N Enter on clicked cell R030: working:  -> {"name":"Relay 24V"} | R033: working:  -> {"model":"MY2N"}
+== Enter x12 in nav (design)
+  部品名(true) Enter x12 -> cur=R046 changes: (なし)
+  単位(true) Enter x12 -> cur=R046 changes: (なし)
+  調達区分(true) Enter x12 -> cur=R046 changes: (なし)
+  メーカ指定(false) Enter x12 -> cur=R046 changes: (なし)
+  代替可否(true) Enter x12 -> cur=R046 changes: (なし)
+  必要日(前倒し)(false) Enter x12 -> cur=R046 changes: (なし)
+  必要日(固定)(false) Enter x12 -> cur=R046 changes: (なし)
+== Enter x12 in nav (purchasing 3 / 9)
+  view3 入荷予定(false) Enter x12 -> changes: (なし) toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  view3 ロット(false) Enter x12 -> changes: (なし) toast=在庫に「3」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  view3 発注数(false) Enter x12 -> changes: (なし) toast=在庫に「3」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  view9 発注数(false) Enter x12 -> changes: (なし) toast=在庫に「9」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+== reload while editing
+  after reload R031 model M22N-BC-TRA-RC working {"model":"E3Z-D61 2M"} toast null
+  Ctrl+Z -> 元に戻す: セル編集 
+  reload, Ctrl+Y -> やり直す: セル編集 {"model":"E3Z-D61 2M"}
+== Ctrl+Z after Enter-type in other roles
+  lot L2026-1023
+  Ctrl+Z -> 元に戻す: セル編集 
+== help ?
+  ? -> 
+  Shift+/ -> null
+
+ERRORS:

@@ -1,0 +1,6 @@
+  end: nav null 1〜2 か ↑↓ と Enter で選んでください
+  visited: R005/model → (Shift+→ 効かず) → (3→R009) → R009/maker → (fixed) → R016/model → (fixed) → R022/model → (Shift+→ 効かず) → (undefined→R022)
+  toast: 1〜2 か ↑↓ と Enter で選んでください
+  F8 rest: R005/model → R022/model → R041/maker → R054/qtyNeeded → R061/model → R005/model → R022/model
+
+ERRORS:

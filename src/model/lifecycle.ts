@@ -1,6 +1,6 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate, tradableIn } from './derive'
+import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate, tradableIn, clearAdoptionMeasures } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
 export function normalize(p: Project, ws: Workspace, today = todayStr()) {
@@ -81,21 +81,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
           r.flags.pmReason = undefined
           r.flags.ltbPending = false
         }
-        r.flags.renegotiating = false
-        // 前の商社への対策（特急・分納の追加費用・対策区分・納期NG・PM の依頼）も、この採用ごと取り下げる
-        r.flags.countermeasure = undefined
-        r.flags.early = undefined
-        r.flags.delegated = undefined
-        r.flags.leadNG = false
-        if (!r.ordered) {
-          r.extraCost = null
-          r.extraCostKind = ''
-        }
-        for (const i of p.issues)
-          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
-            i.status = 'confirmed'
-            i.resolution = '調達区分・指定先の変更で取り下げ（選び直し）'
-          }
+        // 前の商社への対策（特急・分納の追加費用・対策区分・納期NG・先行発注判断・PM の依頼）も、この採用ごと取り下げる
+        clearAdoptionMeasures(p, r, '調達区分・指定先の変更で取り下げ（選び直し）')
         // 前の採用商社の正式回答・差分超過も取り下げる（選び直して依頼したら新しい回答を待つ）。正式依頼中・正式見積済なら取り下げを購買に知らせる
         const oldQ = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
         if (oldQ) {

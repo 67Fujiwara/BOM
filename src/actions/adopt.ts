@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, hasWork, isActive, isFixedProcurement, isQuotable, noUsableQuote, quoteResponses, roundedQty, tradableIn } from '@/model/derive'
+import { effective, hasWork, isActive, isFixedProcurement, isQuotable, noUsableQuote, quoteResponses, roundedQty, tradableIn, clearAdoptionMeasures } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -36,6 +36,8 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
 
 function applyAdoption(_p: Project, r: Row, chosen: ScoreBreakdown, reason: string | undefined, pending: boolean, pmReason?: Row['flags']['pmReason']) {
   const wasDelegated = r.flags.delegated && ['formalRequested', 'formalQuoted'].includes(r.status)
+  // 別の商社に替えたら、前の商社への対策（特急・分納の追加費用・納期NG・PM の依頼）は引き継がない
+  if (r.adoptedSupplierId && r.adoptedSupplierId !== chosen.supplierId && !wasDelegated) clearAdoptionMeasures(_p, r, '採用の変更で取り下げ（選び直し）')
   r.adoptedSupplierId = chosen.supplierId
   r.adoptReason = reason
   r.scoreSnapshot = chosen.total

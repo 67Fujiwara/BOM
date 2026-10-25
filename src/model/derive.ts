@@ -52,6 +52,29 @@ export function handlesMaker(handled: string[], maker: string): boolean {
   })
 }
 
+/** 採用を外す・替えるとき、前の商社への対策（納期NG・特急・分納・追加費用・先行発注判断・PM の依頼）を取り下げる */
+export function clearAdoptionMeasures(p: Project, r: Row, note: string): void {
+  r.flags.renegotiating = false
+  r.flags.countermeasure = undefined
+  r.flags.early = undefined
+  r.flags.delegated = undefined
+  r.flags.leadNG = false
+  r.flags.ltbPending = false
+  if (!r.ordered) {
+    r.extraCost = null
+    r.extraCostKind = ''
+  }
+  if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
+    r.flags.pmPending = false
+    r.flags.pmReason = undefined
+  }
+  for (const i of p.issues)
+    if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+      i.status = 'confirmed'
+      i.resolution = note
+    }
+}
+
 /** 商社マスタにあり、取引停止でもない（マスタから消えた商社は取引できない） */
 export function tradableIn(list: Array<{ id: string; tradable?: boolean }>, id: string): boolean {
   const s = list.find((x) => x.id === id)

@@ -155,7 +155,9 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       row.fill = CHG_FILL
     }
   }
-  for (const d of p.decisions) if (d.rowId) chg.addRow({ rev: '', at: d.at.slice(0, 16).replace('T', ' '), by: d.by.name, id: d.rowId, cause: '決定', reason: d.kind, no: '', detail: [d.reason, decisionExtra(d)].filter(Boolean).join(' / '), approval: d.external ? `${d.external.approver} ${d.external.date} ${d.external.ref}` : '' })
+  // 購買には、却下された変更セットの PM の決定（理由つき）は出さない（Rev の行と同じに隠す）
+  const hiddenDecisions = new Set(p.submissions.filter((sb) => sb.changeSet?.decisionId && (sb.revoked || sb.changeSet.rejected)).map((sb) => sb.changeSet!.decisionId))
+  for (const d of p.decisions) if (d.rowId && !hide(d.rowId) && !(purchasing && hiddenDecisions.has(d.id))) chg.addRow({ rev: '', at: d.at.slice(0, 16).replace('T', ' '), by: d.by.name, id: d.rowId, cause: '決定', reason: d.kind, no: '', detail: [d.reason, decisionExtra(d)].filter(Boolean).join(' / '), approval: d.external ? `${d.external.approver} ${d.external.date} ${d.external.ref}` : '' })
   // チェック結果
   const chk = wb.addWorksheet('チェック結果')
   headerRow(chk, [{ header: 'ID', key: 'id', width: 7 }, { header: '列', key: 'field', width: 10 }, { header: '重大度', key: 'sev', width: 8 }, { header: '内容', key: 'msg', width: 40 }, { header: '種別', key: 'kind', width: 12 }, { header: '状態', key: 'status', width: 8 }])

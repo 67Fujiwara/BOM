@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Decision, DecisionKind, Issue, Project, Row, ScoreWeights, User } from '@/model/types'
 import { ISSUE_KINDS } from '@/model/types'
 import { nextBest, scoreRow } from '@/model/score'
-import { addWithdrawn, capPending, effective, isActive, overCap, orderQty, rowNeedDate, roundedQty, totals } from '@/model/derive'
+import { addWithdrawn, capPending, effective, isActive, overCap, orderQty, rowNeedDate, roundedQty, totals, clearAdoptionMeasures } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { addBusinessDays, addDays, todayStr } from '@/model/dates'
 import { applyDesignChange, applyRemoval } from './rows'
@@ -321,6 +321,8 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
             fq.formalValidUntil = null
             fq.formalRequestNo = undefined
           }
+          // 前の商社への対策（特急・分納の追加費用・納期NG）は引き継がない
+          clearAdoptionMeasures(p, r, '次点への変更で取り下げ（選び直し）')
           r.adoptedSupplierId = next.supplierId
           r.adoptReason = `次点へ（${c}）`
           r.scoreSnapshot = next.total

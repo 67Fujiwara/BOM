@@ -1,0 +1,26 @@
+ltb panel {"kind":"prompt","title":"先行発注を申請 R004（理由と金額）","options":[],"extra":{"金額":"2621"},"index":0}
+X before R004 相見積 st=quoted adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] ball pm case 先行発注判断 iss [] extra null orderQty null
+qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X after publish R004 相見積 st=quoted adopt=- reason= oq=- flags={"ltbPending":true,"requote":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] requote true
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに [["因幡電機",true],["立花エレテック",true],["ミスミ",true]]
+X after rough R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball pm case 先行発注判断 iss [] extra null  orderQty null
+PASS Q1-ltb-1 採用が外れている（概算を取り直す行は選び直し） :: R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q1-ltb-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"ltbPending":true,"requote":false,"renegotiating":false}
+PASS Q1-ltb-3 追加費用（特急・分納）が外れた :: null 
+FAIL Q1-ltb-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {"ltb":true}
+PASS Q1-ltb-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: []
+FAIL Q1-ltb-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: 先行発注判断 pm quoting
+FAIL Q1-ltb-7 PM の 7 に載らない :: true
+PASS Q1-ltb-8 決定は増えていない（嘘の決定が記録されない） :: 0 → 0
+PASS Q1-ltb-9 正式回答・依頼Noが全て外れた
+PM panel on stale ltb row {"kind":"quickfix","title":"決定パネル R004（先行発注判断） 申請: 長納期（¥2,621）・佐藤","options":["y 先行発注を許可（推奨商社で選定済）","Shift+Y 却下 → 正式見積を待つ"],"index":-1}
+PM y → 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） {"kind":"prompt","title":"決定: 先行発注許可（R004。理由・任意）","options":[],"error":"有効な見積がありません（推奨商社を決められません）","index":0} | R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball pm
+PASS Q1-ltb-13 採用に使える見積が無い行の「先行発注判断」を PM が y で許可できてしまわない（許可すると採用なしの選定済／固まる） :: R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+stuck []
+PASS Q1-ltb-14 固まる行がない（許可のあと） :: []
+PASS Q1-ltb-11 不変条件
+PASS Q1-ltb-12 固まる行がない :: []
+ERRORS []
+PASS Q1-ltb-99 console error なし :: []
+== 11/14 PASS

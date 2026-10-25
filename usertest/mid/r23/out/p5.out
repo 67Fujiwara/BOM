@@ -1,0 +1,81 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.3 → び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R081",null,""]]
+PM reject → R081・Rev.3 の変更セット 2 行まとめて: 却下
+E R081 相見積 st=draft adopt=- reason= oq=- flags={} quotes=[] | A R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] {"qtyNeeded":27}
+publish Rev.4 → 選び、変更番号（任意）を入れて Ente] 行 3（Rev.4） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","rej","R011,R081",null,"revoked"],[4,"客先要求","pend","R011,R081,R082",null,""]]
+A R011 B R035 D R082 E R081
+B working {"qtyNeeded":11} C R083 相見積 st=draft adopt=- reason= oq=- flags={} quotes=[]
+states {"A":"selected/pm","B":"selected","C":"draft","D":"submitted/pm","E":"submitted/pm"}
+design 社内 rows 83 has {"A":true,"B":true,"C":true,"D":true,"E":true} qA 27 qB 11
+design 商社共通 rows 80 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+design 保管用 rows 83 has {"A":true,"B":true,"C":true,"D":true,"E":true} qA 24 qB 6
+design 因幡 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+design 立花 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+design ミスミ rows 73 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+purchasing 社内 rows 81 has {"A":true,"B":true,"C":true,"D":false,"E":false} qA 24 qB 6
+purchasing 商社共通 rows 80 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+purchasing 保管用 rows 81 has {"A":true,"B":true,"C":true,"D":false,"E":false} qA 24 qB 6
+purchasing 因幡 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+purchasing 立花 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+purchasing ミスミ rows 73 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+pm 社内 rows 83 has {"A":true,"B":true,"C":true,"D":true,"E":true} qA 24 qB 6
+pm 商社共通 rows 80 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+pm 保管用 rows 83 has {"A":true,"B":true,"C":true,"D":true,"E":true} qA 24 qB 6
+pm 因幡 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+pm 立花 rows 74 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+pm ミスミ rows 73 has {"A":true,"B":true,"C":false,"D":false,"E":false} qA 24 qB 6
+PASS P5-design-商社共通-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-商社共通-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-商社共通-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-design-因幡-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-因幡-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-因幡-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-design-立花-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-立花-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-立花-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-design-ミスミ-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-ミスミ-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-design-ミスミ-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-purchasing-商社共通-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-商社共通-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-商社共通-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-purchasing-因幡-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-因幡-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-因幡-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-purchasing-立花-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-立花-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-立花-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-purchasing-ミスミ-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-ミスミ-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-purchasing-ミスミ-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-pm-商社共通-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-商社共通-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-商社共通-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-pm-因幡-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-因幡-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-因幡-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-pm-立花-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-立花-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-立花-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-pm-ミスミ-1 商社に渡す Excel に、下書き行 C・却下で下書きに戻った E が出ない :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-ミスミ-2 商社に渡す Excel に、承認待ちの追加行 D が出ない（まだ社内で決まっていない） :: {"A":true,"B":true,"C":false,"D":false,"E":false}
+PASS P5-pm-ミスミ-3 商社に渡す Excel の A・B の必要数は公開済の値（A=24、B=6）。承認待ち・作業中の値を渡さない :: qA=24 qB=6
+PASS P5-purchasing-社内-1 購買の Excel に、承認待ちの追加行 D が出ない（A は承認待ちの必要数、E は却下で下書きに戻った行、C は未提出の下書き。E・C が下書きとして出るのは画面の 1・2 と同じ＝O5 の判断） :: {"A":true,"B":true,"C":true,"D":false,"E":false}
+INFO purchasing 社内 下書き C true 却下で下書きの E false
+PASS P5-purchasing-社内-2 購買の Excel の A・B の必要数は公開済の値 :: qA=24 qB=6
+PASS P5-purchasing-保管用-1 購買の Excel に、承認待ちの追加行 D が出ない（A は承認待ちの必要数、E は却下で下書きに戻った行、C は未提出の下書き。E・C が下書きとして出るのは画面の 1・2 と同じ＝O5 の判断） :: {"A":true,"B":true,"C":true,"D":false,"E":false}
+INFO purchasing 保管用 下書き C true 却下で下書きの E false
+PASS P5-purchasing-保管用-2 購買の Excel の A・B の必要数は公開済の値 :: qA=24 qB=6
+INFO pm 社内 {"A":true,"B":true,"C":true,"D":true,"E":true} qA 24
+INFO pm 保管用 {"A":true,"B":true,"C":true,"D":true,"E":true} qA 24
+design 社内 {"A":true,"B":true,"C":true,"D":true,"E":true} 27 11
+lint 0 []
+PASS P5-lint Excel（3 役割 × 6 出力先）の全シートに undefined/NaN/内部名が出ない（チェック結果の「列」は M22-01 として別に数える） :: []
+PASS P5-lint2 チェック結果の「列」に内部名が出ない（M22-01） :: []
+ERRORS []
+PASS P5-9 console error なし :: []
+== 43/43 PASS

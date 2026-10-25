@@ -1,0 +1,13 @@
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] case 納期NG
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X published R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"leadNG":true,"requote":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] requote true
+Ctrl+. panel ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+keep idx 0
+X after keep R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] ball pm case 納期NG toast R003 の旧見積を戻しました（概算。採用はそのまま）
+PASS Q9-ng-1 据え置きで再見積要が外れ、旧見積が有効に戻る :: R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PASS Q9-ng-2 据え置きで採用・PM の判断の印は壊れない（採用あり／承認待ちのまま） :: R003 相見積 st=selected adopt=S1 reason= oq=11 flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PASS Q9-ng-8 不変条件
+PASS Q9-ng-9 固まる行がない :: []
+ERRORS []
+PASS Q9-ng-99 console error なし :: []
+== 5/5 PASS

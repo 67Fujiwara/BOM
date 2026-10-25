@@ -1,0 +1,11 @@
+suppliers [["S1","因幡電機",true],["S2","立花エレテック",true],["S3","ミスミ",false],["S4","RSコンポーネンツ",true],["S5","オムロン直販",true]]
+quoted rows whose top is (non-tradable) S3 
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.fill: value: expected string, got undefined
+    at Object.goto (/home/user/BOM/usertest/mid/r23/lib.mjs:60:100)
+    at async file:///home/user/BOM/usertest/mid/r23/f3b.mjs:12:21
+
+Node.js v22.22.0

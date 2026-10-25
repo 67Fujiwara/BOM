@@ -1,0 +1,23 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+before R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] fno [["S1","P-2026-041-S1-F1"],["S2",null],["S3",null]]
+before R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] fno [["S1","P-2026-041-S1-F1"],["S2",null],["S3",null]]
+publish → [変更セット（7 行: R001, R002, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+after change R001 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={"reissue":true,"requote":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] | 正式依頼中 · 再見積要·再発行
+after change R002 相見積 st=formalQuoted adopt=S1 reason= oq=3 flags={"reissue":true,"requote":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 再見積要·再発行
+R001 Ctrl+. ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+R001 keep → R001 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します）
+R002 Ctrl+. ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+R002 keep → R002 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します）
+after keep R001 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={"reissue":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] | 正式依頼中 · 再発行 ball purchasing fno [["S1","P-2026-041-S1-F1",null],["S2",null,null],["S3",null,null]]
+after keep R002 相見積 st=formalQuoted adopt=S1 reason= oq=3 flags={"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 再発行 ball purchasing fno [["S1","P-2026-041-S1-F1",407],["S2",null,null],["S3",null,null]]
+purch 8 has X/Y true true
+PASS E7-1 据え置き後、採用の無い見積済の行に旧型式の正式単価・正式依頼番号を有効な見積として残さない（または採用・正式の状態ごと戻す） :: R002 相見積 st=formalQuoted adopt=S1 reason= oq=3 flags={"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]]
+R001 a → 正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）
+R002 a → 正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）
+after a R001 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={"reissue":true} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] | 正式依頼中 · 再発行
+after a R002 相見積 st=formalQuoted adopt=S1 reason= oq=3 flags={"reissue":true} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] | 正式見積済 · 再発行
+formal again → 正式見積依頼書（社外）を出します: 対象 2 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 2 行 × 1 社に正式見積を依頼
+after formal R001 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]] | 正式依頼中 reissue false
+after formal R002 相見積 st=formalRequested adopt=S1 reason= oq=3 flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] | 正式依頼中 reissue false
+== 1/1 PASS

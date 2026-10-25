@@ -1,0 +1,52 @@
+0:switch_proc: R038→指定商社 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:switch_proc: R052→支給品 を入れて Enter] 行 1（Rev.3） を公開しました
+2:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:pm_decide: R003 Shift+Y R003: 受入
+4:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:formal_price: R013 x1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+6:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:decline: R024 S2 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+8:next_day: +1d
+9:pm_decide: empty
+10:pm_measure: empty
+11:pm_decide: empty
+12:requote_cycle: R041 41 メーカが空です … F8 で移動して直す） / 5 行 × 2 社に依頼（回答期限 2026-11-01）。メーカを扱う商社がマ
+13:pm_measure: R001 no-q
+14:edit_qty: R057 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+15:requote_cycle: R020 41 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+16:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+17:decline: R061 S2 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+18:rough: 依頼する行がありません（提出済・再見積要の行なし）
+19:excel: pm 3 sheets
+20:pm_decide: R001 Shift+Y R001: 受入
+21:early_adopt: R077 有効な見積がありません（未回答・辞退・期限切れのみ）
+22:order: none
+23:cancel_row: R008 1 件（R041 メーカが空です … F8 で移動して直す）
+24:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+25:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+26:bulk: 採用 62 / 拮抗 27（要見直し）/ 承認要 0 / スキップ 11
+27:replace_row: R013 R013 の置き換え品 R081 を作りました（公開すると R013 は置換済に / 1 件（R041 メーカが空です … F8 で移動して直す）
+28:formal_price: R001 x3 EDIT-ERR R001 の正式単価 ¥438（概算から +200%）。桁・行
+29:formal_price: R001 x1 EDIT-ERR R001 の正式単価 ¥438（概算から +200%）。桁・行
+30:excel: design 3 sheets
+31:pm_decide: R013 Shift+Y R013: 受入
+32:decline: R079 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+33:formal_price: R045 x3 EDIT-ERR R045 の正式単価 ¥30,417（概算から +200%）。
+34:pm_decide: R023 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:pick_supplier: R008 設計作業中の行は選定できません（公開を待つ）
+36:next_day: +2d
+37:add_row: R082 unpublished
+38:receive: none
+39:formal_price: R045 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+40:excel: purchasing 1 sheets
+41:edit_qty: R081 1 件（R041 メーカが空です … F8 で移動して直す）
+42:receive: none
+43:pick_supplier: R057 設計作業中の行は選定できません（公開を待つ）
+44:pm_decide: R023 y 納期NG の行では y は使えません（Enter で決定パネル）
+45:order: R013 設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します
+46:pm_decide: R032 Shift+Y R032: 受入
+47:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 11
+48:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+49:requote_cycle: R051 41 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-208 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

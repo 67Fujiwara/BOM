@@ -1,0 +1,52 @@
+0:pick_supplier: R071 1〜2 で商社を選んでください
+1:bulk: 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+2:order: R013 R013: 発注済にしました
+3:pm_decide: R044 Shift+Y R044: 受入
+4:replace_row: R048 R048 の置き換え品 R081 を作りました（公開すると R048 は置換済に / ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+5:edit_qty: R004 を入れて Enter] 行 1（Rev.3） を公開しました
+6:edit_qty: R050 を入れて Enter] 行 1（Rev.4） を公開しました
+7:early_adopt: none
+8:cancel_row: R037 を入れて Enter] 行 1（Rev.5） を公開しました
+9:undo: purchasing 元に戻す: 発注済
+10:early_adopt: none
+11:pm_decide: R038 Shift+Y R038: 受入
+12:next_day: +3d
+13:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+14:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+15:switch_proc: R044→指定商社 を入れて Enter] 行 1（Rev.6） を公開しました
+16:add_row: R082 を入れて Enter] 行 1（Rev.7） を公開しました
+17:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+18:requote_cycle: R075 nter] 行 1（Rev.8） を公開しました / 8 行 × 3 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマ
+19:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+20:early_adopt: R050 有効な見積がありません（未回答・辞退・期限切れのみ）
+21:requote_cycle: R007 nter] 行 1（Rev.9） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-11-03）
+22:early_adopt: R007 有効な見積がありません（未回答・辞退・期限切れのみ）
+23:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+24:decline: R078 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+26:pick_supplier: none
+27:formal: 拮抗 30 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 68 行 × 3 社に正式見積を依頼
+28:formal_price: R040 x1.05 EDIT-ERR 68 行 × 3 社に正式見積を依頼
+29:cancel_row: R044 入れて Enter] 行 2（Rev.10） を公開しました
+30:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+31:decline: R076 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:cancel_row: R020 入れて Enter] 行 1（Rev.11） を公開しました
+33:requote_cycle: R019 ter] 行 1（Rev.12） を公開しました / 2 行 × 3 社に依頼（回答期限 2026-11-03）
+34:pm_decide: R001 Shift+Y R001: 受入
+35:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+36:pm_measure: R005 p R005: 委譲
+37:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+38:replace_row: R031 R031 の置き換え品 R083 を作りました（公開すると R031 は置換済に / 入れて Enter] 行 2（Rev.13） を公開しました
+39:cancel_row: R017 入れて Enter] 行 1（Rev.14） を公開しました
+40:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+41:formal_price: R053 x3 EDIT-ERR R053 の正式単価 ¥25,887（概算から +200%）。
+42:formal_price: R003 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+43:undo: design 取消・置換を公開した R017 は戻せません（購買に伝わっています。同じ部品が要
+44:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+45:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+46:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+47:requote_cycle: R036 ter] 行 1（Rev.15） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-11-03）
+48:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+49:bulk: 採用 14 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 19
+PASS F3-217 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

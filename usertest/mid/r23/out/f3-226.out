@@ -1,0 +1,52 @@
+0:decline: R012 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:pm_decide: R003 Shift+Y R003: 受入
+2:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+3:pm_decide: empty
+4:edit_qty: R031 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+5:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 1
+6:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+7:edit_qty: R063 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+8:formal: 拮抗 31 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼
+9:requote_cycle: R060 nter] 行 1（Rev.3） を公開しました / 7 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+10:cancel_row: R060 を入れて Enter] 行 1（Rev.4） を公開しました
+11:formal_price: R071 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+12:pick_supplier: none
+13:formal_price: R044 x1.5 EDIT-ERR R044 の正式単価 ¥4,253（概算から +50%）。桁・
+14:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+15:order: R071 R071: 発注済にしました
+16:formal_price: R070 x1.05 EDIT-ERR R071: 発注済にしました
+17:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+18:withdraw_x: R060 R060: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+19:formal_price: R022 x1 EDIT-ERR R060: 正式依頼の取下げ（因幡電機 P-2026-041-
+20:excel: design 1 sheets
+21:ltb_request: none
+22:requote_cycle: R010 nter] 行 1（Rev.5） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-10-31）
+23:receive: R071 R071: 入荷済にしました
+24:excel: purchasing 3 sheets
+25:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+26:pm_decide: R038 Shift+Y R038: 受入
+27:pick_supplier: none
+28:receive: none
+29:edit_qty: R014 を入れて Enter] 行 1（Rev.6） を公開しました
+30:consolidate: やめました（何も変えていません）
+31:next_day: +8d
+32:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+33:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+34:pm_measure: R007 no-p
+35:pm_decide: R011 Shift+Y R011: 却下
+36:replace_row: R019 R019 の置き換え品 R081 を作りました（公開すると R019 は置換済に / を入れて Enter] 行 2（Rev.7） を公開しました
+37:formal_price: R056 x3 EDIT-ERR R056 の正式単価 ¥187,056（概算から +200%）
+38:ltb_request: R008 R008: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥208,00
+39:switch_proc: R016→支給品 ）まで書いてください … 直すか Alt+x で確認済みに）
+40:order: none
+41:pick_supplier: R053 1〜2 で商社を選んでください
+42:ltb_request: R011 R011: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥22,440
+43:next_day: +9d
+44:withdraw_x: R003 R003: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+45:pick_supplier: R013 R013 を 立花エレテック で採用
+46:pm_decide: R011 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+47:excel: design 3 sheets
+48:pm_measure: R008 no-p
+49:requote_cycle: R002 ください … 直すか Alt+x で確認済みに） / 1 行 × 2 社に依頼（回答期限 2026-11-09）
+PASS F3-226 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

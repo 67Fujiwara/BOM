@@ -1,0 +1,6 @@
+rows 80 suppliers S1,S2,S3,S4,S5 role design
+before {"status":"selected","adopted":"S1","requote":true,"leadNG":true,"cm":"特急","early":{"until":"2026-12-01"},"delegated":true,"reneg":true,"pmPending":false,"pmReason":"例外選定","extra":5000,"extraKind":"特急"} ISS-T1:open,ISS-T2:open
+result 1 行 × 1 社に依頼（回答期限 2026-12-31）
+after  {"status":"quoting","requote":false,"leadNG":true,"cm":"特急","early":{"until":"2026-12-01"},"delegated":true,"reneg":false,"pmPending":false,"pmReason":"例外選定","extra":5000,"extraKind":"特急"} ISS-T1:open,ISS-T2:open
+undone {"status":"selected","adopted":"S1","requote":true,"leadNG":true,"cm":"特急","early":{"until":"2026-12-01"},"delegated":true,"reneg":true,"pmPending":false,"pmReason":"例外選定","extra":5000,"extraKind":"特急"} ISS-T1:open,ISS-T2:open
+dbg isActive true isQuotable true proc 相見積 hidden false status selected supplierIds S1,S2,S3

@@ -1,0 +1,24 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+formal → ）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X before R003 相見積 st=formalRequested adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] ball pm case 納期NG iss [] extra null orderQty null
+qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X after publish R003 相見積 st=formalRequested adopt=S1 reason= oq=11 flags={"leadNG":true,"reissue":true,"requote":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] requote true
+rough → 6 行 × 3 社に依頼（回答期限 2026-11-25）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに [["因幡電機",true],["立花エレテック",true],["ミスミ",true]]
+X after rough R003 相見積 st=quoting adopt=- reason= oq=11 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing case なし iss [] extra null  orderQty 11
+PASS Q1-formal-ng-1 採用が外れている（概算を取り直す行は選び直し） :: R003 相見積 st=quoting adopt=- reason= oq=11 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q1-formal-ng-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"leadNG":false,"reissue":false,"requote":false,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1","contested":false,"formalDiff":false,"renegotiating":false}
+PASS Q1-formal-ng-3 追加費用（特急・分納）が外れた :: null 
+PASS Q1-formal-ng-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {}
+PASS Q1-formal-ng-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: []
+PASS Q1-formal-ng-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: なし purchasing quoting
+PASS Q1-formal-ng-7 PM の 7 に載らない :: false
+PASS Q1-formal-ng-8 決定は増えていない（嘘の決定が記録されない） :: 0 → 0
+PASS Q1-formal-ng-9 正式回答・依頼Noが全て外れた
+PASS Q1-formal-ng-10 正式依頼中だった行は取下げの案内が出る（購買の 9） :: 因幡電機 P-2026-041-S1-F1
+PASS Q1-formal-ng-11 不変条件
+PASS Q1-formal-ng-12 固まる行がない :: []
+ERRORS []
+PASS Q1-formal-ng-99 console error なし :: []
+== 13/13 PASS

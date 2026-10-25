@@ -1,0 +1,52 @@
+0:order: R013 R013: 発注済にしました
+1:receive: R013 R013: 入荷済にしました
+2:pick_supplier: R006 R006 を 因幡電機 で採用
+3:decline: R016 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+4:excel: purchasing 3 sheets
+5:pick_supplier: R074 R074 を 立花エレテック で採用
+6:undo: design 元に戻す: 採用 立花エレテック
+7:bulk: 採用 68 / 拮抗 30（要見直し）/ 承認要 0 / スキップ 0
+8:formal_price: none
+9:rough: 依頼する行がありません（提出済・再見積要の行なし）
+10:edit_qty: R057 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+11:replace_row: R014 R014 の置き換え品 R081 を作りました（公開すると R014 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+12:formal_price: none
+13:pm_decide: R025 b R025: 次点商社へ
+14:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+15:pick_supplier: none
+16:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:switch_proc: R044→支給品 を入れて Enter] 行 1（Rev.4） を公開しました
+18:excel: purchasing 1 sheets
+19:add_row: R082 を入れて Enter] 行 1（Rev.5） を公開しました
+20:pm_decide: R064 Shift+Y R064: 受入
+21:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+22:edit_qty: R023 を入れて Enter] 行 1（Rev.6） を公開しました
+23:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+24:pick_supplier: none
+25:decline: none
+26:cancel_row: R082 を入れて Enter] 行 1（Rev.7） を公開しました
+27:decline: none
+28:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+29:add_row: R083 を入れて Enter] 行 1（Rev.8） を公開しました
+30:excel: design 3 sheets
+31:formal_price: none
+32:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:switch_proc: R051→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+34:pm_decide: R021 Shift+Y R021: 受入
+35:rough: 8 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+36:formal_price: none
+37:consolidate: やめました（何も変えていません）
+38:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+39:edit_qty: R081 を入れて Enter] 行 1（Rev.9） を公開しました
+40:replace_row: R025 R025 の置き換え品 R084 を作りました（公開すると R025 は置換済に / 入れて Enter] 行 2（Rev.10） を公開しました
+41:formal_price: none
+42:switch_proc: R024→客先指定品 入れて Enter] 行 1（Rev.11） を公開しました
+43:order: none
+44:decline: R043 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+45:formal: 拮抗 19 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 40 行 × 1 社に正式見積を依頼
+46:formal_price: R028 x1.05 EDIT-ERR 40 行 × 1 社に正式見積を依頼
+47:formal_price: R010 x1 EDIT-ERR 40 行 × 1 社に正式見積を依頼
+48:bulk: 採用 21 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 16
+49:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 16
+PASS F1-307 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

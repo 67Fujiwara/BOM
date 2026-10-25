@@ -1,0 +1,4 @@
+p6 p6-rename rename
+p6 p6-norename norename
+p6 p6-slash-run2 slash
+g8 g8-wipcheck-run2 wipcheck

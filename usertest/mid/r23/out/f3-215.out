@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pm_decide: R003 Shift+Y R003: 受入
+1:switch_proc: R008→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+2:requote_cycle: R042 nter] 行 1（Rev.4） を公開しました / 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:consolidate: やめました（何も変えていません）
+4:pm_decide: R042 Shift+Y R042・Rev.4 の変更セット 1 行まとめて: 却下
+5:undo: pm 元に戻す: 決定: 却下
+6:ltb_request: R039 R039: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥80,888
+7:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:edit_qty: R078 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+9:pm_measure: R039 no-p
+10:switch_proc: R010→客先指定品 を入れて Enter] 行 2（Rev.5） を公開しました
+11:pm_decide: R039 Shift+Y R039: 却下
+12:bulk: 採用 70 / 拮抗 10（要見直し）/ 承認要 0 / スキップ 9
+13:reload: reload
+14:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 9
+15:order: none
+16:decline: R079 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+17:rough: 依頼する行がありません（提出済・再見積要の行なし）
+18:pm_measure: R010 no-g
+19:requote_cycle: R068 nter] 行 1（Rev.6） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+20:formal_price: none
+21:switch_proc: R033→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+22:pm_measure: R025 e R025: 特急・分納
+23:receive: none
+24:order: none
+25:pm_measure: R032 d R032: 設計へ代替依頼
+26:rough: 依頼する行がありません（提出済・再見積要の行なし）
+27:requote_cycle: R036 nter] 行 2（Rev.7） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+28:excel: design 3 sheets
+29:edit_qty: R019 を入れて Enter] 行 1（Rev.8） を公開しました
+30:switch_proc: R035→社内在庫 を入れて Enter] 行 1（Rev.9） を公開しました
+31:rough: 依頼する行がありません（提出済・再見積要の行なし）
+32:cancel_row: R009 入れて Enter] 行 1（Rev.10） を公開しました
+33:excel: purchasing 1 sheets
+34:rename_supplier: S2→立花エレテック（本社） JSON を読み込みました（案件 1 件
+35:master_stop: S1 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+36:edit_qty: R054 入れて Enter] 行 1（Rev.11） を公開しました
+37:formal_price: none
+38:withdraw_x: R013 R013: 正式依頼の取下げ（S1 P-2026-041-S1-1）を伝えた（確認済）
+39:formal_price: none
+40:pm_measure: R023 no-g
+41:excel: pm 3 sheets
+42:change_need_date: R013 役割: 設計（山田）。既定のビュー 4 要確認 を開きました 済みに） … 直すか Alt+x で確認済みに）
+43:receive: none
+44:switch_proc: R063→支給品 +x で確認済みに） … 直すか Alt+x で確認済みに）
+45:ltb_request: R010 R010: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥5,748）
+46:cancel_row: R003 +x で確認済みに） … 直すか Alt+x で確認済みに）
+47:receive: none
+48:rough: 依頼する行がありません（提出済・再見積要の行なし）
+49:decline: R080 S3 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-215a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

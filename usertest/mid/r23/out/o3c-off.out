@@ -1,0 +1,16 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+before {"wait":11,"prog":"見積済 75/80"}
+publish → [変更セット（2 行: R081, R082）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+S R081 支給品 st=selected adopt=- reason= oq=- flags={} quotes=[]
+K R082 社内在庫 st=selected adopt=- reason= oq=- flags={} quotes=[]
+after {"wait":11,"prog":"見積済 75/80"}
+R081 支給品 st selected ball null views {"3":false,"8":false,"9":false}
+PASS O3C-off-R081-1 支給品の新規行：購買の 3・8・9 に出ない（商社に頼まない） :: {"3":false,"8":false,"9":false} st=selected
+PASS O3C-off-R081-2 支給品の新規行：購買のボールでない :: ball=null
+R082 社内在庫 st selected ball null views {"3":false,"8":false,"9":false}
+PASS O3C-off-R082-1 社内在庫の新規行：購買の 3・8・9 に出ない（商社に頼まない） :: {"3":false,"8":false,"9":false} st=selected
+PASS O3C-off-R082-2 社内在庫の新規行：購買のボールでない :: ball=null
+PASS O3C-off-3 購買待ちが 2 行分増えていない :: 11 → 11
+PASS O3C-off-4 見積済の分母に含めない :: 見積済 75/80 → 見積済 75/80
+ERRORS []
+== 6/6 PASS

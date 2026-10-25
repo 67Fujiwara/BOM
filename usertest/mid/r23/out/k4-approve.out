@@ -1,0 +1,15 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+X before PM R004 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","open",""]] case 閾値超
+PASS K4-0 PM の判断待ちのあいだは丸めても指摘を対応済にしない（M16-04） :: [["I-006","最小ロット","open",""]]
+PM y → R004: 承認
+X after approve R004 相見積 st=selected adopt=S1 reason= oq=100 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] | 選定済 ball purchasing issues [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+PASS K4-4 承認で最小ロットの指摘は決着（確認済）、発注数 100 のまま、PM 待ちが外れる :: R004 相見積 st=selected adopt=S1 reason= oq=100 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] [["I-006","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+purch 4 has X false
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 X rows [["R004","アナログ入力","FX5-4AD","三菱電機",100,"個"]] | R004 相見積 st=formalRequested adopt=S1 reason= oq=100 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS K4-5 承認した余剰（発注数 100）で正式見積の依頼書に出る :: 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 [["R004","アナログ入力","FX5-4AD","三菱電機",100,"個"]]
+ERRORS []
+== 3/3 PASS

@@ -1,0 +1,32 @@
+[
+  {
+    "flag": true,
+    "createMs": 3030,
+    "total": 85768,
+    "rows": 2500,
+    "flagged": 750,
+    "f8Med": 339,
+    "fixMed": 1799,
+    "undoMed": 1209
+  },
+  {
+    "flag": true,
+    "publishKeyMs": 271,
+    "toast": "公開できません: エラー 738 件（R1763 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、要る部品なら Ctrl+.（直し方の一覧）で「要る部品"
+  },
+  {
+    "flag": false,
+    "createMs": 2357,
+    "total": 44418,
+    "rows": 2500,
+    "flagged": 0,
+    "f8Med": 133,
+    "fixMed": null,
+    "undoMed": null
+  },
+  {
+    "flag": false,
+    "publishKeyMs": 4139,
+    "toast": "行 2500（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）"
+  }
+]

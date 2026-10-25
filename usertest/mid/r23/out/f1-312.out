@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:switch_proc: R065→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+2:replace_row: R020 R020 の置き換え品 R081 を作りました（公開すると R020 は置換済に / を入れて Enter] 行 2（Rev.4） を公開しました
+3:excel: pm 3 sheets
+4:order: R013 R013: 発注済にしました
+5:replace_row: R007 R007 の置き換え品 R082 を作りました（公開すると R007 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+6:receive: R013 R013: 入荷済にしました
+7:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:next_day: +8d
+10:withdraw_x: none
+11:excel: pm 3 sheets
+12:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+13:pm_decide: R020 Shift+Y R020・Rev.4 の変更セット 2 行まとめて: 却下
+14:pick_supplier: R046 1〜1 で商社を選んでください
+15:pm_decide: R082 y R082・Rev.5 の変更セット 2 行まとめて: 承認
+16:bulk: 採用 62 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 11
+17:rough: 5 行 × 1 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+18:reload: reload
+19:switch_proc: R058→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+20:edit_qty: R015 更番号（任意）を入れ] 行 4（Rev.6） を公開しました
+21:pm_decide: R004 Shift+Y R004: 受入
+22:decline: R030 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+23:pm_decide: R011 Shift+Y R011: 受入
+24:pm_decide: R019 Shift+Y R019: 受入
+25:decline: R077 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+26:edit_qty: R053 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+27:add_row: R083 unpublished
+28:excel: purchasing 1 sheets
+29:formal_price: none
+30:pm_decide: R081 y R081・Rev.6 の変更セット 4 行まとめて: 承認
+31:switch_proc: R070→客先指定品 ）を入れて Ente] 行 3（Rev.7） を公開しました
+32:edit_qty: R077 を入れて Enter] 行 1（Rev.8） を公開しました
+33:pick_supplier: R065 PM承認待ちの行です
+34:switch_proc: R070→社内在庫 を入れて Enter] 行 1（Rev.9） を公開しました
+35:replace_row: R008 R008 の置き換え品 R084 を作りました（公開すると R008 は置換済に / 入れて Enter] 行 2（Rev.10） を公開しました
+36:switch_proc: R083→相見積 入れて Enter] 行 1（Rev.11） を公開しました
+37:add_row: R085 unpublished
+38:formal_price: none
+39:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+40:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+41:order: none
+42:pick_supplier: none
+43:pm_decide: R008 Shift+Y R008・Rev.10 の変更セット 2 行まとめて: 却下
+44:pm_decide: R083 y R083・Rev.11 の変更セット 1 行まとめて: 承認
+45:cancel_row: R067 番号（任意）を入れ] 行 4（Rev.12） を公開しました
+46:excel: purchasing 3 sheets
+47:excel: purchasing 3 sheets
+48:pick_supplier: none
+49:order: none
+PASS F1-312a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

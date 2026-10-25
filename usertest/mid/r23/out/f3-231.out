@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+1:switch_proc: R045→相見積 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+2:undo: pm 元に戻す: 案件設定を変更
+3:add_row: R081 を入れて Enter] 行 2（Rev.3） を公開しました
+4:ltb_request: R057 R057: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥1,110）
+5:reload: reload
+6:requote_cycle: R028 nter] 行 1（Rev.4） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+7:receive: none
+8:excel: purchasing 3 sheets
+9:rough: 依頼する行がありません（提出済・再見積要の行なし）
+10:switch_proc: R056→支給品 を入れて Enter] 行 1（Rev.5） を公開しました
+11:formal_price: R013 x1.5 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+12:switch_proc: R059→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+13:early_adopt: R076 有効な見積がありません（未回答・辞退・期限切れのみ）
+14:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+15:ltb_request: R067 R067: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥664）
+16:excel: pm 3 sheets
+17:excel: purchasing 3 sheets
+18:rough: 依頼する行がありません（提出済・再見積要の行なし）
+19:formal_price: R013 x1.05 EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+20:switch_proc: R023→支給品 を入れて Enter] 行 1（Rev.6） を公開しました
+21:excel: design 3 sheets
+22:excel: design 3 sheets
+23:add_row: R082 を入れて Enter] 行 1（Rev.7） を公開しました
+24:withdraw_x: none
+25:edit_qty: R041 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+26:pm_decide: R067 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+27:cancel_row: R081 1 件（R041 メーカが空です … F8 で移動して直す）
+28:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+29:excel: pm 1 sheets
+30:pm_decide: R013 Shift+Y 使えるキー: y / b / g / d / q（↑↓ と Enter でも選べます）
+31:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:replace_row: R045 R045 の置き換え品 R083 を作りました（公開すると R045 は置換済に / 1 件（R041 メーカが空です … F8 で移動して直す）
+33:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+34:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+35:edit_qty: R075 1 件（R041 メーカが空です … F8 で移動して直す）
+36:formal: 出します: 対象 4 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 4 行 × 1 社に正式見積を依頼
+37:pm_decide: R067 y R067: 先行発注許可
+38:withdraw_x: none
+39:pm_measure: R003 p R003: 委譲
+40:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+41:reload: reload
+42:order: R013 R013: 発注済にしました
+43:switch_proc: R026→指定商社 1 件（R041 メーカが空です … F8 で移動して直す）
+44:order: none
+45:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+46:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+47:next_day: +1d
+48:bulk: 採用 65 / 拮抗 10（要見直し）/ 承認要 0 / スキップ 11
+49:rough: 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-231a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

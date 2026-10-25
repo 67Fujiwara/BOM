@@ -1,0 +1,17 @@
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X diff R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] case 差分超過
+X before R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] ball pm case 差分超過 iss [] extra null orderQty null
+qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+PM approve cs → R001: 受入
+X after publish R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット","formalDiffKey":"S1:20219"} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] requote undefined
+rough → 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに [["因幡電機",false],["立花エレテック",false],["ミスミ",false]]
+X after rough R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット","formalDiffKey":"S1:20219"} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]] ball pm case 変更セット iss [] extra null  orderQty null
+FAIL Q1-diffa-1 採用が外れている（概算を取り直す行は選び直し） :: R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"pmPending":true,"pmReason":"変更セット","formalDiffKey":"S1:20219"} quotes=[["S1",146,19,20219],["S2",123,0,null],["S3",149,23,null]]
+PASS Q1-diffa-11 不変条件
+PASS Q1-diffa-12 固まる行がない :: []
+ERRORS []
+PASS Q1-diffa-99 console error なし :: []
+== 3/4 PASS

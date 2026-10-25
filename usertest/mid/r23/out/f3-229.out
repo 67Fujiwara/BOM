@@ -1,0 +1,52 @@
+0:receive: none
+1:pm_measure: R003 no-q
+2:edit_qty: R056 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+3:cancel_row: R045 を入れて Enter] 行 1（Rev.3） を公開しました
+4:edit_qty: R004 を入れて Enter] 行 1（Rev.4） を公開しました
+5:requote_cycle: R060 nter] 行 1（Rev.5） を公開しました / 8 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+6:replace_row: R043 R043 の置き換え品 R081 を作りました（公開すると R043 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+7:pm_decide: R003 b R003: 次点商社へ
+8:requote_cycle: R019 nter] 行 1（Rev.7） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+9:ltb_request: R025 R025: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥315）
+10:pm_decide: R025 y R025: 先行発注許可
+11:decline: R079 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+12:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+13:switch_proc: R030→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+14:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+15:edit_qty: R053 を入れて Enter] 行 2（Rev.8） を公開しました
+16:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+17:switch_proc: R014→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+18:pm_measure: empty
+19:withdraw_x: R013 R013: 正式依頼の取下げ（因幡電機 P-2026-041-S1-1）を伝えた（確認済）
+20:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+21:switch_proc: R058→客先指定品 を入れて Enter] 行 2（Rev.9） を公開しました
+22:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+23:excel: purchasing 3 sheets
+24:undo: purchasing 元に戻す: 正式見積を依頼（社外）
+25:pm_decide: empty
+26:pm_measure: empty
+27:pick_supplier: R027 R027 を 立花エレテック で採用
+28:pm_decide: empty
+29:replace_row: R011 R011 の置き換え品 R082 を作りました（公開すると R011 は置換済に / 入れて Enter] 行 2（Rev.10） を公開しました
+30:pm_measure: empty
+31:consolidate: やめました（何も変えていません）
+32:order: none
+33:add_row: R083 入れて Enter] 行 1（Rev.11） を公開しました
+34:excel: purchasing 1 sheets
+35:switch_proc: R068→客先指定品 入れて Enter] 行 1（Rev.12） を公開しました
+36:add_row: R084 入れて Enter] 行 1（Rev.13） を公開しました
+37:cancel_row: R058 入れて Enter] 行 1（Rev.14） を公開しました
+38:pm_decide: empty
+39:formal: 出します: 対象 2 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 2 行 × 1 社に正式見積を依頼
+40:requote_cycle: R009 09 メーカが空です … F8 で移動して直す） / 3 行 × 2 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+41:ltb_request: R020 R020: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥5,870）
+42:pm_decide: R020 Shift+Y R020: 却下
+43:order: none
+44:formal_price: R068 x3 R068 の正式単価 ¥7,557（概算から +200%）。桁・行を確かめてくだ
+45:switch_proc: R070→指定商社 1 件（R009 メーカが空です … F8 で移動して直す）
+46:pm_decide: R068 y 納期NG の行では y は使えません（Enter で決定パネル）
+47:undo: design 元に戻す: セル編集
+48:decline: R004 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+49:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+PASS F3-229 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

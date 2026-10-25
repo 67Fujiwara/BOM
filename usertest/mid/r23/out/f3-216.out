@@ -1,0 +1,52 @@
+0:switch_proc: R044→社内在庫 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+1:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+2:replace_row: R078 R078 の置き換え品 R081 を作りました（公開すると R078 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+3:formal_price: R001 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+4:formal_price: R003 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+5:requote_cycle: R013 nter] 行 1（Rev.4） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+6:cancel_row: R041 を入れて Enter] 行 1（Rev.5） を公開しました
+7:bulk: 採用 67 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 6
+8:pm_measure: R046 no-g
+9:edit_qty: R011 を入れて Enter] 行 1（Rev.6） を公開しました
+10:receive: none
+11:pick_supplier: none
+12:pm_measure: R038 Shift+Y R038: 受入
+13:replace_row: R040 R040 の置き換え品 R082 を作りました（公開すると R040 は置換済に / を入れて Enter] 行 2（Rev.7） を公開しました
+14:switch_proc: R043→客先指定品 を入れて Enter] 行 1（Rev.8） を公開しました
+15:switch_proc: R015→社内在庫 を入れて Enter] 行 1（Rev.9） を公開しました
+16:formal: になります → 64 行 × 3 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 1 行
+17:undo: purchasing 元に戻す: 正式見積を依頼（社外）
+18:pick_supplier: none
+19:pm_measure: R032 p R032: 委譲
+20:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+21:switch_proc: R046→客先指定品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+22:requote_cycle: R029 ter] 行 2（Rev.10） を公開しました / 2 行 × 3 社に依頼（回答期限 2026-10-31）
+23:pm_decide: R025 b R025: 次点商社へ
+24:formal: 拮抗 30 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 63 行 × 3 社に正式見積を依頼
+25:formal_price: R034 x3 EDIT-ERR R034 の正式単価 ¥1,068（概算から +200%）。桁
+26:add_row: R083 入れて Enter] 行 1（Rev.11） を公開しました
+27:pm_decide: R064 Shift+Y R064: 受入
+28:receive: none
+29:requote_cycle: R067 ter] 行 1（Rev.12） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）
+30:edit_qty: R057 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+31:edit_qty: R073 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+32:pm_measure: R021 p R021: 委譲
+33:early_adopt: R013 有効な見積がありません（未回答・辞退・期限切れのみ）
+34:formal_price: R047 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+35:receive: none
+36:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+37:switch_proc: R059→指定商社 を入れて Ente] 行 3（Rev.13） を公開しました
+38:next_day: +8d
+39:order: R047 R047: 発注済にしました
+40:pick_supplier: none
+41:undo: design 公開済の値を戻しました。Rev は残し、未公開として 3 行に積みました（Ctr
+42:add_row: R084 番号（任意）を入れ] 行 4（Rev.14） を公開しました
+43:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 0 行・承認待ち 0 行・再見積要 2 行は除外）
+44:requote_cycle: R024 ter] 行 1（Rev.15） を公開しました / 4 行 × 3 社に依頼（回答期限 2026-11-08）
+45:cancel_row: R033 入れて Enter] 行 1（Rev.16） を公開しました
+46:replace_row: R010 R010 の置き換え品 R085 を作りました（公開すると R010 は置換済に / 入れて Enter] 行 2（Rev.17） を公開しました
+47:excel: pm 1 sheets
+48:switch_proc: R063→相見積 ありません。エラーのある行が 2 行あります（F8 で移動）
+49:pm_measure: R007 d R007: 設計へ代替依頼
+PASS F3-216 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,25 @@
+X before R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] ball pm case 例外選定 iss [] extra null orderQty 48
+qty → R011: ミスミ を仮採用（その他: 評価用）。PM の承認待ち（7 要決定）
+publish → 078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X after publish R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=77 flags={"pmPending":true,"pmReason":"例外選定","requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] requote true
+rough → 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに [["因幡電機",false],["立花エレテック",false],["ミスミ",false]]
+in-flight PM case 例外選定 → PM decides, then purchasing re-requests
+PM → R011: 承認 {"kind":"prompt","title":"決定: 承認（R011。理由・任意）","options":[],"index":0} null
+X after PM R011 相見積 st=selected adopt=S3 reason=その他: 評価用 oq=77 flags={"requote":true,"leadNG":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+rough#2 → 1 行 × 3 社に依頼（回答期限 2026-10-31） [["因幡電機",true],["立花エレテック",true],["ミスミ",true]]
+X after rough#2 R011 相見積 st=quoting adopt=- reason=その他: 評価用 oq=77 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing case なし
+X after rough R011 相見積 st=quoting adopt=- reason=その他: 評価用 oq=77 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] ball purchasing case なし iss [] extra null  orderQty 77
+PASS Q1-exc-1 採用が外れている（概算を取り直す行は選び直し） :: R011 相見積 st=quoting adopt=- reason=その他: 評価用 oq=77 flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q1-exc-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"pmPending":false,"contested":false,"requote":false,"leadNG":false,"formalDiff":false,"reissue":false,"renegotiating":false}
+PASS Q1-exc-3 追加費用（特急・分納）が外れた :: null 
+PASS Q1-exc-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {"pm":false}
+PASS Q1-exc-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: []
+PASS Q1-exc-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: なし purchasing quoting
+PASS Q1-exc-7 PM の 7 に載らない :: false
+PASS Q1-exc-8 決定は増えていない（嘘の決定が記録されない） :: 1 → 1
+PASS Q1-exc-9 正式回答・依頼Noが全て外れた
+PASS Q1-exc-11 不変条件
+PASS Q1-exc-12 固まる行がない :: []
+ERRORS []
+PASS Q1-exc-99 console error なし :: []
+== 12/12 PASS

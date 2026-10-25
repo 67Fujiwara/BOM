@@ -1,0 +1,5 @@
+p6-norename == 4/4 PASS
+p6-rename == 3/4 PASS
+g8-wipcheck-run2 == 1/1 PASS
+p6-slash-run2 == 7/8 PASS
+DONE

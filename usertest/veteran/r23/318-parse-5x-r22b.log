@@ -1,0 +1,9 @@
+{"kind":"tsv-plain","n":2500,"len":114001,"rows":2500,"delim":"tab","bomMs":321,"oneParseMs":9}
+{"kind":"tsv-plain","n":10000,"len":475882,"rows":10000,"delim":"tab","bomMs":696,"oneParseMs":47}
+{"kind":"tsv-plain","n":40000,"len":2103382,"rows":40000,"delim":"tab","bomMs":2919,"oneParseMs":170}
+{"kind":"both-hit","n":2500,"len":114012,"rows":2500,"delim":"tab","bomMs":160,"oneParseMs":3}
+{"kind":"both-hit","n":10000,"len":475893,"rows":10000,"delim":"tab","bomMs":764,"oneParseMs":27}
+{"kind":"both-hit","n":40000,"len":2103393,"rows":40000,"delim":"tab","bomMs":2554,"oneParseMs":167}
+{"kind":"csv-quoted","n":2500,"len":119751,"rows":2500,"delim":"comma","bomMs":227,"oneParseMs":8}
+{"kind":"csv-quoted","n":10000,"len":498882,"rows":10000,"delim":"comma","bomMs":482,"oneParseMs":23}
+{"kind":"csv-quoted","n":40000,"len":2195382,"rows":40000,"delim":"comma","bomMs":2021,"oneParseMs":160}

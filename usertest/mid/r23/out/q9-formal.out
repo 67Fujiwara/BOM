@@ -1,0 +1,14 @@
+X R008 相見積 st=formalRequested adopt=S1 reason= oq=4 flags={} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]] case なし
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X published R008 相見積 st=formalRequested adopt=S1 reason= oq=17 flags={"reissue":true,"requote":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]] requote true
+Ctrl+. panel ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+keep idx 0
+X after keep R008 相見積 st=formalRequested adopt=S1 reason= oq=17 flags={"reissue":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]] ball purchasing case なし toast R008 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を
+PASS Q9-formal-1 据え置きで再見積要が外れ、旧見積が有効に戻る :: R008 相見積 st=formalRequested adopt=S1 reason= oq=17 flags={"reissue":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]]
+PASS Q9-formal-2 据え置きで採用・PM の判断の印は壊れない（採用あり／承認待ちのまま） :: R008 相見積 st=formalRequested adopt=S1 reason= oq=17 flags={"reissue":true} quotes=[["S1",43427,18,null],["S2",52001,0,null],["S3",44133,22,null]]
+PASS Q9-formal-3 正式依頼中／正式見積済の行は、必要数を変えたので再発行（reissue）が要る印が付く（古い数量で発注しない） :: reissue=true st=formalRequested
+PASS Q9-formal-8 不変条件
+PASS Q9-formal-9 固まる行がない :: []
+ERRORS []
+PASS Q9-formal-99 console error なし :: []
+== 6/6 PASS

@@ -1,0 +1,23 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X R001 R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+start: proc=相見積 st=formalRequested adopt=S1 oq=- ball=purchasing total=18551654 pend=null wd=- views=p3,p8,d3,d8
+switch → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+pending: proc=相見積 st=formalRequested adopt=S1 oq=- ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PASS P2-formal-支給品-reject-0 不変条件
+PASS P2-formal-支給品-reject-1 公開すると PM の承認待ち（変更セット）。公開値はまだ相見積で、採用も残る :: pending: proc=相見積 st=formalRequested adopt=S1 oq=- ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PASS P2-formal-支給品-reject-2 承認待ちのあいだ PM の 7 に載り、ボールは PM :: pending: proc=相見積 st=formalRequested adopt=S1 oq=- ball=pm total=18551654 pend={"procurement":"支給品"} wd=- views=p3,p7,p8,d3,d7,d8
+PM reject → R001・Rev.3 の変更セット 1 行まとめて: 却下
+after reject: proc=相見積 st=formalRequested adopt=S1 oq=- ball=design total=18551654 pend=null wd=- views=p3,p8,d3,d8
+PASS P2-formal-支給品-reject-3 不変条件
+PASS P2-formal-支給品-reject-4 却下で相見積のまま・採用も残る・承認待ちが外れる :: after reject: proc=相見積 st=formalRequested adopt=S1 oq=- ball=design total=18551654 pend=null wd=- views=p3,p8,d3,d8
+PASS P2-formal-支給品-reject-5 却下したあと、支給品 への変更は設計の作業中に戻る :: {"procurement":"支給品"}
+PASS P2-formal-支給品-reject-6 却下で総額が変わらない :: 18551654 → 18551654
+PASS P2-formal-支給品-reject-12 固まる行がない :: []
+PASS P2-formal-支給品-reject-13 文字に undefined が出ない :: []
+ERRORS []
+PASS P2-formal-支給品-reject-14 console error なし :: []
+== 10/10 PASS

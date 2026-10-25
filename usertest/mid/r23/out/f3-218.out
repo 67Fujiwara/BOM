@@ -1,0 +1,52 @@
+0:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:pm_decide: R003 Shift+Y R003: 受入
+2:pm_decide: empty
+3:edit_qty: R022 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+4:edit_qty: R079 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+5:requote_cycle: R042 nter] 行 1（Rev.3） を公開しました / 7 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+6:switch_proc: R006→指定商社 を入れて Enter] 行 1（Rev.4） を公開しました
+7:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:pm_decide: empty
+9:pm_measure: empty
+10:decline: R009 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+11:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+12:requote_cycle: R062 nter] 行 1（Rev.5） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+13:pm_decide: empty
+14:cancel_row: R014 を入れて Enter] 行 1（Rev.6） を公開しました
+15:pm_measure: empty
+16:pick_supplier: R036 1〜2 で商社を選んでください
+17:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+18:pm_decide: empty
+19:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+20:pick_supplier: R043 1〜1 で商社を選んでください
+21:formal_price: R002 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+22:early_adopt: R076 有効な見積がありません（未回答・辞退・期限切れのみ）
+23:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+24:requote_cycle: R023 nter] 行 1（Rev.7） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+25:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+27:pm_decide: empty
+28:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:excel: design 3 sheets
+30:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+31:bulk: 採用 63 / 拮抗 28（要見直し）/ 承認要 0 / スキップ 9
+32:formal_price: R045 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+33:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+34:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:pm_measure: R046 d R046: 設計へ代替依頼
+36:order: R013 R013: 発注済にしました
+37:pm_measure: R038 Shift+Y R038: 受入
+38:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+39:switch_proc: R070→支給品 を入れて Enter] 行 1（Rev.8） を公開しました
+40:receive: R013 R013: 入荷済にしました
+41:replace_row: R003 R003 の置き換え品 R081 を作りました（公開すると R003 は置換済に / を入れて Enter] 行 2（Rev.9） を公開しました
+42:rename_supplier: S1→ミスミ グループ JSON を読み込みました（案件 1 件
+43:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+44:pick_supplier: none
+45:excel: design 3 sheets
+46:reload: reload
+47:requote_cycle: R051 ter] 行 1（Rev.10） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）
+48:replace_row: R049 R049 の置き換え品 R082 を作りました（公開すると R049 は置換済に / 入れて Enter] 行 2（Rev.11） を公開しました
+49:replace_row: R017 R017 の置き換え品 R083 を作りました（公開すると R017 は置換済に / 入れて Enter] 行 2（Rev.12） を公開しました
+PASS F3-218 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,22 @@
+[
+  {
+    "step": "created",
+    "rows": 300,
+    "flagged": 90
+  },
+  {
+    "step": "loop-done",
+    "keys": 270,
+    "ms": 72541,
+    "rows": 300,
+    "flagged": 0
+  },
+  {
+    "step": "publish",
+    "toast": {
+      "p": null,
+      "t": "行 300（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）",
+      "text": ""
+    }
+  }
+]

@@ -1,0 +1,36 @@
+rows R081 R082 R083 R084
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 9（Rev.2） を公開しました
+rough to S1 → 9 行 × 1 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） []
+requestRevs {"S1":1}
+  R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"]
+  R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"]
+  R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null
+  R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null
+stop JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+ after R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"] ball purchasing
+ after R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets ["S1","S2","S3"] ball purchasing
+ after R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null ball design
+ after R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null]] targets null ball purchasing
+PASS P1C-stop-1 S1 を消して/停止してもボールの無い行・ビューに載らない行がない :: []
+N3 in design 4 true ball design
+N3 problems []
+status bar N3: ナビR001 部品名採用していた 因幡電機 は取引停止（商社マスタ）のため採用を外しました。選び直してください設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたF1ヘルプF8次の問題Enter編集Alt+a推奨採用Space開く
+PASS P1C-stop-2 指定先が取引停止の N3 は設計のボール（指定先を変える） :: ball=design
+N3 designated → S2 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+rough to all → 9 行 × 2 社に依頼（回答期限 2026-10-31） [["立花エレテック",["R081","R082","R083","R084"]],["ミスミ",["R081","R082"]]]
+PASS P1C-stop-3 S1 を除く相見積先（S2・S3）に、S1 にしか頼んでいなかった N1・N2 の依頼書が出る :: [["立花エレテック",9],["ミスミ",7]]
+PASS P1C-stop-4 指定先を S2 に直した N3 は S2 宛に出る（S1 宛でない） :: [["立花エレテック",["R083"]],["ミスミ",[]]]
+N4 (客先指定品) in files [["立花エレテック",true],["ミスミ",false]]
+PASS P1C-stop-5 客先指定品 N4 は消えた/停止の S1 宛に出ない :: [["立花エレテック",true],["ミスミ",false]]
+ now R081 R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+ now R082 R082 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+ now R083 R083 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null]]
+ now R084 R084 客先指定品 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null]]
+N1 R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",200,6,null],["S3",200,6,null]]
+PASS P1C-stop-6 S2・S3 が回答すれば N1・N2 は見積済（消えた/停止の S1 の回答を待たない） :: quoted quoted 見積済
+PASS P1C-stop-9 画面の文字に undefined が出ない :: []
+PASS P1C-stop-10 固まる行がない :: []
+ERRORS []
+PASS P1C-stop-11 console error なし :: []
+== 9/9 PASS

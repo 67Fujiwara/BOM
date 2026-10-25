@@ -1,0 +1,18 @@
+q1 q1-ng-e ng-e
+q1 q1-ng-p ng-p
+q1 q1-ng-d ng-d
+q1 q1-ng-fail ng-fail
+q1 q1-formal formal
+q1 q1-formal-ng formal-ng
+q1 q1-diff diff
+q1 q1-diff-g diff-g
+q1 q1-diff-q diff-q
+q1 q1-diff-d diff-d
+q1 q1-ltb ltb
+q1 q1-exc exc
+q1 q1-early early
+q1 q1-early-ok early-ok
+q1 q1-ordered ordered
+q1 q1-ng-a ng 1
+q1 q1-diff-a diff 1
+q1 q1-ng-e-a ng-e 1

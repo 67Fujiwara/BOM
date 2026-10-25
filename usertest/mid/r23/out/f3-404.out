@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:receive: none
+1:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+2:toggle_approval: OFF 案件設定を保存しました
+3:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+4:next_day: +3d
+5:pick_supplier: R041 R041 を 立花エレテック で採用
+6:order: R013 R013: 発注済にしました
+7:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+8:pm_measure: R003 d R003: 設計へ代替依頼
+9:pm_decide: R034 y 納期NG の行では y は使えません（Enter で決定パネル）
+10:requote_cycle: R035 nter] 行 1（Rev.3） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマ
+11:pm_measure: R034 p R034: 委譲
+12:excel: design 3 sheets
+13:receive: R013 R013: 入荷済にしました
+14:pm_measure: R001 no-g
+15:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+16:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+17:requote_cycle: R065 nter] 行 1（Rev.4） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-11-03）。見積済だった 1 行
+18:bulk: 採用 66 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 7
+19:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+21:consolidate: やめました（何も変えていません）
+22:add_row: R081 を入れて Enter] 行 1（Rev.5） を公開しました
+23:pm_measure: R007 e R007: 特急・分納
+24:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+25:pm_decide: R026 Shift+Y R026: 受入
+26:edit_qty: R023 を入れて Enter] 行 1（Rev.6） を公開しました
+27:pick_supplier: none
+28:requote_cycle: R008 nter] 行 1（Rev.7） を公開しました / 2 行 × 3 社に依頼（回答期限 2026-11-03）
+29:cancel_row: R027 を入れて Enter] 行 1（Rev.8） を公開しました
+30:edit_qty: R047 を入れて Enter] 行 1（Rev.9） を公開しました
+31:pm_measure: R021 p R021: 委譲
+32:edit_qty: R010 入れて Enter] 行 1（Rev.10） を公開しました
+33:receive: none
+34:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:cancel_row: R026 入れて Enter] 行 1（Rev.11） を公開しました
+36:switch_proc: R070→指定商社 入れて Enter] 行 1（Rev.12） を公開しました
+37:reload: reload
+38:decline: R023 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+39:requote_cycle: R054 ter] 行 1（Rev.13） を公開しました / 3 行 × 3 社に依頼（回答期限 2026-11-03）
+40:pick_supplier: none
+41:pm_measure: R044 e R044: 特急・分納
+42:reload: reload
+43:order: none
+44:receive: none
+45:pm_decide: R046 Shift+Y R046: 受入
+46:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+47:rough: 依頼する行がありません（提出済・再見積要の行なし）
+48:toggle_approval: ON 案件設定を保存しました
+49:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+PASS F3-404a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

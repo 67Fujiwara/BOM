@@ -1,0 +1,36 @@
+PM y R020 → R020: 先行発注許可
+PM detail decisions part: 決定・履歴鈴木 10/25 18:54 先行発注許可 許可 （申請: 長納期のため・金額 ¥12,345） 鈴木 10/25 18:54 決定: 先行発注許可佐藤 10/25 18:54 先行発注を申請
+PASS X5-1 許可後、行の詳細（Space）に申請の理由・金額が見える
+sheets [ 'BOM', '変更点', 'チェック結果' ]
+Excel R020 rows ["1|2026-10-23 18:54|山田|R020|||||","|2026-10-25 18:54|鈴木|R020|決定|先行発注許可||許可 / 申請: 長納期のため・金額 ¥12,345|"]
+PASS X5-2 Excel（社内）の変更点に申請の金額が残る :: ["1|2026-10-23 18:54|山田|R020|||||","|2026-10-25 18:54|鈴木|R020|決定|先行発注許可||許可 / 申請: 長納期のため・金額 ¥12,345|"]
+bulk → 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+issue → 指摘 1 件 を公開しました
+publish → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 6（Rev.2・3） を公開しました
+D after reconfirm R001:quoting:adopt=-:{"leadNG":false,"reconfirm":false,"contested":false}:q=[["S1",null,null,"requote"],["S2",123,null,"keep"],["S3",149,null,"keep"]] iss=I-006:型式あいまい:fixed
+purch 4 has D? true
+rough → 6 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+D after rough R001:quoting:adopt=-:{"leadNG":false,"reconfirm":false,"contested":false,"requote":false}:q=[["S1",null,null,""],["S2",123,null,"keep"],["S3",149,null,"keep"]] iss=I-006:型式あいまい:fixed
+D after answer R001:quoted:adopt=-:{"leadNG":false,"reconfirm":false,"contested":false,"requote":false}:q=[["S1",50000,null,""],["S2",123,null,"keep"],["S3",149,null,"keep"]] iss=I-006:型式あいまい:fixed ball 購買
+purch status bar ナビR001 入荷予定購買 佐藤: 未発行 0 件R001 の単価 ¥50,000 は他社（¥149 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）F1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Spa
+purch x → R001 の単価 ¥50,000 は他社（¥149 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+D after x R001:quoted:adopt=-:{"leadNG":false,"reconfirm":false,"contested":false,"requote":false}:q=[["S1",50000,null,""],["S2",123,null,"keep"],["S3",149,null,"keep"]] iss=I-006:型式あいまい:confirmed ball 設計
+design 4 has D? true
+PASS X5-3 採用商社を再見積にした行は、回答・確認のあと選定者の 4 に出る :: 設計
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼
+F R002:formalRequested:adopt=S1:{"leadNG":false,"reissue":false}:q=[["S1",407,null,""],["S2",418,null,""],["S3",376,null,""]] iss= qty 2
+publish → [変更セット（1 行: R002）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+F after qty+1 R002:formalRequested:adopt=S1:{"leadNG":false,"reissue":true,"requote":true}:q=[["S1",407,null,""],["S2",418,null,""],["S3",376,null,""]] iss=
+F Ctrl+. (9) ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+F after keep R002:formalRequested:adopt=S1:{"leadNG":false,"reissue":true,"requote":false}:q=[["S1",407,null,""],["S2",418,null,""],["S3",376,null,""]] iss=
+purch 8 has F (reissue)? true cell 正式依頼中 · 再発行
+formal again → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+F after reissue R002:formalRequested:adopt=S1:{"leadNG":false,"reissue":false,"requote":false}:q=[["S1",407,null,""],["S2",418,null,""],["S3",376,null,""]] iss= reqNo "P-2026-041-S1-F2"
+diff sheet ["行ID|項目|旧|新","R002|必要数|2|3"]
+PASS X5-4 正式依頼中の数量変更を据え置きにしても、再発行（Rev+1）の依頼で正式依頼中に戻る :: R002:formalRequested:adopt=S1:{"leadNG":false,"reissue":false,"requote":false}:q=[["S1",407,null,""],["S2",418,null,""],["S3",376,null,""]] iss=
+dup problems 制10 [ 'error:型式が空です', 'error:メーカが空です', 'warn:回路記号が他の行と重複しています' ]
+PASS X5-5 本当の回路記号の重複は警告される
+r R012 → R012 の置き換え品 R082 を作りました（公開すると R012 は置換済になります。Ctrl+Z で戻す）
+replacement with other ref 電13 [ 'warn:回路記号が他の行と重複しています' ]
+PASS X5-6 置換の新行でも、置換元以外との重複は警告される
+== 6/6 PASS

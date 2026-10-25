@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pick_supplier: R039 R039 を ミスミ で採用（その他: fuzz）
+1:undo: pm 元に戻す: 案件設定を変更
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:requote_cycle: R073 nter] 行 1（Rev.3） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+4:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+5:pm_measure: R003 d R003: 設計へ代替依頼
+6:decline: R024 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+7:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+8:switch_proc: R053→客先指定品 を入れて Enter] 行 1（Rev.4） を公開しました
+9:pm_decide: empty
+10:undo: purchasing 元に戻す: セル編集
+11:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+12:toggle_approval: ON 案件設定を保存しました
+13:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+14:next_day: +1d
+15:cancel_row: R054 を入れて Enter] 行 1（Rev.5） を公開しました
+16:withdraw_x: none
+17:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+18:pm_decide: R013 y R013: 受入
+19:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+21:pick_supplier: R021 R021 を 立花エレテック で採用
+22:pm_measure: R001 d R001: 設計へ代替依頼
+23:withdraw_x: none
+24:switch_proc: R023→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+25:pick_supplier: R043 1〜1 で商社を選んでください
+26:pm_measure: R021 Shift+Y R021: 受入
+27:undo: design 戻せません: R021 の状態（leadNG） は、この操作の後に別の操作（あな
+28:switch_proc: R045→指定商社 ありません。エラーのある行が 3 行あります（F8 で移動）
+29:excel: purchasing 1 sheets
+30:pm_decide: R054 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+31:pick_supplier: R028 R028 を 立花エレテック で採用（その他: fuzz）
+32:switch_proc: R064→客先指定品 R028 を 立花エレテック で採用（その他: fuzz）
+33:order: R013 R013: 発注済にしました
+34:pm_measure: R054 no-e
+35:formal_price: none
+36:formal_price: none
+37:replace_row: R051 R051 の置き換え品 R081 を作りました（公開すると R051 は置換済に / ）を入れて Ente] 行 3（Rev.6） を公開しました
+38:excel: pm 3 sheets
+39:formal: 出します: 対象 8 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 8 行 × 2 社に正式見積を依頼
+40:pm_measure: R054 no-e
+41:pm_measure: R054 Shift+Y R054・Rev.5 の変更セット 1 行まとめて: 却下
+42:bulk: 採用 62 / 拮抗 28（要見直し）/ 承認要 0 / スキップ 9
+43:switch_proc: R044→相見積 採用 62 / 拮抗 28（要見直し）/ 承認要 0 / ス
+44:formal_price: R034 x1.5 EDIT-ERR R034 の正式単価 ¥534（概算から +50%）。桁・行を
+45:consolidate: やめました（何も変えていません）
+46:formal_price: R053 x1.5 EDIT-ERR R053 の正式単価 ¥12,944（概算から +50%）。桁
+47:switch_proc: R043→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+48:pick_supplier: R051 PM承認待ちの行です
+49:replace_row: R042 R042 の置き換え品 R082 を作りました（公開すると R042 は置換済に / 更番号（任意）を入れ] 行 4（Rev.7） を公開しました
+PASS F3-401a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

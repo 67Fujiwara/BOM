@@ -1,0 +1,18 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+replace → R003 の置き換え品 R081 を作りました（公開すると R003 は置換済になります。Ctrl+Z で戻す）
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+X pending R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true,"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] requote undefined
+PM reject → R003・Rev.3 の変更セット 2 行まとめて: 却下
+X after PM R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] requote undefined ball pm case 納期NG
+PASS Q8-repl-reject-1 却下で再見積要の印が残らない（公開値のまま・見積は有効） :: requote=undefined [["S1","live",933],["S2","live",938],["S3","live",1085]]
+PASS Q8-repl-reject-2 却下で採用・状態が公開値のまま :: R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました []
+PASS Q8-repl-reject-3 却下された行は概算の取り直しで採用を外されない :: R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PASS Q8-repl-reject-8 不変条件
+PASS Q8-repl-reject-9 固まる行がない :: []
+ERRORS []
+PASS Q8-repl-reject-99 console error なし :: []
+== 6/6 PASS

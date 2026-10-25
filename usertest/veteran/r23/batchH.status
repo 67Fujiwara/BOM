@@ -1,0 +1,29 @@
+== 164-case-row-keys-5176 20:09:18 load=35.71 36.66 38.79
+   exit 0 20:12:00
+== 159-paste-trim-5176 20:12:00 load=35.39 36.09 38.23
+   exit 0 20:13:31
+== 173-grid-paste-q-5176 20:13:31 load=35.87 36.11 38.04
+   exit 0 20:14:19
+== 182-mac-option-case-5176 20:14:19 load=37.73 36.47 38.06
+   exit 0 20:14:56
+== 145-needdate-year-5176 20:14:56 load=38.31 36.65 38.05
+   exit 0 20:15:35
+== 142-json-r19-5176 20:15:35 load=40.91 37.54 38.29
+   exit 0 20:18:02
+== 143-twotab-decision-5176 20:18:02 load=36.66 37.83 38.33
+   exit 0 20:19:13
+== 157-ui-misc-5176 20:19:13 load=29.56 35.49 37.48
+   exit 0 20:21:00
+== 158-importdel-undo 20:21:00 load=31.84 34.48 36.89
+   exit 0 20:21:23
+== 161-importdel-roles 20:21:23 load=30.49 33.96 36.66
+   exit 0 20:21:37
+== 163-importdel-bulk-paste 20:21:37 load=31.14 33.96 36.61
+   exit 0 20:21:57
+== 151b-importdel-fixloop 20:21:57 load=28.50 33.19 36.31
+   exit 0 20:23:22
+== 184-fix-burst 20:23:22 load=18.15 29.07 34.60
+   exit 0 20:24:00
+== 183-xlsx-strike-wizard 20:24:00 load=17.81 27.76 33.96
+   exit 0 20:24:11
+DONE

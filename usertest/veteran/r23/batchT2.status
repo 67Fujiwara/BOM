@@ -1,0 +1,141 @@
+== 180-redos-scan head 18:58:47 load=22.89 19.00 12.85
+180-redos-scan.ts head exit 0
+== 199-redos-scan2 head 18:59:03 load=23.57 19.41 13.12
+199-redos-scan2.ts head exit 0
+== 220-redos-section head 19:00:37 load=24.57 20.82 14.20
+220-redos-section.ts head exit 0
+== 242-redos-new head 19:01:00 load=25.15 21.27 14.53
+242-redos-new.ts head exit 0
+== 200-redos-delclass head 19:01:48 load=22.22 21.20 14.87
+200-redos-delclass.ts head exit 0
+== 204-redos-cpu head 19:01:53 load=22.22 21.20 14.87
+204-redos-cpu.ts head exit 0
+== 196-delclass head 19:01:59 load=21.51 21.08 14.90
+196-delclass.ts head exit 0
+== 197-delparen head 19:02:07 load=20.82 20.94 14.89
+197-delparen.ts head exit 0
+== 219-flag-volume head 19:02:13 load=26.74 22.24 15.37
+219-flag-volume.ts head exit 0
+== 209-rowscale head 19:02:23 load=27.40 22.53 15.54
+209-rowscale.ts head exit 0
+== 172-parse-garbage head 19:04:33 load=27.96 24.57 17.19
+172-parse-garbage.ts head exit 0
+== 216-xlsx-wide head 19:05:21 load=25.54 24.44 17.53
+216-xlsx-wide.ts head exit 0
+== 206-titles head 19:07:09 load=31.31 26.56 19.04
+206-table-titles-commas.ts head exit 0
+== 198-same-kind head 19:07:16 load=31.61 26.70 19.13
+198-same-kind-machines.ts head exit 0
+== 232-delclass-phrases head 19:07:26 load=30.35 26.59 19.18
+232-delclass-phrases.ts head exit 0
+== 180-redos-scan r22b 19:07:35 load=31.19 26.90 19.36
+180-redos-scan.ts r22b exit 0
+== 199-redos-scan2 r22b 19:07:51 load=31.68 27.22 19.58
+199-redos-scan2.ts r22b exit 0
+== 220-redos-section r22b 19:09:49 load=33.96 29.21 21.22
+220-redos-section.ts r22b exit 0
+== 242-redos-new r22b 19:10:21 load=37.17 30.48 21.91
+242-redos-new.ts r22b exit 0
+== 200-redos-delclass r22b 19:13:42 load=32.91 32.41 24.40
+200-redos-delclass.ts r22b exit 0
+== 204-redos-cpu r22b 19:13:55 load=33.79 32.63 24.60
+204-redos-cpu.ts r22b exit 0
+== 196-delclass r22b 19:14:10 load=33.64 32.64 24.73
+196-delclass.ts r22b exit 0
+== 197-delparen r22b 19:14:23 load=32.09 32.34 24.72
+197-delparen.ts r22b exit 0
+== 219-flag-volume r22b 19:14:31 load=31.26 32.14 24.74
+219-flag-volume.ts r22b exit 0
+== 209-rowscale r22b 19:14:43 load=30.85 32.03 24.82
+209-rowscale.ts r22b exit 0
+== 172-parse-garbage r22b 19:17:35 load=39.25 35.23 27.25
+172-parse-garbage.ts r22b exit 0
+== 216-xlsx-wide r22b 19:18:45 load=37.24 35.71 28.02
+216-xlsx-wide.ts r22b exit 0
+== 206-titles r22b 19:21:22 load=48.97 40.01 30.72
+206-table-titles-commas.ts r22b exit 0
+== 198-same-kind r22b 19:21:35 load=47.55 40.11 30.90
+198-same-kind-machines.ts r22b exit 0
+== 232-delclass-phrases r22b 19:21:50 load=46.88 40.32 31.12
+232-delclass-phrases.ts r22b exit 0
+== 150-plain-tsv-1 head 19:22:07 load=46.49 40.55 31.34
+150-ordinary-fuzz.ts head exit 0
+== 150-plainQ-tsv-1 head 19:22:50 load=41.89 40.20 31.66
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-tsv-1 r22b 19:23:43 load=41.45 40.24 32.12
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plainQ-tsv-1 r22b 19:24:17 load=41.25 40.35 32.46
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plain-csv-1 head 19:25:00 load=37.17 39.43 32.52
+150-ordinary-fuzz.ts head exit 0
+== 150-plainQ-csv-1 head 19:25:30 load=32.26 38.02 32.27
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-csv-1 r22b 19:26:11 load=38.61 38.74 32.74
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plainQ-csv-1 r22b 19:26:43 load=37.47 38.53 32.87
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plain-xlsx-1 head 19:27:18 load=35.02 37.82 32.85
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-xlsx-1 r22b 19:27:59 load=33.51 36.99 32.80
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plain-tsv-2 head 19:28:49 load=34.38 36.72 32.93
+150-ordinary-fuzz.ts head exit 0
+== 150-plainQ-tsv-2 head 19:29:27 load=33.67 36.26 32.91
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-tsv-2 r22b 19:30:15 load=37.30 36.88 33.30
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plainQ-tsv-2 r22b 19:30:56 load=37.76 37.04 33.51
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plain-csv-2 head 19:31:33 load=35.73 36.71 33.53
+150-ordinary-fuzz.ts head exit 0
+== 150-plainQ-csv-2 head 19:32:08 load=34.91 36.38 33.54
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-csv-2 r22b 19:32:54 load=38.12 37.21 33.99
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plainQ-csv-2 r22b 19:33:29 load=37.99 37.32 34.13
+150-ordinary-fuzz.ts r22b exit 0
+== 150-plain-xlsx-2 head 19:34:13 load=35.23 36.75 34.09
+150-ordinary-fuzz.ts head exit 0
+== 150-plain-xlsx-2 r22b 19:35:13 load=37.15 37.06 34.37
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-tsv-1 head 19:36:10 load=33.45 36.08 34.20
+150-ordinary-fuzz.ts head exit 0
+== 150-fullQ-tsv-1 head 19:37:01 load=42.27 38.01 34.96
+150-ordinary-fuzz.ts head exit 0
+== 150-full-tsv-1 r22b 19:38:10 load=51.99 42.04 36.59
+150-ordinary-fuzz.ts r22b exit 0
+== 150-fullQ-tsv-1 r22b 19:38:55 load=53.65 43.90 37.48
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-csv-1 head 19:39:49 load=49.66 44.25 37.93
+150-ordinary-fuzz.ts head exit 0
+== 150-fullQ-csv-1 head 19:40:33 load=48.25 44.49 38.30
+150-ordinary-fuzz.ts head exit 0
+== 150-full-csv-1 r22b 19:41:33 load=54.60 46.91 39.52
+150-ordinary-fuzz.ts r22b exit 0
+== 150-fullQ-csv-1 r22b 19:42:20 load=50.54 47.07 39.97
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-xlsx-1 head 19:43:20 load=51.53 48.39 40.89
+150-ordinary-fuzz.ts head exit 0
+== 150-full-xlsx-1 r22b 19:44:31 load=48.68 48.26 41.40
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-tsv-2 head 19:46:13 load=48.02 48.43 42.18
+150-ordinary-fuzz.ts head exit 0
+== 150-fullQ-tsv-2 head 19:46:54 load=45.40 47.67 42.19
+150-ordinary-fuzz.ts head exit 0
+== 150-full-tsv-2 r22b 19:47:46 load=40.91 46.17 42.00
+150-ordinary-fuzz.ts r22b exit 0
+== 150-fullQ-tsv-2 r22b 19:48:16 load=38.17 45.03 41.75
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-csv-2 head 19:48:56 load=39.10 44.34 41.66
+150-ordinary-fuzz.ts head exit 0
+== 150-fullQ-csv-2 head 19:49:34 load=40.55 44.12 41.68
+150-ordinary-fuzz.ts head exit 0
+== 150-full-csv-2 r22b 19:50:11 load=40.36 43.61 41.61
+150-ordinary-fuzz.ts r22b exit 0
+== 150-fullQ-csv-2 r22b 19:50:50 load=39.01 42.90 41.45
+150-ordinary-fuzz.ts r22b exit 0
+== 150-full-xlsx-2 head 19:51:48 load=43.34 43.58 41.78
+150-ordinary-fuzz.ts head exit 0
+== 150-full-xlsx-2 r22b 19:52:53 load=41.96 43.24 41.79
+150-ordinary-fuzz.ts r22b exit 0
+done

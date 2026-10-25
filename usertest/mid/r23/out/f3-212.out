@@ -1,0 +1,52 @@
+0:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+1:formal_price: R013 x1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+2:next_day: +3d
+3:pick_supplier: R048 R048 を 因幡電機 で採用
+4:bulk: 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+5:edit_qty: R039 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / ス
+6:order: R013 R013: 発注済にしました
+7:pick_supplier: none
+8:undo: design 元に戻す: セル編集
+9:edit_qty: R012  で選び、変更番号（] 行 5（Rev.2） を公開しました
+10:add_row: R081 を入れて Enter] 行 1（Rev.3） を公開しました
+11:next_day: +4d
+12:pick_supplier: none
+13:reload: reload
+14:pm_decide: R005 y 納期NG の行では y は使えません（Enter で決定パネル）
+15:withdraw_x: none
+16:formal_price: none
+17:rename_supplier: S3→立花エレテック（本社） JSON を読み込みました（案件 1 件
+18:formal: 拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+19:pm_decide: R023 y 納期NG の行では y は使えません（Enter で決定パネル）
+20:reload: reload
+21:excel: purchasing 1 sheets
+22:pm_decide: R021 Shift+Y R021: 受入
+23:edit_qty: R076 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+24:add_row: R082 を入れて Enter] 行 2（Rev.4） を公開しました
+25:early_adopt: none
+26:receive: R013 R013: 入荷済にしました
+27:withdraw_x: none
+28:switch_proc: R046→客先指定品 を入れて Enter] 行 1（Rev.5） を公開しました
+29:receive: none
+30:receive: none
+31:pm_decide: R023 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+32:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+33:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+34:order: none
+35:excel: purchasing 3 sheets
+36:edit_qty: R071 を入れて Enter] 行 1（Rev.6） を公開しました
+37:excel: pm 1 sheets
+38:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 1 行
+39:switch_proc: R069→客先指定品 を入れて Enter] 行 1（Rev.7） を公開しました
+40:switch_proc: R034→相見積 を入れて Enter] 行 1（Rev.8） を公開しました
+41:undo: design 公開済の値を戻しました。Rev は残し、未公開として 1 行に積みました（Ctr
+42:formal_price: R067 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+43:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+44:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+45:edit_qty: R078 を入れて Enter] 行 2（Rev.9） を公開しました
+46:edit_qty: R078 入れて Enter] 行 1（Rev.10） を公開しました
+47:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+48:pm_decide: R021 y R021: 先行発注許可
+49:order: none
+PASS F3-212 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

@@ -1,0 +1,14 @@
+Q R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+moq R007 S1 100 → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → I-006 最小ロット を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行 | text 
+publish → 指摘 1 件 を公開しました
+Q after R007 相見積 st=quoted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] issues [["I-006","最小ロット","open","必要数 2 → 丸め数量 100（因幡電機 MOQ 100）、余剰 98（¥2,809,072）。余剰が閾値 ¥20,000 を超えるので、"]] ball pm case 閾値超
+PM 7 has Q true
+PM y → R007: 承認
+Q after y R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済 ball design issues [["I-006","最小ロット","confirmed","必要数 2 → 丸め数量 100（因幡電機 MOQ 100）、余剰 98（¥2,809,072）。余剰が閾値 ¥20,000 を超えるので、"]]
+PASS I5-1 選定前の行の最小ロット（閾値超）を PM が承認しても、採用の無い「選定済」にしない（見積済のまま選定者へ、または丸める商社で採用） :: R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済
+design a Q → R007 を 立花エレテック で採用（スコア 96.8） | R007 相見積 st=selected adopt=S2 reason= oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 6 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 6 行 × 2 社に正式見積を依頼 [["因幡電機",false],["立花エレテック",true]] | R007 相見積 st=formalRequested adopt=S2 reason= oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+PASS I5-2 その行は正式見積の依頼まで進められる :: 正式見積依頼書（社外）を出します: 対象 6 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 6 行 × 2 社に正式見積を依頼 / R007 相見積 st=formalRequested adopt=S2 reason= oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+ERRORS []
+== 2/2 PASS

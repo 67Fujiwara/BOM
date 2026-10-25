@@ -1,0 +1,21 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+N R081
+D qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.c → [変更セット（2 行: R035, R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+N after Rev.c R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] status submitted pendingRev 3 subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",null,""]]
+N name → 行 2（Rev.3） を公開しました
+publish Rev.d → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+N after Rev.d R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] status submitted pendingRev 4 pa {"name":"追加行N2"} subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R035,R081",{"R081":4},""],[4,"廃番・入手難","pend","R081",null,""]]
+panel N 決定パネル R081（変更セット Rev.4（Rev.3 の変更をまとめた））
+PM y D (Rev.c) → R035・Rev.3 の変更セット 1 行まとめて: 承認
+N after Rev.c approve R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] status submitted
+PM Shift+Y N (Rev.d) → R081・Rev.4 の変更セット 1 行まとめて: 却下
+N after reject R081 相見積 st=draft adopt=- reason= oq=- flags={} quotes=[] status draft publishedRev undefined working null
+PASS M8A-1 承認されていない追加行 N は、Rev.d の却下で下書き（提出前）に戻る（提出済のまま購買に出ない） :: status=draft pm=false publishedRev=undefined
+purch 9 has N false
+rough → 5 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["因幡電機",false],["立花エレテック",false],["ミスミ",false]]
+PASS M8A-2 購買の概算見積の依頼に N が出ない :: [["因幡電機",["R076","R077","R078","R079","R080"]],["立花エレテック",["R076","R077","R078","R079","R080"]],["ミスミ",["R076","R077","R078","R079","R080"]]]
+ERRORS []
+== 2/2 PASS

@@ -1,0 +1,15 @@
+X R004 R004 相見積 st=quoted adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] case "先行発注判断"
+B prompt {"kind":"prompt","title":"決定: 先行発注許可（R004。理由・任意）"}
+PASS Q6-ltb-y-0 B に理由の欄が開く :: {"kind":"prompt","title":"決定: 先行発注許可（R004。理由・任意）"}
+A publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+A rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました []
+state before B Enter R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] case "先行発注判断"
+B Enter → R004 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+after R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] new decisions [] B panel null ball pm case 先行発注判断
+PASS Q6-ltb-y-1 別タブで概算が取り直されたあと、古い決定パネルから決定が記録されない（見ていない状態への受入・次点・承認） :: decisions=[] toast=R004 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+PASS Q6-ltb-y-2 取り直し中の行が、採用なしで受入された・選定済になった状態にならない :: R004 相見積 st=quoting adopt=- reason= oq=- flags={"ltbPending":true} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+PASS Q6-ltb-y-3 固まる行がない :: []
+PASS Q6-ltb-y-4 toast に undefined/NaN が出ない :: R004 の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください
+ERRORS [] []
+PASS Q6-ltb-y-9 console error なし :: []
+== 6/6 PASS

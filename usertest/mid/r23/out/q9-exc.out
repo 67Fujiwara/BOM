@@ -1,0 +1,13 @@
+X R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=48 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case 例外選定
+publish → …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+X published R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=77 flags={"pmPending":true,"pmReason":"例外選定","requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] requote true
+Ctrl+. panel ["再見積要: 据え置き（旧見積を有効に戻す）","再見積要: 再見積（概算見積を依頼）"]
+keep idx 0
+X after keep R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=77 flags={"pmPending":true,"pmReason":"例外選定","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] ball pm case 例外選定 toast R011 の旧見積を戻しました（概算。採用はそのまま）
+PASS Q9-exc-1 据え置きで再見積要が外れ、旧見積が有効に戻る :: R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=77 flags={"pmPending":true,"pmReason":"例外選定","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS Q9-exc-2 据え置きで採用・PM の判断の印は壊れない（採用あり／承認待ちのまま） :: R011 相見積 st=quoted adopt=S3 reason=その他: 評価用 oq=77 flags={"pmPending":true,"pmReason":"例外選定","ltbPending":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS Q9-exc-8 不変条件
+PASS Q9-exc-9 固まる行がない :: []
+ERRORS []
+PASS Q9-exc-99 console error なし :: []
+== 5/5 PASS

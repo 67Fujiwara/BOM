@@ -1,0 +1,19 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]]
+formal F1 → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X formal R034 客先指定品 st=formalRequested adopt=S1 reason=指定先（固定） oq=1 flags={} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] formalRequested
+import stop S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+X after stop R034 客先指定品 st=quoting adopt=- reason= oq=1 flags={"droppedStopped":"因幡電機","formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] st quoting wd 因幡電機 P-2026-041-S1-F1 fixed S2 | sb ナビR034 ID採用していた 因幡電機 は取引停止（商社マスタ）のため採用を外しました。購買が次の依頼先に頼みます。正式依頼を取り下げ: 因幡電機 P-2026-041-S1-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+PASS L5F-1 正式依頼中の依頼先（因幡）を取引停止にすると、因幡への取下げが購買に出て、依頼先は次の商社（立花） :: wd=因幡電機 P-2026-041-S1-F1 fixed=S2
+PASS L5F-2 購買のステータスバーで、取引停止で因幡を外したことと取下げが分かる（客先指定品で「選び直してください」と選定者向けの案内を出さない） :: ナビR034 ID採用していた 因幡電機 は取引停止（商社マスタ）のため採用を外しました。購買が次の依頼先に頼みます。正式依頼を取り下げ: 因幡電機 P-2026-041-S1-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+rough S2 → 依頼する行がありません（提出済・再見積要の行なし） []
+S2 answer EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし） / EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+X after S2 answer R034 客先指定品 st=selected adopt=S2 reason=指定先（固定） oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]] selected
+formal F → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+files [["立花エレテック",true]]
+PASS L5F-3 立花の回答で立花が採用され、正式見積の依頼書が立花に出る :: [["立花エレテック",true]]
+import reenable S1 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+X after reenable R034 客先指定品 st=formalRequested adopt=S2 reason=指定先（固定） oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]] st formalRequested fixed S2 wd 因幡電機 P-2026-041-S1-F1
+PASS L5F-4 因幡を取引可に戻しても、立花の採用・正式依頼中のまま（依頼先が因幡に戻らない） :: R034 客先指定品 st=formalRequested adopt=S2 reason=指定先（固定） oq=1 flags={"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]] st=formalRequested
+ERRORS []
+== 4/4 PASS

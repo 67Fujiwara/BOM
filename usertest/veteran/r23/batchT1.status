@@ -1,0 +1,89 @@
+== 230-delim-consistency head 18:51:12 load=11.18 4.30 6.42
+230-delim-consistency.ts head exit 0
+== 195-delim-detect head 18:51:17 load=11.18 4.30 6.42
+195-delim-detect.ts head exit 0
+== 176-delim-detect head 18:51:21 load=11.89 4.56 6.49
+176-delim-detect.ts head exit 0
+== 241-kind-vocab head 18:51:23 load=12.86 4.88 6.59
+241-kind-vocab.ts head exit 0
+== 233-parsetable-perf head 18:51:40 load=15.40 5.86 6.88
+233-parsetable-perf.ts head exit 0
+== 260-fuzz-default-csv head 18:52:23 load=15.68 7.30 7.33
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-default-tsv head 18:52:27 load=15.68 7.30 7.33
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-rfc-csv head 18:52:31 load=15.06 7.32 7.33
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-rfc-tsv head 18:52:37 load=16.34 7.71 7.46
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-rfc-noqc-csv head 18:52:46 load=17.94 8.33 7.66
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-rfc-noqc-tsv head 18:52:50 load=18.02 8.51 7.72
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-noml-csv head 18:52:56 load=18.10 8.68 7.78
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-noml-tsv head 18:53:03 load=21.04 9.63 8.10
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-mlonly-csv head 18:53:08 load=20.64 9.73 8.15
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-mlonly-tsv head 18:53:14 load=20.83 9.95 8.23
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-ml1-csv head 18:53:23 load=21.34 10.42 8.39
+260-quote-fuzz.ts head exit 0
+== 260-fuzz-ml1-tsv head 18:53:30 load=23.23 10.99 8.59
+260-quote-fuzz.ts head exit 0
+== 214-csv head 18:53:37 load=23.53 11.26 8.69
+214-raw-quote-small.ts head exit 0
+== 214-tsv head 18:53:40 load=23.73 11.50 8.78
+214-raw-quote-small.ts head exit 0
+== 213-enum head 18:53:44 load=23.99 11.76 8.88
+213-raw-quote-enum.ts head exit 0
+== 222-csv head 18:53:49 load=25.20 12.21 9.04
+222-quote-ml-enum.ts head exit 0
+== 222-tsv head 18:53:58 load=25.80 12.78 9.26
+222-quote-ml-enum.ts head exit 0
+== 230-delim-consistency r22b 18:54:06 load=25.98 13.03 9.36
+230-delim-consistency.ts r22b exit 0
+== 195-delim-detect r22b 18:54:09 load=25.02 13.05 9.39
+195-delim-detect.ts r22b exit 0
+== 176-delim-detect r22b 18:54:15 load=24.22 13.08 9.42
+176-delim-detect.ts r22b exit 0
+== 241-kind-vocab r22b 18:54:19 load=23.56 13.13 9.46
+241-kind-vocab.ts r22b exit 0
+== 233-parsetable-perf r22b 18:54:44 load=22.68 13.74 9.75
+233-parsetable-perf.ts r22b exit 0
+== 260-fuzz-default-csv r22b 19:00:59 load=25.15 21.27 14.53
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-default-tsv r22b 19:01:08 load=24.01 21.15 14.56
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-rfc-csv r22b 19:01:16 load=25.77 21.56 14.73
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-rfc-tsv r22b 19:01:25 load=24.85 21.51 14.79
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-rfc-noqc-csv r22b 19:01:33 load=24.50 21.55 14.87
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-rfc-noqc-tsv r22b 19:01:40 load=24.06 21.51 14.90
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-noml-csv r22b 19:01:45 load=22.85 21.30 14.87
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-noml-tsv r22b 19:01:49 load=22.22 21.20 14.87
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-mlonly-csv r22b 19:01:54 load=21.72 21.11 14.87
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-mlonly-tsv r22b 19:02:00 load=21.51 21.08 14.90
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-ml1-csv r22b 19:02:07 load=20.82 20.94 14.89
+260-quote-fuzz.ts r22b exit 0
+== 260-fuzz-ml1-tsv r22b 19:02:17 load=26.74 22.24 15.37
+260-quote-fuzz.ts r22b exit 0
+== 214-csv r22b 19:02:27 load=27.40 22.53 15.54
+214-raw-quote-small.ts r22b exit 0
+== 214-tsv r22b 19:02:35 load=27.39 22.68 15.66
+214-raw-quote-small.ts r22b exit 0
+== 213-enum r22b 19:02:41 load=27.60 22.80 15.74
+213-raw-quote-enum.ts r22b exit 0
+== 222-csv r22b 19:02:50 load=27.55 22.95 15.87
+222-quote-ml-enum.ts r22b exit 0
+== 222-tsv r22b 19:03:10 load=27.90 23.34 16.15
+222-quote-ml-enum.ts r22b exit 0
+done

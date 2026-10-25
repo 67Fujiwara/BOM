@@ -1,0 +1,7 @@
+{"key":"¥","code":"KeyY","shift":false,"before":{"view":"view-7"},"after":{"view":"view-7","cursor":"—","mode":"ナビ"},"info":{"confirmed":true},"toast":"案件設定を確定しました（購買・設計に伝わります）"}
+{"key":"¢","code":"Digit4","shift":false,"before":{"view":"view-7"},"after":{"view":"view-4","cursor":"R003 部品名","mode":"ナビ"},"info":{"confirmed":false},"toast":""}
+{"key":"≈","code":"KeyX","shift":false,"before":{"view":"view-7"},"after":{"view":"view-7","cursor":"—","mode":"ナビ"},"info":{"confirmed":false},"toast":"行を選んでください（↓ で先頭の行へ）"}
+{"key":"å","code":"KeyA","shift":false,"before":{"view":"view-7"},"after":{"view":"view-7","cursor":"—","mode":"ナビ"},"info":{"confirmed":false},"toast":"案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く）"}
+{"key":"Y","code":"KeyY","shift":true,"before":{"view":"view-7"},"after":{"view":"view-7","cursor":"—","mode":"ナビ"},"info":{"confirmed":false},"toast":"案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く）"}
+{"key":"¡","code":"Digit1","shift":false,"before":{"view":"view-7"},"after":{"view":"view-1","cursor":"R001 部品名","mode":"ナビ"},"info":{"confirmed":false},"toast":""}
+{"name":"console/pageerror","errs":[]}

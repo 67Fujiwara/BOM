@@ -1,0 +1,52 @@
+0:pm_decide: R003 Shift+Y R003: 受入
+1:rough: 依頼する行がありません（提出済・再見積要の行なし）
+2:edit_qty: R054 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+3:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+4:bulk: 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+5:replace_row: R027 R027 の置き換え品 R081 を作りました（公開すると R027 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+6:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+7:undo: purchasing 元に戻す: 正式見積を依頼（社外）
+8:pm_decide: R039 Shift+Y R039: 受入
+9:pick_supplier: none
+10:excel: pm 3 sheets
+11:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+12:pm_decide: R055 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+13:pm_decide: R046 Shift+Y R046: 受入
+14:pick_supplier: none
+15:edit_qty: R040 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+16:formal_price: R013 x3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+17:next_day: +1d
+18:decline: none
+19:decline: none
+20:undo: design 元に戻す: セル編集
+21:cancel_row: R054 を入れて Enter] 行 1（Rev.4） を公開しました
+22:switch_proc: R007→支給品 行 1（Rev.4） を公開しました
+23:order: none
+24:pm_decide: R032 Shift+Y R032: 受入
+25:formal: になります → 71 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+26:pm_decide: R038 b R038: 次点商社へ
+27:withdraw_x: R038 R038: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+28:order: none
+29:order: none
+30:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:pm_decide: R001 b R001: 次点商社へ
+32:pick_supplier: none
+33:pick_supplier: none
+34:pm_decide: R060 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+36:add_row: R082 を入れて Enter] 行 2（Rev.5） を公開しました
+37:pm_decide: R013 Shift+Y 使えるキー: y / b / g / d / q（↑↓ と Enter でも選べます）
+38:rough: 6 行 × 3 社に依頼（回答期限 2026-11-01）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+39:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+40:formal_price: R020 x1.5 EDIT-ERR R020 の正式単価 ¥4,403（概算から +50%）。桁・
+41:bulk: 採用 17 / 拮抗 1（要見直し）/ 承認要 0 / スキップ 14
+42:undo: design 元に戻す: 未採用を推奨で一括採用
+43:pm_decide: R026 y R026: 先行発注許可
+44:switch_proc: R081→社内在庫 を入れて Enter] 行 1（Rev.6） を公開しました
+45:replace_row: R067 R067 の置き換え品 R083 を作りました（公開すると R067 は置換済に / を入れて Enter] 行 2（Rev.7） を公開しました
+46:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+47:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+48:formal_price: R053 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+49:consolidate: やめました（何も変えていません）
+PASS F1-311 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

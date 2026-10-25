@@ -1,0 +1,15 @@
+DEL/note n=84 deleted=78 flag=6 kept=0
+DEL/model n=84 deleted=81 flag=0 kept=3
+KEEP/note n=86 deleted=1 flag=18 kept=67
+KEEP/model n=86 deleted=1 flag=0 kept=85
+ASK/note n=42 deleted=1 flag=37 kept=4
+ASK/model n=42 deleted=7 flag=0 kept=35
+  DEL/note -> flag (6): 削除対象 ｜ 削除（不要） ｜ 取外してください ｜ 取り外して下さい ｜ 削除Rev.2 ｜ 削除（盤ごと）
+  DEL/model -> kept (3): 取外してください ｜ 取り外して下さい ｜ 削除Rev.2
+  KEEP/note -> deleted (1): 削除(Rev.3で復活)
+  KEEP/note -> flag (18): 削除検討 ｜ 廃止品番に注意 ｜ 削除の可否を確認 ｜ 削除してはいけない ｜ 削除すると故障 ｜ 削除した場合は連絡 ｜ 廃止になったら代替へ ｜ 取外し・再取付 ｜ 取外し箇所は図面参照 ｜ 削除ではない ｜ 削除ではなく変更 ｜ 削除は行わない ｜ 削除しなくてよい ｜ 削除しなくて良い ｜ 撤去履歴あり ｜ 削除履歴あり ｜ 撤去機構 ｜ 取外し治具
+  KEEP/model -> deleted (1): 削除(Rev.3で復活)
+  ASK/note -> deleted (1): 削除（Rev.未定）
+  ASK/note -> kept (4): 削除を検討 ｜ 削除（要否未定） ｜ 削除（検討） ｜ 削除検討要
+  ASK/model -> deleted (7): 削除に変更 ｜ 削除予定 ｜ 廃止予定 ｜ 撤去予定 ｜ 取外し予定 ｜ 削除（Rev.未定） ｜ 削除→変更
+  ASK/model -> kept (35): 削除で ｜ 削除方向 ｜ 削除候補 ｜ 削除かも ｜ 削除？ ｜ 削除? ｜ Del? ｜ 要削除？ ｜ 削除or変更 ｜ 削除/変更 ｜ 削除したい ｜ 削除したほうがよい ｜ 削除案 ｜ 廃止案 ｜ 削除相談 ｜ 削除を検討 ｜ 削除の予定 ｜ 削除か変更 ｜ 削除または変更 ｜ 撤去か移設 ｜ 削除（要否未定） ｜ 削除（検討） ｜ 削除してもよい ｜ 削除で良いか ｜ 削除を依頼 ｜ 削除依頼 ｜ 削除指示 ｜ 削除申請 ｜ 削除提案 ｜ 廃止検討 ｜ 撤去検討 ｜ 取外し検討 ｜ 削除検討要 ｜ 廃止の方向 ｜ 廃止か否か

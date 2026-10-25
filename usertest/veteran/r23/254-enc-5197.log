@@ -1,0 +1,11 @@
+{"f":"f1-utf16le-refs.txt","expect":10,"toast":"f1-utf16le-refs.txt を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 /  / 1 / ","部品2 / M-2 /  / 1 / "]}
+{"f":"f2-utf16le-simple.txt","expect":10,"toast":"f2-utf16le-simple.txt を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 / オムロン / 1 / ","部品2 / M-2 / オムロン / 2 / "]}
+{"f":"f3-utf16le-comma-maker.txt","expect":10,"toast":"f3-utf16le-comma-maker.txt を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 / Omron, Inc. / 1 / ","部品2 / M-2 / オムロン / 2 / "]}
+{"f":"f4-sjis-tsv-refs.tsv","expect":10,"toast":"f4-sjis-tsv-refs.tsv を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 /  / 1 / ","部品2 / M-2 /  / 1 / "]}
+{"f":"f5-sjis-csv-refs.csv","expect":10,"toast":"f5-sjis-csv-refs.csv を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 /  / 1 / ","部品2 / M-2 /  / 1 / "]}
+{"f":"f6-utf8bom-tsv-refs.tsv","expect":10,"toast":"f6-utf8bom-tsv-refs.tsv を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 /  / 1 / ","部品2 / M-2 /  / 1 / "]}
+{"f":"f7-utf16le-ml.txt","expect":8,"toast":"f7-utf16le-ml.txt を読み込みました。Enter で次へ","rows":8,"sample":["部品1 / M-1 / Omron, Inc. / 1 / 1行目 2行目 3行目","部品2 / M-2 / Omron, Inc. / 2 / 1行目 2行目 3行目"]}
+{"f":"f8-sjis-tsv-comma-maker.tsv","expect":10,"toast":"f8-sjis-tsv-comma-maker.tsv を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 / Omron, Inc. / 1 / ","部品2 / M-2 / オムロン / 2 / "]}
+{"f":"f9-utf16le-single-col.txt","expect":5,"toast":"f9-utf16le-single-col.txt を読み込みました。Enter で次へ","rows":5,"sample":["ターミナル /  /  / 1 / ","ターミナル /  /  / 1 / "]}
+{"f":"f10-utf16le-title.txt","expect":10,"toast":"f10-utf16le-title.txt を読み込みました。Enter で次へ","rows":10,"sample":["部品1 / M-1 / Omron, Inc. / 1 / ","部品2 / M-2 / オムロン / 2 / "]}
+errors []

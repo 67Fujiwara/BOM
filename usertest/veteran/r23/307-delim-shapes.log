@@ -1,0 +1,31 @@
+ok  H1-nohead-tsv-refs2                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs2           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs2               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs3                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs3           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs3               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs4                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs4           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs4               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs5                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs5           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs5               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs8                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs8           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs8               exp=tab/10 got=tab/11 names=B|M-1
+ok  H4-both-hit                        exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H5-both-hit-csv                    exp=comma/12 got=comma/12 names=部品1|部品2
+NG  H6-tsv-header-in-comma-title       exp=tab/10 got=comma/10 names=部品1	M-1	1	R10|部品2	M-2	1	R20
+ok  H7-csv-header-tab-title            exp=comma/10 got=comma/10 names=部品1|部品2
+NG  H8-kicad-csv-tabs-desc             exp=comma/10 got=comma/10 names=10k	inline|10k	inline
+ok  H9-altium-tsv                      exp=tab/10 got=tab/10 names=抵抗, 1/10W, 1%|抵抗, 1/10W, 1%
+ok  H10-tsv-semicolon-pt               exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H11-tsv-crlf-bom                   exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H12-csv-semicolon                  exp=none/5 got=none/6 names=部品名;型式;数量|部品1;M-1;1
+ok  H13-tsv-ragged-commas              exp=tab/12 got=tab/12 names=部品1|部品2
+ok  H14-tsv-trailing-tab               exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H15-tsv-1col-name-comma            exp=tab/10 got=tab/10 names=抵抗, 1, a, b, c, d|抵抗, 2, a, b, c, d
+ok  H16-tsv-multiline-quoted-refs      exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H17-tsv-title-lines-many           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H18-csv-title-lines-tabs           exp=comma/10 got=tab/11 names=部品名,型式,数量,備考|部品1,M-1,1,a
+NG 9 / 30

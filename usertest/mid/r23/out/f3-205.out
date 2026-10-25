@@ -1,0 +1,62 @@
+0:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:edit_qty: R001 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+2:bulk: 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+3:order: R013 R013: 発注済にしました
+4:rename_supplier: S1→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+5:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+6:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+7:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+8:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+9:order: none
+10:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+11:order: none
+12:consolidate: やめました（何も変えていません）
+13:early_adopt: none
+14:switch_proc: R043→指定商社 やめました（何も変えていません）
+15:formal: 社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+16:rough: 依頼する行がありません（提出済・再見積要の行なし）
+17:pm_decide: R032 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+18:pm_decide: R044 y 納期NG の行では y は使えません（Enter で決定パネル）
+19:early_adopt: none
+20:add_row: R081 ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+21:replace_row: R068 R068 の置き換え品 R082 を作りました（公開すると R068 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+22:edit_qty: R037 行 2（Rev.3） を公開しました
+23:pm_measure: R039 no-q
+24:edit_qty: R037 ありません。エラーのある行が 3 行あります（F8 で移動）
+25:formal_price: R009 x1.5 EDIT-ERR R009 の正式単価 ¥204（概算から +50%）。桁・行を
+26:pick_supplier: R020 1〜2 で商社を選んでください
+27:bulk: 採用 6 / 拮抗 4（要見直し）/ 承認要 0 / スキップ 1
+28:edit_qty: R005 前後に空白があります … 直すか Alt+x で確認済みに）
+29:pm_measure: R020 e R020: 特急・分納
+30:switch_proc: R044→相見積 前後に空白があります … 直すか Alt+x で確認済みに）
+31:add_row: R083 前後に空白があります … 直すか Alt+x で確認済みに）
+32:consolidate: やめました（何も変えていません）
+33:decline: none
+34:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+35:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+36:pm_measure: R009 p R009: 委譲
+37:requote_cycle: R026 あります … 直すか Alt+x で確認済みに） / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+38:edit_qty: R047 前後に空白があります … 直すか Alt+x で確認済みに）
+39:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+40:undo: pm 元に戻す: 決定: 委譲
+41:formal_price: R009 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+42:formal: 」になります → 4 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 3 行 / 再見積要 0 行
+43:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 1 行・承認待ち 3 行・再見積要 0 行は除外）
+44:order: R009 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+45:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 1 行・承認待ち 3 行・再見積要 0 行は除外）
+46:change_need_date: R023 役割: 設計（山田）。既定のビュー 4 要確認 を開きました あります … 直すか Alt+x で確認済みに）
+47:pick_supplier: none
+48:formal_price: R002 x1.5 EDIT-ERR R002 の正式単価 ¥611（概算から +50%）。桁・行を
+49:edit_qty: R080 前後に空白があります … 直すか Alt+x で確認済みに）
+50:pm_decide: R009 b R009: 次点商社へ
+51:edit_qty: R040 前後に空白があります … 直すか Alt+x で確認済みに）
+52:pm_measure: R021 e R021: 特急・分納
+53:formal_price: R072 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+54:switch_proc: R071→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+55:receive: R013 R013: 入荷済にしました
+56:add_row: R084 unpublished
+57:ltb_request: none
+58:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+59:receive: none
+PASS F3-205 不変条件の違反なし（60 操作） :: violations=0
+== 1/1 PASS

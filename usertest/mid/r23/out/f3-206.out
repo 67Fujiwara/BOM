@@ -1,0 +1,52 @@
+0:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+1:pm_decide: R003 Shift+Y R003: 受入
+2:formal_price: R013 x1.5 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:requote_cycle: R070 、変更番] 行 6（Rev.2） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+4:pm_decide: empty
+5:undo: pm 元に戻す: 決定: 受入
+6:ltb_request: R066 R066: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥429）
+7:switch_proc: R058→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+8:requote_cycle: R005 あります … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+9:order: R013 R013: 発注済にしました
+10:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+11:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+12:cancel_row: R005 を入れて Enter] 行 1（Rev.4） を公開しました
+13:receive: R013 R013: 入荷済にしました
+14:replace_row: R039 R039 の置き換え品 R081 を作りました（公開すると R039 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+15:pm_measure: R066 no-g
+16:decline: R023 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+17:pm_decide: R066 y R066: 先行発注許可
+18:requote_cycle: R042 nter] 行 1（Rev.6） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+19:requote_cycle: R043 nter] 行 1（Rev.7） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+20:receive: none
+21:order: none
+22:excel: pm 3 sheets
+23:decline: R014 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+24:pick_supplier: R064 R064 を 立花エレテック で採用（その他: fuzz）
+25:excel: design 3 sheets
+26:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:replace_row: R057 R057 の置き換え品 R082 を作りました（公開すると R057 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+28:pm_measure: empty
+29:pm_decide: empty
+30:ltb_request: R026 R026: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥1,335）
+31:pm_measure: R026 no-d
+32:pick_supplier: R015 1〜2 で商社を選んでください
+33:formal: 出します: 対象 3 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 3 行 × 1 社に正式見積を依頼
+34:order: none
+35:edit_qty: R064 を入れて Enter] 行 1（Rev.9） を公開しました
+36:requote_cycle: R022 ter] 行 1（Rev.10） を公開しました / 2 行 × 2 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+37:requote_cycle: R003 ter] 行 1（Rev.11） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）。見積済だった 1 行
+38:early_adopt: R077 有効な見積がありません（未回答・辞退・期限切れのみ）
+39:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+40:edit_qty: R053 入れて Enter] 行 1（Rev.12） を公開しました
+41:bulk: 採用 60 / 拮抗 9（要見直し）/ 承認要 0 / スキップ 14
+42:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+43:rough: 1 行 × 2 社に依頼（回答期限 2026-10-31）
+44:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+45:edit_qty: R015 入れて Enter] 行 1（Rev.13） を公開しました
+46:add_row: R083 入れて Enter] 行 1（Rev.14） を公開しました
+47:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+48:change_need_date: R030 役割: 設計（山田）。既定のビュー 4 要確認 を開きました 済みに） … 直すか Alt+x で確認済みに）
+49:edit_qty: R021 公開できません: 未確認の警告 1 件（R030 必要日(前
+PASS F3-206 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

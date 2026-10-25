@@ -1,0 +1,3 @@
+DELIM="\t" N=40000 ok=39999 bad=1
+qe: 1/26307  qs: 1/26208  ml: 1/26371
+{"text":"v00\tv01\tv02\tv03\tv04\r\n\"\"\t\"\"\t\"\"\t\"\"\t\"\"\r\nv20\t\"a1, b\nc, d\"\t\"a2, b\nc, d\"\t\"a3, b\nc, d\"\tv24\r\n\"a0, b\nc, d\"\tv31\t\"\"\t\"a\"\"b\"\tv34\r\n\"\"\t\"\"\tv42\t\"\"\tv44\r\nv50\t\"a1, b\nc, d\"\tv52\tv53\t\"\"\r\nv60\tv61\t\"\"\tv63\tv64\n","got":[["v00","v01","v02","v03","v04"],["v20","a1, b c, d","a2, b c, d","a3, b c, d","v24"],["a0, b c, d","v31","","a\"b","v34"],["","","v42","","v44"],["v50","a1, b c, d","v52","v53",""],["v60","v61","","v63","v64"]],"kinds":"x,x,x,x,x / qe,qe,qe,qe,qe / x,ml,ml,ml,x / ml,x,qe,qs,x / qe,qe,x,qe,x / x,ml,x,x,qe / x,x,qe,x,

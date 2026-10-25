@@ -1,0 +1,52 @@
+0:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:edit_qty: R013 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+2:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+3:switch_proc: R052→相見積 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+4:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+5:decline: R066 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+6:replace_row: R033 R033 の置き換え品 R081 を作りました（公開すると R033 は置換済に / ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+7:edit_qty: R009 1 件（R009 メーカが空です … F8 で移動して直す）
+8:undo: design 元に戻す: セル編集
+9:switch_proc: R048→客先指定品 を入れて Enter] 行 1（Rev.3） を公開しました
+10:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+11:pick_supplier: R062 R062: 因幡電機 を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+12:rough: 6 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+13:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+14:switch_proc: R002→指定商社 を入れて Enter] 行 1（Rev.4） を公開しました
+15:excel: design 3 sheets
+16:replace_row: R068 R068 の置き換え品 R082 を作りました（公開すると R068 は置換済に / を入れて Enter] 行 2（Rev.5） を公開しました
+17:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+18:pm_decide: R062 y R062: 承認
+19:switch_proc: R050→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+20:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+21:order: none
+22:withdraw_x: R013 R013: 正式依頼の取下げ（因幡電機 P-2026-041-S1-1）を伝えた（確認済）
+23:receive: none
+24:pick_supplier: R058 R058 を 立花エレテック で採用（その他: fuzz）
+25:formal_price: none
+26:receive: none
+27:bulk: 採用 64 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 6
+28:switch_proc: R067→社内在庫 を入れて Enter] 行 1（Rev.6） を公開しました
+29:pick_supplier: none
+30:pm_decide: R021 y 納期NG の行では y は使えません（Enter で決定パネル）
+31:edit_qty: R071 を入れて Enter] 行 1（Rev.7） を公開しました
+32:next_day: +8d
+33:pick_supplier: none
+34:decline: R076 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+35:rough: 1 行 × 3 社に依頼（回答期限 2026-11-08）
+36:order: none
+37:edit_qty: R036 を入れて Enter] 行 1（Rev.8） を公開しました
+38:undo: pm 元に戻す: 決定: 承認
+39:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+40:formal: になります → 62 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 1 行
+41:next_day: +16d
+42:order: none
+43:edit_qty: R002 を入れて Enter] 行 1（Rev.9） を公開しました
+44:pm_decide: R008 b R008: 次点商社へ
+45:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+46:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+47:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 2 行
+48:edit_qty: R037 入れて Enter] 行 1（Rev.10） を公開しました
+49:next_day: +19d
+PASS F1-310 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

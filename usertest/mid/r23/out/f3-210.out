@@ -1,0 +1,52 @@
+0:decline: R058 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+2:add_row: R081 unpublished
+3:next_day: +3d
+4:withdraw_x: none
+5:add_row: R082 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+6:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+7:bulk: 採用 69 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 0
+8:requote_cycle: R040 nter] 行 1（Rev.3） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-11-03）。メーカを扱う商社がマ
+9:edit_qty: R054 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+10:decline: R077 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+11:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+12:requote_cycle: R027 nter] 行 2（Rev.4） を公開しました / 2 行 × 3 社に依頼（回答期限 2026-11-03）
+13:withdraw_x: none
+14:cancel_row: R035 を入れて Enter] 行 1（Rev.5） を公開しました
+15:undo: purchasing 元に戻す: 概算見積を依頼（因幡電機・立花エレテック・ミスミ）
+16:edit_qty: R047 を入れて Enter] 行 1（Rev.6） を公開しました
+17:order: R013 R013: 発注済にしました
+18:order: none
+19:switch_proc: R002→相見積 ありません。エラーのある行が 2 行あります（F8 で移動）
+20:ltb_request: none
+21:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+22:pm_measure: R032 e R032: 特急・分納
+23:excel: purchasing 1 sheets
+24:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+25:pm_decide: R026 Shift+Y R026: 受入
+26:formal: になります → 28 行 × 2 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 0 行 / 再見積要 2 行
+27:withdraw_x: none
+28:receive: R013 R013: 入荷済にしました
+29:bulk: 採用 35 / 拮抗 2（要見直し）/ 承認要 0 / スキップ 13
+30:ltb_request: none
+31:formal_price: R057 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+32:pm_decide: R025 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+33:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+34:order: R057 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+35:pm_decide: R011 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+36:formal_price: R045 x3 EDIT-ERR R045 の正式単価 ¥30,417（概算から +200%）。
+37:receive: none
+38:requote_cycle: R061 ています … 直すか Alt+x で確認済みに） / 3 行 × 2 社に依頼（回答期限 2026-11-03）
+39:decline: R012 S1 EDIT-ERR 3 行 × 2 社に依頼（回答期限 2026-11-03）
+40:order: R057 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+41:formal: になります → 27 行 × 2 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 7 行 / 再見積要 0 行
+42:cancel_row: R060 文字が含まれています … 直すか Alt+x で確認済みに）
+43:receive: none
+44:order: R057 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+45:pick_supplier: none
+46:cancel_row: R032 文字が含まれています … 直すか Alt+x で確認済みに）
+47:requote_cycle: R010 ています … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+48:consolidate: やめました（何も変えていません）
+49:pm_measure: R005 d R005: 設計へ代替依頼
+PASS F3-210 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

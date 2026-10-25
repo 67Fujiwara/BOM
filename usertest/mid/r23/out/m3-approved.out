@@ -1,0 +1,21 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+case 閾値超 R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PM y → R011: 承認
+after approve R011 相見積 st=selected adopt=S1 reason= oq=100 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] [["I-006","最小ロット","confirmed"]]
+qty 30 → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after 30 R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS M3A-1 承認した余剰のまま必要数 30 にすると発注数は MOQ の 100（却下の印なし、発注数要確認なし） :: R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+qty 130 → 行 6（Rev.2） を公開しました
+publish → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+after 130 R011 相見積 st=selected adopt=S1 reason= oq=130 flags={"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS M3A-2 必要数 130（MOQ 超）で発注数 130 :: R011 相見積 st=selected adopt=S1 reason= oq=130 flags={"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+qty 10 → 行 1（Rev.3） を公開しました
+publish → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+INFO after 10（余剰 90 個。承認したときの 76 個より多い） R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] case なし [["I-006","最小ロット","confirmed"]]
+ERRORS []
+== 2/2 PASS

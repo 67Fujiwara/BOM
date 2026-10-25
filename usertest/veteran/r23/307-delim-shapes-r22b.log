@@ -1,0 +1,31 @@
+ok  H1-nohead-tsv-refs2                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs2           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs2               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs3                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs3           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs3               exp=tab/10 got=tab/11 names=B|M-1
+ok  H1-nohead-tsv-refs4                exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H2-unknownhead-tsv-refs4           exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H3-onehead-tsv-refs4               exp=tab/10 got=tab/11 names=B|M-1
+NG  H1-nohead-tsv-refs5                exp=tab/10 got=comma/10 names=R11|R21
+NG  H2-unknownhead-tsv-refs5           exp=tab/10 got=comma/10 names=R11|R21
+NG  H3-onehead-tsv-refs5               exp=tab/10 got=comma/10 names=|
+NG  H1-nohead-tsv-refs8                exp=tab/10 got=comma/10 names=R11|R21
+NG  H2-unknownhead-tsv-refs8           exp=tab/10 got=comma/10 names=R11|R21
+NG  H3-onehead-tsv-refs8               exp=tab/10 got=comma/10 names=|
+NG  H4-both-hit                        exp=tab/10 got=comma/11 names=部品名	型式	員数	回路記号|部品1	M-1	1	R10
+ok  H5-both-hit-csv                    exp=comma/12 got=comma/12 names=部品1|部品2
+ok  H6-tsv-header-in-comma-title       exp=tab/10 got=tab/10 names=部品1|部品2
+ok  H7-csv-header-tab-title            exp=comma/10 got=comma/10 names=部品1|部品2
+NG  H8-kicad-csv-tabs-desc             exp=comma/10 got=comma/10 names=10k	inline|10k	inline
+NG  H9-altium-tsv                      exp=tab/10 got=comma/10 names=1/10W|1/10W
+NG  H10-tsv-semicolon-pt               exp=tab/10 got=comma/10 names=R11|R21
+NG  H11-tsv-crlf-bom                   exp=tab/10 got=comma/10 names=R11|R21
+NG  H12-csv-semicolon                  exp=none/5 got=none/6 names=部品名;型式;数量|部品1;M-1;1
+NG  H13-tsv-ragged-commas              exp=tab/12 got=comma/12 names=R11|R21
+ok  H14-tsv-trailing-tab               exp=tab/10 got=tab/10 names=部品1|部品2
+NG  H15-tsv-1col-name-comma            exp=tab/10 got=comma/10 names=|
+NG  H16-tsv-multiline-quoted-refs      exp=tab/10 got=comma/15 names=部品1	M-1	1	"R10|R10
+NG  H17-tsv-title-lines-many           exp=tab/10 got=comma/11 names=部品名	型式	数量	回路記号|部品1	M-1	1	R10
+NG  H18-csv-title-lines-tabs           exp=comma/10 got=tab/11 names=部品名,型式,数量,備考|部品1,M-1,1,a
+NG 20 / 30

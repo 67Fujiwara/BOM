@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+2:excel: purchasing 3 sheets
+3:pm_decide: R003 Shift+Y R003: 受入
+4:order: R013 R013: 発注済にしました
+5:rough: 依頼する行がありません（提出済・再見積要の行なし）
+6:formal_price: none
+7:edit_qty: R006 を入れて Enter] 行 1（Rev.3） を公開しました
+8:requote_cycle: R009 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+9:formal_price: none
+10:undo: pm 元に戻す: 決定: 受入
+11:cancel_row: R027 1 件（R009 メーカが空です … F8 で移動して直す）
+12:pm_measure: R006 no-d
+13:switch_proc: R024→支給品 1 件（R009 メーカが空です … F8 で移動して直す）
+14:bulk: 採用 65 / 拮抗 29（要見直し）/ 承認要 0 / スキップ 9
+15:pm_decide: R044 Shift+Y R044: 受入
+16:pm_measure: R025 Shift+Y R025: 受入
+17:pm_decide: R006 y R006・Rev.3 の変更セット 1 行まとめて: 承認
+18:change_need_date: R022 役割: 設計（山田）。既定のビュー 4 要確認 を開きました unpublished
+19:pm_decide: R046 y 納期NG の行では y は使えません（Enter で決定パネル）
+20:order: none
+21:formal: になります → 69 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+22:pm_measure: R039 no-q
+23:bulk: 採用 1 / 拮抗 1（要見直し）/ 承認要 0 / スキップ 8
+24:formal_price: R066 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:pm_decide: R032 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+26:next_day: +1d
+27:order: R066 R066: 発注済にしました
+28:rough: 1 行 × 3 社に依頼（回答期限 2026-11-01）
+29:undo: purchasing 元に戻す: 概算見積を依頼（因幡電機・立花エレテック・ミスミ）
+30:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+31:decline: R079 S2 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+32:order: none
+33:pm_decide: R001 y 納期NG の行では y は使えません（Enter で決定パネル）
+34:order: none
+35:edit_qty: R035 1 件（R009 メーカが空です … F8 で移動して直す）
+36:pm_measure: R021 Shift+Y R021: 受入
+37:pm_measure: R032 p R032: 委譲
+38:pm_measure: R003 d R003: 設計へ代替依頼
+39:requote_cycle: R038 09 メーカが空です … F8 で移動して直す） / 1 行 × 3 社に依頼（回答期限 2026-11-01）
+40:excel: pm 3 sheets
+41:formal_price: R046 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+42:pm_measure: R046 d R046: 設計へ代替依頼
+43:ltb_request: R027 R027: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥847）
+44:switch_proc: R071→客先指定品 1 件（R009 メーカが空です … F8 で移動して直す）
+45:excel: pm 3 sheets
+46:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+47:formal_price: R059 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+48:switch_proc: R021→客先指定品 1 件（R009 メーカが空です … F8 で移動して直す）
+49:requote_cycle: R003 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-227a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

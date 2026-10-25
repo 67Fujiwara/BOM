@@ -1,0 +1,8 @@
+{"id":"D1 CSV の備考のセルにタブ 1 つ（引用符つき）","expect":"2 部品（コンマ区切り）","n":2,"delimiter":"comma","mapping":"name,model,qtyNeeded,note","rows":["リレー / MY4N / 4 / 盤内\t上段","端子台 / XW2B / 2 / "],"warnings":[]}
+{"id":"D2 CSV の備考のセルにタブ 1 つ（引用符なし）","expect":"2 部品","n":2,"delimiter":"comma","mapping":"name,model,qtyNeeded,note","rows":["リレー / MY4N / 4 / 盤内\t上段","端子台 / XW2B / 2 / "],"warnings":[]}
+{"id":"D3 CSV の部品名の末尾にタブ","expect":"2 部品","n":2,"delimiter":"comma","mapping":"name,model,qtyNeeded","rows":["リレー / MY4N / 4 / ","端子台 / XW2B / 2 / "],"warnings":[]}
+{"id":"D4 TSV で各セルにコンマ（回路記号 R1, R2）","expect":"2 部品","n":2,"delimiter":"tab","mapping":"name,model,qtyNeeded,ref","rows":["リレー / MY4N / 4 / ","端子台 / XW2B / 2 / "],"warnings":[]}
+{"id":"D5 セミコロン区切り","expect":"2 部品（セミコロン区切りも読むか、読めないと知らせる）","n":3,"delimiter":"none","mapping":"name","rows":["部品名;型式;数量 /  / 1 / ","リレー;MY4N;4 /  / 1 / ","端子台;XW2B;2 /  / 1 / "],"warnings":["タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）"]}
+{"id":"D6 パイプ区切り","expect":"2 部品か知らせる","n":3,"delimiter":"none","mapping":"name","rows":["部品名|型式|数量 /  / 1 / ","リレー|MY4N|4 /  / 1 / ","端子台|XW2B|2 /  / 1 / "],"warnings":["タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）"]}
+{"id":"D7 全角コンマ区切り","expect":"2 部品か知らせる","n":3,"delimiter":"none","mapping":"name","rows":["部品名，型式，数量 /  / 1 / ","リレー，MY4N，4 /  / 1 / ","端子台，XW2B，2 /  / 1 / "],"warnings":["タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）"]}
+{"id":"D8 半角空白 2 つ以上の区切り（PDF からのコピー）","expect":"2 部品か知らせる","n":3,"delimiter":"none","mapping":"name","rows":["部品名  型式  数量 /  / 1 / ","リレー  MY4N  4 /  / 1 / ","端子台  XW2B  2 /  / 1 / "],"warnings":["タブ区切り・カンマ区切りではないので、1 行を 1 部品の「部品名」として取り込みます（Excel の表をそのままコピーするとタブ区切りになります）"]}

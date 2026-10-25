@@ -1,0 +1,29 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+formalRequested rows of S1 42
+order R001 R001: 発注済にしました
+order R002 R002: 発注済にしました
+rough request → "依頼する行がありません（提出済・再見積要の行なし）"
+requestRevs {"FS1":1,"FS3":1,"FS2":1}
+rows referencing S1 adopted 44 designated 0 quoteTargets 0 quotes 75
+import → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+refs [] n= 0 soft 77
+PASS P1-S1-formal-1 マスタに無い商社を指す参照が残らない（採用・quoteTargets・指定先） :: []
+採用を外された行 41 うち知らせ(droppedStopped／取下げ)付き 41
+PASS P1-S1-formal-2b マスタから消えて採用が外れた相見積の行（41 行）に、取引停止のときと同じ「採用を外した」知らせ（droppedStopped）が付く :: 知らせ付き 41/41（{"leadNG":false,"reissue":false,"renegotiating":false,"formalDiff":false,"droppedStopped":"S1（商社マスタから削除）","formalWithdrawn":"S1 P-2026-041-S1-F1","contested":false}）
+bad cells 0 []
+PASS P1-S1-formal-2 全ビュー×3 役割の文字に undefined/NaN/null が出ない :: []
+stuck []
+PASS P1-S1-formal-3 固まる行（ボールなし・ボールの役割のビューに載らない）がない :: []
+excel files 9 bad 0 []
+PASS P1-S1-formal-4 Excel（3 役割×3 出力先）に undefined/NaN/内部名が出ない :: []
+panelBad []
+PASS P1-S1-formal-5 スコア内訳・採用パネルに undefined が出ない :: []
+rough panel ["相見積先すべて（立花エレテック・ミスミ）","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+PASS P1-S1-formal-6 概算見積の依頼先に消えた商社・undefined が出ない :: ["相見積先すべて（立花エレテック・ミスミ）","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+consolidate panel ["立花エレテック + ミスミ :: 41/41 行を集約（残りはいまの採用のまま）、総額 ¥19,520,470（差 ¥-170,717）、最長納期 28 日","立花エレテック :: 38/41 行を集約（残りはいまの採用のまま）、総額 ¥19,660,537（差 ¥-30,650）、最長納期 28 日","ミスミ :: 37/41 行を集約（残りはいまの採用のまま）、総額 ¥19,735,318（差 +¥44,131）、最長納期 27 日"]
+PASS P1-S1-formal-7 商社を集約の候補に消えた商社・undefined が出ない :: ["立花エレテック + ミスミ :: 41/41 行を集約（残りはいまの採用のまま）、総額 ¥19,520,470（差 ¥-170,717）、最長納期 28 日","立花エレテック :: 38/41 行を集約（残りはいまの採用のまま）、総額 ¥19,660,537（差 ¥-30,650）、最長納期 28 日","ミスミ :: 37/41 行を集約（残りはいまの採用のまま）、総額 ¥19,735,318（差 +¥44,131）、最長納期 27 日"]
+PASS P1-S1-formal-8 再読み込み後も文字がおかしくならない :: []
+ERRORS []
+PASS P1-S1-formal-9 console error なし :: []
+== 10/10 PASS

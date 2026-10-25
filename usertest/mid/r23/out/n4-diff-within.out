@@ -1,0 +1,12 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+formal price → 20292 EDIT-ERR R001 の正式単価 ¥20,292（概算から +13799%）。桁・行を確かめてください
+X R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"formalDiff":true} quotes=[["S1",146,19,20292],["S2",123,0,null],["S3",149,23,null]] case 差分超過
+B panel {"kind":"quickfix","title":"決定パネル R001（差分超過）","options":["受入 → 正式見積済","次点商社へ","再交渉（購買へ）","設計へ代替依頼（コスト超過を起票）","数量見直し依頼（設計へ）"]}
+A formal price → 146 EDIT-ERR R001 の正式単価 ¥20,292（概算から +13799%）。桁・行を確かめてください
+X after A R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] case なし status formalQuoted
+B → R001 の要決定が、パネルを開いたあとに別のタブで変わりました（差分超過 → なし）。決めていません。開き直してください
+after R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]] status formalQuoted formalPrice 146 decisions []
+PASS N4-1 差分超過が消えた（許容内に直した）あとの y は断る（要決定が変わった）。受入の決定の記録が残らない :: status=formalQuoted price=146 toast=R001 の要決定が、パネルを開いたあとに別のタブで変わりました（差分超過 → なし）。決めていません。開き直してください
+ERRORS []
+== 1/1 PASS

@@ -1,0 +1,15 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+need 2026-11-14 adopted lead 24 alt S2 4
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PM e → R003: 特急・分納
+extraCost → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きまし
+formal → 作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X diff R003 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"countermeasure":"分納・特急","formalDiff":true} quotes=[["S1",933,24,31493],["S2",938,4,null],["S3",1085,0,null]] case 差分超過
+PM b → R003: 次点商社へ
+X after b R003 相見積 st=selected adopt=S2 reason=次点へ（差分超過） oq=2 flags={"countermeasure":"分納・特急","formalWithdrawn":"因幡電機 P-2026-041-S1-F1"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] extra 20000  cm 分納・特急
+FAIL Q7-next-1 次点へで商社が変わったら、前の商社への追加費用（特急・分納）が外れる :: adopt=S2 extra=20000
+FAIL Q7-next-2 次点へで商社が変わったら、前の商社への特急・分納の対策区分が外れる（商社変更に付け替わる） :: cm=分納・特急
+PASS Q7-next-4 固まる行がない :: []
+ERRORS []
+PASS Q7-next-99 console error なし :: []
+== 2/4 PASS

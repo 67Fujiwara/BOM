@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rule → 案件設定を保存しました
+request all → 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+early → R081: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+PM y → R081: 先行発注許可
+X before R081 相見積 st=selected adopt=S1 reason=先行採用: 納期: 急ぎ oq=4 flags={"early":true} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] ball purchasing case なし iss [] extra null orderQty 4
+qty → 最後の行です。下に行を足すときは Shift+Enter
+publish → 。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+X after publish R081 相見積 st=selected adopt=S1 reason=先行採用: 納期: 急ぎ oq=17 flags={"requote":true,"early":true} quotes=[["S1",1200,5,null],["S2",1300,6,null],["S3",null,null,null]] requote true
+rough → 1 行 × 3 社に依頼（回答期限 2026-10-31） [["立花エレテック",true],["因幡電機",true],["ミスミ",true]]
+X after rough R081 相見積 st=quoting adopt=- reason=先行採用: 納期: 急ぎ oq=17 flags={} quotes=[["S3",null,null,null],["S1",null,null,null],["S2",null,null,null]] ball purchasing case なし iss [] extra null  orderQty 17
+PASS Q1-early-ok-1 採用が外れている（概算を取り直す行は選び直し） :: R081 相見積 st=quoting adopt=- reason=先行採用: 納期: 急ぎ oq=17 flags={} quotes=[["S3",null,null,null],["S1",null,null,null],["S2",null,null,null]]
+PASS Q1-early-ok-2 納期NG・対策区分・特急分納・委譲・再交渉・差分超過・再発行・拮抗の印が全て外れた :: {"renegotiating":false,"requote":false,"pmPending":false,"contested":false,"ltbPending":false,"leadNG":false,"formalDiff":false,"reissue":false}
+PASS Q1-early-ok-3 追加費用（特急・分納）が外れた :: null 
+PASS Q1-early-ok-4 PM の承認待ち（先行採用・例外選定・閾値超・先行発注判断・対策不成立・差分超過）が残らない :: {"pm":false,"ltb":false}
+PASS Q1-early-ok-5 PM の依頼（納期NG・コスト超過・数量見直し）の指摘が未対応のまま残らない :: []
+PASS Q1-early-ok-6 PM の決定ケースが「なし」・ボールは購買（見積中） :: なし purchasing quoting
+PASS Q1-early-ok-7 PM の 7 に載らない :: false
+PASS Q1-early-ok-8 決定は増えていない（嘘の決定が記録されない） :: 1 → 1
+PASS Q1-early-ok-9 正式回答・依頼Noが全て外れた
+PASS Q1-early-ok-11 不変条件
+PASS Q1-early-ok-12 固まる行がない :: []
+ERRORS []
+PASS Q1-early-ok-99 console error なし :: []
+== 12/12 PASS

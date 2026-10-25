@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:ltb_request: R037 R037: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥48,752
+1:pm_decide: R003 Shift+Y R003: 受入
+2:reload: reload
+3:requote_cycle: R013 nter] 行 1（Rev.3） を公開しました / 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+4:next_day: +8d
+5:decline: R012 S3 EDIT-ERR 5 行 × 3 社に依頼（回答期限 2026-10-31）。メ
+6:decline: R078 S3 EDIT-ERR 5 行 × 3 社に依頼（回答期限 2026-10-31）。メ
+7:pm_decide: R034 y 納期NG の行では y は使えません（Enter で決定パネル）
+8:replace_row: R014 R014 の置き換え品 R081 を作りました（公開すると R014 は置換済に / を入れて Enter] 行 2（Rev.4） を公開しました
+9:withdraw_x: none
+10:next_day: +16d
+11:add_row: R082 を入れて Enter] 行 1（Rev.5） を公開しました
+12:decline: R056 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+13:pm_decide: R013 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+14:edit_qty: R060 を入れて Enter] 行 1（Rev.6） を公開しました
+15:pick_supplier: R044 R044 を 因幡電機 で採用
+16:excel: design 1 sheets
+17:edit_qty: R063 を入れて Enter] 行 1（Rev.7） を公開しました
+18:bulk: 採用 65 / 拮抗 29（要見直し）/ 承認要 0 / スキップ 8
+19:pm_measure: R010 no-g
+20:rename_supplier: S3→商社79 JSON を読み込みました（案件 1 件
+21:edit_qty: R043 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+22:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+23:receive: none
+24:edit_qty: R008 を入れて Enter] 行 2（Rev.8） を公開しました
+25:edit_qty: R047 を入れて Enter] 行 1（Rev.9） を公開しました
+26:ltb_request: R060 R060: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥10,032
+27:early_adopt: R079 有効な見積がありません（未回答・辞退・期限切れのみ）
+28:pick_supplier: R014 PM承認待ちの行です
+29:requote_cycle: R068 ter] 行 1（Rev.10） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+30:pm_measure: R010 d R010: 設計へ代替依頼
+31:edit_qty: R082 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+32:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+33:early_adopt: R076 有効な見積がありません（未回答・辞退・期限切れのみ）
+34:toggle_approval: OFF 案件設定を保存しました
+35:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+36:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+37:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+38:requote_cycle: R001 ter] 行 2（Rev.11） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-11-16）
+39:pm_measure: R009 d R009: 設計へ代替依頼
+40:requote_cycle: R046 ter] 行 1（Rev.12） を公開しました / 1 行 × 3 社に依頼（回答期限 2026-11-16）
+41:requote_cycle: R041 41 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+42:pm_decide: R005 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+43:switch_proc: R012→支給品 1 件（R041 メーカが空です … F8 で移動して直す）
+44:requote_cycle: R010 41 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+45:switch_proc: R056→客先指定品 1 件（R041 メーカが空です … F8 で移動して直す）
+46:receive: none
+47:edit_qty: R021 公開できません: エラー 1 件（R041 メーカが空です 
+48:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 10
+49:ltb_request: R063 R063: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥158,14
+PASS F3-211a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

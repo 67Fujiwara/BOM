@@ -1,0 +1,17 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+need 2026-11-14 adopted lead 23 alt S1 26
+X R032 相見積 st=selected adopt=S3 reason= oq=1 flags={"leadNG":true} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]]
+PM Y 受入 → R032: 受入
+X after PM R032 相見積 st=selected adopt=S3 reason= oq=1 flags={"countermeasure":"受入"} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] extra null  cm 受入
+score order ["S3","S1","S2"] alt idx 1
+re-adopt → R032: 因幡電機 を仮採用（その他: 選び直し）。PM の承認待ち（7 要決定）
+X after re-adopt R032 相見積 st=selected adopt=S1 reason=その他: 選び直し oq=1 flags={"pmPending":true,"pmReason":"例外選定","countermeasure":"受入"} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] extra null  cm 受入 early undefined
+money 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%) → 概算 ¥18,559,795 / 正式 ¥18,561,351 / 予算 ¥2,800,000 (+562.9%) ball pm case 例外選定
+new supplier lead 26 late? true
+PASS Q7-accept-1 前の商社への追加費用（特急・分納）が新しい採用に持ち越されない :: extra=null 
+FAIL Q7-accept-2 前の商社への対策区分（受入／特急・分納／代替品検討）が新しい採用に持ち越されない（新しい商社が間に合わなければ納期NG としてPM に出る） :: late=true leadNG=false cm=受入 early=undefined
+PASS Q7-accept-3 前の商社への「特急」の印（early）が持ち越されない :: undefined
+PASS Q7-accept-4 固まる行がない :: []
+ERRORS []
+PASS Q7-accept-99 console error なし :: []
+== 4/5 PASS

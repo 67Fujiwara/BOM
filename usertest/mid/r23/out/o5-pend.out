@@ -1,0 +1,18 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+N R081 相見積 st=submitted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[] publishedRev 3
+purchasing views containing N []
+purchasing 社内 BOM N row null
+PASS O5-pend-purchasing-社内 購買の社内 Excel の BOM に承認待ちの追加行 N が出ない :: null
+purchasing 保管用 BOM N row null
+PASS O5-pend-purchasing-保管用 購買の保管用 Excel の BOM に承認待ちの追加行 N が出ない :: null
+pm views containing N [1,2,4,5,7]
+pm 社内 BOM N row ["R081","ZR081","E-2026-041-04","表示","追加行N","G3VM-61A1","オムロン",4,"個",null,"相見積","推奨","同等品可","2026-11-13","",4,"","","","","","提出済","PM"]
+INFO PM 社内 true
+pm 保管用 BOM N row ["R081","ZR081","E-2026-041-04","表示","追加行N","G3VM-61A1","オムロン",4,"個",null,"相見積","推奨","同等品可","2026-11-13","",4,"","","","","","提出済","PM","","","","","","","","",
+INFO PM 保管用 true
+PASS O5-pend-rough 概算見積の依頼書に N が出ない :: 5 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+ERRORS []
+== 3/3 PASS

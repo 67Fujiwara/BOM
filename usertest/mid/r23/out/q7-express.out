@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+need 2026-11-14 adopted lead 24 alt S2 4
+X R003 相見積 st=selected adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]]
+PM e → R003: 特急・分納
+extraCost → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+X after PM R003 相見積 st=selected adopt=S1 reason= oq=- flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] extra 20000  cm 分納・特急
+score order ["S2","S3","S1"] alt idx 0
+re-adopt → R003 を 立花エレテック で採用
+X after re-adopt R003 相見積 st=selected adopt=S2 reason= oq=2 flags={"countermeasure":"分納・特急"} quotes=[["S1",933,24,null],["S2",938,4,null],["S3",1085,0,null]] extra 20000  cm 分納・特急 early undefined
+money 概算 ¥18,571,654 / 正式 ¥18,573,210 / 予算 ¥2,800,000 (+563.3%) → 概算 ¥18,571,664 / 正式 ¥18,573,220 / 予算 ¥2,800,000 (+563.3%) ball purchasing case なし
+new supplier lead 4 late? true
+FAIL Q7-express-1 前の商社への追加費用（特急・分納）が新しい採用に持ち越されない :: extra=20000 
+FAIL Q7-express-2 前の商社への対策区分（受入／特急・分納／代替品検討）が新しい採用に持ち越されない（新しい商社が間に合わなければ納期NG としてPM に出る） :: late=true leadNG=false cm=分納・特急 early=undefined
+PASS Q7-express-3 前の商社への「特急」の印（early）が持ち越されない :: undefined
+PASS Q7-express-4 固まる行がない :: []
+ERRORS []
+PASS Q7-express-99 console error なし :: []
+== 3/5 PASS

@@ -1,0 +1,612 @@
+[
+  {
+    "name": "外れたあと ArrowUp",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "ArrowUp→v4/R005 必要数/ナビ",
+      "Escape→v4/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと ArrowDown",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "ArrowDown→v4/R005 必要数/ナビ",
+      "Escape→v4/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと ArrowLeft",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "ArrowLeft→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと ArrowRight",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "ArrowRight→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Tab",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Tab→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Shift+Tab",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Shift+Tab→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Home",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Home→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと End",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "End→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでいません（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと PageDown",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "PageDown→v4/R005 必要数/ナビ",
+      "Escape→v4/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと PageUp",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "PageUp→v4/R005 必要数/ナビ",
+      "Escape→v4/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Control+ArrowDown",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+ArrowDown→v4/R080 必要数/ナビ",
+      "Escape→v4/R080 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Control+ArrowUp",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+ArrowUp→v4/R016 必要数/ナビ",
+      "Escape→v4/R016 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと j",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "j→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと k",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "k→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと  ",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      " →v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Enter",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Enter→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと F2",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "F2→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Delete",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Delete→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Backspace",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Backspace→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Control+c",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+c→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Control+v",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+v→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+x",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+x→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと x",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "x→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと Control+.",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+.→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Shift+Enter",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Shift+Enter→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでから Shift+Enter（その下に足します。最後に足すときは Ctrl+↓ で最後の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Shift+D",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Shift+D→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと Shift+Delete",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Shift+Delete→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+h",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+h→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+r",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+r→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+s",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+s→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "並び替える列にカーソルを置いてください（↓ で表へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+f",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+f→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+w",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+w→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+Shift+I",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+Shift+I→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Shift+ArrowRight",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Shift+ArrowRight→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと [",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "[→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと ]",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "]→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）"
+    ]
+  },
+  {
+    "name": "外れたあと F8",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "F8→v4/R016 型式/ナビ",
+      "Escape→v4/R016 型式/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Alt+ArrowDown",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Alt+ArrowDown→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "行を選んでください（↓ で先頭の行へ）"
+    ]
+  },
+  {
+    "name": "外れたあと Escape",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Escape→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "外れたあと Control+Shift+C",
+    "expect": "",
+    "seq": [
+      "pre→—",
+      "Control+Shift+C→v4/—/ナビ",
+      "Escape→v4/—/ナビ"
+    ],
+    "diff": [],
+    "toasts": []
+  },
+  {
+    "name": "S1 外れる → Ctrl+G R030（1 へ）→ Alt+4（R030 は 4 に無い）→ ↓",
+    "expect": "4 の先頭の行（R016）",
+    "seq": [
+      "pre→—",
+      "G:R030→v4/R030 必要数/ナビ",
+      "Alt+4→v4/R030 必要数/ナビ",
+      "ArrowDown→v4/R031 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "S2 外れる → Alt+1 → ↓",
+    "expect": "?（1 の先頭か R005）",
+    "seq": [
+      "pre→—",
+      "Alt+1→v1/—/ナビ",
+      "ArrowDown→v1/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "S3 外れる → ↑",
+    "expect": "外れた行の上（R022）か続きの行",
+    "seq": [
+      "pre→—",
+      "ArrowUp→v4/R005 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "S4 外れる → Ctrl+F「リレー」→ Esc → ↓",
+    "expect": "?",
+    "seq": [
+      "pre→—",
+      "Control+f→v4/—/ナビ",
+      "T:リレー→v4/—/ナビ",
+      "Enter→v4/R005 必要数/ナビ",
+      "Escape→v4/R005 必要数/ナビ",
+      "ArrowDown→v4/R061 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）",
+      "絞り込みを解除しました"
+    ]
+  },
+  {
+    "name": "S5 外れる → ↓ → ↓ → ↓",
+    "expect": "R005 → R061 → R004",
+    "seq": [
+      "pre→—",
+      "ArrowDown→v4/R005 必要数/ナビ",
+      "ArrowDown→v4/R061 必要数/ナビ",
+      "ArrowDown→v4/R004 必要数/ナビ"
+    ],
+    "diff": [],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  },
+  {
+    "name": "S6 外れる → 2 回目の直し（R005 型式 を直して外れる）→ ↓",
+    "expect": "?",
+    "seq": [
+      "pre→—",
+      "ArrowDown→v4/R005 必要数/ナビ",
+      "Home→v4/R005 ID/ナビ",
+      "ArrowRight→v4/R005 ボール/ナビ",
+      "ArrowRight→v4/R005 回路記号/ナビ",
+      "F2→v4/R005 回路記号/編集",
+      "Control+a→v4/R005 回路記号/編集",
+      "T:MY4N-D2 DC24→v4/R005 回路記号/編集",
+      "F2→v4/R005 回路記号/入力",
+      "ArrowRight→v4/R005 部品名/ナビ",
+      "Escape→v4/R005 部品名/ナビ",
+      "ArrowDown→v4/R061 部品名/ナビ"
+    ],
+    "diff": [
+      "R005.working:undefined→{\"ref\":\"MY4N-D2 DC24\"}"
+    ],
+    "toasts": [
+      "R054 を直したので、このビューから外れました（↓ で続きの行へ、F8 で次の問題へ）"
+    ]
+  }
+]

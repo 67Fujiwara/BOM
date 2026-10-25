@@ -1,0 +1,65 @@
+== A. 設計の新人、初めて開く（4 要確認）
+  [open] mode=nav view=1 cur=null/name edit="" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  top text: 提出 Rev.1（山田 10/23, 追加75 / 型式0 / 数量0） ID ボール 回路記号 分類 部品名 型式 メーカ 必要数 単位 調達区分 代替可否 必要日 採用 スコア 単価 金額 納期 状態 期限 待ち 発注 入荷 入荷予定 ロット 備考 ▾ 制御 (12) R001 購買 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 相見積 不可 11/13 因幡電機 88 ¥146 ¥146 19日 選定済 10/27 R002 購買 制2 制御 入力拡張ユニット FX5-16EX/ES 三菱電機 2 個 相見積 同等品可 11/13 因幡電機 88 ¥407 ¥814 即納 選定済 10/27 R003 PM 制3 制御 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 個 相見積 同等品可 11/13 因幡電機 88 ¥933 ¥1,866 
+  [after ↓] mode=nav view=1 cur=R001/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+== B. 4 で n（仕様書・以前の癖の「次の問題」）を押してしまう → Enter
+  [before] mode=nav view=1 cur=R001/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [after n] mode=edit view=1 cur=R001/name edit="n" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [after Enter] mode=nav view=1 cur=R002/name edit="n" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  changes: R001: working:  -> {"name":"n"}
+  Ctrl+Z: 元に戻す: セル編集 | changes (なし)
+== C. F8 で問題へ → Alt+x で確認 → Ctrl+.
+  [F8] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: null
+  [F8 2] mode=nav view=1 cur=R009/maker edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: null
+  [Alt+x] mode=nav view=1 cur=R009/maker edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  changes: (なし)
+  [Ctrl+.] mode=panel view=1 cur=R009/maker edit="" panel=quickfix | hints: F1ヘルプ | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  panel: 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+== D. 4 で x を押す（Alt なし）→ Enter
+  [F8] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: null
+  [x] mode=edit view=1 cur=R005/model edit="x" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Enter] mode=nav view=1 cur=R006/model edit="x" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  changes: R005: working:  -> {"model":"x"}
+== E. ID 列で n / x / Shift+I（Alt なし）
+  [Home] mode=nav view=1 cur=R005/id edit="" panel=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く x警告を確認済み | toast: null
+  [n on ID] mode=nav view=1 cur=R009/id edit="" panel=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開いて指摘を見る | toast: null
+  [x on ID] mode=nav view=1 cur=R009/id edit="" panel=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開いて指摘を見る | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [Shift+I on ID] mode=panel view=1 cur=R009/id edit="" panel=issue | hints: F1ヘルプ | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  panel: 指摘を起票 R009 端子台 q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票します） k 等の頭文字 / ↑↓ Enter で種別 Esc 閉じる
+  changes: (なし)
+== F. 見積済の行で Alt+a（Alt を付ければコマンド、と覚えた新人）と Ctrl+Alt+A / a(ID列) の違い
+  rows where cheapest != recommended: [["R005","S3",83.8,"S1",69.2],["R006","S1",96.6,"S3",90],["R009","S1",98.9,"S2",98],["R014","S2",97.6,"S3",90],["R016","S1",95.7,"S3",90],["R017","S1",98.8,"S3",90],["R022","S1",94.1,"S3",90],["R023","S1",97.5,"S2",86],["R024","S2",93.4,"S3",90],["R025","S1",94.2,"S2",92],["R026","S2",91.7,"S1",87.2],["R033","S1",95.4,"S2",80]] count 28
+  [before Alt+a] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: null
+  [after Alt+a] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: R005 を ミスミ で採用（スコア 83.8 / 実績なし）
+  panel: null
+  changes: R005: status: "quoted" -> "selected"; orderQty: null -> 12; adoptedSupplierId:  -> "S3"; adoptReason:  -> "拮抗"; scoreSnapshot:  -> 83.8
+  decisions: []
+  [before Control+Alt+a] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: null
+  [after Control+Alt+a] mode=nav view=1 cur=R005/model edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: R005 を 因幡電機 で採用（最安（スコア無視））
+  panel: null
+  changes: R005: status: "quoted" -> "selected"; orderQty: null -> 12; adoptedSupplierId:  -> "S1"; adoptReason:  -> "最安（スコア無視）"; scoreSnapshot:  -> 69.2
+  decisions: []
+== G. 購買 6 商社別：単価セルで a / Alt+a / Shift+I
+  [6 open] mode=edit view=9 cur=R004/q.unitPrice@S1 edit="6" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [6 ↓] mode=nav view=9 cur=R005/q.unitPrice@S1 edit="6" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [a] mode=edit view=9 cur=R005/q.unitPrice@S1 edit="a" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [a Enter] mode=edit view=9 cur=R005/q.unitPrice@S1 edit="a" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 単価として読めません: 「a」（直して Enter、やめるときは Esc）
+  changes: (なし)
+  [Shift+I] mode=edit view=9 cur=R005/q.unitPrice@S1 edit="aI" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 単価として読めません: 「a」（直して Enter、やめるときは Esc）
+== H. 購買 9 購買作業：発注数で o / Alt+o
+  [9 open] mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [R013] mode=nav view=1 cur=R013/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [at 発注数] mode=nav view=1 cur=R013/note edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [o] mode=nav view=1 cur=R013/note edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1
+  [Alt+o] mode=nav view=1 cur=R013/note edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R013: 発注済にしました
+  changes: R013: status: "formalQuoted" -> "ordered"; ordered: false -> true; orderedAt:  -> "2026-10-25"
+== I. ? ヘルプとパレット「次の問題」「確認済」「採用」
+EXC I. ? ヘルプとパレット「次の問題」「確認済」「採用」 TimeoutError: locator.innerText: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.overlay')[22m
+
+== I2. ? を打てるセルで押す（値の入力の ? ではなくヘルプ）
+  [備考] mode=nav view=1 cur=R030/note edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [after ?] mode=edit view=1 cur=R030/note edit="?" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+
+ERRORS:

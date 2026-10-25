@@ -1,0 +1,17 @@
+  [published] role=design view=1 mode=nav cur=R001/name panel=null |  | toast: 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  [Alt+6] role=purchasing view=6 mode=nav cur=R001/name panel=null |  | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  palette: 案件 案件設定 PM 項目 / 購買項目。納期変更は影響試算つき 案件 案件設定を確定（PM） 案件 新しいBOM 案件 受信箱・案件を切り替える Ctrl+P
+  [案件設定] role=purchasing view=6 mode=panel cur=R001/name panel=settings | 案件設定 （PM 項目は PM、購買項目は購買が変更。未確定（PM が y で確定）） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計 | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  settings rows=23 相見積先 at 22
+  [click 相見積先] role=purchasing view=6 mode=panel cur=R001/name panel=settings | 案件設定 （PM 項目は PM、購買項目は購買が変更。未確定（PM が y で確定）） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計 | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  master: [{"id":"S1","name":"因幡電機","tradable":true},{"id":"S2","name":"立花エレテック","tradable":true},{"id":"S3","name":"ミスミ","tradable":true},{"id":"S4","name":"RSコンポーネンツ","tradable":true},{"id":"S5","name":"オムロン直販","tradable":true}]
+  [names Enter] role=purchasing view=6 mode=panel cur=R001/name panel=settings | 案件設定 （PM 項目は PM、購買項目は購買が変更。未確定（PM が y で確定）） PM 案件名 新しいBOM P-2026-002 PM 案件納期 未定 PM 社内工程日数（この案件） 10 PM 予算 PM 重み（価格,納期,実績,条件） 40,30,20,10 PM 選定者（設計 / 購買） 設計 PM 設計 | toast: 相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）
+  [Ctrl+Enter] role=purchasing view=6 mode=nav cur=R001/name panel=null |  | toast: 案件設定を保存しました
+  supplierIds=["S1","S2"]
+  [6 again] role=purchasing view=6 mode=nav cur=R001/q.unitPrice@S1 panel=null |  | toast: 案件設定を保存しました
+  cols: ID|部品名|型式|メーカ|必要数|単位|状態|因幡電機 単価|因幡電機 納期|因幡電機 MOQ|因幡電機 在庫|因幡電機 有効期限|立花エレテック 単価|立花エレテック 納期|立花エレテック MOQ|立花エレテック 在庫|立花エレテック 有効期限
+  [at R001] role=purchasing view=6 mode=nav cur=R001/q.unitPrice@S1 panel=null |  | toast: 案件設定を保存しました
+  [1200 Enter] role=purchasing view=6 mode=edit cur=R002/q.unitPrice@S1 panel=null |  | toast: 案件設定を保存しました
+  quotes: [["R001","S1",1200]]
+
+ERRORS:

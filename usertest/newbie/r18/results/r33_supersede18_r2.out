@@ -1,0 +1,31 @@
+== 1 PM: 案件設定 → 設計変更は PM 承認が必要 ← はい → Ctrl+Enter
+  [設計変更は PM 承認 ← はい] idx=6 toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  Ctrl+Enter -> panel: 変更理由（必須） Enter 確定 Esc 取り消し | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  changeNeedsPmApproval=true toast 案件設定を保存しました
+== 2 設計: R030 部品名「Pilot lmap」→ 公開（理由 2）
+  [first] Ctrl+Enter panel: 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  2 -> panel: 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter
+  -> toast: 行 6（Rev.2） を公開しました | panel null
+  name=表示灯 白 working=null pendingApproval={"name":"Pilot lmap"} pendingRev=2 pm=true/変更セット rev=2
+  subs: Rev1:R001,R002,R003,R004,R005,R006,R007,R008,R009,R010,R011,R012,R013,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R032,R033,R034,R035,R036,R037,R038,R039,R040,R041,R042,R043,R044,R045,R046,R047,R048,R049,R050,R051,R052,R053,R054,R055,R056,R057,R058,R059,R060,R061,R062,R063,R064,R065,R066,R067,R068,R069,R070,R071,R072,R073,R074,R075 Rev2[cs 設計起因 approved=false rej=false sup=-]:R030,R076,R077,R078,R079,R080
+== 3 設計: 打ち間違いに気づく → 「Pilot lamp」に直して もう一度公開（理由 2）
+  [second] Ctrl+Enter panel: 変更セット（1 行: R030）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  2 -> panel: 変更セット（1 行: R030）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  -> toast: 行 1（Rev.3） を公開しました | panel null
+  name=表示灯 白 working=null pendingApproval={"name":"Pilot lamp"} pendingRev=3 pm=true/変更セット rev=3
+  subs: Rev1:R001,R002,R003,R004,R005,R006,R007,R008,R009,R010,R011,R012,R013,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R032,R033,R034,R035,R036,R037,R038,R039,R040,R041,R042,R043,R044,R045,R046,R047,R048,R049,R050,R051,R052,R053,R054,R055,R056,R057,R058,R059,R060,R061,R062,R063,R064,R065,R066,R067,R068,R069,R070,R071,R072,R073,R074,R075 Rev2[cs 設計起因 approved=false rej=false sup=-]:R030,R076,R077,R078,R079,R080 Rev3[cs 設計起因 approved=false rej=false sup=-]:R030
+== 4 PM: 7 要決定 → R030 → Alt+y で承認
+  view=7 rows=7 hints=F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く
+  7 rows: R003,R030,R076,R077,R078,R079,R080
+  status: ナビR030 部品名PM 鈴木: 要決定 7役割: PM（鈴木）。既定のビュー 7 要決定 を開きましたF1ヘルプF8次の問題Alt+y承認Alt+Shift+Y却下Enter決定パネルSpace開く
+  Alt+y -> panel: 決定: 承認（R030・Rev.3 の変更セット 1 行まとめて。理由・任意） Enter 確定 Esc 取り消し | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  Enter -> toast R030・Rev.3 の変更セット 1 行まとめて: 承認 | panel -
+  name=Pilot lamp working=null pendingApproval=null pendingRev=- pm=false/- rev=3
+  subs: Rev1:R001,R002,R003,R004,R005,R006,R007,R008,R009,R010,R011,R012,R013,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R032,R033,R034,R035,R036,R037,R038,R039,R040,R041,R042,R043,R044,R045,R046,R047,R048,R049,R050,R051,R052,R053,R054,R055,R056,R057,R058,R059,R060,R061,R062,R063,R064,R065,R066,R067,R068,R069,R070,R071,R072,R073,R074,R075 Rev2[cs 設計起因 approved=false rej=false sup=-]:R030,R076,R077,R078,R079,R080 Rev3[cs 設計起因 approved=true rej=false sup=-]:R030
+  decisions: 案件設定変更::試行運用 / 承認:R030:客先承認済み
+  7 rows after: 6
+== 5 購買: R030 を見る → Excel 1 社内 → 変更点シート
+  R030 row: R030 設計 Pilot lamp M22N-BC-TWA-WC オムロン 2 個 相見積 推奨 同等品可 11/13 2 見積済 10/27 ¥19,475 15日 取寄 ¥18,921 12日 4 取寄 
+  sheet 変更点: Rev|日時|公開者|ID|起因|変更理由|変更番号|内容|承認 // 1|DATE|山田|R030||||| // 3|DATE|山田|R030|変更セット #3|設計起因||name: 表示灯 白 → Pilot lamp|鈴木 2026-10-25 // |DATE|鈴木|R030|決定|承認||客先承認済み|
+
+ERRORS:

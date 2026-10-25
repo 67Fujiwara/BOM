@@ -1,0 +1,189 @@
+[A1 changed-only-qty-rows-copy-model]
+  old: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||ソケット|PYF14A|オムロン|4} {||端子台|XW2B-20G4|オムロン|4} {||ランプ|L-1|IDEC|1}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||ソケット|PYF14A|オムロン|4}
+    warn=削除の印がある・新しい版の列が空の 2 行（例: 端子台 XW2B-20G4 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[A2 changed-only-maker-rows-copy-model]
+  old: map=["name",null,"model",null,"maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|パナソニック|2} {||ソケット|PYF14A|IDEC|4} {||端子台|XW2B-20G4|オムロン|4} {||ランプ|L-1|IDEC|1} {||ヒューズ|F-5A|富士電機|3}
+    warn=「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「メーカー（新）」が空の 4 行は、ほかの「メーカ」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「メーカ」に当たる列が 2 つあります。「メーカー（新）」の列を使います
+  new: map=["name",null,"model",null,"maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|パナソニック|2} {||ソケット|PYF14A|IDEC|4} {||端子台|XW2B-20G4|オムロン|4} {||ランプ|L-1|IDEC|1} {||ヒューズ|F-5A|富士電機|3}
+    warn=「型式（新）」が空の 3 行は、ほかの「型式」の列の値を使いました / 「メーカー（新）」が空の 4 行は、ほかの「メーカ」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「メーカ」に当たる列が 2 つあります。「メーカー（新）」の列を使います
+[B1 note-not-delete-words]
+  old: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1} {||ソケット|PYF14A|オムロン|2} {||ブレーカ|NF32-SV|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4} {||スイッチ|A22-FR|オムロン|2}
+    warn=「型式（新）」が空の 6 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4}
+    warn=削除の印がある・新しい版の列が空の 6 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[B2 note-delete-other-words]
+  old: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1} {||ブレーカ|NF32-SV|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 新しい版の列が空で前の版だけに値がある 1 行（例: ソケット PYF14A オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1} {||ソケット|PYF14A|オムロン|2} {||ブレーカ|NF32-SV|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式（新）」が空の 5 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[C1 new-col-delete-variants6]
+  old: map=["name",null,"model","maker",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||ランプ|削除（R012に置換）|IDEC|1} {||ソケット|PYF14A|オムロン|0} {||ブレーカ|撤去済|三菱電機|1} {||スイッチ|A22-FR|オムロン|0} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 新しい版の列が空で前の版だけに値がある 1 行（例: タイマ H3CR-A8 削除済）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+  new: map=["name",null,"model","maker",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||ランプ|削除（R012に置換）|IDEC|1} {||ブレーカ|撤去済|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 削除の印がある・新しい版の列が空の 3 行（例: タイマ H3CR-A8 削除済）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[C2 full-copy-delete-dash-2rows]
+  old: map=["name",null,"model","maker",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1} {||ブレーカ|NF32-SV|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4} {||ランプ|L-1|IDEC|1}
+    warn=「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+  new: map=["name",null,"model","maker",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1} {||ブレーカ|NF32-SV|三菱電機|1} {||端子台|XW2B-20G4|オムロン|4} {||ランプ|L-1|IDEC|1}
+    warn=「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[Q1 suryo-daisu]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 2 つあります。「数量」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 2 つあります。「数量」の列を使います
+[Q2 insu-daisu-noTotal]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 2 つあります。「員数」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=数量の列 2 つ（「員数」「台数」）を掛けて数量にしました
+[Q3 daime-1tier]
+  old: map=["name","model","maker",null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+  new: map=["name","model","maker",null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[Q4 gouki-total-blank]
+  old: map=["name","model","maker",null,null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+  new: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|0}
+    warn=「数量」に当たる列が 3 つあります。「合計」の列を使います
+[Q5 gouki-ditto-first-col]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||リレー|MY2N|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました / 「数量」に当たる列が 2 つあります。「1号機数量」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|3} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました / 数量の列 2 つ（「1号機数量」「2号機数量」）を足して数量にしました
+[Q6 gouki-units-in-cells]
+  old: map=["name","model","maker",null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1}
+    warn=数量の列 2 つ（「1号機」「2号機」）を足して数量にしました
+[Q7 single-qty-plus-and-yobi]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|0} {||タイマ|H3CR-A8|オムロン|0} {||ソケット|PYF14A|オムロン|0}
+    warn=数量を読めない行が 3 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|5} {||タイマ|H3CR-A8|オムロン|0} {||ソケット|PYF14A|オムロン|3}
+    warn=「2+1」「2(予備1)」のように書いた数量 2 個は、足した数にしました / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[Q8 hitsuyou-hacchu-moq]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=
+[D1 maker-DNP-daini-insatsu]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||反射フィルム|RF-200|DNP|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[D2 jissou-umu]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1}
+    warn=
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1}
+    warn=
+[D3 note-mijissou-variants]
+  old: map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1} {||ソケット|PYF14A|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[S1 sign-colon-cells]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||作成：山田|承認：鈴木|検図：佐藤|0}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||作成：山田|承認：鈴木|検図：佐藤|0}
+    warn=
+[S2 sign-label-row-and-name-row]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||承認|検図|作成|0} {||鈴木|佐藤|山田|0}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||鈴木|佐藤|山田|0}
+    warn=小計・合計・区切りの 1 行は取り込みません（例: 「承認 検図 作成」）
+[S3 sign-with-date]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||設計|山田|2026/10/20|0}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||設計|山田|2026/10/20|0}
+    warn=
+[S4 revision-block-below]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||改訂|日付|内容|0} {||1|2026/10/01|初版|0} {||2|2026/10/20|タイマ追加|0}
+    warn=数量を読めない行が 3 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||改訂|日付|内容|0} {||1|2026/10/01|初版|0} {||2|2026/10/20|タイマ追加|0}
+    warn=数量を読めない行が 3 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[M1 cell-trailing-newline]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||"リレー|||0} {||"リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[M2 cell-leading-newline]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|||0} {||MY4N-D2"|オムロン|4|0} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました
+[M3 cell-blank-line-inside]
+  old: map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+[M4 note-two-line-with-inch]
+  old: map=["name","model","maker","qtyNeeded","note"]
+    rows={||ホース|H-1/2|ニッタ|2} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded","note"]
+    rows={||ホース|H-1/2|ニッタ|2} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+[E1 altium-comment-description]
+  old: map=["note","name","ref",null,null,"qtyNeeded","maker","model"]
+    rows={|R1, R2|Chip Resistor|RK73H1JTTD1002F|KOA|2} {|C1|Chip Capacitor|GRM188R71H104KA93D|Murata|1}
+    warn=
+  new: map=["name",null,"ref",null,null,"qtyNeeded","maker","model"]
+    rows={|R1, R2|10k|RK73H1JTTD1002F|KOA|2} {|C1|100n|GRM188R71H104KA93D|Murata|1}
+    warn=「部品名」に当たる列が 2 つあります。「Comment」の列を使います
+[E2 kicad-default-grouped]
+  old: map=[null,"qtyNeeded","ref",null,null,null,null,"model","maker"]
+    rows={|R1, R2||RK73H1JTTD1002F|KOA|2} {|C1||GRM188R71H104KA93D|Murata|1}
+    warn=
+  new: map=[null,"qtyNeeded","ref","name",null,null,null,"model","maker"]
+    rows={|R1, R2|10k|RK73H1JTTD1002F|KOA|2} {|C1|100n|GRM188R71H104KA93D|Murata|1}
+    warn=

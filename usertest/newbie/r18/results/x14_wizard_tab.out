@@ -1,0 +1,18 @@
+== fill
+  [step8] mode=panel panel=wizard active=BODY. | 部品の入れ方 | toast: null
+  [1] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [pasted] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Tab] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Enter] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Enter2] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  project P-2026-041 80
+== keyboard-paste
+  [step8] mode=panel panel=wizard active=BODY. | 部品の入れ方 | toast: null
+  [1] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [pasted] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Tab] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Enter] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  [Enter2] mode=panel panel=wizard active=TEXTAREA.f | 部品の入れ方 | toast: null
+  project P-2026-041 80
+
+ERRORS:

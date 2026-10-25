@@ -1,0 +1,52 @@
+== 単位: Enter → ↓ → ↓ → Enter（候補を選ぶ）
+  [Enter] mode=edit lbl=編集 cur=R030/unit edit="個" cands=[個 本 m セット パック 式] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/unit edit="本" cands=[本 m セット パック 式 個] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/unit edit="m" cands=[m セット パック 式 個 本] | toast: null
+  [Enter] mode=nav lbl=ナビ cur=R031/unit edit="m" cands=[] | toast: null
+  R030: {"unit":"m"} | next: null
+== 単位: Enter → ↓ → Enter
+  [Enter] mode=edit lbl=編集 cur=R030/unit edit="個" cands=[個 本 m セット パック 式] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/unit edit="本" cands=[本 m セット パック 式 個] | toast: null
+  [Enter] mode=nav lbl=ナビ cur=R031/unit edit="本" cands=[] | toast: null
+  R030: {"unit":"本"} | next: null
+== 調達区分: Enter → ↓ ↓ → Enter
+  [Enter] mode=edit lbl=編集 cur=R030/procurement edit="相見積" cands=[相見積 客先指定品 指定商社 支給品 社内在庫] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/procurement edit="客先指定品" cands=[客先指定品 指定商社 支給品 社内在庫 相見積] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/procurement edit="指定商社" cands=[指定商社 支給品 社内在庫 相見積 客先指定品] | toast: null
+  [Enter] mode=nav lbl=ナビ cur=R031/procurement edit="指定商社" cands=[] | toast: null
+  R030: {"procurement":"指定商社"} | next: null
+== 単位: s を打つ → F2 → ↓ → Enter（候補を回してから確定）
+  [t:s] mode=edit lbl=入力 cur=R030/unit edit="s" cands=[個 本 m セット パック 式] | toast: null
+  [F2] mode=edit lbl=編集 cur=R030/unit edit="s" cands=[個 本 m セット パック 式] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/unit edit="本" cands=[本 m セット パック 式 個] | toast: null
+  [Enter] mode=nav lbl=ナビ cur=R031/unit edit="本" cands=[] | toast: null
+  R030: {"unit":"本"} | next: null
+== 単位: pcs → →（右へ確定）→ sh → ↓
+  [t:pcs] mode=edit lbl=入力 cur=R030/unit edit="pcs" cands=[個 本 m セット パック 式] | toast: null
+  [ArrowRight] mode=nav lbl=ナビ cur=R030/procurement edit="pcs" cands=[] | toast: null
+  [t:sh] mode=edit lbl=入力 cur=R030/procurement edit="sh" cands=[相見積 客先指定品 指定商社 支給品 社内在庫] | toast: null
+  [ArrowDown] mode=nav lbl=ナビ cur=R031/procurement edit="sh" cands=[] | toast: null
+  R030: {"procurement":"指定商社"} | next: null
+== 調達区分: zaiko → ←
+  [t:zaiko] mode=edit lbl=入力 cur=R030/procurement edit="zaiko" cands=[相見積 客先指定品 指定商社 支給品 社内在庫] | toast: null
+  [ArrowLeft] mode=nav lbl=ナビ cur=R030/unit edit="zaiko" cands=[] | toast: null
+  R030: {"procurement":"社内在庫"} | next: null
+== 調達区分: sh → Tab
+  [t:sh] mode=edit lbl=入力 cur=R030/procurement edit="sh" cands=[相見積 客先指定品 指定商社 支給品 社内在庫] | toast: null
+  [Tab] mode=nav lbl=ナビ cur=R030/altPolicy edit="sh" cands=[] | toast: null
+  R030: {"procurement":"指定商社"} | next: null
+== 代替可否: F2（打たずに）→ ↓ → Enter
+  [F2] mode=edit lbl=編集 cur=R030/altPolicy edit="同等品可" cands=[同等品可 不可 客先承認要 可] | toast: null
+  [ArrowDown] mode=edit lbl=編集 cur=R030/altPolicy edit="不可" cands=[不可 客先承認要 可 同等品可] | toast: null
+  [Enter] mode=nav lbl=ナビ cur=R031/altPolicy edit="不可" cands=[] | toast: null
+  R030: {"altPolicy":"不可"} | next: null
+== 代替可否: Delete → ↓（空にしてから）
+  [Delete] mode=nav lbl=ナビ cur=R030/altPolicy edit="" cands=[] | toast: 代替可否は空にできません（可 / 同等品可 / 不可 / 客先承認要）
+  [ArrowDown] mode=nav lbl=ナビ cur=R031/altPolicy edit="" cands=[] | toast: 代替可否は空にできません（可 / 同等品可 / 不可 / 客先承認要）
+  R030: null | next: null
+== 単位: Backspace（空にする）→ Enter
+  [Backspace] mode=nav lbl=ナビ cur=R030/unit edit="" cands=[] | toast: 単位は空にできません（個 / 本 / m / セット / パック / 式）
+  [Enter] mode=edit lbl=編集 cur=R030/unit edit="個" cands=[個 本 m セット パック 式] | toast: 単位は空にできません（個 / 本 / m / セット / パック / 式）
+  R030: null | next: null
+
+ERRORS:

@@ -1,0 +1,54 @@
+== 単位を「m」にしてから Enter → ↓ → Enter（m の次の「セット」のつもり）
+  pre m -> {"unit":"m"}
+  [Enter] mode=edit cur=R030/unit edit="m" 強調=m cands=[m セット パック 式 個 本] | toast: null
+  [ArrowDown] mode=edit cur=R030/unit edit="セット" 強調=セット cands=[セット パック 式 個 本 m] | toast: null
+  [Enter] mode=nav cur=R031/unit edit="セット" 強調=- cands=[] | toast: null
+  R030: {"unit":"セット"}
+== 単位を「m」にしてから Enter → Enter（強調は「個」）
+  pre m -> {"unit":"m"}
+  [Enter] mode=edit cur=R030/unit edit="m" 強調=m cands=[m セット パック 式 個 本] | toast: null
+  [Enter] mode=nav cur=R031/unit edit="m" 強調=- cands=[] | toast: null
+  R030: {"unit":"m"}
+== 単位を「m」にしてから Enter → ↑ → Enter（m の上の「本」のつもり）
+  pre m -> {"unit":"m"}
+  [Enter] mode=edit cur=R030/unit edit="m" 強調=m cands=[m セット パック 式 個 本] | toast: null
+  [ArrowUp] mode=edit cur=R030/unit edit="本" 強調=本 cands=[本 m セット パック 式 個] | toast: null
+  [Enter] mode=nav cur=R031/unit edit="本" 強調=- cands=[] | toast: null
+  R030: {"unit":"本"}
+== 調達区分を「指定商社」にしてから Enter → ↓ → Enter（支給品のつもり）
+  pre sh -> {"procurement":"指定商社"}
+  [Enter] mode=edit cur=R030/procurement edit="指定商社" 強調=指定商社 cands=[指定商社 支給品 社内在庫 相見積 客先指定品] | toast: null
+  [ArrowDown] mode=edit cur=R030/procurement edit="支給品" 強調=支給品 cands=[支給品 社内在庫 相見積 客先指定品 指定商社] | toast: null
+  [Enter] mode=nav cur=R031/procurement edit="支給品" 強調=- cands=[] | toast: null
+  R030: {"procurement":"支給品"}
+== 代替可否（同等品可）で Enter → ↓ → Enter（不可のつもり）
+  [Enter] mode=edit cur=R030/altPolicy edit="同等品可" 強調=同等品可 cands=[同等品可 不可 客先承認要 可] | toast: null
+  [ArrowDown] mode=edit cur=R030/altPolicy edit="不可" 強調=不可 cands=[不可 客先承認要 可 同等品可] | toast: null
+  [Enter] mode=nav cur=R031/altPolicy edit="不可" 強調=- cands=[] | toast: null
+  R030: {"altPolicy":"不可"}
+== 代替可否（同等品可）で F2 → ↓ → ↓ → Enter
+  [F2] mode=edit cur=R030/altPolicy edit="同等品可" 強調=同等品可 cands=[同等品可 不可 客先承認要 可] | toast: null
+  [ArrowDown] mode=edit cur=R030/altPolicy edit="不可" 強調=不可 cands=[不可 客先承認要 可 同等品可] | toast: null
+  [ArrowDown] mode=edit cur=R030/altPolicy edit="客先承認要" 強調=客先承認要 cands=[客先承認要 可 同等品可 不可] | toast: null
+  [Enter] mode=nav cur=R031/altPolicy edit="客先承認要" 強調=- cands=[] | toast: null
+  R030: {"altPolicy":"客先承認要"}
+== 代替可否を「不可」にしてから Enter → ↓ → Enter（客先承認要のつもり）
+  pre fuka -> {"altPolicy":"不可"}
+  [Enter] mode=edit cur=R030/altPolicy edit="不可" 強調=不可 cands=[不可 客先承認要 可 同等品可] | toast: null
+  [ArrowDown] mode=edit cur=R030/altPolicy edit="客先承認要" 強調=客先承認要 cands=[客先承認要 可 同等品可 不可] | toast: null
+  [Enter] mode=nav cur=R031/altPolicy edit="客先承認要" 強調=- cands=[] | toast: null
+  R030: {"altPolicy":"客先承認要"}
+== 単位 Enter → ↓ → Esc（やめる）
+  [Enter] mode=edit cur=R030/unit edit="個" 強調=個 cands=[個 本 m セット パック 式] | toast: null
+  [ArrowDown] mode=edit cur=R030/unit edit="本" 強調=本 cands=[本 m セット パック 式 個] | toast: null
+  [Escape] mode=nav cur=R030/unit edit="本" 強調=- cands=[] | toast: null
+  R030: null
+== 購買 6: 在庫の列 Enter → ↓ → Enter
+  cursor R005 単価
+  cursor R005 在庫
+  [Enter] mode=edit cur=R005/q.stock@S1 edit="取寄" 強調=取寄 cands=[取寄 受注生産 在庫] | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowDown] mode=edit cur=R005/q.stock@S1 edit="受注生産" 強調=受注生産 cands=[受注生産 在庫 取寄] | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=nav cur=R006/q.stock@S1 edit="受注生産" 強調=- cands=[] | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  R005 quotes [["S1","受注生産"],["S2","取寄"],["S3","受注生産"]]
+
+ERRORS:

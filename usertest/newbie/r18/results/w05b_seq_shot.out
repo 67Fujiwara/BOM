@@ -1,0 +1,8 @@
+step 0: cursor=R005/model panel=quickfix title=直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削 toast=null
+step 1: cursor=R009/maker panel=quickfix title=直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空で toast=null
+step 2: cursor=R016/model panel=quickfix title=直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格 toast=null
+step 3: cursor=R022/model panel=quickfix title=直し方の候補 R022 サージ保護器 1 購買の提案 LT-C32AC385A  toast=null
+step 4: cursor=R041/maker panel=quickfix title=直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが toast=null
+step 5: cursor=R054/qtyNeeded panel=quickfix title=直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です:  toast=null
+
+ERRORS:

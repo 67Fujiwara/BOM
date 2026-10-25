@@ -1,0 +1,23 @@
+== 編集中にリロード（F5）
+  [typing] mode=edit view=1 cur=R041/maker edit="Keyence" panel=null | toast: null
+  [after reload] mode=nav view=1 cur=R041/maker edit="" panel=null | toast: null
+  R041 maker  {"maker":"Keyence"}
+== 確定 → リロード → Ctrl+Z
+  [after reload] mode=nav view=1 cur=R043/maker edit="" panel=null | toast: null
+  R042 {"maker":"Omron"}
+  [Ctrl+Z] mode=nav view=1 cur=R043/maker edit="" panel=null | toast: 元に戻す: セル編集
+  R042 null
+  [Ctrl+Y] mode=nav view=1 cur=R043/maker edit="" panel=null | toast: やり直す: セル編集
+  R042 {"maker":"Omron"}
+== Ctrl+Z を押しすぎる（10 回）
+  [Ctrl+Z x10] mode=nav view=1 cur=R043/maker edit="" panel=null | toast: これ以上戻す操作がありません（Ctrl+Y でやり直せます）
+  R042 null
+== ガイドの途中でリロード
+  [after reload] mode=nav view=1 cur=null/name edit="" panel=null | toast: null
+  reopen 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 納期 2026-11-30 / 11/30 / 未定 納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。 Enter 次へ Alt+← 1 つ前 Esc 中止（内容は残る）
+== 1024x700 light
+   {"statusW":1024,"statusScrollW":1024,"hintsRight":1012,"vw":1024,"items":[["Ctrl+Enter公開 5 行",438,554,677],["F1ヘルプ",566,616,677],["F8次の問題",628,691,677],["Enter編集",703,760,677],["Alt+a推奨採用",772,853,677],["Space開いて指摘を見る",865,993,677],["Alt+x警告を確認済み",1005,1121,677]],"bodyScrollW":1024}
+== 1024x700 dark
+   {"statusW":1024,"statusScrollW":1024,"hintsRight":1012,"vw":1024,"items":[["Ctrl+Enter公開 5 行",438,554,677],["F1ヘルプ",566,616,677],["F8次の問題",628,691,677],["Enter編集",703,760,677],["Alt+a推奨採用",772,853,677],["Space開いて指摘を見る",865,993,677],["Alt+x警告を確認済み",1005,1121,677]],"bodyScrollW":1024}
+
+ERRORS:

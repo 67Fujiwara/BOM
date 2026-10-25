@@ -1,0 +1,30 @@
+== A ダブルクリックで打つ → 役割「購買」をクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=purchasing view=9 mode=nav cur=R030/q.unitPrice@S1 panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+== B ダブルクリックで打つ → ビュー 4 のタブをクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=4 mode=nav cur=R030/name panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== C ダブルクリックで打つ → 列の見出し（型式）をクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=1 mode=nav cur=R030/name panel=null sort={"col":"model","dir":"asc"} R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== D ダブルクリックで打つ → ステータスバーをクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=1 mode=nav cur=R030/name panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== E ダブルクリックで打つ → 画面の外（ヘッダー）をクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=1 mode=nav cur=R030/name panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== F ダブルクリックで打つ → 別の行のセルをクリック
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=1 mode=nav cur=R031/model panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== G ダブルクリックで打つ → ブラウザのタブを切り替えた（blur）
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [after] role=design view=1 mode=nav cur=R030/name panel=null sort={"col":"id","dir":"asc"} R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== H ダブルクリックで打つ → Ctrl+K を押してパレットから「公開」
+  [typed] role=design view=1 mode=edit cur=R030/name panel=null sort=null R030 name=表示灯 白 working=null | toast: null
+  [palette open] role=design view=1 mode=palette cur=R030/name panel=palette sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+  [after] role=design view=1 mode=nav cur=R030/name panel=null sort=null R030 name=表示灯 白 working={"name":"表示灯 緑"} | toast: null
+== I 列の見出しをクリック（並べ替えのつもり）→ もう一度クリック
+  [header click 1] role=design view=1 mode=nav cur=null/name panel=null sort={"col":"model","dir":"asc"} R030 name=表示灯 白 working=null | toast: null
+  [header click 2] role=design view=1 mode=nav cur=null/name panel=null sort={"col":"model","dir":"desc"} R030 name=表示灯 白 working=null | toast: null
+
+ERRORS:

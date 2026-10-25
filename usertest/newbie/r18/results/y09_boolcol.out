@@ -1,0 +1,8 @@
+入荷「11/5」(打つだけ): view 3->3 cur=R013/received | ordered false->false received false->false status formalQuoted->formalQuoted | toast after typing: 入荷の列は Enter で切り替えます。「ビュー: 変更あり」は Alt+5 | toast end: 入荷の列は Enter で切り替えます。「ビュー: 変更あり」は Alt+5
+入荷「zumi」(打つだけ): view 3->3 cur=R013/received | ordered false->false received false->false status formalQuoted->formalQuoted | toast after typing: 入荷の列は Enter で切り替えます。「入荷済の切り替え」は Alt+i | toast end: 入荷の列は Enter で切り替えます。「入荷済の切り替え」は Alt+i
+入荷「11/5」Enter: view 3->3 cur=R013/received | ordered false->true received false->true status formalQuoted->received | toast after typing: 入荷の列は Enter で切り替えます。「ビュー: 変更あり」は Alt+5 | toast end: R013: 入荷済にしました
+入荷「zumi」ArrowDown: view 3->3 cur=g:操作:R034/received | ordered false->false received false->false status formalQuoted->formalQuoted | toast after typing: 入荷の列は Enter で切り替えます。「入荷済の切り替え」は Alt+i | toast end: 入荷の列は Enter で切り替えます。「入荷済の切り替え」は Alt+i
+発注「ok」(打つだけ): view 3->3 cur=R013/ordered | ordered false->false received false->false status formalQuoted->formalQuoted | toast after typing: 発注の列は Enter で切り替えます。「前の行」は Alt+k | toast end: 発注の列は Enter で切り替えます。「前の行」は Alt+k
+発注「20」Enter: view 3->3 cur=R013/ordered | ordered false->true received false->false status formalQuoted->ordered | toast after typing: 発注の列は Enter で切り替えます。1 キー操作は Alt を押しながら | toast end: R013: 発注済にしました
+
+ERRORS:

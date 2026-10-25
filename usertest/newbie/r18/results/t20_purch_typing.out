@@ -1,0 +1,16 @@
+R013 ロット(true) "ok" @40: mid mode=edit cur=R013/receivedLot edit="ok" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "ok"
+R013 ロット(true) "ok" @300: mid mode=edit cur=R013/receivedLot edit="ok" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "ok"
+R013 ロット(true) "order2" @300: mid mode=edit cur=R013/receivedLot edit="order2" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "order2"
+R013 ロット(true) "in stock" @300: mid mode=edit cur=R013/receivedLot edit="in stock" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "in stock"
+R013 ロット(true) "in stock" @40: mid mode=edit cur=R013/receivedLot edit="in stock" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "in stock"
+R013 ロット(true) "ink" @300: mid mode=edit cur=R013/receivedLot edit="ink" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "ink"
+R013 ロット(true) "OK" @300: mid mode=edit cur=R013/receivedLot edit="OK" toast=R004 の単価 ¥3 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   changes: R013: receivedLot:  -> "OK"
+
+ERRORS:

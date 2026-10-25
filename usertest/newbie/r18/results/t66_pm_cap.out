@@ -1,0 +1,8 @@
+  [e opened] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"ph":"補足（任意。Enter で確定）","v":"","focused":true},{"ph":"","v":"","focused":false,"label":"上限金額"}]} | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [typed 50000] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"ph":"補足（任意。Enter で確定）","v":"50000","focused":true},{"ph":"","v":"","focused":false,"label":"上限金額"}]} | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Enter] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"ph":"補足（任意。Enter で確定）","v":"50000","focused":true},{"ph":"","v":"","focused":false,"label":"上限金額"}]} | toast 「50000」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください
+  [Tab + 50000] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"ph":"補足（任意。Enter で確定）","v":"50000","focused":false},{"ph":"","v":"50000","focused":true,"label":"上限金額"}]} | toast 「50000」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください
+  [Enter2] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"ph":"補足（任意。Enter で確定）","v":"50000","focused":false},{"ph":"","v":"50000","focused":true,"label":"上限金額"}]} | toast 理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）
+  decisions []
+
+ERRORS:

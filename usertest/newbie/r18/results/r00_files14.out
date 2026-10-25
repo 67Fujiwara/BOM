@@ -1,0 +1,81 @@
+[a1_merged_maker.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2\n3\tリレー\tG2R-1\tオムロン\t6\n4\tブレーカ\tNF32-SV\t三菱電機\t2\n5\t電磁接触器\tS-T10\t三菱電機\t1"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||リレー|G2R-1|オムロン|6} {||ブレーカ|NF32-SV|三菱電機|2} {||電磁接触器|S-T10|三菱電機|1}
+    warn=
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2\n3\tリレー\tG2R-1\tオムロン\t6\n4\tブレーカ\tNF32-SV\t三菱電機\t2\n5\t電磁接触器\tS-T10\t三菱電機\t1"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||リレー|G2R-1|オムロン|6} {||ブレーカ|NF32-SV|三菱電機|2} {||電磁接触器|S-T10|三菱電機|1}
+    warn=
+[a2_merged_name_cat.xlsx]
+  old: tsv="分類\t品名\t型式\tメーカー\t数量\n制御部\t端子台\tXW2B-20G4\tオムロン\t2\n制御部\t端子台\tXW2B-40G4\tオムロン\t1\n制御部\t端子台\tXW2B-60G4\tオムロン\t1\n電源部\tブレーカ\tNF32-SV\t三菱電機\t2"
+    map=["category","name","model","maker","qtyNeeded"]
+    rows={制御部||端子台|XW2B-20G4|オムロン|2} {制御部||端子台|XW2B-40G4|オムロン|1} {制御部||端子台|XW2B-60G4|オムロン|1} {電源部||ブレーカ|NF32-SV|三菱電機|2}
+    warn=
+  new: tsv="分類\t品名\t型式\tメーカー\t数量\n制御部\t端子台\tXW2B-20G4\tオムロン\t2\n制御部\t端子台\tXW2B-40G4\tオムロン\t1\n制御部\t端子台\tXW2B-60G4\tオムロン\t1\n電源部\tブレーカ\tNF32-SV\t三菱電機\t2"
+    map=["category","name","model","maker","qtyNeeded"]
+    rows={制御部||端子台|XW2B-20G4|オムロン|2} {制御部||端子台|XW2B-40G4|オムロン|1} {制御部||端子台|XW2B-60G4|オムロン|1} {電源部||ブレーカ|NF32-SV|三菱電機|2}
+    warn=
+[a3_merged_qty.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\tコネクタ ハウジング\tXG4M-2030\tオムロン\t2\n2\tコネクタ 圧着端子\tXG5W-0031\tオムロン\t2\n3\tリレー\tMY4N-D2\tオムロン\t4"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||コネクタ ハウジング|XG4M-2030|オムロン|2} {||コネクタ 圧着端子|XG5W-0031|オムロン|2} {||リレー|MY4N-D2|オムロン|4}
+    warn=
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\tコネクタ ハウジング\tXG4M-2030\tオムロン\t2\n2\tコネクタ 圧着端子\tXG5W-0031\tオムロン\t2\n3\tリレー\tMY4N-D2\tオムロン\t4"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||コネクタ ハウジング|XG4M-2030|オムロン|2} {||コネクタ 圧着端子|XG5W-0031|オムロン|2} {||リレー|MY4N-D2|オムロン|4}
+    warn=
+[a4_ditto.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tリレー\tMY2N-D2\t〃\t2\n3\tタイマ\tH3CR-A8\t同上\t1\n4\t〃\tH3CR-A8N\t〃\t1\n5\tソケット\tPYF14A\t”\t4\n6\tソケット\tPYF08A\t同左\t2"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1} {||タイマ|H3CR-A8N|オムロン|1} {||ソケット|PYF14A|オムロン|4} {||ソケット|PYF08A|オムロン|2}
+    warn=「〃」「同上」「同左」の 6 セルは、上の行（同左は左のセル）の値にしました
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tリレー\tMY2N-D2\t〃\t2\n3\tタイマ\tH3CR-A8\t同上\t1\n4\t〃\tH3CR-A8N\t〃\t1\n5\tソケット\tPYF14A\t”\t4\n6\tソケット\tPYF08A\t同左\t2"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1} {||タイマ|H3CR-A8N|オムロン|1} {||ソケット|PYF14A|オムロン|4} {||ソケット|PYF08A|オムロン|2}
+    warn=「〃」「同上」「同左」の 6 セルは、上の行（同左は左のセル）の値にしました
+[a5_change_deleted.xlsx]
+  old: tsv="品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\t変更\nタイマ\tH3Y-2\t\tオムロン\t1\t\t削除\nヒューズ\tF-1A\t削除\t富士\t2\t0\t\nランプ\tL-1\t－\tIDEC\t1\t－\t廃止\n端子台\t\tXW2B-20G4\tオムロン\t\t2\t追加\nブレーカ\tNF32-SV\tNF32-SV\t三菱電機\t1\t1\t"
+    map=["name",null,"model","maker",null,"qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||ヒューズ|F-1A|富士|0} {||ランプ|L-1|IDEC|1} {||端子台|XW2B-20G4|オムロン|2} {||ブレーカ|NF32-SV|三菱電機|1}
+    warn=「数量（新）」が空の 1 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 新しい版の列が空で前の版だけに値がある 1 行（例: タイマ H3Y-2 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+  new: tsv="品名\t型式（旧）\t型式（新）\tメーカー\t数量（旧）\t数量（新）\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\t変更\nタイマ\tH3Y-2\t\tオムロン\t1\t\t削除\nヒューズ\tF-1A\t削除\t富士\t2\t0\t\nランプ\tL-1\t－\tIDEC\t1\t－\t廃止\n端子台\t\tXW2B-20G4\tオムロン\t\t2\t追加\nブレーカ\tNF32-SV\tNF32-SV\t三菱電機\t1\t1\t"
+    map=["name",null,"model","maker",null,"qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||端子台|XW2B-20G4|オムロン|2} {||ブレーカ|NF32-SV|三菱電機|1}
+    warn=削除の印がある・新しい版の列が空の 3 行（例: タイマ H3Y-2 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[a6_formula_total.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2\n合計\t\t\t\t6"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 1 行は取り込みません（例: 「合計 6」）
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2\n合計\t\t\t\t6"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 1 行は取り込みません（例: 「合計 6」）
+[a7_title_block_merged.xlsx]
+  old: tsv="制御盤A 部品表\t\t\t\t\n図番\tDWG-001\t\t作成\t山田\n\t\t\t\t\nNo\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=見出しより上の 2 行（表題など）は取り込みません
+  new: tsv="制御盤A 部品表\t\t\t\t\n図番\tDWG-001\t\t作成\t山田\n\t\t\t\t\nNo\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=見出しより上の 2 行（表題など）は取り込みません
+[a8_tbd_variants.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\t部品1\t未定（10月決定）\tオムロン\t1\n2\t部品2\t要確認\tオムロン\t1\n3\t部品3\t後日連絡\tIDEC\t1\n4\t部品4\tTBD by 10/30\tTBD\t1\n5\t部品5\t？\t？\t1\n6\t部品6\tー\tー\t1\n7\t部品7\tN/A\tN/A\t1\n8\t部品8\t決まり次第\tメーカー不問\t1\n9\t部品9\tMY4N-D2\t任意\t1\n10\t部品10\tMY4N-D2\t指定なし\t1"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||部品1|未定（10月決定）|オムロン|1} {||部品2|要確認|オムロン|1} {||部品3|後日連絡|IDEC|1} {||部品4|TBD by 10/30|TBD|1} {||部品5|？|？|1} {||部品6|ー|ー|1} {||部品7|N/A|N/A|1} {||部品8|決まり次第|メーカー不問|1} {||部品9|MY4N-D2|任意|1} {||部品10|MY4N-D2|指定なし|1}
+    warn=
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\t部品1\t未定（10月決定）\tオムロン\t1\n2\t部品2\t要確認\tオムロン\t1\n3\t部品3\t後日連絡\tIDEC\t1\n4\t部品4\tTBD by 10/30\tTBD\t1\n5\t部品5\t？\t？\t1\n6\t部品6\tー\tー\t1\n7\t部品7\tN/A\tN/A\t1\n8\t部品8\t決まり次第\tメーカー不問\t1\n9\t部品9\tMY4N-D2\t任意\t1\n10\t部品10\tMY4N-D2\t指定なし\t1"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||部品1|未定（10月決定）|オムロン|1} {||部品2|要確認|オムロン|1} {||部品3|後日連絡|IDEC|1} {||部品4|TBD by 10/30|TBD|1} {||部品5|？|？|1} {||部品6|ー|ー|1} {||部品7|N/A|N/A|1} {||部品8|決まり次第|メーカー不問|1} {||部品9|MY4N-D2|任意|1} {||部品10|MY4N-D2|指定なし|1}
+    warn=
+[a9_qty_notes.xlsx]
+  old: tsv="No\t品名\t型式\tメーカー\t数量\n1\t部品1\tQ-1\tオムロン\t2個×2\n2\t部品2\tQ-2\tオムロン\t4(予備含)\n3\t部品3\tQ-3\tオムロン\t2 ※1\n4\t部品4\tQ-4\tオムロン\t約10\n5\t部品5\tQ-5\tオムロン\t1+1(予備)\n6\t部品6\tQ-6\tオムロン\t2/台\n7\t部品7\tQ-7\tオムロン\t3台分\n8\t部品8\tQ-8\tオムロン\t１０"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||部品1|Q-1|オムロン|0} {||部品2|Q-2|オムロン|0} {||部品3|Q-3|オムロン|0} {||部品4|Q-4|オムロン|0} {||部品5|Q-5|オムロン|0} {||部品6|Q-6|オムロン|0} {||部品7|Q-7|オムロン|0} {||部品8|Q-8|オムロン|10}
+    warn=数量を読めない行が 7 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: tsv="No\t品名\t型式\tメーカー\t数量\n1\t部品1\tQ-1\tオムロン\t2個×2\n2\t部品2\tQ-2\tオムロン\t4(予備含)\n3\t部品3\tQ-3\tオムロン\t2 ※1\n4\t部品4\tQ-4\tオムロン\t約10\n5\t部品5\tQ-5\tオムロン\t1+1(予備)\n6\t部品6\tQ-6\tオムロン\t2/台\n7\t部品7\tQ-7\tオムロン\t3台分\n8\t部品8\tQ-8\tオムロン\t１０"
+    map=[null,"name","model","maker","qtyNeeded"]
+    rows={||部品1|Q-1|オムロン|0} {||部品2|Q-2|オムロン|0} {||部品3|Q-3|オムロン|0} {||部品4|Q-4|オムロン|0} {||部品5|Q-5|オムロン|0} {||部品6|Q-6|オムロン|0} {||部品7|Q-7|オムロン|0} {||部品8|Q-8|オムロン|10}
+    warn=数量を読めない行が 7 行あります（0 にしてエラー表示します。4 要確認で直してください）

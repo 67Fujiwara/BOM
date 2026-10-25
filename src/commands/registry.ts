@@ -818,14 +818,10 @@ export function publishFlow(rowIds?: string[]) {
 }
 
 // ---------- 決定パネル（7） ----------
-function decisionPanel(r: Row) {
-  const s = st()
-  const p = s.project()
-  const c = pm.pmCaseOf(p, r)
-  if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
-  // 開いたあとに別のタブで要決定の中身（変更セットの Rev・種別）が変わったら決めない（見ていない変更を承認しない）
-  // 理由を入れているあいだに変わっても同じ（確定するときにも見直す）。正式見積の金額・承認待ちの値も見る
+// 開いたあとに別のタブで要決定の中身が変わったら決めない（見ていない変更を承認しない）。y / Shift+Y の直接の決定にも使う
+function staleGuard(r: Row, c: ReturnType<typeof pm.pmCaseOf>): () => boolean {
   const rev0 = r.pendingRev
+  // 理由を入れているあいだに変わっても同じ（確定するときにも見直す）。正式見積の金額・承認待ちの値も見る
   const seen = (x: Row) => JSON.stringify([x.pendingApproval ?? null, x.pendingRemoval ?? null, pm.formalKey(st().project(), x) ?? null])
   const seen0 = seen(r)
   const stale = () => {
@@ -840,6 +836,14 @@ function decisionPanel(r: Row) {
     }
     return false
   }
+  return stale
+}
+function decisionPanel(r: Row) {
+  const s = st()
+  const p = s.project()
+  const c = pm.pmCaseOf(p, r)
+  if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
+  const stale = staleGuard(r, c)
   const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => void (!stale() && decideWithReason(r.id, o.kind, stale)) }))
   // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
   // 先行発注の申請は、理由と金額を見て決められるように題に出す
@@ -1613,7 +1617,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (c === 'なし') return toast(`${r!.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
       const o = pm.pmOptions(c, r!).find((x) => x.key === 'y')
       if (!o) return toast(`${c} の行では y は使えません（Enter で決定パネル）`, 'info')
-      return decideWithReason(r!.id, o.kind)
+      return decideWithReason(r!.id, o.kind, staleGuard(r!, c))
     }
     case 'pm.reject': {
       if (!need()) return
@@ -1622,7 +1626,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (c === 'なし') return toast(`${r!.id} は要決定ではありません`, 'info')
       const o = pm.pmOptions(c, r!).find((x) => x.key === 'Y')
       if (!o) return toast(`${c} の行では Shift+Y は使えません（Enter で決定パネル）`, 'info')
-      return decideWithReason(r!.id, o.kind)
+      return decideWithReason(r!.id, o.kind, staleGuard(r!, c))
     }
     case 'weights.row':
       if (!need()) return

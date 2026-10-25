@@ -106,7 +106,11 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
 /** 社内だけのシート（変更点・チェック結果）。商社向けには付けない */
 function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   const purchasing = ws.user.role === 'purchasing'
-  const hide = (id: string) => purchasing && pendingAdd(p.rows.find((x) => x.id === id) ?? ({ flags: {} } as Row))
+  const hide = (id: string) => {
+    const x = p.rows.find((y) => y.id === id)
+    // 承認待ちの追加行と、承認されずに下書きに戻った追加行は購買に出さない
+    return purchasing && (pendingAdd(x ?? ({ flags: {} } as Row)) || (x?.status === 'draft' && x.publishedRev == null))
+  }
   // 変更点
   const chg = wb.addWorksheet('変更点')
   headerRow(chg, [{ header: 'Rev', key: 'rev', width: 6 }, { header: '日時', key: 'at', width: 16 }, { header: '公開者', key: 'by', width: 10 }, { header: 'ID', key: 'id', width: 7 }, { header: '起因', key: 'cause', width: 18 }, { header: '変更理由', key: 'reason', width: 12 }, { header: '変更番号', key: 'no', width: 12 }, { header: '内容', key: 'detail', width: 50 }, { header: '承認', key: 'approval', width: 24 }])

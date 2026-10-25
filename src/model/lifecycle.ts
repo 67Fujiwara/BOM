@@ -70,7 +70,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       const want = fixed ? fixedSupplierId(p, { ...r, adoptedSupplierId: undefined }, ws.suppliers) : null
       // 指定商社は指定先を変えたら（設計が直して公開）その商社に。客先指定品は採用した依頼先のまま（スコアで選んだ採用だけ外す）
       // 支給品・社内在庫に変えたら、商社の採用・正式依頼は使わない（§3.4: 見積なし）
-      const mismatch = !isQuotable(r) || ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.tradable === false || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
+      const mismatch = !isQuotable(r) || !ws.suppliers.some((s) => s.id === r.adoptedSupplierId) || ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.tradable === false || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
       if (mismatch) {
         const stoppedSup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId && s.tradable === false)
         if (stoppedSup) r.flags.droppedStopped = stoppedSup.name

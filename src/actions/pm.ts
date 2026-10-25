@@ -223,7 +223,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
                 rr.pendingRemoval = undefined
               }
               // 前の変更セットで足した（まだ承認されていない）行をこの変更セットにまとめていたら、追加も承認されていない
-              const neverApproved = !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id) && (!sb.changeSet || sb.changeSet.approved))
+              const neverApproved = !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id) && (!sb.changeSet || (sb.changeSet.approved && sb.changeSet.merged?.[rr.id] == null)))
               if (rr.pendingApproval && !(neverApproved && rr.status === 'submitted')) {
                 // 公開値はそのまま。変更は設計の作業中に戻す（見積は失わない）
                 rr.working = { ...rr.pendingApproval, ...(rr.working ?? {}) }
@@ -233,6 +233,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
                 if (rr.pendingApproval) Object.assign(rr, rr.pendingApproval, rr.working ?? {})
                 rr.pendingApproval = undefined
                 rr.working = undefined
+                rr.removal = undefined
                 // この変更セットで足した行（客先指定品などで自動で選定済になった行も）は下書きに戻す
                 rr.adoptedSupplierId = undefined
                 rr.scoreSnapshot = undefined
@@ -283,7 +284,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
             r.adoptedSupplierId = best.supplierId
             r.scoreSnapshot = best.total
             r.adoptReason = '先行発注（推奨）'
-            r.orderQty = roundedQty(r.qtyNeeded, best.quote.moq, r.packQty, r.unit)
+            r.orderQty = r.flags.surplusRejected === best.supplierId ? r.qtyNeeded : roundedQty(r.qtyNeeded, best.quote.moq, r.packQty, r.unit)
           }
           r.flags.early = true
           r.flags.ltbPending = false
@@ -323,7 +324,7 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
           r.adoptedSupplierId = next.supplierId
           r.adoptReason = `次点へ（${c}）`
           r.scoreSnapshot = next.total
-          r.orderQty = roundedQty(r.qtyNeeded, next.quote.moq, r.packQty, r.unit)
+          r.orderQty = r.flags.surplusRejected === next.supplierId ? r.qtyNeeded : roundedQty(r.qtyNeeded, next.quote.moq, r.packQty, r.unit)
           r.flags.formalDiff = false
           r.flags.formalDiffKey = undefined
           r.flags.pmPending = false

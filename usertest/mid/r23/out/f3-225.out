@@ -1,0 +1,52 @@
+0:add_row: R081 unpublished
+1:pick_supplier: R028 R028 を 因幡電機 で採用
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:edit_qty: R005 前後に空白があります … 直すか Alt+x で確認済みに）
+4:pick_supplier: R019 R019 を 立花エレテック で採用
+5:pick_supplier: R042 R042 を ミスミ で採用（その他: fuzz）
+6:order: R013 R013: 発注済にしました
+7:pick_supplier: R004 1〜2 で商社を選んでください
+8:receive: R013 R013: 入荷済にしました
+9:add_row: R082 unpublished
+10:add_row: R083 前後に空白があります … 直すか Alt+x で確認済みに）
+11:replace_row: R021 R021 の置き換え品 R084 を作りました（公開すると R021 は置換済に / 前後に空白があります … 直すか Alt+x で確認済みに）
+12:edit_qty: R082 前後に空白があります … 直すか Alt+x で確認済みに）
+13:undo: purchasing 元に戻す: 入荷済
+14:formal: 出します: 対象 8 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 8 行 × 3 社に正式見積を依頼
+15:switch_proc: R083→指定商社 前後に空白があります … 直すか Alt+x で確認済みに）
+16:pm_measure: R003 p R003: 委譲
+17:switch_proc: R044→相見積 前後に空白があります … 直すか Alt+x で確認済みに）
+18:formal_price: R001 x1.5 EDIT-ERR R001 の正式単価 ¥219（概算から +50%）。桁・行を
+19:edit_qty: R083 前後に空白があります … 直すか Alt+x で確認済みに）
+20:ltb_request: R068 R068: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥2,519）
+21:cancel_row: R055 前後に空白があります … 直すか Alt+x で確認済みに）
+22:decline: R021 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+23:pm_measure: R068 no-q
+24:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+25:pm_decide: R068 Shift+Y R068: 却下
+26:early_adopt: none
+27:bulk: 採用 63 / 拮抗 27（要見直し）/ 承認要 0 / スキップ 3
+28:order: R001 R001: 発注済にしました
+29:pick_supplier: R021 設計作業中の行は選定できません（公開を待つ）
+30:order: none
+31:excel: purchasing 1 sheets
+32:reload: reload
+33:switch_proc: R018→社内在庫 前後に空白があります … 直すか Alt+x で確認済みに）
+34:undo: purchasing 元に戻す: 発注済
+35:pm_decide: R046 y 納期NG の行では y は使えません（Enter で決定パネル）
+36:consolidate: やめました（何も変えていません）
+37:pick_supplier: R021 設計作業中の行は選定できません（公開を待つ）
+38:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+39:decline: R005 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+40:formal: になります → 62 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+41:requote_cycle: R039 あります … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+42:pm_measure: R046 Shift+Y R046: 受入
+43:excel: pm 1 sheets
+44:switch_proc: R052→支給品 前後に空白があります … 直すか Alt+x で確認済みに）
+45:pick_supplier: R005 設計作業中の行は選定できません（公開を待つ）
+46:requote_cycle: R035 あります … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+47:early_adopt: none
+48:withdraw_x: none
+49:requote_cycle: R031 あります … 直すか Alt+x で確認済みに） / 依頼する行がありません（提出済・再見積要の行なし）
+PASS F3-225 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

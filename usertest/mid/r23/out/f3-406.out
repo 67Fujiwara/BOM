@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+1:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+2:next_day: +3d
+3:reload: reload
+4:pm_measure: R003 e R003: 特急・分納
+5:pick_supplier: R038 R038 を 因幡電機 で採用
+6:receive: none
+7:order: none
+8:early_adopt: R079 有効な見積がありません（未回答・辞退・期限切れのみ）
+9:pm_measure: R034 no-g
+10:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+11:early_adopt: R078 有効な見積がありません（未回答・辞退・期限切れのみ）
+12:pm_decide: R013 Shift+Y R013: 受入
+13:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+14:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+15:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+16:edit_qty: R053 を入れて Enter] 行 1（Rev.3） を公開しました
+17:ltb_request: R051 R051: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥45,000
+18:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+19:edit_qty: R021 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+20:switch_proc: R015→指定商社 を入れて Enter] 行 2（Rev.4） を公開しました
+21:decline: R069 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+22:ltb_request: R025 R025: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥315）
+23:excel: design 1 sheets
+24:switch_proc: R048→社内在庫 を入れて Enter] 行 1（Rev.5） を公開しました
+25:next_day: +4d
+26:consolidate: やめました（何も変えていません）
+27:receive: none
+28:receive: none
+29:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+30:pick_supplier: R060 R060 を 因幡電機 で採用
+31:change_need_date: R037 R060 を 因幡電機 で採用 済みに） … 直すか Alt+x で確認済みに）
+32:withdraw_x: none
+33:add_row: R081 unpublished
+34:switch_proc: R057→客先指定品 +x で確認済みに） … 直すか Alt+x で確認済みに）
+35:receive: none
+36:change_need_date: R014 役割: 設計（山田）。既定のビュー 4 要確認 を開きました 済みに） … 直すか Alt+x で確認済みに）
+37:decline: R053 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+38:requote_cycle: R009 09 メーカが空です … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+39:decline: R078 S3 EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+40:pick_supplier: R016 R016 を ミスミ で採用（その他: fuzz）
+41:order: none
+42:pm_measure: R015 Shift+Y R015・Rev.4 の変更セット 2 行まとめて: 却下
+43:bulk: 採用 58 / 拮抗 3（要見直し）/ 承認要 0 / スキップ 14
+44:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+45:pm_measure: R023 Shift+Y R023: 受入
+46:receive: none
+47:pm_decide: R025 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+48:rename_supplier: S2→因幡 / 電機商会 JSON を読み込みました（案件 1 件
+49:pm_measure: R005 d R005: 設計へ代替依頼
+PASS F3-406a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

@@ -6,3 +6,47 @@
 5:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
 6:next_day: +1d
 7:pm_decide: empty
+8:rough: 依頼する行がありません（提出済・再見積要の行なし）
+9:requote_cycle: R006 、変更番] 行 6（Rev.2） を公開しました / 6 行 × 1 社に依頼（回答期限 2026-11-01）。メーカを扱う商社がマ
+10:pm_measure: empty
+11:decline: R066 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+12:excel: design 3 sheets
+13:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+14:switch_proc: R022→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+15:next_day: +2d
+16:add_row: R081 を入れて Enter] 行 2（Rev.3） を公開しました
+17:formal_price: none
+18:requote_cycle: R011 nter] 行 1（Rev.4） を公開しました / 2 行 × 1 社に依頼（回答期限 2026-11-02）。見積済だった 1 行
+19:bulk: 採用 63 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 17
+20:formal: ます: 対象 63 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 63 行 × 1 社に正式見積を依頼
+21:add_row: R082 を入れて Enter] 行 1（Rev.5） を公開しました
+22:formal_price: R074 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+23:replace_row: R025 R025 の置き換え品 R083 を作りました（公開すると R025 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+24:early_adopt: R059 有効な見積がありません（未回答・辞退・期限切れのみ）
+25:pick_supplier: none
+26:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+28:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:receive: none
+30:receive: none
+31:switch_proc: R002→客先指定品 を入れて Enter] 行 1（Rev.7） を公開しました
+32:pm_decide: empty
+33:rough: 2 行 × 2 社に依頼（回答期限 2026-11-02）
+34:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+35:ltb_request: none
+36:order: none
+37:formal_price: none
+38:pm_decide: empty
+39:pick_supplier: none
+40:edit_qty: R037 を入れて Enter] 行 1（Rev.8） を公開しました
+41:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+42:receive: none
+43:pick_supplier: none
+44:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 79
+45:rough: 依頼する行がありません（選んだ商社に頼む行なし。指定商社・客先指定品は指定先の商社を選んでください）
+46:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+47:pm_decide: empty
+48:withdraw_x: R029 R029: 正式依頼の取下げ（ミスミ P-2026-041-S3-F1）を伝えた（確認済）
+49:ltb_request: none
+PASS F3-224 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

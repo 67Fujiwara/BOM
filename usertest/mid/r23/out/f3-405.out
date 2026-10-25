@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:undo: pm 元に戻す: 案件設定を変更
+1:withdraw_x: none
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:ltb_request: R035 R035: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥5,106）
+4:pm_measure: R035 no-q
+5:order: R013 R013: 発注済にしました
+6:decline: R075 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+7:ltb_request: R020 R020: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥5,870）
+8:switch_proc: R078→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+9:switch_proc: R029→客先指定品 を入れて Enter] 行 1（Rev.4） を公開しました
+10:receive: R013 R013: 入荷済にしました
+11:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+12:pm_decide: R020 y R020: 先行発注許可
+13:rename_supplier: S3→商社29 JSON を読み込みました（案件 1 件
+14:withdraw_x: none
+15:bulk: 採用 67 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 1
+16:pm_decide: R035 Shift+Y R035: 却下
+17:add_row: R081 を入れて Enter] 行 1（Rev.5） を公開しました
+18:ltb_request: none
+19:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:pm_measure: R021 p R021: 委譲
+21:receive: none
+22:pick_supplier: none
+23:replace_row: R003 R003 の置き換え品 R082 を作りました（公開すると R003 は置換済に / を入れて Enter] 行 2（Rev.6） を公開しました
+24:cancel_row: R027 を入れて Enter] 行 1（Rev.7） を公開しました
+25:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:switch_proc: R015→社内在庫 を入れて Enter] 行 1（Rev.8） を公開しました
+27:pm_decide: R038 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+28:pm_decide: R026 y R026: 先行発注許可
+29:formal_price: none
+30:pick_supplier: R067 R067 を 商社29 で採用（その他: fuzz）
+31:receive: none
+32:formal_price: none
+33:order: none
+34:order: none
+35:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+36:receive: none
+37:bulk: 採用 15 / 拮抗 2（要見直し）/ 承認要 0 / スキップ 8
+38:formal_price: none
+39:order: none
+40:rough: 5 行 × 2 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 3 行は、選んだ商社すべて
+41:reload: reload
+42:early_adopt: R037 R037: 因幡電機 を仮採用（納期: 急ぎ）。PM の承認待ち（7 要決定）
+43:decline: R055 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+44:undo: pm 元に戻す: 決定: 先行発注許可
+45:pm_measure: R043 p R043: 委譲
+46:requote_cycle: R053 nter] 行 1（Rev.9） を公開しました / 1 行 × 2 社に依頼（回答期限 2026-10-31）
+47:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+48:add_row: R083 unpublished
+49:pm_measure: R054 no-g
+PASS F3-405a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

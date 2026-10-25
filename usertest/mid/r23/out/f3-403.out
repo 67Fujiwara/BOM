@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+1:change_need_date: R037 役割: 設計（山田）。既定のビュー 4 要確認 を開きました nter] 行 1（Rev.3） を公開しました
+2:pick_supplier: R058 R058 を 立花エレテック で採用（その他: fuzz）
+3:withdraw_x: none
+4:edit_qty: R064 を入れて Enter] 行 1（Rev.4） を公開しました
+5:pm_measure: R064 no-q
+6:pm_decide: R037 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+7:pm_measure: R003 p R003: 委譲
+8:pm_measure: R064 no-g
+9:excel: pm 3 sheets
+10:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+11:receive: none
+12:edit_qty: R020 を入れて Enter] 行 1（Rev.5） を公開しました
+13:excel: purchasing 3 sheets
+14:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+15:edit_qty: R044 を入れて Enter] 行 1（Rev.6） を公開しました
+16:add_row: R081 を入れて Enter] 行 1（Rev.7） を公開しました
+17:edit_qty: R017 行 1（Rev.7） を公開しました
+18:pm_decide: R037 y R037・Rev.3 の変更セット 1 行まとめて: 承認
+19:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+20:switch_proc: R020→支給品 を入れて Enter] 行 2（Rev.8） を公開しました
+21:pick_supplier: R027 R027 を 立花エレテック で採用
+22:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+23:switch_proc: R051→指定商社 を入れて Enter] 行 1（Rev.9） を公開しました
+24:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+25:decline: R072 S1 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+26:cancel_row: R031 入れて Enter] 行 1（Rev.10） を公開しました
+27:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+28:formal_price: R013 x1 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+29:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:rough: 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべて
+31:early_adopt: R076 有効な見積がありません（未回答・辞退・期限切れのみ）
+32:bulk: 採用 62 / 拮抗 12（要見直し）/ 承認要 0 / スキップ 12
+33:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
+34:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+35:cancel_row: R078 入れて Enter] 行 1（Rev.11） を公開しました
+36:switch_proc: R056→支給品 入れて Enter] 行 1（Rev.12） を公開しました
+37:requote_cycle: R013 ter] 行 1（Rev.13） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+38:cancel_row: R002 入れて Enter] 行 1（Rev.14） を公開しました
+39:decline: R020 S3 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+40:pick_supplier: R017 PM承認待ちの行です
+41:decline: R078 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+42:ltb_request: R017 R017: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥324）
+43:formal_price: R013 x1 EDIT-ERR R017: 先行発注を申請しました（PM の 7 要決定へ。金
+44:withdraw_x: none
+45:requote_cycle: R024 ter] 行 1（Rev.15） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+46:formal_price: R013 x1 EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+47:next_day: +1d
+48:replace_row: R051 R051 の置き換え品 R082 を作りました（公開すると R051 は置換済に / 入れて Enter] 行 2（Rev.16） を公開しました
+49:switch_proc: R005→指定商社 前後に空白があります … 直すか Alt+x で確認済みに）
+PASS F3-403a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

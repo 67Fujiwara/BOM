@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:early_adopt: none
+1:toggle_approval: OFF 案件設定を保存しました
+2:decline: R025 S1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:withdraw_x: none
+4:formal: 出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 5 行 × 2 社に正式見積を依頼
+5:withdraw_x: none
+6:withdraw_x: none
+7:receive: none
+8:pm_decide: R003 b R003: 次点商社へ
+9:excel: pm 3 sheets
+10:pick_supplier: R010 R010 を 因幡電機 で採用
+11:switch_proc: R057→指定商社 を入れて Enter] 行 1（Rev.3） を公開しました
+12:rename_supplier: S2→立花エレテック（本社） JSON を読み込みました（案件 1 件
+13:consolidate: やめました（何も変えていません）
+14:formal_price: R002 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+15:pm_decide: R057 y 納期NG の行では y は使えません（Enter で決定パネル）
+16:formal: 出します: 対象 3 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 3 行 × 2 社に正式見積を依頼
+17:pm_decide: R057 y 納期NG の行では y は使えません（Enter で決定パネル）
+18:edit_qty: R015 を入れて Enter] 行 1（Rev.4） を公開しました
+19:formal_price: R010 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+20:toggle_approval: ON 案件設定を保存しました
+21:ltb_request: R022 R022: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥14,956
+22:pick_supplier: R016 R016 を ミスミ で採用（その他: fuzz）
+23:reload: reload
+24:pick_supplier: R052 R052 を ミスミ で採用（その他: fuzz）
+25:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+26:edit_qty: R040 を入れて Enter] 行 1（Rev.5） を公開しました
+27:receive: none
+28:requote_cycle: R068 nter] 行 1（Rev.6） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+29:pm_decide: R022 y R022: 先行発注許可
+30:undo: design 前の公開（公開）には戻せる値の変更がありません（行の追加だけ）。追加した行を戻す
+31:change_need_date: R074 前の公開（公開）には戻せる値の変更がありません（行の追加だけ 済みに） … 直すか Alt+x で確認済みに）
+32:withdraw_x: R003 R003: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+33:pm_decide: R040 y R040・Rev.5 の変更セット 1 行まとめて: 承認
+34:switch_proc: R003→客先指定品 +x で確認済みに） … 直すか Alt+x で確認済みに）
+35:master_remove: S3 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+36:reload: reload
+37:pm_decide: R057 Shift+Y R057: 受入
+38:next_day: +3d
+39:master_stop: S3 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+40:formal_price: R001 x3 EDIT-ERR R001 の正式単価 ¥438（概算から +200%）。桁・行
+41:order: R002 R002: 発注済にしました
+42:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+43:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+44:requote_cycle: R013 済みに） … 直すか Alt+x で確認済みに） / 1 行 × 1 社に依頼（回答期限 2026-11-03）。見積済だった 1 行
+45:formal_price: R034 x1.5 EDIT-ERR R034 の正式単価 ¥534（概算から +50%）。桁・行を
+46:decline: R060 S3 EDIT-ERR R034 の正式単価 ¥534（概算から +50%）。桁・行を
+47:withdraw_x: R045 R045: 正式依頼の取下げ（S2 P-2026-041-S2-F1）を伝えた（確認済）
+48:formal: 出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼
+49:ltb_request: R067 R067: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥815）
+PASS F3-407a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

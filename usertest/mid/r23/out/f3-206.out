@@ -1,7 +1,7 @@
 0:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
 1:pm_decide: R003 Shift+Y R003: 受入
 2:formal_price: R013 x1.5 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
-3:requote_cycle: R070 、変更番] 行 6（Rev.2） を公開しました / 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+3:requote_cycle: R070 、変更番] 行 6（Rev.2） を公開しました / 6 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
 4:pm_decide: empty
 5:undo: pm 元に戻す: 決定: 受入
 6:ltb_request: R066 R066: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥429）
@@ -50,23 +50,3 @@
 49:edit_qty: R021 公開できません: 未確認の警告 1 件（R030 必要日(前
 PASS F3-206 不変条件の違反なし（50 操作） :: violations=0
 == 1/1 PASS
-��行では y は使えません（Enter で決定パネル）
-43:rough: 1 行 × 2 社に依頼（回答期限 2026-10-31）
-44:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
-45:edit_qty: R015 入れて Enter] 行 1（Rev.13） を公開しました
-46:add_row: R083 入れて Enter] 行 1（Rev.14） を公開しました
-47:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
-48:change_need_date: R030 役割: 設計（山田）。既定のビュー 4 要確認 を開きました 済みに） … 直すか Alt+x で確認済みに）
-49:edit_qty: R021 公開できません: 未確認の警告 1 件（R030 必要日(前
-50:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
-51:consolidate: やめました（何も変えていません）
-52:formal_price: R066 x1.5 EDIT-ERR R066 の正式単価 ¥644（概算から +50%）。桁・行を
-53:consolidate: やめました（何も変えていません）
-54:receive: none
-55:formal_price: R045 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
-56:excel: design 1 sheets
-57:pm_decide: R021 Shift+Y R021: 受入
-58:rough: 1 行 × 2 社に依頼（回答期限 2026-10-31）
-59:reload: reload
-FAIL F3-206 不変条件の違反なし（60 操作） :: violations=1
-== 0/1 PASS

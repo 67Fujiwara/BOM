@@ -1,0 +1,23 @@
+created → 中堅R21盤（3 行）を作成しました。Ctrl+Enter で提出します
+publish → 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+PASS O7-0 PM の 7 に案件設定確定の行 :: case:C1
+PASS O7-digit-1 案件の行で 1 を押すとビュー 1 になる :: view=1 cursorRow=R001
+PASS O7-digit-2 案件の行で 2 を押すとビュー 2 になる :: view=2 cursorRow=R001
+PASS O7-digit-4 案件の行で 4 を押すとビュー 4 になる :: view=4 cursorRow=null
+PASS O7-digit-5 案件の行で 5 を押すとビュー 5 になる :: view=5 cursorRow=R001
+PASS O7-digit-6 案件の行で 6 を押すとビュー 6 になる :: view=6 cursorRow=R001
+PASS O7-digit-8 案件の行で 8 を押すとビュー 8 になる :: view=8 cursorRow=null
+PASS O7-digit-9 案件の行で 9 を押すとビュー 9 になる :: view=9 cursorRow=R001
+PASS O7-digit-3 案件の行で 3 を押すとビュー 3 になる :: view=3 cursorRow=null
+PASS O7-digit-7 案件の行で 7 を押すとビュー 7 になる :: view=7 cursorRow=case:C1
+PASS O7-alt Alt+数字でも 7 に戻れる :: 7
+PASS O7-letters 案件の行で a x b q を押しても確定・変更されない :: false
+design 7 items case:C1 cursorRow null
+design case row: raw 5 → view 7 toast 行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+FAIL O7-design-digit 案件の行（design）でも 5 でビューが替わる（§9.1 ビュー切替は全ビュー共通） :: view=7 toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+purchasing 7 items case:C1 cursorRow case:C1
+purchasing case row: raw 5 → view 7 toast 行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+FAIL O7-purchasing-digit 案件の行（purchasing）でも 5 でビューが替わる（§9.1 ビュー切替は全ビュー共通） :: view=7 toast=行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）
+PASS O7-y 案件の行で y（素の y）で確定 :: 案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます）
+ERRORS []
+== 13/15 PASS

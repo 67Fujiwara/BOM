@@ -15,3 +15,40 @@ approval ON → 案件設定を保存しました
 12:pm_measure: R048 no-d
 13:pick_supplier: R041 R041 を ミスミ で採用（その他: fuzz）
 14:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+15:ltb_request: R026 R026: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥1,335）
+16:edit_qty: R020 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+17:edit_qty: R030 を入れて Enter] 行 2（Rev.3） を公開しました
+18:pm_decide: R048 y R048: 承認
+19:cancel_row: R023 を入れて Enter] 行 1（Rev.4） を公開しました
+20:requote_cycle: R040 nter] 行 1（Rev.5） を公開しました / 5 行 × 3 社に依頼（回答期限 2026-10-31）。メーカを扱う商社がマ
+21:pm_measure: R003 no-q
+22:pm_decide: R026 y R026: 先行発注許可
+23:requote_cycle: R066 nter] 行 1（Rev.6） を公開しました / 依頼する行がありません（提出済・再見積要の行なし）
+24:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+25:formal_price: R013 x1.05 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+26:decline: R011 S3 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+27:formal_price: R013 x1.5 EDIT-ERR R013 の正式単価 ¥15,557（概算から +50%）。桁
+28:early_adopt: R080 有効な見積がありません（未回答・辞退・期限切れのみ）
+29:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+30:order: R013 R013: 発注済にしました
+31:pm_measure: R003 e R003: 特急・分納
+32:undo: purchasing 元に戻す: 発注済
+33:edit_qty: R073 を入れて Enter] 行 1（Rev.7） を公開しました
+34:formal_price: R013 x1.5 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+35:formal: 」になります → 8 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 2 行 / 再見積要 0 行
+36:bulk: 採用 60 / 拮抗 29（要見直し）/ 承認要 0 / スキップ 9
+37:formal: になります → 59 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 3 行 / 再見積要 0 行
+38:ltb_request: R030 R030: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥38,950
+39:pm_decide: R032 y 納期NG の行では y は使えません（Enter で決定パネル）
+40:formal_price: R004 x3 EDIT-ERR R004 の正式単価 ¥7,863（概算から +200%）。桁
+41:excel: design 1 sheets
+42:switch_proc: R007→相見積 ありません。エラーのある行が 3 行あります（F8 で移動）
+43:switch_proc: R054→支給品 件（R054 必要数が0以下です … F8 で移動して直す）
+44:order: R004 R004: 発注済にしました
+45:pm_decide: R039 y 納期NG の行では y は使えません（Enter で決定パネル）
+46:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 1 行・承認待ち 3 行・再見積要 0 行は除外）
+47:pick_supplier: R066 PM承認待ちの行です
+48:switch_proc: R003→相見積 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+49:formal_price: R045 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+PASS F3-223a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

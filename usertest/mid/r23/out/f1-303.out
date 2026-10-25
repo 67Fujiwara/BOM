@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:formal_price: R013 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+1:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+2:pm_decide: R003 y 納期NG の行では y は使えません（Enter で決定パネル）
+3:master_remove: S2 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:bulk: 採用 69 / 拮抗 3（要見直し）/ 承認要 0 / スキップ 1
+5:next_day: +8d
+6:formal: （拮抗 3 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 2 社に正式見積を依頼
+7:excel: design 3 sheets
+8:withdraw_x: none
+9:edit_qty: R024 を入れて Enter] 行 1（Rev.3） を公開しました
+10:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし）
+11:formal_price: R047 x1 EDIT-ERR 依頼できる行がありません（選定済・再発行対象の行なし）
+12:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+13:edit_qty: R028 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+14:pm_decide: R007 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+15:switch_proc: R065→客先指定品 を入れて Enter] 行 2（Rev.4） を公開しました
+16:formal_price: R058 x3 EDIT-ERR R058 の正式単価 ¥1,449（概算から +200%）。桁
+17:formal_price: R039 x1 EDIT-ERR R058 の正式単価 ¥1,449（概算から +200%）。桁
+18:pm_decide: R008 Shift+Y R008: 受入
+19:next_day: +16d
+20:pm_decide: R003 b R003: 次点商社へ
+21:cancel_row: R003 を入れて Enter] 行 1（Rev.5） を公開しました
+22:receive: none
+23:add_row: R081 を入れて Enter] 行 1（Rev.6） を公開しました
+24:formal_price: R007 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+25:receive: none
+26:pm_decide: R004 y 納期NG の行では y は使えません（Enter で決定パネル）
+27:order: R047 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+28:master_stop: S2 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+29:cancel_row: R019 を入れて Enter] 行 1（Rev.7） を公開しました
+30:formal_price: R055 x3 EDIT-ERR R055 の正式単価 ¥117,378（概算から +200%）
+31:pm_decide: R006 Shift+Y R006: 受入
+32:order: R007 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+33:receive: none
+34:edit_qty: R055 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+35:undo: pm 元に戻す: 決定: 受入
+36:switch_proc: R076→指定商社 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+37:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 1 行・承認待ち 1 行・再見積要 0 行は除外）
+38:undo: design 元に戻す: セル編集
+39:rough: 4 行 × 2 社に依頼（回答期限 2026-11-16）。作業中 1 行を除外。メーカを扱う商社がマスタに無い行 3 
+40:switch_proc: R002→指定商社 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+41:receive: none
+42:edit_qty: R029 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+43:switch_proc: R034→支給品 公開できません: エラー 1 件（R002 指定先「S2」は
+44:receive: none
+45:formal:  → 依頼できる行がありません（選定済・再発行対象の行なし。作業中 1 行・承認待ち 1 行・再見積要 0 行は除外）
+46:switch_proc: R039→客先指定品 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+47:receive: none
+48:order: R047 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+49:rough: 依頼する行がありません（提出済・再見積要の行なし）
+PASS F1-303a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

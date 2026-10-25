@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:consolidate: やめました（何も変えていません）
+1:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+2:edit_qty: R037 を入れて Enter] 行 1（Rev.3） を公開しました
+3:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+4:pick_supplier: R040 R040 を 立花エレテック で採用（その他: fuzz）
+5:add_row: R081 unpublished
+6:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+7:next_day: +3d
+8:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
+9:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+10:toggle_approval: OFF 案件設定を保存しました
+11:formal_price: R013 x3 EDIT-ERR R013 の正式単価 ¥31,113（概算から +200%）。
+12:bulk: 採用 68 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 1
+13:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+14:next_day: +6d
+15:formal_price: R013 x3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+16:pm_decide: R006 y 納期NG の行では y は使えません（Enter で決定パネル）
+17:edit_qty: R017 を入れて Enter] 行 2（Rev.4） を公開しました
+18:decline: R037 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+19:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+20:undo: design 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+21:add_row: R082 を入れて Enter] 行 1（Rev.5） を公開しました
+22:cancel_row: R068 を入れて Enter] 行 1（Rev.6） を公開しました
+23:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+24:pm_decide: R013 Shift+Y 使えるキー: y / b / g / d / q（↑↓ と Enter でも選べます）
+25:excel: design 3 sheets
+26:withdraw_x: none
+27:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+28:excel: pm 3 sheets
+29:toggle_approval: ON 案件設定を保存しました
+30:next_day: +14d
+31:pm_decide: R013 y R013: 受入
+32:order: R013 R013: 発注済にしました
+33:bulk: 採用 0 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 1
+34:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+35:receive: R013 R013: 入荷済にしました
+36:switch_proc: R030→社内在庫 を入れて Enter] 行 1（Rev.7） を公開しました
+37:switch_proc: R080→指定商社 を入れて Enter] 行 1（Rev.8） を公開しました
+38:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+39:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+40:withdraw_x: none
+41:switch_proc: R016→支給品 ）まで書いてください … 直すか Alt+x で確認済みに）
+42:switch_proc: R073→客先指定品 ）まで書いてください … 直すか Alt+x で確認済みに）
+43:edit_qty: R054 ）まで書いてください … 直すか Alt+x で確認済みに）
+44:undo: design 元に戻す: セル編集
+45:bulk: 採用 22 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 2
+46:withdraw_x: none
+47:pm_decide: R008 y 納期NG の行では y は使えません（Enter で決定パネル）
+48:switch_proc: R081→相見積 ）まで書いてください … 直すか Alt+x で確認済みに）
+49:formal_price: none
+PASS F1-306a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

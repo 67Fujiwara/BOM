@@ -26,3 +26,27 @@
 25:rename_supplier: S2→ミスミ グループ JSON を読み込みました（案件 1 件
 26:switch_proc: R028→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
 27:replace_row: R074 R074 の置き換え品 R082 を作りました（公開すると R074 は置換済に / ）を入れて Ente] 行 3（Rev.5） を公開しました
+28:pm_measure: R005 p R005: 委譲
+29:pm_decide: R011 y 納期NG の行では y は使えません（Enter で決定パネル）
+30:withdraw_x: R070 R070: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+31:receive: none
+32:ltb_request: none
+33:order: R044 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+34:decline: none
+35:rename_supplier: S2→ミスミ グループ JSON を読み込みました（案件 1 件
+36:edit_qty: R055 を入れて Enter] 行 1（Rev.6） を公開しました
+37:switch_proc: R062→支給品 を入れて Enter] 行 1（Rev.7） を公開しました
+38:replace_row: R001 R001 の置き換え品 R083 を作りました（公開すると R001 は置換済に / を入れて Enter] 行 2（Rev.8） を公開しました
+39:pm_decide: R011 y 納期NG の行では y は使えません（Enter で決定パネル）
+40:pm_decide: R008 y 納期NG の行では y は使えません（Enter で決定パネル）
+41:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+42:order: R044 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+43:order: R044 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+44:switch_proc: R059→支給品 を入れて Enter] 行 1（Rev.9） を公開しました
+45:master_restore: 再開 JSON を読み込みました（案件 1 件）。戻すときは Ct
+46:formal_price: R026 x1.05 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+47:receive: none
+48:order: R044 納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません
+49:pm_decide: R013 y R013: 先行発注許可
+PASS F3-222 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

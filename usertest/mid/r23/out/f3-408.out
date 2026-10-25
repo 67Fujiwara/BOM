@@ -1,0 +1,54 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号
+approval ON → 案件設定を保存しました
+0:pick_supplier: R041 R041 を ミスミ で採用（その他: fuzz）
+1:edit_qty: R003 を入れて Enter] 行 1（Rev.3） を公開しました
+2:order: R013 R013: 発注済にしました
+3:bulk: 採用 68 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+4:pm_measure: R003 no-p
+5:pm_decide: R038 y 納期NG の行では y は使えません（Enter で決定パネル）
+6:edit_qty: R027 を入れて Enter] 行 1（Rev.4） を公開しました
+7:pm_decide: R044 b R044: 次点商社へ
+8:cancel_row: R008 を入れて Enter] 行 1（Rev.5） を公開しました
+9:next_day: +8d
+10:formal_price: none
+11:formal_price: none
+12:toggle_approval: OFF 案件設定を保存しました
+13:requote_cycle: R061 ています … 直すか Alt+x で確認済みに） / 5 行 × 3 社に依頼（回答期限 2026-11-08）。メーカを扱う商社がマ
+14:bulk: 一括で採用できる行がありません（見積済で未採用の行なし）
+15:add_row: R081 unpublished
+16:decline: R079 S2 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+17:switch_proc: R072→客先指定品 文字が含まれています … 直すか Alt+x で確認済みに）
+18:pm_measure: R008 no-g
+19:early_adopt: R077 有効な見積がありません（未回答・辞退・期限切れのみ）
+20:order: none
+21:excel: design 3 sheets
+22:formal_price: none
+23:formal: になります → 69 行 × 3 社に正式見積を依頼。除外: 作業中 3 行 / 承認待ち 3 行 / 再見積要 0 行
+24:pm_measure: R001 Shift+Y R001: 受入
+25:receive: R013 R013: 入荷済にしました
+26:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+27:decline: R072 S3 EDIT-ERR JSON を読み込みました（案件 1 件）。戻すときは Ctr
+28:switch_proc: R008→指定商社 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+29:formal_price: R024 x3 EDIT-ERR R024 の正式単価 ¥193,878（概算から +200%）
+30:pm_decide: R007 y R007: 先行発注許可
+31:rename_supplier: S1→立花エレテック（本社） JSON を読み込みました（案件 1 件
+32:undo: purchasing 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+33:replace_row: R042 R042 の置き換え品 R082 を作りました（公開すると R042 は置換済に / ンポーネンツ / オムロン直販） … F8 で移動して直す）
+34:formal_price: R029 x1.05 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+35:requote_cycle: R017  / オムロン直販） … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+36:withdraw_x: R011 R011: 正式依頼の取下げ（S1 P-2026-041-S1-F1）を伝えた（確認済）
+37:edit_qty: R020 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+38:formal: 」になります → 1 行 × 1 社に正式見積を依頼。除外: 作業中 0 行 / 承認待ち 1 行 / 再見積要 0 行
+39:add_row: R083 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+40:requote_cycle: R007  / オムロン直販） … F8 で移動して直す） / 依頼する行がありません（提出済・再見積要の行なし）
+41:undo: pm 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+42:cancel_row: R073 ンポーネンツ / オムロン直販） … F8 で移動して直す）
+43:pm_decide: R003 b 使えるキー: y / Shift+Y（↑↓ と Enter でも選べます）
+44:pm_decide: R016 Shift+Y R016: 却下
+45:switch_proc: R010→支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+46:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+47:replace_row: R053 R053 の置き換え品 R084 を作りました（公開すると R053 は置換済に / ンポーネンツ / オムロン直販） … F8 で移動して直す）
+48:excel: design 1 sheets
+49:master_stop: S3 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+PASS F3-408a 不変条件の違反なし（50 操作） :: violations=0
+== 1/1 PASS

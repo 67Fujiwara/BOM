@@ -416,11 +416,13 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
 export function confirmSettings(reason = '既定で確定') {
   const s = st()
   if (s.user().role !== 'pm') return s.toastMsg('権限なし（案件設定の確定は PM）', 'err')
+  if (s.project().settings.pmConfirmed) return s.toastMsg('案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」）', 'info')
   s.commit('案件設定を確定', (p) => {
     p.settings.pmConfirmed = true
     for (const c of p.caseDecisions) if (c.kind === '案件設定確定') c.status = 'done'
     pushDecision(p, s.user(), '案件設定確定', reason)
   })
+  s.toastMsg('案件設定を確定しました（購買・設計に伝わります）', 'ok')
 }
 
 export interface Impact {

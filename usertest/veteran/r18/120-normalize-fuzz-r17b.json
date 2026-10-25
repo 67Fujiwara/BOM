@@ -1,0 +1,20 @@
+{
+  "src": "/tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/b-7236090/src",
+  "N": 4000,
+  "accepted": 4000,
+  "rejected": 0,
+  "distinctErrors": [
+    {
+      "error": "normalize: (cur ?? \"\").split is not a function",
+      "count": 87,
+      "example": {
+        "muts": [
+          "combo R015 formalRequested 支給品 adopted=S5 tradable=false designated=S9 formalWithdrawn=12.5",
+          "rows[R049].flags.requote=\"2026-02-30\""
+        ],
+        "stack": "at addWithdrawn (/tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/b-7236090/src/model/derive.ts:398:28) | at normalize (/tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/b-7236090/src/model/lifecycle.ts:97:121)",
+        "warnings": []
+      }
+    }
+  ]
+}

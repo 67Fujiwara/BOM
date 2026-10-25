@@ -1,0 +1,196 @@
+{
+  "121-normalize-crash-run1.log": {
+    "lines": [
+      10,
+      10
+    ],
+    "diffs": 10,
+    "first": [
+      {
+        "i": 0,
+        "r17": "{\"name\":\"S0 対照: 取引停止だけ（formalWithdrawn なし）\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":null},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/11見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1",
+        "r18": "{\"name\":\"S0 対照: 取引停止だけ（formalWithdrawn なし）\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":null},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1"
+      },
+      {
+        "i": 1,
+        "r17": "{\"name\":\"S1 formalWithdrawn=false\",\"first\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":false},\"shown013\":null},\"second\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":false},\"shown013\":null},\"errs\":[\"pageerror: (cur ?? \\\"\\\").split is not a function\",\"pageerror: (cur ?? \\\"\\\").split is not a function\"]}",
+        "r18": "{\"name\":\"S1 formalWithdrawn=false\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":false},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":f"
+      },
+      {
+        "i": 2,
+        "r17": "{\"name\":\"S2 formalWithdrawn=true\",\"first\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":true},\"shown013\":null},\"second\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":true},\"shown013\":null},\"errs\":[\"pageerror: (cur ?? \\\"\\\").split is not a function\",\"pageerror: (cur ?? \\\"\\\").split is not a function\"]}",
+        "r18": "{\"name\":\"S2 formalWithdrawn=true\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":true},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":tru"
+      },
+      {
+        "i": 3,
+        "r17": "{\"name\":\"S3 formalWithdrawn=0\",\"first\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":0},\"shown013\":null},\"second\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":0},\"shown013\":null},\"errs\":[\"pageerror: (cur ?? \\\"\\\").split is not a function\",\"pageerror: (cur ?? \\\"\\\").split is not a function\"]}",
+        "r18": "{\"name\":\"S3 formalWithdrawn=0\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":0},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":0},\"shown"
+      },
+      {
+        "i": 4,
+        "r17": "{\"name\":\"S4 formalWithdrawn={}\",\"first\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":{}},\"shown013\":null},\"second\":{\"grid\":false,\"rootChildren\":0,\"bodyText\":\"\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":{}},\"shown013\":null},\"errs\":[\"pageerror: (cur ?? \\\"\\\").split is not a function\",\"pageerror: (cur ?? \\\"\\\").split is not a function\"]}",
+        "r18": "{\"name\":\"S4 formalWithdrawn={}\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":{}},\"shown013\":\"R013設計電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13見積済 · 正式依頼取下げ10/27\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥10,139 / 正式 ¥10,139 / 予算 ¥2,800,000 (-99.6%)\\n設計待ち 77（指摘 4・選定待ち 68・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":{}},\"sh"
+      },
+      {
+        "i": 5,
+        "r17": "{\"name\":\"S5 対照: formalWithdrawn=false・取引停止なし\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)\\n設計待ち 73（指摘 4・選定待ち 64・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":false},\"shown013\":\"R013購買電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/11因幡電機88¥10,371¥10,37116日正式見積済10/222日\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)\\n設計待ち 73（指摘 4・選定待ち 64・その他 5）\\n\",\"stored013\":{\"status\":\"formalQ",
+        "r18": "{\"name\":\"S5 対照: formalWithdrawn=false・取引停止なし\",\"first\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)\\n設計待ち 73（指摘 4・選定待ち 64・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuoted\",\"adopted\":\"S1\",\"fw\":false},\"shown013\":\"R013購買電13電源スイッチング電源 24V 5AS8VK-G12024オムロン1個相見積同等品可11/13因幡電機88¥10,371¥10,37116日正式見積済10/26\"},\"second\":{\"grid\":true,\"rootChildren\":1,\"bodyText\":\"P-2026-041\\n第3ライン 搬送制御盤\\n納期 あと29日（必要日 あと19日）\\n概算 ¥23,692 / 正式 ¥25,248 / 予算 ¥2,800,000 (-99.1%)\\n設計待ち 73（指摘 4・選定待ち 64・その他 5）\\n\",\"stored013\":{\"status\":\"formalQuo"
+      }
+    ]
+  },
+  "122-header-wizard.log": {
+    "lines": [
+      31,
+      31
+    ],
+    "diffs": 19,
+    "first": [
+      {
+        "i": 0,
+        "r17": "{\"id\":\"TB7-vtitle-eda\",\"file\":\"TB7-vtitle-eda.xlsx\",\"note\":\"縦の表題欄「図番・品名・作成日・作成者」＋値の行の下に EDA の見出し「Description・Value・MPN・Footprint・Qty・DNP」\",\"expect\":\"見出しは 4 行目: Capacitor GRM188 10・Resistor 20\",\"toast\":\"TB7-vtitle-eda.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 図番 → 図面番号 / 品名 → 部品名 / 作成日 → （使わない） / 作成者 → （使わない）⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）制御基板A1個Value1個10uF1個10k1個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":4,\"sample\":[\"制御基板A /  /  / 1\",\"Value /",
+        "r18": "{\"id\":\"TB7-vtitle-eda\",\"file\":\"TB7-vtitle-eda.xlsx\",\"note\":\"縦の表題欄「図番・品名・作成日・作成者」＋値の行の下に EDA の見出し「Description・Value・MPN・Footprint・Qty・DNP」\",\"expect\":\"見出しは 4 行目: Capacitor GRM188 10・Resistor 20\",\"toast\":\"TB7-vtitle-eda.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 1 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Value → （使わない） / MPN → 型式 / Footprint → （使わない） / Qty → 数量 / DNP → （使わない）⚠ 見出しより上の 2 行（表題など）は取り込みません⚠ 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません⚠ 「部品名」に当たる列が 2 つあります。「Description」の列を使いますCapacitorGRM188R61A10610個Enter で作成します。作成後は「4 要確認」で問題を "
+      },
+      {
+        "i": 1,
+        "r17": "{\"id\":\"TB8-vtitle-attr\",\"file\":\"TB8-vtitle-attr.xlsx\",\"note\":\"縦の表題欄「品名・図番」＋値の下に見出し「部品名・寸法・型式・定格・数量・発注先」\",\"expect\":\"リレー MY4N 12・端子台 XW2B 2\",\"toast\":\"TB8-vtitle-attr.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 品名 → 部品名 / 図番 → 図面番号⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）制御盤A1個部品名1個リレー1個端子台1個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":4,\"sample\":[\"制御盤A /  /  / 1\",\"部品名 /  /  / 1\",\"リレー /  /  / 1\",\"端子台 /  /  / 1\"],\"qty0\":0},\"errs\":[]}",
+        "r18": "{\"id\":\"TB8-vtitle-attr\",\"file\":\"TB8-vtitle-attr.xlsx\",\"note\":\"縦の表題欄「品名・図番」＋値の下に見出し「部品名・寸法・型式・定格・数量・発注先」\",\"expect\":\"リレー MY4N 12・端子台 XW2B 2\",\"toast\":\"TB8-vtitle-attr.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 寸法 → （使わない） / 型式 → 型式 / 定格 → （使わない） / 数量 → 数量 / 発注先 → （使わない）⚠ 見出しより上の 2 行（表題など）は取り込みませんリレーMY4N12個端子台XW2B2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":2,\"sample\":[\"リレー / MY4N /  / 12\",\"端子台 / XW2B /  / 2\"],\"qty0\":0},\"errs\":[]}"
+      },
+      {
+        "i": 2,
+        "r17": "{\"id\":\"TB9-htitle-eda\",\"file\":\"TB9-htitle-eda.xlsx\",\"note\":\"横の表題欄「品名｜制御基板A｜図番｜D-1」の下に EDA の見出し\",\"expect\":\"Capacitor 10・Resistor 20\",\"toast\":\"TB9-htitle-eda.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Value → （使わない） / MPN → 型式 / Footprint → （使わない） / Qty → 数量 / DNP → （使わない）⚠ 見出しより上の 1 行（表題など）は取り込みませんCapacitorGRM188R61A10610個ResistorRC0603FR-0710KL20個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":2,\"sample\":[\"Capacitor / GRM188R61A106 /  / 10\",\"Resistor / RC0603FR-071",
+        "r18": "{\"id\":\"TB9-htitle-eda\",\"file\":\"TB9-htitle-eda.xlsx\",\"note\":\"横の表題欄「品名｜制御基板A｜図番｜D-1」の下に EDA の見出し\",\"expect\":\"Capacitor 10・Resistor 20\",\"toast\":\"TB9-htitle-eda.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 1 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Value → （使わない） / MPN → 型式 / Footprint → （使わない） / Qty → 数量 / DNP → （使わない）⚠ 見出しより上の 1 行（表題など）は取り込みません⚠ 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません⚠ 「部品名」に当たる列が 2 つあります。「Description」の列を使いますCapacitorGRM188R61A10610個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":1,\"sample\":[\"C"
+      },
+      {
+        "i": 4,
+        "r17": "{\"id\":\"CP1-complete-3-deleted-of-10\",\"file\":\"CP1-complete-3-deleted-of-10.xlsx\",\"note\":\"全部の行に変更後を書き写した 10 行の表で、3 行の変更後が空（削除）\",\"expect\":\"7 部品・3 行は削除と知らせる（r16 ビルドは 7）\",\"toast\":\"CP1-complete-3-deleted-of-10.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 10 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 「変更後型式」が空の 3 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1M-1B1個部品2M-22個部品3M-33個部品4M-44個部品5M-55個… ほか 5 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":10,\"sample\":[\"部品1 / M-1B /  ",
+        "r18": "{\"id\":\"CP1-complete-3-deleted-of-10\",\"file\":\"CP1-complete-3-deleted-of-10.xlsx\",\"note\":\"全部の行に変更後を書き写した 10 行の表で、3 行の変更後が空（削除）\",\"expect\":\"7 部品・3 行は削除と知らせる（r16 ビルドは 7）\",\"toast\":\"CP1-complete-3-deleted-of-10.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 7 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 削除の印がある・新しい版の列が空の 3 行（例: 部品2 M-2 2）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1M-1B1個部品3M-33個部品4M-44個部品6M-66個部品7M-77個… ほか 2 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。"
+      },
+      {
+        "i": 5,
+        "r17": "{\"id\":\"CP2-sparse-4-of-5-changed\",\"file\":\"CP2-sparse-4-of-5-changed.xlsx\",\"note\":\"変えた行だけ変更後を書く 5 行の表で、4 行を変えた（1 行は変えていない）\",\"expect\":\"5 部品（部品5 は変えていない M-5）\",\"toast\":\"CP2-sparse-4-of-5-changed.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 4 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 新しい版の列が空で前の版だけに値がある 1 行（例: 部品5 M-5 5）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1N-11個部品2N-22個部品3N-33個部品4N-44個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":4,\"sampl",
+        "r18": "{\"id\":\"CP2-sparse-4-of-5-changed\",\"file\":\"CP2-sparse-4-of-5-changed.xlsx\",\"note\":\"変えた行だけ変更後を書く 5 行の表で、4 行を変えた（1 行は変えていない）\",\"expect\":\"5 部品（部品5 は変えていない M-5）\",\"toast\":\"CP2-sparse-4-of-5-changed.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 5 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 「変更後型式」が空の 1 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1N-11個部品2N-22個部品3N-33個部品4N-44個部品5M-55個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":5,\"sample\":[\"部品1 / N-1 /  / 1\",\"部品2 / N-2 /  / 2\",\""
+      },
+      {
+        "i": 6,
+        "r17": "{\"id\":\"CP3-sparse-9-of-10-changed\",\"file\":\"CP3-sparse-9-of-10-changed.xlsx\",\"note\":\"変えた行だけ書く 10 行の表で、9 行を変えた（リレーを全部入れ替えた）\",\"expect\":\"10 部品（部品10 は変えていない）\",\"toast\":\"CP3-sparse-9-of-10-changed.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 9 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 新しい版の列が空で前の版だけに値がある 1 行（例: 部品10 M-10 10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1N-11個部品2N-22個部品3N-33個部品4N-44個部品5N-55個… ほか 4 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created",
+        "r18": "{\"id\":\"CP3-sparse-9-of-10-changed\",\"file\":\"CP3-sparse-9-of-10-changed.xlsx\",\"note\":\"変えた行だけ書く 10 行の表で、9 行を変えた（リレーを全部入れ替えた）\",\"expect\":\"10 部品（部品10 は変えていない）\",\"toast\":\"CP3-sparse-9-of-10-changed.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 10 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 「変更後型式」が空の 1 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1N-11個部品2N-22個部品3N-33個部品4N-44個部品5N-55個… ほか 5 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":10,\"sample\":[\"部品1 / N-1 /  / 1\",\"部品2 / N-2 "
+      }
+    ]
+  },
+  "123-undo-publish5-run1.log": {
+    "lines": [
+      9,
+      9
+    ],
+    "diffs": 1,
+    "first": [
+      {
+        "i": 3,
+        "r17": "{\"name\":\"C4 A: R020 A1・R010 E1 → 公開 → B: R010 E2 → A: Ctrl+Z（断る）→ A: リロード → A: Ctrl+Z → B: Ctrl+Z（E2 を戻す）→ A: Ctrl+Z → A: Ctrl+Z\",\"expect\":\"断ったあとはリロードしても同じ（断った公開・前の操作は戻さない）\",\"seq\":[\"A R020 A1→R010=端子台エンドカバー R020=電磁接触器/作業中:A1 R030=表示灯 白 w010=null w020={\\\"name\\\":\\\"A1\\\"} revs=1 最後のRev[R010=端子台エンドカバー R020=電磁接触器] «保存しました（編集は自動で保存されています）»\",\"A R010 E1→R010=端子台エンドカバー/作業中:E1 R020=電磁接触器/作業中:A1 R030=表示灯 白 w010={\\\"name\\\":\\\"E1\\\"} w020={\\\"name\\\":\\\"A1\\\"} revs=1 最後のRev[R010=端子台エンドカバー R020=電磁接触器] «保存しました（編集は自動で保存されています）»\",\"A 公開→R010=E1 R020=A1 R030=表示灯 白 w010=null w020=null revs=1,2 最後のRev[R010=E1 R020=A1] «行 ",
+        "r18": "{\"name\":\"C4 A: R020 A1・R010 E1 → 公開 → B: R010 E2 → A: Ctrl+Z（断る）→ A: リロード → A: Ctrl+Z → B: Ctrl+Z（E2 を戻す）→ A: Ctrl+Z → A: Ctrl+Z\",\"expect\":\"断ったあとはリロードしても同じ（断った公開・前の操作は戻さない）\",\"seq\":[\"A R020 A1→R010=端子台エンドカバー R020=電磁接触器/作業中:A1 R030=表示灯 白 w010=null w020={\\\"name\\\":\\\"A1\\\"} revs=1 最後のRev[R010=端子台エンドカバー R020=電磁接触器] «保存しました（編集は自動で保存されています）»\",\"A R010 E1→R010=端子台エンドカバー/作業中:E1 R020=電磁接触器/作業中:A1 R030=表示灯 白 w010={\\\"name\\\":\\\"E1\\\"} w020={\\\"name\\\":\\\"A1\\\"} revs=1 最後のRev[R010=端子台エンドカバー R020=電磁接触器] «»\",\"A 公開→R010=E1 R020=A1 R030=表示灯 白 w010=null w020=null revs=1,2 最後のRev[R010=E1 R020=A1] «行 7（Rev.2） を公開しました»\",\"B "
+      }
+    ]
+  },
+  "124-big17.log": {
+    "lines": [
+      8,
+      8
+    ],
+    "diffs": 8,
+    "first": [
+      {
+        "i": 0,
+        "r17": "{\"mode\":\"file\",\"f\":\"b1-csv-raw-ditto-every10-300.csv\",\"toast\":\"b1-csv-raw-ditto-every10-300.csv を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 150 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5,6 部品6,MDL-6,オムロン,7 部品7,MDL-7,三菱電機,8 部品8,MDL-8,IDEC,9 部品9,MDL-9,オムロン,1 部品10,MDL-10,三菱電機,2 部品11,MDL-11,IDEC,3 部品12,MDL-12,オムロン,4 部品13,MDL-13,三菱電機,5 部品14,MDL-14,IDEC,6 部品15,MDL-15,7個… ほか 145 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":150,\"qtyS",
+        "r18": "{\"mode\":\"file\",\"f\":\"b1-csv-raw-ditto-every10-300.csv\",\"toast\":\"b1-csv-raw-ditto-every10-300.csv を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量⚠ 「〃」「同上」「同左」の 30 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5三菱電機6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":300,\"qtySum\":1494,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\":[\"部品1 / MDL-1 / 三菱電機 / 2\",\"部品2 / MDL-2 / IDEC / 3\",\"部品3 "
+      },
+      {
+        "i": 1,
+        "r17": "{\"mode\":\"file\",\"f\":\"b2-tsv-ditto-last-first-300.tsv\",\"toast\":\"b2-tsv-ditto-last-first-300.tsv を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 270 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 / 備考 → 備考部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5IDEC6個… ほか 265 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":270,\"qtySum\":1335,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\":[\"部品1 / MDL-1 / 三菱電機 / 2\",\"部品2 / MDL-2 / IDEC / 3\",\"部品3 / MDL-3 / オムロン / 4\"],\"odd\":[]},\"er",
+        "r18": "{\"mode\":\"file\",\"f\":\"b2-tsv-ditto-last-first-300.tsv\",\"toast\":\"b2-tsv-ditto-last-first-300.tsv を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 / 備考 → 備考⚠ 「〃」「同上」「同左」の 60 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5IDEC6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":300,\"qtySum\":1494,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\":[\"部品1 / MDL-1 / 三菱電機 / 2\",\"部品2 / MDL-2 / IDEC / 3"
+      },
+      {
+        "i": 2,
+        "r17": "{\"mode\":\"file\",\"f\":\"b3-vtitle-eda-300.xlsx\",\"toast\":\"b3-vtitle-eda-300.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 302 行（タブ区切り、見出しあり）列の対応: 図番 → 図面番号 / 品名 → 部品名 / 作成日 → （使わない） / 作成者 → （使わない）⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）制御基板A1個Value1個1k1個2k1個3k1個… ほか 297 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":302,\"qtySum\":302,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\":[\"制御基板A /  /  / 1\",\"Value /  /  / 1\",\"1k /  /  / 1\"],\"odd\":[]},\"errs\":[]}",
+        "r18": "{\"mode\":\"file\",\"f\":\"b3-vtitle-eda-300.xlsx\",\"toast\":\"b3-vtitle-eda-300.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 258 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Value → （使わない） / MPN → 型式 / Footprint → （使わない） / Qty → 数量 / DNP → （使わない）⚠ 見出しより上の 2 行（表題など）は取り込みません⚠ 実装しない部品（DNP・Not Fitted・未実装）の 42 行は取り込みません⚠ 「部品名」に当たる列が 2 つあります。「Description」の列を使いますResistor 1MPN-12個Diode 2MPN-23個Connector 3MPN-34個Inductor 4MPN-45個Capacitor 5MPN-56個… ほか 253 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":258,\"qtySum\":1278,\"qty0\":0,"
+      },
+      {
+        "i": 3,
+        "r17": "{\"mode\":\"file\",\"f\":\"b4-units-spare-300.xlsx\",\"toast\":\"b4-units-spare-300.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 301 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 /  → （使わない） /  → （使わない）⚠ 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）0個部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個… ほか 296 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":301,\"qtySum\":1494,\"qty0\":1,\"noName\":1,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\":[\" /  /  / 0\",\"部品1 / MDL-1 / 三菱電機 / 2\",\"部品2 / MDL-2 / ID",
+        "r18": "{\"mode\":\"file\",\"f\":\"b4-units-spare-300.xlsx\",\"toast\":\"b4-units-spare-300.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量（1号機） → 数量 / 数量（2号機） → （使わない） / 数量（予備） → （使わない）⚠ 数量の列 3 つ（「数量（1号機）」「数量（2号機）」「数量（予備）」）を足して数量にしました⚠ 2 段の見出しを 1 段にまとめて読みました部品1MDL-1三菱電機4個部品2MDL-2IDEC6個部品3MDL-3オムロン8個部品4MDL-4三菱電機10個部品5MDL-5IDEC13個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":300,\"qtySum\":3048,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":0,\"first\""
+      },
+      {
+        "i": 4,
+        "r17": "{\"mode\":\"file\",\"f\":\"b5-complete-third-deleted-30.xlsx\",\"toast\":\"b5-complete-third-deleted-30.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 30 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / メーカ → （使わない） / 変更後メーカ → メーカ / 数量 → 数量⚠ 「変更後メーカ」が空の 10 行は、ほかの「メーカ」の列の値を使いました⚠ 「変更後型式」が空の 10 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います⚠ 「メーカ」に当たる列が 2 つあります。「変更後メーカ」の列を使います部品1OLD-1三菱電機1個部品2OLD-2IDEC2個部品3OLD-3オムロン3個部品4OLD-4三菱電機4個部品5NEW-5IDEC5個… ほか 25 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":30,",
+        "r18": "{\"mode\":\"file\",\"f\":\"b5-complete-third-deleted-30.xlsx\",\"toast\":\"b5-complete-third-deleted-30.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 20 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / メーカ → （使わない） / 変更後メーカ → メーカ / 数量 → 数量⚠ 削除の印がある・新しい版の列が空の 10 行（例: 部品3 OLD-3 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います⚠ 「メーカ」に当たる列が 2 つあります。「変更後メーカ」の列を使います部品1OLD-1三菱電機1個部品2OLD-2IDEC2個部品4OLD-4三菱電機4個部品5NEW-5IDEC5個部品7OLD-7三菱電機7個… ほか 15 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"crea"
+      },
+      {
+        "i": 5,
+        "r17": "{\"mode\":\"file\",\"f\":\"b6-sparse-25-of-30.xlsx\",\"toast\":\"b6-sparse-25-of-30.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 25 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 新しい版の列が空で前の版だけに値がある 5 行（例: 部品26 OLD-26 26）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1NEW-11個部品2NEW-22個部品3NEW-33個部品4NEW-44個部品5NEW-55個… ほか 20 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":25,\"qtySum\":325,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":0,\"modelNew\":25,\"first\":[\"部品1 / ",
+        "r18": "{\"mode\":\"file\",\"f\":\"b6-sparse-25-of-30.xlsx\",\"toast\":\"b6-sparse-25-of-30.xlsx を読み込みました。Enter で次へ\",\"preview\":\"案件 P-X 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 30 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 「変更後型式」が空の 5 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1NEW-11個部品2NEW-22個部品3NEW-33個部品4NEW-44個部品5NEW-55個… ほか 25 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。\",\"created\":{\"rows\":30,\"qtySum\":465,\"qty0\":0,\"noName\":0,\"longMaker\":0,\"modelOld\":5,\"modelNew\":25,\"first\":[\"部品1 / NEW-1 /  / 1\",\"部品2 / NEW-2 /  / 2\",\"部品3 / NEW-3 /  / 3\"]"
+      }
+    ]
+  },
+  "125-json-r17-run1.log": {
+    "lines": [
+      20,
+      20
+    ],
+    "diffs": 16,
+    "first": [
+      {
+        "i": 0,
+        "r17": "{\"name\":\"L1 単価 \\\"1,200.5\\\"・\\\"-1,200\\\"・\\\"+1200\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 1 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200.5/12 null/-1 null/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/11見積済10/232日\"],\"panel\":null}",
+        "r18": "{\"name\":\"L1 単価 \\\"1,200.5\\\"・\\\"-1,200\\\"・\\\"+1200\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 1 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200.5/12 null/-1 null/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27\"],\"panel\":null}"
+      },
+      {
+        "i": 1,
+        "r17": "{\"name\":\"L1 値\",\"v\":{\"due\":\"2026-11-21\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200.5/12/null/1\",\"null/-1/null/null\",\"null/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-26\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}",
+        "r18": "{\"name\":\"L1 値\",\"v\":{\"due\":\"2026-11-23\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200.5/12/null/1\",\"null/-1/null/null\",\"null/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-28\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}"
+      },
+      {
+        "i": 2,
+        "r17": "{\"name\":\"L2 単価 \\\"1 200\\\"（空白の区切り）・\\\".5\\\"・\\\"1,2345\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200/12 null/-1 null/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/11見積済10/232日\"],\"panel\":null}",
+        "r18": "{\"name\":\"L2 単価 \\\"1 200\\\"（空白の区切り）・\\\".5\\\"・\\\"1,2345\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200/12 null/-1 null/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27\"],\"panel\":null}"
+      },
+      {
+        "i": 3,
+        "r17": "{\"name\":\"L2 値\",\"v\":{\"due\":\"2026-11-21\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200/12/null/1\",\"null/-1/null/null\",\"null/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-26\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}",
+        "r18": "{\"name\":\"L2 値\",\"v\":{\"due\":\"2026-11-23\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200/12/null/1\",\"null/-1/null/null\",\"null/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-28\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}"
+      },
+      {
+        "i": 4,
+        "r17": "{\"name\":\"L3 単価 \\\"１，２００\\\"（全角コンマ）・\\\"1，200\\\"・\\\"1,200,000.00\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200/12 1200/-1 1200000/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/11見積済10/232日\"],\"panel\":null}",
+        "r18": "{\"name\":\"L3 単価 \\\"１，２００\\\"（全角コンマ）・\\\"1，200\\\"・\\\"1,200,000.00\\\"\",\"ms\":0,\"toast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"after\":{\"rows\":80,\"issues\":5,\"quotes\":225,\"issueIds\":[\"I-004:R054\",\"I-005:R041\"],\"R004\":{\"qty\":1,\"need\":null,\"pack\":null,\"order\":null,\"q\":\"1200/12 1200/-1 1200000/13\"}},\"shown\":[\"R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27\"],\"panel\":null}"
+      },
+      {
+        "i": 5,
+        "r17": "{\"name\":\"L3 値\",\"v\":{\"due\":\"2026-11-21\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200/12/null/1\",\"1200/-1/null/null\",\"1200000/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-26\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}",
+        "r18": "{\"name\":\"L3 値\",\"v\":{\"due\":\"2026-11-23\",\"budget\":2800000,\"processDays\":10,\"hol\":0,\"R010need\":null,\"R004q\":[\"1200/12/null/1\",\"1200/-1/null/null\",\"1200000/13/null/1\"],\"st\":[\"\",\"\",\"\"],\"set\":{\"tie\":5,\"exAmt\":10000,\"exPct\":0.03,\"quoteDays\":5,\"surplus\":20000,\"qdl\":\"2026-10-28\"},\"qdlType\":\"string\",\"lead\":5,\"tie0\":5,\"R010\":{\"st\":\"quoted\",\"q\":12}}}"
+      }
+    ]
+  },
+  "127-deep-nest-run1.log": {
+    "lines": [
+      3,
+      3
+    ],
+    "diffs": 3,
+    "first": [
+      {
+        "i": 0,
+        "r17": "{\"name\":\"深さ 500\",\"importToast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":{\"name\":\"DEEP\"},\"shown\":\"R010設計制10制御DEEPD-PT 2,5フエニックス12個相見積同等品可11/13見積済 · 作業中●10/27\"},\"errEdit\":[],\"afterReload\":{\"grid\":true,\"root\":1},\"errAll\":[]}",
+        "r18": "{\"name\":\"深さ 500\",\"importToast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 入れ子が深すぎる値 1 個は外しました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":{\"name\":\"DEEP\"},\"shown\":\"R010設計制10制御DEEPD-PT 2,5フエニックス12個相見積同等品可11/13見積済 · 作業中●10/27\"},\"errEdit\":[],\"afterReload\":{\"grid\":true,\"root\":1},\"errAll\":[]}"
+      },
+      {
+        "i": 1,
+        "r17": "{\"name\":\"深さ 2000\",\"importToast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":{\"name\":\"DEEP\"},\"shown\":\"R010設計制10制御DEEPD-PT 2,5フエニックス12個相見積同等品可11/13見積済 · 作業中●10/27\"},\"errEdit\":[],\"afterReload\":{\"grid\":true,\"root\":1},\"errAll\":[]}",
+        "r18": "{\"name\":\"深さ 2000\",\"importToast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 入れ子が深すぎる値 1 個は外しました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":{\"name\":\"DEEP\"},\"shown\":\"R010設計制10制御DEEPD-PT 2,5フエニックス12個相見積同等品可11/13見積済 · 作業中●10/27\"},\"errEdit\":[],\"afterReload\":{\"grid\":true,\"root\":1},\"errAll\":[]}"
+      },
+      {
+        "i": 2,
+        "r17": "{\"name\":\"深さ 5000\",\"importToast\":\"JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":null,\"shown\":\"R010設計制10制御端子台エンドカバーD-PT 2,5フエニックス12個相見積同等品可11/13見積済10/27\"},\"errEdit\":[\"pageerror: Failed to execute 'structuredClone' on 'Window': Maximum call stack size exceeded\"],\"afterReload\":{\"grid\":false,\"root\":0},\"errAll\":[\"pageerror: Failed to execute 'structuredClone' on 'Window': Maximum call stack size exceeded\",\"pageerror: Failed to execute 'structuredClone' on 'Window': Maximum call stack size exceeded\"]}",
+        "r18": "{\"name\":\"深さ 5000\",\"importToast\":\"JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 入れ子が深すぎる値 1 個は外しました。戻すときは Ctrl+K →「読み込み前に戻す」\",\"junkStored\":true,\"afterEdit\":{\"stored\":{\"name\":\"DEEP\"},\"shown\":\"R010設計制10制御DEEPD-PT 2,5フエニックス12個相見積同等品可11/13見積済 · 作業中●10/27\"},\"errEdit\":[],\"afterReload\":{\"grid\":true,\"root\":1},\"errAll\":[]}"
+      }
+    ]
+  }
+}

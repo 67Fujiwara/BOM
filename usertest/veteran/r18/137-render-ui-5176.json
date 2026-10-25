@@ -1,0 +1,53 @@
+{
+  "n": 3,
+  "bad": [
+    {
+      "k": 2,
+      "role": "design",
+      "muts": [
+        "rows[R038].flags.ltbPending=\"hasOwnProperty\"",
+        "rows[R036].status=-0.5",
+        "rows[R006].needOffset=-1000000000000"
+      ],
+      "grid": true,
+      "steps": [],
+      "crash": "",
+      "errs": [
+        "console: `NaN` is an invalid value for the `%s` css style property. width",
+        "console: Received NaN for the `%s` attribute. If this is expected, cast the value to a string. children"
+      ]
+    },
+    {
+      "k": 2,
+      "role": "purchasing",
+      "muts": [
+        "rows[R038].flags.ltbPending=\"hasOwnProperty\"",
+        "rows[R036].status=-0.5",
+        "rows[R006].needOffset=-1000000000000"
+      ],
+      "grid": true,
+      "steps": [],
+      "crash": "",
+      "errs": [
+        "console: `NaN` is an invalid value for the `%s` css style property. width",
+        "console: Received NaN for the `%s` attribute. If this is expected, cast the value to a string. children"
+      ]
+    },
+    {
+      "k": 2,
+      "role": "pm",
+      "muts": [
+        "rows[R038].flags.ltbPending=\"hasOwnProperty\"",
+        "rows[R036].status=-0.5",
+        "rows[R006].needOffset=-1000000000000"
+      ],
+      "grid": true,
+      "steps": [],
+      "crash": "",
+      "errs": [
+        "console: `NaN` is an invalid value for the `%s` css style property. width",
+        "console: Received NaN for the `%s` attribute. If this is expected, cast the value to a string. children"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+csvQuotedAll {"rows":2500,"medMs":621,"ms":[290,560,621,633,646]}
+csvRawDitto {"rows":1250,"medMs":219,"ms":[130,142,219,229,346]}
+tsvPlain {"rows":2500,"medMs":249,"ms":[132,218,249,448,798]}
+csvUnclosed {"rows":2500,"medMs":307,"ms":[211,249,307,365,487]}

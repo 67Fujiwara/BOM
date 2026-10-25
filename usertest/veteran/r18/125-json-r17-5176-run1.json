@@ -1,0 +1,489 @@
+[
+  {
+    "name": "L1 単価 \"1,200.5\"・\"-1,200\"・\"+1200\"",
+    "ms": 940,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の見積 1 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ],
+      "R004": {
+        "qty": 1,
+        "need": null,
+        "pack": null,
+        "order": null,
+        "q": "1200.5/12 null/-1 null/13"
+      }
+    },
+    "shown": [
+      "R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27"
+    ],
+    "panel": null
+  },
+  {
+    "name": "L1 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "1200.5/12/null/1",
+        "null/-1/null/null",
+        "null/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": "2026-10-28"
+      },
+      "qdlType": "string",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L2 単価 \"1 200\"（空白の区切り）・\".5\"・\"1,2345\"",
+    "ms": 1362,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ],
+      "R004": {
+        "qty": 1,
+        "need": null,
+        "pack": null,
+        "order": null,
+        "q": "1200/12 null/-1 null/13"
+      }
+    },
+    "shown": [
+      "R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27"
+    ],
+    "panel": null
+  },
+  {
+    "name": "L2 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "1200/12/null/1",
+        "null/-1/null/null",
+        "null/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": "2026-10-28"
+      },
+      "qdlType": "string",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L3 単価 \"１，２００\"（全角コンマ）・\"1，200\"・\"1,200,000.00\"",
+    "ms": 1182,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ],
+      "R004": {
+        "qty": 1,
+        "need": null,
+        "pack": null,
+        "order": null,
+        "q": "1200/12 1200/-1 1200000/13"
+      }
+    },
+    "shown": [
+      "R004: R004設計制4制御アナログ入力FX5-4AD三菱電機1個相見積同等品可11/13見積済10/27"
+    ],
+    "panel": null
+  },
+  {
+    "name": "L3 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "1200/12/null/1",
+        "1200/-1/null/null",
+        "1200000/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": "2026-10-28"
+      },
+      "qdlType": "string",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L4 設定 leadMarginDays 10.6（範囲内の小数）・processDays \"12.4\"（文字）・tieThreshold 150",
+    "ms": 1621,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の設定 tieThreshold: 150 → 100 は範囲の外なので直しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L4 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 12,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "2621/12/null/1",
+        "null/-1/null/null",
+        "2907/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 100,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": "2026-10-28"
+      },
+      "qdlType": "string",
+      "lead": 11,
+      "tie0": 100,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L5 設定 quoteDeadline \"20261201\"（区切りなしの日付）",
+    "ms": 1169,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の設定 quoteDeadline は読めない値なので既定にしました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L5 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "2621/12/null/1",
+        "null/-1/null/null",
+        "2907/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": null
+      },
+      "qdlType": "object",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L6 設定 quoteDeadline 46337（Excel のシリアル値・数）",
+    "ms": 1228,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の設定 quoteDeadline は読めない値なので既定にしました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L6 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 2800000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "2621/12/null/1",
+        "null/-1/null/null",
+        "2907/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": null
+      },
+      "qdlType": "object",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L7 設定 quoteDeadline \"1,000\"・budget \"1e13\"",
+    "ms": 1155,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 1 件: 案件 P-2026-041 の設定 budget・quoteDeadline は読めない値なので既定にしました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L7 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": null,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "2621/12/null/1",
+        "null/-1/null/null",
+        "2907/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": null
+      },
+      "qdlType": "object",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L8 設定 budget 2e12（数・上限超え）・formalDiffPct \"10%\"",
+    "ms": 1718,
+    "toast": "JSON を読み込みました（案件 1 件）。外した・直した項目 2 件: 案件 P-2026-041 の設定 formalDiffPct は読めない値なので既定にしました / 案件 P-2026-041 の設定 budget: 2000000000000 → 1000000000000 は範囲の外なので直しました。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L8 値",
+    "v": {
+      "due": "2026-11-23",
+      "budget": 1000000000000,
+      "processDays": 10,
+      "hol": 0,
+      "R010need": null,
+      "R004q": [
+        "2621/12/null/1",
+        "null/-1/null/null",
+        "2907/13/null/1"
+      ],
+      "st": [
+        "",
+        "",
+        ""
+      ],
+      "set": {
+        "tie": 5,
+        "exAmt": 10000,
+        "exPct": 0.03,
+        "quoteDays": 5,
+        "surplus": 20000,
+        "qdl": "2026-10-28"
+      },
+      "qdlType": "string",
+      "lead": 5,
+      "tie0": 5,
+      "R010": {
+        "st": "quoted",
+        "q": 12
+      }
+    }
+  },
+  {
+    "name": "L9 先頭に BOM（U+FEFF）の JSON を貼る",
+    "ms": 439,
+    "toast": "JSON として読めません（JSON を書き出す で作ったファイルを選んでください。詳細: Unexpected token '﻿', \"﻿{\"user\":{\"... is not valid JSON）",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L10 タブで字下げした JSON（JSON.stringify(w, null, \"\\t\")）",
+    "ms": 1346,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "L11 先頭に「// 書き出し 2026-10-23」の 1 行がある JSON",
+    "ms": 311,
+    "toast": "これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用）",
+    "after": {
+      "rows": 80,
+      "issues": 5,
+      "quotes": 225,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

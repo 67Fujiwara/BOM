@@ -1,0 +1,124 @@
+[
+  {
+    "name": "W0 案内どおり x → Enter",
+    "cur": "R013 部品名",
+    "afterX": {
+      "mode": "ナビ",
+      "edit": null,
+      "cursor": "R013 部品名",
+      "view": "view-1",
+      "panel": null,
+      "toast": "権限なし（設計の列）。「警告を確認済みにする / 外す」は Alt+x（または ID の列で x）。キーの一覧は F1",
+      "active": "DIV.gridwrap",
+      "filter": ""
+    },
+    "fw": "因幡電機 FR-1 / 商社B FR-2 / 商社C FR-3",
+    "toast": "権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘",
+    "price": [
+      "S1:10371",
+      "S2:8657",
+      "S3:10952"
+    ]
+  },
+  {
+    "name": "W1 Alt+x を 4 回続けて（ビュー 9）",
+    "cur": "R013 部品名",
+    "seq": [
+      {
+        "after": 1,
+        "fw": null,
+        "toast": "R013: 正式依頼の取下げを元の商社に伝えた（確認済）",
+        "cursor": "R013 部品名"
+      },
+      {
+        "after": 2,
+        "fw": null,
+        "toast": "R013 の差分を確認済にしました（購買として）",
+        "cursor": "R013 部品名"
+      },
+      {
+        "after": 3,
+        "fw": null,
+        "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません",
+        "cursor": "R013 部品名"
+      },
+      {
+        "after": 4,
+        "fw": null,
+        "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+      }
+    ]
+  },
+  {
+    "name": "W2 Ctrl+Z×3・Ctrl+Y・リロード・Ctrl+Z",
+    "z": [
+      {
+        "fw": null,
+        "toast": "元に戻す: 差分を確認済"
+      },
+      {
+        "fw": "因幡電機 FR-1 / 商社B FR-2 / 商社C FR-3",
+        "toast": "元に戻す: 正式依頼の取下げを伝えた"
+      },
+      {
+        "fw": "因幡電機 FR-1 / 商社B FR-2 / 商社C FR-3",
+        "toast": "これ以上戻す操作がありません（Ctrl+Y でやり直せます）"
+      },
+      {
+        "y": true,
+        "fw": null,
+        "toast": "やり直す: 正式依頼の取下げを伝えた"
+      },
+      {
+        "reload": true,
+        "fw": null
+      },
+      {
+        "zAfterReload": true,
+        "fw": "因幡電機 FR-1 / 商社B FR-2 / 商社C FR-3",
+        "toast": "元に戻す: 正式依頼の取下げを伝えた"
+      }
+    ]
+  },
+  {
+    "name": "W3 2 タブ: A の Alt+x の 0ms 後に B の Alt+x",
+    "fwA": null,
+    "fwB": null,
+    "toastA": "R013: 正式依頼の取下げを元の商社に伝えた（確認済）",
+    "toastB": "R013 の差分を確認済にしました（購買として）",
+    "expect": "商社C FR-3 だけ残る（2 社を伝えた）"
+  },
+  {
+    "name": "W3 2 タブ: A の Alt+x の 30ms 後に B の Alt+x",
+    "fwA": null,
+    "fwB": null,
+    "toastA": "R013: 正式依頼の取下げを元の商社に伝えた（確認済）",
+    "toastB": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません",
+    "expect": "商社C FR-3 だけ残る（2 社を伝えた）"
+  },
+  {
+    "name": "W3 2 タブ: A の Alt+x の 400ms 後に B の Alt+x",
+    "fwA": null,
+    "fwB": null,
+    "toastA": "R013: 正式依頼の取下げを元の商社に伝えた（確認済）",
+    "toastB": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません",
+    "expect": "商社C FR-3 だけ残る（2 社を伝えた）"
+  },
+  {
+    "name": "W4 取消済の行の取下げをビュー 9 で Alt+x",
+    "cur": "R013 部品名",
+    "shown9": true,
+    "fw": null,
+    "toast": "R013: 正式依頼の取下げを元の商社に伝えた（確認済）"
+  },
+  {
+    "name": "W5 設計で R013 に Alt+x",
+    "cur": "R013 部品名",
+    "fw": "因幡電機 FR-1 / 商社B FR-2 / 商社C FR-3",
+    "toast": "この行に確認するもの（対応済の指摘・警告・表記修正など）はありません"
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

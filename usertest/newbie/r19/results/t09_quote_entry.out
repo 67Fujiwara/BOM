@@ -1,0 +1,35 @@
+  deadline "2025-01-01" -> panel=panel-prompt val=2025-01-01 sel=▶ S1 因幡電機  toast=回答期限 2025-01-01 が過去の日付です
+  deadline "11/31" -> panel=panel-prompt val=11/31 sel=▶ S1 因幡電機  toast=存在しない回答期限です: 「11/31」
+  deadline "あした" -> panel=null val=- sel=undefined toast=null
+  R077 R077:quoting deadline 
+  at: view=9 cur=R077/q.unitPrice@S1 mode=nav edit="6" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Enter 1500 Tab: view=9 cur=R077/q.leadDays@S1 mode=nav edit="1500" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  10 Tab: view=9 cur=R077/q.moq@S1 mode=nav edit="10" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  5 Enter: view=9 cur=R078/q.unitPrice@S1 mode=nav edit="5" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  R077 S1:1500/10/5 | R078 S1:null/null/null
+  ArrowDown x2 while auto-edit: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="5" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Ctrl+Z while auto-edit: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="5" toast=元に戻す: セル編集
+  R077 S1:1500/10/null
+  pressed 7 while auto-edit: view=9 cur=R080/q.unitPrice@S1 mode=edit edit="7" toast=元に戻す: セル編集
+  Enter (commit 7?): view=9 cur=R080/q.unitPrice@S1 mode=nav edit="7" toast=元に戻す: セル編集
+  quotes R078 S1:null/null/null R079 S1:null/null/null
+  Escape: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="7" toast=元に戻す: セル編集
+  Ctrl+Z after Esc: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="7" toast=元に戻す: セル編集
+  R077 S1:1500/10/null R078 S1:null/null/null
+  R076 999 Enter: view=9 cur=R077/q.unitPrice@S1 mode=nav edit="999" toast=元に戻す: セル編集
+  clicked R078 part name while auto-edit: view=9 cur=R078/model mode=nav edit="999" toast=元に戻す: セル編集
+  price "1,234" -> R079 S1:1234/null/null mode=nav toast=null
+  price "¥980" -> R079 S1:980/null/null mode=nav toast=null
+  price "１２３４" -> R079 S1:1234/null/null mode=nav toast=null
+  price "12.5" -> R079 S1:12.5/null/null mode=nav toast=null
+  price "1万" -> R079 S1:10000/null/null mode=nav toast=null
+  price "1.2k" -> R079 S1:10000/null/null mode=edit toast=単価として読めません: 「1.2k」（直して Enter、やめるときは Esc）
+  8 at: view=9 cur=R030/q.stock@S3 mode=nav edit="8" toast=R031 の単価 ¥8 は他社（¥37,392 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Enter 20000 Tab: view=9 cur=R030/q.stock@S3 mode=edit edit="20000" toast=在庫に「20000」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  20 Enter: view=9 cur=R030/q.stock@S3 mode=edit edit="2000020" toast=在庫に「2000020」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  R030 R030:quoted S1:19475/15/null S2:18921/12/4 S3:null/null/null
+  140 Tab 15 Enter: view=9 cur=R030/q.stock@S3 mode=edit edit="200002014015" toast=在庫に「200002014015」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  R031 R031:quoted S1:8/12/null S2:37392/8/null S3:36454/15/4
+  view8 rows R008,R009,R010,R011,R012,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R032,R033,R035,R036,R037,R038
+
+ERRORS:

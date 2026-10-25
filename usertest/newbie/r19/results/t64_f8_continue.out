@@ -1,0 +1,19 @@
+== A. 一覧（F8 だけで 1 周）
+  F8 x8: R005/model → R009/maker → R016/model → R022/model → R041/maker → R054/qtyNeeded → R061/model → R005/model
+== B. F8 F8（R009 メーカ空）→ オムロン → Enter → F8（期待: R041）
+  at R009/maker
+  after Enter R010/maker | null
+  F8 -> R016/model | status: ナビ R016 型式 型式あいまい 1/1 設計 山田: 未公開 6 行 / 指摘 0 Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み
+== C. 同じを Tab で確定 → F8
+  after Tab R009/qtyNeeded
+  F8 -> R016/model
+== D. 3 つ目（R041 メーカ）を直して Enter → F8 / Shift+F8
+  at R016/model
+  F8 -> R022/model
+  Shift+F8 -> R009/maker
+== E. 先頭（R016 型式・指摘あり）を直して Enter → F8 → F8 …（指摘は公開まで残る）
+  at R005/model | ナビ R005 型式 設計 山田: 未公開 5 行 / 指摘 0 Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み
+  F8 x3: R009/maker → R016/model → R022/model | status: ナビ R022 型式 廃番 1/1 設計 山田: 未公開 6 行 / 指摘 0 Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る
+  R016 working  issues [["I-001","型式あいまい","open"]]
+
+ERRORS:

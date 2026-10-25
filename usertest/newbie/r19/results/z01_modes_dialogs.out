@@ -1,0 +1,35 @@
+== A 型式 MY4X を打つ → F2 → ← Backspace N Enter（Excel の F2 で直す）
+  [MY4X] mode=edit lbl=入力 view=1 cur=R030/model edit="MY4X" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [F2] mode=edit lbl=編集 view=1 cur=R030/model edit="MY4X" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [← → BS N] mode=edit lbl=編集 view=1 cur=R030/model edit="MY4N" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  R030 model/name {"model":"MY4N"}
+== A2 Enter で始めた編集 → F2 → ↓（入力に切り替えて ↓ で確定・移動）
+  [Enter] mode=edit lbl=編集 view=1 cur=R030/qtyNeeded edit="2" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [F2] mode=edit lbl=入力 view=1 cur=R030/qtyNeeded edit="7" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [↓] mode=nav lbl=ナビ view=1 cur=R031/qtyNeeded edit="7" panel=null |  | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  R030/R031 {"qtyNeeded":7} {"qtyNeeded":8}
+== A3 F2 を 2 回（入力→編集→入力）
+  [F2 x2] mode=edit lbl=入力 view=1 cur=R030/model edit="AB" panel=null |  | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [←] mode=nav lbl=ナビ view=1 cur=R030/name edit="AB" panel=null |  | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  R030 {"model":"AB"}
+== B 公開の理由: 1 を押した → 間違えたので 2 → Enter
+  [Ctrl+Enter] mode=panel lbl=パネル view=1 cur=R031/name edit="Lamp" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: null
+  [1] mode=panel lbl=パネル view=1 cur=R031/name edit="Lamp" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [2 (選び直し)] mode=panel lbl=パネル view=1 cur=R031/name edit="Lamp" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] mode=nav lbl=ナビ view=1 cur=R031/name edit="Lamp" panel=null |  | hints: F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: 行 6（Rev.2） を公開しました
+  last sub {"rev":2,"at":"2026-10-25T10:02:31.526Z","by":{"name":"山田","role":"design"},"summary":{"added":5,"modelChanged":0,"qtyChanged":0,"other":1,"cancelled":0},"causes":{"R030":"変更セット #2","R076":"追加","R077":"追加","R078":"追加","R079":"追加","R080":"追加"},"acked":[],"changeSet":{"reason":"設計起因","changeNo":"","approved":true}}
+== B2 公開の理由: 1 → ↓ → Enter（↑↓ では選び直せる？）
+  [1 ↓] mode=panel lbl=パネル view=1 cur=R031/name edit="Lamp" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  last sub {"rev":2,"at":"2026-10-25T10:02:44.282Z","by":{"name":"山田","role":"design"},"summary":{"added":5,"modelChanged":0,"qtyChanged":0,"other":1,"cancelled":0},"causes":{"R030":"変更セット #2","R076":"追加","R077":"追加","R078":"追加","R079":"追加","R080":"追加"},"acked":[],"changeSet":{"reason":"設計起因","changeNo":"","approved":true}}
+== B3 公開の理由: 2 → Backspace → 3 → Enter（消してから選び直す）
+  [2 BS 3] mode=panel lbl=パネル view=1 cur=R031/name edit="Lamp" panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「廃番・入手難」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  last sub {"rev":2,"at":"2026-10-25T10:02:56.144Z","by":{"name":"山田","role":"design"},"summary":{"added":5,"modelChanged":0,"qtyChanged":0,"other":1,"cancelled":0},"causes":{"R030":"変更セット #2","R076":"追加","R077":"追加","R078":"追加","R079":"追加","R080":"追加"},"acked":[],"changeSet":{"reason":"廃番・入手難","changeNo":"","approved":true}}
+== C 採用の理由: R005 で 2 位 → 理由 1 → 「3日で入る」→ Enter
+  [Alt+Shift+A] mode=panel lbl=パネル view=1 cur=R005/name edit="" panel=adopt | 商社を選んで採用 R005 リレー 1 ミスミ ¥10,512 / 17日 / スコア 83.8 実績なし（推奨） 2 立花エレテック ¥10,025 / 22日 / スコア 81.4 納期NG(2日超過) 3 因幡電機 ¥8,870 / 25日 / スコア 69.2 最安・納期NG(5日超過) 1 〜9 で選ぶ Enter 採用 Esc 閉じる | hints: F1ヘルプ | toast: null
+  [2] mode=panel lbl=パネル view=1 cur=R005/name edit="" panel=prompt | 1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter 1 納期 2 在庫即納 3 実績/品質 4 集約 5 客先指定 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: null
+  [理由 1] mode=panel lbl=パネル view=1 cur=R005/name edit="" panel=prompt | 1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter 1 納期 2 在庫即納 3 実績/品質 4 集約 5 客先指定 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [3日で入る] mode=panel lbl=パネル view=1 cur=R005/name edit="" panel=prompt | 1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter 1 納期 2 在庫即納 3 実績/品質 4 集約 5 客先指定 6 その他 ↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し | hints: F1ヘルプ | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] mode=nav lbl=ナビ view=1 cur=R005/name edit="" panel=null |  | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: R005 を 立花エレテック で採用（納期: 3日で入る）
+  R005 selected S2 "納期: 3日で入る" {"pmPending":false,"contested":false,"leadNG":true}
+
+ERRORS:

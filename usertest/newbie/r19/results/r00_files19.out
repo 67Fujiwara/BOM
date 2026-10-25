@@ -1,0 +1,63 @@
+[f1_title_merged_daisu.xlsx]
+  old: tsv="部 品 表\t\t\t\t\n盤名\t制御盤A\t製作台数\t3\t台\n品名\t型式\tメーカー\t1台当り数量\t備考\nリレー\tMY4N-D2\tオムロン\t2\t\nタイマ\tH3CR-A8\tオムロン\t1\t"
+    map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しより上の 2 行（表題など）は取り込みません
+  new: tsv="部 品 表\t\t\t\t\n盤名\t制御盤A\t製作台数\t3\t台\n品名\t型式\tメーカー\t1台当り数量\t備考\nリレー\tMY4N-D2\tオムロン\t2\t\nタイマ\tH3CR-A8\tオムロン\t1\t"
+    map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=数量の列「1台当り数量」は 1 台分なので、表題の製作台数 3 台を掛けました / 見出しより上の 2 行（表題など）は取り込みません
+[f2_change_form_note_words.xlsx]
+  old: tsv="\t変更前\t変更後\t\t\n品名\t型式\t型式\t数量\t備考\nリレー\tMY2N\tMY4N-D2\t4\t型式変更\nタイマ\tH3CR-A8\t\t1\t削除しました\nソケット\tPYF14A\t\t2\t不要のため削除\nランプ\tL-1\t\t1\t削除はしない\nヒューズ\tF-5A\t\t3\t欠番\n端子台\tXW2B-20G4\t\t4\t"
+    map=["name",null,"model","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ソケット|PYF14A||2} {||ヒューズ|F-5A||3} {||端子台|XW2B-20G4||4}
+    warn=「型式（変更後）」が空の 4 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: ランプ L-1 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 見出しより上の 1 行（表題など）は取り込みません / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います
+  new: tsv="\t変更前\t変更後\t\t\n品名\t型式\t型式\t数量\t備考\nリレー\tMY2N\tMY4N-D2\t4\t型式変更\nタイマ\tH3CR-A8\t\t1\t削除しました\nソケット\tPYF14A\t\t2\t不要のため削除\nランプ\tL-1\t\t1\t削除はしない\nヒューズ\tF-5A\t\t3\t欠番\n端子台\tXW2B-20G4\t\t4\t"
+    map=["name",null,"model","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ソケット|PYF14A||2} {||ヒューズ|F-5A||3} {||端子台|XW2B-20G4||4}
+    warn=「型式（変更後）」が空の 4 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: ランプ L-1 1）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 見出しより上の 1 行（表題など）は取り込みません / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います
+[f3_multiline_header_daisu.xlsx]
+  old: tsv="盤名：制御盤B\t\t製作台数：2台\t\t\n品名\t型式\tメーカー\t数量 (1台分)\t備考 (取付位置)\nリレー\tMY4N-D2\tオムロン\t2\t盤内上段, 左側\nタイマ\tH3CR-A8\tオムロン\t1\t"
+    map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しより上の 1 行（表題など）は取り込みません
+  new: tsv="盤名：制御盤B\t\t製作台数：2台\t\t\n品名\t型式\tメーカー\t数量 (1台分)\t備考 (取付位置)\nリレー\tMY4N-D2\tオムロン\t2\t盤内上段, 左側\nタイマ\tH3CR-A8\tオムロン\t1\t"
+    map=["name","model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=数量の列「数量 (1台分)」は 1 台分なので、表題の製作台数 2 台を掛けました / 見出しより上の 1 行（表題など）は取り込みません
+[f4_gouki_jissou.xlsx]
+  old: tsv="品名\t型式\tメーカー\t1号機\t2号機\t3号機\t実装\nリレー\tMY4N-D2\tオムロン\t2\t\t2\t○\nタイマ\tH3CR-A8\tオムロン\t\t1\t\t○\nランプ\tL-1\tIDEC\t1\t1\t1\t×\nソケット\tPYF14A\tオムロン\t2\t2\t2\t○"
+    map=["name","model","maker","qtyNeeded",null,null,null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ソケット|PYF14A|オムロン|6}
+    warn=数量の列 3 つ（「1号機」「2号機」「3号機」）を足して数量にしました / 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: tsv="品名\t型式\tメーカー\t1号機\t2号機\t3号機\t実装\nリレー\tMY4N-D2\tオムロン\t2\t\t2\t○\nタイマ\tH3CR-A8\tオムロン\t\t1\t\t○\nランプ\tL-1\tIDEC\t1\t1\t1\t×\nソケット\tPYF14A\tオムロン\t2\t2\t2\t○"
+    map=["name","model","maker","qtyNeeded",null,null,null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ソケット|PYF14A|オムロン|6}
+    warn=数量の列 3 つ（「1号機」「2号機」「3号機」）を足して数量にしました / 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[f5_merged_vertical_name.xlsx]
+  old: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N\tオムロン\t2\nリレー\tG2R-1\tオムロン\t1\nタイマ\tH3CR-A8\tオムロン\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|2} {||リレー|G2R-1|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+  new: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N\tオムロン\t2\nリレー\tG2R-1\tオムロン\t1\nタイマ\tH3CR-A8\tオムロン\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|2} {||リレー|G2R-1|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+[f6_two_tier_goukibetsu.xlsx]
+  old: tsv="品名\t型式\tメーカー\t号機別数量\t\t\n品名\t型式\tメーカー\t1\t2\t3\nリレー\tMY4N-D2\tオムロン\t2\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1\t1"
+    map=["name","model","maker","qtyNeeded",null,null]
+    rows={||品名|型式|メーカー|1} {||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+  new: tsv="品名\t型式\tメーカー\t号機別数量\t\t\n品名\t型式\tメーカー\t1\t2\t3\nリレー\tMY4N-D2\tオムロン\t2\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1\t1"
+    map=["name","model","maker","qtyNeeded",null,null]
+    rows={||品名|型式|メーカー|1} {||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+[f7_halfkana_headers.xlsx]
+  old: tsv="ﾋﾝﾒｲ\tｶﾀｼｷ\tﾒｰｶｰ\tｽｳﾘｮｳ\nﾘﾚｰ\tMY4N-D2\tｵﾑﾛﾝ\t4\n反射フィルム\tRF-200\tDNP\t2\nﾀｲﾏ\tH3CR-A8\tｵﾑﾛﾝ\t1"
+    map=["category","name","model","maker"]
+    rows={ﾋﾝﾒｲ||ｶﾀｼｷ|ﾒｰｶｰ|ｽｳﾘｮｳ|1} {ﾘﾚｰ||MY4N-D2|ｵﾑﾛﾝ|4|1} {ﾀｲﾏ||H3CR-A8|ｵﾑﾛﾝ|1|1}
+    warn=見出しが無いので、列を「分類・部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください / 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: tsv="ﾋﾝﾒｲ\tｶﾀｼｷ\tﾒｰｶｰ\tｽｳﾘｮｳ\nﾘﾚｰ\tMY4N-D2\tｵﾑﾛﾝ\t4\n反射フィルム\tRF-200\tDNP\t2\nﾀｲﾏ\tH3CR-A8\tｵﾑﾛﾝ\t1"
+    map=["category","name","model","maker"]
+    rows={ﾋﾝﾒｲ||ｶﾀｼｷ|ﾒｰｶｰ|ｽｳﾘｮｳ|1} {ﾘﾚｰ||MY4N-D2|ｵﾑﾛﾝ|4|1} {ﾀｲﾏ||H3CR-A8|ｵﾑﾛﾝ|1|1}
+    warn=見出しが無いので、列を「分類・部品名・型式・メーカ」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください / 実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません

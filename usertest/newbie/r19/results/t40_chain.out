@@ -1,0 +1,32 @@
+== F8 Alt+x → relay
+  [Alt+x] mode=nav cur=R016/model edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [moved] mode=nav cur=R016/maker edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [typed] mode=edit cur=R016/maker edit="relay" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [Enter] mode=nav cur=R009/maker edit="relay" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+   changes: R016: ackRules: [] -> ["rule.model.cp30"]; working:  -> {"maker":"relay"}
+== F8 Alt+x → AC100V
+  [Alt+x] mode=nav cur=R016/model edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [moved] mode=nav cur=R016/maker edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [typed] mode=edit cur=R016/maker edit="AC100V" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [Enter] mode=nav cur=R009/maker edit="AC100V" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+   changes: R016: ackRules: [] -> ["rule.model.cp30"]; working:  -> {"maker":"AC100V"}
+== ID: n x → relay
+  [x on ID] mode=nav cur=R009/id edit="" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [moved] mode=nav cur=R009/ball edit="" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [typed] mode=nav cur=R009/ball edit="" panel=null sort=null | toast: この列は自動計算です。「承認 / 受入 / 許可（PM）」は Alt+y（または ID の列で y）。キーの一覧は F1
+  [Enter] mode=nav cur=R009/ball edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: (なし)
+== ID: n x → → relay
+  [x on ID] mode=nav cur=R009/id edit="" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [moved] mode=nav cur=R009/ref edit="" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [typed] mode=edit cur=R009/ref edit="relay" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+  [Enter] mode=nav cur=R041/ref edit="relay" panel=null sort=null | toast: エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）
+   changes: R009: working:  -> {"ref":"relay"}
+== ID: x → (ボール)  Sensor
+  [x on ID] mode=nav cur=R016/id edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [moved] mode=nav cur=R016/ball edit="" panel=null sort=null | toast: 確認済みにしました: CP30 は定格電流（例: 10A）まで書いてください
+  [typed] mode=nav cur=R016/ball edit="" panel=null sort=null | toast: この列は自動計算です。「置き換え品を作る」は Alt+r（または ID の列で r）。キーの一覧は F1
+  [Enter] mode=nav cur=R016/ball edit="" panel=null sort=null | toast: この列は自動計算です
+   changes: R016: ackRules: [] -> ["rule.model.cp30"]
+
+ERRORS:

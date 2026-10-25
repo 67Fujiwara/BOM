@@ -1,0 +1,53 @@
+== a PM をクリック → 3 → Enter → 知らせのとおり Shift+Tab → 3 → Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [3] role=design user="山田" panel=prompt 欄="3" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+  [w:1500] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+== a2 PM をクリック → 3 → Enter（止められたら開き直して Shift+Tab → 3 → Enter）
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [3] role=design user="山田" panel=prompt 欄="3" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+  [w:300] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+  [reopen] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+  [Shift+Tab] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: 選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）
+  [3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] role=pm user="鈴木" panel=null 欄="-" 選択=- mode=nav view=7 | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+== b 購買をクリック → ２（全角）→ Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:2] role=design user="山田" panel=prompt 欄="" 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [i:２] role=design user="山田" panel=prompt 欄="２" 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=design user="山田" panel=prompt 欄="" 選択=2 購買 mode=panel view=1 | toast: 氏名が「２」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+== c 購買をクリック → 2. → Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:2] role=design user="山田" panel=prompt 欄="" 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [t:2.] role=design user="山田" panel=prompt 欄="2." 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=purchasing user="2." panel=null 欄="-" 選択=- mode=nav view=9 | toast: 役割: 購買（2.）。既定のビュー 9 購買作業 を開きました
+== d 購買をクリック → 2番 → Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:2] role=design user="山田" panel=prompt 欄="" 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [i:2番] role=design user="山田" panel=prompt 欄="2番" 選択=2 購買 mode=panel view=1 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=purchasing user="2番" panel=null 欄="-" 選択=- mode=nav view=9 | toast: 役割: 購買（2番）。既定のビュー 9 購買作業 を開きました
+== e PM をクリック → PM（役割の名前を氏名に）→ Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [opt:3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [t:PM] role=design user="山田" panel=prompt 欄="PM" 選択=3 PM mode=panel view=1 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Enter] role=pm user="PM" panel=null 欄="-" 選択=- mode=nav view=7 | toast: 役割: PM（PM）。既定のビュー 7 要決定 を開きました
+== f Tab → 3 → Enter（文字の欄で数字。PM のつもり）
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [Tab] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [3] role=design user="山田" panel=prompt 欄="3" 選択=1 設計 mode=panel view=1 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [Enter] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: 氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+== g 選択肢をクリックせずに 3 → 3（PM のつもりで 2 回）→ Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=1 設計 mode=panel view=1 | toast: undefined
+  [3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [3] role=design user="山田" panel=prompt 欄="" 選択=3 PM mode=panel view=1 | toast: 「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Enter] role=pm user="鈴木" panel=null 欄="-" 選択=- mode=nav view=7 | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+== h 公開: 理由 1 をクリック → 3 → Enter
+  [open] role=design user="山田" panel=prompt 欄="" 選択=- mode=panel view=1 | toast: undefined
+  [opt:1] role=design user="山田" panel=prompt 欄="" 選択=1 客先要求 mode=panel view=1 | toast: 「客先要求」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [3] role=design user="山田" panel=prompt 欄="3" 選択=1 客先要求 mode=panel view=1 | toast: 「客先要求」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"客先要求","changeNo":"3","approved":true}} | toast: 行 6（Rev.2） を公開しました
+
+ERRORS:

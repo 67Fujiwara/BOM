@@ -1,0 +1,48 @@
+== A. 購買: 部品名で Shift+I（指摘のつもり）→ 案内の「例: Alt+i」どおり Alt+i
+  [open] role=purchasing mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [R013 部品名] role=purchasing mode=nav view=1 cur=R013/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  before R013{st=formalQuoted ord=false rcv=false hid=false sup=S1}
+  [Shift+I] role=purchasing mode=nav view=1 cur=R013/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「指摘を起票（種別は頭文字）」は Alt+Shift+I（または ID の列で I）。キーの一覧は F1
+  [Alt+i (案内どおり)] role=purchasing mode=nav view=1 cur=R013/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R013: 入荷済にしました
+  after R013{st=received ord=true rcv=true hid=false sup=S1}
+== A2. 購買: 型式で Shift+I → Alt+i（見積中の行）
+  before R076{st=draft ord=false rcv=false hid=false sup=undefined}
+  [Shift+I] role=purchasing mode=nav view=1 cur=R076/model edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「指摘を起票（種別は頭文字）」は Alt+Shift+I（または ID の列で I）。キーの一覧は F1
+  [Alt+i] role=purchasing mode=nav view=1 cur=R076/model edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 入荷にできません（発注前の行）: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+  after R076{st=draft ord=false rcv=false hid=false sup=undefined}
+== B. 設計: 単価（自動計算）で「ok」→ 案内「例: Alt+k」→ Alt+k
+  [R033 単価] role=design mode=nav view=1 cur=R033/unitPrice edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: null
+  [ok] role=design mode=nav view=1 cur=R033/unitPrice edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: この列は自動計算です。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Alt+k] role=design mode=nav view=1 cur=R032/unitPrice edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: この列は自動計算です。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+== B2. 設計: ボールで Shift+S（並べるつもりで Sensor）→ 案内 Alt+s / 「Delay」→ Alt+y
+  [Delay] role=design mode=nav view=1 cur=R031/ball edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: この列は自動計算です。「承認 / 受入 / 許可（PM）」は Alt+y（または ID の列で y）。キーの一覧は F1
+  [Alt+y] role=design mode=nav view=1 cur=R031/ball edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: 権限なし（承認は PM）
+== C. 数字のビュー切替: 役割ごとの既定の位置で 1〜9
+  [design open] role=design mode=nav view=1 cur=null/name edit="" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+   design press 6: view 1->6 cur=null/name mode=nav edit="" toast=null
+   design press 8: view 6->8 cur=null/name mode=nav edit="" toast=null
+   design press 3: view 8->3 cur=null/name mode=nav edit="" toast=null
+   design press 7: view 3->7 cur=null/name mode=nav edit="" toast=null
+   design press 1: view 7->1 cur=null/name mode=nav edit="" toast=null
+   design press 4: view 1->4 cur=null/name mode=nav edit="" toast=null
+  [purchasing open] role=purchasing mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 6: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="6" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 8: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="8" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 3: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="3" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 7: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="7" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 1: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="1" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+   purchasing press 4: view 9->9 cur=R004/q.unitPrice@S1 mode=edit edit="4" toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [pm open] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 6: view 7->6 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 8: view 6->8 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 3: view 8->3 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 7: view 3->7 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 1: view 7->1 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   pm press 4: view 1->4 cur=R003/name mode=nav edit="" toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  side text: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75 7 要決定 1 8 正式見積 6 9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+== D. PM: 7 で要決定の行に y（部品名にいる）/ ID 列で y
+  [Alt+7] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [↓] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [y on cell] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 納期NG の行では y は使えません（Enter で決定パネル）
+
+ERRORS:

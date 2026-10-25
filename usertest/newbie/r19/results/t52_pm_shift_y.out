@@ -1,0 +1,17 @@
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確
+  [pub0] toast: 行 5（Rev.2） を公開しました
+approval true
+  [pub] panel: 変更セット（2 行: R016, R033）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub] panel: 変更セット（2 行: R016, R033）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub] toast: 行 2（Rev.3） を公開しました
+R033 before PM quoted GS2107-WTBD null
+PM 7 rows R003,R016,R033
+cursor R033 部品名 | hints F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く
+Shift+Y -> 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | panel 決定: 却下（R033・Rev.3 の変更セット 2 行まとめて。理由・必須） Enter 確定 Esc 取り消し
+Alt+y -> 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました | panel 決定: 却下（R033・Rev.3 の変更セット 2 行まとめて。理由・必須） Enter 確定 Esc 取り消し
+Enter -> 入力は必須です | panel 決定: 却下（R033・Rev.3 の変更セット 2 行まとめて。理由・必須） Enter 確定 Esc 取り消し
+R033 after quoted GS2107-WTBD null
+decisions [{"id":"D-001","kind":"案件設定変更","by":{"role":"pm","name":"鈴木"},"at":"2026-10-25T09:36:03.706Z","reason":"テスト","payload":{"changeNeedsPmApproval":true}}]
+
+ERRORS:

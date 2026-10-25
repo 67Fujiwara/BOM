@@ -1,0 +1,40 @@
+== A 設計: R005 の型式で Excel のキー（表の上）
+  [Control+r] keys=C+Control:browser,C+r:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+R（右へコピー）はありません。行の複製は Alt+Shift+D | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+;] keys=C+Control:browser,C+;:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Shift+Space] keys=S+Shift:browser,S+ :browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+Space] keys=C+Control:browser,C+ :browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+-] keys=C+Control:browser,C+-:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+-（行の削除）はありません。行の取消は Shift+Delete | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+Shift+=] keys=C+Control:browser,C+S+Shift:browser,C+S+=:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+b] keys=C+Control:browser,C+b:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+1] keys=C+Control:browser,C+1:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [F4] keys=F4:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+h] keys=C+Control:browser,C+h:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [F5] keys=F5:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+Shift+ArrowDown] keys=C+Control:browser,C+S+Shift:browser,C+S+ArrowDown:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+n] keys=C+Control:browser,C+n:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+w] keys=C+Control:browser,C+w:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+Tab] keys=C+Control:browser,C+Tab:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+== B 設計: R003 の部品名を Ctrl+C（前の作業）→ R005 の型式で Ctrl+X → R006 の型式で Ctrl+V（切り取って移すつもり）
+  Ctrl+C on R003 部品名: toast=コピー: 出力拡張ユニット
+  [Control+x] keys=C+Control:browser,C+x:browser | mode=nav cur=R005/model edit="" panel=null view=1 | toast=Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます） | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+v] keys=C+Control:browser,C+v:browser | mode=nav cur=R006/model edit="" panel=null view=1 | toast=貼り付け: 出力拡張ユニット | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false} | R006{name=リレーソケット model=PYF14A-E qty=12 need=- working={"model":"出力拡張ユニット"} status=quoted hidden=false}
+== C 設計: 必要日の列で Ctrl+;（今日の日付）
+  col 必要日 found=true cursor=R005 必要日
+  [Control+;] keys=C+Control:browser,C+;:browser | mode=nav cur=R005/needDate edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+;] keys=Enter:browser,C+Control:browser,C+;:browser | mode=nav cur=R005/needDate edit="" panel=null view=1 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+== D 設計: 編集中に Alt+Enter（セル内改行のつもり）→ 続けて打つ → Enter
+  [Alt+Enter] keys=A+Alt:browser,A+Enter:browser | mode=edit cur=R005/name edit="Relay" panel=null view=1 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  after typing+Enter: keys=S+Shift:browser,S+S:browser,m:browser,a:browser,l:browser,l:browser,Enter:browser | mode=nav cur=R006/name edit="RelaySmall" panel=null view=1 | toast=undefined | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working={"name":"RelaySmall"} status=quoted hidden=false}
+== E 設計: 編集中に Ctrl+Enter（Excel では確定して動かない）
+  col found=true
+  [Control+Enter] keys=C+Control:browser,C+Enter:browser | mode=panel cur=R010/qtyNeeded edit="3" panel=prompt view=1 | toast=undefined | panel=変更セット（6 行: R010, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | R010{name=端子台エンドカバー model=D-PT 2,5 qty=12 need=- working={"qtyNeeded":3} status=quoted hidden=false}
+  Esc -> mode=nav cur=R010/qtyNeeded edit="3" panel=null view=1 | toast=null
+  submissions=1 last=Rev1
+== F 購買: 単価の列で Ctrl+R・Ctrl+;・Ctrl+-
+  [Control+r] keys=C+Control:browser,C+r:browser | mode=nav cur=R005/qtyNeeded edit="" panel=null view=9 | toast=Ctrl+R（右へコピー）はありません。行の複製は Alt+Shift+D | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+;] keys=C+Control:browser,C+;:browser | mode=nav cur=R005/qtyNeeded edit="" panel=null view=9 | toast=Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+-] keys=C+Control:browser,C+-:browser | mode=nav cur=R005/qtyNeeded edit="" panel=null view=9 | toast=Ctrl+-（行の削除）はありません。行の取消は Shift+Delete | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [PageDown] keys=PageDown:browser | mode=nav cur=R025/qtyNeeded edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+  [Control+End] keys=C+Control:browser,C+End:browser | mode=nav cur=R075/qtyNeeded edit="" panel=null view=9 | toast=undefined | panel=- | rows 80→80 | R005{name=リレー model=MY4N-D2 DC24  qty=12 need=- working=null status=quoted hidden=false}
+
+ERRORS:

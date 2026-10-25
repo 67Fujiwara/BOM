@@ -1,0 +1,17 @@
+== x then type
+  x on null/name (行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）) → ArrowRight to name → "relay": mode=nav edit="" panel=undefined | Enter toast=行を選んでください（↓ で先頭の行へ）
+   changes: (なし)
+  x on null/name (行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）) → ArrowRight to name → "AC100V": mode=nav edit="" panel=undefined | Enter toast=行を選んでください（↓ で先頭の行へ）
+   changes: (なし)
+  x on null/name (行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）) → ArrowRight to name → "sensor": mode=nav edit="" panel=undefined | Enter toast=行を選んでください（↓ で先頭の行へ）
+   changes: (なし)
+  h on null/name (行を選んでください（↓ で先頭の行へ、F8 で最初の問題へ。1 キー操作は Alt を押しながら、キーの一覧は F1）) → ArrowRight to name → "heater": mode=nav edit="" panel=undefined | Enter toast=行を選んでください（↓ で先頭の行へ）
+   changes: (なし)
+== recover by Ctrl+Z after accidental adopt (Analog Devices)
+  after: toast= null | changes R043: working:  -> {"maker":"Analog Devices"}
+  Ctrl+Z: 元に戻す: セル編集 | changes (なし)
+== slow relay → replacement → Ctrl+Z
+  after: toast= null | changes R030: working:  -> {"name":"relay"} | cursor R031
+  Ctrl+Z: 元に戻す: セル編集 | changes (なし)
+
+ERRORS:

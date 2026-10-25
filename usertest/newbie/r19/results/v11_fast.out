@@ -1,0 +1,8 @@
+A: R030="MY4N-D2" R031="H3CR-A8" R032="1N4148" R033="A22NS-2BL" R034="S8VK-G12024"
+B: sub={"reason":"客先要求","changeNo":"2026-012","approved":true} rev=2 toast=行 6（Rev.2） を公開しました panel=null
+   R031 working=null cursor=R031 部品名
+C: new rows [{"id":"R081","name":"relay","model":"MY4N-D2","maker":"omron","qty":4}] R030=null
+D: R005 selected S2 "納期: 3日で入る" toast=R005 を 立花エレテック で採用（納期: 3日で入る） panel=null
+E: R005 model={"model":"MY4N-D2 DC24"} cursor=R009 メーカ panel=panel-quickfix
+
+ERRORS:

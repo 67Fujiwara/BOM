@@ -1,0 +1,11 @@
+issue: Ctrl+K -> panel-issue | 入力中の内容があります。Enter で確定するか Esc で閉じてから Ctrl+K を押してください
+issue: Esc#1 -> panel-issue | 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | text 型式の末尾（電圧）が抜けています
+issue: Esc#2 -> null | 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+issue2: Esc, type, Esc -> null | text -
+replace: Ctrl+K -> panel-prompt | 入力中の内容があります。Enter で確定するか Esc で閉じてから Ctrl+K を押してください
+replace: Esc#1 -> panel-prompt | 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定） | value S-T21 AC200V
+replace: Enter -> null | R030 の置き換え品 R081 を作りました（公開すると R030 は置換済になります。Ctrl+Z で戻す）
+rows 81 ["R080 TZe-231"]
+Ctrl+Z 元に戻す: 置換 R030 80
+
+ERRORS:

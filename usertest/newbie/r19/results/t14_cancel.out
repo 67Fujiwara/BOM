@@ -1,0 +1,39 @@
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub0] toast: 行 5（Rev.2） を公開しました
+Shift+Delete R030 -> R030 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） null | R030:quoted removal={"kind":"cancel"} model=M22N-BC-TWA-WC
+  design sees R030 設計 操30 操作 表示灯 白 M22N-BC-TWA-WC オムロン 2 個 相見積 同等品可 11/13 見積済 · 取消予定 10/27 
+  purchasing sees R030 設計 表示灯 白 M22N-BC-TWA-WC オムロン 2 個 相見積 推奨 同等品可 11/13 2 見積済 · 作業中● 10/27 ¥1 15日 取寄 ¥18,921 12日 4 取寄 
+  purchasing formal confirm 正式見積依頼書（社外）を出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+  [pub-cancel] panel: 変更セット（1 行: R030）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub-cancel] panel: 変更セット（1 行: R030）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub-cancel] panel: 変更セット（1 行: R030）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub-cancel] toast: 行 1（Rev.3） を公開しました
+  after publish R030:cancelled model=M22N-BC-TWA-WC
+  Ctrl+Z after publish -> 取消・置換を公開した R030 は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。 R030:cancelled model=M22N-BC-TWA-WC
+  design sees R030 — 操30 操作 表示灯 白 M22N-BC-TWA-WC オムロン 2 個 相見積 同等品可 11/13 取消 
+  purchasing sees R030 — 操30 操作 表示灯 白 M22N-BC-TWA-WC オムロン 2 個 相見積 同等品可 11/13 取消 
+r -> R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し
+  Enter -> R031 の置き換え品 R081 を作りました（公開すると R031 は置換済になります。Ctrl+Z で戻す） null | R031:quoted removal={"kind":"replace","by":"R081"} model=M22N-BC-TRA-RC
+  new row R081:draft replaces=R031 model=NEW-MODEL-1 cursor R081
+  Ctrl+Z -> 元に戻す: 置換 R031 R031:quoted model=M22N-BC-TRA-RC rows 80
+  Ctrl+Y -> やり直す: 置換 R031 R031:quoted removal={"kind":"replace","by":"R081"} model=M22N-BC-TRA-RC rows 81
+  Shift+Delete R081 -> R081 を削除しました（R031 の置換を取りやめました）（Ctrl+Z で戻せます） R031:quoted model=M22N-BC-TRA-RC R081: (なし)
+  [pub-replace] toast: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに）
+  after publish R031:quoted removal={"kind":"replace","by":"R081"} model=M22N-BC-TRA-RC R081:draft replaces=R031 model=NEW-MODEL-2
+  purchasing 5 rows R004,R005,R006,R007,R008,R009,R010,R011,R012,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029
+settings 案件設定 （PM 項目は PM、購買項目は購買が変更。確定済） PM 案件名 第3ライン 搬送制御盤 PM 案件納期 2026-11-23 PM 社内工程日数（この案件） 10 PM 予算 2800000 PM 重み（価格,納期,実績,条件
+  edit approval field -> 上長決裁: 予算比 +（%） 5 PM 担当者（設計,購買,PM） 山田,佐藤,鈴木 購買 回答期限の既定（日） 5 購買 今回の回答期限 2026-10-28 購買 見積完了条件（全社 / 2社以上 / 期限） 期限 購買 拮抗閾値（点） 5 購買 例外閾値（円） 10000 購買 例外閾値（%） 3 購買 正式見積の差分閾値（%） 10 購買 正式見積の差分閾値（円） 10000 購買 数量変
+  save -> 変更理由（必須） Enter 確定 Esc 取り消し 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+   panel 変更理由（必須） Enter 確定 Esc 取り消し
+  approval setting {"currency":"¥","budget":2800000,"processDays":10,"tieThreshold":5,"exceptionAmount":10000,"exceptionPct":0.03,"formalDiffPct":0.1,"formalDiffAmount":10000,"qtyTolerancePct":0.2,"surplusAmount":20000,"quoteCompleteRule":"deadline","quoteDeadline":"2026-10-28","changeNeedsPmApproval":true,"selector":"design","pmConfirmed":true,"externalApprovalAmount":300000,"externalApprovalBudgetPct":0.05,"quoteDays":5,"formalDays":7,"leadMarginDays":5,"digestMail":true,"holidays":[]}
+  [pub-pm] toast: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに）
+  R032 after publish R032:quoted removal={"kind":"cancel"} model=M2BJ-B24D
+  purchasing sees R032 R032 設計 ブザー M2BJ-B24D オムロン 1 個 相見積 推奨 同等品可 11/13 1 見積済 · 作業中● 10/27 ¥1 26日 取寄 ¥81,749 25日 受注生産 ¥73,527 23日 受注生産
+  PM 7 R003
+  hints F1ヘルプ F8次の問題 Space開く
+  after Shift+Y 権限なし（設計の列）。「却下 / 受入（遅延許容）/ 現状維持（PM）」は Alt+Shift+Y（または ID の列で Y）。キーの一覧は F1 R032:quoted removal={"kind":"cancel"} model=M2BJ-B24D
+  design sees R032 R032 設計 操32 1 M2BJ-B24D オムロン 1 個 同等品可 見積済 · 取消予定·作業中● 10/27  | hints Ctrl+Enter公開 4 行 F1ヘルプ F8次の問題 Enter編集 Space開く
+  Shift+Delete again -> R032 の取消を取りやめました R032:quoted working={"name":"1"} model=M2BJ-B24D
+
+ERRORS:

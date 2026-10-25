@@ -5,3 +5,13 @@ approval ON → 案件設定を保存しました
 2:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
 3:pm_decide: R013 y 納期NG の行では y は使えません（Enter で決定パネル）
 4:pick_supplier: R048 R048: 立花エレテック を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+5:pm_decide: R073 Shift+Y R073: 受入
+6:pick_supplier: R026 R026: ミスミ を仮採用（その他: fuzz）。PM の承認待ち（7 要決定）
+7:ltb_request: R023 R023: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥51,329
+8:pm_measure: R026 no-p
+9:pm_decide: R023 y R023: 先行発注許可
+10:undo: design 元に戻す: 採用 ミスミ（その他: fuzz） PM承認待ち
+11:ltb_request: R061 R061: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥12,858
+12:pm_measure: R048 no-d
+13:pick_supplier: R041 R041 を ミスミ で採用（その他: fuzz）
+14:formal_price: R013 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました

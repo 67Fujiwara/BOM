@@ -1,0 +1,8 @@
+0:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:early_adopt: none
+2:rough: 依頼する行がありません（提出済・再見積要の行なし）
+3:rough: 依頼する行がありません（提出済・再見積要の行なし）
+4:pm_decide: R003 Shift+Y R003: 受入
+5:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+6:next_day: +1d
+7:pm_decide: empty

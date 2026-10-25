@@ -46,3 +46,5 @@ o3-selected == 20/20 PASS
 o3-formal == 21/21 PASS
 o3-formalq == 21/21 PASS
 o4-remove == 12/12 PASS
+o4-stop == 11/11 PASS
+o9-b == 1/1 PASS

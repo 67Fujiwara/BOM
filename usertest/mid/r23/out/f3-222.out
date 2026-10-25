@@ -18,3 +18,11 @@
 17:bulk: 採用 1 / 拮抗 0（要見直し）/ 承認要 0 / スキップ 0
 18:formal_price: R044 x1 EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
 19:pm_measure: R007 d R007: 設計へ代替依頼
+20:excel: design 3 sheets
+21:replace_row: R070 R070 の置き換え品 R081 を作りました（公開すると R070 は置換済に / を入れて Enter] 行 2（Rev.3） を公開しました
+22:edit_qty: R050 を入れて Enter] 行 1（Rev.4） を公開しました
+23:formal_price: R031 x1.5 EDIT-ERR R031 の正式単価 ¥54,123（概算から +50%）。桁
+24:decline: none
+25:rename_supplier: S2→ミスミ グループ JSON を読み込みました（案件 1 件
+26:switch_proc: R028→社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+27:replace_row: R074 R074 の置き換え品 R082 を作りました（公開すると R074 は置換済に / ）を入れて Ente] 行 3（Rev.5） を公開しました

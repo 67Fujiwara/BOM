@@ -1,0 +1,350 @@
+[
+  {
+    "name": "N1 空き 2KB: 部品名 1 文字 → 指摘を起票（Shift+I q 本文 Enter）",
+    "expect": "小さい編集は保存・指摘は保存できないと知らせる",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "T:A→R010 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R011 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "ArrowUp→R010 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Shift+I→R010 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "q→R010 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "T:確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。→R010 部品名/入力 «»",
+      "Enter→R011 部品名/ナビ «»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "Iq確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "Iq確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。T:確認お願いします。長めの本文を書いておきます。",
+      "r004": "quoted",
+      "role": "design"
+    }
+  },
+  {
+    "name": "N2 空き 2KB: 新しいBOM（ガイド → 3 1 つずつ → 作成）",
+    "expect": "作れなければ知らせる",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "PAL:新しいBOM→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "T:P-NEAR→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "3→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R001 部品名/ナビ «ok|新しいBOM P-NEAR（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 2,
+      "cur": "P-NEAR",
+      "rows": 1,
+      "issues": 0,
+      "revs": 0,
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 2,
+      "cur": "P-NEAR",
+      "rows": 1,
+      "issues": 0,
+      "revs": 0,
+      "role": "design"
+    }
+  },
+  {
+    "name": "N3 空き 2KB: 公開（Ctrl+Enter → 2 → Enter）",
+    "expect": "保存できていないと知らせる",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "T:PUB→R010 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R011 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Control+Enter→R011 部品名/パネル{panel-prompt} «ok|保存しました（編集は自動で保存されています）»",
+      "2→R011 部品名/パネル{panel-prompt} «info|「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定»",
+      "Enter→R011 部品名/ナビ «err|保存できていません（容量不足。リロードで消えます）: 行 6（Rev.2） を公開しました»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "PUB",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "PUB",
+      "r004": "quoted",
+      "role": "design"
+    }
+  },
+  {
+    "name": "N4 空き 2KB: 採用（R004 a）→ Ctrl+Z → Ctrl+Y",
+    "expect": "一貫した知らせ",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "G:R004→R004 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Home→R004 ID/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "a→R004 ID/ナビ «ok|R004 を 因幡電機 で採用（スコア 99.2 / 最安）»",
+      "Control+z→R004 ID/ナビ «info|元に戻す: 推奨採用 因幡電機 スコア99.2»",
+      "Control+y→R004 ID/ナビ «info|やり直す: 推奨採用 因幡電機 スコア99.2»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "selected",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "selected",
+      "role": "design"
+    }
+  },
+  {
+    "name": "N5 空き 2KB: 行を 5 行追加（Shift+Enter ×5）",
+    "expect": "?",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "Shift+Enter→R081 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "Escape→R081 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Shift+Enter→R082 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "Escape→R082 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Shift+Enter→R083 部品名/入力 «ok|保存しました（編集は自動で保存されています）»",
+      "Escape→R083 部品名/ナビ «ok|保存しました（編集は自動で保存されています）»",
+      "Shift+Enter→R084 部品名/入力 «err|保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください»",
+      "Escape→R084 部品名/ナビ «err|保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください»",
+      "Shift+Enter→R085 部品名/入力 «err|保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください»",
+      "Escape→R085 部品名/ナビ «err|保存領域がいっぱいで保存できませんでした（リロードすると消えます）。Ctrl+K → JSON を書き出す で退避し、「退避データを消す」で空きを作ってください»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 83,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 83,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    }
+  },
+  {
+    "name": "N6 空き 2KB: 役割の切り替え（購買）→ 発注数",
+    "expect": "?",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "PAL:役割を切り替え→R010 部品名/パネル{panel-prompt} «ok|保存しました（編集は自動で保存されています）»",
+      "2→R010 部品名/パネル{panel-prompt} «info|「購買」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定»",
+      "Enter→R010 単価/ナビ «info|役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "purchasing"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "purchasing"
+    }
+  },
+  {
+    "name": "N7 空き 0: 新しいBOM",
+    "expect": "作れなければ知らせる・リロード後に前の案件",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "PAL:新しいBOM→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "T:P-FULL→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "3→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R010 部品名/パネル{panel-wizard} «»",
+      "Enter→R001 部品名/ナビ «err|保存できていません（容量不足。リロードで消えます）: 新しいBOM P-FULL（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    }
+  },
+  {
+    "name": "N8 空き 2KB: 案件設定（納期を変える）",
+    "expect": "?",
+    "before": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "seq": [
+      "PAL:案件設定→R010 部品名/パネル{panel-settings} «ok|保存しました（編集は自動で保存されています）»",
+      "Enter→R010 部品名/パネル{panel-settings} «err|権限なし（案件名 は PM 項目）»"
+    ],
+    "toasts": [],
+    "storedBeforeReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    },
+    "afterReload": {
+      "projects": 1,
+      "cur": "P-2026-041",
+      "rows": 80,
+      "issues": 5,
+      "revs": 1,
+      "r010": "端子台エンドカバー",
+      "r004": "quoted",
+      "role": "design"
+    }
+  }
+]

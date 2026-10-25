@@ -1,0 +1,39 @@
+[
+  {
+    "step": "created",
+    "rows": 300,
+    "flagged": 90,
+    "notes": 90
+  },
+  {
+    "step": "at-note",
+    "ok": true,
+    "cursor": "R211 備考"
+  },
+  {
+    "step": "paste-empty-90",
+    "ms": 1785,
+    "rows": 300,
+    "flagged": 1,
+    "notes": 1,
+    "toast": "89 セルを貼り付けました（Ctrl+Z で一度に戻せます）"
+  },
+  {
+    "step": "undo",
+    "rows": 300,
+    "flagged": 90,
+    "notes": 90,
+    "toast": "元に戻す: 貼り付け"
+  },
+  {
+    "step": "redo",
+    "rows": 300,
+    "flagged": 1,
+    "notes": 1
+  },
+  {
+    "step": "publish",
+    "toast": "公開できません: エラー 1 件（R300 取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を取消し（Shift+Delete）、要る部品なら Ctrl+.（直し方の一覧）で「要る部品」を選んでください（備考の【削除？】が消えます。備考の列は Ctrl+K →「列の表示」で出せます） … F8 で移動して直す）",
+    "panel": null
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "D1-csv-tab-in-quoted-cell",
+    "file": "D1-csv-tab-in-quoted-cell.csv",
+    "note": "CSV の備考のセルにタブ 1 つ（引用符つき）",
+    "expect": "2 部品（コンマ区切りとして読む）",
+    "toast": "D1-csv-tab-in-quoted-cell.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-Q0 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 数量 → 数量 / 備考 → 備考リレーMY4N4個端子台XW2B2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "リレー / MY4N /  / 4",
+        "端子台 / XW2B /  / 2"
+      ],
+      "notes": [
+        "盤内\t上段",
+        ""
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  },
+  {
+    "id": "D2-csv-tab-in-cell",
+    "file": "D2-csv-tab-in-cell.csv",
+    "note": "CSV の備考のセルにタブ 1 つ（引用符なし）",
+    "expect": "2 部品",
+    "toast": "D2-csv-tab-in-cell.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-Q1 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 数量 → 数量 / 備考 → 備考リレーMY4N4個端子台XW2B2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "リレー / MY4N /  / 4",
+        "端子台 / XW2B /  / 2"
+      ],
+      "notes": [
+        "盤内\t上段",
+        ""
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  },
+  {
+    "id": "D3-csv-trailing-tab-in-name",
+    "file": "D3-csv-trailing-tab-in-name.csv",
+    "note": "CSV の部品名の末尾にタブ",
+    "expect": "2 部品",
+    "toast": "D3-csv-trailing-tab-in-name.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-Q2 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 数量 → 数量リレーMY4N4個端子台XW2B2個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "リレー / MY4N /  / 4",
+        "端子台 / XW2B /  / 2"
+      ],
+      "notes": [
+        "",
+        ""
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  },
+  {
+    "id": "D9-csv-many-rows-one-tab",
+    "file": "D9-csv-many-rows-one-tab.csv",
+    "note": "CSV 300 行のうち 1 行の備考にタブ",
+    "expect": "300 部品",
+    "toast": "D9-csv-many-rows-one-tab.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-Q3 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 数量 → 数量 / 備考 → 備考部品1M-11個部品2M-22個部品3M-33個部品4M-44個部品5M-55個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "sample": [
+        "部品1 / M-1 /  / 1",
+        "部品2 / M-2 /  / 2",
+        "部品3 / M-3 /  / 3",
+        "部品4 / M-4 /  / 4",
+        "部品5 / M-5 /  / 5",
+        "部品6 / M-6 /  / 6",
+        "部品7 / M-7 /  / 7",
+        "部品8 / M-8 /  / 1"
+      ],
+      "notes": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  }
+]

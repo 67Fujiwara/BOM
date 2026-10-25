@@ -1,0 +1,323 @@
+[
+  {
+    "id": "publish",
+    "label": "公開（提出 / 指摘を発行）",
+    "ok": true,
+    "top": [
+      "公開（提出 / 指摘を発行）"
+    ]
+  },
+  {
+    "id": "quotes.request",
+    "label": "概算見積を依頼",
+    "ok": true,
+    "top": [
+      "概算見積を依頼"
+    ]
+  },
+  {
+    "id": "quotes.import",
+    "label": "見積回答を取り込む",
+    "ok": true,
+    "top": [
+      "見積回答を取り込む"
+    ]
+  },
+  {
+    "id": "adopt.bulkBest",
+    "label": "未採用を推奨で一括採用",
+    "ok": true,
+    "top": [
+      "未採用を推奨で一括採用"
+    ]
+  },
+  {
+    "id": "adopt.bulkCheapest",
+    "label": "未採用を最安で一括採用（スコア無視）",
+    "ok": true,
+    "top": [
+      "未採用を最安で一括採用（スコア無視）"
+    ]
+  },
+  {
+    "id": "consolidate",
+    "label": "商社を集約",
+    "ok": true,
+    "top": [
+      "商社を集約"
+    ]
+  },
+  {
+    "id": "quotes.formal",
+    "label": "正式見積を依頼（社外）",
+    "ok": true,
+    "top": [
+      "正式見積を依頼（社外）"
+    ]
+  },
+  {
+    "id": "export.selection",
+    "label": "選定記録を出力（社内）",
+    "ok": true,
+    "top": [
+      "選定記録を出力（社内）"
+    ]
+  },
+  {
+    "id": "ltb.request",
+    "label": "先行発注を申請",
+    "ok": true,
+    "top": [
+      "先行発注を申請"
+    ]
+  },
+  {
+    "id": "undo",
+    "label": "元に戻す",
+    "ok": true,
+    "top": [
+      "元に戻す",
+      "読み込み前に戻す（退避したデータに戻す）",
+      "キャンセル不可で発注に戻す（発注後変更依頼のあと）"
+    ]
+  },
+  {
+    "id": "redo",
+    "label": "やり直す",
+    "ok": true,
+    "top": [
+      "やり直す"
+    ]
+  },
+  {
+    "id": "project.save",
+    "label": "保存",
+    "ok": true,
+    "top": [
+      "保存",
+      "退避データを消す（保存領域を空ける）",
+      "退避したデータを書き出す"
+    ]
+  },
+  {
+    "id": "row.delete",
+    "label": "行を削除（提出済なら取消）",
+    "ok": true,
+    "top": [
+      "行を削除（提出済なら取消）"
+    ]
+  },
+  {
+    "id": "row.insertBelow",
+    "label": "行を追加",
+    "ok": true,
+    "top": [
+      "行を追加"
+    ]
+  },
+  {
+    "id": "settings",
+    "label": "案件設定",
+    "ok": true,
+    "top": [
+      "案件設定",
+      "案件設定を確定（PM）",
+      "新しいBOM"
+    ]
+  },
+  {
+    "id": "settings.confirm",
+    "label": "案件設定を確定（PM）",
+    "ok": true,
+    "top": [
+      "案件設定を確定（PM）"
+    ]
+  },
+  {
+    "id": "project.new",
+    "label": "新しいBOM",
+    "ok": true,
+    "top": [
+      "新しいBOM",
+      "ガイドで1つ前の段階へ（新しいBOM）"
+    ]
+  },
+  {
+    "id": "project.switch",
+    "label": "受信箱・案件を切り替える",
+    "ok": true,
+    "top": [
+      "受信箱・案件を切り替える"
+    ]
+  },
+  {
+    "id": "rule.add",
+    "label": "ルールを追加",
+    "ok": true,
+    "top": [
+      "ルールを追加"
+    ]
+  },
+  {
+    "id": "export.excel",
+    "label": "Excelで出力",
+    "ok": true,
+    "top": [
+      "Excelで出力"
+    ]
+  },
+  {
+    "id": "copy.formatted",
+    "label": "表示中の行と列を書式つきでコピー",
+    "ok": true,
+    "top": [
+      "表示中の行と列を書式つきでコピー"
+    ]
+  },
+  {
+    "id": "data.exportJson",
+    "label": "JSON を書き出す",
+    "ok": true,
+    "top": [
+      "JSON を書き出す"
+    ]
+  },
+  {
+    "id": "data.importJson",
+    "label": "JSON を読み込む",
+    "ok": true,
+    "top": [
+      "JSON を読み込む"
+    ]
+  },
+  {
+    "id": "data.restoreBackup",
+    "label": "読み込み前に戻す（退避したデータに戻す）",
+    "ok": true,
+    "top": [
+      "読み込み前に戻す（退避したデータに戻す）"
+    ]
+  },
+  {
+    "id": "order.restore",
+    "label": "キャンセル不可で発注に戻す（発注後変更依頼のあと）",
+    "ok": true,
+    "top": [
+      "キャンセル不可で発注に戻す（発注後変更依頼のあと）"
+    ]
+  },
+  {
+    "id": "data.clearBackups",
+    "label": "退避データを消す（保存領域を空ける）",
+    "ok": true,
+    "top": [
+      "退避データを消す（保存領域を空ける）"
+    ]
+  },
+  {
+    "id": "data.exportBackup",
+    "label": "退避したデータを書き出す",
+    "ok": true,
+    "top": [
+      "退避したデータを書き出す"
+    ]
+  },
+  {
+    "id": "data.reset",
+    "label": "サンプルデータに戻す",
+    "ok": true,
+    "top": [
+      "サンプルデータに戻す"
+    ]
+  },
+  {
+    "id": "supplier.add",
+    "label": "商社を追加",
+    "ok": true,
+    "top": [
+      "商社を追加"
+    ]
+  },
+  {
+    "id": "role.switch",
+    "label": "役割を切り替え（ログイン）",
+    "ok": true,
+    "top": [
+      "役割を切り替え（ログイン）"
+    ]
+  },
+  {
+    "id": "history",
+    "label": "履歴",
+    "ok": true,
+    "top": [
+      "履歴",
+      "行を開く・閉じる（相見積の比較と履歴）"
+    ]
+  },
+  {
+    "id": "theme.toggle",
+    "label": "ダークモード切替",
+    "ok": true,
+    "top": [
+      "ダークモード切替"
+    ]
+  },
+  {
+    "id": "density.toggle",
+    "label": "コンパクト表示切替",
+    "ok": true,
+    "top": [
+      "コンパクト表示切替"
+    ]
+  },
+  {
+    "id": "sort.asc",
+    "label": "今の列で並び替え",
+    "ok": true,
+    "top": [
+      "今の列で並び替え",
+      "今の列で並び替え（降順）"
+    ]
+  },
+  {
+    "id": "filter.focus",
+    "label": "絞り込み検索",
+    "ok": true,
+    "top": [
+      "絞り込み検索"
+    ]
+  },
+  {
+    "id": "columns.panel",
+    "label": "列の表示・非表示",
+    "ok": true,
+    "top": [
+      "列の表示・非表示"
+    ]
+  },
+  {
+    "id": "goto",
+    "label": "行へジャンプ（ID・回路記号・型式）",
+    "ok": true,
+    "top": [
+      "行へジャンプ（ID・回路記号・型式）"
+    ]
+  },
+  {
+    "id": "row.toggleHidden",
+    "label": "行を隠す / 隠した行を戻す",
+    "ok": true,
+    "top": [
+      "行を隠す / 隠した行を戻す"
+    ]
+  },
+  {
+    "id": "help",
+    "label": "ショートカット一覧（ヘルプ）",
+    "ok": true,
+    "top": [
+      "ショートカット一覧（ヘルプ）"
+    ]
+  }
+]

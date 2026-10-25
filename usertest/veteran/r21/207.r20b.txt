@@ -1,0 +1,8 @@
+nTitle \ U(引用符なしの部品行)   0   1   2   3   5   8   12
+     0                        NG  NG  NG  NG  NG  NG  NG
+     1                        NG  NG  NG  NG  NG  NG  NG
+     2                        NG  NG  NG  NG  NG  NG  NG
+     3                        NG  NG  NG  NG  NG  NG  NG
+     4                        NG  NG  NG  NG  NG  NG  NG
+     6                        NG  NG  NG  NG  NG  NG  NG
+    10                        NG  NG  NG  NG  NG  NG  NG

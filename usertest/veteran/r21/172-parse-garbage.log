@@ -1,0 +1,30 @@
+{
+ "src": "/home/user/BOM/src",
+ "N": 20000,
+ "exc": 0,
+ "slow": 4,
+ "big": 0,
+ "maxMs": 354,
+ "bad": [
+  {
+   "kind": "slow",
+   "ms": 282,
+   "text": "未実装1/2\"同上Description\t削除済\"\"【削除？】DNP1/2\"→0,\"abc3台Description1/2\",\"\"　a1変更後型式2+13台員数>Valuea3台Value\r\nDescription変更後型式1/2\"“【削除？】”員数【削除？】変更内容号機-,\"1/2\"Descriptionabc\"\"abc\"DNP数量2+1削除M-12+1\n員数備考部品名0削除済DNP\"abc->"
+  },
+  {
+   "kind": "slow",
+   "ms": 206,
+   "text": " \t削除済\n【削除？】部品名\"abcﾋﾝﾒｲﾋﾝﾒｲ\"abc,変更区分製作台数“\t->数量>\" Comment部品名 ﾋﾝﾒｲValue2+1,　\u0000\t部品名DNP"
+  },
+  {
+   "kind": "slow",
+   "ms": 224,
+   "text": "ﾋﾝﾒｲDescriptiona\"\u0000型式\"1/2\"😀ﾋﾝﾒｲ同上\"ﾋﾝﾒｲ【削除？】【削除？】ｽｳﾘｮｳ同上“DescriptionM-1\"abc\r abc\"1号機(新) 削除済1号機(新)削除済1号機(新)01aValue->😀\"備考部品名〃M-11号機(旧)\nM-1Value😀＂削除済\u0000備考削除済変更内容号機\r\n号機\"＂\tｽｳﾘｮｳ\r\t未実装〃,同上ﾋﾝﾒｲ\"\t ＂1号機(新) 1号機("
+  },
+  {
+   "kind": "slow",
+   "ms": 354,
+   "text": "削除削除削除済未実装M-1\"\" 〃,ｽｳﾘｮｳ員数手配数手配数員数同上→ \r-DNP,->\r\n手配数”1号機(新)Comment\r\n\n1"
+  }
+ ]
+}

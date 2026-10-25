@@ -1,0 +1,132 @@
+[
+  {
+    "id": "DP4-dnp-note-words",
+    "note": "備考「DNP 手配」「DNP 品」「DNP製」「DNP (大日本印刷)」「※DNP 手配」「DNP」",
+    "expect": "備考に DNP の語が入っていても実装しない部品とは限らない（手配先メモ）。「DNP」だけの行は外す",
+    "ms": 47,
+    "n": 4,
+    "mapping": "name,model,qtyNeeded,note",
+    "header": "部品名|型式|数量|備考",
+    "warnings": [
+      "実装しない部品（DNP・Not Fitted・未実装）の 2 行は取り込みません"
+    ],
+    "rows": [
+      "A / M-1 /  / 1 / 個 /  /  / DNP 手配",
+      "B / M-2 /  / 1 / 個 /  /  / DNP 品",
+      "C / M-3 /  / 1 / 個 /  /  / DNP製",
+      "E / M-5 /  / 1 / 個 /  /  / ※DNP 手配"
+    ]
+  },
+  {
+    "id": "DP5-dnp-model",
+    "note": "型式「DNP RF-100」「DNP-200」「DNP 200」",
+    "expect": "3 部品（型式の DNP は大日本印刷）",
+    "ms": 2,
+    "n": 3,
+    "mapping": "name,model,qtyNeeded",
+    "header": "部品名|型式|数量",
+    "warnings": [],
+    "rows": [
+      "A / DNP RF-100 /  / 1 / 個 /  /  / ",
+      "B / DNP-200 /  / 1 / 個 /  /  / ",
+      "C / DNP 200 /  / 1 / 個 /  /  / "
+    ]
+  },
+  {
+    "id": "AL4-altium-three-names",
+    "note": "Description・Value・Comment の 3 つ。Description も Value も空で Comment だけ値",
+    "expect": "部品名は Comment (LM358)",
+    "ms": 10,
+    "n": 3,
+    "mapping": "name,,note,ref,qtyNeeded",
+    "header": "Description|Value|Comment|Designator|Quantity",
+    "warnings": [
+      "「部品名」に当たる列が 3 つあります。「Description」の列を使います"
+    ],
+    "rows": [
+      "Capacitor /  /  / 2 / 個 /  / C1 / 100nF",
+      " /  /  / 1 / 個 /  / U1 / LM358",
+      "10k /  /  / 1 / 個 /  / R1 / 10k"
+    ]
+  },
+  {
+    "id": "AL5-altium-comment-only-then-desc",
+    "note": "Comment が先、Description が後で、Description が空の行は Comment",
+    "expect": "部品名は Comment",
+    "ms": 1,
+    "n": 2,
+    "mapping": "note,name,ref,qtyNeeded",
+    "header": "Comment|Description|Designator|Quantity",
+    "warnings": [
+      "「部品名」に当たる列が 2 つあります。「Description」の列を使います"
+    ],
+    "rows": [
+      "LM358 /  /  / 1 / 個 /  / U1 / ",
+      "Capacitor /  /  / 2 / 個 /  / C1 / 100nF"
+    ]
+  },
+  {
+    "id": "AL6-altium-comment-with-note-col",
+    "note": "Comment・Description・備考（日本語）。Description 空の行",
+    "expect": "部品名は Comment、備考はそのまま",
+    "ms": 25,
+    "n": 2,
+    "mapping": ",name,note,ref,qtyNeeded",
+    "header": "Comment|Description|備考|Designator|Quantity",
+    "warnings": [
+      "「部品名」に当たる列が 2 つあります。「Description」の列を使います"
+    ],
+    "rows": [
+      "LM358 /  /  / 1 / 個 /  / U1 / 要予備",
+      "Capacitor /  /  / 2 / 個 /  / C1 / "
+    ]
+  },
+  {
+    "id": "QT30-suryo-tehai-kana",
+    "note": "「数量」と「手配数」が両方あり数量が空の行",
+    "expect": "空の数量は 0 と知らせる（手配数 100 を使わない）",
+    "ms": 2,
+    "n": 2,
+    "mapping": "name,model,qtyNeeded,",
+    "header": "部品名|型式|数量|手配数",
+    "warnings": [
+      "「数量」に当たる列が 2 つあります。「数量」の列を使います"
+    ],
+    "rows": [
+      "A / M-1 /  / 3 / 個 /  /  / ",
+      "B / M-2 /  / 0 / 個 /  /  / "
+    ]
+  },
+  {
+    "id": "QT31-insu-daisu-product",
+    "note": "「員数」×「台数」の表で台数が全行「3」、員数が空の行",
+    "expect": "員数が空の行は 0 と知らせる",
+    "ms": 35,
+    "n": 2,
+    "mapping": "name,model,qtyNeeded,",
+    "header": "部品名|型式|員数|台数",
+    "warnings": [
+      "数量の列 2 つ（「員数」「台数」）を掛けて数量にしました"
+    ],
+    "rows": [
+      "A / M-1 /  / 6 / 個 /  /  / ",
+      "B / M-2 /  / 3 / 個 /  /  / "
+    ]
+  },
+  {
+    "id": "QT32-total-and-per-unit",
+    "note": "「1台当り数量」と「合計数量」と「予備」",
+    "expect": "合計数量（予備を含むかは知らせる）",
+    "ms": 2,
+    "n": 2,
+    "mapping": "name,model,,,qtyNeeded",
+    "header": "部品名|型式|1台当り数量|予備|合計数量",
+    "warnings": [
+      "「数量」に当たる列が 2 つあります。「合計数量」の列を使います"
+    ],
+    "rows": [
+      "A / M-1 /  / 7 / 個 /  /  / ",
+      "B / M-2 /  / 3 / 個 /  /  / "
+    ]
+  }
+]

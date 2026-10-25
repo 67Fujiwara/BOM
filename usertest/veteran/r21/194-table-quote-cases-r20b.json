@@ -1,0 +1,485 @@
+[
+ {
+  "id": "Q01-inch-raw-then-ml",
+  "note": "型式に囲まない 3/4\"、同じ行の備考が囲んだ複数行",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "パイプ|3/4\"|オムロン|1|1行目 2行目",
+   "端子台|XW2B|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q02-inch-raw-after-ml-row",
+  "note": "複数行セルの行のあとの行に 3/4\"",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "パイプ|XW2B|オムロン|1|1行目 2行目",
+   "ホース|3/4\"|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q03-inch-raw-two-then-ml",
+  "note": "3/4\" が 2 つ（型式と備考の前）＋複数行",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "3/4\"パイプ|3/4\"|オムロン|1|a b",
+   "X|Y|Z|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q04-ditto-quote-then-ml",
+  "note": "メーカの「\"」（囲まない）＋同じ行の備考が複数行",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "B|M-2|\"|2|1行目 2行目",
+   "C|M-3|\"|3|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q05-ditto-quote-ml-prev",
+  "note": "複数行セルの行の次の行にメーカ「\"」",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|1行目 2行目",
+   "B|M-2|\"|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q06-ditto-in-name-col0",
+  "note": "部品名が「\"」の行",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "リレー|M-1|オムロン|1|",
+   "\"|M-2|オムロン|2|",
+   "\"|M-3|オムロン|3|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q07-ditto-last-col",
+  "note": "最後の列（備考）が「\"」",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "リレー|M-1|オムロン|1|盤内",
+   "B|M-2|オムロン|2|\"",
+   "C|M-3|オムロン|3|\""
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q08-ml-comma5-in-width4",
+  "note": "中のコンマが区切りの数より多い複数行（Excel の囲み）",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|\"a| b| c| d| e| f",
+   "g\"",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q09-ml-comma-list-and-ditto",
+  "note": "中のコンマの多い複数行＋別の行の「\"」",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|\"a| b| c| d| e| f",
+   "g\"",
+   "B|M-2|\"|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q10-title-nocomma-many",
+  "note": "コンマの無い表題 5 行＋複数行セル＋コンマ入りの囲み",
+  "expectRows": 8,
+  "gotRows": 8,
+  "ok": true,
+  "cells": [
+   "部品表",
+   "制御盤A",
+   "2026-10-25",
+   "山田",
+   "以上",
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|Omron, Inc.|1|x y",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q11-title-with-commas",
+  "note": "表題にコンマ（作成,山田,承認,鈴木）",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "作成|山田|承認|鈴木",
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|x y",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q12-all-quoted",
+  "note": "すべて囲んだ CSV（引用符あり）、複数行セル、コンマ",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|Omron, Inc.|1|\"a| b| c",
+   "d\"",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q13-ml-two-in-row",
+  "note": "同じ行に複数行セルが 2 つ（名称と備考）",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "リレー A|M-1|オムロン|1|x y",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q14-ml-first-col",
+  "note": "部品名が複数行、メーカにコンマ入り",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "\"リレー",
+   "A| B\"|M-1|Omron, Inc.|1|",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q15-inch-in-quoted",
+  "note": "囲んだセルの中のインチ（\"3/4\"\" 形）＋複数行",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|3/4\"|オムロン|1|1行目 2行目",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q16-start-quote-text",
+  "note": "「\"」で始まる文字（\"特注\"品）を囲まずに書いた",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "\"特注\"品|M-1|オムロン|1|",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q17-start-quote-text-ml",
+  "note": "「\"特注\"品」＋別の行の複数行セル",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "\"特注\"品|M-1|オムロン|1|",
+   "B|M-2|オムロン|2|x y"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q18-ditto-pair-adjacent-cols",
+  "note": "「\"」が横に 2 つ並ぶ（メーカ・数量）",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "B|M-2|,|",
+   "C|M-3|,|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q19-quote-space-text",
+  "note": "セルが「\" 」（引用符＋空白）",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "B|M-2|\" |2|",
+   "C|M-3|\" |3|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q20-many-inner-commas-width-high",
+  "note": "10 列の表で、中のコンマ 15 の複数行セル",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "a|b|c|d|e|f|g|h|i|j",
+   "1|2|3|4|5|6|7|8|9|\"x1| x2| x3| x4| x5| x6| x7| x8",
+   "x9| x10| x11| x12| x13| x14| x15\"",
+   "1|2|3|4|5|6|7|8|9|10"
+  ],
+  "bomRows": 4
+ },
+ {
+  "id": "Q21-ml-mid-col-then-more-cells",
+  "note": "備考が途中の列で、複数行のあとにまだ列がある（Excel の CSV）",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|備考|型式|数量",
+   "A|x, y z|M-1|1",
+   "B||M-2|2"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q22-crlf-ml",
+  "note": "CRLF の改行＋複数行セル（CR LF がセルの中）",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|x y",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q23-no-trailing-newline-quote",
+  "note": "最後のセルが閉じない「\"」",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|\"x",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q24-quote-in-middle-unquoted",
+  "note": "セルの途中の「\"」（囲まない）が複数行",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オ\"ムロン|1|",
+   "B|M-2|オ\"ムロン|2|",
+   "C|M-3|x|3|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q25-only-quotes-line",
+  "note": "「\"」だけの行",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "\"",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q26-ditto-then-ml-same-line-closing",
+  "note": "「\"」→次行が複数行の閉じ（\"…\\n…\"）を含む",
+  "expectRows": 3,
+  "gotRows": 3,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|\"|1|a b",
+   "B|M-2|\"|2|c d"
+  ],
+  "bomRows": 2
+ },
+ {
+  "id": "Q27-outside-count-quoted-in-before",
+  "note": "同じ行の前に「囲んだセル2つ」＋ML（outside 数えの確認）",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A, 1|M, 1|Omron, Inc.|1|\"x",
+   "y\"",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q28-ml-after-row-with-escaped-quotes",
+  "note": "前のセルに \"\" のエスケープ",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A \"x\", y|M-1|オムロン|1|\"p",
+   "q\"",
+   "B|M-2|オムロン|2|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q29-tsv-ish-in-csv",
+  "note": "値の中に全角コンマ・読点は区切りにしない",
+  "expectRows": 2,
+  "gotRows": 2,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A、B|M-1|オムロン，Inc|1|x"
+  ],
+  "bomRows": 1
+ },
+ {
+  "id": "Q30-ml-width-by-quoted-only",
+  "note": "全行に複数行セル（引用符なしの行が見出しだけ）",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|p, q r",
+   "B|M-2|オムロン|2|p, q r",
+   "C|M-3|オムロン|3|p, q r"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q31-raw-ditto-and-ml-commas-same-row",
+  "note": "同じ行に囲まない「\"」（メーカ）と、中のコンマが 4 つの複数行セル",
+  "expectRows": 4,
+  "gotRows": 5,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "B|M-2|\"|2|\"a| b| c| d| e",
+   "f\"",
+   "C|M-3|オムロン|3|"
+  ],
+  "bomRows": 4
+ },
+ {
+  "id": "Q32-raw-inch-and-ml-commas-same-row",
+  "note": "同じ行に囲まない 3/4\"（型式）と、中のコンマが 4 つの複数行セル",
+  "expectRows": 4,
+  "gotRows": 5,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "パイプ|3/4\"|オムロン|2|\"a| b| c| d| e",
+   "f\"",
+   "C|M-3|オムロン|3|"
+  ],
+  "bomRows": 4
+ },
+ {
+  "id": "Q33-raw-inch-and-ml-commas3-same-row",
+  "note": "同上、中のコンマ 3（区切りの数 4 より少ない）",
+  "expectRows": 4,
+  "gotRows": 4,
+  "ok": true,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "パイプ|3/4\"|オムロン|2|a, b, c, d f",
+   "C|M-3|オムロン|3|"
+  ],
+  "bomRows": 3
+ },
+ {
+  "id": "Q34-excel-inch-quoted-and-ml-commas",
+  "note": "Excel 形式（\"3/4\"\"\"）＋中のコンマ 5 の複数行",
+  "expectRows": 4,
+  "gotRows": 5,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "A|M-1|オムロン|1|",
+   "パイプ|3/4\"|オムロン|2|\"a| b| c| d| e| f",
+   "g\"",
+   "C|M-3|オムロン|3|"
+  ],
+  "bomRows": 4
+ },
+ {
+  "id": "Q35-inch-raw-in-name-then-ml-prefix",
+  "note": "部品名の途中に 1/2\"（囲まない）＋同行の複数行（コンマ5）",
+  "expectRows": 3,
+  "gotRows": 4,
+  "ok": false,
+  "cells": [
+   "部品名|型式|メーカ|数量|備考",
+   "パイプ 1/2\" 長尺|M-1|オムロン|1|\"a| b| c| d| e| f",
+   "g\"",
+   "C|M-3|オムロン|3|"
+  ],
+  "bomRows": 3
+ }
+]

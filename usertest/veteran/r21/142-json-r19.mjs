@@ -1,0 +1,55 @@
+// ラウンド19: ラウンド18 の読み込みの修正（V18-15: 前倒し日数は ±3650 日まで、V18-13: 見積の読めない数・設定の true/{}/[] を知らせる）の境目を
+// JSON の読み込み（Ctrl+K →「JSON を読み込む」）で。R005 の行の表示（必要日の列など）と、詳細（Space）の文、console error を見る
+import { open, reset, sleep, logger } from './lib21.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const pg = env.page; const log = logger(`142-json-r19-${port}${process.env.RUN ?? ''}.json`)
+const LSK = 'bom-pro.workspace.v2'
+const toast = () => pg.evaluate(() => (document.querySelector('[data-testid="toast-float"]') ?? document.querySelector('[data-testid="toast"]'))?.textContent?.slice(0, 700) ?? '')
+await reset(env)
+const base = await pg.evaluate((k) => JSON.parse(localStorage.getItem(k)), LSK)
+const cur = (w) => w.projects.find((x) => x.id === w.currentProjectId)
+const proj = () => pg.evaluate((k) => { const w = JSON.parse(localStorage.getItem(k)); const p = w.projects.find((x) => x.id === w.currentProjectId); const r = (id) => p.rows.find((x) => x.id === id); return { due: p.dueDate, sel: p.settings.selector, rule: p.settings.quoteCompleteRule, cur: p.settings.currency, digest: p.settings.digestMail, hol: (p.settings.holidays ?? []).length, R004q: p.quotes.filter((q) => q.rowId === 'R004').map((q) => `${q.unitPrice}/${q.leadDays}/${q.moq}/${q.quoteQty}`), R005: { off: r('R005')?.needOffset, wOff: r('R005')?.working?.needOffset, fixed: r('R005')?.needDateFixed } } }, LSK)
+const rowText = (id) => pg.evaluate((id) => document.querySelector(`[data-row-id="${id}"]`)?.innerText.replace(/\s+/g, ' ').slice(0, 260) ?? '(見えない)', id)
+async function imp(name, mutate) {
+  await reset(env); env.errs.length = 0
+  const w = structuredClone(base); const p = cur(w); mutate?.(p, w)
+  await pg.keyboard.press('Control+k'); await pg.getByTestId('palette-input').fill('JSON を読み込む'); await sleep(80); await pg.keyboard.press('Enter'); await sleep(150)
+  const text = JSON.stringify(w)
+  await pg.evaluate((t) => { const el = document.querySelector('[data-testid="import-text"]'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(el, t); el.dispatchEvent(new Event('input', { bubbles: true })) }, text)
+  await pg.getByTestId('import-text').focus(); await pg.keyboard.press('Control+Enter'); await sleep(300)
+  let confirm = ''
+  if (await pg.evaluate(() => !!document.querySelector('[data-testid="panel-prompt"]'))) { confirm = (await pg.evaluate(() => document.querySelector('[data-testid="panel-prompt"]')?.textContent?.slice(0, 300) ?? '')); await pg.keyboard.press('2'); await sleep(500) }
+  const t = await toast()
+  const v = await proj()
+  await pg.keyboard.press('Escape'); await sleep(100)
+  // R005 の行（ビュー 1）と詳細
+  await pg.locator('.gridwrap').focus(); await pg.keyboard.press('Alt+1'); await sleep(100)
+  await pg.keyboard.press('Control+g'); await pg.getByTestId('prompt-text').fill('R005'); await pg.keyboard.press('Enter'); await sleep(200)
+  const row = await rowText('R005')
+  await pg.keyboard.press('Home'); await pg.keyboard.press('Space'); await sleep(250)
+  const detail = await pg.evaluate(() => (document.querySelector('[data-testid="detail"]') ?? document.querySelector('.detail'))?.innerText.replace(/\s+/g, ' ').slice(0, 400) ?? '')
+  await pg.keyboard.press('Escape')
+  log({ name, confirm, toast: t, v, row, detail: /NaN|Invalid|aN/.test(detail) ? detail : detail.slice(0, 120), nan: /NaN|aN\/|Invalid/.test(row + detail), errs: env.errs.filter((e) => e.type !== 'dialog').map((e) => e.text.slice(0, 160)) })
+}
+const R = (p, id) => p.rows.find((r) => r.id === id)
+await imp('O1 R005 needOffset 3650（境目・受け付ける）', (p) => { R(p, 'R005').needOffset = 3650 })
+await imp('O2 R005 needOffset 3651（外して知らせる）', (p) => { R(p, 'R005').needOffset = 3651 })
+await imp('O3 R005 needOffset -3650', (p) => { R(p, 'R005').needOffset = -3650 })
+await imp('O4 R005 needOffset -3651', (p) => { R(p, 'R005').needOffset = -3651 })
+await imp('O5 R005 needOffset 3650.5（小数。画面の欄は整数だけ）', (p) => { R(p, 'R005').needOffset = 3650.5 })
+await imp('O6 R005 needOffset 7.5（小数）', (p) => { R(p, 'R005').needOffset = 7.5 })
+await imp('O7 R005 作業中の needOffset 3651（作業中の値）', (p) => { R(p, 'R005').working = { ...(R(p, 'R005').working ?? {}), needOffset: 3651 } })
+await imp('O8 R005 needOffset "30"（文字）', (p) => { R(p, 'R005').needOffset = '30' })
+await imp('O9 案件の納期 9999-12-31 ＋ R005 needOffset -3650（必要日が 1 万年）', (p) => { p.dueDate = '9999-12-31'; R(p, 'R005').needOffset = -3650 })
+await imp('O10 案件の納期 0001-01-05 ＋ R005 needOffset 3650（必要日が紀元前）', (p) => { p.dueDate = '0001-01-05'; R(p, 'R005').needOffset = 3650 })
+await imp('O11 R005 needDateFixed "9999-12-31"', (p) => { R(p, 'R005').needDateFixed = '9999-12-31' })
+await imp('Q1 R004 の見積: 単価「¥1,000」「1.000」「1,000-」', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].unitPrice = '¥1,000'; qs[1].unitPrice = '1.000'; if (qs[2]) qs[2].unitPrice = '1,000-' })
+await imp('Q2 R004 の見積: 納期「2週間」「14日」「 14 」', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].leadDays = '2週間'; qs[1].leadDays = '14日'; if (qs[2]) qs[2].leadDays = ' 14 ' })
+await imp('Q3 R004 の見積: MOQ「１００」（全角）・数量「1,0000」・単価 true', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].moq = '１００'; qs[1].quoteQty = '1,0000'; if (qs[2]) qs[2].unitPrice = true })
+await imp('S1 設定 selector "xyz"・quoteCompleteRule "never"（知らない選択肢）', (p) => { p.settings.selector = 'xyz'; p.settings.quoteCompleteRule = 'never' })
+await imp('S2 設定 currency 123・digestMail "yes"・pmConfirmed "true"', (p) => { p.settings.currency = 123; p.settings.digestMail = 'yes'; p.settings.pmConfirmed = 'true' })
+await imp('S3 設定 holidays "2026-12-31"（配列でない）・holidays ["2026-12-31", "abc", 5]', (p) => { p.settings.holidays = '2026-12-31' })
+await imp('S4 設定 holidays ["2026-12-31", "abc", 5, null]', (p) => { p.settings.holidays = ['2026-12-31', 'abc', 5, null] })
+await imp('S5 設定 tieThreshold -5・exceptionPct 50・surplusAmount -1', (p) => { p.settings.tieThreshold = -5; p.settings.exceptionPct = 50; p.settings.surplusAmount = -1 })
+console.log('errors', JSON.stringify(env.errs.slice(0, 8)))
+log.save(); await env.browser.close()

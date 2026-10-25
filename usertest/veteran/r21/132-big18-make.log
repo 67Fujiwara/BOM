@@ -1,0 +1,9 @@
+ok [
+  'c1-csv-excel-multiline-comma-300.csv',
+  'c2-tsv-trailing-newline-300.tsv',
+  'c3-eda-value-description-300.xlsx',
+  'c4-sparse-note-torihazushi-fuyou-300.xlsx',
+  'c5-copy-unit-removed-300.xlsx',
+  'c6-need-and-order-300.xlsx',
+  'c7-maker-dnp-300.xlsx'
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "step": "created",
+    "rows": 300,
+    "flagged": 90
+  },
+  {
+    "step": "sequence-start",
+    "panel": "panel-quickfix",
+    "cursor": "R211 備考"
+  },
+  {
+    "step": "done",
+    "presses": 90,
+    "ms": 20237,
+    "rows": 300,
+    "flagged": 0,
+    "panel": null,
+    "toast": "順番に直すモード: 残りの問題はありません"
+  },
+  {
+    "step": "undo-once",
+    "rows": 300,
+    "flagged": 1,
+    "toast": "元に戻す: 要る部品（【削除？】を消す）"
+  }
+]

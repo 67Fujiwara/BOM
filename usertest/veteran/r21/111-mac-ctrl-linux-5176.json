@@ -1,0 +1,981 @@
+[
+  {
+    "name": "linux editor Control+d",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Meta+d",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Meta+d",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+Shift+d",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+k",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+k",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+e",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "BODY",
+      "value": null,
+      "mode": "パネル",
+      "panel": "panel-export",
+      "kd": [
+        {
+          "k": "Ctrl+e",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+a",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+a",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+f",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+f",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+b",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+b",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+n",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+n",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+p",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "inbox-input",
+      "value": "",
+      "mode": "パネル",
+      "panel": "panel-inbox",
+      "kd": [
+        {
+          "k": "Ctrl+p",
+          "prevented": true,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+h",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+h",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux editor Control+t",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "mode": "編集",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+t",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+d",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Meta+d",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Meta+d",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+Shift+d",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+k",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+k",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+e",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+e",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+a",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+a",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+f",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+f",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+b",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+b",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+n",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+n",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+p",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+p",
+          "prevented": true,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+h",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+h",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux palette Control+t",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette"
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "abcdef",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+t",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+d",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Meta+d",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Meta+d",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+Shift+d",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+k",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "palette-input",
+      "value": "",
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "kd": [
+        {
+          "k": "Ctrl+k",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+e",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "grid",
+      "value": null,
+      "mode": "パネル",
+      "panel": "panel-export",
+      "kd": [
+        {
+          "k": "Ctrl+e",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+a",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+a",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+f",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+f",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+b",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+b",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+n",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+n",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+p",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "inbox-input",
+      "value": "",
+      "mode": "パネル",
+      "panel": "panel-inbox",
+      "kd": [
+        {
+          "k": "Ctrl+p",
+          "prevented": true,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+h",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+h",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux filter Control+t",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "filter",
+      "value": "abcdef",
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+t",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux grid Control+d",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ],
+      "toast": "Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux grid Meta+d",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Meta+d",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ],
+      "toast": "Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "linux grid Control+Shift+d",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null
+    },
+    "after": {
+      "plat": "Linux x86_64",
+      "focus": "grid",
+      "value": null,
+      "mode": "ナビ",
+      "panel": null,
+      "kd": [
+        {
+          "k": "Ctrl+d",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ],
+      "toast": "保存しました（編集は自動で保存されています）",
+      "r010": "端子台エンドカバー"
+    }
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

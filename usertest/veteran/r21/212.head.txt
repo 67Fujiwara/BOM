@@ -1,0 +1,13 @@
+variant                                             10            50           300          2500
+ditto 30%                                     ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 70%                                     ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 100%                                    ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+inch 30%                                      ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+inch 100%                                     ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 70% + inch 100%                          NG 5/11      NG 19/51     NG 92/301   NG 752/2501
+ditto 30% + ml 5%                             ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 70% + ml 10%                            ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+inch 30% + ml 10%                             ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 30% + commaMaker 30%                    ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+ditto 30% + commaMaker 30% + ml 10%           ok 11/11      ok 51/51    ok 301/301  ok 2501/2501
+commaMaker 100% + ml 10% (Excel形式)            ok 11/11      ok 51/51    ok 301/301  ok 2501/2501

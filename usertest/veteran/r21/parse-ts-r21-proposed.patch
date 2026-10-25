@@ -1,0 +1,11 @@
+--- /home/user/BOM/src/model/parse.ts	2026-10-25 12:04:01.068035932 +0000
++++ /tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/v21/patch/src/model/parse.ts	2026-10-25 15:26:24.932434670 +0000
+@@ -44,7 +44,7 @@
+     s = s.slice(0, -1)
+   }
+   // 16 進（0x10）・指数（1e3）などは数値として受け付けない
+-  let n = s === '' && unit ? 1 : /^[+-]?(\d+\.?\d*|\.\d+)$/.test(s) ? Number(s) : NaN
++  let n = s === '' && unit ? 1 : /^[+-]?(\d+(?:\.\d*)?|\.\d+)$/.test(s) ? Number(s) : NaN
+   if (!Number.isFinite(n)) {
+     const k = kanjiNumber(s)
+     if (k == null) return { ok: false, error: `${opts.label ?? '数値'}として読めません: 「${raw}」` }

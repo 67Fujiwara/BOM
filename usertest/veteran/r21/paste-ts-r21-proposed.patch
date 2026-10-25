@@ -1,0 +1,86 @@
+--- /home/user/BOM/src/io/paste.ts	2026-10-25 14:18:44.860516456 +0000
++++ /tmp/claude-0/-home-user-BOM/cac18a95-603a-5fc7-89ba-5680a1690c60/scratchpad/v21/patch/src/io/paste.ts	2026-10-25 15:48:47.256039778 +0000
+@@ -35,6 +35,13 @@
+  * セルの中の改行は空白にする（BOM の項目は 1 行）
+  */
+ function closesProperly(src: string, start: number, delim: string, width = 0): boolean {
++  if (src[start + 1] === delim && width > 0) {
++    // 「"」の直後が区切り: 〃の代わりの「"」か、コンマで始まる囲み（",y"）か。その行を囲みなしで数えた区切りの数が列の数と合えば〃
++    const ls = src.lastIndexOf('\n', start - 1) + 1
++    let le = src.indexOf('\n', start)
++    if (le < 0) le = src.length
++    if (src.slice(ls, le).split(delim).length - 1 === width) return false
++  }
+   for (let j = start + 1; j < src.length; j++) {
+     const c = src[j]
+     if (c === '"') {
+@@ -52,21 +59,26 @@
+       if (!inner.trim()) return false
+       // 行の区切りの数（囲みの外）が列の数と合えば Excel の複数行のセル。多ければ次の行までつながった誤った囲み（〃の代わりの「"」、インチの「"」）
+       if (width > 0) {
+-        const outside = (t: string) => {
++        const outside = (t: string, fresh0 = true) => {
+           let n = 0
+           let q = false
++          let fresh = fresh0
+           for (let k = 0; k < t.length; k++) {
+-            if (t[k] === '"') {
++            if (t[k] === '"' && (q || (fresh && t[k + 1] !== delim && k + 1 < t.length))) {
+               if (q && t[k + 1] === '"') k++
+               else q = !q
+-            } else if (!q && t[k] === delim) n++
++              fresh = false
++            } else if (!q && t[k] === delim) {
++              n++
++              fresh = true
++            } else fresh = false
+           }
+           return n
+         }
+         const lineStart = src.lastIndexOf('\n', start - 1) + 1
+         const before = outside(src.slice(lineStart, start))
+         const eol = src.indexOf('\n', j)
+-        const after = outside(src.slice(j + 1, eol < 0 ? src.length : eol))
++        const after = outside(src.slice(j + 1, eol < 0 ? src.length : eol), false)
+         const sep = before + after
+         // 開く「"」のすぐ後ろが区切り・改行なら〃の代わり（囲みの始まりではない）
+         const ditto = src[start + 1] === delim || src[start + 1] === '\n'
+@@ -206,9 +218,15 @@
+   const raw = text.replace(/\r\n?/g, '\n')
+   const warnings: string[] = []
+   // 区切りは多くの行で決める（コンマ区切りの 300 行のうち 1 行の備考にタブがあるだけで、全体をタブ区切りにしない）
+-  const nonBlank = raw.split('\n').filter((l) => l.trim())
+-  const tabShare = nonBlank.length ? nonBlank.filter((l) => l.includes('\t')).length / nonBlank.length : 0
+-  const delimiter: PasteResult['delimiter'] = tabShare >= 0.5 ? 'tab' : raw.includes(',') ? 'comma' : raw.includes('\t') ? 'tab' : 'none'
++  const consistency = (d: '\t' | ',') => {
++    const rows = parseTable(raw, d).filter((r) => r.length > 1)
++    const cnt = new Map<number, number>()
++    for (const r of rows) cnt.set(r.length, (cnt.get(r.length) ?? 0) + 1)
++    let best = 0
++    for (const [len, n] of cnt) best = Math.max(best, len * n)
++    return best
++  }
++  const delimiter: PasteResult['delimiter'] = !raw.includes('\t') ? (raw.includes(',') ? 'comma' : 'none') : !raw.includes(',') ? 'tab' : consistency('\t') >= consistency(',') ? 'tab' : 'comma'
+   const table = delimiter === 'none' ? raw.split('\n').map((l) => [l]) : parseTable(raw, delimiter === 'tab' ? '\t' : ',')
+   let lines = table.filter((r) => r.some((c) => c.trim() !== ''))
+   if (!lines.length) return { rows: [], mapping: [], header: null, delimiter: 'none', warnings: ['貼り付けが空です'] }
+@@ -995,6 +1013,8 @@
+ export function isSectionLine(cells: string[], width = cells.length): boolean {
+   // 全角の数字・記号は半角にしてから見る（「－２－」）
+   const filled = cells.map((c) => toHalf(c).trim()).filter(Boolean)
++  // 区切り・表題の行のセルは短い（長いセルは正規表現が二乗になるので見ない）
++  if (filled.some((c) => c.length > 200)) return false
+   // ページの表題とページ番号だけの行（「部品表 (2/3)」と「P.2」）
+   if (width > 1 && filled.length === 2 && filled.every((c) => PAGE_TITLE.test(c) || PAGE_NO.test(c))) return true
+   // 表題・製品名・ページ番号の行（「部品表 (2/2)」「制御盤A」「P.2」）
+@@ -1062,7 +1082,9 @@
+   // （注記）・→…: 注記の中身が否定・保留・再利用なら残す。Rev・置換・代替・R番号・不要だけなら削除
+   const note = /^[\s　]*([（(【\[]|→|⇒)(.*)$/.exec(rest)
+   if (note) {
+-    const inner = note[2].replace(/[）)】\]]+$/, '')
++    let ie = note[2].length
++    while (ie > 0 && /[）)】\]]/.test(note[2][ie - 1])) ie--
++    const inner = note[2].slice(0, ie)
+     if (/しない|せず|保留|見送|要確認|確認|検討|再|戻す|復活|取消|取り消|中止|延期|撤回|流用|禁止|NG|否|未定|不可|様子|待ち|相談/i.test(inner)) return 'keep'
+     if (note[1] === '→' || note[1] === '⇒') return strict ? 'del' : /不要|削除|撤去|廃止|取外|済|完了|rev|置換|代替|代わり|R\d/i.test(inner) ? 'del' : 'ask'
+     if (/不要/.test(inner) && !/rev|置換|R\d/i.test(inner)) return 'keep'

@@ -1,0 +1,110 @@
+[
+ {
+  "sname": "plain",
+  "col": "型式",
+  "pname": "a+全角空白+b",
+  "ms": 381
+ },
+ {
+  "sname": "plain",
+  "col": "メーカ",
+  "pname": "a+全角空白+b",
+  "ms": 389
+ },
+ {
+  "sname": "plain",
+  "col": "数量",
+  "pname": "a+全角空白+b",
+  "ms": 347
+ },
+ {
+  "sname": "change",
+  "col": "型式",
+  "pname": "a+全角空白+b",
+  "ms": 364
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "a+空白+b",
+  "ms": 675
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "a+全角空白+b",
+  "ms": 970
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "1+空白+x",
+  "ms": 628
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "削除+空白+x",
+  "ms": 3010
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "x+ピリオド+y",
+  "ms": 498
+ },
+ {
+  "sname": "change",
+  "col": "変更後型式",
+  "pname": "x+閉じ括弧+y",
+  "ms": 3269
+ },
+ {
+  "sname": "change",
+  "col": "数量",
+  "pname": "a+全角空白+b",
+  "ms": 434
+ },
+ {
+  "sname": "change",
+  "col": "備考",
+  "pname": "1+空白+x",
+  "ms": 354
+ },
+ {
+  "sname": "change",
+  "col": "備考",
+  "pname": "削除+空白+x",
+  "ms": 1409
+ },
+ {
+  "sname": "change",
+  "col": "備考",
+  "pname": "x+閉じ括弧+y",
+  "ms": 1490
+ },
+ {
+  "sname": "kind",
+  "col": "型式",
+  "pname": "a+全角空白+b",
+  "ms": 377
+ },
+ {
+  "sname": "kind",
+  "col": "数量",
+  "pname": "a+全角空白+b",
+  "ms": 389
+ },
+ {
+  "sname": "title",
+  "col": "-",
+  "pname": "1+空白+x",
+  "ms": 690
+ },
+ {
+  "sname": "csvq",
+  "col": "-",
+  "pname": "a+全角空白+b",
+  "ms": 352
+ }
+]

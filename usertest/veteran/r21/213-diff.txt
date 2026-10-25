@@ -1,0 +1,17 @@
+total 20000 head ok 16807 r20b ok 16714 regress 1352 improve 1445
+ditto=maker inch=model       {"n":1724,"headBad":962,"oldBad":293,"reg":745,"imp":76}
+ditto=maker inch=name        {"n":1659,"headBad":201,"oldBad":279,"reg":0,"imp":78}
+ditto=maker inch=none        {"n":1705,"headBad":161,"oldBad":274,"reg":0,"imp":113}
+ditto=model inch=model       {"n":1720,"headBad":207,"oldBad":315,"reg":0,"imp":108}
+ditto=model inch=name        {"n":1674,"headBad":180,"oldBad":292,"reg":0,"imp":112}
+ditto=model inch=none        {"n":1657,"headBad":138,"oldBad":301,"reg":0,"imp":163}
+ditto=name inch=model        {"n":1716,"headBad":220,"oldBad":343,"reg":0,"imp":123}
+ditto=name inch=name         {"n":1659,"headBad":204,"oldBad":320,"reg":0,"imp":116}
+ditto=name inch=none         {"n":1581,"headBad":126,"oldBad":298,"reg":0,"imp":172}
+ditto=note inch=model        {"n":1649,"headBad":701,"oldBad":186,"reg":607,"imp":92}
+ditto=note inch=name         {"n":1645,"headBad":93,"oldBad":185,"reg":0,"imp":92}
+ditto=note inch=none         {"n":1611,"headBad":0,"oldBad":200,"reg":0,"imp":200}
+REG "部品名,型式,メーカ,数量,備考\n部品0,M-0,オムロン,0,\n部品1,M-1,\",1,\n部品2,3/4\",\",2,\n" {"nRows":3,"dCol":"maker","iCol":"model","pD":1,"pI":0.3,"qMaker":false,"ml":true,"mlCommas":5}
+REG "部品名,型式,メーカ,数量,備考\n部品0,M-0,オムロン,0,\n部品1,M-1,\",1,\n部品2,3/4\",\",2,\n" {"nRows":3,"dCol":"maker","iCol":"model","pD":1,"pI":0.3,"qMaker":false,"ml":false,"mlCommas":0}
+REG "部品名,型式,メーカ,数量,備考\n部品0,M-0,オムロン,0,\n部品1,M-1,\",1,\n部品2,3/4\",\",2,\n" {"nRows":3,"dCol":"maker","iCol":"model","pD":1,"pI":0.3,"qMaker":true,"ml":false,"mlCommas":6}
+REG "部品名,型式,メーカ,数量,備考\n部品0,M-0,オムロン,0,\n部品1,M-1,\",1,\n部品2,3/4\",\",2,\n" {"nRows":3,"dCol":"maker","iCol":"model","pD":1,"pI":0.3,"qMaker":true,"ml":false,"mlCommas":0}

@@ -1,0 +1,74 @@
+[
+ {
+  "name": "baseline 2500",
+  "fileKB": 64,
+  "tsvKB": 49,
+  "rows": 2500,
+  "cpuMs": 616,
+  "wallMs": 3250,
+  "err": ""
+ },
+ {
+  "name": "XFD stray value row1",
+  "fileKB": 63,
+  "tsvKB": 65,
+  "rows": 2500,
+  "cpuMs": 3992,
+  "wallMs": 17799,
+  "err": ""
+ },
+ {
+  "name": "XFD stray value last row",
+  "fileKB": 64,
+  "tsvKB": 65,
+  "rows": 2500,
+  "cpuMs": 2824,
+  "wallMs": 11662,
+  "err": ""
+ },
+ {
+  "name": "row 1,000,000 stray",
+  "fileKB": 64,
+  "tsvKB": 49,
+  "rows": 2501,
+  "cpuMs": 711,
+  "wallMs": 3024,
+  "err": ""
+ },
+ {
+  "name": "200 cols all rows",
+  "fileKB": 1092,
+  "tsvKB": 528,
+  "rows": 2500,
+  "cpuMs": 5632,
+  "wallMs": 15927,
+  "err": ""
+ },
+ {
+  "name": "hidden cols 3000",
+  "fileKB": 30,
+  "tsvKB": 5,
+  "rows": 300,
+  "cpuMs": 150,
+  "wallMs": 394,
+  "err": ""
+ },
+ {
+  "name": "merged cells many",
+  "fileKB": 23,
+  "tsvKB": 11,
+  "rows": 500,
+  "cpuMs": 173,
+  "wallMs": 439,
+  "err": ""
+ },
+ {
+  "name": "long text cells 32k",
+  "fileKB": 9,
+  "tsvKB": 3127,
+  "rows": 100,
+  "cpuMs": 1332,
+  "wallMs": 2522,
+  "err": ""
+ }
+]

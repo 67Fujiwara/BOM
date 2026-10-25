@@ -1,0 +1,152 @@
+[
+  {
+    "step": "created",
+    "rows": 300,
+    "flagged": 90,
+    "notes": 90
+  },
+  {
+    "step": "palette",
+    "q": "削除？",
+    "items": [
+      "行を削除（提出済なら取消）",
+      "退避データを消す（保存領域を空ける）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "要る部品",
+    "items": [
+      "該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "削除",
+    "items": [
+      "行を削除（提出済なら取消）",
+      "退避データを消す（保存領域を空ける）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "取り込み",
+    "items": [
+      "新しいBOM",
+      "見積回答を取り込む"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "一括",
+    "items": [
+      "未採用を推奨で一括採用",
+      "未採用を最安で一括採用（スコア無視）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "すべて",
+    "items": [
+      "ビュー: すべて",
+      "行を隠す / 隠した行を戻す"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "全部",
+    "items": [
+      "未採用を推奨で一括採用"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "問題",
+    "items": [
+      "次の問題へ",
+      "前の問題へ",
+      "今の問題をその場で直す",
+      "今の問題をあとで直す（次へ）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "直す",
+    "items": [
+      "今の問題をその場で直す",
+      "やり直す",
+      "順番に直すモード",
+      "今の問題をあとで直す（次へ）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "importDel",
+    "items": [
+      "該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "印を消す",
+    "items": [
+      "行を削除（提出済なら取消）"
+    ]
+  },
+  {
+    "step": "palette",
+    "q": "備考",
+    "items": [
+      "該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方"
+    ]
+  },
+  {
+    "step": "at-note",
+    "cursor": "R211 備考"
+  },
+  {
+    "step": "shift-down-89",
+    "ms": 934,
+    "cursor": "R211 備考",
+    "mode": "ナビ"
+  },
+  {
+    "step": "delete-range",
+    "rows": 300,
+    "flagged": 89,
+    "notes": 89,
+    "toast": "R211 備考 を空にしました（Ctrl+Z で戻す）"
+  },
+  {
+    "step": "undo",
+    "rows": 300,
+    "flagged": 90,
+    "notes": 90,
+    "toast": "元に戻す: セルを空にする"
+  },
+  {
+    "step": "filter",
+    "filterInput": "INPUT:【削除？】",
+    "rowsShown": 29
+  },
+  {
+    "step": "after-filter-enter",
+    "mode": "ナビ",
+    "cursor": "R211 備考"
+  },
+  {
+    "step": "ctrl-a",
+    "cursor": "R211 備考",
+    "toast": "元に戻す: セルを空にする"
+  },
+  {
+    "step": "ctrl-dot-after-select",
+    "panel": "panel-quickfix"
+  },
+  {
+    "step": "final",
+    "rows": 300,
+    "flagged": 90,
+    "notes": 90
+  }
+]

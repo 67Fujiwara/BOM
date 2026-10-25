@@ -1,0 +1,31 @@
+ok  Q01-inch-raw-then-ml exp=3 got=3 bom=2 
+ok  Q02-inch-raw-after-ml-row exp=3 got=3 bom=2 
+ok  Q03-inch-raw-two-then-ml exp=3 got=3 bom=2 
+ok  Q04-ditto-quote-then-ml exp=4 got=4 bom=3 
+ok  Q05-ditto-quote-ml-prev exp=3 got=3 bom=2 
+ok  Q06-ditto-in-name-col0 exp=4 got=4 bom=3 
+ok  Q07-ditto-last-col exp=4 got=4 bom=3 
+NG  Q08-ml-comma5-in-width4 exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","A|M-1|オムロン|1|\"a| b| c| d| e| f","g\"","B|M-2|オムロン|2|"]
+NG  Q09-ml-comma-list-and-ditto exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","A|M-1|オムロン|1|\"a| b| c| d| e| f","g\"","B|M-2|\"|2|"]
+ok  Q10-title-nocomma-many exp=8 got=8 bom=2 
+ok  Q11-title-with-commas exp=4 got=4 bom=2 
+NG  Q12-all-quoted exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","A|M-1|Omron, Inc.|1|\"a| b| c","d\"","B|M-2|オムロン|2|"]
+ok  Q13-ml-two-in-row exp=3 got=3 bom=2 
+NG  Q14-ml-first-col exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","\"リレー","A| B\"|M-1|Omron, Inc.|1|","B|M-2|オムロン|2|"]
+ok  Q15-inch-in-quoted exp=3 got=3 bom=2 
+ok  Q16-start-quote-text exp=3 got=3 bom=2 
+ok  Q17-start-quote-text-ml exp=3 got=3 bom=2 
+ok  Q18-ditto-pair-adjacent-cols exp=4 got=4 bom=3 
+ok  Q19-quote-space-text exp=4 got=4 bom=3 
+NG  Q20-many-inner-commas-width-high exp=3 got=4 bom=4 ["a|b|c|d|e|f|g|h|i|j","1|2|3|4|5|6|7|8|9|\"x1| x2| x3| x4| x5| x6| x7| x8","x9| x10| x11| x12| x13| x14| x15\"","1|2|3|4|5|6|7|8|9|10"]
+ok  Q21-ml-mid-col-then-more-cells exp=3 got=3 bom=2 
+ok  Q22-crlf-ml exp=3 got=3 bom=2 
+ok  Q23-no-trailing-newline-quote exp=3 got=3 bom=2 
+ok  Q24-quote-in-middle-unquoted exp=4 got=4 bom=3 
+ok  Q25-only-quotes-line exp=4 got=4 bom=3 
+ok  Q26-ditto-then-ml-same-line-closing exp=3 got=3 bom=2 
+NG  Q27-outside-count-quoted-in-before exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","A, 1|M, 1|Omron, Inc.|1|\"x","y\"","B|M-2|オムロン|2|"]
+NG  Q28-ml-after-row-with-escaped-quotes exp=3 got=4 bom=3 ["部品名|型式|メーカ|数量|備考","A \"x\", y|M-1|オムロン|1|\"p","q\"","B|M-2|オムロン|2|"]
+ok  Q29-tsv-ish-in-csv exp=2 got=2 bom=1 
+ok  Q30-ml-width-by-quoted-only exp=4 got=4 bom=3 
+bad 7 / 30

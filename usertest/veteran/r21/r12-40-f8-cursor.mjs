@@ -1,0 +1,48 @@
+// ラウンド12: F8 はカーソルから数える（V11-01/02 の修正）を、矢印・PageDown・Ctrl+End・絞り込み・並べ替え・役割・リロード・直したあとで
+import { open, logger } from './lib21.mjs'
+import { scenario } from './run14.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const log = logger(`40-f8-cursor-${port}.json`)
+const S = (name, o) => scenario(env, log, name, o)
+// A: V11-01 の再現手順そのまま
+await S('A1 1: F8（R005）→ ↓×15 → F8', { toks: ['F8', 'REP:15*ArrowDown', 'F8'], expect: 'R022' })
+await S('A2 1: F8×4（R022）→ ↑×15 → F8', { toks: ['F8', 'F8', 'F8', 'F8', 'REP:15*ArrowUp', 'F8'], expect: 'R009' })
+await S('A3 1: F8（R005）→ PageDown → F8', { toks: ['F8', 'PageDown', 'F8'], expect: 'PageDown 先より下' })
+await S('A4 2: F8 → ↓×20 → F8', { view: 2, toks: ['F8', 'REP:20*ArrowDown', 'F8'], expect: 'R024 より下（R041）' })
+await S('A5 1: F8 → ↓×15 → Shift+F8', { toks: ['F8', 'REP:15*ArrowDown', 'Shift+F8'], expect: 'R016（R020 より上で最も近い）' })
+await S('A6 1: F8 → Ctrl+End → Shift+F8', { toks: ['F8', 'Control+End', 'Shift+F8'], expect: 'R061' })
+await S('A7 1: F8 → Ctrl+↓ → F8', { toks: ['F8', 'Control+ArrowDown', 'F8'], expect: 'R005（一周）' })
+await S('A8 1: F8 → PageDown ×2 → PageUp → F8', { toks: ['F8', 'PageDown', 'PageDown', 'PageUp', 'F8'], expect: 'カーソルより下' })
+await S('A9 1: R005 の部品名（型式の左）で F8', { toks: ['G:R005', 'C:部品名', 'F8'], expect: 'R005 型式' })
+await S('A10 1: R005 の備考（型式の右）で F8', { toks: ['G:R005', 'C:備考', 'F8'], expect: 'R005 型式（同じ行）か R009？' })
+await S('A11 1: R005 の ID の列で F8 → F8', { toks: ['G:R005', 'Home', 'F8', 'F8'], expect: 'R005 型式 → R009（ID の列は行の問題に入る）' })
+await S('A12 1: j/k で動いたあとの F8', { toks: ['F8', 'j', 'j', 'j', 'j', 'j', 'F8'], expect: 'R010 より下（R016）' })
+await S('A13 1: F8 → ↓ → Shift+F8 → Shift+F8', { toks: ['F8', 'F8', 'ArrowDown', 'Shift+F8', 'Shift+F8'], expect: 'R009 → R005' })
+// B: 絞り込み・並べ替え
+await S('B1 1: F8×2（R009）→ 絞り込み「リレー」→ F8', { toks: ['F8', 'F8', 'F:リレー', 'F8'], expect: '絞り込みの中の先頭（カーソル行が残っていればその下）' })
+await S('B2 1: 絞り込み「R0」→ ↓×10 → F8', { toks: ['F:R0', 'REP:10*ArrowDown', 'F8'], expect: 'カーソルより下の問題' })
+await S('B3 1: ID 降順（Ctrl+Shift+S?）→ F8 → ↓×5 → F8', { toks: ['PAL:並べ替え', 'Enter', 'F8', 'REP:5*ArrowDown', 'F8'], expect: '見えている並びでカーソルより下' })
+await S('B4 1: 絞り込み「リレー」→ Esc で解除 → F8', { toks: ['F:リレー', 'ArrowDown', 'Control+f', 'Escape', 'F8'], expect: 'カーソル行より下' })
+// C: V11-02 問題の無いビュー
+await S('C1 3: F8 → F8 → F8', { view: 3, toks: ['F8', 'F8', 'F8'], expect: 'R005 → R009 → R016' })
+await S('C2 7: F8 → F8', { view: 7, toks: ['F8', 'F8'], expect: 'R005 → R009' })
+await S('C3 1: 絞り込み「ヒューズ」→ F8 → F8', { toks: ['F:ヒューズ', 'F8', 'F8'], expect: 'R005 → R009' })
+await S('C4 3: Shift+F8', { view: 3, toks: ['Shift+F8'], expect: 'R061（最後）' })
+await S('C5 9: F8', { view: 9, toks: ['F8', 'F8'], expect: '9 の並び / 1 の先頭' })
+// D: 4 要確認
+await S('D1 4: F8 → ↓×3 → F8', { view: 4, toks: ['F8', 'REP:3*ArrowDown', 'F8'], expect: '4 の並びでカーソルより下' })
+await S('D2 4: Ctrl+G R005 → C:型式 → x → F8（V7-03）', { view: 4, toks: ['G:R005', 'C:型式', 'Alt+x', 'F8'], expect: 'R061 か次の問題（先頭へ戻らない）' })
+await S('D3 4: Ctrl+G R005 → x → n（V7-03）', { view: 4, toks: ['G:R005', 'x', 'n'], expect: 'R005 の次（R061）' })
+await S('D4 4: F8（R005 型式）→ 直す（T:MY4N-GS DC24 Enter）→ F8', { view: 4, toks: ['F8', 'T:MY4N-GS DC24', 'Enter', 'F8'], expect: '直した問題の次（R009）' })
+await S('D5 1: F8（R005 型式）→ 直す → Enter → F8', { view: 1, toks: ['F8', 'T:MY4N-GS DC24', 'Enter', 'F8'], expect: 'R009' })
+await S('D6 4: F8 → F8（R009）→ Alt+x → F8', { view: 4, toks: ['F8', 'F8', 'Alt+x', 'F8'], expect: 'R016' })
+await S('D7 4: Ctrl+G R005 → 型式を直して Tab → Shift+Tab → F8', { view: 4, toks: ['G:R005', 'C:型式', 'T:MY4N-GS DC24', 'Tab', 'Shift+Tab', 'F8'], expect: 'R005 の次の問題（R009）' })
+// E: 役割・リロード・Undo
+await S('E1 購買 1: F8 → ↓×10 → F8', { role: 'purchasing', toks: ['F8', 'REP:10*ArrowDown', 'F8'], expect: 'カーソルより下' })
+await S('E2 購買 4: F8 → F8 → ↑ → F8', { role: 'purchasing', view: 4, toks: ['F8', 'F8', 'ArrowUp', 'F8'], expect: '2 回目と同じ行' })
+await S('E3 PM 7: F8 → F8', { role: 'pm', view: 7, toks: ['F8', 'F8'], expect: 'PM の問題' })
+await S('E4 1: F8 → ↓×15 → リロード → F8', { toks: ['F8', 'REP:15*ArrowDown', 'RELOAD', 'F8'], expect: 'R022（リロードしても同じ）' })
+await S('E5 1: F8（R005 型式）→ 直す → Ctrl+Z → F8', { toks: ['F8', 'T:MY4N-GS DC24', 'Enter', 'Control+z', 'F8'], expect: 'Ctrl+Z で戻った行の下' })
+await S('E6 1: Esc で選択を外したあと F8（行なし）', { toks: ['F8', 'F8', 'Escape', 'Escape', 'F8'], expect: '前の F8 の次か先頭' })
+console.log('errors', JSON.stringify(env.errs.slice(0, 5)))
+log.save(); await env.browser.close()

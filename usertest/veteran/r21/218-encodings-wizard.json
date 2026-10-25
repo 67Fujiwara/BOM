@@ -1,0 +1,46 @@
+[
+  {
+    "f": "e1-sjis-ml.csv",
+    "expect": 8,
+    "toast": "e1-sjis-ml.csv を読み込みました。Enter で次へ",
+    "rows": 8,
+    "sample": [
+      "部品1 / M-1 / Omron, Inc. / 1 / 1行目, a 2行目",
+      "部品2 / M-2 / オムロン / 2 / ",
+      "部品3 / M-3 / Omron, Inc. / 3 / 1行目, a 2行目"
+    ]
+  },
+  {
+    "f": "e2-utf8bom-ml.csv",
+    "expect": 8,
+    "toast": "e2-utf8bom-ml.csv を読み込みました。Enter で次へ",
+    "rows": 8,
+    "sample": [
+      "部品1 / M-1 / Omron, Inc. / 1 / 1行目, a 2行目",
+      "部品2 / M-2 / オムロン / 2 / ",
+      "部品3 / M-3 / Omron, Inc. / 3 / 1行目, a 2行目"
+    ]
+  },
+  {
+    "f": "e3-utf16le-ml.txt",
+    "expect": 8,
+    "toast": "e3-utf16le-ml.txt を読み込みました。Enter で次へ",
+    "rows": 25,
+    "sample": [
+      "部品名\t型式\tメーカ\t数量\t備考 /  /  / 1 / ",
+      "部品1\tM-1\tOmron / Inc.\t1\t\"1行目 /  / 1 / ",
+      "2行目 /  /  / 1 / "
+    ]
+  },
+  {
+    "f": "e4-sjis-tsv-ml.tsv",
+    "expect": 8,
+    "toast": "e4-sjis-tsv-ml.tsv を読み込みました。Enter で次へ",
+    "rows": 25,
+    "sample": [
+      "部品名\t型式\tメーカ\t数量\t備考 /  /  / 1 / ",
+      "部品1\tM-1\tOmron / Inc.\t1\t\"1行目 /  / 1 / ",
+      "2行目 /  /  / 1 / "
+    ]
+  }
+]

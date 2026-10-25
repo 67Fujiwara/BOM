@@ -1,0 +1,19 @@
+{"name":"パレット","k":"F1","before":{"panel":"panel-palette","active":"INPUT.q[abc]"},"after":{"panel":"panel-palette","active":"INPUT.q[abc]","mode":"パレット"},"prevented":[true]}
+{"name":"パレット","k":"Control+f","before":{"panel":"panel-palette","active":"INPUT.q[abc]"},"after":{"panel":"panel-palette","active":"INPUT.q[abc]","mode":"パレット"},"prevented":[true]}
+{"name":"Ctrl+G の欄","k":"F1","before":{"panel":"panel-prompt","active":"INPUT.q[R01]"},"after":{"panel":"panel-prompt","active":"INPUT.q[R01]","mode":"パネル"},"prevented":[true]}
+{"name":"Ctrl+G の欄","k":"Control+f","before":{"panel":"panel-prompt","active":"INPUT.q[R01]"},"after":{"panel":"panel-prompt","active":"INPUT.q[R01]","mode":"パネル"},"prevented":[true]}
+{"name":"採用理由の補足","k":"F1","before":{"panel":"panel-prompt","active":"INPUT.q[memo]"},"after":{"panel":"panel-prompt","active":"INPUT.q[memo]","mode":"パネル"},"prevented":[true]}
+{"name":"採用理由の補足","k":"Control+f","before":{"panel":"panel-prompt","active":"INPUT.q[memo]"},"after":{"panel":"panel-prompt","active":"INPUT.q[memo]","mode":"パネル"},"prevented":[true]}
+{"name":"指摘の起票（Alt+Shift+I）","k":"F1","before":{"panel":"panel-issue","active":"INPUT.q[]"},"after":{"panel":"panel-issue","active":"INPUT.q[]","mode":"パネル"},"prevented":[true]}
+{"name":"指摘の起票（Alt+Shift+I）","k":"Control+f","before":{"panel":"panel-issue","active":"INPUT.q[]"},"after":{"panel":"panel-issue","active":"INPUT.q[]","mode":"パネル"},"prevented":[true]}
+{"name":"JSON を読み込むの欄","k":"F1","before":{"panel":"panel-import","active":"TEXTAREA.f[{\"a\":]"},"after":{"panel":"panel-import","active":"TEXTAREA.f[{\"a\":]","mode":"パネル"},"prevented":[true]}
+{"name":"JSON を読み込むの欄","k":"Control+f","before":{"panel":"panel-import","active":"TEXTAREA.f[{\"a\":]"},"after":{"panel":"panel-import","active":"TEXTAREA.f[{\"a\":]","mode":"パネル"},"prevented":[true]}
+{"name":"新しいBOM の貼り付け欄","k":"F1","before":{"panel":"panel-wizard","active":"TEXTAREA.f[abc]"},"after":{"panel":"panel-wizard","active":"TEXTAREA.f[abc]","mode":"パネル"},"prevented":[true]}
+{"name":"新しいBOM の貼り付け欄","k":"Control+f","before":{"panel":"panel-wizard","active":"TEXTAREA.f[abc]"},"after":{"panel":"panel-wizard","active":"TEXTAREA.f[abc]","mode":"パネル"},"prevented":[true]}
+{"name":"案件設定の欄","k":"F1","before":{"panel":"panel-settings","active":"BODY.[]"},"after":{"panel":"panel-settings","active":"BODY.[]","mode":"パネル"},"prevented":[true]}
+{"name":"案件設定の欄","k":"Control+f","before":{"panel":"panel-settings","active":"BODY.[]"},"after":{"panel":"panel-settings","active":"BODY.[]","mode":"パネル"},"prevented":[true]}
+{"name":"絞り込み欄","k":"F1","before":{"panel":null,"active":"INPUT.filter[ab]"},"after":{"panel":"panel-help","active":"BODY.[]","mode":"パネル"},"prevented":[true]}
+{"name":"絞り込み欄","k":"Control+f","before":{"panel":null,"active":"INPUT.filter[ab]"},"after":{"panel":null,"active":"INPUT.filter[ab]","mode":"ナビ"},"prevented":[true]}
+{"name":"セルの編集中","k":"F1","before":{"panel":null,"active":"INPUT.cell[memo]"},"after":{"panel":"panel-help","active":"BODY.[]","mode":"パネル"},"prevented":[true]}
+{"name":"セルの編集中","k":"Control+f","before":{"panel":null,"active":"INPUT.cell[memo]"},"after":{"panel":null,"active":"INPUT.filter[]","mode":"ナビ"},"prevented":[true]}
+errors []

@@ -1,0 +1,13 @@
+settings.selector="2026-02-30" -> design/R004/ball=undefined ; design/R005/ball=undefined ; design/R006/ball=undefined (192) 
+settings.selector=null -> ok [warn:1]
+settings.selector={} -> ok [warn:1]
+quote.leadDays=1e12 -> design/R001/scoreRow ; purchasing/R001/scoreRow ; pm/R001/scoreRow (3) 
+quote.leadDays=1e308 -> ok [warn:1]
+row.quotedAt="\u0000" -> design/R004/scoreRow ; purchasing/R004/scoreRow ; pm/R004/scoreRow (3) 
+row.quotedAt="abc" -> ok 
+supplier.defectRate="abc" -> ok 
+supplier.defectRate={} -> ok 
+supplier.defectRate=1e308 -> ok 
+supplier.defectRate=-1e308 -> ok 
+supplier.onTimeRate=1e308 -> ok 
+supplier.terms={} -> ok 

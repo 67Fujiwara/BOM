@@ -926,3 +926,47 @@ describe('ラウンド 20 の取り込み（新人）', () => {
     expect(parseBomPaste('品名\t型式\tUnit1\tUnit2\nリレー\tMY4N\t2\t2').rows[0].qtyNeeded).toBe(4)
   })
 })
+
+describe('ラウンド 20 の取り込み（ベテラン）', () => {
+  it('V20-12 コンマ区切りの 1 行の備考にタブがあっても、コンマ区切りと読む', () => {
+    const rows = Array.from({ length: 5 }, (_, i) => `部品${i},M-${i},${i + 1},${i === 2 ? '盤内\t左' : ''}`)
+    const r = parseBomPaste(['部品名,型式,数量,備考', ...rows].join('\n'))
+    expect(r.rows.map((x) => x.name)).toEqual(rows.map((_, i) => `部品${i}`))
+  })
+  it('V20-01 コンマ入りの囲みと同じ行の複数行セル', () => {
+    const r = parseBomPaste('品名,型式,メーカー,数量\n"リレー\n(24V)",MY4N,"Omron, Inc.",4\nタイマ,H3CR,オムロン,2\nランプ,L-1,IDEC,1')
+    expect(r.rows.map((x) => [x.maker, x.qtyNeeded])).toEqual([['Omron, Inc.', 4], ['オムロン', 2], ['IDEC', 1]])
+  })
+  it('V20-03 備考「変更なし」「交換不要」の書き写した行は書き写しに数える', () => {
+    const t = ['品名\t型式（旧）\t型式（新）\t備考', 'A\tX1\tY1\t型式変更', 'B\tX2\tX2\t変更なし', 'C\tX3\tX3\t交換不要', 'D\tX4\tX4\t', 'E\tX5\t\t', 'F\tX6\t\t'].join('\n')
+    // 書き写し 3 行・空 2 行は決められないので、空の 2 行は【削除？】で聞く（黙って残さない）
+    const r = parseBomPaste(t)
+    expect(r.rows.map((x) => [x.name, (x.note ?? '').startsWith('【削除？】')])).toEqual([['A', false], ['B', false], ['C', false], ['D', false], ['E', true], ['F', true]])
+  })
+  it('V20-05 型式の「M12→M8 変換」「AC100V>DC24V」は壊さない', () => {
+    const r = parseBomPaste('品名\t型式\t数量\nアダプタ\tM12→M8 変換\t1\nトランス\tAC100V>DC24V\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['M12→M8 変換', 'AC100V>DC24V'])
+  })
+  it('V20-06 部品名「DNP 反射フィルム」・型式「DNP RF-100」は外さない', () => {
+    expect(parseBomPaste('品名\t型式\t数量\nDNP 反射フィルム\tRF-1\t2\nフィルム\tDNP RF-100\t1').rows.length).toBe(2)
+  })
+  it('V20-08 号機ごとの変更表で、変えた号機だけ新を書く行は旧の号機を補う', () => {
+    const r = parseBomPaste('品名\t型式\t1号機(旧)\t2号機(旧)\t1号機(新)\t2号機(新)\nリレー\tMY4N\t3\t3\t7\t\n端子台\tXW2B\t1\t1\t\t')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([10, 2])
+  })
+  it('V20-09 「－」の仲間（そのまま・No change・Unicode のダッシュ）は変えていない印', () => {
+    const marks = ['そのまま', 'No change', '―', '‐', '同一']
+    const t = ['品名\t型式（旧）\t型式（新）', 'A\tX1\tY1', ...marks.map((m, i) => `M${i}\tZ${i}\t${m}`)].join('\n')
+    expect(parseBomPaste(t).rows.map((x) => x.model)).toEqual(['Y1', ...marks.map((_, i) => `Z${i}`)])
+  })
+  it('V20-10 削除→復活・削除（保留）は残す', () => {
+    const t = ['品名\t型式（旧）\t型式（新）\t備考', 'A\tX1\tY1\t', 'B\tX2\t\t削除→復活', 'C\tX3\t\t削除（保留）'].join('\n')
+    const r = parseBomPaste(t)
+    expect(r.rows.map((x) => x.name)).toEqual(['A', 'B', 'C'])
+    expect(r.rows.some((x) => (x.note ?? '').startsWith('【削除？】'))).toBe(false)
+  })
+  it('V20-11 変更区分の 除外・抹消・Remove、見出し「改訂区分」', () => {
+    const t = ['改訂区分\t品名\t型式（旧）\t型式（新）', '変更\tA\tX1\tY1', '除外\tB\tX2\t', '抹消\tC\tX3\t', 'Remove\tD\tX4\t', '追加\tE\t\tZ5'].join('\n')
+    expect(parseBomPaste(t).rows.map((x) => x.name)).toEqual(['A', 'E'])
+  })
+})

@@ -79,3 +79,148 @@
 == 13-alt-sweep-5176 13:18:02 load=4.68 10.67 20.13
    exit 0 13:20:57
 == 03-entry-matrix-5176 13:20:57 load=5.11 7.78 17.34
+== 23-norow-keys-5176 13:32:21 load=2.33 3.85 10.21
+== 16-deselect-arrow-5176 13:32:21 load=2.33 3.85 10.21
+== 17-palette-exact-5176 13:32:21 load=2.33 3.85 10.21
+   exit 0 13:32:36
+== 12-reload-odd-5176 13:32:36 load=5.43 4.45 10.30
+   exit 0 13:32:50
+== 02-arrows-5176 13:32:50 load=6.93 4.84 10.33
+   exit 0 13:33:02
+== 11-f1-ctrlf-inputs-5176 13:33:02 load=8.48 5.24 10.41
+   exit 0 13:33:53
+== 24b-storage-actions2-5176 13:33:53 load=12.84 7.10 10.75
+   exit 0 13:34:16
+== 25-undo200-5176 13:34:16 load=14.20 7.79 10.90
+   exit 0 13:34:28
+== 21-f2-modes-5176 13:34:28 load=14.23 8.11 10.96
+   exit 0 13:35:34
+== r9-38-misc-keys 13:35:34 load=15.06 9.57 11.27
+   exit 0 13:36:08
+== r9-r8-25-ime 13:36:08 load=15.36 10.22 11.43
+   exit 0 13:36:08
+== r9-30-norow-symbols 13:36:08 load=15.36 10.22 11.43
+   exit 0 13:36:16
+== 26-twotab-new-5176 13:36:16 load=14.29 10.09 11.37
+   exit 0 13:36:25
+== 10-storage-full-5176 13:36:25 load=12.84 9.92 11.31
+   exit 0 13:36:43
+== 05-undo-reload-5176 13:36:43 load=12.29 10.00 11.30
+   exit 0 13:37:02
+== 07-json-import-5176 13:37:02 load=12.57 10.16 11.34
+   exit 0 13:37:51
+== 04-twotab-5176 13:37:51 load=11.08 10.15 11.27
+   exit 0 13:38:03
+== 41b-norow-ctrl-5176 13:38:03 load=9.13 9.76 11.13
+   exit 0 13:38:24
+== 66-paste-r13-5176 13:38:24 load=8.36 9.53 11.02
+   exit 0 13:38:33
+== 64-json-r13-5176 13:38:33 load=9.04 9.64 11.04
+   exit 0 13:38:54
+== 07b-json-values 13:38:54 load=8.43 9.44 10.94
+   exit 0 13:39:00
+== 50-fast-chain-5176 13:39:00 load=9.11 9.57 10.97
+   exit 0 13:39:07
+== 68-storage-r13-5176 13:39:07 load=7.95 9.30 10.87
+   exit 0 13:39:24
+== 62-twotab-r13-5176 13:39:24 load=7.00 9.02 10.76
+   exit 0 13:39:53
+== 71-numpad-roles-5176 13:39:53 load=6.73 8.78 10.62
+   exit 0 13:40:11
+== 85-json-r14-run1 13:40:11 load=7.43 8.84 10.61
+   exit 0 13:40:16
+== 67-undo-r13-5176 13:40:16 load=7.23 8.77 10.58
+   exit 0 13:40:29
+== 24-storage-actions-5176 13:40:29 load=7.11 8.68 10.52
+   exit 0 13:40:44
+== 90-dialog-r14-run1 13:40:44 load=7.76 8.75 10.51
+   exit 0 13:40:54
+== 69-reload-r13 13:40:54 load=8.00 8.77 10.50
+   exit 0 13:41:05
+== 98-f8-anchor-run1 13:41:05 load=8.18 8.78 10.49
+   exit 0 13:41:09
+== 83-twotab-publish-run1 13:41:09 load=8.25 8.78 10.48
+   exit 0 13:41:25
+== 10b-storage-paste-5176 13:41:25 load=8.07 8.71 10.43
+   exit 0 13:41:41
+== r9-36-undo-chain 13:41:41 load=8.48 8.78 10.42
+   exit 0 13:41:42
+== 101-misc-r15-run1 13:41:42 load=8.48 8.78 10.42
+   exit 0 13:41:55
+== 85b-json-protoid-run1 13:41:55 load=9.72 9.06 10.49
+   exit 0 13:42:04
+== 111-mac-ctrl-mac-run1 13:42:04 load=8.53 8.83 10.40
+   exit 0 13:42:05
+== r9-40-twotab3 13:42:05 load=8.53 8.83 10.40
+   exit 0 13:42:23
+== 08-files7 13:42:23 load=8.29 8.78 10.35
+   exit 0 13:42:29
+== 92-storage-publish-run1 13:42:29 load=8.02 8.72 10.32
+   exit 0 13:42:53
+== 99-undo-publish3-run1 13:42:53 load=8.34 8.75 10.29
+   exit 0 13:43:06
+== 48-paste-new-5176 13:43:06 load=7.97 8.66 10.24
+   exit 0 13:43:17
+== 114-mac-ctrl-typed-mac-run1 13:43:17 load=8.14 8.67 10.23
+   exit 0 13:43:22
+== 63-dialog-r13-5176 13:43:22 load=8.05 8.64 10.21
+   exit 0 13:43:27
+== 103-twotab-undo-run1 13:43:27 load=8.05 8.63 10.20
+   exit 0 13:43:36
+== 121-normalize-crash-run1 13:43:36 load=8.34 8.68 10.20
+   exit 0 13:43:49
+== 67b-undo-publish-5176 13:43:49 load=7.56 8.50 10.11
+   exit 0 13:43:49
+== 112-json-r16-run1 13:43:49 load=7.56 8.50 10.11
+   exit 0 13:44:01
+== 70-misc-r13-5176 13:44:01 load=7.32 8.41 10.07
+   exit 0 13:44:13
+== 127-deep-nest-run1 13:44:13 load=7.34 8.35 10.02
+   exit 0 13:44:22
+== 84-undo-publish2-run1 13:44:22 load=7.71 8.41 10.03
+   exit 0 13:44:25
+== 111-mac-ctrl-linux 13:44:25 load=7.97 8.45 10.04
+   exit 0 13:44:30
+== 134-grid-paste-ml-5176-run1 13:44:30 load=7.50 8.34 9.99
+   exit 0 13:44:43
+== 141-excel-keys-mac-run1 13:44:43 load=8.89 8.61 10.05
+   exit 0 13:44:59
+== 86-f8-r14-run1 13:44:59 load=7.45 8.30 9.93
+   exit 0 13:45:28
+== 93-misc-r14-run1 13:45:28 load=7.09 8.11 9.81
+   exit 0 13:45:38
+== 123-undo-publish5-run1 13:45:38 load=6.90 8.04 9.77
+   exit 0 13:45:47
+== 100-json-r15-run1 13:45:47 load=7.15 8.08 9.77
+   exit 0 13:45:54
+== 145-needdate-year-run1 13:45:54 load=8.86 8.42 9.87
+   exit 0 13:46:10
+== 137-render-ui-run1 13:46:10 load=8.00 8.25 9.79
+   exit 0 13:46:19
+== 110-undo-publish4-run1 13:46:19 load=7.88 8.21 9.76
+   exit 0 13:46:31
+== 129-json-r18-run1 13:46:31 load=7.36 8.09 9.70
+   exit 0 13:47:13
+== 113-dup-tab-run1 13:47:13 load=7.39 8.01 9.61
+   exit 0 13:47:34
+== 114-mac-ctrl-typed-linux 13:47:34 load=6.43 7.75 9.48
+   exit 0 13:47:40
+== 139-needoffset-ui-run1 13:47:40 load=6.72 7.79 9.48
+   exit 0 13:47:50
+== 142-json-r19-run1 13:47:50 load=6.46 7.70 9.43
+   exit 0 13:47:53
+== 125-json-r17-run1 13:47:53 load=6.26 7.63 9.41
+   exit 0 13:48:20
+== 133-withdrawn-x-run1 13:48:20 load=6.43 7.58 9.34
+   exit 0 13:48:49
+== 141-excel-keys-linux-run1 13:48:49 load=5.38 7.19 9.15
+   exit 0 13:48:58
+== 147-grid-paste-inch-run1 13:48:58 load=5.31 7.12 9.11
+   exit 0 13:49:07
+   exit 0 13:49:54
+== 143-twotab-decision-run1 13:49:54 load=4.24 6.49 8.78
+   exit 0 13:50:32
+== 148-twotab-settings-confirm-run1 13:50:32 load=3.53 6.06 8.55
+   exit 0 13:51:00
+   exit 0 14:00:20
+DONE

@@ -101,7 +101,7 @@ export function needsExternalApproval(p: Project, row: Row): boolean {
   return diff >= p.settings.externalApprovalAmount || overBudget
 }
 
-function formalKey(p: Project, r: Row): string | undefined {
+export function formalKey(p: Project, r: Row): string | undefined {
   const q = r.adoptedSupplierId ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale) : undefined
   return q?.formalPrice != null ? `${q.supplierId}:${q.formalPrice}` : undefined
 }
@@ -222,11 +222,17 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
                 rr.removal = rr.pendingRemoval
                 rr.pendingRemoval = undefined
               }
-              if (rr.pendingApproval) {
+              // 前の変更セットで足した（まだ承認されていない）行をこの変更セットにまとめていたら、追加も承認されていない
+              const neverApproved = !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id) && (!sb.changeSet || sb.changeSet.approved))
+              if (rr.pendingApproval && !(neverApproved && rr.status === 'submitted')) {
                 // 公開値はそのまま。変更は設計の作業中に戻す（見積は失わない）
                 rr.working = { ...rr.pendingApproval, ...(rr.working ?? {}) }
                 rr.pendingApproval = undefined
-              } else if (rr.publishedRev === rev && !p.submissions.some((sb) => sb.rev < (rev ?? 0) && sb.rowIds.includes(rr.id)) && !['ordered', 'received'].includes(rr.status)) {
+              } else if (neverApproved && (rr.publishedRev === rev || rr.status === 'submitted') && !['ordered', 'received'].includes(rr.status)) {
+                // 下書きでは値を直接持つ（まとめた変更も下書きの値に）
+                if (rr.pendingApproval) Object.assign(rr, rr.pendingApproval, rr.working ?? {})
+                rr.pendingApproval = undefined
+                rr.working = undefined
                 // この変更セットで足した行（客先指定品などで自動で選定済になった行も）は下書きに戻す
                 rr.adoptedSupplierId = undefined
                 rr.scoreSnapshot = undefined

@@ -148,7 +148,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       if (q && sid && r.publishedRev != null) {
         r.adoptedSupplierId = sid
         r.adoptReason = '指定先（固定）'
-        r.orderQty = roundedQty(r.qtyNeeded, q.moq, r.packQty, r.unit)
+        r.orderQty = r.flags.surplusRejected === sid ? r.qtyNeeded : roundedQty(r.qtyNeeded, q.moq, r.packQty, r.unit)
         if (r.status !== 'selected') {
           if (!r.quotedAt) r.quotedAt = today
           r.status = 'selected'

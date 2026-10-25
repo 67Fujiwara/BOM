@@ -824,25 +824,40 @@ function decisionPanel(r: Row) {
   const c = pm.pmCaseOf(p, r)
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
   // 開いたあとに別のタブで要決定の中身（変更セットの Rev・種別）が変わったら決めない（見ていない変更を承認しない）
+  // 理由を入れているあいだに変わっても同じ（確定するときにも見直す）。正式見積の金額・承認待ちの値も見る
   const rev0 = r.pendingRev
+  const seen = (x: Row) => JSON.stringify([x.pendingApproval ?? null, x.pendingRemoval ?? null, pm.formalKey(st().project(), x) ?? null])
+  const seen0 = seen(r)
   const stale = () => {
     const now = st().project().rows.find((x) => x.id === r.id)
     if (now && (now.pendingRev !== rev0 || pm.pmCaseOf(st().project(), now) !== c)) {
       toast(`${r.id} の要決定が、パネルを開いたあとに別のタブで変わりました（${c}${rev0 != null ? ` Rev.${rev0}` : ''} → ${now.pendingRev != null ? `Rev.${now.pendingRev}` : pm.pmCaseOf(st().project(), now)}）。決めていません。開き直してください`, 'err')
       return true
     }
+    if (now && seen(now) !== seen0) {
+      toast(`${r.id} の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください`, 'err')
+      return true
+    }
     return false
   }
-  const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => void (!stale() && decideWithReason(r.id, o.kind)) }))
+  const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => void (!stale() && decideWithReason(r.id, o.kind, stale)) }))
   // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
   // 先行発注の申請は、理由と金額を見て決められるように題に出す
   const req = c === '先行発注判断' && r.ltbRequest ? ` 申請: ${r.ltbRequest.reason}${r.ltbRequest.amount != null ? `（¥${r.ltbRequest.amount.toLocaleString()}）` : ''}・${r.ltbRequest.by}` : ''
   // 変更セットは Rev と、まとめた前の Rev を題に出す
-  const merged = c === '変更セット' ? p.submissions.filter((sb) => sb.changeSet?.merged?.[r.id] === r.pendingRev || sb.changeSet?.supersededBy === r.pendingRev).map((sb) => sb.rev) : []
+  // まとめた Rev をさらに前の Rev がまとめていれば、それもたどる（Rev.3 → Rev.4 → Rev.5）
+  const merged: number[] = []
+  if (c === '変更セット' && r.pendingRev != null)
+    for (let into = [r.pendingRev]; into.length; ) {
+      const found = p.submissions.filter((sb) => !merged.includes(sb.rev) && into.some((v) => sb.changeSet?.merged?.[r.id] === v || sb.changeSet?.supersededBy === v)).map((sb) => sb.rev)
+      merged.push(...found)
+      into = found
+    }
+  merged.sort((a, b) => a - b)
   const revNote = c === '変更セット' && r.pendingRev != null ? ` Rev.${r.pendingRev}${merged.length ? `（Rev.${merged.join('・')} の変更をまとめた）` : ''}` : ''
   openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}${revNote}）${req}`, rowId: r.id, field: 'status', index: -1, options })
 }
-function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
+function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1], stale?: () => boolean) {
   const s = st()
   const p = s.project()
   const r = p.rows.find((x) => x.id === rowId)!
@@ -851,6 +866,7 @@ function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) 
   // 変更セットの承認・却下は Rev の全行に効くので、対象を題に出す
   const cs = pm.pmCaseOf(p, r) === '変更セット' && r.pendingRev != null ? `・Rev.${r.pendingRev} の変更セット ${p.rows.filter((x) => x.pendingRev === r.pendingRev && x.flags.pmPending && x.flags.pmReason === '変更セット').length} 行まとめて` : ''
   prompt(`決定: ${kind}（${rowId}${cs}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
+    if (stale?.()) return
     if (ext && !(extra?.['承認者'] ?? '').trim()) return '上長決裁の条件に該当します。承認者を入れてください'
     if (ext) {
       const dd = parseDate(extra?.['日付'] ?? '', { label: '決裁日' })

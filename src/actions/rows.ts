@@ -568,7 +568,7 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
       // PM が余剰を却下した商社のままなら、MOQ で丸めない（却下した数に戻さない）
       const rejected = !!r.flags.surplusRejected && r.flags.surplusRejected === r.adoptedSupplierId
       const recalculated = rejected ? q1 : roundedQty(q1, aq?.moq, r.packQty, r.unit)
-      const wasManual = r.orderQty != null && r.orderQty !== roundedQty(q0, aq?.moq, before.packQty, before.unit)
+      const wasManual = r.orderQty != null && r.orderQty !== (rejected ? q0 : roundedQty(q0, aq?.moq, before.packQty, before.unit))
       r.orderQty = recalculated
       if (wasManual) r.flags.orderQtyCheck = true
     }
@@ -624,6 +624,17 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     const cancelGroupIsCs = plan.cancelled.length > 0
     const revs: number[] = []
     const needsApproval = !!changeSet && p.settings.changeNeedsPmApproval
+    // 承認待ちの前の変更セットの行をまとめたら、その行がもう残っていない前の Rev は「まとめた」にする（あとの Rev の決定に従う）
+    const mergeIntoRev = (r: Row, rev: number) => {
+      const oldRev = r.pendingRev
+      r.pendingRev = rev
+      if (oldRev == null || oldRev === rev) return
+      const old = p.submissions.find((x) => x.rev === oldRev)
+      if (!old?.changeSet) return
+      // この行の前の変更は、あとの変更セットで決める（前の Rev の承認では反映しない・「承認」と出さない）
+      old.changeSet.merged = { ...(old.changeSet.merged ?? {}), [r.id]: rev }
+      if (!p.rows.some((x) => x.pendingRev === oldRev)) old.changeSet.supersededBy = rev
+    }
     for (const [group, isCs] of [[fixRows, false], [csRows, true]] as Array<[Row[], boolean]>) {
       if (group.length === 0 && !(isCs && cancelGroupIsCs)) continue
       let sub: Submission
@@ -646,7 +657,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
             r.pendingRemoval = rm
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'
-            r.pendingRev = sub.rev
+            mergeIntoRev(r, sub.rev)
             sub.causes[r.id] = rm.kind === 'cancel' ? '取消（承認待ち）' : `置換 → ${rm.by}（承認待ち）`
           } else applyRemoval(p, r, rm, sub)
         } else if (r.status === 'draft' && r.publishedRev == null) {
@@ -669,17 +680,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           if (isCs && needsApproval) {
             // PM の承認まで公開値は変えない（購買には「承認待ちの変更あり」だけ見える）
             r.pendingApproval = { ...(r.pendingApproval ?? {}), ...values }
-            // 承認待ちの前の変更セットの行をまとめたら、その行がもう残っていない前の Rev は「まとめた」にする（あとの Rev の決定に従う）
-            const oldRev = r.pendingRev
-            r.pendingRev = sub.rev
-            if (oldRev != null && oldRev !== sub.rev) {
-              const old = p.submissions.find((x) => x.rev === oldRev)
-              if (old?.changeSet) {
-                // この行の前の変更は、あとの変更セットで決める（前の Rev の承認では反映しない・「承認」と出さない）
-                old.changeSet.merged = { ...(old.changeSet.merged ?? {}), [r.id]: sub.rev }
-                if (!p.rows.some((x) => x.pendingRev === oldRev)) old.changeSet.supersededBy = sub.rev
-              }
-            }
+            mergeIntoRev(r, sub.rev)
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'
             sub.summary.other++
@@ -697,7 +698,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           // 提出後に追加した行も承認まで保留
           r.flags.pmPending = true
           r.flags.pmReason = '変更セット'
-          r.pendingRev = sub.rev
+          mergeIntoRev(r, sub.rev)
         }
         r.publishedRev = sub.rev
         r.lastChangeCause = sub.causes[r.id] ?? r.lastChangeCause

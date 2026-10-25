@@ -39,7 +39,8 @@ function applyAdoption(_p: Project, r: Row, chosen: ScoreBreakdown, reason: stri
   r.adoptedSupplierId = chosen.supplierId
   r.adoptReason = reason
   r.scoreSnapshot = chosen.total
-  r.orderQty = roundedQty(r.qtyNeeded, chosen.quote.moq, r.packQty, r.unit)
+  // PM が余剰を却下した商社を選び直しても、MOQ で丸めない（却下した数に戻さない）
+  r.orderQty = r.flags.surplusRejected === chosen.supplierId ? r.qtyNeeded : roundedQty(r.qtyNeeded, chosen.quote.moq, r.packQty, r.unit)
   if (r.flags.delegated) {
     // 委譲された再選定は PM の決定が承認を兼ねる（例外閾値の承認は不要）
     pending = false

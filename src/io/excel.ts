@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { colDef } from '@/model/columns'
-import { STATUS_LABEL, ROLE_LABEL } from '@/model/types'
+import { STATUS_LABEL, ROLE_LABEL, DESIGN_FIELDS } from '@/model/types'
 import { pendingAdd, adoptedQuote, decisionExtra, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
@@ -110,6 +110,16 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // 変更点
   const chg = wb.addWorksheet('変更点')
   headerRow(chg, [{ header: 'Rev', key: 'rev', width: 6 }, { header: '日時', key: 'at', width: 16 }, { header: '公開者', key: 'by', width: 10 }, { header: 'ID', key: 'id', width: 7 }, { header: '起因', key: 'cause', width: 18 }, { header: '変更理由', key: 'reason', width: 12 }, { header: '変更番号', key: 'no', width: 12 }, { header: '内容', key: 'detail', width: 50 }, { header: '承認', key: 'approval', width: 24 }])
+  // まとめた先の Rev をさらにあとの Rev にまとめていれば、最後の Rev を出す（Rev.3 → Rev.4 → Rev.5 なら Rev.5）
+  const finalRev = (id: string, rev: number) => {
+    for (let v = rev, n = 0; n < 100; n++) {
+      const cs = p.submissions.find((x) => x.rev === v)?.changeSet
+      const nx = cs?.merged?.[id] ?? cs?.supersededBy
+      if (nx == null || nx === v) return v
+      v = nx
+    }
+    return rev
+  }
   for (const sub of p.submissions) {
     // 承認待ち・却下の変更セットの中身は購買には出さない（§5「承認待ちの変更あり」だけ）
     if (purchasing && sub.changeSet && (!sub.changeSet.approved || sub.changeSet.rejected || sub.revoked)) continue
@@ -123,11 +133,11 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
       const cause = sub.causes[id] ?? ''
       if (cause.startsWith('置換')) detail = cause
-      const diffs = before && now ? (['model', 'maker', 'qtyNeeded', 'name', 'needOffset', 'altPolicy', 'procurement', 'designated', 'makerLock', 'unit', 'category'] as const).filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${colDef(k)?.label ?? k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
+      const diffs = before && now ? DESIGN_FIELDS.filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${colDef(k)?.label ?? k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
       const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)
-      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: sub.changeSet?.merged?.[id] != null ? `Rev ${sub.changeSet.merged[id]} にまとめた` : dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${sub.changeSet.supersededBy} にまとめた` : '' })
+      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: sub.changeSet?.merged?.[id] != null ? `Rev ${finalRev(id, sub.changeSet.merged[id])} にまとめた` : dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${finalRev(id, sub.changeSet.supersededBy)} にまとめた` : '' })
       row.fill = CHG_FILL
     }
   }

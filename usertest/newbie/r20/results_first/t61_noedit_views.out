@@ -1,0 +1,80 @@
+== purchasing view 4 (先頭) 部品名 に「ok」→ Enter
+  [at 部品名 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed ok] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 4 (先頭) 部品名 に「in stock」→ Enter
+  [at 部品名 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R004 の単価 ¥4 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed in stock] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 4 (先頭) 型式 に「hai」→ Enter
+  [at 型式 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R004 の単価 ¥4 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed hai] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 4 (先頭) 備考 に「sumi」→ Enter
+  [at 備考 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R004 の単価 ¥4 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed sumi] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="4" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 2 R013 部品名 に「in stock」→ Enter
+  [at 部品名 (true)] role=purchasing mode=nav view=1 cur=R013/name edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥2 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed in stock] role=purchasing mode=nav view=1 cur=R013/name edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space閉じる | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] role=purchasing mode=nav view=1 cur=R013/name edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space閉じる | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  CHANGES: (なし)
+== purchasing view 2 R013 備考 に「nouki ok」→ Enter
+  [at 備考 (true)] role=purchasing mode=nav view=1 cur=R013/note edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥2 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed nouki ok] role=purchasing mode=nav view=1 cur=R013/note edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space閉じる | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] role=purchasing mode=nav view=1 cur=R013/note edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space閉じる | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  CHANGES: (なし)
+== purchasing view 2 R030 メーカ に「Omron」→ Enter
+  [at メーカ (true)] role=purchasing mode=nav view=9 cur=R030/maker edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥2 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed Omron] role=purchasing mode=nav view=9 cur=R030/maker edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「次の問題へ」は Alt+n（または ID の列で n）。キーの一覧は F1
+  [Enter] role=purchasing mode=nav view=9 cur=R030/maker edit="2" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  CHANGES: (なし)
+== purchasing view 5 (先頭) 部品名 に「checked」→ Enter
+  [at 部品名 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="5" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R004 の単価 ¥5 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed checked] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="5" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="5" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 7 (先頭) 部品名 に「yes」→ Enter
+  [at 部品名 (false)] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="7" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R004 の単価 ¥7 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  side: ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 1 Al
+  [typed yes] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="7" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=9 cur=g:制御:R004/q.stock@S3 edit="7" panel=null sort=null filter=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== pm view 7 (先頭) 部品名 に「ok」→ Enter
+  [at 部品名 (true)] role=pm mode=nav view=7 cur=R003/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  side: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75
+  [typed ok] role=pm mode=nav view=7 cur=R003/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix sort=null filter=null | hints: F1ヘルプ | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  CHANGES: (なし)
+== pm view 7 (先頭) 部品名 に「hai」→ Enter
+  [at 部品名 (true)] role=pm mode=nav view=7 cur=R003/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  side: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75
+  [typed hai] role=pm mode=nav view=7 cur=R003/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 権限なし（設計の列）。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+  [Enter] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix sort=null filter=null | hints: F1ヘルプ | toast: 権限なし（設計の列）。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+  CHANGES: (なし)
+== pm view 1 R013 部品名 に「in stock」→ Enter
+  [at 部品名 (true)] role=pm mode=nav view=1 cur=R013/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  side: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75
+  [typed in stock] role=pm mode=nav view=1 cur=R013/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space閉じる | toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  [Enter] role=pm mode=nav view=1 cur=R013/name edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space閉じる | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  CHANGES: (なし)
+== pm view 1 R030 備考 に「yes」→ Enter
+  [at 備考 (true)] role=pm mode=nav view=1 cur=R030/note edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  side: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75
+  [typed yes] role=pm mode=nav view=1 cur=R030/note edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space開く | toast: 権限なし（設計の列）。「今の列で並び替え（昇順）」は Alt+s（または ID の列で s）。キーの一覧は F1
+  [Enter] role=pm mode=nav view=1 cur=R030/note edit="" panel=null sort=null filter=null | hints: F1ヘルプ F8次の問題 Space開く | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  CHANGES: (なし)
+
+ERRORS:

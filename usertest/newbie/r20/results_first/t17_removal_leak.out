@@ -1,0 +1,13 @@
+selected rows R001,R002,R003,R034,R045 | formalQuoted R013
+design Shift+Delete R001 -> R001 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+design Shift+Delete R013 -> R013 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+purchasing sees R001 設計 制1 制御 PLC CPUユニット FX5U-32MR/ES 三菱電機 1 個 相見積 不可 11/13 因幡電機 88 ¥146 ¥146 19日 選定済 · 作業中● 10/27 
+purchasing sees R013 設計 電13 電源 スイッチング電源 24V 5A S8VK-G12024 オムロン 1 個 相見積 同等品可 11/13 因幡電機 88 ¥10,371 ¥10,371 16日 正式見積済 · 作業中● 10/26 
+formal confirm 正式見積依頼書（社外）を出します: 対象 5 行。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+formal -> 4 行 × 2 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行 | R001:selected removal={"kind":"cancel"} ordered=false
+o on R013 -> 権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1  | R013:formalQuoted removal={"kind":"cancel"} ordered=false
+  pub panel 変更セット（7 行: R001, R013, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 
+  pub panel 変更セット（7 行: R001, R013, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 
+design publish -> 行 7（Rev.2） を公開しました | R001:cancelled ordered=false | R013:cancelled ordered=false
+
+ERRORS:

@@ -1,0 +1,69 @@
+== design: R005 で Home（A 列のつもり）→「relay」→ Enter
+  [Home] role=design mode=nav view=1 cur=R005/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く x警告を確認済み | toast: null
+  [typed] role=design mode=panel view=1 cur=R005/id edit="" panel=prompt sort=null | hints: F1ヘルプ | toast: null
+  [Enter] role=design mode=nav view=1 cur=R081/model edit="" panel=null sort=null | hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: R005 の置き換え品 R081 を作りました（公開すると R005 は置換済になります。Ctrl+Z で戻す）
+  CHANGES: R005: removal:  -> {"kind":"replace","by":"R081"} ; R081: ref:  -> "制5"; drawing:  -> "E-2026-041-01"; category:  -> "制御"; name:  -> "リレー"; model:  -> "elay"; maker:  -> "オムロン"; qtyNeeded:  -> 12; unit:  -> "個"; packQty:  -> null; procurement:  -> "相見積"; makerLock:  -> "推奨"; altPolicy:  -> "同等品可"; designated:  -> ""; needOffset:  -> null; needDateFixed:  - ; rows 80->81
+== design: R030 で Home（A 列のつもり）→「hai」→ Enter
+  [Home] role=design mode=nav view=1 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: null
+  [typed] role=design mode=nav view=1 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: 権限なし（購買の列）
+  [Enter] role=design mode=nav view=1 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: この列は自動計算です
+  CHANGES: R030: hidden: false -> true; status: "quoted" -> "selected"; flags: {} -> {"pmPending":false,"contested":false,"leadNG":false}; orderQty: null -> 2; adoptedSupplierId:  -> "S1"; scoreSnapshot:  -> 99.2
+== design: R030 で Home（A 列のつもり）→「MY4N」→ Enter
+  [Home] role=design mode=nav view=1 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: null
+  [typed] role=design mode=nav view=4 cur=R022/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開いて指摘を見る | toast: 権限なし（却下は PM）
+  [Enter] role=design mode=nav view=4 cur=R022/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開いて指摘を見る | toast: この列は自動計算です
+  CHANGES: (なし)
+== purchasing: R033 で Home（A 列のつもり）→「ok」→ Enter
+  [Home] role=purchasing mode=nav view=9 cur=R033/id edit="" panel=null sort=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing mode=nav view=9 cur=R032/id edit="" panel=null sort=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+  [Enter] role=purchasing mode=nav view=9 cur=R032/id edit="" panel=null sort=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: この列は自動計算です
+  CHANGES: (なし)
+== purchasing: R013 で Home（A 列のつもり）→「zaiko ari」→ Enter
+  [Home] role=purchasing mode=nav view=1 cur=R013/id edit="" panel=null sort=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing mode=nav view=1 cur=g:電源:R013/id edit="" panel=null sort=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=1 cur=g:電源:R013/id edit="" panel=null sort=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: R013: status: "formalQuoted" -> "received"; ordered: false -> true; received: false -> true; receivedAt:  -> "2026-10-25"; orderedAt:  -> "2026-10-25"
+== design: R030 で Home（A 列のつもり）→「12」→ Enter
+  [Home] role=design mode=nav view=1 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: null
+  [typed] role=design mode=nav view=2 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: null
+  [Enter] role=design mode=nav view=2 cur=R030/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: この列は自動計算です
+  CHANGES: (なし)
+== design: ID のセルをマウスでクリック → 「hikoukai」（非公開と打つつもり）
+  [click id] role=design mode=nav view=1 cur=R010/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: null
+  [typed] role=design mode=nav view=1 cur=R008/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: 権限なし（購買の列）
+  CHANGES: R008: status: "quoted" -> "selected"; flags: {} -> {"pmPending":false,"contested":false,"leadNG":false}; orderQty: null -> 4; adoptedSupplierId:  -> "S1"; scoreSnapshot:  -> 99.2 ; R010: hidden: false -> true
+  [Ctrl+Z] role=design mode=nav view=1 cur=R008/id edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: 元に戻す: 推奨採用 因幡電機 スコア99.2
+  after undo CHANGES: R010: hidden: false -> true
+== design: 状態の列をクリック → 「mitsumori」
+  td classes id | mine |  |  | name | model model
+  [click 2nd td] role=design mode=nav view=1 cur=R020/ball edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: null
+  [typed] role=design mode=nav view=1 cur=R020/ball edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く | toast: この列は自動計算です。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+  CHANGES: (なし)
+== 起動直後（待たずに）打つ: 設計 「47」→ ↓ → 「relay」
+  [after 47] role=design mode=nav view=7 cur=null/name edit="" panel=null sort=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [↓ relay] role=design mode=edit view=7 cur=R003/name edit="relay" panel=null sort=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Enter] role=design mode=nav view=7 cur=R003/name edit="relay" panel=null sort=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 最後の行です。下に行を足すときは Shift+Enter
+== 起動直後: グリッドに focus しないで打つ（クリックもしない）
+  active: gridwrap DIV
+  [↓] role=design mode=nav view=1 cur=R001/name edit="" panel=null sort=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [abc] role=design mode=edit view=1 cur=R001/name edit="abc" panel=null sort=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+== 編集中に F1 → Esc（途中の値はどうなる）
+  [editing] role=design mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WCXX" panel=null sort=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [F1] role=design mode=panel view=1 cur=R030/model edit="M22N-BC-TWA-WCXX" panel=help sort=null | hints: F1ヘルプ | toast: null
+  [Esc] role=design mode=nav view=1 cur=R030/model edit="M22N-BC-TWA-WCXX" panel=null sort=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  CHANGES: R030: working:  -> {"model":"M22N-BC-TWA-WCXX"}
+== 打ち始め（Enter なし）で F1
+  [typed ABC] role=design mode=edit view=1 cur=R031/model edit="ABC" panel=null sort=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [F1] role=design mode=panel view=1 cur=R031/model edit="ABC" panel=help sort=null | hints: F1ヘルプ | toast: null
+  [Esc] role=design mode=nav view=1 cur=R031/model edit="ABC" panel=null sort=null | hints: Ctrl+Enter公開 7 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  CHANGES: R031: working:  -> {"model":"ABC"}
+== 編集中に Ctrl+K → Esc
+  [Ctrl+K] role=design mode=palette view=1 cur=R032/model edit="QQ" panel=palette sort=null | hints: F1ヘルプ | toast: null
+  [Esc] role=design mode=nav view=1 cur=R032/model edit="QQ" panel=null sort=null | hints: Ctrl+Enter公開 8 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  CHANGES: R032: working:  -> {"model":"QQ"}
+== 編集中に Ctrl+F
+  [Ctrl+F] role=design mode=nav view=1 cur=R033/model edit="ZZ" panel=null sort=null | hints: Ctrl+Enter公開 9 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  [Esc] role=design mode=nav view=1 cur=R033/model edit="ZZ" panel=null sort=null | hints: Ctrl+Enter公開 9 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  CHANGES: R033: working:  -> {"model":"ZZ"}
+
+ERRORS:

@@ -1,0 +1,112 @@
+[
+  {
+    "sec": "needOffset",
+    "v": "7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "+7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "７",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "-7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "−7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "－7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "0",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "7日前",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "前倒し7",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "-7.5",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "1e1",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "365",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "-365",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset",
+    "v": "366",
+    "error": "column-not-reached",
+    "shown": false
+  },
+  {
+    "sec": "needOffset-paste",
+    "rows": [
+      null,
+      null,
+      null
+    ],
+    "problems": [
+      [
+        "(import err Error: page.evaluate: TypeError: Failed to fetch dynamically)"
+      ],
+      [
+        "(import err Error: page.evaluate: TypeError: Failed to fetch dynamically)"
+      ],
+      [
+        "(import err Error: page.evaluate: TypeError: Failed to fetch dynamically)"
+      ]
+    ],
+    "toast": "3 セルを貼り付けました（Ctrl+Z で一度に戻せます）"
+  },
+  {
+    "name": "console/pageerror",
+    "errs": [
+      "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  }
+]

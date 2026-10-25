@@ -1,0 +1,40 @@
+== design view 1: R013 必要数 → ↑ → 「12」→ Enter
+  [at] role=design mode=nav view=1 cur=R013/qtyNeeded edit="" panel=null | cursorbar=R013 必要数 | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  [↑] role=design mode=nav view=1 cur=g:電源:R013/qtyNeeded edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [typed] role=design mode=nav view=1 cur=g:電源:R013/qtyNeeded edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=design mode=nav view=1 cur=g:電源:R013/qtyNeeded edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== design view 1: R013 部品名 → ↑ → 「relay」→ Enter
+  [at] role=design mode=nav view=1 cur=R013/name edit="" panel=null | cursorbar=R013 部品名 | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  [↑] role=design mode=nav view=1 cur=g:電源:R013/name edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [typed] role=design mode=nav view=1 cur=g:電源:R013/name edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=design mode=nav view=1 cur=g:電源:R013/name edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== design view 4: 先頭 必要数 → ↑ → 「3」→ Enter
+  [at] role=design mode=nav view=4 cur=R016/qtyNeeded edit="" panel=null | cursorbar=R016 必要数 | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み | toast: null
+  [↑] role=design mode=nav view=4 cur=R016/qtyNeeded edit="" panel=null | cursorbar=R016 必要数 | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み | toast: null
+  [typed] role=design mode=edit view=4 cur=R016/qtyNeeded edit="3" panel=null | cursorbar=R016 必要数 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Enter] role=design mode=nav view=4 cur=R009/qtyNeeded edit="3" panel=null | cursorbar=R009 必要数 | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る | toast: null
+  CHANGES: R016: working:  -> {"qtyNeeded":3}
+== purchasing view 3: R013 追加費用 → ↑ → 「5000」→ Enter
+  [at] role=purchasing mode=nav view=3 cur=R013/extraCost edit="" panel=null | cursorbar=R013 追加費用 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [↑] role=purchasing mode=nav view=3 cur=g:電源:R013/extraCost edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing mode=nav view=3 cur=g:電源:R013/extraCost edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=3 cur=g:電源:R013/extraCost edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 9: R013 発注数 → ↑ → 「20」→ Enter
+  [at] role=purchasing mode=nav view=1 cur=R013/note edit="" panel=null | cursorbar=R013 備考 | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: null
+  [↑] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [typed] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== purchasing view 1: R013 発注数 → ↑ → 「20」→ Enter
+  [at] role=purchasing mode=nav view=1 cur=R013/note edit="" panel=null | cursorbar=R013 備考 | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: null
+  [↑] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [typed] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  [Enter] role=purchasing mode=nav view=1 cur=g:電源:R013/note edit="" panel=null | cursorbar=分類 電源 | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  CHANGES: (なし)
+== 見出しの行の見た目（設計 1）
+  sel elem null
+
+ERRORS:

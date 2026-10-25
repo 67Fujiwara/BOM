@@ -1,0 +1,25 @@
+== A. 設計：最初の行の部品名で Ctrl+Enter → 案内どおり n → x → Enter
+  [Ctrl+Enter] mode=panel view=1 cur=R001/name edit="" panel=prompt | hints: F1ヘルプ | toast: null
+  panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [n (案内どおり)] mode=edit view=1 cur=R001/name edit="n" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [x (案内どおり)] mode=edit view=1 cur=R001/name edit="nx" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Enter] mode=nav view=1 cur=R002/name edit="nx" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  changes: R001: working:  -> {"name":"nx"}
+== B. 案内に Alt / F8 を使った新人（F8 → Alt+x → Ctrl+Enter）
+  try 0: toast=null panel=変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確
+  changes: (なし)
+== C. ガイドで作った表：作成直後の案内「n で次の問題へ」どおり n
+  step9: 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 確認して作成 案件 NEW-6 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 リレー MY4N 4 個 タイマ オムロン 2 個 ヒューズ ABC Omron 0 個 Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、C
+  [created] mode=nav view=4 cur=R001/maker edit="" panel=null | hints: Ctrl+Enter公開 3 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 新しいBOM NEW-6（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [n] mode=edit view=4 cur=R001/maker edit="n" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 新しいBOM NEW-6（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Enter] mode=nav view=4 cur=R001/maker edit="n" panel=null | hints: Ctrl+Enter公開 3 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 最後の行です。下に行を足すときは Shift+Enter
+  changes: R001: maker: "" -> "n"
+== D. h で隠した行を「h でもう一度押すと戻る」どおり戻す
+  [h on ID] mode=nav view=1 cur=R030/id edit="" panel=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: R030 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  [h again] mode=nav view=1 cur=R030/id edit="" panel=null | hints: Ctrl+Enter公開 5 行 ?ヘルプ F8次の問題 a推奨採用 Space開く | toast: R030 を表示に戻しました
+  [Alt+h on 部品名] mode=nav view=1 cur=R031/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: R031 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  cursor after hiding: R031 name
+  [h again (on typable)] mode=edit view=1 cur=R031/name edit="h" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R031 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+  R031 hidden: true
+
+ERRORS:

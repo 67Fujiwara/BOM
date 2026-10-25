@@ -1,0 +1,54 @@
+  型式(true) R040 「3M-1181」 typed-edit="3M-1181" mode0=edit -> mode=nav cur=R041 err= toast=null | working={"model":"3M-1181"} (before null)
+  型式(true) R041 「1N4148」 typed-edit="1N4148" mode0=edit -> mode=nav cur=R042 err= toast=null | working={"model":"1N4148"} (before null)
+  型式(true) R042 「<5mm」 typed-edit="<5mm" mode0=edit -> mode=nav cur=R043 err= toast=null | working={"model":"<5mm"} (before null)
+  型式(true) R043 「#10-24」 typed-edit="#10-24" mode0=edit -> mode=nav cur=R044 err= toast=null | working={"model":"#10-24"} (before null)
+  型式(true) R044 「=SUM(A1)」 typed-edit="=SUM(A1)" mode0=edit -> mode=nav cur=R045 err= toast=null | working={"model":"=SUM(A1)"} (before null)
+  型式(true) R045 「+24V」 typed-edit="+24V" mode0=edit -> mode=nav cur=R046 err= toast=null | working={"model":"+24V"} (before null)
+  型式(true) R046 「'0123」 typed-edit="'0123" mode0=edit -> mode=nav cur=R047 err= toast=null | working={"model":"'0123"} (before null)
+  型式(true) R047 「1/4W 10kΩ」 typed-edit="1/4W 10kΩ" mode0=edit -> mode=nav cur=R048 err= toast=null | working={"model":"1/4W 10kΩ"} (before null)
+  型式(true) R048 「-」 typed-edit="-" mode0=edit -> mode=nav cur=R049 err= toast=null | working={"model":"-"} (before null)
+  型式(true) R049 「teikou」 typed-edit="teikou" mode0=edit -> mode=nav cur=R050 err= toast=null | working={"model":"teikou"} (before null)
+  部品名(true) R050 「teikou」 typed-edit="teikou" mode0=edit -> mode=nav cur=R051 err= toast=null | working={"name":"teikou"} (before null)
+  部品名(true) R051 「10kΩ抵抗」 typed-edit="10kΩ抵抗" mode0=edit -> mode=nav cur=R052 err= toast=null | working={"name":"10kΩ抵抗"} (before null)
+  部品名(true) R052 「?」 typed-edit="?" mode0=edit -> mode=nav cur=R053 err= toast=null | working={"name":"?"} (before null)
+  部品名(true) R053 「/仮」 typed-edit="/仮" mode0=edit -> mode=nav cur=R054 err= toast=null | working={"name":"/仮"} (before null)
+  部品名(true) R054 「[A]端子」 typed-edit="[A]端子" mode0=edit -> mode=nav cur=R055 err= toast=null | working={"name":"[A]端子"} (before null)
+  必要数(true) R055 「2個」 typed-edit="2個" mode0=edit -> mode=nav cur=R056 err= toast=null | working={"qtyNeeded":2} (before null)
+  必要数(true) R056 「２」 typed-edit="2個" mode0=nav -> mode=edit cur=R056 err= toast=null | working=null (before null)
+  必要数(true) R057 「1,000」 typed-edit="1,000" mode0=edit -> mode=nav cur=R058 err= toast=null | working={"qtyNeeded":1000} (before null)
+  必要数(true) R058 「1e3」 typed-edit="1e3" mode0=edit -> mode=edit cur=R058 err=必要数として読めません: 「1e3」 toast=必要数として読めません: 「1e3」（直して Enter、やめるときは Esc） | working=null (before null)
+  必要数(true) R059 「-1」 typed-edit="-1" mode0=edit -> mode=edit cur=R059 err=必要数は 0 以上にしてください: 「-1」 toast=必要数は 0 以上にしてください: 「-1」（直して Enter、やめるときは Esc） | working=null (before null)
+  必要数(true) R060 「0.5」 typed-edit="0.5" mode0=edit -> mode=nav cur=R061 err= toast=必要数は 0 以上にしてください: 「-1」（直して Enter、やめるときは Esc） | working={"qtyNeeded":0.5} (before null)
+  必要数(true) R061 「1/2」 typed-edit="1/2" mode0=edit -> mode=edit cur=R061 err=必要数として読めません: 「1/2」 toast=必要数として読めません: 「1/2」（直して Enter、やめるときは Esc） | working=null (before null)
+  必要数(true) R062 「=2*3」 typed-edit="=2*3" mode0=edit -> mode=edit cur=R062 err=必要数として読めません: 「=2*3」 toast=必要数として読めません: 「=2*3」（直して Enter、やめるときは Esc） | working=null (before null)
+  必要数(true) R063 「10m」 typed-edit="10m" mode0=edit -> mode=nav cur=R064 err= toast=必要数として読めません: 「=2*3」（直して Enter、やめるときは Esc） | working={"qtyNeeded":10} (before null)
+  必要数(true) R064 「三」 typed-edit="10m" mode0=nav -> mode=edit cur=R064 err= toast=必要数として読めません: 「=2*3」（直して Enter、やめるときは Esc） | working=null (before null)
+  必要日(true) R065 「11/5」 typed-edit="6" mode0=nav -> mode=nav cur=R065 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R066 「2026/11/5」 typed-edit="6" mode0=nav -> mode=nav cur=R066 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R067 「11月5日」 typed-edit="6" mode0=nav -> mode=nav cur=R067 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R068 「R8.11.5」 typed-edit="6" mode0=nav -> mode=nav cur=R068 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R069 「来週」 typed-edit="6" mode0=nav -> mode=nav cur=R069 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R070 「2026-02-30」 typed-edit="6" mode0=nav -> mode=nav cur=R070 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  必要日(true) R071 「1105」 typed-edit="6" mode0=nav -> mode=nav cur=R071 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working=null (before null)
+  メーカ(true) R072 「omron」 typed-edit="omron" mode0=edit -> mode=nav cur=R073 err= toast=この列は自動計算です（日付で固定するときは「必要日(固定)」の列、前倒しは「必要日(前倒し)」の列。列は Ctrl+K →「列の表示」） | working={"maker":"omron"} (before null)
+  メーカ(true) R073 「OMRON」 typed-edit="OMRON" mode0=edit -> mode=nav cur=R074 err= toast=null | working={"maker":"OMRON"} (before null)
+  メーカ(true) R074 「オムロン㈱」 typed-edit="OMRON" mode0=nav -> mode=edit cur=R074 err= toast=null | working=null (before null)
+  メーカ(true) R075 「3M」 typed-edit="3M" mode0=edit -> mode=nav cur=R076 err= toast=null | working={"maker":"3M"} (before null)
+  メーカ(true) R040 「-」 typed-edit="-" mode0=edit -> mode=nav cur=R041 err= toast=null | working={"model":"3M-1181","maker":"-"} (before {"model":"3M-1181"})
+== 最後の行で Enter を 5 回（行が増える？）
+  cursor R080 部品名
+   Enter 1: mode=edit cur=R080 部品名 toast=null
+   Enter 2: mode=nav cur=R080 部品名 toast=最後の行です。下に行を足すときは Shift+Enter
+   Enter 3: mode=edit cur=R080 部品名 toast=最後の行です。下に行を足すときは Shift+Enter
+   Enter 4: mode=nav cur=R080 部品名 toast=最後の行です。下に行を足すときは Shift+Enter
+   Enter 5: mode=edit cur=R080 部品名 toast=最後の行です。下に行を足すときは Shift+Enter
+  rows 80 -> 80
+== Shift+Enter で行を足して、部品名→Tab→型式→Tab→…と打つ
+  after Shift+Enter R081 部品名 null
+   typed relay -> cur=R081 型式 toast=null
+   typed MY4N-D2 -> cur=R081 メーカ toast=null
+   typed omron -> cur=R081 必要数 toast=null
+   typed 4 -> cur=R081 単位 toast=null
+  new row {"id":"R081","name":"relay","model":"MY4N-D2","maker":"omron","qty":4}
+
+ERRORS:

@@ -1,0 +1,20 @@
+{
+ "src": "/home/user/BOM/src",
+ "N": 20000,
+ "exc": 0,
+ "slow": 2,
+ "big": 0,
+ "maxMs": 223,
+ "bad": [
+  {
+   "kind": "slow",
+   "ms": 223,
+   "text": "\n,3台\t\r\n"
+  },
+  {
+   "kind": "slow",
+   "ms": 201,
+   "text": "\u0000”Comment変更内容同上同上 備考“同上abc\"　削除済\"\"\u0000員数\"-M-1\r\n変更後型式【削除？】3台a【削除？】\t,1/2\"\t変更後型式abc\"\n変更内容”\"abc〃\r\n\"\" 変更区分－\"abc\"製作台数部品名\"\t\u00001/2\"【削除？】a員数未実装備考Description "
+  }
+ ]
+}

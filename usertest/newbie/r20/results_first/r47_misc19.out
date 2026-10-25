@@ -1,0 +1,31 @@
+== A 設計: R039 の必要日(前倒し) に 7 / -7 / 7日前
+  before: R039 needOffset=null working=null 必要日=2026-11-13 必要日(作業中)=2026-11-13 案件納期=2026-11-23
+  col true
+  「7」 Enter: toast=undefined | R039 needOffset=null working={"needOffset":7} 必要日=2026-11-13 必要日(作業中)=2026-11-20 案件納期=2026-11-23 | cell=R039|設計|セ39|センサ|ファイバセンサアンプ|E3X-HD11 2M|オムロン|2|個|相見積|同等品可|7|11/20||||||見積済 · 作業中●|10/27||||||
+  col true
+  「-7」 Enter: toast=undefined | R039 needOffset=null working={"needOffset":-7} 必要日=2026-11-13 必要日(作業中)=2026-11-06 案件納期=2026-11-23 | cell=R039|設計|セ39|センサ|ファイバセンサアンプ|E3X-HD11 2M|オムロン|2|個|相見積|同等品可|-7|11/06||||||見積済 · 作業中●|10/27||||||
+  col true
+  「7日前」 Enter: toast=必要日(前倒し日数)として読めません: 「7日前」（直して Enter、やめるときは Esc） | R039 needOffset=null working={"needOffset":-7} 必要日=2026-11-13 必要日(作業中)=2026-11-06 案件納期=2026-11-23 | cell=R039|設計|セ39|センサ|ファイバセンサアンプ|E3X-HD11 2M|オムロン|2|個|相見積|同等品可|必要日(前倒し日数)として読めません: 「7日前」|11/06||||||見積済 · 作業中●|10/27||||||
+  col true
+  「１週間前」 Enter: toast=undefined | R039 needOffset=null working={"needOffset":-7} 必要日=2026-11-13 必要日(作業中)=2026-11-06 案件納期=2026-11-23 | cell=R039|設計|セ39|センサ|ファイバセンサアンプ|E3X-HD11 2M|オムロン|2|個|相見積|同等品可||11/06||||||見積済 · 作業中●|10/27||||||
+== B 設計（選定者）: 商社を集約 → 1 番目 → Enter → Ctrl+Z
+  [集約] role=design view=1 cur=null/name mode=panel panel=consolidate | 商社を集約（試算。Enter で適用） 1 因幡電機 + 立花エレテック 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,495,156（差 ¥-35,632）、最長納期 27 日 2 因幡電機 + ミスミ 72/72 行を集約（残りはいまの採用のまま。指定商社・客先指定品 2 行は指定先のまま対象外）、総額 ¥18,645,998（差 +¥115,210）、最長納期 28 日 3 因幡電機 65/72 行を集約（残りはいまの採用のまま。指定商社・客先 | toast=undefined
+  [Enter] role=design view=1 cur=null/name mode=panel panel=prompt | 「因幡電機 + 立花エレテック」に集約します。見積済・選定済の行の採用を付け替えます（採用していなかった行も採用します。戻すときは Ctrl+Z） 1 やめる 2 集約する 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し | toast=undefined
+  [Enter 0] role=design view=1 cur=null/name mode=nav panel=null |  | toast=やめました（何も変えていません）
+  adopted rows 6 → 6 | statuses: {"selected":5,"quoted":69,"formalQuoted":1,"draft":5} | by supplier: {"S1":5,"S2":1}
+  [Ctrl+Z] role=design view=1 cur=null/name mode=nav panel=null |  | toast=戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+  after undo adopted=6
+== C 購買: I-001（R016 型式あいまい・自分の指摘）→ Ctrl+. →「この指摘からルールを作る」
+  [Ctrl+.] role=purchasing view=1 cur=R016/model mode=panel panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 I-001 を見送りにする（理由） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  rules 12 → 12: 
+  rows hit by the new rule: R016:CP30 は定格電流（例: 10A）まで書いてください
+  [design] role=design view=4 cur=R016/model mode=nav panel=null |  | toast=役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  design hints at R016: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開いて指摘を見る Alt+x警告を確認済み
+== D 設計が選定済の R002 の型式を変えて公開 → 購買が正式見積を依頼（2 回）
+  [design publish] role=design view=1 cur=R003/model mode=nav panel=null |  | toast=行 6（Rev.2） を公開しました
+  R001-R003,R013: R001:selected:{"leadNG":false} R002:submitted:{"leadNG":false,"requote":true,"renegotiating":false} R003:selected:{"leadNG":true} R013:formalQuoted:{"formalDiff":false,"leadNG":false}
+  [正式見積を依頼 1] role=purchasing view=9 cur=R002/q.unitPrice@S1 mode=panel panel=prompt | 正式見積依頼書（社外）を出します: 対象 4 行。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し | toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [依頼後] role=purchasing view=9 cur=R002/q.unitPrice@S1 mode=nav panel=null |  | toast=4 行 × 2 社に正式見積を依頼
+  [正式見積を依頼 2] role=purchasing view=9 cur=R002/q.unitPrice@S1 mode=nav panel=null |  | toast=依頼できる行がありません（選定済・再発行対象の行なし）
+
+ERRORS:

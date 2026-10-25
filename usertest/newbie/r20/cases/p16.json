@@ -1,0 +1,146 @@
+[
+ [
+  "A1 changed-row-fills-all",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\t\tオムロン\t1\t\nブレーカ\tNF32-SV\t\t三菱電機\t1\t"
+ ],
+ [
+  "A2 changed-row-fills-all-maker",
+  "品名\t旧型式\t新型式\t旧メーカー\t新メーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\tオムロン\t2\nタイマ\tH3CR-A8\t\tオムロン\t\t1\nブレーカ\tNF32-SV\t\t三菱電機\t\t1"
+ ],
+ [
+  "A3 change-before-after-2tier",
+  "\t変更前\t\t変更後\t\n品名\t型式\t数量\t型式\t数量\nリレー\tMY2N\t2\tMY4N-D2\t2\nタイマ\tH3CR-A8\t1\t\t\nブレーカ\tNF32-SV\t1\t\t"
+ ],
+ [
+  "A4 qty-only-changed",
+  "品名\t型式\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t\nブレーカ\tNF32-SV\t三菱電機\t1\t\n端子台\tXW2B-20G4\tオムロン\t\t2"
+ ],
+ [
+  "A5 full-copy-with-delete(control)",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t1\t1\nブレーカ\tNF32-SV\t\t三菱電機\t1\t"
+ ],
+ [
+  "B1 gouki-no-total-2tier",
+  "品名\t型式\tメーカー\t数量\t\n\t\t\t1号機\t2号機\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "B2 gouki-1tier",
+  "品名\t型式\tメーカー\t1号機数量\t2号機数量\t合計数量\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "B3 gouki-paren",
+  "品名\t型式\tメーカー\t数量(1号機)\t数量(2号機)\t数量(計)\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "B4 gouki-hash",
+  "品名\t型式\tメーカー\t数量\t\t\n\t\t\t#1\t#2\t計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "B5 gouki-go",
+  "品名\t型式\tメーカー\t数量\t\t\n\t\t\t1号\t2号\t合計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "B6 gouki-unit-per-set",
+  "品名\t型式\tメーカー\t数量\t\t\n\t\t\t1台当り\t台数\t合計\nリレー\tMY4N-D2\tオムロン\t2\t3\t6\nタイマ\tH3CR-A8\tオムロン\t1\t3\t3"
+ ],
+ [
+  "B7 gouki-ab",
+  "品名\t型式\tメーカー\tA号機\tB号機\t合計\nリレー\tMY4N-D2\tオムロン\t2\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t1\t2"
+ ],
+ [
+  "C1 delete-words",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\t（削除）\tオムロン\t1\t\nブレーカ\tNF32-SV\t削除済\t三菱電機\t1\t\n端子台\tXW2B\t取外し\tオムロン\t2\t\nソケット\tPYF08A\t廃止品\tオムロン\t2\t\nランプ\tM22N\tー削除ー\tIDEC\t1\t\nスイッチ\tA22NS\t不使用\tオムロン\t1\t"
+ ],
+ [
+  "C2 delete-qty0",
+  "品名\t型式\tメーカー\t数量(旧)\t数量(新)\nリレー\tMY4N-D2\tオムロン\t2\t4\nタイマ\tH3CR-A8\tオムロン\t1\t0\nブレーカ\tNF32-SV\t三菱電機\t1\t1"
+ ],
+ [
+  "C3 delete-note-variants",
+  "品名\t型式(旧)\t型式(新)\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t\nタイマ\tH3CR-A8\t\tオムロン\t1\t今回削除\nブレーカ\tNF32-SV\t\t三菱電機\t1\t※削除\n端子台\tXW2B\t\tオムロン\t2\t（削除）"
+ ],
+ [
+  "D1 ditto-variants",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nリレー\tMY2N\t上と同じ\t2\nソケット\tPYF14A\t上記に同じ\t2\nソケット\tPYF08A\t〃〃\t2\nタイマ\tH3CR-A8\t々\t1\nタイマ\tH3Y-2\t同\t1\n端子台\tXW2B\t同上品\t2"
+ ],
+ [
+  "D2 ditto-dq-excel-quoted",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t\"\"\"\"\t1\nブレーカ\tNF32-SV\t三菱電機\t1"
+ ],
+ [
+  "D3 ditto-dq-raw",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t\"\t1\nブレーカ\tNF32-SV\t三菱電機\t1\n端子台\tXW2B\tオムロン\t2"
+ ],
+ [
+  "D4 inch-mark-paste",
+  "品名\t型式\tメーカー\t数量\nニップル\t\"SGP 1/2\"\"\"\tベンカン\t4\nソケット\tSGP 1/2\"\tベンカン\t2\nエルボ\tSGP 3/4\"\tベンカン\t2"
+ ],
+ [
+  "D5 dousa-maker-after-model",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t同左\t1"
+ ],
+ [
+  "D6 dousa-first-row",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\t〃\t4\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "F1 title-plain-number",
+  "品名\t制御盤A\t図番\tD-1234\t数量\t1\t備考\t試作\n\t\t\t\t\t\t\t\n品名\t型式\t数量\nリレー\tMY4N-D2\t4\nタイマ\tH3CR-A8\t2"
+ ],
+ [
+  "F2 title-plain-number-2",
+  "品名\t制御盤A\t数量\t1\n図番\tD-1234\t作成\t山田\n部品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "F3 title-same-row-label",
+  "部品表\t\t品名：制御盤A\t数量：1台\nNo\t品名\t型式\tメーカー\t数量\n1\tリレー\tMY4N-D2\tオムロン\t4\n2\tタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "F4 title-model-unit",
+  "型式\tCP-100\t数量\t1\t単位\t面\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "G1 estimate-tax",
+  "No\t品名\t規格\tメーカー\t数量\t単位\t単価\t金額\t備考\n1\tリレー\tMY4N-D2 DC24\tオムロン\t4\t個\t1200\t4800\t\n2\tタイマ\tH3CR-A8\tオムロン\t2\t個\t3000\t6000\t\n\t\t\t\t\t\t小計\t10800\t\n\t\t\t\t\t\t消費税\t1080\t\n\t\t\t\t\t\t合計\t11880\t"
+ ],
+ [
+  "G2 estimate-maker-model",
+  "品番\t品名\tメーカー名\t数量\t単価\t金額\nMY4N-D2\tリレー\tオムロン\t4\t1,200\t4,800\nH3CR-A8\tタイマ\tオムロン\t2\t3,000\t6,000"
+ ],
+ [
+  "G3 estimate-qty-unit-in-cell",
+  "品名\t型式\tメーカー\t数量\t単価\nリレー\tMY4N-D2\tオムロン\t4個\t¥1,200\nタイマ\tH3CR-A8\tオムロン\t2個\t¥3,000"
+ ],
+ [
+  "H1 current-rating",
+  "品名\t型式\tメーカー\t定格電流\t数量\nブレーカ\tNF32-SV\t三菱電機\t10A\t1\nブレーカ\tNF63-SV\t三菱電機\t30A\t1"
+ ],
+ [
+  "H2 model-current-col",
+  "品名\tModel\tCurrent\tMaker\tQty\nBreaker\tNF32-SV\t10A\tMitsubishi\t1\nRelay\tMY4N\t3A\tOmron\t2"
+ ],
+ [
+  "H3 shuusei-note",
+  "品名\t型式\tメーカー\t数量\t備考\t修正\nリレー\tMY4N-D2\tオムロン\t4\t\tMY2Nから\nタイマ\tH3CR-A8\tオムロン\t2\t\t"
+ ],
+ [
+  "H4 kata-shuusei-only",
+  "品名\t型式\t型式(修正)\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t\tオムロン\t2"
+ ],
+ [
+  "K1 kei-category",
+  "分類\t品名\t型式\tメーカー\t数量\n計装\t圧力計\tGV50\t長野計器\t1\n計器\t電流計\tYS-206NAA\t三菱電機\t1\n計\t\t\t\t2"
+ ],
+ [
+  "K2 total-long",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n合計 6 個（2 品目）\t\t\t6\n計:6\t\t\t"
+ ],
+ [
+  "R1 data-looks-header",
+  "品名\t型式\tメーカー\t数量\n名称板\tNP-01\t自社\t1\n型式表示\tTP-02\t自社\t1\n記号\tSYM-1\t自社\t1\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4"
+ ],
+ [
+  "R2 repeated-header-other-word",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n名称\t形番\t製造元\t個数\nタイマ\tH3CR-A8\tオムロン\t2"
+ ]
+]

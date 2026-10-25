@@ -1,0 +1,35 @@
+{
+ "src": "/home/user/BOM/src",
+ "N": 20000,
+ "exc": 0,
+ "slow": 5,
+ "big": 0,
+ "maxMs": 433,
+ "bad": [
+  {
+   "kind": "slow",
+   "ms": 209,
+   "text": "　－部品名【削除？】1号機(旧)号機型式\r\n備考製作台数型式Comment\t->手配数削除【削除？】変更内容😀﻿同上\r\na\"abc\"abcabc\" \"abc削除【削除？】a-【削除？】\r\"M-1,Value変更区分\"M-1変更区分0abc\"0,Commenta,1備考ｽｳﾘｮｳComment\t備考\t製作台数\t　備考0\r\n＂削除2+1\u0000型式\n3台〃\r【削除？】ｽｳﾘｮｳ手配数1号機(旧)“,型式”"
+  },
+  {
+   "kind": "slow",
+   "ms": 433,
+   "text": "\r\n\"1号機(旧)数量>abc\"-【削除？】削除済a\t 数量\t数量＂－\"型式【削除？】型式\"ﾋﾝﾒｲﾋﾝﾒｲDescription😀ｽｳﾘｮｳ\"\"\r\n備考Descriptiona　変更区分3台製作台数\"〃abc\"﻿部品名\r変更区分1号機(旧)\t 　変更内容Comment-\t削除変更内容,製作台数\t〃 \",数量\"abcDNP\n\n変更区分Commentabc\""
+  },
+  {
+   "kind": "slow",
+   "ms": 209,
+   "text": "😀 \t\r\n削除\"\"1号機(新)号機＂Comment同上\"\"部品名\n”😀数量,手配数1号機(旧)\t削除 a \t\r型式\n\"->Description,”Comment1/2\",DNP-変更後型式>Comment変更後型式\"2+1\"〃 abc\"削除->”同上【削除？】\t\t備考号機\rM-1ｽｳﾘｮｳ11ﾋﾝﾒｲ－3台ﾋﾝﾒｲ2+1“Description\"\"a“変更区分数量変更後型式﻿\t【削除？】aD"
+  },
+  {
+   "kind": "slow",
+   "ms": 208,
+   "text": "Comment\"abc->部品名部品名ｽｳﾘｮｳ\t﻿\n-\"0製作台数\t未実装変更内容部品名“ ->Description"
+  },
+  {
+   "kind": "slow",
+   "ms": 269,
+   "text": "2+1,型式abc\"M-1変更後型式”変更内容備考\n変更後型式\"\"\r\n1削除型式,\"abcComment備考>abc\"->\"変更内容abc\"削除数量備考DNP手配数\t\r\n\n【削除？】3台>\n\t変更区分aValue\n“Value未実装員数Value2+1\n未実装変更区分1/2\"－\"\r型式\naM-1DNP型式変更区分 😀備考2+1a\t﻿DNPabc\"未実装\t1号機(旧)1号機(旧)DNP“DNP\u0000部"
+  }
+ ]
+}

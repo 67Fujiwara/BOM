@@ -1,0 +1,27 @@
+{"sname":"plain","col":"型式","pname":"a+全角空白+b","ms":624}
+{"sname":"plain","col":"型式","pname":"1+空白+x","ms":338}
+{"sname":"plain","col":"型式","pname":"削除+空白+x","ms":361}
+{"sname":"plain","col":"型式","pname":"rev+空白","ms":415}
+{"sname":"plain","col":"メーカ","pname":"a+全角空白+b","ms":445}
+{"sname":"plain","col":"メーカ","pname":"削除+空白+x","ms":377}
+{"sname":"plain","col":"メーカ","pname":"rev+空白","ms":350}
+{"sname":"plain","col":"数量","pname":"a+全角空白+b","ms":514}
+{"sname":"change","col":"型式","pname":"a+空白+b","ms":340}
+{"sname":"change","col":"型式","pname":"a+全角空白+b","ms":724}
+{"sname":"change","col":"型式","pname":"削除+空白+x","ms":453}
+{"sname":"change","col":"変更後型式","pname":"a+空白+b","ms":926}
+{"sname":"change","col":"変更後型式","pname":"a+全角空白+b","ms":992}
+{"sname":"change","col":"変更後型式","pname":"1+空白+x","ms":812}
+{"sname":"change","col":"変更後型式","pname":"削除+空白+x","ms":3127}
+{"sname":"change","col":"変更後型式","pname":"x+ピリオド+y","ms":485}
+{"sname":"change","col":"変更後型式","pname":"x+閉じ括弧+y","ms":3204}
+{"sname":"change","col":"数量","pname":"a+全角空白+b","ms":499}
+{"sname":"change","col":"備考","pname":"削除+空白+x","ms":1543}
+{"sname":"change","col":"備考","pname":"x+閉じ括弧+y","ms":1542}
+{"sname":"kind","col":"型式","pname":"a+全角空白+b","ms":497}
+{"sname":"kind","col":"型式","pname":"rev+空白","ms":338}
+{"sname":"kind","col":"数量","pname":"a+全角空白+b","ms":382}
+{"sname":"kind","col":"数量","pname":"1+空白+x","ms":341}
+{"sname":"title","col":"-","pname":"1+空白+x","ms":746}
+{"sname":"csvq","col":"-","pname":"a+全角空白+b","ms":423}
+done slow= 26

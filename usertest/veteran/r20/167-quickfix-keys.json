@@ -1,0 +1,125 @@
+[
+  {
+    "step": "created",
+    "rows": 12,
+    "flagged": 4,
+    "deferred": 0
+  },
+  {
+    "k": "１",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 4,
+    "flaggedAfter": 4,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Process1",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 4,
+    "flaggedAfter": 4,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Numpad1",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 4,
+    "flaggedAfter": 4,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Digit1",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 4,
+    "flaggedAfter": 3,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Enter",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 3,
+    "flaggedAfter": 2,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "ArrowDown+Enter",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 2,
+    "flaggedAfter": 2,
+    "deferredAfter": 1,
+    "toast": ""
+  },
+  {
+    "k": "Space",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 2,
+    "flaggedAfter": 2,
+    "deferredAfter": 1,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "2",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 2,
+    "flaggedAfter": 2,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Numpad2",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 2,
+    "flaggedAfter": 2,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "２",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": "panel-quickfix",
+    "flaggedBefore": 2,
+    "flaggedAfter": 2,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Shift+1",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 2,
+    "flaggedAfter": 1,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "Escape",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 1,
+    "flaggedAfter": 1,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  },
+  {
+    "k": "ArrowUp+Enter",
+    "panelBefore": "panel-quickfix",
+    "panelAfter": null,
+    "flaggedBefore": 1,
+    "flaggedAfter": 0,
+    "deferredAfter": 0,
+    "toast": "1〜2 か ↑↓ と Enter で選んでください"
+  }
+]

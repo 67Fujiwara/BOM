@@ -1,0 +1,157 @@
+OK  R076 部品名 "relay" @40ms -> value="relay" | mid mode=edit cur=R076/name edit="relay" panel=null view=1
+     toast=null panelText=undefined
+     changes: R076: name: "USBアイソレータ" -> "relay" ; sort=null view=1 hiddenCols=13
+OK  R077 メーカ "omron" @40ms -> value="omron" | mid mode=edit cur=R077/maker edit="omron" panel=null view=1
+     toast=null panelText=undefined
+     changes: R077: maker: "三菱電機" -> "omron" ; sort=null view=1 hiddenCols=13
+OK  R078 型式 "abc-123" @40ms -> value="abc-123" | mid mode=edit cur=R078/model edit="abc-123" panel=null view=1
+     toast=null panelText=undefined
+     changes: R078: model: "TK-100" -> "abc-123" ; sort=null view=1 hiddenCols=13
+OK  R030 型式 "hello" @40ms -> value="hello" | mid mode=edit cur=R030/model edit="hello" panel=null view=1
+     toast=null panelText=undefined
+     changes: R030: working:  -> {"model":"hello"} ; sort=null view=1 hiddenCols=13
+OK  R031 部品名 "sensor" @40ms -> value="sensor" | mid mode=edit cur=R031/name edit="sensor" panel=null view=1
+     toast=null panelText=undefined
+     changes: R031: working:  -> {"name":"sensor"} ; sort=null view=1 hiddenCols=13
+OK  R032 部品名 "fuse" @40ms -> value="fuse" | mid mode=edit cur=R032/name edit="fuse" panel=null view=1
+     toast=null panelText=undefined
+     changes: R032: working:  -> {"name":"fuse"} ; sort=null view=1 hiddenCols=13
+OK  R033 メーカ "idec" @40ms -> value="idec" | mid mode=edit cur=R033/maker edit="idec" panel=null view=1
+     toast=null panelText=undefined
+     changes: R033: working:  -> {"maker":"idec"} ; sort=null view=1 hiddenCols=13
+OK  R035 部品名 "cable" @40ms -> value="cable" | mid mode=edit cur=R035/name edit="cable" panel=null view=1
+     toast=null panelText=undefined
+     changes: R035: working:  -> {"name":"cable"} ; sort=null view=1 hiddenCols=13
+OK  R036 部品名 "wire" @40ms -> value="wire" | mid mode=edit cur=R036/name edit="wire" panel=null view=1
+     toast=null panelText=undefined
+     changes: R036: working:  -> {"name":"wire"} ; sort=null view=1 hiddenCols=13
+OK  R037 部品名 "x-ray" @40ms -> value="x-ray" | mid mode=edit cur=R037/name edit="x-ray" panel=null view=1
+     toast=null panelText=undefined
+     changes: R037: working:  -> {"name":"x-ray"} ; sort=null view=1 hiddenCols=13
+OK  R038 部品名 "nut" @40ms -> value="nut" | mid mode=edit cur=R038/name edit="nut" panel=null view=1
+     toast=null panelText=undefined
+     changes: R038: working:  -> {"name":"nut"} ; sort=null view=1 hiddenCols=13
+OK  R042 メーカ "IDEC" @40ms -> value="IDEC" | mid mode=edit cur=R042/maker edit="IDEC" panel=null view=1
+     toast=null panelText=undefined
+     changes: R042: working:  -> {"maker":"IDEC"} ; sort=null view=1 hiddenCols=13
+OK  R043 メーカ "NEC" @40ms -> value="NEC" | mid mode=edit cur=R043/maker edit="NEC" panel=null view=1
+     toast=null panelText=undefined
+     changes: R043: working:  -> {"maker":"NEC"} ; sort=null view=1 hiddenCols=13
+OK  R044 メーカ "SMC" @40ms -> value="SMC" | mid mode=edit cur=R044/maker edit="SMC" panel=null view=1
+     toast=null panelText=undefined
+     changes: R044: working:  -> {"maker":"SMC"} ; sort=null view=1 hiddenCols=13
+OK  R045 メーカ "Keyence" @40ms -> value="Keyence" | mid mode=edit cur=R045/maker edit="Keyence" panel=null view=1
+     toast=null panelText=undefined
+     changes: R045: working:  -> {"maker":"Keyence"} ; sort=null view=1 hiddenCols=13
+OK  R046 メーカ "Denso" @40ms -> value="Denso" | mid mode=edit cur=R046/maker edit="Denso" panel=null view=1
+     toast=null panelText=undefined
+     changes: R046: working:  -> {"maker":"Denso"} ; sort=null view=1 hiddenCols=13
+OK  R047 部品名 "Relay" @40ms -> value="Relay" | mid mode=edit cur=R047/name edit="Relay" panel=null view=1
+     toast=null panelText=undefined
+     changes: R047: working:  -> {"name":"Relay"} ; sort=null view=1 hiddenCols=13
+OK  R048 メーカ "Yaskawa" @40ms -> value="Yaskawa" | mid mode=edit cur=R048/maker edit="Yaskawa" panel=null view=1
+     toast=null panelText=undefined
+     changes: R048: working:  -> {"maker":"Yaskawa"} ; sort=null view=1 hiddenCols=13
+OK  R049 メーカ "Analog Devices" @40ms -> value="Analog Devices" | mid mode=edit cur=R049/maker edit="Analog Devices" panel=null view=1
+     toast=null panelText=undefined
+     changes: R049: working:  -> {"maker":"Analog Devices"} ; sort=null view=1 hiddenCols=13
+OK  R050 部品名 "Jumper" @40ms -> value="Jumper" | mid mode=edit cur=R050/name edit="Jumper" panel=null view=1
+     toast=null panelText=undefined
+     changes: R050: working:  -> {"name":"Jumper"} ; sort=null view=1 hiddenCols=13
+OK  R051 型式 "XW2B-20G4" @40ms -> value="XW2B-20G4" | mid mode=edit cur=R051/model edit="XW2B-20G4" panel=null view=1
+     toast=null panelText=undefined
+     changes: R051: working:  -> {"model":"XW2B-20G4"} ; sort=null view=1 hiddenCols=13
+OK  R052 部品名 "Inverter" @40ms -> value="Inverter" | mid mode=edit cur=R052/name edit="Inverter" panel=null view=1
+     toast=null panelText=undefined
+     changes: R052: working:  -> {"name":"Inverter"} ; sort=null view=1 hiddenCols=13
+OK  R058 部品名 "Antenna" @40ms -> value="Antenna" | mid mode=edit cur=R058/name edit="Antenna" panel=null view=1
+     toast=null panelText=undefined
+     changes: R058: working:  -> {"name":"Antenna"} ; sort=null view=1 hiddenCols=13
+OK  R059 型式 "SJ-4" @40ms -> value="SJ-4" | mid mode=edit cur=R059/model edit="SJ-4" panel=null view=1
+     toast=null panelText=undefined
+     changes: R059: working:  -> {"model":"SJ-4"} ; sort=null view=1 hiddenCols=13
+OK  R030 型式 "S-T21 AC200V" @40ms -> value="S-T21 AC200V" | mid mode=edit cur=R030/model edit="S-T21 AC200V" panel=null view=1
+     toast=null panelText=undefined
+     changes: R030: working:  -> {"model":"S-T21 AC200V"} ; sort=null view=1 hiddenCols=13
+OK  R057 メーカ "Omron" @40ms -> value="Omron" | mid mode=edit cur=R057/maker edit="Omron" panel=null view=1
+     toast=null panelText=undefined
+     changes: R057: working:  -> {"maker":"Omron"} ; sort=null view=1 hiddenCols=13
+OK  R053 部品名 "inverter" @40ms -> value="inverter" | mid mode=edit cur=R053/name edit="inverter" panel=null view=1
+     toast=null panelText=undefined
+     changes: R053: working:  -> {"name":"inverter"} ; sort=null view=1 hiddenCols=13
+OK  R054 部品名 "snubber" @40ms -> value="snubber" | mid mode=edit cur=R054/name edit="snubber" panel=null view=1
+     toast=null panelText=undefined
+     changes: R054: working:  -> {"name":"snubber"} ; sort=null view=1 hiddenCols=13
+OK  R055 部品名 "ink" @40ms -> value="ink" | mid mode=edit cur=R055/name edit="ink" panel=null view=1
+     toast=null panelText=undefined
+     changes: R055: working:  -> {"name":"ink"} ; sort=null view=1 hiddenCols=13
+OK  R056 部品名 "anode" @40ms -> value="anode" | mid mode=edit cur=R056/name edit="anode" panel=null view=1
+     toast=null panelText=undefined
+     changes: R056: working:  -> {"name":"anode"} ; sort=null view=1 hiddenCols=13
+OK  R052 部品名 "noise filter" @40ms -> value="noise filter" | mid mode=edit cur=R052/name edit="noise filter" panel=null view=1
+     toast=null panelText=undefined
+     changes: R052: working:  -> {"name":"noise filter"} ; sort=null view=1 hiddenCols=13
+OK  R053 部品名 "knob" @40ms -> value="knob" | mid mode=edit cur=R053/name edit="knob" panel=null view=1
+     toast=null panelText=undefined
+     changes: R053: working:  -> {"name":"knob"} ; sort=null view=1 hiddenCols=13
+OK  R054 部品名 "jack" @40ms -> value="jack" | mid mode=edit cur=R054/name edit="jack" panel=null view=1
+     toast=null panelText=undefined
+     changes: R054: working:  -> {"name":"jack"} ; sort=null view=1 hiddenCols=13
+OK  R055 部品名 "kit" @40ms -> value="kit" | mid mode=edit cur=R055/name edit="kit" panel=null view=1
+     toast=null panelText=undefined
+     changes: R055: working:  -> {"name":"kit"} ; sort=null view=1 hiddenCols=13
+OK  R035 部品名 "connector" @40ms -> value="connector" | mid mode=edit cur=R035/name edit="connector" panel=null view=1
+     toast=null panelText=undefined
+     changes: R035: working:  -> {"name":"connector"} ; sort=null view=1 hiddenCols=13
+OK  R036 部品名 "capacitor" @40ms -> value="capacitor" | mid mode=edit cur=R036/name edit="capacitor" panel=null view=1
+     toast=null panelText=undefined
+     changes: R036: working:  -> {"name":"capacitor"} ; sort=null view=1 hiddenCols=13
+OK  R037 部品名 "washer" @40ms -> value="washer" | mid mode=edit cur=R037/name edit="washer" panel=null view=1
+     toast=null panelText=undefined
+     changes: R037: working:  -> {"name":"washer"} ; sort=null view=1 hiddenCols=13
+OK  R038 メーカ "Amphenol" @40ms -> value="Amphenol" | mid mode=edit cur=R038/maker edit="Amphenol" panel=null view=1
+     toast=null panelText=undefined
+     changes: R038: working:  -> {"maker":"Amphenol"} ; sort=null view=1 hiddenCols=13
+OK  R039 メーカ "ABB" @40ms -> value="ABB" | mid mode=edit cur=R039/maker edit="ABB" panel=null view=1
+     toast=null panelText=undefined
+     changes: R039: working:  -> {"maker":"ABB"} ; sort=null view=1 hiddenCols=13
+OK  R040 部品名 "IC socket" @40ms -> value="IC socket" | mid mode=edit cur=R040/name edit="IC socket" panel=null view=1
+     toast=null panelText=undefined
+     changes: R040: working:  -> {"name":"IC socket"} ; sort=null view=1 hiddenCols=13
+OK  R041 メーカ "Weidmuller" @40ms -> value="Weidmuller" | mid mode=edit cur=R041/maker edit="Weidmuller" panel=null view=1
+     toast=null panelText=undefined
+     changes: R041: working:  -> {"maker":"Weidmuller"} ; sort=null view=1 hiddenCols=13
+OK  R041 メーカ "Coilcraft" @40ms -> value="Coilcraft" | mid mode=edit cur=R041/maker edit="Coilcraft" panel=null view=1
+     toast=null panelText=undefined
+     changes: R041: working:  -> {"maker":"Coilcraft"} ; sort=null view=1 hiddenCols=13
+OK  R030 回路記号 "K1" @40ms -> value="K1" | mid mode=edit cur=R030/ref edit="K1" panel=null view=1
+     toast=null panelText=undefined
+     changes: R030: working:  -> {"ref":"K1"} ; sort=null view=1 hiddenCols=13
+OK  R031 回路記号 "J3" @40ms -> value="J3" | mid mode=edit cur=R031/ref edit="J3" panel=null view=1
+     toast=null panelText=undefined
+     changes: R031: working:  -> {"ref":"J3"} ; sort=null view=1 hiddenCols=13
+OK  R032 回路記号 "N2" @40ms -> value="N2" | mid mode=edit cur=R032/ref edit="N2" panel=null view=1
+     toast=null panelText=undefined
+     changes: R032: working:  -> {"ref":"N2"} ; sort=null view=1 hiddenCols=13
+OK  R033 回路記号 "k5" @40ms -> value="k5" | mid mode=edit cur=R033/ref edit="k5" panel=null view=1
+     toast=null panelText=undefined
+     changes: R033: working:  -> {"ref":"k5"} ; sort=null view=1 hiddenCols=13
+OK  R034 回路記号 "j2" @40ms -> value="j2" | mid mode=edit cur=R034/ref edit="j2" panel=null view=1
+     toast=null panelText=undefined
+     changes: R034: working:  -> {"ref":"j2"} ; sort=null view=1 hiddenCols=13
+OK  R035 回路記号 "KA1" @40ms -> value="KA1" | mid mode=edit cur=R035/ref edit="KA1" panel=null view=1
+     toast=null panelText=undefined
+     changes: R035: working:  -> {"ref":"KA1"} ; sort=null view=1 hiddenCols=13
+OK  R036 回路記号 "X1" @40ms -> value="X1" | mid mode=edit cur=R036/ref edit="X1" panel=null view=1
+     toast=null panelText=undefined
+     changes: R036: working:  -> {"ref":"X1"} ; sort=null view=1 hiddenCols=13
+OK  R037 回路記号 "SW1" @40ms -> value="SW1" | mid mode=edit cur=R037/ref edit="SW1" panel=null view=1
+     toast=null panelText=undefined
+     changes: R037: working:  -> {"ref":"SW1"} ; sort=null view=1 hiddenCols=13
+OK  R038 備考 "jj" @40ms -> value="jj" | mid mode=edit cur=R038/note edit="jj" panel=null view=1
+     toast=null panelText=undefined
+     changes: R038: working:  -> {"note":"jj"} ; sort=null view=1 hiddenCols=13
+EXC R039 NN-1 Error: keyboard.press: Target page, context or browser has been closed
+EXC R040 K-2 Error: page.goto: Target page, context or browser has been closed
+
+ERRORS:

@@ -1,0 +1,37 @@
+// 購買の新人が指摘を出す → 設計が返信・直す → 購買が確認（Enter 連打・Esc・Ctrl+K を混ぜる）
+import { launch, fresh, setRole, T, makeLog, shot, sel, gotoCol, ui, typeReal, proj, sleep } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('x10_issue')
+const st = async (tag) => { const u = await ui(page); log(`  [${tag}] role=${u.role} mode=${u.mode} view=${u.view} cur=${u.cursorRow}/${u.cursorCol} panel=${u.panel} | ${(await T.panelText(page))?.slice(0, 260)} | hints: ${await T.hints(page)} | toast: ${await T.toast(page)}`) }
+const iss = async () => { const p = await proj(page); return p.issues.map((i) => `${i.id}:${i.rowId}/${i.field}/${i.kind}/${i.status}${i.draft ? '(draft)' : ''}`).join(' ') }
+await fresh(page, 'purchasing'); await sleep(150)
+await page.keyboard.press('Alt+1'); await sel(page, 'R030'); await gotoCol(page, '型式'); await st('at R030 型式')
+await page.keyboard.press('Alt+Shift+I'); await sleep(150); await st('Alt+Shift+I')
+await shot(page, 'x10_issue_dialog')
+await page.keyboard.press('Enter'); await sleep(100); await st('Enter (何も選ばず)')
+await page.keyboard.press('Enter'); await sleep(100); await st('Enter 2')
+await typeReal(page, 'katashiki ga furui', 20); await sleep(80); await st('typed romaji')
+await page.keyboard.press('Enter'); await sleep(150); await st('Enter 3')
+await page.keyboard.press('Enter'); await sleep(150); await st('Enter 4')
+log('  issues:', await iss())
+await page.keyboard.press('Control+Enter'); await sleep(200); await st('Ctrl+Enter')
+if ((await ui(page)).panel) { await page.keyboard.press('Enter'); await sleep(150); await st('Enter in publish') }
+log('  issues:', await iss())
+log('== 設計: 4 → F8 → Space で指摘を見る → Shift+R（返信）→ 打つ → Enter')
+await setRole(page, 'design'); await sleep(150); await st('design')
+await sel(page, 'R030'); await gotoCol(page, '型式'); await page.keyboard.press('Space'); await sleep(150); await st('Space')
+await page.keyboard.press('Alt+Shift+R'); await sleep(150); await st('Alt+Shift+R')
+await typeReal(page, 'MY4N ni shimasu', 20); await page.keyboard.press('Enter'); await sleep(150); await st('reply Enter')
+log('  issues:', await iss())
+await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await sleep(80)
+await sel(page, 'R030'); await gotoCol(page, '型式'); await typeReal(page, 'MY4N-D2 DC24', 20); await page.keyboard.press('Enter'); await sleep(100)
+await page.keyboard.press('Control+Enter'); await sleep(200); await st('Ctrl+Enter')
+if ((await ui(page)).panel) { await page.keyboard.press('2'); await sleep(80); await page.keyboard.press('Enter'); await sleep(150); await st('reason') }
+log('  issues:', await iss())
+log('== 購買: 4 → 対応済の指摘を確認（x は Alt+x）')
+await setRole(page, 'purchasing'); await page.keyboard.press('Alt+4'); await sleep(150); await st('purch 4')
+await page.keyboard.press('F8'); await sleep(80); await st('F8')
+await page.keyboard.press('x'); await sleep(80); await st('x')
+await page.keyboard.press('Alt+x'); await sleep(120); await st('Alt+x')
+log('  issues:', await iss())
+save(errors); await browser.close()

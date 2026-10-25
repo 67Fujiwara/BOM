@@ -1,0 +1,26 @@
+[
+  {
+    "step": "typed 7",
+    "ok": true,
+    "toast": "保存しました（編集は自動で保存されています）",
+    "status": "ナビ R012 必要日(前倒し) 設計 山田: 未公開 6 行 / 指摘 0 保存しました（編集は自動で保存されています） Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く"
+  },
+  {
+    "step": "detail",
+    "hit": false,
+    "snippet": ""
+  },
+  {
+    "step": "view4",
+    "rows": 28,
+    "hasR011": true
+  },
+  {
+    "step": "Alt+x",
+    "toast": "確認済みにしました: 必要日(前倒し)が +7 で、案件の必要日より 7 日後ろになります（前倒しは -7。承知のうえなら Alt+x で確認済みに）"
+  },
+  {
+    "step": "view4-after-ack",
+    "hasR011": true
+  }
+]

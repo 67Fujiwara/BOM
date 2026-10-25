@@ -1,0 +1,135 @@
+[V-newname keep 「取外しカバー」] OK (old≠new)
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「撤去工具」] OK (old≠new)
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「不要品回収箱」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「中止ボタン」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「削除用ツール」] OK (old≠new)
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   old: MY4N-D2:4
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「廃止品置場」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「欠番表示板」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「Delタイマ」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「Remove Tool」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname keep 「取止めバンド」] OK
+   new: TR-10:1 MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「削除」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 削除 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「削除済」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 削除済 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「削除品」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 削除品 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「撤去」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 撤去 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「廃止」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 廃止 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「不要」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 不要 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「欠番」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 欠番 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「取止め」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 取止め TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「中止」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 中止 TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「Del」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 Del TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newname del 「×」] OK
+   new: MY4N-D2:4 | map=-,name,model,maker,qtyNeeded
+   warn: 「品名（新）」が空の 1 行は、ほかの「部品名」の列の値を使いました / 削除の印がある・新しい版の列が空の 1 行（例: 工具 × TR-10）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「部品名」に当たる列が 2 つあります。「品名（新）」の列を使います
+[V-newmodel 「削除しました」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   old: MY4N-D2:4 削除しました:1
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 削除しました）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「削除してください」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   old: MY4N-D2:4 削除してください:1
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 削除してください）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「Del.」] INFO (old≠new)
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   old: MY4N-D2:4 Del.:1
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 Del.）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「→削除」] INFO
+   new: MY4N-D2:4 →削除:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「削除（不要）」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 削除（不要））は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「廃止済」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 廃止済）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「撤去済み」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 撤去済み）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「取外し済」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 取外し済）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「不使用」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 不使用）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「なし」] INFO
+   new: MY4N-D2:4 | map=name,-,model,maker,qtyNeeded
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 なし）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「-」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-newmodel 「－」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 | map=name,-,model,maker,qtyNeeded
+   warn: 「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「削除」] INFO (old≠new)
+   new: MY4N-D2:4 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1 L-1:2
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「削除済」] INFO (old≠new)
+   new: MY4N-D2:4 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1 L-1:2
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「削除しました」] INFO (old≠new)
+   new: MY4N-D2:4 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1 L-1:2
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「不要のため削除」] INFO (old≠new)
+   new: MY4N-D2:4 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   old: MY4N-D2:4 H3CR-A8:1 L-1:2
+   warn: 削除の印がある・新しい版の列が空の 1 行（例: タイマ H3CR-A8 H3CR-A8）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「削除しない」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-copyrow note 「」] INFO
+   new: MY4N-D2:4 H3CR-A8:1 L-1:2 | map=name,-,model,maker,qtyNeeded,note
+   warn: 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[V-qty halfwidth ｺ] OK (old≠new)
+   new: MY4N-D2:4 H3CR-A8:2 | map=name,model,qtyNeeded
+   old: MY4N-D2:0 H3CR-A8:0
+   warn: 
+[V-qty 4個 5本 3ヶ] OK
+   new: MY4N-D2:4 CV:5 H3CR-A8:3 | map=name,model,qtyNeeded
+   warn: 
+MISMATCHES 0

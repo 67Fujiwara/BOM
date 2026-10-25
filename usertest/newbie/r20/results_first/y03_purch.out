@@ -1,0 +1,46 @@
+== 購買: Alt+8 → すぐ正式単価のつもりで 1500 Enter 1480 Enter
+  [Alt+8] mode=nav view=8 cur=R001/q.formalPrice@A edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  cols: ID|部品名|型式|メーカ|発注数|採用|単価|差分|納期|状態|期限|正式単価|正式納期|正式期限|差分理由
+  [1500] mode=edit view=8 cur=R001/q.formalPrice@A edit="1500" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=8 cur=R002/q.formalPrice@A edit="" | toast: R001 の正式単価 ¥1,500（概算から +927%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+  [1480 Enter] mode=edit view=8 cur=R003/q.formalPrice@A edit="" | toast: R002 の正式単価 ¥1,480（概算から +264%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+  CHANGES: Q R001@S1: formalPrice: null -> 1500 ; Q R002@S1: formalPrice: null -> 1480
+== 購買: サイドの 8 をクリック → 1500 Enter
+  [click 8] mode=nav view=8 cur=R001/q.formalPrice@A edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [1500 Enter] mode=edit view=8 cur=R002/q.formalPrice@A edit="" | toast: R001 の正式単価 ¥1,500（概算から +927%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+  CHANGES: Q R001@S1: formalPrice: null -> 1500
+== 購買 9: ビューを変えるつもりで 8 → 6 → Enter
+  [start] mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [86] mode=edit view=9 cur=R004/q.unitPrice@S1 edit="86" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=nav view=9 cur=R005/q.unitPrice@S1 edit="86" | toast: R004 の単価 ¥86 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  CHANGES: Q R004@S1: unitPrice: 2621 -> 86; source:  -> "手入力"
+== 購買 6: Enter で編集を始めて日本語の値（IME 確定のつもり）
+  単価 R033「１２００」 -> mode=edit toast=R033 の単価 ¥1,200 は他社（¥101 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | Q R033@S1: unitPrice: 106 -> 1200; source:  -> "手入力"
+  単価 R033「¥1,200」 -> mode=edit toast=R033 の単価 ¥1,200 は他社（¥101 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | (なし)
+  単価 R033「1,200円」 -> mode=edit toast=R033 の単価 ¥1,200 は他社（¥101 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | (なし)
+  単価 R033「１，２００円」 -> mode=edit toast=R033 の単価 ¥1,200 は他社（¥101 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | (なし)
+  単価 R033「1200円（税別）」 -> mode=edit toast=単価として読めません: 「1200円（税別）」（直して Enter、やめるときは Esc） | (なし)
+  納期 R034「即納」 -> mode=edit toast=単価として読めません: 「1200円（税別）」（直して Enter、やめるときは Esc） | Q R034@S1: leadDays: 18 -> 0; source:  -> "手入力"
+  納期 R034「2W」 -> mode=edit toast=null | Q R034@S1: leadDays: 0 -> 14
+  納期 R034「3営業日」 -> mode=edit toast=null | Q R034@S1: leadDays: 14 -> 3
+  納期 R034「１０日」 -> mode=edit toast=null | Q R034@S1: leadDays: 3 -> 10
+  納期 R034「約2週間」 -> mode=edit toast=納期（日）として読めません: 「約2週間」（直して Enter、やめるときは Esc） | (なし)
+  納期 R034「2～3週間」 -> mode=edit toast=納期（日）として読めません: 「2～3週間」（直して Enter、やめるときは Esc） | (なし)
+  納期 R034「受注後3週」 -> mode=edit toast=納期（日）として読めません: 「受注後3週」（直して Enter、やめるときは Esc） | (なし)
+  在庫 R035「あり」 -> mode=nav toast=納期（日）として読めません: 「受注後3週」（直して Enter、やめるときは Esc） | Q R035@S1: stock: null -> "在庫"
+  在庫 R035「有」 -> mode=nav toast=null | (なし)
+  在庫 R035「在庫有」 -> mode=nav toast=null | (なし)
+  在庫 R035「在庫あり」 -> mode=nav toast=null | (なし)
+  在庫 R035「なし」 -> mode=edit toast=在庫に「なし」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc） | (なし)
+  在庫 R035「無」 -> mode=edit toast=在庫に「無」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc） | (なし)
+  有効期限 R036「令和8年12月31日」 -> mode=nav toast=在庫に「無」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc） | Q R036@S1: validUntil: "2026-11-25" -> "2026-12-31"
+  有効期限 R036「R8.12.31」 -> mode=nav toast=null | (なし)
+  有効期限 R036「2026年12月31日」 -> mode=nav toast=null | (なし)
+  有効期限 R036「12月末」 -> mode=edit toast=有効期限として読めません: 「12月末」（例: 2026-11-30、11/30、未定）（直して Enter、やめるときは Esc） | (なし)
+  有効期限 R036「来月末」 -> mode=edit toast=有効期限として読めません: 「来月末」（例: 2026-11-30、11/30、未定）（直して Enter、やめるときは Esc） | (なし)
+  MOQ R037「１０」 -> mode=edit toast=有効期限として読めません: 「来月末」（例: 2026-11-30、11/30、未定）（直して Enter、やめるときは Esc） | Q R037@S1: moq: 16 -> 10
+  MOQ R037「10個」 -> mode=edit toast=null | (なし)
+  MOQ R037「1リール」 -> mode=edit toast=MOQとして読めません: 「1リール」（直して Enter、やめるときは Esc） | (なし)
+  MOQ R037「100pcs」 -> mode=edit toast=MOQとして読めません: 「1リール」（直して Enter、やめるときは Esc） | Q R037@S1: moq: 10 -> 100
+
+ERRORS:

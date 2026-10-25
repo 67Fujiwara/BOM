@@ -643,3 +643,97 @@ describe('ラウンド 17 の取り込み（ベテラン）', () => {
     expect(r.rows.map((x) => x.qtyNeeded)).toEqual([5, 3])
   })
 })
+
+describe('ラウンド 18 の取り込み（新人）', () => {
+  it('N18-01 数量だけ変えた行に新の型式（旧と同じ）を書いても、変えていない行を消さない', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t型式変更\nタイマ\tH3CR-A8\tH3CR-A8\tオムロン\t2\t数量変更 1→2\nソケット\tPYF14A\tPYF14A\tオムロン\t4\t数量変更 2→4\n端子台\tXW2B-20G4\t\tオムロン\t4\t\nランプ\tL-1\t\tIDEC\t1\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', 'ソケット', '端子台', 'ランプ'])
+  })
+  it('N17-01 残り 書き写した表の「－」は削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N\t2\t2\nタイマ\tH3CR\tH3CR\t1\t1\n端子台\tXW2B\tXW2B\t4\t4\nランプ\tL-1\t－\t1\t－')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', '端子台'])
+  })
+  it('N18-02 / N18-03 備考の削除不要・撤去不要・削除取消・廃止取りやめ・削除無・廃止品から変更済 は残す、削除します・要削除・Rev.1 削除・不要・撤去済 は削除', () => {
+    const keep = ['削除不要', '撤去不要（流用）', '削除取消（Rev.2で復活）', '廃止取りやめ', '削除無', '廃止品から変更済']
+    const del = ['削除します', '要削除', 'Rev.1 削除', '不要', '撤去済']
+    const rows = [...keep.map((n, i) => `K${i}\tA${i}\t\t1\t${n}`), ...del.map((n, i) => `D${i}\tB${i}\t\t1\t${n}`)]
+    const r = parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量\t備考', 'リレー\tMY2N\tMY4N\t1\t', ...rows].join('\n'))
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', ...keep.map((_, i) => `K${i}`)])
+  })
+  it('N14-02 残り 新の型式の「撤去済」「削除（R012に置換）」は削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\nリレー\tMY2N\tMY4N\t1\nタイマ\tH3Y\t撤去済\t1\nランプ\tL-1\t削除（R012に置換）\t1')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+  it('N18-04 セルの最後・最初に改行のある Excel の複数行のセルを 1 つのセルとして読む', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\n"リレー\n"\tMY4N-D2\tオムロン\t4\nタイマ\t"\nH3CR-A8"\tオムロン\t2')
+    expect(r.rows.map((x) => [x.name?.trim(), x.model?.trim(), x.qtyNeeded])).toEqual([['リレー', 'MY4N-D2', 4], ['タイマ', 'H3CR-A8', 2]])
+  })
+  it('N18-05 / N17-07 残り メーカの DNP（大日本印刷）は残す、実装 無・しない、未実装（将来用）は外す', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '反射フィルム'])
+    const s = parseBomPaste('品名\t型式\t数量\t実装\t備考\nA\tX1\t1\t有\t\nB\tX2\t1\t無\t\nC\tX3\t1\tしない\t\nD\tX4\t1\t\t未実装（将来用）')
+    expect(s.rows.map((x) => x.name)).toEqual(['A'])
+  })
+  it('N18-06 1台目｜2台目 は足す、N18-08 合計が空なら号機を足す、U18-05 数量｜台数 は掛ける', () => {
+    expect(parseBomPaste('品名\t型式\tメーカー\t1台目\t2台目\nリレー\tMY4N\tオムロン\t2\t2').rows[0].qtyNeeded).toBe(4)
+    expect(parseBomPaste('品名\t型式\t1号機\t2号機\t合計\nリレー\tMY4N\t2\t2\t4\nタイマ\tH3CR\t1\t1\t').rows.map((x) => x.qtyNeeded)).toEqual([4, 2])
+    expect(parseBomPaste('品名\t型式\t数量\t台数\nリレー\tMY4N\t2\t3').rows[0].qtyNeeded).toBe(6)
+  })
+  it('N18-07 表題欄の製作台数と 1台当り数量 は掛ける', () => {
+    const r = parseBomPaste('盤名\t制御盤A\t製作台数\t3台\n\n品名\t型式\tメーカー\t1台当り数量\nリレー\tMY4N\tオムロン\t2\nタイマ\tH3CR\tオムロン\t1')
+    expect(r.rows.map((x) => x.qtyNeeded)).toEqual([6, 3])
+    expect(r.warnings.join()).toContain('製作台数')
+  })
+  it('N18-09 Altium の Comment｜Description は Description を部品名', () => {
+    const r = parseBomPaste('Comment\tDescription\tDesignator\tFootprint\tLibRef\tQuantity\tManufacturer\tManufacturer Part Number\n10k\tChip Resistor\tR1, R2\t0603\tRES\t2\tKOA\tRK73H1J')
+    expect(r.rows[0]).toMatchObject({ name: 'Chip Resistor', model: 'RK73H1J', qtyNeeded: 2 })
+  })
+})
+
+describe('ラウンド 18 の取り込み（ベテラン）', () => {
+  it('V18-01 CSV の複数行のセル（コンマを含む）・前後に改行のあるセル', () => {
+    const r = parseBomPaste('部品名,型式,数量,備考\nリレー,MY4N,1,"盤内上段, 左側\n(要確認)"\nタイマ,H3CR,2,')
+    expect(r.rows.map((x) => [x.name, x.qtyNeeded])).toEqual([['リレー', 1], ['タイマ', 2]])
+  })
+  it('V18-02 備考の「取外し不要」「撤去品を流用」は残す', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\t備考\nリレー\tMY2N\tMY4N\t1\t\nタイマ\tH3Y\t\t1\t取外し不要\nランプ\tL-1\t\t1\t撤去品を流用')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', 'ランプ'])
+  })
+  it('V18-03 取付位置だけ変えた行に同じ型式を書いた表は書き写す表でない、〃で書き写した表は書き写す表', () => {
+    const a = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\t変更内容\nA\tX1\tX1\t1\t取付位置変更\nB\tX2\tX2\t1\t取付位置変更\nC\tX3\tX3\t1\t取付位置変更\nD\tX4\t\t1\t\nE\tX5\t\t1\t\nF\tX6\t\t1\t')
+    expect(a.rows.length).toBe(6)
+    const b = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nA\tX1\tX1\t1\t1\nB\t〃\t〃\t〃\t〃\nC\tX3\tX3\t2\t2\nD\tX4\t\t1\t')
+    expect(b.rows.map((x) => x.name)).toEqual(['A', 'B', 'C'])
+  })
+  it('V18-04 全角の「ＤＮＰ」の見出し、実装の列の「-」', () => {
+    const a = parseBomPaste('品名\t型式\t数量\tＤＮＰ\n抵抗A\tR1\t1\t0\n抵抗B\tR2\t1\t1\nコンデンサ\tC1\t1\t0')
+    expect(a.rows.map((x) => x.name)).toEqual(['抵抗A', 'コンデンサ'])
+    const b = parseBomPaste('品名\t型式\t数量\t実装\nA\tX1\t1\tリフロー\nB\tX2\t1\t-')
+    expect(b.rows.map((x) => x.name)).toEqual(['A', 'B'])
+  })
+  it('V18-05 ほかに部品名の列があれば Comment は備考', () => {
+    const r = parseBomPaste('部品名\t型式\tメーカ\t数量\tComment\nリレー\tMY4N\tオムロン\t1\t盤内上段')
+    expect(r.rows[0]).toMatchObject({ name: 'リレー', note: '盤内上段' })
+  })
+  it('V18-06 必要数と手配数があれば必要数', () => {
+    expect(parseBomPaste('品名\t型式\t必要数\t手配数\n抵抗\tR1\t3\t100').rows[0].qtyNeeded).toBe(3)
+  })
+  it('V18-07 削除の下の〃・同上は削除、新の数量 0 の下の〃も削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\nリレーA\tMY2N\tMY4N\t1\nリレーB\tMY2N\t削除\t1\nリレーC\tMY2N\t〃\t1\nリレーD\tMY2N\t同上\t1')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレーA'])
+  })
+  it('V18-08 号機の旧／新が後ろ・2 段目', () => {
+    expect(parseBomPaste('品名\t型式\t1号機(旧)\t2号機(旧)\t1号機(新)\t2号機(新)\nリレー\tMY4N\t1\t1\t2\t3').rows[0].qtyNeeded).toBe(5)
+  })
+  it('V18-09 欠番・取止め・中止・Del、全角の０・0個 は削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N\t1\t2\nA\tX1\t欠番\t1\t\nB\tX2\t取止め\t1\t\nC\tX3\t中止\t1\t\nD\tX4\tDel\t1\t\nE\tX5\tX5\t1\t０\nF\tX6\tX6\t1\t0個')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+  it('V18-10 縦の表題欄（品名・数量 ＋ 制御盤A・2）の下の属性の見出し', () => {
+    const r = parseBomPaste('品名\t数量\n制御盤A\t2\n品名\t色\t型式\t材料\t数量\t担当\nカバー\t白\tC-1\tABS\t2\t山田')
+    expect(r.rows.map((x) => [x.name, x.model, x.qtyNeeded])).toEqual([['カバー', 'C-1', 2]])
+  })
+  it('V18-14 見出しの下の単位だけの行は部品にしない', () => {
+    expect(parseBomPaste('品名\t型式\t数量\t単価\n\t\t(個)\t(円)\nリレー\tMY4N\t2\t100').rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+})

@@ -157,7 +157,7 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   // 最小ロットの指摘（直すのは購買）は、発注数を丸め数量以上にしたら対応済（起票者が確認して閉じる）
   // PM が余剰を却下した行（採用商社が同じ）は、発注数を必要数より多くしない
   if (colKey === 'orderQty' && typeof value === 'number' && r.flags.surplusRejected && r.flags.surplusRejected === (r.adoptedSupplierId ?? '-') && value > r.qtyNeeded)
-    return `${r.id} は PM が最小ロットの余剰を却下しています（発注数は必要数 ${r.qtyNeeded} まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す）`
+    return `${r.id} は PM が最小ロットの余剰を却下しています（発注数は必要数 ${r.qtyNeeded} まで）。ほかの商社・数量で手配してください。PM にもう一度相談するときは、いまの最小ロットの指摘を見送り（Ctrl+. →「見送り」）にしてから起票し直します`
   // ただし余剰が閾値を超えて PM の判断待ちのあいだは対応済にしない（PM が却下したら戻す）
   if (colKey === 'orderQty' && typeof value === 'number' && !(r.flags.pmPending && r.flags.pmReason === '閾値超'))
     for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && (x.status === 'open' || x.status === 'inProgress')))
@@ -565,7 +565,9 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
     else if (inFlight) r.flags.priceCheck = true
     if (r.adoptedSupplierId) {
       const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      const recalculated = roundedQty(q1, aq?.moq, r.packQty, r.unit)
+      // PM が余剰を却下した商社のままなら、MOQ で丸めない（却下した数に戻さない）
+      const rejected = !!r.flags.surplusRejected && r.flags.surplusRejected === r.adoptedSupplierId
+      const recalculated = rejected ? q1 : roundedQty(q1, aq?.moq, r.packQty, r.unit)
       const wasManual = r.orderQty != null && r.orderQty !== roundedQty(q0, aq?.moq, before.packQty, before.unit)
       r.orderQty = recalculated
       if (wasManual) r.flags.orderQtyCheck = true
@@ -670,9 +672,13 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
             // 承認待ちの前の変更セットの行をまとめたら、その行がもう残っていない前の Rev は「まとめた」にする（あとの Rev の決定に従う）
             const oldRev = r.pendingRev
             r.pendingRev = sub.rev
-            if (oldRev != null && oldRev !== sub.rev && !p.rows.some((x) => x.pendingRev === oldRev)) {
+            if (oldRev != null && oldRev !== sub.rev) {
               const old = p.submissions.find((x) => x.rev === oldRev)
-              if (old?.changeSet) old.changeSet.supersededBy = sub.rev
+              if (old?.changeSet) {
+                // この行の前の変更は、あとの変更セットで決める（前の Rev の承認では反映しない・「承認」と出さない）
+                old.changeSet.merged = { ...(old.changeSet.merged ?? {}), [r.id]: sub.rev }
+                if (!p.rows.some((x) => x.pendingRev === oldRev)) old.changeSet.supersededBy = sub.rev
+              }
             }
             r.flags.pmPending = true
             r.flags.pmReason = '変更セット'

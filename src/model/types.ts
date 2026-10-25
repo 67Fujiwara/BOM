@@ -318,7 +318,7 @@ export interface Submission {
   /** 差分の要約 */
   summary: { added: number; modelChanged: number; qtyChanged: number; other: number; cancelled: number }
   /** 変更セット（指摘対応でない変更があるとき） */
-  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; decisionId?: string; rejected?: boolean; /** 承認前に同じ行のあとの変更セットにまとめた（その Rev の決定に従う） */ supersededBy?: number }
+  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; decisionId?: string; rejected?: boolean; /** 承認前に同じ行のあとの変更セットにまとめた（その Rev の決定に従う） */ supersededBy?: number; /** 行ごとに、あとの変更セットにまとめた行（行 ID → まとめた先の Rev） */ merged?: Record<string, number> }
   /** 却下などで取り消された Rev */
   revoked?: boolean
   /** 提出時のスナップショット（設計列） */

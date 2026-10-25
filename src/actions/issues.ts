@@ -290,7 +290,7 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
 export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn') {
   // 取下げが複数あるときは 1 つずつ（x 1 回で 1 社）。どの商社のどの依頼か知らせる
   const list0 = (st().project().rows.find((x) => x.id === rowId)?.flags.formalWithdrawn ?? '').split(' / ').filter(Boolean)
-  if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げ（${list0[0] ?? ''}）を伝えた（確認済）${list0.length > 1 ? `。残り ${list0.length - 1} 件: ${list0.slice(1).join(' / ')}（続けて x）` : ''}`, 'ok'))
+  if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げ（${list0[0] ?? ''}）を伝えた（確認済）${list0.length > 1 ? `。残り ${list0.length - 1} 件: ${list0.slice(1).join(' / ')}（続けて Alt+x）` : ''}`, 'ok'))
   st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : '確認', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
     if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = list0.length > 1 ? list0.slice(1).join(' / ') : undefined

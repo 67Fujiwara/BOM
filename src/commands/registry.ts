@@ -823,11 +823,24 @@ function decisionPanel(r: Row) {
   const p = s.project()
   const c = pm.pmCaseOf(p, r)
   if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
-  const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => decideWithReason(r.id, o.kind) }))
+  // 開いたあとに別のタブで要決定の中身（変更セットの Rev・種別）が変わったら決めない（見ていない変更を承認しない）
+  const rev0 = r.pendingRev
+  const stale = () => {
+    const now = st().project().rows.find((x) => x.id === r.id)
+    if (now && (now.pendingRev !== rev0 || pm.pmCaseOf(st().project(), now) !== c)) {
+      toast(`${r.id} の要決定が、パネルを開いたあとに別のタブで変わりました（${c}${rev0 != null ? ` Rev.${rev0}` : ''} → ${now.pendingRev != null ? `Rev.${now.pendingRev}` : pm.pmCaseOf(st().project(), now)}）。決めていません。開き直してください`, 'err')
+      return true
+    }
+    return false
+  }
+  const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => void (!stale() && decideWithReason(r.id, o.kind)) }))
   // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
   // 先行発注の申請は、理由と金額を見て決められるように題に出す
   const req = c === '先行発注判断' && r.ltbRequest ? ` 申請: ${r.ltbRequest.reason}${r.ltbRequest.amount != null ? `（¥${r.ltbRequest.amount.toLocaleString()}）` : ''}・${r.ltbRequest.by}` : ''
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}）${req}`, rowId: r.id, field: 'status', index: -1, options })
+  // 変更セットは Rev と、まとめた前の Rev を題に出す
+  const merged = c === '変更セット' ? p.submissions.filter((sb) => sb.changeSet?.merged?.[r.id] === r.pendingRev || sb.changeSet?.supersededBy === r.pendingRev).map((sb) => sb.rev) : []
+  const revNote = c === '変更セット' && r.pendingRev != null ? ` Rev.${r.pendingRev}${merged.length ? `（Rev.${merged.join('・')} の変更をまとめた）` : ''}` : ''
+  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}${revNote}）${req}`, rowId: r.id, field: 'status', index: -1, options })
 }
 function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1]) {
   const s = st()
@@ -1653,9 +1666,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const cand = p.rows.filter((x) => isActive(x) && x.adoptedSupplierId && (x.status === 'selected' || (x.flags.reissue && ['formalRequested', 'formalQuoted'].includes(x.status))))
       const working = cand.filter((x) => hasWork(x) || x.pendingRemoval).length
       const pending = cand.filter((x) => x.flags.pmPending || x.flags.ltbPending).length
-      const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.flags.pmPending || x.flags.ltbPending).length
+      const requote = cand.filter((x) => x.flags.requote && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending && !x.flags.ltbPending).length
+      const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.pendingRemoval || x.flags.pmPending || x.flags.ltbPending || x.flags.requote || s.ws.suppliers.find((y) => y.id === x.adoptedSupplierId)?.tradable === false || x.procurement === '支給品' || x.procurement === '社内在庫').length
       const contested = cand.filter((x) => x.flags.contested && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending).length
-      if (!n) return toast(`依頼できる行がありません（選定済・再発行対象の行なし${working || pending ? `。作業中 ${working} 行・承認待ち ${pending} 行は除外` : ''}）`, 'err')
+      if (!n) return toast(`依頼できる行がありません（選定済・再発行対象の行なし${working || pending || requote ? `。作業中 ${working} 行・承認待ち ${pending} 行・再見積要 ${requote} 行は除外` : ''}）`, 'err')
       return confirmDanger(`正式見積依頼書（社外）を出します: 対象 ${n} 行${contested ? `（拮抗 ${contested} 行を含む）` : ''}${working || pending ? `。作業中 ${working} 行・承認待ち ${pending} 行は除外` : ''}。商社に送る書類が作られ、状態が「正式依頼中」になります`, '依頼書を作る', () => void quotes.requestFormalQuotes().then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok')))
     }
     case 'export.selection':

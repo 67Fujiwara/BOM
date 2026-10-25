@@ -32,6 +32,21 @@ const ISSUE_STATUS_OK = ['draft', 'open', 'inProgress', 'fixed', 'answered', 'co
 const userOf = (v: unknown, fallback: Workspace['user']): Workspace['user'] => (isObj(v) && typeof v.name === 'string' && ROLES_OK.includes(String(v.role)) ? (v as unknown as Workspace['user']) : fallback)
 
 /** 読み込んだワークスペースを検証し、欠けている項目を既定値で補う。直せない項目は外して warnings に、全体が読めなければ error を返す */
+/** 41 段より深い入れ子があるか（見つけたらすぐ返す） */
+function tooDeep(v: unknown, depth: number): boolean {
+  if (v === null || typeof v !== 'object') return false
+  if (depth > 40) return true
+  if (Array.isArray(v)) {
+    for (const x of v) if (x !== null && typeof x === 'object' && tooDeep(x, depth + 1)) return true
+    return false
+  }
+  for (const k in v as Record<string, unknown>) {
+    const x = (v as Record<string, unknown>)[k]
+    if (x !== null && typeof x === 'object' && tooDeep(x, depth + 1)) return true
+  }
+  return false
+}
+
 /** 深すぎる入れ子（数千段の配列など）は外す（複製・保存で止まらないように）。外した数を返す */
 function pruneDeep(v: unknown, depth: number, cut: { n: number }): unknown {
   if (v === null || typeof v !== 'object') return v
@@ -48,7 +63,8 @@ function pruneDeep(v: unknown, depth: number, cut: { n: number }): unknown {
 export function sanitizeWorkspace(raw0: unknown): { ws?: Workspace; error?: string; warnings?: string[] } {
   try {
     const cut = { n: 0 }
-    const raw = pruneDeep(raw0, 0, cut)
+    // 深すぎる入れ子があるときだけ複製して外す（普通の保存データは複製しない。起動を遅くしない）
+    const raw = tooDeep(raw0, 0) ? pruneDeep(raw0, 0, cut) : raw0
     const res = sanitizeInner(raw)
     if (cut.n && res.ws) res.warnings = [...(res.warnings ?? []), `入れ子が深すぎる値 ${cut.n} 個は外しました`]
     return res
@@ -99,6 +115,8 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       .map((q) => ({ ...q, validUntil: normDate(q.validUntil), formalValidUntil: normDate(q.formalValidUntil), stock: q.stock === '在庫' || q.stock === '取寄' || q.stock === '受注生産' ? q.stock : null, source: typeof q.source === 'string' ? q.source : undefined, formalDiffReason: typeof q.formalDiffReason === 'string' ? q.formalDiffReason : '', unitPrice: nonNeg(q.unitPrice), leadDays: nonNeg(q.leadDays, true), moq: nonNeg(q.moq), quoteQty: nonNeg(q.quoteQty), formalPrice: nonNeg(q.formalPrice), formalLeadDays: nonNeg(q.formalLeadDays, true), note: typeof q.note === 'string' ? q.note : '' })) as unknown as Project['quotes']
     const negs = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'quoteQty', 'formalPrice', 'formalLeadDays'].some((k) => numOrNull(q[k]) != null && nonNeg(q[k], k === 'leadDays' || k === 'formalLeadDays') === null)).length
     if (negs) warnings.push(`案件 ${p0.id} の見積 ${negs} 件に負の値・範囲外の値（単価・納期・MOQ・数量）があったので空にしました`)
+    const badNums = quotes0.filter((q) => isObj(q) && ['unitPrice', 'leadDays', 'moq', 'quoteQty', 'formalPrice', 'formalLeadDays'].some((k) => q[k] != null && q[k] !== '' && numOrNull(q[k]) == null)).length
+    if (badNums) warnings.push(`案件 ${p0.id} の見積 ${badNums} 件に数として読めない値（単価・納期・MOQ・数量）があったので空にしました`)
     const badDates = quotes0.filter((q) => isObj(q) && ['validUntil', 'formalValidUntil'].some((k) => q[k] != null && q[k] !== '' && !normDate(q[k]))).length
     if (badDates) warnings.push(`案件 ${p0.id} の見積 ${badDates} 件の有効期限が日付（YYYY-MM-DD）として読めないので空にしました`)
     if (p0.dueDate != null && p0.dueDate !== '' && !normDate(p0.dueDate)) warnings.push(`案件 ${p0.id} の納期「${String(p0.dueDate)}」は日付（YYYY-MM-DD）として読めないので空にしました（案件設定で入れ直してください）`)
@@ -197,6 +215,11 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
   // 任意の文字の項目（起因・置換元／先・採用理由など）に文字以外が入っていたら外す
   for (const k of ['lastChangeCause', 'replaces', 'replacedBy', 'adoptReason', 'fromIssue', 'adoptedSupplierId', 'statusChangedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = undefined
   for (const k of ['packQty', 'orderQty', 'needOffset', 'extraCost', 'scoreSnapshot']) if (out[k] != null && (typeof out[k] !== 'number' || !Number.isFinite(out[k] as number))) out[k] = null
+  // 前倒し日数は ±3650 日まで（大きすぎると日付が作れない）
+  if (typeof out.needOffset === 'number' && Math.abs(out.needOffset) > 3650) {
+    out.needOffset = null
+    note('前倒し日数が範囲の外なので外した')
+  }
   for (const k of ['needDateFixed', 'promisedDate', 'dueAt', 'quotedAt']) if (out[k] != null && typeof out[k] !== 'string') out[k] = null
   if (typeof out.qtyNeeded === 'number' && out.qtyNeeded < 0) out.qtyNeeded = 0
   // 日付の項目は、実在する YYYY-MM-DD だけ（「2026-02-30」「明日」は外す）
@@ -236,7 +259,7 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
       if (!(f in base)) continue
       if (v === null && (def === null || f === 'needOffset' || f === 'needDateFixed' || f === 'packQty')) kept[f] = null
       else if (f === 'needDateFixed' && normDate(v)) kept[f] = normDate(v)
-      else if (f === 'needDateFixed' ? false : f === 'needOffset' || f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
+      else if (f === 'needDateFixed' ? false : f === 'needOffset' ? typeof v === 'number' && Number.isFinite(v) && Math.abs(v) <= 3650 : f === 'packQty' ? typeof v === 'number' && Number.isFinite(v) : typeof def === typeof v && (typeof v !== 'number' || Number.isFinite(v))) kept[f] = v
       else note('作業中の値が読めないので外した')
     }
     // 作業中の必要数・入数も、行の値と同じ範囲に
@@ -277,11 +300,9 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>, bad?: 
       out[k] = numOrNull(x)
       continue
     }
-    if (typeof d === typeof x) {
-      if (typeof x === 'number' && !Number.isFinite(x)) continue
-      if (Array.isArray(d) !== Array.isArray(x)) continue
-      out[k] = x
-    }
+    if (typeof d === typeof x && !(typeof x === 'number' && !Number.isFinite(x)) && Array.isArray(d) === Array.isArray(x)) out[k] = x
+    // 型の違う値（true・{}・[]・読めない文字）は既定のまま。知らせる
+    else if (!(typeof d === 'number' && typeof x === 'string')) bad?.push(k)
   }
   for (const [k, x] of Object.entries(v)) if (!(k in out)) out[k] = x
   return out as unknown as T

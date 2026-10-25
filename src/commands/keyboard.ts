@@ -691,6 +691,15 @@ export function handleKeyDown(e: KeyboardEvent) {
   if (/^(Ctrl\+)?Alt\+(Shift\+)?[A-Z0-9]$/.test(key)) return toast(`${key} は割り当てがありません（F1 でキーの一覧）`, 'info')
   // Excel の癖のキー（範囲選択・下へコピー）は使えないことを知らせる
   if (key === 'Ctrl+D') return (e.preventDefault(), toast('Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）', 'info'))
+  // Excel の癖のキー（切り取り・今日の日付・右へコピー・行の削除・セル内改行）も、無いことを知らせる
+  const EXCEL_KEYS: Record<string, string> = {
+    'Ctrl+X': 'Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます）',
+    'Ctrl+;': 'Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます',
+    'Ctrl+R': 'Ctrl+R（右へコピー）はありません。行の複製は Alt+Shift+D',
+    'Ctrl+-': 'Ctrl+-（行の削除）はありません。行の取消は Shift+Delete',
+    'Alt+Enter': 'Alt+Enter（セル内改行）はありません。備考などは 1 行で入れてください',
+  }
+  if (EXCEL_KEYS[key]) return (e.preventDefault(), toast(EXCEL_KEYS[key], 'info'))
   if (/^Shift\+Arrow(Up|Down|Left|Right)$/.test(key)) return toast('セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）', 'info')
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）
   const ch = e.key

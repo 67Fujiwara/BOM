@@ -416,11 +416,13 @@ export function decide(rowId: string, kind: DecisionKind, reason: string, extra?
 export function confirmSettings(reason = '既定で確定') {
   const s = st()
   if (s.user().role !== 'pm') return s.toastMsg('権限なし（案件設定の確定は PM）', 'err')
+  if (s.project().settings.pmConfirmed) return s.toastMsg('案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」）', 'info')
   s.commit('案件設定を確定', (p) => {
     p.settings.pmConfirmed = true
     for (const c of p.caseDecisions) if (c.kind === '案件設定確定') c.status = 'done'
     pushDecision(p, s.user(), '案件設定確定', reason)
   })
+  s.toastMsg('案件設定を確定しました（購買・設計に伝わります）', 'ok')
 }
 
 export interface Impact {
@@ -448,7 +450,7 @@ export function simulateSettings(p: Project, patch: { dueDate?: string | null; p
     const oldNeed = rowNeedDate(p, r)
     if (r.adoptedSupplierId) {
       const q = next.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      const ld = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays)
+      const ld = q?.formalLeadDays ?? (q?.stock === '在庫' ? 0 : q?.leadDays)
       if (need && ld != null && ld >= 0 && addDays(today, ld) > need) impact.leadNG.push({ rowId: r.id, status: r.status })
       if (['formalRequested', 'formalQuoted'].includes(r.status) && need !== oldNeed) impact.reissue.push(r.id)
       const before = scoreRow(p, r, s.ws.suppliers)[0]

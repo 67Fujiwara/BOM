@@ -795,7 +795,7 @@ export function pasteCells(startRowId: string, startCol: string, visibleCols: st
         skipped++
         return
       }
-      const parsed = parseValue(col, v)
+      const parsed = parseValue(col, v.trim())
       if (!parsed.ok) errors.push(`${i + 1}行目 ${colDef(col)?.label}: ${parsed.error}`)
       else cells.push({ row: i, col, value: parsed.value })
     })

@@ -701,6 +701,8 @@ export function handleKeyDown(e: KeyboardEvent) {
     'Ctrl+-': 'Ctrl+-（行の削除）はありません。行の取消は Shift+Delete',
     'Alt+Enter': 'Alt+Enter（セル内改行）はありません。備考などは 1 行で入れてください',
   }
+  // 再読み込み（Ctrl+R）・縮小（Ctrl+-）はブラウザの操作。止めずに通す
+  if (key === 'Ctrl+R' || key === 'Ctrl+-') return
   if (EXCEL_KEYS[key]) return (e.preventDefault(), toast(EXCEL_KEYS[key], 'info'))
   if (/^Shift\+Arrow(Up|Down|Left|Right)$/.test(key)) return toast('セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）', 'info')
   // 割り当ての無い文字 → 上書き編集（Excel と同じ）

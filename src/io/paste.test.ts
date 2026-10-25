@@ -816,3 +816,62 @@ describe('ラウンド 19 の取り込み（新人）', () => {
     expect(r.warnings.join()).toContain('MY2N→MY4N-D2')
   })
 })
+
+describe('ラウンド 19 の取り込み（ベテラン）', () => {
+  const names = (t: string) => parseBomPaste(t).rows.map((x) => x.name)
+  it('V19-01 変えた行だけ書く表で、変えていない行の「－」は変えていない印（取付位置だけ変えた行に同じ型式があっても）', () => {
+    const t = '品名\t型式（旧）\t型式（新）\t備考\nA\tX1\tY1\t型式変更\nB\tX2\tX2\t取付位置変更\nC\tX3\tX3\t取付位置変更\nD\tX4\tX4\t取付位置変更\nE\tX5\t－\t\nF\tX6\t－\t'
+    expect(names(t)).toEqual(['A', 'B', 'C', 'D', 'E', 'F'])
+  })
+  it('V19-02 書き写した行が何行もあり削除が多い表は、削除を黙って取り込まない（【削除？】で聞く）', () => {
+    const copies = Array.from({ length: 6 }, (_, i) => `K${i}\tM${i}\tM${i}`)
+    const dels = Array.from({ length: 4 }, (_, i) => `D${i}\tN${i}\t`)
+    const r = parseBomPaste(['品名\t型式（旧）\t型式（新）', 'C\tOLD\tNEW', ...copies, ...dels].join('\n'))
+    expect(r.rows.filter((x) => x.note?.startsWith('【削除？】')).map((x) => x.name)).toEqual(['D0', 'D1', 'D2', 'D3'])
+  })
+  it('V19-03 号機ごとの変更表で、新の号機が空の行は旧の号機を足す', () => {
+    const r = parseBomPaste('品名\t型式\t1号機(旧)\t2号機(旧)\t1号機(新)\t2号機(新)\nリレー\tMY4N\t1\t1\t7\t7\n端子台\tXW2B\t1\t1\t\t')
+    expect(r.rows.map((x) => [x.name, x.qtyNeeded])).toEqual([['リレー', 14], ['端子台', 2]])
+  })
+  it('V19-04 CSV の「"」（〃の代わり）と、次の行のインチの「"」を囲みにしない（表題の行があっても）', () => {
+    const csv = '部品表 制御盤A\n品名,型式,メーカー,数量\nリレーA,MY4N,オムロン,1\nリレーB,MY4N,",2\nグランド,OA-W16 1/2",オーム電機,3\nヒューズ,F-10,オムロン,4'
+    const r = parseBomPaste(csv)
+    expect(r.rows.map((x) => x.name)).toEqual(['リレーA', 'リレーB', 'グランド', 'ヒューズ'])
+  })
+  it('V19-04 続き: 普通の見出しの CSV のインチの「"」、見出しの 1 列目が複数行のセル、タブ区切りの備考の「"」の次のインチ', () => {
+    const a = parseBomPaste('品名,型式,メーカー,数量\nリレーA,MY4N,オムロン,1\nリレーB,MY4N,",2\nグランド,OA-W16 1/2",オーム電機,3\nヒューズ,F-10,オムロン,4')
+    expect(a.rows.map((x) => x.name)).toEqual(['リレーA', 'リレーB', 'グランド', 'ヒューズ'])
+    const b = parseBomPaste('"部品名\n(品名)",型式,メーカー,数量\nリレーA,MY4N,オムロン,1\nリレーB,MY4N,",2\nグランド,OA-W16,オーム電機,3\nヒューズ,F-10,オムロン,4')
+    expect(b.rows.map((x) => x.name)).toEqual(['リレーA', 'リレーB', 'グランド', 'ヒューズ'])
+    const c = parseBomPaste('品名\t型式\tメーカー\t備考\nリレーA\tMY4N\tオムロン\t予備\nリレーB\tMY4N\tオムロン\t"\nグランド 1/2"\tOA-W16\tオーム電機\t\nヒューズ\tF-10\tオムロン\t')
+    expect(c.rows.map((x) => x.name)).toEqual(['リレーA', 'リレーB', 'グランド 1/2"', 'ヒューズ'])
+  })
+  it('V19-05 部品名「未実装基板」・備考「未実装時は短絡」は実装しない印ではない、「未実装（将来用）」は外す', () => {
+    expect(names('品名\t型式\t備考\n未実装基板\tPCB-1\t未実装時は短絡\nリレー\tMY4N\t')).toEqual(['未実装基板', 'リレー'])
+    expect(names('品名\t型式\t備考\nタイマ\tH3CR\t未実装（将来用）\nリレー\tMY4N\t')).toEqual(['リレー'])
+  })
+  it('V19-06 備考が削除の印だけのときだけ削除、文（保留・見送り・注意・次回）は残す。「…のため削除」「→削除」「ユニットごと削除」「削除せよ」は削除', () => {
+    const keep = ['削除は次回', '削除保留', '削除見送り', '削除検討中', '削除撤回', '廃止延期', '削除禁止', '取外し時注意', '撤去時は2名で作業', '取外し工具を使用', '削除しません']
+    const del = ['R012に置換のため削除', '→削除', 'ユニットごと削除', '削除せよ', '旧品削除']
+    const rows = [...keep.map((n, i) => `K${i}\tA${i}\t\t1\t${n}`), ...del.map((n, i) => `D${i}\tB${i}\t\t1\t${n}`)]
+    const r = parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量\t備考', 'リレー\tMY2N\tMY4N\t1\t', ...rows].join('\n'))
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', ...keep.map((_, i) => `K${i}`)])
+  })
+  it('V19-07 取付位置・変更内容を書いた行は、同じ型式を書いても書き写しに数えない', () => {
+    const t = '品名\t型式（旧）\t型式（新）\t変更内容\nA\tX1\tY1\t型式変更\nB\tX2\tX2\t取付位置変更\nC\tX3\tX3\t取付位置変更\nD\tX4\tX4\t取付位置変更\nE\tX5\t\t\nF\tX6\t\t'
+    expect(names(t)).toEqual(['A', 'B', 'C', 'D', 'E', 'F'])
+  })
+  it('V19-08 変更後の部品名・備考が「取外し工具」「撤去時注意」でも削除にしない', () => {
+    const r = parseBomPaste('品名（旧）\t品名（新）\t型式\t備考（旧）\t備考（新）\n工具\t取外し工具\tTK-2\t盤内\t撤去時注意\nジャッキ\t撤去用ジャッキ\tJK-1\t盤内\t取外し時は2名')
+    expect(r.rows.map((x) => [x.name, x.note])).toEqual([['取外し工具', '撤去時注意'], ['撤去用ジャッキ', '取外し時は2名']])
+  })
+  it('V19-09 削除の下の〃・同上は、削除済・×・不要・撤去済・Rev.1 削除・0個 でも削除', () => {
+    for (const mark of ['削除済', '×', '不要', '撤去済', 'Rev.1 削除', '削除（R012に置換）']) {
+      const r = parseBomPaste(`品名\t型式（旧）\t型式（新）\t数量\nリレーA\tMY2N\tMY4N\t1\nリレーB\tMY2N\t${mark}\t1\nリレーC\tMY2N\t〃\t1`)
+      expect(r.rows.map((x) => x.name), mark).toEqual(['リレーA'])
+    }
+  })
+  it('V19-10 数量と手配数があれば数量', () => {
+    expect(parseBomPaste('品名\t型式\t数量\t手配数\n抵抗\tR1\t3\t100').rows[0].qtyNeeded).toBe(3)
+  })
+})

@@ -1,0 +1,28 @@
+A R006 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]]
+B R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+publish 指定商社 → [変更セット（7 行: R006, R007, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+bulk → 採用 67 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 0
+A note (working) → 採用 67 / 拮抗 31（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 31 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+publish A → [変更セット（1 行: R006）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+before stop R006 指定商社 st=selected adopt=S3 reason=指定先（固定） oq=12 flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]] | 選定済
+before stop R007 指定商社 st=formalQuoted adopt=S3 reason=指定先（固定） oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,33103]] | 正式見積済
+after stop R006 指定商社 st=quoted adopt=- reason= oq=12 flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]] withdrawn= - | 見積済 ball design
+after stop R007 指定商社 st=quoted adopt=- reason= oq=2 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] withdrawn= ミスミ P-2026-041-S3-F1 | 見積済 · 正式依頼取下げ ball design
+statusbar A ナビR006 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+statusbar B ナビR007 ID正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（元の商社に取り下げを伝えたら x）購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+purch 4 has A,B false true
+design 4 has A,B true true
+design status A 見積済
+formal →  → 依頼できる行がありません（選定済・再発行対象の行なし）
+files []
+after formal R006 指定商社 st=quoted adopt=- reason= oq=12 flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]] withdrawn= - | 見積済
+after formal R007 指定商社 st=quoted adopt=- reason= oq=2 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] withdrawn= ミスミ P-2026-041-S3-F1 | 見積済 · 正式依頼取下げ
+PASS J2-1 指定先が取引停止（ミスミ）の選定済の行に、黙って正式見積の依頼書を出さない（除外するか、取引停止と知らせる） ::  → 依頼できる行がありません（選定済・再発行対象の行なし） / []
+PASS J2-2 取引停止の指定先の行に、購買・設計が気づける印がある（状態の列・ステータスバー・4） :: A text=見積済 sb=ナビR006 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く design4=true
+B state for order R007 指定商社 st=quoted adopt=- reason= oq=2 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済 · 正式依頼取下げ
+order B → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | ordered false
+PASS J2-3 指定先が取引停止の正式見積済の行は、黙って発注にしない（止めるか、知らせる） :: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） ordered=false before=quoted
+PASS J2-4 取下げの印と依頼先が食い違わない（同じミスミに出し直した行に「ミスミへの取下げ」が残らない／取下げた商社に依頼し直さない） :: [["R006","quoted",null,null],["R007","quoted",null,"ミスミ P-2026-041-S3-F1"]]
+ERRORS []
+== 4/4 PASS

@@ -25,6 +25,7 @@ async function round(qty, winner) {
 }
 const a = await round(q0 * 3, O)
 log('to O: header', JSON.stringify(a.head), 'diff', JSON.stringify(a.diff))
+check('K9-0 その行を初めて送る商社（O）の差分シートに、O が受け取っていない「旧」の値（必要数 ' + q0 + ' → ' + q0 * 3 + '）を出さない', !a.diff.some((r) => r[1] === 'qtyNeeded'), JSON.stringify(a.diff))
 p = await t.proj(); const wdA = p.rows.find((r) => r.id === Y).flags.formalWithdrawn ?? ''
 check('K9-1 O に出した時点で、ad への取下げ（まだ伝えていない）が残る', wdA.includes(NAMES[ad]), wdA)
 const b = await round(q0 * 4, ad)

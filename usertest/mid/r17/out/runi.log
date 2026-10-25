@@ -1,0 +1,15 @@
+i5-reject == 3/3 PASS
+i1 == 7/7 PASS
+i6 == 3/3 PASS
+i7-approve == 2/2 PASS
+i2 == 4/4 PASS
+i3 == 5/5 PASS
+i7-multi == 1/1 PASS
+i4 == 2/3 PASS
+i5-sel == 4/4 PASS
+i7-ack == 1/1 PASS
+i5-quoted == 2/2 PASS
+i8 == 2/2 PASS
+i9-supplyreq == 1/1 PASS
+i9-partial == 1/1 PASS
+DONE

@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /home/user/BOM/usertest/veteran/r17
-while ! grep -q DONE batchR.status 2>/dev/null; do sleep 10; done
+# （再開）batchS2 と並行に流す
 run() { local name=$1; shift; echo "== $name $(date +%T) load=$(cut -d' ' -f1-3 /proc/loadavg)" >> batchA.status; env "$@" > "$name.log" 2>&1; echo "   exit $? $(date +%T)" >> batchA.status; }
 run 41-norow-view-5176 PORT=5176 node r12-41-norow-view.mjs
 run 41-norow-view-5198 PORT=5198 node r12-41-norow-view.mjs

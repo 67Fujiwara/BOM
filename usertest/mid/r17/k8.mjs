@@ -9,7 +9,7 @@ let p = await t.proj()
 const cands = p.rows.filter((r) => r.status === 'quoted' && r.procurement === '相見積' && !r.working && r.maker && p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.unitPrice != null && q.leadDays >= 0).length === 3)
 const F = cands[0].id, G = cands[1].id
 log('F', h.show(p, F)); log('G', h.show(p, G))
-for (const id of [F, G]) for (const sid of ['S1', 'S2', 'S3']) await h.decline(id, sid)
+for (const sid of ['S1', 'S2', 'S3']) await h.decline(F, sid)
 p = await t.proj(); log('F', h.show(p, F), '|', await h.status(F))
 await t.press('1'); await t.goto(F); await t.press('Home'); await t.press('Control+.'); await page.waitForTimeout(100); let qf = await t.panel(); log('Ctrl+. F', JSON.stringify(qf?.options ?? []))
 const oi = (qf?.options ?? []).findIndex((o) => /ほかの商社に依頼/.test(o))
@@ -33,7 +33,8 @@ check('K8-4 RS の回答で見積済 → a で RS を採用', rF.adoptedSupplier
 await t.role('purchasing'); const n0 = t.downloads.length; const fm = await t.requestFormal(); const f0 = await h.files(n0)
 log('formal →', fm, JSON.stringify(f0.filter((f) => f.ids.includes(F)).map((f) => f.sup)))
 check('K8-5 正式見積の依頼が RS に出る', f0.some((f) => /RS/.test(f.sup) && f.ids.includes(F)), JSON.stringify(f0.map((f) => [f.sup, f.ids.length])))
-// G: 設計に代替を相談
+// G: 設計に代替を相談（RS への依頼のあとで 3 社辞退）
+for (const sid of ['S1', 'S2', 'S3']) await h.decline(G, sid)
 p = await t.proj(); log('G now', h.show(p, G), '|', await h.status(G))
 await t.press('1'); await t.goto(G); await t.press('Home'); await t.press('Control+.'); await page.waitForTimeout(100); qf = await t.panel(); const gi = (qf?.options ?? []).findIndex((o) => /代替を相談/.test(o)); log('Ctrl+. G', JSON.stringify(qf?.options ?? []))
 if (gi >= 0) { for (let k = 0; k < gi; k++) await t.press('ArrowDown'); await t.press('Enter'); await page.waitForTimeout(150); let pn = await t.panel(); log('after pick', pn?.kind, pn?.title); let g = 0; while (pn && g++ < 3) { await page.keyboard.press('Enter'); await page.waitForTimeout(100); pn = await t.panel() } log('toast', await t.toast()); log('publish →', await t.publish()) } else await t.press('Escape')

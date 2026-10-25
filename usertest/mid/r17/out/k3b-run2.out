@@ -1,0 +1,13 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X after stop R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] | 見積済 · 先行発注判断 ball pm case 先行発注判断
+X need date 2026-11-13 formalDays 7
+PM 7 has X true
+scoreRow (推奨) [["S1",99.2]]
+FAIL K3B-1 取引停止の商社（因幡）がスコアの推奨に出ない（客先指定品の指定先でも） :: [["S1",99.2]]
+PM y → R034: 先行発注許可
+X after y R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] | 見積済 · 先行発注判断 ball pm
+PASS K3B-2 PM の先行発注の許可で、取引停止の因幡を採用しない :: R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]]
+order X → 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） | R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] ordered false
+PASS K3B-3 取引停止の因幡に発注しない :: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請） ordered=false adopt=undefined
+ERRORS []
+== 2/3 PASS

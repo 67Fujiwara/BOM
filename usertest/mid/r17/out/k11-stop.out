@@ -1,0 +1,14 @@
+X R081 publish → [変更セット（6 行: R081, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rough S2 → 6 行 × 1 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [["立花エレテック",true]]
+X R081 指定商社 st=quoting adopt=- reason= oq=- flags={} quotes=[["S2",null,null,null]] | 見積中 0/1
+S2 answer EDIT-ERR 6 行 × 1 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） / EDIT-ERR 6 行 × 1 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+X answered R081 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=3 flags={} quotes=[["S2",5000,10,null]] | 選定済
+X now R081 指定商社 st=quoted adopt=- reason= oq=3 flags={} quotes=[["S2",5000,10,null]] | 見積済 ball design
+purch Ctrl+. X []
+PASS K11-1 指定商社の行の購買の Ctrl+. に「ほかの商社に依頼する」（指定先以外への依頼）を出さない :: []
+rough all → 5 行 × 2 社に依頼（回答期限 2026-10-30） [["因幡電機",false],["ミスミ",false]]
+X after all R081 指定商社 st=quoted adopt=- reason= oq=3 flags={} quotes=[["S2",5000,10,null]] | 見積済 targets null
+PASS K11-2 「相見積先すべて」で、指定商社の行を指定先以外の商社（因幡・ミスミ）に頼まない（指定先を変えるのは設計） :: [["因幡電機",false],["ミスミ",false]]
+PASS K11-3 行は設計のボール（指定先を変える）のまま :: design
+ERRORS []
+== 3/3 PASS

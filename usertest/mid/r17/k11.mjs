@@ -5,7 +5,7 @@ import { launch, check, log, summary } from './lib.mjs'
 import { helpers } from './h.mjs'
 const mode = process.argv[2] ?? 'decline'
 const t = await launch(); const { page } = t; const h = helpers(t)
-await t.open('design')
+await t.open('design'); await t.press('1')
 const X = await h.addRow('R010', '指定品テスト', 'K11-' + mode.toUpperCase() + '-1', 'オムロン', '指定商社', '立花エレテック', '3')
 log('X', X, 'publish →', await t.publish('1'))
 await t.role('purchasing'); const r1 = await h.requestTo('S2'); log('rough S2 →', r1.msg, JSON.stringify(r1.f.map((f) => [f.sup, f.ids.includes(X)])))

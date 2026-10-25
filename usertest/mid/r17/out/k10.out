@@ -1,0 +1,20 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+ミスミ採用 ["R005","R020","R032","R056","R057","R069"]
+A panel 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります
+B import → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」 B S3 tradable false
+A S3 tradable false A panel still 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります
+A confirm → 68 行 × 2 社に正式見積を依頼 [["因幡電機",43],["立花エレテック",25]]
+PASS K10-1 別のタブでミスミを取引停止にした直後、開いていた確認パネルから確定してもミスミに依頼書を出さない :: [["因幡電機",43],["立花エレテック",25]]
+ミスミ採用だった行 [["R005","quoted",null,null],["R020","quoted",null,null],["R032","quoted",null,null],["R056","quoted",null,null],["R057","quoted",null,null],["R069","quoted",null,null]]
+PASS K10-2 ミスミ採用だった行は採用が外れ、ミスミへの取下げを出す用事も無い（出していないので） :: [["R005","quoted",null,null],["R020","quoted",null,null],["R032","quoted",null,null],["R056","quoted",null,null],["R057","quoted",null,null],["R069","quoted",null,null]]
+state R005 相見積 st=quoted adopt=- reason= oq=12 flags={"ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] | 見積済 · 先行発注判断 ball pm
+state R020 相見積 st=quoted adopt=- reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] | 見積済 ball design
+state R032 相見積 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] | 見積済 · 先行発注判断 ball pm
+state R056 相見積 st=quoted adopt=- reason= oq=5 flags={} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]] | 見積済 ball design
+state R057 相見積 st=quoted adopt=- reason= oq=10 flags={} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]] | 見積済 ball design
+state R069 相見積 st=quoted adopt=- reason= oq=2 flags={"ltbPending":true} quotes=[["S1",8830,24,null],["S2",8758,24,null],["S3",10004,16,null]] | 見積済 · 先行発注判断 ball pm
+A purch 4 has M[0] false
+A design 4 has M [true,true,false,true,true,false]
+PASS K10-3 採用が外れた行が選定者（設計）の 4 に出る（PM の判断待ちの行は除く） :: [true,true,false,true,true,false]
+ERRORS []
+== 3/3 PASS

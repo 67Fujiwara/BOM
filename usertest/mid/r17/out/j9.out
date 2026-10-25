@@ -1,0 +1,29 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+O1 R020 O2 R056 O3 R057
+O3 note (working) → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 73 行 × 3 社に正式見積を依頼。除外: 作業中 1 行 / 承認待ち 0 行 / 再見積要 0 行
+order O1 → R020: 発注済にしました
+publish O3 → [変更セット（6 行: R057, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+before stop R020 相見積 st=ordered adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,2935]] | 発注済
+before stop R056 相見積 st=formalRequested adopt=S3 reason= oq=5 flags={} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]] | 正式依頼中
+before stop R057 相見積 st=selected adopt=S3 reason= oq=10 flags={} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]] | 選定済
+after stop (load) R020 相見積 st=ordered adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,2935]] withdrawn= - | 発注済 ball purchasing
+after stop (load) R056 相見積 st=quoted adopt=- reason= oq=5 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]] withdrawn= ミスミ P-2026-041-S3-F1 | 見積済 · 正式依頼取下げ ball design
+after stop (load) R057 相見積 st=quoted adopt=- reason= oq=10 flags={} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]] withdrawn= - | 見積済 ball design
+INFO 読み込み直後の O2・O3 の採用 {"R056":null,"R057":null}
+after receive R020 相見積 st=received adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,2935]] withdrawn= - | 入荷済 ball null
+after receive R056 相見積 st=quoted adopt=- reason= oq=5 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]] withdrawn= ミスミ P-2026-041-S3-F1 | 見積済 · 正式依頼取下げ ball design
+after receive R057 相見積 st=quoted adopt=- reason= oq=10 flags={} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]] withdrawn= - | 見積済 ball design
+receive O1 → R020: 入荷済にしました
+PASS J9-1 取引停止の前に発注した行は、採用・発注のまま入荷できる（取下げ・選び直しにしない） :: R020 相見積 st=received adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,2935]] R020: 入荷済にしました
+PASS J9-2 正式依頼中の行は採用が外れ「正式依頼取下げ（ミスミ）」、選び直しへ :: R056 相見積 st=quoted adopt=- reason= oq=5 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]]
+PASS J9-3 選定済の行は採用が外れ、選び直しへ（取下げは付かない） :: R057 相見積 st=quoted adopt=- reason= oq=10 flags={} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]]
+PASS J9-4 読み込み直後（操作の前）から、取引停止の商社の採用は表示上も外れている :: {"R056":null,"R057":null}
+design 4 has O2,O3 true true
+design a R056 → R056 を 立花エレテック で採用（スコア 72.9 / 在庫即納・MOQ 10）
+design a R057 → R057 を 因幡電機 で採用（スコア 74.2 / 納期NG(4日超過)）
+after a R056 相見積 st=selected adopt=S2 reason=拮抗 oq=10 flags={"formalWithdrawn":"ミスミ P-2026-041-S3-F1"} quotes=[["S1",61727,27,null],["S2",61988,0,null],["S3",62352,9,null]] | 選定済 · 正式依頼取下げ
+after a R057 相見積 st=selected adopt=S1 reason= oq=10 flags={"leadNG":true} quotes=[["S1",125,23,null],["S2",122,27,null],["S3",111,12,null]] | 選定済 · 納期NG
+PASS J9-5 選び直しで取引停止の商社（ミスミ）は選ばれない :: ["S2","S1"]
+ERRORS []
+== 5/5 PASS

@@ -1,0 +1,35 @@
+== 購買: 正式見積を依頼 → 確認で Enter（既定は「やめる」）→ もう一度開いて 2 → Enter
+  選定済: R001 R002 R003 R034 R045
+  panel: 正式見積依頼書（社外）を出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+  toast: やめました（何も変えていません）
+  toast: やめました（何も変えていません）
+  R001:formalRequested:cancel=false:flags={"leadNG":false,"reissue":false}
+  R002:formalRequested:cancel=false:flags={"leadNG":false,"reissue":false}
+  R003:formalRequested:cancel=false:flags={"leadNG":true,"reissue":false}
+  R034:formalRequested:cancel=false:flags={"leadNG":false,"reissue":false}
+  R045:formalRequested:cancel=false:flags={"leadNG":false,"reissue":false}
+== 設計: R001 を「行を削除」（パレット）→ 確認 → Ctrl+Enter → 理由 3 → Enter
+  panel: - | toast R001 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+  toast: R001 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ） | R001:formalRequested:cancel=false:flags={"leadNG":false,"reissue":false}
+  panel: 変更セット（7 行: R001, R004, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  toast: 行 7（Rev.2） を公開しました | R001:cancelled:cancel=false:flags={"leadNG":false,"reissue":false,"formalWithdrawn":"因幡電機 P-2026-041-S1-F1"}
+== 購買: 受信箱・F8 で回る → 案内のとおり x
+  [purchasing start] view=9 cur=R001/q.unitPrice@S1 panel=null | hints: F1ヘルプ | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [F8 1] view=9 cur=R001/status panel=null | hints: ?ヘルプ | toast: undefined
+  [x] view=9 cur=R001/status panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  R001:cancelled:cancel=false:flags={"leadNG":false,"reissue":false}
+  [F8 after x] view=9 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+== 購買: ビュー 4 要確認 に切り替えて F8 → x（ステータスバーの案内のとおり）
+  [4] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  [知らせのとおり Alt+4] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  view4 rows: R054
+  [v4 F8 1] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  [v4 F8 2] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  [v4 F8 3] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  [v4 F8 4] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R001: 正式依頼の取下げ（因幡電機 P-2026-041-S1-F1）を伝えた（確認済）
+  [v4 x] view=4 cur=R054/status panel=null | hints: ?ヘルプ F8次の問題 Shift+I指摘 Space開く | toast: R054 の差分を確認済にしました（購買として）
+  R001:cancelled:cancel=false:flags={"leadNG":false,"reissue":false}
+== 受信箱（Ctrl+K 受信箱）に取下げは出ているか
+  panel: P-2026-041 第3ライン 搬送制御盤 納期 2026-11-23 / 提出 Rev.2 / 設計 68 購買 10 PM 1 / 更新 10/25 13:06 佐藤 あなた宛 10 ＋ 新しいBOM を作る Enter 開く ↑ / ↓ 選択 Esc 閉じる
+
+ERRORS:

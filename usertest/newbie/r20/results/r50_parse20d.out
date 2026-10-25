@@ -1,0 +1,5 @@
+[C2 full-copy-delete-dash-2rows] INFO (old≠new)
+   new: MY4N-D2:2 H3CR-A8:1 NF32-SV:1 XW2B-20G4:4 L-1:1 | map=name,-,model,maker,-,qtyNeeded
+   old: MY4N-D2:2 H3CR-A8:1 XW2B-20G4:4
+   warn: 「数量（新）」が空の 2 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+MISMATCHES 0

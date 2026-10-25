@@ -1,0 +1,90 @@
+== A 1 つ飛ばして Esc → Ctrl+Shift+F でやり直し → 全部飛ばす
+  [start] seq=true cur=R005/model panel=quickfix | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x）  | toast: null
+  [skip1] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [Esc] seq=false cur=R009/maker panel=null |  | toast: null
+  [restart] seq=true cur=R009/maker panel=quickfix | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表で | toast: null
+  [A restart end] seq=false cur=R009/maker panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  A restart: 開いた問題 7 件 R009 R016 R022 R041 R054 R061 R005
+== B 3 つ飛ばして Esc → 表で ↓ 少し動く → Ctrl+Shift+F → 全部飛ばす
+  [skip3] seq=true cur=R022/model panel=quickfix | 直し方の候補 R022 サージ保護器 1 購買の提案 LT-C32AC385A を適用して置換（I-002） 2 飛ばして次の問題へ（この問 | toast: null
+  [moved] seq=false cur=R024/model panel=null |  | toast: null
+  [restart] seq=true cur=R041/maker panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。 | toast: null
+  [B restart end] seq=false cur=R041/maker panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  B restart: 開いた問題 7 件 R041 R054 R061 R005 R009 R016 R022
+== C 全部飛ばして一周 → もう一度 Ctrl+Shift+F（二回目も全部見られるか）
+  [C1 end] seq=false cur=R005/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  C1: 開いた問題 7 件 R005 R009 R016 R022 R041 R054 R061
+  [C2 end] seq=false cur=R005/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  C2: 開いた問題 7 件 R005 R009 R016 R022 R041 R054 R061
+== D Esc → リロード → Ctrl+Shift+F
+  [D after reload end] seq=false cur=R005/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  D after reload: 開いた問題 7 件 R005 R009 R016 R022 R041 R054 R061
+== E 2 つ飛ばして、パネルの外の表をクリック（マウス）→ Ctrl+Shift+F
+  [skip2] seq=true cur=R016/model panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格電流（例: 10A）まで書いてください: 編集する 2 CP | toast: null
+click err TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-row-id="R003"] td').nth(3)[22m
+[2m    - locator resolved to <td class="" data-col="category">制御</td>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <span>CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確…</span> from <div class="overlay" data-testid="panel-quickfix">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <span>CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確…</span> from <div class="overlay" data-testid="panel-quickfix">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="overlay" data-testid="panel-quickfix">…</div> intercepts pointer events[22m
+[2m  14 × retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m       - waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <span>CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確…</span> from <div class="overlay" data-testid="panel-quickfix">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m       - waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <span>CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確…</span> from <div class="overlay" data-testid="panel-quickfix">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m       - waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <div class="overlay" data-testid="panel-quickfix">…</div> intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m       - waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <div class="overlay" data-testid="panel-quickfix">…</div> intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <span>CP30 は定格電流（例: 10A）まで書いてください: あとで（いまは飛ばす。公開までに直すか確…</span> from <div class="overlay" data-testid="panel-quickfix">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+  [clicked R003] seq=true cur=R016/model panel=quickfix | 直し方の候補 R016 サーキットプロテクタ 2P 10A 1 CP30 は定格電流（例: 10A）まで書いてください: 編集する 2 CP | toast: null
+  [E restart end] seq=false cur=R005/model panel=null |  | toast: 順番に直すモード: 一周しました（残りの問題 7 件はそのまま。F8 で回れます）
+  E restart: 開いた問題 5 件 R016 R022 R041 R054 R061
+
+ERRORS:

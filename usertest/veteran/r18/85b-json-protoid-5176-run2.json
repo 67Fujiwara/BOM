@@ -1,0 +1,166 @@
+[
+  {
+    "name": "P constructor",
+    "ms": 837,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 81,
+      "issues": 5,
+      "quotes": 228,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "P constructor の行で操作",
+    "seq": [
+      "G→view-1/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+6→view-6/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-6/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "a→view-6/constructor 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Shift+A→view-6/constructor 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "PAL:重み→view-6/constructor 部品名/パネル/panel-settings «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+1→view-1/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-1/constructor 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+Shift+I→view-1/constructor 部品名/パネル/panel-issue «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "T:k要確認→view-1/constructor 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Enter→view-1/constructor 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Control+Enter→view-1/constructor 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "2→view-1/constructor 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "Enter→view-1/constructor 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»",
+      "Alt+4→view-4/constructor 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»"
+    ],
+    "row": "constructor設計制4X-constructorFX5-4AD三菱電機1個同等品可見積済10/27",
+    "errs": []
+  },
+  {
+    "name": "P __proto__",
+    "ms": 776,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 81,
+      "issues": 5,
+      "quotes": 228,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "P __proto__ の行で操作",
+    "seq": [
+      "G→view-1/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+6→view-6/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-6/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "a→view-6/__proto__ 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Shift+A→view-6/__proto__ 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "PAL:重み→view-6/__proto__ 部品名/パネル/panel-settings «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+1→view-1/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-1/__proto__ 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+Shift+I→view-1/__proto__ 部品名/パネル/panel-issue «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "T:k要確認→view-1/__proto__ 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Enter→view-1/__proto__ 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Control+Enter→view-1/__proto__ 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "2→view-1/__proto__ 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "Enter→view-1/__proto__ 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»",
+      "Alt+4→view-4/__proto__ 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»"
+    ],
+    "row": "__proto__設計制4X-__proto__FX5-4AD三菱電機1個同等品可見積済10/27",
+    "errs": []
+  },
+  {
+    "name": "P toString",
+    "ms": 775,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 81,
+      "issues": 5,
+      "quotes": 228,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "P toString の行で操作",
+    "seq": [
+      "G→view-1/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+6→view-6/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-6/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "a→view-6/toString 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Shift+A→view-6/toString 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "PAL:重み→view-6/toString 部品名/パネル/panel-settings «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+1→view-1/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-1/toString 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+Shift+I→view-1/toString 部品名/パネル/panel-issue «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "T:k要確認→view-1/toString 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Enter→view-1/toString 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Control+Enter→view-1/toString 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "2→view-1/toString 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "Enter→view-1/toString 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»",
+      "Alt+4→view-4/toString 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»"
+    ],
+    "row": "toString設計制4X-toStringFX5-4AD三菱電機1個同等品可見積済10/27",
+    "errs": []
+  },
+  {
+    "name": "P hasOwnProperty",
+    "ms": 770,
+    "toast": "JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」",
+    "after": {
+      "rows": 81,
+      "issues": 5,
+      "quotes": 228,
+      "issueIds": [
+        "I-004:R054",
+        "I-005:R041"
+      ]
+    },
+    "shown": [],
+    "panel": null
+  },
+  {
+    "name": "P hasOwnProperty の行で操作",
+    "seq": [
+      "G→view-1/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+6→view-6/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-6/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "a→view-6/hasOwnProperty 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Shift+A→view-6/hasOwnProperty 部品名/入力 «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "PAL:重み→view-6/hasOwnProperty 部品名/パネル/panel-settings «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Escape→view-6/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+1→view-1/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "G→view-1/hasOwnProperty 部品名/ナビ «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "Alt+Shift+I→view-1/hasOwnProperty 部品名/パネル/panel-issue «JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」»",
+      "T:k要確認→view-1/hasOwnProperty 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Enter→view-1/hasOwnProperty 部品名/パネル/panel-issue «種別を選んでください: q 質問 / o その他（↑↓ と Enter でも選べます）»",
+      "Control+Enter→view-1/hasOwnProperty 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "2→view-1/hasOwnProperty 部品名/パネル/panel-issue «本文を入れてください（何がどう問題か。相手が聞き直さずに済むように）»",
+      "Enter→view-1/hasOwnProperty 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»",
+      "Alt+4→view-4/hasOwnProperty 部品名/ナビ «I-006 質問 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行»"
+    ],
+    "row": "hasOwnProperty設計制4X-hasOwnPropertyFX5-4AD三菱電機1個同等品可見積済10/27",
+    "errs": []
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

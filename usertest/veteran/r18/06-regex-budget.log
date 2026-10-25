@@ -1,0 +1,18 @@
+{"name":"r9 形: 300 行すべて英大文字 19＋1","port":5197,"loadMs":305,"ms":{"f8":20,"down":17,"commit":42,"undo":29},"alive":true,"errs":[]}
+{"name":"r9 形: 300 行すべて英大文字 19＋1","port":5198,"loadMs":277,"ms":{"f8":15,"down":16,"commit":38,"undo":21},"alive":true,"errs":[]}
+{"name":"r9 形: カタカナ 300 行 20 字＋（","port":5197,"loadMs":268,"ms":{"f8":23,"down":14,"commit":39,"undo":31},"alive":true,"errs":[]}
+{"name":"r9 形: カタカナ 300 行 20 字＋（","port":5198,"loadMs":203,"ms":{"f8":22,"down":16,"commit":37,"undo":25},"alive":true,"errs":[]}
+{"name":"r9 形: 1 行だけ 28＋1","port":5197,"loadMs":2482,"ms":{"f8":19,"down":20,"commit":32,"undo":21},"alive":true,"errs":[]}
+{"name":"r9 形: 1 行だけ 28＋1","port":5198,"loadMs":2390,"ms":{"f8":17,"down":23,"commit":50,"undo":21},"alive":true,"errs":[]}
+{"name":"r8 形: ^([A-Z0-9]+-?)+$ 26＋!","port":5197,"loadMs":2671,"ms":{"f8":17,"down":13,"commit":31,"undo":17},"alive":true,"errs":[]}
+{"name":"r8 形: ^([A-Z0-9]+-?)+$ 26＋!","port":5198,"loadMs":2695,"ms":{"f8":35,"down":15,"commit":31,"undo":19},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/12 が 20＋1","port":5197,"loadMs":208,"ms":{"f8":27,"down":16,"commit":37,"undo":28},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/12 が 20＋1","port":5198,"loadMs":196,"ms":{"f8":21,"down":17,"commit":39,"undo":23},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/25 が 21＋1","port":5197,"loadMs":243,"ms":{"f8":16,"down":16,"commit":26,"undo":21},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/25 が 21＋1","port":5198,"loadMs":192,"ms":{"f8":23,"down":17,"commit":38,"undo":28},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/25 が 22＋1","port":5197,"loadMs":198,"ms":{"f8":23,"down":17,"commit":36,"undo":26},"alive":true,"errs":[]}
+{"name":"まばら 300 行・1/25 が 22＋1","port":5198,"loadMs":185,"ms":{"f8":26,"down":16,"commit":33,"undo":20},"alive":true,"errs":[]}
+{"name":"まばら 2,500 行・1/100 が 21＋1","port":5197,"loadMs":1490,"ms":{"f8":540,"down":12,"commit":164,"undo":104},"alive":true,"errs":[]}
+{"name":"まばら 2,500 行・1/100 が 21＋1","port":5198,"loadMs":335,"ms":{"f8":49,"down":17,"commit":138,"undo":92},"alive":true,"errs":[]}
+{"name":"まばら 2,500 行・1/100 が 22＋1","port":5197,"loadMs":413,"ms":{"f8":55,"down":17,"commit":142,"undo":105},"alive":true,"errs":[]}
+{"name":"まばら 2,500 行・1/100 が 22＋1","port":5198,"loadMs":520,"ms":{"f8":61,"down":14,"commit":164,"undo":118},"alive":true,"errs":[]}

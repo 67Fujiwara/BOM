@@ -17,5 +17,5 @@ for (let i = 0; i < 7; i++) for (const name of (i % 2 ? ['current', 'r13'] : ['r
 }
 const med = (a) => [...a].sort((x, y) => x - y)[Math.floor(a.length / 2)]
 console.log(JSON.stringify({ ...out, median: { r13: med(out.r13), current: med(out.current) } }))
-saveJson('52-load-ab.json', { ...out, median: { r13: med(out.r13), current: med(out.current) } })
+saveJson(`52-load-ab${process.env.TAG ?? ''}.json`, { ...out, median: { r13: med(out.r13), current: med(out.current) } })
 await browser.close()

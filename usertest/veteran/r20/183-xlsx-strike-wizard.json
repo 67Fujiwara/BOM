@@ -1,0 +1,16 @@
+[
+  {
+    "f": "x1-strike.xlsx",
+    "toast": "x1-strike.xlsx を読み込みました。Enter で次へ",
+    "rows": 3,
+    "names": "リレー,タイマ,端子台",
+    "warn": ""
+  },
+  {
+    "f": "x4-hidden-kind.xlsx",
+    "toast": "x4-hidden-kind.xlsx を読み込みました。Enter で次へ。Excel で隠した列 1 列（「変更区分」）は読んでいません（要るときは Excel で再表示してから読んでください）",
+    "rows": 3,
+    "names": "A,B,C",
+    "warn": "⚠ Excel で隠した列 1 列（「変更区分」）は読んでいません（要るときは Excel で再表示してから読んでください）AM-11個BM-21個CM-31個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。"
+  }
+]

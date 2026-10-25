@@ -1,7 +1,7 @@
 [
   {
     "name": "Q1 見出し＋「部品取付板 / 品番なし / メーカ不問 / 1」＋ 3 部品",
-    "ms": 252,
+    "ms": 239,
     "panel": null,
     "panelText": null,
     "toasts": [
@@ -15,7 +15,7 @@
   },
   {
     "name": "Q2 旧／新の見出しを繰り返す",
-    "ms": 225,
+    "ms": 242,
     "panel": null,
     "panelText": null,
     "toasts": [
@@ -29,7 +29,7 @@
   },
   {
     "name": "Q3 数量・変更後数量（変えた行だけ）",
-    "ms": 243,
+    "ms": 248,
     "panel": null,
     "panelText": null,
     "toasts": [

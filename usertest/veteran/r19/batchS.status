@@ -1,0 +1,59 @@
+== 81-header-wizard 10:34:47 load=2.53 6.36 16.99
+   exit 0 10:36:10
+== 81-header-wizard-5198 10:36:10 load=3.18 5.58 15.78
+   exit 0 10:37:12
+== 82-excel-big 10:37:12 load=2.99 5.12 14.98
+   exit 0 10:37:31
+== 82-excel-big-5198 10:37:31 load=3.07 5.02 14.74
+   exit 0 10:37:46
+== 89-ecn-xlsx 10:37:46 load=3.02 4.92 14.55
+   exit 0 10:37:53
+== 89-ecn-xlsx-5198 10:37:53 load=3.50 4.98 14.52
+   exit 0 10:37:59
+== 87-roundtrip 10:37:59 load=3.27 4.89 14.39
+   exit 1 10:38:10
+== 88-wizard-stale 10:38:10 load=2.93 4.76 14.24
+   exit 1 10:38:13
+== 91-twotab-wizard 10:38:13 load=2.93 4.76 14.24
+   exit 0 10:38:57
+== 83-twotab-publish-run1 10:38:57 load=2.33 4.38 13.66
+   exit 0 10:39:39
+== 84-undo-publish2-run1 10:39:39 load=3.16 4.34 13.26
+   exit 0 10:40:11
+== 85-json-r14-run1 10:40:11 load=2.16 3.96 12.80
+   exit 0 10:40:40
+== 85b-json-protoid-run1 10:40:40 load=1.60 3.66 12.42
+   exit 0 10:41:10
+== 86-f8-r14-run1 10:41:10 load=1.16 3.35 12.04
+   exit 0 10:41:36
+== 90-dialog-r14-run1 10:41:36 load=1.08 3.16 11.74
+   exit 0 10:41:55
+== 92-storage-publish-run1 10:41:55 load=1.13 3.04 11.52
+   exit 0 10:42:16
+== 93-misc-r14-run1 10:42:16 load=1.11 2.90 11.29
+   exit 0 10:42:32
+== 83-twotab-publish-run2 10:42:32 load=1.14 2.83 11.13
+   exit 0 10:43:12
+== 84-undo-publish2-run2 10:43:12 load=1.66 2.74 10.75
+   exit 0 10:43:45
+== 85-json-r14-run2 10:43:45 load=1.11 2.48 10.37
+   exit 0 10:44:14
+== 85b-json-protoid-run2 10:44:14 load=1.93 2.59 10.20
+   exit 0 10:44:43
+== 86-f8-r14-run2 10:44:43 load=1.56 2.45 9.91
+   exit 0 10:45:09
+== 90-dialog-r14-run2 10:45:09 load=1.92 2.49 9.72
+   exit 0 10:45:26
+== 92-storage-publish-run2 10:45:26 load=1.58 2.38 9.53
+   exit 0 10:45:48
+== 93-misc-r14-run2 10:45:48 load=1.55 2.32 9.36
+   exit 0 10:46:05
+== 84-undo-publish2-5198 10:46:05 load=1.17 2.18 9.16
+   exit 0 10:46:30
+== 85-json-r14-5198 10:46:30 load=1.41 2.17 8.97
+   exit 0 10:46:52
+== 86-f8-r14-5198 10:46:52 load=1.07 2.04 8.79
+   exit 0 10:47:12
+== 93-misc-r14-5198 10:47:12 load=0.98 1.96 8.61
+   exit 0 10:47:23
+DONE

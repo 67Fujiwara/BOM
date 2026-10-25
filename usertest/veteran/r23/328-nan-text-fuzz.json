@@ -1,0 +1,162 @@
+[
+ [
+  "rows[Rxxx].working.designated -> cell:designated",
+  {
+   "n": 1,
+   "first": "rows[R048].working.designated=\"NaN\"",
+   "where": "cell:designated"
+  }
+ ],
+ [
+  "rows[Rxxx].unit -> cell:unit",
+  {
+   "n": 1,
+   "first": "rows[R018].unit=\"NaN\"",
+   "where": "cell:unit"
+  }
+ ],
+ [
+  "rows[Rxxx].altPolicy -> cell:altPolicy",
+  {
+   "n": 1,
+   "first": "rows[R047].altPolicy=\"NaN\"",
+   "where": "cell:altPolicy"
+  }
+ ],
+ [
+  "rows[Rxxx].name -> cell:name",
+  {
+   "n": 4,
+   "first": "rows[R028].name=\"NaN\"",
+   "where": "cell:name"
+  }
+ ],
+ [
+  "rows[Rxxx].working.note -> cell:note",
+  {
+   "n": 1,
+   "first": "rows[R025].working.note=\"NaN\"",
+   "where": "cell:note"
+  }
+ ],
+ [
+  "rows[Rxxx].working.maker -> cell:maker",
+  {
+   "n": 1,
+   "first": "rows[R024].working.maker=\"NaN\"",
+   "where": "cell:maker"
+  }
+ ],
+ [
+  "quotes[Rxxx/S3].currency -> rankedQuotes,scoreRow",
+  {
+   "n": 1,
+   "first": "quotes[R033/S3].currency=\"NaN\"",
+   "where": "scoreRow,rankedQuotes"
+  }
+ ],
+ [
+  "rows[Rxxx].working.unit -> cell:unit",
+  {
+   "n": 1,
+   "first": "rows[R039].working.unit=\"NaN\"",
+   "where": "cell:unit"
+  }
+ ],
+ [
+  "rows[Rxxx].working.model -> cell:model",
+  {
+   "n": 1,
+   "first": "rows[R036].working.model=\"NaN\"",
+   "where": "cell:model"
+  }
+ ],
+ [
+  "rows[Rxxx].receivedLot -> cell:receivedLot",
+  {
+   "n": 1,
+   "first": "rows[R069].receivedLot=\"NaN\"",
+   "where": "cell:receivedLot"
+  }
+ ],
+ [
+  "quotes[Rxxx/S1].formalRequestNo -> rankedQuotes,scoreRow",
+  {
+   "n": 3,
+   "first": "quotes[R016/S1].formalRequestNo=\"NaN\"",
+   "where": "scoreRow,rankedQuotes"
+  }
+ ],
+ [
+  "quotes[Rxxx/S2].leadDays -> scoreRow",
+  {
+   "n": 3,
+   "first": "quotes[R036/S2].leadDays=1000000000000",
+   "where": "scoreRow"
+  }
+ ],
+ [
+  "rows[Rxxx].makerLock -> cell:makerLock",
+  {
+   "n": 3,
+   "first": "rows[R057].makerLock=\"NaN\"",
+   "where": "cell:makerLock"
+  }
+ ],
+ [
+  "rows[Rxxx].working.category -> cell:category",
+  {
+   "n": 3,
+   "first": "rows[R040].working.category=\"NaN\"",
+   "where": "cell:category"
+  }
+ ],
+ [
+  "rows[Rxxx].procurement -> cell:procurement",
+  {
+   "n": 3,
+   "first": "rows[R074].procurement=\"NaN\"",
+   "where": "cell:procurement"
+  }
+ ],
+ [
+  "settings.selector -> cell:ball",
+  {
+   "n": 6,
+   "first": "settings.selector=\"2026-02-30\"",
+   "where": "cell:ball"
+  }
+ ],
+ [
+  "quotes[Rxxx/S2].currency -> rankedQuotes,scoreRow",
+  {
+   "n": 3,
+   "first": "quotes[R043/S2].currency=\"NaN\"",
+   "where": "scoreRow,rankedQuotes"
+  }
+ ],
+ [
+  "rows[Rxxx].ref -> cell:ref",
+  {
+   "n": 3,
+   "first": "rows[R036].ref=\"NaN\"",
+   "where": "cell:ref"
+  }
+ ],
+ [
+  "rows[Rxxx].quotedAt -> scoreRow",
+  {
+   "n": 3,
+   "first": "rows[R049].quotedAt=\"\\u0000\"",
+   "where": "scoreRow"
+  }
+ ],
+ [
+  "suppliers[S].name -> cell:adopted,cell:designated",
+  {
+   "n": 3,
+   "first": "suppliers[S2].name=\"NaN\"",
+   "where": "cell:designated,cell:adopted"
+  }
+ ]
+]

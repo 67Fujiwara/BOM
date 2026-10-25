@@ -2,3 +2,7 @@
 1:edit_qty: R017 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / ス
 2:excel: pm 3 sheets
 3:master_remove: S1 削除 JSON を読み込みました（案件 1 件）。戻すときは Ct
+4:pm_decide: R021 b 入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）
+5:switch_proc: R022→客先指定品 ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+6:formal_price: none
+7:formal_price: none

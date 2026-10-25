@@ -1,1 +1,10 @@
 0:master_stop: S1 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+1:master_stop: S2 停止 JSON を読み込みました（案件 1 件）。戻すときは Ct
+2:switch_proc: R065→社内在庫 ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+3:formal_price: R056 x1.5 EDIT-ERR R056 の正式単価 ¥93,528（概算から +50%）。桁
+4:switch_proc: R046→支給品 を入れて Enter] 行 1（Rev.3） を公開しました
+5:reload: reload
+6:reload: reload
+7:order: none
+8:edit_qty: R055 
+9:excel: design 3 sheets

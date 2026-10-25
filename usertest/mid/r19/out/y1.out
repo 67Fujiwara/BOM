@@ -1,0 +1,52 @@
+publish → [変更セット（9 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 9（Rev.2） を公開しました
+R081 指定商社 des=オムロン直販 st=submitted adopt=- quotes=[]
+R082 指定商社 des=立花エレテック st=submitted adopt=- quotes=[]
+R083 客先指定品 des=客先承認 KS-9 st=submitted adopt=- quotes=[]
+R084 指定商社 des=因幡電機 st=submitted adopt=- quotes=[]
+lamp before 見積済 75/84
+options ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+S1 only → 6 行 × 1 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます） [{"sup":"因幡電機","file":"download","ids":["R076","R077","R078","R079","R080","R084"]}]
+R081 指定商社 des=オムロン直販 st=submitted adopt=- quotes=[]
+R082 指定商社 des=立花エレテック st=submitted adopt=- quotes=[]
+R083 客先指定品 des=客先承認 KS-9 st=submitted adopt=- quotes=[]
+R084 指定商社 des=因幡電機 st=quoting adopt=- quotes=[["S1",null,null]]
+PASS Y1-1 因幡だけの依頼で、因幡指定の行は見積中・依頼書に入る
+PASS Y1-2 因幡だけの依頼で、立花指定・直販指定・客先指定品（立花）は提出済のまま :: submitted,submitted,submitted
+PASS Y1-3 「n 行 × 1 社」の件数が依頼書の行数と一致 :: 6 vs 6
+S2 only → 7 行 × 1 社に依頼（回答期限 2026-10-30） [{"sup":"立花エレテック","file":"download","ids":["R076","R077","R078","R079","R080","R082","R083"]}]
+R081 指定商社 des=オムロン直販 st=submitted adopt=- quotes=[]
+R082 指定商社 des=立花エレテック st=quoting adopt=- quotes=[["S2",null,null]]
+R083 客先指定品 des=客先承認 KS-9 st=quoting adopt=- quotes=[["S2",null,null]]
+PASS Y1-4 立花だけの依頼で、立花指定と客先指定品（パナソニック→立花）が見積中、直販指定は提出済のまま
+all → 6 行 × 2 社に依頼（回答期限 2026-10-30） [{"sup":"ミスミ","file":"download","ids":["R076","R077","R078","R079","R080"]},{"sup":"オムロン直販","file":"download","ids":["R081"]}]
+R081 指定商社 des=オムロン直販 st=quoting adopt=- quotes=[["S5",null,null]]
+project suppliers ["S1","S2","S3"]
+PASS Y1-5 相見積先すべてで、案件外の指定先（オムロン直販）に依頼書が出て見積中 :: [{"sup":"ミスミ","file":"download","ids":["R076","R077","R078","R079","R080"]},{"sup":"オムロン直販","file":"download","ids":["R081"]}]
+6 columns ["id","name","model","maker","qtyNeeded","unit","status","q.unitPrice@S1","q.leadDays@S1","q.moq@S1","q.stock@S1","q.validUntil@S1","q.unitPrice@S2","q.leadDays@S2","q.moq@S2","q.stock@S2","q.validUntil@S2","q.unitPrice@S3","q.leadDays@S3","q.moq@S3","q.stock@S3","q.validUntil@S3","q.unitPrice@S5","q.leadDays@S5","q.moq@S5","q.stock@S5","q.validUntil@S5"]
+6 rows has a? true
+enter S5 in 6 → EDIT-ERR 6 行 × 2 社に依頼（回答期限 2026-10-30） / EDIT-ERR 6 行 × 2 社に依頼（回答期限 2026-10-30）
+R081 指定商社 des=オムロン直販 st=selected adopt=S5 quotes=[["S5",2100,6]] ball 購買
+PASS Y1-6 購買が 6 でオムロン直販の回答を入れられ、直販指定の行が指定先で採用される :: R081 指定商社 des=オムロン直販 st=selected adopt=S5 quotes=[["S5",2100,6]]
+lamp after 見積済 76/84
+decline c EDIT-ERR 6 行 × 2 社に依頼（回答期限 2026-10-30）
+after decline R083 客先指定品 des=客先承認 KS-9 st=quoting adopt=- quotes=[["S2",null,-1]] ball 購買
+purch 9 has c? true
+purch 4 has c? true
+design 4 has c? false ball 購買
+re-request → 1 行 × 1 社に依頼（回答期限 2026-10-30） [{"sup":"ミスミ","file":"download","ids":["R083"]}]
+R083 客先指定品 des=客先承認 KS-9 st=quoting adopt=- quotes=[["S2",null,-1],["S3",null,null]]
+c next requested to [ 'S3' ] handles パナソニック? [ 'ミスミ:false' ]
+PASS Y1-7 客先指定品の依頼先が辞退したら、もう一度の依頼で次の商社に依頼書が出る :: [{"sup":"ミスミ","file":"download","ids":["R083"]}]
+EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-30）
+EDIT-ERR 1 行 × 1 社に依頼（回答期限 2026-10-30）
+c after answer R083 客先指定品 des=客先承認 KS-9 st=selected adopt=S3 quotes=[["S2",null,-1],["S3",1500,7]] ball 購買
+PASS Y1-8 次の商社の回答で、客先指定品がその商社で採用（選定済） :: R083 客先指定品 des=客先承認 KS-9 st=selected adopt=S3 quotes=[["S2",null,-1],["S3",1500,7]]
+decline d 1 行 × 1 社に依頼（回答期限 2026-10-30）
+d after decline R084 指定商社 des=因幡電機 st=quoting adopt=- quotes=[["S1",null,-1]] ball 設計 flags {"renegotiating":false,"requote":false}
+d in purch4 true purch9 true design4 true
+design status bar on d ナビR084 部品名設計 山田: 未公開 0 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたF1ヘルプF8次の問題Enter編集Space開くCtrl+.指定先を変える
+design Ctrl+. on d ["指定先を変える（因幡電機 が取扱なしと回答）"]
+design a on d 指定商社の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+detail d 相見積・スコア内訳 （必要日 11/13 / 必要数 4個）商社単価納期MOQ在庫丸め/余剰スコア価格点納期点実績点条件点備考因幡電機辞退—手入力指摘 （↓ で指摘・見積を選んで Enter でアクション。Shift+R 返信）指摘はありません決定・履歴佐藤 10/25 09:32 セル編集山田 10/25 09:31 セル編集山田 10/25 09:31 セル編集山田 10/25 09:30 セル編集山田 10/25 09:30 セル編集山田 10/25 09:30 セル編集山田 10/25 09:30 セル編集山田 10/25 09:30 セル編集最終公開の起因: 追加（Rev.2）
+PASS Y1-9 指定商社が辞退した行は、指定先を変える設計の 4 に出る（または購買の 4） :: design4=true purch4=true ball=設計
+== 9/9 PASS

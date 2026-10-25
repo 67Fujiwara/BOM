@@ -1,0 +1,23 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+leadNG rows with a late other supplier R032,R044,R046
+PM e R032 R032: 特急・分納
+PM d R044 R044: 設計へ代替依頼
+PM d R046 R046: 設計へ代替依頼
+E extra 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+before switch R032 相見積 st=selected adopt=S3 reason= oq=1 flags={"countermeasure":"分納・特急"} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] cm 分納・特急 extra 20000 [] case なし
+before switch R044 相見積 st=selected adopt=S1 reason= oq=2 flags={"countermeasure":"代替品検討"} quotes=[["S1",2835,20,null],["S2",3099,22,null],["S3",3213,5,null]] cm 代替品検討 extra null [["I-006","納期NG","open","pm"]] case なし
+before switch R046 相見積 st=selected adopt=S2 reason= oq=10 flags={"pmPending":true,"pmReason":"対策不成立","countermeasure":"代替品検討"} quotes=[["S1",11397,23,null],["S2",10506,21,null],["S3",12065,0,null]] cm 代替品検討 extra null [["I-007","納期NG","answered","pm"]] case 対策不成立
+publish → [変更セット（8 行: R032, R044, R046, R076, R077 …）の理由。数字か ↑↓ で選び、変更番] 行 8（Rev.2） を公開しました
+after switch R032 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={"leadNG":true} quotes=[["S1",81668,26,null],["S2",81749,25,null],["S3",73527,23,null]] cm undefined extra null [] ball pm case 納期NG | 選定済 · 納期NG
+after switch R044 指定商社 st=selected adopt=S2 reason=指定先（固定） oq=2 flags={"leadNG":true} quotes=[["S1",2835,20,null],["S2",3099,22,null],["S3",3213,5,null]] cm undefined extra null [["I-006","納期NG","confirmed","pm"]] ball pm case 納期NG | 選定済 · 納期NG
+after switch R046 指定商社 st=selected adopt=S1 reason=指定先（固定） oq=10 flags={"leadNG":true} quotes=[["S1",11397,23,null],["S2",10506,21,null],["S3",12065,0,null]] cm undefined extra null [["I-007","納期NG","confirmed","pm"]] ball pm case 納期NG | 選定済 · 納期NG
+money 概算 ¥18,571,654 / 正式 ¥18,573,210 / 予算 ¥2,800,000 (+563.3%) → 概算 ¥18,569,233 / 正式 ¥18,570,789 / 予算 ¥2,800,000 (+563.2%)
+PM 7 has E/D/F true true true
+PM panel F {"kind":"quickfix","title":"決定パネル R046（納期NG）","options":["Shift+Y 受入（遅延許容）","b 次点へ（必要日を満たす商社）","p 購買が再選定（委譲）","d 設計が代替品検討","e 特急・分納（上限入力）"],"index":-1}
+PM status bar F ナビR046 IDPM 鈴木: 要決定 10役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開く
+PASS E3-1 (e) 指定商社（別の商社）に切り替えたら、前の商社への特急費・対策区分「分納・特急」を残さない :: extra=null cm=undefined
+PASS E3-2 (e) 新しい指定先が必要日に間に合わないなら納期NG で PM の 7 に載る（前の対策で隠れない） :: leadNG=true in7=true
+PASS E3-3 (d) 前の商社の納期に対する PM の「納期NG」指摘・対策区分「代替品検討」を残さない（設計の 4 に残らない） :: open=[] cm=undefined
+PASS E3-4 (d) 新しい指定先が間に合わないなら納期NG で PM の 7 に載る :: leadNG=true in7=true
+PASS E3-5 (対策不成立) 前の採用の対策不成立を残さず、新しい指定先で判定し直す（間に合わなければ納期NG） :: {"pmPending":false,"contested":false,"leadNG":true,"formalDiff":false,"ltbPending":false,"renegotiating":false,"reissue":false}
+== 5/5 PASS

@@ -1,0 +1,20 @@
+publish → [変更セット（7 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+rule → 案件設定を保存しました
+A R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null]] targets ["S1","S2","S3"]
+supplierIds → 案件設定を保存しました
+project suppliers ["S1","S2"]
+all → 案件設定を保存しました options[0] 相見積先すべて（因幡電機・立花エレテック） []
+PASS C3-1 相見積先から外したミスミには依頼書を出さない :: []
+A after S2 R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",1400,6,null]] | 見積済
+B R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",900,5,null],["S2",950,6,null]] | 見積済
+PASS C3-2 (全社) 相見積先（因幡・立花）が答えた A は見積済（外したミスミを待たない） :: quoted
+supplierIds add → 案件設定を保存しました
+project suppliers ["S1","S2","S5"]
+publish C → [変更セット（1 行: R083）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+all after add → 1 行 × 3 社に依頼（回答期限 2026-10-30） [["因幡電機",["R083"]],["立花エレテック",["R083"]],["オムロン直販",["R083"]]]
+R081 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",1500,5,null],["S2",1400,6,null]] | 見積済
+R082 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",900,5,null],["S2",950,6,null]] | 見積済
+R083 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S5",null,null,null]] | 見積中 0/3
+PASS C3-3 足したあとに提出された行はオムロン直販にも頼む
+PASS C3-4 見積済の A・B は足した商社のために見積中に戻らない（ラウンド9 の修正） :: quoted
+== 4/4 PASS

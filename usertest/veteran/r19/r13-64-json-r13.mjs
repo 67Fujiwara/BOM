@@ -1,0 +1,43 @@
+// ラウンド13: 壊れた JSON（ラウンド12 の修正の境目: 日付は YYYY-MM-DD だけ・負の見積・一覧でない quotes/issues・数字の指摘 id）
+import { open, reset, sleep, logger } from './lib19.mjs'
+const port = Number(process.env.PORT ?? 5176)
+const env = await open(port); const pg = env.page; const log = logger(`64-json-r13-${port}.json`)
+const LSK = 'bom-pro.workspace.v2'
+const toast = () => pg.evaluate(() => (document.querySelector('[data-testid="toast-float"]') ?? document.querySelector('[data-testid="toast"]'))?.textContent?.slice(0, 600) ?? '')
+await reset(env)
+const base = await pg.evaluate((k) => JSON.parse(localStorage.getItem(k)), LSK)
+async function imp(name, mutate, pick, raw) {
+  await reset(env)
+  const w = structuredClone(base); const p = w.projects.find((x) => x.id === w.currentProjectId); mutate?.(p, w)
+  await pg.keyboard.press('Control+k'); await pg.getByTestId('palette-input').fill('JSON を読み込む'); await sleep(80); await pg.keyboard.press('Enter'); await sleep(150)
+  const text = raw ? raw(w) : JSON.stringify(w)
+  await pg.evaluate((t) => { const el = document.querySelector('[data-testid="import-text"]'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(el, t); el.dispatchEvent(new Event('input', { bubbles: true })) }, text)
+  await pg.getByTestId('import-text').focus(); const t0 = Date.now(); await pg.keyboard.press('Control+Enter'); await sleep(250)
+  if (await pg.evaluate(() => !!document.querySelector('[data-testid="panel-prompt"]'))) { await pg.keyboard.press('2'); await sleep(400) }
+  const ms = Date.now() - t0
+  const t = await toast()
+  const after = await pg.evaluate(([k, ids]) => { const w = JSON.parse(localStorage.getItem(k)); const p = w.projects.find((x) => x.id === w.currentProjectId); const o = { rows: p.rows.length, issues: p.issues.length, quotes: p.quotes.length, issueIds: p.issues.slice(-2).map((i) => `${i.id}:${i.rowId}`) }; for (const id of ids) { const r = p.rows.find((x) => x.id === id); o[id] = r ? { qty: r.qtyNeeded, wq: r.working?.qtyNeeded, need: r.needDateFixed, wneed: r.working?.needDateFixed, pack: r.packQty, wpack: r.working?.packQty, order: r.orderQty, q: p.quotes.filter((q) => q.rowId === id).map((q) => q.unitPrice + '/' + q.leadDays).join(' ') } : null } return o }, [LSK, pick ?? []])
+  const shown = await pg.evaluate((ids) => ids.map((id) => { const tr = document.querySelector(`[data-testid="grid"] [data-row-id="${id}"]`); return tr ? `${id}: ${tr.textContent.replace(/\s+/g, ' ').slice(0, 150)}` : `${id}: (表示なし)` }), pick ?? [])
+  log({ name, ms, toast: t, after, shown, panel: await pg.evaluate(() => document.querySelector('[data-testid^="panel-"]')?.dataset.testid ?? null) })
+  await pg.keyboard.press('Escape')
+}
+const R = (p, id) => p.rows.find((r) => r.id === id)
+const grab = async (sel) => pg.evaluate((s) => [...document.querySelectorAll(s)].map((e) => e.textContent.replace(/\s+/g, ' ').slice(0, 200)).slice(0, 4), sel)
+await imp('J1 案件の納期 "2026-02-30"（ありえない日付・形は正しい）', (p) => { p.dueDate = '2026-02-30' }, ['R010', 'R011'])
+log({ name: 'J1 画面', status: await grab('.statusbar, [data-testid="statusbar"]'), head: await grab('.toolbar') })
+await imp('J2 案件の納期 "2026-13-45"', (p) => { p.dueDate = '2026-13-45' }, ['R010'])
+log({ name: 'J2 画面', head: await grab('.toolbar') })
+await imp('J3 見積の期限 validUntil "2026-02-30"・"2026-13-45"・formalValidUntil "abc"', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].validUntil = '2026-02-30'; qs[1].validUntil = '2026-13-45'; qs[2].formalValidUntil = 'abc' }, ['R004'])
+await imp('J4 休日 "2026-02-30"・"2026-13-01"', (p) => { p.settings.holidays = ['2026-02-30', '2026-13-01', '2026-11-03'] }, ['R010'])
+await imp('J5 見積の quoteQty -5・formalLeadDays -3・leadDays -0.5（知らせの数に入るか）', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].quoteQty = -5; qs[1].formalLeadDays = -3; qs[2].leadDays = -0.5 }, ['R004'])
+await imp('J6 見積の単価 1e15・1e300', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].unitPrice = 1e15; qs[1].unitPrice = 1e300 }, ['R004'])
+await imp('J7 指摘の id が 5（数字）と "5"（文字）で重なる', (p) => { const base = p.issues[0]; p.issues.push({ ...structuredClone(base), id: 5, text: 'num5' }); p.issues.push({ ...structuredClone(base), id: '5', text: 'str5' }) }, [])
+log({ name: 'J7 指摘', issues: await pg.evaluate(() => { const w = JSON.parse(localStorage.getItem('bom-pro.workspace.v2')); const p = w.projects.find((x) => x.id === w.currentProjectId); return p.issues.filter((i) => i.id === '5').map((i) => i.text) }) })
+await imp('J8 quotes が {}（オブジェクト）・submissions が "x"・decisions が 1', (p) => { p.quotes = {}; p.submissions = 'x'; p.decisions = 1 }, [])
+await imp('J9 suppliers（作業域）が文字・projects の中に null', (p, w) => { w.suppliers = 'abc'; w.projects.push(null) }, ['R004'])
+await imp('J10 rows が null', (p) => { p.rows = null }, [])
+await imp('J11 行の needDateFixed "2026-02-29"（閏年でない）・"2028-02-29"（閏年）', (p) => { R(p, 'R010').needDateFixed = '2026-02-29'; R(p, 'R011').needDateFixed = '2028-02-29' }, ['R010', 'R011'])
+await imp('J12 作業中の needDateFixed "２０２６-０３-０１"（全角）', (p) => { R(p, 'R010').working = { needDateFixed: '２０２６-０３-０１' } }, ['R010'])
+await imp('J13 見積の unitPrice "1200"（文字）・leadDays "10"', (p) => { const qs = p.quotes.filter((q) => q.rowId === 'R004'); qs[0].unitPrice = '1200'; qs[1].leadDays = '10' }, ['R004'])
+console.log('errors', JSON.stringify(env.errs.slice(0, 8)))
+log.save(); await env.browser.close()

@@ -1,0 +1,15 @@
+approval ON → 案件設定を保存しました
+R011 model → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+last sub 2 {"reason":"客先要求","changeNo":"","approved":false}
+PM dueDate → 案件設定を保存しました
+subs [[1,"plain",80,80],[2,"cs-pending",6,0]]
+案件納期変更 rows 80 R001,R002,R003,R004,R005
+purch 5 count 75 cause R001 Rev.1 案件納期変更
+purch 社内 変更点 案件納期変更 rows 75
+PASS G5-3 案件納期の変更（起因「案件納期変更」）は、承認待ちの変更セットが最後の Rev でも購買の変更点に出る :: excel rows=75
+PM reject R011 → R011・Rev.2 の変更セット 6 行まとめて: 却下
+design 5 count 80 has R001 true cause R001 Rev.1 案件納期変更
+purch 5 count after reject 80 cause Rev.1 案件納期変更
+PASS G5-4 変更セットを却下しても、案件納期の変更の行は設計・購買の 5 に起因「案件納期変更」で残る（§9.3） :: design cause=Rev.1 案件納期変更 purch cause=Rev.1 案件納期変更
+== 2/2 PASS

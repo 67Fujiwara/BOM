@@ -1,0 +1,178 @@
+[
+  {
+    "mode": "file",
+    "f": "b1-csv-raw-ditto-every10-300.csv",
+    "toast": "b1-csv-raw-ditto-every10-300.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-B0 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量⚠ 「〃」「同上」「同左」の 30 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5三菱電機6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "qtySum": 1494,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "部品1 / MDL-1 / 三菱電機 / 2",
+        "部品2 / MDL-2 / IDEC / 3",
+        "部品3 / MDL-3 / オムロン / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "file",
+    "f": "b2-tsv-ditto-last-first-300.tsv",
+    "toast": "b2-tsv-ditto-last-first-300.tsv を読み込みました。Enter で次へ",
+    "preview": "案件 P-B1 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 / 備考 → 備考⚠ 「〃」「同上」「同左」の 60 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5IDEC6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "qtySum": 1494,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "部品1 / MDL-1 / 三菱電機 / 2",
+        "部品2 / MDL-2 / IDEC / 3",
+        "部品3 / MDL-3 / オムロン / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "file",
+    "f": "b3-vtitle-eda-300.xlsx",
+    "toast": "b3-vtitle-eda-300.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-B2 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 258 行（タブ区切り、見出しあり）列の対応: Description → 部品名 / Value → （使わない） / MPN → 型式 / Footprint → （使わない） / Qty → 数量 / DNP → （使わない）⚠ 見出しより上の 2 行（表題など）は取り込みません⚠ 実装しない部品（DNP・Not Fitted・未実装）の 42 行は取り込みません⚠ 「部品名」に当たる列が 2 つあります。「Description」の列を使いますResistor 1MPN-12個Diode 2MPN-23個Connector 3MPN-34個Inductor 4MPN-45個Capacitor 5MPN-56個… ほか 253 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 258,
+      "qtySum": 1278,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "Resistor 1 / MPN-1 /  / 2",
+        "Diode 2 / MPN-2 /  / 3",
+        "Connector 3 / MPN-3 /  / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "file",
+    "f": "b4-units-spare-300.xlsx",
+    "toast": "b4-units-spare-300.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-B3 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量（1号機） → 数量 / 数量（2号機） → （使わない） / 数量（予備） → （使わない）⚠ 数量の列 3 つ（「数量（1号機）」「数量（2号機）」「数量（予備）」）を足して数量にしました⚠ 2 段の見出しを 1 段にまとめて読みました部品1MDL-1三菱電機4個部品2MDL-2IDEC6個部品3MDL-3オムロン8個部品4MDL-4三菱電機10個部品5MDL-5IDEC13個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "qtySum": 3048,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "部品1 / MDL-1 / 三菱電機 / 4",
+        "部品2 / MDL-2 / IDEC / 6",
+        "部品3 / MDL-3 / オムロン / 8"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "file",
+    "f": "b5-complete-third-deleted-30.xlsx",
+    "toast": "b5-complete-third-deleted-30.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-B4 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 20 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / メーカ → （使わない） / 変更後メーカ → メーカ / 数量 → 数量⚠ 削除の印がある・新しい版の列が空の 10 行（例: 部品3 OLD-3 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います⚠ 「メーカ」に当たる列が 2 つあります。「変更後メーカ」の列を使います部品1OLD-1三菱電機1個部品2OLD-2IDEC2個部品4OLD-4三菱電機4個部品5NEW-5IDEC5個部品7OLD-7三菱電機7個… ほか 15 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 20,
+      "qtySum": 300,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 16,
+      "modelNew": 4,
+      "first": [
+        "部品1 / OLD-1 / 三菱電機 / 1",
+        "部品2 / OLD-2 / IDEC / 2",
+        "部品4 / OLD-4 / 三菱電機 / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "file",
+    "f": "b6-sparse-25-of-30.xlsx",
+    "toast": "b6-sparse-25-of-30.xlsx を読み込みました。Enter で次へ",
+    "preview": "案件 P-B5 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 30 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / 数量 → 数量⚠ 「変更後型式」が空の 5 行は、ほかの「型式」の列の値を使いました⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います部品1NEW-11個部品2NEW-22個部品3NEW-33個部品4NEW-44個部品5NEW-55個… ほか 25 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 30,
+      "qtySum": 465,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 5,
+      "modelNew": 25,
+      "first": [
+        "部品1 / NEW-1 /  / 1",
+        "部品2 / NEW-2 /  / 2",
+        "部品3 / NEW-3 /  / 3"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "paste",
+    "f": "b1-csv-raw-ditto-every10-300.csv",
+    "toast": "",
+    "preview": "案件 P-B6 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（カンマ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量⚠ 「〃」「同上」「同左」の 30 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5三菱電機6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "qtySum": 1494,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "部品1 / MDL-1 / 三菱電機 / 2",
+        "部品2 / MDL-2 / IDEC / 3",
+        "部品3 / MDL-3 / オムロン / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  },
+  {
+    "mode": "paste",
+    "f": "b2-tsv-ditto-last-first-300.tsv",
+    "toast": "",
+    "preview": "案件 P-B7 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量 / 備考 → 備考⚠ 「〃」「同上」「同左」の 60 セルは、上の行（同左は左のセル）の値にしました部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5IDEC6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 300,
+      "qtySum": 1494,
+      "qty0": 0,
+      "noName": 0,
+      "longMaker": 0,
+      "modelOld": 0,
+      "modelNew": 0,
+      "first": [
+        "部品1 / MDL-1 / 三菱電機 / 2",
+        "部品2 / MDL-2 / IDEC / 3",
+        "部品3 / MDL-3 / オムロン / 4"
+      ],
+      "odd": []
+    },
+    "errs": []
+  }
+]

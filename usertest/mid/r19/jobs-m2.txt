@@ -1,0 +1,8 @@
+m1 m1-chain-run2 chain
+m3 m3-qtycheck-run2 qtycheck
+m3 m3-same-run2 same
+m4 m4-prompt-run2 prompt
+m4 m4-diff-run2 diff
+m8 m8-cancel-run2 cancel
+m8 m8-add-run2 add
+m6 m6-selector-run2 selector

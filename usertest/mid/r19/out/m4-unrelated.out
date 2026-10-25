@@ -1,0 +1,14 @@
+publish drafts → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish Rev.a → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+B panel {"kind":"quickfix","title":"決定パネル R011（変更セット Rev.3）","options":["承認 → Rev.3 の変更セット 1 行まとめて公開値に反映","却下 → Rev.3 の変更セット 1 行まとめて設計の作業中に戻す"]}
+C name → 行 1（Rev.3） を公開しました
+publish Rev.b → [変更セット（1 行: R037）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+B panel after A publish {"kind":"quickfix","title":"決定パネル R011（変更セット Rev.3）","options":["承認 → Rev.3 の変更セット 1 行まとめて公開値に反映","却下 → Rev.3 の変更セット 1 行まとめて設計の作業中に戻す"]}
+B y → R011・Rev.3 の変更セット 1 行まとめて: 承認
+after [[2,"appr","R076,R077,R078,R079,R080",null],[3,"appr","R011",null],[4,"pend","R037",null]] A 25 エンドクランプ B 光電センサ 反射 C 近接センサ M12 A pending false
+PASS M4U-1 別の行（C）の変更セットの公開では、開いていた A の Rev.a の y は断られずに承認される（C は承認待ちのまま） :: A 25 pm=false C 近接センサ M12 toast=R011・Rev.3 の変更セット 1 行まとめて: 承認
+ERRORS []
+== 1/1 PASS

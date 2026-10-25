@@ -1,0 +1,15 @@
+approval ON → 案件設定を保存しました
+publish A → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+PM y → R081・Rev.2 の変更セット 6 行まとめて: 承認
+request → 6 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+A R081 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]]
+publish change → [変更セット（1 行: R081）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+A pending R081 相見積 st=quoting adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",null,null,null],["S2",null,null,null],["S3",null,null,null]] pendingApproval {"model":"G2RL-1 DC24"} | 見積中 0/3 · PM承認待ち
+purch sees model G2R-1 DC24 | status 見積中 0/3 · PM承認待ち
+import S1 → 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0
+typed S2 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 取り込み 1 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0
+A after answers R081 相見積 st=quoting adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"変更セット"} quotes=[["S1",1500,5,null],["S2",1400,6,null],["S3",null,null,null]] | 見積中 2/3 · PM承認待ち
+PM y change → R081・Rev.3 の変更セット 1 行まとめて: 承認
+A after approve R081 相見積 st=quoting adopt=- reason= oq=- flags={"requote":true} quotes=[] model G2RL-1 DC24 | 見積中（再見積の依頼前） · 再見積要 stale [["S1",1500,"G2R-1 DC24"],["S2",1400,"G2R-1 DC24"],["S3",null,"G2R-1 DC24"]]
+PASS C7-1 承認後、旧型式（G2R-1）への回答が新型式（G2RL-1）の有効な見積として残らない（再見積要） :: []
+== 1/1 PASS

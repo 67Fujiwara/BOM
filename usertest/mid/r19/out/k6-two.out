@@ -1,0 +1,8 @@
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+Y R007 相見積 st=formalRequested adopt=S1 reason= oq=2 flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] name0 タイマ
+Y name (cs) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+Y qty (cs) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish cs → [変更セット（6 行: R007, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+Y pending {"name":"NAME-CS","qtyNeeded":6} subs [[1,"plain",2,"タイマ",null],[2,"pend",6,"NAME-CS","変更セット #2"]]

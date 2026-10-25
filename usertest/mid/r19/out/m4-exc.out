@@ -1,0 +1,10 @@
+cands [["R011",[["S1",99.2],["S2",68],["S3",34.2]]],["R020",[["S3",90],["S2",66.3],["S1",65.5]]],["R033",[["S1",95.4],["S2",80],["S3",58]]],["R036",[["S1",99.2],["S2",81.8],["S3",53.6]]],["R041",[["S2",94],["S3",85.1],["S1",69.2]]]]
+X R020 R020: 立花エレテック を仮採用（その他: 2 位で）。PM の承認待ち（7 要決定）
+B panel {"kind":"quickfix","title":"決定パネル R020（例外選定）","options":["承認 → 選定済","却下 → 見積済（選定者へ）","次点へ（必要日を満たす最高スコア）"]} sees supplier S2
+A re-adopt 3rd → PM承認待ちの行です R020 相見積 st=quoted adopt=S2 reason=その他: 2 位で oq=2 flags={"pmPending":true,"pmReason":"例外選定"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+B panel after {"kind":"quickfix","title":"決定パネル R020（例外選定）","options":["承認 → 選定済","却下 → 見積済（選定者へ）","次点へ（必要日を満たす最高スコア）"]}
+B y → R020: 承認
+after R020 相見積 st=selected adopt=S2 reason=その他: 2 位で oq=2 flags={"leadNG":true} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+PASS M4E-1 PM が S2 の例外選定を見て開いたパネルの y で、開いたあとに選び直した S1 が承認されない（決めずに知らせる） :: R020 相見積 st=selected adopt=S2 reason=その他: 2 位で oq=2 flags={"leadNG":true} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] toast=R020: 承認
+ERRORS []
+== 1/1 PASS

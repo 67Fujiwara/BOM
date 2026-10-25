@@ -1,0 +1,56 @@
+// 新人: 入力/編集の表示と F2、ダイアログで数字を打ち間違えて別の数字で選び直す、選んだあとの数字の補足
+import { launch, fresh, T, makeLog, sel, gotoCol, ui, typeReal, proj, sleep, shot, row, setRole } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('z01_modes_dialogs')
+const st = async (tag) => { const u = await ui(page); log(`  [${tag}] mode=${u.mode} lbl=${(await T.mode(page))} view=${u.view} cur=${u.cursorRow}/${u.cursorCol} edit=${JSON.stringify(u.editValue)} panel=${u.panel} | ${(await T.panelText(page))?.slice(0, 220) ?? ''} | hints: ${await T.hints(page)} | toast: ${await T.toast(page)}`) }
+
+log('== A 型式 MY4X を打つ → F2 → ← Backspace N Enter（Excel の F2 で直す）')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '型式')
+await typeReal(page, 'MY4X'); await st('MY4X')
+await page.keyboard.press('F2'); await st('F2')
+await page.keyboard.press('ArrowLeft'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('Backspace'); await typeReal(page, 'N'); await st('← → BS N')
+await page.keyboard.press('Enter'); await sleep(80)
+let r = await row(page, 'R030'); log('  R030 model/name', JSON.stringify(r.working))
+await shot(page, 'z01_A')
+
+log('== A2 Enter で始めた編集 → F2 → ↓（入力に切り替えて ↓ で確定・移動）')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '必要数')
+await page.keyboard.press('Enter'); await st('Enter'); await typeReal(page, '7'); await page.keyboard.press('F2'); await st('F2'); await page.keyboard.press('ArrowDown'); await st('↓'); await typeReal(page, '8'); await page.keyboard.press('ArrowDown')
+log('  R030/R031', JSON.stringify((await row(page, 'R030')).working), JSON.stringify((await row(page, 'R031')).working))
+
+log('== A3 F2 を 2 回（入力→編集→入力）')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '型式')
+await typeReal(page, 'AB'); await page.keyboard.press('F2'); await page.keyboard.press('F2'); await st('F2 x2'); await page.keyboard.press('ArrowLeft'); await st('←')
+log('  R030', JSON.stringify((await row(page, 'R030')).working))
+
+log('== B 公開の理由: 1 を押した → 間違えたので 2 → Enter')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '部品名'); await typeReal(page, 'Lamp', 20); await page.keyboard.press('Enter'); await sleep(80)
+await page.keyboard.press('Control+Enter'); await sleep(150); await st('Ctrl+Enter'); await shot(page, 'z01_B_dialog')
+await page.keyboard.press('1'); await sleep(100); await st('1')
+await page.keyboard.press('2'); await sleep(100); await st('2 (選び直し)')
+await shot(page, 'z01_B_after2')
+await page.keyboard.press('Enter'); await sleep(200); await st('Enter')
+let p = await proj(page); log('  last sub', JSON.stringify({ ...p.submissions.at(-1), snapshot: undefined, rowIds: undefined }))
+
+log('== B2 公開の理由: 1 → ↓ → Enter（↑↓ では選び直せる？）')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '部品名'); await typeReal(page, 'Lamp', 20); await page.keyboard.press('Enter'); await sleep(80)
+await page.keyboard.press('Control+Enter'); await sleep(150)
+await page.keyboard.press('1'); await page.keyboard.press('ArrowDown'); await sleep(100); await st('1 ↓')
+await page.keyboard.press('Enter'); await sleep(200)
+p = await proj(page); log('  last sub', JSON.stringify({ ...p.submissions.at(-1), snapshot: undefined, rowIds: undefined }))
+
+log('== B3 公開の理由: 2 → Backspace → 3 → Enter（消してから選び直す）')
+await fresh(page); await sel(page, 'R030'); await gotoCol(page, '部品名'); await typeReal(page, 'Lamp', 20); await page.keyboard.press('Enter'); await sleep(80)
+await page.keyboard.press('Control+Enter'); await sleep(150)
+await page.keyboard.press('2'); await page.keyboard.press('Backspace'); await page.keyboard.press('3'); await sleep(100); await st('2 BS 3')
+await page.keyboard.press('Enter'); await sleep(200)
+p = await proj(page); log('  last sub', JSON.stringify({ ...p.submissions.at(-1), snapshot: undefined, rowIds: undefined }))
+
+log('== C 採用の理由: R005 で 2 位 → 理由 1 → 「3日で入る」→ Enter')
+await fresh(page); await sel(page, 'R005'); await gotoCol(page, '部品名')
+await page.keyboard.press('Alt+Shift+A'); await sleep(150); await st('Alt+Shift+A')
+await page.keyboard.press('2'); await sleep(150); await st('2')
+await page.keyboard.press('1'); await sleep(100); await st('理由 1')
+await page.keyboard.insertText('3日で入る'); await st('3日で入る'); await page.keyboard.press('Enter'); await sleep(200); await st('Enter')
+r = await row(page, 'R005'); log('  R005', r.status, r.adoptedSupplierId, JSON.stringify(r.adoptReason ?? r.adoption ?? null), JSON.stringify(r.flags))
+save(errors); await browser.close()

@@ -1,0 +1,1110 @@
+[
+  {
+    "name": "mac grid Meta+x",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+X（切り取り）はありません。Ctrl+C でコピーしてから Delete で消してください（Ctrl+Z で戻せます）",
+      "kd": [
+        {
+          "k": "Meta+x",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Meta+r",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+R（右へコピー）はありません。行の複製は Alt+Shift+D",
+      "kd": [
+        {
+          "k": "Meta+r",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Meta+Minus",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+-（行の削除）はありません。行の取消は Shift+Delete",
+      "kd": [
+        {
+          "k": "Meta+-",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Meta+Equal",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+=",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Meta+0",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+0",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Control+;",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Ctrl+;（今日の日付）はありません。日付は 2026-10-25 や 10/25 のように打てます",
+      "kd": [
+        {
+          "k": "Ctrl+;",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid Alt+Enter",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "Alt+Enter（セル内改行）はありません。備考などは 1 行で入れてください",
+      "kd": [
+        {
+          "k": "Alt+Enter",
+          "prevented": true,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac grid F5",
+    "before": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "grid",
+      "value": null,
+      "sel": null,
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "F5",
+          "prevented": false,
+          "tgt": "grid"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Meta+x",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+x",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Meta+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Meta+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Meta+Equal",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+=",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Meta+0",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+0",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Control+;",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+;",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac editor Alt+Enter",
+    "before": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "端子台エンドカバー",
+      "sel": [
+        6,
+        9
+      ],
+      "mode": "編集",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Alt+Enter",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Meta+x",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+x",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Meta+r",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+r",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Meta+Minus",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+-",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Meta+Equal",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+=",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Meta+0",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+0",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Control+;",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+;",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac typed Alt+Enter",
+    "before": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力"
+    },
+    "after": {
+      "focus": "cell-editor",
+      "value": "ABC DEF",
+      "sel": [
+        5,
+        7
+      ],
+      "mode": "入力",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Alt+Enter",
+          "prevented": false,
+          "tgt": "cell-editor"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Meta+x",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+x",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Meta+r",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+r",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Meta+Minus",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+-",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Meta+Equal",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+=",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Meta+0",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+0",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Control+;",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+;",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac filter Alt+Enter",
+    "before": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ"
+    },
+    "after": {
+      "focus": "filter",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "ナビ",
+      "panel": null,
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Alt+Enter",
+          "prevented": false,
+          "tgt": "filter"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Meta+x",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+x",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Meta+r",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+r",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Meta+Minus",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+-",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Meta+Equal",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+=",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Meta+0",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Meta+0",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Control+;",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Ctrl+;",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "mac palette Alt+Enter",
+    "before": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット"
+    },
+    "after": {
+      "focus": "palette-input",
+      "value": "abcdef",
+      "sel": [
+        3,
+        6
+      ],
+      "mode": "パレット",
+      "panel": "panel-palette",
+      "toast": "保存しました（編集は自動で保存されています）",
+      "kd": [
+        {
+          "k": "Alt+Enter",
+          "prevented": false,
+          "tgt": "palette-input"
+        }
+      ]
+    },
+    "clipboard": "(前のクリップボード)",
+    "reloaded": false
+  },
+  {
+    "name": "console/pageerror",
+    "errs": []
+  }
+]

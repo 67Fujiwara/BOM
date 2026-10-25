@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+case 閾値超 R011 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PM Shift+Y → R011: 却下
+after reject R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] [["I-006","最小ロット","open"]]
+x → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました | sb before ナビR011 ID最小ロット 1/2購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くx発注数を確認 | R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS M3Q-0 購買が x で発注数要確認を確認できる :: R011 相見積 st=selected adopt=S1 reason= oq=24 flags={"surplusRejected":"S1"} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+qty +1 → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R011, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+after qty R011 相見積 st=selected adopt=S1 reason= oq=25 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS M3Q-1 発注数は新しい必要数 25（却下した余剰に戻らない） :: R011 相見積 st=selected adopt=S1 reason= oq=25 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+FAIL M3Q-2 購買が発注数を手で変えていない（却下で戻した数のまま）ので「発注数要確認」は付かない（§4 発注数要確認の条件） :: R011 相見積 st=selected adopt=S1 reason= oq=25 flags={"surplusRejected":"S1","orderQtyCheck":true,"priceCheck":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+purch statusbar X ナビR011 ID最小ロット 1/2購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くx発注数を確認
+ERRORS []
+== 2/3 PASS

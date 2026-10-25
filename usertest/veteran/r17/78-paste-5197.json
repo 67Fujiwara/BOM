@@ -1,0 +1,92 @@
+[
+  {
+    "N": 300,
+    "before": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "afterPaste": {
+      "n": 379,
+      "last": "貼付299",
+      "lastModel": "PM-299"
+    },
+    "msPaste": 112,
+    "toast": "1200 セルを貼り付けました（299 行追加）（Ctrl+Z で一度に戻せます）",
+    "afterUndo": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "msUndo": 42,
+    "afterRedo": {
+      "n": 379,
+      "last": "貼付299",
+      "lastModel": "PM-299"
+    },
+    "msRedo": 48,
+    "perEnterAfter": 57,
+    "perUndoAfter": 26,
+    "errs": []
+  },
+  {
+    "N": 1000,
+    "before": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "afterPaste": {
+      "n": 1079,
+      "last": "貼付999",
+      "lastModel": "PM-999"
+    },
+    "msPaste": 196,
+    "toast": "4000 セルを貼り付けました（999 行追加）（Ctrl+Z で一度に戻せます）",
+    "afterUndo": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "msUndo": 59,
+    "afterRedo": {
+      "n": 1079,
+      "last": "貼付999",
+      "lastModel": "PM-999"
+    },
+    "msRedo": 141,
+    "perEnterAfter": 81,
+    "perUndoAfter": 45,
+    "errs": []
+  },
+  {
+    "N": 2500,
+    "before": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "afterPaste": {
+      "n": 2579,
+      "last": "貼付2499",
+      "lastModel": "PM-2499"
+    },
+    "msPaste": 568,
+    "toast": "10000 セルを貼り付けました（2499 行追加）（Ctrl+Z で一度に戻せます）",
+    "afterUndo": {
+      "n": 80,
+      "last": "ラベルプリンタテープ",
+      "lastModel": "TZe-231"
+    },
+    "msUndo": 67,
+    "afterRedo": {
+      "n": 2579,
+      "last": "貼付2499",
+      "lastModel": "PM-2499"
+    },
+    "msRedo": 426,
+    "perEnterAfter": 140,
+    "perUndoAfter": 77,
+    "errs": []
+  }
+]

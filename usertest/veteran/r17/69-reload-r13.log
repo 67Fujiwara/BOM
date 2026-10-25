@@ -1,0 +1,5 @@
+{"case":"R1 ガイドのプレビュー中にリロード","before":{},"after":{},"panel":null,"toast":""}
+{"case":"R2 2,500 行の作成の Enter 直後にリロード","after":{"nproj":2,"cur":"P-RL1","rows":2500,"revs":0,"r010":"部品10"},"toast":""}
+{"case":"R3 その案件で Ctrl+Z → 直後にリロード","after":{"nproj":2,"cur":"P-RL1","rows":2500,"revs":0,"r010":"部品10"},"toast":""}
+{"case":"R4 公開のダイアログで 2 を選んだままリロード","after":{"nproj":1,"cur":"P-2026-041","rows":80,"revs":1,"r010":"RL"},"panel":null}
+errors []

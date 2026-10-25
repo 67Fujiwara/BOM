@@ -71,7 +71,11 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
       // 追加費用の上限超過（PM の判断待ち・却下）
       const oc = overCap(p, row)
       if (oc) return `上限超過 ¥${(row.extraCost ?? 0).toLocaleString()} > ¥${oc.cap.toLocaleString()}${row.flags.capRuled === row.extraCost ? '（PM 却下: 上限内で手配し直す）' : '（PM 判断待ち）'}`
-      if (row.flags.droppedStopped && !row.adoptedSupplierId) return `採用していた ${row.flags.droppedStopped} は取引停止（商社マスタ）のため採用を外しました。選び直してください`
+      if (row.flags.droppedStopped && !row.adoptedSupplierId) {
+        // 相見積は選定者が選び直す。指定系は購買が次の依頼先に頼む（設計が指定先を変える）。正式依頼の取下げもあわせて出す
+        const next = row.procurement === '相見積' ? (user.role === p.settings.selector ? '選び直してください' : '選定者が選び直します') : row.procurement === '指定商社' ? '設計が指定先を変えます' : '購買が次の依頼先に頼みます'
+        return `採用していた ${row.flags.droppedStopped} は取引停止（商社マスタ）のため採用を外しました。${next}${row.flags.formalWithdrawn ? `。正式依頼を取り下げ: ${row.flags.formalWithdrawn}（伝えたら x）` : ''}`
+      }
       if (row.flags.formalWithdrawn) return `正式依頼を取り下げ: ${row.flags.formalWithdrawn}（元の商社に取り下げを伝えたら x）`
       return ''
     }

@@ -113,11 +113,13 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   for (const sub of p.submissions) {
     // 承認待ち・却下の変更セットの中身は購買には出さない（§5「承認待ちの変更あり」だけ）
     if (purchasing && sub.changeSet && (!sub.changeSet.approved || sub.changeSet.rejected || sub.revoked)) continue
-    const prev = p.submissions.filter((x) => x.rev < sub.rev && !(purchasing && x.changeSet && (!x.changeSet.approved || x.changeSet.rejected || x.revoked)))
+    const prev = p.submissions.filter((x) => x.rev < sub.rev)
+    // 比べる前の値は、決まった Rev だけから（却下・承認待ち・まとめた変更セットは、どの役割でも前の値にしない）
+    const settled = (x: (typeof prev)[number], id: string) => !x.revoked && !(x.changeSet && (!x.changeSet.approved || x.changeSet.rejected || x.changeSet.supersededBy != null || x.changeSet.merged?.[id] != null))
     for (const id of sub.rowIds) {
       if (hide(id)) continue
       const now = sub.snapshot[id]
-      const before = [...prev].reverse().map((x) => x.snapshot[id]).find(Boolean)
+      const before = [...prev].reverse().filter((x) => settled(x, id)).map((x) => x.snapshot[id]).find(Boolean)
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
       const cause = sub.causes[id] ?? ''
       if (cause.startsWith('置換')) detail = cause
@@ -125,7 +127,7 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
       const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)
-      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${sub.changeSet.supersededBy} にまとめた` : '' })
+      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: sub.changeSet?.merged?.[id] != null ? `Rev ${sub.changeSet.merged[id]} にまとめた` : dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${sub.changeSet.supersededBy} にまとめた` : '' })
       row.fill = CHG_FILL
     }
   }

@@ -203,7 +203,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     const need = rowNeedDate(p, r)
     if (need && r.adoptedSupplierId && ['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
       const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      const ld = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays)
+      // 正式納期があればそれ（概算で「在庫」と答えていても、正式の回答が優先）
+      const ld = q?.formalLeadDays ?? (q?.stock === '在庫' ? 0 : q?.leadDays)
       if (ld != null && ld >= 0) {
         const arrive = addDays(today, ld)
         r.flags.leadNG = arrive > need && !leadAccepted(r)

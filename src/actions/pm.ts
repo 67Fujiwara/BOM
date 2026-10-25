@@ -450,7 +450,7 @@ export function simulateSettings(p: Project, patch: { dueDate?: string | null; p
     const oldNeed = rowNeedDate(p, r)
     if (r.adoptedSupplierId) {
       const q = next.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      const ld = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays)
+      const ld = q?.formalLeadDays ?? (q?.stock === '在庫' ? 0 : q?.leadDays)
       if (need && ld != null && ld >= 0 && addDays(today, ld) > need) impact.leadNG.push({ rowId: r.id, status: r.status })
       if (['formalRequested', 'formalQuoted'].includes(r.status) && need !== oldNeed) impact.reissue.push(r.id)
       const before = scoreRow(p, r, s.ws.suppliers)[0]

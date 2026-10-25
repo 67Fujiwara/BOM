@@ -144,7 +144,7 @@ export function receiptStats(p: Project, supplierId: string): { ok: number; tota
   if (!done.length) return null
   const ok = done.filter((r) => {
     const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === supplierId && !x.stale)
-    const lead = q?.stock === '在庫' ? 0 : (q?.formalLeadDays ?? q?.leadDays ?? 0)
+    const lead = q?.formalLeadDays ?? (q?.stock === '在庫' ? 0 : (q?.leadDays ?? 0))
     return r.receivedAt! <= addDays(r.orderedAt!, Math.max(0, lead))
   }).length
   return { ok, total: done.length }

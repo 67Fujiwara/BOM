@@ -144,7 +144,9 @@
       "order changed",
       "quotes changed"
     ],
-    "toastsOnB": [],
+    "toastsOnB": [
+      "R030 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）"
+    ],
     "toastsA": [
       "R030 の置き換え品 R081 を作りました（公開すると R030 は置換済になります。Ctrl+Z で戻す）"
     ]
@@ -195,6 +197,8 @@
       "R001.promisedDate:undefined→\"2026-12-01\""
     ],
     "toastsOnB": [],
-    "toastsA": []
+    "toastsA": [
+      "役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました"
+    ]
   }
 ]

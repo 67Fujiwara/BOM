@@ -1,0 +1,9 @@
+R001 before {"st":"selected","need":1,"pack":null,"oq":null,"flags":{"leadNG":false},"adopted":"S1"}
+cursor R001 正式単価 | hints F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く
+toast R001 の正式単価 ¥1,500（概算から +927%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+R001 after {"st":"selected","need":1,"oq":null,"flags":{"leadNG":false}}
+header P-2026-041第3ライン 搬送制御盤納期 あと29日（必要日 あと19日）概算 ¥23,692 / 正式 ¥26,602 / 予算 ¥2,800,000 (-99.0%)設計待ち 73購買待ち 6PM待ち 1見積済 75/75エラー 3警告 3期限超過 1設計購買PM佐藤Ctrl+K コマンド?
+statusbar 1024 (design 4): [["Ctrl+Enter公開 5 行",629,745],["F1ヘルプ",757,807],["F8次の問題",819,882],["Enter編集",894,951],["Alt+a推奨採用",963,1044],["Space開いて指摘を見る",1056,1184],["Alt+x警告を確認済み",1196,1312]]
+statusbar 1024 dark: [["Ctrl+Enter公開 5 行",518,635],["F1ヘルプ",647,696],["F8次の問題",708,771],["Enter編集",783,840],["Alt+a推奨採用",852,933],["Space開いて指摘を見る",945,1073],["Alt+x警告を確認済み",1085,1202]]
+
+ERRORS:

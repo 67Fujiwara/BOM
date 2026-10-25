@@ -1,0 +1,22 @@
+== 購買: 役割ボタン → 直後の状態 → 8
+  [after role] role=purchasing mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | cursorbar=R004 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [8] role=purchasing mode=edit view=9 cur=R004/q.unitPrice@S1 edit="8" panel=null | cursorbar=R004 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [6] role=purchasing mode=edit view=9 cur=R004/q.unitPrice@S1 edit="86" panel=null | cursorbar=R004 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+== 購買: 役割ボタン → ↓ → 状態
+  [↓] role=purchasing mode=nav view=9 cur=R005/q.unitPrice@S1 edit="" panel=null | cursorbar=R005 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing mode=edit view=9 cur=R005/q.unitPrice@S1 edit="8870" panel=null | cursorbar=R005 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Esc] role=purchasing mode=nav view=9 cur=R005/q.unitPrice@S1 edit="8870" panel=null | cursorbar=R005 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+== 購買: ロード時（リロード後に購買のまま）
+  [reload] role=purchasing mode=nav view=9 cur=R005/q.unitPrice@S1 edit="" panel=null | cursorbar=R005 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: null
+  [8] role=purchasing mode=edit view=9 cur=R005/q.unitPrice@S1 edit="8" panel=null | cursorbar=R005 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+== PM: 役割ボタン直後
+  [after role] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | cursorbar=R003 部品名 | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+== 設計: 起動直後
+  [start] role=design mode=nav view=1 cur=null/name edit="" panel=null | cursorbar=— | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [9] role=design mode=nav view=9 cur=null/name edit="" panel=null | cursorbar=— | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+== 設計 → 購買（ボタン）→ 設計
+  [↓] role=design mode=nav view=9 cur=R004/name edit="" panel=null | cursorbar=R004 部品名 | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  [purch] role=purchasing mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | cursorbar=R004 単価 | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [6] role=purchasing mode=edit view=9 cur=R004/q.unitPrice@S1 edit="6" panel=null | cursorbar=R004 単価 | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+
+ERRORS:

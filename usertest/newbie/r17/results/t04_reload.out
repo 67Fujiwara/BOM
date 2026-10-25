@@ -1,0 +1,15 @@
+before reload: live {"view":1,"cursorRow":"R044","cursorCol":"model","sort":null,"hiddenCols":13,"recent":["project.new"],"wizardDraft":{"step":0,"data":{"id":"DRAFT-9"},"sel":0,"picks":[]},"undoN":2}
+before reload: sessionStorage {"ui":{"view":1,"cursorRow":"R044","cursorCol":"model","sort":null,"hiddenCols":13,"wizardDraft":true},"undoN":2}
+after reload: live {"view":1,"cursorRow":"R044","cursorCol":"model","sort":null,"hiddenCols":13,"recent":["project.new"],"wizardDraft":{"step":0,"data":{"id":"DRAFT-9"},"sel":0,"picks":[]},"undoN":2}
+after reload: sessionStorage {"ui":{"view":1,"cursorRow":"R044","cursorCol":"model","sort":null,"hiddenCols":13,"wizardDraft":true},"undoN":2}
+Ctrl+Z after reload: 元に戻す: セル編集 R040 working {"maker":"UNDOTEST"}
+wizard after reload id DRAFT-9 toast 途中まで入れた内容を戻しました（Esc で中止しても内容は残ります）
+after next edit: sessionStorage {"ui":{"view":1,"cursorRow":"R043","cursorCol":"maker","sort":null,"hiddenCols":13,"wizardDraft":true},"undoN":2}
+wizard step text 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 部品の入れ方 1 貼り付け（Excel の表をコピーして貼る。見出し行があれば列を自動で判別） 2 ファイル（.xlsx / .csv / .tsv / .txt） 3 1 
+textarea? 1
+after reload panel null
+wizard reopened: 1.案件ID 2.案件名 3.納期 4.社内工程日数 5.予算（任意） 6.購買・PM 担当者 7.希望商社 8.部品の入れ方 9.確認して作成 部品の入れ方 1 貼り付け（Excel の表をコピーして貼る。見出し行があれば列を自動で判別） 2 ファイル（.xlsx / .csv / .tsv / .txt） 3 1 つずつ入力（空の表から始める） 1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ Ctrl+Enter 次へ（貼り付け欄の Enter は改行） Alt+← 1 つ前 Esc 中止（内容は残る） | textarea 部品名	型式	メーカ	数量
+リレー	MY4N	オムロン	4
+Ctrl+Y after reload: やり直す: セル編集 R043 {"maker":"REDOTEST"}
+
+ERRORS:

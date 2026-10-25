@@ -1,0 +1,23 @@
+[design] Alt+Shift+I on R030/model -> mode=panel panel=issue cur=R030/model sort=null filter=null | 指摘を起票 R030 表示灯 白 q 質問 対応 設計 / 期限 1 営業日 o その他 対応 設計 / 期限 2 営業日 設計が起票できるのは「質問」「その他」です（型式あいまい等の指摘は購買が起票 | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+Shift+A on R030/model -> mode=panel panel=adopt cur=R030/model sort=null filter=null | 商社を選んで採用 R030 表示灯 白 1 因幡電機 ¥19,475 / 15日 / スコア 99.2 最安（推奨） 2 立花エレテック ¥18,921 / 12日 / スコア 73.6 MOQ 4  | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+c on R030/model -> mode=panel panel=columns cur=R030/model sort=null filter=null | 列の表示（すべて・購買提出用以外のビューは列が決まっています） ● ID 自動 ● ボール 自動 ● 回路記号 設計 ○ 図面番号 設計 ● 分類 設計 ● 部品名 設計 ● 型式 設計 ● メーカ  | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+w on R030/model -> mode=panel panel=weights cur=R030/model sort=null filter=null | この行だけ重みを変える R030 （いまは案件の既定） 価格 40 納期 30 実績 20 条件 10 ← −5 → +5 Delete 案件の既定に戻す Esc 閉じる | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+r on R030/model -> mode=panel panel=prompt cur=R030/model sort=null filter=null | R030 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+Shift+R on R016/model -> mode=panel panel=replyIssue cur=R016/model sort=null filter=null | 返信 I-001 Enter 送信 Esc 閉じる | toast=null
+    Ctrl+K -> panel-palette | null
+[design] Alt+f on R030/model -> mode=nav panel=null cur=R030/model sort=null filter={"col":"model","value":"M22N-BC-TWA-WC"} |  | toast=型式 =「M22N-BC-TWA-WC」で絞り込みました（Esc か Alt+f で解除）
+[design] Alt+s on R030/model -> mode=nav panel=null cur=R030/model sort={"col":"model","dir":"asc"} filter=null |  | toast=型式 で昇順に並べました（もう一度で解除）
+[design] Alt+h on R030/model -> mode=nav panel=null cur=R030/model sort=null filter=null |  | toast=R030 を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）
+[design] Alt+Shift+X on R016/model -> mode=nav panel=null cur=R016/model sort=null filter=null |  | toast=差戻しは指摘を起票した人（購買）の操作です。設計は Space → 指摘を選んで Enter で回答・返信できます
+[design] Alt+j on R030/model -> mode=nav panel=null cur=R031/model sort=null filter=null |  | toast=null
+[design] Alt+n on R030/model -> mode=nav panel=null cur=R041/maker sort=null filter=null |  | toast=null
+[purchasing] Alt+Shift+I on R030/name -> mode=panel panel=issue cur=R030/name sort=null filter=null | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 | toast=R004 の単価 ¥1 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+    Ctrl+K -> panel-palette | R004 の単価 ¥1 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+[pm] Alt+y on R003/name -> mode=nav panel=null cur=R003/name sort=null filter=null |  | toast=納期NG の行では y は使えません（Enter で決定パネル）
+
+ERRORS:

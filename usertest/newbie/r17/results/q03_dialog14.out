@@ -1,0 +1,61 @@
+== a 選択肢 3 をクリック → 2026-012（Tab なし）→ Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:3] panel=prompt 欄="" 選択=3 廃番・入手難 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「廃番・入手難」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [t:2026-012] panel=prompt 欄="2026-012" 選択=3 廃番・入手難 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「廃番・入手難」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"廃番・入手難","changeNo":"2026-012","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== b 選択肢 1 をクリック → 3 を押す（数字で選び直すつもり）→ Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:1] panel=prompt 欄="" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「客先要求」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [3] panel=prompt 欄="3" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「客先要求」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"客先要求","changeNo":"3","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== c 選択肢 1 をクリック → 選択肢 4 をクリック（選び直し）→ ECN-1 → Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:1] panel=prompt 欄="" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「客先要求」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [opt:4] panel=prompt 欄="" 選択=4 コスト focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「コスト」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [t:ECN-1] panel=prompt 欄="ECN-1" 選択=4 コスト focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「コスト」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"コスト","changeNo":"ECN-1","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== d 選択肢 2 をクリック → Shift+Tab → 5 → Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:2] panel=prompt 欄="" 選択=2 設計起因 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「設計起因」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Shift+Tab] panel=prompt 欄="" 選択=2 設計起因 focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: 選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）
+  [5] panel=prompt 欄="" 選択=5 納期 focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"納期","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== e 選択肢 2 をクリック → ↓（選び直すつもり）→ Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:2] panel=prompt 欄="" 選択=2 設計起因 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「設計起因」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [ArrowDown] panel=prompt 欄="" 選択=3 廃番・入手難 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「設計起因」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"廃番・入手難","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== f 1 → Tab → 12 → 選択肢 3 をクリック → Enter（番号は残る?）
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [1] panel=prompt 欄="" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Tab] panel=prompt 欄="" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [t:12] panel=prompt 欄="12" 選択=1 客先要求 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [opt:3] panel=prompt 欄="12" 選択=3 廃番・入手難 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「廃番・入手難」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"廃番・入手難","changeNo":"12","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== g 選択肢 3 をダブルクリック
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [dbl:3] panel=prompt 欄="" 選択=3 廃番・入手難 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「廃番・入手難」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"廃番・入手難","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== h 選択肢 2 をクリック → Backspace（選択を外すつもり）→ Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:2] panel=prompt 欄="" 選択=2 設計起因 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「設計起因」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [Backspace] panel=prompt 欄="" 選択=2 設計起因 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「設計起因」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> {"rev":2,"changeSet":{"reason":"設計起因","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== i 採用: R005 → Alt+Shift+A → 2位 → 選択肢 2 をクリック → 3日で入る → Enter
+  [open] panel=prompt 欄="" 選択=- focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:2] panel=prompt 欄="" 選択=2 在庫即納 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「在庫即納」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [t:3] panel=prompt 欄="3" 選択=2 在庫即納 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「在庫即納」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [i:日で入る] panel=prompt 欄="3日で入る" 選択=2 在庫即納 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「在庫即納」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  R005 selected S2 "在庫即納: 3日で入る" R005 を 立花エレテック で採用（在庫即納: 3日で入る）
+== j 役割の切り替え: Ctrl+K 役割 → 購買をクリック → 氏名 佐藤 → Enter
+  palette: 案件 役割を切り替え（ログイン）
+  [open] panel=prompt 欄="" 選択=1 設計 focus=INPUT#prompt-text.q foot=「1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し」 | toast: undefined
+  [opt:2] panel=prompt 欄="" 選択=2 購買 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [i:佐藤] panel=prompt 欄="佐藤" 選択=2 購買 focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「購買」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> role=purchasing user=佐藤 toast=役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+== k 役割の切り替え: PM をクリック → 3（PM のつもりで数字）→ Enter
+  [opt:3] panel=prompt 欄="" 選択=3 PM focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  [3] panel=prompt 欄="3" 選択=3 PM focus=INPUT#prompt-text.q foot=「↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し」 | toast: 「PM」を選んで文字の欄に移りました（数字も文字として入ります。数字で選び直すときは Shift+Tab）
+  -> role=design user="山田" toast=氏名が「3」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）
+
+ERRORS:

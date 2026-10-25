@@ -1,0 +1,14 @@
+== A. 設計: ↓（R001 部品名）→ サイドのヒント欄を読む → ? → Enter → Ctrl+Enter
+  side hint: ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+  status hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く
+  [?] mode=edit view=1 cur=R001/name edit="?" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  [Enter] mode=nav view=1 cur=R002/name edit="?" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  R001 {"name":"?"}
+== B. 新しい BOM（1 つずつ入力）で型式に ? を入れて公開
+  [created] mode=nav view=4 cur=R001/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 新しいBOM P-2026-002（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  after create mode nav R001 name
+  [model ?] mode=nav view=4 cur=R001/model edit="?" panel=null | hints: Ctrl+Enter公開 1 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 新しいBOM P-2026-002（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Ctrl+Enter] mode=nav view=4 cur=R001/model edit="?" panel=null | hints: Ctrl+Enter公開 1 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: 公開できません: エラー 2 件（R001 型式が空です … F8 で移動して直す）
+  rows [["R001","?","","","draft"]]
+
+ERRORS:

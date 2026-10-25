@@ -1,0 +1,9 @@
+[m3c_tier_genkou_henkou.xlsx]
+  old: tsv="品名\t型式\t\tメーカー\t数量\t\n\t現行\t変更\t\t現行\t変更\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4"
+    map=["name","model",null,"maker","qtyNeeded",null]
+    rows={|||現行||0} {||リレー|MY2N|オムロン|2}
+    warn=数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: tsv="品名\t型式\t\tメーカー\t数量\t\n\t現行\t変更\t\t現行\t変更\nリレー\tMY2N\tMY4N-D2\tオムロン\t2\t4"
+    map=["name",null,"model","maker",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4}
+    warn=2 段の見出しを 1 段にまとめて読みました / 「型式」に当たる列が 2 つあります。「型式（変更）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更）」の列を使います

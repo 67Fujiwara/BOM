@@ -1,0 +1,68 @@
+R049 型式 "AC100V" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R049: working:  -> {"model":"AC100V"} | issues 5->5  | hiddenCols 13->13 weights=null
+R049 型式 "AC100V" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R056 型式 "A1" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R056: working:  -> {"model":"A1"} | issues 5->5  | hiddenCols 13->13 weights=null
+R056 型式 "A1" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R049 メーカ "ABB" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R049: working:  -> {"maker":"ABB"} | issues 5->5  | hiddenCols 13->13 weights=null
+R049 メーカ "ABB" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R058 型式 "A2-1" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R058: working:  -> {"model":"A2-1"} | issues 5->5  | hiddenCols 13->13 weights=null
+R058 型式 "A2-1" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R040 部品名 "IO unit" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R040: working:  -> {"name":"IO unit"} | issues 5->5  | hiddenCols 13->13 weights=null
+R040 部品名 "IO unit" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R040 部品名 "IQ sensor" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R040: working:  -> {"name":"IQ sensor"} | issues 5->5  | hiddenCols 13->13 weights=null
+R040 部品名 "IQ sensor" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R042 メーカ "IDEC" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R042: working:  -> {"maker":"IDEC"} | issues 5->5  | hiddenCols 13->13 weights=null
+R042 メーカ "IDEC" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R035 部品名 "cable 2m" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R035: working:  -> {"name":"cable 2m"} | issues 5->5  | hiddenCols 13->13 weights=null
+R035 部品名 "cable 2m" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R036 部品名 "w1" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R036: working:  -> {"name":"w1"} | issues 5->5  | hiddenCols 13->13 weights=null
+R036 部品名 "w1" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R037 部品名 "cord 3" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R037: working:  -> {"name":"cord 3"} | issues 5->5  | hiddenCols 13->13 weights=null
+R037 部品名 "cord 3" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+R036 部品名 "washer M4" then Enter: panelMid=undefined | toast=null
+   after Enter: panel=undefined toast=null
+   changes: R036: working:  -> {"name":"washer M4"} | issues 5->5  | hiddenCols 13->13 weights=null
+R036 部品名 "washer M4" then Escape: panelMid=undefined | toast=null
+   after Escape: panel=undefined toast=null
+   changes: (なし) | issues 5->5  | hiddenCols 13->13 weights=null
+
+ERRORS:

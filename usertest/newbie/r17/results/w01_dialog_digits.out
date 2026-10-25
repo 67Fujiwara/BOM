@@ -1,0 +1,65 @@
+== 公開: 1 → 2（選び直し）→ Enter
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [2] panel=prompt 欄="" 選択=2 設計起因 | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"設計起因","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 1 → Tab → 2026-012 → Enter（案内どおり）
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Tab] panel=prompt 欄="" 選択=1 客先要求 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [t:2026-012] panel=prompt 欄="2026-012" 選択=1 客先要求 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  -> {"rev":2,"changeSet":{"reason":"客先要求","changeNo":"2026-012","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 1 → そのまま 2026-012 → Enter（Tab を知らない新人）
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:2026-012] panel=prompt 欄="026-012" 選択=2 設計起因 | toast: 「設計起因」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"設計起因","changeNo":"026-012","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 1 → 欄をクリック → 2026-012 → Enter（マウスで欄へ）
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [click] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:2026-012] panel=prompt 欄="2026-012" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"客先要求","changeNo":"2026-012","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 選ばずに Tab → 2026-012 → Enter（理由を選び忘れ）
+  [Tab] panel=prompt 欄="" 選択=- | toast: undefined
+  [t:2026-012] panel=prompt 欄="2026-012" 選択=- | toast: undefined
+  -> {"rev":1} | toast: ↑↓ で選んでから Enter（数字で選ぶときは Shift+Tab で選択肢へ） | panel=panel-prompt
+   still open: 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 ↑ / ↓ 選択 Shift+Tab 数字で選ぶに戻る Enter 確定 Esc 取り消し
+== 公開: 1 → Tab → 12 → Shift+Tab → 5（理由を選び直したい）→ Enter
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Tab] panel=prompt 欄="" 選択=1 客先要求 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [t:12] panel=prompt 欄="12" 選択=1 客先要求 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [Shift+Tab] panel=prompt 欄="12" 選択=1 客先要求 | toast: 選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）
+  [5] panel=prompt 欄="12" 選択=5 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"納期","changeNo":"12","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 1 → ECN-12 → Enter（英字で始まる番号）
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:ECN-12] panel=prompt 欄="ECN-12" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"客先要求","changeNo":"ECN-12","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 4 → a → Backspace → 3 → Enter（文字を消してから数字）
+  [4] panel=prompt 欄="" 選択=4 コスト | toast: 「コスト」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:a] panel=prompt 欄="a" 選択=4 コスト | toast: 「コスト」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Backspace] panel=prompt 欄="" 選択=4 コスト | toast: 「コスト」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [3] panel=prompt 欄="3" 選択=4 コスト | toast: 「コスト」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"コスト","changeNo":"3","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 公開: 1 → 2 → Tab → 欄に何も打たず Shift+Tab → 3 → Enter
+  [1] panel=prompt 欄="" 選択=1 客先要求 | toast: 「客先要求」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Tab] panel=prompt 欄="" 選択=1 客先要求 | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [Shift+Tab] panel=prompt 欄="" 選択=1 客先要求 | toast: 選択肢に戻りました（数字で選び直せます。Tab で文字の欄へ）
+  [3] panel=prompt 欄="" 選択=3 廃番・入手難 | toast: 「廃番・入手難」を選びました（選び直しは数字か ↑↓）。文字の欄（変更番号）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  -> {"rev":2,"changeSet":{"reason":"廃番・入手難","changeNo":"","approved":true}} | toast: 行 6（Rev.2） を公開しました | panel=null
+== 役割: 2 → 3 → Tab → Sato → Enter
+  [2] panel=prompt 欄="" 選択=2 購買 | toast: 「購買」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [3] panel=prompt 欄="" 選択=3 PM | toast: 「PM」を選びました（選び直しは数字か ↑↓）。文字の欄（氏名）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [Tab] panel=prompt 欄="" 選択=3 PM | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  [t:Sato] panel=prompt 欄="Sato" 選択=3 PM | toast: 文字の欄に移りました（数字も文字として入ります。Shift+Tab で選択肢へ）
+  user "pm" "Sato" 役割: PM（Sato）。既定のビュー 7 要決定 を開きました
+== 採用: R005 2位 → 理由 1 → 欄をクリック → 3日で入る（3 は打鍵、日で入るは IME） → Enter
+  [1] panel=prompt 欄="" 選択=1 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [click] panel=prompt 欄="" 選択=1 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:3] panel=prompt 欄="3" 選択=1 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [i:日で入る] panel=prompt 欄="3日で入る" 選択=1 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  R005 selected S2 "納期: 3日で入る" R005 を 立花エレテック で採用（納期: 3日で入る）
+== 採用: R005 2位 → 理由 1 → 3日で入る（Tab なし。3 は打鍵）→ Enter
+  [1] panel=prompt 欄="" 選択=1 納期 | toast: 「納期」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [t:3] panel=prompt 欄="" 選択=3 実績/品質 | toast: 「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  [i:日で入る] panel=prompt 欄="日で入る" 選択=3 実績/品質 | toast: 「実績/品質」を選びました（選び直しは数字か ↑↓）。文字の欄（補足）は打てば入ります（数字で始まるときは Tab で欄へ）。Enter で確定
+  R005 selected S2 "実績/品質: 日で入る" R005 を 立花エレテック で採用（実績/品質: 日で入る）
+
+ERRORS:

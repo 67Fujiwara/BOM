@@ -1,0 +1,84 @@
+[K1 kicad-csv]
+  old: map=["category","name","model","maker","qtyNeeded"]
+    rows={Reference||Value|Footprint|Qty|0} {R1,R2||10k|Resistor_SMD:R_0603|2|0} {C1||100n|Capacitor_SMD:C_0603|1|0} {U1||STM32F103C8T6|Package_QFP:LQFP-48|1|0}
+    warn=見出しが無いので、列を「分類・部品名・型式・メーカ・数量」と判断しました。違うときは 1 行目に見出し（部品名・型式・メーカ・数量 など）を付けて貼り付けてください / 数量を読めない行が 2 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: map=["ref",null,null,"qtyNeeded",null]
+    rows={|R1,R2||||2} {|C1||||1} {|U1||||1}
+    warn=見出しに「部品名」「型式」に当たる列がありません
+[K2 altium-tsv]
+  old: map=["note","name","ref",null,null,"qtyNeeded"]
+    rows={|R1, R2|Resistor|||2} {|U1|MCU|||1}
+    warn=
+  new: map=["note","name","ref",null,null,"qtyNeeded"]
+    rows={|R1, R2|Resistor|||2} {|U1|MCU|||1}
+    warn=
+[K3 header-cell-linebreak]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+[K4 insu-daisu-hitsuyou]
+  old: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 3 つあります。「員数」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 3 つあります。「員数」の列を使います
+[K5 gouki-1tier-kei-noqtyword]
+  old: map=["name","model","maker",null,null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+  new: map=["name","model","maker",null,null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+[K6 qty-ditto]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|4} {||タイマ|H3CR-A8|オムロン|4}
+    warn=「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|4} {||タイマ|H3CR-A8|オムロン|4}
+    warn=「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[K7 title-and-signature]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||作成|山田|承認|0}
+    warn=見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 1 行は取り込みません（例: 「以下余白」） / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||作成|山田|承認|0}
+    warn=見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 1 行は取り込みません（例: 「以下余白」） / 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください）
+[K8 total-variants]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+[K9 machine-and-unit-qty]
+  old: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 2 つあります。「数量/台」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=「数量」に当たる列が 2 つあります。「数量/台」の列を使います
+[K10 yobi-1tier]
+  old: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「数量」に当たる列が 2 つあります。「数量」の列を使います
+  new: map=["name","model","maker","qtyNeeded",null,null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「数量」に当たる列が 2 つあります。「数量」の列を使います
+[K11 eda-mpn-dnp]
+  old: map=["ref","note","maker","model","qtyNeeded",null]
+    rows={|R1, R2||RK73H1JTTD1002F|KOA|2} {|C1||GRM188R71H104KA93D|Murata|1} {|U1||STM32F103C8T6|ST|1}
+    warn=
+  new: map=["ref","note","maker","model","qtyNeeded",null]
+    rows={|R1, R2||RK73H1JTTD1002F|KOA|2} {|C1||GRM188R71H104KA93D|Murata|1} {|U1||STM32F103C8T6|ST|1}
+    warn=
+[K12 eda-fitted-col]
+  old: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|Resistor|RK73H1JTTD1002F|KOA|2} {|C1|Capacitor|GRM188R71H104KA93D|Murata|1}
+    warn=
+  new: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|Resistor|RK73H1JTTD1002F|KOA|2} {|C1|Capacitor|GRM188R71H104KA93D|Murata|1}
+    warn=

@@ -1,0 +1,41 @@
+  publish panel 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確
+  publish panel 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確
+  publish toast 行 5（Rev.2） を公開しました R076:submitted
+  request panel 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ） · S1 因幡電機 · S2 立花エレテック · S3 ミスミ · S4 RSコンポーネンツ · S5 オムロン直販 ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  deadline "来週" -> panel=null val=- toast=null
+  R076 after R076:quoting
+  import toast: 取り込み 2 行 / 突合不能 1（R999） / 型式不一致 1 / 代替提案の下書き 0 / 読めない値 2 件（R077 単価: 単価として読めません: 「abc」、R079 単価: 単価は 0 以上にしてください: 「-50」。その行は取り込んでいません）
+    R076 S1:1200/14/1
+    R077 S1:null/null/null
+    R078 S1:3500/14/null
+    R079 S1:null/null/null
+  thead ID ボール 部品名 型式 メーカ 必要数 単位 入数 調達区分 メーカ指定 代替可否 必要日 発注数 状態 期限 待ち 因幡電機 単価 因幡電機 納期 因幡電機 MOQ 因幡電機 在庫 立花エレテック 単価 立花エレテック 納期 立花エレテック MOQ 立花エレテック 在庫 ミスミ 単価 ミスミ 納期 ミスミ MOQ ミスミ 在庫 
+  at: view=9 cur=R077/q.unitPrice@S1 mode=nav edit="6" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  typed 1500 (no Enter): view=9 cur=R077/q.unitPrice@S1 mode=edit edit="1500" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Enter: view=9 cur=R078/q.unitPrice@S1 mode=nav edit="1500" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Enter (start): view=9 cur=R078/q.unitPrice@S1 mode=edit edit="3500" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  1500 Tab: view=9 cur=R078/q.leadDays@S1 mode=nav edit="1500" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  10 Tab: view=9 cur=R078/q.moq@S1 mode=nav edit="10" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  5 Enter: view=9 cur=R079/q.unitPrice@S1 mode=nav edit="5" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  R077 S1:1500/null/null | R078 S1:1500/10/5
+  ArrowDown x2 while auto-edit: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="5" toast=R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  Ctrl+Z while auto-edit: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="5" toast=元に戻す: セル編集
+  R077 S1:1500/null/null
+  Esc, Ctrl+Z: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="5" toast=元に戻す: セル編集
+  R077 S1:1500/null/null
+  Enter Enter: view=9 cur=R080/q.unitPrice@S1 mode=nav edit="" toast=元に戻す: セル編集
+  pressed 1 (wants view 1): view=9 cur=R080/q.unitPrice@S1 mode=edit edit="1" toast=元に戻す: セル編集
+  a R030 役割: 設計（山田）。既定のビュー 4 要確認 を開きました R030:quoted
+  a R031 役割: 設計（山田）。既定のビュー 4 要確認 を開きました R031:quoted
+  formal confirm 正式見積依頼書（社外）を出します: 対象 5 行。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+  Enter (default) -> null やめました（何も変えていません） R030:quoted*{"name":"a"}
+  2 ->  5 行 × 2 社に正式見積を依頼
+   R030:quoted*{"name":"a"} R031:quoted*{"name":"a"}
+  view8 thead ID ボール 部品名 型式 メーカ 必要数 単位 入数 調達区分 メーカ指定 代替可否 必要日 発注数 状態 期限 待ち 因幡電機 単価 因幡電機 納期 因幡電機 MOQ 因幡電機 在庫 立花エレテック 単価 立花エレテック 納期 立花エレテック MOQ 立花エレテック 在庫 ミスミ 単価 ミスミ 納期 ミスミ MOQ ミスミ 在庫  rows 29
+  cursor at: view=9 cur=R030/q.stock@S3 mode=nav edit="8" toast=R031 の単価 ¥8 は他社（¥37,392 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  after 25000 Tab 20 Enter: view=9 cur=R030/q.stock@S3 mode=edit edit="2500020" toast=在庫に「2500020」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  R030 R030:quoted*{"name":"a"} S1:19475/15/null S2:18921/12/4 S3:null/null/null
+  after 130 Tab 15 Enter: view=9 cur=R030/q.stock@S3 mode=edit edit="250002013015" toast=在庫に「250002013015」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  R031 R031:quoted*{"name":"a"} S1:8/12/null S2:37392/8/null S3:36454/15/4
+
+ERRORS:

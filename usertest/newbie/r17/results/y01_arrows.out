@@ -1,0 +1,147 @@
+== 設計: 単位で m ↓ 本 ↓ 個 Enter（R030〜R032）
+  [start] mode=nav view=1 cur=R030/unit edit="" | toast: null
+  [m] mode=edit view=1 cur=R030/unit edit="m" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R031/unit edit="m" | toast: null
+  [本] mode=nav view=1 cur=R031/unit edit="m" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R032/unit edit="m" | toast: null
+  [個] mode=nav view=1 cur=R032/unit edit="m" | toast: null
+  [Enter] mode=edit view=1 cur=R032/unit edit="個" | toast: null
+  CHANGES: R030: working:  -> {"unit":"m"}
+== 設計: 単位で pcs ↓ m ↓（候補に無い語）
+  [start] mode=nav view=1 cur=R030/unit edit="" | toast: null
+  [pcs] mode=edit view=1 cur=R030/unit edit="pcs" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R031/unit edit="pcs" | toast: null
+  [m] mode=edit view=1 cur=R031/unit edit="m" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R032/unit edit="m" | toast: null
+  CHANGES: R031: working:  -> {"unit":"m"}
+== 設計: 調達区分で sh ↓ so ↓
+  [start] mode=nav view=1 cur=R030/procurement edit="" | toast: null
+  [sh] mode=edit view=1 cur=R030/procurement edit="sh" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R031/procurement edit="sh" | toast: null
+  [so] mode=edit view=1 cur=R031/procurement edit="so" | toast: null
+  [ArrowDown] mode=edit view=1 cur=R031/procurement edit="so" | toast: 調達区分に「so」はありません（相見積 / 客先指定品 / 指定商社 / 支給品 / 社内在庫）（直して Enter、やめるときは Esc）
+  CHANGES: R030: working:  -> {"procurement":"指定商社"}
+== 設計: 代替可否で ka ↓ fuka ↓
+  [start] mode=nav view=1 cur=R030/altPolicy edit="" | toast: null
+  [ka] mode=edit view=1 cur=R030/altPolicy edit="ka" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R031/altPolicy edit="ka" | toast: null
+  [fuka] mode=edit view=1 cur=R031/altPolicy edit="fuka" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R032/altPolicy edit="fuka" | toast: null
+  CHANGES: R030: working:  -> {"altPolicy":"可"} ; R031: working:  -> {"altPolicy":"不可"}
+== 設計: 必要数 R032 で 7 ↑ 8 ↑ 9 Enter
+  [start] mode=nav view=1 cur=R032/qtyNeeded edit="" | toast: null
+  [7] mode=edit view=1 cur=R032/qtyNeeded edit="7" | toast: null
+  [ArrowUp] mode=nav view=1 cur=R031/qtyNeeded edit="7" | toast: null
+  [8] mode=edit view=1 cur=R031/qtyNeeded edit="8" | toast: null
+  [ArrowUp] mode=nav view=1 cur=R030/qtyNeeded edit="8" | toast: null
+  [9] mode=edit view=1 cur=R030/qtyNeeded edit="9" | toast: null
+  [Enter] mode=nav view=1 cur=R031/qtyNeeded edit="9" | toast: null
+  CHANGES: R030: working:  -> {"qtyNeeded":9} ; R031: working:  -> {"qtyNeeded":8} ; R032: working:  -> {"qtyNeeded":7}
+== 設計: 型式で MY4X ← Backspace N（打ち間違いを直すつもり）
+  [start] mode=nav view=1 cur=R030/model edit="" | toast: null
+  [MY4X] mode=edit view=1 cur=R030/model edit="MY4X" | toast: null
+  [ArrowLeft] mode=nav view=1 cur=R030/name edit="MY4X" | toast: null
+  [Backspace] mode=nav view=1 cur=R030/name edit="MY4X" | toast: R030 部品名 を空にしました（Ctrl+Z で戻す）
+  [N] mode=edit view=1 cur=R030/name edit="N" | toast: R030 部品名 を空にしました（Ctrl+Z で戻す）
+  [Enter] mode=nav view=1 cur=R031/name edit="N" | toast: R030 部品名 を空にしました（Ctrl+Z で戻す）
+  CHANGES: R030: working:  -> {"model":"MY4X","name":"N"}
+== 設計: 型式 Enter → ← ← → Home End（文字の中を動く）→ X Enter
+  [start] mode=nav view=1 cur=R030/model edit="" | toast: null
+  [Enter] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [ArrowLeft] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [ArrowLeft] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [ArrowRight] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [Home] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [End] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" | toast: null
+  [X] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WCX" | toast: null
+  [ArrowDown] mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WCX" | toast: null
+  [Enter] mode=nav view=1 cur=R031/model edit="M22N-BC-TWA-WCX" | toast: null
+  CHANGES: R030: working:  -> {"model":"M22N-BC-TWA-WCX"}
+== 設計: F2 → 必要数を打ち直す 5 → ↓（Enter で始めた編集）
+  [start] mode=nav view=1 cur=R030/qtyNeeded edit="" | toast: null
+  [F2] mode=edit view=1 cur=R030/qtyNeeded edit="2" | toast: null
+  [5] mode=edit view=1 cur=R030/qtyNeeded edit="5" | toast: null
+  [ArrowDown] mode=edit view=1 cur=R030/qtyNeeded edit="5" | toast: null
+  [Enter] mode=nav view=1 cur=R031/qtyNeeded edit="5" | toast: null
+  CHANGES: R030: working:  -> {"qtyNeeded":5}
+== 設計: R012（電源の直前）必要数 3 ↓ 4 ↓
+  [start] mode=nav view=1 cur=R012/qtyNeeded edit="" | toast: null
+  [3] mode=edit view=1 cur=R012/qtyNeeded edit="3" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R013/qtyNeeded edit="3" | toast: null
+  [4] mode=edit view=1 cur=R013/qtyNeeded edit="4" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R014/qtyNeeded edit="4" | toast: null
+  CHANGES: R013: working:  -> {"qtyNeeded":4}
+== 設計: R013 必要数 5 ↑（上は見出し）
+  [start] mode=nav view=1 cur=R013/qtyNeeded edit="" | toast: null
+  [5] mode=edit view=1 cur=R013/qtyNeeded edit="5" | toast: null
+  [ArrowUp] mode=nav view=1 cur=R012/qtyNeeded edit="5" | toast: null
+  [6] mode=edit view=1 cur=R012/qtyNeeded edit="6" | toast: null
+  [Enter] mode=nav view=1 cur=R013/qtyNeeded edit="6" | toast: null
+  CHANGES: R012: working:  -> {"qtyNeeded":6} ; R013: working:  -> {"qtyNeeded":5}
+== 設計: 必要数 1O（オー）↓ → 続けて 3 ↓
+  [start] mode=nav view=1 cur=R030/qtyNeeded edit="" | toast: null
+  [1O] mode=edit view=1 cur=R030/qtyNeeded edit="1O" | toast: null
+  [ArrowDown] mode=edit view=1 cur=R030/qtyNeeded edit="1O" | toast: 必要数として読めません: 「1O」（直して Enter、やめるときは Esc）
+  [3] mode=edit view=1 cur=R030/qtyNeeded edit="1O3" | toast: 必要数として読めません: 「1O」（直して Enter、やめるときは Esc）
+  [ArrowDown] mode=edit view=1 cur=R030/qtyNeeded edit="1O3" | toast: 必要数として読めません: 「1O3」（直して Enter、やめるときは Esc）
+  [Escape] mode=nav view=1 cur=R030/qtyNeeded edit="1O3" | toast: 必要数として読めません: 「1O3」（直して Enter、やめるときは Esc）
+  CHANGES: (なし)
+== 設計: 必要日(固定) 11/5 ↓ 12/1 ↓
+  [start] mode=nav view=1 cur=R030/note edit="" | toast: null
+  [11/5] mode=edit view=1 cur=R030/note edit="11/5" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R031/note edit="11/5" | toast: null
+  [12/1] mode=edit view=1 cur=R031/note edit="12/1" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R032/note edit="12/1" | toast: null
+  CHANGES: R030: working:  -> {"note":"11/5"} ; R031: working:  -> {"note":"12/1"}
+== 設計: 最後の行で 7 ↓ 8 ↓
+  [start] mode=nav view=1 cur=R080/qtyNeeded edit="" | toast: null
+  [7] mode=edit view=1 cur=R080/qtyNeeded edit="7" | toast: null
+  [ArrowDown] mode=nav view=1 cur=R080/qtyNeeded edit="7" | toast: 最後の行です。下に行を足すときは Shift+Enter
+  [8] mode=edit view=1 cur=R080/qtyNeeded edit="8" | toast: 最後の行です。下に行を足すときは Shift+Enter
+  [ArrowDown] mode=nav view=1 cur=R080/qtyNeeded edit="8" | toast: 最後の行です。下に行を足すときは Shift+Enter
+  [Escape] mode=nav view=1 cur=R080/qtyNeeded edit="8" | toast: 最後の行です。下に行を足すときは Shift+Enter
+  CHANGES: R080: qtyNeeded: 3 -> 8
+== 購買 6: R033 単価 120 → 14 → 10 ↓
+  [start] mode=nav view=6 cur=R033/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [120] mode=edit view=6 cur=R033/q.unitPrice@S1 edit="120" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowRight] mode=nav view=6 cur=R033/q.leadDays@S1 edit="120" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [14] mode=edit view=6 cur=R033/q.leadDays@S1 edit="14" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowRight] mode=nav view=6 cur=R033/q.moq@S1 edit="14" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [10] mode=edit view=6 cur=R033/q.moq@S1 edit="10" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowDown] mode=edit view=6 cur=R034/q.moq@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  CHANGES: Q R033@S1: unitPrice: 106 -> 120; leadDays: 12 -> 14; moq: null -> 10; source:  -> "手入力"
+== 購買 6: R033 単価 120 Tab 14 Tab 10 Enter（Tab の流れ）
+  [start] mode=nav view=6 cur=R033/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [120] mode=edit view=6 cur=R033/q.unitPrice@S1 edit="120" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Tab] mode=edit view=6 cur=R033/q.leadDays@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [14] mode=edit view=6 cur=R033/q.leadDays@S1 edit="14" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Tab] mode=edit view=6 cur=R033/q.moq@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [10] mode=edit view=6 cur=R033/q.moq@S1 edit="10" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R034/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  CHANGES: Q R033@S1: unitPrice: 106 -> 120; leadDays: 12 -> 14; moq: null -> 10; source:  -> "手入力"
+== 購買 6: 単価 120 Enter → 自動で始まった空の入力で → → ← 
+  [start] mode=nav view=6 cur=R033/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [120] mode=edit view=6 cur=R033/q.unitPrice@S1 edit="120" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R034/q.unitPrice@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowRight] mode=nav view=6 cur=R034/q.leadDays@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowRight] mode=nav view=6 cur=R034/q.moq@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowLeft] mode=nav view=6 cur=R034/q.leadDays@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [9] mode=edit view=6 cur=R034/q.leadDays@S1 edit="9" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] mode=edit view=6 cur=R035/q.leadDays@S1 edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  CHANGES: Q R033@S1: unitPrice: 106 -> 120; source:  -> "手入力" ; Q R034@S1: leadDays: 18 -> 9; source:  -> "手入力"
+== 設計 4: 先頭の問題（F8）を直して ↓
+  [start] mode=nav view=4 cur=R016/model edit="" | toast: null
+  [ABC-1 10A] mode=edit view=4 cur=R016/model edit="ABC-1 10A" | toast: null
+  [ArrowDown] mode=nav view=4 cur=R009/model edit="ABC-1 10A" | toast: null
+  [X] mode=edit view=4 cur=R009/model edit="X" | toast: null
+  [Escape] mode=nav view=4 cur=R009/model edit="X" | toast: null
+  CHANGES: R016: working:  -> {"model":"ABC-1 10A"}
+== 購買 3: 入荷予定 R013 11/5 ↓ 11/6 ↓
+  [start] mode=nav view=3 cur=R013/promisedDate edit="" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [11/5] mode=edit view=3 cur=R013/promisedDate edit="11/5" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowDown] mode=nav view=3 cur=R034/promisedDate edit="11/5" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [11/6] mode=edit view=3 cur=R034/promisedDate edit="11/6" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [ArrowDown] mode=nav view=3 cur=R045/promisedDate edit="11/6" | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  CHANGES: R013: promisedDate:  -> "2026-11-05" ; R034: promisedDate:  -> "2026-11-06"
+
+ERRORS:

@@ -1,0 +1,48 @@
+== N7-02 A: 起動（行なし）→ サイド → ↓ → サイド → F1 ヘルプのビュー行 → パレット「要確認」
+  side(no row): ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 74 5 変更あり 75 6 商社別 75 7 要決定 1 8 正式見積 6 9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+  [↓] role=design mode=nav view=1 cur=R001/name edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: null
+  side(R001 部品名): ビュー Alt+1 すべて 80 Alt+2 購買提出用 80 Alt+3 発注・入荷 6 Alt+4 要確認 74 Alt+5 変更あり 75 Alt+6 商社別 75 Alt+7 要決定 1 Alt+8 正式見積 6 Alt+9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctr
+  help view rows: ビュー: 要確認 Alt+4 | 次の問題へ Alt+n F8 | 絞り込み検索にフォーカス Alt+/ | 承認 / 受入 / 許可（PM）
+  palette 要確認: ["ビュービュー: 要確認Alt+4"]
+  palette 絞り込み: ["表示絞り込み検索Ctrl+F で入力欄へAlt+/Ctrl+F","BOM操作今のセルの値で絞り込みAlt+f"]
+  palette 並び替え: ["表示今の列で並び替えID の列で s 昇順 / Shift+S 降順（ほかの列では Alt+s / Alt+Shift+S）。列見出しのクリックでもAlt+s","BOM操作今の列で並び替え（降順）Alt+Shift+S"]
+== N7-02 B: 起動（行なし）→ 6（サイドは「6」）→ サイドの表示 → 4 → Enter
+  [6] role=design mode=nav view=6 cur=null/name edit="" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  side after 6: ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 74 5 変更あり 75 6 商社別 75 7 要決定 1 8 正式見積 6 9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+  [4] role=design mode=nav view=4 cur=null/name edit="" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: null
+  [Enter] role=design mode=nav view=4 cur=null/name edit="" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 行を選んでください（↓ で先頭の行へ）
+  R001 R001{st=selected ord=false rcv=false hid=false sup=S1 name=PLC CPUユニット w=null}
+== N7-01 残り A: 購買 R013 部品名で romaji「sumi」（済）→ 案内の例 → そのとおり押す
+  before R013{st=formalQuoted ord=false rcv=false hid=false sup=S1 name=スイッチング電源 24V 5A w=null}
+  [sumi] role=purchasing mode=nav view=1 cur=R013/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+  after R013{st=formalQuoted ord=false rcv=false hid=false sup=S1 name=スイッチング電源 24V 5A w=null}
+== N7-01 残り B: 設計 R005 単価（自動計算）で「mada」（まだ）→ 案内の例 → そのとおり押す
+  before R005{st=quoted ord=false rcv=false hid=false sup=undefined name=リレー w=null}
+  [mada] role=design mode=nav view=1 cur=R005/unitPrice edit="" panel=null | hints: Ctrl+Enter公開 5 行 F1ヘルプ F8次の問題 Alt+a推奨採用 Space開く Alt+x警告を確認済み | toast: この列は自動計算です。「推奨（最高スコア）で採用。見積済のみ」は Alt+a（または ID の列で a）。キーの一覧は F1
+  after R005{st=quoted ord=false rcv=false hid=false sup=undefined name=リレー w=null}
+== N7-01 残り C: 購買 R013 備考で「memo」→ 例
+  [memo] role=purchasing mode=nav view=1 cur=R013/note edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1
+  [Hai] role=purchasing mode=nav view=1 cur=R013/note edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+== U7-01: 購買 9 の部品名で 6・8・4、PM 7 の部品名で 6・1・7
+   purch 6: view=9 cur=R004/q.unitPrice@S1 mode=edit
+   purch 8: view=9 cur=R004/q.unitPrice@S1 mode=edit
+   purch 4: view=9 cur=R004/q.unitPrice@S1 mode=edit
+   purch 9: view=9 cur=R004/q.unitPrice@S1 mode=edit
+  side(purch 9): ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 2 5 変更あり 75 6 商社別 75 7 要決定 1 8 正式見積 6 9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+   pm 6: view=6 cur=R003/name mode=nav
+   pm 1: view=1 cur=R003/name mode=nav
+   pm 7: view=7 cur=R003/name mode=nav
+  side(pm 7): ビュー 1 すべて 80 2 購買提出用 80 3 発注・入荷 6 4 要確認 1 5 変更あり 75 6 商社別 75 7 要決定 1 8 正式見積 6 9 購買作業 69 案件 第3ライン 搬送制御盤 ヒント F1 ショートカット一覧 Ctrl+K すべての操作 Ctrl+P 受信箱・案件 ＋ 新しいBOM
+== U7-02: PM 決定パネル Enter 連打
+  panel 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [Enter2] role=pm mode=panel view=7 cur=R003/name edit="" panel=quickfix | hints: F1ヘルプ | toast: 使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+== 編集中の「?ヘルプ」: 設計 R030 型式 → Enter（編集）→ ステータスバー → ? → F1
+  [Enter (edit)] role=design mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [?] role=design mode=edit view=1 cur=R030/model edit="M22N-BC-TWA-WC?" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: null
+  [F1] role=design mode=panel view=1 cur=R030/model edit="M22N-BC-TWA-WC?" panel=help | hints: F1ヘルプ | toast: null
+  panel panel-help
+  [Esc] role=design mode=nav view=1 cur=R030/model edit="M22N-BC-TWA-WC?" panel=null | hints: Ctrl+Enter公開 6 行 F1ヘルプ F8次の問題 Enter編集 Space開く | toast: null
+  [MY4N?] role=design mode=edit view=1 cur=R030/model edit="MY4N?" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: null
+  R030 R030{st=quoted ord=false rcv=false hid=false sup=undefined name=表示灯 白 w={"model":"MY4N?"}}
+
+ERRORS:

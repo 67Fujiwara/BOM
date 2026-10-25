@@ -1,0 +1,74 @@
+[K1 kicad-csv] preview: 取り込む行: 3 行（カンマ区切り、見出しあり） 列の対応: Reference → 回路記号 / Value → （使わない） / Footprint → （使わない） / Qty → 数量 / DNP → （使わない） ⚠ 見出しに「部品名」「型式」に当たる列がありません 2 個 R1,R2 1 個 C1 1 個 U1 
+   created rows=3: {|R1,R2||||2個|} {|C1||||1個|} {|U1||||1個|}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 1 件: 見出しに「部品名」「型式」に当たる列がありません
+   problems: R001:e/name/部品名が空です;e/model/型式が空です;e/maker/メーカが空です | R002:e/name/部品名が空です;e/model/型式が空です;e/maker/メーカが空です | R003:e/name/部品名が空です;e/model/型式が空です;e/maker/メーカが空です
+   Ctrl+Enter -> 公開するもの（下書き・未公開の変更）はありません。エラーのある行が 3 行あります（F8 で移動）。部品名も型式も無い下書きの行 3 行は公開しません（入れてから Ctrl+Enter） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev-
+[K2 altium-tsv] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: Comment → 備考 / Description → 部品名 / Designator → 回路記号 / Footprint → （使わない） / LibRef → （使わない） / Quantity → 数量 Resistor 2 個 R1, R2 MCU 1 個 U1 
+   created rows=2: {|R1, R2|Resistor|||2個|10k} {|U1|MCU|||1個|STM32F103C8T6}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。問題のある行 2 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+   problems: R001:e/model/型式が空です;e/maker/メーカが空です | R002:e/model/型式が空です;e/maker/メーカが空です
+   Ctrl+Enter -> 公開できません: エラー 4 件（R001 型式が空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev-
+[K3 header-cell-linebreak] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 部品 名称 → 部品名 / 型式 → 型式 / メーカー 名 → メーカ / 必要 数量 → 数量 リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|2個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K4 insu-daisu-hitsuyou] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 員数 → 数量 / 台数 → （使わない） / 必要数 → （使わない） ⚠ 「数量」に当たる列が 3 つあります。「員数」の列を使います リレー MY4N-D2 オムロン 2 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|2個|} {||タイマ|H3CR-A8|オムロン|1個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 「数量」に当たる列が 3 つあります。「員数」の列を使います
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K5 gouki-1tier-kei-noqtyword] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 1号機 → （使わない） / 2号機 → （使わない） / 計 → （使わない） ⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください） リレー MY4N-D2 オムロン 1 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|1個|} {||タイマ|H3CR-A8|オムロン|1個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K6 qty-ditto] preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 ⚠ 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました リレー MY4N-D2 オムロン 4 個 リレー MY2N オムロン 4 個 タイマ H3CR-A8 オムロン 4 個 
+   created rows=3: {||リレー|MY4N-D2|オムロン|4個|} {||リレー|MY2N|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|4個|}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+   problems: (問題なし)
+   Ctrl+Enter -> 行 3（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1 R003:submitted:rev1
+[K7 title-and-signature] preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 ⚠ 見出しより上の 1 行（表題など）は取り込みません ⚠ 小計・合計・区切りの 1 行は取り込みません（例: 「以下余白」） ⚠ 数量を読めない行が 1 行あります（0 にしてエラー表示します。4 要確認で直してください） リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 作成 山田 承認 0 個 
+   created rows=3: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|2個|} {||作成|山田|承認|0個|数量「鈴木」を読めません}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します。注意 3 件: 見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 1 行は取り込みません（例: 「以下余白」） ほか
+   problems: R003:e/qtyNeeded/必要数が0以下です
+   Ctrl+Enter -> 公開できません: エラー 1 件（R003 必要数が0以下です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev-
+[K8 total-variants] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 ⚠ 小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」） リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|2個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K9 machine-and-unit-qty] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量/台 → 数量 / 製作台数 → （使わない） / 手配数 → （使わない） ⚠ 「数量」に当たる列が 2 つあります。「数量/台」の列を使います リレー MY4N-D2 オムロン 2 個 タイマ H3CR-A8 オムロン 1 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|2個|} {||タイマ|H3CR-A8|オムロン|1個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 「数量」に当たる列が 2 つあります。「数量/台」の列を使います
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K10 yobi-1tier] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: 品名 → 部品名 / 型式 → 型式 / メーカー → メーカ / 数量 → 数量 / 予備 → （使わない） / 手配数 → （使わない） ⚠ 「数量」に当たる列が 2 つあります。「数量」の列を使います リレー MY4N-D2 オムロン 4 個 タイマ H3CR-A8 オムロン 2 個 
+   created rows=2: {||リレー|MY4N-D2|オムロン|4個|} {||タイマ|H3CR-A8|オムロン|2個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 1 件: 「数量」に当たる列が 2 つあります。「数量」の列を使います
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+[K11 eda-mpn-dnp] preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: Designator → 回路記号 / Comment → 備考 / Manufacturer → メーカ / Manufacturer Part Number → 型式 / Quantity → 数量 / DNP → （使わない） RK73H1JTTD1002F KOA 2 個 R1, R2 GRM188R71H104KA93D Murata 1 個 C1 STM32F103C8T6 ST 1 個 U1 
+   created rows=3: {|R1, R2||RK73H1JTTD1002F|KOA|2個|10k} {|C1||GRM188R71H104KA93D|Murata|1個|100n} {|U1||STM32F103C8T6|ST|1個|MCU}
+   toast=新しいBOM P-2026-002（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+   problems: R001:e/name/部品名が空です | R002:e/name/部品名が空です | R003:e/name/部品名が空です
+   Ctrl+Enter -> 公開できません: エラー 3 件（R001 部品名が空です … F8 で移動して直す） | panel -
+   published: R001:draft:rev- R002:draft:rev- R003:draft:rev-
+[K12 eda-fitted-col] preview: 取り込む行: 2 行（タブ区切り、見出しあり） 列の対応: Designator → 回路記号 / Description → 部品名 / Manufacturer → メーカ / MPN → 型式 / Qty → 数量 / Fitted → （使わない） Resistor RK73H1JTTD1002F KOA 2 個 R1, R2 Capacitor GRM188R71H104KA93D Murata 1 個 C1 
+   created rows=2: {|R1, R2|Resistor|RK73H1JTTD1002F|KOA|2個|} {|C1|Capacitor|GRM188R71H104KA93D|Murata|1個|}
+   toast=新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します
+   problems: (問題なし)
+   Ctrl+Enter -> 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） | panel -
+   published: R001:submitted:rev1 R002:submitted:rev1
+
+ERRORS:

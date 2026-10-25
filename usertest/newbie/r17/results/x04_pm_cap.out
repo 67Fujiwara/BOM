@@ -1,0 +1,39 @@
+== PM: Enter → e → 理由欄に 50000 → Enter（案内）→ Tab → 50000 → Enter（止まる）→ Shift+Tab → 消す → 特急で → Enter
+  [reason=50000 Enter] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"v":"50000","focused":true},{"v":"","focused":false}]} | toast 「50000」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください
+  [Tab 50000 Enter] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"v":"50000","focused":false},{"v":"50000","focused":true}]} | toast 理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）
+  [Shift+Tab clear] {"text":"決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し","inputs":[{"v":"","focused":true},{"v":"50000","focused":false}]} | toast 理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）
+  [Enter (reason empty)] null | toast R003: 特急・分納
+  {after e} R003 st=selected extra=null flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}]]
+== 購買: 3 発注・入荷 → R003 追加費用 に「8万」→ Enter / 「80,000円」→ Enter
+  [at 追加費用 true] role=purchasing mode=nav view=3 cur=R003/extraCost edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [8万] role=purchasing mode=edit view=3 cur=R003/extraCost edit="8万" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing mode=nav view=3 cur=R013/extraCost edit="8万" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 追加費用 ¥80,000 が、PM の決めた特急・分納の上限 ¥50,000 を超えています（D-001）。購買の 4・PM の 7 に出します
+  {8万} R003 st=selected extra=80000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}]]
+  [80,000円 Enter] role=purchasing mode=nav view=3 cur=g:電源:R013/extraCost edit="8万" panel=null | hints: F1ヘルプ ↓表へ F8次の問題 | toast: 分類の見出しです（Space で折りたたみ、↓ で行へ。ビューの切り替えは Alt+数字）
+  {80000円} R003 st=selected extra=80000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}]]
+== PM: 7 → R003 上限超過 → 何を押せばよいか（ステータスバー）→ y
+  [pm 7] role=pm mode=nav view=7 cur=R003/name edit="8万" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Enter panel] {"text":"決定パネル R003（上限超過） y 追加費用 ¥80,000 を承認（上限 ¥50,000を実費まで引き上げ） Shift+Y 却下 → 購買が上限内で手配し直す Enter 実行 ↑ / ↓ 選択 Esc 閉じる","inputs":[]} | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [y] role=pm mode=panel view=7 cur=R003/name edit="8万" panel=prompt | hints: F1ヘルプ | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [after y] {"text":"決定: 承認（R003。理由・任意） Enter 確定 Esc 取り消し","inputs":[{"v":"","focused":true}]} | toast 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [Enter in y dialog] null | toast R003: 承認
+  {after y} R003 st=selected extra=80000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}],["承認","",{"amount":80000,"cap":true}]]
+== PM: Ctrl+Z
+  [Ctrl+Z] role=pm mode=nav view=7 cur=R003/name edit="8万" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 元に戻す: 決定: 承認
+  {undo} R003 st=selected extra=80000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}]]
+== PM: Shift+Y（却下）
+  [Shift+Y] {"text":"決定: 却下（R003。理由・必須） Enter 確定 Esc 取り消し","inputs":[{"v":"","focused":true}]} | toast 元に戻す: 決定: 承認
+  [reason takai Enter] null | toast R003: 却下
+  {after Shift+Y} R003 st=selected extra=80000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false,"capRuled":80000} decisions=[["特急・分納","",{"amount":50000}],["却下","takai",null]]
+== 購買: 却下を受けて、追加費用を 50000 に下げる / もう一度 90000 に上げる
+  [purch] role=purchasing mode=nav view=9 cur=R004/q.unitPrice@S1 edit="8万" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Alt+4] role=purchasing mode=nav view=4 cur=R054/name edit="8万" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  rows in 4: 3 R054,R003,R013
+  [90000] role=purchasing mode=nav view=3 cur=R034/extraCost edit="90000" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 追加費用 ¥90,000 が、PM の決めた特急・分納の上限 ¥50,000 を超えています（D-001）。購買の 4・PM の 7 に出します
+  {90000} R003 st=selected extra=90000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}],["却下","takai",null]]
+  [pm 7 again] role=pm mode=nav view=7 cur=R003/name edit="90000" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+== リロード（PM）
+  [reload] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: null
+  {reload} R003 st=selected extra=90000 flags={"leadNG":false,"countermeasure":"分納・特急","pmPending":false} decisions=[["特急・分納","",{"amount":50000}],["却下","takai",null]]
+
+ERRORS:

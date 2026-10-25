@@ -1,0 +1,29 @@
+== A 種別を選ばずに本文を打つ（kakaku ga takai）
+  [Alt+Shift+I] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast: 「k」で種別「型式あいまい」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）
+  [Enter] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: I-006 型式あいまい を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/型式あいまい/draft/「akaku ga takai」
+== B 種別を選ばずに本文を打つ（moq 100 ko）
+  [Alt+Shift+I] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 種別: メーカ未記入 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast: 「m」で種別「メーカ未記入」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）
+  [Enter] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: I-006 メーカ未記入 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/メーカ未記入/draft/「oq 100 ko」
+== C 数字で始まる本文（1 で種別を選んで、3個単位です）
+  [Alt+Shift+I] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 種別: 型式あいまい Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [Enter] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: I-006 型式あいまい を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/型式あいまい/draft/「3個単位です」
+== D 種別 m → 本文「MOQ 100」
+  [Alt+Shift+I] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 k 型式あいまい 対応 設計 / 期限 1 営業日 m メーカ未記入 対応 設計 / 期限 1 営業日 d 廃番 対応 設計 / 期限 3 営業日 a 代替提案 対応 設計 / 期限 3 営業日 l 最小ロット 対応 購買 / 期限 2 営業日 r 数量見直し依頼 対応 設計 / 期限 2 営業日 q 質問 対応 設計 / 期限 1 営業日 h 発注後変更依頼 対 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [typed] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=panel panel=issue | 指摘を起票 R030 表示灯 白 種別: メーカ未記入 Enter 起票（下書き） Ctrl+Enter 起票して次の行へ Esc 閉じる | toast: 「m」で種別「メーカ未記入」を選びました。本文を入れてください（種別を変えるときは Esc で閉じてやり直す）
+  [Enter] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: I-006 メーカ未記入 を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/メーカ未記入/draft/「MOQ 100」
+== E 起票 → Ctrl+Enter で発行 → 設計 → 返信 → 購買 確認
+  [raised] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: I-006 型式あいまい を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/型式あいまい/draft/「kataban wo kakunin」
+  [Ctrl+Enter] role=purchasing view=9 cur=R030/q.unitPrice@S1 mode=nav panel=null |  | toast: 指摘 1 件 を公開しました
+  issues: I-004:R054/最小ロット/open/「数量0。パック単位の入数を確認。」 I-005:R041/メーカ未記入/open/「メーカが空欄。」 I-006:R030/型式あいまい/open/「kataban wo kakunin」
+  [design] role=design view=4 cur=R030/name mode=nav panel=null |  | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  [Space] role=design view=4 cur=R030/name mode=nav panel=null |  | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+
+ERRORS:

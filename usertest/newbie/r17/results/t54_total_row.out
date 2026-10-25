@@ -1,0 +1,10 @@
+created [{"id":"R001","name":"リレー","model":"MY4N","maker":"オムロン","qty":4,"st":"draft"},{"id":"R002","name":"タイマ","model":"H3CR","maker":"オムロン","qty":2,"st":"draft"}]
+status ナビR001 部品名設計 山田: 未公開 2 行 / 指摘 0新しいBOM P-2026-002（2 行）を作成しました。Ctrl+Enter で提出します。注意 2 件: 見出しより上の 2 行（表題など）は取り込みません / 小計・合計・区切りの 4 行は取り込みません（例: 「計 6」「TOTAL 6」 ほか）Ctrl+Enter公開 2 行F1ヘルプF8次の問題Enter編集Space開く
+F8 R001 部品名 ナビR001 部品名設計 山田: 未公開 2 行 / 指摘 0設計がいま直す問題はありません（Ctrl+Enter で公開できます）Ctrl+Enter公開 2 行F1ヘルプF8次の問題Enter編集Space開く
+Ctrl+. panel null
+Ctrl+Enter 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） null
+after [{"id":"R001","name":"リレー","maker":"オムロン","qty":4,"st":"submitted","pub":1},{"id":"R002","name":"タイマ","maker":"オムロン","qty":2,"st":"submitted","pub":1}]
+status ナビR001 部品名設計 山田: 未公開 0 行 / 指摘 0行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）F1ヘルプEnter編集Space開く
+Ctrl+Enter 2 公開するもの（下書き・未公開の変更）はありません
+
+ERRORS:

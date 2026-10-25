@@ -1,0 +1,42 @@
+== A 順番に直すモード: R016・R009・R041 を直して R022（指摘・提案あり）に来たら
+  [seq 0] mode=panel view=1 cur=R005/model panel=quickfix | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白があります: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 4 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [seq 1] mode=edit view=1 cur=R009/maker panel=null |  | toast: null
+  [seq 2] mode=edit view=1 cur=R016/model panel=null |  | toast: null
+  [at R022?] mode=panel view=1 cur=R041/maker panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [Shift+ArrowRight] mode=panel view=1 cur=R041/maker panel=quickfix | 直し方の候補 R041 圧力センサ 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [2] mode=panel view=1 cur=R054/qtyNeeded panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [n] mode=panel view=1 cur=R054/qtyNeeded panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [F8] mode=panel view=1 cur=R054/qtyNeeded panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [Tab] mode=panel view=1 cur=R054/qtyNeeded panel=quickfix | 直し方の候補 R054 圧着端子 Y形 1.25-3 1 必要数が0以下です: 1 にする 2 必要数が0以下です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） 3 飛ばして次の問題へ（この問題はそのまま。Esc で順番に直すモードを終わる） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: 1〜3 か ↑↓ と Enter で選んでください
+  [Esc] mode=nav view=1 cur=R054/qtyNeeded panel=null |  | toast: 1〜3 か ↑↓ と Enter で選んでください
+  表で R022 型式に Shift+→（あとで）
+  [Shift+→ on R022] mode=nav view=1 cur=R022/model panel=null |  | toast: この行に「あとで」にする問題はありません
+== B 取消（Shift+Delete）→ 公開（理由 1・番号）→ Ctrl+Z → リロード
+  [Shift+Delete] mode=nav view=1 cur=R030/name panel=null |  | toast: R030 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+  R030 quoted {"kind":"cancel"}
+  [Ctrl+Enter] mode=panel view=1 cur=R030/name panel=prompt | 変更セット（6 行: R030, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast: R030 を取消（作業中）にしました。Ctrl+Enter で公開すると購買に伝わります（もう一度 Shift+Delete で取りやめ）
+  [1 ECN-7 Enter] mode=nav view=1 cur=R030/name panel=null |  | toast: 行 6（Rev.2） を公開しました
+  R030 after publish cancelled null
+  last sub {"rev":2,"at":"2026-10-23T19:47:38.622Z","by":{"name":"山田","role":"design"},"rowIds":["R030","R076","R077","R078","R079","R080"],"summary":{"added":5,"modelChanged":0,"qtyChanged":0,"other":0,"cancell
+  [Ctrl+Z] mode=nav view=1 cur=R030/name panel=null |  | toast: 取消・置換を公開した R030 は戻せません（購買に伝わっています。同じ部品が要るときは Shift+Enter で行を追加）。
+  R030 after undo cancelled null null
+  [reload] mode=nav view=1 cur=R030/name panel=null |  | toast: null
+  R030 after reload cancelled null null
+  subs 2
+== C 置換（パレット「置き換え」）→ 型式を入れて Enter → 公開 → 購買の 5
+  [palette] mode=palette view=1 cur=R031/name panel=palette | BOM操作 置き換え品を作る Alt+r Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast: null
+  [Enter] mode=panel view=1 cur=R031/name panel=prompt | R031 の置き換え品を作る（新しい型式。メーカは「型式 / メーカ」で変えられます） Enter 確定 Esc 取り消し | toast: null
+  [model Enter] mode=nav view=1 cur=R081/model panel=null |  | toast: R031 の置き換え品 R081 を作りました（公開すると R031 は置換済になります。Ctrl+Z で戻す）
+  new row R080 ラベルプリンタテープ TZe-231 3 draft  R031 removal {"kind":"replace","by":"R081"}
+  [Ctrl+Enter] mode=panel view=1 cur=R081/model panel=prompt | 変更セット（7 行: R031, R081, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し | toast: R031 の置き換え品 R081 を作りました（公開すると R031 は置換済になります。Ctrl+Z で戻す）
+  [↓↓↓ Enter] mode=nav view=1 cur=R081/model panel=null |  | toast: 行 7（Rev.2） を公開しました
+  R031 replaced  new submitted
+  [purch 5] mode=nav view=5 cur=R081/name panel=null |  | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  5 rows: R010,R011,R012,R013,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028,R029,R030,R031,R081,R032,R033,R034,R035,R036,R037
+== D Ctrl+Z / Ctrl+Y 連打（10 回）→ リロード
+  [Ctrl+Z x10] mode=nav view=1 cur=R033/qtyNeeded panel=null |  | toast: これ以上戻す操作がありません（Ctrl+Y でやり直せます）
+  [Ctrl+Y x10] mode=nav view=1 cur=R033/qtyNeeded panel=null |  | toast: やり直す操作がありません
+  R030-32 qty [{"qtyNeeded":3},{"qtyNeeded":4},{"qtyNeeded":5}]
+  after reload [{"qtyNeeded":3},{"qtyNeeded":4},{"qtyNeeded":5}]
+
+ERRORS:

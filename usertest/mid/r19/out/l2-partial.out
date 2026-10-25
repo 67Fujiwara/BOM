@@ -1,0 +1,33 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+approval ON → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+A R011 相見積 st=selected adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] B R035 相見積 st=selected adopt=S2 reason= oq=6 flags={} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]]
+A qty → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish cs-a → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+after cs-a [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","pend","R011",""]]
+A name → 行 1（Rev.3） を公開しました
+B name → 行 1（Rev.3） を公開しました
+publish cs-b → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.4） を公開しました
+before PM subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","pend","R011,R035",""]] A pending {"qtyNeeded":25,"name":"NAME-A2"} pendingRev 4
+PASS L2-1 Rev.a（A だけ）は Rev.b にまとめた印になり、承認待ちのまま残らない（M17-03） :: [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","pend","R011,R035",""]]
+PM 7 rows ["R003","R011","R021","R025","R032","R035","R038","R039","R044","R046","R055","R064"]
+PM statusbar A ナビR011 IDPM 鈴木: 要決定 12役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開く
+PM decide panel A {"kind":"quickfix","title":"決定パネル R011（変更セット Rev.4（Rev.3 の変更をまとめた））","options":["y 承認 → Rev.4 の変更セット 2 行まとめて公開値に反映","Shift+Y 却下 → Rev.4 の変更セット 2 行まとめて設計の作業中に戻す"],"index":-1}
+FAIL L2-2 PM が A を決めるときに、まとめた Rev.a の変更（必要数 24 → 25・理由「客先要求」）が見える :: {"kind":"quickfix","title":"決定パネル R011（変更セット Rev.4（Rev.3 の変更をまとめた））","options":["y 承認 → Rev.4 の変更セット 2 行まとめて公開値に反映","Shift+Y 却下 → Rev.4 の変更セット 2 行まとめて設計の作業中に戻す"],"index":-1}ナビR011 IDPM 鈴木: 要決定 12役割: PM（鈴木）。既定のビュー 7 要決定 を開きました?ヘルプF8次の問題y承認Shift+Y却下Enter決定パネルSpace開く
+PM y A (Rev.b) → R011・Rev.4 の変更セット 2 行まとめて: 承認
+C qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+D qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish cs-c → [変更セット（2 行: R037, R047）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.5） を公開しました
+C name → 行 2（Rev.5） を公開しました
+publish cs-d → [変更セット（1 行: R037）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.6） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","appr","R011,R035",""],[5,"客先要求","pend","R037,R047",""],[6,"廃番・入手難","pend","R037",""]] C pendingRev 6 D pendingRev 5
+PM y D (Rev.c) → R047・Rev.5 の変更セット 1 行まとめて: 承認
+after Rev.c approve [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","appr","R011,R035",""],[5,"客先要求","appr","R037,R047",""],[6,"廃番・入手難","pend","R037",""]] C qty 8 D qty 201 C pendingRev 6
+FAIL L2P-1 Rev.c（C・D の必要数）を承認したら、Rev.c に載っている C の必要数も公開値になる（または Rev.c の決定が C の分を含まないと分かる） :: C qty=8 (want 9) pendingRev=6 subs=[[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","appr","R011,R035",""],[5,"客先要求","appr","R037,R047",""],[6,"廃番・入手難","pend","R037",""]]
+PM Shift+Y C (Rev.d) → R037・Rev.6 の変更セット 1 行まとめて: 却下
+after Rev.d reject [[2,"客先要求","appr","R076,R077,R078,R079,R080",""],[3,"客先要求","merged→4","R011",""],[4,"廃番・入手難","appr","R011,R035",""],[5,"客先要求","appr","R037,R047",""],[6,"廃番・入手難","rej","R037","revoked"]] C qty 8 name 近接センサ M12 working {"qtyNeeded":9,"name":"NAME-C2"}
+FAIL L2P-2 Rev.d（C の部品名）を却下しても、承認済の Rev.c の C の必要数は戻らない :: C qty=8 working={"qtyNeeded":9,"name":"NAME-C2"}
+PM 変更点 C [[1,"","",""],[5,"客先要求","必要数: 8 → 9","Rev 6 にまとめた"],[6,"廃番・入手難","必要数: 8 → 9 / 部品名: 近接センサ M12 → NAME-C2","却下"],["","却下","部品名は不可",""]]
+FAIL L2P-3 変更点で「承認」とある Rev.c の C の必要数の変更と、C の公開値が食い違わない :: {"rc":["必要数: 8 → 9","Rev 6 にまとめた"],"qty":8}
+ERRORS []
+== 1/5 PASS

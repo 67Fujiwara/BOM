@@ -1,0 +1,22 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+sample 支給品 - 
+B R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] amount 2621 den 75/75
+B → 支給品 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（6 行: R004, R076, R077, R078, R079 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+B 支給品 R004 支給品 st=selected adopt=- reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] ball purchasing amount null den 74/79 | 選定済
+PASS L9-1 支給品にした行は金額に含まれず、見積済 n/N の分母から外れる（§3.4。同じ公開で下書き 5 行が足される） :: amount=null den 75/75 → 74/79
+purch 9/4/8/3 has B false false true true
+PASS L9-2b 支給品にした行はボール（購買待ち）に数えない（購買の 4・9・8 のどこにも出ない行を購買待ちに数えない） :: ball=purchasing 4=false 9=false 8=true
+PASS L9-3 支給品にした行は購買の 9・4 に出ない（購買の作業が無い） :: 9=false 4=false
+B → 社内在庫 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish → [変更セット（1 行: R004）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.3） を公開しました
+B → 相見積 行 1（Rev.3） を公開しました
+publish → [変更セット（1 行: R004）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+B back 相見積 R004 相見積 st=quoted adopt=- reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] ball design | 見積済 den 75/80
+PASS L9-4 相見積に戻すと、残っている見積で見積済（選定者のボール）になり、分母に戻る :: R004 相見積 st=quoted adopt=- reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] den=75/80
+a → R004 を 因幡電機 で採用（スコア 99.2 / 最安）
+B adopted R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+PASS L9-5 選び直した B は正式見積の依頼書に出る :: [["因幡電機",true],["ミスミ",false],["立花エレテック",false]]
+ERRORS []
+== 5/5 PASS

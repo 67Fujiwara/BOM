@@ -8,3 +8,4 @@ playwright-report
 usertest/**/shots/
 usertest/**/results/
 usertest/**/*.png
+usertest/**/dl/

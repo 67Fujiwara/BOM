@@ -34,7 +34,7 @@ export interface PasteResult {
  * タブ区切り・CSV を表に分ける。Excel は改行を含むセルを "…" で囲んで出すので、引用符の中の改行・区切りはセルの一部として扱う。
  * セルの中の改行は空白にする（BOM の項目は 1 行）
  */
-function closesProperly(src: string, start: number, delim: string): boolean {
+function closesProperly(src: string, start: number, delim: string, width = 0): boolean {
   for (let j = start + 1; j < src.length; j++) {
     const c = src[j]
     if (c === '"') {
@@ -46,7 +46,9 @@ function closesProperly(src: string, start: number, delim: string): boolean {
       if (!(nx === undefined || nx === delim || nx === '\n' || nx === '\r')) return false
       // 改行をまたぐ囲みは、Excel の複数行のセル（中に区切りが無く、改行の前後に文字がある）だけ
       const inner = src.slice(start + 1, j)
-      if (inner.includes('\n') && (inner.includes(delim) || !inner.trim())) return false
+      // （中に 1 行分の区切りがある＝次の行までつながった「"」は囲みでない。CSV の「盤内上段, 左側⏎(要確認)」は囲み）
+      const delims = inner.split(delim).length - 1
+      if (inner.includes('\n') && (!inner.trim() || (delim === '\t' ? delims > 0 : width > 0 && delims >= width))) return false
       return true
     }
     if (delim === '\t' && c === '\t') return false
@@ -60,6 +62,8 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
   let quoted = false
   let fresh = true // セルの先頭か（引用符はセルの先頭にあるときだけ囲みとみなす）
   const src = text.replace(/\r\n?/g, '\n')
+  // 1 行目の区切りの数（見出しの列の数 − 1）。囲みの中にこれだけの区切りがあれば、行をまたいだ誤った囲み
+  const width = (src.split('\n')[0] ?? '').split(delim).length - 1
   for (let i = 0; i < src.length; i++) {
     const ch = src[i]
     if (quoted) {
@@ -72,7 +76,7 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
     }
     // 引用符で囲んだセルは、閉じる引用符のすぐ後ろが区切り・改行・終わりのときだけ。
     // 閉じない「"」だけのセル（〃の代わり）や、タブ区切りで中にタブを含むもの（別のセルの「"」までつながる）は、ただの文字
-    if (ch === '"' && fresh && closesProperly(src, i, delim)) {
+    if (ch === '"' && fresh && closesProperly(src, i, delim, width)) {
       quoted = true
       fresh = false
       continue
@@ -213,7 +217,9 @@ export function parseBomPaste(text: string): PasteResult {
     return f.length ? f.filter((c) => headerField(c)).length / f.length : 0
   }
   const bestRatio = best >= 2 ? Math.min(...tops.map((i) => ratio(lines[i]))) : 0
-  const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && (tops.includes(i) || (!titleLike(l) && ratio(l) >= bestRatio - 0.15)))
+  // 繰り返しの見出しは、いちばん見出しらしい行と同じくらいの項目がある行だけ（「品名｜数量」の縦の表題欄を見出しにしない）
+  const enough = (l: string[]) => fieldSet(l).size >= (best >= 4 ? best - 1 : best)
+  const firstSame = lines.slice(0, 30).findIndex((l, i) => sameHeader(l) && enough(l) && (tops.includes(i) || (!titleLike(l) && ratio(l) >= bestRatio - 0.15)))
   const headerAt = best >= 2 ? (firstSame >= 0 ? firstSame : tops[tops.length - 1]) : -1
   // 設計変更の様式の上の段（変更前｜変更後）。ページごとに繰り返していたら外す
   let upperRow: string[] | null = null
@@ -412,7 +418,7 @@ export function parseBomPaste(text: string): PasteResult {
 
   // 数量の列が無く、号機ごとの列（1号機・A号機・#1・予備）と合計の列だけある 1 段の見出しは、それらを数量の列にする
   if (hasHeader && !mapping.includes('qtyNeeded')) {
-    const mach = (c: string) => /^(旧|新|現|現行|変更前|変更後)?\s*(#\s*\d+|\d+\s*号機?|[a-z]\s*号機?|号機\s*\d+|\d+\s*台目|予備)$/i.test(toHalf(c).trim())
+    const mach = (c: string) => /^(旧|新|現|現行|変更前|変更後)?\s*(#\s*\d+|\d+\s*号機?|[a-z]\s*号機?|号機\s*\d+|\d+\s*台目|予備)(\s*[（(](旧|新|現|現行|変更前|変更後)[）)])?$/i.test(toHalf(c).trim())
     if (first.filter(mach).length >= 1) mapping = mapping.map((f, j) => (!f && (mach(first[j] ?? '') || /^(合計|計|総数|小計)$/.test(toHalf(first[j] ?? '').trim())) ? 'qtyNeeded' : f))
   }
   if (hasHeader && !mapping.includes('name') && !mapping.includes('model')) warnings.push('見出しに「部品名」「型式」に当たる列がありません')
@@ -435,9 +441,9 @@ export function parseBomPaste(text: string): PasteResult {
   let body = (hasHeader ? lines.slice(1) : lines).filter((l) => !isTotal(l) && !mappedEmpty(l))
   // EDA の BOM の実装しない部品（DNP・Not Fitted・未実装）は取り込まない（列の値、またはそう書いたセル）
   const dnpCol = hasHeader ? first.findIndex((c) => /^(dnp|do\s*not\s*(place|populate|fit)|fitted|populated?|実装|未実装|非実装|実装有無)$/i.test(toHalf(c).trim())) : -1
-  const dnpHeader = dnpCol >= 0 && /dnp|do\s*not|未実装|非実装/i.test(first[dnpCol])
+  const dnpHeader = dnpCol >= 0 && /dnp|do\s*not|未実装|非実装/i.test(toHalf(first[dnpCol]))
   const dnpRow = (l: string[]) =>
-    (dnpCol >= 0 && (dnpHeader ? /^(x|1|yes|y|true|dnp|○|●|✓|未実装|しない)$/i : /^(no|n|0|false|not\s*fitted|nf|dnp|未実装|なし|無|しない|非|×|-)$/i).test(toHalf(l[dnpCol] ?? '').trim())) ||
+    (dnpCol >= 0 && (dnpHeader ? /^(x|1|yes|y|true|dnp|○|●|✓|未実装|しない)$/i : /^(no|n|0|false|not\s*fitted|nf|dnp|未実装|なし|無|しない|非|×)$/i).test(toHalf(l[dnpCol] ?? '').trim())) ||
     // そう書いたセル（メーカの列の「DNP」＝大日本印刷 は除く）
     l.some((c, j) => mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない)/i.test(toHalf(c).trim()) || (/^dnp$/i.test(toHalf(c).trim()) && j !== dnpCol)))
   const dnp = body.filter(dnpRow).length
@@ -465,14 +471,17 @@ export function parseBomPaste(text: string): PasteResult {
     const rev = (j: number) => (hasHeader ? (headerRev(first[j] ?? '') ?? -1) : -1)
     // 号機ごとの数量と「合計」の列があれば合計を（必要数・手配数・発注数・所要数も合計の数）
     const total = (j: number) => (hasHeader && TOTALISH.test(toHalf(first[j] ?? '')) ? 0 : 1)
+    const machineHead0 = (j: number) => /(#\s*\d+|\d+\s*号機?|号機\s*\d+|\d+\s*台目|予備)/.test(toHalf(first[j] ?? ''))
     // 部品名は Description・品名を Value・Comment より先に（Altium の Comment は値）
     const vc = (j: number) => (dup === 'name' && hasHeader && /^(value|comment)$/i.test((first[j] ?? '').trim()) ? 1 : 0)
     const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || vc(a) - vc(b) || a - b)
     const keep = order[0]
-    if (rank(keep) === 0 || rev(keep) >= 0) fallback.set(dup, { keep, others: order.slice(1) })
+    if ((rank(keep) === 0 || rev(keep) >= 0) && !(dup === 'qtyNeeded' && hasHeader && cols.every(machineHead0))) fallback.set(dup, { keep, others: order.slice(1) })
     // 数量の列が複数（版の印なし）: 合計の列 → 「n 台分」のいちばん多い列 → 号機ごと（予備も）なら足す → 1 台当り×台数 なら掛ける
     let pick = keep
-    if (dup === 'qtyNeeded' && hasHeader && cols.every((j) => rank(j) === 1 && rev(j) < 0)) {
+    // （旧／新の印が付いていても、号機ごとの列だけなら新の号機を足す）
+    const machineHead = (j: number) => /(#\s*\d+|\d+\s*号機?|号機\s*\d+|\d+\s*台目|予備)/.test(toHalf(first[j] ?? ''))
+    if (dup === 'qtyNeeded' && hasHeader && cols.every((j) => rev(j) < 0) && (cols.every((j) => rank(j) === 1) || cols.every(machineHead))) {
       const h = (j: number) => toHalf(first[j] ?? '')
       const nUnits = (j: number) => Number(/(\d+)\s*台分/.exec(h(j))?.[1] ?? 0)
       const machine = (j: number) => !TOTALISH.test(h(j)) && /(#\s*\d+|\d+\s*号機?|号機\s*\d+|(^|[^a-z])[a-z]\s*号機?|\d+\s*台目|予備)/i.test(h(j))
@@ -480,9 +489,12 @@ export function parseBomPaste(text: string): PasteResult {
       const units = (j: number) => /台数|製作数/.test(h(j)) && !perUnit(j)
       // 台数の列があるときは、ただの「数量」「員数」も 1 台分
       const perUnit2 = (j: number) => perUnit(j) || (cols.some(units) && /^(数量|員数|個数)$/.test(h(j).trim()))
-      const totals = cols.filter((j) => TOTALISH.test(h(j)))
+      // 必要数・合計を、手配数・発注数（丸めた数）より先に
+      const ordering = (j: number) => /手配数|発注数/.test(h(j))
+      const totals0 = cols.filter((j) => TOTALISH.test(h(j)))
+      const totals = totals0.some((j) => !ordering(j)) ? totals0.filter((j) => !ordering(j)) : totals0
       // 旧／新 × 号機 は新の号機だけを足す
-      const verOf = (j: number) => (/^(新|変更後|new)/i.test(h(j).trim()) ? 'new' : /^(旧|現|現行|変更前|old)/i.test(h(j).trim()) ? 'old' : null)
+      const verOf = (j: number) => (/^(新|変更後|new)/i.test(h(j).trim()) ? 'new' : /^(旧|現|現行|変更前|old)/i.test(h(j).trim()) ? 'old' : headerVersion(h(j)))
       const machines0 = cols.filter(machine)
       const machines = machines0.some((j) => verOf(j) === 'new') ? machines0.filter((j) => verOf(j) === 'new') : machines0
       if (totals.length) {
@@ -496,6 +508,11 @@ export function parseBomPaste(text: string): PasteResult {
     }
     const keep2 = pick
     mapping = mapping.map((f, j) => (f === dup && j !== keep2 ? null : f))
+    // 部品名に使わなかった Comment の列は備考に（備考の列が無ければ）
+    if (dup === 'name' && hasHeader && !mapping.includes('note')) {
+      const c = cols.find((j) => j !== keep2 && /^comments?$/i.test((first[j] ?? '').trim()))
+      if (c != null) mapping[c] = 'note'
+    }
     if (dup === 'qtyNeeded' && qtyCombine && qtyCombine.mode !== 'totalOrSum') warnings.unshift(`数量の列 ${cols.length} つ（${cols.map((j) => `「${first[j]}」`).join('')}）を${qtyCombine.mode === 'sum' ? '足して' : '掛けて'}数量にしました`)
     else if (dup === 'qtyNeeded' && qtyCombine) warnings.push(`数量は「${first[keep2]}」の列を使います（空の行は号機の数を足します）`)
     else warnings.push(`「${FIELD_LABEL[dup]}」に当たる列が ${cols.length} つあります。「${(hasHeader ? first[keep2] : '') || '左の列'}」の列を使います`)
@@ -525,6 +542,21 @@ export function parseBomPaste(text: string): PasteResult {
   const keepCols = new Set([...fallback.values()].map((fb) => fb.keep))
   let colDitto = 0
   body = body.map((l) => [...l])
+  // 新しい版の列の〃: 上の行が削除の印なら削除、上の行が書き写し（新＝旧）ならこの行も旧を書き写す
+  const oldOf = new Map([...fallback.values()].map((fb) => [fb.keep, fb.others] as const))
+  for (let i = 1; i < body.length; i++)
+    for (const [j, others] of oldOf) {
+      if (!DITTO0.test((body[i][j] ?? '').replace(/[\s　。.]/g, ''))) continue
+      const up = (body[i - 1][j] ?? '').trim()
+      const upOld = others.map((k) => (body[i - 1][k] ?? '').trim()).find(Boolean)
+      if (/^(削除|廃止|撤去|取外し|欠番|取止め|中止|del|delete[d]?|remove[d]?|0+)$/i.test(toHalf(up).replace(/[\s（）()]/g, ''))) {
+        body[i][j] = up
+        colDitto++
+      } else if (up && upOld && up === upOld) {
+        body[i][j] = others.map((k) => (body[i][k] ?? '').trim()).find(Boolean) ?? up
+        colDitto++
+      }
+    }
   for (let i = 1; i < body.length; i++)
     for (let j = 0; j < body[i].length; j++) {
       if (keepCols.has(j) || !DITTO0.test((body[i][j] ?? '').replace(/[\s　。.]/g, ''))) continue
@@ -537,16 +569,17 @@ export function parseBomPaste(text: string): PasteResult {
   // 新しい版の列の「－」「同左」「変更なし」は「変えていない」（空と同じ）。「〃」「同上」は上の行と同じ（下で上の行の値にする）
   const SAME = /^(－|-|ー|―|同左|変更なし|変更無し|同じ|同)$/
   // 削除の印（新の列）: 削除・廃止・撤去・取外し・不要・不使用・なし・×（括弧・記号つきも）。新の数量の 0 も
-  const DEL0 = /^(削除|削除済み?|削除品|廃止|廃止品|撤去|取外し|取り外し|不要|不使用|なし|無し|×|✕|delete[d]?|remove[d]?)$/i
+  const DEL0 = /^(削除|削除済み?|削除品|廃止|廃止品|撤去|取外し|取り外し|不要|不使用|なし|無し|欠番|取止め|取り止め|取りやめ|中止|×|✕|del|delete[d]?|remove[d]?)$/i
   const DEL = { test: (v: string) => DEL0.test(v.replace(/[\s　（）()【】\[\]ー－\-―※*＊]/g, '')) || delWord(v) }
   const fbe = [...fallback.entries()]
   const cell = (l: string[], j: number) => (l[j] ?? '').trim()
   const empty = (l: string[], j: number) => cell(l, j) === ''
   const blank = (l: string[], j: number) => empty(l, j) || SAME.test(cell(l, j))
-  const isDel = (l: string[], f: BomField, j: number) => DEL.test(cell(l, j)) || (f === 'qtyNeeded' && /^0+(\.0+)?$/.test(cell(l, j)))
+  const isDel = (l: string[], f: BomField, j: number) => DEL.test(cell(l, j)) || (f === 'qtyNeeded' && /^0+(\.0+)?\s*(個|台|本|枚|pcs|コ)?$/i.test(toHalf(cell(l, j))))
   const hasOld = (l: string[]) => fbe.some(([, fb]) => fb.others.some((k) => !blank(l, k)))
   // 新の列に削除の印がある行（ほかの新の列は空・変えていない印・削除の印だけ。新の型式があって新のメーカが「なし」の行は消さない）
-  const delRow = (l: string[]) => fbe.some(([f, fb]) => isDel(l, f, fb.keep)) && fbe.every(([f, fb]) => blank(l, fb.keep) || isDel(l, f, fb.keep))
+  // （新の数量の 0 で、新の型式が旧と同じ・空の行も削除）
+  const delRow = (l: string[]) => fbe.some(([f, fb]) => isDel(l, f, fb.keep)) && fbe.every(([f, fb]) => blank(l, fb.keep) || isDel(l, f, fb.keep) || fb.others.some((k) => cell(l, k) === cell(l, fb.keep)))
   // 新の列がどれも空・変えていない印
   const newBlank = (l: string[]) => fbe.every(([, fb]) => blank(l, fb.keep))
   const newEmpty = (l: string[]) => fbe.every(([, fb]) => empty(l, fb.keep))
@@ -817,6 +850,8 @@ export function isSectionLine(cells: string[], width = cells.length): boolean {
   if (width > 1 && filled.length === 2 && filled.every((c) => PAGE_TITLE.test(c) || PAGE_NO.test(c))) return true
   // 表題・製品名・ページ番号の行（「部品表 (2/2)」「制御盤A」「P.2」）
   if (width > 1 && filled.length === 3 && filled.some((c) => PAGE_TITLE.test(c)) && filled.some((c) => PAGE_NO.test(c))) return true
+  // 単位だけの行（見出しの下の「(個)」「(円)」）
+  if (filled.length >= 1 && filled.every((c) => /^[（(][^）)]{1,6}[）)]$/.test(c))) return true
   // 署名欄（作成｜山田｜承認｜鈴木）
   const SIGN = /^(作成|承認|検図|検印|設計|確認|担当|審査|照査|作図|製図|日付|発行|査閲|承認者|作成者|確認者)(者|日)?[:：]?$/
   if (filled.length >= 2 && filled.filter((_, i) => i % 2 === 0).every((c) => SIGN.test(c))) return true
@@ -860,6 +895,8 @@ function delWord(v0: string): boolean {
   if (!m) return false
   const rest = v.slice(m[0].length)
   if (/^(品)?(不要|取消|取り消|取りやめ|取止め|取り止め|中止|しない|せず|なし|無し|無|予定|対象外|不可|後|から|品から)/.test(rest)) return false
+  // 「撤去品を流用」「廃止品の在庫」のように、品のあとに文が続くものは部品の説明
+  if (/^品./.test(rest) && !/^品[\s　。.]*$/.test(rest)) return false
   if (/^し(?!ます)/.test(rest) || /^せ/.test(rest)) return false
   return true
 }

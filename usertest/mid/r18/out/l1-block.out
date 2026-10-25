@@ -1,0 +1,26 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+PM Shift+Y → R004: 却下
+X after reject R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] oq 1 issues [["I-006","最小ロット","open",""]]
+PASS L1-0 却下で発注数が必要数に戻る（M16-04） :: oq=1 need=1
+re-round 100 → R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す） | oq 1 [["I-006","最小ロット","open",""]]
+PASS L1B-1 却下のあと同じ商社で発注数 100 は入らず、理由（PM の却下）が出る（M17-02） :: oq=1 msg=R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す）
+orderQty = need → R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す）
+re-raise → REFUSED R004 には同じ「最小ロット」の指摘 I-006 がもうあります。内容を足すときは Space → ↓ で I-006 を選んで返信（1）
+FAIL L1B-1b 知らせのとおり「最小ロットの指摘を発行し直す」とそのまま発行できる（同じ指摘が開いていると断られない） :: REFUSED R004 には同じ「最小ロット」の指摘 I-006 がもうあります。内容を足すときは Space → ↓ で I-006 を選んで返信（1）
+purch Ctrl+. options ["I-006 を見送りにする（理由）"]
+見送り → R004 には同じ「最小ロット」の指摘 I-006 がもうあります。内容を足すときは Space → ↓ で I-006 を選んで返信（1）
+re-raise 2 → 指摘 1 件 を公開しました
+after re-raise R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"pmPending":true,"pmReason":"閾値超","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] case 閾値超 [["I-006","最小ロット","wontfix","見送り: PM に再相談するため出し直す"],["I-007","最小ロット","open",""]]
+PASS L1B-2 最小ロットの指摘を発行し直すと、PM の 7 にまた「閾値超」で載る（対応表 M17-02） :: R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"pmPending":true,"pmReason":"閾値超","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+round during 2nd PM wait → 指摘 1 件 を公開しました oq 100
+PM y → R004: 承認
+after approve R004 相見積 st=selected adopt=S1 reason= oq=100 flags={"orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] [["I-006","最小ロット","wontfix","見送り: PM に再相談するため出し直す"],["I-007","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+PASS L1B-3 2 回目に PM が承認したら発注数 100 にでき、指摘は確認済 :: R004 相見積 st=selected adopt=S1 reason= oq=100 flags={"orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] [["I-006","最小ロット","wontfix","見送り: PM に再相談するため出し直す"],["I-007","最小ロット","confirmed","PM の決定: 余剰を受け入れる（発注数は丸めた数）"]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 [["因幡電機","R004","アナログ入力","FX5-4AD","三菱電機",100,"個"]]
+PASS L1B-4 承認した余剰（100）で正式見積の依頼書に出る :: [["因幡電機","R004","アナログ入力","FX5-4AD","三菱電機",100,"個"]]
+ERRORS []
+== 5/6 PASS

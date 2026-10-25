@@ -1,0 +1,10 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+X (在庫) R002 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,null],["S2",418,0,null],["S3",376,23,null]] need 11/14
+Y (在庫でない) R001 相見積 st=formalRequested adopt=S1 reason= oq=- flags={} quotes=[["S1",146,19,null],["S2",123,0,null],["S3",149,23,null]]
+R002 formalQuoted stock 在庫 formalLead 60 leadNG false case なし | 正式見積済
+R001 formalQuoted stock 受注生産 formalLead 60 leadNG true case 納期NG | 正式見積済 · 納期NG
+PASS L8B-0 （対照）在庫でない商社の正式納期 60 日は納期NG になる :: R001 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={"leadNG":true} quotes=[["S1",146,19,146],["S2",123,0,null],["S3",149,23,null]]
+FAIL L8B-1 概算で「在庫」でも、正式納期 60 日（必要日 11-13 を超える）なら納期NG になり PM の 7 に載る :: R002 相見積 st=formalQuoted adopt=S1 reason= oq=- flags={} quotes=[["S1",407,0,407],["S2",418,0,null],["S3",376,23,null]] case=なし
+ERRORS []
+== 1/2 PASS

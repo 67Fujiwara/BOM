@@ -1,0 +1,30 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+o R001 R001: 発注済にしました
+o R002 R002: 発注済にしました
+h A → 指摘 1 件 を公開しました
+PM y A → R001: 承認
+A approved R001:ordered:ord=true:{"orderCancelApproved":true} issues=I-006:発注後変更依頼:inProgress:ruled
+restore A (not removed) → {"title":"R001 を発注済のまま残します。取引先がキャンセルを受けなかったときだけ使います（置き換えはやめ、発注後変更依頼は「キャンセル不可」で閉じます）","options":["やめる","発注済のまま残す"],"toast":"R001 を発注済のまま残しました（キャンセル不可）"}
+A after R001:ordered:ord=true:{} issues=I-006:発注後変更依頼:confirmed:ruled
+PASS B8-1 外す前でも「発注済のまま残す」で依頼を閉じ、発注済のまま（承認は使い切り） :: R001:ordered:ord=true:{} issues=I-006:発注後変更依頼:confirmed:ruled
+A in purch 4 false PM 7 false design 4 false
+o on A after keep → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+R001:ordered:ord=true:{} issues=I-006:発注後変更依頼:confirmed:ruled
+PASS B8-2 残した後は o で外せない（承認は使い切り） :: R001:ordered:ord=true:{} issues=I-006:発注後変更依頼:confirmed:ruled
+Ctrl+Z → 元に戻す: キャンセル不可で発注に戻す R001:ordered:ord=true:{"orderCancelApproved":true} issues=I-006:発注後変更依頼:inProgress:ruled
+PASS B8-3 Ctrl+Z で「残す」を戻すと、承認済・外す前に戻る :: 元に戻す: キャンセル不可で発注に戻す
+o on A after undo → R001: 発注済を外しました
+R001:formalQuoted:ord=false:{"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled
+PASS B8-4 戻した後は o で外せる :: R001:formalQuoted:ord=false:{"countermeasure":"代替品検討"} issues=I-006:発注後変更依頼:confirmed:ruled
+h B → 指摘 1 件 を公開しました
+PM y B → R002: 承認
+unorder B → R002: 発注済を外しました
+restore B → R002 を発注済に戻しました（キャンセル不可） R002:ordered:ord=true:{} issues=I-007:発注後変更依頼:confirmed:ruled
+Ctrl+Z → 元に戻す: キャンセル不可で発注に戻す R002:formalQuoted:ord=false:{"countermeasure":"代替品検討"} issues=I-007:発注後変更依頼:confirmed:ruled
+PASS B8-5 外した後に戻したのを Ctrl+Z → 外した状態（代替品検討・置き換え待ち） :: R002:formalQuoted:ord=false:{"countermeasure":"代替品検討"} issues=I-007:発注後変更依頼:confirmed:ruled
+B ball 設計 design 4 true
+Ctrl+Y → やり直す: キャンセル不可で発注に戻す R002:ordered:ord=true:{} issues=I-007:発注後変更依頼:confirmed:ruled
+PASS B8-6 Ctrl+Y でもう一度「発注済に戻す」 :: やり直す: キャンセル不可で発注に戻す
+design Ctrl+Z → 戻せません: R004 の「状態」 は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください R002:ordered:ord=true:{} issues=I-007:発注後変更依頼:confirmed:ruled
+== 6/6 PASS

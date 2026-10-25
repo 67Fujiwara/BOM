@@ -1,0 +1,12 @@
+l1-pre == 0/0 PASS
+l3-rough == 2/2 PASS
+l3-qty == 2/2 PASS
+l3-manual == 0/1 PASS
+l5-pending == 0/0 PASS
+l4 == 8/8 PASS
+l7 == 21/21 PASS
+l9 == 5/5 PASS
+l10-surplus == 2/2 PASS
+l2-approve == 6/7 PASS
+l2-reject == 4/6 PASS
+DONE

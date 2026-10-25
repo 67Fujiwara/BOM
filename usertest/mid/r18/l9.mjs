@@ -1,0 +1,33 @@
+// l9: 調達区分の切り替え（相見積 → 支給品 → 社内在庫 → 相見積、相見積 → 客先指定品 → 相見積）で、状態・ボール・発注数・金額・見積済の分母（§3.4）
+import { launch, check, log, summary } from './lib.mjs'
+import { helpers } from './h.mjs'
+const t = await launch(); const { page } = t; const h = helpers(t)
+await t.open('design'); log('bulk →', await t.bulk())
+let p = await t.proj()
+const sup0 = p.rows.find((r) => r.procurement === '支給品'); log('sample 支給品', sup0 ? h.show(p, sup0.id) : '-', sup0 ? 'ball ' + (await h.ballOf(sup0.id)) : '')
+const den = async () => { const r0 = await page.evaluate(async () => (await import(window.__m('/src/model/store.ts'))).useStore.getState().user().role); if (r0 === 'design') await t.role('purchasing'); const hd = await t.header(); if (r0 === 'design') await t.role('design'); return (/見積済\D*(\d+)\/(\d+)/.exec(hd) ?? []).slice(1).join('/') }
+const amount = async (id) => page.evaluate(async (id) => { const d = await import(window.__m('/src/model/derive.ts')); const s = (await import(window.__m('/src/model/store.ts'))).useStore.getState(); const p = s.project(); return d.lineAmount(p, p.rows.find((r) => r.id === id)).rough ?? null }, id)
+const sel = p.rows.filter((r) => r.status === 'selected' && r.procurement === '相見積' && !r.flags.contested && !r.flags.leadNG && !r.working)
+const B = sel[2].id
+log('B', h.show(p, B), 'amount', await amount(B), 'den', await den())
+const den0 = await den()
+await t.press('1'); await t.showCol('procurement', 'designated')
+log('B → 支給品', await t.setCellKey(B, 'procurement', '支給品')); log('publish →', await t.publish('1'))
+p = await t.proj(); const rB = p.rows.find((r) => r.id === B)
+const ballB = await h.ballOf(B); const amtB = await amount(B); const den1 = await den()
+log('B 支給品', h.show(p, B), 'ball', ballB, 'amount', amtB, 'den', den1, '|', await h.status(B))
+check('L9-1 支給品にした行は金額に含まれず、見積済 n/N の分母から外れる（§3.4。同じ公開で下書き 5 行が足される）', (amtB == null || amtB === 0) && +den1.split('/')[1] === +den0.split('/')[1] + 5 - 1, `amount=${amtB} den ${den0} → ${den1}`)
+const in9 = await h.inView('purchasing', 9, B), in4 = await h.inView('purchasing', 4, B), in8 = await h.inView('purchasing', 8, B), in3 = await h.inView('purchasing', 3, B); log('purch 9/4/8/3 has B', in9, in4, in8, in3)
+check('L9-2b 支給品にした行はボール（購買待ち）に数えない（購買の 4・9・8 のどこにも出ない行を購買待ちに数えない）', ballB == null || in4 || in9 || in8, `ball=${ballB} 4=${in4} 9=${in9} 8=${in8}`)
+check('L9-3 支給品にした行は購買の 9・4 に出ない（購買の作業が無い）', !in9 && !in4, `9=${in9} 4=${in4}`)
+await t.role('design'); await t.press('1')
+log('B → 社内在庫', await t.setCellKey(B, 'procurement', '社内在庫')); log('publish →', await t.publish('1'))
+log('B → 相見積', await t.setCellKey(B, 'procurement', '相見積')); log('publish →', await t.publish('1'))
+p = await t.proj(); const rB2 = p.rows.find((r) => r.id === B); log('B back 相見積', h.show(p, B), 'ball', await h.ballOf(B), '|', await h.status(B), 'den', await den())
+check('L9-4 相見積に戻すと、残っている見積で見積済（選定者のボール）になり、分母に戻る', rB2.status === 'quoted' && !rB2.adoptedSupplierId && (await h.ballOf(B)) === 'design' && +(await den()).split('/')[1] === +den1.split('/')[1] + 1, `${h.show(p, B)} den=${await den()}`)
+await t.goto(B); await t.press('a'); await page.waitForTimeout(100); log('a →', await t.toast())
+p = await t.proj(); log('B adopted', h.show(p, B))
+await t.role('purchasing'); const n0 = t.downloads.length; log('formal →', await t.requestFormal()); await page.waitForTimeout(2500); const f0 = await h.files(n0)
+check('L9-5 選び直した B は正式見積の依頼書に出る', f0.some((f) => f.ids.includes(B)), JSON.stringify(f0.map((f) => [f.sup, f.ids.includes(B)])))
+log('ERRORS', JSON.stringify(t.errors))
+summary(); await t.close()

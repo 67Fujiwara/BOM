@@ -1,0 +1,9 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+publish → [変更セット（7 行: R001, R003, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+R001 {"leadNG":false,"requote":true,"orderQtyCheck":true}
+R003 {"leadNG":true,"requote":true,"orderQtyCheck":true}
+R001 ball 購買 in purch 4 true
+R003 ball PM in purch 4 true
+PASS X6b-1 発注数要確認（ボール購買）が購買の 4 に出る
+PASS X6b-2 発注数要確認（ボール PM：納期NG）も購買の 4 に出る
+== 2/2 PASS

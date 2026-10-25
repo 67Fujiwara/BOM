@@ -1,0 +1,18 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+publish → 指摘 1 件 を公開しました
+orderQty 100 (PM 待ち) → 指摘 1 件 を公開しました
+X before PM R004 相見積 st=selected adopt=S1 reason= oq=100 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","open",""]] case 閾値超
+PASS K4-0 PM の判断待ちのあいだは丸めても指摘を対応済にしない（M16-04） :: [["I-006","最小ロット","open",""]]
+PM Shift+Y → R004: 却下
+X after reject R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] | 選定済 · 指摘·発注数要確認 ball purchasing issues [["I-006","最小ロット","open",""]]
+PASS K4-1 却下で発注数が必要数に戻り、最小ロットの指摘が購買に戻る :: oq=1 need=1 [["I-006","最小ロット","open",""]]
+purch statusbar ナビR004 ID最小ロット 1/2購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開くx発注数を確認
+purch Ctrl+. options ["I-006 を見送りにする（理由）"]
+X re-round → R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す） | R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] issues [["I-006","最小ロット","open",""]] case なし ball purchasing
+PASS K4-2 PM が却下した余剰（発注数 100）にまた丸めても、黙って指摘が対応済にならない（PM に戻す・止める・知らせる） :: pm=false closed=false toast=R004 は PM が最小ロットの余剰を却下しています（発注数は必要数 1 まで）。ほかの商社・数量で手配するか、PM にもう一度相談してください（最小ロットの指摘を発行し直す） [["I-006","最小ロット","open",""]]
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 X rows [["R004","アナログ入力","FX5-4AD","三菱電機",1,"個"]] | R004 相見積 st=formalRequested adopt=S1 reason= oq=1 flags={"surplusRejected":"S1","orderQtyCheck":true} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]]
+PASS K4-3 PM が却下した余剰（100）で正式見積の依頼書が出ない :: 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼 [["R004","アナログ入力","FX5-4AD","三菱電機",1,"個"]]
+ERRORS []
+== 4/4 PASS

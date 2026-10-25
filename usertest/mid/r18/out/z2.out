@@ -1,0 +1,43 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+o R001 R001: 発注済にしました
+o R002 R002: 発注済にしました
+o R004 R004: 発注済にしました
+money after order 概算 ¥18,551,654 / 正式 ¥18,553,210 / 予算 ¥2,800,000 (+562.6%)
+PM d X → R001: 設計へ代替依頼 ["Shift+Y 受入（遅延許容）","e 特急・分納・納期短縮交渉（購買）","d 設計が代替品検討"]
+design issue panel ["1 返信","2 直さず回答（理由必須）","3 客先承認取得（番号・日付）","7 代替なし（対策不成立として PM へ）"]
+X after 代替なし R001:ordered:ord=true:cm=代替品検討:oca=false:leadNG=false issues=I-006:納期NG:answered ball PM
+PM panel X 決定パネル R001（対策不成立） ["Shift+Y 受入（遅延・価格を受け入れる）","e 特急・分納・納期短縮交渉（購買）"]
+g → 使えるキー: Shift+Y / e（↑↓ と Enter でも選べます） | b → 使えるキー: Shift+Y / e（↑↓ と Enter でも選べます） | R001:ordered:ord=true:cm=代替品検討:oca=false:leadNG=false issues=I-006:納期NG:answered
+PASS Z2-1 発注済の行の対策不成立は、決定パネルが e と受入だけ（b・g は出ず、押しても状態が変わらない。§9.1・§16） :: ["Shift+Y 受入（遅延・価格を受け入れる）","e 特急・分納・納期短縮交渉（購買）"]
+publish → 指摘 1 件 を公開しました
+PM Shift+Y Y → R002: 却下
+Y after reject R002:ordered:ord=true:cm=受入:oca=false:leadNG=false issues=I-007:発注後変更依頼:wontfix ball 購買
+o Y → 発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）
+Ctrl+Z #1 → 戻せません: I-007 は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください
+Ctrl+Z #2 → 戻せません: I-007 は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください
+Ctrl+Z #3 → 戻せません: R001 の状態（leadNG） は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください
+Ctrl+Z #4 → 元に戻す: 発注済
+Y R002:ordered:ord=true:cm=受入:oca=false:leadNG=false issues=I-007:発注後変更依頼:wontfix
+FAIL Z2-2 (U6-03) PM の判断で戻せないときの文が「別の操作で変わっています」にならない
+publish → 指摘 1 件 を公開しました
+PM y Z → R004: 承認
+unorder → R004: 発注済を外しました | re-order → 発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」） | R004:formalQuoted:ord=false:cm=代替品検討:oca=false:leadNG=false issues=I-008:発注後変更依頼:confirmed
+PASS Z2-3 (M6-03) 承認で外した行に o を押しても再発注されない（理由が出る） :: 発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）
+Ctrl+Z → 元に戻す: 発注済を外す | R004:ordered:ord=true:cm=-:oca=true:leadNG=false issues=I-008:発注後変更依頼:inProgress
+Ctrl+Y → やり直せません: R004 の発注は、発注後変更依頼で PM が判断しているので Ctrl+Z・Ctrl+Y では外しません（外すのは PM の承認のあと、購買の o）。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作） | R004:ordered:ord=true:cm=-:oca=true:leadNG=false issues=I-008:発注後変更依頼:inProgress
+FAIL Z2-4 外した発注を Ctrl+Z で戻した直後の Ctrl+Y で、もう一度外せる（自分の操作のやり直し） :: やり直せません: R004 の発注は、発注後変更依頼で PM が判断しているので Ctrl+Z・Ctrl+Y では外しません（外すのは PM の承認のあと、購買の o）。この操作は飛ばしました（次の Ctrl+Y は 1 つ前に戻した操作）
+o → R004: 発注済を外しました
+PM Ctrl+Z after unorder → 戻せません: R004 の状態（orderCancelApproved） は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください | R004:formalQuoted:ord=false:cm=代替品検討:oca=false:leadNG=false issues=I-008:発注後変更依頼:confirmed
+PASS Z2-5 購買が発注を外したあとの PM の Ctrl+Z（承認の取り消し）は、発注を外した行と食い違う状態を作らない :: 戻せません: R004 の状態（orderCancelApproved） は、この操作の後に別の操作（あなたの別の操作・自動の更新・他の人）で変わっています。この操作は戻さずに飛ばしました（次の Ctrl+Z は 1 つ前の操作）。行を開いて履歴を確認してください | R004:formalQuoted:ord=false:cm=代替品検討:oca=false:leadNG=false issues=I-008:発注後変更依頼:confirmed
+design 4 has Z true ball 設計
+Alt+r → R004 の置き換え品 R081 を作りました（公開すると R004 は置換済になります。Ctrl+Z で戻す）
+new R081
+publish → [変更セット（7 行: R004, R081, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番] 行 7（Rev.2） を公開しました
+old R004:replaced:ord=false:cm=代替品検討:oca=false:leadNG=false issues=I-008:発注後変更依頼:confirmed
+new R081:submitted:ord=false:cm=-:oca=false:leadNG=false issues= [["S1",2621,null],["S2",null,null],["S3",2907,null]]
+money after replace 概算 ¥18,549,033 / 正式 ¥18,550,589 / 予算 ¥2,800,000 (+562.5%)
+PASS Z2-6 置換の公開で元行は置換済、新行は購買のボール :: R081:submitted:ord=false:cm=-:oca=false:leadNG=false issues=
+purch 4 has new true
+purch 5 has new true
+== 4/6 PASS

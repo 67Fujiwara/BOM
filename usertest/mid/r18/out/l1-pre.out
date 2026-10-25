@@ -1,0 +1,11 @@
+Q R007 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → 指摘 1 件 を公開しました
+Q case 閾値超 R007 相見積 st=quoted adopt=- reason= oq=- flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]]
+PM Shift+Y → R007: 却下
+Q after reject R007 相見積 st=quoted adopt=- reason= oq=- flags={"surplusRejected":"-"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] | 見積済 · 指摘 ball purchasing issues [["I-006","最小ロット","open",""]]
+ranks [["S2",96.8],["S3",90],["S1",50.3]]
+adopt S1 (rank 3 ) → R007: 因幡電機 を仮採用（その他: 因幡で）。PM の承認待ち（7 要決定） | R007 相見積 st=quoted adopt=S1 reason=その他: 因幡で oq=100 flags={"pmPending":true,"pmReason":"例外選定","surplusRejected":"-"} quotes=[["S1",28664,18,null],["S2",34098,11,null],["S3",33103,14,null]] case 例外選定 issues [["I-006","最小ロット","open",""]]
+INFO 例外選定で PM へ（PM は余剰の却下を知っている） 例外選定
+ERRORS []
+== 0/0 PASS

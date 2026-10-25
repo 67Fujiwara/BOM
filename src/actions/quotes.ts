@@ -1,7 +1,7 @@
 import { isSectionLine, isTotalCell } from '@/io/paste'
 import { useStore } from '@/model/store'
 import type { Project, Quote, Row } from '@/model/types'
-import { addWithdrawn, noUsableQuote, fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate } from '@/model/derive'
+import { addWithdrawn, noUsableQuote, fixedSupplierId, handlesMaker, hasWork, isActive, isFixedProcurement, isQuotable, normalizeModel, orderQty, rowNeedDate, tradableIn } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { emptyQuote } from '@/model/sample'
 import { parseValue, quoteTargets } from './rows'
@@ -27,10 +27,10 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   }
   // 相見積の行で、まだ頼んでいない商社（前に一部の商社だけに頼んだ）。あとから頼める
   // 頼むつもりで、まだ頼んでいない商社（最初の依頼を一部の商社だけにした・回答を手で入れ始めた行）。あとで案件に足した商社は入れない
-  const tradable = (sid: string) => p.supplierIds.includes(sid) && s.ws.suppliers.find((x) => x.id === sid)?.tradable !== false
+  const tradable = (sid: string) => p.supplierIds.includes(sid) && tradableIn(s.ws.suppliers, sid)
   const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : (r.quoteTargets ?? []).filter((sid) => tradable(sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
   // 相見積で、取引できる商社の有効な見積が無い（全社辞退）行は、まだその行に頼んでいない商社に頼める
-  const others = (r: Row) => (!noUsableQuote(p, r) ? [] : (all ? p.supplierIds : supplierIds).filter((sid) => s.ws.suppliers.find((x) => x.id === sid)?.tradable !== false && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
+  const others = (r: Row) => (!noUsableQuote(p, r) ? [] : (all ? p.supplierIds : supplierIds).filter((sid) => tradableIn(s.ws.suppliers, sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
   const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid)) || others(r).length > 0) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
@@ -102,7 +102,8 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   })
   const p2 = st().project()
   for (const [sid, rs] of perSupplier) {
-    const sup = s.ws.suppliers.find((x) => x.id === sid)!
+    const sup = s.ws.suppliers.find((x) => x.id === sid)
+    if (!sup) continue
     await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'rough', deadline, p2.requestRevs[sid] ?? 1)
   }
   // §7 のメーカでの絞り込みを知らせる（どの行をどの商社に頼まなかったか・扱う商社が無くて全社に頼んだか）
@@ -245,7 +246,7 @@ export async function requestFormalQuotes(): Promise<string> {
   if (s.user().role !== 'purchasing') return '権限なし（正式見積の依頼は購買）'
   const p = s.project()
   // 取引停止の商社・支給品・社内在庫の行には依頼しない
-  const target = p.rows.filter((r) => isActive(r) && isQuotable(r) && r.adoptedSupplierId && s.ws.suppliers.find((x) => x.id === r.adoptedSupplierId)?.tradable !== false && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
+  const target = p.rows.filter((r) => isActive(r) && isQuotable(r) && r.adoptedSupplierId && tradableIn(s.ws.suppliers, r.adoptedSupplierId) && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
   const working = target.filter((r) => hasWork(r) || r.pendingRemoval)
   const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
   // 再見積要の行は概算が失効している。概算を取り直して採用し直してから正式見積へ
@@ -291,7 +292,8 @@ export async function requestFormalQuotes(): Promise<string> {
   })
   const p2 = st().project()
   for (const [sid, rs] of per) {
-    const sup = s.ws.suppliers.find((x) => x.id === sid)!
+    const sup = s.ws.suppliers.find((x) => x.id === sid)
+    if (!sup) continue
     await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays), p2.requestRevs['F' + sid] ?? 1, prevNeed, prevSent)
   }
   return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || pending.length || requote.length ? `。除外: 作業中 ${working.length} 行 / 承認待ち ${pending.length} 行 / 再見積要 ${requote.length} 行` : ''}`

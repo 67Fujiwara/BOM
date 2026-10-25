@@ -881,7 +881,7 @@ describe('ラウンド 20 の取り込み（新人）', () => {
   it('N20-01 ふつうの型式の「→」「>」は壊さない', () => {
     const r = parseBomPaste('品名\t型式\tメーカー\t数量\nケーブル\tUSB-A→USB-C 変換ケーブル\tサンワ\t1\n電線\tUL1007 AWG22 (赤→黒)\tサンワ\t2')
     expect(r.rows.map((x) => x.model)).toEqual(['USB-A→USB-C 変換ケーブル', 'UL1007 AWG22 (赤→黒)'])
-    expect(parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY2N→MY4N-D2\tオムロン\t4').rows[0].model).toBe('MY4N-D2')
+    expect(parseBomPaste('品名\t型式\tメーカー\t数量\t備考\nリレー\tMY2N→MY4N-D2\tオムロン\t4\t型式変更').rows[0].model).toBe('MY4N-D2')
   })
   it('N20-02 変更内容と備考の両方があれば備考を備考に（備考の削除が効く）', () => {
     const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\t変更内容\t備考\nリレー\tMY2N\tMY4N\t1\t型式変更\t盤内\nタイマ\tH3Y\t\t1\t\t削除\n端子台\tXW2B\t\t4\t\t')
@@ -968,5 +968,58 @@ describe('ラウンド 20 の取り込み（ベテラン）', () => {
   it('V20-11 変更区分の 除外・抹消・Remove、見出し「改訂区分」', () => {
     const t = ['改訂区分\t品名\t型式（旧）\t型式（新）', '変更\tA\tX1\tY1', '除外\tB\tX2\t', '抹消\tC\tX3\t', 'Remove\tD\tX4\t', '追加\tE\t\tZ5'].join('\n')
     expect(parseBomPaste(t).rows.map((x) => x.name)).toEqual(['A', 'E'])
+  })
+})
+
+describe('ラウンド 21 の取り込み（新人）', () => {
+  const sheet = (notes: string[]) => parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量\t備考', 'リレー\tMY2N\tMY4N\t1\t', ...notes.map((n, i) => `部品${i}\tP-${i}\t\t1\t${n}`), '端子台\tXW2B\t\t4\t'].join('\n'))
+  const kept = (r: ReturnType<typeof sheet>) => r.rows.filter((x) => !(x.note ?? '').startsWith('【削除？】')).map((x) => x.name)
+  it('N21-01 削除（確認済・検討済・生産中止・不要品・使用しないため・再設計・再利用しない）は削除（残さない）', () => {
+    const del = ['削除（確認済）', '削除（検討済）', '削除（検討の結果）', '削除（生産中止）', '削除（不要品）', '削除（不要になったため）', '削除（使用しないため）', '削除（再設計のため）', '削除（NG品）', '削除（取付不可）', '削除(再利用不可)', '取外し（再利用しない）', '削除（他案件へ流用）']
+    const r = sheet(del)
+    expect(kept(r)).toEqual(['リレー', '端子台'])
+  })
+  it('N21-01 続き 削除（保留）・削除（しない）・削除（要確認）・削除（再取付）は残す', () => {
+    const keep = ['削除（保留）', '削除（しない）', '削除（要確認）', '削除（検討中）', '撤去（再取付）', '取外し（再利用）', '削除→保留', '削除→再追加']
+    expect(kept(sheet(keep))).toEqual(['リレー', ...keep.map((_, i) => `部品${i}`), '端子台'])
+  })
+  it('N21-02 変更内容の列の「削除」も、別に備考の列があっても削除', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量\t変更内容\t備考\nリレー\tMY2N\tMY4N-D2\t4\t型式変更\t盤内\nタイマ\tH3CR-A8\t\t1\t削除\t盤内\n端子台\tXW2B-20G4\t\t4\t\t')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+  })
+  it('N21-03 「そのまま」「No change」「変更なし」の行は【削除？】で聞かない', () => {
+    const r = parseBomPaste('品名\t型式（旧）\t型式（新）\t数量（旧）\t数量（新）\nリレー\tMY2N\tMY4N-D2\t4\t4\nタイマ\tH3CR-A8\tそのまま\t1\tそのまま\n端子台\tXW2B-20G4\tNo change\t4\tNo change\nソケット\tPYF14A\tPYF14A\t2\t2\n電線\tVCTF\tVCTF\t10\t10')
+    expect(r.rows.map((x) => (x.note ?? '').startsWith('【削除？】'))).toEqual([false, false, false, false, false])
+  })
+  it('N21-04 旧／新の印の無い表の「DVI→HDMI」「USB-A→USB-C」は型式のまま', () => {
+    const r = parseBomPaste('品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n変換\tDVI→HDMI\tミスミ\t1\nケーブル\tUSB-A→USB-C\tサンワ\t1')
+    expect(r.rows.map((x) => x.model)).toEqual(['MY4N-D2', 'DVI→HDMI', 'USB-A→USB-C'])
+  })
+  it('N21-05 変更区分の 取外し・廃番・x・削除(R012へ)・DEL.、見出し 変更タイプ・Change Type・修正区分', () => {
+    const vals = ['取外し', '廃番', 'x', '削除(R012へ)', '削除済(Rev.2)', 'DEL.']
+    const rows = ['変更区分\t品名\t型式（旧）\t型式（新）\t数量', '変更\tリレー\tMY2N\tMY4N\t4', ...vals.map((v, i) => `${v}\tD${i}\tX${i}\t\t1`), '変更なし\t端子台\tXW2B\t\t4']
+    expect(parseBomPaste(rows.join('\n')).rows.map((x) => x.name)).toEqual(['リレー', '端子台'])
+    for (const h of ['変更タイプ', 'Change Type', '修正区分', 'Rev区分']) {
+      expect(parseBomPaste(`${h}\t品名\t型式（旧）\t型式（新）\t数量\n変更\tリレー\tMY2N\tMY4N\t4\n削除\tタイマ\tH3Y\t\t1`).rows.map((x) => x.name), h).toEqual(['リレー'])
+    }
+  })
+  it('N21-06 タブ区切りの表の上下にコンマ入りの説明の行がたくさんあっても、タブ区切りと読む', () => {
+    const note = Array.from({ length: 6 }, (_, i) => `注${i}: 本表は, 盤用です`)
+    const r = parseBomPaste([...note, '品名\t型式\tメーカー\t数量', 'リレー\tMY4N-D2\tオムロン\t4', 'タイマ\tH3CR\tオムロン\t2'].join('\n'))
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ'])
+  })
+  it('N21-08 / U21-06 備考の「DNP 将来用」「DNP/未実装」は外す、部品名「DNP（大日本印刷）」は外さない', () => {
+    const r = parseBomPaste('品名\t型式\t数量\t備考\nリレー\tA\t1\t\nB\tB\t1\tDNP 将来用\nC\tC\t1\tDNP/未実装\nD\tD\t1\tDNP品')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+    expect(parseBomPaste('品名\t型式\t数量\nDNP（大日本印刷）\tRF\t1\nリレー\tA\t1').rows.length).toBe(2)
+  })
+  it('N21-10 新の型式の「削除（不要）」「削除（確認済）」「削除に変更」「削除対象」「廃止予定」は型式にしない（削除）', () => {
+    const vals = ['削除（不要）', '削除（確認済）', '削除に変更', '削除対象', '廃止予定', '→削除']
+    const r = parseBomPaste(['品名\t型式（旧）\t型式（新）\t数量', 'リレー\tMY2N\tMY4N\t1', ...vals.map((v, i) => `D${i}\tX${i}\t${v}\t1`)].join('\n'))
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー'])
+  })
+  it('N21-11 見出しが「変更」で ○/× の列があるふつうの BOM は、× の部品を外さない', () => {
+    const r = parseBomPaste('品名\t型式\t数量\t変更\nリレー\tA\t1\t○\nタイマ\tB\t1\t×\nランプ\tC\t1\t○')
+    expect(r.rows.map((x) => x.name)).toEqual(['リレー', 'タイマ', 'ランプ'])
   })
 })

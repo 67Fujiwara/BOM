@@ -1,6 +1,6 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate } from './derive'
+import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate, tradableIn } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
 export function normalize(p: Project, ws: Workspace, today = todayStr()) {
@@ -127,7 +127,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       r.statusChangedAt = now
     }
     // 見積済の相見積の行で、取引できる商社の有効な見積が無くなった（取引停止にした）ら、選べないので見積中に戻す（購買が次の商社に頼む）
-    if (!isFixedProcurement(r) && isQuotable(r) && !r.adoptedSupplierId && r.status === 'quoted' && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1 && ws.suppliers.find((s) => s.id === x.supplierId)?.tradable !== false)) {
+    if (!isFixedProcurement(r) && isQuotable(r) && !r.adoptedSupplierId && r.status === 'quoted' && !p.quotes.some((x) => x.rowId === r.id && !x.stale && x.unitPrice != null && x.leadDays !== -1 && tradableIn(ws.suppliers, x.supplierId))) {
       r.status = 'quoting'
       r.statusChangedAt = now
     }
@@ -143,7 +143,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     if (isFixedProcurement(r) && !r.adoptedSupplierId && !r.flags.pmPending && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
       const sid0 = fixedSupplierId(p, r, ws.suppliers)
       // 取引停止の指定先は採用しない（採用を外したあとに採用し直さない。設計が指定先を変える）
-      const sid = sid0 && ws.suppliers.find((s) => s.id === sid0)?.tradable !== false ? sid0 : null
+      const sid = sid0 && tradableIn(ws.suppliers, sid0) ? sid0 : null
       const q = sid ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale && x.unitPrice != null && x.leadDays !== -1) : undefined
       if (q && sid && r.publishedRev != null) {
         r.adoptedSupplierId = sid

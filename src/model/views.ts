@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { ball, fixedSupplierId, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, noUsableQuote, quoteResponses, resolverOfIssue } from './derive'
+import { ball, fixedSupplierId, isActive, isFixedProcurement, isOverdue, openIssues, overCap, capPending, noUsableQuote, quoteResponses, resolverOfIssue, tradableIn, isQuotable } from './derive'
 import { checkRow, type Problem } from './rules'
 import { todayStr } from './dates'
 import type { ViewId } from './store'
@@ -54,7 +54,7 @@ export const VIEWS: ViewDef[] = [
     columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'adopted', 'score', 'unitPrice', 'formalPrice', 'formalDiff', 'lead', 'status', 'due', 'waiting'],
     filter: (r, c) => isActive(r) && (ball(c.p, r) === 'pm' || r.flags.leadNG === true || r.flags.pmPending === true || r.flags.formalDiff === true || capPending(c.p, r)),
   },
-  { id: 8, label: '正式見積', columns: ['id', 'name', 'model', 'maker', 'orderQty', 'adopted', 'unitPrice', 'formalDiff', 'lead', 'status', 'due'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
+  { id: 8, label: '正式見積', columns: ['id', 'name', 'model', 'maker', 'orderQty', 'adopted', 'unitPrice', 'formalDiff', 'lead', 'status', 'due'], filter: (r) => isActive(r) && (isQuotable(r) || !!r.adoptedSupplierId) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   { id: 9, label: '購買作業', columns: ['id', 'ball', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'packQty', 'procurement', 'makerLock', 'altPolicy', 'needDate', 'orderQty', 'status', 'due', 'waiting'], filter: (r) => (!isActive(r) ? !!r.flags.formalWithdrawn : (['submitted', 'quoting', 'quoted'].includes(r.status) || r.flags.requote === true || !!r.flags.formalWithdrawn) && !(r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted')) },
 ]
 
@@ -84,7 +84,7 @@ function purchasingAttention(r: Row, c: ViewCtx): boolean {
   const { answered, total } = quoteResponses(c.p, r)
   const deadlinePassed = !!c.p.settings.quoteDeadline && c.p.settings.quoteDeadline < today
   // 頼むつもりでまだ頼んでいない商社がある行も出す（購買が残りに依頼する）
-  const unasked = (r.quoteTargets ?? []).some((id) => c.p.supplierIds.includes(id) && c.ws.suppliers.find((x) => x.id === id)?.tradable !== false && !qs.some((q) => q.supplierId === id))
+  const unasked = (r.quoteTargets ?? []).some((id) => c.p.supplierIds.includes(id) && tradableIn(c.ws.suppliers, id) && !qs.some((q) => q.supplierId === id))
   return unasked || (answered < total && (answered > 0 || deadlinePassed))
 }
 

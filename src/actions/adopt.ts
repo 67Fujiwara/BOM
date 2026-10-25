@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
 import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
-import { effective, hasWork, isActive, isFixedProcurement, isQuotable, noUsableQuote, quoteResponses, roundedQty } from '@/model/derive'
+import { effective, hasWork, isActive, isFixedProcurement, isQuotable, noUsableQuote, quoteResponses, roundedQty, tradableIn } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
 
@@ -203,7 +203,7 @@ export function consolidateOptions(): Array<{ label: string; detail: string; sup
   const current = rows.reduce((sum, r) => sum + curOf(r).cost, 0)
   const combos: string[][] = []
   // 取引停止の商社は集約の候補にしない
-  const ids0 = p.supplierIds.filter((id) => s.ws.suppliers.find((x) => x.id === id)?.tradable !== false)
+  const ids0 = p.supplierIds.filter((id) => tradableIn(s.ws.suppliers, id))
   for (const a of ids0) combos.push([a])
   for (let i = 0; i < ids0.length; i++) for (let j = i + 1; j < ids0.length; j++) combos.push([ids0[i], ids0[j]])
   const out = combos.map((ids) => {

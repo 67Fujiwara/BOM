@@ -52,6 +52,12 @@ export function handlesMaker(handled: string[], maker: string): boolean {
   })
 }
 
+/** 商社マスタにあり、取引停止でもない（マスタから消えた商社は取引できない） */
+export function tradableIn(list: Array<{ id: string; tradable?: boolean }>, id: string): boolean {
+  const s = list.find((x) => x.id === id)
+  return !!s && s.tradable !== false
+}
+
 export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): string | null {
   if (row.procurement === '指定商社') {
     const d = (row.designated ?? '').trim()
@@ -60,7 +66,7 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
   if (row.procurement === '客先指定品') {
     // 一度決まった商社（採用済み・見積を依頼した商社）は、値を入れた順番で変えない
     // 取引停止の商社は依頼先にしない（採用していても・頼んでいても次の商社へ）
-    const ok = (sid: string) => suppliers.find((x) => x.id === sid)?.tradable !== false
+    const ok = (sid: string) => tradableIn(suppliers, sid)
     if (row.adoptedSupplierId && ok(row.adoptedSupplierId)) return row.adoptedSupplierId
     // 最初に頼んだ商社（辞退していないもの）。辞退したら次に頼んだ・単価を入れた商社 → そのメーカを扱う商社の順。
     // 頼んだ商社の回答前に別の商社の欄に値を入れても、指定先は変わらない
@@ -129,6 +135,8 @@ export function ball(p: Project, row: Row): Role | null {
       return selectorRole(p)
     case 'selected':
       if (f.contested) return selectorRole(p)
+      // 支給品・社内在庫は商社に頼まない（見積・正式依頼・発注の対象外）。ボールはどの役割にも無い
+      if (!isQuotable(row) && !row.adoptedSupplierId) return null
       return 'purchasing'
     case 'formalRequested':
     case 'formalQuoted':
@@ -261,9 +269,9 @@ export function quoteResponses(p: Project, row: Row): { answered: number; total:
   }
   // 頼むつもりの商社（まだ依頼書を出していない商社も）を分母に入れる（1 社だけ頼んで 1 社の回答で見積済にしない）。
   // 案件の相見積先から外した・取引不可にした商社は、回答が無ければ待たない
-  const waitable = (id: string) => p.supplierIds.includes(id) && knownSuppliers.find((x) => x.id === id)?.tradable !== false
+  const waitable = (id: string) => p.supplierIds.includes(id) && tradableIn(knownSuppliers, id)
   // 取引停止にした商社の回答は数えない（その回答では選べない）
-  const tradable = (id: string) => knownSuppliers.find((x) => x.id === id)?.tradable !== false
+  const tradable = (id: string) => tradableIn(knownSuppliers, id)
   const counted = qs.filter((q) => done(q) && tradable(q.supplierId))
   const ids = new Set([...counted.map((q) => q.supplierId), ...qs.filter((q) => waitable(q.supplierId)).map((q) => q.supplierId), ...(row.quoteTargets ?? []).filter(waitable)])
   return { answered: counted.length, total: ids.size }
@@ -274,7 +282,7 @@ export function quoteComplete(p: Project, row: Row, today = todayStr()): boolean
   const { answered, total } = quoteResponses(p, row)
   if (total === 0) return false
   // 取引できる商社の有効な回答（辞退でない）が 1 つも無ければ、選べないので見積済にしない（購買が次の商社に頼む）
-  if (!isFixedProcurement(row) && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && knownSuppliers.find((x) => x.id === q.supplierId)?.tradable !== false)) return false
+  if (!isFixedProcurement(row) && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && tradableIn(knownSuppliers, q.supplierId))) return false
   switch (p.settings.quoteCompleteRule) {
     case 'all':
       return answered === total
@@ -345,7 +353,7 @@ export function pendingAdd(r: Row): boolean {
 /** 相見積の依頼先: 案件の相見積先のうち取引できる商社を、行のメーカで絞る（§7）。
  *  扱うメーカが登録されていない商社は絞らない。メーカを扱うと登録した商社が 1 社も無いとき（表記ゆれ・マスタ未登録）は、取りこぼさないよう全社 */
 export function makerTargets(p: Project, maker: string | undefined | null, suppliers: Supplier[]): string[] {
-  const ids = p.supplierIds.filter((id) => suppliers.find((x) => x.id === id)?.tradable !== false)
+  const ids = p.supplierIds.filter((id) => tradableIn(suppliers, id))
   if (!maker) return ids
   const listed = (id: string) => (suppliers.find((x) => x.id === id)?.handledMakers.length ?? 0) > 0
   const explicit = ids.filter((id) => listed(id) && handlesMaker(suppliers.find((x) => x.id === id)!.handledMakers, maker))
@@ -393,7 +401,7 @@ export function withdrawFormal(p: Project, r: Row, suppliers: Supplier[]): void 
 export function noUsableQuote(p: Project, row: Row): boolean {
   if (isFixedProcurement(row) || row.status !== 'quoting') return false
   const { answered, total } = quoteResponses(p, row)
-  return total > 0 && answered >= total && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && knownSuppliers.find((x) => x.id === q.supplierId)?.tradable !== false)
+  return total > 0 && answered >= total && !p.quotes.some((q) => q.rowId === row.id && !q.stale && q.unitPrice != null && q.leadDays !== -1 && tradableIn(knownSuppliers, q.supplierId))
 }
 
 /** 正式依頼の取下げの印に足す（まだ伝えていない前の取下げを消さない。「商社 依頼No / 商社 依頼No」） */

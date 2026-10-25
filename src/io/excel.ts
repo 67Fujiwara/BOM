@@ -55,8 +55,10 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   if (target !== 'supplier') {
     cols.push({ header: '発注数', key: 'orderQty', width: 7 }, { header: '採用', key: 'adopted', width: 14 }, { header: '単価', key: 'unitPrice', width: 10 }, { header: '金額', key: 'amount', width: 12 }, { header: '正式単価', key: 'formalPrice', width: 10 }, { header: '納期(日)', key: 'lead', width: 8 }, { header: '状態', key: 'status', width: 10 }, { header: 'ボール', key: 'ball', width: 7 })
   }
+  // マスタから消えた商社の列は出さない（見出しが undefined にならないように）
+  const archiveSuppliers = p.supplierIds.filter((id) => ws.suppliers.some((x) => x.id === id))
   if (target === 'archive') {
-    for (const sid of p.supplierIds) {
+    for (const sid of archiveSuppliers) {
       const sup = ws.suppliers.find((x) => x.id === sid)
       cols.push({ header: `${sup?.name} 単価`, key: `q.${sid}.price`, width: 10 }, { header: `${sup?.name} 納期`, key: `q.${sid}.lead`, width: 8 }, { header: `${sup?.name} MOQ`, key: `q.${sid}.moq`, width: 7 })
     }
@@ -82,8 +84,8 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
     const e = target === 'internal' ? valuesFor(r, ws.user.role) : r
     const q = adoptedQuote(p, r)
     const amt = lineAmount(p, r)
-    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status] + (e !== r && r.working && Object.keys(r.working).length ? '（作業中の値・未公開）' : ''), ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
-    if (target === 'archive') for (const sid of p.supplierIds) {
+    const rec: Record<string, unknown> = { ...e, needDate: rowNeedDate(p, r) ?? '', id: r.id, orderQty: orderQty(r), adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? (r.adoptedSupplierId ? `${r.adoptedSupplierId}（商社マスタに無い）` : ''), unitPrice: q?.unitPrice ?? '', amount: amt.rough ?? '', formalPrice: q?.formalPrice ?? '', lead: q?.leadDays ?? '', status: STATUS_LABEL[r.status] + (e !== r && r.working && Object.keys(r.working).length ? '（作業中の値・未公開）' : ''), ball: (() => { const b = ball(p, r); return b ? ROLE_LABEL[b] : '' })(), extraCost: r.extraCost ?? '', score: r.scoreSnapshot ?? '' }
+    if (target === 'archive') for (const sid of archiveSuppliers) {
       const qq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === sid && !x.stale)
       rec[`q.${sid}.price`] = qq?.unitPrice ?? ''
       rec[`q.${sid}.lead`] = qq?.leadDays ?? ''
@@ -132,11 +134,19 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
     const settled = (x: (typeof prev)[number], id: string) => !x.revoked && !(x.changeSet && (!x.changeSet.approved || x.changeSet.rejected || x.changeSet.supersededBy != null || x.changeSet.merged?.[id] != null))
     for (const id of sub.rowIds) {
       if (hide(id)) continue
+      // 購買には、まとめた先の Rev が承認されていない・却下された行は出さない（見えない Rev を指さない）
+      const mergedTo = sub.changeSet?.merged?.[id] ?? sub.changeSet?.supersededBy
+      if (purchasing && mergedTo != null) {
+        const f = p.submissions.find((x) => x.rev === finalRev(id, mergedTo))
+        if (f && (f.revoked || (f.changeSet && (!f.changeSet.approved || f.changeSet.rejected)))) continue
+      }
       const now = sub.snapshot[id]
       const before = [...prev].reverse().filter((x) => settled(x, id)).map((x) => x.snapshot[id]).find(Boolean)
       let detail = sub.causes[id] === '追加' ? `追加: ${now?.name ?? ''} ${now?.model ?? ''}` : sub.causes[id] === '取消' ? '取消' : ''
       const cause = sub.causes[id] ?? ''
       if (cause.startsWith('置換')) detail = cause
+      // 前の Rev で追加してあとの Rev にまとめた行は、最後の Rev に追加の内容を書く（比べる前の Rev が無いので）
+      if (!before && !detail && now && prev.some((x) => x.causes[id] === '追加' && (x.changeSet?.merged?.[id] != null || x.changeSet?.supersededBy != null))) detail = `追加: ${now.name ?? ''} ${now.model ?? ''}`
       const diffs = before && now ? DESIGN_FIELDS.filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${colDef(k)?.label ?? k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
@@ -200,7 +210,7 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
       const firstTime = prevSent !== undefined && !sent && !prevNeed?.has(r.id)
       const now = sent ? r : firstTime ? undefined : subs.at(-1)?.snapshot[r.id]
       const before = sent ?? (firstTime ? undefined : subs.at(-2)?.snapshot[r.id])
-      if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, k, String(before[k] ?? ''), String(now[k] ?? '')])
+      if (now && before) for (const k of ['model', 'maker', 'qtyNeeded', 'needOffset'] as const) if (JSON.stringify(now[k]) !== JSON.stringify(before[k])) diff.addRow([r.id, colDef(k)?.label ?? k, String(before[k] ?? ''), String(now[k] ?? '')])
       // 前回の依頼で送った必要納期と今回の値（案件納期の変更・前倒し日数の変更など）
       const now2 = rowNeedDate(p, r) ?? ''
       const prev = prevNeed?.get(r.id)

@@ -5,7 +5,7 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues } from '@/model/derive'
+import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues, tradableIn } from '@/model/derive'
 import { checkRow, setSupplierMaster, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
@@ -822,7 +822,7 @@ export function publishFlow(rowIds?: string[]) {
 function staleGuard(r: Row, c: ReturnType<typeof pm.pmCaseOf>): () => boolean {
   const rev0 = r.pendingRev
   // 理由を入れているあいだに変わっても同じ（確定するときにも見直す）。正式見積の金額・承認待ちの値も見る
-  const seen = (x: Row) => JSON.stringify([x.pendingApproval ?? null, x.pendingRemoval ?? null, pm.formalKey(st().project(), x) ?? null])
+  const seen = (x: Row) => JSON.stringify([x.pendingApproval ?? null, x.pendingRemoval ?? null, pm.formalKey(st().project(), x) ?? null, x.orderQty, x.qtyNeeded, x.adoptedSupplierId ?? null])
   const seen0 = seen(r)
   const stale = () => {
     const now = st().project().rows.find((x) => x.id === r.id)
@@ -1646,7 +1646,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.request': {
       if (role !== 'purchasing') return toast('権限なし（概算見積の依頼は購買）', 'err')
       const tradable = s.ws.suppliers.filter((x) => x.tradable)
-      const ids = (p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)).filter((id) => s.ws.suppliers.find((x) => x.id === id)?.tradable !== false)
+      const ids = (p.supplierIds.length ? p.supplierIds : p.preferredSupplierIds.length ? p.preferredSupplierIds : tradable.slice(0, 3).map((x) => x.id)).filter((id) => tradableIn(s.ws.suppliers, id))
       const def = addDays(todayStr(), p.settings.quoteDays)
       const allLabel = `相見積先すべて（${ids.map((id) => s.ws.suppliers.find((x) => x.id === id)?.name ?? id).join('・')}）`
       return prompt('概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter）', { options: [allLabel, ...tradable.map((x) => `${x.id} ${x.name}`)], placeholder: `回答期限（空なら ${def}）`, showText: true }, (choice, text) => {

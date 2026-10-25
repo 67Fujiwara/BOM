@@ -11,7 +11,7 @@ import * as adopt from '@/actions/adopt'
 import * as pm from '@/actions/pm'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
+import { vm as vmModel, ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -473,7 +473,9 @@ function sequenceNext() {
     // 「あとで」「飛ばす」で問題が残った行に戻ってしまうときは、行を 1 つ下げて次の問題を探す（一周の判定は行ごと）
     const stillKeys = new Set(problemCells().map((x) => `${x.rowId}|${x.field}`))
     const rowsWithProblem = new Set(problemCells().map((x) => x.rowId))
-    const seenRows = new Set([...seqSeen].filter((k) => { const [r, c] = k.split('|'); return c === 'id' || c === 'status' ? rowsWithProblem.has(r) : stillKeys.has(k) }).map((k) => k.split('|')[0]))
+    const shownCols = new Set<string>(vmModel().columns)
+    const hiddenProblemRows = new Set(problemCells().filter((x) => !shownCols.has(x.field as string)).map((x) => x.rowId))
+    const seenRows = new Set([...seqSeen].filter((k) => { const [r, c] = k.split('|'); return c === 'id' || c === 'status' || hiddenProblemRows.has(r) ? rowsWithProblem.has(r) : stillKeys.has(k) }).map((k) => k.split('|')[0]))
     for (let guard = 0; guard < 400 && seenRows.has(st().cursorRow ?? '') && seenRows.size < 400; guard++) {
       const before = st().cursorRow
       moveCursorRow(1)

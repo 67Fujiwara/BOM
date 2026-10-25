@@ -477,7 +477,9 @@ function gotoProblem(delta: 1 | -1): boolean {
   }
   const s = st()
   // ID・状態の列で使っているときは列を変えずに行だけ移る（x → n → x … を ID の列で続けられる）
-  const stay = s.cursorCol === 'id' || s.cursorCol === 'status'
+  // いまのビューに出ていない列の問題（4 要確認の備考の【削除？】など）は、列を見ずに行だけで数える
+  const shownCols = new Set<string>(vm().columns)
+  const stay = s.cursorCol === 'id' || s.cursorCol === 'status' || list.some((x) => x.rowId === s.cursorRow && !shownCols.has(x.field as string))
   const idx = stay ? list.findIndex((x) => x.rowId === s.cursorRow) : list.findIndex((x) => x.rowId === s.cursorRow && x.field === s.cursorCol)
   let next = idx < 0 ? (delta > 0 ? 0 : list.length - 1) : (idx + delta + list.length) % list.length
   // カーソルが行にあるときは、その行から下（Shift+F8 は上）でいちばん近い問題（↓・PageDown で動いたあとも、カーソルから数える）。

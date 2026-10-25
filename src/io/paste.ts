@@ -16,7 +16,7 @@ const HEADER_SYNONYMS: Record<BomField, RegExp> = {
   unit: /^(単位|unit)/i,
   ref: /^(回路記号|記号|部品記号|デバイス|refdes|ref|reference|designator|シンボル)/i,
   drawing: /^(図面|図番|図面番号|drawing|dwg)/i,
-  note: /^(備考|摘要|メモ|変更内容|変更理由|変更点|変更概要|note|remarks?|comment)/i,
+  note: /^(備考|摘要|メモ|変更の内容|変更内容|変更理由|変更点|変更概要|内容|理由|note|remarks?|comment)/i,
   packQty: /^(入数|入り数|pack)/i,
 }
 
@@ -527,7 +527,7 @@ export function parseBomPaste(text: string): PasteResult {
   const dnpRow = (l: string[]) =>
     (dnpCol >= 0 && (dnpHeader ? /^(x|1|yes|y|true|dnp|○|●|✓|未実装|しない)$/i : /^(no|n|0|false|not\s*fitted|nf|dnp|未実装|なし|無し?|しない|非|×|不要|未)$/i).test(toHalf(l[dnpCol] ?? '').trim())) ||
     // そう書いたセル（メーカの列の「DNP」＝大日本印刷 は除く）
-    l.some((c0, j) => { const c = trimMarks(c0); return mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装無し|実装なし|実装せず|実装不要)(品|部品|です|こと|のこと|とする|予定)?([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || ((mapping[j] === 'name' || mapping[j] === 'model' ? /^dnp$/i : mapping[j] === 'note' || !mapping[j] ? /^dnp$|^dnp[\s　:：/／・]*(?:将来|未|オプション|不要|実装|なし|無|非|省略|外す|option|future|nc|not)|^dnp[（(【\[]/i : /^dnp([\s　]*[（(【\[].*)?$/i).test(toHalf(c).trim()) && j !== dnpCol)) })
+    l.some((c0, j) => { const c = trimMarks(c0); return mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装しません|実装無し|実装なし|実装せず|実装不要)(品|部品|です|こと|のこと|とする|予定)?([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || ((mapping[j] === 'name' || mapping[j] === 'model' ? /^dnp$/i : mapping[j] === 'note' || !mapping[j] ? /^dnp$|^dnp[\s　:：/／・、,]*(?:将来|未実装|未搭載|未装着|オプション|不要|実装|なし|無|非|省略|外す|option|future|nc|not)|^dnp[（(【\[][^）)】\]]*(?:将来|未実装|オプション|不要|実装|なし|無|非|省略|外す|option|future|nc|not)/i : /^dnp([\s　]*[（(【\[].*)?$/i).test(toHalf(c).trim()) && j !== dnpCol)) })
   const dnp = body.filter(dnpRow).length
   if (dnp) {
     body = body.filter((l) => !dnpRow(l))
@@ -553,7 +553,8 @@ export function parseBomPaste(text: string): PasteResult {
         const word = (v: string) => KIND_WORD.test(kv0(v))
         if (clear) return vals.some((v) => /^(追加|変更|削除|廃止|新規)$/.test(kv0(v)) || kindIsDel(v) || /^(add|new)$/i.test(kv0(v)))
         const known = vals.filter((v) => kindIsDel(v) || word(v)).length
-        return vals.length > 0 && known >= vals.length * 0.4 && vals.some((v) => word(v) && !/^(同上|〃|-|－)$/.test(kv0(v))) && vals.some((v) => kindIsDel(v))
+        // ふつうの BOM の 新規/継続/廃止・汎用/専用/不要・New/Existing/Deleted の列と区別するため、追加／変更の語と削除の語の両方が、はっきりした語であるときだけ
+        return vals.length > 0 && known >= vals.length * 0.4 && vals.some((v) => /^(追加|変更|修正|設変|add(ed)?|mod(ify|ified)?|chg|change[d]?|update[d]?)$/i.test(kv0(v))) && vals.some((v) => /^(削除|delete[d]?|del\.?|d|撤去|取外し?|[×✕])$/i.test(kv0(v)))
       })
   if (kindCol >= 0) {
     mapping[kindCol] = null
@@ -611,7 +612,7 @@ export function parseBomPaste(text: string): PasteResult {
     // 部品名は Description・品名を Value・Comment より先に（Altium の Comment は値）
     const vc = (j: number) => (dup === 'name' && hasHeader && /^(value|comment)$/i.test((first[j] ?? '').trim()) ? 1 : 0)
     // 備考の列は「備考」「摘要」を、変更内容・変更理由・変更点の列より先に
-    const nt = (j: number) => (dup === 'note' && hasHeader && /^(変更内容|変更理由|変更点|変更概要)/.test(toHalf(first[j] ?? '').trim()) ? 1 : 0)
+    const nt = (j: number) => (dup === 'note' && hasHeader && /^(変更の内容|変更内容|変更理由|変更点|変更概要|内容|理由)/.test(toHalf(first[j] ?? '').trim()) ? 1 : 0)
     const order = [...cols].sort((a, b) => rev(b) - rev(a) || rank(a) - rank(b) || total(a) - total(b) || vc(a) - vc(b) || nt(a) - nt(b) || a - b)
     const keep = order[0]
     if ((rank(keep) === 0 || rev(keep) >= 0) && !(dup === 'qtyNeeded' && hasHeader && cols.every(machineHead0))) fallback.set(dup, { keep, others: order.slice(1) })
@@ -744,7 +745,7 @@ export function parseBomPaste(text: string): PasteResult {
   const newEmpty = (l: string[]) => fbe.every(([, fb]) => empty(l, fb.keep))
   // 変えていない行も新の列に書き写す表か: 書き写した行（新と旧がどの項目も同じ）が 2 行以上で、新の列が空の行より多いか同じ
   // 備考・変更内容に「取付位置変更」「→」など変えた理由を書いた行は、新を旧と同じに書いても書き写しではない（型式以外を変えた行）
-  const reasonCols = [...new Set([noteCol, ...(hasHeader ? first.map((c, j) => (/^(変更内容|変更理由|変更点|変更概要)/.test(toHalf(c).trim()) ? j : -1)) : [])])].filter((j) => j >= 0)
+  const reasonCols = [...new Set([noteCol, ...(hasHeader ? first.map((c, j) => (/^(変更の内容|変更内容|変更理由|変更点|変更概要|内容|理由)/.test(toHalf(c).trim()) ? j : -1)) : [])])].filter((j) => j >= 0)
   const reasoned = (l: string[]) => reasonCols.some((j) => /変更|→|⇒|移設|位置|銘板|差替|差し替|交換|修正|追記|追加/.test(cell(l, j).replace(/(変更|追加|交換|修正|位置|移設|銘板|差替|差し替|追記)(は)?[\s　]*(なし|無し?|不要|ない|せず|無)/g, '')))
   const copyRow = (l: string[]) => !reasoned(l) && fbe.every(([, fb]) => !blank(l, fb.keep) && fb.others.some((k) => cell(l, k) === cell(l, fb.keep)))
   const copies = body.filter((l) => hasOld(l) && copyRow(l)).length
@@ -768,7 +769,8 @@ export function parseBomPaste(text: string): PasteResult {
   // 書き写した行がある程度あり、新の列が空の行も多い表は、書き写す表か変えた行だけ書く表か分からない。
   // 新の列が空の行は残して備考に【削除？】と付け、設計に決めてもらう（エラーで公開を止める）
   const ambiguous = fbe.length > 0 && !complete && copies >= (fbe.length >= 2 ? 2 : 3) && copies * 3 >= empties + dashes
-  const unsure = new Set(body.filter((l) => !deletedSet.has(l) && ((ambiguous && hasOld(l) && newBlank(l) && !wordMark(l)) || noteAsk(l))))
+  const newAsk = (l: string[]) => fbe.some(([, fb]) => delClass(cell(l, fb.keep), true) === 'ask')
+  const unsure = new Set(body.filter((l) => !deletedSet.has(l) && ((ambiguous && hasOld(l) && newBlank(l) && !wordMark(l)) || noteAsk(l) || newAsk(l))))
   if (unsure.size) warnings.unshift(`削除かどうか決められない ${unsure.size} 行（例: ${[...unsure][0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')}）は、備考の頭に【削除？】を付けて取り込みました（削除なら行を取消し、要る部品なら【削除？】を消してください。消すまで公開できません。多いときは Ctrl+K →「順番に直すモード」で 1 を押していくと速く直せます）`)
   if (deletedSet.size) {
     const ex = [...deletedSet][0].map((c) => c.trim()).filter(Boolean).slice(0, 3).join(' ')
@@ -787,7 +789,7 @@ export function parseBomPaste(text: string): PasteResult {
   let ditto = 0
   // 「旧→新」の見出し、型式を変えたと書いた備考・変更内容（位置・交換・追加の変更では矢印を型式と読む）
   const arrowHdr = hasHeader && first.some((c) => /旧\s*[→⇒]\s*新|変更前\s*[→⇒]\s*変更後/.test(toHalf(c)))
-  const arrowReason = (l: string[]) => reasonCols.some((j) => /型式変更|型番変更|品番変更|変更前|変更後|旧型|旧品|置換|差替|差し替|代替|→|⇒/.test(cell(l, j)))
+  const arrowReason = (l: string[]) => reasonCols.some((j) => /型式変更(?!なし|無し|不要)|型番変更(?!なし|無し|不要)|品番変更(?!なし|無し|不要)|変更前|変更後|旧型|→|⇒/.test(cell(l, j)))
   const arrows: string[] = []
   const rows = body.map((line) => {
     const cells = split(line)
@@ -798,7 +800,7 @@ export function parseBomPaste(text: string): PasteResult {
       seen.add(f)
       let v = (cells[j] ?? '').trim()
       const fb = fallback.get(f)
-      if (fb && (SAME.test(v) || DEL.test(v) || delClass(v, true) === 'keep' || (f === 'qtyNeeded' && j === fb.keep && /^0+(\.0+)?$/.test(v) && deletedSet.has(line)))) v = ''
+      if (fb && (SAME.test(v) || DEL.test(v) || (delClass(v, true) === 'keep' || delClass(v, true) === 'ask') || (f === 'qtyNeeded' && j === fb.keep && /^0+(\.0+)?$/.test(v) && deletedSet.has(line)))) v = ''
       if (f === 'qtyNeeded' && qtyCombine) {
         // 新の号機が空の列は、対になる旧の号機の数を使う（変えた号機だけ新を書く表）
         let used = false
@@ -850,7 +852,7 @@ export function parseBomPaste(text: string): PasteResult {
         ditto++
       }
       // 1 つのセルに「旧→新」（MY2N→MY4N-D2・1→2）と書いたら新を使う
-      if ((f === 'qtyNeeded' || ((f === 'model' || f === 'maker') && (fallback.size > 0 || kindCol >= 0 || arrowHdr || arrowReason(line)))) && v.length <= 80 && /^[A-Za-z0-9._\/#+-]+ ?(→|⇒|->) ?[A-Za-z0-9._\/#+-]+$/.test(toHalf(v).trim()) && !/^[<>]/.test(v)) {
+      if ((f === 'qtyNeeded' || ((f === 'model' || f === 'maker') && (fallback.size > 0 || (kindCol >= 0 && /^(変更|修正|設変|置換|mod|chg|change|update)/i.test(kindVal(line[kindCol] ?? ''))) || arrowHdr || arrowReason(line)))) && v.length <= 80 && /^[A-Za-z0-9._\/#+-]+ ?(→|⇒|->) ?[A-Za-z0-9._\/#+-]+$/.test(toHalf(v).trim()) && !/^[<>]/.test(v)) {
         const nv = v.split(/\s*(?:→|⇒|->|＞|>)\s*/).pop()!.trim()
         if (nv) {
           arrows.push(v)
@@ -1093,12 +1095,13 @@ function qtyOf(v0: string): number | null {
   return n.ok && n.value != null ? n.value : null
 }
 
-/** 削除の印の文（備考・新の列）を 3 つに分ける。
- *  'del'  : 削除と断定できる（削除の語だけ・済・します・しました・です・お願いします・せよ・のこと・（Rev.1・R012に置換）・→不要、「要削除」「Rev.1 削除」「不要」「欠番」「取止め」「中止」「Del」、文の終わりの「不要のため削除」「→削除」「ユニットごと削除」）
- *  'keep' : 残すと断定できる（削除不要・削除取消・削除は次回・削除保留・削除見送り・取外し時注意・撤去用ブラケット・削除（しない）・削除（保留）・撤去後に再取付）
- *  'ask'  : 頭が削除・廃止・撤去・取外しなのにどちらとも決められない（削除に変更・削除で…）→ 取り込んで【削除？】で聞く
+/** 削除の印の文（備考・新の列）を 3 つに分ける。迷うものは必ず 'ask'（取り込んで【削除？】で聞く）。黙って削除・黙って残すのは、言い切れるものだけ。
+ *  'del'  : 削除と言い切れる（削除の語だけ・済・します・です・お願いします・せよ・のこと・（Rev.1・R012に置換）・使わないので削除、
+ *           「要削除」「Rev.1 削除」「不要」「欠番」「取止め」「中止」「Del」「×」、文の終わりの「不要のため削除」「→削除」「全て削除です」）
+ *  'keep' : 残すと言い切れる（削除不要・削除取消・削除は次回・削除保留・取外し時注意・撤去用ブラケット・削除（しない）・削除（保留）・撤去後に再取付）
+ *  'ask'  : 頭が削除・廃止・撤去・取外しなのにどちらとも決められない（削除に変更・削除で…・保留と理由の両方・一部・予定・？・承認後は削除）
  *  null   : 削除の話ではない
- *  strict（新の列の値＝部品名・型式）は頭の語のみ判定し、'ask'・文の終わりの削除は見ない */
+ *  strict（新の列の値＝部品名・型式）は頭の語のみ判定する。「撤去用ブラケット」「取外し工具」は部品名 */
 function delClass(v0: string, strict = false): 'del' | 'keep' | 'ask' | null {
   let v = toHalf(v0).trim().replace(/^[\s　※*＊（(【\[「]+/, '').replace(/^[（(]?rev\.?\s*[a-z0-9]+[）)]?[\s:：、,]*/i, '').replace(/^(今回の変更で|今回|本変更で|要)/, '')
   v = v.replace(/^[\s　]+/, '').replace(/^[→⇒][\s　]*(?=削除|撤去|廃止|取外|取り外)/, '')
@@ -1107,48 +1110,65 @@ function delClass(v0: string, strict = false): 'del' | 'keep' | 'ask' | null {
     while (e > 0 && /[\s　。.!！）)】\]」]/.test(v[e - 1])) e--
     v = v.slice(0, e)
   }
-  if (/^(不要|不使用|欠番|取止め|取り止め|取りやめ|中止|del|delete[d]?|remove[d]?|使用しない|使わない|廃止品|削除品)$/i.test(v)) return 'del'
+  if (/^(不要|不使用|欠番|取止め|取り止め|取りやめ|中止|del|delete[d]?|remove[d]?|使用しない|使わない|廃止品|削除品|[×✕xｘ]|不要です|外す|取外す|取り外す|取消|取り消し)$/i.test(v)) return 'del'
   // 一部だけの削除（一部削除・一部のみ削除・一部不要・半分撤去）、疑問（削除？・削除か・Del?）は聞く
   if (!strict && (/^(一部|半分)(の|のみ)?[\s　]*(削除|撤去|廃止|取外し|取り外し|不要)/.test(v) || /^(削除|撤去|廃止|取外し|取り外し|del|全削除|一式削除)[\s　]*[?？]$/i.test(v) || /^(削除|撤去|廃止|取外し|取り外し|全削除|一式削除)か$/.test(v))) return 'ask'
   if (/^一式不要$/.test(v)) return 'del'
   // 削除のあとに続いてよい語
-  const DONE = /^(済み?|ずみ|完了|です|でお願いします|をお願いします|お願いします|お願い|ください|下さい|します|しました|した|する|すること|して(ください|下さい)?|せよ|のこと|とする|とします|となります|されました|になりました|予定です|願います|確定|決定)?$/
+  const END = '(?:済み?|ずみ|完了|です|でお願いします|をお願いします|お願いします|お願い|ください|下さい|します|しました|した|する|すること|して(?:ください|下さい)?|せよ|のこと|とする|とします|となります|されました|になりました|予定です|願います|確定|決定)'
+  const DONE = new RegExp(`^${END}?$`)
   {
-    // 文の終わりの削除（新の列の値にも：「不要の為削除」「全削除」は型式にならない）（「不要のため削除」「Rev.2で削除」「B版にて削除」「設計変更により削除」「→削除」「ユニットごと削除」「旧品削除」）
-    const tail = /^(.*?)(削除|廃止|撤去|取外し|取り外し)(済み?|します|しました|した|する|すること|のこと)?$/.exec(v)
-    if (tail && tail[1] && /(ため|為|で|にて|により|につき|に付き|に伴い|による|に伴う|、|,|版|\s|→|⇒|ごと|品|ユニット|全|一式|全て|すべて|全部|全数|を|は|も|から)$/.test(tail[1])) return /一部|半分/.test(tail[1]) ? 'ask' : 'del'
+    // 文の終わりの削除（「不要のため削除」「Rev.2で削除」「B版にて削除」「→削除」「ユニットごと削除」「全て削除でお願いします」「この部品は削除です」）
+    const tail = new RegExp(`^(.*?)(削除|廃止|撤去|取外し|取り外し)${END}?$`).exec(v)
+    if (tail && tail[1] && /(ため|為|で|にて|により|につき|に付き|に伴い|による|に伴う|、|,|版|\s|→|⇒|ごと|品|ユニット|全|一式|全て|すべて|全部|全数|を|は|も|から)$/.test(tail[1])) {
+      // 承認後は・次回から・将来・場合・〜なら などの条件つき・先の話は、いまの削除ではないので聞く
+      if (/(後|次回|以降|将来|いずれ|あと|時|場合|なら|たら|れば|承認|確認|決定|検討)(は|から|に|で|も)?$/.test(tail[1])) return 'ask'
+      return /一部|半分/.test(tail[1]) ? 'ask' : 'del'
+    }
   }
   const m = /^(削除|廃止|撤去|取外し|取り外し)/.exec(v)
   if (!m) return null
   const rest = v.slice(m[0].length)
   if (DONE.test(rest)) return 'del'
-  // （注記）・→…: 注記の中身が「保留」「しない」「要確認」「再取付」のような保留・否定そのものなら残す。
-  // 理由・結果（確認済・検討済・生産中止・不要品・〜のため・不可・NG品・再利用しない）や Rev・置換・代替なら削除。どちらとも言えなければ聞く
+  // （注記）・→…
   const note = /^[\s　]*([（(【\[]|→|⇒)(.*)$/.exec(rest)
   if (note) {
     let ie = note[2].length
     while (ie > 0 && /[）)】\]\s　]/.test(note[2][ie - 1])) ie--
     const inner = note[2].slice(0, ie).replace(/[\s　]+/g, '')
-    // 一部だけの削除は聞く
-    if (/一部|のみ|だけ|個中|半分|うち|分のみ/.test(inner)) return strict ? 'del' : 'ask'
-    let cls: 'del' | 'keep' | 'ask'
-    if (inner === '不要') cls = note[1] === '→' || note[1] === '⇒' ? 'del' : 'ask'
-    else if (/^(しない|せず|保留|見送り?|要確認|確認中|確認要|検討中|要検討|検討|再取付|再利用|再使用|再追加|再登録|戻す|復活|取消|取り消し|中止|延期|撤回|未定|待ち|様子見|相談|仮|予定なし|対象外|変更なし|削除なし|なし|無し|要相談)$/.test(inner)) cls = 'keep'
-    // 使う・再利用しない（使わないから削除）は削除の理由
-    else if (/(再?利用|再?使用|使わ|必要)(しない|不可|せず|ない|なし)/.test(inner) && !/(変更|削除|撤去|廃止|取外)(を)?(しない|せず)/.test(inner)) cls = 'del'
+    if (/一部|のみ|だけ|個中|半分|うち|分のみ/.test(inner)) return 'ask'
+    if (inner === '不要') return strict || note[1] === '→' || note[1] === '⇒' ? 'del' : 'ask'
+    if (/^(しない|せず|保留|見送り?|要確認|確認中|確認要|検討中|要検討|検討|再取付|再利用|再使用|再追加|再登録|戻す|復活|取消|取り消し|中止|延期|撤回|未定|待ち|様子見|相談|仮|予定なし|対象外|変更なし|削除なし|なし|無し|要相談)$/.test(inner)) return 'keep'
+    // 検討済・確認済・協議済 は「済」＝決まった。保留の語として数えない
+    const held = inner.replace(/(検討|確認|相談|協議|承認|調整|回答)済み?/g, '済').replace(/(済|完了)(では|で)?(ない|なし)|未済|未完了|(済|完了)していない/g, '')
+    // 使わない（使用していない・使われていない・再利用しない・使用予定なし）は削除の理由
+    const useNeg = (/(利用|使用|使わ|使っ|使い|使え|必要)(して|され|さ|れて|れ|て)?(いない|ない|なし|しない|不可|せず)/.test(inner) || /(利用|使用)予定(は)?(なし|無い|ない)/.test(inner)) && !/(変更|削除|撤去|廃止|取外|交換)(を)?(しない|せず)/.test(inner)
     // 残す・除く・継続・変更しない・予定は無い・〜ではない・未済 など、残すことをはっきり言う語
-    else if (/残す|残る|残し|除く|継続|変更(を)?(しない|せず|不要)|(削除|撤去|廃止|取外し?|交換)(を)?(しない|せず|不要)|予定(は)?(無い|ない|なし)|対象(では|で)?(ない|外)|ではない|でない|未済|未完了|していない|いない/i.test(inner)) cls = 'keep'
-    // 他へ流用は、この BOM から外すのか残すのか分からないので聞く
+    const retain = /残す|残る|残し|除く|継続|変更(を)?(しない|せず|不要)|(削除|撤去|廃止|取外し?|交換)(を)?(しない|せず|不要)|予定(は)?(無い|ない|なし)|対象(では|で)?(ない|外)|ではない|でない|未済|未完了|していない|いない/.test(inner)
+    // 保留・待ち・確認中・検討・pending・再取付 など、まだ決まっていない言い方
+    const hold = /使用中|保留|見送|待ち|確認中|要確認|検討|再取付|戻す|復活|取消|取り消|延期|撤回|未定|相談|pending|review|hold|tbd|まだ|様子/i.test(held)
+    // 理由・結果（済・ため・生産中止・不要品・不可・NG品・Rev・置換・代替）
+    const reason = /済|ため|為|につき|に付き|の結果|品$|不要品|不要部品|生産中止|廃番|不可|(?<![a-z])NG品?$|解除|(?<![a-z])rev|置換|代替|代わり|R\d|再設計|再編成|他案件|ユニット|完了/i.test(held)
+    // Rev・R番号・置換・代替は理由でなく参照なので、「残す」と一緒にあっても残す
+    const reasonMain = reason && /済|ため|為|につき|に付き|の結果|品$|不要品|不要部品|生産中止|廃番|不可|(?<![a-z])NG品?$|解除|再設計|再編成|他案件|完了/i.test(held)
+    let cls: 'del' | 'keep' | 'ask'
+    if (useNeg && !hold) cls = 'del'
     else if (/流用/.test(inner)) cls = 'ask'
-    // 理由・結果（確認済・検討済・ため・生産中止・不要品・不可・NG品・Rev・置換・代替）は削除
-    else if (/済|ため|為|につき|に付き|の結果|品$|不要品|不要部品|生産中止|廃番|不可|(?<![a-z])NG品?$|解除|(?<![a-z])rev|置換|代替|代わり|R\d|再設計|再編成|他案件|ユニット|完了/i.test(inner)) cls = 'del'
-    // まだ決まっていない言い方（保留・待ち・確認中・検討・再取付・使用中・pending）は残す
-    else if (/使用中|保留|見送|待ち|確認中|要確認|検討|再取付|戻す|復活|取消|取り消|延期|撤回|未定|相談|pending|review|hold|tbd|まだ|様子/i.test(inner)) cls = 'keep'
+    else if (retain && !reasonMain && !hold) cls = 'keep'
+    else if (retain && (reason || hold) && !useNeg) cls = hold && !reason ? 'keep' : 'ask'
+    else if (hold && reason) cls = 'ask'
+    else if (reason && !hold) cls = 'del'
+    else if (hold) cls = 'keep'
     else cls = 'ask'
-    // 新の列の値（部品名・型式）は、決められない言い方でも型式にならないので削除として外す（残す言い方は「変えていない」扱い）
-    return strict && cls === 'ask' ? 'del' : cls
+    if (useNeg && hold) cls = 'ask'
+    return cls
   }
-  if (strict) return /^(予定なし|対象外|はしない|しない|保留|見送り?)/.test(rest) ? 'keep' : /^(品|対象|予定|に変更)$/.test(rest) || /^(対象|予定|に変更)/.test(rest) || /^(済み?|ずみ|完了|します|する)[\s　]*[（(]/.test(rest) ? 'del' : null
+  if (strict) {
+    // 新の列の値: 「削除不要」「削除取消」は変えていない、「削除してよいか確認」「削除かも」「削除？」は聞く、それ以外は部品名（撤去用ブラケット）ではなく削除の言い方だけ削除
+    if (/^(予定なし|対象外|はしない|しない|保留|見送り?|不要|取消|取り消し?|取りやめ)/.test(rest)) return 'keep'
+    if (/^(してよい|かも|か$|[?？]|確認|しても)/.test(rest)) return 'ask'
+    return /^(品|対象|予定|に変更)$/.test(rest) || /^(対象|予定|に変更)/.test(rest) || /^(済み?|ずみ|完了|します|する)[\s　]*[（(]/.test(rest) ? 'del' : null
+  }
   // 予定・検討だけ（削除予定・削除検討・撤去予定）は、決まっているのか分からないので聞く
   if (/^(予定|検討)([\s　]*)$/.test(rest)) return 'ask'
   // 否定・保留・文（削除は次回・削除保留・削除見送り・取外し時注意・撤去用ブラケット・撤去品を流用・撤去後に再取付）

@@ -139,3 +139,5 @@
 == 141-excel-keys-linux-run1 15:56:23 load=3.27 4.47 11.18
    exit 0 15:57:33
 == 143-twotab-decision-run1 15:57:33 load=4.88 4.69 10.76
+   exit 0 15:58:13
+== 148-twotab-settings-confirm-run1 15:58:13 load=3.97 4.54 10.46

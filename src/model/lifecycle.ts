@@ -74,6 +74,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       if (mismatch) {
         const stoppedSup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId && s.tradable === false)
         if (stoppedSup) r.flags.droppedStopped = stoppedSup.name
+        else if (!ws.suppliers.some((s) => s.id === r.adoptedSupplierId)) r.flags.droppedStopped = `${r.adoptedSupplierId}（商社マスタから削除）`
         // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
         if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
           r.flags.pmPending = false

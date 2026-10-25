@@ -611,7 +611,7 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
   if (role === 'purchasing') {
     if (r.flags.reconfirm)
       for (const q of p.quotes.filter((x) => x.rowId === r.id && !x.stale && !x.reconfirm)) {
-        const name = s.ws.suppliers.find((x) => x.id === q.supplierId)?.name
+        const name = s.ws.suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId
         opts.push({ label: `要再確認 ${name}: 据え置き`, run: () => issues.reconfirmQuote(r.id, q.supplierId, 'keep') }, { label: `要再確認 ${name}: 再見積`, run: () => issues.reconfirmQuote(r.id, q.supplierId, 'requote') })
         if (q.source?.startsWith('提案')) opts.push({ label: `要再確認 ${name}: 提案値で確定`, run: () => issues.reconfirmQuote(r.id, q.supplierId, 'proposal') })
       }

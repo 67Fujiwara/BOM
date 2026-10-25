@@ -174,7 +174,8 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
     }
     case 'adopted': {
       const sup = ctx.ws.suppliers.find((s) => s.id === row.adoptedSupplierId)
-      return { text: sup ? sup.name : '', raw: sup?.name ?? '', cls: row.flags.pmPending ? 'warn-text' : '', title: row.adoptReason }
+      const nm = sup ? sup.name : row.adoptedSupplierId ? `${row.adoptedSupplierId}（商社マスタに無い）` : ''
+      return { text: nm, raw: nm, cls: row.flags.pmPending ? 'warn-text' : '', title: row.adoptReason }
     }
     case 'score':
       return { text: row.scoreSnapshot == null ? '' : String(row.scoreSnapshot), raw: row.scoreSnapshot ?? '', cls: 'num' }

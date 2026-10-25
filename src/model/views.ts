@@ -29,7 +29,7 @@ export const VIEWS: ViewDef[] = [
   // §5: PM 承認待ちの変更セットで足した行は、承認まで購買には見せない（設計・PM には見せる）
   { id: 1, label: 'すべて', filter: (r, c) => c.role !== 'purchasing' || !(r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') },
   { id: 2, label: '購買提出用', columns: [...DESIGN_COLS, 'due'], filter: (r) => isActive(r) && !r.hidden },
-  { id: 3, label: '発注・入荷', columns: ['id', 'ball', 'name', 'model', 'maker', 'orderQty', 'unit', 'adopted', 'unitPrice', 'amount', 'lead', 'ordered', 'received', 'promisedDate', 'receivedLot', 'status'], filter: (r) => isActive(r) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
+  { id: 3, label: '発注・入荷', columns: ['id', 'ball', 'name', 'model', 'maker', 'orderQty', 'unit', 'adopted', 'unitPrice', 'amount', 'lead', 'ordered', 'received', 'promisedDate', 'receivedLot', 'status'], filter: (r) => isActive(r) && (isQuotable(r) || !!r.adoptedSupplierId) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   {
     id: 4,
     label: '要確認',

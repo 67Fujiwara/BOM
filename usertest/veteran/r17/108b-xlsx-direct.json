@@ -1,0 +1,336 @@
+[
+  {
+    "f": "z1-sparse-maker-written-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 270,
+    "modelNew": 30,
+    "warnings": [
+      "「変更後メーカ」が空の 270 行は、ほかの「メーカ」の列の値を使いました",
+      "「変更後型式」が空の 270 行は、ほかの「型式」の列の値を使いました",
+      "「型式」に当たる列が 2 つあります。「変更後型式」の列を使います",
+      "「メーカ」に当たる列が 2 つあります。「変更後メーカ」の列を使います"
+    ],
+    "tsvHead": [
+      "部品名\t型式\t変更後型式\tメーカ\t変更後メーカ\t数量",
+      "部品1\tOLD-1\t\t三菱電機\t\t2",
+      "部品2\tOLD-2\t\tIDEC\t\t3"
+    ],
+    "first": [
+      "部品1 / OLD-1 / 三菱電機 / 2 / ",
+      "部品2 / OLD-2 / IDEC / 3 / ",
+      "部品3 / OLD-3 / オムロン / 4 / "
+    ],
+    "around": [
+      "部品49 / OLD-49 / 三菱電機 / 5 / ",
+      "部品50 / NEW-50 / IDEC / 6 / ",
+      "部品51 / OLD-51 / オムロン / 7 / ",
+      "部品52 / OLD-52 / 三菱電機 / 8 / ",
+      "部品53 / OLD-53 / IDEC / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z2-eda-bom-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "Description\tValue\tMPN\tFootprint\tQty\tDNP",
+      "部品1\t1k\tMPN-1\t0603\t2\t",
+      "部品2\t2k\tMPN-2\t0603\t3\t"
+    ],
+    "first": [
+      "部品1 / MPN-1 /  / 2 / ",
+      "部品2 / MPN-2 /  / 3 / ",
+      "部品3 / MPN-3 /  / 4 / "
+    ],
+    "around": [
+      "部品49 / MPN-49 /  / 5 / ",
+      "部品50 / MPN-50 /  / 6 / ",
+      "部品51 / MPN-51 /  / 7 / ",
+      "部品52 / MPN-52 /  / 8 / ",
+      "部品53 / MPN-53 /  / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z2b-eda-bom-real-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 300,
+    "notBuhin": [
+      "Resistor 1 / MPN-1 /  / 2 / ",
+      "Diode 2 / MPN-2 /  / 3 / ",
+      "Connector 3 / MPN-3 /  / 4 / ",
+      "Inductor 4 / MPN-4 /  / 5 / ",
+      "Capacitor 5 / MPN-5 /  / 6 / ",
+      "Resistor 6 / MPN-6 /  / 7 / ",
+      "Diode 7 / MPN-7 /  / 8 / ",
+      "Connector 8 / MPN-8 /  / 9 / "
+    ],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "Description\tValue\tMPN\tFootprint\tQty\tDNP",
+      "Resistor 1\t1k\tMPN-1\t0603\t2\t",
+      "Diode 2\t2k\tMPN-2\t0603\t3\t"
+    ],
+    "first": [
+      "Resistor 1 / MPN-1 /  / 2 / ",
+      "Diode 2 / MPN-2 /  / 3 / ",
+      "Connector 3 / MPN-3 /  / 4 / "
+    ],
+    "around": [
+      "Inductor 49 / MPN-49 /  / 5 / ",
+      "Capacitor 50 / MPN-50 /  / 6 / ",
+      "Resistor 51 / MPN-51 /  / 7 / ",
+      "Diode 52 / MPN-52 /  / 8 / ",
+      "Connector 53 / MPN-53 /  / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z3-units-no-total-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 2988,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "数量の列 2 つ（「数量（1号機）」「数量（2号機）」）を足して数量にしました",
+      "2 段の見出しを 1 段にまとめて読みました"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量\t",
+      "\t\t\t1号機\t2号機",
+      "部品1\tMDL-1\t三菱電機\t2\t2"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 4 / ",
+      "部品2 / MDL-2 / IDEC / 6 / ",
+      "部品3 / MDL-3 / オムロン / 8 / "
+    ],
+    "around": [
+      "部品49 / MDL-49 / 三菱電機 / 10 / ",
+      "部品50 / MDL-50 / IDEC / 12 / ",
+      "部品51 / MDL-51 / オムロン / 14 / ",
+      "部品52 / MDL-52 / 三菱電機 / 16 / ",
+      "部品53 / MDL-53 / IDEC / 18 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z4-quotes-various.xlsx",
+    "n": 20,
+    "qty0": 0,
+    "qtySum": 95,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "「〃」「同上」「同左」の 8 セルは、上の行（同左は左のセル）の値にしました"
+    ],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量\t備考",
+      "部品1\t\"\"\"\"\t三菱電機\t2\t",
+      "部品2\t\"\"\"\"\"\"\tIDEC\t3\t"
+    ],
+    "first": [
+      "部品1 /  / 三菱電機 / 2 / ",
+      "部品2 /  / IDEC / 3 / ",
+      "部品3 / 12\" / オムロン / 4 / "
+    ],
+    "around": [],
+    "quotes": [
+      "部品3 / 12\" / オムロン / 4 / ",
+      "部品4 / 3/4\" グランド / 三菱電機 / 5 / ",
+      "部品5 / \"N\"型 / IDEC / 6 / ",
+      "部品6 / a\"b\"c / オムロン / 7 / ",
+      "部品7 / a\"b\"c / 三菱電機 / 8 / ",
+      "部品8 / \"始まり / IDEC / 9 / ",
+      "部品9 / 終わり\" / オムロン / 1 / ",
+      "部品10 / 終わり\" / 三菱電機 / 2 / ",
+      "部品13 / MDL-13 / 三菱電機 / 5 / 12\"",
+      "部品14 / MDL-14 / IDEC / 6 / 3/4\" グランド",
+      "部品15 / MDL-15 / オムロン / 7 / \"N\"型",
+      "部品16 / MDL-16 / 三菱電機 / 8 / a\"b\"c"
+    ]
+  },
+  {
+    "f": "z5-merged-2d-note.xlsx",
+    "n": 12,
+    "qty0": 0,
+    "qtySum": 28,
+    "noName": 0,
+    "notBuhinN": 1,
+    "notBuhin": [
+      "ケーブル（別途手配） /  / フジクラ / 5 / "
+    ],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [],
+    "tsvHead": [
+      "部品名\t型式\tメーカ\t数量\t備考\t",
+      "部品1\tMDL-1\t三菱電機\t2\t盤内配線用（共通）\t",
+      "部品2\tMDL-2\tIDEC\t2\t盤内配線用（共通）\t"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2 / 盤内配線用（共通）",
+      "部品2 / MDL-2 / IDEC / 2 / 盤内配線用（共通）",
+      "部品3 / MDL-3 / オムロン / 2 / 盤内配線用（共通）"
+    ],
+    "around": [],
+    "quotes": []
+  },
+  {
+    "f": "z6-henkou-paren-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 270,
+    "modelNew": 30,
+    "warnings": [
+      "「型式(変更)」が空の 270 行は、ほかの「型式」の列の値を使いました",
+      "「型式」に当たる列が 2 つあります。「型式(変更)」の列を使います"
+    ],
+    "tsvHead": [
+      "部品名\t型式\t型式(変更)\tメーカ\t数量",
+      "部品1\tOLD-1\t\t三菱電機\t2",
+      "部品2\tOLD-2\t\tIDEC\t3"
+    ],
+    "first": [
+      "部品1 / OLD-1 / 三菱電機 / 2 / ",
+      "部品2 / OLD-2 / IDEC / 3 / ",
+      "部品3 / OLD-3 / オムロン / 4 / "
+    ],
+    "around": [
+      "部品49 / OLD-49 / 三菱電機 / 5 / ",
+      "部品50 / NEW-50 / IDEC / 6 / ",
+      "部品51 / OLD-51 / オムロン / 7 / ",
+      "部品52 / OLD-52 / 三菱電機 / 8 / ",
+      "部品53 / OLD-53 / IDEC / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z7-csv-quoted-ditto.csv",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1493,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました"
+    ],
+    "tsvHead": [
+      "部品名,型式,メーカ,数量\r",
+      "部品1,MDL-1,三菱電機,2\r",
+      "部品2,MDL-2,IDEC,3\r"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2 / ",
+      "部品2 / MDL-2 / IDEC / 3 / ",
+      "部品3 / MDL-3 / IDEC / 3 / "
+    ],
+    "around": [
+      "部品49 / MDL-49 / 三菱電機 / 5 / ",
+      "部品50 / MDL-50 / IDEC / 6 / ",
+      "部品51 / MDL-51 / オムロン / 7 / ",
+      "部品52 / MDL-52 / 三菱電機 / 8 / ",
+      "部品53 / MDL-53 / IDEC / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z8-csv-raw-ditto.csv",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1493,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 0,
+    "modelNew": 0,
+    "warnings": [
+      "「〃」「同上」「同左」の 1 セルは、上の行（同左は左のセル）の値にしました"
+    ],
+    "tsvHead": [
+      "部品名,型式,メーカ,数量\r",
+      "部品1,MDL-1,三菱電機,2\r",
+      "部品2,MDL-2,IDEC,3\r"
+    ],
+    "first": [
+      "部品1 / MDL-1 / 三菱電機 / 2 / ",
+      "部品2 / MDL-2 / IDEC / 3 / ",
+      "部品3 / MDL-3 / IDEC / 3 / "
+    ],
+    "around": [
+      "部品49 / MDL-49 / 三菱電機 / 5 / ",
+      "部品50 / MDL-50 / IDEC / 6 / ",
+      "部品51 / MDL-51 / オムロン / 7 / ",
+      "部品52 / MDL-52 / 三菱電機 / 8 / ",
+      "部品53 / MDL-53 / IDEC / 9 / "
+    ],
+    "quotes": []
+  },
+  {
+    "f": "z9-kyushin-name-up-repeat-300.xlsx",
+    "n": 300,
+    "qty0": 0,
+    "qtySum": 1794,
+    "noName": 0,
+    "notBuhinN": 0,
+    "notBuhin": [],
+    "modelOld": 270,
+    "modelNew": 30,
+    "warnings": [
+      "見出しより上の 1 行（表題など）は取り込みません",
+      "繰り返しの見出し 10 行は取り込みません",
+      "「型式」に当たる列が 2 つあります。「型式（新）」の列を使います",
+      "「数量」に当たる列が 2 つあります。「数量（新）」の列を使います"
+    ],
+    "tsvHead": [
+      "部品名\t旧\t\t新\t",
+      "部品名\t型式\t数量\t型式\t数量",
+      "部品1\tOLD-1\t2\tOLD-1\t2"
+    ],
+    "first": [
+      "部品1 / OLD-1 /  / 2 / ",
+      "部品2 / OLD-2 /  / 3 / ",
+      "部品3 / OLD-3 /  / 4 / "
+    ],
+    "around": [
+      "部品49 / OLD-49 /  / 5 / ",
+      "部品50 / NEW-50 /  / 16 / ",
+      "部品51 / OLD-51 /  / 7 / ",
+      "部品52 / OLD-52 /  / 8 / ",
+      "部品53 / OLD-53 /  / 9 / "
+    ],
+    "quotes": []
+  }
+]

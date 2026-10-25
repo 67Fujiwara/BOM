@@ -1,0 +1,38 @@
+[
+  {
+    "n": 20,
+    "loadMs": 360,
+    "previewMs": 36,
+    "errs": []
+  },
+  {
+    "n": 24,
+    "loadMs": 153,
+    "previewMs": 44,
+    "errs": []
+  },
+  {
+    "n": 26,
+    "loadMs": 145,
+    "previewMs": 46,
+    "errs": []
+  },
+  {
+    "n": 28,
+    "loadMs": 147,
+    "previewMs": 35,
+    "errs": []
+  },
+  {
+    "n": 40,
+    "loadMs": 180,
+    "previewMs": 102,
+    "errs": []
+  },
+  {
+    "n": 200,
+    "loadMs": 146,
+    "previewMs": 25,
+    "errs": []
+  }
+]

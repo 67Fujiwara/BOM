@@ -1,0 +1,20 @@
+{
+  "src": "/home/user/BOM/src",
+  "N": 4000,
+  "accepted": 4000,
+  "rejected": 0,
+  "distinctErrors": [
+    {
+      "error": "normalize: (cur ?? \"\").split is not a function",
+      "count": 87,
+      "example": {
+        "muts": [
+          "combo R015 formalRequested 支給品 adopted=S5 tradable=false designated=S9 formalWithdrawn=12.5",
+          "rows[R049].flags.requote=\"2026-02-30\""
+        ],
+        "stack": "at addWithdrawn (/home/user/BOM/src/model/derive.ts:398:28) | at normalize (/home/user/BOM/src/model/lifecycle.ts:97:121)",
+        "warnings": []
+      }
+    }
+  ]
+}

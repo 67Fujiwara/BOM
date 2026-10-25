@@ -1,0 +1,19 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X before stop R034 客先指定品 st=selected adopt=S1 reason=指定先（固定） oq=1 flags={} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] | 選定済
+X after stop R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]] | 見積済 · 先行発注判断 ball pm
+PASS K3-1 取引停止の依頼先（因幡）の採用は外れる :: R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",null,null,null],["S3",null,null,null]]
+fixedSupplierId S1
+purch statusbar ナビR034 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く
+purch Ctrl+. options []
+purch 4/9, design 4 false true false
+FAIL K3-2 依頼先が取引停止の客先指定品は、誰かの 4 に出て次の手（次の商社に依頼・依頼先を変える）が分かる :: ball=pm p4=false d4=false sb=ナビR034 ID購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題Shift+I指摘Space開く qf=[]
+rough all → 依頼する行がありません（提出済・再見積要の行なし） []
+rough S2 → 依頼する行がありません（提出済・再見積要の行なし） []
+FAIL K3-3 次の商社（立花エレテック）に概算見積を頼める :: 依頼する行がありません（提出済・再見積要の行なし）
+S2 answer EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし） / EDIT-ERR 依頼する行がありません（提出済・再見積要の行なし）
+X after S2 answer R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]] | 見積済 · 先行発注判断 ball pm
+FAIL K3-4 次の商社の回答で、その商社が採用されて選定済（客先指定品はスコアなしで固定） :: R034 客先指定品 st=quoted adopt=- reason= oq=1 flags={"ltbPending":true} quotes=[["S1",356,18,null],["S2",400,10,null],["S3",null,null,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 31 行（拮抗 10 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 31 行 × 2 社に正式見積を依頼 [["ミスミ",false],["立花エレテック",false]]
+PASS K3-5 取引停止の因幡には正式見積の依頼書が出ない :: ["ミスミ","立花エレテック"]
+ERRORS []
+== 2/5 PASS

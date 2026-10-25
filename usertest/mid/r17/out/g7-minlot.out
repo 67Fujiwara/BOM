@@ -1,0 +1,10 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] qty 1
+moq → EDIT-ERR 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+raise → I-006 最小ロット を下書きに追加しました。Ctrl+Enter（本文で）なら次の行へ続けて起票。最後に表で Ctrl+Enter で発行
+publish → 指摘 1 件 を公開しました
+issues [["I-006","最小ロット","必要数 1 → 丸め数量 100（因幡電機 MOQ 100）、余剰 99（¥259,479）。余剰が閾値 ¥20,000 を超えるので、発行すると PM の要決定（閾値超）に載ります","open"]]
+X R004 相見積 st=selected adopt=S1 reason= oq=1 flags={"pmPending":true,"pmReason":"閾値超"} quotes=[["S1",2621,12,null],["S2",null,-1,null],["S3",2907,13,null]] ball pm case 閾値超
+PM 7 has X true
+PASS G7-2 最小ロットの余剰金額（MOQ 100 で約 ¥259,479）が閾値を大きく超えたら PM の要決定（7）に載る（§6.2 A=PM、§9.1） :: in7=true ball=pm case=閾値超
+== 1/1 PASS

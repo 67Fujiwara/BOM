@@ -1,0 +1,24 @@
+F R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+G R006 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",14485,15,null],["S2",15088,14,null],["S3",13542,0,null]]
+F R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null]] | 見積中（有効な見積なし）
+Ctrl+. F ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ Ctrl+K →「案件設定」で足す）","設計に代替を相談する（指摘を起票）"]
+PASS K8-1 全社辞退の行の Ctrl+. に「ほかの商社に依頼する」「設計に代替を相談する」 :: ["ほかの商社に依頼する（概算見積を依頼。まだこの行に頼んでいない商社を選ぶ。案件の相見積先に無ければ Ctrl+K →「案件設定」で足す）","設計に代替を相談する（指摘を起票）"]
+request panel 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ["相見積先すべて（因幡電機・立花エレテック・ミスミ）","S1 因幡電機","S2 立花エレテック","S3 ミスミ","S4 RSコンポーネンツ","S5 オムロン直販"]
+INFO 依頼のパネルに RS が ある
+request S4 → 2 行 × 1 社に依頼（回答期限 2026-10-28） [["RSコンポーネンツ",["R005","R006"]]]
+PASS K8-2 RS への依頼書に全社辞退の行（F・G）が入り、ほかの見積済の行は入らない :: [["RSコンポーネンツ",["R005","R006"]]]
+F after request R005 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",null,null,null]] | 見積中 3/4 targets ["S4"]
+PASS K8-3 依頼のあとは見積中で RS の回答を待つ（「有効な見積なし」のままにしない・回答数に RS が入る） :: 見積中 3/4
+S4 answer EDIT-ERR R005 の単価 ¥999 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） / EDIT-ERR R005 の単価 ¥999 は他社（¥10,025 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+F after RS answer R005 相見積 st=quoted adopt=- reason= oq=- flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",999,5,null]] | 見積済 ball design
+design a → R005 を RSコンポーネンツ で採用（スコア 98.7 / 最安）
+F adopted R005 相見積 st=selected adopt=S4 reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",999,5,null]]
+PASS K8-4 RS の回答で見積済 → a で RS を採用 :: R005 相見積 st=selected adopt=S4 reason= oq=12 flags={} quotes=[["S1",8870,-1,null],["S2",10025,-1,null],["S3",10512,-1,null],["S4",999,5,null]]
+formal → 正式見積依頼書（社外）を出します: 対象 6 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 6 行 × 3 社に正式見積を依頼 ["RSコンポーネンツ"]
+PASS K8-5 正式見積の依頼が RS に出る :: [["因幡電機",4],["RSコンポーネンツ",1],["立花エレテック",1]]
+G now R006 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",14485,-1,null],["S2",15088,-1,null],["S3",13542,-1,null],["S4",null,null,null]] | 見積中 3/4
+Ctrl+. G []
+G after R006 相見積 st=quoting adopt=- reason= oq=- flags={} quotes=[["S1",14485,-1,null],["S2",15088,-1,null],["S3",13542,-1,null],["S4",null,null,null]] issues [] ball purchasing
+FAIL K8-6 「設計に代替を相談する」で指摘が設計に届く（設計のボール・4） :: d4=false ball=purchasing
+ERRORS []
+== 5/6 PASS

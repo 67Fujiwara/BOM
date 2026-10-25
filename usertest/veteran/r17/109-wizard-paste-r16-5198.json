@@ -1,0 +1,152 @@
+[
+  {
+    "id": "p1-kyushin-name-up-repeat-300",
+    "preview": "案件 P-V0 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式（旧） → （使わない） / 数量（旧） → （使わない） / 型式（新） → 型式 / 数量（新） → 数量⚠ 見出しより上の 1 行（表題など）は取り込みません⚠ 繰り返しの見出し 10 行は取り込みません（列の並びが違うページの 250 行は、最初の見出しの並びに直しました）⚠ 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います⚠ 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います部品1OLD-12個部品2OLD-23個部品3OLD-34個部品4OLD-45個部品5OLD-56個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "rows": 300,
+    "qty0": 0,
+    "qtySum": 1794,
+    "noName": 250,
+    "notBuhinN": 250,
+    "modelOld": 270,
+    "modelNew": 30,
+    "sample": [
+      "部品1 / OLD-1 /  / 2",
+      "部品2 / OLD-2 /  / 3",
+      "部品3 / OLD-3 /  / 4"
+    ],
+    "around": [
+      "部品49 / OLD-49 /  / 5",
+      "部品50 / NEW-50 /  / 16",
+      " / OLD-51 /  / 7",
+      " / OLD-52 /  / 8",
+      " / OLD-53 /  / 9"
+    ],
+    "tail": [
+      " / OLD-299 /  / 3",
+      " / NEW-300 /  / 14"
+    ]
+  },
+  {
+    "id": "p2-ascii-quote-ditto-300",
+    "preview": "案件 P-V1 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 3 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-33 部品4\tMDL-4\t三菱電機\t5 部品5\tMDL-5\tIDEC\t6 部品6\tMDL-6\tオムロン\t7 部品7\tMDL-7\t三菱電機\t8 部品8\tMDL-8\tIDEC\t9 部品9\tMDL-9\tオムロン\t1 部品10\tMDL-10\t三菱電機\t2 部品11\tMDL-11\tIDEC\t3 部品12\tMDL-12\tオムロン\t4 部品13\tMDL-13\t三菱電機\t5 部品14\tMDL-14\tIDEC\t6 部品15\tMDL-15\tオムロン\t7 部品16\tMDL-16\t三菱電機\t8 部品17\tMDL-17\tIDEC\t9 部品18\tMDL-18\tオムロン\t1 部品19\tMDL-19\t三菱電機\t2 部品20\tMDL-20\tIDEC\t3 部品21\tMDL-21\tオムロン\t4 部品22\tMDL-22\t三菱電機\t5 部品23\tMDL-23\tIDEC\t6 部品24\tMDL-24\tオムロン\t7 部品25\tMDL-25\t三菱電機\t8 部品26\tMDL-26\tIDEC\t9 部品27\tMDL-27\tオムロン\t1 部品28\tMDL-28\t三菱電機\t2 部品29\tMDL-29\tIDEC\t3 部品30\tMDL-30\tオムロン\t4 部品31\tMDL-31\t三菱電機\t5 部品32\tMDL-3",
+    "rows": 3,
+    "qty0": 1,
+    "qtySum": 5,
+    "noName": 0,
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "sample": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / 3 部品4\tMDL-4\t三菱電機\t5 部品5\tMDL-5\tIDEC\t6 部品6\tMDL-6\tオムロン\t7 部品7\tMDL-7\t三菱電機\t8 部品8\tMDL-8\tIDEC\t9 部品9\tMDL-9\tオムロン\t1 部品10\tMDL-10\t三菱電機\t2 部品11\tMDL-11\tIDEC\t3 部品12\tMDL-12\tオムロン\t4 部品13\tMDL-13\t三菱電機\t5 部品14\tMDL-14\tIDEC\t6 部品15\tMDL-15\tオムロン\t7 部品16\tMDL-16\t三菱電機\t8 部品17\tMDL-17\tIDEC\t9 部品18\tMDL-18\tオムロン\t1 部品19\tMDL-19\t三菱電機\t2 部品20\tMDL-20\tIDEC\t3 部品21\tMDL-21\tオムロン\t4 部品22\tMDL-22\t三菱電機\t5 部品23\tMDL-23\tIDEC\t6 部品24\tMDL-24\tオムロン\t7 部品25\tMDL-25\t三菱電機\t8 部品26\tMDL-26\tIDEC\t9 部品27\tMDL-27\tオムロン\t1 部品28\tMDL-28\t三菱電機\t2 部品29\tMDL-29\tIDEC\t3 部品30\tMDL-30\tオムロン\t4 部品31\tMDL-31\t三菱電機\t5 部品32\tMDL-32\tIDEC\t6 部品33\tMDL-33\tオムロン\t7 部品34\tMDL-34\t三菱電機\t8 部品35\tMDL-35\tIDEC\t9 部品36\tMDL-36\tオムロン\t1 部品37\tMDL-37\t三菱電機\t2 部品38\tMDL-38\tIDEC\t3 部品39\tMDL-39\tオムロン\t4 部品40\tMDL-40\t三菱電機\t5 部品41\tMDL-41\tIDEC\t6 部品42\tMDL-42\tオムロン\t7 部品43\tMDL-43\t三菱電機\t8 部品44\tMDL-44\tIDEC\t9 部品45\tMDL-45\tオムロン\t1 部品46\tMDL-46\t三菱電機\t2 部品47\tMDL-47\tIDEC\t3 部品48\tMDL-48\tオムロン\t4 部品49\tMDL-49\t三菱電機\t5 部品50\tMDL-50\tIDEC\t6 部品51\tMDL-51\tオムロン\t7 部品52\tMDL-52\t三菱電機\t8 部品53\tMDL-53\tIDEC\t9 部品54\tMDL-54\tオムロン\t1 部品55\tMDL-55\t三菱電機\t2 部品56\tMDL-56\tIDEC\t3 部品57\tMDL-57\tオムロン\t4 部品58\tMDL-58\t三菱電機\t5 部品59\tMDL-59\tIDEC\t6 部品60\tMDL-60\tオムロン\t7 部品61\tMDL-61\t三菱電機\t8 部品62\tMDL-62\tIDEC\t9 部品63\tMDL-63\tオムロン\t1 部品64\tMDL-64\t三菱電機\t2 部品65\tMDL-65\tIDEC\t3 部品66\tMDL-66\tオムロン\t4 部品67\tMDL-67\t三菱電機\t5 部品68\tMDL-68\tIDEC\t6 部品69\tMDL-69\tオムロン\t7 部品70\tMDL-70\t三菱電機\t8 部品71\tMDL-71\tIDEC\t9 部品72\tMDL-72\tオムロン\t1 部品73\tMDL-73\t三菱電機\t2 部品74\tMDL-74\tIDEC\t3 部品75\tMDL-75\tオムロン\t4 部品76\tMDL-76\t三菱電機\t5 部品77\tMDL-77\tIDEC\t6 部品78\tMDL-78\tオムロン\t7 部品79\tMDL-79\t三菱電機\t8 部品80\tMDL-80\tIDEC\t9 部品81\tMDL-81\tオムロン\t1 部品82\tMDL-82\t三菱電機\t2 部品83\tMDL-83\tIDEC\t3 部品84\tMDL-84\tオムロン\t4 部品85\tMDL-85\t三菱電機\t5 部品86\tMDL-86\tIDEC\t6 部品87\tMDL-87\tオムロン\t7 部品88\tMDL-88\t三菱電機\t8 部品89\tMDL-89\tIDEC\t9 部品90\tMDL-90\tオムロン\t1 部品91\tMDL-91\t三菱電機\t2 部品92\tMDL-92\tIDEC\t3 部品93\tMDL-93\tオムロン\t4 部品94\tMDL-94\t三菱電機\t5 部品95\tMDL-95\tIDEC\t6 部品96\tMDL-96\tオムロン\t7 部品97\tMDL-97\t三菱電機\t8 部品98\tMDL-98\tIDEC\t9 部品99\tMDL-99\tオムロン\t1 部品100\tMDL-100\t三菱電機\t2 部品101\tMDL-101\tIDEC\t3 部品102\tMDL-102\tオムロン\t4 部品103\tMDL-103\t三菱電機\t5 部品104\tMDL-104\tIDEC\t6 部品105\tMDL-105\tオムロン\t7 部品106\tMDL-106\t三菱電機\t8 部品107\tMDL-107\tIDEC\t9 部品108\tMDL-108\tオムロン\t1 部品109\tMDL-109\t三菱電機\t2 部品110\tMDL-110\tIDEC\t3 部品111\tMDL-111\tオムロン\t4 部品112\tMDL-112\t三菱電機\t5 部品113\tMDL-113\tIDEC\t6 部品114\tMDL-114\tオムロン\t7 部品115\tMDL-115\t三菱電機\t8 部品116\tMDL-116\tIDEC\t9 部品117\tMDL-117\tオムロン\t1 部品118\tMDL-118\t三菱電機\t2 部品119\tMDL-119\tIDEC\t3 部品120\tMDL-120\tオムロン\t4 部品121\tMDL-121\t三菱電機\t5 部品122\tMDL-122\tIDEC\t6 部品123\tMDL-123\tオムロン\t7 部品124\tMDL-124\t三菱電機\t8 部品125\tMDL-125\tIDEC\t9 部品126\tMDL-126\tオムロン\t1 部品127\tMDL-127\t三菱電機\t2 部品128\tMDL-128\tIDEC\t3 部品129\tMDL-129\tオムロン\t4 部品130\tMDL-130\t三菱電機\t5 部品131\tMDL-131\tIDEC\t6 部品132\tMDL-132\tオムロン\t7 部品133\tMDL-133\t三菱電機\t8 部品134\tMDL-134\tIDEC\t9 部品135\tMDL-135\tオムロン\t1 部品136\tMDL-136\t三菱電機\t2 部品137\tMDL-137\tIDEC\t3 部品138\tMDL-138\tオムロン\t4 部品139\tMDL-139\t三菱電機\t5 部品140\tMDL-140\tIDEC\t6 部品141\tMDL-141\tオムロン\t7 部品142\tMDL-142\t三菱電機\t8 部品143\tMDL-143\tIDEC\t9 部品144\tMDL-144\tオムロン\t1 部品145\tMDL-145\t三菱電機\t2 部品146\tMDL-146\tIDEC\t3 部品147\tMDL-147\tオムロン\t4 部品148\tMDL-148\t三菱電機\t5 部品149\tMDL-149\tIDEC\t6 部品150\tMDL-150\tオムロン\t7 部品151\tMDL-151\t三菱電機\t8 部品152\tMDL-152\tIDEC\t9 部品153\tMDL-153\tオムロン\t1 部品154\tMDL-154\t三菱電機\t2 部品155\tMDL-155\tIDEC\t3 部品156\tMDL-156\tオムロン\t4 部品157\tMDL-157\t三菱電機\t5 部品158\tMDL-158\tIDEC\t6 部品159\tMDL-159\tオムロン\t7 部品160\tMDL-160\t三菱電機\t8 部品161\tMDL-161\tIDEC\t9 部品162\tMDL-162\tオムロン\t1 部品163\tMDL-163\t三菱電機\t2 部品164\tMDL-164\tIDEC\t3 部品165\tMDL-165\tオムロン\t4 部品166\tMDL-166\t三菱電機\t5 部品167\tMDL-167\tIDEC\t6 部品168\tMDL-168\tオムロン\t7 部品169\tMDL-169\t三菱電機\t8 部品170\tMDL-170\tIDEC\t9 部品171\tMDL-171\tオムロン\t1 部品172\tMDL-172\t三菱電機\t2 部品173\tMDL-173\tIDEC\t3 部品174\tMDL-174\tオムロン\t4 部品175\tMDL-175\t三菱電機\t5 部品176\tMDL-176\tIDEC\t6 部品177\tMDL-177\tオムロン\t7 部品178\tMDL-178\t三菱電機\t8 部品179\tMDL-179\tIDEC\t9 部品180\tMDL-180\tオムロン\t1 部品181\tMDL-181\t三菱電機\t2 部品182\tMDL-182\tIDEC\t3 部品183\tMDL-183\tオムロン\t4 部品184\tMDL-184\t三菱電機\t5 部品185\tMDL-185\tIDEC\t6 部品186\tMDL-186\tオムロン\t7 部品187\tMDL-187\t三菱電機\t8 部品188\tMDL-188\tIDEC\t9 部品189\tMDL-189\tオムロン\t1 部品190\tMDL-190\t三菱電機\t2 部品191\tMDL-191\tIDEC\t3 部品192\tMDL-192\tオムロン\t4 部品193\tMDL-193\t三菱電機\t5 部品194\tMDL-194\tIDEC\t6 部品195\tMDL-195\tオムロン\t7 部品196\tMDL-196\t三菱電機\t8 部品197\tMDL-197\tIDEC\t9 部品198\tMDL-198\tオムロン\t1 部品199\tMDL-199\t三菱電機\t2 部品200\tMDL-200\tIDEC\t3 部品201\tMDL-201\tオムロン\t4 部品202\tMDL-202\t三菱電機\t5 部品203\tMDL-203\tIDEC\t6 部品204\tMDL-204\tオムロン\t7 部品205\tMDL-205\t三菱電機\t8 部品206\tMDL-206\tIDEC\t9 部品207\tMDL-207\tオムロン\t1 部品208\tMDL-208\t三菱電機\t2 部品209\tMDL-209\tIDEC\t3 部品210\tMDL-210\tオムロン\t4 部品211\tMDL-211\t三菱電機\t5 部品212\tMDL-212\tIDEC\t6 部品213\tMDL-213\tオムロン\t7 部品214\tMDL-214\t三菱電機\t8 部品215\tMDL-215\tIDEC\t9 部品216\tMDL-216\tオムロン\t1 部品217\tMDL-217\t三菱電機\t2 部品218\tMDL-218\tIDEC\t3 部品219\tMDL-219\tオムロン\t4 部品220\tMDL-220\t三菱電機\t5 部品221\tMDL-221\tIDEC\t6 部品222\tMDL-222\tオムロン\t7 部品223\tMDL-223\t三菱電機\t8 部品224\tMDL-224\tIDEC\t9 部品225\tMDL-225\tオムロン\t1 部品226\tMDL-226\t三菱電機\t2 部品227\tMDL-227\tIDEC\t3 部品228\tMDL-228\tオムロン\t4 部品229\tMDL-229\t三菱電機\t5 部品230\tMDL-230\tIDEC\t6 部品231\tMDL-231\tオムロン\t7 部品232\tMDL-232\t三菱電機\t8 部品233\tMDL-233\tIDEC\t9 部品234\tMDL-234\tオムロン\t1 部品235\tMDL-235\t三菱電機\t2 部品236\tMDL-236\tIDEC\t3 部品237\tMDL-237\tオムロン\t4 部品238\tMDL-238\t三菱電機\t5 部品239\tMDL-239\tIDEC\t6 部品240\tMDL-240\tオムロン\t7 部品241\tMDL-241\t三菱電機\t8 部品242\tMDL-242\tIDEC\t9 部品243\tMDL-243\tオムロン\t1 部品244\tMDL-244\t三菱電機\t2 部品245\tMDL-245\tIDEC\t3 部品246\tMDL-246\tオムロン\t4 部品247\tMDL-247\t三菱電機\t5 部品248\tMDL-248\tIDEC\t6 部品249\tMDL-249\tオムロン\t7 部品250\tMDL-250\t三菱電機\t8 部品251\tMDL-251\tIDEC\t9 部品252\tMDL-252\tオムロン\t1 部品253\tMDL-253\t三菱電機\t2 部品254\tMDL-254\tIDEC\t3 部品255\tMDL-255\tオムロン\t4 部品256\tMDL-256\t三菱電機\t5 部品257\tMDL-257\tIDEC\t6 部品258\tMDL-258\tオムロン\t7 部品259\tMDL-259\t三菱電機\t8 部品260\tMDL-260\tIDEC\t9 部品261\tMDL-261\tオムロン\t1 部品262\tMDL-262\t三菱電機\t2 部品263\tMDL-263\tIDEC\t3 部品264\tMDL-264\tオムロン\t4 部品265\tMDL-265\t三菱電機\t5 部品266\tMDL-266\tIDEC\t6 部品267\tMDL-267\tオムロン\t7 部品268\tMDL-268\t三菱電機\t8 部品269\tMDL-269\tIDEC\t9 部品270\tMDL-270\tオムロン\t1 部品271\tMDL-271\t三菱電機\t2 部品272\tMDL-272\tIDEC\t3 部品273\tMDL-273\tオムロン\t4 部品274\tMDL-274\t三菱電機\t5 部品275\tMDL-275\tIDEC\t6 部品276\tMDL-276\tオムロン\t7 部品277\tMDL-277\t三菱電機\t8 部品278\tMDL-278\tIDEC\t9 部品279\tMDL-279\tオムロン\t1 部品280\tMDL-280\t三菱電機\t2 部品281\tMDL-281\tIDEC\t3 部品282\tMDL-282\tオムロン\t4 部品283\tMDL-283\t三菱電機\t5 部品284\tMDL-284\tIDEC\t6 部品285\tMDL-285\tオムロン\t7 部品286\tMDL-286\t三菱電機\t8 部品287\tMDL-287\tIDEC\t9 部品288\tMDL-288\tオムロン\t1 部品289\tMDL-289\t三菱電機\t2 部品290\tMDL-290\tIDEC\t3 部品291\tMDL-291\tオムロン\t4 部品292\tMDL-292\t三菱電機\t5 部品293\tMDL-293\tIDEC\t6 部品294\tMDL-294\tオムロン\t7 部品295\tMDL-295\t三菱電機\t8 部品296\tMDL-296\tIDEC\t9 部品297\tMDL-297\tオムロン\t1 部品298\tMDL-298\t三菱電機\t2 部品299\tMDL-299\tIDEC\t3 部品300\tMDL-300\tオムロン\t4 / 0"
+    ],
+    "around": [],
+    "tail": [
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / 3 部品4\tMDL-4\t三菱電機\t5 部品5\tMDL-5\tIDEC\t6 部品6\tMDL-6\tオムロン\t7 部品7\tMDL-7\t三菱電機\t8 部品8\tMDL-8\tIDEC\t9 部品9\tMDL-9\tオムロン\t1 部品10\tMDL-10\t三菱電機\t2 部品11\tMDL-11\tIDEC\t3 部品12\tMDL-12\tオムロン\t4 部品13\tMDL-13\t三菱電機\t5 部品14\tMDL-14\tIDEC\t6 部品15\tMDL-15\tオムロン\t7 部品16\tMDL-16\t三菱電機\t8 部品17\tMDL-17\tIDEC\t9 部品18\tMDL-18\tオムロン\t1 部品19\tMDL-19\t三菱電機\t2 部品20\tMDL-20\tIDEC\t3 部品21\tMDL-21\tオムロン\t4 部品22\tMDL-22\t三菱電機\t5 部品23\tMDL-23\tIDEC\t6 部品24\tMDL-24\tオムロン\t7 部品25\tMDL-25\t三菱電機\t8 部品26\tMDL-26\tIDEC\t9 部品27\tMDL-27\tオムロン\t1 部品28\tMDL-28\t三菱電機\t2 部品29\tMDL-29\tIDEC\t3 部品30\tMDL-30\tオムロン\t4 部品31\tMDL-31\t三菱電機\t5 部品32\tMDL-32\tIDEC\t6 部品33\tMDL-33\tオムロン\t7 部品34\tMDL-34\t三菱電機\t8 部品35\tMDL-35\tIDEC\t9 部品36\tMDL-36\tオムロン\t1 部品37\tMDL-37\t三菱電機\t2 部品38\tMDL-38\tIDEC\t3 部品39\tMDL-39\tオムロン\t4 部品40\tMDL-40\t三菱電機\t5 部品41\tMDL-41\tIDEC\t6 部品42\tMDL-42\tオムロン\t7 部品43\tMDL-43\t三菱電機\t8 部品44\tMDL-44\tIDEC\t9 部品45\tMDL-45\tオムロン\t1 部品46\tMDL-46\t三菱電機\t2 部品47\tMDL-47\tIDEC\t3 部品48\tMDL-48\tオムロン\t4 部品49\tMDL-49\t三菱電機\t5 部品50\tMDL-50\tIDEC\t6 部品51\tMDL-51\tオムロン\t7 部品52\tMDL-52\t三菱電機\t8 部品53\tMDL-53\tIDEC\t9 部品54\tMDL-54\tオムロン\t1 部品55\tMDL-55\t三菱電機\t2 部品56\tMDL-56\tIDEC\t3 部品57\tMDL-57\tオムロン\t4 部品58\tMDL-58\t三菱電機\t5 部品59\tMDL-59\tIDEC\t6 部品60\tMDL-60\tオムロン\t7 部品61\tMDL-61\t三菱電機\t8 部品62\tMDL-62\tIDEC\t9 部品63\tMDL-63\tオムロン\t1 部品64\tMDL-64\t三菱電機\t2 部品65\tMDL-65\tIDEC\t3 部品66\tMDL-66\tオムロン\t4 部品67\tMDL-67\t三菱電機\t5 部品68\tMDL-68\tIDEC\t6 部品69\tMDL-69\tオムロン\t7 部品70\tMDL-70\t三菱電機\t8 部品71\tMDL-71\tIDEC\t9 部品72\tMDL-72\tオムロン\t1 部品73\tMDL-73\t三菱電機\t2 部品74\tMDL-74\tIDEC\t3 部品75\tMDL-75\tオムロン\t4 部品76\tMDL-76\t三菱電機\t5 部品77\tMDL-77\tIDEC\t6 部品78\tMDL-78\tオムロン\t7 部品79\tMDL-79\t三菱電機\t8 部品80\tMDL-80\tIDEC\t9 部品81\tMDL-81\tオムロン\t1 部品82\tMDL-82\t三菱電機\t2 部品83\tMDL-83\tIDEC\t3 部品84\tMDL-84\tオムロン\t4 部品85\tMDL-85\t三菱電機\t5 部品86\tMDL-86\tIDEC\t6 部品87\tMDL-87\tオムロン\t7 部品88\tMDL-88\t三菱電機\t8 部品89\tMDL-89\tIDEC\t9 部品90\tMDL-90\tオムロン\t1 部品91\tMDL-91\t三菱電機\t2 部品92\tMDL-92\tIDEC\t3 部品93\tMDL-93\tオムロン\t4 部品94\tMDL-94\t三菱電機\t5 部品95\tMDL-95\tIDEC\t6 部品96\tMDL-96\tオムロン\t7 部品97\tMDL-97\t三菱電機\t8 部品98\tMDL-98\tIDEC\t9 部品99\tMDL-99\tオムロン\t1 部品100\tMDL-100\t三菱電機\t2 部品101\tMDL-101\tIDEC\t3 部品102\tMDL-102\tオムロン\t4 部品103\tMDL-103\t三菱電機\t5 部品104\tMDL-104\tIDEC\t6 部品105\tMDL-105\tオムロン\t7 部品106\tMDL-106\t三菱電機\t8 部品107\tMDL-107\tIDEC\t9 部品108\tMDL-108\tオムロン\t1 部品109\tMDL-109\t三菱電機\t2 部品110\tMDL-110\tIDEC\t3 部品111\tMDL-111\tオムロン\t4 部品112\tMDL-112\t三菱電機\t5 部品113\tMDL-113\tIDEC\t6 部品114\tMDL-114\tオムロン\t7 部品115\tMDL-115\t三菱電機\t8 部品116\tMDL-116\tIDEC\t9 部品117\tMDL-117\tオムロン\t1 部品118\tMDL-118\t三菱電機\t2 部品119\tMDL-119\tIDEC\t3 部品120\tMDL-120\tオムロン\t4 部品121\tMDL-121\t三菱電機\t5 部品122\tMDL-122\tIDEC\t6 部品123\tMDL-123\tオムロン\t7 部品124\tMDL-124\t三菱電機\t8 部品125\tMDL-125\tIDEC\t9 部品126\tMDL-126\tオムロン\t1 部品127\tMDL-127\t三菱電機\t2 部品128\tMDL-128\tIDEC\t3 部品129\tMDL-129\tオムロン\t4 部品130\tMDL-130\t三菱電機\t5 部品131\tMDL-131\tIDEC\t6 部品132\tMDL-132\tオムロン\t7 部品133\tMDL-133\t三菱電機\t8 部品134\tMDL-134\tIDEC\t9 部品135\tMDL-135\tオムロン\t1 部品136\tMDL-136\t三菱電機\t2 部品137\tMDL-137\tIDEC\t3 部品138\tMDL-138\tオムロン\t4 部品139\tMDL-139\t三菱電機\t5 部品140\tMDL-140\tIDEC\t6 部品141\tMDL-141\tオムロン\t7 部品142\tMDL-142\t三菱電機\t8 部品143\tMDL-143\tIDEC\t9 部品144\tMDL-144\tオムロン\t1 部品145\tMDL-145\t三菱電機\t2 部品146\tMDL-146\tIDEC\t3 部品147\tMDL-147\tオムロン\t4 部品148\tMDL-148\t三菱電機\t5 部品149\tMDL-149\tIDEC\t6 部品150\tMDL-150\tオムロン\t7 部品151\tMDL-151\t三菱電機\t8 部品152\tMDL-152\tIDEC\t9 部品153\tMDL-153\tオムロン\t1 部品154\tMDL-154\t三菱電機\t2 部品155\tMDL-155\tIDEC\t3 部品156\tMDL-156\tオムロン\t4 部品157\tMDL-157\t三菱電機\t5 部品158\tMDL-158\tIDEC\t6 部品159\tMDL-159\tオムロン\t7 部品160\tMDL-160\t三菱電機\t8 部品161\tMDL-161\tIDEC\t9 部品162\tMDL-162\tオムロン\t1 部品163\tMDL-163\t三菱電機\t2 部品164\tMDL-164\tIDEC\t3 部品165\tMDL-165\tオムロン\t4 部品166\tMDL-166\t三菱電機\t5 部品167\tMDL-167\tIDEC\t6 部品168\tMDL-168\tオムロン\t7 部品169\tMDL-169\t三菱電機\t8 部品170\tMDL-170\tIDEC\t9 部品171\tMDL-171\tオムロン\t1 部品172\tMDL-172\t三菱電機\t2 部品173\tMDL-173\tIDEC\t3 部品174\tMDL-174\tオムロン\t4 部品175\tMDL-175\t三菱電機\t5 部品176\tMDL-176\tIDEC\t6 部品177\tMDL-177\tオムロン\t7 部品178\tMDL-178\t三菱電機\t8 部品179\tMDL-179\tIDEC\t9 部品180\tMDL-180\tオムロン\t1 部品181\tMDL-181\t三菱電機\t2 部品182\tMDL-182\tIDEC\t3 部品183\tMDL-183\tオムロン\t4 部品184\tMDL-184\t三菱電機\t5 部品185\tMDL-185\tIDEC\t6 部品186\tMDL-186\tオムロン\t7 部品187\tMDL-187\t三菱電機\t8 部品188\tMDL-188\tIDEC\t9 部品189\tMDL-189\tオムロン\t1 部品190\tMDL-190\t三菱電機\t2 部品191\tMDL-191\tIDEC\t3 部品192\tMDL-192\tオムロン\t4 部品193\tMDL-193\t三菱電機\t5 部品194\tMDL-194\tIDEC\t6 部品195\tMDL-195\tオムロン\t7 部品196\tMDL-196\t三菱電機\t8 部品197\tMDL-197\tIDEC\t9 部品198\tMDL-198\tオムロン\t1 部品199\tMDL-199\t三菱電機\t2 部品200\tMDL-200\tIDEC\t3 部品201\tMDL-201\tオムロン\t4 部品202\tMDL-202\t三菱電機\t5 部品203\tMDL-203\tIDEC\t6 部品204\tMDL-204\tオムロン\t7 部品205\tMDL-205\t三菱電機\t8 部品206\tMDL-206\tIDEC\t9 部品207\tMDL-207\tオムロン\t1 部品208\tMDL-208\t三菱電機\t2 部品209\tMDL-209\tIDEC\t3 部品210\tMDL-210\tオムロン\t4 部品211\tMDL-211\t三菱電機\t5 部品212\tMDL-212\tIDEC\t6 部品213\tMDL-213\tオムロン\t7 部品214\tMDL-214\t三菱電機\t8 部品215\tMDL-215\tIDEC\t9 部品216\tMDL-216\tオムロン\t1 部品217\tMDL-217\t三菱電機\t2 部品218\tMDL-218\tIDEC\t3 部品219\tMDL-219\tオムロン\t4 部品220\tMDL-220\t三菱電機\t5 部品221\tMDL-221\tIDEC\t6 部品222\tMDL-222\tオムロン\t7 部品223\tMDL-223\t三菱電機\t8 部品224\tMDL-224\tIDEC\t9 部品225\tMDL-225\tオムロン\t1 部品226\tMDL-226\t三菱電機\t2 部品227\tMDL-227\tIDEC\t3 部品228\tMDL-228\tオムロン\t4 部品229\tMDL-229\t三菱電機\t5 部品230\tMDL-230\tIDEC\t6 部品231\tMDL-231\tオムロン\t7 部品232\tMDL-232\t三菱電機\t8 部品233\tMDL-233\tIDEC\t9 部品234\tMDL-234\tオムロン\t1 部品235\tMDL-235\t三菱電機\t2 部品236\tMDL-236\tIDEC\t3 部品237\tMDL-237\tオムロン\t4 部品238\tMDL-238\t三菱電機\t5 部品239\tMDL-239\tIDEC\t6 部品240\tMDL-240\tオムロン\t7 部品241\tMDL-241\t三菱電機\t8 部品242\tMDL-242\tIDEC\t9 部品243\tMDL-243\tオムロン\t1 部品244\tMDL-244\t三菱電機\t2 部品245\tMDL-245\tIDEC\t3 部品246\tMDL-246\tオムロン\t4 部品247\tMDL-247\t三菱電機\t5 部品248\tMDL-248\tIDEC\t6 部品249\tMDL-249\tオムロン\t7 部品250\tMDL-250\t三菱電機\t8 部品251\tMDL-251\tIDEC\t9 部品252\tMDL-252\tオムロン\t1 部品253\tMDL-253\t三菱電機\t2 部品254\tMDL-254\tIDEC\t3 部品255\tMDL-255\tオムロン\t4 部品256\tMDL-256\t三菱電機\t5 部品257\tMDL-257\tIDEC\t6 部品258\tMDL-258\tオムロン\t7 部品259\tMDL-259\t三菱電機\t8 部品260\tMDL-260\tIDEC\t9 部品261\tMDL-261\tオムロン\t1 部品262\tMDL-262\t三菱電機\t2 部品263\tMDL-263\tIDEC\t3 部品264\tMDL-264\tオムロン\t4 部品265\tMDL-265\t三菱電機\t5 部品266\tMDL-266\tIDEC\t6 部品267\tMDL-267\tオムロン\t7 部品268\tMDL-268\t三菱電機\t8 部品269\tMDL-269\tIDEC\t9 部品270\tMDL-270\tオムロン\t1 部品271\tMDL-271\t三菱電機\t2 部品272\tMDL-272\tIDEC\t3 部品273\tMDL-273\tオムロン\t4 部品274\tMDL-274\t三菱電機\t5 部品275\tMDL-275\tIDEC\t6 部品276\tMDL-276\tオムロン\t7 部品277\tMDL-277\t三菱電機\t8 部品278\tMDL-278\tIDEC\t9 部品279\tMDL-279\tオムロン\t1 部品280\tMDL-280\t三菱電機\t2 部品281\tMDL-281\tIDEC\t3 部品282\tMDL-282\tオムロン\t4 部品283\tMDL-283\t三菱電機\t5 部品284\tMDL-284\tIDEC\t6 部品285\tMDL-285\tオムロン\t7 部品286\tMDL-286\t三菱電機\t8 部品287\tMDL-287\tIDEC\t9 部品288\tMDL-288\tオムロン\t1 部品289\tMDL-289\t三菱電機\t2 部品290\tMDL-290\tIDEC\t3 部品291\tMDL-291\tオムロン\t4 部品292\tMDL-292\t三菱電機\t5 部品293\tMDL-293\tIDEC\t6 部品294\tMDL-294\tオムロン\t7 部品295\tMDL-295\t三菱電機\t8 部品296\tMDL-296\tIDEC\t9 部品297\tMDL-297\tオムロン\t1 部品298\tMDL-298\t三菱電機\t2 部品299\tMDL-299\tIDEC\t3 部品300\tMDL-300\tオムロン\t4 / 0"
+    ]
+  },
+  {
+    "id": "p3-sparse-maker-written-300",
+    "preview": "案件 P-V2 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 30 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → （使わない） / 変更後型式 → 型式 / メーカ → （使わない） / 変更後メーカ → メーカ / 数量 → 数量⚠ 新しい版の列が空で前の版だけに値がある 270 行（例: 部品1 OLD-1 三菱電機）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください）⚠ 「型式」に当たる列が 2 つあります。「変更後型式」の列を使います⚠ 「メーカ」に当たる列が 2 つあります。「変更後メーカ」の列を使います部品10NEW-10三菱電機2個部品20NEW-20IDEC3個部品30NEW-30オムロン4個部品40NEW-40三菱電機5個部品50NEW-50IDEC6個… ほか 25 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "rows": 30,
+    "qty0": 0,
+    "qtySum": 144,
+    "noName": 0,
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 30,
+    "sample": [
+      "部品10 / NEW-10 / 三菱電機 / 2",
+      "部品20 / NEW-20 / IDEC / 3",
+      "部品30 / NEW-30 / オムロン / 4"
+    ],
+    "around": [],
+    "tail": [
+      "部品290 / NEW-290 / IDEC / 3",
+      "部品300 / NEW-300 / オムロン / 4"
+    ]
+  },
+  {
+    "id": "p4-eda-bom-300",
+    "preview": "案件 P-V3 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 291 行（タブ区切り、見出しあり）列の対応: 部品1 → 部品名 / 1k → （使わない） / MPN-1 → 型式 / 0603 → （使わない） / 2 → （使わない） /  → （使わない）⚠ 見出しより上の 1 行（表題など）は取り込みません⚠ 繰り返しの見出し 8 行は取り込みません⚠ 見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）部品10MPN-101個部品11MPN-111個部品12MPN-121個部品13MPN-131個部品14MPN-141個… ほか 286 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "rows": 291,
+    "qty0": 0,
+    "qtySum": 291,
+    "noName": 0,
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "sample": [
+      "部品10 / MPN-10 /  / 1",
+      "部品11 / MPN-11 /  / 1",
+      "部品12 / MPN-12 /  / 1"
+    ],
+    "around": [
+      "部品58 / MPN-58 /  / 1",
+      "部品59 / MPN-59 /  / 1",
+      "部品60 / MPN-60 /  / 1",
+      "部品61 / MPN-61 /  / 1",
+      "部品62 / MPN-62 /  / 1"
+    ],
+    "tail": [
+      "部品299 / MPN-299 /  / 1",
+      "部品300 / MPN-300 /  / 1"
+    ]
+  },
+  {
+    "id": "p5-henkou-paren-300",
+    "preview": "案件 P-V4 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / 型式(変更) → （使わない） / メーカ → メーカ / 数量 → 数量⚠ 「型式」に当たる列が 2 つあります。「型式」の列を使います部品1OLD-1三菱電機2個部品2OLD-2IDEC3個部品3OLD-3オムロン4個部品4OLD-4三菱電機5個部品5OLD-5IDEC6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "rows": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 0,
+    "modelOld": 300,
+    "modelNew": 0,
+    "sample": [
+      "部品1 / OLD-1 / 三菱電機 / 2",
+      "部品2 / OLD-2 / IDEC / 3",
+      "部品3 / OLD-3 / オムロン / 4"
+    ],
+    "around": [
+      "部品49 / OLD-49 / 三菱電機 / 5",
+      "部品50 / OLD-50 / IDEC / 6",
+      "部品51 / OLD-51 / オムロン / 7",
+      "部品52 / OLD-52 / 三菱電機 / 8",
+      "部品53 / OLD-53 / IDEC / 9"
+    ],
+    "tail": [
+      "部品299 / OLD-299 / IDEC / 3",
+      "部品300 / OLD-300 / オムロン / 4"
+    ]
+  },
+  {
+    "id": "p6-units-no-total-300",
+    "preview": "案件 P-V5 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 300 行（タブ区切り、見出しあり）列の対応: 部品名 → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量（1号機） → 数量 / 数量（2号機） → （使わない）⚠ 2 段の見出しを 1 段にまとめて読みました⚠ 「数量」に当たる列が 2 つあります。「数量（1号機）」の列を使います部品1MDL-1三菱電機2個部品2MDL-2IDEC3個部品3MDL-3オムロン4個部品4MDL-4三菱電機5個部品5MDL-5IDEC6個… ほか 295 行Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "rows": 300,
+    "qty0": 0,
+    "qtySum": 1494,
+    "noName": 0,
+    "notBuhinN": 0,
+    "modelOld": 0,
+    "modelNew": 0,
+    "sample": [
+      "部品1 / MDL-1 / 三菱電機 / 2",
+      "部品2 / MDL-2 / IDEC / 3",
+      "部品3 / MDL-3 / オムロン / 4"
+    ],
+    "around": [
+      "部品49 / MDL-49 / 三菱電機 / 5",
+      "部品50 / MDL-50 / IDEC / 6",
+      "部品51 / MDL-51 / オムロン / 7",
+      "部品52 / MDL-52 / 三菱電機 / 8",
+      "部品53 / MDL-53 / IDEC / 9"
+    ],
+    "tail": [
+      "部品299 / MDL-299 / IDEC / 3",
+      "部品300 / MDL-300 / オムロン / 4"
+    ]
+  }
+]

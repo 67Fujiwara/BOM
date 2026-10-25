@@ -87,6 +87,26 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
           r.flags.contested = false
           r.flags.formalDiff = false
           r.flags.reissue = false
+          // 前の採用への対策（納期NG・特急・分納の追加費用・PM の依頼）も、この採用ごと取り下げる（採用の無い行に納期NG が残らない）
+          r.flags.leadNG = false
+          r.flags.countermeasure = undefined
+          r.flags.early = undefined
+          r.flags.delegated = undefined
+          r.flags.renegotiating = false
+          if (!r.ordered) {
+            r.extraCost = null
+            r.extraCostKind = ''
+          }
+          if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
+            r.flags.pmPending = false
+            r.flags.pmReason = undefined
+            r.flags.ltbPending = false
+          }
+          for (const i of p2.issues)
+            if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+              i.status = 'confirmed'
+              i.resolution = '概算の取り直しで取り下げ（選び直し）'
+            }
           for (const q of p2.quotes.filter((x) => x.rowId === r.id)) {
             q.formalPrice = null
             q.formalLeadDays = null

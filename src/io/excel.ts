@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { colDef } from '@/model/columns'
-import { STATUS_LABEL, ROLE_LABEL, DESIGN_FIELDS } from '@/model/types'
+import { STATUS_LABEL, ROLE_LABEL, DESIGN_FIELDS, ISSUE_STATUS_LABEL } from '@/model/types'
 import { pendingAdd, adoptedQuote, decisionExtra, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
@@ -162,10 +162,10 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   // 設計以外の出力は公開値で判定する（作業中・承認待ちの値をチェック結果に出さない §5）
   const checked = ws.user.role === 'design' ? p : { ...p, rows: p.rows.map((r) => ({ ...r, ...valuesFor(r, ws.user.role), working: undefined, pendingApproval: undefined })) }
   for (const pr of checkProject(checked, ws.rules).filter((x) => !hide(x.rowId))) {
-    const row = chk.addRow({ id: pr.rowId, field: pr.field, sev: pr.severity === 'error' ? 'エラー' : '警告', msg: pr.message, kind: 'チェック', status: '' })
+    const row = chk.addRow({ id: pr.rowId, field: colDef(pr.field)?.label ?? pr.field, sev: pr.severity === 'error' ? 'エラー' : '警告', msg: pr.message, kind: 'チェック', status: '' })
     row.fill = pr.severity === 'error' ? ERR_FILL : WARN_FILL
   }
-  for (const i of p.issues) if (i.status !== 'draft') chk.addRow({ id: i.rowId, field: i.field ?? '', sev: '指摘', msg: i.text, kind: i.kind, status: i.status })
+  for (const i of p.issues) if (i.status !== 'draft') chk.addRow({ id: i.rowId, field: i.field ? (colDef(i.field)?.label ?? i.field) : '', sev: '指摘', msg: i.text, kind: i.kind, status: ISSUE_STATUS_LABEL[i.status] ?? i.status })
 }
 
 /** ファイル名に使えない文字を置き換える */
@@ -231,7 +231,7 @@ export async function exportSelectionRecord(ws: Workspace, p: Project, scoresOf:
     const e = r
     const sc = scoresOf(r)
     const dec = p.decisions.filter((d) => d.rowId === r.id).map((d) => `${d.kind} ${d.by.name} ${d.at.slice(0, 10)}`).join('; ')
-    sh.addRow({ id: r.id, name: e.name, model: e.model, adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? '', reason: r.adoptReason ?? '推奨', score: r.scoreSnapshot ?? '', detail: sc.map((x) => `${ws.suppliers.find((s) => s.id === x.supplierId)?.name}: ${x.total} / ${x.price} / ${x.lead} / ${x.record} / ${x.terms}`).join('　'), decision: dec })
+    sh.addRow({ id: r.id, name: e.name, model: e.model, adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? `${r.adoptedSupplierId}（商社マスタに無い）`, reason: r.adoptReason ?? '推奨', score: r.scoreSnapshot ?? '', detail: sc.map((x) => `${ws.suppliers.find((s) => s.id === x.supplierId)?.name ?? x.supplierId}: ${x.total} / ${x.price} / ${x.lead} / ${x.record} / ${x.terms}`).join('　'), decision: dec })
   }
   const buf = await wb.xlsx.writeBuffer()
   download(buf as ArrayBuffer, `${p.id}_選定記録.xlsx`)

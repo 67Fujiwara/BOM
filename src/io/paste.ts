@@ -34,13 +34,23 @@ export interface PasteResult {
  * タブ区切り・CSV を表に分ける。Excel は改行を含むセルを "…" で囲んで出すので、引用符の中の改行・区切りはセルの一部として扱う。
  * セルの中の改行は空白にする（BOM の項目は 1 行）
  */
-function closesProperly(src: string, start: number, delim: string, width = 0): boolean {
+interface LineCtx { ls: number; le: number; n: number }
+function closesProperly(src: string, start: number, delim: string, width = 0, before = 0, ctx: LineCtx = { ls: -1, le: -2, n: -1 }): boolean {
   if (src[start + 1] === delim && width > 0) {
     // 「"」の直後が区切り: 〃の代わりの「"」か、コンマで始まる囲み（",y"）か。その行を囲みなしで数えた区切りの数が列の数と合えば〃
-    const ls = src.lastIndexOf('\n', start - 1) + 1
-    let le = src.indexOf('\n', start)
-    if (le < 0) le = src.length
-    if (src.slice(ls, le).split(delim).length - 1 === width) return false
+    // （同じ行の中の何度目の「"」でも、行の区切りの数は 1 回だけ数える）
+    if (start < ctx.ls || start > ctx.le) {
+      ctx.ls = src.lastIndexOf('\n', start - 1) + 1
+      const le = src.indexOf('\n', start)
+      ctx.le = le < 0 ? src.length : le
+      ctx.n = -1
+    }
+    if (ctx.n < 0) {
+      let n = 0
+      for (let k = ctx.ls; k < ctx.le; k++) if (src[k] === delim) n++
+      ctx.n = n
+    }
+    if (ctx.n === width) return false
   }
   for (let j = start + 1; j < src.length; j++) {
     const c = src[j]
@@ -75,8 +85,6 @@ function closesProperly(src: string, start: number, delim: string, width = 0): b
           }
           return n
         }
-        const lineStart = src.lastIndexOf('\n', start - 1) + 1
-        const before = outside(src.slice(lineStart, start))
         const eol = src.indexOf('\n', j)
         const after = outside(src.slice(j + 1, eol < 0 ? src.length : eol), false)
         const sep = before + after
@@ -99,6 +107,7 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
   let quoted = false
   let fresh = true // セルの先頭か（引用符はセルの先頭にあるときだけ囲みとみなす）
   const src = text.replace(/\r\n?/g, '\n')
+  const lineCtx: LineCtx = { ls: -1, le: -2, n: -1 }
   // 列の区切りの数（見出しの列の数 − 1）: 引用符の無い行でいちばん多い数（1 行目が表題・複数行の見出しでも決まる）
   const counts = new Map<number, number>()
   for (const l of src.split('\n')) if (l.trim() && !l.includes('"') && l.includes(delim)) counts.set(l.split(delim).length - 1, (counts.get(l.split(delim).length - 1) ?? 0) + 1)
@@ -115,7 +124,7 @@ export function parseTable(text: string, delim: '\t' | ','): string[][] {
     }
     // 引用符で囲んだセルは、閉じる引用符のすぐ後ろが区切り・改行・終わりのときだけ。
     // 閉じない「"」だけのセル（〃の代わり）や、タブ区切りで中にタブを含むもの（別のセルの「"」までつながる）は、ただの文字
-    if (ch === '"' && fresh && closesProperly(src, i, delim, width)) {
+    if (ch === '"' && fresh && closesProperly(src, i, delim, width, row.length, lineCtx)) {
       quoted = true
       fresh = false
       continue
@@ -212,6 +221,15 @@ export function detectField(h: string): BomField | null {
 }
 
 const UNIT_ALIAS: Record<string, Unit> = { 個: '個', pcs: '個', pc: '個', ケ: '個', ヶ: '個', 本: '本', m: 'm', ｍ: 'm', メートル: 'm', セット: 'セット', set: 'セット', パック: 'パック', pack: 'パック', 袋: 'パック', 箱: 'パック', 式: '式', 台: '個', 枚: '個' }
+
+/** 前後の空白・括弧・※を削る（長い繰り返しで正規表現が二乗にならないよう、文字を数えて戻る） */
+function trimMarks(v: string): string {
+  let b = 0
+  let e = v.length
+  while (b < e && /[\s　（(【\[※*＊]/.test(v[b])) b++
+  while (e > b && /[\s　）)】\]]/.test(v[e - 1])) e--
+  return v.slice(b, e)
+}
 
 /** Excel からの貼り付け（タブ区切り / CSV）を BOM 行に変換する */
 export function parseBomPaste(text: string): PasteResult {
@@ -509,7 +527,7 @@ export function parseBomPaste(text: string): PasteResult {
   const dnpRow = (l: string[]) =>
     (dnpCol >= 0 && (dnpHeader ? /^(x|1|yes|y|true|dnp|○|●|✓|未実装|しない)$/i : /^(no|n|0|false|not\s*fitted|nf|dnp|未実装|なし|無し?|しない|非|×|不要|未)$/i).test(toHalf(l[dnpCol] ?? '').trim())) ||
     // そう書いたセル（メーカの列の「DNP」＝大日本印刷 は除く）
-    l.some((c0, j) => { const c = c0.replace(/^[\s　（(【\[※*＊]+/, '').replace(/[\s　）)】\]]+$/, ''); return mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装無し|実装なし|実装せず|実装不要)(品|部品|です|こと|のこと|とする|予定)?([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || ((mapping[j] === 'name' || mapping[j] === 'model' ? /^dnp$/i : mapping[j] === 'note' || !mapping[j] ? /^dnp$|^dnp(?:[\s　:：/／・品（(【\[]|(?=[\u3040-\u30ff\u4e00-\u9fff]))(?![製社株様]).*$/i : /^dnp([\s　]*[（(【\[].*)?$/i).test(toHalf(c).trim()) && j !== dnpCol)) })
+    l.some((c0, j) => { const c = trimMarks(c0); return mapping[j] !== 'maker' && (/^(not\s*fitted|do\s*not\s*(place|fit|populate)|未実装|非実装|実装しない|実装無し|実装なし|実装せず|実装不要)(品|部品|です|こと|のこと|とする|予定)?([\s　]*[（(【\[].*)?$/i.test(toHalf(c).trim()) || ((mapping[j] === 'name' || mapping[j] === 'model' ? /^dnp$/i : mapping[j] === 'note' || !mapping[j] ? /^dnp$|^dnp[\s　:：/／・]*(?:将来|未|オプション|不要|実装|なし|無|非|省略|外す|option|future|nc|not)|^dnp[（(【\[]/i : /^dnp([\s　]*[（(【\[].*)?$/i).test(toHalf(c).trim()) && j !== dnpCol)) })
   const dnp = body.filter(dnpRow).length
   if (dnp) {
     body = body.filter((l) => !dnpRow(l))
@@ -517,6 +535,8 @@ export function parseBomPaste(text: string): PasteResult {
   }
   // 変更区分の列（追加・変更・削除）: 「削除」の行は取り込まない。「区分」の見出しでも中身がそれだけなら分類にしない
   const KIND_DEL = /^(削除|削除済み?|削除品|削除する|削除します|削除対象|廃止|廃止品|撤去|撤去済み?|取消|取り消し|欠番|不要|[×✕]|del|deleted?|remove[d]?|除却|除外|抹消|d)$/i
+  // 変更区分の列に書かれる、削除ではない区分の語
+  const KIND_WORD = /^(追加|変更|新規|流用|継続|修正|変更あり|設変|改訂|更新|置換|代替|仕様変更|型式変更|数量変更|移設|増|減|新設|差替|差し替え|据え置き|据置|継続使用|既存|現行|共通|変更なし|変更無し|同上|〃|-|－|add(ed)?|new|mod(ify|ified)?|chg|change[d]?|update[d]?|replace[d]?|rev|keep|same|unchanged|existing|no\s*change)$/i
   const kindVal = (v: string) => toHalf(v).trim()
   const kv0 = (v: string) => v.replace(/[\s（）()【】\[\]]/g, '')
   const kindIsDel = (v: string) => KIND_DEL.test(kv0(v)) || delWord(v, true) || /^(取外し?|取り外し|廃番|廃止予定|不使用|[xｘ✗−ー削消]|del\.?|delete\.?)$/i.test(kv0(v))
@@ -525,14 +545,15 @@ export function parseBomPaste(text: string): PasteResult {
     : first.findIndex((c, j) => {
         const h = toHalf(c).replace(/[\s　]+/g, '')
         // 見出しがはっきり変更区分の列（変更区分・変更タイプ・設変区分・ECN区分…）なら、知らない値が混ざっていてもその列を読む
-        const clear = /^(変更区分|変更種別|変更種類|変更の種類|変更タイプ|修正区分|rev区分|改訂区分|改訂種別|設変区分|設変種別|対応区分|ecn区分|ecn種別|ecntype|changetype|区分\(変更\))$/i.test(h) && !mapping[j]
-        // 「変更」「対応」「Action」「区分」だけの見出しは、ふつうの BOM の列かもしれないので、値が区分の語ばかりのときだけ
-        const vague = /^(改訂|設変|対応|change|action|変更|区分|種別|処置|処置区分)$/i.test(h) && (!mapping[j] || /^(区分|種別)$/.test(h))
+        const clear = /^(変更区分|変更種別|変更種類|変更の種類|変更タイプ|修正区分|rev区分|改訂区分|改訂種別|設変区分|設変種別|対応区分|更新区分|更新種別|ecn区分|ecn種別|ecntype|changetype|区分\(変更\))$/i.test(h) && !mapping[j]
+        // 「変更」「対応」「Action」「区分」「ステータス」だけの見出しは、ふつうの BOM の列かもしれないので、値の多くが区分の語で、追加・変更の語と削除の語の両方があるときだけ
+        const vague = /^(改訂|設変|対応|change|action|変更|区分|種別|処置|処置区分|ステータス|status)$/i.test(h) && (!mapping[j] || /^(区分|種別)$/.test(h))
         if (!clear && !vague) return false
         const vals = body.map((l) => kindVal(l[j] ?? '')).filter(Boolean)
-        const word = (v: string) => /^(追加|変更|新規|流用|継続|同上|〃|-|－|変更なし|変更無し)$/.test(kv0(v))
+        const word = (v: string) => KIND_WORD.test(kv0(v))
         if (clear) return vals.some((v) => /^(追加|変更|削除|廃止|新規)$/.test(kv0(v)) || kindIsDel(v) || /^(add|new)$/i.test(kv0(v)))
-        return vals.length > 0 && vals.every((v) => kindIsDel(v) || word(v)) && vals.some((v) => /^(追加|変更|新規|削除|廃止)$/.test(kv0(v)))
+        const known = vals.filter((v) => kindIsDel(v) || word(v)).length
+        return vals.length > 0 && known >= vals.length * 0.4 && vals.some((v) => word(v) && !/^(同上|〃|-|－)$/.test(kv0(v))) && vals.some((v) => kindIsDel(v))
       })
   if (kindCol >= 0) {
     mapping[kindCol] = null
@@ -1087,14 +1108,15 @@ function delClass(v0: string, strict = false): 'del' | 'keep' | 'ask' | null {
     v = v.slice(0, e)
   }
   if (/^(不要|不使用|欠番|取止め|取り止め|取りやめ|中止|del|delete[d]?|remove[d]?|使用しない|使わない|廃止品|削除品)$/i.test(v)) return 'del'
-  // 一部だけの削除（一部削除・半分撤去）は聞く
-  if (!strict && /^(一部|半分)の?[\s　]*(削除|撤去|廃止|取外し|取り外し)/.test(v)) return 'ask'
+  // 一部だけの削除（一部削除・一部のみ削除・一部不要・半分撤去）、疑問（削除？・削除か・Del?）は聞く
+  if (!strict && (/^(一部|半分)(の|のみ)?[\s　]*(削除|撤去|廃止|取外し|取り外し|不要)/.test(v) || /^(削除|撤去|廃止|取外し|取り外し|del|全削除|一式削除)[\s　]*[?？]$/i.test(v) || /^(削除|撤去|廃止|取外し|取り外し|全削除|一式削除)か$/.test(v))) return 'ask'
+  if (/^一式不要$/.test(v)) return 'del'
   // 削除のあとに続いてよい語
-  const DONE = /^(済み?|ずみ|完了|です|でお願いします|をお願いします|お願いします|お願い|ください|下さい|します|しました|した|する|すること|して(ください|下さい)?|せよ|のこと|とする|とします|となります|されました|になりました|予定です)?$/
-  if (!strict) {
-    // 文の終わりの削除（「不要のため削除」「Rev.2で削除」「B版にて削除」「設計変更により削除」「→削除」「ユニットごと削除」「旧品削除」）
+  const DONE = /^(済み?|ずみ|完了|です|でお願いします|をお願いします|お願いします|お願い|ください|下さい|します|しました|した|する|すること|して(ください|下さい)?|せよ|のこと|とする|とします|となります|されました|になりました|予定です|願います|確定|決定)?$/
+  {
+    // 文の終わりの削除（新の列の値にも：「不要の為削除」「全削除」は型式にならない）（「不要のため削除」「Rev.2で削除」「B版にて削除」「設計変更により削除」「→削除」「ユニットごと削除」「旧品削除」）
     const tail = /^(.*?)(削除|廃止|撤去|取外し|取り外し)(済み?|します|しました|した|する|すること|のこと)?$/.exec(v)
-    if (tail && tail[1] && /(ため|為|で|にて|により|につき|に付き|に伴い|による|に伴う|、|,|版|\s|→|⇒|ごと|品|ユニット|全|一式|全て|すべて|全部|を|は|も)$/.test(tail[1])) return /一部|半分/.test(tail[1]) ? 'ask' : 'del'
+    if (tail && tail[1] && /(ため|為|で|にて|により|につき|に付き|に伴い|による|に伴う|、|,|版|\s|→|⇒|ごと|品|ユニット|全|一式|全て|すべて|全部|全数|を|は|も|から)$/.test(tail[1])) return /一部|半分/.test(tail[1]) ? 'ask' : 'del'
   }
   const m = /^(削除|廃止|撤去|取外し|取り外し)/.exec(v)
   if (!m) return null
@@ -1112,18 +1134,25 @@ function delClass(v0: string, strict = false): 'del' | 'keep' | 'ask' | null {
     let cls: 'del' | 'keep' | 'ask'
     if (inner === '不要') cls = note[1] === '→' || note[1] === '⇒' ? 'del' : 'ask'
     else if (/^(しない|せず|保留|見送り?|要確認|確認中|確認要|検討中|要検討|検討|再取付|再利用|再使用|再追加|再登録|戻す|復活|取消|取り消し|中止|延期|撤回|未定|待ち|様子見|相談|仮|予定なし|対象外|変更なし|削除なし|なし|無し|要相談)$/.test(inner)) cls = 'keep'
-    // 理由・結果（確認済・ため・生産中止・不要品・不可・NG品・再利用しない・Rev・置換・代替）は削除
-    else if (/済|ため|為|につき|に付き|の結果|品$|不要品|不要部品|生産中止|廃番|不可|(?<![a-z])NG品?$|解除|(?<![a-z])rev|置換|代替|代わり|R\d|再利用しない|再設計|再編成|他案件|ユニット|完了|除く/i.test(inner)) cls = 'del'
-    // 保留・待ち・確認中・使用中など、まだ決まっていない言い方は残す
-    else if (/しない|せず|保留|見送|待ち|確認中|要確認|検討|再取付|再利用|再使用|戻す|復活|取消|取り消|延期|撤回|未定|相談|pending|review|hold|tbd|予定なし|対象外|変更なし|使用中|まだ|様子/i.test(inner)) cls = 'keep'
+    // 使う・再利用しない（使わないから削除）は削除の理由
+    else if (/(再?利用|再?使用|使わ|必要)(しない|不可|せず|ない|なし)/.test(inner) && !/(変更|削除|撤去|廃止|取外)(を)?(しない|せず)/.test(inner)) cls = 'del'
+    // 残す・除く・継続・変更しない・予定は無い・〜ではない・未済 など、残すことをはっきり言う語
+    else if (/残す|残る|残し|除く|継続|変更(を)?(しない|せず|不要)|(削除|撤去|廃止|取外し?|交換)(を)?(しない|せず|不要)|予定(は)?(無い|ない|なし)|対象(では|で)?(ない|外)|ではない|でない|未済|未完了|していない|いない/i.test(inner)) cls = 'keep'
+    // 他へ流用は、この BOM から外すのか残すのか分からないので聞く
+    else if (/流用/.test(inner)) cls = 'ask'
+    // 理由・結果（確認済・検討済・ため・生産中止・不要品・不可・NG品・Rev・置換・代替）は削除
+    else if (/済|ため|為|につき|に付き|の結果|品$|不要品|不要部品|生産中止|廃番|不可|(?<![a-z])NG品?$|解除|(?<![a-z])rev|置換|代替|代わり|R\d|再設計|再編成|他案件|ユニット|完了/i.test(inner)) cls = 'del'
+    // まだ決まっていない言い方（保留・待ち・確認中・検討・再取付・使用中・pending）は残す
+    else if (/使用中|保留|見送|待ち|確認中|要確認|検討|再取付|戻す|復活|取消|取り消|延期|撤回|未定|相談|pending|review|hold|tbd|まだ|様子/i.test(inner)) cls = 'keep'
     else cls = 'ask'
     // 新の列の値（部品名・型式）は、決められない言い方でも型式にならないので削除として外す（残す言い方は「変えていない」扱い）
     return strict && cls === 'ask' ? 'del' : cls
   }
   if (strict) return /^(予定なし|対象外|はしない|しない|保留|見送り?)/.test(rest) ? 'keep' : /^(品|対象|予定|に変更)$/.test(rest) || /^(対象|予定|に変更)/.test(rest) || /^(済み?|ずみ|完了|します|する)[\s　]*[（(]/.test(rest) ? 'del' : null
+  // 予定・検討だけ（削除予定・削除検討・撤去予定）は、決まっているのか分からないので聞く
+  if (/^(予定|検討)([\s　]*)$/.test(rest)) return 'ask'
   // 否定・保留・文（削除は次回・削除保留・削除見送り・取外し時注意・撤去用ブラケット・撤去品を流用・撤去後に再取付）
   if (/^(品)?[はもを]?(不要|取消|取り消|取りやめ|取止め|取り止め|中止|しない|せず|しません|なし|無し|無|予定|対象外|不可|後|から|品から|保留|見送|ng|せん|できない|禁止|検討|再|延期|撤回|次回|時|注意|用|工具|を使用|を流用|品を|品の|品は|は不要|は次|は保|は見|は検|は延|は撤|可能|可否|スペース|場所|方法|手順|要領|作業|工数|費用|日程|スケジュール|しやすい|容易|困難|可)/i.test(rest)) return 'keep'
-  if (/一部|半分|うち/.test(rest)) return 'ask'
   return 'ask'
 }
 function delWord(v0: string, strict = false): boolean {

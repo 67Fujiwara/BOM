@@ -423,12 +423,14 @@ export function confirmSettings(reason = '既定で確定') {
   const s = st()
   if (s.user().role !== 'pm') return s.toastMsg('権限なし（案件設定の確定は PM）', 'err')
   if (s.project().settings.pmConfirmed) return s.toastMsg('案件設定はもう確定しています（変えるときは Ctrl+K →「案件設定」）', 'info')
+  // 納期が未定のまま確定すると、購買・設計の日程の判断が決まらない。確定はするが知らせる
+  const noDue = s.project().dueDate == null
   s.commit('案件設定を確定', (p) => {
     p.settings.pmConfirmed = true
     for (const c of p.caseDecisions) if (c.kind === '案件設定確定') c.status = 'done'
     pushDecision(p, s.user(), '案件設定確定', reason)
   })
-  s.toastMsg('案件設定を確定しました（購買・設計に伝わります）', 'ok')
+  s.toastMsg(noDue ? '案件設定を確定しました。ただし納期が未定のままです（Ctrl+K →「案件設定」で入れると、納期NG の判定が効きます）' : '案件設定を確定しました（購買・設計に伝わります）', noDue ? 'info' : 'ok')
 }
 
 export interface Impact {

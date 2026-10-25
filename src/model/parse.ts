@@ -2,9 +2,10 @@ import { addDays, todayStr } from './dates'
 
 export type Parsed<T> = { ok: true; value: T } | { ok: false; error: string }
 
-/** 全角英数・記号を半角に */
+/** 全角英数・記号を半角に（半角カナは全角カナに。古い基幹システムの「ﾋﾝﾒｲ」「ﾒｰｶｰ」） */
 export function toHalf(s: string): string {
   return s
+    .replace(/[\uFF61-\uFF9F]+/g, (c) => c.normalize('NFKC'))
     .replace(/[０-９Ａ-Ｚａ-ｚ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
     .replace(/[－−ー―]/g, (c, i, str) => (/\d/.test(str[i + 1] ?? '') || i === 0 ? '-' : c))
     .replace(/[．。]/g, '.')

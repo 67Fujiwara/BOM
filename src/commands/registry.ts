@@ -224,7 +224,7 @@ export function startEdit(initial?: string) {
   if (!isActive(r)) return toast(`${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`, 'err')
   const d = colDef(s.cursorCol)!
   // 打ち終わってから拒否しない: 発注済以降の行の設計列は入口で止める
-  if (d.design && (r.status === 'ordered' || r.status === 'received')) return toast(`${r.id} は発注済以降の行です。設計列は変えられません（Alt+Shift+I → h 発注後変更依頼）`, 'err')
+  if (d.design && (r.status === 'ordered' || r.status === 'received')) return toast(`${r.id} は発注済以降の行です。設計列は変えられません（${s.ws.user.role === 'design' ? '変えたいときは購買に伝えてください。購買が Alt+Shift+I → h で発注後変更依頼を起票し、PM が決めます' : 'Alt+Shift+I → h 発注後変更依頼'}）`, 'err')
   if (d.kind === 'bool') return toggleBool(r, s.cursorCol)
   const cur = cellText(r, s.cursorCol, vm().ctx)
   const value = initial ?? String(cur.raw ?? '')
@@ -1701,7 +1701,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'consolidate': {
       if (p.settings.selector !== role) return toast(`権限なし（選定者は${ROLE_LABEL[p.settings.selector]}）`, 'err')
-      const options = adopt.consolidateOptions().map((o) => ({ label: o.label, detail: o.detail, run: () => adopt.applyConsolidation(o.supplierIds) }))
+      const options = adopt.consolidateOptions().map((o) => ({ label: o.label, detail: o.detail, run: () => confirmDanger(`「${o.label}」に集約します。見積済・選定済の行の採用を付け替えます（採用していなかった行も採用します。戻すときは Ctrl+Z）`, '集約する', () => adopt.applyConsolidation(o.supplierIds)) }))
       if (!options.length) return toast('集約できる行がありません（見積済・選定済の行なし）', 'info')
       return openPanel({ kind: 'consolidate', index: 0, options })
     }

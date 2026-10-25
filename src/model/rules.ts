@@ -183,6 +183,12 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
     const v = String(e[f] ?? '').trim()
     if (/^(〃+|″+|”+|＂+|"+|''|同上|同左|同|々|上に同じ|上と同じ|上記に同じ|上記と同じ|左に同じ|左と同じ|仝|ditto)$/i.test(v.replace(/[\s　。.]/g, ''))) out.push({ rowId: row.id, field: f, ruleId: 'sys.ditto', severity: 'error', message: `「${v}」は値ではありません（上の行と同じなら、その値を入れてください）`, fixes: [] })
   }
+  // 必要日(前倒し)は「負で前倒し」。+7 と打つと 7 日後ろになる（前倒しのつもりの入力を止める）
+  const NEED_PLUS = 'sys.needOffset.plus'
+  if (typeof e.needOffset === 'number' && e.needOffset > 0 && !row.ackRules.includes(NEED_PLUS))
+    out.push({ rowId: row.id, field: 'needOffset', ruleId: NEED_PLUS, severity: 'warn', message: `必要日(前倒し)が +${e.needOffset} で、案件の必要日より ${e.needOffset} 日後ろになります（前倒しは -${e.needOffset}。承知のうえなら Alt+x で確認済みに）`, fixes: [{ label: `${e.needOffset} 日前倒し（-${e.needOffset}）にする`, apply: () => ({ needOffset: -(e.needOffset as number) }) }] })
+  // 取り込みで削除か分からなかった行（変更図の新の列が空）
+  if (String(e.note ?? '').startsWith('【削除？】')) out.push({ rowId: row.id, field: 'note', ruleId: 'sys.importDel', severity: 'error', message: '取り込みで、変えていない部品か削除した部品か分からなかった行です（変更図の新の列が空）。削除なら行を消し（Shift+Delete）、要るなら備考の【削除？】を消してください', fixes: [{ label: '要る部品（【削除？】を消す）', apply: () => ({ note: String(e.note ?? '').replace(/^【削除？】\s*/, '') }) }] })
   // §3.1: メーカ指定＝任意 と 代替可否＝不可 は矛盾（メーカは自由なのに代替を認めない）。ルールの登録に関係なく常に見る
   const MAKER_ALT = 'sys.makerlock.alt'
   if (e.makerLock === '任意' && e.altPolicy === '不可' && !row.ackRules.includes(MAKER_ALT))

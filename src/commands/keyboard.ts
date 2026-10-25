@@ -427,6 +427,8 @@ export function onCommandCell(ch = ''): boolean {
   // 記号（? / [ ] < > など）。文字を打てるセルでは値の打ち始め（<5mm・[A]CN-12）、それ以外では 1 キー操作
   // 分類の見出しの行: [ ] で分類を移るだけ。ほかは案内（見出しでビューが変わって選択が外れない）
   if (s.cursorRow?.startsWith('g:')) return ch === '[' || ch === ']'
+  // PM の 7 の「案件設定確定」の行: 案内どおり y（Shift+Y）で既定のまま確定
+  if (s.cursorRow?.startsWith('case:')) return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y')
   // 行を選んでいないとき: 数字（ビュー切替）だけ。記号・英字は案内（「<5mm」の残りが行に入らない）
   if (!visibleCursorRow()) return /^\d$/.test(ch)
   if (s.cursorCol === 'id' || s.cursorCol === 'status') return true

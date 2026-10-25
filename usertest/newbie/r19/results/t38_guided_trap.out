@@ -1,0 +1,16 @@
+== A. エラー（メーカ空）: 作成直後の案内「n で次の問題へ」→ n → Enter → Ctrl+Enter
+  [created] mode=nav view=4 cur=R001/maker edit="" panel=null | toast: 新しいBOM TRAP-A（2 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  created: R001{リレー|MY4N-D2||4個|draft|pub=-} R002{タイマ|H3CR-A8|オムロン|2個|draft|pub=-}
+  [n Enter] mode=nav view=4 cur=R002/maker edit="n" panel=null | toast: 新しいBOM TRAP-A（2 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  [Ctrl+Enter] mode=nav view=4 cur=R002/maker edit="n" panel=null | toast: 行 2（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  after publish: R001{リレー|MY4N-D2|n|4個|submitted|pub=1} R002{タイマ|H3CR-A8|オムロン|2個|submitted|pub=1}
+== B. 警告（全角の型式）: Ctrl+Enter の案内「直すか x で確認済みに」→ x → Enter → Ctrl+Enter
+  [created] mode=nav view=4 cur=R001/model edit="" panel=null | toast: 新しいBOM TRAP-B（1 行）を作成しました。問題のある行 1 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  created: R001{リレー|ＭＹ４Ｎ|オムロン|4個|draft|pub=-}
+  [Ctrl+Enter (blocked?)] mode=nav view=4 cur=R001/model edit="" panel=null | toast: 公開できません: 未確認の警告 1 件（R001 型式に全角文字が含まれています … 直すか Alt+x で確認済みに）
+  [x] mode=edit view=4 cur=R001/model edit="x" panel=null | toast: 公開できません: 未確認の警告 1 件（R001 型式に全角文字が含まれています … 直すか Alt+x で確認済みに）
+  [Enter] mode=nav view=4 cur=R001/model edit="x" panel=null | toast: 最後の行です。下に行を足すときは Shift+Enter
+  [Ctrl+Enter] mode=nav view=4 cur=R001/model edit="x" panel=null | toast: 行 1（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）
+  after publish: R001{リレー|x|オムロン|4個|submitted|pub=1}
+
+ERRORS:

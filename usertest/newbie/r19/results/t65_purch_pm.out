@@ -1,0 +1,61 @@
+== A. 購買 6: R033 因幡電機 の単価・納期・MOQ・在庫・有効期限を Enter → 打ち直し → Tab
+  col R033 単価
+  before S1:106/12/null/受注生産/2026-11-28 S2:96/23/null/取寄/2026-12-18 S3:101/25/null/取寄/2026-11-27
+   q.unitPrice@S1 Enter -> edit="106"
+     typed 98 -> edit="98"
+     Tab -> R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | mode nav
+   q.leadDays@S1 Enter -> edit="12"
+     typed 10 -> edit="10"
+     Tab -> R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | mode nav
+   q.moq@S1 Enter -> edit=""
+     typed 5 -> edit="5"
+     Tab -> R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | mode nav
+   q.stock@S1 Enter -> edit="受注生産"
+     typed z -> edit="z"
+     Tab -> R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す） | mode nav
+   q.unitPrice@S2 Enter -> edit="96"
+     typed 2026/12/31 -> edit="2026/12/31"
+     Tab -> 単価として読めません: 「2026/12/31」（直して Enter、やめるときは Esc） | mode edit
+  after S1:98/10/5/在庫/2026-11-28 S2:96/23/null/取寄/2026-12-18 S3:101/25/null/取寄/2026-11-27
+== B. 購買 6: いきなり打つ（単価 1,200 円・納期 2週間・在庫 在庫あり・有効期限 12/31）
+  before S1:356/18/null/取寄/2026-12-18 S2:null/null/null// S3:null/null/null//
+   1,200円 -> この列は自動計算です。1 キー操作は Alt を押しながらか、ID の列で。キーの一覧は F1 | mode nav edit="6"
+   2週間 -> この列は自動計算です。「ビュー: 購買提出用」は Alt+2（または ID の列で 2）。キーの一覧は F1 | mode nav edit="6"
+   1 -> この列は自動計算です。「ビュー: すべて」は Alt+1（または ID の列で 1）。キーの一覧は F1 | mode nav edit="6"
+   在庫あり -> この列は自動計算です | mode nav edit="6"
+   12/31 -> この列は自動計算です
+  after S1:356/18/null/取寄/2026-12-18 S2:null/null/null// S3:null/null/null//
+== C. 購買 8: 正式単価を Enter → 打ち直し（期待: 上書き）
+  rows R004,R005,R006,R007,R008,R009,R010,R011,R012,R014,R015,R016,R017,R018,R019,R020,R021,R022,R023,R024,R025,R026,R027,R028
+  col null
+  before R004 S1:8/12/null/受注生産/2026-12-01 S2:null/-1/null// S3:2907/13/null/受注生産/2026-12-02
+  [Enter] role=purchasing mode=edit view=9 cur=R004/q.stock@S3 edit="受注生産" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed 1500 Enter] role=purchasing mode=edit view=9 cur=R004/q.stock@S3 edit="1500" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2入力モードへ（矢印で確定） | toast: 在庫に「1500」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  after S1:8/12/null/受注生産/2026-12-01 S2:null/-1/null// S3:2907/13/null/受注生産/2026-12-02
+  [Enter again] role=purchasing mode=nav view=9 cur=R005/q.stock@S3 edit="受注生産" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 在庫に「1500」はありません（在庫 / 取寄 / 受注生産）（直して Enter、やめるときは Esc）
+  after2 S1:8/12/null/受注生産/2026-12-01 S2:null/-1/null// S3:2907/13/null/受注生産/2026-12-02
+== D. 購買 8: 単価（自動計算）の列に 1500 を打つ（隣の列と間違えた）
+  col R005 単価
+  [at 単価] role=purchasing mode=nav view=9 cur=R005/q.unitPrice@S1 edit="8" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   1: view=9 cur=R005/q.unitPrice@S1 mode=edit toast=R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   5: view=9 cur=R005/q.unitPrice@S1 mode=edit toast=R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   0: view=9 cur=R005/q.unitPrice@S1 mode=edit toast=R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+   0: view=9 cur=R005/q.unitPrice@S1 mode=edit toast=R004 の単価 ¥8 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [Enter] role=purchasing mode=nav view=9 cur=R006/q.unitPrice@S1 edit="1500" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: R005 の単価 ¥1,500 は他社（¥10,512 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+== E. PM 7: Enter → 決定パネル → p（委譲）→ Enter / Esc / Ctrl+K
+  panel 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  [p] role=pm mode=panel view=7 cur=R003/name edit="" panel=prompt | hints: F1ヘルプ | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  panel 決定: 委譲（R003。理由・任意） Enter 確定 Esc 取り消し
+  [Ctrl+K in p dialog] role=pm mode=palette view=7 cur=R003/name edit="" panel=palette | hints: F1ヘルプ | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  [after] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  decisions [] | R003 flags {"leadNG":true}
+  [Ctrl+Z] role=pm mode=nav view=7 cur=R003/name edit="" panel=null | hints: F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く | toast: 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+  decisions after undo 0 {"leadNG":true}
+== F. PM 7: e（特急・分納の上限）→ 打つ「5万」→ Enter
+  panel 決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し
+  [5万 Enter] role=pm mode=panel view=7 cur=R003/name edit="" panel=prompt | hints: F1ヘルプ | toast: 特急・分納の上限金額を入れてください（Tab で下の「上限金額」の欄へ。例: 30000）
+  panel 決定: 特急・分納（R003。理由・任意） 上限金額 Enter 確定 Esc 取り消し
+  [50000 Enter] role=pm mode=panel view=7 cur=R003/name edit="" panel=prompt | hints: F1ヘルプ | toast: 「50000」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください
+  decisions []
+
+ERRORS:

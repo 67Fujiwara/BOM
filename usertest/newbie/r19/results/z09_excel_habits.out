@@ -1,0 +1,36 @@
+== Ctrl+S（ナビ・編集中）
+  [Ctrl+S nav] mode=nav cur=R030/qtyNeeded edit="" panel=null | toast: 保存しました（編集は自動で保存されています）
+  [9 Ctrl+S] mode=nav cur=R030/qtyNeeded edit="9" panel=null | toast: 保存しました（編集は自動で保存されています）
+   {"R030":{"qtyNeeded":9}}
+  prevented ["Control:false","s:true","9:true","Control:false","s:true"]
+== 打ってから別のセルをクリック
+  [click R033] mode=nav cur=R033/model edit="7" panel=null | toast: null
+   {"R030":{"qtyNeeded":7},"R033":null}
+== 打ってからサイドのビュー 3 をクリック
+  [click view 3] mode=nav cur=R001/name edit="6" panel=null | toast: null
+   {"R030":{"qtyNeeded":6}}
+== Shift+↓ ×2 で範囲 → Delete（Excel で 3 セル消す）
+  [Shift+↓↓] mode=nav cur=R030/note edit="" panel=null | toast: セルの範囲選択はありません（行の並べ替えは Alt+↑↓、複数行の貼り付けは Ctrl+V）
+  [Delete] mode=nav cur=R030/note edit="" panel=null | toast: このセルはもう空です
+   {"R030":null,"R031":null,"R032":null}
+== 必要数 Shift+↓ ×2 → Delete
+  [qty Delete] mode=nav cur=R030/qtyNeeded edit="" panel=null | toast: R030 必要数 を空にしました（Ctrl+Z で戻す）
+   {"R030":{"qtyNeeded":null},"R031":null,"R032":null}
+== Ctrl+C → ↓ → Ctrl+V（型式を下にコピー）
+  [Ctrl+C] mode=nav cur=R030/model edit="" panel=null | toast: コピー: M22N-BC-TWA-WC
+  [↓ Ctrl+V] mode=nav cur=R031/model edit="" panel=null | toast: 貼り付け: M22N-BC-TWA-WC
+   {"R030":null,"R031":{"model":"M22N-BC-TWA-WC"}}
+== Ctrl+D（Excel の下へコピー）
+  [Ctrl+D] mode=nav cur=R031/model edit="" panel=null | toast: Ctrl+D（上の値を下へコピー）はありません。行の複製は Alt+Shift+D（ID の列では Shift+D）
+   {"R030":null,"R031":null}
+== 打った値を Esc（元の値に戻る？）
+  [XYZ Esc] mode=nav cur=R030/model edit="XYZ" panel=null | toast: null
+   {"R030":null}
+== 編集中に Ctrl+Z（入力欄の取り消し）→ Enter
+  [Enter ZZ Ctrl+Z] mode=edit cur=R030/model edit="M22N-BC-TWA-WC" panel=null | toast: null
+   {"R030":null}
+== 打って Ctrl+Z（入力モード）
+  [QQ Ctrl+Z] mode=nav cur=R030/model edit="QQ" panel=null | toast: 入力を取り消しました（セルは元のまま）
+   {"R030":null}
+
+ERRORS:

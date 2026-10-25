@@ -1,0 +1,22 @@
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub0] panel: 変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始まるとき） ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  [pub0] toast: 行 5（Rev.2） を公開しました
+approval true
+replacement R081 R081:draft replaces=R034 model=REPL-34 flags={"reconfirm":true}
+  [pub-blocked] toast: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに）
+  status before x ナビR081 回路記号設計 山田: 未公開 5 行 / 指摘 0公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに）Ctrl+Enter公開 5 行F1ヘルプF8次の問題Enter編集Space開く
+  x -> この行に確認するもの（対応済の指摘・警告・表記修正など）はありません
+  [pub] toast: 公開できません: 未確認の警告 1 件（R016 CP30 は定格電流（例: 10A）まで書いてください … 直すか Alt+x で確認済みに）
+  after publish R032:quoted removal={"kind":"cancel"} model=M2BJ-B24D flags={}
+  after publish R033:quoted working={"model":"M2BJ-B24D-NEW"} model=GS2107-WTBD flags={}
+  after publish R034:selected removal={"kind":"replace","by":"R081"} model=G9SE-201 flags={}
+  after publish R081:draft replaces=R034 model=REPL-34 flags={"reconfirm":true}
+  purchasing sees R032 設計 ブザー M2BJ-B24D オムロン 1 個 相見積 推奨 同等品可 11/13 1 見積済 · 作業中● 10/27 ¥81,668 26日 取寄 ¥81,749 25日 受注生産 ¥73,527 23日 受注生産
+  purchasing sees R033 設計 タッチパネル 7インチ GS2107-WTBD 三菱電機 1 個 相見積 推奨 同等品可 11/13 1 見積済 · 作業中● 10/27 ¥106 12日 受注生産 ¥96 23日 取寄 ¥101 25日 取寄
+  purchasing sees R034 設計 操34 操作 安全リレーユニット G9SE-201 オムロン 1 個 客先指定品 不可 11/13 因幡電機 ¥356 ¥356 18日 選定済 · 作業中● 10/27 
+  purchasing sees R081 設計 操34 操作 安全リレーユニット REPL-34 オムロン 1 個 客先指定品 不可 11/13 下書き · 要再確認 
+  purchasing 9 has R081 1
+  PM 7 rows R003:R003 PM 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 因幡電機 88 ¥933 24日 選定済 · 
+EXC PM reject Error: locator.fill: value: expected string, got undefined
+
+ERRORS:

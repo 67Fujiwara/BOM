@@ -1,0 +1,38 @@
+publish drafts first → [変更セット（5 行: R076, R077, R078, R079, R080）の理由。数字か ↑↓ で選び、変更番号（] 行 5（Rev.2） を公開しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+formal 1 → 正式見積依頼書（社外）を出します: 対象 74 行（拮抗 32 行を含む）。商社に送る書類が作られ、状態が「正式依頼中」になります → 74 行 × 3 社に正式見積を依頼
+approval ON → 案件設定を保存しました
+C R011 相見積 st=formalRequested adopt=S1 reason= oq=24 flags={} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] CLIPFIX 35 D R035 相見積 st=formalRequested adopt=S2 reason= oq=6 flags={} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]]
+C qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+D qty → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish Rev.c → [変更セット（2 行: R011, R035）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 2（Rev.3） を公開しました
+C name → 行 2（Rev.3） を公開しました
+publish Rev.d → [変更セット（1 行: R011）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter] 行 1（Rev.4） を公開しました
+question → 指摘 1 件 を公開しました
+C model (fix) → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+publish fix → 行 1（Rev.5） を公開しました
+subs [[2,"客先要求","appr","R076,R077,R078,R079,R080",null,""],[3,"客先要求","pend","R011,R035",{"R011":4},""],[4,"廃番・入手難","pend","R011",null,""]] revE 5 causes {"R011":"I-006"}
+C before PM R011 相見積 st=formalRequested adopt=S1 reason= oq=24 flags={"pmPending":true,"pmReason":"変更セット","notation":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] model clipfix 35 pa {"qtyNeeded":25,"name":"NAME-C2"} pendingRev 4
+PASS M2-0 指摘対応の型式の表記修正はすぐ公開値（Rev.e）、C は Rev.d の承認待ちのまま、再発行対象にならない :: R011 相見積 st=formalRequested adopt=S1 reason= oq=24 flags={"pmPending":true,"pmReason":"変更セット","notation":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] model=clipfix 35
+PM y D → R035・Rev.3 の変更セット 1 行まとめて: 承認
+after Rev.c R035 相見積 st=formalRequested adopt=S2 reason= oq=7 flags={"reissue":true,"requote":true} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]] | R011 相見積 st=formalRequested adopt=S1 reason= oq=24 flags={"pmPending":true,"pmReason":"変更セット","notation":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+PASS M2-1 Rev.c の承認で D は必要数が変わり取下げ・再発行対象、C は再発行対象にならない（必要数は Rev.d 待ち） :: D 7 reissue=true C 24 reissue=false
+keep D → R035 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します）
+D after keep R035 相見積 st=formalRequested adopt=S2 reason= oq=7 flags={"reissue":true} quotes=[["S1",null,null,null],["S2",851,9,null],["S3",990,16,null]]
+formal 2 → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼 [["立花エレテック","R035",[["R035","qtyNeeded","6","7"]]]]
+PASS M2-2 再発行の依頼書は D だけ（C は出ない）、差分シートの D は必要数 6 → 7 :: {"all2":["R035"],"diff2":[["R035","qtyNeeded","6","7"]]}
+PM y C → R011・Rev.4 の変更セット 1 行まとめて: 承認
+after Rev.d R011 相見積 st=formalRequested adopt=S1 reason= oq=25 flags={"reissue":true,"notation":true,"requote":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]] model clipfix 35 name NAME-C2
+PASS M2-3 Rev.d の承認で C の必要数・部品名が公開値、型式は Rev.e で直した表記のまま、再発行対象 :: 25 NAME-C2 clipfix 35 reissue=true
+keep C → R011 の旧見積を戻しました（概算。採用はそのまま。再発行対象: Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します）
+C after keep R011 相見積 st=formalRequested adopt=S1 reason= oq=25 flags={"reissue":true,"notation":true} quotes=[["S1",935,16,null],["S2",935,28,null],["S3",973,27,null]]
+formal 3 → 正式見積依頼書（社外）を出します: 対象 1 行。商社に送る書類が作られ、状態が「正式依頼中」になります → 1 行 × 1 社に正式見積を依頼 [["因幡電機",[["R011","NAME-C2","clipfix 35",25]],[["R011","model","CLIPFIX 35","clipfix 35"],["R011","qtyNeeded","24","25"]]]]
+PASS M2-4 再発行の依頼書に C（部品名 NAME-C2・型式 clipfix 35）、差分シートに C の必要数 24 → 25（型式の旧は CLIPFIX 35） :: {"rowsC":[["R011","NAME-C2","clipfix 35",25]],"diffC":[["R011","model","CLIPFIX 35","clipfix 35"],["R011","qtyNeeded","24","25"]]}
+design 変更点 C [[1,"","",""],[3,"客先要求","必要数: 24 → 25","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 24 → 25 / 部品名: エンドクランプ → NAME-C2","鈴木 2026-10-25 / 部長 田中 K-77"],[5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]]
+PASS M2-X-design 変更点：指摘対応の Rev.5 の C の内容は型式の表記だけ（CLIPFIX 35 → clipfix 35）。承認待ち・まとめた値の必要数・部品名を出さない :: [5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]
+purchasing 変更点 C [[1,"","",""],[3,"客先要求","必要数: 24 → 25","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 24 → 25 / 部品名: エンドクランプ → NAME-C2","鈴木 2026-10-25 / 部長 田中 K-77"],[5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]]
+PASS M2-X-purchasing 変更点：指摘対応の Rev.5 の C の内容は型式の表記だけ（CLIPFIX 35 → clipfix 35）。承認待ち・まとめた値の必要数・部品名を出さない :: [5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]
+pm 変更点 C [[1,"","",""],[3,"客先要求","必要数: 24 → 25","Rev 4 にまとめた"],[4,"廃番・入手難","必要数: 24 → 25 / 部品名: エンドクランプ → NAME-C2","鈴木 2026-10-25 / 部長 田中 K-77"],[5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]]
+PASS M2-X-pm 変更点：指摘対応の Rev.5 の C の内容は型式の表記だけ（CLIPFIX 35 → clipfix 35）。承認待ち・まとめた値の必要数・部品名を出さない :: [5,"指摘対応","型式: CLIPFIX 35 → clipfix 35",""]
+ERRORS []
+== 8/8 PASS

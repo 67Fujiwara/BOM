@@ -1,0 +1,63 @@
+[e1_change_form_qty_rows.xlsx]
+  old: tsv="\t変更前\t\t変更後\t\t\n品名\t型式\t数量\t型式\t数量\t備考\nリレー\tMY2N\t4\tMY4N-D2\t4\t型式変更\nタイマ\tH3CR-A8\t1\tH3CR-A8\t2\t数量変更\nソケット\tPYF14A\t2\tPYF14A\t4\t数量変更\n端子台\tXW2B-20G4\t4\t\t\t\nランプ\tL-1\t1\t\t\t\nブレーカ\tNF32-SV\t1\t\t\t"
+    map=["name",null,null,"model","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||2} {||ソケット|PYF14A||4} {||端子台|XW2B-20G4||4} {||ランプ|L-1||1} {||ブレーカ|NF32-SV||1}
+    warn=「数量（変更後）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（変更後）」が空の 3 行は、ほかの「型式」の列の値を使いました / 見出しより上の 1 行（表題など）は取り込みません / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更後）」の列を使います
+  new: tsv="\t変更前\t\t変更後\t\t\n品名\t型式\t数量\t型式\t数量\t備考\nリレー\tMY2N\t4\tMY4N-D2\t4\t型式変更\nタイマ\tH3CR-A8\t1\tH3CR-A8\t2\t数量変更\nソケット\tPYF14A\t2\tPYF14A\t4\t数量変更\n端子台\tXW2B-20G4\t4\t\t\t\nランプ\tL-1\t1\t\t\t\nブレーカ\tNF32-SV\t1\t\t\t"
+    map=["name",null,null,"model","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||2} {||ソケット|PYF14A||4} {||端子台|XW2B-20G4||4} {||ランプ|L-1||1} {||ブレーカ|NF32-SV||1}
+    warn=「数量（変更後）」が空の 3 行は、ほかの「数量」の列の値を使いました / 「型式（変更後）」が空の 3 行は、ほかの「型式」の列の値を使いました / 見出しより上の 1 行（表題など）は取り込みません / 「型式」に当たる列が 2 つあります。「型式（変更後）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（変更後）」の列を使います
+[e2_note_keep_words.xlsx]
+  old: tsv="品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\t\tオムロン\t1\t削除不要\nソケット\tPYF14A\t\tオムロン\t2\t削除取消（Rev.2で復活）\nランプ\tL-1\t\tIDEC\t1\t撤去不要（流用）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+    map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式（新）」が空の 1 行は、ほかの「型式」の列の値を使いました / 削除の印がある・新しい版の列が空の 3 行（例: タイマ H3CR-A8 オムロン）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: tsv="品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\t\tオムロン\t1\t削除不要\nソケット\tPYF14A\t\tオムロン\t2\t削除取消（Rev.2で復活）\nランプ\tL-1\t\tIDEC\t1\t撤去不要（流用）\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+    map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ソケット|PYF14A|オムロン|2} {||ランプ|L-1|IDEC|1} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[e3_maker_dnp.xlsx]
+  old: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||反射フィルム|RF-200|DNP|2} {||タイマ|H3CR-A8|オムロン|1}
+    warn=
+[e4_jissou_umu.xlsx]
+  old: tsv="品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t有\nタイマ\tH3CR-A8\tオムロン\t1\t無\nランプ\tL-1\tIDEC\t1\t有"
+    map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|1}
+    warn=
+  new: tsv="品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t有\nタイマ\tH3CR-A8\tオムロン\t1\t無\nランプ\tL-1\tIDEC\t1\t有"
+    map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||ランプ|L-1|IDEC|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[e5_daime.xlsx]
+  old: tsv="品名\t型式\tメーカー\t1台目\t2台目\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+    map=["name","model","maker",null,null]
+    rows={||リレー|MY4N-D2|オムロン|1} {||タイマ|H3CR-A8|オムロン|1}
+    warn=見出しに「数量」に当たる列が見つからないので、数量は全部 1 にしました（見出しを「数量」にして貼り直すか、作成後に直してください）
+  new: tsv="品名\t型式\tメーカー\t1台目\t2台目\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+    map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=数量の列 2 つ（「1台目」「2台目」）を足して数量にしました
+[e6_cell_trailing_newline.xlsx]
+  old: tsv="品名\t型式\tメーカー\t数量\nリレー \tMY4N-D2\tオムロン\t4\nタイマ\t H3CR-A8\tオムロン\t2\nランプ\tL-1\tIDEC\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||ランプ|L-1|IDEC|1}
+    warn=
+  new: tsv="品名\t型式\tメーカー\t数量\nリレー \tMY4N-D2\tオムロン\t4\nタイマ\t H3CR-A8\tオムロン\t2\nランプ\tL-1\tIDEC\t1"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||ランプ|L-1|IDEC|1}
+    warn=
+[e7_stamp_block.xlsx]
+  old: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n承認\t検図\t作成\t\n鈴木\t佐藤\t山田\t"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||鈴木|佐藤|山田|0}
+    warn=小計・合計・区切りの 1 行は取り込みません（例: 「承認 検図 作成」）
+  new: tsv="品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\tオムロン\t2\n承認\t検図\t作成\t\n鈴木\t佐藤\t山田\t"
+    map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2} {||鈴木|佐藤|山田|0}
+    warn=小計・合計・区切りの 1 行は取り込みません（例: 「承認 検図 作成」）

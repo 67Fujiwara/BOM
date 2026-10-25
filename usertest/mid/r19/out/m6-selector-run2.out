@@ -1,0 +1,24 @@
+selector 購買 → 案件設定を保存しました
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+F R005 相見積 st=selected adopt=S3 reason= oq=12 flags={"contested":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] S R020 相見積 st=selected adopt=S3 reason= oq=2 flags={} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+S note → 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+formal F → 正式見積依頼書（社外）を出します: 対象 73 行（拮抗 32 行を含む）。作業中 1 行・承認待ち 0 行は除外。商社に送る書類が作られ、状態が「正式依頼中」になります → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+import stop S3 → JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」
+F after R005 相見積 st=quoted adopt=- reason= oq=12 flags={"droppedStopped":"ミスミ","formalWithdrawn":"ミスミ P-2026-041-S3-F1","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]] wd ミスミ P-2026-041-S3-F1
+S after R020 相見積 st=quoted adopt=- reason= oq=2 flags={"droppedStopped":"ミスミ"} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+S purch sb ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選び直してください購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題a推奨採用Shift+I指摘Space開く
+S design sb ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選定者が選び直します設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 5 行?ヘルプF8次の問題Space開く
+F purch sb ナビR005 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選び直してください。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題a推奨採用Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+PASS M6S-1 選定者＝購買：購買のステータスバーは「選び直してください」、設計は「選定者が選び直します」 :: ["ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選び直してください購買 佐藤: 未発行 0 件JSON を読み込みました（案件 1 件）。戻すときは Ctrl+K →「読み込み前に戻す」?ヘルプF8次の問題a推奨採用Shift+I指摘Space開く","ナビR020 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選定者が選び直します設計 山田: 未公開 5 行 / 指摘 0役割: 設計（山田）。既定のビュー 4 要確認 を開きましたCtrl+Enter公開 5 行?ヘルプF8次の問題Space開く"]
+PASS M6S-2 正式依頼中だった F の購買のステータスバーに取下げの依頼No（ミスミ P-2026-041-S3-F） :: ナビR005 ID採用していた ミスミ は取引停止（商社マスタ）のため採用を外しました。選び直してください。正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました?ヘルプF8次の問題a推奨採用Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+ball S purchasing purch 4 false purch 9 true design 4 false
+PASS M6S-3 ボールは購買（選定者）で購買の 4 か 9 に出る、設計の 4 には出ない :: {"ball":"purchasing","p4":false,"p9":true,"d4":false}
+a R020 → R020 を 立花エレテック で採用（スコア 68 / 最安・納期NG(6日超過)）
+a R005 → R005 を 立花エレテック で採用（スコア 75.4 / 納期NG(3日超過)）
+S re R020 相見積 st=selected adopt=S2 reason=拮抗 oq=2 flags={"leadNG":true} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]]
+F re R005 相見積 st=selected adopt=S2 reason= oq=12 flags={"leadNG":true,"formalWithdrawn":"ミスミ P-2026-041-S3-F1","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+PASS M6S-4 購買（選定者）が a で選び直せる（ミスミ以外） :: R020 相見積 st=selected adopt=S2 reason=拮抗 oq=2 flags={"leadNG":true} quotes=[["S1",3231,26,null],["S2",3069,25,null],["S3",2935,0,null]] | R005 相見積 st=selected adopt=S2 reason= oq=12 flags={"leadNG":true,"formalWithdrawn":"ミスミ P-2026-041-S3-F1","ltbPending":true} quotes=[["S1",8870,25,null],["S2",10025,22,null],["S3",10512,17,null]]
+F purch sb after ナビR005 ID正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（元の商社に取り下げを伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件R005 を 立花エレテック で採用（スコア 75.4 / 納期NG(3日超過)）?ヘルプF8次の問題a推奨採用Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+PASS M6S-5 選び直したあとも、ミスミへの取下げ（依頼No）は x まで出る :: ナビR005 ID正式依頼を取り下げ: ミスミ P-2026-041-S3-F1（元の商社に取り下げを伝えたら Alt+x。ID・状態の列では x）購買 佐藤: 未発行 0 件R005 を 立花エレテック で採用（スコア 75.4 / 納期NG(3日超過)）?ヘルプF8次の問題a推奨採用Shift+I指摘Space開くx正式依頼の取下げを元の商社に伝えた
+ERRORS []
+== 5/5 PASS

@@ -1,0 +1,23 @@
+== variant ctrlA
+  [seq] mode=panel panel=quickfix cur=R005/model edit="" | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白 | toast null
+  [Enter 編集する] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast null
+  [typed] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast null
+  [commit +50ms] mode=edit panel=null cur=R009/maker edit="" | undefined | toast null
+  [+250ms] mode=edit panel=null cur=R009/maker edit="" | undefined | toast null
+== variant direct
+  [seq] mode=panel panel=quickfix cur=R005/model edit="" | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白 | toast null
+  [Enter 編集する] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast null
+  [typed] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast 1〜3 か ↑↓ と Enter で選んでください
+  [commit +50ms] mode=edit panel=null cur=R009/maker edit="" | undefined | toast 1〜3 か ↑↓ と Enter で選んでください
+  [+250ms] mode=edit panel=null cur=R009/maker edit="" | undefined | toast 1〜3 か ↑↓ と Enter で選んでください
+== variant tab
+  [seq] mode=panel panel=quickfix cur=R005/model edit="" | 直し方の候補 R005 リレー 1 型式の前後に空白があります: 前後の空白を削除 2 型式の前後に空白があります: 確認済みにする（x） 3 型式の前後に空白 | toast null
+  [Enter 編集する] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast null
+  [typed] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast 1〜3 か ↑↓ と Enter で選んでください
+  [commit +50ms] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast 1〜3 か ↑↓ と Enter で選んでください
+  [+250ms] mode=panel panel=quickfix cur=R009/maker edit="" | 直し方の候補 R009 端子台 1 メーカが空です: 編集する 2 メーカが空です: あとで（いまは飛ばす。公開までに直すか確認済みに。表では Shift+→） | toast 1〜3 か ↑↓ と Enter で選んでください
+== F8 だけ: R016 を直して（Enter）F8
+  [fixed with Tab] mode=nav panel=null cur=R005/maker edit="NEW-1 10A" | undefined | toast null
+  [F8] mode=nav panel=null cur=R009/maker edit="NEW-1 10A" | undefined | toast null
+
+ERRORS:

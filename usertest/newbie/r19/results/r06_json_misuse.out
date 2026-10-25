@@ -1,0 +1,22 @@
+  palette 「読み込み」 -> データ読み込み前に戻す（退避したデータに戻す） / 案件新しいBOM / データJSON を読み込む
+  palette 「読み込む」 -> 案件新しいBOM / データJSON を読み込む
+  palette 「Excel読み込み」 -> 案件新しいBOM
+  palette 「エクセル 読み込み」 -> 案件新しいBOM
+  palette 「BOMを読み込む」 -> 案件新しいBOM
+  palette 「部品表 取り込み」 -> 該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方
+  palette 「ファイルを開く」 -> 該当する操作がありません。F1 でショートカット一覧、「ヘルプ」と打つと使い方
+  palette 「インポート」 -> 流れ見積回答を取り込む購買。貼り付けで突合 / 案件新しいBOM
+  palette 「Excelから」 -> 案件新しいBOM / 出力Excelで出力Ctrl+E
+  palette 「開く」 -> 案件受信箱・案件を切り替えるCtrl+P / 全体コマンドパレットを開くCtrl+K / 移動行を開く・閉じる（相見積の比較と履歴）Space
+  before: project=P-2026-041 rows=80
+  panel: JSON を読み込む（「ファイルを選ぶ」か、JSON を書き出す で作ったファイルの中身を貼り付け）。いまの内容は置き換わります ファイルを選ぶ Ctrl+Enter 取り込む Esc 閉じる
+  TSV を貼って Ctrl+Enter -> toast: これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用） | panel=null
+  file input count=1 accept=.json,application/json
+  xlsx を選ぶ -> toast: b5_change_after_add.xlsx を読み込みました（Ctrl+Enter で反映） | panel=panel-import | JSON を読み込む（「ファイルを選ぶ」か、JSON を書き出す で作ったファイルの中身を貼り付け）。いまの内容は置き換わります ファイルを選ぶ Ctrl+Enter 取り込む Esc 閉じる
+  textarea after file: "PK\u0003\u0004\n\u0000\u0000\u0000\b\u0000$�W]���\tY\u0001\u0000\u0000�\u0004\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml��Mn�0\u0010��=E�-J\f]TUE¢��\u0016��\u0000�xB,\u001c"
+  Ctrl+Enter -> toast: これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用） | panel=null
+  csv を選ぶ -> toast: bom.csv を読み込みました（Ctrl+Enter で反映） | panel=panel-import
+  Ctrl+Enter -> toast: これは表（タブ区切り・CSV）です。部品表は Ctrl+K →「新しいBOM」→「1 貼り付け」か「2 ファイル」から読み込みます（JSON を読み込む は、JSON を書き出す で作ったファイル用） | panel=null
+  after: project=P-2026-041 rows=80
+
+ERRORS:

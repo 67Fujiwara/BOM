@@ -1,0 +1,10 @@
+publish → [変更セット（6 行: R076, R077, R078, R079, R080 …）の理由。数字か ↑↓ で選び、変更番] 行 6（Rev.2） を公開しました
+rough → 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+after decline R081 quoting ball 購買 status cell 見積中 0/1
+purch 4 has c true lamps 設計待ち 68購買待ち 12PM待ち 1見積済 75/81エラー 3警告 3
+purch status bar ナビR081 単価購買 佐藤: 未発行 0 件F1ヘルプF8次の問題Enter編集Alt+Shift+I指摘Space開くCtrl+.次の商社に依頼
+design 4 has c false lamps 設計待ち 68（指摘 4・選定待ち 64）購買待ち 12PM待ち 1エラー 3警告 3
+design a → 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+design Shift+A → null 客先指定品の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）
+PASS Y1c-1 客先指定品の依頼先が辞退した行は、次の依頼をする購買のボール（購買の 4）になる :: ball=購買 purch4=true design4=false
+== 1/1 PASS

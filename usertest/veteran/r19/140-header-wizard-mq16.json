@@ -1,0 +1,23 @@
+[
+  {
+    "id": "MQ16-csv-multiline-header-ditto",
+    "file": "MQ16-csv-multiline-header-ditto.csv",
+    "note": "Excel の CSV 書き出し: 見出しの 1 列目が複数行のセル（\"部品名\\n(品名)\"）、本文に「\"」（上と同じ）が 2 か所（表題の行は無い）",
+    "expect": "4 部品（リレーB・ヒューズのメーカはオムロン）",
+    "toast": "MQ16-csv-multiline-header-ditto.csv を読み込みました。Enter で次へ",
+    "preview": "案件 P-Q0 新しいBOM / 納期 未定 / 工程日数 10 / 予算 なし / 購買・PM 未定 / 希望商社 0 社取り込む行: 2 行（カンマ区切り、見出しあり）列の対応: 部品名 (品名) → 部品名 / 型式 → 型式 / メーカ → メーカ / 数量 → 数量リレーAMY4Nオムロン4個リレーBMY2N,2 端子台,XW2B,オムロン,2 ヒューズ,F-10,4個Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。",
+    "created": {
+      "rows": 2,
+      "sample": [
+        "リレーA / MY4N / オムロン / 4",
+        "リレーB / MY2N / ,2 端子台,XW2B,オムロン,2 ヒューズ,F-10, / 4"
+      ],
+      "notes": [
+        "",
+        ""
+      ],
+      "qty0": 0
+    },
+    "errs": []
+  }
+]

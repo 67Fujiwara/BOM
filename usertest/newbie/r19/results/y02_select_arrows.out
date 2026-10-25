@@ -1,0 +1,26 @@
+単位「pcs」↓: 個 -> 個 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="pcs" | cands=個 本 m セット パック 式 | toast=null
+単位「pcs」↓ Enter: 個 -> 個 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="個" | cands=個 本 m セット パック 式 | toast=null
+単位「pcs」Enter: 個 -> 個 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="pcs" | cands=個 本 m セット パック 式 | toast=null
+単位「set」↓: 個 -> セット | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="set" | cands=個 本 m セット パック 式 | toast=null
+単位「set」↓ Enter: 個 -> セット | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="個" | cands=個 本 m セット パック 式 | toast=null
+単位「set」Enter: 個 -> セット | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="set" | cands=個 本 m セット パック 式 | toast=null
+単位「hon」↓: 個 -> 本 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="hon" | cands=個 本 m セット パック 式 | toast=null
+単位「hon」↓ Enter: 個 -> 本 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="個" | cands=個 本 m セット パック 式 | toast=null
+単位「hon」Enter: 個 -> 本 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="hon" | cands=個 本 m セット パック 式 | toast=null
+調達区分「sh」↓: 相見積 -> 指定商社 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="sh" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+調達区分「sh」↓ Enter: 相見積 -> 指定商社 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="相見積" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+調達区分「sh」Enter: 相見積 -> 指定商社 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="sh" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+調達区分「zaiko」↓: 相見積 -> 社内在庫 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="zaiko" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+調達区分「zaiko」↓ Enter: 相見積 -> 社内在庫 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="相見積" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+調達区分「zaiko」Enter: 相見積 -> 社内在庫 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="zaiko" | cands=相見積 客先指定品 指定商社 支給品 社内在庫 | toast=null
+代替可否「fuka」↓: 同等品可 -> 不可 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="fuka" | cands=可 同等品可 不可 客先承認要 | toast=null
+代替可否「fuka」↓ Enter: 同等品可 -> 不可 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="同等品可" | cands=可 同等品可 不可 客先承認要 | toast=null
+代替可否「fuka」Enter: 同等品可 -> 不可 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="fuka" | cands=可 同等品可 不可 客先承認要 | toast=null
+代替可否「ka」↓: 同等品可 -> 可 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="ka" | cands=可 同等品可 不可 客先承認要 | toast=null
+代替可否「ka」↓ Enter: 同等品可 -> 可 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="同等品可" | cands=可 同等品可 不可 客先承認要 | toast=null
+代替可否「ka」Enter: 同等品可 -> 可 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="ka" | cands=可 同等品可 不可 客先承認要 | toast=null
+メーカ指定「shitei」↓: 推奨 -> 推奨 | after↓ mode=nav cur=R031 | end mode=nav cur=R031 edit="shitei" | cands= | toast=null
+メーカ指定「shitei」↓ Enter: 推奨 -> 推奨 | after↓ mode=nav cur=R031 | end mode=edit cur=R031 edit="" | cands= | toast=null
+メーカ指定「shitei」Enter: 推奨 -> 推奨 | after↓ mode=edit cur=R030 | end mode=nav cur=R031 edit="shitei" | cands= | toast=null
+
+ERRORS:

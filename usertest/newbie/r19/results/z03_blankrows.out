@@ -1,0 +1,8 @@
+after create R001:部品1:draft R002:部品2:draft R003:部品3:draft R004:部品4:draft R005:部品5:draft R006:部品6:draft R007:部品7:draft R008:部品8:draft R009:部品9:draft
+rows on screen 9 header P-2026-002新しいBOM P-2026-002納期 未定仮概算 ¥0 / 正式 ¥0設計待ち 9購買待ち 0PM待ち 0エラー 0警告 0設計購買PM山田Ctrl+K コマンド?
+Ctrl+Enter 行 9（Rev.1） を公開しました（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます） null
+after publish R001:部品1:submitted: R002:部品2:submitted: R003:部品3:submitted: R004:部品4:submitted: R005:部品5:submitted: R006:部品6:submitted: R007:部品7:submitted: R008:部品8:submitted: R009:部品9:submitted:
+rows on screen 9
+view4 rows 0 
+
+ERRORS:

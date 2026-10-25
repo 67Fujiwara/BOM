@@ -1,0 +1,18 @@
+== タブ A を開く（データを消して）→ タブ B を開く（同じブラウザ）
+  [A start] R030 name=表示灯 白 note="" pub=1 working=null | R031 working=null | toast: undefined
+  [B start] R030 name=表示灯 白 note="" pub=1 working=null | R031 working=null | toast: undefined
+== A: R031 の部品名を直す（作業中）→ R030 の部品名を Lamp に直して Ctrl+Enter → 理由 1 → Enter
+  A panel: 変更セット（7 行: R030, R031, R076, R077, R078 …）の理由。数字か ↑↓ で選び、変更番号（任意）を入れて Enter 1 客先要求 2 設計起因 3 廃番・入手難 4 コスト 5 納期 6 その他 1 〜 数字で選ぶ Tab 文字の欄へ（数字で始
+  [A published] R030 name=Lamp note="" pub=2 working=null | R031 working=null | toast: 行 7（Rev.2） を公開しました
+== B: タブを切り替えて R030 の備考に「納期確認中」と打つ（作業中）
+  [B before] R030 name=Lamp note="" pub=2 working=null | R031 working=null | toast: undefined
+  [B typed] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: undefined
+== A: タブを戻して「やっぱり公開をやめる」Ctrl+Z → Ctrl+Z → Ctrl+Z
+  [A back] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: undefined
+  [A Control+z] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: 戻せません: R030 は、この公開のあとに別のタブ・他の人が変えています（公開し直し・作業中の値）。この公開と、それより前の操作は Ctrl+Z では戻しません
+  [A Control+z] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+  [A Control+z] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: 戻す操作がありません（この案件で戻せるあなたの操作は残っていません）
+== B: 戻って見る
+  [B after] R030 name=Lamp note="" pub=2 working={"note":"nouki"} | R031 working=null | toast: undefined
+
+ERRORS:

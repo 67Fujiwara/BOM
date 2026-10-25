@@ -1,0 +1,31 @@
+PM 7 on fresh sample: ["R003:R003 PM 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 因幡電機 88 ¥933 24日 選定済 · 納期NG 10/27"] | header 設計待ち 73購買待ち 6PM待ち 1
+  R003 R003:selected@S1 flags={"leadNG":true} R013 R013:formalQuoted@S1 flags={} R034 R034:selected@S1 flags={}
+PM 7 after design edits R070 備考: ["R003:R003 PM 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 因幡電機 88 ¥933 24日 選定済 · 納期NG 10/27"] | header 設計待ち 73購買待ち 6PM待ち 1
+  R003 R003:selected@S1 flags={"leadNG":true} R013 R013:formalQuoted@S1 flags={} R034 R034:selected@S1 flags={}
+top cursor R003 hints F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く
+R003 hints F1ヘルプ F8次の問題 Alt+y承認 Alt+Shift+Y却下 Enter決定パネル Space開く
+  y -> null | 納期NG の行では y は使えません（Enter で決定パネル）
+  Enter -> 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+  b -> 決定: 次点商社へ（R003。理由・任意） Enter 確定 Esc 取り消し | 納期NG の行では y は使えません（Enter で決定パネル）
+  Enter -> null | R003: 次点商社へ
+  R003 after R003:selected@S2 flags={"countermeasure":"商社変更"} decisions [{"id":"D-001","rowId":"R003","kind":"次点商社へ","by":{"role":"pm","name":"鈴木"},"at":"2026-10-25T09:28:16.669Z","reason":""}]
+  Ctrl+Z 元に戻す: 決定: 次点商社へ R003:selected@S1 flags={"leadNG":true}
+  Shift+Y -> 決定: 受入（R003。理由・任意） Enter 確定 Esc 取り消し | 元に戻す: 決定: 次点商社へ
+  Enter -> null | R003: 受入
+  R003 after Shift+Y R003:selected@S1 flags={"countermeasure":"受入"}
+PM Enter on R040 この列は自動計算です nav
+PM 7 final []
+PM 7 rows ["R003:R003 PM 出力拡張ユニット FX5-16EYR/ES 三菱電機 2 因幡電機 88 ¥933 24日 選定済 · 納期NG 10/27"]
+cursor R003
+  Enter#1 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=役割: PM（鈴木）。既定のビュー 7 要決定 を開きました
+  Enter#2 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+  Enter#3 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+  Enter#4 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+  Enter#5 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+  Enter#6 -> panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる | toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+  decisions []
+  R003 panel: 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+    1 -> view=7 panel=決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる toast=使えるキー: Shift+Y / b / p / d / e（↑↓ と Enter でも選べます）
+    ↓ -> 決定パネル R003（納期NG） Shift+Y 受入（遅延許容） b 次点へ（必要日を満たす商社） p 購買が再選定（委譲） d 設計が代替品検討 e 特急・分納（上限入力） Enter 実行 ↑ / ↓ 選択 Esc 閉じる
+
+ERRORS:

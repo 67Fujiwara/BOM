@@ -1,0 +1,9 @@
+  8 columns: ID | 部品名 | 型式 | メーカ | 発注数 | 採用 | 単価 | 差分 | 納期 | 状態 | 期限 | 正式単価 | 正式納期 | 正式期限 | 差分理由
+  rows: R001,R002,R003,R013,R034,R045
+  [↓] mode=nav view=8 cur=R002/q.formalPrice@A edit="" | cursorbar=R002 正式単価 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [at 正式?] mode=nav view=8 cur=R002/q.formalPrice@A edit="" | cursorbar=R002 正式単価 | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  [1450 Enter] mode=edit view=8 cur=R003/q.formalPrice@A edit="" | cursorbar=R003 正式単価 | toast: R002 の正式単価 ¥1,450（概算から +256%）。まだ正式見積を依頼していない行です。桁・行を確かめてください
+  changed: R002@S1 formal=1450 price=407
+  row R002 selected {"leadNG":false}
+
+ERRORS:

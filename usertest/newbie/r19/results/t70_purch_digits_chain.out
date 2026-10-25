@@ -1,0 +1,18 @@
+== 購買 view 9 R076 必要数 に「12pcs」
+   1→v1 R076/qtyNeeded nav | 2→v1 R076/qtyNeeded nav | p→v1 R076/qtyNeeded nav | c→v1 R076/qtyNeeded nav | s→v1 R076/qtyNeeded nav
+  toast: 権限なし（設計の列）。「今の列で並び替え（昇順）」は Alt+s（または ID の列で s）。キーの一覧は F1
+  CHANGES: (なし)
+== 購買 view 1 R013 備考 に「2 in stock」
+   2→v1 R013/note nav |  →v1 R013/note nav | i→v1 R013/note nav | n→v1 R013/note nav |  →v1 R013/note nav | s→v1 R013/note nav | t→v1 R013/note nav | o→v1 R013/note nav | c→v1 R013/note nav | k→v1 R013/note nav
+  toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  CHANGES: (なし)
+== 購買 view 1 R013 必要数 に「20 hai」
+   2→v1 R013/qtyNeeded nav | 0→v1 R013/qtyNeeded nav |  →v1 R013/qtyNeeded nav | h→v1 R013/qtyNeeded nav | a→v1 R013/qtyNeeded nav | i→v1 R013/qtyNeeded nav
+  toast: 権限なし（設計の列）。「入荷済の切り替え」は Alt+i（または ID の列で i）。キーの一覧は F1
+  CHANGES: (なし)
+== 購買 view 9 R076 型式 に「2SC1815 ok」
+   2→v1 R076/model nav | S→v1 R076/model nav | C→v1 R076/model nav | 1→v1 R076/model nav | 8→v1 R076/model nav | 1→v1 R076/model nav | 5→v1 R076/model nav |  →v1 R076/model nav | o→v1 R076/model nav | k→v1 R076/model nav
+  toast: 権限なし（設計の列）。「前の行」は Alt+k（または ID の列で k）。キーの一覧は F1
+  CHANGES: (なし)
+
+ERRORS:

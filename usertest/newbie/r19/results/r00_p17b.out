@@ -1,0 +1,84 @@
+[K1 kicad-csv]
+  old: map=["ref","name",null,"qtyNeeded",null]
+    rows={|R1,R2|10k|||2} {|U1|STM32F103C8T6|||1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: map=["ref","name",null,"qtyNeeded",null]
+    rows={|R1,R2|10k|||2} {|U1|STM32F103C8T6|||1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[K2 altium-tsv]
+  old: map=["name",null,"ref",null,null,"qtyNeeded"]
+    rows={|R1, R2|10k|||2} {|U1|STM32F103C8T6|||1}
+    warn=「部品名」に当たる列が 2 つあります。「Comment」の列を使います
+  new: map=["note","name","ref",null,null,"qtyNeeded"]
+    rows={|R1, R2|Resistor|||2} {|U1|MCU|||1}
+    warn=「部品名」に当たる列が 2 つあります。「Description」の列を使います
+[K3 header-cell-linebreak]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=
+[K4 insu-daisu-hitsuyou]
+  old: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=「数量」に当たる列が 3 つあります。「必要数」の列を使います
+  new: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=「数量」に当たる列が 3 つあります。「必要数」の列を使います
+[K5 gouki-1tier-kei-noqtyword]
+  old: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「数量」に当たる列が 3 つあります。「計」の列を使います
+  new: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=数量は「計」の列を使います（空の行は号機の数を足します）
+[K6 qty-ditto]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|4} {||タイマ|H3CR-A8|オムロン|4}
+    warn=「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||リレー|MY2N|オムロン|4} {||タイマ|H3CR-A8|オムロン|4}
+    warn=「〃」「同上」「同左」の 2 セルは、上の行（同左は左のセル）の値にしました
+[K7 title-and-signature]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 2 行は取り込みません（例: 「以下余白」「作成 山田 承認 鈴木」）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=見出しより上の 1 行（表題など）は取り込みません / 小計・合計・区切りの 2 行は取り込みません（例: 「以下余白」「作成 山田 承認 鈴木」）
+[K8 total-variants]
+  old: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+  new: map=["name","model","maker","qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|2}
+    warn=小計・合計・区切りの 2 行は取り込みません（例: 「合計 2品目 6点」「総合計 6」）
+[K9 machine-and-unit-qty]
+  old: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=「数量」に当たる列が 2 つあります。「手配数」の列を使います
+  new: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|6} {||タイマ|H3CR-A8|オムロン|3}
+    warn=「数量」に当たる列が 2 つあります。「手配数」の列を使います
+[K10 yobi-1tier]
+  old: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|5} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「数量」に当たる列が 2 つあります。「手配数」の列を使います
+  new: map=["name","model","maker",null,null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2|オムロン|5} {||タイマ|H3CR-A8|オムロン|2}
+    warn=「数量」に当たる列が 2 つあります。「手配数」の列を使います
+[K11 eda-mpn-dnp]
+  old: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|10k|RK73H1JTTD1002F|KOA|2} {|U1|MCU|STM32F103C8T6|ST|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|10k|RK73H1JTTD1002F|KOA|2} {|U1|MCU|STM32F103C8T6|ST|1}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+[K12 eda-fitted-col]
+  old: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|Resistor|RK73H1JTTD1002F|KOA|2}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません
+  new: map=["ref","name","maker","model","qtyNeeded",null]
+    rows={|R1, R2|Resistor|RK73H1JTTD1002F|KOA|2}
+    warn=実装しない部品（DNP・Not Fitted・未実装）の 1 行は取り込みません

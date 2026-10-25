@@ -1,0 +1,50 @@
+== 設計が公開
+   行 5（Rev.2） を公開しました R076:submitted name=USBアイソレータ
+== 購買: 概算見積を依頼
+  [purch open] mode=nav view=9 cur=R004/q.unitPrice@S1 edit="" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  panel 概算見積を依頼（↑↓ で依頼先、回答期限を入れて Enter） ▶ 相見積先すべて（因幡電機・立花エレテック・ミスミ） · S1 因幡電機 · S2 立花エレテック · S3 ミスミ · S4 RSコンポーネンツ · S5 オムロン直販 ↑ / ↓ 選択 Enter 確定 Esc 取り消し
+  Enter ->  | 役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました
+  R076 R076:quoting name=USBアイソレータ
+== 6 商社別: 単価セルで数字をいきなり / Enter から
+  [6] mode=edit view=9 cur=R004/q.unitPrice@S1 edit="6" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 5 行 × 3 社に依頼（回答期限 2026-10-30）。メーカを扱う商社がマスタに無い行 4 行は、選んだ商社すべてに依頼（例: R076「ラトック」。商社マスタの取扱メーカに足すと絞れます）
+  [at 単価] mode=nav view=9 cur=R076/q.unitPrice@S1 edit="6" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed 1200 w/o Enter] mode=edit view=9 cur=R076/q.unitPrice@S1 edit="1200" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [typed abc on price] mode=edit view=9 cur=R076/q.unitPrice@S1 edit="abc" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R004 の単価 ¥6 は他社（¥2,907 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [Enter] mode=edit view=9 cur=R076/q.unitPrice@S1 edit="abc" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 単価として読めません: 「abc」（直して Enter、やめるときは Esc）
+  R076 quotes S1:12006/null/null S2:null/null/null S3:null/null/null
+  [after 2 rows] mode=nav view=9 cur=R078/q.unitPrice@S1 edit="10" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 単価として読めません: 「abc」（直して Enter、やめるときは Esc）
+  R076 S1:1200/14/1 S2:null/null/null S3:null/null/null | R077 S1:800/7/10 S2:null/null/null S3:null/null/null
+  [Esc] mode=nav view=9 cur=R078/q.unitPrice@S1 edit="10" panel=null | hints: F1ヘルプ F8次の問題 Enter編集 Alt+Shift+I指摘 Space開く | toast: 単価として読めません: 「abc」（直して Enter、やめるときは Esc）
+== 見積回答を取り込む（貼り付け）
+  panel どの商社の回答ですか 1 S1 因幡電機 2 S2 立花エレテック 3 S3 ミスミ 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+  Enter -> 見積回答を取り込む（因幡電機） Ctrl+Enter 取り込む Esc 閉じる
+  toast 取り込み 2 行 / 突合不能 0 / 型式不一致 0 / 代替提案の下書き 0 / 読めない値 1 件（R079 単価: 単価として読めません: 「#VALUE!」。その行は取り込んでいません） | panel 
+    R078 S1:3500/14/1 S2:null/null/null S3:null/null/null
+    R079 S1:null/null/null S2:null/null/null S3:null/null/null
+    R080 S1:900/3/1 S2:null/null/null S3:null/null/null
+== 設計: 採用（Ctrl+Alt+A / ID 列で a / 部品名で a）
+  [R030 部品名] mode=nav view=4 cur=R030/name edit="1" panel=null | hints: Ctrl+Enter公開 1 行 F1ヘルプ F8次の問題 Enter編集 Alt+a推奨採用 Space開く | toast: 役割: 設計（山田）。既定のビュー 4 要確認 を開きました
+  Ctrl+Alt+A R030 を 因幡電機 で採用（最安（スコア無視）） R030:selected@S1 oq=2 name=表示灯 白
+  ID a R031 を 因幡電機 で採用（スコア 99.2 / 最安） R031:selected@S1 oq=2 name=表示灯 赤
+  [部品名 a] mode=edit view=4 cur=R032/name edit="a" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: R031 を 因幡電機 で採用（スコア 99.2 / 最安）
+  部品名 a Enter R031 を 因幡電機 で採用（スコア 99.2 / 最安） R032:quoted*{"name":"a"} name=ブザー
+  Ctrl+Z 元に戻す: セル編集 R032:quoted name=ブザー
+== 購買: 正式見積を依頼 → 8 で入力
+  panel 正式見積依頼書（社外）を出します: 対象 7 行。商社に送る書類が作られ、状態が「正式依頼中」になります 1 やめる 2 依頼書を作る 1 〜 数字で選ぶ Enter 選択中を確定 Esc 取り消し
+  Enter(default) -> null やめました（何も変えていません）
+  toast 7 行 × 2 社に正式見積を依頼 R030:formalRequested@S1 oq=2 name=表示灯 白 R031:formalRequested@S1 oq=2 name=表示灯 赤
+  [8] mode=edit view=9 cur=R033/q.unitPrice@S1 edit="8" panel=null | hints: F1ヘルプ Enter確定して下へ Tab確定して右へ Esc取り消し F2編集モードへ（矢印で文字の中） | toast: 7 行 × 2 社に正式見積を依頼
+  [at 正式単価] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: R033 の単価 ¥8 は他社（¥101 前後）とけた違いです。桁・列を確かめてください（Ctrl+Z で戻す）
+  [after row1] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  [after row2] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。変えてほしいときは Alt+Shift+I で指摘
+  R030 R030:formalRequested@S1 oq=2 name=表示灯 白 S1:19475/15/null S2:18921/12/4 S3:null/null/null
+  R031 R031:formalRequested@S1 oq=2 name=表示灯 赤 S1:36082/12/null S2:37392/8/null S3:36454/15/4
+== 発注（3 発注・入荷）: 発注数で o / ID で o / Alt+o
+  [3 R030] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「ビュー: 発注・入荷」は Alt+3（または ID の列で 3）。キーの一覧は F1
+  [at 発注数] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「ビュー: 発注・入荷」は Alt+3（または ID の列で 3）。キーの一覧は F1
+  [o on 発注数] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 権限なし（設計の列）。「発注済の切り替え」は Alt+o（または ID の列で o）。キーの一覧は F1
+  [Alt+o] mode=nav view=1 cur=R030/note edit="8" panel=null | hints: F1ヘルプ F8次の問題 Alt+Shift+I指摘 Space開く | toast: 正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）
+   R030:formalRequested@S1 oq=2 name=表示灯 白
+  Ctrl+Z 元に戻す: セル編集 R030:formalRequested@S1 oq=2 name=表示灯 白
+
+ERRORS:

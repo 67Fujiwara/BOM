@@ -1,0 +1,10 @@
+preview: 取り込む行: 3 行（タブ区切り、見出しあり） 列の対応: No → （使わない） / 品名 → 部品名 / 規格 → （使わない） / メーカー → メーカ / 単価 → （使わない） / 数量 → 数量 / 金額 → （使わない） リレー オムロン 4 個 タイマ オムロン 2 個 ブレーカ 三菱電機 1 個 
+  [created] mode=nav view=4 cur=R001/model panel=null |  | toast: 新しいBOM P-2026-002（3 行）を作成しました。問題のある行 3 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します
+  rows: {||リレー||オムロン|4個|} {||タイマ||オムロン|2個|} {||ブレーカ||三菱電機|1個|}
+  [Shift+Delete] mode=nav view=4 cur=R001/model panel=null |  | toast: R001 を削除しました（Ctrl+Z で戻せます）
+  rows: {||タイマ||オムロン|2個|} {||ブレーカ||三菱電機|1個|} status=draft,draft
+  [Ctrl+Enter] mode=nav view=4 cur=R001/model panel=null |  | toast: 公開できません: エラー 2 件（R002 型式が空です … F8 で移動して直す）
+  published: R002:draft:タイマ//2個/ref=/cat= R003:draft:ブレーカ//1個/ref=/cat=
+  purch view1: R002 設計 タイマ オムロン 2 個 相見積 同等品可 下書き  || R003 設計 ブレーカ 三菱電機 1 個 相見積 同等品可 下書き 
+
+ERRORS:

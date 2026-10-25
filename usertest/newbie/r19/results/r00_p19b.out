@@ -1,0 +1,42 @@
+[K1 kubun-col-tsuika-henkou-sakujo]
+  old: map=["category","name",null,"model","qtyNeeded"]
+    rows={変更||リレー|MY4N-D2||4} {削除||タイマ|H3CR-A8||1} {追加||ランプ|L-1||2} {||端子台|XW2B-20G4||4}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["category","name",null,"model","qtyNeeded"]
+    rows={変更||リレー|MY4N-D2||4} {削除||タイマ|H3CR-A8||1} {追加||ランプ|L-1||2} {||端子台|XW2B-20G4||4}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[K2 henkou-kubun-col]
+  old: map=["name",null,"model","qtyNeeded",null]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ランプ|L-1||2} {||端子台|XW2B-20G4||4}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["name",null,"model","qtyNeeded",null]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ランプ|L-1||2} {||端子台|XW2B-20G4||4}
+    warn=「型式（新）」が空の 2 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[K3 henkou-kubun-only-new-cols]
+  old: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|2} {||端子台|XW2B-20G4|オムロン|4}
+    warn=
+  new: map=["name","model","maker","qtyNeeded",null]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ランプ|L-1|IDEC|2} {||端子台|XW2B-20G4|オムロン|4}
+    warn=
+[K4 full-copy-delete-in-note-only]
+  old: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ソケット|PYF14A|オムロン|2} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+  new: map=["name",null,"model","maker","qtyNeeded","note"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|オムロン|1} {||ソケット|PYF14A|オムロン|2} {||端子台|XW2B-20G4|オムロン|4}
+    warn=「型式」に当たる列が 2 つあります。「型式（新）」の列を使います
+[K5 full-copy-more-deletions-than-copies]
+  old: map=["name",null,"model",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ソケット|PYF14A||2} {||ランプ|L-1||1} {||ブレーカ|NF32-SV||1} {||ヒューズ|F-5A||3} {||端子台|XW2B-20G4||4}
+    warn=「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+  new: map=["name",null,"model",null,"qtyNeeded"]
+    rows={||リレー|MY4N-D2||4} {||タイマ|H3CR-A8||1} {||ソケット|PYF14A||2} {||ランプ|L-1||1} {||ブレーカ|NF32-SV||1} {||ヒューズ|F-5A||3} {||端子台|XW2B-20G4||4}
+    warn=「数量（新）」が空の 4 行は、ほかの「数量」の列の値を使いました / 「型式（新）」が空の 4 行は、ほかの「型式」の列の値を使いました / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+[K6 sparse-maker-only-change-copies]
+  old: map=["name",null,"model",null,"qtyNeeded","maker"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|パナソニック|1} {||ソケット|PYF14A|IDEC|2}
+    warn=削除の印がある・新しい版の列が空の 2 行（例: 端子台 XW2B-20G4 4）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います
+  new: map=["name",null,"model",null,"qtyNeeded","maker"]
+    rows={||リレー|MY4N-D2|オムロン|4} {||タイマ|H3CR-A8|パナソニック|1} {||ソケット|PYF14A|IDEC|2}
+    warn=削除の印がある・新しい版の列が空の 2 行（例: 端子台 XW2B-20G4 4）は、削除された部品として取り込みません（要るときは新しい版の列に値を入れて貼り直してください） / 「型式」に当たる列が 2 つあります。「型式（新）」の列を使います / 「数量」に当たる列が 2 つあります。「数量（新）」の列を使います

@@ -1,0 +1,23 @@
+// ダイアログで数字を押し間違えて、別の数字で選び直す（役割・採用の理由・取消の確認）
+import { launch, fresh, T, makeLog, sel, gotoCol, ui, typeReal, proj, sleep, shot, row, runPalette } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('z11_digit_correct')
+const st = async (tag) => { const u = await ui(page); log(`  [${tag}] role=${u.role} user=${u.user} mode=${u.mode} view=${u.view} panel=${u.panel} | ${(await T.panelText(page))?.slice(0, 160) ?? ''} | toast: ${await T.toast(page)}`) }
+log('== 役割: Ctrl+K「役割」→ 2（購買）→ 間違えた、3（PM）→ Enter')
+await fresh(page); await page.keyboard.press('ArrowDown'); await sleep(50)
+await runPalette(page, '役割', '役割を切り替え'); await sleep(150)
+await page.keyboard.press('2'); await sleep(80); await page.keyboard.press('3'); await sleep(80); await st('2 3')
+await shot(page, 'z11_role_2_3')
+await page.keyboard.press('Enter'); await sleep(200); await st('Enter')
+const ws = await page.evaluate(async () => { const u = performance.getEntriesByType('resource').map((e) => e.name).find((n) => n.includes('/src/model/store.ts')); const m = await import(u); return m.useStore.getState().ws.user })
+log('  user', JSON.stringify(ws))
+log('== 採用: R005 Alt+Shift+A → 2（立花）→ 理由 2 → 間違えた、1（納期）→ Enter')
+await fresh(page); await sel(page, 'R005'); await gotoCol(page, '部品名')
+await page.keyboard.press('Alt+Shift+A'); await sleep(150); await page.keyboard.press('2'); await sleep(150)
+await page.keyboard.press('2'); await sleep(80); await page.keyboard.press('1'); await sleep(80); await st('理由 2 1')
+await page.keyboard.press('Enter'); await sleep(200); await st('Enter')
+const r = await row(page, 'R005'); log('  R005', r.status, r.adoptedSupplierId, JSON.stringify(r.adoptReason ?? null))
+log('== 購買: 指摘の起票で数字（1）を押す')
+await fresh(page, 'purchasing'); await sel(page, 'R030'); await gotoCol(page, '部品名')
+await page.keyboard.press('Alt+Shift+I'); await sleep(150); await st('Alt+Shift+I'); await page.keyboard.press('1'); await sleep(100); await st('1')
+save(errors); await browser.close()

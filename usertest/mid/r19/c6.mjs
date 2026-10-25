@@ -1,0 +1,31 @@
+// c6: 指定系は指定先の見積だけを待つ。(a) 見積済の相見積の行を、まだ答えていない立花の指定商社に切り替え、(b) 案件外の直販を指定、(c) 指定商社の行に指定先以外の回答を先に入れる
+import { launch, check, log, summary } from './lib.mjs'
+import { helpers } from './h.mjs'
+const t = await launch(); const { page } = t; const h = helpers(t)
+await t.open('design'); await t.press('1')
+const A = await h.addRow('R080', '指定に切替A', 'G2R-1 DC24', 'オムロン', '相見積')
+const B = await h.addRow(A, '直販に切替B', 'G2R-2 DC24', 'オムロン', '相見積')
+const C = await h.addRow(B, '最初から指定C', 'G2R-1-S DC24', 'オムロン', '指定商社', '立花エレテック')
+log('publish →', await t.publish('1'))
+await t.role('purchasing'); log('rule →', await h.setting('quoteCompleteRule', '2社以上', '完了条件'))
+log('request all →', (await h.requestTo(null)).msg)
+await t.press('6'); for (const id of [A, B]) { await h.q(id, 'S1', 1500, 5); await h.q(id, 'S3', 1600, 4) }
+// C: 指定先（立花）の回答の前に、因幡の欄に値を入れてしまう（参考に取った値）
+await h.q(C, 'S1', 700, 3); await t.press('Escape')
+let p = await t.proj(); for (const id of [A, B, C]) log('before', h.show(p, id), '|', await h.status(id))
+check('C6-0 指定先（立花）の回答前に他社の値を入れても、指定商社の行は見積済・選定済にならない', ['submitted', 'quoting'].includes(p.rows.find((r) => r.id === C).status), h.show(p, C))
+await t.role('design'); await t.press('1')
+await t.setCellKey(A, 'procurement', '指定商社'); await t.setCellKey(A, 'designated', '立花エレテック')
+await t.setCellKey(B, 'procurement', '指定商社'); await t.setCellKey(B, 'designated', 'オムロン直販')
+log('publish switch →', await t.publish('1'))
+p = await t.proj(); for (const id of [A, B]) log('after switch', h.show(p, id), '|', await h.status(id), 'ball', await h.ballOf(id), 'case', await h.caseOf(id))
+const rA = p.rows.find((r) => r.id === A)
+check('C6-1 見積済の相見積の行を、まだ答えていない立花の指定商社にしたら見積中（立花の回答待ち・購買のボール）。見積済・選定者のボールに残さない', rA.status === 'quoting' && (await h.ballOf(A)) === 'purchasing', h.show(p, A) + ' ball ' + (await h.ballOf(A)))
+await t.press('4'); log('design 4 has A/B', JSON.stringify([(await t.viewRows()).includes(A), (await t.viewRows()).includes(B)]))
+await t.goto(A); await t.press('Home'); await t.press('a'); await page.waitForTimeout(80); log('design a on A →', await t.toast())
+await t.role('purchasing')
+const r2 = await h.requestTo(null); log('all →', r2.msg, JSON.stringify(r2.f.map((f) => [f.sup, f.ids.filter((x) => [A, B, C].includes(x))])))
+p = await t.proj(); for (const id of [A, B]) log('after all', h.show(p, id), '|', await h.status(id), 'ball', await h.ballOf(id))
+check('C6-2 指定先を案件外のオムロン直販にした B は、「相見積先すべて」で直販に依頼書が出る', r2.f.some((f) => f.sup === 'オムロン直販' && f.ids.includes(B)), JSON.stringify(r2.f.map((f) => f.sup)))
+await t.role('pm'); await t.press('7'); log('PM 7 has A/B', JSON.stringify([(await t.viewRows()).includes(A), (await t.viewRows()).includes(B)]))
+summary(); await t.close()

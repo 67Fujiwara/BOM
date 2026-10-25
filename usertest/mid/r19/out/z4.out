@@ -1,0 +1,14 @@
+bulk → 採用 69 / 拮抗 32（要見直し）/ 承認要 0 / スキップ 0
+PM start {"view":7,"mode":"nav","row":"R003","col":"name","edit":"","toast":"役割: PM（鈴木）。既定のビュー 7 要決定 を開きました","panel":null}
+PM raw y {"view":7,"mode":"nav","row":"R003","col":"name","edit":"","toast":"納期NG の行では y は使えません（Enter で決定パネル）","panel":null}
+FAIL Z4-1 PM が 7 を開いてそのまま y（§9.1「7 のナビで直接効くのは y と Shift+Y」）で決定が始まる :: {"view":7,"mode":"nav","row":"R003","col":"name","edit":"","toast":"納期NG の行では y は使えません（Enter で決定パネル）","panel":null}
+PM raw y on maker → {"view":7,"mode":"nav","row":"R003","col":"maker","edit":"","toast":"納期NG の行では y は使えません（Enter で決定パネル）","panel":null}
+FAIL Z4-2 PM が 7 の部品名などの列（PM は書けない列）で y を押しても決定できる（§14「PM は 7 で編集できるセルを持たないので衝突しない」） :: col=maker 納期NG の行では y は使えません（Enter で決定パネル）
+PM raw Shift+Y → {"view":7,"mode":"panel","row":"R003","col":"maker","edit":"","toast":"納期NG の行では y は使えません（Enter で決定パネル）","panel":"prompt"}
+PM raw 4 on maker → {"view":4,"mode":"nav","row":"R003","col":"maker","edit":"","toast":"納期NG の行では y は使えません（Enter で決定パネル）","panel":null}
+design start {"view":4,"mode":"nav","row":"R016","col":"maker","edit":"","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null}
+design raw n {"view":4,"mode":"edit","row":"R016","col":"maker","edit":"n","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null}
+FAIL Z4-3 (U6-02) 設計が 4 を開いてそのまま n（§6.3・§15 のキー列）で次の問題へ進む（部品名の入力にならない） :: {"view":4,"mode":"edit","row":"R016","col":"maker","edit":"n","toast":"役割: 設計（山田）。既定のビュー 4 要確認 を開きました","panel":null}
+purch 3 start {"view":3,"mode":"nav","row":"R001","col":"orderQty","edit":"n","toast":"役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました","panel":null}
+purch raw o {"view":3,"mode":"edit","row":"R001","col":"orderQty","edit":"o","toast":"役割: 購買（佐藤）。既定のビュー 9 購買作業 を開きました","panel":null}
+== 0/3 PASS

@@ -1,0 +1,178 @@
+[
+ [
+  "B1 note-del-past-polite",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除しました\n部品2\tP-20\t\tオムロン\t1\t削除した\n部品3\tP-30\t\tオムロン\t1\t削除してください\n部品4\tP-40\t\tオムロン\t1\t削除済み\n部品5\tP-50\t\tオムロン\t1\t削除する\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "B2 note-del-reason-first",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t不要のため削除\n部品2\tP-20\t\tオムロン\t1\tRev.2で削除\n部品3\tP-30\t\tオムロン\t1\tB版にて削除\n部品4\tP-40\t\tオムロン\t1\t設計変更により削除\n部品5\tP-50\t\tオムロン\t1\t※削除\n部品6\tP-60\t\tオムロン\t1\t使用しない\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "B3 note-keep-phrases",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t削除はしない\n部品2\tP-20\t\tオムロン\t1\t削除は不要\n部品3\tP-30\t\tオムロン\t1\t削除保留\n部品4\tP-40\t\tオムロン\t1\t削除見送り\n部品5\tP-50\t\tオムロン\t1\t削除NG（客先指定）\n部品6\tP-60\t\tオムロン\t1\t撤去後再取付\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "B4 note-other-del-words",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\t備考\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\t\n部品1\tP-10\t\tオムロン\t1\t欠番\n部品2\tP-20\t\tオムロン\t1\t取止め\n部品3\tP-30\t\tオムロン\t1\t中止\n部品4\tP-40\t\tオムロン\t1\t撤去済\n部品5\tP-50\t\tオムロン\t1\tDel\n端子台\tXW2B-20G4\t\tオムロン\t4\t"
+ ],
+ [
+  "N1 new-model-del-phrases",
+  "品名\t型式（旧）\t型式（新）\tメーカー\t数量\nリレー\tMY2N\tMY4N-D2\tオムロン\t4\nタイマ\tH3CR-A8\t削除しました\tオムロン\t1\nランプ\tL-1\t削除してください\tIDEC\t1\nソケット\tPYF14A\tDel.\tオムロン\t2\n端子台\tXW2B-20G4\t\tオムロン\t4"
+ ],
+ [
+  "N2 new-name-starts-with-del-word",
+  "品名（旧）\t品名（新）\t型式\tメーカー\t数量\n工具\t取外し工具\tTR-10\tホーザン\t1\nブラケット\t撤去用ブラケット\tBK-2\tミスミ\t2\nカバー\t廃止穴用カバー\tCV-3\tミスミ\t2\nリレー\t\tMY4N-D2\tオムロン\t4"
+ ],
+ [
+  "A3 arrow-in-cell",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY2N→MY4N-D2\tオムロン\t4\t型式変更\nタイマ\tH3CR-A8\tオムロン\t1→2\t数量変更\nランプ\tL-1\tIDEC\t1\t"
+ ],
+ [
+  "M1 csv-multiline-header",
+  "品名,\"型式\n(新)\",メーカー,数量\nリレー,MY4N-D2,オムロン,4\nランプ,L-1,IDEC,1"
+ ],
+ [
+  "M2 csv-multiline-header-and-comma-cell",
+  "品名,型式,メーカー,数量,\"備考\n(取付位置)\"\nリレー,MY4N-D2,オムロン,4,\"盤内上段, 左側\n(要確認)\"\nタイマ,H3CR-A8,オムロン,2,盤内下段"
+ ],
+ [
+  "M3 tsv-multiline-header",
+  "品名\t\"型式\n（新）\"\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t4\nランプ\tL-1\tIDEC\t1"
+ ],
+ [
+  "M4 tsv-two-multiline-cells-row",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\t\"MY4N-D2\nDC24V\"\tオムロン\t4\t\"旧品\nMY2N\"\nタイマ\tH3CR-A8\tオムロン\t2\t"
+ ],
+ [
+  "M5 tsv-multiline-qty-yobi",
+  "品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t\"4\n(予備1)\"\nタイマ\tH3CR-A8\tオムロン\t2"
+ ],
+ [
+  "M6 csv-multiline-first-col-comma",
+  "品名,型式,メーカー,数量\n\"リレー, 小型\n(2c)\",MY4N-D2,オムロン,4\nタイマ,H3CR-A8,オムロン,2"
+ ],
+ [
+  "D1 jissou-maru-batsu",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t○\nタイマ\tH3CR-A8\tオムロン\t1\t×\nランプ\tL-1\tIDEC\t1\t○"
+ ],
+ [
+  "D2 jissou-other-values",
+  "品名\t型式\tメーカー\t数量\t実装\nリレー\tMY4N-D2\tオムロン\t4\t実装\nタイマ\tH3CR-A8\tオムロン\t1\t未\nランプ\tL-1\tIDEC\t1\t不要\nソケット\tPYF14A\tオムロン\t2\t－"
+ ],
+ [
+  "D3 note-dnp-variants",
+  "品名\t型式\tメーカー\t数量\t備考\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\tDNP（将来用）\nランプ\tL-1\tIDEC\t1\t実装無し\nソケット\tPYF14A\tオムロン\t2\t実装せず\nヒューズ\tF-5A\t富士電機\t3\t未実装品"
+ ],
+ [
+  "D4 dnp-header-maru",
+  "品名\t型式\tメーカー\t数量\tDNP\nリレー\tMY4N-D2\tオムロン\t4\t\nタイマ\tH3CR-A8\tオムロン\t1\t○\nランプ\tL-1\tIDEC\t1\t"
+ ],
+ [
+  "D5 populate-fitted",
+  "Designator\tDescription\tManufacturer\tManufacturer Part Number\tQuantity\tFitted\nR1\tChip Resistor\tKOA\tRK73H1JTTD1002F\t2\tFitted\nC1\tChip Capacitor\tMurata\tGRM188R71H104KA93D\t1\tNot Fitted\nU1\tMCU\tST\tSTM32F103C8T6\t1\tFitted"
+ ],
+ [
+  "D6 maker-halfkana-DNP",
+  "品名\t型式\tﾒｰｶｰ\t数量\nリレー\tMY4N-D2\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "D7 maker-seizoumoto-DNP",
+  "品名\t型式\t製造元\t数量\nリレー\tMY4N-D2\tオムロン\t4\n反射フィルム\tRF-200\tDNP\t2"
+ ],
+ [
+  "Q1 no1-no2",
+  "品名\t型式\tメーカー\tNo.1\tNo.2\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "Q2 goukiyou",
+  "品名\t型式\tメーカー\t1号機用\t2号機用\nリレー\tMY4N-D2\tオムロン\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1"
+ ],
+ [
+  "Q3 suryo-paren-gouki",
+  "品名\t型式\tメーカー\t数量(1号機)\t数量(2号機)\t数量(予備)\nリレー\tMY4N-D2\tオムロン\t2\t2\t1\nタイマ\tH3CR-A8\tオムロン\t1\t1\t"
+ ],
+ [
+  "Q4 gouki-3-blanks",
+  "品名\t型式\tメーカー\t1号機\t2号機\t3号機\nリレー\tMY4N-D2\tオムロン\t2\t\t2\nタイマ\tH3CR-A8\tオムロン\t\t1\t\nランプ\tL-1\tIDEC\t1\t1\t1"
+ ],
+ [
+  "Q5 daitousu-daisu",
+  "品名\t型式\tメーカー\t1台当数量\t台数\nリレー\tMY4N-D2\tオムロン\t2\t3\nタイマ\tH3CR-A8\tオムロン\t1\t3"
+ ],
+ [
+  "Q6 insu-per-dai-seisakudaisu",
+  "品名\t型式\tメーカー\t員数/台\t製作台数\nリレー\tMY4N-D2\tオムロン\t2\t3\nタイマ\tH3CR-A8\tオムロン\t1\t3"
+ ],
+ [
+  "Q7 suryo-daisu-goukei",
+  "品名\t型式\tメーカー\t数量\t台数\t合計\nリレー\tMY4N-D2\tオムロン\t2\t3\t6\nタイマ\tH3CR-A8\tオムロン\t1\t3\t3"
+ ],
+ [
+  "Q8 two-tier-goukibetsu",
+  "品名\t型式\tメーカー\t号機別数量\t\t\n\t\t\t1\t2\t3\nリレー\tMY4N-D2\tオムロン\t2\t2\t2\nタイマ\tH3CR-A8\tオムロン\t1\t1\t1"
+ ],
+ [
+  "T1 title-colon-one-cell",
+  "盤名：制御盤A\t製作台数：3台\t\t\n\t\t\t\n品名\t型式\tメーカー\t1台当り数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T2 title-separate-cells-unit",
+  "盤名\t制御盤A\t製作台数\t3\t台\n品名\t型式\tメーカー\t1台当り数量\t\nリレー\tMY4N-D2\tオムロン\t2\t\nタイマ\tH3CR-A8\tオムロン\t1\t"
+ ],
+ [
+  "T3 title-seisaku-suryo",
+  "盤名\t制御盤A\t製作数量\t3台\n品名\t型式\tメーカー\t1台当り数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T4 title-daisu-with-note",
+  "盤名\t制御盤A\t製作台数\t3台（予備機含まず）\n品名\t型式\tメーカー\t1台当り数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T5 title-vertical",
+  "盤名\t製作台数\t\t\n制御盤A\t3\t\t\n品名\t型式\tメーカー\t1台当り数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T6 title-insu",
+  "盤名\t制御盤A\t製作台数\t3台\n品名\t型式\tメーカー\t員数\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T7 title-daitousu",
+  "盤名\t制御盤A\t製作台数\t3台\n品名\t型式\tメーカー\t1台当数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T8 title-1daibun-fullwidth",
+  "盤名\t制御盤A\t製作台数\t３台\n品名\t型式\tメーカー\t数量（1台分）\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T9 title-plain-suryo",
+  "盤名\t制御盤A\t製作台数\t3台\n品名\t型式\tメーカー\t数量\nリレー\tMY4N-D2\tオムロン\t2\nタイマ\tH3CR-A8\tオムロン\t1"
+ ],
+ [
+  "T10 daisu-right-of-header",
+  "品名\t型式\tメーカー\t1台当り数量\t\t製作台数\t3\nリレー\tMY4N-D2\tオムロン\t2\t\t\t\nタイマ\tH3CR-A8\tオムロン\t1\t\t\t"
+ ],
+ [
+  "C1 altium-with-notes-col",
+  "Comment\tDescription\tDesignator\tQuantity\tManufacturer\tManufacturer Part Number\tNotes\n10k\tChip Resistor\tR1, R2\t2\tKOA\tRK73H1JTTD1002F\t\n100n\tChip Capacitor\tC1\t1\tMurata\tGRM188R71H104KA93D\tX7R"
+ ],
+ [
+  "C2 altium-description-blank",
+  "Comment\tDescription\tDesignator\tQuantity\tManufacturer\tManufacturer Part Number\n10k\tChip Resistor\tR1, R2\t2\tKOA\tRK73H1JTTD1002F\nLED_Red\t\tD1\t1\tRohm\tSML-310LTT86"
+ ],
+ [
+  "C3 jp-comment-col",
+  "品名\t型式\tメーカー\t数量\tコメント\nリレー\tMY4N-D2\tオムロン\t4\t盤内上段\nタイマ\tH3CR-A8\tオムロン\t1\t"
+ ],
+ [
+  "C4 jp-hinmei-comment-bikou",
+  "品名\t型式\tメーカー\t数量\tComment\t備考\nリレー\tMY4N-D2\tオムロン\t4\t客先支給の可能性あり\t盤内上段\nタイマ\tH3CR-A8\tオムロン\t1\t\t"
+ ],
+ [
+  "C5 kicad-value-description",
+  "Reference\tValue\tFootprint\tQty\tDescription\tMPN\tManufacturer\nR1,R2\t10k\tR_0603\t2\tThick film resistor\tRK73H1JTTD1002F\tKOA\nC1\t100n\tC_0603\t1\tMLCC\tGRM188R71H104KA93D\tMurata"
+ ],
+ [
+  "X1 combined-messy",
+  "部品表\t\t\t\t\n盤名：制御盤A\t製作台数：2台\t\t\t\n品名\t型式\tメーカー\t1台当り数量\t備考\nリレー\tMY4N-D2\tオムロン\t2\t\nリレー\tMY2N\t〃\t1\t\nタイマ\tH3CR-A8\tオムロン\t1\tDNP\n小計\t\t\t4\t\n部品表 (2/2)\t\t\t\t\n品名\t型式\tメーカー\t1台当り数量\t備考\nランプ\tL-1\tIDEC\t1\t\n作成\t山田\t承認\t鈴木\t"
+ ]
+]

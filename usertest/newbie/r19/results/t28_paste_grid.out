@@ -1,0 +1,17 @@
+== purchasing 6 paste 3x3
+  toast 9 セルを貼り付けました（Ctrl+Z で一度に戻せます） | panel 
+    R076 S1:1200/14/1 S2:null/null/null S3:null/null/null
+    R077 S1:800/7/10 S2:null/null/null S3:null/null/null
+    R078 S1:450/0/100 S2:null/null/null S3:null/null/null
+    R079 S1:null/null/null S2:null/null/null S3:null/null/null
+  Ctrl+Z 元に戻す: 貼り付け
+    R076 S1:null/null/null S2:null/null/null S3:null/null/null
+    R077 S1:null/null/null S2:null/null/null S3:null/null/null
+    R078 S1:null/null/null S2:null/null/null S3:null/null/null
+== design paste names/models/makers
+  toast 6 セルを貼り付けました（Ctrl+Z で一度に戻せます） | panel 
+  changes R040: working:  -> {"name":"近接センサ","model":"E2E-X5ME1 2M"} | R042: working:  -> {"name":"光電センサ","model":"E3Z-D61"}
+  ref paste toast 5 セルを貼り付けました（Ctrl+Z で一度に戻せます）
+  changes R050: working:  -> {"ref":"K1"} | R051: working:  -> {"ref":"K2"} | R052: working:  -> {"ref":"K3"} | R053: working:  -> {"ref":"K4"} | R055: working:  -> {"ref":"K5"}
+
+ERRORS:

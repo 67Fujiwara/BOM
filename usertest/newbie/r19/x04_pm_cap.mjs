@@ -1,0 +1,46 @@
+// PM の上限超過（ラウンド8 の新機能）を新人の PM・購買で一周。理由欄に金額を入れてしまう続き、追加費用の打ち方、y / Shift+Y、Ctrl+Z、リロード
+import { launch, fresh, setRole, T, makeLog, shot, sel, gotoCol, ui, typeReal, proj, sleep, row } from './lib.mjs'
+const { browser, page, errors } = await launch()
+const { log, save } = makeLog('x04_pm_cap')
+const st = async (tag) => { const u = await ui(page); log(`  [${tag}] role=${u.role} mode=${u.mode} view=${u.view} cur=${u.cursorRow}/${u.cursorCol} edit=${JSON.stringify(u.editValue)} panel=${u.panel} | hints: ${await T.hints(page)} | toast: ${await T.toast(page)}`) }
+const dump = async (tag) => { const d = await page.evaluate(() => { const o = document.querySelector('.overlay'); if (!o) return null; return { text: o.innerText.replace(/\s+/g, ' ').slice(0, 300), inputs: [...o.querySelectorAll('input,textarea')].map((e) => ({ v: e.value, focused: e === document.activeElement })) } }); log(`  [${tag}]`, JSON.stringify(d), '| toast', await T.toast(page)) }
+const r3 = async (tag) => { const r = await row(page, 'R003'); const p = await proj(page); log(`  {${tag}} R003 st=${r.status} extra=${r.extraCost} flags=${JSON.stringify(r.flags)} decisions=${JSON.stringify(p.decisions.filter((d) => d.rowId === 'R003').map((d) => [d.kind, d.reason, d.payload]))}`) }
+await fresh(page, 'pm'); await sleep(200)
+log('== PM: Enter → e → 理由欄に 50000 → Enter（案内）→ Tab → 50000 → Enter（止まる）→ Shift+Tab → 消す → 特急で → Enter')
+await page.keyboard.press('Enter'); await sleep(100); await page.keyboard.press('e'); await sleep(150)
+await typeReal(page, '50000', 20); await page.keyboard.press('Enter'); await sleep(100); await dump('reason=50000 Enter')
+await page.keyboard.press('Tab'); await typeReal(page, '50000', 20); await page.keyboard.press('Enter'); await sleep(100); await dump('Tab 50000 Enter')
+await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Control+a'); await page.keyboard.press('Backspace'); await sleep(50); await dump('Shift+Tab clear')
+await page.keyboard.press('Enter'); await sleep(150); await dump('Enter (reason empty)')
+await r3('after e')
+await shot(page, 'x04_after_e')
+log('== 購買: 3 発注・入荷 → R003 追加費用 に「8万」→ Enter / 「80,000円」→ Enter')
+await setRole(page, 'purchasing'); await sleep(150)
+await page.keyboard.press('Alt+3'); await sleep(100); await sel(page, 'R003'); await sleep(100)
+const okc = await gotoCol(page, '追加費用'); await st(`at 追加費用 ${okc}`)
+await typeReal(page, '8', 20); await page.keyboard.insertText('万'); await sleep(50); await st('8万'); await page.keyboard.press('Enter'); await sleep(150); await st('Enter')
+await r3('8万')
+await page.keyboard.press('ArrowUp'); await typeReal(page, '80,000', 20); await page.keyboard.insertText('円'); await page.keyboard.press('Enter'); await sleep(150); await st('80,000円 Enter')
+await r3('80000円'); await shot(page, 'x04_purch_extra')
+log('== PM: 7 → R003 上限超過 → 何を押せばよいか（ステータスバー）→ y')
+await setRole(page, 'pm'); await sleep(200); await st('pm 7')
+await page.keyboard.press('Enter'); await sleep(150); await dump('Enter panel')
+await page.keyboard.press('Escape'); await sleep(100)
+await page.keyboard.press('y'); await sleep(150); await st('y'); await dump('after y')
+if (await T.panel(page)) { await page.keyboard.press('Enter'); await sleep(150); await dump('Enter in y dialog') }
+await r3('after y'); await shot(page, 'x04_pm_y')
+log('== PM: Ctrl+Z')
+await page.keyboard.press('Control+z'); await sleep(150); await st('Ctrl+Z'); await r3('undo')
+log('== PM: Shift+Y（却下）')
+await page.keyboard.press('Shift+Y'); await sleep(150); await dump('Shift+Y'); 
+if (await T.panel(page)) { await typeReal(page, 'takai', 20); await page.keyboard.press('Enter'); await sleep(150); await dump('reason takai Enter') }
+await r3('after Shift+Y')
+log('== 購買: 却下を受けて、追加費用を 50000 に下げる / もう一度 90000 に上げる')
+await setRole(page, 'purchasing'); await sleep(150); await st('purch')
+await page.keyboard.press('Alt+4'); await sleep(100); await st('Alt+4'); log('  rows in 4:', await T.rows(page), (await page.getByTestId('row').evaluateAll((els) => els.map((e) => e.getAttribute('data-row-id')))).join(','))
+await page.keyboard.press('Alt+3'); await sleep(100); await sel(page, 'R003'); await gotoCol(page, '追加費用'); await typeReal(page, '90000', 20); await page.keyboard.press('Enter'); await sleep(150); await st('90000')
+await r3('90000')
+await setRole(page, 'pm'); await sleep(200); await st('pm 7 again')
+log('== リロード（PM）')
+await page.reload(); await page.getByTestId('grid').waitFor(); await page.locator('.gridwrap').focus(); await sleep(300); await st('reload'); await r3('reload')
+save(errors); await browser.close()

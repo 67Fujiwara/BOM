@@ -7,6 +7,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
   const now = new Date().toISOString()
   for (const r of p.rows) {
     if (!isActive(r)) continue
+    // 取引停止で外した採用の知らせは、選び直したら外す
+    if (r.flags.droppedStopped && r.adoptedSupplierId) r.flags.droppedStopped = undefined
     // 発注済の行の再発行の印は使えない（発注後の変更は発注後変更依頼で扱う）。前の版で残った印を外す
     if (r.flags.reissue && ['ordered', 'received'].includes(r.status)) r.flags.reissue = false
     // 見積対象外は選定をスキップして「選定済（固定）」
@@ -70,6 +72,8 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       // 支給品・社内在庫に変えたら、商社の採用・正式依頼は使わない（§3.4: 見積なし）
       const mismatch = !isQuotable(r) || ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.tradable === false || (fixed ? (r.procurement === '指定商社' ? want !== r.adoptedSupplierId : r.adoptReason !== '指定先（固定）' && want !== r.adoptedSupplierId) : r.adoptReason === '指定先（固定）')
       if (mismatch) {
+        const stoppedSup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId && s.tradable === false)
+        if (stoppedSup) r.flags.droppedStopped = stoppedSup.name
         // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
         if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
           r.flags.pmPending = false

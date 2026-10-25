@@ -564,12 +564,13 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
     const cur = s.ws.suppliers.find((x) => x.id === r.designated || x.name === r.designated)
     const declined = new Set(p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.leadDays === -1).map((q) => q.supplierId))
     // メーカを扱う商社を先に。扱わない（取扱メーカに無い）商社はそうと分かるように
-    const cands = s.ws.suppliers.filter((x) => !declined.has(x.id))
+    // 取引停止の商社は候補にしない
+    const cands = s.ws.suppliers.filter((x) => !declined.has(x.id) && x.tradable !== false)
     const carries = (x: (typeof cands)[number]) => !x.handledMakers.length || handlesMaker(x.handledMakers, r.maker)
     const labelOf = new Map(cands.map((x) => [carries(x) ? x.name : `${x.name}（${r.maker || 'メーカ'} は取扱メーカに無い）`, x] as const))
     const names = [...cands.filter(carries), ...cands.filter((x) => !carries(x))].map((x) => [...labelOf].find(([, v]) => v === x)![0])
     opts.push({
-      label: `指定先を変える（${cur?.name ?? r.designated} が取扱なしと回答）`,
+      label: `指定先を変える（${cur?.name ?? r.designated} が${cur?.tradable === false ? '取引停止（商社マスタ）' : '取扱なしと回答'}）`,
       run: () =>
         prompt(`${r.id} の新しい指定先（公開すると購買が新しい指定先に依頼します）`, { options: names }, (c) => {
           const sp = c ? labelOf.get(c) : undefined
@@ -1251,7 +1252,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
           .exportBomExcel(s.ws, p, label === 'internal' ? 'internal' : label === 'supplier' ? 'supplier' : 'archive', sid)
           .then(() => toast(`Excel を出力しました（${label === 'internal' ? '社内、BOM・変更点・チェック結果の 3 シート' : label === 'supplier' ? `商社向け${sid ? `・${s.ws.suppliers.find((x) => x.id === sid)?.name}` : ''}、BOM シートのみ・価格なし` : '保管用、全列'}）`, 'ok'))
           .catch((err: Error) => toast(`Excel を出力できませんでした: ${err.message}`, 'err'))
-      const sups = p.supplierIds.map((id) => s.ws.suppliers.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x)
+      // 取引停止の商社には商社向けを出さない
+      const sups = p.supplierIds.map((id) => s.ws.suppliers.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x && x.tradable !== false)
       return openPanel({
         kind: 'export',
         index: 0,

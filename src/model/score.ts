@@ -36,7 +36,7 @@ export function scoreRow(p: Project, row: Row, suppliers: Supplier[], today = to
   const fixed = isFixedProcurement(row) ? fixedSupplierId(p, row, suppliers) : null
   // 相見積は、案件の相見積先にいて取引できる商社だけ（外した商社は推奨・採用しない。いまの採用は相見積先から外しても残す。取引停止の商社は採用中でも外す）
   const eligible = (sid: string) => suppliers.find((s) => s.id === sid)?.tradable !== false && (sid === row.adoptedSupplierId || p.supplierIds.includes(sid))
-  const quotes = validQuotes(p, row, today).filter((q) => (fixed ? q.supplierId === fixed : eligible(q.supplierId)))
+  const quotes = validQuotes(p, row, today).filter((q) => (fixed ? q.supplierId === fixed && suppliers.find((s) => s.id === fixed)?.tradable !== false : eligible(q.supplierId)))
   if (quotes.length === 0) return []
   const w = weightsFor(p, row.id)
   const sum = w.price + w.lead + w.record + w.terms || 1

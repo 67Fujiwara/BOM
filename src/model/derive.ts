@@ -59,12 +59,14 @@ export function fixedSupplierId(p: Project, row: Row, suppliers: Supplier[]): st
   }
   if (row.procurement === '客先指定品') {
     // 一度決まった商社（採用済み・見積を依頼した商社）は、値を入れた順番で変えない
-    if (row.adoptedSupplierId) return row.adoptedSupplierId
+    // 取引停止の商社は依頼先にしない（採用していても・頼んでいても次の商社へ）
+    const ok = (sid: string) => suppliers.find((x) => x.id === sid)?.tradable !== false
+    if (row.adoptedSupplierId && ok(row.adoptedSupplierId)) return row.adoptedSupplierId
     // 最初に頼んだ商社（辞退していないもの）。辞退したら次に頼んだ・単価を入れた商社 → そのメーカを扱う商社の順。
     // 頼んだ商社の回答前に別の商社の欄に値を入れても、指定先は変わらない
-    const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1)
+    const live = p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays !== -1 && ok(x.supplierId))
     if (live[0]) return live[0].supplierId
-    const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && x.leadDays === -1).map((x) => x.supplierId))
+    const declined = new Set(p.quotes.filter((x) => x.rowId === row.id && !x.stale && (x.leadDays === -1 || !ok(x.supplierId))).map((x) => x.supplierId))
     let cands = p.supplierIds.map((id) => suppliers.find((x) => x.id === id)).filter((x): x is Supplier => !!x && !declined.has(x.id) && x.tradable !== false)
     // 案件の相見積先がすべて辞退したら、商社マスタの中から（メーカを扱う商社を先に）
     if (!cands.length) cands = suppliers.filter((x) => !declined.has(x.id) && x.tradable !== false)
@@ -367,6 +369,7 @@ export function routeSurplusToPm(p: Project, issue: Issue): void {
   if (surplusOf(p, r).amount > p.settings.surplusAmount) {
     r.flags.pmPending = true
     r.flags.pmReason = '閾値超'
+    r.flags.surplusRejected = undefined
   }
 }
 

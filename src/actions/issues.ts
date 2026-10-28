@@ -1,7 +1,7 @@
 import { useStore } from '@/model/store'
 import type { Issue, IssueKind, Project, Role, Row, Rule } from '@/model/types'
 import { ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { effective, isActive as isActiveRow, openIssues, orderQty, resolverOfIssue, routeSurplusToPm, surplusOf, withdrawFormal } from '@/model/derive'
+import { effective, isActive as isActiveRow, openIssues, resolverOfIssue, surplusOf, withdrawFormal } from '@/model/derive'
 import { replaceRow } from './rows'
 import { normalize } from '@/model/lifecycle'
 import { addBusinessDays, todayStr } from '@/model/dates'
@@ -75,11 +75,12 @@ export function raiseIssue(rowId: string, field: string | undefined, kind: Issue
         const { quote: q, rounded: rq, amount } = surplusOf(p, row)
         const need = row.qtyNeeded
         const name = q ? (s.ws.suppliers.find((x) => x.id === q.supplierId)?.name ?? q.supplierId) : ''
-        body = `必要数 ${need} → 丸め数量 ${rq}${name ? `（${name}${q?.moq ? ` MOQ ${q.moq}` : ''}）` : ''}、余剰 ${rq - need}（¥${amount.toLocaleString()}）${amount > p.settings.surplusAmount ? `。余剰が閾値 ¥${p.settings.surplusAmount.toLocaleString()} を超えるので、発行すると PM の要決定（閾値超）に載ります` : ''}`
+        body = `必要数 ${need} → 丸め数量 ${rq}${name ? `（${name}${q?.moq ? ` MOQ ${q.moq}` : ''}）` : ''}、余剰 ${rq - need}（¥${amount.toLocaleString()}）`
       }
       const i: Issue = { id, rowId, field: field as keyof Row | undefined, kind, text: body, proposal, by: user, at: new Date().toISOString(), status: publishNow ? 'open' : 'draft', replies: [], bounceCount: 0, dueAt: addBusinessDays(todayStr(), def.dueDays, p.settings.holidays), rev: p.submissions.at(-1)?.rev }
       p.issues.push(i)
-      if (publishNow) routeSurplusToPm(p, i)
+      // 発注後の変更依頼は承認を待たず、購買が発注を取り消せる
+      if (publishNow && kind === '発注後変更依頼') row.flags.orderCancelApproved = true
       if (prior) s.toastMsg(`注意: この行の「${kind}」は見送り済（${prior.answer ?? prior.resolution ?? ''}）`, 'info')
     },
     { rowId },
@@ -147,19 +148,17 @@ export function bounceIssue(issueId: string, reason: string) {
     i.replies.push({ by: s.user(), at: new Date().toISOString(), text: `差戻し(${i.bounceCount}回目): ${reason}` })
     const def = issueKindDef(i.kind)
     i.dueAt = addBusinessDays(todayStr(), def.dueDays, p.settings.holidays)
-    const r = p.rows.find((x) => x.id === i.rowId)
-    if (r && i.bounceCount >= 2) r.flags.pmReason = '差戻し2回目'
     normalize(p, ws)
   })
 }
 
-/** 見送り（起票者・PM） */
+/** 見送り（起票者） */
 export function wontfixIssue(issueId: string, reason: string) {
   const s = st()
   s.commit('指摘を見送り', (p, ws) => {
     const i = p.issues.find((x) => x.id === issueId)
     if (!i) return
-    if (i.by.name !== s.user().name && s.user().role !== 'pm') return '見送りは起票者または PM だけができます'
+    if (i.by.name !== s.user().name) return '見送りは起票者だけができます'
     if (!reason.trim()) return '見送り理由は必須です'
     i.status = 'wontfix'
     i.resolution = `見送り: ${reason}`
@@ -177,7 +176,6 @@ export function applyProposal(issueId: string): string | null {
     return null
   }
   const oldRow = p.rows.find((r) => r.id === i.rowId)
-  const oldAdopted = oldRow?.adoptedSupplierId ? p.quotes.find((q) => q.rowId === oldRow.id && q.supplierId === oldRow.adoptedSupplierId && !q.stale)?.unitPrice ?? null : null
   const newId = replaceRow(i.rowId, { model: i.proposal.model, maker: i.proposal.maker })
   if (!newId) return null
   s.commit(
@@ -207,14 +205,6 @@ export function applyProposal(issueId: string): string | null {
       }
       // 代替可否＝客先承認要 → 代替承認待ち
       if (effective(nr).altPolicy === '客先承認要') nr.flags.altPending = true
-      // 価格差の閾値判定
-      if (oldAdopted != null && prop.unitPrice != null) {
-        const diff = (prop.unitPrice - oldAdopted) * orderQty(nr)
-        if (diff > p2.settings.formalDiffAmount) {
-          nr.flags.pmPending = true
-          nr.flags.pmReason = '閾値超'
-        }
-      }
       nr.fromIssue = issueId
       const issue = p2.issues.find((x) => x.id === issueId)!
       issue.status = 'fixed'
@@ -287,13 +277,16 @@ export function reconfirmQuote(rowId: string, supplierId: string, choice: 'keep'
 }
 
 /** 確認系フラグを外す（x） */
-export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn') {
+export function ackFlag(rowId: string, flag: 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck' | 'formalWithdrawn' | 'leadNG') {
   // 取下げが複数あるときは 1 つずつ（x 1 回で 1 社）。どの商社のどの依頼か知らせる
   const list0 = (st().project().rows.find((x) => x.id === rowId)?.flags.formalWithdrawn ?? '').split(' / ').filter(Boolean)
   if (flag === 'formalWithdrawn') queueMicrotask(() => st().toastMsg(`${rowId}: 正式依頼の取下げ（${list0[0] ?? ''}）を伝えた（確認済）${list0.length > 1 ? `。残り ${list0.length - 1} 件: ${list0.slice(1).join(' / ')}（続けて Alt+x）` : ''}`, 'ok'))
-  st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : '確認', (p, ws) => {
+  st().commit(flag === 'formalWithdrawn' ? '正式依頼の取下げを伝えた' : flag === 'leadNG' ? '納期NGを承知で進める' : '確認', (p, ws) => {
     const r = p.rows.find((x) => x.id === rowId)
-    if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = list0.length > 1 ? list0.slice(1).join(' / ') : undefined
+    if (r && flag === 'leadNG') {
+      r.flags.countermeasure = '受入'
+      r.flags.leadNG = false
+    } else if (r && flag === 'formalWithdrawn') r.flags.formalWithdrawn = list0.length > 1 ? list0.slice(1).join(' / ') : undefined
     else if (r) r.flags[flag as 'notation' | 'orderQtyCheck' | 'contested' | 'priceCheck'] = false
     normalize(p, ws)
   })

@@ -28,8 +28,6 @@ export type Panel =
   | { kind: 'issue'; rowId: string; field: string; step: 'kind' | 'text' | 'proposal'; issueKind?: string; index: number; text: string; proposal: { model: string; maker: string; supplierId: string; unitPrice: string; leadDays: string } }
   | { kind: 'adopt'; rowId: string; index: number; reasonFor?: string; /** 開いたときの採用（別のタブで変わっていたら上書きしない） */ was?: string | null }
   | { kind: 'prompt'; title: string; options?: string[]; index: number; text: string; placeholder?: string; requireText?: boolean; showText?: boolean; digitsSelect?: boolean; /** 文字欄に移った・文字を打った（以後の数字は文字として欄に入る。それまでは数字で選び直せる） */ textTouched?: boolean; onSubmit: (choice: string | null, text: string, extra?: Record<string, string>) => string | void; extra?: Record<string, string>; danger?: boolean; error?: string }
-  | { kind: 'wizard'; step: number; data: Record<string, string>; sel: number; picks: string[]; error?: string }
-  | { kind: 'inbox'; index: number; query: string }
   | { kind: 'settings'; index: number; draft: Record<string, string>; editing: boolean; value: string; error?: string; discardArmed?: boolean }
   | { kind: 'quickfix'; title: string; rowId: string; field: string; index: number; options: PanelOption[] }
   | { kind: 'history'; rowId: string; index: number }
@@ -57,7 +55,7 @@ export interface UndoEntry {
 }
 
 /** Undo で追う案件レベルの項目（events・version・連番は追わない） */
-const PROJECT_KEYS = ['name', 'dueDate', 'settings', 'weights', 'rowWeights', 'submissions', 'decisions', 'supplierIds', 'preferredSupplierIds', 'members', 'caseDecisions', 'requestRevs'] as const
+const PROJECT_KEYS = ['name', 'dueDate', 'settings', 'weights', 'rowWeights', 'submissions', 'supplierIds', 'preferredSupplierIds', 'members', 'requestRevs'] as const
 
 export interface State {
   ws: Workspace
@@ -96,7 +94,6 @@ export interface State {
   recentCommands: string[]
   detailIndex: number
   clipboard: string | null
-  wizardDraft: { step: number; data: Record<string, string>; sel: number; picks: string[] } | null
   // actions
   set: (p: Partial<State>) => void
   project: () => Project
@@ -170,7 +167,6 @@ export const useStore = create<State>((set, get) => ({
   recentCommands: loadUiField('recentCommands') ?? [],
   detailIndex: 0,
   clipboard: null,
-  wizardDraft: loadUiField('wizardDraft') ?? null,
   set: (p) => set(p),
   project: () => {
     const ws = get().ws
@@ -340,7 +336,7 @@ export function userKey(u: User): string {
 }
 
 // ---------- 画面の状態（タブごと。リロードしても同じビュー・セル・ガイドの途中から） ----------
-type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands' | 'wizardDraft'>
+type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands'>
 function readUi(): Partial<UiSaved> {
   try {
     return JSON.parse(sessionStorage.getItem(UI_KEY) ?? '{}') ?? {}
@@ -350,13 +346,13 @@ function readUi(): Partial<UiSaved> {
 }
 function loadUi(): Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort'> {
   const u = readUi()
-  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 9 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
+  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 9 && u.view !== 7 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
 }
 function loadUiCols(): string[] | null {
   const c = readUi().hiddenCols
   return Array.isArray(c) && c.every((x) => typeof x === 'string') ? c : null
 }
-function loadUiField<K extends 'recentCommands' | 'wizardDraft'>(k: K): UiSaved[K] | undefined {
+function loadUiField<K extends 'recentCommands'>(k: K): UiSaved[K] | undefined {
   return readUi()[k] as UiSaved[K] | undefined
 }
 let uiTimer: number | undefined
@@ -375,7 +371,7 @@ useStore.subscribe((s, prev) => {
   if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)
 })
 useStore.subscribe((s, prev) => {
-  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.wizardDraft === prev.wizardDraft && s.panel === prev.panel) return
+  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.panel === prev.panel) return
   window.clearTimeout(uiTimer)
   uiTimer = window.setTimeout(writeUi, 200)
 })
@@ -384,8 +380,7 @@ function writeUi() {
   {
     const st = useStore.getState()
     // ガイドを開いている間は、入れている途中の内容も下書きとして残す
-    const wizardDraft = st.panel?.kind === 'wizard' ? { step: st.panel.step, data: st.panel.data, sel: st.panel.sel, picks: st.panel.picks } : st.wizardDraft
-    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands, wizardDraft }
+    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands }
     try {
       sessionStorage.setItem(UI_KEY, JSON.stringify(saved))
     } catch {

@@ -17,7 +17,7 @@ export interface KeyBinding {
 export const KEYMAP: KeyBinding[] = [
   // 5.1 全体
   { id: 'palette.open', keys: ['Ctrl+K'], mode: 'any', section: '全体', label: 'コマンドパレットを開く', hint: 'Ctrl+K' },
-  { id: 'project.switch', keys: ['Ctrl+P'], mode: 'any', section: '全体', label: '案件を切り替える' },
+  { id: 'project.switch', keys: ['Ctrl+P'], mode: 'any', section: '全体', label: '作成中の案件一覧へ' },
   { id: 'project.save', keys: ['Ctrl+S'], mode: 'any', section: '全体', label: '一時保存' },
   { id: 'undo', keys: ['Ctrl+Z'], mode: 'any', section: '全体', label: '元に戻す' },
   { id: 'redo', keys: ['Ctrl+Shift+Z', 'Ctrl+Y'], mode: 'any', section: '全体', label: 'やり直す' },
@@ -27,7 +27,6 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'filter.focus', keys: ['/', 'Ctrl+F'], mode: 'nav', section: '全体', label: '絞り込み検索にフォーカス' },
   { id: 'help', keys: ['?', 'F1'], mode: 'nav', section: '全体', label: 'ショートカット一覧', hint: '?' },
   { id: 'escape', keys: ['Escape'], mode: 'any', section: '全体', label: '1段階戻る' },
-  { id: 'wizard.back', keys: ['Alt+ArrowLeft'], mode: 'nav', section: '全体', label: 'ガイドで1つ前の段階へ（新しいBOM）' },
 
   // 5.2 移動
   { id: 'move.up', keys: ['ArrowUp'], mode: 'nav', section: '移動', label: '上のセル' },
@@ -51,7 +50,6 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'view.4', keys: ['4'], mode: 'nav', section: '移動', label: 'ビュー: 要確認' },
   { id: 'view.5', keys: ['5'], mode: 'nav', section: '移動', label: 'ビュー: 変更あり' },
   { id: 'view.6', keys: ['6'], mode: 'nav', section: '移動', label: 'ビュー: 商社別' },
-  { id: 'view.7', keys: ['7'], mode: 'nav', section: '移動', label: 'ビュー: 要決定' },
   { id: 'view.8', keys: ['8'], mode: 'nav', section: '移動', label: 'ビュー: 正式見積' },
   { id: 'category.prev', keys: ['['], mode: 'nav', section: '移動', label: '前の分類へ' },
   { id: 'category.next', keys: [']'], mode: 'nav', section: '移動', label: '次の分類へ' },
@@ -93,8 +91,6 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'issue.reply', keys: ['Shift+R'], mode: 'nav', section: '流れ', label: '指摘に返信' },
   { id: 'issue.bounce', keys: ['Shift+X'], mode: 'nav', section: '流れ', label: '指摘を差戻し（専用）' },
   { id: 'adopt.cheapest', keys: ['Ctrl+Alt+A'], mode: 'nav', section: 'BOM操作', label: '最安で採用（スコア無視）。見積中なら先行採用' },
-  { id: 'pm.approve', keys: ['y'], mode: 'nav', section: '要決定', label: '承認 / 受入 / 許可（PM）' },
-  { id: 'pm.reject', keys: ['Shift+Y'], mode: 'nav', section: '要決定', label: '却下 / 受入（遅延許容）/ 現状維持（PM）' },
   { id: 'weights.row', keys: ['w'], mode: 'nav', section: 'BOM操作', label: 'この行だけ重みを変える' },
   { id: 'view.9', keys: ['9'], mode: 'nav', section: '移動', label: 'ビュー: 購買作業' },
   { id: 'rev.prev', keys: ['<'], mode: 'nav', section: '移動', label: '5 変更あり: 前の Rev' },

@@ -31,7 +31,7 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
   const unasked = (r: Row) => (isFixedProcurement(r) || r.adoptedSupplierId || !['quoting', 'quoted'].includes(r.status) ? [] : (r.quoteTargets ?? []).filter((sid) => tradable(sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
   // 相見積で、取引できる商社の有効な見積が無い（全社辞退）行は、まだその行に頼んでいない商社に頼める
   const others = (r: Row) => (!noUsableQuote(p, r) ? [] : (all ? p.supplierIds : supplierIds).filter((sid) => tradableIn(s.ws.suppliers, sid) && !p.quotes.some((q) => q.rowId === r.id && q.supplierId === sid && !q.stale)))
-  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid)) || others(r).length > 0) && !hasWork(r) && !r.pendingRemoval && !r.flags.pmPending)
+  const rows = p.rows.filter((r) => isActive(r) && isQuotable(r) && (r.status === 'submitted' || r.flags.requote || awaitingRequote(r).length > 0 || needsNextFixed(r).length > 0 || unasked(r).some((sid) => all || supplierIds.includes(sid)) || others(r).length > 0) && !hasWork(r))
   if (!rows.length) return '依頼する行がありません（提出済・再見積要の行なし）'
   const excluded = p.rows.filter((r) => isActive(r) && r.status === 'submitted' && r.working && Object.keys(r.working).length).length
   const perSupplier = new Map<string, Row[]>()
@@ -85,9 +85,8 @@ export async function requestRoughQuotes(supplierIds: string[], deadline: string
           r.adoptedSupplierId = undefined
           r.scoreSnapshot = undefined
           r.flags.contested = false
-          r.flags.formalDiff = false
           r.flags.reissue = false
-          // 前の採用への対策（納期NG・特急・分納の追加費用・先行発注判断・PM の依頼）も、この採用ごと取り下げる
+          // 前の採用への対策（納期NG・特急・分納の追加費用）も、この採用ごと取り下げる
           clearAdoptionMeasures(p2, r, '概算の取り直しで取り下げ（選び直し）')
           for (const q of p2.quotes.filter((x) => x.rowId === r.id)) {
             q.formalPrice = null
@@ -177,10 +176,6 @@ export function importQuoteAnswers(text: string, supplierId: string): ImportResu
         res.unmatched.push(id || line.replace(/\t+/g, ' ').trim().slice(0, 20))
         continue
       }
-      if (r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') {
-        res.errors.push(`${r.id}: 変更セットの PM 承認待ちの追加行です（承認されてから取り込みます）`)
-        continue
-      }
       if (r.status === 'ordered' || r.status === 'received') {
         res.errors.push(`${r.id}: 発注済の行には取り込みません（変えるときは発注後変更依頼）`)
         continue
@@ -249,11 +244,10 @@ export async function requestFormalQuotes(): Promise<string> {
   const p = s.project()
   // 取引停止の商社・支給品・社内在庫の行には依頼しない
   const target = p.rows.filter((r) => isActive(r) && isQuotable(r) && r.adoptedSupplierId && tradableIn(s.ws.suppliers, r.adoptedSupplierId) && (r.status === 'selected' || (r.flags.reissue && ['formalRequested', 'formalQuoted'].includes(r.status))))
-  const working = target.filter((r) => hasWork(r) || r.pendingRemoval)
-  const pending = target.filter((r) => r.flags.pmPending || r.flags.ltbPending)
+  const working = target.filter((r) => hasWork(r))
   // 再見積要の行は概算が失効している。概算を取り直して採用し直してから正式見積へ
   const requote = target.filter((r) => r.flags.requote)
-  const rows = target.filter((r) => !working.includes(r) && !pending.includes(r) && !requote.includes(r))
+  const rows = target.filter((r) => !working.includes(r) && !requote.includes(r))
   if (!rows.length) return '依頼する行がありません（選定済・再発行対象なし）'
   const per = new Map<string, Row[]>()
   for (const r of rows) per.set(r.adoptedSupplierId!, [...(per.get(r.adoptedSupplierId!) ?? []), r])
@@ -298,7 +292,7 @@ export async function requestFormalQuotes(): Promise<string> {
     if (!sup) continue
     await (await import('@/io/excel')).exportRequestExcel(p2, sup, rs.map((r) => p2.rows.find((x) => x.id === r.id)!), 'formal', addBusinessDays(todayStr(), p2.settings.formalDays, p2.settings.holidays), p2.requestRevs['F' + sid] ?? 1, prevNeed, prevSent)
   }
-  return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || pending.length || requote.length ? `。除外: 作業中 ${working.length} 行 / 承認待ち ${pending.length} 行 / 再見積要 ${requote.length} 行` : ''}`
+  return `${rows.length} 行 × ${per.size} 社に正式見積を依頼${working.length || requote.length ? `。除外: 作業中 ${working.length} 行 / 再見積要 ${requote.length} 行` : ''}`
 }
 
 export function quoteFor(p: Project, rowId: string, supplierId: string): Quote | undefined {

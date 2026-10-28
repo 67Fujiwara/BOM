@@ -10,14 +10,12 @@ function navKey(k: string): string {
 }
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
-import { colsForPanel, paletteItems, WIZ_KEYS } from '@/commands/registry'
+import { colsForPanel, paletteItems } from '@/commands/registry'
 import { issueKindsFor } from '@/commands/keyboard'
-import { ballCounts, effective, fmtYen } from '@/model/derive'
+import { effective, fmtYen } from '@/model/derive'
 import { scoreRow } from '@/model/score'
 import { fmtDateTime } from '@/model/dates'
 import { settingsFields } from './settingsFields'
-import { FIELD_LABEL, parseBomPaste, xlsxToTsv } from '@/io/paste'
-import * as pasteIo from '@/io/paste'
 
 /** パネルのキー操作を合成する（クリックでもキーと同じ動きにするため） */
 function press(key: string) {
@@ -142,21 +140,6 @@ function PanelBody({ panel }: { panel: Panel }) {
                   ))}
                 </section>
               ))}
-              <section>
-                <h4>要決定（7 ビュー・PM）</h4>
-                {[
-                  ['y', '承認 / 受入 / 許可'],
-                  ['Shift+Y', '却下 / 受入（遅延許容）/ 現状維持'],
-                  ['Enter', '決定パネル（b 次点 / g 再交渉 / d 設計へ代替依頼 / q 数量見直し / e 特急・分納 / p 委譲）'],
-                ].map(([k, l]) => (
-                  <div className="r" key={k}>
-                    <span>{l}</span>
-                    <span className="ks">
-                      <kbd>{formatKey(navKey(k))}</kbd>
-                    </span>
-                  </div>
-                ))}
-              </section>
               <section>
                 <h4>行の詳細（Space で開いて ↓ で選択）</h4>
                 {[
@@ -404,51 +387,17 @@ function PanelBody({ panel }: { panel: Panel }) {
           <Foot items={[['Enter', '送信'], ['Escape', '閉じる']]} />
         </div>
       )
-    case 'inbox': {
-      const q = panel.query.toLowerCase()
-      const list = st.ws.projects.filter((x) => !q || (x.id + x.name).toLowerCase().includes(q))
-      return (
-        <div className="dialog wide" role="dialog" aria-label="受信箱">
-          <AutoInput value={panel.query} onChange={(v) => st.set({ panel: { ...panel, query: v, index: 0 } })} placeholder="案件を検索（Enter で開いて、あなた宛の最初の行へ）" testid="inbox-input" />
-          <div className="list" data-testid="inbox" ref={listRef}>
-            {list.map((x, i) => {
-              const bc = ballCounts(x)
-              const mine = bc[st.ws.user.role]
-              return (
-                <div key={x.id} className="item" aria-selected={i === panel.index} onClick={() => (setIndex(i), press('Enter'))}>
-                  <span className="sec mono">{x.id}</span>
-                  <span>{x.name}</span>
-                  <span className="desc">
-                    納期 {x.dueDate ?? '未定'} / 提出 Rev.{x.submissions.at(-1)?.rev ?? 0} / 設計 {bc.design} 購買 {bc.purchasing} PM {bc.pm} / 更新 {fmtDateTime(x.updatedAt)} {x.events.at(-1)?.by.name ?? ''}
-                  </span>
-                  <span className="keys">{mine > 0 && <span className="chip err">あなた宛 {mine}</span>}</span>
-                </div>
-              )
-            })}
-            {q && !list.length && <div className="item muted">「{panel.query}」に当たる案件はありません</div>}
-            <div className="item" aria-selected={panel.index === list.length} onClick={() => (setIndex(list.length), press('Enter'))}>
-              <span className="sec">＋</span>
-              <span>新しいBOM を作る</span>
-            </div>
-          </div>
-          <Foot items={[['Enter', '開く'], ['ArrowUp', '/ ↓ 選択'], ['Escape', '閉じる']]} />
-        </div>
-      )
-    }
     case 'settings': {
       const fields = settingsFields(p)
       return (
         <div className="dialog wide" role="dialog" aria-label="案件設定">
           <div className="body panel-list" data-testid="settings" ref={listRef}>
             <h3 style={{ margin: '0 0 8px' }}>
-              案件設定 <span className="muted">（PM 項目は PM、購買項目は購買が変更。{p.settings.pmConfirmed ? '確定済' : '未確定（PM が y で確定）'}）</span>
+              案件設定
             </h3>
             {fields.map((f, i) => {
-              const role = st.ws.user.role
-              const mine = (f.owner === 'PM' && role === 'pm') || (f.owner === '購買' && role !== 'design')
               return (
-                <div key={f.key} className={'opt clickable' + (mine ? '' : ' disabled')} aria-selected={i === panel.index} onClick={() => !panel.editing && (setIndex(i), press('Enter'))}>
-                  <span className="muted" style={{ width: 40 }}>{f.owner}</span>
+                <div key={f.key} className="opt clickable" aria-selected={i === panel.index} onClick={() => !panel.editing && (setIndex(i), press('Enter'))}>
                   <span style={{ width: 240 }}>{f.label}</span>
                   {panel.editing && i === panel.index ? (
                     <span style={{ flex: 1 }}>
@@ -465,7 +414,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               )
             })}
           </div>
-          <Foot items={[['Enter', '項目を編集 / 確定'], ['Ctrl+Enter', '保存（理由を聞く）'], ['y', 'PM: 設定を確定'], ['Escape', '閉じる']]} />
+          <Foot items={[['Enter', '項目を編集 / 確定'], ['Ctrl+Enter', '保存'], ['Escape', '閉じる']]} />
         </div>
       )
     }
@@ -507,160 +456,6 @@ function PanelBody({ panel }: { panel: Panel }) {
         </div>
       )
     }
-    case 'wizard':
-      return <Wizard panel={panel} />
   }
 }
 
-const WIZ_STEPS = ['案件ID', '案件名', '納期', '社内工程日数', '予算（任意）', '購買・PM 担当者', '希望商社', '部品の入れ方', '確認して作成']
-
-function Wizard({ panel }: { panel: Extract<Panel, { kind: 'wizard' }> }) {
-  const st = useStore()
-  const d = panel.data
-  const step = panel.step
-  const setData = (k: string, v: string) => st.set({ panel: { ...panel, data: { ...d, [k]: v }, error: undefined } })
-  const key = WIZ_KEYS[step]
-  const fileRef = useRef<HTMLInputElement>(null)
-  const preview = step === 8 && d.inputMode !== '2' ? parseBomPaste(d.paste ?? '') : null
-  const onFile = async (f: File | undefined) => {
-    if (!f) return
-    try {
-      // 中身で判別する（拡張子が無い・違うファイルでも、Excel は zip の先頭 PK で分かる）
-      const buf = await f.arrayBuffer()
-      const head = new Uint8Array(buf.slice(0, 4))
-      const isZip = head[0] === 0x50 && head[1] === 0x4b && head[2] === 0x03 && head[3] === 0x04
-      if (/\.xlsx$/i.test(f.name) && !isZip) throw new Error('Excel（.xlsx）として読めません。壊れているか、別の形式のファイルです')
-      let text: string
-      if (isZip) {
-        try {
-          text = await xlsxToTsv(buf)
-        } catch {
-          throw new Error('Excel（.xlsx）として読めません。壊れているか、パスワード付きのファイルです')
-        }
-      } else {
-        // 日本語の Excel が出す CSV は Shift_JIS のことが多い。UTF-8 で読めなければ Shift_JIS で読む
-        // Excel の「Unicode テキスト」は UTF-16（先頭が FF FE / FE FF）
-        const bom = new Uint8Array(buf.slice(0, 2))
-        const utf16 = bom[0] === 0xff && bom[1] === 0xfe ? 'utf-16le' : bom[0] === 0xfe && bom[1] === 0xff ? 'utf-16be' : null
-        if (utf16) text = new TextDecoder(utf16).decode(buf)
-        else
-          try {
-            text = new TextDecoder('utf-8', { fatal: true }).decode(buf)
-          } catch {
-            text = new TextDecoder('shift_jis').decode(buf)
-          }
-        if (/[\u0000\ufffd]/.test(text.slice(0, 4000))) throw new Error('文字のファイル（CSV・タブ区切り）ではありません。Excel から .xlsx か CSV で保存してください')
-      }
-      if (!text.trim()) throw new Error('中身が空です')
-      const cur = useStore.getState().panel
-      if (cur?.kind !== 'wizard') return
-      st.set({ panel: { ...cur, data: { ...cur.data, paste: text, fileName: f.name, fileNote: isZip ? pasteIo.hiddenNote : '', inputMode: '1' }, error: undefined } })
-      const others = isZip ? pasteIo.otherSheets : []
-      st.toastMsg(`${f.name}${isZip && pasteIo.lastSheetName ? `（シート「${pasteIo.lastSheetName}」）` : ''} を読み込みました。Enter で次へ${isZip && pasteIo.hiddenNote ? `。${pasteIo.hiddenNote}` : ''}${others.length ? `。部品表らしいシートがほかにもあります（${others.map((n) => `「${n}」`).join('・')}）。そちらを読むときは Excel でそのシートだけを別のファイルに保存して読んでください` : ''}`, others.length || (isZip && pasteIo.hiddenNote) ? 'info' : 'ok')
-    } catch (err) {
-      st.toastMsg(`${f.name} を読めませんでした: ${(err as Error).message}`, 'err')
-    }
-  }
-  const hints = ['例: P-2026-042（空なら自動で付けます）', '例: 第4ライン 制御盤', '2026-11-30 / 11/30 / 未定', '納期から逆算して必要日を出す日数（空なら 10）', '目標原価（円）。例: 2800000 / 280万。空でも可', '購買担当, PM 担当（カンマ区切り。例: 佐藤, 鈴木。空なら未定）']
-  return (
-    <div className="dialog wide wizard" role="dialog" aria-label="新しいBOM">
-      <div className="steps">
-        {WIZ_STEPS.map((s, i) => (
-          <span key={s} className={i === step ? 'on' : i < step ? 'done' : ''}>
-            {i + 1}.{s}
-          </span>
-        ))}
-      </div>
-      <div className="body" data-testid="wizard">
-        <h3 style={{ margin: '0 0 4px' }}>{WIZ_STEPS[step]}</h3>
-        {step <= 5 && (
-          <>
-            <div className="muted" style={{ marginBottom: 6 }}>{hints[step]}</div>
-            <AutoInput key={step} className="f" value={d[key] ?? ''} onChange={(v) => setData(key, v)} placeholder="" testid={`wizard-${key}`} />
-            {step >= 2 && step <= 4 && <div className="muted" style={{ marginTop: 6 }}>納期・工程日数・予算は「仮（PM 未確定）」で保存され、提出 Rev.1 で PM の要決定に載ります。</div>}
-          </>
-        )}
-        {step === 6 && (
-          <div className="panel-list">
-            {st.ws.suppliers.map((s, i) => (
-              <div key={s.id} className="opt clickable" aria-selected={i === panel.sel} onClick={() => st.set({ panel: { ...panel, sel: i, picks: panel.picks.includes(s.id) ? panel.picks.filter((x) => x !== s.id) : [...panel.picks, s.id] } })}>
-                <span className="check">{panel.picks.includes(s.id) ? '●' : '○'}</span>
-                <span className="supplier-dot" style={{ background: s.color }} />
-                <span>{s.name}</span>
-                <span className="muted">
-                  {s.kind} / {s.tradable ? '取引可' : '取引停止'} / {s.handledMakers.length ? s.handledMakers.slice(0, 3).join('・') : '取扱メーカ未登録'}
-                </span>
-              </div>
-            ))}
-            <div className="muted">希望商社（任意。確定は購買）。↑↓ で移動、Space で選択、Enter で次へ</div>
-          </div>
-        )}
-        {step === 7 && (
-          <>
-            <div className="panel-list">
-              {['1 貼り付け（Excel の表をコピーして貼る。見出し行があれば列を自動で判別）', '2 ファイル（.xlsx / .csv / .tsv / .txt）', '3 1 つずつ入力（空の表から始める）'].map((o, i) => (
-                <div key={o} className="opt clickable" aria-selected={panel.sel === i} onClick={() => st.set({ panel: { ...panel, sel: i, data: { ...d, inputMode: String(i) } } })}>
-                  <span>{o}</span>
-                </div>
-              ))}
-            </div>
-            {panel.sel === 0 && <AutoInput multiline autoFocus={false} value={d.paste ?? ''} onChange={(v) => (d.fileName ? st.set({ panel: { ...panel, data: { ...d, paste: v, fileName: '', fileNote: '' } } }) : setData('paste', v))} placeholder={'例）見出し行つきでそのまま貼れます\n品名\t形式\tメーカー\t員数\nリレー\tMY4N-D2 DC24\tオムロン\t12\n\n貼り付け欄の中では Ctrl+Enter で次へ'} testid="wizard-paste" />}
-            {panel.sel === 1 && (
-              <div style={{ marginTop: 8 }}>
-                <input ref={fileRef} type="file" data-testid="wizard-file" accept=".xlsx,.csv,.tsv,.txt" onChange={(e) => void onFile(e.target.files?.[0])} />
-                {d.fileName && <div className="muted">読み込み済み: {d.fileName}（{(d.paste ?? '').split('\n').filter(Boolean).length} 行）</div>}
-              </div>
-            )}
-            <div className="muted" style={{ marginTop: 6 }}>1〜3 で選ぶ（貼り付け欄の中では Ctrl+Enter で次へ。Enter は改行）。Enter で次へ</div>
-          </>
-        )}
-        {step === 8 && (
-          <div data-testid="wizard-preview">
-            <div>
-              案件 <b>{d.id || '（自動）'}</b> {d.name || '新しいBOM'} / 納期 {d.due || '未定'} / 工程日数 {d.processDays || 10} / 予算 {d.budget || 'なし'} / 購買・PM {d.buyer || '未定'} / 希望商社 {panel.picks.length} 社
-            </div>
-            {preview && (
-              <>
-                <div style={{ marginTop: 8 }}>
-                  取り込む行: <b>{preview.rows.length}</b> 行（{preview.delimiter === 'tab' ? 'タブ区切り' : preview.delimiter === 'comma' ? 'カンマ区切り' : '1 列'}、見出し{preview.header ? 'あり' : 'なし'}）
-                </div>
-                <div className="muted" style={{ fontSize: 12 }}>
-                  列の対応: {preview.mapping.map((f, i) => `${preview.header ? preview.header[i] : `${i + 1}列目`} → ${f ? FIELD_LABEL[f] : '（使わない）'}`).join(' / ')}
-                </div>
-                {[...(d.fileName && d.fileNote ? [d.fileNote] : []), ...preview.warnings].map((w) => (
-                  <div key={w} className="warn-text" style={{ fontSize: 12 }}>
-                    ⚠ {w}
-                  </div>
-                ))}
-                <table className="quotes" style={{ marginTop: 6 }}>
-                  <tbody>
-                    {preview.rows.slice(0, 5).map((r, i) => (
-                      <tr key={i}>
-                        <td>{r.category}</td>
-                        <td>{r.name}</td>
-                        <td className="mono">{r.model}</td>
-                        <td>{r.maker}</td>
-                        <td className="num">{r.qtyNeeded}</td>
-                        <td>{r.unit}</td>
-                        <td>{r.ref}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {preview.rows.length > 5 && <div className="muted">… ほか {preview.rows.length - 5} 行</div>}
-              </>
-            )}
-            {!preview && <div className="muted">空の表から始めます。</div>}
-            <div className="muted" style={{ marginTop: 8 }}>Enter で作成します。作成後は「4 要確認」で問題を F8 で順に直し、Ctrl+Enter で提出します。</div>
-          </div>
-        )}
-        {panel.error && (
-          <div className="err-text" data-testid="wizard-error" style={{ marginTop: 8 }}>
-            {panel.error}
-          </div>
-        )}
-      </div>
-      <Foot items={[step === 7 && (d.inputMode ?? '0') === '0' ? ['Ctrl+Enter', '次へ（貼り付け欄の Enter は改行）'] : ['Enter', step === 8 ? '作成' : '次へ'], ['Alt+ArrowLeft', '1 つ前'], ['Escape', '中止（内容は残る）']]} />
-    </div>
-  )
-}

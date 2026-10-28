@@ -35,7 +35,7 @@ export function setSupplierMaster(list: Array<{ id: string; name: string }>) {
 /** 重複・代替可否の突き合わせを行ごとに全行走査すると行数の 2 乗になるので、行の並び（配列）ごとに索引を作って持つ */
 const dupCache = new WeakMap<Row[], Map<string, Map<string, Row[]>>>()
 function dupCounted(r: Row): boolean {
-  return r.status !== 'cancelled' && r.status !== 'replaced' && !r.removal && !r.pendingRemoval
+  return r.status !== 'cancelled' && r.status !== 'replaced' && !r.removal
 }
 function rowsByValue(rows: Row[], field: string): Map<string, Row[]> {
   let byField = dupCache.get(rows)
@@ -145,7 +145,7 @@ export function checkRow(row: Row, rules: Rule[], project: Project): Problem[] {
         break
       case 'duplicate':
         // 取消・置換の作業中の行と、置換の元と先（同じ部品位置を引き継ぐ）どうしは重複に数えない
-        if (str && !row.removal && !row.pendingRemoval && (rowsByValue(project.rows, field).get(str) ?? []).some((r) => r.id !== row.id && r.replaces !== row.id && row.replaces !== r.id)) push([])
+        if (str && !row.removal && (rowsByValue(project.rows, field).get(str) ?? []).some((r) => r.id !== row.id && r.replaces !== row.id && row.replaces !== r.id)) push([])
         break
       case 'packMultiple':
         // 単位が「パック」なら数量はパック数。個数で数える単位で入数があるときだけ倍数を確かめる

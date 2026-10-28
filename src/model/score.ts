@@ -106,18 +106,6 @@ export function isContested(scores: ScoreBreakdown[], tie: number): boolean {
   return scores.length >= 2 && scores[0].total - scores[1].total <= tie
 }
 
-/** 例外選定（1位以外）が PM 承認を要するか */
-export function needsPmApproval(p: Project, row: Row, scores: ScoreBreakdown[], chosen: ScoreBreakdown): boolean {
-  if (scores.length === 0 || chosen.supplierId === scores[0].supplierId) return false
-  const s = p.settings
-  if (scores[0].total - chosen.total <= s.tieThreshold) return false
-  const qty = row.qtyNeeded
-  const diff = (chosen.effectivePrice - scores[0].effectivePrice) * qty
-  const pct = scores[0].effectivePrice > 0 ? (chosen.effectivePrice - scores[0].effectivePrice) / scores[0].effectivePrice : 0
-  if (diff <= s.exceptionAmount && pct <= s.exceptionPct) return false
-  return true
-}
-
 export function cheapest(scores: ScoreBreakdown[]): ScoreBreakdown | undefined {
   return [...scores].sort((a, b) => a.effectivePrice - b.effectivePrice)[0]
 }

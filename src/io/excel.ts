@@ -2,7 +2,7 @@ import ExcelJS from 'exceljs'
 import type { Project, Row, Supplier, Workspace } from '@/model/types'
 import { colDef } from '@/model/columns'
 import { STATUS_LABEL, ROLE_LABEL, DESIGN_FIELDS, ISSUE_STATUS_LABEL } from '@/model/types'
-import { pendingAdd, adoptedQuote, decisionExtra, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
+import { adoptedQuote, fixedSupplierId, isFixedProcurement, lineAmount, orderQty, rowNeedDate, isActive, ball, valuesFor } from '@/model/derive'
 import { checkProject } from '@/model/rules'
 
 const FILL = (argb: string): ExcelJS.Fill => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } })
@@ -69,7 +69,6 @@ export async function exportBomExcel(ws: Workspace, p: Project, target: ExportTa
   for (const r of p.rows) {
     if (!isActive(r) && target === 'supplier') continue
     // PM 承認待ちの変更セットで足した行は、商社向けには出さない。社内・保管用も購買には出さない（§5。承認する PM には出す）
-    if (pendingAdd(r) && (target === 'supplier' || ws.user.role === 'purchasing')) continue
     // 商社向け: 未提出の下書きは出さない。商社を選んだときは、その商社に見積を頼む行だけ
     if (target === 'supplier' && (r.publishedRev == null || r.status === 'draft')) continue
     // 支給品・社内在庫は商社に頼まない
@@ -111,7 +110,7 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
   const hide = (id: string) => {
     const x = p.rows.find((y) => y.id === id)
     // 承認待ちの追加行と、承認されずに下書きに戻った追加行は購買に出さない
-    return purchasing && (pendingAdd(x ?? ({ flags: {} } as Row)) || (x?.status === 'draft' && x.publishedRev == null))
+    return purchasing && ((x?.status === 'draft' && x.publishedRev == null))
   }
   // 変更点
   const chg = wb.addWorksheet('変更点')
@@ -150,14 +149,10 @@ function addInternalSheets(wb: ExcelJS.Workbook, ws: Workspace, p: Project) {
       const diffs = before && now ? DESIGN_FIELDS.filter((k) => JSON.stringify(before[k]) !== JSON.stringify(now[k])).map((k) => `${colDef(k)?.label ?? k}: ${before[k] ?? ''} → ${now[k] ?? ''}`).join(' / ') : ''
       // 取消・置換の行は値が変わらなくても、取消・置換と書く
       if (diffs) detail = detail && (cause === '取消' || cause.startsWith('置換')) ? `${detail} / ${diffs}` : diffs
-      const dec = p.decisions.find((d) => d.id === sub.changeSet?.decisionId)
-      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: sub.changeSet?.merged?.[id] != null ? `Rev ${finalRev(id, sub.changeSet.merged[id])} にまとめた` : dec ? `${dec.by.name} ${dec.at.slice(0, 10)}${dec.external ? ' / ' + dec.external.approver + ' ' + dec.external.ref : ''}` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${finalRev(id, sub.changeSet.supersededBy)} にまとめた` : '' })
+      const row = chg.addRow({ rev: sub.rev, at: sub.at.slice(0, 16).replace('T', ' '), by: sub.by.name, id, cause: sub.causes[id] ?? '', reason: sub.changeSet?.reason ?? (sub.causes[id]?.startsWith('I-') ? '指摘対応' : ''), no: sub.changeSet?.changeNo ?? '', detail, approval: sub.changeSet?.merged?.[id] != null ? `Rev ${finalRev(id, sub.changeSet.merged[id])} にまとめた` : sub.revoked ? '却下' : sub.changeSet?.supersededBy != null ? `Rev ${finalRev(id, sub.changeSet.supersededBy)} にまとめた` : '' })
       row.fill = CHG_FILL
     }
   }
-  // 購買には、却下された変更セットの PM の決定（理由つき）は出さない（Rev の行と同じに隠す）
-  const hiddenDecisions = new Set(p.submissions.filter((sb) => sb.changeSet?.decisionId && (sb.revoked || sb.changeSet.rejected)).map((sb) => sb.changeSet!.decisionId))
-  for (const d of p.decisions) if (d.rowId && !hide(d.rowId) && !(purchasing && hiddenDecisions.has(d.id))) chg.addRow({ rev: '', at: d.at.slice(0, 16).replace('T', ' '), by: d.by.name, id: d.rowId, cause: '決定', reason: d.kind, no: '', detail: [d.reason, decisionExtra(d)].filter(Boolean).join(' / '), approval: d.external ? `${d.external.approver} ${d.external.date} ${d.external.ref}` : '' })
   // チェック結果
   const chk = wb.addWorksheet('チェック結果')
   headerRow(chk, [{ header: 'ID', key: 'id', width: 7 }, { header: '列', key: 'field', width: 10 }, { header: '重大度', key: 'sev', width: 8 }, { header: '内容', key: 'msg', width: 40 }, { header: '種別', key: 'kind', width: 12 }, { header: '状態', key: 'status', width: 8 }])
@@ -227,13 +222,12 @@ export async function exportRequestExcel(p: Project, sup: Supplier, rows: Row[],
 export async function exportSelectionRecord(ws: Workspace, p: Project, scoresOf: (r: Row) => Array<{ supplierId: string; total: number; price: number; lead: number; record: number; terms: number }>) {
   const wb = new ExcelJS.Workbook()
   const sh = wb.addWorksheet('選定記録')
-  headerRow(sh, [{ header: 'ID', key: 'id', width: 7 }, { header: '部品名', key: 'name', width: 22 }, { header: '型式', key: 'model', width: 24 }, { header: '採用', key: 'adopted', width: 14 }, { header: '理由', key: 'reason', width: 16 }, { header: 'スコア', key: 'score', width: 7 }, { header: '内訳（商社: 合計 / 価格 / 納期 / 実績 / 条件）', key: 'detail', width: 70 }, { header: '決定', key: 'decision', width: 30 }])
+  headerRow(sh, [{ header: 'ID', key: 'id', width: 7 }, { header: '部品名', key: 'name', width: 22 }, { header: '型式', key: 'model', width: 24 }, { header: '採用', key: 'adopted', width: 14 }, { header: '理由', key: 'reason', width: 16 }, { header: 'スコア', key: 'score', width: 7 }, { header: '内訳（商社: 合計 / 価格 / 納期 / 実績 / 条件）', key: 'detail', width: 70 }])
   for (const r of p.rows) {
     if (!r.adoptedSupplierId) continue
     const e = r
     const sc = scoresOf(r)
-    const dec = p.decisions.filter((d) => d.rowId === r.id).map((d) => `${d.kind} ${d.by.name} ${d.at.slice(0, 10)}`).join('; ')
-    sh.addRow({ id: r.id, name: e.name, model: e.model, adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? `${r.adoptedSupplierId}（商社マスタに無い）`, reason: r.adoptReason ?? '推奨', score: r.scoreSnapshot ?? '', detail: sc.map((x) => `${ws.suppliers.find((s) => s.id === x.supplierId)?.name ?? x.supplierId}: ${x.total} / ${x.price} / ${x.lead} / ${x.record} / ${x.terms}`).join('　'), decision: dec })
+    sh.addRow({ id: r.id, name: e.name, model: e.model, adopted: ws.suppliers.find((s) => s.id === r.adoptedSupplierId)?.name ?? `${r.adoptedSupplierId}（商社マスタに無い）`, reason: r.adoptReason ?? '推奨', score: r.scoreSnapshot ?? '', detail: sc.map((x) => `${ws.suppliers.find((s) => s.id === x.supplierId)?.name ?? x.supplierId}: ${x.total} / ${x.price} / ${x.lead} / ${x.record} / ${x.terms}`).join('　') })
   }
   const buf = await wb.xlsx.writeBuffer()
   download(buf as ArrayBuffer, `${p.id}_選定記録.xlsx`)

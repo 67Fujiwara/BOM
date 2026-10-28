@@ -202,14 +202,6 @@ export function Grid({ vm }: { vm: ViewModel }) {
                 </tr>
               )
             }
-            if (it.kind === 'case') {
-              const sel = st.cursorRow === it.key
-              return (
-                <tr key={it.key} className={'group case' + (sel ? ' sel' : '')} data-testid="case-row" onMouseDown={commitBeforeClick} onClick={() => st.set({ cursorRow: it.key })} onDoubleClick={() => (st.set({ cursorRow: it.key }), runCommand('cell.edit'))}>
-                  <td colSpan={cols.length}>◆ {it.label}</td>
-                </tr>
-              )
-            }
             const r = it.row
             const sel = st.cursorRow === r.id
             return <GridRow key={it.key} row={r} cols={cols} ctx={vm.ctx} sel={sel} cursorCol={sel ? st.cursorCol : ''} editing={sel && st.mode === 'edit'} editValue={sel ? st.editValue : ''} editError={sel ? st.editError : null} candidates={sel ? st.editCandidates : null} cursorRef={cursorRef} inputRef={inputRef} suppliers={st.ws.suppliers} />
@@ -273,7 +265,7 @@ interface RowProps {
 }
 
 const GridRow = memo(function GridRow({ row: r, cols, ctx, sel, cursorCol, editing, editValue, editError, candidates, cursorRef, inputRef, suppliers }: RowProps) {
-  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' || (ctx.role === 'design' && (r.removal || r.pendingRemoval)) ? 'rejected' : ''].filter(Boolean).join(' ')
+  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' || (ctx.role === 'design' && r.removal) ? 'rejected' : ''].filter(Boolean).join(' ')
   return (
     <tr className={cls} data-testid="row" data-row-id={r.id}>
       {cols.map((c) => {

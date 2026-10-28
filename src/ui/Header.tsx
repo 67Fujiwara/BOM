@@ -1,9 +1,8 @@
 import { useStore } from '@/model/store'
-import { ROLE_LABEL, ROLES } from '@/model/types'
 import { ballCounts, daysLeft, designBreakdown, isOverdue, isQuotable, totals, fmtYen } from '@/model/derive'
 import type { ViewModel } from '@/model/selectors'
 import { syncEnabled } from '@/io/persist'
-import { runCommand, switchRole } from '@/commands/registry'
+import { runCommand } from '@/commands/registry'
 
 /** ボタンを押してもフォーカスを表に残す（Space / Enter が表の操作として効くように） */
 const keepFocus = (e: React.MouseEvent) => e.preventDefault()
@@ -29,14 +28,14 @@ export function Header({ vm }: { vm: ViewModel }) {
     <header className="header" data-testid="header">
       <div className="hdr-left">
         <span className="pid">{p.id}</span>
-        <span className="pname" title={p.name}>
+        <span className="pname" title={`${p.customer} ${p.name}`.trim()}>
+          {p.customer ? `${p.customer} / ` : ''}
           {p.name}
         </span>
         <span className={'due' + (dl.need != null && dl.need < 7 ? ' urgent' : '')} data-testid="due" title="必要日 = 納期 − 社内工程日数">
           {p.dueDate ? `納期 ${dayText(dl.due)}（必要日 ${dayText(dl.need)}）` : '納期 未定'}
-          {!p.settings.pmConfirmed && <span className="chip warn" style={{ marginLeft: 6 }} title="納期・工程日数・予算・重みは PM の確定前（仮）">仮</span>}
         </span>
-        <span className="muted mono hdr-money" data-testid="money" title={`採用 ${adoptedN} 行の合計。重み：${p.settings.pmConfirmed ? '確定' : '既定（未確定）'}`}>
+        <span className="muted mono hdr-money" data-testid="money" title={`採用 ${adoptedN} 行の合計`}>
           概算 {fmtYen(t.rough, p.settings.currency)} / 正式 {fmtYen(t.formal, p.settings.currency)}
           {t.budget != null && pct != null && (
             <>
@@ -57,7 +56,6 @@ export function Header({ vm }: { vm: ViewModel }) {
           ) : null}
         </span>
         <span className={'lamp ' + (user.role === 'purchasing' ? 'accent keep' : '')}>購買待ち {bc.purchasing}</span>
-        <span className={'lamp ' + (user.role === 'pm' ? 'accent keep' : '')}>PM待ち {bc.pm}</span>
         {user.role !== 'design' && quotable.length > 0 && (
           <span className="lamp keep" title="見積済以降の行 / 見積の対象（提出済の相見積・指定系）" data-testid="quote-progress">
             見積済 {quotedN}/{quotable.length}
@@ -68,13 +66,6 @@ export function Header({ vm }: { vm: ViewModel }) {
         {overdue > 0 && <span className="lamp err keep keep-narrow">期限超過 {overdue}</span>}
       </span>
       <span className="hdr-right">
-        <span className="role" title="役割（ログイン）。Ctrl+K → 役割を切り替え でも変えられます">
-          {ROLES.map((r) => (
-            <button key={r} tabIndex={-1} aria-pressed={user.role === r} onMouseDown={keepFocus} onClick={() => user.role !== r && switchRole(r)} data-testid={`role-${r}`}>
-              {ROLE_LABEL[r]}
-            </button>
-          ))}
-        </span>
         <span className="muted hdr-user" title={syncEnabled() ? '共有ストアに接続中' : 'このブラウザに保存'}>
           {user.name}
           {syncEnabled() ? ' · 共有' : ''}

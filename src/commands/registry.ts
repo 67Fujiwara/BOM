@@ -5,29 +5,27 @@ import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { VIEWS, isAcked } from '@/model/views'
-import { ball as ballOf, pendingAdd, valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues, tradableIn } from '@/model/derive'
+import { valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues, tradableIn } from '@/model/derive'
 import { checkRow, setSupplierMaster, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
 import * as issues from '@/actions/issues'
 import * as adopt from '@/actions/adopt'
-import * as pm from '@/actions/pm'
+import { applySettings, simulateSettings } from '@/actions/settings'
 import * as quotes from '@/actions/quotes'
 import { rankedQuotes, scoreRow } from '@/model/score'
-import { makeSampleProject, makeSupplier, newProject, newRow, rowId as mkRowId, DEFAULT_SETTINGS } from '@/model/sample'
+import { makeSampleProject, makeSupplier } from '@/model/sample'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { backupsSnapshot, clearBackups, loadBackups, restoreBackupsSnapshot, resetWorkspace, saveBackup, type Backup } from '@/io/persist'
 import { addDays, fmtDateTime, todayStr } from '@/model/dates'
 import { parseDate, parseNumber, toHalf } from '@/model/parse'
 import { sanitizeWorkspace } from '@/model/validate'
-import { parseBomPaste } from '@/io/paste'
-import { settingsFields as settingsFieldsOf } from '@/ui/settingsFields'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
 const toast = (t: string, k: 'ok' | 'err' | 'info' = 'ok') => st().toastMsg(t, k)
 export const vm = () => buildViewModel(st())
 
-export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 4, purchasing: 9, pm: 7 }
+export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 4, purchasing: 9 }
 
 /** 選択中の行（いま表示されている行だけ。絞り込みで隠れた行は対象にしない） */
 function cursorRow(): Row | undefined {
@@ -182,11 +180,6 @@ export function jumpToRow(id: string, col?: string, keepProblem = false): boolea
   const r = p.rows.find((x) => x.id === id)
   if (!r) return false
   if (!vm().rows.some((x) => x.id === id)) set({ view: 1, filter: '', cellFilter: null })
-  // 1 すべてにも出ない行（購買には PM 承認待ちの変更セットの追加行）は選ばない
-  if (!vm().rows.some((x) => x.id === id) && !r.hidden) {
-    toast(`${id} は変更セットの PM 承認待ちの行です（承認されると見えます）`, 'info')
-    return false
-  }
   const cat = effective(r).category || '（分類なし）'
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
@@ -371,6 +364,7 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
   if (row.flags.notation) return '表記修正を確認'
   if (row.flags.orderQtyCheck) return '発注数を確認'
   if (row.flags.formalWithdrawn && role === 'purchasing') return '正式依頼の取下げを元の商社に伝えた'
+  if (row.flags.leadNG && !row.flags.countermeasure && role === 'purchasing') return '納期NGを承知で進める'
   if (row.flags.contested && role === p.settings.selector) return '拮抗を確認'
   if (row.flags.priceCheck) return '単価要確認を確認'
   if (role === 'design') {
@@ -396,6 +390,7 @@ function ackCurrent() {
   if (r.flags.notation) return issues.ackFlag(r.id, 'notation')
   if (r.flags.orderQtyCheck) return issues.ackFlag(r.id, 'orderQtyCheck')
   if (r.flags.formalWithdrawn && role === 'purchasing') return issues.ackFlag(r.id, 'formalWithdrawn')
+  if (r.flags.leadNG && !r.flags.countermeasure && role === 'purchasing') return issues.ackFlag(r.id, 'leadNG')
   if (r.flags.contested && role === p.settings.selector) return issues.ackFlag(r.id, 'contested')
   if (r.flags.priceCheck) return issues.ackFlag(r.id, 'priceCheck')
   if (role === 'design') {
@@ -440,7 +435,6 @@ function problemCells(): Array<{ rowId: string; field: string }> {
     }
     if (role === 'design') for (const pr of checkRow(r, s.ws.rules, p)) out.push({ rowId: r.id, field: pr.field, order: 20 + (pr.severity === 'error' ? 0 : 1) })
     if (role === 'purchasing' && (r.flags.reconfirm || r.flags.requote || r.flags.notation || r.flags.orderQtyCheck || r.flags.formalWithdrawn)) out.push({ rowId: r.id, field: r.flags.formalWithdrawn && !(r.flags.reconfirm || r.flags.requote || r.flags.notation || r.flags.orderQtyCheck) ? 'status' : 'model', order: 30 })
-    if (role === 'pm' && ballOf(p, r) === 'pm') out.push({ rowId: r.id, field: 'status', order: 30 })
   }
   const sorted = out.sort((a, b) => a.order - b.order || a.rowId.localeCompare(b.rowId))
   const seen = new Set<string>()
@@ -661,7 +655,7 @@ export function quickfixOptions(r: Row, field: string): PanelOption[] {
         },
       })
   }
-  for (const i of iss) if ((i.by.name === s.ws.user.name || role === 'pm') && (i.status === 'open' || i.status === 'inProgress' || i.status === 'answered')) opts.push({ label: `${i.id} を見送りにする（理由）`, run: () => prompt(`見送り ${i.id}`, { requireText: true }, (_c, t) => issues.wontfixIssue(i.id, t)) })
+  for (const i of iss) if (i.by.name === s.ws.user.name && (i.status === 'open' || i.status === 'inProgress' || i.status === 'answered')) opts.push({ label: `${i.id} を見送りにする（理由）`, run: () => prompt(`見送り ${i.id}`, { requireText: true }, (_c, t) => issues.wontfixIssue(i.id, t)) })
   return opts
 }
 function openQuickfix() {
@@ -709,23 +703,8 @@ function issueActionPanel(issueId: string) {
         }),
     })
     if (i.proposal) options.push({ key: '4', label: `提案 ${i.proposal.model} を適用（置換）`, run: () => void issues.applyProposal(i.id) })
-    // 対策不成立は、PM の決定から出た指摘への回答だけ（購買の依頼には「直さず回答」で返す。§6.3）
-    if ((i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && i.by.role === 'pm')
-      options.push({
-        key: '7',
-        label: `${i.kind === '数量見直し依頼' ? '数量変更不可' : '代替なし'}（対策不成立として PM へ）`,
-        run: () =>
-          prompt(`${i.id} 対策不成立の理由`, { requireText: true }, (_c, t) => {
-            issues.answerIssue(i.id, t, '説明')
-            s.commit('対策不成立', (p2) => {
-              const rr = p2.rows.find((x) => x.id === i.rowId)!
-              rr.flags.pmPending = true
-              rr.flags.pmReason = '対策不成立'
-            })
-          }),
-      })
   }
-  if (i.by.name === s.ws.user.name || role === 'pm') {
+  if (i.by.name === s.ws.user.name) {
     options.push({
       key: '5',
       label: 'この指摘からルールを作る',
@@ -797,7 +776,7 @@ export function publishFlow(rowIds?: string[]) {
   // 開いたあとに別のタブでその行の中身（取消・値）が変わったら、確定の前に止めて確かめ直させる
   const sig = () => {
     const p2 = st().project()
-    return JSON.stringify(ids.map((id) => { const r = p2.rows.find((x) => x.id === id); return r && [r.status, r.working ?? null, r.removal ?? null, r.pendingRemoval ?? null, r.hidden ?? false] }))
+    return JSON.stringify(ids.map((id) => { const r = p2.rows.find((x) => x.id === id); return r && [r.status, r.working ?? null, r.removal ?? null, r.hidden ?? false] }))
   }
   const before = sig()
   const changed = () => {
@@ -817,84 +796,6 @@ export function publishFlow(rowIds?: string[]) {
     return
   }
   rows.publish(rowIds)
-}
-
-// ---------- 決定パネル（7） ----------
-// 開いたあとに別のタブで要決定の中身が変わったら決めない（見ていない変更を承認しない）。y / Shift+Y の直接の決定にも使う
-function staleGuard(r: Row, c: ReturnType<typeof pm.pmCaseOf>): () => boolean {
-  const rev0 = r.pendingRev
-  // 理由を入れているあいだに変わっても同じ（確定するときにも見直す）。正式見積の金額・承認待ちの値も見る
-  const seen = (x: Row) => JSON.stringify([x.pendingApproval ?? null, x.pendingRemoval ?? null, pm.formalKey(st().project(), x) ?? null, x.orderQty, x.qtyNeeded, x.adoptedSupplierId ?? null])
-  const seen0 = seen(r)
-  const stale = () => {
-    const now = st().project().rows.find((x) => x.id === r.id)
-    if (now && (now.pendingRev !== rev0 || pm.pmCaseOf(st().project(), now) !== c)) {
-      toast(`${r.id} の要決定が、パネルを開いたあとに別のタブで変わりました（${c}${rev0 != null ? ` Rev.${rev0}` : ''} → ${now.pendingRev != null ? `Rev.${now.pendingRev}` : pm.pmCaseOf(st().project(), now)}）。決めていません。開き直してください`, 'err')
-      return true
-    }
-    if (now && seen(now) !== seen0) {
-      toast(`${r.id} の要決定の中身（承認待ちの値・正式見積）が、パネルを開いたあとに別のタブで変わりました。決めていません。開き直してください`, 'err')
-      return true
-    }
-    return false
-  }
-  return stale
-}
-function decisionPanel(r: Row) {
-  const s = st()
-  const p = s.project()
-  const c = pm.pmCaseOf(p, r)
-  if (c === 'なし') return toast(`${r.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
-  const stale = staleGuard(r, c)
-  const options = pm.pmOptions(c, r).map((o) => ({ key: o.key === 'Y' ? 'Shift+Y' : o.key, label: o.label, run: () => void (!stale() && decideWithReason(r.id, o.kind, stale)) }))
-  // 既定の選択は無し（Enter の連打で受入・承認が決まらないように、キーか ↑↓ で選ぶ）
-  // 先行発注の申請は、理由と金額を見て決められるように題に出す
-  const req = c === '先行発注判断' && r.ltbRequest ? ` 申請: ${r.ltbRequest.reason}${r.ltbRequest.amount != null ? `（¥${r.ltbRequest.amount.toLocaleString()}）` : ''}・${r.ltbRequest.by}` : ''
-  // 変更セットは Rev と、まとめた前の Rev を題に出す
-  // まとめた Rev をさらに前の Rev がまとめていれば、それもたどる（Rev.3 → Rev.4 → Rev.5）
-  const merged: number[] = []
-  if (c === '変更セット' && r.pendingRev != null)
-    for (let into = [r.pendingRev]; into.length; ) {
-      const found = p.submissions.filter((sb) => !merged.includes(sb.rev) && into.some((v) => sb.changeSet?.merged?.[r.id] === v || sb.changeSet?.supersededBy === v)).map((sb) => sb.rev)
-      merged.push(...found)
-      into = found
-    }
-  merged.sort((a, b) => a - b)
-  const revNote = c === '変更セット' && r.pendingRev != null ? ` Rev.${r.pendingRev}${merged.length ? `（Rev.${merged.join('・')} の変更をまとめた）` : ''}` : ''
-  openPanel({ kind: 'quickfix', title: `決定パネル ${r.id}（${c}${revNote}）${req}`, rowId: r.id, field: 'status', index: -1, options })
-}
-function decideWithReason(rowId: string, kind: Parameters<typeof pm.decide>[1], stale?: () => boolean) {
-  const s = st()
-  const p = s.project()
-  const r = p.rows.find((x) => x.id === rowId)!
-  const ext = pm.needsExternalApproval(p, r) && (kind === '受入' || kind === '承認')
-  const must = kind === '却下' || kind === '回答を支持' || kind === '指摘を支持'
-  // 変更セットの承認・却下は Rev の全行に効くので、対象を題に出す
-  const cs = pm.pmCaseOf(p, r) === '変更セット' && r.pendingRev != null ? `・Rev.${r.pendingRev} の変更セット ${p.rows.filter((x) => x.pendingRev === r.pendingRev && x.flags.pmPending && x.flags.pmReason === '変更セット').length} 行まとめて` : ''
-  prompt(`決定: ${kind}（${rowId}${cs}。理由${must ? '・必須' : '・任意'}）${ext ? '。上長決裁の条件に該当: 承認者を入れてください' : ''}`, { requireText: must, showText: true, extra: ext ? { 承認者: '', 日付: todayStr(), 決裁書No: '' } : kind === '特急・分納' ? { 上限金額: '' } : undefined }, (_c, text, extra) => {
-    if (stale?.()) return
-    if (ext && !(extra?.['承認者'] ?? '').trim()) return '上長決裁の条件に該当します。承認者を入れてください'
-    if (ext) {
-      const dd = parseDate(extra?.['日付'] ?? '', { label: '決裁日' })
-      if (!dd.ok) return dd.error
-    }
-    let amount: number | undefined
-    // 特急・分納は上限金額を入れる（§9.1「上限入力」）
-    if (kind === '特急・分納' && !(extra?.['上限金額'] ?? '').trim())
-      return /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()
-        ? `「${text.trim()}」は理由の欄に入っています。Tab で下の「上限金額」の欄へ移って金額を入れ、理由の欄には理由を書いてください`
-        : '特急・分納の上限金額を入れてください（Tab で下の「上限金額」の欄へ。例: 30000）'
-    // 理由の欄に金額だけを入れたまま確定しない（理由が「50000」と残らないように）
-    if (kind === '特急・分納' && /^[\d,.¥￥円\s]+$/.test(text.trim()) && text.trim()) return '理由の欄が金額だけです。理由を書いてください（金額は「上限金額」の欄）'
-    if (extra?.['上限金額']) {
-      const n = parseNumber(extra['上限金額'], { min: 0, label: '上限金額' })
-      if (!n.ok) return n.error
-      amount = n.value ?? undefined
-    }
-    const err = pm.decide(rowId, kind, text, { external: ext ? { approver: (extra?.['承認者'] ?? '').trim(), date: extra?.['日付'] ?? '', ref: extra?.['決裁書No'] ?? '' } : undefined, amount })
-    if (err) return err
-    toast(`${rowId}${cs}: ${kind}`, 'ok')
-  })
 }
 
 // ---------- 案件設定 ----------
@@ -933,15 +834,6 @@ export function validateSetting(key: string, v: string, p: Project, ws = st().ws
     }
     case 'selector':
       return /^(design|purchasing|設計|購買)$/.test(v.trim()) ? null : '選定者は「設計」か「購買」です'
-    case 'changeNeedsPmApproval':
-      return /^(はい|いいえ|y|n|yes|no|true|false|1|0)$/i.test(v.trim()) ? null : '「はい」か「いいえ」で入れてください'
-    case 'externalApprovalAmount':
-    case 'exceptionAmount':
-    case 'formalDiffAmount':
-      return num({ min: 0, max: 1e12, label: '金額' })
-    case 'externalApprovalBudgetPct':
-    case 'exceptionPct':
-    case 'formalDiffPct':
     case 'qtyTolerancePct':
       return num({ min: 0, max: 100, label: '割合（%）' })
     case 'tieThreshold':
@@ -962,9 +854,9 @@ export function validateSetting(key: string, v: string, p: Project, ws = st().ws
     }
     case 'members': {
       const ms = toHalf(v).split(/[,、]/).map((x) => x.trim())
-      if (ms.length !== 3) return '担当者は「設計,購買,PM」の 3 人をカンマ区切りで入れてください'
-      if (ms.some((x) => !x)) return '担当者の名前を 3 人とも入れてください（未定なら「未定」など）'
-      // 役割ごとに別の人として記録する（同じ名前だと Undo・「自分の」指摘・決定の記録が混ざる）
+      if (ms.length !== 2) return '担当者は「設計,購買」の 2 人をカンマ区切りで入れてください'
+      if (ms.some((x) => !x)) return '担当者の名前を 2 人とも入れてください（未定なら「未定」など）'
+      // 役割ごとに別の人として記録する（同じ名前だと Undo・「自分の」指摘の記録が混ざる）
       const dup = ms.find((x, i) => ms.indexOf(x) !== i)
       return dup ? `同じ名前「${dup}」が複数の役割にあります。役割ごとに別の担当者を入れてください` : null
     }
@@ -1002,8 +894,8 @@ function saveSettings(draft: Record<string, string>) {
         break
       }
       case 'members': {
-        const [d, pu, m] = toHalf(v).split(/[,、]/).map((x) => x.trim())
-        extraCommits.push(() => s.commit('担当者を変更', (p2) => void (p2.members = { design: d ?? '', purchasing: pu ?? '', pm: m ?? '' })))
+        const [d, pu] = toHalf(v).split(/[,、]/).map((x) => x.trim())
+        extraCommits.push(() => s.commit('担当者を変更', (p2) => void (p2.members = { design: d ?? '', purchasing: pu ?? '' })))
         break
       }
       case 'supplierIds': {
@@ -1015,9 +907,6 @@ function saveSettings(draft: Record<string, string>) {
         }))
         break
       }
-      case 'changeNeedsPmApproval':
-        patch[k] = /^(はい|y|yes|true|1)$/i.test(v)
-        break
       case 'selector':
         patch[k] = /^(purchasing|購買)$/.test(v) ? 'purchasing' : 'design'
         break
@@ -1027,10 +916,7 @@ function saveSettings(draft: Record<string, string>) {
       case 'holidays':
         patch.holidays = v.split(/[,、\s]+/).filter(Boolean).map((h) => (parseDate(h) as { value: string }).value)
         break
-      case 'exceptionPct':
-      case 'formalDiffPct':
       case 'qtyTolerancePct':
-      case 'externalApprovalBudgetPct':
         patch[k] = ((parseNumber(v) as { value: number }).value ?? 0) / 100
         break
       case 'name':
@@ -1043,135 +929,41 @@ function saveSettings(draft: Record<string, string>) {
       }
     }
   }
-  const role = s.user().role
-  for (const f of settingsFieldsOf(p)) if (f.key in draft && ((f.owner === 'PM' && role !== 'pm') || (f.owner === '購買' && role === 'design'))) return toast(`権限なし（${f.label} は ${f.owner} 項目）`, 'err')
   if (!Object.keys(patch).length) {
     extraCommits.forEach((f) => f())
     closePanel()
     return toast(extraCommits.length ? '案件設定を保存しました' : '変更はありません', 'info')
   }
   const needImpact = 'dueDate' in patch || 'processDays' in patch || 'weights' in patch
-  // 担当者などのほかの変更も、理由を入れて確定したときにまとめて保存する（Esc で取りやめたら何も保存しない）
-  const finish = (reason: string, opts?: { fixedNeed?: 'shift' | 'keep'; proposeReselect?: boolean }) => {
+  const finish = (opts?: { fixedNeed?: 'shift' | 'keep' }) => {
     extraCommits.forEach((f) => f())
-    pm.applySettings(patch as Parameters<typeof pm.applySettings>[0], reason, opts)
+    applySettings(patch as Parameters<typeof applySettings>[0], opts)
     closePanel()
     toast('案件設定を保存しました', 'ok')
   }
   if (needImpact) {
-    const im = pm.simulateSettings(p, { dueDate: patch.dueDate as string | null | undefined, processDays: patch.processDays as number | undefined, weights: patch.weights as Project['weights'] | undefined })
-    const lines = [`納期NG になる行: ${im.leadNG.length}（${Object.entries(im.leadNG.reduce((m, x) => ({ ...m, [x.status]: (m[x.status] ?? 0) + 1 }), {} as Record<string, number>)).map(([k, n]) => `${k} ${n}`).join(' / ') || 'なし'}）`, `推奨が変わる行: ${im.recommendChanged.length}（${im.recommendChanged.slice(0, 8).join(', ')}）`, `行必要日が固定の行: ${im.fixedNeed.length}（${im.fixedNeed.join(', ')}）`, `正式依頼中で必要納期が変わる行（再発行対象）: ${im.reissue.length}`, `総額差（推奨で選び直した場合）: ${im.totalDelta >= 0 ? '+' : ''}¥${Math.round(im.totalDelta).toLocaleString()}`, `特急費の概算: 納期NG ${im.leadNG.length} 行が対象（金額は商社の特急見積で決まる。決定パネル e で上限を入れる）`]
+    const im = simulateSettings(p, { dueDate: patch.dueDate as string | null | undefined, processDays: patch.processDays as number | undefined, weights: patch.weights as Project['weights'] | undefined })
+    const lines = [
+      `納期NG になる行: ${im.leadNG.length}（${Object.entries(im.leadNG.reduce((m, x) => ({ ...m, [x.status]: (m[x.status] ?? 0) + 1 }), {} as Record<string, number>)).map(([k, n]) => `${k} ${n}`).join(' / ') || 'なし'}）`,
+      `推奨が変わる行: ${im.recommendChanged.length}（${im.recommendChanged.slice(0, 8).join(', ')}）`,
+      `行必要日が固定の行: ${im.fixedNeed.length}（${im.fixedNeed.join(', ')}）`,
+      `正式依頼中で必要納期が変わる行（再発行対象）: ${im.reissue.length}`,
+      `総額差（推奨で選び直した場合）: ${im.totalDelta >= 0 ? '+' : ''}¥${Math.round(im.totalDelta).toLocaleString()}`,
+    ]
     openPanel({
       kind: 'impact',
       title: '影響試算（確定前）',
       lines,
       onConfirm: () => {
-        prompt('変更理由（必須）', { requireText: true, showText: true, options: im.fixedNeed.length ? ['固定必要日の行: 同じ日数だけ前倒し', '固定必要日の行: 据え置き'] : undefined }, (choice, reason) => {
-          const fixedNeed = choice?.includes('据え置き') ? 'keep' : 'shift'
-          if (im.recommendChanged.length) prompt(`推奨が変わる ${im.recommendChanged.length} 行を 7 に再選定提案として載せますか`, { options: ['載せる', '載せない'], showText: false }, (c2) => finish(reason, { fixedNeed, proposeReselect: c2 === '載せる' }))
-          else finish(reason, { fixedNeed })
-        })
+        if (im.fixedNeed.length) prompt('固定必要日の行の扱い', { options: ['同じ日数だけ前倒し', '据え置き'], showText: false }, (choice) => finish({ fixedNeed: choice?.includes('据え置き') ? 'keep' : 'shift' }))
+        else finish()
       },
     })
     return
   }
-  prompt('変更理由（必須）', { requireText: true }, (_c, reason) => finish(reason))
+  finish()
 }
 
-// ---------- 新しい BOM ----------
-export const WIZ_KEYS = ['id', 'name', 'due', 'processDays', 'budget', 'buyer', 'suppliers', 'input', 'check'] as const
-/** ガイドの各段階の入力チェック。OK なら null */
-export function validateWizardStep(step: number, d: Record<string, string>): string | null {
-  const s = st()
-  switch (step) {
-    case 0: {
-      const id = (d.id ?? '').trim()
-      if (id && !/^[A-Za-z0-9_\-.]{1,40}$/.test(toHalf(id))) return '案件ID は英数字と - _ . で 40 文字までにしてください（例: P-2026-042）'
-      if (id && s.ws.projects.some((p) => p.id.toLowerCase() === toHalf(id).toLowerCase())) return `案件ID「${id}」はもうあります（Ctrl+P で開けます）。別の ID にしてください`
-      return null
-    }
-    case 1:
-      return (d.name ?? '').length > 100 ? '案件名が長すぎます（100 文字まで）' : null
-    case 2: {
-      const r = parseDate(d.due ?? '', { label: '納期' })
-      return r.ok ? (r.value && r.value < todayStr() ? `納期 ${r.value} が過去の日付です` : null) : r.error
-    }
-    case 3: {
-      const r = parseNumber(d.processDays ?? '', { min: 0, max: 365, integer: true, label: '社内工程日数' })
-      return r.ok ? null : r.error
-    }
-    case 4: {
-      const r = parseNumber(d.budget ?? '', { min: 0, max: 1e12, label: '予算' })
-      return r.ok ? null : r.error
-    }
-    case 5: {
-      // 購買・PM の担当者（役割ごとに別の人。作った本人とも別）
-      const names = toHalf(d.buyer ?? '').split(/[,、]/).map((x) => x.trim()).filter(Boolean)
-      if (names.length > 2) return '購買担当, PM 担当 の 2 人までをカンマ区切りで入れてください'
-      if (names.length === 2 && names[0] === names[1]) return `購買と PM に同じ名前「${names[0]}」があります。役割ごとに別の担当者を入れてください`
-      if (names.includes(s.ws.user.name)) return `「${s.ws.user.name}」はいまの${ROLE_LABEL[s.ws.user.role]}担当（あなた）です。別の担当者を入れるか空にしてください`
-      return null
-    }
-    case 7:
-      if (d.inputMode !== '2' && !(d.paste ?? '').trim()) return '部品を貼り付けてください（またはファイルを選ぶ / 3 で 1 つずつ入力）'
-      return null
-    default:
-      return null
-  }
-}
-function createProjectFromWizard(d: Record<string, string>, picks: string[]) {
-  const s = st()
-  for (let i = 0; i < 8; i++) {
-    const err = validateWizardStep(i, d)
-    if (err) return toast(err, 'err')
-  }
-  const id = toHalf((d.id ?? '').trim()) || nextProjectId()
-  const due = parseDate(d.due ?? '')
-  const pd = parseNumber(d.processDays ?? '')
-  const bd = parseNumber(d.budget ?? '')
-  // 名前を入れなかったときは案件 ID を付けて、受信箱で見分けられるように
-  const p = newProject(id, d.name?.trim() || `新しいBOM ${id}`, {
-    dueDate: due.ok ? due.value : null,
-    preferredSupplierIds: picks,
-    supplierIds: picks,
-    // 作った人は自分の役割の担当者にする（購買・PM が作っても設計担当にはしない）
-    members: (() => {
-      const [buyer = '', pmName = ''] = toHalf(d.buyer ?? '').split(/[,、]/).map((x) => x.trim())
-      const me = s.ws.user
-      return { design: me.role === 'design' ? me.name : '', purchasing: me.role === 'purchasing' ? me.name : buyer, pm: me.role === 'pm' ? me.name : pmName }
-    })(),
-    settings: { ...DEFAULT_SETTINGS, processDays: pd.ok && pd.value != null ? pd.value : 10, budget: bd.ok ? bd.value : null },
-  })
-  let warnings: string[] = []
-  if (d.inputMode !== '2' && d.paste?.trim()) {
-    const res = parseBomPaste(d.paste)
-    warnings = res.warnings
-    res.rows.forEach((r, i) => p.rows.push(newRow(mkRowId(i + 1), r)))
-  }
-  if (!p.rows.length) p.rows.push(newRow('R001'))
-  s.commitWs('', (ws) => {
-    ws.projects.push(p)
-    ws.currentProjectId = p.id
-  })
-  set({ wizardDraft: null, view: 4, cursorRow: null, filter: '', cellFilter: null })
-  closePanel()
-  ensureCursor()
-  const problems = p.rows.filter((r) => checkRow(r, st().ws.rules, p).length).length
-  // 注意はいくつあっても件数と先頭の 2 つを出す（1 つ目だけで、数量の列が無い などを見落とさない）
-  const note = warnings.length ? `。注意 ${warnings.length} 件: ${warnings.slice(0, 2).join(' / ')}${warnings.length > 2 ? ' ほか' : ''}` : ''
-  if (s.ws.user.role !== 'design') {
-    setView(1)
-    return toast(`${p.name}（${p.rows.length} 行）を作成しました。行の追加・編集は設計が行います（Ctrl+K → 役割 で設計に切り替え）${note}`, 'info')
-  }
-  if (!problems) {
-    setView(1)
-    return toast(`${p.name}（${p.rows.length} 行）を作成しました。Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
-  }
-  // 最初の問題のセルにカーソルを置く（n は「次の」問題へ進むので、ここから直す）
-  const first = problemCells()[0]
-  if (first) jumpToRow(first.rowId, first.field)
-  toast(`${p.name}（${p.rows.length} 行）を作成しました。問題のある行 ${problems} 行: カーソルのセルから直し、F8 で次の問題へ。終わったら Ctrl+Enter で提出します${note}`, warnings.length ? 'info' : 'ok')
-}
 function restoreBackup(b: Backup) {
   let res: ReturnType<typeof sanitizeWorkspace>
   try {
@@ -1213,6 +1005,8 @@ function replaceWorkspace(ws: Workspace): boolean {
   const prev = st().ws
   const ok = st().commitWs('', (w) => {
     w.projects = ws.projects
+    w.stock = ws.stock
+    w.purchases = ws.purchases
     w.suppliers = ws.suppliers
     w.rules = ws.rules
     w.currentProjectId = ws.currentProjectId
@@ -1226,13 +1020,6 @@ function replaceWorkspace(ws: Workspace): boolean {
   set({ cursorRow: null, filter: '', cellFilter: null, openRows: [], sort: null })
   ensureCursor()
   return true
-}
-function nextProjectId(): string {
-  const y = new Date().getFullYear()
-  for (let n = st().ws.projects.length + 1; ; n++) {
-    const id = `P-${y}-${String(n).padStart(3, '0')}`
-    if (!st().ws.projects.some((p) => p.id.toLowerCase() === id.toLowerCase())) return id
-  }
 }
 
 // ---------- 役割 ----------
@@ -1259,16 +1046,11 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     if (!r) toast(s.cursorRow?.startsWith('g:') ? '分類の見出しです（↓ で行へ）' : s.cursorRow?.startsWith('case:') ? '案件の要決定です（y で既定のまま確定 / Enter で案件設定を開く）' : '行を選んでください（↓ で先頭の行へ）', 'info')
     return r
   }
-  // 7 要決定の先頭にある「案件設定確定」の行
-  if (s.cursorRow?.startsWith('case:')) {
-    if (id === 'pm.approve') return pm.confirmSettings()
-    if (id === 'cell.edit' || id === 'row.toggleOpen') return openSettings()
-  }
   switch (id) {
     case 'palette.open':
       return openPanel({ kind: 'palette', query: '', index: 0 })
     case 'project.switch':
-      return openPanel({ kind: 'inbox', index: 0, query: '' })
+      return set({ screen: 'active', panel: null, mode: 'nav' })
     case 'project.save':
       if (!s.commitWs('', () => {})) return
       return toast('保存しました（編集は自動で保存されています）', 'ok')
@@ -1407,12 +1189,6 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (it?.kind === 'issue') return issueActionPanel(it.id)
         if (it?.kind === 'quote') return quoteActionPanel(r, it.supplierId)
       }
-      if (role === 'pm' && r && pm.pmCaseOf(p, r) !== 'なし') return decisionPanel(r)
-      // PM が 7 で決めることの無い行に Enter: 次の手を案内する（「権限なし」で止めない）
-      if (role === 'pm' && r && s.view === 7 && rows.canEdit(s.cursorCol)) {
-        const ans = p.issues.find((i) => i.rowId === r.id && (i.status === 'answered' || i.status === 'fixed') && i.by.role === 'pm')
-        return toast(`${r.id} に要決定はありません${ans ? `（${ans.id} は${ans.status === 'answered' ? '回答済' : '対応済'}。Alt+x で受け入れ、Space で中身を見る）` : '（Space で詳細、F8 で次の要決定へ）'}`, 'info')
-      }
       return startEdit()
     case 'cell.clear': {
       if (!need()) return
@@ -1496,7 +1272,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         if (!c) return toast('有効な見積がありません', 'err')
         const name = s.ws.suppliers.find((x) => x.id === c.supplierId)?.name
         const was = r!.adoptedSupplierId ?? null
-        return prompt(`先行採用（見積中）: 最安の ${name} を仮採用し PM の承認待ちにします。理由（数字か ↑↓）`, { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (ch, t) => void adopt.adoptChoose(r!.id, c.supplierId, `最安（スコア無視）・${ch ?? 'その他'}${t ? ': ' + t : ''}`, was))
+        return prompt(`先行採用（見積中）: 最安の ${name} を採用します。理由（数字か ↑↓）`, { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (ch, t) => void adopt.adoptChoose(r!.id, c.supplierId, `最安（スコア無視）・${ch ?? 'その他'}${t ? ': ' + t : ''}`, was))
       }
       adopt.adoptCheapest(r!.id)
       return
@@ -1610,25 +1386,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       const sel = s.detailIndex > 0 ? detailItems(r!)[s.detailIndex - 1] : undefined
       const target = (sel?.kind === 'issue' ? all.find((i) => i.id === sel.id) : undefined) ?? all.filter((i) => i.status === 'fixed' || i.status === 'answered' || i.status === 'inProgress').at(-1)
       if (!target || !(target.status === 'fixed' || target.status === 'answered' || target.status === 'inProgress')) return toast('差戻しできる指摘がありません（対応済・回答済・対応中のもの）', 'info')
-      return prompt(`差戻し ${target.id}（理由必須。2 回目で PM の要決定に上がります）`, { requireText: true }, (_c, t) => issues.bounceIssue(target.id, t))
-    }
-    case 'pm.approve': {
-      if (!need()) return
-      if (role !== 'pm') return toast('権限なし（承認は PM）', 'err')
-      const c = pm.pmCaseOf(p, r!)
-      if (c === 'なし') return toast(`${r!.id} は要決定ではありません（7 要決定ビューの行で使えます）`, 'info')
-      const o = pm.pmOptions(c, r!).find((x) => x.key === 'y')
-      if (!o) return toast(`${c} の行では y は使えません（Enter で決定パネル）`, 'info')
-      return decideWithReason(r!.id, o.kind, staleGuard(r!, c))
-    }
-    case 'pm.reject': {
-      if (!need()) return
-      if (role !== 'pm') return toast('権限なし（却下は PM）', 'err')
-      const c = pm.pmCaseOf(p, r!)
-      if (c === 'なし') return toast(`${r!.id} は要決定ではありません`, 'info')
-      const o = pm.pmOptions(c, r!).find((x) => x.key === 'Y')
-      if (!o) return toast(`${c} の行では Shift+Y は使えません（Enter で決定パネル）`, 'info')
-      return decideWithReason(r!.id, o.kind, staleGuard(r!, c))
+      return prompt(`差戻し ${target.id}（理由必須）`, { requireText: true }, (_c, t) => issues.bounceIssue(target.id, t))
     }
     case 'weights.row':
       if (!need()) return
@@ -1686,13 +1444,12 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     case 'quotes.formal': {
       if (role !== 'purchasing') return toast('権限なし（正式見積の依頼は購買）', 'err')
       const cand = p.rows.filter((x) => isActive(x) && x.adoptedSupplierId && (x.status === 'selected' || (x.flags.reissue && ['formalRequested', 'formalQuoted'].includes(x.status))))
-      const working = cand.filter((x) => hasWork(x) || x.pendingRemoval).length
-      const pending = cand.filter((x) => x.flags.pmPending || x.flags.ltbPending).length
-      const requote = cand.filter((x) => x.flags.requote && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending && !x.flags.ltbPending).length
-      const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.pendingRemoval || x.flags.pmPending || x.flags.ltbPending || x.flags.requote || s.ws.suppliers.find((y) => y.id === x.adoptedSupplierId)?.tradable === false || x.procurement === '支給品' || x.procurement === '社内在庫').length
-      const contested = cand.filter((x) => x.flags.contested && !(x.working && Object.keys(x.working).length) && !x.flags.pmPending).length
-      if (!n) return toast(`依頼できる行がありません（選定済・再発行対象の行なし${working || pending || requote ? `。作業中 ${working} 行・承認待ち ${pending} 行・再見積要 ${requote} 行は除外` : ''}）`, 'err')
-      return confirmDanger(`正式見積依頼書（社外）を出します: 対象 ${n} 行${contested ? `（拮抗 ${contested} 行を含む）` : ''}${working || pending ? `。作業中 ${working} 行・承認待ち ${pending} 行は除外` : ''}。商社に送る書類が作られ、状態が「正式依頼中」になります`, '依頼書を作る', () => void quotes.requestFormalQuotes().then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok')))
+      const working = cand.filter((x) => hasWork(x)).length
+      const requote = cand.filter((x) => x.flags.requote && !(x.working && Object.keys(x.working).length)).length
+      const n = cand.length - cand.filter((x) => (x.working && Object.keys(x.working).length) || x.flags.requote || s.ws.suppliers.find((y) => y.id === x.adoptedSupplierId)?.tradable === false || x.procurement === '支給品' || x.procurement === '社内在庫').length
+      const contested = cand.filter((x) => x.flags.contested && !(x.working && Object.keys(x.working).length)).length
+      if (!n) return toast(`依頼できる行がありません（選定済・再発行対象の行なし${working || requote ? `。作業中 ${working} 行・再見積要 ${requote} 行は除外` : ''}）`, 'err')
+      return confirmDanger(`正式見積依頼書（社外）を出します: 対象 ${n} 行${contested ? `（拮抗 ${contested} 行を含む）` : ''}${working ? `。作業中 ${working} 行は除外` : ''}。商社に送る書類が作られ、状態が「正式依頼中」になります`, '依頼書を作る', () => void quotes.requestFormalQuotes().then((m) => toast(m, m.startsWith('権限') || m.startsWith('依頼する行') ? 'err' : 'ok')))
     }
     case 'export.selection':
       return void import('@/io/excel').then((m) => m.exportSelectionRecord(s.ws, p, (row) => scoreRow(p, row, s.ws.suppliers))).then(() => toast('選定記録（社内）を出力しました', 'ok'))
@@ -1713,30 +1470,8 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
     }
     case 'settings':
       return openSettings()
-    case 'settings.confirm':
-      return pm.confirmSettings()
-    case 'ltb.request':
-      if (!need()) return
-      if (role !== 'purchasing') return toast('権限なし（先行発注の申請は購買）', 'err')
-      {
-        // PM が判断できるのは有効な見積がある行だけ（§4）。金額の目安は推奨の見積から
-        const best = scoreRow(p, r!, s.ws.suppliers)[0]
-        if (!best) return toast(`${r!.id} には有効な見積がありません。見積が揃ってから申請します`, 'info')
-        const est = Math.round((best.quote.unitPrice ?? 0) * best.roundedQty)
-        return prompt(`先行発注を申請 ${r!.id}（理由と金額）`, { requireText: true, placeholder: '理由（例: 長納期のため正式見積を待てない）', extra: { 金額: String(est) } }, (_c, t, ex) => {
-          const amt = parseNumber(ex?.['金額'] ?? '', { min: 0, label: '金額' })
-          if (!amt.ok || amt.value == null) return amt.ok ? '金額を入れてください' : amt.error
-          pm.requestEarlyOrder(r!.id, t, amt.value)
-          toast(`${r!.id}: 先行発注を申請しました（PM の 7 要決定へ。金額 ¥${amt.value.toLocaleString()}）`, 'ok')
-        })
-      }
-    case 'project.new': {
-      const d = s.wizardDraft
-      if (d) toast('途中まで入れた内容を戻しました（Esc で中止しても内容は残ります）', 'info')
-      return openPanel({ kind: 'wizard', step: d?.step ?? 0, data: d?.data ?? {}, sel: d?.sel ?? 0, picks: d?.picks ?? [] })
-    }
-    case 'wizard.back':
-      return toast('Alt+← は新規BOMガイドの中で 1 つ前の段階に戻るキーです', 'info')
+    case 'project.new':
+      return set({ screen: 'new', panel: null, mode: 'nav' })
     case 'history':
       return openPanel({ kind: 'history', rowId: r?.id ?? '', index: 0 })
     case 'rule.add': {
@@ -1890,10 +1625,10 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
         })
       })
     case 'role.switch':
-      return prompt('役割を切り替え（ログイン）。数字か ↑↓ で役割、氏名を入れて Enter', { digitsSelect: true, options: ['設計', '購買', 'PM'], index: ['design', 'purchasing', 'pm'].indexOf(role), placeholder: '氏名（空なら案件の担当者名）', showText: true }, (choice, name) => {
+      return prompt('役割を切り替え（ログイン）。数字か ↑↓ で役割、氏名を入れて Enter', { digitsSelect: true, options: ['設計', '購買'], index: ['design', 'purchasing'].indexOf(role), placeholder: '氏名（空なら案件の担当者名）', showText: true }, (choice, name) => {
         // 数字だけの氏名は、選び直すつもりの数字が入ったことが多い（履歴に残る名前になる）
         if (/^[\d\s０-９]+$/.test(name.trim())) return `氏名が「${name.trim()}」です。数字だけの氏名にはできません（数字で役割を選ぶときは Shift+Tab で選択肢へ）`
-        switchRole(choice === '購買' ? 'purchasing' : choice === 'PM' ? 'pm' : 'design', name)
+        switchRole(choice === '購買' ? 'purchasing' : 'design', name)
       })
     default:
       if (id.startsWith('view.')) {
@@ -1926,16 +1661,14 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'consolidate', label: '商社を集約', section: '流れ', desc: '1社/2社に集約した総額差を試算', keywords: 'まとめる 集約' },
   { id: 'quotes.formal', label: '正式見積を依頼（社外）', section: '流れ', desc: '購買。選定済の行を商社ごとに', keywords: '正式 依頼書' },
   { id: 'export.selection', label: '選定記録を出力（社内）', section: '流れ', desc: 'スコア内訳つき', keywords: '記録 スコア' },
-  { id: 'ltb.request', label: '先行発注を申請', section: '流れ', desc: '購買 → PM の要決定へ', keywords: '長納期 ltb' },
   { id: 'undo', label: '元に戻す', section: '編集', keywords: 'undo 戻る 取り消し もどす' },
   { id: 'redo', label: 'やり直す', section: '編集', keywords: 'redo やりなおし やり直し' },
   { id: 'project.save', label: '保存', section: '編集', desc: '編集は自動で保存されています', keywords: 'save 保存 ほぞん' },
   { id: 'row.delete', label: '行を削除（提出済なら取消）', section: '編集', keywords: '削除 消す delete 取消 取り消し キャンセル cancel やめる' },
   { id: 'row.insertBelow', label: '行を追加', section: '編集', keywords: '追加 新しい行 挿入 insert' },
   { id: 'settings', label: '案件設定', section: '案件', desc: 'PM 項目 / 購買項目。納期変更は影響試算つき', keywords: '設定 納期 期限 回答期限 予算 重み 担当 相見積先 選定者 閾値 理由' },
-  { id: 'settings.confirm', label: '案件設定を確定（PM）', section: '案件' },
-  { id: 'project.new', label: '新しいBOM', section: '案件', keywords: '新規 作成 new 作る 案件 取り込み 取込 インポート csv excel xlsx ファイル 貼り付け 読み込む 読み込み excel読み込み エクセル エクセル読み込み bomを読み込む bom読み込み 部品表を読み込む 部品表読み込み' },
-  { id: 'project.switch', label: '受信箱・案件を切り替える', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
+  { id: 'project.new', label: '新規作成（案件を登録）', section: '案件', keywords: '新規 作成 new 作る 案件 取り込み 取込 インポート csv excel xlsx ファイル 貼り付け 読み込む 読み込み excel読み込み エクセル エクセル読み込み bomを読み込む bom読み込み 部品表を読み込む 部品表読み込み' },
+  { id: 'project.switch', label: '作成中の案件一覧へ', section: '案件', keywords: '開く 案件 案件を開く 一覧 受信箱 inbox 切り替え' },
   { id: 'rule.add', label: 'ルールを追加', section: 'チェック' },
   { id: 'export.excel', label: 'Excelで出力', section: '出力', keywords: 'エクセル excel xlsx 出力 印刷 ダウンロード 書き出す エクスポート export' },
   { id: 'copy.formatted', label: '表示中の行と列を書式つきでコピー', section: '出力', keywords: 'コピー メール 貼る' },
@@ -1987,7 +1720,7 @@ export function paletteItems(query: string): PaletteItem[] {
     const id = /^r?\d+$/i.test(m[1]) ? 'R' + m[1].replace(/\D/g, '').padStart(3, '0') : m[1].toUpperCase()
     const row0 = p.rows.find((x) => x.id === id)
     // 購買には、PM 承認待ちの変更セットで足した行は出さない（名前も操作も）
-    const row = row0 && !(s.user().role === 'purchasing' && pendingAdd(row0)) ? row0 : undefined
+    const row = row0
     if (row) {
       // パレットの表示どおり「R040 を置換」と打っても当たるように、先頭の「を」は無視する
       // 表示どおりの「R040 を置換」「R040 へジャンプ」「R040 を 因幡電機 で採用」でも当たる
@@ -2102,5 +1835,5 @@ export function colsForPanel() {
 
 export { handleKeyDown } from './keyboard'
 import { resetSequence } from './keyboard'
-export { issues as issueActions, rows as rowActions, ROLE_LABEL, KEYMAP, eventToKey, lookupBinding, ISSUE_KINDS, VIEWS, cursorRow as visibleCursorRow, moveCursorRow, gotoProblem, problemCells, openQuickfix, prompt, confirmDanger, decisionPanel, saveSettings, createProjectFromWizard, nextProjectId }
+export { issues as issueActions, rows as rowActions, ROLE_LABEL, KEYMAP, eventToKey, lookupBinding, ISSUE_KINDS, VIEWS, cursorRow as visibleCursorRow, moveCursorRow, gotoProblem, problemCells, openQuickfix, prompt, confirmDanger, saveSettings }
 export type { IssueKind }

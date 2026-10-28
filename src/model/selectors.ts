@@ -8,7 +8,7 @@ import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, noUsabl
 import { fmtDate } from './dates'
 import { toHalf } from './parse'
 
-export type Item = { kind: 'group'; key: string; category: string; count: number } | { kind: 'row'; key: string; row: Row } | { kind: 'detail'; key: string; row: Row } | { kind: 'case'; key: string; label: string }
+export type Item = { kind: 'group'; key: string; category: string; count: number } | { kind: 'row'; key: string; row: Row } | { kind: 'detail'; key: string; row: Row }
 
 export interface ViewModel {
   ctx: ViewCtx
@@ -74,15 +74,10 @@ function buildViewModelUncached(st: State): ViewModel {
   const columns = viewColumns(st, p)
   const counts = {} as Record<ViewId, number>
   // 隠した行は「すべて」と作業のビュー（要確認・要決定）には出す
-  const showHidden = (id: number) => id === 1 || id === 4 || id === 7
-  // §5: PM 承認待ちの変更セットで足した行は、承認まで購買にはどのビューでも見せない
-  const hiddenFromRole = (r: Row) => ws.user.role === 'purchasing' && !!r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted'
-  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden) && !hiddenFromRole(r)).length
-  // 案件レベルの要決定（案件設定確定）も 7 の件数に入れる
-  const openCases = p.caseDecisions.filter((c) => c.status === 'open')
-  counts[7] += openCases.length
+  const showHidden = (id: number) => id === 1 || id === 4
+  for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden)).length
   const v = VIEWS.find((x) => x.id === st.view)!
-  let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && !hiddenFromRole(r) && matchText(r, p, st.filter, ws.user.role))
+  let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
   if (st.cellFilter) rows = rows.filter((r) => cellText(r, st.cellFilter!.col, ctx).text === st.cellFilter!.value)
   const sort = st.sort
   if (sort) {
@@ -101,12 +96,11 @@ function buildViewModelUncached(st: State): ViewModel {
     })
   } else if (v.defaultSort) rows = [...rows].sort((a, b) => v.defaultSort!(a, b, ctx))
   const items: Item[] = []
-  if (st.view === 7 && !st.filter && !st.cellFilter) for (const c of openCases) items.push({ kind: 'case', key: 'case:' + c.id, label: c.kind === '案件設定確定' ? '案件設定確定（納期・工程日数・予算・重み・選定者）: y で既定のまま確定 / Enter で案件設定を開く' : c.kind })
   // 分類ごとに 1 つの見出し。分類が連続していない BOM（回路記号順・図面順など）では見出しを出さない
   const catOf = (r: Row) => effective(r).category || '（分類なし）'
   const runs = rows.reduce((n, r, i) => (i === 0 || catOf(rows[i - 1]) !== catOf(r) ? n + 1 : n), 0)
   const contiguous = runs === new Set(rows.map(catOf)).size
-  const grouped = !sort && !v.defaultSort && st.view !== 7 && st.view !== 4 && contiguous
+  const grouped = !sort && !v.defaultSort && st.view !== 4 && contiguous
   let lastCat: string | null = null
   const ordered: Row[] = []
   for (const r of rows) {
@@ -175,7 +169,7 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
     case 'adopted': {
       const sup = ctx.ws.suppliers.find((s) => s.id === row.adoptedSupplierId)
       const nm = sup ? sup.name : row.adoptedSupplierId ? `${row.adoptedSupplierId}（商社マスタに無い）` : ''
-      return { text: nm, raw: nm, cls: row.flags.pmPending ? 'warn-text' : '', title: row.adoptReason }
+      return { text: nm, raw: nm, cls: '', title: row.adoptReason }
     }
     case 'score':
       return { text: row.scoreSnapshot == null ? '' : String(row.scoreSnapshot), raw: row.scoreSnapshot ?? '', cls: 'num' }
@@ -195,7 +189,7 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       const q = adoptedQuote(p, row)
       if (!q || q.formalPrice == null || q.unitPrice == null) return { text: '', raw: '' }
       const pct = ((q.formalPrice - q.unitPrice) / q.unitPrice) * 100
-      return { text: `${pct >= 0 ? '+' : ''}${pct.toFixed(0)}%`, raw: pct, cls: 'num', sev: row.flags.formalDiff ? 'err' : undefined }
+      return { text: `${pct >= 0 ? '+' : ''}${pct.toFixed(0)}%`, raw: pct, cls: 'num' }
     }
     case 'lead': {
       const q = adoptedQuote(p, row)
@@ -211,19 +205,14 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       if (f.notation) flags.push('表記修正')
       if (f.orderQtyCheck) flags.push('発注数要確認')
       if (f.reissue) flags.push('再発行')
-      if (f.pmPending) flags.push('PM承認待ち')
-      if (f.formalDiff) flags.push('差分超過')
       if (f.formalWithdrawn) flags.push('正式依頼取下げ')
       if (f.leadNG) flags.push('納期NG')
-      if (f.ltbPending) flags.push('先行発注判断')
       if (f.altPending) flags.push('代替承認待ち')
       if (f.contested) flags.push('拮抗')
-      if (f.early) flags.push('先行')
       if (f.countermeasure) flags.push(f.countermeasure)
-      if (f.delegated) flags.push('委譲')
       if (row.working && Object.keys(row.working).length) flags.push('作業中●')
       // 取消・置換の作業中: 設計には中身を、他の役割には「作業中」だけ見せる（§5）
-      const rm = row.removal ?? row.pendingRemoval
+      const rm = row.removal
       if (rm && ctx.role === 'design') flags.unshift(rm.kind === 'cancel' ? '取消予定' : `置換予定 →${rm.by}`)
       else if (row.removal && !flags.includes('作業中●')) flags.push('作業中●')
       let text = STATUS_LABEL[row.status]

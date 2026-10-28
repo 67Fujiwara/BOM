@@ -191,7 +191,6 @@ function Main() {
               ）
             </span>
           )}
-          {!p.settings.pmConfirmed && p.caseDecisions.some((c) => c.status === 'open') && <span className="chip err">案件設定 未確定（PM）</span>}
         </div>
         <Grid vm={vm} />
       </main>

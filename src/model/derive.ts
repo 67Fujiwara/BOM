@@ -1,10 +1,10 @@
 import type { DesignFields, Issue, Project, Role, Row, RowStatus, Supplier, Workspace } from './types'
 import { addDays, addBusinessDays, businessDaysBetween, diffDays, todayStr } from './dates'
 
-/** 設計が見ている値（公開値 ＋ PM 承認待ちの変更 ＋ 作業中）。購買・PM や計算には使わない */
+/** 設計が見ている値（公開値 ＋ 作業中）。購買や計算には使わない */
 export function effective(row: Row): DesignFields {
-  if (!row.working && !row.pendingApproval) return row
-  return { ...row, ...(row.pendingApproval ?? {}), ...(row.working ?? {}) }
+  if (!row.working) return row
+  return { ...row, ...(row.working ?? {}) }
 }
 
 /** 役割に応じて見せる値（設計は作業中を含む、他は公開値） */
@@ -52,24 +52,16 @@ export function handlesMaker(handled: string[], maker: string): boolean {
   })
 }
 
-/** 採用を外す・替えるとき、前の商社への対策（納期NG・特急・分納・追加費用・先行発注判断・PM の依頼）を取り下げる */
+/** 採用を外す・替えるとき、前の商社への対策（納期NG・特急・分納・追加費用・依頼）を取り下げる */
 export function clearAdoptionMeasures(p: Project, r: Row, note: string): void {
-  r.flags.renegotiating = false
   r.flags.countermeasure = undefined
-  r.flags.early = undefined
-  r.flags.delegated = undefined
   r.flags.leadNG = false
-  r.flags.ltbPending = false
   if (!r.ordered) {
     r.extraCost = null
     r.extraCostKind = ''
   }
-  if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
-    r.flags.pmPending = false
-    r.flags.pmReason = undefined
-  }
   for (const i of p.issues)
-    if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+    if (i.rowId === r.id && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
       i.status = 'confirmed'
       i.resolution = note
     }
@@ -132,22 +124,19 @@ export function ball(p: Project, row: Row): Role | null {
   if (!isActive(row)) return null
   if (row.status === 'received') return null
   const f = row.flags
-  if (f.pmPending || f.formalDiff || (f.leadNG && !f.countermeasure) || f.ltbPending || capPending(p, row)) return 'pm'
+  // 納期NG（採用した商社の納期が必要日に間に合わない）は、購買が商社を替える・特急にするなどで対処する
+  if (f.leadNG && !f.countermeasure) return 'purchasing'
   if (f.importMismatch) return 'purchasing'
   const issues = openIssues(p, row.id)
-  if (issues.some((i) => i.bounceCount >= 2 && i.status === 'open' && !i.pmRuled)) return 'pm'
-  // 発注後変更依頼は PM の承認待ち（§6.2 A＝PM）
-  if (issues.some((i) => i.kind === '発注後変更依頼' && (i.status === 'open' || i.status === 'inProgress') && !i.pmRuled) && !f.orderCancelApproved) return 'pm'
   if (f.orderCancelApproved) return 'purchasing'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'design')) return 'design'
   if (issues.some((i) => (i.status === 'open' || i.status === 'inProgress') && resolverOfIssue(i) === 'purchasing')) return 'purchasing'
   const pending = issues.find((i) => i.status === 'fixed' || i.status === 'answered')
-  if (pending) return pending.by.role === 'pm' ? 'pm' : pending.by.role
+  if (pending) return pending.by.role
   if (f.altPending) return 'design'
   // 指定商社の指定先が辞退（取扱なし）: 設計が指定先を変える
   if (row.procurement === '指定商社' && designatedDeclined(p, row)) return 'design'
   if (f.countermeasure === '代替品検討') return 'design'
-  if (f.countermeasure === '商社変更' || f.delegated) return 'purchasing'
   if (row.status === 'draft' || hasWork(row)) return 'design'
   if (f.requote || f.reconfirm || f.orderQtyCheck || f.notation || f.reissue) return 'purchasing'
   switch (row.status) {
@@ -237,12 +226,11 @@ export function totals(p: Project): { rough: number; formal: number; budget: num
 }
 
 export function ballCounts(p: Project): Record<Role, number> {
-  const c: Record<Role, number> = { design: 0, purchasing: 0, pm: 0 }
+  const c: Record<Role, number> = { design: 0, purchasing: 0 }
   for (const r of p.rows) {
     const b = ball(p, r)
     if (b) c[b]++
   }
-  c.pm += p.caseDecisions.filter((x) => x.status === 'open').length
   return c
 }
 
@@ -331,15 +319,6 @@ export function hasWork(r: Row): boolean {
   return (!!r.working && Object.keys(r.working).length > 0) || !!r.removal
 }
 
-/** 決定の付帯情報（先行発注の申請内容・特急の上限金額）を文にする。詳細・Excel の変更点に出す */
-export function decisionExtra(d: { kind?: string; payload?: Record<string, unknown> }): string {
-  const pl = d.payload ?? {}
-  const parts: string[] = []
-  if (typeof pl.request === 'string' && pl.request) parts.push(`申請: ${pl.request}`)
-  if (typeof pl.amount === 'number') parts.push(`${d.kind === '特急・分納' ? '上限' : '金額'} ¥${pl.amount.toLocaleString()}`)
-  return parts.join('・')
-}
-
 /** 指定商社の指定先が辞退（取扱なし）したか */
 export function designatedDeclined(p: Project, row: Row): boolean {
   const d = (row.designated ?? '').trim()
@@ -353,24 +332,6 @@ export function designatedDeclined(p: Project, row: Row): boolean {
 let knownSuppliers: Array<{ id: string; name: string; tradable?: boolean; handledMakers?: string[] }> = []
 export function setKnownSuppliers(list: Array<{ id: string; name: string; tradable?: boolean; handledMakers?: string[] }>) {
   knownSuppliers = list
-}
-
-/** 追加費用が PM の決めた特急・分納の上限を超えているか（超えた額の上限の決定を返す） */
-export function overCap(p: Project, r: Row): { cap: number; decisionId: string } | null {
-  if (r.extraCost == null) return null
-  // 上限は「特急・分納」の決定、または上限超過を承認した決定（上限を実費まで引き上げ）
-  const d = [...p.decisions].reverse().find((x) => x.rowId === r.id && (x.kind === '特急・分納' || x.payload?.cap === true) && typeof x.payload?.amount === 'number')
-  const cap = d?.payload?.amount as number | undefined
-  return d && cap != null && r.extraCost > cap ? { cap, decisionId: d.id } : null
-}
-/** 上限超過で PM の決定を待っているか（却下した額のままなら待たない） */
-export function capPending(p: Project, r: Row): boolean {
-  return !!overCap(p, r) && r.flags.capRuled !== r.extraCost
-}
-
-/** PM 承認待ちの変更セットで足した行（承認まで購買には見せない。§5） */
-export function pendingAdd(r: Row): boolean {
-  return !!r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted'
 }
 
 /** 相見積の依頼先: 案件の相見積先のうち取引できる商社を、行のメーカで絞る（§7）。
@@ -390,18 +351,6 @@ export function surplusOf(p: Project, row: Row): { quote: Project['quotes'][numb
   const q = (row.adoptedSupplierId ? qs.find((x) => x.supplierId === row.adoptedSupplierId) : undefined) ?? [...qs].sort((a, b) => (b.moq ?? 0) - (a.moq ?? 0))[0]
   const rounded = roundedQty(row.qtyNeeded, q?.moq, row.packQty, row.unit)
   return { quote: q, rounded, amount: (rounded - row.qtyNeeded) * (q?.unitPrice ?? 0) }
-}
-
-/** 最小ロットの指摘を発行したとき、余剰金額が閾値（§9.1）を超えていれば PM の要決定（閾値超）に載せる */
-export function routeSurplusToPm(p: Project, issue: Issue): void {
-  if (issue.kind !== '最小ロット') return
-  const r = p.rows.find((x) => x.id === issue.rowId)
-  if (!r || r.flags.pmPending) return
-  if (surplusOf(p, r).amount > p.settings.surplusAmount) {
-    r.flags.pmPending = true
-    r.flags.pmReason = '閾値超'
-    r.flags.surplusRejected = undefined
-  }
 }
 
 /**

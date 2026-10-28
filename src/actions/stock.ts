@@ -38,7 +38,7 @@ export function createProject(no: string, customer: string, deviceName: string):
 
 function buildProject(id: string, customer: string, deviceName: string, userName: string, role: Role): Project {
   const p = newProject(id, deviceName, { customer })
-  p.members = { design: role === 'design' ? userName : '', purchasing: role === 'purchasing' ? userName : '', pm: '' }
+  p.members = { design: role === 'design' ? userName : '', purchasing: role === 'purchasing' ? userName : '' }
   p.events[0] = { ...p.events[0], by: { name: userName, role }, text: `案件を登録（${customer} ${deviceName}）` }
   return p
 }

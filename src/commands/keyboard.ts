@@ -1,17 +1,15 @@
-import { useStore, type Panel, type State } from '@/model/store'
+import { useStore, type State } from '@/model/store'
 import { eventToKey, lookupBinding } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
 import type { IssueKind } from '@/model/types'
 import { ISSUE_KINDS } from '@/model/types'
-import { isActive, ball as ballOf } from '@/model/derive'
 import { scoreRow } from '@/model/score'
 import { parseNumber } from '@/model/parse'
 import * as issues from '@/actions/issues'
 import * as adopt from '@/actions/adopt'
-import * as pm from '@/actions/pm'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { vm as vmModel, ROLE_DEFAULT_VIEW, cancelEdit, closePanel, colsForPanel, commitEdit, createProjectFromWizard, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, setView, startEdit, updateEditValue, validateSetting, validateWizardStep, visibleCursorRow } from './registry'
+import { vm as vmModel, cancelEdit, closePanel, colsForPanel, commitEdit, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, startEdit, updateEditValue, validateSetting, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -31,21 +29,16 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
   const panel = s.panel!
   const p = s.project()
   const up = (n: number, len: number) => Math.max(0, Math.min(Math.max(len - 1, 0), n))
-  const inText = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
   if (key === 'Escape') {
     // 打ちかけの文（指摘の本文・置き換え品の型式・返信など）は、1 回目の Esc では捨てずに知らせる
     const p0 = panel as unknown as Record<string, unknown>
-    const typed = typeof p0.text === 'string' && p0.text.trim() !== '' && panel.kind !== 'palette' && panel.kind !== 'inbox'
+    const typed = typeof p0.text === 'string' && p0.text.trim() !== '' && panel.kind !== 'palette'
     if (typed && !escArmed) {
       escArmed = true
       toast('入力中の内容があります。もう一度 Esc で捨てて閉じます（Enter で確定）', 'info')
       return true
     }
     escArmed = false
-    if (panel.kind === 'wizard') {
-      set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
-      toast('新規BOMガイドを中止しました（入れた内容は残っています。Ctrl+K → 新しいBOM で続きから）', 'info')
-    }
     if (panel.kind === 'settings' && panel.editing) {
       set({ panel: { ...panel, editing: false, error: undefined } })
       return true
@@ -174,7 +167,7 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         const was = panel.was !== undefined ? panel.was : (row.adoptedSupplierId ?? null)
         if (n === 0 && row.status !== 'quoting') adopt.adoptChoose(row.id, sc.supplierId, undefined, was)
         else {
-          prompt(row.status === 'quoting' ? '先行採用の理由（PM 承認待ちになります）。数字か ↑↓ で選び、補足があれば入れて Enter' : '1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
+          prompt(row.status === 'quoting' ? '先行採用の理由。数字か ↑↓ で選び、補足があれば入れて Enter' : '1位以外を選ぶ理由。数字か ↑↓ で選び、補足があれば入れて Enter', { options: [...adopt.ADOPT_REASONS], index: -1, placeholder: '補足（任意）', showText: true, digitsSelect: true }, (c, t) => void adopt.adoptChoose(row.id, sc.supplierId, (c ?? 'その他') + (t ? `: ${t}` : ''), was))
         }
         return true
       }
@@ -270,33 +263,6 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
         return true
       }
       return false
-    case 'inbox': {
-      const q = panel.query.toLowerCase()
-      const list = s.ws.projects.filter((x) => !q || (x.id + x.name).toLowerCase().includes(q))
-      const total = list.length + 1
-      if (key === 'ArrowDown') return (set({ panel: { ...panel, index: up(panel.index + 1, total) } }), true)
-      if (key === 'ArrowUp') return (set({ panel: { ...panel, index: up(panel.index - 1, total) } }), true)
-      if (key === 'Enter') {
-        if (q && !list.length) return (toast(`「${panel.query}」に当たる案件はありません（新しく作るときは ↓ で「＋ 新しいBOM」を選んで Enter）`, 'info'), true)
-        if (panel.index >= list.length) {
-          closePanel()
-          runCommand('project.new')
-          return true
-        }
-        const target = list[panel.index]
-        closePanel()
-        st().commitWs('', (ws) => void (ws.currentProjectId = target.id))
-        const p2 = st().project()
-        const role = st().user().role
-        set({ filter: '', cellFilter: null, openRows: [], sort: null, cursorRow: null })
-        setView(ROLE_DEFAULT_VIEW[role])
-        const first = p2.rows.find((r) => isActive(r) && ballOf(p2, r) === role)
-        if (first) jumpToRow(first.id)
-        toast(`${target.name} を開きました${first ? `（あなた宛の最初の行 ${first.id}）` : ''}`, 'info')
-        return true
-      }
-      return false
-    }
     case 'settings': {
       if (panel.discardArmed) {
         set({ panel: { ...panel, discardArmed: false } })
@@ -321,19 +287,9 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       if (key === 'ArrowUp') return (set({ panel: { ...panel, index: up(panel.index - 1, fields.length) } }), true)
       if (key === 'Enter') {
         const f = fields[panel.index]
-        const role = s.user().role
-        if ((f.owner === 'PM' && role !== 'pm') || (f.owner === '購買' && role === 'design')) return (toast(`権限なし（${f.label} は ${f.owner} 項目）`, 'err'), true)
         return (set({ panel: { ...panel, editing: true, error: undefined, value: panel.draft[f.key] ?? f.value } }), true)
       }
       if (key === 'Ctrl+Enter' || key === 'Ctrl+S') return (saveSettings(panel.draft), true)
-      if (key === 'y') {
-        if (s.user().role !== 'pm') return (toast('権限なし（確定は PM）', 'err'), true)
-        if (Object.keys(panel.draft).length) return (toast('変更があります。先に Ctrl+Enter で保存してから y で確定してください', 'info'), true)
-        pm.confirmSettings()
-        closePanel()
-        toast('案件設定を確定しました', 'ok')
-        return true
-      }
       return true
     }
     case 'weights': {
@@ -357,58 +313,7 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       }
       return true
     }
-    case 'wizard':
-      return handleWizardKey(panel, key, e, inText)
   }
-}
-
-function handleWizardKey(panel: Extract<Panel, { kind: 'wizard' }>, key: string, e: KeyboardEvent, inText: boolean): boolean {
-  const s = st()
-  const n = s.ws.suppliers.length
-  const up = (x: number, len: number) => Math.max(0, Math.min(len - 1, x))
-  const go = (step: number) => set({ panel: { ...panel, step, error: undefined } })
-  if (key === 'Alt+ArrowLeft') return (go(Math.max(0, panel.step - 1)), true)
-  const inTextarea = e.target instanceof HTMLTextAreaElement
-  if (panel.step === 6) {
-    if (key === 'ArrowDown') return (set({ panel: { ...panel, sel: up(panel.sel + 1, n) } }), true)
-    if (key === 'ArrowUp') return (set({ panel: { ...panel, sel: up(panel.sel - 1, n) } }), true)
-    if (key === ' ') {
-      const id = s.ws.suppliers[panel.sel].id
-      return (set({ panel: { ...panel, picks: panel.picks.includes(id) ? panel.picks.filter((x) => x !== id) : [...panel.picks, id] } }), true)
-    }
-  }
-  if (panel.step === 7 && !inTextarea) {
-    if (/^[1-3]$/.test(key)) {
-      set({ panel: { ...panel, sel: Number(key) - 1, data: { ...panel.data, inputMode: String(Number(key) - 1) }, error: undefined } })
-      setTimeout(() => {
-        if (key === '1') document.querySelector<HTMLTextAreaElement>('[data-testid="wizard-paste"]')?.focus()
-        if (key === '2') document.querySelector<HTMLInputElement>('[data-testid="wizard-file"]')?.focus()
-      }, 0)
-      return true
-    }
-    if (key === 'ArrowDown' || key === 'ArrowUp') {
-      const sel = up(panel.sel + (key === 'ArrowDown' ? 1 : -1), 3)
-      return (set({ panel: { ...panel, sel, data: { ...panel.data, inputMode: String(sel) } } }), true)
-    }
-  }
-  const next = key === 'Ctrl+Enter' || (key === 'Enter' && !inTextarea)
-  if (next) {
-    const data = panel.step === 7 ? { ...panel.data, inputMode: panel.data.inputMode ?? String(panel.sel) } : panel.data
-    const err = validateWizardStep(panel.step, data)
-    if (err) {
-      set({ panel: { ...panel, data, error: err } })
-      toast(err, 'err')
-      return true
-    }
-    if (panel.step < 8) {
-      set({ panel: { ...panel, data, step: panel.step + 1, error: undefined, sel: panel.step + 1 === 6 ? 0 : panel.step + 1 === 7 ? Number(data.inputMode ?? 0) : panel.sel } })
-      return true
-    }
-    createProjectFromWizard(data, panel.picks)
-    return true
-  }
-  void inText
-  return false
 }
 
 // ---------- 英字・数字の扱い ----------
@@ -427,16 +332,11 @@ export function onCommandCell(ch = ''): boolean {
   // 記号（? / [ ] < > など）。文字を打てるセルでは値の打ち始め（<5mm・[A]CN-12）、それ以外では 1 キー操作
   // 分類の見出しの行: [ ] で分類を移るだけ。ほかは案内（見出しでビューが変わって選択が外れない）
   if (s.cursorRow?.startsWith('g:')) return ch === '[' || ch === ']'
-  // PM の 7 の「案件設定確定」の行: 案内どおり y（Shift+Y）で既定のまま確定
-  if (s.cursorRow?.startsWith('case:')) return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y' || /^\d$/.test(ch))
   // 行を選んでいないとき: 数字（ビュー切替）だけ。記号・英字は案内（「<5mm」の残りが行に入らない）
   if (!visibleCursorRow()) return /^\d$/.test(ch)
   if (s.cursorCol === 'id' || s.cursorCol === 'status') return true
-  // 発注・入荷の列・自分が書けない列: 打った文字（英字・数字・記号）は案内だけ（「11/30」の / で絞り込みが開いて残りが入る、などを防ぐ）。
-  // 例外: どの列も書かない PM の数字（ビュー切替）
-  if (/^\d$/.test(ch) && s.user().role === 'pm') return true
-  // §9.1: PM の 7 では y / Shift+Y がどの列でもそのまま効く（ほかの英字は単語を打ったときに 1 文字ずつ操作にならないよう Alt）
-  return s.user().role === 'pm' && s.view === 7 && (ch === 'y' || ch === 'Y' || /^\d$/.test(ch))
+  // 発注・入荷の列・自分が書けない列: 打った文字（英字・数字・記号）は案内だけ（「11/30」の / で絞り込みが開いて残りが入る、などを防ぐ）
+  return false
 }
 /** macOS の Option+記号は別の文字（÷ ¿ “ ‘ ≤ ≥）になるので、キーの位置から記号の操作を引く */
 function altCodeBinding(e: KeyboardEvent) {
@@ -574,7 +474,6 @@ export function handleKeyDown(e: KeyboardEvent) {
       const p0 = panel as unknown as Record<string, unknown>
       const typed = (typeof p0.text === 'string' && p0.text.trim() !== '') || (panel.kind === 'settings' && (panel.editing || Object.keys(panel.draft).length > 0)) || (panel.kind === 'issue' && !!panel.proposal && Object.values(panel.proposal).some((v) => String(v ?? '').trim() !== ''))
       if (typed) return toast('入力中の内容があります。Enter で確定するか Esc で閉じてから Ctrl+K を押してください', 'info')
-      if (panel.kind === 'wizard') set({ wizardDraft: { step: panel.step, data: panel.data, sel: panel.sel, picks: panel.picks } })
       closePanel()
       runCommand('palette.open')
       return

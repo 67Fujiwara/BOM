@@ -1,6 +1,6 @@
 import type { Project, Row, Workspace } from './types'
 import { addDays, todayStr } from './dates'
-import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, orderQty, quoteComplete, roundedQty, rowNeedDate, tradableIn, clearAdoptionMeasures } from './derive'
+import { addWithdrawn, fixedSupplierId, isActive, makerTargets, isFixedProcurement, isQuotable, quoteComplete, roundedQty, rowNeedDate, tradableIn, clearAdoptionMeasures } from './derive'
 
 /** 変更後に状態・フラグを整合させる（commit の最後に必ず呼ぶ） */
 export function normalize(p: Project, ws: Workspace, today = todayStr()) {
@@ -23,21 +23,12 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
     }
     // 採用した商社があとから「取扱なし」（辞退）になったら採用を外す（§3.2・§8.1: 辞退は選定の対象外）。
     // 相見積は選び直し（見積済）、指定系は次の商社・指定先の変更へ（見積中）。発注済は発注後変更依頼で扱う
-    // PM 承認待ちの仮の採用（先行採用・例外選定・閾値超）も同じ
-    const tentative = r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立'].includes(r.flags.pmReason ?? '')
-    if (r.adoptedSupplierId && (['selected', 'formalRequested', 'formalQuoted'].includes(r.status) || tentative)) {
+    if (r.adoptedSupplierId && ['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
       const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (aq && aq.leadDays === -1) {
-        if (tentative || r.flags.pmReason === '対策不成立') {
-          r.flags.pmPending = false
-          r.flags.pmReason = undefined
-          r.flags.ltbPending = false
-        }
-        // 再交渉もこの商社とのもの
-        r.flags.renegotiating = false
-        // PM がこの商社の納期・価格について出した依頼（納期NG・コスト超過）は取り下げ（選び直しで判定し直す）
+        // この商社の納期・価格について出した依頼（納期NG・コスト超過）は取り下げ（選び直しで判定し直す）
         for (const i of p.issues)
-          if (i.rowId === r.id && i.by.role === 'pm' && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
+          if (i.rowId === r.id && (i.kind === '納期NG' || i.kind === 'コスト超過' || i.kind === '数量見直し依頼') && ['open', 'inProgress', 'answered'].includes(i.status)) {
             i.status = 'confirmed'
             i.resolution = '採用商社の辞退で取り下げ（選び直し）'
           }
@@ -50,8 +41,6 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         r.adoptReason = undefined
         r.scoreSnapshot = undefined
         r.flags.contested = false
-        r.flags.formalDiff = false
-        r.flags.early = undefined
         aq.formalPrice = null
         aq.formalLeadDays = null
         // 納期NG・期限は辞退した商社の見積に対するもの。選び直しのあとで判定し直す
@@ -75,13 +64,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
         const stoppedSup = ws.suppliers.find((s) => s.id === r.adoptedSupplierId && s.tradable === false)
         if (stoppedSup) r.flags.droppedStopped = stoppedSup.name
         else if (!ws.suppliers.some((s) => s.id === r.adoptedSupplierId)) r.flags.droppedStopped = `${r.adoptedSupplierId}（商社マスタから削除）`
-        // 採用に対する PM の承認待ち（例外選定など）も、この採用ごと取り下げる
-        if (r.flags.pmPending && ['先行採用', '例外選定', '閾値超', '先行発注判断', '対策不成立', '再選定提案', '差分超過'].includes(r.flags.pmReason ?? '')) {
-          r.flags.pmPending = false
-          r.flags.pmReason = undefined
-          r.flags.ltbPending = false
-        }
-        // 前の商社への対策（特急・分納の追加費用・対策区分・納期NG・先行発注判断・PM の依頼）も、この採用ごと取り下げる
+        // 前の商社への対策（特急・分納の追加費用・対策区分・納期NG）も、この採用ごと取り下げる
         clearAdoptionMeasures(p, r, '調達区分・指定先の変更で取り下げ（選び直し）')
         // 前の採用商社の正式回答・差分超過も取り下げる（選び直して依頼したら新しい回答を待つ）。正式依頼中・正式見積済なら取り下げを購買に知らせる
         const oldQ = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
@@ -93,8 +76,6 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
           oldQ.formalDiffReason = ''
           oldQ.formalRequestNo = undefined
         }
-        r.flags.formalDiff = false
-        r.flags.formalDiffKey = undefined
         r.flags.reissue = false
         r.adoptedSupplierId = undefined
         r.adoptReason = undefined
@@ -108,7 +89,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       }
     }
     // 支給品・社内在庫から相見積に戻した行（選定済で採用なし）は、見積から出し直す（残っている見積で見積済、無ければ見積中・提出済）
-    if (r.procurement === '相見積' && r.status === 'selected' && !r.adoptedSupplierId && !r.flags.pmPending) {
+    if (r.procurement === '相見積' && r.status === 'selected' && !r.adoptedSupplierId) {
       const live = p.quotes.some((x) => x.rowId === r.id && !x.stale)
       if (!r.quoteTargets?.length) r.quoteTargets = makerTargets(p, r.maker, ws.suppliers)
       r.status = !live ? 'submitted' : quoteComplete(p, r, today) ? 'quoted' : 'quoting'
@@ -128,7 +109,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       }
     }
     // 指定商社・客先指定品: 指定先の有効な見積が来たら、スコアなしで指定先を採用して選定済（§3.4）
-    if (isFixedProcurement(r) && !r.adoptedSupplierId && !r.flags.pmPending && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
+    if (isFixedProcurement(r) && !r.adoptedSupplierId && ['submitted', 'quoting', 'quoted', 'selected'].includes(r.status)) {
       const sid0 = fixedSupplierId(p, r, ws.suppliers)
       // 取引停止の指定先は採用しない（採用を外したあとに採用し直さない。設計が指定先を変える）
       const sid = sid0 && tradableIn(ws.suppliers, sid0) ? sid0 : null
@@ -136,7 +117,7 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       if (q && sid && r.publishedRev != null) {
         r.adoptedSupplierId = sid
         r.adoptReason = '指定先（固定）'
-        r.orderQty = r.flags.surplusRejected === sid ? r.qtyNeeded : roundedQty(r.qtyNeeded, q.moq, r.packQty, r.unit)
+        r.orderQty = roundedQty(r.qtyNeeded, q.moq, r.packQty, r.unit)
         if (r.status !== 'selected') {
           if (!r.quotedAt) r.quotedAt = today
           r.status = 'selected'
@@ -156,37 +137,18 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       r.status = 'quoted'
       r.statusChangedAt = now
       r.quotedAt = today
-      // 先行発注判断: 商社納期 > 必要日 − 正式見積の所要日数
-      const need = rowNeedDate(p, r)
-      if (need) {
-        const best = p.quotes.filter((q) => q.rowId === r.id && !q.stale && q.unitPrice != null && q.leadDays != null && q.leadDays >= 0).map((q) => (q.stock === '在庫' ? 0 : q.leadDays!))
-        if (best.length && Math.min(...best) > 0 && addDays(today, Math.min(...best)) > addDays(need, -p.settings.formalDays)) {
-          r.flags.ltbPending = true
-        }
-      }
       // 期限到達で未回答の商社は辞退扱い
       for (const q of p.quotes) if (q.rowId === r.id && !q.stale && q.unitPrice == null && q.leadDays == null && p.settings.quoteDeadline && p.settings.quoteDeadline < today) q.leadDays = -1
     }
-    // 正式見積の回答 → 正式見積済 / 差分超過
+    // 正式見積の回答 → 正式見積済
     if (r.status === 'formalRequested' && r.adoptedSupplierId) {
       const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
       if (q?.formalPrice != null) {
         r.status = 'formalQuoted'
-        r.flags.renegotiating = false
         r.statusChangedAt = now
       }
     }
-    if (r.status === 'formalQuoted' && r.adoptedSupplierId) {
-      const q = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      if (q?.formalPrice != null && q.unitPrice != null) {
-        // §9.2: 差が「±割合 または 金額 の大きい方」を超えたら差分超過。PM が対応した同じ正式単価には戻さない
-        const qty = orderQty(r)
-        const diff = Math.abs(q.formalPrice - q.unitPrice) * qty
-        const threshold = Math.max(p.settings.formalDiffPct * q.unitPrice * qty, p.settings.formalDiffAmount)
-        const key = `${q.supplierId}:${q.formalPrice}`
-        r.flags.formalDiff = diff > threshold && r.flags.formalDiffKey !== key
-      }
-    }
+
     // 納期NG（採用済みの商社納期が必要日を超える）。対策区分が付いていれば外す
     const need = rowNeedDate(p, r)
     if (need && r.adoptedSupplierId && ['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) {
@@ -196,11 +158,6 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
       if (ld != null && ld >= 0) {
         const arrive = addDays(today, ld)
         r.flags.leadNG = arrive > need && !leadAccepted(r)
-        // 商社を変えてもまだ間に合わないなら対策区分を外して PM に戻す
-        if (arrive > need && r.flags.countermeasure === '商社変更' && !r.flags.delegated) {
-          r.flags.countermeasure = undefined
-          r.flags.leadNG = true
-        }
       }
     } else if (r.status === 'ordered' && r.promisedDate && need) {
       r.flags.leadNG = r.promisedDate > need && !leadAccepted(r)
@@ -217,13 +174,10 @@ export function normalize(p: Project, ws: Workspace, today = todayStr()) {
   }
 }
 
-/** 納期NG に PM が手を打った（受入・特急・代替品検討・委譲中）なら NG として PM に出さない */
+/** 納期NG に手を打った（受入・代替品検討）なら NG として出さない */
 function leadAccepted(r: Row): boolean {
   const cm = r.flags.countermeasure
-  // 先行発注を PM が許可した行は、納期を承知のうえでの判断（§4 先行発注許可）
-  // 再交渉中（正式見積の回答待ち）は、回答が来てから判定する
-  if (r.flags.renegotiating && r.status === 'formalRequested') return true
-  return cm === '受入' || cm === '分納・特急' || cm === '代替品検討' || (cm === '商社変更' && !!r.flags.delegated) || !!r.flags.early
+  return cm === '受入' || cm === '代替品検討'
 }
 
 export function nextRowId(p: Project): string {
@@ -236,7 +190,5 @@ export function setStatus(r: Row, s: Row['status']) {
     r.status = s
     r.statusChangedAt = new Date().toISOString()
     r.dueAt = undefined
-    // 概算から取り直す（見積中より前に戻る）なら、前の再交渉は終わり（次の正式依頼で納期NG を見直しの待ちにしない）
-    if (['draft', 'submitted', 'quoting', 'quoted'].includes(s)) r.flags.renegotiating = false
   }
 }

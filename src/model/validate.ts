@@ -30,7 +30,11 @@ const nonNeg = (v: unknown, allowDecline = false): number | null => {
 }
 const ROLES_OK = ['design', 'purchasing', 'pm']
 const ISSUE_STATUS_OK = ['draft', 'open', 'inProgress', 'fixed', 'answered', 'confirmed', 'wontfix']
-const userOf = (v: unknown, fallback: Workspace['user']): Workspace['user'] => (isObj(v) && typeof v.name === 'string' && ROLES_OK.includes(String(v.role)) ? (v as unknown as Workspace['user']) : fallback)
+/** 旧版の PM（廃止）は設計として読む */
+const userOf = (v: unknown, fallback: Workspace['user']): Workspace['user'] => {
+  if (!isObj(v) || typeof v.name !== 'string' || !ROLES_OK.includes(String(v.role))) return fallback
+  return (v.role === 'pm' ? { ...v, role: 'design' } : v) as unknown as Workspace['user']
+}
 
 /** 読み込んだワークスペースを検証し、欠けている項目を既定値で補う。直せない項目は外して warnings に、全体が読めなければ error を返す */
 /** 41 段より深い入れ子があるか（見つけたらすぐ返す） */
@@ -99,7 +103,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     // 値を直して読んだ項目（数量の無い・読めない・負の値、存在しない日付）を数えて知らせる
     const fixes: Record<string, number> = {}
     const fallbackUser = { name: '不明', role: 'design' as const }
-    for (const k of ['rows', 'quotes', 'issues', 'submissions', 'decisions'] as const) if (p0[k] !== undefined && !Array.isArray(p0[k])) warnings.push(`案件 ${p0.id} の ${k} が一覧の形ではないので読めませんでした`)
+    for (const k of ['rows', 'quotes', 'issues', 'submissions'] as const) if (p0[k] !== undefined && !Array.isArray(p0[k])) warnings.push(`案件 ${p0.id} の ${k} が一覧の形ではないので読めませんでした`)
     const issues0 = arr<unknown>(p0.issues).map((x) => (isObj(x) && typeof x.id === 'number' && Number.isFinite(x.id) ? { ...x, id: String(x.id) } : x))
     // 数字で書いた行 ID（81 など）は、行と同じく文字にして突き合わせる
     const idStr = (x: unknown) => (isObj(x) && typeof x.rowId === 'number' && Number.isFinite(x.rowId) ? { ...x, rowId: String(x.rowId) } : x)
@@ -141,7 +145,7 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       completed: p0.completed === true,
       completedAt: typeof p0.completedAt === 'string' ? p0.completedAt : undefined,
       dueDate: normDate(p0.dueDate),
-      members: isObj(p0.members) ? (p0.members as Project['members']) : { design: '', purchasing: '', pm: '' },
+      members: isObj(p0.members) ? { design: typeof p0.members.design === 'string' ? p0.members.design : '', purchasing: typeof p0.members.purchasing === 'string' ? p0.members.purchasing : '' } : { design: '', purchasing: '' },
       preferredSupplierIds: arr(p0.preferredSupplierIds),
       supplierIds: arr(p0.supplierIds),
       rows: rows.map((r) => coerceRow(r as Record<string, unknown>, fixes)),
@@ -158,7 +162,6 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
         snapshot: isObj(s.snapshot) ? Object.fromEntries(Object.entries(s.snapshot).filter(([, v]) => isObj(v))) : {},
         changeSet: isObj(s.changeSet) ? s.changeSet : undefined,
       })),
-      decisions: arr<Project['decisions'][number]>(p0.decisions).filter(isObj).map((d) => ({ ...d, by: userOf(d.by, fallbackUser) })),
       weights: isObj(p0.weights) ? coerceLike(DEFAULT_WEIGHTS, p0.weights as Record<string, unknown>) : { ...DEFAULT_WEIGHTS },
       rowWeights: isObj(p0.rowWeights) ? (p0.rowWeights as Project['rowWeights']) : {},
       settings: settings0,
@@ -168,8 +171,6 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
       version: Number(p0.version) || 1,
       requestRevs: isObj(p0.requestRevs) ? (p0.requestRevs as Project['requestRevs']) : {},
       nextIssueNo: Number(p0.nextIssueNo) || arr(p0.issues).length + 1,
-      nextDecisionNo: Number(p0.nextDecisionNo) || arr(p0.decisions).length + 1,
-      caseDecisions: arr<Project['caseDecisions'][number]>(p0.caseDecisions).filter((c) => isObj(c) && str(c.id) && typeof c.kind === 'string' && (c.status === 'open' || c.status === 'done')),
     }
     for (const [k, n] of Object.entries(fixes)) warnings.push(`案件 ${p0.id}: ${k} ${n} 行`)
     // 前の版で残った「発注済 · 再発行」の印は、読み込んだときに外す（発注後の変更は発注後変更依頼で扱う）
@@ -237,23 +238,21 @@ function coerceRow(r0: Record<string, unknown>, fixes: Record<string, number> = 
   }
   if (!STATUSES.includes(String(out.status))) out.status = 'draft'
   // 印の型をそろえる（文字の印に true・{} などが入っていると、整えるときに止まる）
-  const STR_FLAGS = ['formalWithdrawn', 'droppedStopped', 'surplusRejected', 'importMismatch', 'pmReason', 'countermeasure', 'formalDiffKey']
+  const STR_FLAGS = ['formalWithdrawn', 'droppedStopped', 'importMismatch', 'countermeasure']
   const f0 = isObj(r.flags) ? r.flags : {}
   const flags: Record<string, unknown> = {}
   for (const [k, v] of Object.entries(f0)) {
     if (STR_FLAGS.includes(k)) {
       if (typeof v === 'string' && v) flags[k] = v
-    } else if (k === 'capRuled') {
-      if (typeof v === 'number' && Number.isFinite(v)) flags[k] = v
     } else if (typeof v === 'boolean') flags[k] = v
   }
   out.flags = flags
   out.ackRules = arr<unknown>(r.ackRules).filter((x) => typeof x === 'string')
   out.quoteTargets = r.quoteTargets === undefined ? undefined : arr<unknown>(r.quoteTargets).filter((x): x is string => typeof x === 'string')
   out.deferredRules = arr<unknown>(r.deferredRules).filter((x) => typeof x === 'string')
-  for (const k of ['working', 'pendingApproval', 'removal', 'pendingRemoval']) if (out[k] != null && !isObj(out[k])) out[k] = undefined
+  for (const k of ['working', 'removal']) if (out[k] != null && !isObj(out[k])) out[k] = undefined
   // 作業中・承認待ちの値も、行の項目と同じ型にそろえる（型の違う値は捨てる）
-  for (const k of ['working', 'pendingApproval']) {
+  for (const k of ['working']) {
     const w = out[k] as Record<string, unknown> | undefined
     if (!w) continue
     const kept: Record<string, unknown> = {}
@@ -373,8 +372,8 @@ function clampSettings<T extends object>(st: T): T {
     out[k] = c
   }
   for (const k of ['processDays', 'quoteDays', 'formalDays', 'leadMarginDays']) clamp(k, 0, 365, true)
-  for (const k of ['externalApprovalBudgetPct', 'exceptionPct', 'formalDiffPct', 'qtyTolerancePct', 'tieThreshold']) clamp(k, 0, 100)
-  for (const k of ['externalApprovalAmount', 'exceptionAmount', 'formalDiffAmount', 'surplusAmount', 'budget']) clamp(k, 0, 1e12)
+  for (const k of ['qtyTolerancePct', 'tieThreshold']) clamp(k, 0, 100)
+  for (const k of ['surplusAmount', 'budget']) clamp(k, 0, 1e12)
   return out as unknown as T
 }
 

@@ -3,9 +3,8 @@ import type { Row } from '@/model/types'
 import { ISSUE_STATUS_LABEL, ROLE_LABEL } from '@/model/types'
 import type { ViewModel } from '@/model/selectors'
 import { rankedQuotes, scoreRow } from '@/model/score'
-import { decisionExtra, effective, fmtYen, roundedQty, rowNeedDate } from '@/model/derive'
+import { effective, fmtYen, roundedQty, rowNeedDate } from '@/model/derive'
 import { fmtDate, fmtDateTime } from '@/model/dates'
-import { pmCaseOf } from '@/actions/pm'
 import { commitEdit, runCommand } from '@/commands/registry'
 
 export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
@@ -18,7 +17,6 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
   const stale = p.quotes.filter((q) => q.rowId === row.id && q.stale)
   // 他の人の下書き（未発行）の指摘は見せない
   const issues = p.issues.filter((i) => i.rowId === row.id && (i.status !== 'draft' || i.by.name === st.ws.user.name))
-  const decisions = p.decisions.filter((d) => d.rowId === row.id)
   const events = p.events.filter((ev) => ev.rowId === row.id).slice(-8).reverse()
   const focused = st.cursorRow === row.id && st.detailIndex > 0
   // 詳細の指摘・見積をクリックで選ぶ（↓ で選ぶのと同じ。続く Enter でアクション）
@@ -26,7 +24,6 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
     if (useStore.getState().mode === 'edit' && !commitEdit('stay')) return
     useStore.getState().set({ cursorRow: row.id, detailIndex: index })
   }
-  const pmCase = pmCaseOf(p, row)
   const need = rowNeedDate(p, row)
   return (
     <div className="detail" data-testid="detail">
@@ -110,12 +107,7 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
           </div>
           {row.adoptedSupplierId && (
             <p className="muted" style={{ margin: '6px 0 0', fontSize: 12 }}>
-              採用: {st.ws.suppliers.find((s) => s.id === row.adoptedSupplierId)?.name} {row.scoreSnapshot != null ? `スコア ${row.scoreSnapshot}（固定）` : ''} {row.adoptReason ? `理由: ${row.adoptReason}` : ''} {row.flags.pmPending ? '／ PM承認待ち' : ''}
-            </p>
-          )}
-          {pmCase !== 'なし' && (
-            <p style={{ margin: '6px 0 0', fontSize: 12 }}>
-              <span className="chip err">要決定: {pmCase}</span> <span className="muted">PM は y / Shift+Y、または Enter で決定パネル</span>
+              採用: {st.ws.suppliers.find((s) => s.id === row.adoptedSupplierId)?.name} {row.scoreSnapshot != null ? `スコア ${row.scoreSnapshot}（固定）` : ''} {row.adoptReason ? `理由: ${row.adoptReason}` : ''}
             </p>
           )}
         </div>
@@ -151,13 +143,8 @@ export function Detail({ row, vm }: { row: Row; vm: ViewModel }) {
             })}
             {issues.length === 0 && <li className="done">指摘はありません</li>}
           </ul>
-          <h4 style={{ marginTop: 10 }}>決定・履歴</h4>
+          <h4 style={{ marginTop: 10 }}>履歴</h4>
           <ul className="history">
-            {decisions.map((d) => (
-              <li key={d.id}>
-                <span className="who">{d.by.name}</span> {fmtDateTime(d.at)} <b>{d.kind}</b> {d.reason} {decisionExtra(d) ? `（${decisionExtra(d)}）` : ''} {d.external ? `（決裁: ${d.external.approver} ${d.external.date} ${d.external.ref}）` : ''}
-              </li>
-            ))}
             {events.map((ev) => (
               <li key={ev.id}>
                 <span className="who">{ev.by.name}</span> {fmtDateTime(ev.at)} {ev.text}

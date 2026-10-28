@@ -1,6 +1,6 @@
-export type Role = 'design' | 'purchasing' | 'pm'
-export const ROLE_LABEL: Record<Role, string> = { design: '設計', purchasing: '購買', pm: 'PM' }
-export const ROLES: Role[] = ['design', 'purchasing', 'pm']
+export type Role = 'design' | 'purchasing'
+export const ROLE_LABEL: Record<Role, string> = { design: '設計', purchasing: '購買' }
+export const ROLES: Role[] = ['design', 'purchasing']
 
 export interface User {
   name: string
@@ -55,25 +55,15 @@ export const ADOPT_REASONS: AdoptReason[] = ['納期', '在庫即納', '実績/�
 export interface RowFlags {
   /** 再見積要（型式/メーカ変更・数量±20%超） */
   requote?: boolean
-  /** PM承認待ち（例外選定・変更セット） */
-  pmPending?: boolean
   /** 置換で引き継いだ見積の要再確認 */
   reconfirm?: boolean
   /** 納期NG */
   leadNG?: boolean
-  /** 先行発注 */
-  early?: boolean
   /** 代替承認待ち（客先承認要） */
   altPending?: boolean
-  /** 正式見積の差分超過 */
-  formalDiff?: boolean
-  /** 対策区分（納期NGに PM が割当） */
-  countermeasure?: '商社変更' | '代替品検討' | '分納・特急' | '受入'
-  /** PM の再交渉で正式見積の回答待ち（回答が来るまで納期NG を PM に出し直さない） */
-  renegotiating?: boolean
-  /** 特急・分納の上限超過を PM が却下したときの追加費用（同じ額のあいだは PM の 7 に出さない） */
-  capRuled?: number
-  /** 発注後変更依頼を PM が承認した（購買が発注を取り消せる。§9.1） */
+  /** 納期NG への対応（受入: 承知で進める / 代替品検討: 発注を取り消して設計が置き換える） */
+  countermeasure?: '代替品検討' | '受入'
+  /** 発注後変更依頼を出した（購買が発注を取り消せる） */
   orderCancelApproved?: boolean
   /** 単価要確認（数量変更が閾値内だが MOQ をまたぐ等） */
   priceCheck?: boolean
@@ -83,18 +73,8 @@ export interface RowFlags {
   orderQtyCheck?: boolean
   /** 取下げ・再発行対象（正式依頼中以降の変更） */
   reissue?: boolean
-  /** 先行発注判断（PM） */
-  ltbPending?: boolean
   /** 拮抗（一括採用で確定した拮抗行） */
   contested?: boolean
-  /** 選定権限を購買に委譲（納期NG 対策） */
-  delegated?: boolean
-  /** 要決定に載っている理由 */
-  pmReason?: '例外選定' | '先行採用' | '先行発注判断' | '変更セット' | '差分超過' | '納期NG' | '差戻し2回目' | '閾値超' | '再選定提案' | '対策不成立'
-  /** 差分超過に PM が対応した時の「商社:正式単価」。同じ値の間は差分超過に戻さない */
-  formalDiffKey?: string
-  /** PM が最小ロットの余剰（閾値超）を却下した（発注数を必要数より多くしない。採用商社が変わったら外す） */
-  surplusRejected?: string
   /** 取引停止で外した採用商社の名前（ステータスバーで理由を出す。選び直したら外す） */
   droppedStopped?: string
   /** 調達区分・指定先の変更で取り下げた正式依頼（「商社名 依頼No」。購買が元の商社へ取り下げを伝える。購買が x で確認すると外れる） */
@@ -167,15 +147,8 @@ export interface Row extends DesignFields {
   publishedRev?: number
   /** 作業中（未公開）の設計列。公開済み以降の編集はここに積む */
   working?: Partial<DesignFields>
-  /** PM 承認待ちの変更セット（承認されるまで公開値には反映しない） */
-  pendingApproval?: Partial<DesignFields>
-  pendingRev?: number
-  /** 購買の先行発注の申請（PM の判断材料。設計の採用理由とは別に残す） */
-  ltbRequest?: { reason: string; amount: number | null; by: string; at: string }
   /** 設計の作業中の取消・置換（公開するまで購買には「設計作業中」だけ見える） */
   removal?: Removal
-  /** PM 承認待ちの取消・置換 */
-  pendingRemoval?: Removal
   /** 指摘の提案から作られた行（その指摘 ID） */
   fromIssue?: string
   /** 公開済み差分の起因（指摘ID or 変更セットID） */
@@ -238,7 +211,6 @@ export interface IssueKindDef {
   kind: IssueKind
   key: string // 頭文字
   resolver: Role
-  approver?: Role
   dueDays: number
   /** 起票不可の調達区分 */
   blockedFor: Procurement[]
@@ -248,14 +220,14 @@ export interface IssueKindDef {
 export const ISSUE_KINDS: IssueKindDef[] = [
   { kind: '型式あいまい', key: 'k', resolver: 'design', dueDays: 1, blockedFor: ['客先指定品'] },
   { kind: 'メーカ未記入', key: 'm', resolver: 'design', dueDays: 1, blockedFor: [] },
-  { kind: '廃番', key: 'd', resolver: 'design', approver: 'pm', dueDays: 3, blockedFor: [] },
+  { kind: '廃番', key: 'd', resolver: 'design', dueDays: 3, blockedFor: [] },
   { kind: '代替提案', key: 'a', resolver: 'design', dueDays: 3, blockedFor: ['客先指定品'], blockedIfNoAlt: true },
-  { kind: '最小ロット', key: 'l', resolver: 'purchasing', approver: 'pm', dueDays: 2, blockedFor: [] },
+  { kind: '最小ロット', key: 'l', resolver: 'purchasing', dueDays: 2, blockedFor: [] },
   { kind: '数量見直し依頼', key: 'r', resolver: 'design', dueDays: 2, blockedFor: [] },
-  { kind: '納期NG', key: 'n', resolver: 'purchasing', approver: 'pm', dueDays: 1, blockedFor: [] },
+  { kind: '納期NG', key: 'n', resolver: 'purchasing', dueDays: 1, blockedFor: [] },
   { kind: '質問', key: 'q', resolver: 'design', dueDays: 1, blockedFor: [] },
-  { kind: 'コスト超過', key: 'c', resolver: 'design', approver: 'pm', dueDays: 2, blockedFor: [] },
-  { kind: '発注後変更依頼', key: 'h', resolver: 'purchasing', approver: 'pm', dueDays: 1, blockedFor: [] },
+  { kind: 'コスト超過', key: 'c', resolver: 'design', dueDays: 2, blockedFor: [] },
+  { kind: '発注後変更依頼', key: 'h', resolver: 'purchasing', dueDays: 1, blockedFor: [] },
   { kind: 'その他', key: 'o', resolver: 'design', dueDays: 2, blockedFor: [] },
 ]
 
@@ -283,12 +255,8 @@ export interface Issue {
   answer?: string
   answerKind?: '説明' | '客先承認取得'
   approvalRef?: { no: string; date: string }
-  /** PM の決定 */
-  decisionId?: string
   replies: IssueReply[]
   bounceCount: number
-  /** 差戻し 2 回目を PM が裁定した */
-  pmRuled?: boolean
   dueAt: string
   resolution?: string
   /** 対応先の行（置換時） */
@@ -322,7 +290,7 @@ export interface Submission {
   /** 差分の要約 */
   summary: { added: number; modelChanged: number; qtyChanged: number; other: number; cancelled: number }
   /** 変更セット（指摘対応でない変更があるとき） */
-  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; decisionId?: string; rejected?: boolean; /** 承認前に同じ行のあとの変更セットにまとめた（その Rev の決定に従う） */ supersededBy?: number; /** 行ごとに、あとの変更セットにまとめた行（行 ID → まとめた先の Rev） */ merged?: Record<string, number> }
+  changeSet?: { reason: ChangeReason; changeNo: string; approved?: boolean; rejected?: boolean; /** 承認前に同じ行のあとの変更セットにまとめた（その Rev の決定に従う） */ supersededBy?: number; /** 行ごとに、あとの変更セットにまとめた行（行 ID → まとめた先の Rev） */ merged?: Record<string, number> }
   /** 却下などで取り消された Rev */
   revoked?: boolean
   /** 提出時のスナップショット（設計列） */
@@ -331,20 +299,6 @@ export interface Submission {
   causes: Record<string, string>
   /** 購買が確認済にした差分 */
   acked: string[]
-}
-
-export type DecisionKind = '承認' | '却下' | '次点商社へ' | '再交渉' | '設計へ代替依頼' | '数量見直し依頼' | '特急・分納' | '先行発注許可' | '受入' | '案件設定変更' | '対策区分' | '委譲' | '再選定' | '現状維持' | '指摘を支持' | '回答を支持' | '案件設定確定'
-export interface Decision {
-  id: string
-  rowId?: string
-  issueId?: string
-  kind: DecisionKind
-  by: User
-  at: string
-  reason: string
-  /** ツール外決裁 */
-  external?: { approver: string; date: string; ref: string }
-  payload?: Record<string, unknown>
 }
 
 export interface ScoreWeights {
@@ -370,21 +324,11 @@ export interface ProjectSettings {
   /** 社内工程日数（納期から逆算して必要日） */
   processDays: number
   tieThreshold: number
-  exceptionAmount: number
-  exceptionPct: number
-  formalDiffPct: number
-  formalDiffAmount: number
   qtyTolerancePct: number
   surplusAmount: number
   quoteCompleteRule: 'all' | 'min2' | 'deadline'
   quoteDeadline: string | null
-  changeNeedsPmApproval: boolean
   selector: 'design' | 'purchasing'
-  /** PM 項目の確定（重み・納期・予算） */
-  pmConfirmed: boolean
-  /** 上長決裁の条件 */
-  externalApprovalAmount: number
-  externalApprovalBudgetPct: number
   /** 回答期限の既定日数 / 正式見積の所要日数 */
   quoteDays: number
   formalDays: number
@@ -405,14 +349,13 @@ export interface Project {
   completed: boolean
   completedAt?: string
   dueDate: string | null
-  members: { design: string; purchasing: string; pm: string }
+  members: { design: string; purchasing: string }
   preferredSupplierIds: string[]
   supplierIds: string[]
   rows: Row[]
   quotes: Quote[]
   issues: Issue[]
   submissions: Submission[]
-  decisions: Decision[]
   weights: ScoreWeights
   rowWeights: Record<string, ScoreWeights>
   settings: ProjectSettings
@@ -423,9 +366,7 @@ export interface Project {
   /** 概算/正式の依頼 Rev（商社ごと） */
   requestRevs: Record<string, number>
   nextIssueNo: number
-  nextDecisionNo: number
   /** 案件レベルの要決定（案件設定確定など） */
-  caseDecisions: Array<{ id: string; kind: '案件設定確定' | '予算超過'; status: 'open' | 'done'; at: string }>
 }
 
 /** 在庫（社内にある部品） */

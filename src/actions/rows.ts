@@ -2,7 +2,7 @@ import { useStore } from '@/model/store'
 import type { ChangeReason, DesignFields, Issue, Project, Removal, Role, Row, Submission } from '@/model/types'
 import { DESIGN_FIELDS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
 import { colDef, supplierOfCol } from '@/model/columns'
-import { effective, fixedSupplierId, makerTargets, surplusOf, withdrawFormal, overCap, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty, routeSurplusToPm } from '@/model/derive'
+import { effective, fixedSupplierId, makerTargets, surplusOf, withdrawFormal, hasWork, isActive, isFixedProcurement, normalizeModel, orderQty, resolverOfIssue, roundedQty } from '@/model/derive'
 import { normalize, nextRowId, setStatus } from '@/model/lifecycle'
 import { emptyQuote, newRow } from '@/model/sample'
 import { parseTable } from '@/io/paste'
@@ -139,13 +139,6 @@ export function setCell(rowId: string, colKey: string, raw: string, label = 'セ
     const r = st().project().rows.find((x) => x.id === rowId)
     if (r && value > Math.max(r.qtyNeeded * 10, r.qtyNeeded + 100)) st().toastMsg(`${rowId} の発注数 ${value} は必要数 ${r.qtyNeeded} の ${Math.round(value / Math.max(1, r.qtyNeeded))} 倍です。列（発注数）を確かめてください（Ctrl+Z で戻す）`, 'err')
   }
-  // 追加費用が PM の決めた特急・分納の上限を超えたら知らせる（止めはしない）
-  if (ok && colKey === 'extraCost' && typeof value === 'number') {
-    const p = st().project()
-    const r = p.rows.find((x) => x.id === rowId)
-    const oc = r ? overCap(p, r) : null
-    if (oc) st().toastMsg(`追加費用 ¥${value.toLocaleString()} が、PM の決めた特急・分納の上限 ¥${oc.cap.toLocaleString()} を超えています（${oc.decisionId}）。購買の 4・PM の 7 に出します`, 'err')
-  }
   return ok
 }
 
@@ -155,19 +148,13 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
   const rowId = r.id
   if (!isActive(r)) return `${r.id} は${r.status === 'cancelled' ? '取消' : '置換'}済の行です（編集できません）`
   // 最小ロットの指摘（直すのは購買）は、発注数を丸め数量以上にしたら対応済（起票者が確認して閉じる）
-  // PM が余剰を却下した行（採用商社が同じ）は、発注数を必要数より多くしない
-  if (colKey === 'orderQty' && typeof value === 'number' && r.flags.surplusRejected && r.flags.surplusRejected === (r.adoptedSupplierId ?? '-') && value > r.qtyNeeded)
-    return `${r.id} は PM が最小ロットの余剰を却下しています（発注数は必要数 ${r.qtyNeeded} まで）。ほかの商社・数量で手配してください。PM にもう一度相談するときは、いまの最小ロットの指摘を見送り（Ctrl+. →「見送り」）にしてから起票し直します`
-  // ただし余剰が閾値を超えて PM の判断待ちのあいだは対応済にしない（PM が却下したら戻す）
-  if (colKey === 'orderQty' && typeof value === 'number' && !(r.flags.pmPending && r.flags.pmReason === '閾値超'))
+  if (colKey === 'orderQty' && typeof value === 'number')
     for (const i of p.issues.filter((x) => x.rowId === r.id && x.kind === '最小ロット' && (x.status === 'open' || x.status === 'inProgress')))
       if (value >= surplusOf(p, r).rounded) {
         i.status = 'fixed'
         i.resolution = `発注数を ${value} に（丸め）`
       }
   if (d.perSupplier) {
-    // §5: PM 承認待ちの変更セットで足した行は、承認されるまで購買に渡っていない
-    if (r.flags.pmPending && r.flags.pmReason === '変更セット' && r.status === 'submitted') return `${r.id} は変更セット（Rev.${r.pendingRev ?? ''}）の PM 承認待ちの追加行です。承認されてから見積を入れます`
     const sid = supplierOfCol(colKey)!
     let q = p.quotes.find((x) => x.rowId === rowId && x.supplierId === sid && !x.stale)
     if (!q) {
@@ -195,20 +182,18 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       r.working = Object.keys(w).length ? (w as Partial<DesignFields>) : undefined
     }
   } else {
-    // 追加費用を入れ直したら、前の PM の却下は効かない（同じ額に戻しても、もう一度 PM が決める）
-    if (colKey === 'extraCost') r.flags.capRuled = undefined
     // 発注（o）・発注を飛ばした入荷（i）は、同じ条件で止める
     if ((colKey === 'ordered' || colKey === 'received') && value === true && !r.ordered) {
       const block = orderBlock(p, r)
       if (block) return colKey === 'received' ? `入荷にできません（発注前の行）: ${block}` : block
     }
     if (colKey === 'ordered' && value === false && r.received) return '入荷済の行です。先に入荷（i）を外してください'
-    // 発注の取り消しは、発注後変更依頼を PM が承認したときだけ（§9.1）。押し間違いは Ctrl+Z で戻す
+    // 発注の取り消しは、発注後変更依頼を出したときだけ。押し間違いは Ctrl+Z で戻す
     if (colKey === 'ordered' && value === false && r.ordered) {
-      const req = p.issues.find((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
+      const req = p.issues.find((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && (i.status === 'open' || i.status === 'inProgress'))
       if (!r.flags.orderCancelApproved || !req) {
         r.flags.orderCancelApproved = false
-        return '発注済を外すには、発注後変更依頼（Alt+Shift+I → h）の PM 承認が要ります（押し間違いは Ctrl+Z で戻せます）'
+        return '発注済を外すには、先に発注後変更依頼（Alt+Shift+I → h）を出してください（押し間違いは Ctrl+Z で戻せます）'
       }
       // 発注を取り消したら、設計が置き換え品を作る番（設計の 4 に出る。§9.1）
       r.flags.orderCancelApproved = false
@@ -224,17 +209,16 @@ export function applyCellValue(p: Project, r: Row, colKey: string, value: unknow
       if (!r.ordered) r.orderedAt = r.orderedAt ?? todayStr()
       r.ordered = true
     }
-    if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, r.flags.early ? 'selected' : 'formalQuoted')
+    if (colKey === 'ordered' && value === false && r.status === 'ordered') setStatus(r, 'formalQuoted')
     if (colKey === 'received' && value === false && r.status === 'received') setStatus(r, 'ordered')
   }
 }
 
-/** 取消・置換を公開値に反映する（公開時、または PM の承認時） */
+/** 取消・置換を公開値に反映する（公開時） */
 export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) {
   // 正式見積を依頼していた行を取消・置換したら、元の商社への正式依頼を取り下げる（購買への知らせ）
   withdrawFormal(p, r, st().ws.suppliers)
   r.removal = undefined
-  r.pendingRemoval = undefined
   r.working = undefined
   if (rm.kind === 'cancel') {
     setStatus(r, 'cancelled')
@@ -255,13 +239,13 @@ export function applyRemoval(p: Project, r: Row, rm: Removal, sub?: Submission) 
   }
 }
 
-/** 発注後変更依頼の承認で発注を外し、設計の置き換えを待っている行か */
+/** 発注後変更依頼で発注を外し、設計の置き換えを待っている行か */
 export function awaitingReplacement(p: Project, r: Row): boolean {
   return r.flags.countermeasure === '代替品検討' && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'confirmed')
 }
-/** PM が発注後変更依頼を承認したが、購買がまだ発注を外していない行か */
+/** 発注後変更依頼を出したが、購買がまだ発注を外していない行か */
 export function cancelApprovedNotYet(p: Project, r: Row): boolean {
-  return r.ordered && !!r.flags.orderCancelApproved && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && i.status === 'inProgress' && i.pmRuled)
+  return r.ordered && !!r.flags.orderCancelApproved && p.issues.some((i) => i.rowId === r.id && i.kind === '発注後変更依頼' && (i.status === 'open' || i.status === 'inProgress'))
 }
 /** 取引先がキャンセルを受けなかった: 置き換えをやめ、もとの発注に戻す（購買。§9.1 の発注後変更依頼の出口） */
 export function restoreOrder(rowId: string): string | null {
@@ -270,8 +254,8 @@ export function restoreOrder(rowId: string): string | null {
   const p = s.project()
   const r = p.rows.find((x) => x.id === rowId)
   if (!r || (!awaitingReplacement(p, r) && !cancelApprovedNotYet(p, r))) return `${rowId} は発注後変更依頼の承認で発注を取り消す・取り消した行ではありません`
-  if (r.removal || r.pendingRemoval || r.replacedBy) {
-    const by = r.replacedBy ?? (r.removal?.kind === 'replace' ? r.removal.by : undefined) ?? (r.pendingRemoval?.kind === 'replace' ? r.pendingRemoval.by : undefined)
+  if (r.removal || r.replacedBy) {
+    const by = r.replacedBy ?? (r.removal?.kind === 'replace' ? r.removal.by : undefined)
     return `${rowId} は設計が置き換えの作業中です。設計に${by ? `置換先の行 ${by} で` : ''} Shift+Delete を押して置換を取りやめてもらってから戻します`
   }
   if (!r.adoptedSupplierId) return `${rowId} は採用商社がありません`
@@ -287,26 +271,23 @@ export function restoreOrder(rowId: string): string | null {
       req.status = 'confirmed'
       req.resolution = 'キャンセル不可（取引先が受けず）。もとの発注のまま'
     }
-    // 納期NG などを今の発注で見直す（PM の 7 にすぐ出す）
     normalize(p2, ws)
   })
   return null
 }
 
-/** 発注できない理由（発注できるなら null）。§4・§9.1: 正式見積済（または先行発注許可）で、PM の決定待ちが無く、採用商社の有効な見積がある行だけ */
+/** 発注できない理由（発注できるなら null）。正式見積済で、採用商社の有効な見積がある行だけ */
 export function orderBlock(p: Project, r: Row): string | null {
   if (r.procurement === '支給品' || r.procurement === '社内在庫') return `${r.procurement}の行です（商社に発注しません）`
-  if (r.status !== 'formalQuoted' && !r.flags.early) return '正式見積済でないと発注できません（先行発注は PM の許可が要ります。Ctrl+K → 先行発注を申請）'
-  if (r.flags.formalDiff) return '正式見積が概算から差分超過です。PM の決定（7 要決定）が出るまで発注できません'
-  if (r.flags.pmPending || r.pendingApproval || r.pendingRemoval) return 'PM の承認待ちの行です。承認が出るまで発注できません'
+  if (r.status !== 'formalQuoted') return '正式見積済でないと発注できません'
   // 設計が取消・置換の作業中（未公開）の行は、公開されるまで発注しない
   if (r.removal) return '設計が取消・置換の作業中です（設計作業中●）。公開を待ってから発注します'
-  if (r.flags.leadNG) return '納期NG の行です。対策（PM の受入・別商社など）が決まるまで発注できません'
+  if (r.flags.leadNG) return '納期NG の行です。別の商社に替えるなどの対策をしてから発注します'
   if (awaitingReplacement(p, r)) return '発注を取り消して置き換えを待っている行です（設計が Alt+r で置き換え品を作ります。取引先がキャンセルを受けなかったときは Ctrl+K →「キャンセル不可で発注に戻す」）'
   if (r.flags.requote) return '再見積要の行です（型式・数量の変更で見積が失効）。見積を取り直して採用してから発注します'
   // 正式依頼のあとに数量・型式・必要日が変わった行は、いまの値で正式見積を取り直してから（前の正式単価は前の数量のもの）
   if (r.flags.reissue) return '取下げ・再発行対象の行です（正式依頼のあとに数量・型式・必要日が変更）。Ctrl+K →「正式見積を依頼」で再発行し、回答を受けてから発注します'
-  // PM が差分超過などに「設計へ代替依頼」「数量見直し依頼」を出している間は、結論が出るまで発注しない
+  // 設計への代替依頼・数量見直し依頼を出している間は、結論が出るまで発注しない
   const waiting = p.issues.find((i) => i.rowId === r.id && (i.kind === 'コスト超過' || i.kind === '数量見直し依頼' || i.kind === '発注後変更依頼') && ['open', 'inProgress', 'answered'].includes(i.status))
   if (waiting) return `${waiting.id}（${waiting.kind}）の結論が出ていません。対応・確認が済んでから発注します`
   const aq = r.adoptedSupplierId ? p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale && x.unitPrice != null) : undefined
@@ -371,7 +352,6 @@ export function deleteRow(rowId: string) {
         msg = `${rowId} を削除しました${old && !old.removal ? `（${old.id} の置換を取りやめました）` : ''}（Ctrl+Z で戻せます）`
       } else {
         if (['ordered', 'received'].includes(r.status)) return '発注済の行は取り消せません（発注後変更依頼を起票）'
-        if (r.pendingRemoval) return `${r.id} の取消・置換は PM の承認待ちです`
         if (r.removal) {
           // もう一度押したら取りやめ
           if (r.removal.kind === 'replace') return `${r.id} は置換の作業中です（置換先 ${r.removal.by} を Shift+Delete で消すと取りやめ）`
@@ -427,7 +407,7 @@ export function replaceRow(rowId: string, preset?: { model: string; maker: strin
       const old = p.rows[idx]
       if (!isActive(old)) return `${old.id} は${old.status === 'cancelled' ? '取消' : '置換'}済の行です（置換できません）`
       if (['ordered', 'received'].includes(old.status)) return '発注済の行は置換できません（発注後変更依頼を起票）'
-      if (old.removal || old.pendingRemoval) return `${old.id} は取消・置換の作業中です`
+      if (old.removal) return `${old.id} は取消・置換の作業中です`
       id = nextRowId(p)
       const e = effective(old)
       const copy: Partial<Row> = {}
@@ -527,7 +507,6 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
       if (sameNorm) r.flags.notation = true
       else if (fixedIssueIds.length && hasQuotes) {
         r.flags.reconfirm = true
-        r.flags.pmReason = undefined
       } else {
         r.flags.requote = true
         withdrawFormal(p, r, st().ws.suppliers)
@@ -540,13 +519,6 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
         }
         r.quoteTargets = undefined
         if (['selected', 'formalRequested', 'formalQuoted'].includes(r.status)) setStatus(r, 'submitted')
-        // 採用・先行採用・先行発注・差分超過の判断は旧型式に対するもの。新しい型式で見積から出し直す
-        r.flags.early = undefined
-        r.flags.formalDiff = undefined
-        if (r.flags.pmReason && ['例外選定', '先行採用', '先行発注判断', '差分超過', '閾値超', '再選定提案'].includes(r.flags.pmReason)) {
-          r.flags.pmPending = undefined
-          r.flags.pmReason = undefined
-        }
       }
       if (formalStage && !sameNorm) r.flags.reissue = true
     }
@@ -565,10 +537,8 @@ export function applyDesignChange(p: Project, r: Row, values: Partial<DesignFiel
     else if (inFlight) r.flags.priceCheck = true
     if (r.adoptedSupplierId) {
       const aq = p.quotes.find((x) => x.rowId === r.id && x.supplierId === r.adoptedSupplierId && !x.stale)
-      // PM が余剰を却下した商社のままなら、MOQ で丸めない（却下した数に戻さない）
-      const rejected = !!r.flags.surplusRejected && r.flags.surplusRejected === r.adoptedSupplierId
-      const recalculated = rejected ? q1 : roundedQty(q1, aq?.moq, r.packQty, r.unit)
-      const wasManual = r.orderQty != null && r.orderQty !== (rejected ? q0 : roundedQty(q0, aq?.moq, before.packQty, before.unit))
+      const recalculated = roundedQty(q1, aq?.moq, r.packQty, r.unit)
+      const wasManual = r.orderQty != null && r.orderQty !== roundedQty(q0, aq?.moq, before.packQty, before.unit)
       r.orderQty = recalculated
       if (wasManual) r.flags.orderQtyCheck = true
     }
@@ -615,7 +585,11 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
       i.at = now
       const def = ISSUE_KINDS.find((k) => k.kind === i.kind)!
       i.dueAt = addBusinessDays(today, def.dueDays, p.settings.holidays)
-      routeSurplusToPm(p, i)
+      // 発注後の変更依頼は承認を待たず、購買が発注を取り消せる
+      if (i.kind === '発注後変更依頼') {
+        const rr = p.rows.find((x) => x.id === i.rowId)
+        if (rr) rr.flags.orderCancelApproved = true
+      }
       issued++
     }
     // 行の公開：指摘対応と変更セットを別 Rev に分ける
@@ -623,18 +597,6 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
     const csRows = plan.rows.filter((r) => plan.nonIssueChanges.includes(r.id))
     const cancelGroupIsCs = plan.cancelled.length > 0
     const revs: number[] = []
-    const needsApproval = !!changeSet && p.settings.changeNeedsPmApproval
-    // 承認待ちの前の変更セットの行をまとめたら、その行がもう残っていない前の Rev は「まとめた」にする（あとの Rev の決定に従う）
-    const mergeIntoRev = (r: Row, rev: number) => {
-      const oldRev = r.pendingRev
-      r.pendingRev = rev
-      if (oldRev == null || oldRev === rev) return
-      const old = p.submissions.find((x) => x.rev === oldRev)
-      if (!old?.changeSet) return
-      // この行の前の変更は、あとの変更セットで決める（前の Rev の承認では反映しない・「承認」と出さない）
-      old.changeSet.merged = { ...(old.changeSet.merged ?? {}), [r.id]: rev }
-      if (!p.rows.some((x) => x.pendingRev === oldRev)) old.changeSet.supersededBy = rev
-    }
     for (const [group, isCs] of [[fixRows, false], [csRows, true]] as Array<[Row[], boolean]>) {
       if (group.length === 0 && !(isCs && cancelGroupIsCs)) continue
       let sub: Submission
@@ -642,7 +604,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
       if (mode === 'append' && !isCs && last && plan.canAppend) sub = last
       else {
         sub = { rev: (last?.rev ?? 0) + 1, at: now, by: user, rowIds: [], summary: { added: 0, modelChanged: 0, qtyChanged: 0, other: 0, cancelled: 0 }, snapshot: {}, causes: {}, acked: [] }
-        if (isCs && changeSet) sub.changeSet = { ...changeSet, approved: !needsApproval }
+        if (isCs && changeSet) sub.changeSet = { ...changeSet, approved: true }
         p.submissions.push(sub)
       }
       revs.push(sub.rev)
@@ -651,15 +613,7 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
         if (!sub.rowIds.includes(r.id)) sub.rowIds.push(r.id)
         if (r.removal) {
           const rm = r.removal
-          if (isCs && needsApproval) {
-            // PM の承認まで公開値は変えない
-            r.removal = undefined
-            r.pendingRemoval = rm
-            r.flags.pmPending = true
-            r.flags.pmReason = '変更セット'
-            mergeIntoRev(r, sub.rev)
-            sub.causes[r.id] = rm.kind === 'cancel' ? '取消（承認待ち）' : `置換 → ${rm.by}（承認待ち）`
-          } else applyRemoval(p, r, rm, sub)
+          applyRemoval(p, r, rm, sub)
         } else if (r.status === 'draft' && r.publishedRev == null) {
           setStatus(r, 'submitted')
           sub.summary.added++
@@ -677,34 +631,12 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
           // 他セルだけ変わった未対応指摘は「対応中」
           for (const i of p.issues) if (i.rowId === r.id && i.status === 'open' && resolverOfIssue(i) === 'design' && !fixed.some((f) => f.issue.id === i.id)) i.status = 'inProgress'
           sub.causes[r.id] = fixed.length ? fixed.map((f) => f.issue.id).join(',') : `変更セット #${sub.rev}${changeSet?.changeNo ? ' ' + changeSet.changeNo : ''}`
-          if (isCs && needsApproval) {
-            // PM の承認まで公開値は変えない（購買には「承認待ちの変更あり」だけ見える）
-            r.pendingApproval = { ...(r.pendingApproval ?? {}), ...values }
-            mergeIntoRev(r, sub.rev)
-            r.flags.pmPending = true
-            r.flags.pmReason = '変更セット'
-            sub.summary.other++
-          } else {
-            // 承認待ちの変更セットと同じ項目を、あとから指摘対応などで公開したら、そちらが新しい値（承認で古い値に戻さない）
-            if (r.pendingApproval) {
-              const pa = { ...r.pendingApproval } as Record<string, unknown>
-              for (const k of Object.keys(values)) delete pa[k]
-              r.pendingApproval = Object.keys(pa).length ? (pa as Row['pendingApproval']) : undefined
-            }
-            applyDesignChange(p, r, values, fixed.map((f) => f.issue.id), sub.summary)
-          }
-        }
-        if (isCs && needsApproval && r.status === 'submitted' && !r.pendingApproval) {
-          // 提出後に追加した行も承認まで保留
-          r.flags.pmPending = true
-          r.flags.pmReason = '変更セット'
-          mergeIntoRev(r, sub.rev)
+          applyDesignChange(p, r, values, fixed.map((f) => f.issue.id), sub.summary)
         }
         r.publishedRev = sub.rev
         r.lastChangeCause = sub.causes[r.id] ?? r.lastChangeCause
         r.deferredRules = r.deferredRules.filter((id) => activeDeferred(r, ws.rules, p).includes(id))
-        // 承認待ちの値は、その変更セットの Rev のスナップショットにだけ入れる（ほかの Rev には公開値。§5）
-        sub.snapshot[r.id] = { ...pick(r.pendingApproval && r.pendingRev === sub.rev ? { ...r, ...r.pendingApproval } : r), status: r.status }
+        sub.snapshot[r.id] = { ...pick(r), status: r.status }
         if (r.status === 'submitted') r.dueAt = addBusinessDays(today, 1, p.settings.holidays)
       }
       // 取消行も差分に（変更セットの Rev に入れる）
@@ -715,10 +647,8 @@ export function publish(rowIds: string[] | undefined, changeSet?: { reason: Chan
         r.publishedRev = sub.rev
       }
       const sm = sub.summary
-      p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: now, by: user, text: `公開 Rev.${sub.rev}（追加${sm.added} / 型式${sm.modelChanged} / 数量${sm.qtyChanged} / その他${sm.other} / 取消${sm.cancelled}）${isCs && needsApproval ? ' PM承認待ち' : ''}` })
+      p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: now, by: user, text: `公開 Rev.${sub.rev}（追加${sm.added} / 型式${sm.modelChanged} / 数量${sm.qtyChanged} / その他${sm.other} / 取消${sm.cancelled}）` })
     }
-    // Rev.1 で案件設定確定を PM の要決定に載せる
-    if (revs.includes(1) && !p.settings.pmConfirmed && !p.caseDecisions.some((c) => c.kind === '案件設定確定')) p.caseDecisions.push({ id: 'C1', kind: '案件設定確定', status: 'open', at: now })
     normalize(p, ws)
     msg = [plan.rows.length ? `行 ${plan.rows.length}（Rev.${revs.join('・')}）` : '', issued ? `指摘 ${issued} 件` : ''].filter(Boolean).join(' / ') + ' を公開しました' + (revs.length === 1 && revs[0] === 1 && !changeSet ? '（最初の公開は変更理由を聞きません。2 回目からは理由のダイアログが出ます）' : '')
   }, { kind: plan.rows.length ? 'publish' : 'normal' })

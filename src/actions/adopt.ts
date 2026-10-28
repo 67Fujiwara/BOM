@@ -1,7 +1,7 @@
 import { useStore } from '@/model/store'
 import type { Project, Row } from '@/model/types'
 import { ADOPT_REASONS } from '@/model/types'
-import { cheapest, isContested, needsPmApproval, scoreRow, type ScoreBreakdown } from '@/model/score'
+import { cheapest, isContested, scoreRow, type ScoreBreakdown } from '@/model/score'
 import { effective, hasWork, isActive, isFixedProcurement, isQuotable, noUsableQuote, quoteResponses, roundedQty, tradableIn, clearAdoptionMeasures } from '@/model/derive'
 import { normalize, setStatus } from '@/model/lifecycle'
 import { businessDaysBetween, todayStr } from '@/model/dates'
@@ -13,13 +13,12 @@ function st() {
 export function canAdopt(p: Project, row: Row, allowQuoting = false): string | null {
   const role = st().user().role
   void p
-  const allowed = p.settings.selector === role || (row.flags.delegated && role === 'purchasing')
+  const allowed = p.settings.selector === role
   if (!allowed) return `権限なし（選定者は${p.settings.selector === 'design' ? '設計' : '購買'}）`
   if (!isActive(row)) return '取消・置換済の行は採用できません'
   if (!isQuotable(row)) return `見積対象外の行です（調達区分: ${effective(row).procurement}。選定済・固定）`
   if (isFixedProcurement(row)) return `${effective(row).procurement}の行は指定先で固定です（スコアでは選びません。指定先を変えるときは設計が「指定先」を直す）`
   if (hasWork(row)) return '設計作業中の行は選定できません（公開を待つ）'
-  if (row.flags.pmPending) return 'PM承認待ちの行です'
   if (row.status === 'quoting' && !allowQuoting) {
     if (noUsableQuote(p, row)) return '取引できる商社の有効な見積がありません（全社辞退・取引停止）。購買がほかの商社に依頼します'
     const { answered, total } = quoteResponses(p, row)
@@ -28,36 +27,18 @@ export function canAdopt(p: Project, row: Row, allowQuoting = false): string | n
   if (row.status === 'draft') return '下書きの行です。設計が Ctrl+Enter で提出し、購買の見積が揃ってから採用できます'
   if (row.status === 'submitted') return '見積前の行です（購買が概算見積を依頼・回答待ち）'
   if (!isActive(row)) return '取消・置換済の行は採用できません'
-  // PM が購買に再選定を委譲した行は、正式依頼中・正式見積済でも選び直せる
-  if (row.flags.delegated && role === 'purchasing' && ['selected', 'formalRequested', 'formalQuoted'].includes(row.status)) return null
-  if (!['quoted', 'selected', 'quoting'].includes(row.status)) return '正式見積の依頼以降は採用を変えられません（変えるときは PM の要決定で「次点へ」）'
+  if (!['quoted', 'selected', 'quoting'].includes(row.status)) return '正式見積の依頼以降は採用を変えられません'
   return null
 }
 
-function applyAdoption(_p: Project, r: Row, chosen: ScoreBreakdown, reason: string | undefined, pending: boolean, pmReason?: Row['flags']['pmReason']) {
-  const wasDelegated = r.flags.delegated && ['formalRequested', 'formalQuoted'].includes(r.status)
-  // 別の商社に替えたら、前の商社への対策（特急・分納の追加費用・納期NG・PM の依頼）は引き継がない
-  if (r.adoptedSupplierId && r.adoptedSupplierId !== chosen.supplierId && !wasDelegated) clearAdoptionMeasures(_p, r, '採用の変更で取り下げ（選び直し）')
+function applyAdoption(_p: Project, r: Row, chosen: ScoreBreakdown, reason: string | undefined) {
+  // 別の商社に替えたら、前の商社への対策（特急・分納の追加費用・納期NG）は引き継がない
+  if (r.adoptedSupplierId && r.adoptedSupplierId !== chosen.supplierId) clearAdoptionMeasures(_p, r, '採用の変更で取り下げ（選び直し）')
   r.adoptedSupplierId = chosen.supplierId
   r.adoptReason = reason
   r.scoreSnapshot = chosen.total
-  // PM が余剰を却下した商社を選び直しても、MOQ で丸めない（却下した数に戻さない）
-  r.orderQty = r.flags.surplusRejected === chosen.supplierId ? r.qtyNeeded : roundedQty(r.qtyNeeded, chosen.quote.moq, r.packQty, r.unit)
-  if (r.flags.delegated) {
-    // 委譲された再選定は PM の決定が承認を兼ねる（例外閾値の承認は不要）
-    pending = false
-    r.flags.delegated = false
-    r.flags.formalDiffKey = undefined
-  }
-  if (wasDelegated) setStatus(r, 'selected')
-  if (pending) {
-    r.flags.pmPending = true
-    r.flags.pmReason = pmReason ?? '例外選定'
-  } else {
-    r.flags.pmPending = false
-    r.flags.pmReason = undefined
-    setStatus(r, 'selected')
-  }
+  r.orderQty = roundedQty(r.qtyNeeded, chosen.quote.moq, r.packQty, r.unit)
+  setStatus(r, 'selected')
   r.flags.contested = false
 }
 
@@ -88,7 +69,7 @@ export function adoptBest(rowId: string): boolean {
   const sup = s.ws.suppliers.find((x) => x.id === best.supplierId)
   s.commit(`推奨採用 ${sup?.name ?? ''} スコア${best.total}`, (p2, ws) => {
     const r = p2.rows.find((x) => x.id === rowId)!
-    applyAdoption(p2, r, best, isContested(scores, p2.settings.tieThreshold) ? '拮抗' : undefined, false)
+    applyAdoption(p2, r, best, isContested(scores, p2.settings.tieThreshold) ? '拮抗' : undefined)
     normalize(p2, ws)
   }, { rowId })
   s.toastMsg(`${row.id} を ${sup?.name} で採用（スコア ${best.total}${best.reasons.length ? ' / ' + best.reasons.join('・') : ''}）`, 'ok')
@@ -115,7 +96,7 @@ export function adoptCheapest(rowId: string): boolean {
   return adoptChoose(rowId, c.supplierId, '最安（スコア無視）')
 }
 
-/** Shift+A → 商社を選んで採用。1位以外は理由必須、閾値超は PM 承認待ち */
+/** Shift+A → 商社を選んで採用。1位以外は理由必須 */
 export function adoptChoose(rowId: string, supplierId: string, reason?: string, expectAdopted?: string | null): boolean {
   const s = st()
   const p = s.project()
@@ -144,22 +125,21 @@ export function adoptChoose(rowId: string, supplierId: string, reason?: string, 
     s.toastMsg('1位以外を選ぶには理由が必要です', 'err')
     return false
   }
-  const pending = early || needsPmApproval(p, row, scores, chosen)
   const sup = s.ws.suppliers.find((x) => x.id === supplierId)
-  s.commit(`採用 ${sup?.name ?? ''}${reason ? '（' + reason + '）' : ''}${pending ? ' PM承認待ち' : ''}`, (p2, ws) => {
+  s.commit(`採用 ${sup?.name ?? ''}${reason ? '（' + reason + '）' : ''}`, (p2, ws) => {
     const r = p2.rows.find((x) => x.id === rowId)!
-    applyAdoption(p2, r, chosen, early ? `先行採用: ${reason ?? ''}` : reason, pending, early ? '先行採用' : '例外選定')
+    applyAdoption(p2, r, chosen, early ? `先行採用: ${reason ?? ''}` : reason)
     normalize(p2, ws)
   }, { rowId })
-  s.toastMsg(pending ? `${row.id}: ${sup?.name} を仮採用${reason ? `（${reason}）` : ''}。PM の承認待ち（7 要決定）` : `${row.id} を ${sup?.name} で採用${reason ? `（${reason}）` : ''}`, pending ? 'info' : 'ok')
+  s.toastMsg(`${row.id} を ${sup?.name} で採用${early ? '（先行採用: 見積の回答待ちのまま）' : ''}${reason ? `（${reason}）` : ''}`, 'ok')
   return true
 }
 
 /** 一括採用 */
-export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contested: number; pending: number; skipped: number } {
+export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contested: number; skipped: number } {
   const s = st()
   const p = s.project()
-  const result = { adopted: 0, contested: 0, pending: 0, skipped: 0 }
+  const result = { adopted: 0, contested: 0, skipped: 0 }
   s.commit(mode === 'best' ? '未採用を推奨で一括採用' : '未採用を最安で一括採用（スコア無視）', (p2, ws) => {
     for (const r of p2.rows) {
       if (r.status !== 'quoted' || r.adoptedSupplierId) {
@@ -176,10 +156,8 @@ export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contest
         continue
       }
       const chosen = mode === 'best' ? scores[0] : cheapest(scores)!
-      const pending = needsPmApproval(p2, r, scores, chosen)
-      applyAdoption(p2, r, chosen, mode === 'cheapest' ? '最安（スコア無視）' : undefined, pending)
-      if (pending) result.pending++
-      else if (isContested(scores, p2.settings.tieThreshold)) {
+      applyAdoption(p2, r, chosen, mode === 'cheapest' ? '最安（スコア無視）' : undefined)
+      if (isContested(scores, p2.settings.tieThreshold)) {
         r.flags.contested = true
         result.contested++
         result.adopted++
@@ -187,7 +165,7 @@ export function bulkAdopt(mode: 'best' | 'cheapest'): { adopted: number; contest
     }
     normalize(p2, ws)
   })
-  s.toastMsg(`採用 ${result.adopted} / 拮抗 ${result.contested}（要見直し）/ 承認要 ${result.pending} / スキップ ${result.skipped}`, 'ok')
+  s.toastMsg(`採用 ${result.adopted} / 拮抗 ${result.contested}（要見直し）/ スキップ ${result.skipped}`, 'ok')
   return result
 }
 
@@ -236,7 +214,6 @@ export function consolidateOptions(): Array<{ label: string; detail: string; sup
 export function applyConsolidation(supplierIds: string[]) {
   const s = st()
   let n = 0
-  let pending = 0
   let skipped = 0
   const p0 = s.project()
   s.commit('商社を集約', (p, ws) => {
@@ -252,14 +229,12 @@ export function applyConsolidation(supplierIds: string[]) {
       if (!sc.length) continue
       const chosen = [...sc].sort((a, b) => a.effectivePrice - b.effectivePrice)[0]
       if (chosen.supplierId === r.adoptedSupplierId) continue
-      const pend = needsPmApproval(p, r, scores, chosen)
-      applyAdoption(p, r, chosen, '集約', pend)
+      applyAdoption(p, r, chosen, '集約')
       n++
-      if (pend) pending++
     }
     normalize(p, ws)
   })
-  s.toastMsg(`集約: ${n} 行を付け替え（PM承認待ち ${pending}${skipped ? `、作業中・承認待ちの ${skipped} 行は対象外` : ''}）`, 'ok')
+  s.toastMsg(`集約: ${n} 行を付け替え${skipped ? `（作業中などの ${skipped} 行は対象外）` : ''}`, 'ok')
 }
 
 export function rowScores(p: Project, row: Row) {

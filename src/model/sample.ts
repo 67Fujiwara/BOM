@@ -132,19 +132,11 @@ export const DEFAULT_SETTINGS: Project['settings'] = {
   budget: null,
   processDays: 10,
   tieThreshold: 5,
-  exceptionAmount: 10000,
-  exceptionPct: 0.03,
-  formalDiffPct: 0.1,
-  formalDiffAmount: 10000,
   qtyTolerancePct: 0.2,
   surplusAmount: 20000,
   quoteCompleteRule: 'deadline',
   quoteDeadline: null,
-  changeNeedsPmApproval: false,
   selector: 'design',
-  pmConfirmed: false,
-  externalApprovalAmount: 300000,
-  externalApprovalBudgetPct: 0.05,
   quoteDays: 5,
   formalDays: 7,
   leadMarginDays: 5,
@@ -160,14 +152,13 @@ export function newProject(id: string, name: string, partial: Partial<Project> =
     customer: '',
     completed: false,
     dueDate: null,
-    members: { design: '', purchasing: '', pm: '' },
+    members: { design: '', purchasing: '' },
     preferredSupplierIds: [],
     supplierIds: [],
     rows: [],
     quotes: [],
     issues: [],
     submissions: [],
-    decisions: [],
     weights: { ...DEFAULT_WEIGHTS },
     rowWeights: {},
     settings: { ...DEFAULT_SETTINGS },
@@ -177,8 +168,6 @@ export function newProject(id: string, name: string, partial: Partial<Project> =
     version: 1,
     requestRevs: {},
     nextIssueNo: 1,
-    nextDecisionNo: 1,
-    caseDecisions: [],
     ...partial,
   }
 }
@@ -251,13 +240,12 @@ export function makeSampleProject(): Project {
   fq.formalValidUntil = addDays(today, 45)
   fq.formalDiffReason = '為替'
   fq.formalRequestNo = 'P-2026-041-S1-1'
-  rows[12].flags.formalDiff = true
   const due = addDays(today, 29)
   const snapshot: Project['submissions'][number]['snapshot'] = {}
   for (const r of rows) if (r.status !== 'draft') snapshot[r.id] = { ref: r.ref, drawing: r.drawing, category: r.category, name: r.name, model: r.model, maker: r.maker, qtyNeeded: r.qtyNeeded, unit: r.unit, packQty: r.packQty, procurement: r.procurement, makerLock: r.makerLock, altPolicy: r.altPolicy, designated: r.designated, needOffset: r.needOffset, needDateFixed: r.needDateFixed, tags: r.tags, note: r.note, status: r.status }
   return newProject('P-2026-041', '第3ライン 搬送制御盤', {
     dueDate: due,
-    members: { design: '山田', purchasing: '佐藤', pm: '鈴木' },
+    members: { design: '山田', purchasing: '佐藤' },
     preferredSupplierIds: ['S1', 'S2'],
     supplierIds,
     rows,
@@ -270,7 +258,7 @@ export function makeSampleProject(): Project {
       { id: 'I-005', rowId: 'R041', field: 'maker', kind: 'メーカ未記入', text: 'メーカが空欄。', by: BUYER, at: ago(0, 4), rev: 1, status: 'open', replies: [], bounceCount: 0, dueAt: addDays(today, 1) },
     ],
     submissions: [{ rev: 1, at: ago(2), by: DESIGNER, rowIds: rows.filter((r) => r.status !== 'draft').map((r) => r.id), summary: { added: 75, modelChanged: 0, qtyChanged: 0, other: 0, cancelled: 0 }, snapshot, causes: {}, acked: [] }],
-    settings: { ...DEFAULT_SETTINGS, budget: 2800000, quoteDeadline: addDays(today, 3), pmConfirmed: true },
+    settings: { ...DEFAULT_SETTINGS, budget: 2800000, quoteDeadline: addDays(today, 3) },
     events: [
       { id: 1, at: ago(3), by: DESIGNER, text: '案件を作成' },
       { id: 2, at: ago(2), by: DESIGNER, text: '提出 Rev.1（75行）' },

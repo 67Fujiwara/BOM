@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
 import { ROLE_LABEL } from '@/model/types'
-import { unpublishedCount, openIssues, isActive, designatedDeclined, fixedSupplierId, overCap, quoteResponses } from '@/model/derive'
+import { unpublishedCount, openIssues, isActive, designatedDeclined, fixedSupplierId, quoteResponses } from '@/model/derive'
 import { formatKey, keyToEventInit } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
-import { pmCaseOf } from '@/actions/pm'
 import { canAdopt } from '@/actions/adopt'
 import { nextAckTarget } from '@/commands/registry'
 import { onCommandCell } from '@/commands/keyboard'
@@ -28,9 +27,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
   // Excel と同じく、打ち始めた入力は「入力」（矢印で確定して移動）、Enter・F2 で始めた編集は「編集」（矢印は文字の中）。F2 で切り替え
   const modeLabel = st.mode === 'nav' ? 'ナビ' : st.mode === 'edit' ? (st.editTyped ? '入力' : '編集') : st.mode === 'palette' ? 'パレット' : 'パネル'
   if (st.mode === 'nav' && row && isActive(row)) {
-    const pmCase = pmCaseOf(p, row)
-    if (user.role === 'pm' && pmCase !== 'なし') hints.push(['y', '承認'], ['Shift+Y', '却下'], ['Enter', '決定パネル'])
-    else if (!canEdit(st.cursorCol)) hints.push(['Enter', '編集'])
+    if (!canEdit(st.cursorCol)) hints.push(['Enter', '編集'])
     if (!canAdopt(p, row)) hints.push(['a', '推奨採用'])
     if (user.role === 'purchasing') hints.push(['Shift+I', '指摘'])
     // Space は 1 つだけ出す（指摘があれば「開いて指摘を見る」）
@@ -68,9 +65,6 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (!row) return ''
     const iss = openIssues(p, row.id).filter((i) => i.status === 'open' || i.status === 'inProgress')
     if (!iss.length) {
-      // 追加費用の上限超過（PM の判断待ち・却下）
-      const oc = overCap(p, row)
-      if (oc) return `上限超過 ¥${(row.extraCost ?? 0).toLocaleString()} > ¥${oc.cap.toLocaleString()}${row.flags.capRuled === row.extraCost ? '（PM 却下: 上限内で手配し直す）' : '（PM 判断待ち）'}`
       if (row.flags.droppedStopped && !row.adoptedSupplierId) {
         // 相見積は選定者が選び直す。指定系は購買が次の依頼先に頼む（設計が指定先を変える）。正式依頼の取下げもあわせて出す
         const next = row.procurement === '相見積' ? (user.role === p.settings.selector ? '選び直してください' : '選定者が選び直します') : row.procurement === '指定商社' ? '設計が指定先を変えます' : '購買が次の依頼先に頼みます'

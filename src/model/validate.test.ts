@@ -29,17 +29,16 @@ describe('sanitizeWorkspace', () => {
     expect(res.ws!.projects[0].rows[0].working).toEqual({ name: 'ok' })
     expect(res.ws!.projects[0].quotes[0]).toMatchObject({ validUntil: null, stock: null, unitPrice: 10 })
   })
-  it('survives malformed submissions, regex rules, case decisions and row strings (V5-07)', () => {
+  it('survives malformed submissions, regex rules and row strings (V5-07)', () => {
     const res = sanitizeWorkspace({
       rules: [{ id: 'r', type: 'regex', field: 'model', message: 'x', severity: 'warn', pattern: '([', enabled: true, scope: 'all' }],
-      projects: [{ id: 'X', rows: [{ id: 'R001', lastChangeCause: { a: 1 } }], submissions: [{ rev: 1, rowIds: ['R001', 5], causes: { R001: { x: 1 } } }, { rev: 'x' }], caseDecisions: [{ id: 'C1', kind: 5, status: 'open' }] }],
+      projects: [{ id: 'X', rows: [{ id: 'R001', lastChangeCause: { a: 1 } }], submissions: [{ rev: 1, rowIds: ['R001', 5], causes: { R001: { x: 1 } } }, { rev: 'x' }] }],
     })
     expect(res.ws!.rules).toHaveLength(0)
     expect(res.ws!.projects[0].rows[0].lastChangeCause).toBeUndefined()
     expect(res.ws!.projects[0].submissions).toHaveLength(1)
     expect(res.ws!.projects[0].submissions[0].rowIds).toEqual(['R001'])
     expect(res.ws!.projects[0].submissions[0].causes).toEqual({})
-    expect(res.ws!.projects[0].caseDecisions).toHaveLength(0)
   })
 })
 

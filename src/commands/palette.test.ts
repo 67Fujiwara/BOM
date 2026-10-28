@@ -3,10 +3,11 @@ import { STATIC, paletteItems } from './registry'
 import { KEYMAP } from '@/keys/keymap'
 import { useStore } from '@/model/store'
 import type { Role } from '@/model/types'
+import { addSampleTo } from '@/model/sample'
 
 // 操作名どおりに打って Enter したら、その操作が先頭に来ること（別の操作が走らない）
 describe('palette ranking', () => {
-  for (const role of ['design', 'purchasing', 'pm'] as Role[]) {
+  for (const role of ['design', 'purchasing'] as Role[]) {
     it(`exact labels come first (${role})`, () => {
       useStore.setState({ ws: { ...useStore.getState().ws, user: { role, name: 'テスト' } } })
       const wrong: string[] = []
@@ -34,7 +35,9 @@ describe('palette ranking', () => {
     expect(wrong).toEqual([])
   })
   it('row actions typed as displayed are found (V4-11)', () => {
-    useStore.setState({ ws: { ...useStore.getState().ws, user: { role: 'design', name: 'テスト' } } })
+    const ws = structuredClone(useStore.getState().ws)
+    addSampleTo(ws)
+    useStore.setState({ ws: { ...ws, user: { role: 'design', name: 'テスト' } }, screen: 'project' })
     expect(paletteItems('R040 を置換')[0]?.id).toBe('row.replace:R040')
     expect(paletteItems('R040 へジャンプ')[0]?.id).toBe('goto:R040')
   })

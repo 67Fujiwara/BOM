@@ -7,7 +7,7 @@ import { addSampleTo } from '@/model/sample'
 import { isActive } from '@/model/derive'
 import * as stock from '@/actions/stock'
 import type { PurchaseEntry } from '@/actions/stock'
-import { ensureCursor, setView, switchRole } from '@/commands/registry'
+import { switchRole } from '@/commands/registry'
 
 const st = () => useStore.getState()
 
@@ -21,9 +21,7 @@ export function openProject(id: string) {
   st().commitWs('', (ws) => {
     ws.currentProjectId = id
   })
-  useStore.setState({ screen: 'project', cursorRow: null, filter: '', cellFilter: null, openRows: [], panel: null, mode: 'nav' })
-  setView(1)
-  ensureCursor()
+  useStore.setState({ screen: 'project', view: 1, detailIndex: 0, revView: null, sort: null, cursorRow: null, filter: '', cellFilter: null, openRows: [], panel: null, mode: 'nav' })
 }
 
 const TABS: Array<{ id: Screen; label: string }> = [
@@ -53,11 +51,6 @@ export function TopNav() {
         )
       })}
       <span className="grow" />
-      {s.screen === 'project' && cur && (
-        <span className="crumb" title="いま開いている案件">
-          {cur.id}　{cur.customer}　{cur.name}
-        </span>
-      )}
       <span className="role" title="役割（ログイン）">
         {ROLES.map((r) => (
           <button key={r} tabIndex={-1} aria-pressed={user.role === r} onClick={() => user.role !== r && switchRole(r)} data-testid={`role-${r}`}>

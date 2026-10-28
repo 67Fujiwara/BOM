@@ -154,21 +154,6 @@ function PanelBody({ panel }: { panel: Panel }) {
                   </div>
                 ))}
               </section>
-              <section>
-                <h4>新規BOMガイド</h4>
-                {[
-                  ['Enter', '次へ（貼り付け欄の中は Ctrl+Enter）'],
-                  ['Alt+ArrowLeft', '1 つ前の段階'],
-                  ['Escape', '中止（入れた内容は残る）'],
-                ].map(([k, l]) => (
-                  <div className="r" key={k + l}>
-                    <span>{l}</span>
-                    <span className="ks">
-                      <kbd>{formatKey(k)}</kbd>
-                    </span>
-                  </div>
-                ))}
-              </section>
             </div>
           </div>
           <Foot items={[['Escape', '閉じる']]} />

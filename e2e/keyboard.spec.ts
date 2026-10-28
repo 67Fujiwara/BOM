@@ -1,14 +1,14 @@
 import { test, expect, type Page } from '@playwright/test'
 
-async function open(page: Page, role: 'design' | 'purchasing' | 'pm' = 'design') {
+async function open(page: Page, role: 'design' | 'purchasing' = 'design') {
   await page.goto('/')
   await page.evaluate(() => localStorage.clear())
   await page.goto('/')
+  // 空で始まる。サンプル案件を入れて開く
+  await page.getByTestId('add-sample').click()
+  await page.locator('[data-testid^="open-"]').first().click()
   await expect(page.getByTestId('grid')).toBeVisible()
-  if (role !== 'design') {
-    const label = role === 'purchasing' ? '購買' : 'PM'
-    await page.locator('.role button', { hasText: label }).click()
-  }
+  if (role !== 'design') await page.getByTestId(`role-${role}`).click()
   await page.locator('.gridwrap').focus()
 }
 
@@ -37,13 +37,11 @@ test('矢印・j/k・数字キーで移動とビュー切替ができ、? のヘ
   await expect(page.getByTestId('cursor')).toContainText('R002')
   await page.keyboard.press('4')
   await expect(page.getByTestId('view-4')).toHaveAttribute('aria-current', 'true')
-  await page.keyboard.press('7')
-  await expect(page.getByTestId('view-7')).toHaveAttribute('aria-current', 'true')
   await page.keyboard.press('1')
   await page.keyboard.press('?')
   const help = page.getByTestId('help')
   await expect(help).toBeVisible()
-  for (const label of ['コマンドパレットを開く', '公開（自分の未公開の行＋下書き指摘）', '指摘を起票（種別は頭文字）', '推奨（最高スコア）で採用。見積済のみ', '順番に直すモード', '承認 / 受入 / 許可（PM）']) await expect(help).toContainText(label)
+  for (const label of ['コマンドパレットを開く', '公開（自分の未公開の行＋下書き指摘）', '指摘を起票（種別は頭文字）', '推奨（最高スコア）で採用。見積済のみ', '順番に直すモード']) await expect(help).toContainText(label)
   await page.keyboard.press('Escape')
   await expect(help).toBeHidden()
 })
@@ -111,7 +109,7 @@ test('設計: 4 要確認 → n → 直す → Ctrl+Enter で公開すると指�
   await expect(page.getByTestId('toast')).toContainText('公開しました')
   await expect(page.getByTestId('status')).toContainText('未公開 0 行')
   // 公開後：購買に切り替えて 5 変更あり → x
-  await page.locator('.role button', { hasText: '購買' }).click()
+  await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('5')
   await expect(page.locator('[data-row-id="R016"]')).toBeVisible()
@@ -137,13 +135,13 @@ test('購買: Shift+I → k → 本文 → Enter で下書き、Ctrl+Enter で�
   await expect(page.getByTestId('status')).toContainText('未発行 1 件')
   await page.keyboard.press('Control+Enter')
   await expect(page.getByTestId('toast')).toContainText('指摘 1 件')
-  await page.locator('.role button', { hasText: '設計' }).click()
+  await page.getByTestId('role-design').click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('4')
   await expect(page.locator('[data-row-id="R030"]')).toBeVisible()
 })
 
-test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要決定に載って PM の y で確定する', async ({ page }) => {
+test('Shift+A で2位商社を選ぶと理由が要り、PM の承認なしにそのまま選定済になる', async ({ page }) => {
   await open(page)
   // 見積済の行を探して開く
   await page.keyboard.press('Control+g')
@@ -158,56 +156,22 @@ test('Shift+A で2位商社を選ぶと理由が要り、閾値超なら 7 要�
   await page.keyboard.press('1') // 理由: 納期（数字で選び、Enter で確定。Enter だけでは進まない）
   await page.keyboard.press('Enter')
   await expect(page.getByTestId('prompt-options')).toHaveCount(0)
-  const toast = await page.getByTestId('toast').textContent()
   const row = page.locator('[data-row-id="R020"]')
-  if (toast?.includes('PM')) {
-    await expect(row).toContainText('PM承認待ち')
-    await page.locator('.role button', { hasText: 'PM' }).click()
-    await page.locator('.gridwrap').focus()
-    await page.keyboard.press('7')
-    await expect(row).toBeVisible()
-    await page.keyboard.press('Control+g')
-    await page.getByTestId('prompt-text').fill('R020')
-    await page.keyboard.press('Enter')
-    await page.keyboard.press('Alt+y')
-    await page.keyboard.press('Enter')
-    await expect(page.locator('[data-row-id="R020"]')).toContainText('選定済')
-    await expect(page.locator('[data-row-id="R020"]')).not.toContainText('PM承認待ち')
-  } else {
-    await expect(row).toContainText('選定済')
-  }
+  await expect(row).toContainText('選定済')
+  await expect(row).not.toContainText('PM')
 })
 
-test('新しいBOM ガイドをキーボードだけで通せる', async ({ page }) => {
+test('新規作成で案件番号・客先・装置名を登録すると案件が開く', async ({ page }) => {
   await open(page)
-  await page.keyboard.press('Control+k')
-  await page.getByTestId('palette-input').fill('新しいBOM')
-  await page.keyboard.press('Enter')
-  await expect(page.getByTestId('wizard')).toBeVisible()
-  await page.getByTestId('wizard-id').fill('P-2026-099')
-  await page.keyboard.press('Enter')
-  await page.getByTestId('wizard-name').fill('テスト盤')
-  await page.keyboard.press('Enter')
-  await page.getByTestId('wizard-due').fill('未定')
-  await page.keyboard.press('Enter')
-  await page.getByTestId('wizard-processDays').fill('7')
-  await page.keyboard.press('Enter')
-  await page.keyboard.press('Enter') // 予算なし
-  await page.getByTestId('wizard-buyer').fill('佐藤')
-  await page.keyboard.press('Enter')
-  await page.keyboard.press(' ') // 商社1
-  await page.keyboard.press('Enter')
-  await page.keyboard.press('1')
-  await page.getByTestId('wizard-paste').fill('制御\tリレー\tMY4N-D2 DC24\tオムロン\t4\t個\tKA1\n制御\tソケット\tPYF14A-E\tオムロン\t4\t個\tKA1S')
-  await page.keyboard.press('Control+Enter')
-  await page.keyboard.press('Enter')
+  await page.getByTestId('tab-new').click()
+  await page.getByTestId('new-no').fill('A123456')
+  await page.getByTestId('new-customer').fill('テスト客先')
+  await page.getByTestId('new-device').fill('テスト盤')
+  await page.getByTestId('new-submit').click()
+  await page.locator('[data-testid^="open-A123456"]').click()
+  await expect(page.getByTestId('header')).toContainText('A123456')
+  await expect(page.getByTestId('header')).toContainText('テスト客先')
   await expect(page.getByTestId('header')).toContainText('テスト盤')
-  await page.keyboard.press('1')
-  await expect(page.getByTestId('row')).toHaveCount(2)
-  // 公開
-  await page.keyboard.press('Control+Enter')
-  await expect(page.getByTestId('toast')).toContainText('公開しました')
-  await expect(page.getByTestId('rev-info')).toContainText('Rev.1')
 })
 
 test('80 行でキー入力から画面反応まで 50ms 以内（ページ内計測）', async ({ page }) => {
@@ -246,9 +210,7 @@ test('スクリーンショット', async ({ page }) => {
   await page.screenshot({ path: 'docs/screenshots/palette.png' })
   await page.keyboard.press('Escape')
   await page.evaluate(() => { document.documentElement.dataset.theme = 'dark' })
-  await page.keyboard.press('7')
-  await page.locator('.role button', { hasText: 'PM' }).click()
-  await page.screenshot({ path: 'docs/screenshots/dark-pm.png' })
+  await page.screenshot({ path: 'docs/screenshots/dark.png' })
 })
 
 async function gotoCell(page: Page, id: string, colLabel: string) {
@@ -351,7 +313,7 @@ test('提出済の行の取消は公開するまで購買に見えない', async
   await gotoCell(page, 'R050', '部品名')
   await page.keyboard.press('Shift+Delete')
   await expect(page.locator('[data-row-id="R050"]')).toContainText('取消予定')
-  await page.locator('.role button', { hasText: '購買' }).click()
+  await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('1')
   await gotoCell(page, 'R050', '部品名')
@@ -382,7 +344,7 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   await expect(page.locator('[data-row-id="R012"] td[data-col="model"]')).toHaveText('1N4148')
   await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   // 書けない列（購買の部品名）で英字を打っても 1 キー操作にならない
-  await page.locator('.role button', { hasText: '購買' }).click()
+  await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('1')
   await gotoCell(page, 'R013', '部品名')
@@ -390,7 +352,7 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   await expect(page.locator('[data-row-id="R013"]')).not.toHaveClass(/hidden-row/)
 })
 
-test('Enter で始めた数値の編集は上書き、書けない列の数字は案内、案内は Shift を残す、PM は 7 で y が効く', async ({ page }) => {
+test('Enter で始めた数値の編集は上書き、書けない列の数字は案内、案内は Shift を残す', async ({ page }) => {
   await open(page)
   await gotoCell(page, 'R030', '必要数')
   await page.keyboard.press('Enter')
@@ -398,7 +360,7 @@ test('Enter で始めた数値の編集は上書き、書けない列の数字�
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R030"] td[data-col="qtyNeeded"]')).toHaveText('3')
   // 購買: 書けない部品名の列で数字は案内だけ（打った単語の残りが切り替えた先のセルに入らない）、Alt+数字で切り替え。Shift+I は「Alt+Shift+I」と案内する
-  await page.locator('.role button', { hasText: '購買' }).click()
+  await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
   await page.keyboard.press('1')
   await gotoCell(page, 'R013', '部品名')
@@ -411,14 +373,6 @@ test('Enter で始めた数値の編集は上書き、書けない列の数字�
   await gotoCell(page, 'R013', '部品名')
   await page.keyboard.press('Shift+I')
   await expect(page.getByTestId('toast')).toContainText('Alt+Shift+I')
-  // PM はどの列も書かないので、7 の部品名でも y がそのまま効く（キーの案内を出さない）
-  await page.locator('.role button', { hasText: 'PM' }).click()
-  await page.locator('.gridwrap').focus()
-  await page.keyboard.press('7')
-  await page.keyboard.press('ArrowDown')
-  await page.keyboard.press('y')
-  await expect(page.getByTestId('toast')).not.toContainText('権限なし')
-  await expect(page.getByTestId('mode')).not.toHaveText(/入力|編集/)
 })
 
 test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにそのまま入る', async ({ page }) => {
@@ -437,8 +391,8 @@ test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにその�
 test('行を選んでいないときの数字はビュー切替だけで、続けて打った文字はどの行にも入らない', async ({ page }) => {
   await open(page)
   const before = await page.locator('[data-row-id="R001"] td[data-col="name"]').textContent()
-  await page.keyboard.type('47', { delay: 30 })
-  await expect(page.getByTestId('view-7')).toHaveAttribute('aria-current', 'true')
+  await page.keyboard.type('46', { delay: 30 })
+  await expect(page.getByTestId('view-6')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R001"] td[data-col="name"]')).toHaveText(before ?? '')

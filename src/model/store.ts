@@ -336,7 +336,7 @@ export function userKey(u: User): string {
 }
 
 // ---------- 画面の状態（タブごと。リロードしても同じビュー・セル・ガイドの途中から） ----------
-type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands'>
+type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands' | 'screen'>
 function readUi(): Partial<UiSaved> {
   try {
     return JSON.parse(sessionStorage.getItem(UI_KEY) ?? '{}') ?? {}
@@ -356,6 +356,13 @@ function loadUiField<K extends 'recentCommands'>(k: K): UiSaved[K] | undefined {
   return readUi()[k] as UiSaved[K] | undefined
 }
 let uiTimer: number | undefined
+// リロードしても同じ画面（開いていた案件・在庫など）から。案件が無ければ作成中の一覧
+{
+  const sc = readUi().screen
+  const st0 = useStore.getState()
+  if (sc && ['stock', 'history', 'new', 'active', 'done'].includes(sc)) useStore.setState({ screen: sc })
+  else if (sc === 'project' && st0.ws.projects.some((x) => x.id === st0.ws.currentProjectId)) useStore.setState({ screen: 'project' })
+}
 // 指定先のチェックに使う商社マスタ
 setSupplierMaster(useStore.getState().ws.suppliers)
 // 読み込んだデータの状態・フラグを今の規則で整え直す（取引停止にした商社・前の版で残った印。保存は次の操作のとき）
@@ -371,16 +378,16 @@ useStore.subscribe((s, prev) => {
   if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)
 })
 useStore.subscribe((s, prev) => {
-  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.panel === prev.panel) return
-  window.clearTimeout(uiTimer)
-  uiTimer = window.setTimeout(writeUi, 200)
+  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.screen === prev.screen && s.panel === prev.panel) return
+  clearTimeout(uiTimer)
+  uiTimer = setTimeout(writeUi, 200) as unknown as number
 })
 function writeUi() {
-  window.clearTimeout(uiTimer)
+  clearTimeout(uiTimer)
   {
     const st = useStore.getState()
     // ガイドを開いている間は、入れている途中の内容も下書きとして残す
-    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands }
+    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands, screen: st.screen }
     try {
       sessionStorage.setItem(UI_KEY, JSON.stringify(saved))
     } catch {

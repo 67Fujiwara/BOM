@@ -1,0 +1,98 @@
+import { test, expect, type Page } from '@playwright/test'
+
+async function fresh(page: Page) {
+  await page.goto('/')
+  await page.evaluate(() => localStorage.clear())
+  await page.goto('/')
+}
+
+async function createProject(page: Page, no: string, customer: string, device: string) {
+  await page.getByTestId('tab-new').click()
+  await page.getByTestId('new-no').fill(no)
+  await page.getByTestId('new-customer').fill(customer)
+  await page.getByTestId('new-device').fill(device)
+  await page.getByTestId('new-submit').click()
+}
+
+test('空で始まり、5 つの画面（在庫・購入歴あり・新規作成・作成中・完了案件）に PM は無い', async ({ page }) => {
+  await fresh(page)
+  await expect(page.getByTestId('screen-active')).toBeVisible()
+  await expect(page.getByTestId('project-empty')).toBeVisible()
+  for (const t of ['stock', 'history', 'new', 'active', 'done']) await expect(page.getByTestId(`tab-${t}`)).toBeVisible()
+  await expect(page.getByTestId('role-design')).toBeVisible()
+  await expect(page.getByTestId('role-purchasing')).toBeVisible()
+  await expect(page.getByTestId('role-pm')).toHaveCount(0)
+  await expect(page.locator('body')).not.toContainText('PM')
+})
+
+test('案件登録は番号（例 A123456）・客先・装置名。形式違反と重複は止まる', async ({ page }) => {
+  await fresh(page)
+  await createProject(page, 'a123456', '〇〇株式会社', '検査装置 1号機')
+  await expect(page.getByTestId('project-A123456')).toContainText('〇〇株式会社')
+  await expect(page.getByTestId('project-A123456')).toContainText('検査装置 1号機')
+  await createProject(page, 'A123456', 'x', 'y')
+  await expect(page.getByTestId('new-error')).toContainText('A123456')
+  await page.getByTestId('new-no').fill('12345')
+  await page.getByTestId('new-submit').click()
+  await expect(page.getByTestId('new-error')).toBeVisible()
+})
+
+test('在庫の部品をクリック → 数量 → 作成中の案件の番号を選ぶと、その案件に追加される', async ({ page }) => {
+  await fresh(page)
+  await createProject(page, 'A123456', '〇〇株式会社', '検査装置 1号機')
+  await page.getByTestId('tab-stock').click()
+  await page.getByTestId('stock-add').click()
+  await page.getByTestId('stock-f-name').fill('リレー')
+  await page.getByTestId('stock-f-model').fill('MY4N-D2')
+  await page.getByTestId('stock-f-maker').fill('オムロン')
+  await page.getByTestId('stock-f-qty').fill('10')
+  await page.getByTestId('stock-save').click()
+  await page.locator('[data-testid^="stock-ST"]').first().click()
+  await page.getByTestId('add-qty').fill('3')
+  await page.getByTestId('add-project-A123456').click()
+  await page.getByTestId('add-submit').click()
+  await expect(page.getByTestId('add-done')).toBeVisible()
+  await page.getByTestId('add-open-project').click()
+  await expect(page.getByTestId('header')).toContainText('A123456')
+  await expect(page.getByTestId('row')).toHaveCount(1)
+  await expect(page.getByTestId('row')).toContainText('MY4N-D2')
+  // 在庫の画面に戻ると引当が出る
+  await page.getByTestId('tab-stock').click()
+  await expect(page.getByTestId('stock-table')).toContainText('3')
+})
+
+test('購入歴あり: サンプルの履歴から数量を決めて作成中の案件に追加できる', async ({ page }) => {
+  await fresh(page)
+  await page.getByTestId('add-sample').click()
+  await page.getByTestId('tab-history').click()
+  await expect(page.getByTestId('history-table')).toBeVisible()
+  await page.locator('[data-testid="history-table"] tbody tr').first().click()
+  await page.getByTestId('add-qty').fill('2')
+  await page.locator('[data-testid^="add-project-"]').first().click()
+  await page.getByTestId('add-submit').click()
+  await expect(page.getByTestId('add-done')).toBeVisible()
+})
+
+test('完了にすると完了案件へ移り、作成中に戻せる', async ({ page }) => {
+  await fresh(page)
+  await createProject(page, 'B000001', '△△工業', '組立機')
+  await page.getByTestId('complete-B000001').click()
+  await expect(page.getByTestId('project-B000001')).toHaveCount(0)
+  await page.getByTestId('tab-done').click()
+  await expect(page.getByTestId('project-B000001')).toBeVisible()
+  await page.getByTestId('reopen-B000001').click()
+  await page.getByTestId('tab-active').click()
+  await expect(page.getByTestId('project-B000001')).toBeVisible()
+})
+
+test('開いた案件はリロードしても同じ案件から続けられ、一覧へ戻れる', async ({ page }) => {
+  await fresh(page)
+  await createProject(page, 'C000001', '□□', '搬送機')
+  await page.getByTestId('open-C000001').click()
+  await expect(page.getByTestId('header')).toContainText('C000001')
+  await page.waitForTimeout(500)
+  await page.reload()
+  await expect(page.getByTestId('header')).toContainText('C000001')
+  await page.getByTestId('tab-active').click()
+  await expect(page.getByTestId('screen-active')).toBeVisible()
+})

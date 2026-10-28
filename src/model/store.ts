@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { Issue, Project, Quote, Row, User, Workspace } from './types'
 import { DESIGN_FIELDS } from './types'
-import { makeWorkspace } from './sample'
+import { makeWorkspace, newProject } from './sample'
 import { setSupplierMaster } from './rules'
 import { normalize } from './lifecycle'
 import type { Mode } from '@/keys/keymap'
@@ -10,6 +10,12 @@ import { loadIfChangedElsewhere, loadWorkspace, saveWorkspace } from '@/io/persi
 // 保存キーはストアを作る前に定義する（ストアの初期値を読むときに使う。後ろで定義すると初期化前参照で黙って空になる）
 const UI_KEY = 'bom-pro.ui'
 const HISTORY_KEY = 'bom-pro.history'
+
+/** 案件が 1 つも無いときの空の案件（画面の関数が落ちないように。保存はしない） */
+const EMPTY_PROJECT: Project = newProject('', '')
+
+/** 最初の画面の種類。project は案件を開いた部品表の画面 */
+export type Screen = 'stock' | 'history' | 'new' | 'active' | 'done' | 'project'
 
 export type ViewId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
@@ -56,6 +62,7 @@ const PROJECT_KEYS = ['name', 'dueDate', 'settings', 'weights', 'rowWeights', 's
 export interface State {
   ws: Workspace
   mode: Mode
+  screen: Screen
   view: ViewId
   cursorRow: string | null
   cursorCol: string
@@ -142,6 +149,7 @@ function entities(p: Project) {
 export const useStore = create<State>((set, get) => ({
   ws: loadWorkspace() ?? makeWorkspace(),
   mode: 'nav',
+  screen: 'active',
   openRows: [],
   collapsed: [],
   ...loadUi(),
@@ -166,7 +174,7 @@ export const useStore = create<State>((set, get) => ({
   set: (p) => set(p),
   project: () => {
     const ws = get().ws
-    return ws.projects.find((p) => p.id === ws.currentProjectId) ?? ws.projects[0]
+    return ws.projects.find((p) => p.id === ws.currentProjectId) ?? ws.projects[0] ?? EMPTY_PROJECT
   },
   user: () => get().ws.user,
   commit: (label, fn, opts = {}) => {

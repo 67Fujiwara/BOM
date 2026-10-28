@@ -157,6 +157,8 @@ export function newProject(id: string, name: string, partial: Partial<Project> =
   return {
     id,
     name,
+    customer: '',
+    completed: false,
     dueDate: null,
     members: { design: '', purchasing: '', pm: '' },
     preferredSupplierIds: [],
@@ -294,10 +296,37 @@ export const DEFAULT_RULES: Rule[] = [
   { id: 'rule.model.cp30', name: 'CP30は定格電流まで書く', field: 'model', type: 'regex', pattern: '^CP30-.*\\d+A$', when: '^CP30', maker: '三菱電機', severity: 'warn', message: 'CP30 は定格電流（例: 10A）まで書いてください', fromIssueKind: '型式あいまい', owner: '佐藤', scope: 'all', enabled: true },
 ]
 
+/** 最初は空（案件・在庫・購入歴なし）。サンプルは「サンプルを入れる」で足す */
 export function makeWorkspace(): Workspace {
+  return { user: { name: '山田', role: 'design' }, projects: [], stock: [], purchases: [], suppliers: SAMPLE_SUPPLIERS, rules: DEFAULT_RULES, currentProjectId: '' }
+}
+
+/** サンプル（案件 1 件・在庫・購入歴）を足す。呼び出し側が ws に反映する */
+export function addSampleTo(ws: Workspace): string {
   const p = makeSampleProject()
-  const ws: Workspace = { user: { name: '山田', role: 'design' }, projects: [p], suppliers: SAMPLE_SUPPLIERS, rules: DEFAULT_RULES, currentProjectId: p.id }
-  // 作った時点で状態・フラグを整合させる（最初の無関係な編集で 7 要決定などが入れ替わらないように）
+  p.customer = 'サンプル客先'
+  // 案件番号の例（重ならない番号にする）
+  let n = 100001
+  while (ws.projects.some((x) => x.id === `S${n}`)) n++
+  p.id = `S${n}`
+  p.name = 'サンプル装置'
+  ws.projects.push(p)
+  ws.currentProjectId = p.id
   normalize(p, ws)
-  return ws
+  const k = ws.stock.length
+  const items: Array<[string, string, string, number, Unit, string]> = [
+    ['リレー', 'MY4N-D2 DC24V', 'オムロン', 20, '個', '棚A-1'],
+    ['タイマ', 'H3CR-A8', 'オムロン', 5, '個', '棚A-2'],
+    ['端子台', 'XW2B-20G4', 'オムロン', 12, '個', '棚B-1'],
+    ['ヒューズ', 'F-5A', 'ミスミ', 100, '個', '棚C-3'],
+    ['電線', 'VCTF 2sq', '住電', 50, 'm', 'ドラム置場'],
+  ]
+  items.forEach(([name, model, maker, qty, unit, location], i) => ws.stock.push({ id: `ST${String(k + i + 1).padStart(4, '0')}`, name, model, maker, qty, unit, location, note: '' }))
+  const k2 = ws.purchases.length
+  const hist: Array<[string, string, string, number, string, string]> = [
+    ['コンタクタ', 'SC-N2 DC24V', '富士電機', 4200, 'S2', '2026-05-12'],
+    ['ブレーカ', 'NF32-SV 3P 20A', '三菱電機', 3100, 'S1', '2026-06-03'],
+  ]
+  hist.forEach(([name, model, maker, price, sup, date], i) => ws.purchases.push({ id: `PH${String(k2 + i + 1).padStart(4, '0')}`, name, model, maker, unit: '個', unitPrice: price, supplier: ws.suppliers.find((x) => x.id === sup)?.name ?? sup, date, qty: 2, note: '' }))
+  return p.id
 }

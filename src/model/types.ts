@@ -142,6 +142,10 @@ export interface Row extends DesignFields {
   scoreSnapshot?: number
   ordered: boolean
   received: boolean
+  /** 在庫から足した行の在庫 ID（在庫の引当の計算に使う） */
+  stockId?: string
+  /** 購入歴から足した行の購入歴キー */
+  historyKey?: string
   /** 発注した日・入荷した日（YYYY-MM-DD。商社の納期遵守の集計に使う §8.1） */
   orderedAt?: string
   receivedAt?: string
@@ -391,8 +395,15 @@ export interface ProjectSettings {
 }
 
 export interface Project {
+  /** 案件番号（例: A123456） */
   id: string
+  /** 装置名 */
   name: string
+  /** 客先 */
+  customer: string
+  /** 完了案件（作成中でなくなった案件） */
+  completed: boolean
+  completedAt?: string
   dueDate: string | null
   members: { design: string; purchasing: string; pm: string }
   preferredSupplierIds: string[]
@@ -417,9 +428,39 @@ export interface Project {
   caseDecisions: Array<{ id: string; kind: '案件設定確定' | '予算超過'; status: 'open' | 'done'; at: string }>
 }
 
+/** 在庫（社内にある部品） */
+export interface StockItem {
+  id: string
+  name: string
+  model: string
+  maker: string
+  qty: number
+  unit: Unit
+  /** 置き場所 */
+  location: string
+  note: string
+}
+
+/** 購入歴（過去に買った部品）。発注した行から自動でも集まる。ここは取り込んだ・手で足した分 */
+export interface PurchaseRecord {
+  id: string
+  name: string
+  model: string
+  maker: string
+  unit: Unit
+  unitPrice: number | null
+  supplier: string
+  /** 購入した日 YYYY-MM-DD（不明なら空） */
+  date: string
+  qty: number | null
+  note: string
+}
+
 export interface Workspace {
   user: User
   projects: Project[]
+  stock: StockItem[]
+  purchases: PurchaseRecord[]
   suppliers: Supplier[]
   rules: Rule[]
   currentProjectId: string

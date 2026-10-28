@@ -1,4 +1,5 @@
-import type { Project, Row, Workspace } from './types'
+import type { Project, Row, Unit, Workspace } from './types'
+import { UNITS } from './types'
 import { DEFAULT_RULES, DEFAULT_SETTINGS, SAMPLE_SUPPLIERS, newRow } from './sample'
 import { DEFAULT_WEIGHTS } from './score'
 
@@ -77,7 +78,6 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
   const warnings: string[] = []
   if (!isObj(raw)) return { error: 'ワークスペースの形式ではありません（{ projects: [...] } が必要）' }
   if (!Array.isArray(raw.projects)) return { error: 'projects が配列ではありません' }
-  if (raw.projects.length === 0) return { error: '案件が 1 つもありません' }
   const projects: Project[] = []
   for (const [i, p0] of raw.projects.entries()) {
     if (!isObj(p0)) return { error: `projects[${i}] が案件の形式ではありません` }
@@ -137,6 +137,9 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
     const p: Project = {
       ...(p0 as unknown as Project),
       name: typeof p0.name === 'string' ? p0.name : p0.id,
+      customer: typeof p0.customer === 'string' ? p0.customer : '',
+      completed: p0.completed === true,
+      completedAt: typeof p0.completedAt === 'string' ? p0.completedAt : undefined,
       dueDate: normDate(p0.dueDate),
       members: isObj(p0.members) ? (p0.members as Project['members']) : { design: '', purchasing: '', pm: '' },
       preferredSupplierIds: arr(p0.preferredSupplierIds),
@@ -176,9 +179,9 @@ function sanitizeInner(raw: unknown): { ws?: Workspace; error?: string; warnings
   const ids = projects.map((p) => p.id.toLowerCase())
   const dup = ids.find((id, i) => ids.indexOf(id) !== i)
   if (dup) return { error: `案件 ID が重複しています: ${dup}` }
-  const user = isObj(raw.user) && typeof raw.user.name === 'string' && ['design', 'purchasing', 'pm'].includes(String(raw.user.role)) ? (raw.user as unknown as Workspace['user']) : { name: '山田', role: 'design' as const }
-  const currentProjectId = typeof raw.currentProjectId === 'string' && projects.some((p) => p.id === raw.currentProjectId) ? raw.currentProjectId : projects[0].id
-  return { warnings, ws: { user, projects, suppliers: suppliersOf(raw.suppliers, warnings), rules: rulesOf(raw.rules, warnings), currentProjectId } }
+  const user = isObj(raw.user) && typeof raw.user.name === 'string' && ['design', 'purchasing'].includes(String(raw.user.role)) ? (raw.user as unknown as Workspace['user']) : { name: '山田', role: 'design' as const }
+  const currentProjectId = typeof raw.currentProjectId === 'string' && projects.some((p) => p.id === raw.currentProjectId) ? raw.currentProjectId : (projects[0]?.id ?? '')
+  return { warnings, ws: { user, projects, stock: stockOf(raw.stock), purchases: purchasesOf(raw.purchases), suppliers: suppliersOf(raw.suppliers, warnings), rules: rulesOf(raw.rules, warnings), currentProjectId } }
 }
 
 const STATUSES = ['draft', 'submitted', 'quoting', 'quoted', 'selected', 'formalRequested', 'formalQuoted', 'ordered', 'received', 'cancelled', 'replaced']
@@ -306,6 +309,27 @@ function coerceLike<T extends object>(def: T, v: Record<string, unknown>, bad?: 
   }
   for (const [k, x] of Object.entries(v)) if (!(k in out)) out[k] = x
   return out as unknown as T
+}
+
+const unitOf = (v: unknown): Unit => ((UNITS as string[]).includes(String(v)) ? (v as Unit) : '個')
+const numOr = (v: unknown, d: number | null): number | null => (typeof v === 'number' && Number.isFinite(v) && v >= 0 ? v : d)
+
+/** 在庫: id と部品名が文字のものだけ。数量は 0 以上の数 */
+function stockOf(v: unknown): Workspace['stock'] {
+  const seen = new Set<string>()
+  return arr<unknown>(v)
+    .filter((x): x is Record<string, unknown> => isObj(x) && str(x.id) && typeof x.name === 'string')
+    .filter((x) => (seen.has(x.id as string) ? false : (seen.add(x.id as string), true)))
+    .map((x) => ({ id: x.id as string, name: x.name as string, model: typeof x.model === 'string' ? x.model : '', maker: typeof x.maker === 'string' ? x.maker : '', qty: numOr(x.qty, 0) ?? 0, unit: unitOf(x.unit), location: typeof x.location === 'string' ? x.location : '', note: typeof x.note === 'string' ? x.note : '' }))
+}
+
+/** 購入歴: id と部品名が文字のものだけ */
+function purchasesOf(v: unknown): Workspace['purchases'] {
+  const seen = new Set<string>()
+  return arr<unknown>(v)
+    .filter((x): x is Record<string, unknown> => isObj(x) && str(x.id) && typeof x.name === 'string')
+    .filter((x) => (seen.has(x.id as string) ? false : (seen.add(x.id as string), true)))
+    .map((x) => ({ id: x.id as string, name: x.name as string, model: typeof x.model === 'string' ? x.model : '', maker: typeof x.maker === 'string' ? x.maker : '', unit: unitOf(x.unit), unitPrice: numOr(x.unitPrice, null), supplier: typeof x.supplier === 'string' ? x.supplier : '', date: normDate(x.date) ?? '', qty: numOr(x.qty, null), note: typeof x.note === 'string' ? x.note : '' }))
 }
 
 /** 商社マスタ: id と名前が文字の商社だけ。足りない項目は既定で補う。1 社も無ければサンプルの商社 */

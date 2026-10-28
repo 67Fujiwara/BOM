@@ -6,6 +6,7 @@ import { Side } from '@/ui/Side'
 import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
+import { Home, TopNav } from '@/ui/Home'
 import { commitEdit, handleKeyDown, keepCursorVisible } from '@/commands/registry'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
@@ -76,9 +77,13 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
 
 function Main() {
   const st = useStore()
-  const vm = useMemo(() => buildViewModel(st), [st.ws, st.view, st.sort, st.filter, st.cellFilter, st.hiddenCols, st.collapsed, st.openRows, st.revView])
+  // 部品表の画面（案件を開いているとき）だけ、表の表示用データを作る
+  const vm = useMemo(() => (st.screen === 'project' ? buildViewModel(st) : null), [st.screen, st.ws, st.view, st.sort, st.filter, st.cellFilter, st.hiddenCols, st.collapsed, st.openRows, st.revView])
   useEffect(() => {
-    const h = (e: KeyboardEvent) => handleKeyDown(e)
+    // 一覧の画面（在庫・購入歴・新規作成・作成中・完了案件）では、表のキー操作は使わない（入力欄に普通に打てるように）
+    const h = (e: KeyboardEvent) => {
+      if (useStore.getState().screen === 'project') handleKeyDown(e)
+    }
     window.addEventListener('keydown', h)
     // 編集中にリロード・タブを閉じたら、入れていた値を確定する。読めない値なら確認を出す
     const unload = (e: BeforeUnloadEvent) => {
@@ -113,12 +118,12 @@ function Main() {
       const s = useStore.getState()
       ws.user = loadUser() ?? s.ws.user
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
-      const before = buildViewModel(s).rows.map((r) => r.id)
+      const before = s.screen === 'project' ? buildViewModel(s).rows.map((r) => r.id) : []
       // 容量不足で保存できていなかった変更は、別のタブの保存で置き換わる（黙って消さない）
       const lost = hasUnsavedChanges()
       dropUnsavedChanges()
       useStore.setState({ ws })
-      keepCursorVisible(before, true)
+      if (s.screen === 'project') keepCursorVisible(before, true)
       if (lost) useStore.getState().toastMsg('このタブの保存できていなかった変更は、別のタブの保存で置き換わりました（容量不足。Ctrl+K →「JSON を書き出す」で退避してから空きを作ってください）', 'err')
     }
     window.addEventListener('storage', onStorage)
@@ -126,18 +131,31 @@ function Main() {
       const s = useStore.getState()
       ws.user = s.ws.user
       if (ws.projects.some((p) => p.id === s.ws.currentProjectId)) ws.currentProjectId = s.ws.currentProjectId
-      const before = buildViewModel(s).rows.map((r) => r.id)
+      const before = s.screen === 'project' ? buildViewModel(s).rows.map((r) => r.id) : []
       useStore.setState({ ws })
-      keepCursorVisible(before, true)
+      if (s.screen === 'project') keepCursorVisible(before, true)
     })
     return () => {
       window.removeEventListener('storage', onStorage)
       stop()
     }
   }, [])
+  if (!vm) {
+    return (
+      <div className="shell">
+        <TopNav />
+        <div className="shell-body">
+          <Home />
+        </div>
+      </div>
+    )
+  }
   const p = vm.ctx.p
   const rev = st.revView
   return (
+    <div className="shell">
+      <TopNav />
+      <div className="shell-body">
     <div className="app">
       <Header vm={vm} />
       <Side vm={vm} />
@@ -179,6 +197,8 @@ function Main() {
       </main>
       <StatusBar vm={vm} />
       <Panels />
+    </div>
+      </div>
     </div>
   )
 }

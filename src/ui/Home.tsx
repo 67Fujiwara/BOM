@@ -8,6 +8,7 @@ import { isActive } from '@/model/derive'
 import * as stock from '@/actions/stock'
 import type { PurchaseEntry } from '@/actions/stock'
 import { switchRole } from '@/commands/registry'
+import { readPanelStudioFile, type PanelStudioBom } from '@/io/panelStudio'
 
 const st = () => useStore.getState()
 
@@ -234,6 +235,7 @@ function NewProjectScreen() {
           <span className="muted">登録した案件は「作成中」に並びます（いま {s.ws.projects.filter((p) => !p.completed).length} 件）</span>
         </div>
       </form>
+      <PanelStudioImport />
     </section>
   )
 }
@@ -564,6 +566,101 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
           </form>
         )}
       </div>
+    </div>
+  )
+}
+
+/** Panel Studio で設計完了したときに出る部品表（ZIP の中の _bom.json、または JSON そのもの）から案件を作る */
+function PanelStudioImport() {
+  const [data, setData] = useState<PanelStudioBom | null>(null)
+  const [fileName, setFileName] = useState('')
+  const [no, setNo] = useState('')
+  const [customer, setCustomer] = useState('')
+  const [device, setDevice] = useState('')
+  const [error, setError] = useState('')
+  const target = no ? stock.panelStudioTarget(no) : { exists: false, completed: false }
+  const pick = async (file: File | undefined) => {
+    if (!file) return
+    const r = await readPanelStudioFile(file)
+    if (!r.ok) {
+      setData(null)
+      return setError(r.error)
+    }
+    setError('')
+    setData(r.data)
+    setFileName(file.name)
+    setNo(r.data.jobNo)
+    setCustomer(r.data.company)
+    setDevice(r.data.deviceName)
+  }
+  const go = () => {
+    if (!data) return
+    const r = stock.importPanelStudio(data, no, customer, device)
+    if ('error' in r) return setError(r.error)
+    st().toastMsg(`${r.id}: ${r.added} 行を取り込みました${r.created ? '（案件を新しく登録）' : '（既存の案件に追加）'}${r.skipped ? `。同じ型式などで飛ばした行 ${r.skipped}` : ''}`, 'ok')
+    openProject(r.id)
+  }
+  return (
+    <div className="home-card" style={{ marginTop: 24 }} data-testid="ps-import">
+      <h3 style={{ margin: '0 0 6px' }}>Panel Studio から取り込む</h3>
+      <p className="muted" style={{ margin: '0 0 10px' }}>
+        Panel Studio で「設計完了」したときに出る ZIP（または中の「〇〇_bom.json」）を選ぶと、案件と部品の行がまとめて入ります。
+      </p>
+      <input type="file" accept=".zip,.json,application/json,application/zip" onChange={(e) => void pick(e.target.files?.[0])} data-testid="ps-file" />
+      {error && (
+        <div className="err-text" role="alert" data-testid="ps-error" style={{ marginTop: 8 }}>
+          {error}
+        </div>
+      )}
+      {data && (
+        <div data-testid="ps-preview" style={{ marginTop: 12 }}>
+          <div className="muted">
+            {fileName}: 部品 {data.lines.length} 行{data.skipped ? `（読めない ${data.skipped} 行は飛ばします）` : ''}
+          </div>
+          <div className="form-grid" style={{ margin: '10px 0' }}>
+            <label>
+              案件番号
+              <input value={no} onChange={(e) => setNo(e.target.value)} placeholder="例 A123456" data-testid="ps-no" />
+            </label>
+            <label>
+              客先
+              <input value={customer} onChange={(e) => setCustomer(e.target.value)} data-testid="ps-customer" disabled={target.exists} />
+            </label>
+            <label>
+              装置名
+              <input value={device} onChange={(e) => setDevice(e.target.value)} data-testid="ps-device" disabled={target.exists} />
+            </label>
+          </div>
+          {target.exists && !target.completed && <div className="muted">この案件番号はもうあります。部品の行を追加します（同じメーカー・型式の行は飛ばします）。</div>}
+          {target.completed && <div className="err-text">この案件番号は完了案件です。作成中に戻すか、別の番号にしてください。</div>}
+          <table className="home-table" style={{ marginTop: 8 }}>
+            <thead>
+              <tr>
+                <th>部品名</th>
+                <th>型式</th>
+                <th>メーカー</th>
+                <th className="num">数量</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.lines.slice(0, 50).map((l, i) => (
+                <tr key={i}>
+                  <td>{l.name}{l.derived ? ' （派生）' : ''}</td>
+                  <td className="mono">{l.model}</td>
+                  <td>{l.maker}</td>
+                  <td className="num">{l.qty} {l.unit}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {data.lines.length > 50 && <div className="muted">ほか {data.lines.length - 50} 行</div>}
+          <div className="row-actions" style={{ marginTop: 10 }}>
+            <button className="btn primary" onClick={go} disabled={target.completed} data-testid="ps-go">
+              {target.exists ? '案件に追加して開く' : '案件を作って取り込む'}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

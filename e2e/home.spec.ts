@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test'
+import JSZip from 'jszip'
 
 async function fresh(page: Page) {
   await page.goto('/')
@@ -95,4 +96,48 @@ test('開いた案件はリロードしても同じ案件から続けられ、�
   await expect(page.getByTestId('header')).toContainText('C000001')
   await page.getByTestId('tab-active').click()
   await expect(page.getByTestId('screen-active')).toBeVisible()
+})
+
+test('Panel Studio の設計完了の部品表（JSON）から案件と部品の行を取り込める', async ({ page }) => {
+  await fresh(page)
+  await page.getByTestId('tab-new').click()
+  const bom = {
+    format: 'panel-studio/bom',
+    version: 1,
+    job: { company: '〇〇株式会社', jobNo: 'A123456', owner: '山田', completedAt: '2026-10-29', note: '' },
+    deviceName: '検査装置 1号機',
+    lines: [
+      { model: 'MY4N-D2 DC24V', maker: 'オムロン', name: 'リレー', qty: 4, unit: '個', source: 'device' },
+      { model: 'TS35 （必要長 1200mm）', maker: '', name: 'DINレール', qty: 2, unit: '本', source: 'derived' },
+    ],
+  }
+  await page.getByTestId('ps-file').setInputFiles({ name: 'A123456_bom.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bom)) })
+  await expect(page.getByTestId('ps-preview')).toContainText('部品 2 行')
+  await expect(page.getByTestId('ps-no')).toHaveValue('A123456')
+  await expect(page.getByTestId('ps-customer')).toHaveValue('〇〇株式会社')
+  await page.getByTestId('ps-go').click()
+  await expect(page.getByTestId('header')).toContainText('A123456')
+  await expect(page.getByTestId('header')).toContainText('検査装置 1号機')
+  await expect(page.getByTestId('row')).toHaveCount(2)
+  await expect(page.getByTestId('row').first()).toContainText('MY4N-D2')
+  // 同じ案件番号でもう一度読むと、同じ型式の行は飛ばして追加になる
+  await page.getByTestId('tab-new').click()
+  await page.getByTestId('ps-file').setInputFiles({ name: 'A123456_bom.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bom)) })
+  await expect(page.getByTestId('ps-go')).toContainText('案件に追加')
+  // 図面用のファイルは理由を出して断る
+  await page.getByTestId('ps-file').setInputFiles({ name: 'x_electracad.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ format: 'panel-studio/electracad-sheets' })) })
+  await expect(page.getByTestId('ps-error')).toContainText('_bom.json')
+})
+
+test('設計完了の ZIP をそのまま選んでも、中の _bom.json を読める', async ({ page }) => {
+  await fresh(page)
+  await page.getByTestId('tab-new').click()
+  const zip = new JSZip()
+  zip.file('A200001/A200001_electracad.json', JSON.stringify({ format: 'panel-studio/electracad-sheets' }))
+  zip.file('A200001/A200001_bom.json', JSON.stringify({ format: 'panel-studio/bom', version: 1, job: { company: '△△工業', jobNo: 'A200001' }, deviceName: '組立機', lines: [{ model: 'F-5A', maker: 'ミスミ', name: 'ヒューズ', qty: 10, unit: '個', source: 'device' }] }))
+  const buffer = await zip.generateAsync({ type: 'nodebuffer' })
+  await page.getByTestId('ps-file').setInputFiles({ name: 'A200001_dxf.zip', mimeType: 'application/zip', buffer })
+  await expect(page.getByTestId('ps-no')).toHaveValue('A200001')
+  await page.getByTestId('ps-go').click()
+  await expect(page.getByTestId('row')).toHaveCount(1)
 })

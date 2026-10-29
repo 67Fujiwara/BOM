@@ -7,6 +7,7 @@ import { nextRowId } from '@/model/lifecycle'
 import { parseBomPaste } from '@/io/paste'
 import { parseNumber, toHalf } from '@/model/parse'
 import { todayStr } from '@/model/dates'
+import type { PanelStudioBom } from '@/io/panelStudio'
 
 const st = () => useStore.getState()
 
@@ -277,4 +278,56 @@ export function addPartToProject(src: AddSource, qtyText: string, projectId: str
   })
   if (!ok) return { error: '保存できませんでした（保存領域がいっぱいです）' }
   return { rowId, projectId }
+}
+
+// ---------- Panel Studio（設計完了の部品表） ----------
+
+/** 同じ案件番号がすでにあるか（あれば取り込みは追加になる）。完了案件なら null */
+export function panelStudioTarget(no: string): { exists: boolean; completed: boolean } {
+  const n = parseProjectNo(no)
+  if (!n.ok) return { exists: false, completed: false }
+  const p = st().ws.projects.find((x) => x.id.toUpperCase() === n.value)
+  return { exists: !!p, completed: !!p?.completed }
+}
+
+/**
+ * Panel Studio の設計完了の部品表から案件を作り、部品の行（下書き）を入れる。
+ * 同じ案件番号がすでにあれば、その案件に足す（同じメーカー・型式の行は飛ばす）。
+ */
+export function importPanelStudio(data: PanelStudioBom, no: string, customer: string, device: string): { error: string } | { id: string; added: number; skipped: number; created: boolean } {
+  const n = parseProjectNo(no)
+  if (!n.ok) return { error: n.error }
+  const cust = customer.trim()
+  const dev = device.trim()
+  const ws = st().ws
+  const existing = ws.projects.find((p) => p.id.toUpperCase() === n.value)
+  if (existing?.completed) return { error: `${n.value} は完了案件です。作成中に戻すか、別の案件番号にしてください` }
+  if (!existing && !cust) return { error: '客先を入れてください' }
+  if (!existing && !dev) return { error: '装置名を入れてください' }
+  let added = 0
+  let skipped = 0
+  const ok = st().commitWs('', (w) => {
+    let p = w.projects.find((x) => x.id.toUpperCase() === n.value)
+    if (!p) {
+      p = buildProject(n.value, cust, dev, w.user.name, w.user.role)
+      w.projects.push(p)
+    }
+    const keyOf = (model: string, maker: string) => `${normalizeModel(model)}|${maker.trim()}`
+    const have = new Set(p.rows.filter((r) => isActive(r)).map((r) => keyOf(r.model, r.maker)))
+    for (const l of data.lines) {
+      const k = keyOf(l.model, l.maker)
+      if (l.model && have.has(k)) {
+        skipped++
+        continue
+      }
+      have.add(k)
+      p.rows.push(newRow(nextRowId(p), { name: l.name, model: l.model, maker: l.maker, qtyNeeded: l.qty, unit: l.unit, procurement: '相見積', note: l.derived ? 'Panel Studio（派生部品）' : 'Panel Studio' }))
+      added++
+    }
+    p.updatedAt = new Date().toISOString()
+    p.version++
+    p.events.push({ id: (p.events.at(-1)?.id ?? 0) + 1, at: p.updatedAt, by: w.user, text: `Panel Studio の設計完了から ${added} 行を取り込み${skipped ? `（同じ型式 ${skipped} 行は飛ばした）` : ''}` })
+  })
+  if (!ok) return { error: '保存できませんでした（保存領域がいっぱいです）' }
+  return { id: n.value, added, skipped: skipped + data.skipped, created: !existing }
 }

@@ -60,8 +60,11 @@ export function parsePanelStudioBom(text: string): { ok: true; data: PanelStudio
       skipped++
       continue
     }
+    // 「本(1000mm定尺)」のような但し書き付きの単位は、頭の単位で読む
     const u = str(l.unit)
-    lines.push({ model, maker: str(l.maker), name, qty, unit: (UNITS as string[]).includes(u) ? (u as Unit) : '個', derived: l.source === 'derived' })
+    const unit = (UNITS as string[]).includes(u) ? (u as Unit) : (UNITS.find((x) => u.startsWith(x)) ?? '個')
+    const maker = str(l.maker)
+    lines.push({ model, maker: /^[—–\-ー]$/.test(maker) ? '' : maker, name, qty, unit, derived: l.source === 'derived' })
   }
   if (!lines.length) return { ok: false, error: '取り込める部品の行がありません' }
   return {

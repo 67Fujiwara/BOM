@@ -27,6 +27,10 @@ describe('parsePanelStudioBom', () => {
     const r = parsePanelStudioBom(JSON.stringify({ ...good, lines: [{ model: 'A', name: 'a', qty: 1, unit: 'ロール' }] }))
     expect(r.ok && r.data.lines[0].unit).toBe('個')
   })
+  it('Panel Studio の実際の出力（但し書き付きの単位・メーカー「—」）を読む', () => {
+    const r = parsePanelStudioBom(JSON.stringify({ ...good, lines: [{ model: 'DINレール TH35-7.5（切断 計420mm / 1本）', key: 'TH35-7.5', maker: '—', name: 'DINレール', qty: 1, unit: '本(1000mm定尺)', source: 'derived' }] }))
+    expect(r.ok && r.data.lines[0]).toMatchObject({ unit: '本', maker: '', derived: true })
+  })
   it('別の形式・壊れた JSON・空は理由つきで断る', () => {
     expect(parsePanelStudioBom('{')).toMatchObject({ ok: false })
     expect(parsePanelStudioBom(JSON.stringify({ format: 'panel-studio/electracad-sheets' }))).toMatchObject({ ok: false, error: expect.stringContaining('_bom.json') })

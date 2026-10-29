@@ -1,6 +1,10 @@
 import { test, expect, type Page } from '@playwright/test'
 
 async function open(page: Page, role: 'design' | 'purchasing' = 'design') {
+  // 既定で隠している列（回路記号・調達区分など）に入力するテストのため、全部の列を出しておく（最初の 1 回だけ。リロードでは保存された状態を使う）
+  await page.addInitScript(() => {
+    if (!sessionStorage.getItem('bom-pro.ui')) sessionStorage.setItem('bom-pro.ui', JSON.stringify({ hiddenCols: ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff'] }))
+  })
   await page.goto('/')
   await page.evaluate(() => localStorage.clear())
   await page.goto('/')

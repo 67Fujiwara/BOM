@@ -152,7 +152,7 @@ export const useStore = create<State>((set, get) => ({
   ...loadUi(),
   filter: '',
   cellFilter: null,
-  hiddenCols: loadUiCols() ?? ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff'],
+  hiddenCols: loadUiCols() ?? ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff', 'ref', 'procurement', 'altPolicy', 'needDate', 'score', 'lead', 'due', 'waiting'],
   editValue: '',
   editCandidates: null,
   editError: null,

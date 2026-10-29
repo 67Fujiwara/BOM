@@ -28,7 +28,7 @@ const DESIGN_COLS = ['id', 'ball', 'ref', 'category', 'name', 'model', 'maker', 
 export const VIEWS: ViewDef[] = [
   { id: 1, label: 'すべて', filter: () => true },
   { id: 2, label: '購買提出用', columns: [...DESIGN_COLS, 'due'], filter: (r) => isActive(r) && !r.hidden },
-  { id: 3, label: '発注・入荷', columns: ['id', 'ball', 'name', 'model', 'maker', 'orderQty', 'unit', 'adopted', 'unitPrice', 'amount', 'lead', 'ordered', 'received', 'promisedDate', 'receivedLot', 'status'], filter: (r) => isActive(r) && (isQuotable(r) || !!r.adoptedSupplierId) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
+  { id: 3, label: '発注・入荷', columns: ['id', 'ball', 'name', 'model', 'maker', 'orderQty', 'unit', 'adopted', 'unitPrice', 'amount', 'lead', 'ordered', 'received', 'status'], filter: (r) => isActive(r) && (isQuotable(r) || !!r.adoptedSupplierId) && ['selected', 'formalRequested', 'formalQuoted', 'ordered', 'received'].includes(r.status) },
   {
     id: 4,
     label: '要確認',

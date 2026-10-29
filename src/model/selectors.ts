@@ -241,8 +241,6 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
       return { text: String(orderQty(row)), raw: orderQty(row), cls: 'num' + (row.flags.orderQtyCheck ? ' changed' : '') }
     case 'extraCost':
       return { text: row.extraCost == null ? '' : fmtYen(row.extraCost, p.settings.currency), raw: row.extraCost ?? '', cls: 'num' }
-    case 'promisedDate':
-      return { text: fmtDate(row.promisedDate), raw: row.promisedDate ?? '' }
     default: {
       const v = (e as unknown as Record<string, unknown>)[col] ?? (row as unknown as Record<string, unknown>)[col]
       const txt = v == null ? '' : String(v)

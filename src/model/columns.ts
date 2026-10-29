@@ -52,8 +52,6 @@ export const COLUMNS: ColumnDef[] = [
   { key: 'waiting', label: '待ち', kind: 'computed', width: 40, editableBy: [], numeric: true },
   { key: 'ordered', label: '発注', kind: 'bool', width: 40, editableBy: ['purchasing'] },
   { key: 'received', label: '入荷', kind: 'bool', width: 40, editableBy: ['purchasing'] },
-  { key: 'promisedDate', label: '入荷予定', kind: 'date', width: 72, editableBy: ['purchasing'] },
-  { key: 'receivedLot', label: 'ロット', kind: 'text', width: 80, editableBy: ['purchasing'] },
   { key: 'extraCost', label: '追加費用', kind: 'num', width: 70, editableBy: ['purchasing'], numeric: true },
   { key: 'extraCostKind', label: '費用種別', kind: 'select', width: 60, editableBy: ['purchasing'], options: ['特急', '送料', '分納', 'その他'] },
   { key: 'note', label: '備考', kind: 'text', width: 160, editableBy: ['design'], design: true },

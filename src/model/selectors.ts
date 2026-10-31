@@ -33,12 +33,10 @@ export function makeCtx(ws: Workspace, p: Project, rev: number | null): ViewCtx 
   return { ws, p, problems: problemsFor(ws, p), role: ws.user.role, rev }
 }
 
-/** この列を隠しているか（設定があればそれ。無ければ「すべて」ビューだけ既定の列を隠す） */
+/** この列を隠しているか（列の表示の設定。ID と部品名は隠せない） */
 export function colHidden(st: State, key: string): boolean {
   if (key === 'id' || key === 'name') return false
-  const pref = st.colPrefs[key]
-  if (pref !== undefined) return pref
-  return !VIEWS.find((x) => x.id === st.view)?.columns && DEFAULT_HIDDEN_COLS.includes(key)
+  return st.colPrefs[key] ?? DEFAULT_HIDDEN_COLS.includes(key)
 }
 
 /** 列の表示パネルに並べる列（このビューで出せる列。隠している列も含む） */
@@ -51,10 +49,10 @@ export function viewColumns(st: State, p: Project): string[] {
   let cols: string[] = viewBaseColumns(st)
   // 相見積先に加えて、見積を頼んだ商社（指定系の行の指定先で、相見積先に無い商社）の列も出す
   const quoted = [...p.supplierIds, ...new Set(p.quotes.filter((q) => !q.stale && !p.supplierIds.includes(q.supplierId)).map((q) => q.supplierId))]
-  if (st.view === 6) for (const sid of quoted) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.validUntil@${sid}`)
-  if (st.view === 9) for (const sid of p.supplierIds) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`)
-  if (st.view === 8) cols.push('q.formalPrice@A', 'q.formalLeadDays@A', 'q.formalValidUntil@A', 'q.formalDiffReason@A')
-  if (st.view === 3) cols.push('extraCost', 'extraCostKind')
+  if (st.view === 3) {
+    for (const sid of quoted) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.formalPrice@${sid}`)
+    cols.push('extraCost', 'extraCostKind')
+  }
   return cols.filter((c) => c.startsWith('q.') || !colHidden(st, c))
 }
 
@@ -84,8 +82,8 @@ function buildViewModelUncached(st: State): ViewModel {
   const ctx = makeCtx(ws, p, st.revView)
   const columns = viewColumns(st, p)
   const counts = {} as Record<ViewId, number>
-  // 隠した行は「すべて」と作業のビュー（要確認・要決定）には出す
-  const showHidden = (id: number) => id === 1 || id === 4
+  // 隠した行は 設計中 にだけ出す
+  const showHidden = (id: number) => id === 2
   for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden)).length
   const v = VIEWS.find((x) => x.id === st.view)!
   let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
@@ -111,7 +109,7 @@ function buildViewModelUncached(st: State): ViewModel {
   const catOf = (r: Row) => effective(r).category || '（分類なし）'
   const runs = rows.reduce((n, r, i) => (i === 0 || catOf(rows[i - 1]) !== catOf(r) ? n + 1 : n), 0)
   const contiguous = runs === new Set(rows.map(catOf)).size
-  const grouped = !sort && !v.defaultSort && st.view !== 4 && contiguous
+  const grouped = !sort && !v.defaultSort && contiguous
   let lastCat: string | null = null
   const ordered: Row[] = []
   for (const r of rows) {

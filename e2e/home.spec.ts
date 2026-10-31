@@ -55,6 +55,8 @@ test('在庫の部品をクリック → 数量 → 作成中の案件の番号�
   await expect(page.getByTestId('add-done')).toBeVisible()
   await page.getByTestId('add-open-project').click()
   await expect(page.getByTestId('header')).toContainText('A123456')
+  // 在庫から入れた行は 在庫 のビューに出る
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('row')).toHaveCount(1)
   await expect(page.getByTestId('row')).toContainText('MY4N-D2')
   // 在庫の画面に戻ると引当が出る

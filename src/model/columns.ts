@@ -55,7 +55,7 @@ export const COLUMNS: ColumnDef[] = [
   { key: 'extraCost', label: '追加費用', kind: 'num', width: 70, editableBy: ['purchasing'], numeric: true },
   { key: 'extraCostKind', label: '費用種別', kind: 'select', width: 60, editableBy: ['purchasing'], options: ['特急', '送料', '分納', 'その他'] },
   { key: 'note', label: '備考', kind: 'text', width: 160, editableBy: ['design'], design: true },
-  // 商社ごとの列（6 商社別ビュー、9 購買作業ビュー）
+  // 商社ごとの列（3 見積もりビュー）
   { key: 'q.unitPrice', label: '単価', kind: 'num', width: 70, editableBy: ['purchasing'], perSupplier: true, numeric: true },
   { key: 'q.leadDays', label: '納期', kind: 'num', width: 50, editableBy: ['purchasing'], perSupplier: true, numeric: true },
   { key: 'q.moq', label: 'MOQ', kind: 'num', width: 50, editableBy: ['purchasing'], perSupplier: true, numeric: true },
@@ -85,6 +85,5 @@ export function rowFieldOf(key: string): keyof Row | undefined {
   return key as keyof Row
 }
 
-/** 「すべて」ビューで初めから隠している列（列の表示の設定で出せる） */
-export const DEFAULT_HIDDEN_COLS = ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff', 'ref', 'procurement', 'altPolicy', 'needDate', 'score', 'lead', 'due', 'waiting']
-
+/** 初めから隠している列（列の表示の設定で出せる） */
+export const DEFAULT_HIDDEN_COLS = ['ref', 'procurement', 'altPolicy', 'needDate', 'score', 'lead', 'due', 'waiting']

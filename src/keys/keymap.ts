@@ -44,13 +44,9 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'move.pageUp', keys: ['PageUp'], mode: 'nav', section: '移動', label: '1画面ぶん上' },
   { id: 'move.pageDown', keys: ['PageDown'], mode: 'nav', section: '移動', label: '1画面ぶん下' },
   { id: 'row.toggleOpen', keys: [' '], mode: 'nav', section: '移動', label: '行を開く・閉じる（相見積の比較と履歴）', hint: 'Space 開く' },
-  { id: 'view.1', keys: ['1'], mode: 'nav', section: '移動', label: 'ビュー: すべて' },
-  { id: 'view.2', keys: ['2'], mode: 'nav', section: '移動', label: 'ビュー: 購買提出用' },
-  { id: 'view.3', keys: ['3'], mode: 'nav', section: '移動', label: 'ビュー: 発注・入荷' },
-  { id: 'view.4', keys: ['4'], mode: 'nav', section: '移動', label: 'ビュー: 要確認' },
-  { id: 'view.5', keys: ['5'], mode: 'nav', section: '移動', label: 'ビュー: 変更あり' },
-  { id: 'view.6', keys: ['6'], mode: 'nav', section: '移動', label: 'ビュー: 商社別' },
-  { id: 'view.8', keys: ['8'], mode: 'nav', section: '移動', label: 'ビュー: 正式見積' },
+  { id: 'view.1', keys: ['1'], mode: 'nav', section: '移動', label: 'ビュー: 在庫' },
+  { id: 'view.2', keys: ['2'], mode: 'nav', section: '移動', label: 'ビュー: 設計中' },
+  { id: 'view.3', keys: ['3'], mode: 'nav', section: '移動', label: 'ビュー: 見積もり' },
   { id: 'category.prev', keys: ['['], mode: 'nav', section: '移動', label: '前の分類へ' },
   { id: 'category.next', keys: [']'], mode: 'nav', section: '移動', label: '次の分類へ' },
 
@@ -92,9 +88,6 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'issue.bounce', keys: ['Shift+X'], mode: 'nav', section: '流れ', label: '指摘を差戻し（専用）' },
   { id: 'adopt.cheapest', keys: ['Ctrl+Alt+A'], mode: 'nav', section: 'BOM操作', label: '最安で採用（スコア無視）。見積中なら先行採用' },
   { id: 'weights.row', keys: ['w'], mode: 'nav', section: 'BOM操作', label: 'この行だけ重みを変える' },
-  { id: 'view.9', keys: ['9'], mode: 'nav', section: '移動', label: 'ビュー: 購買作業' },
-  { id: 'rev.prev', keys: ['<'], mode: 'nav', section: '移動', label: '5 変更あり: 前の Rev' },
-  { id: 'rev.next', keys: ['>'], mode: 'nav', section: '移動', label: '5 変更あり: 次の Rev' },
 ]
 
 /** KeyboardEvent を "Ctrl+Shift+Z" 形式に正規化する。

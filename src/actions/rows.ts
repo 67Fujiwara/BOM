@@ -389,7 +389,7 @@ export function toggleHidden(rowId: string) {
       hidden = r.hidden
     }
   })
-  st().toastMsg(hidden ? `${rowId} を隠しました（「1 すべて」で薄く表示。Alt+h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
+  st().toastMsg(hidden ? `${rowId} を隠しました（「2 設計中」で薄く表示。Alt+h でもう一度押すと戻る）` : `${rowId} を表示に戻しました`, 'info')
 }
 
 /** 置き換え品を作る。指摘・見積・状態を新行に引き継ぎ「要再確認」 */

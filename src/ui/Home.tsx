@@ -18,11 +18,12 @@ export function goScreen(screen: Screen) {
 }
 
 /** 案件を開いて部品表の画面へ */
-export function openProject(id: string) {
+/** 案件を開く。view は 1 在庫 / 2 設計中 / 3 見積もり（既定は設計中） */
+export function openProject(id: string, view: 1 | 2 | 3 = 2) {
   st().commitWs('', (ws) => {
     ws.currentProjectId = id
   })
-  useStore.setState({ screen: 'project', view: 1, detailIndex: 0, revView: null, sort: null, cursorRow: null, filter: '', cellFilter: null, openRows: [], panel: null, mode: 'nav' })
+  useStore.setState({ screen: 'project', view, detailIndex: 0, revView: null, sort: null, cursorRow: null, filter: '', cellFilter: null, openRows: [], panel: null, mode: 'nav' })
 }
 
 const TABS: Array<{ id: Screen; label: string }> = [
@@ -503,7 +504,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
   const [qty, setQty] = useState('1')
   const [pid, setPid] = useState(active.some((p) => p.id === lastProject) ? lastProject : active.length === 1 ? active[0].id : '')
   const [err, setErr] = useState('')
-  const [added, setAdded] = useState<{ projectId: string; text: string } | null>(null)
+  const [added, setAdded] = useState<{ projectId: string; text: string; kind: 'stock' | 'history' } | null>(null)
   const title = target.kind === 'stock' ? [target.item.name, target.item.model].filter(Boolean).join('　') : [target.entry.name, target.entry.model].filter(Boolean).join('　')
   const maker = target.kind === 'stock' ? target.item.maker : target.entry.maker
   const unit = target.kind === 'stock' ? target.item.unit : target.entry.unit
@@ -516,7 +517,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
     if ('error' in r) return setErr(r.error)
     lastProject = pid
     setErr('')
-    setAdded({ projectId: pid, text: `${pid} に ${title} × ${qty}${unit} を追加しました` })
+    setAdded({ projectId: pid, kind: target.kind, text: `${pid} に ${title} × ${qty}${unit} を追加しました` })
   }
   return (
     <div className="overlay" onClick={onClose} data-testid="add-dialog">
@@ -528,7 +529,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
           <>
             <div className="ok-box" data-testid="add-done">{added.text}</div>
             <div className="row-actions">
-              <button className="btn primary" onClick={() => { onClose(); openProject(added.projectId) }} data-testid="add-open-project">案件を開く</button>
+              <button className="btn primary" onClick={() => { onClose(); openProject(added.projectId, added.kind === 'stock' ? 1 : 2) }} data-testid="add-open-project">案件を開く</button>
               <button className="btn" onClick={() => { setAdded(null); setQty('1') }} data-testid="add-more">続けて追加</button>
               <button className="btn" onClick={onClose} data-testid="add-close">閉じる</button>
             </div>

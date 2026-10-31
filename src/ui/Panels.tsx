@@ -169,7 +169,7 @@ function PanelBody({ panel }: { panel: Panel }) {
           <div className="body panel-list" data-testid="columns" ref={listRef}>
             <h3 style={{ margin: '0 0 4px' }}>表示する列</h3>
             <p className="muted" style={{ margin: '0 0 8px', fontSize: 12 }}>
-              「{viewDef(st.view).label}」ビューの列です。チェックを外した列は<b>すべてのビュー</b>で隠れ、次に開いたときも同じです（ID と部品名は隠せません）。
+              「{viewDef(st.view).label}」ビューの列です。チェックを外した列は<b>すべてのビュー</b>で隠れ、次に開いたときも同じです。回路記号・調達区分・代替可否・必要日・スコア・納期・期限・待ちは初めは隠れています（ID と部品名は隠せません）。
             </p>
             <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
               <button className="btn" onClick={() => press('a')} data-testid="cols-all">すべて出す</button>

@@ -151,7 +151,6 @@ function Main() {
     )
   }
   const p = vm.ctx.p
-  const rev = st.revView
   return (
     <div className="shell">
       <TopNav />
@@ -176,14 +175,8 @@ function Main() {
               並び替え {colDef(st.sort.col)?.label} {st.sort.dir === 'asc' ? '▲' : '▼'} ✕
             </span>
           )}
-          {st.view === 5 && (
-            <span className="chip muted" data-testid="rev-filter">
-              {rev == null ? '未確認の差分すべて' : `Rev.${rev}`} <kbd>&lt;</kbd>
-              <kbd>&gt;</kbd>
-            </span>
-          )}
-          {st.view === 9 && <span className="chip warn">未発行の指摘 {p.issues.filter((i) => i.status === 'draft' && i.by.name === st.ws.user.name).length} 件</span>}
-          {st.view === 8 && <span className="chip warn">再発行対象 {p.rows.filter((r) => r.flags.reissue).length} 行</span>}
+          {st.view === 3 && <span className="chip warn">未発行の指摘 {p.issues.filter((i) => i.status === 'draft' && i.by.name === st.ws.user.name).length} 件</span>}
+          {st.view === 3 && p.rows.some((r) => r.flags.reissue) && <span className="chip warn">再発行対象 {p.rows.filter((r) => r.flags.reissue).length} 行</span>}
           {p.submissions.length > 0 && (
             <span className="muted" style={{ marginLeft: 'auto', fontSize: 12, whiteSpace: 'nowrap' }} data-testid="rev-info">
               提出 Rev.{p.submissions.at(-1)!.rev}（{p.submissions.at(-1)!.by.name} {fmtDate(p.submissions.at(-1)!.at.slice(0, 10))}

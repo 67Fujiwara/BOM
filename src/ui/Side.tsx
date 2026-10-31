@@ -11,7 +11,7 @@ export function Side({ vm }: { vm: ViewModel }) {
       <h3>ビュー</h3>
       {VIEWS.map((v) => {
         const n = vm.counts[v.id]
-        const cls = v.id === 4 && n ? 'n err' : v.id === 7 && n ? 'n warn' : 'n'
+        const cls = 'n'
         return (
           <div key={v.id} className="view" aria-current={st.view === v.id} onClick={() => setView(v.id as ViewId)} data-testid={`view-${v.id}`}>
             <span className="k" title={st.mode === 'nav' && !onCommandCell(String(v.id)) ? '文字を打てるセルでは数字は値になるので、Alt を押しながら' : undefined}>{st.mode === 'nav' && !onCommandCell(String(v.id)) ? `Alt+${v.id}` : v.id}</span>

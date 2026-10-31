@@ -32,7 +32,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (user.role === 'purchasing') hints.push(['Shift+I', '指摘'])
     // Space は 1 つだけ出す（指摘があれば「開いて指摘を見る」）
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : user.role !== 'purchasing' && openIssues(p, row.id).length ? '開いて指摘を見る' : '開く'])
-    if (vm.counts[4]) hints.push(['F8', '次の問題'])
+    if (vm.counts[2] + vm.counts[3] > 0) hints.push(['F8', '次の問題'])
     if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) {
       const d = (row.designated ?? '').trim()
       const stopped = st.ws.suppliers.find((x) => (x.id === d || x.name === d) && x.tradable === false)
@@ -90,7 +90,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
         </span>
         {problemHint && <span className="muted">{problemHint}</span>}
         <span className="muted" data-testid="role-status">
-          {ROLE_LABEL[user.role]} {user.name}: {user.role === 'purchasing' ? `未発行 ${up.issues} 件` : user.role === 'design' ? `未公開 ${up.rows} 行 / 指摘 ${up.issues}` : `要決定 ${vm.counts[7]}`}
+          {ROLE_LABEL[user.role]} {user.name}: {user.role === 'purchasing' ? `未発行 ${up.issues} 件` : `未公開 ${up.rows} 行 / 指摘 ${up.issues}`}
         </span>
         {toastVisible && (
           <span className={'toast ' + st.toast!.kind} data-testid="toast">

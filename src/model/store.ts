@@ -18,7 +18,8 @@ const EMPTY_PROJECT: Project = newProject('', '')
 /** 最初の画面の種類。project は案件を開いた部品表の画面 */
 export type Screen = 'stock' | 'history' | 'new' | 'active' | 'done' | 'project'
 
-export type ViewId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+/** 1 在庫 / 2 設計中 / 3 見積もり */
+export type ViewId = 1 | 2 | 3
 
 export type PanelOption = { label: string; run: () => void; key?: string; hint?: string }
 
@@ -70,7 +71,7 @@ export interface State {
   sort: { col: string; dir: 'asc' | 'desc' } | null
   filter: string
   cellFilter: { col: string; value: string } | null
-  /** 列ごとの表示の設定（true: 隠す / false: 出す）。無い列は既定（「すべて」ビューだけ DEFAULT_HIDDEN_COLS を隠す）。全ビューに効き、ブラウザに残る */
+  /** 列ごとの表示の設定（true: 隠す / false: 出す）。無い列は既定（DEFAULT_HIDDEN_COLS は隠す）。全ビューに効き、ブラウザに残る */
   colPrefs: Record<string, boolean>
   editValue: string
   editCandidates: string[] | null
@@ -348,7 +349,7 @@ function readUi(): Partial<UiSaved> {
 }
 function loadUi(): Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort'> {
   const u = readUi()
-  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 9 && u.view !== 7 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
+  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 3 ? u.view : 2) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
 }
 function loadColPrefs(): Record<string, boolean> {
   try {

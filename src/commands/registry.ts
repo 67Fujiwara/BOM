@@ -1,10 +1,10 @@
 import { useStore, type Panel, type PanelOption, type ViewId, type State } from '@/model/store'
 import { KEYMAP, bindingsFor, eventToKey, lookupBinding } from '@/keys/keymap'
-import { buildViewModel, cellText } from '@/model/selectors'
+import { buildViewModel, cellText, makeCtx } from '@/model/selectors'
 import { colDef, supplierOfCol } from '@/model/columns'
 import type { ChangeReason, IssueKind, Project, Role, Row, Workspace } from '@/model/types'
 import { CHANGE_REASONS, ISSUE_KINDS, ROLE_LABEL } from '@/model/types'
-import { VIEWS, isAcked } from '@/model/views'
+import { VIEWS, isAcked, viewOfRow } from '@/model/views'
 import { valuesFor, designatedDeclined, effective, fixedSupplierId, handlesMaker, hasWork, isActive, noUsableQuote, openIssues, tradableIn } from '@/model/derive'
 import { checkRow, setSupplierMaster, type Problem } from '@/model/rules'
 import * as rows from '@/actions/rows'
@@ -25,7 +25,7 @@ const set = (p: Partial<State>) => useStore.setState(p)
 const toast = (t: string, k: 'ok' | 'err' | 'info' = 'ok') => st().toastMsg(t, k)
 export const vm = () => buildViewModel(st())
 
-export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 4, purchasing: 9 }
+export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 2, purchasing: 3 }
 
 /** 選択中の行（いま表示されている行だけ。絞り込みで隠れた行は対象にしない） */
 function cursorRow(): Row | undefined {
@@ -179,7 +179,7 @@ export function jumpToRow(id: string, col?: string, keepProblem = false): boolea
   const p = s.project()
   const r = p.rows.find((x) => x.id === id)
   if (!r) return false
-  if (!vm().rows.some((x) => x.id === id)) set({ view: 1, filter: '', cellFilter: null })
+  if (!vm().rows.some((x) => x.id === id)) set({ view: viewOfRow(r, makeCtx(s.ws, p, null)), filter: '', cellFilter: null })
   const cat = effective(r).category || '（分類なし）'
   if (st().collapsed.includes(cat)) set({ collapsed: st().collapsed.filter((c) => c !== cat) })
   set({ cursorRow: id, cursorCol: col && vm().columns.includes(col) ? col : s.cursorCol, detailIndex: 0 })
@@ -193,16 +193,16 @@ export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
   if (!commitEdit('stay')) return
   set({ view: v, detailIndex: 0, revView: null })
-  // 6 商社別・8 正式見積は相見積先の列で入れる。相見積先が無ければ理由を知らせる
-  if ((v === 6 || v === 8) && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
+  // 3 見積もりは相見積先の列で入れる。相見積先が無ければ理由を知らせる
+  if (v === 3 && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
   if (!vm().rows.some((r) => r.id === st().cursorRow)) set({ cursorRow: null })
   ensureCursor()
-  // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 6・8 を開くと単価、9 なら発注数）。ID・状態の列にいるときはそのまま
+  // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 3 見積もりを開くと単価）。ID・状態の列にいるときはそのまま
   const c = st().cursorCol
   if (c !== 'id' && c !== 'status' && rows.canEdit(c)) {
-    // 単価（6 は概算、8 は正式）を先に。無ければ書ける最初の列（9 なら発注数）
+    // 単価を先に。無ければ書ける最初の列
     const cols = vm().columns.filter((k) => !rows.canEdit(k) && colDef(k)?.kind !== 'bool')
-    const mine = cols.find((k) => k.startsWith(v === 8 ? 'q.formalPrice' : 'q.unitPrice')) ?? cols.find((k) => k.startsWith('q.')) ?? cols[0]
+    const mine = cols.find((k) => k.startsWith('q.unitPrice')) ?? cols.find((k) => k.startsWith('q.')) ?? cols[0]
     if (mine) set({ cursorCol: mine })
   }
 }
@@ -341,9 +341,9 @@ export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'dow
     if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
     moveCol(dir === 'right' ? 1 : -1)
   } else tabAnchor = null
-  // 6 商社別・8 正式見積: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
+  // 3 見積もり: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
   const n = st()
-  if (dir !== 'stay' && (n.view === 6 || n.view === 8) && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
+  if (dir !== 'stay' && n.view === 3 && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
     startEdit('')
     set({ editAuto: true })
   }
@@ -372,7 +372,7 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
     const pr = prs.find((x) => x.severity === 'warn' && x.field === st().cursorCol) ?? prs.find((x) => x.severity === 'warn')
     if (pr) return row.ackRules.includes(pr.ruleId) ? '警告の確認済みを外す' : '警告を確認済み'
   }
-  if (st().view === 5 && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
+  if (st().view === 3 && role === 'purchasing' && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
   return null
 }
 function ackCurrent() {
@@ -402,7 +402,7 @@ function ackCurrent() {
     }
     if (prs.some((x) => x.severity === 'error')) return toast('エラーは確認済みにできません。直してください（Ctrl+. で直し方の候補）', 'err')
   }
-  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !isAcked(sb, r.id, role)) && (s.view === 5 || role !== 'design')) {
+  if (p.submissions.some((sb) => sb.rowIds.includes(r.id) && !isAcked(sb, r.id, role)) && role !== 'design') {
     // 確認は自分の役割の分だけ。Rev を選んでいればその Rev だけ
     const rev = s.revView
     s.commit('差分を確認済', (p2) => {
@@ -446,7 +446,7 @@ function problemCells(): Array<{ rowId: string; field: string }> {
   })
   // F8 は見えている並び（4 は種別の順に並んでいる）で上から下へ進む。同じ行は列の順。このビューに無い行は最後（一覧の順）
   const v = vm()
-  // このビューに無い行は、BOM の並び（1 すべての順）で後ろに
+  // このビューに無い行は、BOM の並び（BOM の行の順）で後ろに
   const pos = new Map<string, number>([...p.rows.map((x, i) => [x.id, 1e6 + i] as const), ...v.rows.map((x, i) => [x.id, i] as const)])
   const colPos = (f: string) => {
     const i = v.columns.indexOf(f)
@@ -464,7 +464,7 @@ function gotoProblem(delta: 1 | -1): boolean {
   const visible = all.filter((x) => shown.has(x.rowId))
   const list = visible.length ? visible : all
   if (!visible.length && all.length) lastProblem = null
-  if (!visible.length && all.length && (st().filter || st().cellFilter || st().view !== 1)) toast('このビュー・絞り込みには問題がありません。1 すべてに切り替えて次の問題へ移ります', 'info')
+  if (!visible.length && all.length && (st().filter || st().cellFilter)) toast('このビュー・絞り込みには問題がありません。別のビューの問題へ移ります', 'info')
   if (!list.length) {
     toast(`${ROLE_LABEL[st().user().role]}がいま直す問題はありません${st().user().role === 'design' ? '（Ctrl+Enter で公開できます）' : ''}`, 'info')
     return false
@@ -522,7 +522,7 @@ function gotoProblem(delta: 1 | -1): boolean {
         if (delta > 0 ? q >= anchor && (best < 0 || q < pos.get(list[best].rowId)!) : q < anchor && (best < 0 || q > pos.get(list[best].rowId)!)) best = i
       })
       if (best >= 0) next = best
-    } else if (cur == null || (!list.some((x) => x.rowId === curId) && (s.view === 4 || !list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) })))) {
+    } else if (cur == null || (!list.some((x) => x.rowId === curId) && (!list.some((x) => { const q = pos.get(x.rowId); return q != null && (delta > 0 ? q > cur : q < cur) })))) {
       const bom = new Map(st().project().rows.map((x, i) => [x.id, i] as const))
       const at = bom.get(curId)
       if (at != null) {
@@ -746,9 +746,9 @@ function quoteActionPanel(r: Row, supplierId: string) {
   if (s.user().role === 'purchasing')
     options.push({
       key: 'i',
-      label: `6 商社別ビューで ${sup?.name} の見積を入力`,
+      label: `3 見積もりビューで ${sup?.name} の見積を入力`,
       run: () => {
-        setView(6)
+        setView(3)
         jumpToRow(r.id, `q.unitPrice@${supplierId}`)
       },
     })
@@ -1203,7 +1203,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       // 行を選んでいないときは足す位置が分からないので足さない（表の最後に足すなら Ctrl+↓ で最後の行へ）
       if (!r && s.project().rows.length) return toast('行を選んでから Shift+Enter（その下に足します。最後に足すときは Ctrl+↓ で最後の行へ）', 'info')
       if (s.filter || s.cellFilter) set({ filter: '', cellFilter: null })
-      if (![1, 2, 4].includes(s.view)) setView(1)
+      if (s.view !== 2) setView(2)
       const nid = rows.insertBelow(r?.id ?? null)
       if (nid) {
         jumpToRow(nid, 'name')
@@ -1392,17 +1392,6 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       if (!need()) return
       if (!isActive(r!)) return toast(`${r!.id} は${r!.status === 'cancelled' ? '取消' : '置換'}済の行です（重みは変えられません）`, 'info')
       return openPanel({ kind: 'weights', rowId: r!.id, index: 0 })
-    case 'rev.prev':
-    case 'rev.next': {
-      const revs = p.submissions.map((x) => x.rev)
-      if (!revs.length) return toast('まだ提出がありません', 'info')
-      if (s.view !== 5) setView(5)
-      const cur = s.revView
-      const idx = cur == null ? revs.length : revs.indexOf(cur)
-      const next = id === 'rev.prev' ? Math.max(0, idx - 1) : Math.min(revs.length, idx + 1)
-      set({ revView: next >= revs.length ? null : revs[next] })
-      return toast(next >= revs.length ? '未確認の差分すべて' : `Rev.${revs[next]} の差分`, 'info')
-    }
     case 'quotes.request': {
       if (role !== 'purchasing') return toast('権限なし（概算見積の依頼は購買）', 'err')
       const tradable = s.ws.suppliers.filter((x) => x.tradable)
@@ -1688,7 +1677,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: 'Ctrl+F で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },
-  { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 すべてに薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
+  { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 2 設計中に薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
   { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ? alt f8 英字 ショートカット' },
 ]
 

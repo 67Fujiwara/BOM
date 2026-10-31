@@ -84,3 +84,7 @@ export function rowFieldOf(key: string): keyof Row | undefined {
   if (!d || d.kind === 'computed' || d.perSupplier) return undefined
   return key as keyof Row
 }
+
+/** 「すべて」ビューで初めから隠している列（列の表示の設定で出せる） */
+export const DEFAULT_HIDDEN_COLS = ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff', 'ref', 'procurement', 'altPolicy', 'needDate', 'score', 'lead', 'due', 'waiting']
+

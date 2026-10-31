@@ -10,7 +10,9 @@ function navKey(k: string): string {
 }
 import { COLUMNS } from '@/model/columns'
 import { ROLE_LABEL, ISSUE_KINDS } from '@/model/types'
-import { colsForPanel, paletteItems } from '@/commands/registry'
+import { paletteItems } from '@/commands/registry'
+import { colHidden, viewBaseColumns } from '@/model/selectors'
+import { viewDef } from '@/model/views'
 import { issueKindsFor } from '@/commands/keyboard'
 import { effective, fmtYen } from '@/model/derive'
 import { scoreRow } from '@/model/score'
@@ -161,16 +163,23 @@ function PanelBody({ panel }: { panel: Panel }) {
       )
     }
     case 'columns': {
-      const cols = colsForPanel()
+      const cols = viewBaseColumns(st)
       return (
         <div className="dialog" role="dialog" aria-label="列の表示">
           <div className="body panel-list" data-testid="columns" ref={listRef}>
-            <h3 style={{ margin: '0 0 8px' }}>列の表示（すべて・購買提出用以外のビューは列が決まっています）</h3>
+            <h3 style={{ margin: '0 0 4px' }}>表示する列</h3>
+            <p className="muted" style={{ margin: '0 0 8px', fontSize: 12 }}>
+              「{viewDef(st.view).label}」ビューの列です。チェックを外した列は<b>すべてのビュー</b>で隠れ、次に開いたときも同じです（ID と部品名は隠せません）。
+            </p>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+              <button className="btn" onClick={() => press('a')} data-testid="cols-all">すべて出す</button>
+              <button className="btn" onClick={() => press('r')} data-testid="cols-reset">初めの表示に戻す</button>
+            </div>
             {cols.map((key, i) => {
               const c = COLUMNS.find((x) => x.key === key)!
               return (
-                <div key={c.key} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press(' '))}>
-                  <span className="check">{st.hiddenCols.includes(c.key) ? '○' : '●'}</span>
+                <div key={c.key} className="opt clickable" aria-selected={i === panel.index} onClick={() => (setIndex(i), press(' '))} data-testid={`col-${c.key}`}>
+                  <span className="check">{colHidden(st, c.key) ? '○' : '●'}</span>
                   <span>{c.label}</span>
                   <span className="muted" style={{ marginLeft: 'auto' }}>
                     {c.editableBy.map((r) => ROLE_LABEL[r]).join('・') || '自動'}
@@ -179,7 +188,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               )
             })}
           </div>
-          <Foot items={[['ArrowUp', '/ ↓ 選択'], [' ', '表示を切り替え'], ['Escape', '閉じる']]} />
+          <Foot items={[['ArrowUp', '/ ↓ 選択'], [' ', '表示を切り替え'], ['a', 'すべて出す'], ['r', '初めに戻す'], ['Escape', '閉じる']]} />
         </div>
       )
     }

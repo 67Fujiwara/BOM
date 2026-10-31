@@ -1,6 +1,6 @@
 import type { Project, Role, Row, Workspace } from './types'
 import { STATUS_LABEL, ROLE_LABEL } from './types'
-import { COLUMNS, colDef, supplierOfCol } from './columns'
+import { COLUMNS, DEFAULT_HIDDEN_COLS, colDef, supplierOfCol } from './columns'
 import { VIEWS, buildProblems, causeOf, type ViewCtx } from './views'
 import type { Problem } from './rules'
 import type { State, ViewId } from './store'
@@ -33,18 +33,29 @@ export function makeCtx(ws: Workspace, p: Project, rev: number | null): ViewCtx 
   return { ws, p, problems: problemsFor(ws, p), role: ws.user.role, rev }
 }
 
-export function viewColumns(st: State, p: Project): string[] {
+/** この列を隠しているか（設定があればそれ。無ければ「すべて」ビューだけ既定の列を隠す） */
+export function colHidden(st: State, key: string): boolean {
+  if (key === 'id' || key === 'name') return false
+  const pref = st.colPrefs[key]
+  if (pref !== undefined) return pref
+  return !VIEWS.find((x) => x.id === st.view)?.columns && DEFAULT_HIDDEN_COLS.includes(key)
+}
+
+/** 列の表示パネルに並べる列（このビューで出せる列。隠している列も含む） */
+export function viewBaseColumns(st: State): string[] {
   const v = VIEWS.find((x) => x.id === st.view)!
-  let cols: string[]
-  if (v.columns) cols = [...v.columns]
-  else cols = COLUMNS.filter((c) => !c.perSupplier && !st.hiddenCols.includes(c.key)).map((c) => c.key)
+  return v.columns ? [...v.columns] : COLUMNS.filter((c) => !c.perSupplier).map((c) => c.key)
+}
+
+export function viewColumns(st: State, p: Project): string[] {
+  let cols: string[] = viewBaseColumns(st)
   // 相見積先に加えて、見積を頼んだ商社（指定系の行の指定先で、相見積先に無い商社）の列も出す
   const quoted = [...p.supplierIds, ...new Set(p.quotes.filter((q) => !q.stale && !p.supplierIds.includes(q.supplierId)).map((q) => q.supplierId))]
   if (st.view === 6) for (const sid of quoted) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.validUntil@${sid}`)
   if (st.view === 9) for (const sid of p.supplierIds) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`)
   if (st.view === 8) cols.push('q.formalPrice@A', 'q.formalLeadDays@A', 'q.formalValidUntil@A', 'q.formalDiffReason@A')
   if (st.view === 3) cols.push('extraCost', 'extraCostKind')
-  return cols
+  return cols.filter((c) => c.startsWith('q.') || !colHidden(st, c))
 }
 
 function matchText(row: Row, p: Project, q: string, role: Role): boolean {
@@ -59,7 +70,7 @@ let cacheKey: unknown[] | null = null
 let cacheVal: ViewModel | null = null
 
 export function buildViewModel(st: State): ViewModel {
-  const key = [st.ws, st.view, st.sort, st.filter, st.cellFilter, st.hiddenCols, st.collapsed, st.openRows, st.revView]
+  const key = [st.ws, st.view, st.sort, st.filter, st.cellFilter, st.colPrefs, st.collapsed, st.openRows, st.revView]
   if (cacheKey && cacheVal && key.every((k, i) => k === cacheKey![i])) return cacheVal
   const v = buildViewModelUncached(st)
   cacheKey = key

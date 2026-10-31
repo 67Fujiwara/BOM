@@ -1828,11 +1828,6 @@ function matchScore(label: string, keywords: string | undefined, desc: string | 
   return 0
 }
 
-/** 列パネルで並べる列 */
-export function colsForPanel() {
-  return ['id', 'ball', 'ref', 'drawing', 'category', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'packQty', 'procurement', 'makerLock', 'altPolicy', 'designated', 'needOffset', 'needDateFixed', 'needDate', 'tags', 'orderQty', 'adopted', 'score', 'unitPrice', 'amount', 'formalPrice', 'formalDiff', 'lead', 'status', 'due', 'waiting', 'ordered', 'received', 'extraCost', 'extraCostKind', 'note']
-}
-
 export { handleKeyDown } from './keyboard'
 import { resetSequence } from './keyboard'
 export { issues as issueActions, rows as rowActions, ROLE_LABEL, KEYMAP, eventToKey, lookupBinding, ISSUE_KINDS, VIEWS, cursorRow as visibleCursorRow, moveCursorRow, gotoProblem, problemCells, openQuickfix, prompt, confirmDanger, saveSettings }

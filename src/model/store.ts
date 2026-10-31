@@ -9,6 +9,7 @@ import { loadIfChangedElsewhere, loadWorkspace, saveWorkspace } from '@/io/persi
 
 // 保存キーはストアを作る前に定義する（ストアの初期値を読むときに使う。後ろで定義すると初期化前参照で黙って空になる）
 const UI_KEY = 'bom-pro.ui'
+const COL_PREFS_KEY = 'bom-pro.colPrefs'
 const HISTORY_KEY = 'bom-pro.history'
 
 /** 案件が 1 つも無いときの空の案件（画面の関数が落ちないように。保存はしない） */
@@ -69,7 +70,8 @@ export interface State {
   sort: { col: string; dir: 'asc' | 'desc' } | null
   filter: string
   cellFilter: { col: string; value: string } | null
-  hiddenCols: string[]
+  /** 列ごとの表示の設定（true: 隠す / false: 出す）。無い列は既定（「すべて」ビューだけ DEFAULT_HIDDEN_COLS を隠す）。全ビューに効き、ブラウザに残る */
+  colPrefs: Record<string, boolean>
   editValue: string
   editCandidates: string[] | null
   editError: string | null
@@ -152,7 +154,7 @@ export const useStore = create<State>((set, get) => ({
   ...loadUi(),
   filter: '',
   cellFilter: null,
-  hiddenCols: loadUiCols() ?? ['cause', 'drawing', 'tags', 'packQty', 'makerLock', 'needOffset', 'needDateFixed', 'orderQty', 'designated', 'extraCost', 'extraCostKind', 'formalPrice', 'formalDiff', 'ref', 'procurement', 'altPolicy', 'needDate', 'score', 'lead', 'due', 'waiting'],
+  colPrefs: loadColPrefs(),
   editValue: '',
   editCandidates: null,
   editError: null,
@@ -336,7 +338,7 @@ export function userKey(u: User): string {
 }
 
 // ---------- 画面の状態（タブごと。リロードしても同じビュー・セル・ガイドの途中から） ----------
-type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'hiddenCols' | 'recentCommands' | 'screen'>
+type UiSaved = Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort' | 'recentCommands' | 'screen'>
 function readUi(): Partial<UiSaved> {
   try {
     return JSON.parse(sessionStorage.getItem(UI_KEY) ?? '{}') ?? {}
@@ -348,9 +350,21 @@ function loadUi(): Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort'> {
   const u = readUi()
   return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 9 && u.view !== 7 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
 }
-function loadUiCols(): string[] | null {
-  const c = readUi().hiddenCols
-  return Array.isArray(c) && c.every((x) => typeof x === 'string') ? c : null
+function loadColPrefs(): Record<string, boolean> {
+  try {
+    const v = JSON.parse(localStorage.getItem(COL_PREFS_KEY) ?? 'null')
+    if (v && typeof v === 'object' && !Array.isArray(v)) return Object.fromEntries(Object.entries(v).filter(([, b]) => typeof b === 'boolean')) as Record<string, boolean>
+  } catch {
+    /* 読めなければ既定 */
+  }
+  return {}
+}
+function saveColPrefs(p: Record<string, boolean>) {
+  try {
+    localStorage.setItem(COL_PREFS_KEY, JSON.stringify(p))
+  } catch {
+    /* 保存できなくても動作は続ける */
+  }
 }
 function loadUiField<K extends 'recentCommands'>(k: K): UiSaved[K] | undefined {
   return readUi()[k] as UiSaved[K] | undefined
@@ -376,9 +390,10 @@ try {
 }
 useStore.subscribe((s, prev) => {
   if (s.ws.suppliers !== prev.ws.suppliers) setSupplierMaster(s.ws.suppliers)
+  if (s.colPrefs !== prev.colPrefs) saveColPrefs(s.colPrefs)
 })
 useStore.subscribe((s, prev) => {
-  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.hiddenCols === prev.hiddenCols && s.recentCommands === prev.recentCommands && s.screen === prev.screen && s.panel === prev.panel) return
+  if (s.view === prev.view && s.cursorRow === prev.cursorRow && s.cursorCol === prev.cursorCol && s.sort === prev.sort && s.recentCommands === prev.recentCommands && s.screen === prev.screen && s.panel === prev.panel) return
   clearTimeout(uiTimer)
   uiTimer = setTimeout(writeUi, 200) as unknown as number
 })
@@ -387,7 +402,7 @@ function writeUi() {
   {
     const st = useStore.getState()
     // ガイドを開いている間は、入れている途中の内容も下書きとして残す
-    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, hiddenCols: st.hiddenCols, recentCommands: st.recentCommands, screen: st.screen }
+    const saved: UiSaved = { view: st.view, cursorRow: st.cursorRow, cursorCol: st.cursorCol, sort: st.sort, recentCommands: st.recentCommands, screen: st.screen }
     try {
       sessionStorage.setItem(UI_KEY, JSON.stringify(saved))
     } catch {

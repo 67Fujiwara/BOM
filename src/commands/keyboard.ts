@@ -1,6 +1,7 @@
 import { useStore, type State } from '@/model/store'
 import { eventToKey, lookupBinding } from '@/keys/keymap'
 import { colDef } from '@/model/columns'
+import { colHidden, viewBaseColumns } from '@/model/selectors'
 import type { IssueKind } from '@/model/types'
 import { ISSUE_KINDS } from '@/model/types'
 import { scoreRow } from '@/model/score'
@@ -9,7 +10,7 @@ import * as issues from '@/actions/issues'
 import * as adopt from '@/actions/adopt'
 import * as rows from '@/actions/rows'
 import { settingsFields } from '@/ui/settingsFields'
-import { vm as vmModel, cancelEdit, closePanel, colsForPanel, commitEdit, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, startEdit, updateEditValue, validateSetting, visibleCursorRow } from './registry'
+import { vm as vmModel, cancelEdit, closePanel, commitEdit, ensureCursor, gotoProblem, jumpToRow, moveCursorRow, openQuickfix, paletteItems, problemCells, prompt, runCommand, saveSettings, startEdit, updateEditValue, validateSetting, visibleCursorRow } from './registry'
 
 const st = () => useStore.getState()
 const set = (p: Partial<State>) => useStore.setState(p)
@@ -85,15 +86,18 @@ function handlePanelKey(key: string, e: KeyboardEvent): boolean {
       return true
     }
     case 'columns': {
-      const cols = colsForPanel()
+      const cols = viewBaseColumns(s)
       if (key === 'ArrowDown') return (set({ panel: { ...panel, index: up(panel.index + 1, cols.length) } }), true)
       if (key === 'ArrowUp') return (set({ panel: { ...panel, index: up(panel.index - 1, cols.length) } }), true)
       if (key === ' ' || key === 'Enter') {
         const c = cols[panel.index]
         if (c === 'id' || c === 'name') return (toast('ID と部品名は隠せません', 'info'), true)
-        set({ hiddenCols: s.hiddenCols.includes(c) ? s.hiddenCols.filter((x) => x !== c) : [...s.hiddenCols, c] })
+        set({ colPrefs: { ...s.colPrefs, [c]: !colHidden(s, c) } })
         return true
       }
+      // 設定を消して初めの表示に戻す / 全部出す
+      if (key === 'r') return (set({ colPrefs: {} }), toast('列の表示を初めの状態に戻しました', 'info'), true)
+      if (key === 'a') return (set({ colPrefs: Object.fromEntries(cols.filter((c) => c !== 'id' && c !== 'name').map((c) => [c, false])) }), toast('すべての列を出しました', 'info'), true)
       return true
     }
     case 'issue': {

@@ -7,7 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { Home, TopNav } from '@/ui/Home'
-import { commitEdit, handleKeyDown, keepCursorVisible } from '@/commands/registry'
+import { commitEdit, handleKeyDown, keepCursorVisible, runCommand } from '@/commands/registry'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
 import { fmtDate } from '@/model/dates'
@@ -78,7 +78,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
 function Main() {
   const st = useStore()
   // 部品表の画面（案件を開いているとき）だけ、表の表示用データを作る
-  const vm = useMemo(() => (st.screen === 'project' ? buildViewModel(st) : null), [st.screen, st.ws, st.view, st.sort, st.filter, st.cellFilter, st.hiddenCols, st.collapsed, st.openRows, st.revView])
+  const vm = useMemo(() => (st.screen === 'project' ? buildViewModel(st) : null), [st.screen, st.ws, st.view, st.sort, st.filter, st.cellFilter, st.colPrefs, st.collapsed, st.openRows, st.revView])
   useEffect(() => {
     // 一覧の画面（在庫・購入歴・新規作成・作成中・完了案件）では、表のキー操作は使わない（入力欄に普通に打てるように）
     const h = (e: KeyboardEvent) => {
@@ -163,6 +163,9 @@ function Main() {
         <div className="toolbar">
           <input className="filter" placeholder="絞り込み（Ctrl+F でここへ。Enter で表に戻る、Esc で解除）" value={st.filter} onChange={(e) => st.set({ filter: e.target.value })} data-testid="filter" />
           {st.filter && <span className="muted" style={{ fontSize: 12 }}>{vm.rows.length} 行</span>}
+          <button className="btn" tabIndex={-1} onMouseDown={(e) => e.preventDefault()} onClick={() => runCommand('columns.panel')} title="表示する列を選ぶ（隠したい列のチェックを外す）" data-testid="cols-button">
+            列{Object.values(st.colPrefs).some(Boolean) ? `（${Object.values(st.colPrefs).filter(Boolean).length} 件隠す設定）` : ''}
+          </button>
           {st.cellFilter && (
             <span className="chip" style={{ cursor: 'pointer' }} onClick={() => st.set({ cellFilter: null })} title="クリックか f / Esc で解除">
               {colDef(st.cellFilter.col)?.label} = {st.cellFilter.value || '（空）'} ✕

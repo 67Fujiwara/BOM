@@ -141,3 +141,35 @@ test('設計完了の ZIP をそのまま選んでも、中の _bom.json を読�
   await page.getByTestId('ps-go').click()
   await expect(page.getByTestId('row')).toHaveCount(1)
 })
+
+test('不要な列を非表示に設定でき、全ビューに効いて、リロードしても残る。「初めの表示に戻す」で戻る', async ({ page }) => {
+  await fresh(page)
+  await page.getByTestId('add-sample').click()
+  await page.locator('[data-testid^="open-"]').first().click()
+  const th = (label: string) => page.locator('thead th', { hasText: label })
+  await expect(th('備考')).toBeVisible()
+  await expect(th('回路記号')).toHaveCount(0) // 「すべて」の初めの表示では隠れている
+  await page.getByTestId('cols-button').click()
+  await expect(page.getByTestId('columns')).toBeVisible()
+  await page.getByTestId('col-note').click()
+  await page.getByTestId('col-ref').click() // 隠れていた列を出す
+  await page.keyboard.press('Escape')
+  await expect(th('備考')).toHaveCount(0)
+  await expect(th('回路記号')).toBeVisible()
+  await expect(page.getByTestId('cols-button')).toContainText('1 件')
+  // 列が決まっている別のビュー（2 購買提出用には備考がある）でも隠れたまま
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('2')
+  await expect(th('部品名')).toBeVisible()
+  await expect(th('備考')).toHaveCount(0)
+  // リロードしても残る
+  await page.waitForTimeout(400)
+  await page.reload()
+  await expect(th('部品名')).toBeVisible()
+  await expect(th('備考')).toHaveCount(0)
+  // 戻す
+  await page.getByTestId('cols-button').click()
+  await page.getByTestId('cols-reset').click()
+  await page.keyboard.press('Escape')
+  await expect(th('備考')).toBeVisible()
+})

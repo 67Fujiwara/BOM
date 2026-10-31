@@ -19,7 +19,7 @@ export interface ColumnDef {
 }
 
 export const COLUMNS: ColumnDef[] = [
-  { key: 'id', label: 'ID', kind: 'computed', width: 56, editableBy: [] },
+  { key: 'id', label: 'ID', kind: 'computed', width: 96, editableBy: [] },
   { key: 'ball', label: 'ボール', kind: 'computed', width: 52, editableBy: [] },
   { key: 'cause', label: '起因', kind: 'computed', width: 130, editableBy: [] },
   { key: 'ref', label: '回路記号', kind: 'text', width: 70, editableBy: ['design'], design: true },

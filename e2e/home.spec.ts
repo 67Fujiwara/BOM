@@ -55,8 +55,6 @@ test('在庫の部品をクリック → 数量 → 作成中の案件の番号�
   await expect(page.getByTestId('add-done')).toBeVisible()
   await page.getByTestId('add-open-project').click()
   await expect(page.getByTestId('header')).toContainText('A123456')
-  // 在庫から入れた行は 在庫 のビューに出る
-  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('row')).toHaveCount(1)
   await expect(page.getByTestId('row')).toContainText('MY4N-D2')
   // 在庫の画面に戻ると引当が出る
@@ -159,9 +157,9 @@ test('不要な列を非表示に設定でき、全ビューに効いて、リ�
   await expect(th('備考')).toHaveCount(0)
   await expect(th('回路記号')).toBeVisible()
   await expect(page.getByTestId('cols-button')).toContainText('1 件')
-  // 列が決まっている別のビュー（2 購買提出用には備考がある）でも隠れたまま
+  // 列が決まっている別のビュー（1 設計中には備考がある）でも隠れたまま
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('2')
+  await page.keyboard.press('1')
   await expect(th('部品名')).toBeVisible()
   await expect(th('備考')).toHaveCount(0)
   // リロードしても残る
@@ -174,4 +172,27 @@ test('不要な列を非表示に設定でき、全ビューに効いて、リ�
   await page.getByTestId('cols-reset').click()
   await page.keyboard.press('Escape')
   await expect(th('備考')).toBeVisible()
+})
+
+test('見積もり・発注のあとに足した部品には「追加」の札と件数が出て、絞り込める', async ({ page }) => {
+  await fresh(page)
+  await page.getByTestId('add-sample').click()
+  await page.locator('[data-testid^="open-"]').first().click()
+  // サンプルには、最初の提出のあとに足した下書きが 5 行ある
+  await expect(page.getByTestId('added-chip')).toContainText('追加部品 5 件（未提出 5）')
+  await page.locator('.gridwrap').focus()
+  await page.keyboard.press('Control+g')
+  await page.getByTestId('prompt-text').fill('R009')
+  await page.keyboard.press('Enter')
+  await page.keyboard.press('Shift+Enter')
+  await page.keyboard.type('追加のリレー')
+  await page.keyboard.press('Enter')
+  await expect(page.getByTestId('added-chip')).toContainText('追加部品 6 件')
+  await expect(page.getByTestId('added-chip')).toContainText('未提出 6')
+  await expect(page.locator('tr.added-row [data-testid="tag-added"]').first()).toHaveText('追加予定')
+  // 件数をクリックすると追加部品だけに絞り込む（設計中のビューは 6 行、見積もりのビューには 0 行）
+  await page.getByTestId('added-chip').click()
+  await expect(page.getByTestId('filter')).toHaveValue('追加')
+  await expect(page.getByTestId('row')).toHaveCount(6)
+  await expect(page.locator('tr.added-row')).toHaveCount(6)
 })

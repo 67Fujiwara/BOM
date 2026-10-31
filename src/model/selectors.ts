@@ -4,7 +4,7 @@ import { COLUMNS, DEFAULT_HIDDEN_COLS, colDef, supplierOfCol } from './columns'
 import { VIEWS, buildProblems, causeOf, type ViewCtx } from './views'
 import type { Problem } from './rules'
 import type { State, ViewId } from './store'
-import { adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, noUsableQuote, openIssues, orderQty, quoteResponses, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
+import { addedLater, adoptedQuote, ball, effective, isActive, isOverdue, lineAmount, noUsableQuote, openIssues, orderQty, quoteResponses, rowDue, rowNeedDate, waitingDays, fmtYen } from './derive'
 import { fmtDate } from './dates'
 import { toHalf } from './parse'
 
@@ -49,7 +49,7 @@ export function viewColumns(st: State, p: Project): string[] {
   let cols: string[] = viewBaseColumns(st)
   // 相見積先に加えて、見積を頼んだ商社（指定系の行の指定先で、相見積先に無い商社）の列も出す
   const quoted = [...p.supplierIds, ...new Set(p.quotes.filter((q) => !q.stale && !p.supplierIds.includes(q.supplierId)).map((q) => q.supplierId))]
-  if (st.view === 3) {
+  if (st.view === 2) {
     for (const sid of quoted) cols.push(`q.unitPrice@${sid}`, `q.leadDays@${sid}`, `q.moq@${sid}`, `q.stock@${sid}`, `q.formalPrice@${sid}`)
     cols.push('extraCost', 'extraCostKind')
   }
@@ -60,7 +60,7 @@ function matchText(row: Row, p: Project, q: string, role: Role): boolean {
   if (!q) return true
   q = toHalf(q)
   const e = role === 'design' ? effective(row) : row
-  const hay = toHalf([row.id, e.ref, e.name, e.model, e.maker, e.category, e.note, STATUS_LABEL[row.status], ...openIssues(p, row.id).map((i) => i.kind + i.text)].join(' ')).toLowerCase()
+  const hay = toHalf([row.id, e.ref, e.name, e.model, e.maker, e.category, e.note, STATUS_LABEL[row.status], addedLater(p, row) ? '追加 追加部品' : '', ...openIssues(p, row.id).map((i) => i.kind + i.text)].join(' ')).toLowerCase()
   return q.toLowerCase().split(/\s+/).every((t) => hay.includes(t))
 }
 
@@ -83,7 +83,7 @@ function buildViewModelUncached(st: State): ViewModel {
   const columns = viewColumns(st, p)
   const counts = {} as Record<ViewId, number>
   // 隠した行は 設計中 にだけ出す
-  const showHidden = (id: number) => id === 2
+  const showHidden = (id: number) => id === 1
   for (const v of VIEWS) counts[v.id] = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(v.id) || !r.hidden)).length
   const v = VIEWS.find((x) => x.id === st.view)!
   let rows = p.rows.filter((r) => v.filter(r, ctx) && (showHidden(st.view) || !r.hidden) && matchText(r, p, st.filter, ws.user.role))
@@ -132,6 +132,8 @@ export interface CellText {
   cls?: string
   sev?: 'err' | 'warn'
   title?: string
+  /** セルの横に付ける札（追加部品など） */
+  tag?: string
 }
 
 export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
@@ -154,8 +156,10 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
     return { text: v == null ? '' : String(v), raw: v ?? '', cls: d.numeric ? 'num' : '' }
   }
   switch (col) {
-    case 'id':
-      return { text: row.id, raw: row.id, cls: 'id' }
+    case 'id': {
+      const add = addedLater(p, row)
+      return { text: row.id, raw: row.id, cls: 'id', tag: add ? (add.state === 'draft' ? '追加予定' : '追加') : undefined, title: add ? (add.state === 'draft' ? '見積もり・発注のあとに足した部品（まだ提出していません。設計が公開すると購買に渡ります）' : `見積もり・発注のあとに足した部品（Rev.${add.rev} で追加）`) : undefined }
+    }
     case 'ball': {
       const b = ball(p, row)
       return { text: b ? ROLE_LABEL[b] : '—', raw: b ?? '', cls: b === ctx.role ? 'mine' : 'muted' }
@@ -208,6 +212,8 @@ export function cellText(row: Row, col: string, ctx: ViewCtx): CellText {
     case 'status': {
       const flags: string[] = []
       const f = row.flags
+      const add = addedLater(p, row)
+      if (add) flags.push(add.state === 'draft' ? '追加予定' : `追加 Rev.${add.rev}`)
       if (openIssues(p, row.id).length) flags.push('指摘')
       if (f.requote) flags.push('再見積要')
       if (f.reconfirm) flags.push('要再確認')

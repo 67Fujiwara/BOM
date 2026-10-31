@@ -18,8 +18,8 @@ const EMPTY_PROJECT: Project = newProject('', '')
 /** 最初の画面の種類。project は案件を開いた部品表の画面 */
 export type Screen = 'stock' | 'history' | 'new' | 'active' | 'done' | 'project'
 
-/** 1 在庫 / 2 設計中 / 3 見積もり */
-export type ViewId = 1 | 2 | 3
+/** 1 設計中 / 2 見積もり */
+export type ViewId = 1 | 2
 
 export type PanelOption = { label: string; run: () => void; key?: string; hint?: string }
 
@@ -349,7 +349,7 @@ function readUi(): Partial<UiSaved> {
 }
 function loadUi(): Pick<State, 'view' | 'cursorRow' | 'cursorCol' | 'sort'> {
   const u = readUi()
-  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 3 ? u.view : 2) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
+  return { view: (typeof u.view === 'number' && u.view >= 1 && u.view <= 2 ? u.view : 1) as ViewId, cursorRow: typeof u.cursorRow === 'string' ? u.cursorRow : null, cursorCol: typeof u.cursorCol === 'string' ? u.cursorCol : 'name', sort: u.sort && typeof u.sort.col === 'string' ? u.sort : null }
 }
 function loadColPrefs(): Record<string, boolean> {
   try {

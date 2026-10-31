@@ -1,5 +1,5 @@
 import type { Project, Role, Row, Workspace } from './types'
-import { designatedDeclined, isActive, openIssues, resolverOfIssue, valuesFor } from './derive'
+import { designatedDeclined, isActive, openIssues, resolverOfIssue } from './derive'
 import { checkRow, type Problem } from './rules'
 import type { ViewId } from './store'
 
@@ -24,14 +24,9 @@ export interface ViewCtx {
 
 const DESIGN_COLS = ['id', 'ball', 'ref', 'category', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'procurement', 'altPolicy', 'needDate', 'note', 'status']
 
-/** 在庫から使う行（調達区分が社内在庫）。設計が直した値（作業中）もすぐ見る */
-function isStockRow(r: Row, c: ViewCtx): boolean {
-  return isActive(r) && valuesFor(r, c.role).procurement === '社内在庫'
-}
-
 /**
  * 設計中: 設計が見る・直す行（下書き・設計に指摘が来ている・エラーのある行・取消や置換の済んだ行・隠した行）。提出して見積に回った行は見積もりへ。
- * 在庫の行と見積もりの行は含まない。どの行も 在庫 / 設計中 / 見積もり のどれか 1 つに入る
+ * どの行も 設計中 / 見積もりのどちらか 1 つに入る
  */
 function isDesigning(r: Row, c: ViewCtx): boolean {
   if (!isActive(r)) return !(c.role === 'purchasing' && r.flags.formalWithdrawn)
@@ -43,25 +38,19 @@ function isDesigning(r: Row, c: ViewCtx): boolean {
 }
 
 export const VIEWS: ViewDef[] = [
+  { id: 1, label: '設計中', columns: DESIGN_COLS, filter: (r, c) => isDesigning(r, c) },
   {
-    id: 1,
-    label: '在庫',
-    columns: ['id', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'procurement', 'note', 'status'],
-    filter: (r, c) => isStockRow(r, c),
-  },
-  { id: 2, label: '設計中', columns: DESIGN_COLS, filter: (r, c) => !isStockRow(r, c) && isDesigning(r, c) },
-  {
-    id: 3,
+    id: 2,
     label: '見積もり',
     // 商社ごとの見積（単価・納期・MOQ・在庫・正式単価）の列は商社の数だけ後ろに付く
     columns: ['id', 'ball', 'ref', 'name', 'model', 'maker', 'qtyNeeded', 'unit', 'procurement', 'altPolicy', 'needDate', 'orderQty', 'adopted', 'score', 'unitPrice', 'amount', 'lead', 'status', 'due', 'waiting', 'ordered', 'received'],
-    filter: (r, c) => !isStockRow(r, c) && !isDesigning(r, c),
+    filter: (r, c) => !isDesigning(r, c),
   },
 ]
 
 /** この行が出るビュー（Ctrl+G や問題へのジャンプで、いまのビューに無い行を出すときに使う） */
 export function viewOfRow(r: Row, c: ViewCtx): ViewId {
-  return (VIEWS.find((v) => v.filter(r, c) && (!r.hidden || v.id === 2)) ?? VIEWS[1]).id
+  return (VIEWS.find((v) => v.filter(r, c) && (!r.hidden || v.id === 1)) ?? VIEWS[0]).id
 }
 
 /** その役割が差分を確認済か（確認は役割ごと。§5「自分が未確認の差分」。印の無い古い確認は全員の確認として扱う） */

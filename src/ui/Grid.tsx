@@ -1,6 +1,7 @@
 import { memo, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { useStore } from '@/model/store'
 import type { ViewModel } from '@/model/selectors'
+import { addedLater } from '@/model/derive'
 import { cellSev, cellText } from '@/model/selectors'
 import { colDef } from '@/model/columns'
 import { Detail } from './Detail'
@@ -227,9 +228,8 @@ function EmptyState({ vm, role }: { vm: ViewModel; role: string }) {
       </div>
     )
   const msg: Record<number, string> = {
-    1: '在庫から使う部品はありません（在庫の画面から案件に追加すると、ここに出ます）。',
-    2: role === 'design' ? '設計中の行はありません。Shift+Enter で行を追加できます。' : '設計中の行はありません（設計の提出を待っています）。',
-    3: '見積もりの行はまだありません。設計が公開（Ctrl+Enter）すると、ここに出ます。',
+    1: role === 'design' ? '設計中の行はありません。Shift+Enter で行を追加できます。' : '設計中の行はありません（設計の提出を待っています）。',
+    2: '見積もりの行はまだありません。設計が公開（Ctrl+Enter）すると、ここに出ます。',
   }
   void vm
   return (
@@ -237,7 +237,7 @@ function EmptyState({ vm, role }: { vm: ViewModel; role: string }) {
       {msg[st.view] ?? 'この条件に合う行はありません。'}
       <br />
       <span className="muted">
-        <kbd>1</kbd> 在庫 <kbd>2</kbd> 設計中 <kbd>3</kbd> 見積もり <kbd>F1</kbd> ショートカット一覧 <kbd>Ctrl+K</kbd> 操作を名前で探す
+        <kbd>1</kbd> 設計中 <kbd>2</kbd> 見積もり <kbd>F1</kbd> ショートカット一覧 <kbd>Ctrl+K</kbd> 操作を名前で探す
       </span>
     </div>
   )
@@ -259,7 +259,7 @@ interface RowProps {
 }
 
 const GridRow = memo(function GridRow({ row: r, cols, ctx, sel, cursorCol, editing, editValue, editError, candidates, cursorRef, inputRef, suppliers }: RowProps) {
-  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' || (ctx.role === 'design' && r.removal) ? 'rejected' : ''].filter(Boolean).join(' ')
+  const cls = ['row', sel ? 'sel' : '', r.hidden ? 'hidden-row' : '', r.status === 'cancelled' || r.status === 'replaced' || (ctx.role === 'design' && r.removal) ? 'rejected' : '', addedLater(ctx.p, r) ? 'added-row' : ''].filter(Boolean).join(' ')
   return (
     <tr className={cls} data-testid="row" data-row-id={r.id}>
       {cols.map((c) => {
@@ -327,6 +327,11 @@ const GridRow = memo(function GridRow({ row: r, cols, ctx, sel, cursorCol, editi
                     ))}
                   </div>
                 )}
+              </>
+            ) : c === 'id' && ct.tag ? (
+              <>
+                {ct.text}
+                <span className="tag-added" data-testid="tag-added">{ct.tag}</span>
               </>
             ) : c === 'status' ? (
               <span className={'status-pill ' + (ct.cls ?? '')}>{ct.text}</span>

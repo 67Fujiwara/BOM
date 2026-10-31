@@ -7,6 +7,7 @@ import { Grid } from '@/ui/Grid'
 import { StatusBar } from '@/ui/StatusBar'
 import { Panels } from '@/ui/Panels'
 import { Home, TopNav } from '@/ui/Home'
+import { addedLater } from '@/model/derive'
 import { commitEdit, handleKeyDown, keepCursorVisible, runCommand } from '@/commands/registry'
 import { STORAGE_KEY, loadBackups, loadProblem, loadUser, parseWorkspace, resetWorkspace, saveBackup, startSync } from '@/io/persist'
 import { colDef } from '@/model/columns'
@@ -162,6 +163,16 @@ function Main() {
         <div className="toolbar">
           <input className="filter" placeholder="絞り込み（Ctrl+F でここへ。Enter で表に戻る、Esc で解除）" value={st.filter} onChange={(e) => st.set({ filter: e.target.value })} data-testid="filter" />
           {st.filter && <span className="muted" style={{ fontSize: 12 }}>{vm.rows.length} 行</span>}
+          {(() => {
+            const added = p.rows.filter((r) => addedLater(p, r))
+            if (!added.length) return null
+            const on = st.filter.trim() === '追加'
+            return (
+              <span className={'chip ' + (on ? 'warn' : 'muted')} style={{ cursor: 'pointer' }} onClick={() => st.set({ filter: on ? '' : '追加' })} title="見積もり・発注のあとに足した部品。クリックでそれだけを絞り込み（もう一度で解除）" data-testid="added-chip">
+                追加部品 {added.length} 件{added.some((r) => addedLater(p, r)?.state === 'draft') ? `（未提出 ${added.filter((r) => addedLater(p, r)?.state === 'draft').length}）` : ''}
+              </span>
+            )
+          })()}
           <button className="btn" tabIndex={-1} onMouseDown={(e) => e.preventDefault()} onClick={() => runCommand('columns.panel')} title="表示する列を選ぶ（隠したい列のチェックを外す）" data-testid="cols-button">
             列{Object.values(st.colPrefs).some(Boolean) ? `（${Object.values(st.colPrefs).filter(Boolean).length} 件隠す設定）` : ''}
           </button>
@@ -175,8 +186,8 @@ function Main() {
               並び替え {colDef(st.sort.col)?.label} {st.sort.dir === 'asc' ? '▲' : '▼'} ✕
             </span>
           )}
-          {st.view === 3 && <span className="chip warn">未発行の指摘 {p.issues.filter((i) => i.status === 'draft' && i.by.name === st.ws.user.name).length} 件</span>}
-          {st.view === 3 && p.rows.some((r) => r.flags.reissue) && <span className="chip warn">再発行対象 {p.rows.filter((r) => r.flags.reissue).length} 行</span>}
+          {st.view === 2 && <span className="chip warn">未発行の指摘 {p.issues.filter((i) => i.status === 'draft' && i.by.name === st.ws.user.name).length} 件</span>}
+          {st.view === 2 && p.rows.some((r) => r.flags.reissue) && <span className="chip warn">再発行対象 {p.rows.filter((r) => r.flags.reissue).length} 行</span>}
           {p.submissions.length > 0 && (
             <span className="muted" style={{ marginLeft: 'auto', fontSize: 12, whiteSpace: 'nowrap' }} data-testid="rev-info">
               提出 Rev.{p.submissions.at(-1)!.rev}（{p.submissions.at(-1)!.by.name} {fmtDate(p.submissions.at(-1)!.at.slice(0, 10))}

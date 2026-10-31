@@ -32,7 +32,7 @@ export function StatusBar({ vm }: { vm: ViewModel }) {
     if (user.role === 'purchasing') hints.push(['Shift+I', '指摘'])
     // Space は 1 つだけ出す（指摘があれば「開いて指摘を見る」）
     hints.push(['Space', st.openRows.includes(row.id) ? '閉じる' : user.role !== 'purchasing' && openIssues(p, row.id).length ? '開いて指摘を見る' : '開く'])
-    if (vm.counts[2] + vm.counts[3] > 0) hints.push(['F8', '次の問題'])
+    if (vm.counts[1] + vm.counts[2] > 0) hints.push(['F8', '次の問題'])
     if (user.role === 'design' && row.procurement === '指定商社' && designatedDeclined(p, row)) {
       const d = (row.designated ?? '').trim()
       const stopped = st.ws.suppliers.find((x) => (x.id === d || x.name === d) && x.tradable === false)

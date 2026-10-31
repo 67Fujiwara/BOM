@@ -44,9 +44,8 @@ export const KEYMAP: KeyBinding[] = [
   { id: 'move.pageUp', keys: ['PageUp'], mode: 'nav', section: '移動', label: '1画面ぶん上' },
   { id: 'move.pageDown', keys: ['PageDown'], mode: 'nav', section: '移動', label: '1画面ぶん下' },
   { id: 'row.toggleOpen', keys: [' '], mode: 'nav', section: '移動', label: '行を開く・閉じる（相見積の比較と履歴）', hint: 'Space 開く' },
-  { id: 'view.1', keys: ['1'], mode: 'nav', section: '移動', label: 'ビュー: 在庫' },
-  { id: 'view.2', keys: ['2'], mode: 'nav', section: '移動', label: 'ビュー: 設計中' },
-  { id: 'view.3', keys: ['3'], mode: 'nav', section: '移動', label: 'ビュー: 見積もり' },
+  { id: 'view.1', keys: ['1'], mode: 'nav', section: '移動', label: 'ビュー: 設計中' },
+  { id: 'view.2', keys: ['2'], mode: 'nav', section: '移動', label: 'ビュー: 見積もり' },
   { id: 'category.prev', keys: ['['], mode: 'nav', section: '移動', label: '前の分類へ' },
   { id: 'category.next', keys: [']'], mode: 'nav', section: '移動', label: '次の分類へ' },
 

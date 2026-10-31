@@ -18,8 +18,8 @@ export function goScreen(screen: Screen) {
 }
 
 /** 案件を開いて部品表の画面へ */
-/** 案件を開く。view は 1 在庫 / 2 設計中 / 3 見積もり（既定は設計中） */
-export function openProject(id: string, view: 1 | 2 | 3 = 2) {
+/** 案件を開く。view は 1 設計中 / 2 見積もり（既定は設計中） */
+export function openProject(id: string, view: 1 | 2 = 1) {
   st().commitWs('', (ws) => {
     ws.currentProjectId = id
   })
@@ -27,7 +27,7 @@ export function openProject(id: string, view: 1 | 2 | 3 = 2) {
 }
 
 const TABS: Array<{ id: Screen; label: string }> = [
-  { id: 'stock', label: '在庫' },
+  { id: 'stock', label: '在庫マスタ' },
   { id: 'history', label: '購入歴あり' },
   { id: 'new', label: '新規作成' },
   { id: 'active', label: '作成中' },
@@ -268,7 +268,7 @@ function StockScreen() {
   return (
     <section className="home-sec">
       <div className="home-head">
-        <h2>在庫</h2>
+        <h2>在庫マスタ</h2>
         <input className="home-search" placeholder="部品名・型式・メーカー・置き場所で絞り込み" value={q} onChange={(e) => setQ(e.target.value)} data-testid="stock-search" />
         <button className="btn primary" onClick={() => { setForm({ id: null, v: EMPTY_STOCK }); setErr(''); setImporting(false) }} data-testid="stock-add">
           ＋ 在庫を追加
@@ -504,7 +504,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
   const [qty, setQty] = useState('1')
   const [pid, setPid] = useState(active.some((p) => p.id === lastProject) ? lastProject : active.length === 1 ? active[0].id : '')
   const [err, setErr] = useState('')
-  const [added, setAdded] = useState<{ projectId: string; text: string; kind: 'stock' | 'history' } | null>(null)
+  const [added, setAdded] = useState<{ projectId: string; text: string } | null>(null)
   const title = target.kind === 'stock' ? [target.item.name, target.item.model].filter(Boolean).join('　') : [target.entry.name, target.entry.model].filter(Boolean).join('　')
   const maker = target.kind === 'stock' ? target.item.maker : target.entry.maker
   const unit = target.kind === 'stock' ? target.item.unit : target.entry.unit
@@ -517,7 +517,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
     if ('error' in r) return setErr(r.error)
     lastProject = pid
     setErr('')
-    setAdded({ projectId: pid, kind: target.kind, text: `${pid} に ${title} × ${qty}${unit} を追加しました` })
+    setAdded({ projectId: pid, text: `${pid} に ${title} × ${qty}${unit} を追加しました` })
   }
   return (
     <div className="overlay" onClick={onClose} data-testid="add-dialog">
@@ -529,7 +529,7 @@ function AddDialog({ target, onClose }: { target: PickTarget; onClose: () => voi
           <>
             <div className="ok-box" data-testid="add-done">{added.text}</div>
             <div className="row-actions">
-              <button className="btn primary" onClick={() => { onClose(); openProject(added.projectId, added.kind === 'stock' ? 1 : 2) }} data-testid="add-open-project">案件を開く</button>
+              <button className="btn primary" onClick={() => { onClose(); openProject(added.projectId) }} data-testid="add-open-project">案件を開く</button>
               <button className="btn" onClick={() => { setAdded(null); setQty('1') }} data-testid="add-more">続けて追加</button>
               <button className="btn" onClick={onClose} data-testid="add-close">閉じる</button>
             </div>

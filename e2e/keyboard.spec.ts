@@ -13,19 +13,18 @@ async function open(page: Page, role: 'design' | 'purchasing' = 'design', pickVi
   await page.locator('[data-testid^="open-"]').first().click()
   await expect(page.getByTestId('grid')).toBeVisible()
   if (role !== 'design') await page.getByTestId(`role-${role}`).click()
-  if (pickView) await page.getByTestId('view-3').click()
+  if (pickView) await page.getByTestId('view-2').click()
   await page.locator('.gridwrap').focus()
 }
 
 test('80 行の BOM が 設計中 / 見積もり に分かれて表示され、ヘッダーにボール別件数と金額が出る', async ({ page }) => {
   await open(page)
-  // ビューは 在庫 / 設計中 / 見積もり の 3 つだけ。80 行は 設計中 10 + 見積もり 70
-  await expect(page.locator('[data-testid^="view-"]')).toHaveCount(3)
-  await expect(page.getByTestId('view-1')).toContainText('在庫')
-  await expect(page.getByTestId('view-2')).toContainText('設計中')
-  await expect(page.getByTestId('view-3')).toContainText('見積もり')
-  await expect(page.getByTestId('view-2')).toContainText('10')
-  await expect(page.getByTestId('view-3')).toContainText('70')
+  // ビューは 設計中 / 見積もり の 2 つだけ。80 行は 設計中 10 + 見積もり 70
+  await expect(page.locator('[data-testid^="view-"]')).toHaveCount(2)
+  await expect(page.getByTestId('view-1')).toContainText('設計中')
+  await expect(page.getByTestId('view-2')).toContainText('見積もり')
+  await expect(page.getByTestId('view-1')).toContainText('10')
+  await expect(page.getByTestId('view-2')).toContainText('70')
   // 表は見えている範囲の行だけを描く。先頭と最後の行に移動できることで行数を確かめる
   await expect(page.locator('[data-row-id="R001"]')).toBeVisible()
   await page.locator('.gridwrap').focus()
@@ -47,9 +46,9 @@ test('矢印・j/k・数字キーで移動とビュー切替ができ、? のヘ
   await expect(page.getByTestId('cursor')).toContainText('R003')
   await page.keyboard.press('k')
   await expect(page.getByTestId('cursor')).toContainText('R002')
+  await page.keyboard.press('1')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await page.keyboard.press('2')
-  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
-  await page.keyboard.press('3')
   await page.keyboard.press('?')
   const help = page.getByTestId('help')
   await expect(help).toBeVisible()
@@ -73,7 +72,7 @@ test('編集モード中は1キー操作が効かず、Enter で確定して下�
   await page.keyboard.press('Control+a')
   await page.keyboard.type('a1o2h3')
   await expect(page.getByTestId('cell-editor')).toHaveValue('a1o2h3')
-  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true') // 1 でビューが変わっていない（R076 は設計中）
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true') // 1 でビューが変わっていない（R076 は設計中）
   await page.keyboard.press('Enter')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
   await expect(page.getByTestId('cursor')).toContainText('R077')
@@ -96,7 +95,7 @@ test('コマンドパレット: 文の形 "R035 採用" で推奨採用が先頭
 
 test('設計: 4 要確認 → n → 直す → Ctrl+Enter で公開すると指摘が対応済になり、購買が x で確認済にできる', async ({ page }) => {
   await open(page)
-  await page.keyboard.press('Alt+2') // 書ける列（部品名）では数字は入力なので Alt を付けてビュー切替
+  await page.keyboard.press('Alt+1') // 書ける列（部品名）では数字は入力なので Alt を付けてビュー切替
   await page.keyboard.press('F8') // 次の問題（文字を打てるセルでも効く）
   const cur = await page.getByTestId('cursor').textContent()
   expect(cur).toMatch(/R0(16|09|41|54|22)/)
@@ -148,7 +147,7 @@ test('購買: Shift+I → k → 本文 → Enter で下書き、Ctrl+Enter で�
   await expect(page.getByTestId('toast')).toContainText('指摘 1 件')
   await page.getByTestId('role-design').click()
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('3')
+  await page.keyboard.press('2')
   await expect(page.locator('[data-row-id="R030"]')).toBeVisible()
 })
 
@@ -294,9 +293,9 @@ test('編集中にサイドバーのビューをクリックしても、入力�
   await page.keyboard.press('Enter')
   await page.keyboard.press('Control+a')
   await page.keyboard.type('クリック確定')
-  await page.getByTestId('view-2').click()
+  await page.getByTestId('view-1').click()
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
-  await page.getByTestId('view-3').click()
+  await page.getByTestId('view-2').click()
   await expect(page.locator('[data-row-id="R010"] td[data-col="name"]')).toHaveText('クリック確定')
 })
 
@@ -307,12 +306,12 @@ test('リロードしてもビュー・カーソルと Ctrl+Z の履歴が残る
   await page.keyboard.press('Control+a')
   await page.keyboard.type('リロード前')
   await page.keyboard.press('Enter')
-  await page.keyboard.press('Alt+2') // 書ける列では数字は入力なので Alt を付けてビュー切替
+  await page.keyboard.press('Alt+1') // 書ける列では数字は入力なので Alt を付けてビュー切替
   await page.waitForTimeout(500)
   await page.reload()
-  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('Alt+3')
+  await page.keyboard.press('Alt+2')
   await page.keyboard.press('Control+z')
   await expect(page.getByTestId('toast')).toContainText('元に戻す')
   await gotoCell(page, 'R010', '部品名')
@@ -326,7 +325,7 @@ test('提出済の行の取消は公開するまで購買に見えない', async
   await expect(page.locator('[data-row-id="R050"]')).toContainText('取消予定')
   await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('3')
+  await page.keyboard.press('2')
   await gotoCell(page, 'R050', '部品名')
   await expect(page.locator('[data-row-id="R050"]')).not.toContainText('取消')
   await expect(page.locator('[data-row-id="R050"]')).toContainText('作業中')
@@ -336,10 +335,10 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   await open(page)
   await gotoCell(page, 'R010', 'ID')
   await page.keyboard.press('s')
-  await page.keyboard.press('2')
-  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
+  await page.keyboard.press('1')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
-  await page.keyboard.press('3')
+  await page.keyboard.press('2')
   await gotoCell(page, 'R011', '部品名')
   await page.keyboard.press('Alt+h')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
@@ -353,11 +352,11 @@ test('英字のコマンドは ID の列ではそのまま、文字を打てる�
   for (const ch of '1N4148') await page.keyboard.press(/[A-Z]/.test(ch) ? `Shift+${ch}` : ch)
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R012"] td[data-col="model"]')).toHaveText('1N4148')
-  await expect(page.getByTestId('view-3')).toHaveAttribute('aria-current', 'true')
+  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
   // 書けない列（購買の部品名）で英字を打っても 1 キー操作にならない
   await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('3')
+  await page.keyboard.press('2')
   await gotoCell(page, 'R013', '部品名')
   for (const ch of 'hold') await page.keyboard.press(ch)
   await expect(page.locator('[data-row-id="R013"]')).not.toHaveClass(/hidden-row/)
@@ -373,14 +372,14 @@ test('Enter で始めた数値の編集は上書き、書けない列の数字�
   // 購買: 書けない部品名の列で数字は案内だけ（打った単語の残りが切り替えた先のセルに入らない）、Alt+数字で切り替え。Shift+I は「Alt+Shift+I」と案内する
   await page.getByTestId('role-purchasing').click()
   await page.locator('.gridwrap').focus()
-  await page.keyboard.press('3')
-  await gotoCell(page, 'R013', '部品名')
   await page.keyboard.press('2')
-  await expect(page.getByTestId('toast')).toContainText('Alt+2')
-  await expect(page.getByTestId('view-3')).toHaveAttribute('aria-current', 'true')
-  await page.keyboard.press('Alt+2')
+  await gotoCell(page, 'R013', '部品名')
+  await page.keyboard.press('1')
+  await expect(page.getByTestId('toast')).toContainText('Alt+1')
   await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
-  await page.keyboard.press('Alt+3')
+  await page.keyboard.press('Alt+1')
+  await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
+  await page.keyboard.press('Alt+2')
   await gotoCell(page, 'R013', '部品名')
   await page.keyboard.press('Shift+I')
   await expect(page.getByTestId('toast')).toContainText('Alt+Shift+I')
@@ -392,7 +391,7 @@ test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにその�
   await page.keyboard.type('<5mm', { delay: 30 })
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-row-id="R040"] td[data-col="model"]')).toHaveText('<5mm')
-  await expect(page.getByTestId('view-3')).toHaveAttribute('aria-current', 'true')
+  await expect(page.getByTestId('view-2')).toHaveAttribute('aria-current', 'true')
   await gotoCell(page, 'R001', '型式')
   await page.keyboard.type('[A]CN-12', { delay: 30 })
   await page.keyboard.press('Enter')
@@ -402,15 +401,15 @@ test('記号で始まる値（<5mm・[A]CN-12）も、打ったセルにその�
 test('行を選んでいないときの数字はビュー切替だけで、続けて打った文字はどの行にも入らない', async ({ page }) => {
   await open(page, 'design', false) // ビューを選ぶと先頭の行が選ばれてしまうので、開いたまま（行を選んでいない）で試す
   const before = await page.locator('[data-row-id="R009"] td[data-col="name"]').textContent()
-  await page.keyboard.type('31', { delay: 30 })
+  await page.keyboard.type('21', { delay: 30 })
   await expect(page.getByTestId('view-1')).toHaveAttribute('aria-current', 'true')
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
-  await page.keyboard.press('2')
+  await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R009"] td[data-col="name"]')).toHaveText(before ?? '')
   // 記号で始まる語（<5mm）も、行を選んでいないときはどこにも入らない
   await page.keyboard.type('<5mm', { delay: 30 })
   await expect(page.getByTestId('mode')).toHaveText('ナビ')
-  await page.keyboard.press('2')
+  await page.keyboard.press('1')
   await expect(page.locator('[data-row-id="R009"] td[data-col="name"]')).toHaveText(before ?? '')
 })
 

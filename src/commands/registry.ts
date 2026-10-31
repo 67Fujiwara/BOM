@@ -25,7 +25,7 @@ const set = (p: Partial<State>) => useStore.setState(p)
 const toast = (t: string, k: 'ok' | 'err' | 'info' = 'ok') => st().toastMsg(t, k)
 export const vm = () => buildViewModel(st())
 
-export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 2, purchasing: 3 }
+export const ROLE_DEFAULT_VIEW: Record<Role, ViewId> = { design: 1, purchasing: 2 }
 
 /** 選択中の行（いま表示されている行だけ。絞り込みで隠れた行は対象にしない） */
 function cursorRow(): Row | undefined {
@@ -193,11 +193,11 @@ export function setView(v: ViewId) {
   // 編集中にビューを切り替えたら、先に今のセルへ確定する（別の行に書き込まない）
   if (!commitEdit('stay')) return
   set({ view: v, detailIndex: 0, revView: null })
-  // 3 見積もりは相見積先の列で入れる。相見積先が無ければ理由を知らせる
-  if (v === 3 && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
+  // 2 見積もりは相見積先の列で入れる。相見積先が無ければ理由を知らせる
+  if (v === 2 && !st().project().supplierIds.length) toast('相見積先がまだありません（案件設定 Ctrl+K →「案件設定」→ 相見積先、または概算見積の依頼で商社を選ぶ）', 'info')
   if (!vm().rows.some((r) => r.id === st().cursorRow)) set({ cursorRow: null })
   ensureCursor()
-  // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 3 見積もりを開くと単価）。ID・状態の列にいるときはそのまま
+  // 書けない列にいるなら、このビューで自分が書ける最初の列へ（購買が 2 見積もりを開くと単価）。ID・状態の列にいるときはそのまま
   const c = st().cursorCol
   if (c !== 'id' && c !== 'status' && rows.canEdit(c)) {
     // 単価を先に。無ければ書ける最初の列
@@ -341,9 +341,9 @@ export function commitEdit(dir: 'down' | 'up' | 'right' | 'left' | 'stay' = 'dow
     if (!tabAnchor || tabAnchor.row !== r.id) tabAnchor = { row: r.id, col: s.cursorCol }
     moveCol(dir === 'right' ? 1 : -1)
   } else tabAnchor = null
-  // 3 見積もり: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
+  // 2 見積もり: 単価 → Tab → 納期 … と数字を続けて打てるよう、次の数値セルの入力を始める
   const n = st()
-  if (dir !== 'stay' && n.view === 3 && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
+  if (dir !== 'stay' && n.view === 2 && colDef(n.cursorCol)?.numeric && !rows.canEdit(n.cursorCol) && cursorRow() && (n.cursorRow !== r.id || n.cursorCol !== s.cursorCol)) {
     startEdit('')
     set({ editAuto: true })
   }
@@ -372,7 +372,7 @@ export function nextAckTarget(p: Project, row: Row, role: Role): string | null {
     const pr = prs.find((x) => x.severity === 'warn' && x.field === st().cursorCol) ?? prs.find((x) => x.severity === 'warn')
     if (pr) return row.ackRules.includes(pr.ruleId) ? '警告の確認済みを外す' : '警告を確認済み'
   }
-  if (st().view === 3 && role === 'purchasing' && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
+  if (st().view === 2 && role === 'purchasing' && p.submissions.some((sb) => sb.rowIds.includes(row.id) && !isAcked(sb, row.id, role))) return '差分を確認済'
   return null
 }
 function ackCurrent() {
@@ -746,9 +746,9 @@ function quoteActionPanel(r: Row, supplierId: string) {
   if (s.user().role === 'purchasing')
     options.push({
       key: 'i',
-      label: `3 見積もりビューで ${sup?.name} の見積を入力`,
+      label: `2 見積もりビューで ${sup?.name} の見積を入力`,
       run: () => {
-        setView(3)
+        setView(2)
         jumpToRow(r.id, `q.unitPrice@${supplierId}`)
       },
     })
@@ -1203,7 +1203,7 @@ export function runCommand(id: string, e?: KeyboardEvent): void {
       // 行を選んでいないときは足す位置が分からないので足さない（表の最後に足すなら Ctrl+↓ で最後の行へ）
       if (!r && s.project().rows.length) return toast('行を選んでから Shift+Enter（その下に足します。最後に足すときは Ctrl+↓ で最後の行へ）', 'info')
       if (s.filter || s.cellFilter) set({ filter: '', cellFilter: null })
-      if (s.view !== 2) setView(2)
+      if (s.view !== 1) setView(1)
       const nid = rows.insertBelow(r?.id ?? null)
       if (nid) {
         jumpToRow(nid, 'name')
@@ -1677,7 +1677,7 @@ export const STATIC: Array<{ id: string; label: string; section: string; desc?: 
   { id: 'filter.focus', label: '絞り込み検索', section: '表示', desc: 'Ctrl+F で入力欄へ', keywords: 'フィルタ filter 検索 探す さがす' },
   { id: 'columns.panel', label: '列の表示・非表示', section: '表示', keywords: '列 カラム 隠す 見えない' },
   { id: 'goto', label: '行へジャンプ（ID・回路記号・型式）', section: '表示', keywords: '移動 ジャンプ 探す 行へ' },
-  { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 2 設計中に薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
+  { id: 'row.toggleHidden', label: '行を隠す / 隠した行を戻す', section: '編集', desc: '隠した行は 1 設計中に薄く出ます', keywords: '非表示 隠した 隠す 戻す 表示' },
   { id: 'help', label: 'ショートカット一覧（ヘルプ）', section: '表示', keywords: 'ヘルプ help 使い方 キー 操作 わからない ? alt f8 英字 ショートカット' },
 ]
 

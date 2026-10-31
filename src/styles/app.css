@@ -271,3 +271,8 @@ table.home-table { width: 100%; border-collapse: collapse; background: var(--bg-
 .pick:hover { border-color: var(--line-strong); }
 .pick.on { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent); }
 .ok-box { margin: 14px 0 6px; padding: 10px 12px; border-radius: var(--radius); background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+
+/* 見積もり・発注のあとに足した部品 */
+.tag-added { display: inline-block; margin-left: 6px; padding: 0 5px; border-radius: 3px; font-size: 10px; font-weight: 700; line-height: 16px; color: #fff; background: #d9730d; vertical-align: middle; white-space: nowrap; }
+tr.added-row > td:first-child { box-shadow: inset 3px 0 0 #d9730d; }
+tr.added-row:not(.sel) { background: color-mix(in srgb, #d9730d 8%, transparent); }

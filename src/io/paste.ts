@@ -942,7 +942,7 @@ export function parseBomPaste(text: string): PasteResult {
   for (const [f, n] of fellBack) warnings.unshift(`「${first[fallback.get(f)!.keep] ?? FIELD_LABEL[f]}」が空の ${n} 行は、ほかの「${FIELD_LABEL[f]}」の列の値を使いました`)
   if (altUsed) warnings.push(`新の号機が空の ${altUsed} 行は、旧の号機の数を足しました`)
   if (summed) warnings.push(`「2+1」「2(予備1)」のように書いた数量 ${summed} 個は、足した数にしました`)
-  if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。2 設計中で直してください）`)
+  if (badQty) warnings.push(`数量を読めない行が ${badQty} 行あります（0 にしてエラー表示します。1 設計中で直してください）`)
   if (badUnit) warnings.push(`単位を読めない行が ${badUnit} 行あります（「個」にしました）`)
   const noResult = body.reduce((n, l) => n + split(l).filter((c) => c.trim() === '#数式の結果なし').length, 0)
   if (noResult) warnings.push(`数式の計算結果が入っていないセルが ${noResult} 個あります（Excel で開いて保存し直してから読むと値が入ります）`)

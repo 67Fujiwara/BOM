@@ -381,3 +381,16 @@ export function addWithdrawn(cur: string | undefined, add: string): string {
   const list = (typeof cur === 'string' ? cur : '').split(' / ').filter(Boolean)
   return list.includes(add) ? list.join(' / ') : [...list, add].join(' / ')
 }
+
+/**
+ * 見積もり・発注のあとに足した部品か。最初の提出（Rev）にあった行は null。
+ * sent: 提出済（Rev.N で追加）/ draft: 足したがまだ提出していない（設計が公開すると購買に渡る）
+ */
+export function addedLater(p: Project, row: Row): { state: 'sent' | 'draft'; rev: number | null } | null {
+  const subs = p.submissions.filter((s) => !s.revoked)
+  if (!subs.length) return null
+  if (row.status === 'draft' && row.publishedRev == null) return isActive(row) ? { state: 'draft', rev: null } : null
+  const first = subs.find((s) => s.rowIds.includes(row.id))
+  if (!first || first.rev <= subs[0].rev) return null
+  return { state: 'sent', rev: first.rev }
+}
